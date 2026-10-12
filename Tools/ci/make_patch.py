@@ -4,7 +4,7 @@
 ★ 目录布局遵循用户约定（asi loader 把 update/ 当工作目录并覆盖游戏视图）：
     <Game>\\
       ├─ dsound.dll                  ASI Loader（Ultimate ASI Loader v6.4, MIT）
-      ├─ 安装说明.txt
+      ├─ 必读说明.txt
       ├─ LICENSE                     项目主许可（含游戏版权声明）
       ├─ License.txt                 LICENSES/*.txt 合并，供随包分发
       ├─ scripts\\
@@ -45,8 +45,14 @@ ASI_LOADER_DST = "dsound.dll"
 
 # 仓库根 LICENSE（项目主许可，含游戏版权声明）-> 包根 LICENSE
 LICENSE_SRC = "LICENSE"
-README_SRC = "Documents/安装说明.txt"
-README_DST = "安装说明.txt"
+# 统一标准 S11：包内说明一律叫「必读说明.txt」（原「安装说明.txt」已改名）
+README_SRC = "Documents/必读说明.txt"
+README_DST = "必读说明.txt"
+# 两份 AI 辅助文件（统一标准 S12/S13），与必读说明同源目录，随包分发到包根
+AI_FILES = [
+    "如果不会安装，请把该文件发给AI，让AI教你.txt",
+    "将此文件交给AI，让AI协助完善本项目.txt",
+]
 LICENSE_DIR = "LICENSES"
 # 合并顺序：先第三方（随包分发者），最后 GPLv3.txt 作为主许可正文
 LICENSE_ORDER = ["ASILoader.txt", "GPLv3.txt"]
@@ -130,7 +136,8 @@ def main():
         print("!! build_out 中缺少: %s" % ", ".join(missing), file=sys.stderr)
         return 1
 
-    # 3) 包根附加文件：dsound.dll（ASI Loader）/ LICENSE / License.txt / 安装说明.txt
+    # 3) 包根附加文件：dsound.dll（ASI Loader）/ LICENSE / License.txt /
+    #    必读说明.txt / 两份 AI 辅助文件
     def put_root(src_path, dst_name, label):
         """从仓库任意路径复制一个文件到包根。"""
         nonlocal n, total
@@ -146,7 +153,7 @@ def main():
              "%s (ASI Loader)" % ASI_LOADER_SRC)
     put_root(os.path.join(root, LICENSE_SRC), "LICENSE", LICENSE_SRC)
 
-    # 安装说明.txt 写 UTF-8 **带 BOM**：Windows 记事本靠 BOM 判断编码，
+    # 必读说明.txt 写 UTF-8 **带 BOM**：Windows 记事本靠 BOM 判断编码，
     # 无 BOM 的 UTF-8 在旧版系统上会显示成乱码。目标用户是中文玩家，
     # 直接双击打开是首要场景。
     readme_src = os.path.join(root, README_SRC)
@@ -160,6 +167,21 @@ def main():
             fh.write(txt)
         n += 1
         total += os.path.getsize(rp)
+
+    # 两份 AI 辅助文件（S12/S13）：同样写 UTF-8 带 BOM + CRLF，
+    # 保证玩家双击用记事本打开就是正常中文。放包根，可直接拖进 AI 聊天工具。
+    for ai in AI_FILES:
+        ai_src = os.path.join(root, "Documents", ai)
+        if not os.path.isfile(ai_src):
+            missing.append("Documents/%s" % ai)
+            continue
+        ap = os.path.join(stage, ai)
+        with open(ai_src, "r", encoding="utf-8") as fh:
+            ai_txt = fh.read()
+        with open(ap, "w", encoding="utf-8-sig", newline="\r\n") as fh:
+            fh.write(ai_txt)
+        n += 1
+        total += os.path.getsize(ap)
 
     # License.txt：把 LICENSES/ 下各 txt 合并成一份，便于随包分发
     lic_dir = os.path.join(root, LICENSE_DIR)

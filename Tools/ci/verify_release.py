@@ -211,7 +211,7 @@ def main():
 
     # 7. 包根必备文件
     #    这些缺任何一个都会直接影响用户：dsound.dll 缺失则汉化完全不加载；
-    #    LICENSE / 安装说明 是分发义务。
+    #    LICENSE / 必读说明 是分发义务。
     print()
     print("包根文件:")
     ROOT_FILES = [
@@ -219,9 +219,15 @@ def main():
          False),
         ("LICENSE", 1000, "项目主许可（含游戏版权声明）", False),
         ("License.txt", 1000, "LICENSES/*.txt 合并正文", False),
-        # 安装说明是中文，**必须**带 BOM，否则记事本显示乱码。
+        # 必读说明是中文，**必须**带 BOM，否则记事本显示乱码。
         # License.txt 是英文 GPL 正文，不需要 BOM。
-        ("安装说明.txt", 500, "安装说明（须为 UTF-8 BOM）", True),
+        # S11 统一命名：原「安装说明.txt」已更名为「必读说明.txt」。
+        ("必读说明.txt", 500, "必读说明（须为 UTF-8 BOM）", True),
+        # S12/S13：两份 AI 辅助文件，中文正文同样需 BOM。
+        ("如果不会安装，请把该文件发给AI，让AI教你.txt", 500,
+         "AI 安装助手入口（须为 UTF-8 BOM）", True),
+        ("将此文件交给AI，让AI协助完善本项目.txt", 500,
+         "AI 贡献助手入口（须为 UTF-8 BOM）", True),
     ]
     for name, min_size, why, need_bom in ROOT_FILES:
         p = os.path.join(out, name)

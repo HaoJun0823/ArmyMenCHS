@@ -44,7 +44,7 @@
         ▼  build_out/  （平铺的中间目录）
 ③ make_patch.py --out stage
         │  组装成"可解压到游戏根目录"的最终布局，
-        │  加入 dsound.dll / LICENSE / License.txt / 安装说明.txt
+        │  加入 dsound.dll / LICENSE / License.txt / 必读说明.txt / 两份 AI 辅助文件
         ▼  stage/  （含 zip）
 ④ verify_release.py stage
         │  独立校验最终产物
@@ -177,7 +177,9 @@ fi
 ```
 ArmyMen-CHS-Patch-<UTC 时间戳>.zip
 ├─ dsound.dll                 ASI Loader（Ultimate ASI Loader v6.4, MIT）
-├─ 安装说明.txt               UTF-8 BOM + CRLF（记事本友好）
+├─ 必读说明.txt               UTF-8 BOM + CRLF（记事本友好）
+├─ 如果不会安装，请把该文件发给AI，让AI教你.txt   UTF-8 BOM + CRLF
+├─ 将此文件交给AI，让AI协助完善本项目.txt         UTF-8 BOM + CRLF
 ├─ LICENSE                    项目主许可（含游戏版权声明）
 ├─ License.txt                LICENSES/*.txt 合并正文
 ├─ scripts\
@@ -213,7 +215,7 @@ ArmyMen-CHS-Patch-<UTC 时间戳>.zip
 | 4 | 三个 `objects.dat` **能重新解析** | 魔数 + key 数量 + 块头合法 |
 | 5 | `objects.dat` 的 key 集合与 Steam 原版一致 | 差异移植不应改 key 集合 |
 | 6 | 载荷目录齐全 | Audio/AVI/Campaigns/Maps/Screens |
-| 7 | **包根必备文件** | `dsound.dll` / `LICENSE` / `License.txt` / `安装说明.txt`（须 UTF-8 BOM） |
+| 7 | **包根必备文件** | `dsound.dll` / `LICENSE` / `License.txt` / `必读说明.txt` / 两份 AI 辅助文件（均须 UTF-8 BOM） |
 | 8 | **LICENSE 内容体检** | 不得残留其它项目名，必须含 GPL 与游戏版权方 |
 
 ### 第 7 项为什么是硬门禁
