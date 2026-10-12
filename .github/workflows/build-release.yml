@@ -1,0 +1,349 @@
+name: build-release
+
+# ============================================================================
+# ArmyMenCHS —— 《玩具兵大战》Steam 版汉化补丁构建 + 自动发 Release
+# 架构：ubuntu-latest + msvc-wine (MSVC v141, 32 位 x86)
+# ----------------------------------------------------------------------------
+# 产物（单个 zip，解压到游戏根目录）：
+#   ArmyMen-CHS-Patch-<date-time>.zip
+#
+# 包内结构（= 游戏安装目录布局，可直接覆盖）：
+#   Audio\  AVI\  Campaigns\  Maps\  Screens\
+#   Alpine\objects.dat  Bayou\objects.dat  Desert\objects.dat
+#   Army1_Extend_Dll.dll  ArmyMenCHS.ini  strings\*.ini
+#
+# 触发：
+#   push(main/master)  —— 构建 + 校验 + 上传 zip；随后 publish job 在同一 run
+#                         内按日期-时间打 tag 并发 Release。
+#   pull_request       —— 构建 + 校验（门禁，不发布）
+#   workflow_dispatch  —— 手动；可勾选跳过 DLL 编译
+#
+# ★★ 为什么是 ubuntu + msvc-wine（与 MajestyIIExtend / SR_GAME_CHINESE 同款）：
+#   windows-2022/2025 镜像**不带 v141 (MSVC 14.16)**，在 VS Installer 里加装
+#   连续翻车。msvc-wine 用与 VS 安装器同一份官方 manifest 从微软 CDN 拉包，
+#   wine 运行真 cl.exe/link.exe，能精确锁定 VC.Tools.14.16。
+#
+# ★★ 本项目是 **32 位** DLL（游戏 Armymen.exe 是 PE32/i386），与参考项目
+#   的 x64 不同，因此有几处 32 位专属处理（下方已标注）：
+#     1. vsdownload --architecture **x86 x64**（两者都要）：
+#        x86 cl.exe（Hostx64/x86）启动时按 PATH 找 mspdbcore.dll，而该文件
+#        只存在于 **Hostx64/x64** 目录。只拉 x86 会让 wine 下的 cl 报
+#        "fatal error C1356: unable to find mspdbcore.dll"。
+#        此坑在本地用 VS2017 真实 cl 复现过（见 Tools/ci/_local_test_compile.cmd）。
+#     2. compile_dll_wine.py 用 bin/x86/cl + bin/x86/link，并把 bin/x64 也
+#        加进 PATH（双保险）。
+#     3. 产物校验断言 machine == 0x14C (i386)。
+#
+# ★ 资源侧（AVI/Audio/Maps/Screens/objects.dat）全是纯 Python 处理，
+#   Linux 原生运行，不需要 wine。
+# ============================================================================
+
+on:
+  push:
+    branches: [main, master]
+    paths-ignore:
+      - '**.md'
+      - 'Archives/**'
+      - 'docs/**'
+  pull_request:
+    branches: [main, master]
+    paths-ignore:
+      - '**.md'
+      - 'Archives/**'
+      - 'docs/**'
+  workflow_dispatch:
+    inputs:
+      skip_dll:
+        description: '跳过 DLL 编译（复用已提交产物；CI 上一般不要勾）'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: 构建发布包（ubuntu-latest + msvc-wine MSVC v141 x86）
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: 'utf-8'
+      MSVC_WINE_PREFIX: ${{ github.workspace }}/.msvc
+      MSVC_SDK_DIR: ${{ github.workspace }}/.msvc-sdk
+      MSVCWINE_REF: master
+
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      # ★ 必须完整 checkout msvc-wine：install.sh 要用仓库里的 lowercase /
+      #   fixinclude（Linux 大小写敏感必需）、wrappers/、msvctricks.cpp。
+      - name: 检出 msvc-wine
+        uses: actions/checkout@v4
+        with:
+          repository: mstorsjo/msvc-wine
+          ref: ${{ env.MSVCWINE_REF }}
+          path: .msvc-wine
+
+      - name: 配置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 安装 Python 依赖（Pillow，导出贴图用）
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet Pillow
+
+      - name: 安装 wine / msitools 等依赖
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y wine64 msitools ca-certificates winbind
+          wine --version
+
+      - name: 还原 MSVC 工具链缓存
+        uses: actions/cache@v4
+        with:
+          path: .msvc
+          key: armymenchs-msvcwine-v141-x86-sdk26100-${{ env.MSVCWINE_REF }}-v1
+
+      # ── 下载工具链（缓存未命中时）：两段 vsdownload + 合并 ──────────
+      #   段1 VC 14.16：--major 15 是**关键** —— VC.Tools.14.16 (v141) 只
+      #     存在于 VS2017 manifest；VS2022+ 清单里 v141 兼容组件 ID 不同，
+      #     vsdownload 找不到会**静默回退最新工具集**。
+      #     ★ --architecture **x86 x64**：x64 是 mspdbcore.dll 的来源（见文件头）。
+      #     --with-sdk=no：SDK 走段 2。
+      #   段2 SDK 26100：与 vcxproj 的 WindowsTargetPlatformVersion 一致
+      #     （10.0.26100）。VS2017 manifest 里没有 26100，故走 VS2022 channel。
+      - name: 下载并装配 MSVC v141 + Win10 SDK 26100（缓存未命中时）
+        run: |
+          set -euo pipefail
+          if [ -x "${MSVC_WINE_PREFIX}/bin/x86/cl" ] && [ -d "${MSVC_WINE_PREFIX}/kits/10/include/10.0.26100.0" ]; then
+            echo "工具链缓存命中（VC 14.16 + SDK 26100），跳过下载。"
+          else
+            echo "==> [1/3] 下载 VC 14.16 (v141, VS2017 channel, x86+x64)"
+            python3 .msvc-wine/vsdownload.py \
+              --accept-license --major 15 --msvc-version 15.9 \
+              --architecture x86 x64 --host-arch x64 \
+              --with-sdk=no --with-atl=no --with-asan=no --with-dia=no \
+              --with-msbuild=no --with-devcmd=no \
+              --dest "${MSVC_WINE_PREFIX}"
+
+            echo "==> [2/3] 下载 Win10 SDK 26100 (VS2022 channel)"
+            python3 .msvc-wine/vsdownload.py \
+              --accept-license --major 17 \
+              --sdk-version 10.0.26100 \
+              --with-default=no \
+              --architecture x86 --host-arch x64 \
+              --dest "${MSVC_SDK_DIR}"
+
+            echo "==> [3/3] 合并 SDK 26100 进 MSVC prefix"
+            if [ -d "${MSVC_WINE_PREFIX}/Windows Kits" ]; then
+              echo "!! .msvc/Windows Kits 已存在，意外状态" >&2; exit 1
+            fi
+            mv "${MSVC_SDK_DIR}/Windows Kits" "${MSVC_WINE_PREFIX}/"
+          fi
+          rm -rf "${MSVC_SDK_DIR}"
+
+      - name: install.sh（生成包装脚本 / 大小写修复）
+        run: |
+          set -euo pipefail
+          sh .msvc-wine/install.sh "${MSVC_WINE_PREFIX}"
+
+      # ── 编译器验证（门禁）────────────────────────────────────────
+      #   必须看到 19.16 才放行（防止 vsdownload 静默回退新版工具集）。
+      #   同时显式检查 mspdbcore.dll 就位（C1356 根因诊断）。
+      - name: 验证编译器为 MSVC v141 x86（诊断 + 门禁）
+        run: |
+          set -euo pipefail
+          export PATH="${MSVC_WINE_PREFIX}/bin/x86:$PATH"
+          echo "-- mspdbcore.dll 就位检查（32位 cl 必需）--"
+          find "${MSVC_WINE_PREFIX}/vc/tools/msvc" -name mspdbcore.dll 2>/dev/null || true
+          echo "-- cl banner --"
+          banner="$(cl 2>&1 || true)"
+          echo "$banner" | head -2
+          if ! echo "$banner" | grep -q "19\.16"; then
+            echo "!! cl 不是 MSVC 14.16 (v141)" >&2
+            exit 1
+          fi
+          echo "-- Win SDK 版本（应含 10.0.26100.0）--"
+          ls "${MSVC_WINE_PREFIX}/kits/10/include/"
+          echo "-- 磁盘余量 --"
+          df -h .
+
+      # ── 编译 DLL（32 位）─────────────────────────────────────────
+      #   msvc-wine 无 MSBuild，故由 compile_dll_wine.py 把 vcxproj 的
+      #   Release|Win32 选项逐项翻译成 cl/link 命令行。
+      - name: 编译 Army1_Extend_Dll.dll（32 位）
+        if: ${{ github.event.inputs.skip_dll != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/compile_dll_wine.py --msvc-prefix "${MSVC_WINE_PREFIX}"
+
+      # ── 组装发布包 ────────────────────────────────────────────────
+      #   ci_build.py 做三件事：
+      #     1) 复制 Army1_NEW_CHS/* （游戏原生目录布局）
+      #     2) pack_diff.py 以 Steam 原版 objects.dat 为基底 + Army1_Object_CHS
+      #        的差异块覆盖 -> 产出三地形 objects.dat
+      #     3) 复制 DLL / ini / strings
+      - name: 组装发布包
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/ci_build.py --out build_out --verify
+
+      # ── 打补丁包（make_patch.py）───────────────────────────────
+      #   这一步才产出**最终用户拿到手的目录结构**：
+      #     包根   dsound.dll / LICENSE / License.txt / 安装说明.txt
+      #     scripts\  Army1_Extend_Dll.asi / ArmyMenCHS.ini / strings\
+      #     update\   Audio AVI Campaigns Maps Screens Alpine Bayou Desert
+      #
+      #   ★ 必须在校验之前跑：verify_release.py 校验的是 stage（最终产物），
+      #     而非 build_out（中间目录）。dsound.dll 缺失时游戏不会加载
+      #     scripts\*.asi，汉化会完全失效且无任何报错 —— 必须在 CI 拦下。
+      - name: 打补丁包（含 ASI Loader / LICENSE / 安装说明）
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/make_patch.py --out stage
+
+      # ── 产物校验（独立于构建再核一遍）──────────────────────────────
+      #   · DLL 必须是 32 位 PE (machine 0x14C)
+      #   · 三个 objects.dat 存在且非空
+      #   · 载荷目录齐全
+      #   · objects.dat 能重新解析（key 集合与 Steam 一致）
+      #   · 包根必备文件齐全 + LICENSE 无模板残留 + 安装说明带 BOM
+      - name: 校验产物完整性
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/verify_release.py stage
+
+      - name: 上传发布包
+        uses: actions/upload-artifact@v4
+        with:
+          name: armymen-chs
+          path: stage/*.zip
+          if-no-files-found: error
+          retention-days: 30
+
+  publish:
+    name: 发布 Release（push 主分支自动按日期-时间打 tag）
+    needs: build
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: 检出仓库（供 gh 发版确定 git 上下文）
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 下载发布包
+        uses: actions/download-artifact@v4
+        with:
+          name: armymen-chs
+          path: dist
+
+      - name: 计算日期-时间 tag
+        id: tag
+        run: |
+          set -euo pipefail
+          tag="$(TZ=Asia/Shanghai date +%Y-%m-%d-%H-%M-%S)"
+          if gh api "repos/${{ github.repository }}/git/ref/tags/$tag" >/dev/null 2>&1; then
+            tag="${tag}-${GITHUB_RUN_NUMBER}"
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "将使用 tag: $tag"
+
+      - name: 生成 Release 说明（提交记录）
+        run: |
+          set -euo pipefail
+          tag="${{ steps.tag.outputs.tag }}"
+          slug="${{ github.repository }}"
+          repo_url="https://github.com/$slug"
+
+          latest="$(gh api "repos/$slug/releases/latest" 2>/dev/null || true)"
+          prev_tag="$(printf '%s' "$latest" | jq -r '.tag_name // empty' 2>/dev/null || true)"
+          prev_sha="$(printf '%s' "$latest" | jq -r '.commit.sha // empty' 2>/dev/null || true)"
+          if [ -z "$prev_sha" ] && [ -n "$prev_tag" ]; then
+            prev_sha="$(gh api "repos/$slug/git/refs/tags/$prev_tag" --jq '.object.sha // empty' 2>/dev/null || true)"
+            if [ "$(git cat-file -t "$prev_sha" 2>/dev/null || true)" = "tag" ]; then
+              prev_sha="$(gh api "repos/$slug/git/refs/tags/$prev_tag" --jq '.object.object.sha // empty' 2>/dev/null || true)"
+            fi
+          fi
+          if [ -n "$prev_sha" ] && git cat-file -e "${prev_sha}^{commit}" 2>/dev/null; then
+            base="$prev_sha"; base_label="$prev_tag"
+          else
+            base="$(git rev-list --max-parents=0 HEAD)"; base_label="首个提交"
+          fi
+
+          # ★ 必须用 tformat（不是 format）：format 末尾不带换行，read 在 EOF
+          #   遇到无换行行时返回非零并丢弃该行，导致「恰好 1 条提交」时显示 0 条。
+          : > commits.md
+          git log --no-merges --max-count=60 --pretty=tformat:'%H%x09%s' "$base..HEAD" \
+            | while IFS=$'\t' read -r h s; do
+                if [ -z "$h" ]; then continue; fi
+                printf -- '- [`%s`](%s/commit/%s) %s\n' "${h:0:7}" "$repo_url" "$h" "$s" >> commits.md
+              done
+          n=$(grep -c '^- ' commits.md || true)
+          echo "本次提交记录：$n 条（基准 $base_label）"
+
+          cat > release_notes.md <<EOF
+          ## 《玩具兵大战》简体中文汉化补丁 · \`$tag\`
+
+          基于 1998 上海育碧简体中文母盘，对 Steam 重制版做**精细化**汉化：
+          以 Steam 原版为基底，只替换真正被本地化的内容。
+
+          下载 zip，**把包内全部内容解压到游戏安装目录**即可。
+          EOF
+          {
+            echo
+            echo "### 本次更新（自 \`$base_label\` 起，共 ${n} 条提交）"
+            echo
+            if [ -s commits.md ]; then cat commits.md; else echo "(本次构建无新增提交)"; fi
+            echo
+            echo "### 补丁内容"
+            echo
+            echo "- 视频/音频/文本/贴图：取自中文母盘，未汉化部分保留 Steam 原版"
+            echo "- objects.dat：以 Steam 版为基底，仅覆盖被本地化的精灵块（Alpine 41 / Bayou 37 / Desert 37）"
+            echo "- exe 内硬编码文本：由 Army1_Extend_Dll.dll 运行时内存补丁（124 条）"
+          } >> release_notes.md
+          sed -i "s/\$tag/$tag/g" release_notes.md
+          echo "-- release_notes.md --"
+          head -5 release_notes.md
+
+      - name: 创建 Release 并上传 zip
+        run: |
+          set -euo pipefail
+          tag="${{ steps.tag.outputs.tag }}"
+          slug="${{ github.repository }}"
+          if [ ! -f release_notes.md ]; then echo "!! 未找到 release_notes.md" >&2; exit 1; fi
+
+          REL_JSON=$(gh api -X POST "repos/$slug/releases" \
+            -f "tag_name=$tag" -f "name=$tag" \
+            -F "body=@release_notes.md" -F "draft=false")
+          if [ "$(jq -r .body <<<"$REL_JSON")" = "@release_notes.md" ]; then
+            REL_JSON=$(gh api -X POST "repos/$slug/releases" \
+              -f "tag_name=$tag" -f "name=$tag" \
+              -f "body=$(cat release_notes.md)" -F "draft=false")
+          fi
+          UPLOAD_URL=$(echo "$REL_JSON" | jq -r .upload_url)
+          BASE="${UPLOAD_URL%%\{*}"
+          src="$(ls dist/*.zip | head -1)"
+          ascii="ArmyMen-CHS-Patch-${tag}.zip"
+          echo "上传 $ascii"
+          curl -fsSL -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/zip" \
+            -H "Accept: application/vnd.github+json" \
+            --data-binary "@$src" \
+            "${BASE}?name=${ascii}" | jq -r '.name'
+          echo "已发布 Release: $tag"

@@ -1,0 +1,105 @@
+HaoJun0823 Project License
+Copyright (c) 2026 Haojun (HaoJun0823) (Randerion). All rights reserved.
+Homepage: https://www.haojun0823.xyz
+Github: https://github.com/HaoJun0823
+ORCID: https://orcid.org/0000-0002-2285-0503
+
+----------------------------------------------------------------------
+Main License
+----------------------------------------------------------------------
+
+This project (the Chinese translation data, documentation, build scripts
+and tools authored for it) is licensed under:
+
+    GNU General Public License v3.0 or later
+
+SPDX-License-Identifier: GPL-3.0-or-later
+
+The full license text is available at:
+    ./LICENSES/GPLv3.txt
+
+----------------------------------------------------------------------
+Game Copyright Notice (Army Men Series)
+----------------------------------------------------------------------
+
+This project is an independent, fan-made Chinese localization ("translation
+patch") for the Army Men video game series (Chinese title: 玩具兵大战).
+It is not affiliated with, endorsed by, or sponsored by the copyright
+holders of those games.
+
+Army Men (玩具兵大战) and all related titles, characters, artwork, music,
+and trademarks are the property of their respective copyright holders.
+
+Copyright (c) 1998 The 3DO Company. All rights reserved.
+
+The 3DO Company is the original developer and publisher of the Army Men
+series. This project makes no claim of rights in any game asset.
+
+This project redistributes **no game assets**. It provides only translation
+text and data that users must apply to their own legally acquired copies of
+the games. The games themselves are not redistributed by this project and
+remain governed by their own licenses and copyright.
+
+----------------------------------------------------------------------
+Additional Terms
+----------------------------------------------------------------------
+
+None.
+
+----------------------------------------------------------------------
+Other Copyright Notices
+----------------------------------------------------------------------
+
+Copyright (c) 2026 Randerion (HaoJun0823). All rights reserved.
+
+Portions of this project are Copyright (c) their respective authors.
+
+----------------------------------------------------------------------
+Third-Party Components
+----------------------------------------------------------------------
+
+The following third-party components are distributed under their own
+licenses and are not covered by the main license of this project:
+
+- ASI Loader (Ultimate ASI Loader) - MIT License - Copyright (c) 2023 ThirteenAG
+  Redistributed in this release as `dsound.dll` (Win32 build, v6.4).
+  See ./LICENSES/ASILoader.txt
+
+----------------------------------------------------------------------
+Disclaimer
+----------------------------------------------------------------------
+
+The main license of this project, GNU General Public License v3.0 or later,
+includes its own warranty disclaimer and limitation of liability. The
+following disclaimer is a project-specific summary and does not replace,
+modify, or override the main license. The main license controls in case of
+any conflict.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+----------------------------------------------------------------------
+Notes
+----------------------------------------------------------------------
+
+This file describes the main license, additional terms, copyright notices,
+third-party components, and disclaimer of this project.
+
+The full license texts are located in the ./LICENSES/ directory.
+
+Scope notes for this specific project:
+
+  * The patch does NOT modify, redistribute or replace the game executable.
+    `Armymen.exe` is never written to. All in-memory patching is performed at
+    runtime by scripts\Army1_Extend_Dll.asi and is fully reversible.
+  * Game asset differences in `update/` are extracted blocks taken from the
+    user's own legally acquired copy of the localized retail release; no new
+    artwork is authored by this project.
+  * No stb / MinHook / Source Han Serif are used by this project. The font is
+    the system-provided SimSun (宋体), selected at runtime via the game's own
+    CreateFontA/CreateFontIndirectA.

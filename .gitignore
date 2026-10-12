@@ -1,0 +1,74 @@
+# ============================================================================
+#  构建产物
+# ============================================================================
+build_out/
+stage/
+dist/
+
+# DLL 编译中间与输出（build_dll_local.py / compile_dll_wine.py 产出）
+Army1_Extend_Dll/Release/
+Army1_Extend_Dll/Debug/
+Army1_Extend_Dll/x64/
+Army1_Extend_Dll/build_tmp/
+Army2_Extend_Dll/Release/
+Army2_Extend_Dll/Debug/
+Army2_Extend_Dll/x64/
+Army2_Extend_Dll/build_tmp/
+Army1_Extend_Dll/*.obj
+Army1_Extend_Dll/*.pch
+Army1_Extend_Dll/*.ilk
+Army1_Extend_Dll/*.exp
+Army1_Extend_Dll/*.lib
+Army1_Extend_Dll/*.i64
+
+# Visual Studio 本地缓存（Browse.VC.db / ipch 可达上百 MB，纯垃圾）
+.vs/
+*.suo
+*.user
+*.sdf
+*.opensdf
+*.VC.db
+*.ipch
+ipch/
+
+# 工具链（CI 下载，体积大）
+.msvc/
+.msvc-sdk/
+.msvc-wine/
+
+# ============================================================================
+#  子模块例外
+# ============================================================================
+#   ArmyMenSourceCode 是 git submodule（.gitmodules），其内容不该由本仓库
+#   逐文件跟踪。以下全局 *.obj / *.lib 规则必须对子模块放行，
+#   否则会污染子模块工作区状态。
+!ArmyMenSourceCode/**
+
+# ============================================================================
+#  工作区临时
+# ============================================================================
+_work/
+_vr/
+_backup_deployed/
+
+# 逐个备份/对比用的散落文件（下划线前缀）
+_bak_*.dat
+_fix_*.dat
+_test_*.dat
+_keys.csv
+
+# 构建/分析脚本的临时输出
+*.log
+ArmyMenCHS.log
+
+# ============================================================================
+#  Python
+# ============================================================================
+__pycache__/
+*.pyc
+
+# ============================================================================
+#  系统
+# ============================================================================
+.DS_Store
+Thumbs.db

@@ -1,0 +1,81 @@
+# ============================================================================
+#  为什么要显式锁死换行符
+# ============================================================================
+#  本仓库同时包含三类文件：
+#    1. 源码 / 配置        —— 文本，应按平台习惯处理
+#    2. 游戏载荷资产       —— .txt 任务脚本、.rul 规则、.cpn 战役定义、
+#                            objects.dat、BMP…… 游戏按**字节**解析
+#    3. 二进制工具         —— dsound.dll、*.pch
+#
+#  本机 core.autocrlf=true。若不加此文件，Windows 检出时会把 LF 改写成
+#  CRLF；对第 2 类文件就是**逐字节损坏**（每行多 1 字节，后续所有偏移错位），
+#  且症状是"地图加载崩溃"，极难排查。
+#
+#  因此：资产一律 -text（禁止任何换行符转换），只对源码放开。
+# ============================================================================
+
+# ---- 二进制：一律不做换行符转换 ----
+*.dll      -text
+*.asi      -text
+*.exe      -text
+*.dat      -text
+*.bmp      -text
+*.BMP      -text
+*.png      -text
+*.jpg      -text
+*.pdf      -text
+*.pdb      -text
+*.i64      -text
+*.idb      -text
+*.obj      -text
+*.pch      -text
+*.ilk      -text
+*.exp      -text
+*.lib      -text
+*.smk      -text
+*.asd      -text
+*.amm      -text
+*.atl      -text
+
+# ---- 游戏载荷文本资产：游戏按字节解析，禁止转换 ----
+#   .txt 任务脚本 / .rul 地图规则 / .cpn 战役定义 / .aai AI 行为表
+*.txt      -text
+*.rul      -text
+*.cpn      -text
+*.aai      -text
+
+# ---- 我们自己写的源码与文档：保持仓库内 LF，检出时按平台转换 ----
+#   注意顺序：git 属性是「后匹配者胜」，所以下面这些窄规则要排在上面的
+#   通配规则之后，才能把本项目自己的文件从 -text 里捞回来。
+*.py       text eol=lf
+*.yml      text eol=lf
+*.yaml     text eol=lf
+*.cpp      text eol=lf
+*.h        text eol=lf
+*.md       text eol=lf
+*.ini      text eol=lf
+
+# ---- 精确指定本项目维护的文件 ----
+#   注意：*.txt 是 -text（游戏资产），LICENSE 没有扩展名，GPLv3.txt 会被
+#   通配规则捕获。LICENSE 必须显式声明，否则可能被 autocrlf 改写。
+LICENSE       text eol=lf
+.gitignore    text eol=lf
+.gitattributes text eol=lf
+.gitmodules    text eol=lf
+
+# LICENSES/ 下是第三方许可证原文，保持原样不做转换
+LICENSES/**   -text
+
+# 安装说明.txt 由 make_patch.py 生成到包内（UTF-8 BOM + CRLF），
+# 仓库里的源文件 Documents/安装说明.txt 用 LF，打包时再转 CRLF。
+Documents/安装说明.txt text eol=lf
+
+# ---- 其它我们维护的文本 ----
+*.sln      text eol=lf
+*.vcxproj  text eol=lf
+*.filters  text eol=lf
+*.mak      text eol=lf
+*.bat      text eol=lf
+*.cmd      text eol=lf
+*.json     text eol=lf
+*.csv      text eol=lf

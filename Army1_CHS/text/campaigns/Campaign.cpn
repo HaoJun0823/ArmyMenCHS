@@ -1,0 +1,318 @@
+#=======================================================================
+#	SAMPLE .CPN file
+#
+#	Data format:
+#
+#	CAMPAIGN		ID  <Load>.BMP  <Scenario>.BMP
+#		TITLE		"NameString"
+#		MUSIC		AudioID									# see files sounds.h, streams.h, and voices.h
+#		VISIBILITY	0|1
+#	SCENARIO		ID
+#		TITLE		"NameString"
+#		AVI			<win>	<lose0>	<lose1>	<lose2>
+#		VISIBILITY	0|1
+#	MISSION			ID	<Briefing>.BMP
+#		TITLE		"NameString"
+#		MESSAGE		MissionStatementMusicID MissionStatementVoiceID
+#		MAPFILE		<filename>.AMM
+#		STRATMAP	<filename>.BMP
+#		MUSIC		LoIntensityAudioID HiIntensityAudioID	# see files sounds.h, streams.h, and voices.h
+#		VISIBILITY	0|1
+#
+#=======================================================================
+#
+#-----------------------------------------------------------------------
+#		DESERT
+#-----------------------------------------------------------------------
+CAMPAIGN	10001	des_load.bmp	des_misn_select.bmp
+	TITLE			"沙漠"
+	MUSIC			DESERT1_MUSIC
+	VISIBILITY		1					# VISIBLE
+SCENARIO	01001
+	TITLE			"仙人掌平原"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		1					# VISIBLE
+MISSION		00001	DS1M1.bmp
+	TITLE			"初显身手" #The Assassination Game
+	MESSAGE			DS1M1 DESERT1_1WIN DESERT1_1LOSE DESERT_DIE
+	MAPFILE			Desert1
+	STRATMAP		Desert1.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				0
+	VISIBILITY		1					# VISIBLE
+MISSION		00002	DS1M2.bmp
+	TITLE			"见习杀手"
+	MESSAGE			DS1M2 DESERT_WIN DESERT1_2LOSE DESERT_DIE
+	MAPFILE			Desert1
+	STRATMAP		Desert1.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				0
+	VISIBILITY		0					# Not Visible
+MISSION		00003	DS1M3.bmp
+	TITLE			"长桥"
+	MESSAGE			DS1M3 DESERT_WIN DESERT_LOSE DESERT_DIE
+	MAPFILE			Desert1
+	STRATMAP		Desert1.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				1
+	VISIBILITY		0					# Not Visible
+SCENARIO	01002
+	TITLE			"梅沙山谷"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00004	DS2M1.bmp
+	TITLE			"如影随行"
+	MESSAGE			DS2M1 DESERT_WIN DESERT2_1LOSE DESERT_DIE
+	MAPFILE			Desert2
+	STRATMAP		Desert2.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				1
+	VISIBILITY		0					# Not Visible
+MISSION		00005	DS2M2.bmp
+	TITLE			"凶残的部队"
+	MESSAGE			DS2M2 DESERT2_2WIN DESERT2_2LOSE DESERT_DIE
+	MAPFILE			Desert2
+	STRATMAP		Desert2.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				1
+	VISIBILITY		0					# Not Visible
+SCENARIO	01003
+	TITLE			"卡撒塑料卡"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00006	DS3M1.bmp
+	TITLE			"中士的英雄们"
+	MESSAGE			DS3M1 DESERT_WIN DESERT3_1LOSE DESERT_DIE
+	MAPFILE			Desert3
+	STRATMAP		Desert3.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				2
+	VISIBILITY		0					# Not Visible
+MISSION		00007	DS3M2.bmp
+	TITLE			"爆发"
+	MESSAGE			DS3M2 DESERT_WIN DESERT3_2LOSE DESERT_DIE
+	MAPFILE			Desert3
+	STRATMAP		Desert3.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	VISIBILITY		0					# Not Visible
+SCENARIO	01004
+	TITLE			"曲折的峡谷"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00008	DS4M1.bmp
+	TITLE			"死里逃生"
+	MESSAGE			DS4M1 DESERT_WIN DESERT4_1LOSE DESERT_DIE
+	MAPFILE			Desert4
+	STRATMAP		Desert4.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				2
+	VISIBILITY		0					# Not Visible
+MISSION		00009	DS4M2.bmp
+	TITLE			"虎口脱险"
+	MESSAGE			DS4M2 DESERT_WIN DESERT_LOSE DESERT_DIE
+	MAPFILE			Desert4
+	STRATMAP		Desert4.bmp
+	MUSIC			DESERT1_MUSIC DESERT2_MUSIC
+	KEY				2
+	VISIBILITY		0					# Not Visible
+#-----------------------------------------------------------------------
+#		ALPINE
+#-----------------------------------------------------------------------
+CAMPAIGN	10002	alp_load.bmp	alp_misn_select.bmp
+	TITLE			"高山"
+	MUSIC			ALPINE1_MUSIC
+	VISIBILITY		0					# Not Visible
+SCENARIO	01005
+	TITLE			"驻扎营"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00010	AS1M1.bmp
+	TITLE			"离开山脉"
+	MESSAGE			AS1M1 ALPINE1_1WIN ALPINE1_1LOSE ALPINE_DIE
+	MAPFILE			Alpine1
+	STRATMAP		Alpine1.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				2
+	VISIBILITY		0					# Not Visible
+MISSION		00011	AS1M2.bmp
+	TITLE			"诱敌"
+	MESSAGE			AS1M2 ALPINE1_2WIN ALPINE1_2LOSE ALPINE_DIE
+	MAPFILE			Alpine1
+	STRATMAP		Alpine1.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				2
+	VISIBILITY		0					# Not Visible
+SCENARIO	010060
+	TITLE			"布雷营"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00012	AS2M1.bmp
+	TITLE			"敌军的地雷"
+	MESSAGE			AS2M1 ALPINE2_1WIN ALPINE2_1LOSE ALPINE_DIE
+	MAPFILE			Alpine2
+	STRATMAP		Alpine2.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				2
+	VISIBILITY		0					# Not Visible
+MISSION		00013	AS2M2.bmp
+	TITLE			"幽灵火车"
+	MESSAGE			AS2M2 ALPINE2_2WIN ALPINE2_2LOSE ALPINE_DIE
+	MAPFILE			Alpine2
+	STRATMAP		Alpine2.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				2
+	VISIBILITY		0					# Not Visible
+SCENARIO	01007
+	TITLE			"羊肠河"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00014	AS3M1.bmp
+	TITLE			"弃物和残骸"
+	MESSAGE			AS3M1 ALPINE3_1WIN ALPINE3_1LOSE ALPINE_DIE
+	MAPFILE			Alpine3
+	STRATMAP		Alpine3.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+MISSION		00015	AS3M2.bmp
+	TITLE			"套叠轨道"
+	MESSAGE			AS3M2 ALPINE3_2WIN ALPINE3_2LOSE ALPINE_DIE
+	MAPFILE			Alpine3
+	STRATMAP		Alpine3.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+MISSION		00016	AS3M3.bmp
+	TITLE			"迂回作战"
+	MESSAGE			AS3M3 ALPINE_WIN ALPINE3_3LOSE ALPINE_DIE
+	MAPFILE			Alpine3
+	STRATMAP		Alpine3.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+SCENARIO	01008
+	TITLE			"战俘营"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00017	AS4M1.bmp
+	TITLE			"大逃亡"
+	MESSAGE			AS4M1 ALPINE4_1WIN ALPINE4_1LOSE ALPINE_DIE
+	MAPFILE			Alpine4
+	STRATMAP		Alpine4.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+MISSION		00018	AS4M2.bmp
+	TITLE			"最后的生机"
+	MESSAGE			AS4M2 ALPINE4_2WIN ALPINE4_2LOSE ALPINE_DIE
+	MAPFILE			Alpine4
+	STRATMAP		Alpine4.bmp
+	MUSIC			ALPINE1_MUSIC ALPINE2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+#-----------------------------------------------------------------------
+#		BAYOU
+#-----------------------------------------------------------------------
+CAMPAIGN	10003	bay_load.bmp	bay_misn_select.bmp
+	TITLE			"长沼"
+	MUSIC			BAYOU1_MUSIC
+	VISIBILITY		0					# Not Visible
+SCENARIO	01009
+	TITLE			"沼泽"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00019	BS1M1.bmp
+	TITLE			"谍报新闻"
+	MESSAGE			BS1M1 BAYOU1_1WIN BAYOU1_1LOSE BAYOU_DIE
+	MAPFILE			Bayou1
+	STRATMAP		Bayou1.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+MISSION		00020	BS1M2.bmp
+	TITLE			"混战华尔兹"
+	MESSAGE			BS1M2 BAYOU1_2WIN BAYOU1_2LOSE BAYOU_DIE
+	MAPFILE			Bayou1
+	STRATMAP		Bayou1.bmp
+	MUSIC			BAYOU1 BAYOU2
+	KEY				3
+	VISIBILITY		0					# Not Visible
+SCENARIO	01010
+	TITLE			"木屋小镇"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00021	BS2M1.bmp
+	TITLE			"战俘的窘境"
+	MESSAGE			BS2M1 BAYOU2_1WIN BAYOU2_1LOSE BAYOU_DIE
+	MAPFILE			Bayou2
+	STRATMAP		Bayou2.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+MISSION		00022	BS2M2.bmp
+	TITLE			"清扫行动"
+	MESSAGE			BS2M2 BAYOU2_2WIN BAYOU2_2LOSE BAYOU_DIE
+	MAPFILE			Bayou2
+	STRATMAP		Bayou2.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU2_MUSIC
+	KEY				3
+	VISIBILITY		0					# Not Visible
+SCENARIO	01011
+	TITLE			"兵工场"
+	AVI				none	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00023	BS3M1.bmp
+	TITLE			"注意头顶"
+	MESSAGE			BS3M1 BAYOU3_1WIN BAYOU3_1LOSE BAYOU_DIE
+	MAPFILE			Bayou3
+	STRATMAP		Bayou3.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU2_MUSIC
+	KEY				4
+	VISIBILITY		0					# Not Visible
+MISSION		00024	BS3M2.bmp
+	TITLE			"巨响理论"
+	MESSAGE			BS3M2 BAYOU3_2WIN BAYOU_LOSE BAYOU_DIE
+	MAPFILE			Bayou3
+	STRATMAP		Bayou3.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU2_MUSIC
+	KEY				4
+	VISIBILITY		0					# Not Visible
+MISSION		00025	BS3M3.bmp
+	TITLE			"雇佣掩护军"
+	MESSAGE			BS3M3 BAYOU3_3WIN BAYOU3_3LOSE BAYOU_DIE
+	MAPFILE			Bayou3
+	STRATMAP		Bayou3.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU2_MUSIC
+	KEY				4
+	VISIBILITY		0					# Not Visible
+SCENARIO	01012
+	TITLE			"风笛街"
+	AVI				final	lose1 lose2 lose3
+	VISIBILITY		0					# Not Visible
+MISSION		00026	BS4M1.bmp
+	TITLE			"冥河与尸骨"
+	MESSAGE			BS4M1 BAYOU4_1WIN BAYOU4_1LOSE BAYOU_DIE
+	MAPFILE			Bayou4
+	STRATMAP		Bayou4.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU3_MUSIC
+	KEY				4
+	VISIBILITY		0					# Not Visible
+MISSION		00027	BS4M2.bmp
+	TITLE			"诅咒之城"
+	MESSAGE			BS4M2 BAYOU4_2WIN BAYOU4_2LOSE BAYOU_DIE
+	MAPFILE			Bayou4
+	STRATMAP		Bayou4.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU3_MUSIC
+	KEY				4
+	VISIBILITY		0					# Not Visible
+MISSION		00028	BS4M3.bmp
+	TITLE			"浴火重生"
+	MESSAGE			BS4M3 BAYOU_WIN BAYOU4_3LOSE BAYOU_DIE
+	MAPFILE			Bayou4
+	STRATMAP		Bayou4.bmp
+	MUSIC			BAYOU1_MUSIC BAYOU3_MUSIC
+	KEY				4
+	VISIBILITY		0					# Not Visible
+#=======================================================================
+#						EOF
+#=======================================================================
