@@ -256,12 +256,17 @@ jobs:
         id: tag
         run: |
           set -euo pipefail
-          tag="$(TZ=Asia/Shanghai date +%Y-%m-%d-%H-%M-%S)"
+          # stamp：纯 ASCII 时间戳，仅供 Release 附件名（API 上传不支持中文名，
+          #   非 ASCII 会被静默破坏成 _._._）。
+          stamp="$(TZ=Asia/Shanghai date +%Y-%m-%d-%H-%M-%S)"
+          # tag：面向玩家的 CJK 前缀标签（统一标准 §5 汉化补丁-YYYY-MM-DD-HH-MM-SS）。
+          tag="汉化补丁-${stamp}"
           if gh api "repos/${{ github.repository }}/git/ref/tags/$tag" >/dev/null 2>&1; then
             tag="${tag}-${GITHUB_RUN_NUMBER}"
           fi
+          echo "stamp=$stamp" >> "$GITHUB_OUTPUT"
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
-          echo "将使用 tag: $tag"
+          echo "将使用 tag: $tag （附件戳 stamp: $stamp）"
 
       - name: 生成 Release 说明（提交记录）
         run: |
@@ -324,6 +329,7 @@ jobs:
         run: |
           set -euo pipefail
           tag="${{ steps.tag.outputs.tag }}"
+          stamp="${{ steps.tag.outputs.stamp }}"
           slug="${{ github.repository }}"
           if [ ! -f release_notes.md ]; then echo "!! 未找到 release_notes.md" >&2; exit 1; fi
 
@@ -338,7 +344,7 @@ jobs:
           UPLOAD_URL=$(echo "$REL_JSON" | jq -r .upload_url)
           BASE="${UPLOAD_URL%%\{*}"
           src="$(ls dist/*.zip | head -1)"
-          ascii="ArmyMen-CHS-Patch-${tag}.zip"
+          ascii="ArmyMen-CHS-Patch-${stamp}.zip"
           echo "上传 $ascii"
           curl -fsSL -X POST \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
