@@ -24,7 +24,10 @@ import sys
 VC = r"C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Tools\MSVC\14.16.27023"
 SDK = r"C:\Program Files (x86)\Windows Kits\10"
 SDKV = "10.0.26100.0"
-PROJ = r"G:\Projects\ArmyMenCHS\Army1_Extend_Dll"
+# 本脚本是 Windows + MSVC 专用（CI 用 compile_dll_wine.py），
+# 但路径仍从 __file__ 推导，避免换机器/换 clone 位置时失效。
+PROJ = os.path.join(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__)))), "Army1_Extend_Dll")
 
 # 顺序与 vcxproj Release|Win32 一致
 CL_FLAGS = [
