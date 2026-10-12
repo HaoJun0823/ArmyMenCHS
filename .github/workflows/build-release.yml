@@ -80,19 +80,19 @@ jobs:
 
     steps:
       - name: 检出仓库
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
 
       # ★ 必须完整 checkout msvc-wine：install.sh 要用仓库里的 lowercase /
       #   fixinclude（Linux 大小写敏感必需）、wrappers/、msvctricks.cpp。
       - name: 检出 msvc-wine
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
         with:
           repository: mstorsjo/msvc-wine
           ref: ${{ env.MSVCWINE_REF }}
           path: .msvc-wine
 
       - name: 配置 Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7.0.0
         with:
           python-version: '3.12'
 
@@ -109,7 +109,7 @@ jobs:
           wine --version
 
       - name: 还原 MSVC 工具链缓存
-        uses: actions/cache@v4
+        uses: actions/cache@v6.1.0
         with:
           path: .msvc
           key: armymenchs-msvcwine-v141-x86-sdk26100-${{ env.MSVCWINE_REF }}-v1
@@ -217,14 +217,17 @@ jobs:
       #   · 三个 objects.dat 存在且非空
       #   · 载荷目录齐全
       #   · objects.dat 能重新解析（key 集合与 Steam 一致）
-      #   · 包根必备文件齐全 + LICENSE 无模板残留 + 安装说明带 BOM
+      #   · 包根必备文件齐全 + LICENSE 无模板残留 + 必读说明带 BOM
+      #   · S8 体积指纹（硬断言位置：verify_release.py 的 DLL_EXPECTED_SIZE）：
+      #     scripts/Army1_Extend_Dll.asi 必须精确为 259584 B
+      #     （= MSVC v141 14.16 + Win10 SDK 26100 的确定产物；回退 v142 会改变体积）
       - name: 校验产物完整性
         run: |
           set -euo pipefail
           python3 Tools/ci/verify_release.py stage
 
       - name: 上传发布包
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: armymen-chs
           path: stage/*.zip
@@ -242,12 +245,12 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: 检出仓库（供 gh 发版确定 git 上下文）
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
 
       - name: 下载发布包
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8.0.2
         with:
           name: armymen-chs
           path: dist

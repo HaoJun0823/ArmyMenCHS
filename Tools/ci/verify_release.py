@@ -34,6 +34,14 @@ TERRAINS = ("Alpine", "Bayou", "Desert")
 FILEID = 132415161
 HEADER_SIZE = 4 + 1024 + 4
 
+# ── S8 DLL 体积指纹（硬门禁）─────────────────────────────────────────────
+# 值 = 「MSVC v141 (14.16, cl 19.16) + Win10 SDK 10.0.26100 + 本仓库固定 flags」
+# 的确定产物（落包后名为 scripts/Army1_Extend_Dll.asi）。工具链静默回退到
+# v142 会改变体积 —— 故必须**精确相等**，不能用区间或软警告替代。
+# 实测来源：2026-10-13 CI 产物。
+DLL_EXPECTED_SIZE = 259584
+
+
 
 def sha256(p):
     import hashlib
@@ -139,8 +147,14 @@ def main():
         if m != 0x14C:
             print(f"  [FAIL] DLL 不是 32 位 (machine=0x{m:X}, 应为 0x14C)")
             ok = False
+        elif sz != DLL_EXPECTED_SIZE:
+            # S8 硬指纹：体积不符 = 工具集/SDK 回退或源码改动，必须拦下
+            print(f"  [FAIL] DLL 体积指纹不符：实际 {sz} B，"
+                  f"期望 {DLL_EXPECTED_SIZE} B"
+                  f"（MSVC v141 14.16 + Win10 SDK 26100 的确定产物）")
+            ok = False
         else:
-            print(f"  [ OK ] DLL 32 位 PE, {sz} bytes")
+            print(f"  [ OK ] DLL 32 位 PE, {sz} bytes（指纹相符）")
             with open(dll, "rb") as f:
                 b = f.read()
             for name in (b"ArmyMenCHS_Install", b"ArmyMenCHS_Uninstall"):
