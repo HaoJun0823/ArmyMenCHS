@@ -314,7 +314,7 @@ jobs:
           EOF
           {
             echo
-            echo "### 本次更新（自 \`$base_label\` 起，共 ${n} 条提交）"
+            echo "### 🧾 本次更新（自 \`$base_label\` 起，共 ${n} 条提交）"
             echo
             if [ -s commits.md ]; then cat commits.md; else echo "(本次构建无新增提交)"; fi
             echo
@@ -324,7 +324,49 @@ jobs:
             echo "- objects.dat：以 Steam 版为基底，仅覆盖被本地化的精灵块（Alpine 41 / Bayou 37 / Desert 37）"
             echo "- exe 内硬编码文本：由 Army1_Extend_Dll.dll 运行时内存补丁（124 条）"
           } >> release_notes.md
+
+          # ── 下载表（附件名是上传时由 curl ?name= 赋的 ASCII 名）─────────────
+          {
+            echo
+            echo "### 📦 下载"
+            echo
+            echo "| 附件名 | 内容 |"
+            echo "|---|---|"
+            echo "| \`ArmyMen-CHS-Patch-${{ steps.tag.outputs.stamp }}.zip\` | 简体中文汉化补丁（解压到游戏根目录） |"
+            echo
+            echo "### 📖 必读说明（安装 / 卸载 / 已知问题）"
+          } >> release_notes.md
+
+          {
+            echo
+            # ★ 必读说明在 zip 内部（artifact 只上传 zip，不含独立的说明文件），
+            #   故从 zip 里取 —— 保证 Release 正文与玩家实际拿到的包内说明逐字一致。
+            zip_path="$(find dist -name '*.zip' -print -quit 2>/dev/null || true)"
+            unzip -p "$zip_path" '必读说明.txt' 2>/dev/null | tr -d '\r' > readme_embed.txt || true
+            if [ -s readme_embed.txt ]; then
+              echo "<details><summary>展开完整必读说明（与包内 必读说明.txt 一致）</summary>"
+              echo
+              echo "<pre>"
+              cat readme_embed.txt
+              echo "</pre>"
+              echo
+              echo "</details>"
+            else
+              echo "> ⚠️ 未能从 zip 内取出 必读说明.txt，本次未附带。"
+            fi
+            echo
+            echo "---"
+            echo
+            echo "源码仓库：<https://github.com/HaoJun0823/ArmyMenCHS>　·　作者主页：<https://www.haojun0823.xyz/>"
+          } >> release_notes.md
+
           sed -i "s/\$tag/$tag/g" release_notes.md
+          # 三段结构自检（下载表 / 必读说明 / 提交记录）
+          for sec in "### 📦 下载" "### 📖 必读说明" "### 🧾 本次更新"; do
+            if ! grep -qF "$sec" release_notes.md; then
+              echo "!! release_notes.md 缺少段落「$sec」" >&2; exit 1
+            fi
+          done
           echo "-- release_notes.md --"
           head -5 release_notes.md
 
@@ -355,4 +397,12 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             --data-binary "@$src" \
             "${BASE}?name=${ascii}" | jq -r '.name'
+
+          # body 自检：非空、非占位符、首行符合预期
+          body="$(gh api "repos/$slug/releases/tags/$tag" --jq .body)"
+          body_head="${body%%$'\n'*}"
+          if [ -z "$body_head" ] || [[ "$body_head" != "## 《玩具兵大战》简体中文汉化补丁"* ]]; then
+            echo "!! Release body 异常（首行=[$body_head]）" >&2; exit 1
+          fi
+          echo "✓ Release body 已写入（首行：${body_head}…）"
           echo "已发布 Release: $tag"
