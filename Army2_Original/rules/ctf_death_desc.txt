@@ -1,5 +1,5 @@
-将敌方旗帜带回己方基地得 200 分。
-击毙敌方中士得 50 分。
-旗帜若 2 分钟无人持有，将自动返回基地。
-误伤友军致死扣 100 分。
-最先达到目标分数的玩家或队伍获胜。
+Bringing an enemy flag to home base scores 200 pts.
+Killing an enemy sarge scores 50 pts.
+A flag returns to its base if unheld for 2 minutes.
+There is a 100 pt penalty for friendly fire deaths.
+The first player/team to reach the point goal wins.

@@ -1,0 +1,145 @@
+《玩具兵大战 II》(Army Men II) 简体中文补丁  安装说明
+======================================================
+
+版本
+----
+本补丁适用于《玩具兵大战 II》Steam 版（ArmyMen2.exe，1999 年原作的
+Steam 再发行版本）。
+
+本补丁基于 1999 年上海育碧发行的官方简体中文版制作。
+
+
+安装步骤
+--------
+1. 关闭游戏。若游戏正在运行，请先退出（任务管理器中确认没有 ArmyMen2.exe）。
+
+2. 将本压缩包解压到**游戏根目录**（即 ArmyMen2.exe 所在的文件夹）。
+   解压后应当得到这样的结构：
+
+       <游戏目录>\
+       ├─ dinput.dll                  <- 新增
+       ├─ 必读说明.txt
+       ├─ 如果不会安装，请把该文件发给AI，让AI教你.txt
+       ├─ 将此文件交给AI，让AI协助完善本项目.txt
+       ├─ LICENSE
+       ├─ License.txt
+       ├─ Disable_AM2ExeWinCompatShim.reg    <- 新增，见下文
+       ├─ Restore_AM2ExeWinCompatShim.reg    <- 新增，见下文
+       ├─ scripts\
+       │   ├─ Army2_Extend_Dll.asi    <- 新增
+       │   ├─ ArmyMenCHS.ini          <- 新增
+       │   ├─ Hzk16                   <- 新增（中文字库）
+       │   └─ strings\am2_strings.ini <- 新增
+       └─ update\
+           ├─ 01-title\  audio\  avi\  bitmaps\  data\  rules\
+           └─ mpmaps.txt  readme.txt  shared.dat  title.dat   <- 新增/覆盖
+
+   选择"替换"（覆盖）所有同名文件。
+
+3. 启动游戏即可。脚本目录下会生成 scripts\ArmyMen2CHS.log，
+   记录汉化加载情况，可用于排查问题。
+
+
+现代系统（Win10/11）必读：先装 cnc-ddraw
+----------------------------------------
+本作是 1999 年的 DirectDraw 5 程序，在新系统上**无法直接运行**
+（表现为黑屏、无图像、或鼠标错位）。
+
+请自行安装 cnc-ddraw：
+    https://github.com/FunkyFr3sh/cnc-ddraw
+
+按其官方说明把 ddraw.dll 放到游戏根目录（ArmyMen2.exe 同级），
+ddraw.ini 请用该项目自带的默认配置按需调整。
+本补丁**不包含也不修改** cnc-ddraw 的任何文件。
+
+注意：本补丁的 dinput.dll（ASI Loader）与 ddraw.dll 是两个不同的代理，
+互不冲突，但都需要在游戏根目录。
+
+
+Windows 兼容性设置（shim）的抵消与恢复
+--------------------------------------
+Steam 版给 ArmyMen2.exe 打了 Windows 兼容性 shim，它会干扰 cnc-ddraw。
+游戏根目录提供两个注册表文件：
+
+    Disable_AM2ExeWinCompatShim.reg   抵消 shim
+      —— 想让 cnc-ddraw 正常工作，请双击导入这个
+
+    Restore_AM2ExeWinCompatShim.reg   恢复 shim
+      —— 仅用于回滚：如果抵消后反而跑不起来，导入这个恢复原状
+
+两个文件都要**管理员权限**双击导入，导入后重启游戏。
+
+操作顺序建议：
+    先装 cnc-ddraw → 导入 Disable → 启动游戏
+  若仍无法运行，再导入 Restore 恢复 shim 试试。
+
+
+关于 dinput.dll
+---------------
+这是 Ultimate ASI Loader（by ThirteenAG，MIT 许可）。
+它本身不是汉化组件，作用是自动加载 scripts\ 目录下的 .asi 插件。
+
+游戏必须通过它才能加载汉化。如果你的游戏目录里没有这个文件，汉化不会生效。
+
+为什么用 dinput.dll 而不是 dsound.dll：
+本作按**序号**导入 dsound.dll，而 ASI Loader 的导出表是多个 DLL 的合并表，
+序号 1 并不对应 DirectSoundCreate，直接沿用会让游戏拿到错误的函数
+（表现为无声音且无报错）。本作按**名字**导入 dinput.dll!DirectInputCreateA，
+用该名字作代理可可靠命中。
+
+该文件会用本补丁附带的版本覆盖游戏根目录中已有的同名文件。
+如果你希望完全卸载本补丁并恢复干净状态，删除 scripts\ 和 update\ 目录，
+以及根目录下的 dinput.dll 即可（如果该文件在安装本补丁之前就存在，
+请自行确认来源后再决定是否删除）。
+
+
+本补丁做了什么
+--------------
+* 界面文本汉化：菜单、对话框、任务简报、单位名称、通讯消息等，
+  共 92 条。翻译数据存放在 scripts\ArmyMenCHS.ini，
+  可自行修改后重启生效。
+
+* 中文字体：游戏引擎自带点阵字体渲染，本补丁 hook 了 4 个文字渲染函数，
+  使用官方中文版的 13x13 字库 scripts\Hzk16。
+
+* 资源汉化：update\ 下的 336 个文件来自中文零售版 ——
+  中文配音、中文界面图、中文任务脚本、中文 UI 精灵等。
+
+* 补回了被 Steam 版阉割的多人游戏内容：
+    修复了被封锁的「多人游戏」入口（原版该菜单项不可用），
+    并补回 6 张社区提供的多人地图：
+      Road Wars / Hobby Table Havoc / Kitchen Madness /
+      Bedroom Bonanza / Rec Room Rumble / Hobby Multi
+
+* 补译了官方中文版遗漏的帮助/规则说明（rules\*_desc.txt，6 个文件）。
+  这些文件在官方中文版里**仍是英文**，属本项目新增翻译。
+
+
+本补丁不做什么
+--------------
+* **不修改 ArmyMen2.exe**。exe 文件保持原样，一个字节都不会变。
+  所有补丁内容由 scripts\Army2_Extend_Dll.asi 在游戏运行时于内存中完成，
+  卸载后不留任何痕迹。
+
+* 不附带、不分发任何游戏原始素材。
+  update\ 下的文件是中文零售版资源的提取结果，
+  请配合你自己合法获取的游戏使用。
+
+
+已知限制
+--------
+* 6 张社区多人地图的**图像本身没有翻译**（仍是英文烧字），
+  地图可正常玩，但界面上的图内文字为英文。
+
+* 电影为原版画面 + 中文配音音轨（画面本身无字幕文字）。
+
+* 若出现异常，请把 scripts\ArmyMen2CHS.log 一并反馈。
+
+
+许可与致谢
+----------
+本汉化补丁：GPL-3.0-or-later（见 LICENSE 与 License.txt）
+Ultimate ASI Loader：MIT License, Copyright (c) 2023 ThirteenAG
+
+《玩具兵大战 II》(Army Men II) (c) 1999 The 3DO Company. All rights reserved.
+本项目为非官方粉丝汉化，与游戏版权方无任何关联。

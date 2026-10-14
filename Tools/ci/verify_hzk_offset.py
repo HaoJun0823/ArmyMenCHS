@@ -113,8 +113,11 @@ def art(g, indent="      "):
 
 def main():
     ap = argparse.ArgumentParser()
+    # ★ 默认指向仓库内的 Army2_CHS/Hzk16（已跟踪），使 CI 与本地一致。
+    _root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     ap.add_argument("--file",
-                    default=r"I:\LocalGames\Army Men\玩具兵大战2\Hzk16")
+                    default=os.environ.get("AM2_HZK")
+                    or os.path.join(_root, "Army2_CHS", "Hzk16"))
     args = ap.parse_args()
 
     if not os.path.isfile(args.file):

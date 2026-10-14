@@ -143,6 +143,13 @@ def main():
             os.makedirs(os.path.dirname(d), exist_ok=True)
             shutil.copyfile(s, d)
             rows.append((rel, os.path.getsize(s), sha256(s)))
+
+        # ★ 这里**不再**往资产树里塞 compat/。
+        #   那两棵目录树是"母盘/Steam 版的逐文件镜像"，只放来自游戏的文件；
+        #   我们自造的运行时配套（两个兼容性 shim 的 .reg）放仓库根 compat/。
+        #   早先塞进来过一次，既污染镜像、又需要额外的暂存目录来绕过
+        #   rmtree，纯属自找麻烦。
+
         print("\n[%s] 已写入 %d 文件" % (dirname, len(rows)))
 
         # _filehash.csv（照 1 代格式：relative,size,sha256）

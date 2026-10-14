@@ -1,6 +1,6 @@
-中士每持有黑旗 3 秒得 10 分。
-
-旗帜若 2 分钟无人持有，将自动返回基地。
-误伤友军致死扣 100 分。
-最先达到目标分数的玩家或队伍获胜。
+Sarge scores 10 pts for every 3 seconds he holds the
+black flag.
+The flag returns to its base if unheld for 2 minutes.
+There is a 100 pt penalty for friendly fire deaths.
+The first player/team to reach the point goal wins.
 

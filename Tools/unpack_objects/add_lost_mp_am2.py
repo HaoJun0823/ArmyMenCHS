@@ -43,12 +43,22 @@ import struct
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# ★★ 源目录默认值：一律指向**仓库内**的资产树，而不是作者的测试环境盘符。
+#   这样 CI（ubuntu-latest，没有 I:\ 盘）与本地跑出来的是同一份产物。
+#   早先默认 I:\LocalGames\... —— CI 上必然失败，而本地因为文件在而看不出问题
+#   （这类"本地能跑、CI 炸"的默认值是本项目反复踩的坑）。
+#
+#   --lost   Lost MP 地图源。默认用 Army2_NEW_CHS：那 54 个文件已随仓库入库，
+#            且已逐一核对与外部 Lost MP 目录内容完全一致（54/54）。
+#   --chs    中文母盘资产（Army2_CHS）
+#   --steam  Steam 基线资产（Army2_Original）
 LOST = (sys.argv[sys.argv.index("--lost") + 1] if "--lost" in sys.argv
-        else r"I:\LocalGames\Army Men\Army Men II Lost MP Content\AMII")
+        else os.path.join(ROOT, "Army2_NEW_CHS"))
 CHS = (sys.argv[sys.argv.index("--chs") + 1] if "--chs" in sys.argv
-       else r"I:\LocalGames\Army Men\玩具兵大战2")
+       else os.path.join(ROOT, "Army2_CHS"))
 STEAM = (sys.argv[sys.argv.index("--steam") + 1] if "--steam" in sys.argv
-         else r"I:\LocalGames\Army Men\Army Men II STEAM")
+         else os.path.join(ROOT, "Army2_Original"))
 
 OUT = os.path.join(ROOT, "build_out_am2", "update")
 

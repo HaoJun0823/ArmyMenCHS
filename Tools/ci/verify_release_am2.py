@@ -14,7 +14,7 @@
   5. scripts\\Hzk16 存在、魔数正确、几何为 13x13
   6. update\\ 里**不含任何 exe/dll**（硬约束：不改游戏文件）
   7. update\\ 的文件清单与 MANIFEST 一致，且总大小在预期范围
-  8. 安装说明.txt 为 UTF-8 BOM + CRLF（记事本友好）
+  8. 必读说明.txt 为 UTF-8 BOM + CRLF（记事本友好）
 
 用法：
     python Tools/ci/verify_release_am2.py [stage_dir]
@@ -28,7 +28,14 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 STAGE = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, "stage_am2")
-STM_EXE = r"I:\LocalGames\Army Men\Army Men II STEAM\ArmyMen2.exe"
+
+# Steam exe 的位置。用于"译文表逐条对照英文原文"这一步（较强的闸门）。
+#   ★ 可用环境变量 AM2_STEAM_EXE 覆盖；CI 上没有 exe（exe 不入库，见
+#     .github/workflows/build-release.yml 的说明），此时该步退化为
+#     WARN 而不是 FAIL —— 见下方 [4] 的处理。
+#   之所以不硬编码，是为了让路径可移植、可测试。
+STM_EXE = (os.environ.get("AM2_STEAM_EXE")
+           or r"I:\LocalGames\Army Men\Army Men II STEAM\ArmyMen2.exe")
 
 FAIL = []
 WARN = []
@@ -267,8 +274,10 @@ def main():
             listed |= {"hzk16"}
             only_actual = actual - listed
             only_listed = listed - actual
-            # Hzk16 是**故意**从 update\ 挪到 scripts\ 的（避免同一份字库放两处，
-            # 且 DLL 优先在 scripts\ 找），所以磁盘上没有 update\Hzk16 属正常。
+            # Hzk16 是**故意**不放进 update\ 的（字库只由 make_patch_am2.py
+            # 落在 scripts\Hzk16 一处，避免同一份 200 KB 文件重复三遍），
+            # 且 build_update_am2.py 已不再把 hzk16 收进清单。
+            # 这里容错处理旧清单：若清单里还列着 hzk16 而磁盘没有，不算错误。
             only_listed.discard("hzk16")
             ok(not only_actual, "磁盘文件都在清单内",
                "磁盘有清单外文件: %s" % sorted(only_actual)[:5])
@@ -287,10 +296,12 @@ def main():
     else:
         FAIL.append("缺 update\\ 目录")
 
-    # ── 8. 安装说明编码 ───────────────────────────────────────────────
-    print("\n[8] 安装说明.txt")
-    readme = os.path.join(STAGE, "安装说明.txt")
-    if ok(os.path.isfile(readme), "存在", "缺安装说明.txt"):
+    # ── 8. 必读说明编码 ───────────────────────────────────────────────
+    #   与 1 代 verify_release.py 同一套判据（统一标准 S11：
+    #   包内说明一律叫「必读说明.txt」）。
+    print("\n[8] 必读说明.txt")
+    readme = os.path.join(STAGE, "必读说明.txt")
+    if ok(os.path.isfile(readme), "存在", "缺 必读说明.txt"):
         raw = open(readme, "rb").read()
         ok(raw[:3] == b"\xef\xbb\xbf", "UTF-8 BOM（记事本友好）", "缺 UTF-8 BOM")
         ok(b"\r\n" in raw, "CRLF 换行", "不是 CRLF 换行")

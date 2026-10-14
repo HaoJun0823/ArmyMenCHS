@@ -25,8 +25,11 @@ import os
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# ★ 默认指向**仓库内**的 Steam 基线（Army2_Original/rules），而不是作者本机盘符。
+#   这些英文原文用于"逐行行数断言"（译文行数必须与原文件一致，
+#   否则游戏里文本竖向排版会变）。CI 上没有 I:\ 盘，默认值必须可移植。
 SRC_RULES = (sys.argv[sys.argv.index("--rules") + 1] if "--rules" in sys.argv
-             else r"I:\LocalGames\Army Men\Army Men II STEAM\rules")
+             else os.path.join(ROOT, "Army2_Original", "rules"))
 OUT_RULES = os.path.join(ROOT, "build_out_am2", "update", "rules")
 
 # 逐行译文；行数必须与原文件一致（脚本会断言）

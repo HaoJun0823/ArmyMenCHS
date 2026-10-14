@@ -9,13 +9,24 @@
 
 | 项 | 1 代 | 2 代 |
 |---|---|---|
-| 注入代理 | `dsound.dll`（UAL 6.4） | **`dinput.dll`**（UAL 9.0.0） |
+| 注入代理 | `dsound.dll`（UAL 6.4） | **`dinput.dll`**（UAL，同一份文件改名） |
+| 构建入口 | `Tools/ci/ci_build.py` | `Tools/ci/ci_build_am2.py` |
+| 打补丁包 | `Tools/ci/make_patch.py` | `Tools/ci/make_patch_am2.py` |
+| 产物校验 | `Tools/ci/verify_release.py` | `Tools/ci/verify_release_am2.py` |
 | 产物目录 | `build_out` / `stage` | `build_out_am2` / `stage_am2` |
 | 资产树 | `Army1_*` | `Army2_*` |
-| 一键构建 | 多脚本手工串联 | **`build_all_am2.py` 17 步** |
+| 载荷目录 | `Army1_NEW_CHS/`（纯载荷） | `Army2_NEW_CHS/`（纯载荷，同构） |
 | 文字渲染 | 走 GDI（换字体即可） | **引擎自带点阵，需 hook 4 个函数** |
 | 校验器数量 | 4 | **7** |
 | exe 是否入库 | 否 | 否（同） |
+
+> ★ 2 代的构建链与 1 代**同构**（这是刻意对齐的）。
+> 早期 2 代另起了一套 19 步编排 `build_all_am2.py` + 独立 workflow
+> `build-am2.yml`，与 1 代分叉；那套编排已废弃删除。
+> 原因：编排层把「维护工具」和「CI 构建」混在一起，且
+> `build_new_chs_am2.py` 会**回写** `Army2_NEW_CHS` —— 而同一目录又被
+> `build_update_am2.py` 当作人工覆盖层**读入**，输入被输出改写，
+> 一旦中间态过期就会静默毁掉手工成果。
 
 ---
 
@@ -39,52 +50,96 @@
 
 ---
 
-## 3. 一键构建：19 步
+## 3. 构建：与 1 代同构的三段式
 
 ```powershell
-python Tools/ci/build_all_am2.py
-python Tools/ci/build_all_am2.py --skip-movies   # 不打包 123 MB 电影
+# ① 编译 ASI（也可由 CI 用 msvc-wine 编译）
+python Tools/ci/build_dll_local_am2.py
+
+# ② 载荷 + 运行期文件 -> build_out_am2
+python Tools/ci/ci_build_am2.py --out build_out_am2 --verify
+
+# ③ 打补丁包 -> stage_am2
+python Tools/ci/make_patch_am2.py --out stage_am2
+
+# ④ 独立校验产物
+python Tools/ci/verify_release_am2.py stage_am2
+
+# ⑤ 部署到本地游戏目录（可选，仅作者本机）
+python Tools/ci/deploy_am2.py --from stage_am2
 ```
 
 任一步失败立即停止，**不做静默容错**。
 
-| # | 步骤 | 作用 | 需要 exe |
-|---|---|---|---|
-| ① | 资产对账与差异打包 | 中英母盘逐文件 sha256 → `build_out_am2/update` | 否 |
-| ①b | 生成 rules 汉化文本 | 6 个 `*_desc.txt` | 否 |
-| ①c | 补回被移除的多人地图 | 6 张图 + 36 条 RULEMAP | 否 |
-| ② | 编译 ASI 模块 | 断言 32 位 PE + 3 个导出 | 否 |
-| ③ | 字库离线自测 | 13×13 几何 + 墨迹量 | 否 |
-| **③b** | **校验字形偏移公式** | **全角 ASCII 判据（见 §5）** | 否 |
-| **③c** | **资产结构与 sha256** | **防 autocrlf 改写 + MANIFEST 不符** | 否 |
-| **③d** | **译文表容量自检** | **防中文超出槽容量 + 占位符不匹配** | 否 |
-| ④ | 校验 hook 签名 | 4 个 hook 逐字节比对 | ✅ |
-| ④b | 校验全局量 VA | 14 项地址语义 | ✅ |
-| ④c | 校验 stub 边界 | 逐 hook patchLen 是否在指令边界 | ✅ |
-| ④d | 校验代码补丁 | 多字节原文比对 | ✅ |
-| ⑤ | 生成译文表 | 词典硬闸门 + 逐条容量校验 | ✅ |
-| ⑤b | 补录难度三项 | | ✅ |
-| ⑤c | 补录人工译文 | | ✅ |
-| ⑤d | 补录单位名称 | | ✅ |
-| ⑤e | 补录通讯消息 | | ✅ |
-| ⑥ | 组装 stage | | 否 |
-| ⑦ | 独立校验产物 | **独立实现**，不复用生成侧代码 | ✅ |
+| 环节 | 脚本 | 输入 → 输出 |
+|---|---|---|
+| 编译 | `build_dll_local_am2.py` / `compile_dll_wine.py --proj Army2_Extend_Dll` | `src/` → `Release/*.dll` |
+| 组装 | `ci_build_am2.py` | `Army2_NEW_CHS/` + `Army2_Extend_Dll/` → `build_out_am2/` |
+| 打包 | `make_patch_am2.py` | `build_out_am2/` → `stage_am2/` |
+| 校验 | `verify_release_am2.py` | 独立复核 `stage_am2/` |
 
-构建成功后**自动部署**到游戏目录（`scripts\{asi,ini,Hzk16}`）。
+### 单向数据流（★ 关键设计）
 
-> ★ 带 ✅ 的步骤 CI 上跑不了（exe 不入库），必须在本地构建。
-> ③b/③c/③d 三步是特意设计成**不依赖 exe** 的，好让 CI 有实际门禁可跑。
+```
+Army2_NEW_CHS（人工维护，权威载荷，336 文件，只读）
+        │  ci_build_am2.py 整树复制
+        ▼
+build_out_am2/（游戏原生布局 + dll/ini/Hzk16/strings）
+        │  make_patch_am2.py 分流到 scripts\ 与 update\
+        ▼
+stage_am2/（玩家实际拿到的包）
+```
+
+**方向必须单向。** `Army2_NEW_CHS` 是人工成果（手工修的 BMP 等），
+任何脚本都不得回写它。早期 `build_new_chs_am2.py` 从 `build_out_am2/update`
++ `stage_am2/scripts` 反向重建 `Army2_NEW_CHS`，而 `Army2_NEW_CHS` 同时
+又是 `build_update_am2.py` 的**输入**（人工覆盖层）—— 输入被输出改写，
+`build_out` 一旦过期，手工改的图就会被母盘原图静默顶掉。
+
+### 未挂在 CI 上的「维护工具」
+
+下列脚本用于**更新载荷**（从母盘重新推导差异），只在人工维护时跑，
+不属于 CI 构建链（与 1 代 `build_new_chs.py` 的定位相同）：
+
+| 脚本 | 作用 |
+|---|---|
+| `unpack_objects/build_update_am2.py` | 中英母盘逐文件对账，推导差异载荷 |
+| `unpack_objects/gen_rules_chs_am2.py` | 生成 `rules/*_desc.txt` 汉化文本 |
+| `unpack_objects/add_lost_mp_am2.py` | 补回被 Steam 阉割的多人地图 |
+| `unpack_objects/gen_am2_strings_ini.py` 等 | 从 exe 生成/补录译文表 |
+| `ci/refresh_asset_manifest_am2.py` | 资产树被有意改动后，重算 `_filehash.csv` |
+
+### CI 与本地的分工
+
+| 步骤 | 需要 `ArmyMen2.exe` | CI 可跑 |
+|---|---|---|
+| 编译 ASI（msvc-wine） | ❌ | ✅ |
+| `verify_assets_am2.py`（资产结构 + sha256） | ❌ | ✅ |
+| `ci_build_am2.py` | ❌ | ✅ |
+| `make_patch_am2.py` | ❌ | ✅ |
+| `verify_release_am2.py`（exe 相关项退化为 WARN） | 部分 | ✅ |
+| `build_test_hzk16.py` / `verify_hzk_offset.py` | ❌ | ✅ |
+| `verify_strings_cap_am2.py` | ❌ | ✅ |
+| `verify_hook_sigs.py` | ✅ | ❌ |
+| `verify_globals.py` | ✅ | ❌ |
+| `verify_stub_boundary.py` | ✅ | ❌ |
+| `verify_codepatch.py` | ✅ | ❌ |
+| `gen_am2_strings_ini.py`（逐条对照 exe 原文） | ✅ | ❌ |
+
+> exe 不入库（版权 + 体积），故带 ✅ 的步骤只能在作者本机跑。
+> **这些步骤不被静默跳过**：`verify_release_am2.py` 会把 exe 相关项
+> 退化为 WARN 并列明，CI 日志里能看到"哪些没覆盖"。
 
 ---
 
 ## 4. 部署：必须真拷贝 + 回读校验
 
-`build_all_am2.py` 的 `DeployToGame()`：
+`Tools/ci/deploy_am2.py`（原 `build_all_am2.py` 的 `DeployToGame()`）：
 
 1. 真 `copyfile`（★ 早期版本这里**只有 print 没有 copy**，白费一轮实测）
 2. 每个文件 **sha256 回读校验**
 3. 失败即非零退出
-4. 目标目录可用环境变量 `AM2_GAME_SCRIPTS` 覆盖
+4. 目标目录可用 `--scripts` 或环境变量 `AM2_GAME_SCRIPTS` 覆盖
 
 ### 幂等性
 
@@ -140,17 +195,23 @@ stage_am2/
 ├── scripts/
 │   ├── Army2_Extend_Dll.asi     # 208–210 KB
 │   ├── ArmyMenCHS.ini           # 译文表（92 条）
-│   └── Hzk16                    # 202,966 B
+│   ├── Hzk16                    # 202,966 B（字库**只此一处**）
+│   └── strings/am2_strings.ini
 ├── update/                      # 336 文件（游戏原生目录布局）
 │   ├── 01-title/
 │   ├── audio/vos/               # 162 个中文配音 wav
-│   ├── bitmaps/                 # 95 张界面图
-│   ├── data/                    # 多人地图预览
+│   ├── avi/                     # 3 部中文配音电影
+│   ├── bitmaps/                 # 72 个界面图
+│   ├── data/                    # 88 个地图数据/预览
 │   ├── rules/                   # 6 个 *_desc.txt
-│   ├── shared.dat / title.dat   # 中文 UI 精灵
-│   ├── hzk16 / mpmaps.txt / readme.txt
-└── dinput.dll                   # UAL 9.0.0
+│   └── mpmaps.txt / readme.txt / shared.dat / title.dat
+└── dinput.dll                   # UAL（与 1 代同一份 asi/dsound.dll 改名）
 ```
+
+> ★ 字库**只放一处**（`scripts/Hzk16`）。早期它同时出现在
+> `update/Hzk16`、`scripts/Hzk16`、`Army2_NEW_CHS/Hzk16` 三处 ——
+> 同一份 200 KB 文件打三遍，现已在 `build_update_am2.py` 的白名单里
+> 排除 `hzk16`，由 `ci_build_am2.py` 从 `Army2_CHS/Hzk16` 取一次。
 
 ### UAL 的 `update\` 机制
 
@@ -170,31 +231,38 @@ stage_am2/
 | `verify_globals.py` | ✅ | ❌ |
 | `verify_codepatch.py` | ✅ | ❌ |
 | `gen_am2_strings_ini.py` | ✅ | ❌ |
-| `verify_release_am2.py` | ✅ | ❌ |
+| `verify_release_am2.py` | 部分（exe 项退化为 WARN） | ✅ |
 | `build_test_hzk16.py` | ❌ | ✅ |
 | `verify_hzk_offset.py` | ❌（用仓库内 `Army2_CHS/Hzk16`） | ✅ |
 | `build_dll_local_am2.py` | ❌ | ✅（需 MSVC） |
 | `build_army2_assets.py` | ❌ | ✅ |
+| `ci_build_am2.py` / `make_patch_am2.py` | ❌ | ✅ |
+| `verify_assets_am2.py` / `verify_strings_cap_am2.py` | ❌ | ✅ |
 
 因此 workflow 分两层：
 
 | 层 | 内容 | 触发 |
 |---|---|---|
-| **CI 可跑层** | 编译 DLL + 字库判据 + 资产结构自检 + 译文表容量自检 + 文档内链 | 每次 push / PR |
-| **发布层** | 完整 19 步 + 打包（需 exe） | 手动 `workflow_dispatch`，由本地执行 |
+| **CI 可跑层** | 编译 2 代 ASI + 资产结构自检 + 组装 + 打包 + 产物独立校验 + 字库判据 + 译文容量 + 文档内链 | 每次 push / PR |
+| **本地补足层** | 需要 exe 的 4 个校验器 + 译文表逐条对照 + 部署实测 | 手动，本机执行 |
 
-Workflow：`.github/workflows/build-am2.yml`（2 代）+ `build-release.yml`（1 代）。
+Workflow：**单一** `.github/workflows/build-release.yml`
+（1 代 build → 2 代 build → 合并 publish）。
+原独立 workflow `build-am2.yml` 已删除 —— 两代产物挂在同一个 Release
+下，分两个 workflow 会导致「1 代成功、2 代失败」时 Release 状态不明。
 
 ### 关键设计：不静默跳过
 
-CI 上 6 个需要 exe 的步骤跑不了。**处理方式不是静默跳过**，
-而是在最后一步**显式列出未覆盖项**：
+CI 上需要 exe 的步骤跑不了。**处理方式不是静默跳过**，
+而是在 `verify_release_am2.py` 的输出里**显式列出未覆盖项**：
 
 ```
-❌ 以下步骤**需要 ArmyMen2.exe**，CI 无法覆盖，须本地构建：
+❌ 以下检查**需要 ArmyMen2.exe**，CI 无法覆盖，须本地执行：
    verify_hook_sigs.py       逐 hook 签名比对
-   ...
-   本地跑： python Tools/ci/build_all_am2.py
+   verify_globals.py         全局量 VA 语义
+   verify_stub_boundary.py   逐 hook patchLen 指令边界
+   verify_codepatch.py       多字节原文比对
+   gen_am2_strings_ini.py    译文表逐条对照 exe 原文
 ```
 
 否则读者会以为 CI 覆盖了全部校验 —— 那正是本项目
@@ -218,7 +286,7 @@ CI 上 6 个需要 exe 的步骤跑不了。**处理方式不是静默跳过**�
 ## 8. 发布前检查清单
 
 ```
-[ ] build_all_am2.py 17 步全绿
+[ ] 三段式全绿：build_dll_local_am2 → ci_build_am2 → make_patch_am2 → verify_release_am2
 [ ] 部署后日志确认：
       · Detect 选中正确档位 + 4 个 hook 签名一致
       · 渲染环境自检通过（14 项）
@@ -231,7 +299,8 @@ CI 上 6 个需要 exe 的步骤跑不了。**处理方式不是静默跳过**�
       · 中文配音可播
 [ ] 全部校验器都能报出检查条目数（非空转）
 [ ] git 提交前全量 blob 保真校验
-[ ] 资产目录含 MANIFEST.md + _filehash.csv
+[ ] 资产镜像目录含 MANIFEST.md + _filehash.csv
+      （Army2_Original / Army2_CHS；Army2_NEW_CHS 是**纯载荷**，不带清单）
 ```
 
 ---

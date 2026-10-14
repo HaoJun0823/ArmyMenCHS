@@ -15,7 +15,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from build_dll_local_am2 import (pick_vc, pick_sdk, env_setup, SDK,  # noqa
                                  CL_FLAGS, PROJ)
 
-DEFAULT_FONT = r"I:\LocalGames\Army Men\玩具兵大战2\Hzk16"
+# 中文字库路径。★ 默认指向**仓库内**的 Army2_CHS/Hzk16（已跟踪），
+#   而非作者本机盘符 —— 这样 CI 与本地一致。可用 AM2_HZK 覆盖。
+_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+DEFAULT_FONT = (os.environ.get("AM2_HZK")
+                or os.path.join(_ROOT, "Army2_CHS", "Hzk16"))
 
 
 def run(cmd, cwd, env, label=""):

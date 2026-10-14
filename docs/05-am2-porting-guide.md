@@ -125,7 +125,9 @@ python Tools/exe_scan/list_imports.py <目标 exe>
 | `Tools/ci/verify_hook_sigs.py` | 🟢 按档位解析，改签名宏 |
 | `Tools/ci/verify_stub_boundary.py` | 🟢 同上 |
 | `Tools/ci/verify_hzk_offset.py` | 🟢 直接用 |
-| `Tools/ci/build_all_am2.py` | 🟢 改步骤名 |
+| `Tools/ci/ci_build_am2.py`（三段式组装，对应 1 代 `build_out`） | 🟢 改载荷目录名 |
+| `Tools/ci/make_patch_am2.py`（打包，对应 1 代 `stage`） | 🟢 改代理名与地形目录 |
+| `Tools/ci/verify_release_am2.py`（独立校验产物） | 🟡 改校验项 |
 | `Tools/exe_scan/*` | 🟢 与游戏无关 |
 | `Army2_Extend_Dll/src/*` | 🟡 框架照搬，RVA 表重填 |
 

@@ -234,6 +234,112 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+      # ══════════════════════════════════════════════════════════════════
+      #  《玩具兵大战 II》汉化补丁
+      # ══════════════════════════════════════════════════════════════════
+      #  2 代与 1 代共用同一个 Release（附件里两个 zip 并列），
+      #  且**构建流程与 1 代同构**（这是刻意的，见 docs/07：
+      #    1 代                                   2 代
+      #    compile_dll_wine.py  Army1             compile_dll_wine.py --proj Army2_Extend_Dll
+      #    ci_build.py      -> build_out          ci_build_am2.py  -> build_out_am2
+      #    make_patch.py    -> stage              make_patch_am2.py -> stage_am2
+      #    verify_release.py                      verify_release_am2.py
+      #  早期 2 代另起了一套 19 步编排（build_all_am2.py）+ 独立 workflow，
+      #  与 1 代分叉；现已废弃，改为与 1 代同一套三段式。
+      #
+      #  ★ 打包**完全使用仓库内资产**，不依赖作者本机的 I:\ 盘：
+      #      Army2_NEW_CHS/  权威载荷（336 文件，游戏原生目录布局）
+      #      Army2_CHS/      中文母盘（HZK16 字库、资产审计基线）
+      #      asi/dsound.dll  UAL，落名为 dinput.dll
+      #    这一步以前只在本机能跑（默认路径写死 I:\），CI 上必失败。
+      #
+      #  ★ 需要 ArmyMen2.exe 的校验（hook 签名 / 全局量 / stub 边界 /
+      #    代码补丁 / 译文表逐条对照）在 CI 上跑不了 —— exe 不入库。
+      #    它们**不被静默跳过**，由 verify_release_am2.py 把 exe 相关项
+      #    退化为 WARN 并在结尾显式列出。本地跑 build_local 那一套补足。
+      - name: 编译 Army2_Extend_Dll.dll（32 位）
+        if: ${{ github.event.inputs.skip_dll != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/compile_dll_wine.py --msvc-prefix "${MSVC_WINE_PREFIX}" \
+            --proj Army2_Extend_Dll
+
+      - name: 校验《玩具兵大战 II》资产树（纯载荷 + 清单一致）
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/verify_assets_am2.py --dir Army2_NEW_CHS
+
+      - name: 组装《玩具兵大战 II》发布包（仓库内资产）
+        run: |
+          set -euo pipefail
+          # ① 载荷 + 运行期文件 -> build_out_am2
+          python3 Tools/ci/ci_build_am2.py --out build_out_am2 --verify
+
+          # ② 打补丁包 -> stage_am2（含 ASI Loader / LICENSE / 必读说明）
+          python3 Tools/ci/make_patch_am2.py --out stage_am2
+
+          # ③ 独立校验产物
+          python3 Tools/ci/verify_release_am2.py stage_am2
+
+          echo "── 断言产物 ──"
+          ls -l stage_am2/*.zip
+          test -f stage_am2/*.zip || { echo "!! 未产出 zip" >&2; exit 1; }
+
+          # 32 位 + 导出齐全（复用 1 代同一套判据）
+          python3 - <<'PY'
+          import struct, os, glob
+          dll = sorted(glob.glob("build_out_am2/Army2_Extend_Dll.dll"))
+          assert dll, "缺 build_out_am2/Army2_Extend_Dll.dll"
+          b = open(dll[0], "rb").read()
+          pe = struct.unpack_from("<I", b, 0x3C)[0]
+          machine = struct.unpack_from("<H", b, pe + 4)[0]
+          assert machine == 0x14C, f"不是 32 位 PE: 0x{machine:X}"
+          for want in (b"ArmyMenCHS_Install", b"ArmyMenCHS_Uninstall"):
+              assert want in b, "缺少导出 " + want.decode()
+          print(f"✓ ASI 32 位 (0x{machine:X})，导出齐全，{len(b)} bytes")
+
+          # 代理 DLL 必须是 UAL（含 DirectInputCreateA 具名导出）
+          #   AM2 按**名字**导入 dinput.dll!DirectInputCreateA（已实测），
+          #   所以代理必须真有这个名字，不能只靠序号命中。
+          proxy = "stage_am2/dinput.dll"
+          assert os.path.isfile(proxy), "缺代理 dll"
+          pb = open(proxy, "rb").read()
+          assert b"DirectInputCreateA" in pb, "代理缺少 DirectInputCreateA 导出"
+          print(f"✓ 代理 {proxy} 含 DirectInputCreateA，{len(pb)} bytes")
+          PY
+
+          # 包内不得含 exe/dll（硬约束：不改游戏文件）
+          python3 - <<'PY'
+          import zipfile, glob
+          z = zipfile.ZipFile(sorted(glob.glob("stage_am2/*.zip"))[0])
+          bad = [n for n in z.namelist()
+                 if n.startswith("update/") and n.lower().endswith((".exe", ".dll", ".asi"))]
+          assert not bad, "update/ 里混入了可执行文件: %s" % bad
+          # 包根必备文件（与 1 代同一套：dsound/dinput + LICENSE + License.txt + 必读说明）
+          names = set(z.namelist())
+          for want in ("dinput.dll", "LICENSE", "License.txt", "必读说明.txt",
+                       "scripts/Army2_Extend_Dll.asi", "scripts/Hzk16",
+                       "scripts/ArmyMenCHS.ini", "scripts/strings/am2_strings.ini"):
+              assert want in names, "包内缺 %s" % want
+          print("✓ update/ 不含可执行文件，包根必备文件齐全，共 %d 条目"
+                % len(z.namelist()))
+          PY
+
+      - name: 上传《玩具兵大战 II》发布包
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: armymen2-chs
+          path: stage_am2/*.zip
+          if-no-files-found: error
+          retention-days: 30
+
+      # 文档内链有效性。原在 build-am2.yml 的 gate job 里，
+      # 合并进本 workflow 后保留 —— 改了文档文件名没人发现就会留死链。
+      - name: 校验文档相对链接
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/verify_doc_links.py
+
   publish:
     name: 发布 Release（push 主分支自动按日期-时间打 tag）
     needs: build
@@ -254,6 +360,14 @@ jobs:
         with:
           name: armymen-chs
           path: dist
+
+      # ★ 2 代的包下到独立目录，避免与 1 代的 zip 混在同一层
+      #   （两者文件名不同，但仍分开更清晰）
+      - name: 下载《玩具兵大战 II》发布包
+        uses: actions/download-artifact@v8.0.2
+        with:
+          name: armymen2-chs
+          path: dist2
 
       - name: 计算日期-时间 tag
         id: tag
@@ -388,6 +502,8 @@ jobs:
           fi
           UPLOAD_URL=$(echo "$REL_JSON" | jq -r .upload_url)
           BASE="${UPLOAD_URL%%\{*}"
+
+          # ── 上传 1 代 ──────────────────────────────────────────────────
           src="$(ls dist/*.zip | head -1)"
           ascii="ArmyMen-CHS-Patch-${stamp}.zip"
           echo "上传 $ascii"
@@ -397,6 +513,27 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             --data-binary "@$src" \
             "${BASE}?name=${ascii}" | jq -r '.name'
+
+          # ── 上传 2 代 ──────────────────────────────────────────────────
+          #   文件名保持 build 阶段产出的原名（含 ArmyMen2- 前缀与时间戳），
+          #   但时间戳改用发版 stamp，和 1 代附件对得上。
+          src2="$(ls dist2/*.zip | head -1)"
+          ascii2="ArmyMen2-CHS-Patch-${stamp}.zip"
+          echo "上传 $ascii2"
+          curl -fsSL -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/zip" \
+            -H "Accept: application/vnd.github+json" \
+            --data-binary "@$src2" \
+            "${BASE}?name=${ascii2}" | jq -r '.name'
+
+          # 断言两个附件都在（防"只传了一个却报成功"）
+          names="$(gh api "repos/$slug/releases/tags/$tag" --jq '.assets[].name')"
+          for want in "$ascii" "$ascii2"; do
+            echo "$names" | grep -qxF "$want" \
+              || { echo "!! Release 缺少附件 $want（实有：$names）" >&2; exit 1; }
+          done
+          echo "✓ 两个附件均已上传"
 
           # body 自检：非空、非占位符、首行符合预期
           body="$(gh api "repos/$slug/releases/tags/$tag" --jq .body)"

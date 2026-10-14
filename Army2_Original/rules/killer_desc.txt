@@ -1,5 +1,5 @@
-当你的中士持有黑旗时，击毙敌方中士得 250 分。
-这是唯一的得分方式。
-旗帜若 2 分钟无人持有，将自动返回基地。
-误伤友军致死扣 100 分。
-最先达到目标分数的玩家或队伍获胜。
+Killing an enemy sarge while your sarge has the black
+flag scores 250 pts. This is the only way to score.
+The flag returns to its base if unheld for 2 minutes.
+There is a 100 pt penalty for friendly fire deaths.
+The first player/team to reach the point goal wins.

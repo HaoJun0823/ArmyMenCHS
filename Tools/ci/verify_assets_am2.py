@@ -29,6 +29,24 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 
 DIRS = ["Army2_Original", "Army2_CHS", "Army2_NEW_CHS"]
 
+# ★ Army2_NEW_CHS 与另外两棵树的**性质不同**，自检策略也不同：
+#     Army2_Original / Army2_CHS = 母盘/Steam 版的逐文件镜像，
+#        带 _filehash.csv + MANIFEST.md（含"文件数"摘要），照常做全量对账。
+#     Army2_NEW_CHS = **纯载荷目录**（对齐 1 代 Army1_NEW_CHS）：
+#        只有游戏原生目录布局的载荷，**不含**任何清单/哈希/脚本/字库。
+#        它没有 _filehash.csv，因此不做 csv 对账，只做两条硬判据：
+#          · 目录里不得出现清单类元数据（MANIFEST/_filehash/README/BMP_STATUS）
+#          · 目录里不得出现可执行文件（.exe/.dll/.asi）
+#        权威清单由 ci_build_am2.py 从**磁盘实际内容**生成到 build_out_am2。
+#     早期版本把 NEW_CHS 当成"带清单的完整快照"，由 build_new_chs_am2.py
+#     回写 MANIFEST/_filehash —— 那个回环已废弃（输入被输出改写的隐患）。
+NEW_CHS = "Army2_NEW_CHS"
+NEW_CHS_FORBIDDEN_NAMES = {
+    "_filehash.csv", "manifest.md", "manifest.json",
+    "readme.md", "manifest_bmp.md", "bmp_status.json",
+}
+NEW_CHS_FORBIDDEN_EXT = {".exe", ".dll", ".asi", ".sys"}
+
 
 def sha256(p, buf=1 << 20):
     h = hashlib.sha256()
@@ -150,6 +168,40 @@ def check_dir(base, verbose=False):
     return len(errs), n, "；".join(errs) if errs else ""
 
 
+def check_new_chs(base):
+    """Army2_NEW_CHS 专用自检（纯载荷目录，无清单）。
+
+    返回 (错误数, 检查数, 说明)
+    """
+    d = os.path.join(ROOT, base)
+    if not os.path.isdir(d):
+        return 0, 0, "目录不存在，跳过"
+
+    errs = []
+    n = 0
+    bad_meta = []
+    bad_ext = []
+    for dp, _, fns in os.walk(d):
+        for fn in fns:
+            full = os.path.join(dp, fn)
+            rel = os.path.relpath(full, d).replace("\\", "/")
+            n += 1
+            if rel.lower() in NEW_CHS_FORBIDDEN_NAMES:
+                bad_meta.append(rel)
+            if os.path.splitext(fn)[1].lower() in NEW_CHS_FORBIDDEN_EXT:
+                bad_ext.append(rel)
+
+    if bad_meta:
+        errs.append("含清单类元数据 %d 个（应移出，载荷目录须纯净）: %s"
+                    % (len(bad_meta), bad_meta[:3]))
+    if bad_ext:
+        errs.append("含可执行文件 %d 个（违反「不改游戏文件」约束）: %s"
+                    % (len(bad_ext), bad_ext[:3]))
+    if n == 0:
+        errs.append("载荷为空")
+    return len(errs), n, "；".join(errs) if errs else "纯净载荷"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dir", action="append",
@@ -166,7 +218,10 @@ def main():
     total_err = 0
     total_chk = 0
     for base in dirs:
-        errs, n, msg = check_dir(base, args.verbose)
+        if base == NEW_CHS:
+            errs, n, msg = check_new_chs(base)
+        else:
+            errs, n, msg = check_dir(base, args.verbose)
         total_err += errs
         total_chk += n
         tag = "OK " if errs == 0 else "!! "
