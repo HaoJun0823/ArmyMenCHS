@@ -86,6 +86,19 @@ def main():
     cfg = PROJECTS[proj_dir]
     SOURCES = cfg["sources"]
     INCLUDES = cfg["includes"]
+    # ★★ 输出名必须绑定到**实际工程目录名**，不能用模块级 PROJ（写死 Army1）。
+    #   踩过的坑（CI run 38555347853）：
+    #     `--proj Army2_Extend_Dll` 只切换了 SOURCES/INCLUDES，而下面
+    #     /Fp{build}/{PROJ}.pch、/OUT:{PROJ}.dll 仍用 PROJ="Army1_Extend_Dll"，
+    #     于是 2 代编出来的产物叫 Army1_Extend_Dll.dll。
+    #     编译步骤**报绿**（"✓ Army2_Extend_Dll/Release/Army1_Extend_Dll.dll"），
+    #     随后 ci_build_am2.py 找不到 Army2_Extend_Dll.dll 才失败 ——
+    #     症状离根因隔了两步，非常容易误判成"资产缺失"。
+    #   2 代与 1 代同在一个 job 里编译，但各自在**自己的目录**下构建，
+    #   故用 proj_dir 作产物前缀是安全的（不会互相覆盖）。
+    #   ★ 用独立变量名而不是复用 PROJ：给 PROJ 赋值会让它变成局部变量，
+    #     上面第 80 行的 `else PROJ` 回退就会 UnboundLocalError。
+    OUT_STEM = proj_dir
 
     bin_dir = os.path.join(prefix, "bin", "x86")
     cl = os.path.join(bin_dir, "cl")
@@ -119,7 +132,7 @@ def main():
     pch_cmd = [cl] + CL_FLAGS + ["/Yc" "pch.h"] + \
         [f"/D{d}" for d in DEFINES] + \
         [f"/I{i}" for i in INCLUDES] + \
-        [f"/Fp{build}/{PROJ}.pch", f"/Fo{build}/", "pch.cpp"]
+        [f"/Fp{build}/{OUT_STEM}.pch", f"/Fo{build}/", "pch.cpp"]
     print("── 生成预编译头 ──")
     print(" ".join(pch_cmd))
     r = subprocess.run(pch_cmd, env=env)
@@ -137,7 +150,7 @@ def main():
         cmd = [cl] + CL_FLAGS + ["/Yu" "pch.h"] + \
             [f"/D{d}" for d in DEFINES] + \
             [f"/I{i}" for i in INCLUDES] + \
-            [f"/Fp{build}/{PROJ}.pch",
+            [f"/Fp{build}/{OUT_STEM}.pch",
              f"/Fo{build}/{out_name}", s]
         print(f"── 编译 {s} ──")
         r = subprocess.run(cmd, env=env)
@@ -148,9 +161,9 @@ def main():
         objs.append(f"{build}/{out_name}")
 
     # 3) 链接
-    out_dll = f"{build}/{PROJ}.dll"
+    out_dll = f"{build}/{OUT_STEM}.dll"
     cmd = [link] + LINK_FLAGS + objs + LINK_LIBS + \
-        [f"/OUT:{out_dll}", f"/IMPLIB:{build}/{PROJ}.lib"]
+        [f"/OUT:{out_dll}", f"/IMPLIB:{build}/{OUT_STEM}.lib"]
     print("── 链接 ──")
     r = subprocess.run(cmd, env=env)
     os.chdir(root)
