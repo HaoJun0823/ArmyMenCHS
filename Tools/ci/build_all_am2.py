@@ -30,6 +30,14 @@ STEPS = [
     ("①c 补回被移除的多人地图", [PY, os.path.join(TOOLS, "unpack_objects", "add_lost_mp_am2.py")]),
     ("② 编译 ASI 模块",      [PY, os.path.join(TOOLS, "ci", "build_dll_local_am2.py")]),
     ("③ 字库离线自测",       [PY, os.path.join(TOOLS, "ci", "build_test_hzk16.py")]),
+    # ★ ③b 判据性测试：用全角 ASCII（ＡＢＣ１２）与一二三的形状指纹验证
+    #   字形偏移公式。加这一步的理由 —— 同一个问题被误判过两次：
+    #     第 1 轮：我目视把噪声点阵当成工整字形（误判为"公式正确"）
+    #     第 2 轮：子代理推导"缺 dataStart"（误判为"公式错误"）
+    #   两次都是判据太弱（汉字"看着都像字"；"墨迹量 8..110"随便一段都满足）。
+    #   本测试用不可混淆的形状指纹，并**自证区分力**（全偏移扫描，
+    #   误通过率 0.717%），从根上堵住这两种误判。
+    ("③b 校验字形偏移公式",   [PY, os.path.join(TOOLS, "ci", "verify_hzk_offset.py")]),
     ("④ 校验 hook 签名",     [PY, os.path.join(TOOLS, "ci", "verify_hook_sigs.py")]),
     ("④b 校验全局量 VA",     [PY, os.path.join(TOOLS, "ci", "verify_globals.py")]),
     ("④c 校验 stub 边界",    [PY, os.path.join(TOOLS, "ci", "verify_stub_boundary.py")]),
