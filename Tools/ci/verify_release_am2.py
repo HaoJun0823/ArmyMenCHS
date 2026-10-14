@@ -266,11 +266,23 @@ def main():
         man = os.path.join(ROOT, "build_out_am2", "MANIFEST.json")
         if os.path.isfile(man):
             m = json.load(open(man, encoding="utf-8"))
-            listed = set(x["path"].replace("/", "\\").lower() for x in m["files"])
+            # ★★ 路径分隔符必须**归一化**再比较（CI run 38555827350 的失败根因）：
+            #   清单里写的是正斜杠（build_update_am2.py 统一用 "/"），
+            #   而 os.path.relpath 在 Windows 上给 "\"、在 Linux 上给 "/"。
+            #   早先这里把清单侧 replace("/", "\\") 强行转成反斜杠，
+            #   于是 Linux 上两侧分隔符不一致 —— **全部 336 条**都被判成
+            #   "磁盘有清单外文件"，报出来的却是"清单缺失"。
+            #   Windows 上两侧恰好都是 "\"，所以本地一直看不出来（假绿的镜像：
+            #   这里是"本地绿、CI 红"）。
+            #   统一用正斜杠比较，与平台无关。
+            def _norm(s):
+                return s.replace("\\", "/").lower()
+
+            listed = set(_norm(x["path"]) for x in m["files"])
             actual = set()
             for dp, dn, fn in os.walk(upd):
                 for x in fn:
-                    actual.add(os.path.relpath(os.path.join(dp, x), upd).lower())
+                    actual.add(_norm(os.path.relpath(os.path.join(dp, x), upd)))
             listed |= {"hzk16"}
             only_actual = actual - listed
             only_listed = listed - actual
