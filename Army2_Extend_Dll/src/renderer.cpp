@@ -63,6 +63,9 @@ static Installed g_hooks[8];
 static int  g_hookCount = 0;
 
 static volatile LONG g_measureCalls = 0;
+static volatile LONG g_measureDiag = 0;
+static volatile LONG g_inkDiag = 0;
+static volatile LONG g_inkCalls = 0;
 static volatile LONG g_calls = 0;
 static volatile LONG g_cjkGlyphs = 0;
 static volatile LONG g_asciiFail = 0;
@@ -297,6 +300,20 @@ static CjkResult DrawCjk13(const Hzk16Font& f, BYTE lead, BYTE trail,
         }
     }
     if (ink) *ink = n;
+
+    // ★ 有界诊断：记录**实际**写入的坐标范围与裁剪结果。
+    //   若 minX/maxX 越出 640 或 minY/maxY 越出 480，就是写出表面 = 花屏。
+    {
+        LONG c = InterlockedIncrement(&g_inkCalls);
+        if (c <= 30 || (c % 500) == 0) {
+            LONG d = InterlockedIncrement(&g_inkDiag);
+            Log("ink#%ld lead=%02X trail=%02X req=(%d,%d) draw=(%d,%d) "
+                "ink=%d clip=(%d,%d,%d,%d) surf=%p pitch=%d",
+                d, lead, trail, dx, dy, drawX, drawY, n,
+                clipL, clipT, clipR, clipB,
+                (void*)surface, pitch);
+        }
+    }
     return CJK_OK;
 }
 
@@ -491,6 +508,11 @@ static int RenderCore(int kind, int x, int y, const char* str, int font,
     const BYTE* s = (const BYTE*)str;
 
     // ── 快速路径：整串 ASCII -> 整串转调原函数（零行为差异）──
+    //   ★ 判据只看"有没有 >0xA0 的字节"，不看它是不是完整汉字：
+    //     只要出现了高位字节，就必须走我们自己的循环 ——
+    //     哪怕它是渐显中途的**孤立首字节**。
+    //     若把孤立首字节放行到原函数，它会去查 ASCII 宽度表越界取值
+    //     -> 伪造字形指针 -> blit 出大段垃圾 = 花屏。
     bool hasCjk = false;
     for (const BYTE* p = s; *p; ++p) {
         if (*p > 0xA0) { hasCjk = true; break; }
@@ -526,9 +548,37 @@ static int RenderCore(int kind, int x, int y, const char* str, int font,
         // '^' 颜色转义（官方条件：后面还有字节）
         if (*s == 0x5E && s[1] != 0) { curColor = (BYTE)s[1]; s += 2; continue; }
 
-        if (*s > 0xA0 && s[1] != 0) {
-            // ── 汉字：官方 desc/步进恒用 15 ──
-            if (g_pFont && g_pFont->IsLoaded()) {
+        // ★★★ 花屏的**真正根因**（本轮定位，此前连错四轮）★★★
+        //
+        //  原来的条件是 `*s > 0xA0 && s[1] != 0` —— 多了一个 "s[1] != 0"。
+        //  看起来是"防止把孤立首字节当汉字"，实际造成相反后果：
+        //  当串以**孤立首字节**结尾时（s[1] == 0），条件不成立，
+        //  于是掉进下面的 ASCII 分支，把这个汉字首字节当 ASCII 字符
+        //  交给原版渲染器。原版随即去查 ASCII 宽度表
+        //      word_6598D4[262*font + 0xBF]
+        //  这是表区间之外的位置，取到**别的字符的数据**当字形偏移，
+        //  再 blit —— 把随机字节当 RLE 游程长度，往屏幕刷大段颜色 = 花屏。
+        //
+        //  官方中文版 sub_446B00 的条件就是 `if (*v10 > 0xA0u)`，
+        //  **不看下一个字节**。它遇到孤立首字节时：走 CJK 分支、
+        //  取点阵（GBK 查表失败则跳过）、x += 15，绝不会去查 ASCII 表。
+        //
+        //  为什么现象是"首次正常、后续花屏"：
+        //    这些界面的文字是**逐字节渐显**的。日志实证（b1=避,dc=避的尾字节）：
+        //      len=1  51次  c4                    ← 孤立首字节
+        //      len=3  32次  b1 dc bf              ← 完整字 + 孤立首字节
+        //      len=5  36次  b1 dc bf aa bb        ← ...
+        //      len=24 304次 b1 dc ... b0 b2       ← 完整串（正常）
+        //    渐显过程每两步就会产生一个奇数长度串（末尾孤立首字节），
+        //    于是**全程都在花屏**；只有恰好偶数长度的那一帧是对的。
+        //
+        //  修法：与官方一致 —— 只判断首字节，不要求尾字节存在。
+        //  孤立首字节按"半个汉字"处理：跳过、不画、推进一个步进（避免死循环）。
+        if (*s > 0xA0) {
+            // 判断它是否构成一个完整的双字节汉字
+            const bool havePair = (s[1] != 0);
+            if (havePair && g_pFont && g_pFont->IsLoaded()) {
+                // ── 汉字：官方 desc/步进恒用 15 ──
                 // CENTER 要自己算居中（原函数只替 ASCII 算）
                 int hx = axisY ? (anchor - CJK_BOX / 2) : acc;
                 int hy = axisY ? acc : y;
@@ -542,8 +592,10 @@ static int RenderCore(int kind, int x, int y, const char* str, int font,
                 // ★ 官方 LEFT：rcSrc2 裁光则**整个函数返回**（其余字不再画）
                 if (r == CJK_ABORT) return acc;
             }
+            // 推进：完整汉字走 2 字节；孤立首字节（渐显中途）只走 1 字节，
+            // 且**绝不落到 ASCII 分支**（那正是花屏根因）。
             acc += CJK_BOX;               // 汉字步进 = 15
-            s += 2;
+            s += havePair ? 2 : 1;
             continue;
         }
 
@@ -680,9 +732,13 @@ extern "C" int __cdecl Hook_MEASURE(const char* str, int font)
             s += 2;
             continue;
         }
-        if (*s > 0xA0 && s[1] != 0) {         // 汉字：官方固定 15
-            w += CJK_BOX;
-            s += 2;
+        // ★ 与官方一致：只看首字节，**不要求尾字节存在**。
+        //   之前写 `&& s[1] != 0`，遇到"渐显中途的孤立首字节"会掉进
+        //   ASCII 分支去查 ASCII 宽度表 -> 取到表外垃圾 -> 宽度错乱。
+        //   （绘制侧同样的 bug 就是花屏根因，见 RenderCore 里的长注释。）
+        if (*s > 0xA0) {
+            w += CJK_BOX;                     // 汉字固定 15
+            s += (s[1] != 0) ? 2 : 1;         // 孤立首字节只推进 1，防死循环
             continue;
         }
         // ASCII：逐字符转调原实现，用返回值推进（原版是累加式的，
@@ -701,6 +757,20 @@ extern "C" int __cdecl Hook_MEASURE(const char* str, int font)
         }
     }
     InterlockedIncrement(&g_measureCalls);
+
+    // ★ 有界诊断：测量函数是上一轮才补的 hook，此前完全没有日志，
+    //   导致"它到底被调用了吗、返回了什么"无从判断。
+    {
+        LONG n = InterlockedIncrement(&g_measureDiag);
+        if (n <= 30 || (n % 500) == 0) {
+            char head[33];
+            int i = 0;
+            for (; i < 32 && str[i]; i++) head[i] = str[i];
+            head[i] = 0;
+            Log("meas#%ld font=%d w=%d len=%d \"%s\"",
+                n, font, w, i, head);
+        }
+    }
     return w;
 }
 
