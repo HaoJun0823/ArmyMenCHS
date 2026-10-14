@@ -30,6 +30,30 @@
     { 1,0,0,0,0, 1,1,1, 1,1, 1,1,1,1, 1,1,0,0,0,0, 1,1,1,1, 1,1,1,        \
       1,1,1,1,1,1 }
 
+// ── AM2 文本**测量**函数 sub_446E00 的签名（capstone 实测）────────
+//   8B 4C 24 08  mov ecx,[esp+8]       ; a2 = font
+//   56           push esi
+//   8B D1        mov edx,ecx
+//   8B 74 24 08  mov esi,[esp+8]       ; a1 = str（push 后位置变了）
+//   C1 E2 06     shl edx,6
+//   03 D1        add edx,ecx           ; edx = font*65
+//   57           push edi
+//   33 C0        xor eax,eax
+//   8D 14 51     lea edx,[ecx+edx*2]   ; edx = font*131
+//   8B 3C 95 ..  mov edi,[edx*4 + atlasBase]
+//   8A 16        mov dl,[esi]
+//   84 D2        test dl,dl
+//   74 ??        jz  ...
+//   atlasBase 地址与 jz 位移随版本变，用掩码通配。
+#define SIG_AM2_MEASURE                                                   \
+    { 0x8B,0x4C,0x24,0x08, 0x56, 0x8B,0xD1, 0x8B,0x74,0x24,0x08,         \
+      0xC1,0xE2,0x06, 0x03,0xD1, 0x57, 0x33,0xC0, 0x8D,0x14,0x51,         \
+      0x8B,0x3C,0x95,0,0,0,0, 0x8A,0x16, 0x84,0xD2, 0x74,0 }
+#define MSK_AM2_MEASURE                                                   \
+    { 1,1,1,1, 1, 1,1, 1,1,1,1,                                           \
+      1,1,1, 1,1, 1, 1,1, 1,1,1,                                           \
+      1,1,1,0,0,0,0, 1,1, 1,1, 1,0 }
+
 #define SIG_TIS                                                           \
     { 0x55,0x8B,0xEC, 0x83,0xEC,0x38, 0x83,0x3D,0,0,0,0,0x00,            \
       0x53,0x56,0x57, 0x0F,0x84,0,0,0,0, 0x8B,0x75,0x10, 0x56,           \
@@ -74,12 +98,17 @@ static const DWORD RVA = 0x400000;   // ImageBase（三作一致）
 
 // 往档位里加一个 hook 目标
 static void AddHook(GameProfile& g, DWORD va, RenderKind kind,
-                    const BYTE* sig, const BYTE* mask, int n)
+                    const BYTE* sig, const BYTE* mask, int n,
+                    int patchLen = 5)
 {
     HookSite h;
     h.rva = va - RVA;
     h.kind = kind;
-    h.patchLen = 5;      // ★ 指令边界（见 target.h）
+    // ★ patchLen 必须落在**指令边界**上（见 target.h）：
+    //   三个渲染器入口是 A1 imm32      -> 5 字节
+    //   测量函数入口是 mov/push/mov     -> 7 字节
+    //   stub 构造按此长度复制，不能再硬编码 5。
+    h.patchLen = patchLen;
     memcpy(h.sig, sig, n);
     memcpy(h.sigMask, mask, n);
     h.sigLen = n;
@@ -118,6 +147,7 @@ static std::vector<GameProfile> MakeProfiles() {
         g.imageSizeOfImage = 0x267000;
         g.timeStamp = 0x36B7AE36;
         g.rendererVA = 0x446930 - RVA;          // 0x46930
+        g.measureVA  = 0x446E00;                 // ★ 绝对 VA：文本测量
         g.blitVA     = 0x41C710;                 // ★ 绝对 VA（勿再减 RVA）
         g.rectVA     = 0x42E220;                 // ★ 绝对 VA
         g.atlasOffsetVA = 0x6598D4;             // WORD[262*font + c]（字形偏移）
@@ -141,9 +171,14 @@ static std::vector<GameProfile> MakeProfiles() {
             static const BYTE _ml[] = MSK_AM2_STEAM;
             static const BYTE _sd[] = SIG_AM2_DLG;
             static const BYTE _md[] = MSK_AM2_DLG;
+            static const BYTE _sm[] = SIG_AM2_MEASURE;
+            static const BYTE _mm[] = MSK_AM2_MEASURE;
             AddHook(g, 0x446930, RK_LEFT,   _sl, _ml, (int)sizeof(_sl));
             AddHook(g, 0x446AB0, RK_DIALOG, _sd, _md, (int)sizeof(_sd));
             AddHook(g, 0x446C50, RK_CENTER, _sd, _md, (int)sizeof(_sd));
+            // ★ 文本**测量**函数：漏 hook 它 -> 上层拿到错误宽度 ->
+            //   拿它当裁剪矩形 -> 文字被切碎 = 花屏（本轮根因）
+            AddHook(g, 0x446E00, RK_MEASURE, _sm, _mm, (int)sizeof(_sm), 7);
         }
         v.push_back(g);
     }

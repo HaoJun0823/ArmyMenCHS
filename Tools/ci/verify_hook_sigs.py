@@ -16,9 +16,18 @@ IB = 0x400000
 
 # 期望的 3 个渲染器（IDA 实测地址）
 EXPECT = {
-    "RK_LEFT":   (0x446930, "左对齐（主渲染器 / 面板文字）"),
-    "RK_DIALOG": (0x446AB0, "对话框（退出确认等）"),
-    "RK_CENTER": (0x446C50, "居中文字"),
+    "RK_LEFT":    (0x446930, "左对齐（主渲染器 / 面板文字）"),
+    "RK_DIALOG":  (0x446AB0, "对话框（退出确认等）"),
+    "RK_CENTER":  (0x446C50, "居中文字"),
+    "RK_MEASURE": (0x446E00, "文本测量（汉字须按 15 计，防裁剪矩形错）"),
+}
+
+# 每个 hook 覆盖的字节数（必须落在**指令边界**上）
+EXPECT_PATCHLEN = {
+    0x446930: 5,   # mov eax,[0x4fdf80]   A1 imm32
+    0x446AB0: 5,   # 同上
+    0x446C50: 5,   # 同上
+    0x446E00: 7,   # mov ecx,[esp+8]; push esi; mov edx,ecx
 }
 
 
@@ -71,29 +80,73 @@ def parse_macro(name):
 #   而实际传的是局部别名 _sl/_sd，于是过滤条件匹配不到任何条目，
 #   脚本"什么都没校验"却打印了"全部通过"。
 #   凡是校验器，必须同时断言"实际检查的条目数 > 0"。
+#
+# ★★ 另一个坑（本轮）：target.cpp 里有**多个档位**共用一份 AddHook 代码：
+#     ArmyMenII      -> Steam 英文版 exe（本脚本校验的对象）
+#     ArmyMenII-CHS  -> 中文母盘 exe（地址/签名完全不同）
+#     ToysInSpace    -> TIS exe
+#   若不加区分地把所有 SIG_AM2_* 都拿来跟 Steam exe 比，
+#   CHS 那条必然"不匹配"——那是**假红**，会掩盖真正的问题。
+#   故：先按 g.id = "..." 切分档位块，只校验 Steam 档位。
 regs = []
+PROFILE_RE = re.compile(r'g\.id\s*=\s*"([^"]+)"')
+marks = [(m.start(), m.group(1)) for m in PROFILE_RE.finditer(src)]
+if not marks:
+    print("!! 没能解析出任何档位（g.id = ...）—— 校验器失效")
+    raise SystemExit(1)
+
+
+def profile_at(pos):
+    cur = None
+    for p, name in marks:
+        if p < pos:
+            cur = name
+        else:
+            break
+    return cur
+
+
 for m in re.finditer(
-        r"AddHook\(g,\s*(0x[0-9a-fA-F]+),\s*(RK_\w+),\s*(\w+),\s*(\w+),", src):
-    addr, kind, alias_s, alias_m = m.groups()
+        r"AddHook\(g,\s*(0x[0-9a-fA-F]+),\s*(RK_\w+),\s*(\w+),\s*(\w+),\s*"
+        r"[^,]+(?:,\s*(\d+))?\s*\)", src):
+    addr, kind, alias_s, alias_m, plen = m.groups()
     # 在 AddHook 之前的作用域里找别名定义
     head = src[:m.start()]
     def resolve(alias):
         mm = re.findall(r"static const BYTE\s+%s\[\]\s*=\s*(\w+)\s*;" % alias, head)
         return mm[-1] if mm else None
-    regs.append((addr, kind, resolve(alias_s), resolve(alias_m), alias_s, alias_m))
+    regs.append((addr, kind, resolve(alias_s), resolve(alias_m),
+                 alias_s, alias_m, profile_at(m.start())))
 
 print("target.cpp 里登记的 hook 目标: %d 个" % len(regs))
-for a, k, s, mk, als, alm in regs:
-    print("   %-11s %-11s sig=%-16s mask=%s" % (k, a, s or ("?" + als), mk or ("?" + alm)))
+for a, k, s, mk, als, alm, prof in regs:
+    print("   %-12s %-11s sig=%-16s mask=%-16s [%s]"
+          % (k, a, s or ("?" + als), mk or ("?" + alm), prof))
 
-AM2 = [(a, k, s, mk) for (a, k, s, mk, _, _) in regs
-       if s in ("SIG_AM2_STEAM", "SIG_AM2_DLG") and mk]
+# 只取 Steam 档位（与 EXE 对应）
+AM2 = [(a, k, s, mk) for (a, k, s, mk, _, _, prof) in regs
+       if prof == "ArmyMenII" and s and mk]
 
 # ★ 断言真的检查到了条目（防止校验器空转）
 if not AM2:
     print("\n!! 没有解析出任何 AM2 hook 条目 —— 校验器失效，不算通过")
     raise SystemExit(1)
-print("\n将校验 %d 个 AM2 hook 目标" % len(AM2))
+
+# ★★ 覆盖度断言（本轮新增）
+#   以前这里写的是 `s in ("SIG_AM2_STEAM", "SIG_AM2_DLG")` —— 一个**白名单**。
+#   于是新加的 SIG_AM2_MEASURE 被静默过滤掉，脚本照样打印"全部通过"，
+#   而实际上**新增的那个 hook 一个字节都没校验**。
+#   这正是"校验器空转报绿"，本项目已经栽过两次（另一次是 stub 边界校验）。
+#   现在：改成按前缀匹配 + 断言期望的 hook 集合都被覆盖。
+AM2_EXPECT_KINDS = {"RK_LEFT", "RK_DIALOG", "RK_CENTER", "RK_MEASURE"}
+got_kinds = set(k for _, k, _, _ in AM2)
+missing = AM2_EXPECT_KINDS - got_kinds
+if missing:
+    print("\n!! 以下 hook 类别没有被校验到: %s" % ", ".join(sorted(missing)))
+    print("   校验器覆盖不全，不算通过（避免假绿）")
+    raise SystemExit(1)
+print("\n将校验 %d 个 AM2 hook 目标（覆盖 %d 类：%s）"
+      % (len(AM2), len(got_kinds), ", ".join(sorted(got_kinds))))
 
 d = open(EXE, "rb").read()
 secs = sections(d)
@@ -134,7 +187,75 @@ for addr_s, kind, sig_name, msk_name in AM2:
 
 print()
 if fail == 0:
-    print("全部通过：AM2 的 %d 个文字渲染器地址与签名均正确。" % len(AM2))
+    print("全部通过：AM2 的 %d 个 hook 地址与签名均正确。" % len(AM2))
 else:
     print("!! 有 %d 项问题，不要部署" % fail)
     raise SystemExit(1)
+
+
+# ══════════════════════════════════════════════════════════════════════════
+#  patchLen 指令边界校验
+# ══════════════════════════════════════════════════════════════════════════
+#  ★ 为什么必须单独查：
+#    hook 的做法是在函数入口写 `jmp rel32`（5 字节），覆盖 patchLen 个字节。
+#    若 patchLen 落在一條指令中间，stub 会把半条指令复制走，
+#    再 jmp 到 +patchLen —— 等于从指令中间开始执行，必崩。
+#    本项目的血泪史：patchLen=7 把 `sub esp,0x2c` 切成两半。
+#
+#    现在测量函数用 7（三条完整指令），渲染器用 5（一条），
+#    两个值都必须逐字节验证，不能凭记忆。
+try:
+    from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+except ImportError:
+    print("\n!! 缺少 capstone，无法校验 patchLen 边界（不算通过）")
+    raise SystemExit(1)
+
+print("\n" + "=" * 70)
+print("patchLen 指令边界校验")
+print("=" * 70)
+
+md = Cs(CS_ARCH_X86, CS_MODE_32)
+bounds_fail = 0
+for addr_s, kind, sig_name, msk_name in AM2:
+    va = int(addr_s, 16)
+    rva = va - IB
+    o = r2o(secs, rva)
+    want = EXPECT_PATCHLEN.get(va)
+    if want is None:
+        print("  ?? %-11s VA=%#x 未登记期望 patchLen" % (kind, va))
+        bounds_fail += 1
+        continue
+
+    # 线性反汇编，累积到 >= want，检查是否**恰好**落在边界
+    raw = d[o:o + 32]
+    acc = 0
+    hit = None
+    for ins in md.disasm(raw, va):
+        acc += ins.size
+        if acc == want:
+            hit = ins
+            break
+        if acc > want:
+            break
+
+    if hit is None:
+        print("  [FAIL] %-11s VA=%#x patchLen=%d **不在指令边界上**"
+              % (kind, va, want))
+        bounds_fail += 1
+        continue
+
+    # 打印覆盖的指令，便于人工复核
+    acc2 = 0
+    covered = []
+    for ins in md.disasm(raw, va):
+        acc2 += ins.size
+        covered.append("%s %s" % (ins.mnemonic, ins.op_str))
+        if acc2 >= want:
+            break
+    print("  [ OK ] %-11s VA=%#x patchLen=%d  = %s"
+          % (kind, va, want, " ; ".join(covered)))
+
+if bounds_fail:
+    print("\n!! patchLen 边界校验失败 %d 项，不要部署" % bounds_fail)
+    raise SystemExit(1)
+print("\n全部通过：patchLen 均落在指令边界上。")

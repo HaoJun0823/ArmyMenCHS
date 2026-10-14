@@ -62,6 +62,7 @@ struct Installed {
 static Installed g_hooks[8];
 static int  g_hookCount = 0;
 
+static volatile LONG g_measureCalls = 0;
 static volatile LONG g_calls = 0;
 static volatile LONG g_cjkGlyphs = 0;
 static volatile LONG g_asciiFail = 0;
@@ -429,12 +430,15 @@ bool RendererValidateEnv(std::string* report) {
 
 // 原始函数副本（stub）：把被 jmp 覆盖前的 7 字节搬过来 + 跳回原处 +8
 // 由 RendererInstallAt 为每个 hook 生成。
+// ★ 文本测量：官方英文版 sub_446E00(char* str, int font) -> int 宽度
+typedef int (__cdecl *PFN_measure)(const char*, int);
 typedef int (__cdecl *PFN_render_left)(int, int, const char*, int, int, int);
 typedef int (__cdecl *PFN_render_dlg)(int, int, const char*, int,
                                       int, int, int, int, int);
 static PFN_render_left g_origLeft = nullptr;
 static PFN_render_dlg  g_origDialog = nullptr;
 static PFN_render_dlg  g_origCenter = nullptr;
+static PFN_measure  g_origMeasure = nullptr;
 
 // ── 诊断（"首次正常、后续花屏"无法本地复现，故输出有界状态快照）──────
 //
@@ -602,8 +606,15 @@ bool RendererBuildStubs()
         Installed& ins = g_hooks[i];
         if (!ins.target || ins.len < 5) continue;
 
-        const int N = 5;                    // 一条完整指令（A1 imm32）
-        BYTE* stub = (BYTE*)VirtualAlloc(nullptr, 32, MEM_COMMIT | MEM_RESERVE,
+        // ★ N 必须等于实际覆盖长度，且该长度已落在**指令边界**上：
+        //     渲染器 : A1 imm32              -> 5
+        //     测量函数: mov/push/mov         -> 7
+        //   以前这里硬编码 5，一旦 patchLen 是 7，stub 就会把
+        //   第 6、7 字节（下一条指令的前半）也复制进去，
+        //   再 jmp 到 +7 —— 等于跳过半条指令执行，必崩。
+        const int N = ins.len;
+
+        BYTE* stub = (BYTE*)VirtualAlloc(nullptr, 64, MEM_COMMIT | MEM_RESERVE,
                                          PAGE_EXECUTE_READWRITE);
         if (!stub) {
             Log("Renderer: stub 分配失败");
@@ -617,14 +628,82 @@ bool RendererBuildStubs()
         memcpy(stub + N + 1, &rel, 4);
         FlushInstructionCache(GetCurrentProcess(), stub, N + 5);
 
-        if (ins.kind == RK_LEFT)   g_origLeft = (PFN_render_left)stub;
-        if (ins.kind == RK_DIALOG) g_origDialog = (PFN_render_dlg)stub;
-        if (ins.kind == RK_CENTER) g_origCenter = (PFN_render_dlg)stub;
-        Log("Renderer: stub[%d] = %p -> 原函数 %p +%d", i, (void*)stub,
-            (void*)ins.target, N);
+        if (ins.kind == RK_LEFT)    g_origLeft = (PFN_render_left)stub;
+        if (ins.kind == RK_DIALOG)  g_origDialog = (PFN_render_dlg)stub;
+        if (ins.kind == RK_CENTER)  g_origCenter = (PFN_render_dlg)stub;
+        if (ins.kind == RK_MEASURE) g_origMeasure = (PFN_measure)stub;
+        Log("Renderer: stub[%d] = %p -> 原函数 %p +%d (kind=%d)", i, (void*)stub,
+            (void*)ins.target, N, (int)ins.kind);
     }
     return (g_origLeft || g_origDialog || g_origCenter);
 }
+
+// ── 文本测量 hook（官方中文版把它从 sub_446E00 换成 sub_446A70）────────
+//
+// ★ 为什么必须 hook 它（本轮的根因）：
+//   英文版 sub_446E00 对**每个字节**都查 ASCII 宽度表：
+//       result += *(WORD*)(atlas + offs[262*font + c] + 2) - 3;
+//   汉字是双字节（如 "避" = B1 DC），第一字节 0xB1 会去查宽度表
+//   `word_6598D4[262*font + 0xB1]` —— 那是表里 ASCII 区间之外的位置，
+//   取到的是**别的字符的数据**，算出来的宽度是垃圾。
+//
+//   调用点 sub_419AC0（任务简报窗口）先调它算宽度，再拿宽度当裁剪矩形
+//   交给绘制函数。宽度算错 -> 裁剪矩形错 -> 文字被切碎/错位 = 花屏。
+//   而 rcSrc2 是全局的，一旦被污染，退出对话框也跟着花屏 —— 与你观察到的
+//   "简报窗口开始花屏，然后退出窗口也花屏"完全一致。
+//
+// ★ 官方中文版的正确做法（sub_446A70）：
+//       if (c >= 0xA0u) result += 15;      // 汉字固定 15，不查表
+//
+// ★ 方案 A（本轮）：
+//       汉字 -> += 15（官方值）
+//       ASCII -> 转调原 stub，保留原版行为，绝不复刻表查找
+//
+//   注：英文版对 ASCII 用 `glyph[1] - 3`（取高-3），官方中文版用
+//   `glyph[0]`（取宽）。差异是 3px/字符。ASCII 串本就该按英文原样显示，
+//   故保留英文行为；关键是**汉字不再走 ASCII 表**。
+extern "C" int __cdecl Hook_MEASURE(const char* str, int font)
+{
+    if (!str) return 0;
+    if (font < 0 || font > 16) font = 0;
+
+    // 官方也有这个前置判断（表面未锁定时不测量）
+    if (g_env.enabledVA && *(const DWORD*)VaToPtr(g_env.enabledVA) == 0)
+        return 0;
+
+    int w = 0;
+    const BYTE* s = (const BYTE*)str;
+
+    while (*s) {
+        if (*s == 0x5E) {                     // '^' 颜色转义：跳过 2 字节
+            if (s[1] == 0) break;
+            s += 2;
+            continue;
+        }
+        if (*s > 0xA0 && s[1] != 0) {         // 汉字：官方固定 15
+            w += CJK_BOX;
+            s += 2;
+            continue;
+        }
+        // ASCII：逐字符转调原实现，用返回值推进（原版是累加式的，
+        // 所以这里传单字符串并取其返回的"增量"需小心 —— 见下）
+        {
+            char tmp[2] = { (char)*s, 0 };
+            int r = g_origMeasure ? g_origMeasure(tmp, font) : 0;
+            if (r <= 0) {
+                // 兜底：原实现返回 0（例如 c < 31 的控制字符）时给个合理步进
+                WORD* cw = CharWidth(font);
+                int adv = cw ? cw[(BYTE)*s] : 0;
+                r = (adv > 0 ? adv : 6);
+            }
+            w += r;
+            s += 1;
+        }
+    }
+    InterlockedIncrement(&g_measureCalls);
+    return w;
+}
+
 
 extern "C" int __cdecl Hook_LEFT(int x, int y, const char* str,
                                  int font, int, int color)
@@ -676,9 +755,10 @@ bool RendererInstallAt(DWORD targetRVA, int kind, const BYTE* expect,
         return false;
     }
 
-    void* ours = (kind == RK_DIALOG) ? (void*)&Hook_DIALOG
-               : (kind == RK_CENTER) ? (void*)&Hook_CENTER
-                                     : (void*)&Hook_LEFT;
+    void* ours = (kind == RK_DIALOG)  ? (void*)&Hook_DIALOG
+               : (kind == RK_CENTER)  ? (void*)&Hook_CENTER
+               : (kind == RK_MEASURE) ? (void*)&Hook_MEASURE
+                                      : (void*)&Hook_LEFT;
 
     BYTE patch[16];
     memset(patch, 0x90, sizeof(patch));

@@ -43,6 +43,10 @@ enum RenderKind {
     RK_LEFT = 0,
     RK_DIALOG,
     RK_CENTER,
+    // ★ 文本**测量**（不是绘制）：给定字符串算宽度。
+    //   官方中文版把它从 sub_446E00 换成 sub_446A70（汉字 += 15）。
+    //   漏 hook 它 -> 上层拿到错误宽度 -> 拿它当裁剪矩形 -> 花屏。
+    RK_MEASURE,
 };
 
 // ★ 签名缓冲区大小。
@@ -80,6 +84,8 @@ struct GameProfile {
     //
     // ★ 保留 rendererVA 作为"主渲染器"（左对齐），其余渲染器放在 hooks[] 里。
     //   两者内容一致，保留 rendererVA 是为了兼容既有代码与日志。
+    // 文本测量函数（汉字按官方 15 计）；0 = 该档位无此函数
+    DWORD  measureVA = 0;
     DWORD  rendererVA = 0;
     BYTE   sig[SIG_MAX] = {0};      // 期望在 rendererVA 处看到的字节
     BYTE   sigMask[SIG_MAX] = {0};  // 1=必须匹配, 0=通配
