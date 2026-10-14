@@ -1,0 +1,173 @@
+//*Frontyard Mission 3*//
+
+
+        //**Mission 3 start**//
+if startup3 then
+        setbriefing "map06_2.bmp",
+        trigger cocks1,
+        trigger cocks2,
+	trigger cocks3,
+        trigger tg1,
+        trigger tg2,
+        trigger tg3,
+        triggerdelay 1500 showmiss3,
+        trigger makemoreroaches,
+        trigger addpower,
+        trigger offportdef
+
+                //**setup mission3**//
+
+if addpower then
+        createpowerup "" medkit (170,1896),
+        createpowerup "" medpack (2272,1533) 3,
+        createpowerup "" grenade (1531,728) 5
+
+if makemoreroaches then
+        createroach "gardenroach1" (222,1238) tan,
+        createroach "gardenroach2" (476,1228) tan,
+        createroach "gardenroach3" (227,1974) tan,
+        createroach "gardenroach4" (482,1967) tan,
+        createroach "gardenroach5" (505,1792) tan,
+        createroach "pathroach" (2031,1168) tan,
+        setaimode gardenroach1 attack,
+        setaimode gardenroach2 attack,
+        setaimode gardenroach3 defend,
+        setaimode gardenroach4 defend,
+        setaimode gardenroach5 defend,
+        setaimode pathroach attack,
+        setfacing gardenroach1 128,
+        setfacing gardenroach2 128,
+        setfacing gardenroach3 128,
+        setfacing gardenroach4 128
+
+        //**win condition**//
+if padon winner then
+        trigger timetowin2,
+        triggerdelay 300 playportoutsfx,
+	triggerdelay 1000 showfinalpdamis
+
+if playportoutsfx then
+        playsound "portal2_8Bit.wav" 2 0
+
+if showfinalpdamis then
+	showpda "干得好！你已经占领该区，该回去了！"
+
+if timetowin2 butnot doh then
+        triggerdelay 1500 petertestgreenwins
+
+
+	//**teleporter guards**//
+if tg1 then
+        createtrooper "telguard1" bazooka tele1 grey,
+        setaimode telguard1 ignore,
+        setfacing telguard1 118
+
+if tg2 then
+        createtrooper "telguard2" bazooka tele2 grey,
+        setaimode telguard2 ignore,
+        setfacing telguard2 138
+
+
+        //**Roaches**//
+if cocks1 then
+        createroach "cock1" roach1 grey,
+        setaimode cock1 ignore
+
+
+if cocks2 then
+        createroach "cock2" roach2 grey,
+        setaimode cock2 ignore
+
+if cocks3 then
+        createroach "cock3" (3907,1735) grey,
+        order cock3 follow greensarge1 inmode attack
+
+        //**encountering guards**//
+if padon votele butnot onlyoneattack then
+        triggerdelay 1000 cock1engage,
+        triggerdelay 1000 cock2engage,
+        triggerdelay 2000 cock3engage,
+        trigger onlyoneattack
+
+if cock1engage then
+        order cock1 follow greensarge1
+
+if cock2engage then
+        setaimode cock2 attack,
+        order cock2 follow greensarge1
+
+if allof killed cock1 killed cock2 then
+        setaimode telguard1 attack,
+        setaimode telguard2 attack,
+        order telguard1 follow greensarge1 inmode attack,
+        order telguard2 follow greensarge1 inmode attack
+
+        //**Fuel to the Fire**//
+
+if padon fueltofire butnot onefire then
+        createtrooper "goose1" rifle goosedep1 grey,
+        createtrooper "goose2" rifle goosedep2 grey,
+        createtrooper "goose3" grenade goosedep3 grey,
+        createtrooper "goose4" sniper goosedep4 grey,
+        setaimode goose4 defend,
+        setfacing goose4 54,
+        setaimode goose4 evade,
+        createtrooper "goose5" bazooka goosedep5 grey,
+        setaimode goose5 defend,
+        setfacing goose5 44,
+        createtrooper "goose6" vulcan goosedep6 grey,
+        setaimode goose6 defend,
+        setfacing goose6 54,
+        triggerdelay 1000 changecolor,
+        triggerdelay 500 orderthegooses,
+        trigger makecocksuckers,
+        trigger onefire
+
+if makecocksuckers then
+        createroach snipercock1 (3477,1290) grey,
+        setaimode snipercock1 defend,
+        createroach snipercock2 (3765,1209) grey,
+        setaimode snipercock2 defend,
+        createroach snipercock3 (3202,969) grey,
+        setaimode snipercock3 attack,
+        createroach snipercock4 (3919,1145) grey,
+        setaimode snipercock4 attack,
+        setfacing snipercock1 114,
+        setfacing snipercock2 128,
+        setfacing snipercock3 114,
+        setfacing snipercock4 128
+
+if changecolor then
+        setforcecolor goose3 tan,
+        setforcecolor goose4 blue,
+        setforcecolor goose6 tan
+
+if orderthegooses then
+        order goose1 follow greensarge1 inmode attack,
+        order goose2 follow greensarge1 inmode attack,
+        order goose3 follow greensarge1 inmode attack
+
+        //**sniper orders**//
+
+if allof killed goose5 killed goose6 then
+        order goose4 goto sniperrun1
+
+if padon sniperrun1 then
+        setfacing goose4 64,
+        triggerdelay 700 orderchickengoose
+
+if orderchickengoose then
+        order goose4 goto sniperfinal
+
+if padon sniperfinal then
+        undeploy goose4
+
+        //**Powerup Drop**//
+
+
+
+
+
+
+
+

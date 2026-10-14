@@ -37,6 +37,20 @@
 *.amm      -text
 *.atl      -text
 
+# ---- 2 代新增：音频与动画资产，同样是二进制 ----
+#   本机 core.autocrlf=true。git 目前靠"内容像二进制就跳过转换"来兜底，
+#   但这是**内容启发式**，不是声明：一旦某个 .wav 恰好看不出二进制特征
+#   （例如极短或全 ASCII 字节的样本），就会被改写。
+#   2 代载荷含 162 个 .wav + 20 个 .ani，故显式锁死。
+*.wav      -text
+*.ani      -text
+*.ast      -text
+*.axs      -text
+*.sdb      -text
+*.vdf      -text
+*.isu      -text
+*.ico      -text
+
 # ---- 游戏载荷文本资产：游戏按字节解析，禁止转换 ----
 #   .txt 任务脚本 / .rul 地图规则 / .cpn 战役定义 / .aai AI 行为表
 *.txt      -text

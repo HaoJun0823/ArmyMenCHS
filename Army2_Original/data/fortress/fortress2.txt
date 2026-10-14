@@ -1,0 +1,208 @@
+//**mission 2 fortress**//
+
+if startup2 then
+        triggerdelay 1500 showmiss2,
+        setbriefing "map11_2.bmp",
+        moveitem extracrate5 extrarock1,
+        setitemflag extracrate5 strategic 1,
+        trigger tankplacement
+
+//**Win Conditions**//
+
+if killed truck butnot stoptruck then
+        trigger starttruckwin,
+        trigger killedweapon,
+        trigger killedgear
+
+if starttruckwin then
+        setobjstate gear gear_initial,
+        setobjstate golfball golf_initial,
+        playsound "" idlerock 5 0 0,
+        triggerdelay 1500 timetowin2
+
+if killed gear butnot killedweapon then
+        undeploy sw1,
+        undeploy sw2,
+        undeploy golfball,
+        undeploy gear,
+        undeploy weaponlid,
+        triggerdelay 100 exp1,
+        triggerdelay 300 exp2,
+        triggerdelay 500 exp3,
+        triggerdelay 700 exp4,
+        triggerdelay 900 exp5,
+        triggerdelay 1100 exp6,
+        triggerdelay 1300 exp7,
+        triggerdelay 1400 exp8,
+        triggerdelay 1600 exp9,
+        triggerdelay 1900 exp10,
+        triggerdelay 2000 timetowin2,
+        playsound "" idlerock 5 0 0,
+        trigger stoptruck,
+        trigger killedgear
+
+if killed weapon butnot killedgear then
+        undeploy sw1,
+        undeploy sw2,
+        undeploy golfball,
+        undeploy gear,
+        undeploy weaponlid,
+        triggerdelay 100 exp1,
+        triggerdelay 300 exp2,
+        triggerdelay 500 exp3,
+        triggerdelay 700 exp4,
+        triggerdelay 900 exp5,
+        triggerdelay 1100 exp6,
+        triggerdelay 1300 exp7,
+        triggerdelay 1400 exp8,
+        triggerdelay 1600 exp9,
+        triggerdelay 1900 exp10,
+        triggerdelay 2000 timetowin2,
+        playsound "" idlerock 5 0 0,
+        trigger stoptruck,
+        trigger killedweapon
+
+if timetowin2 butnot doh then
+        triggerdelay 1500 failsafewin2
+
+if failsafewin2 butnot startup3 then
+        triggerdelay 1500 petertestgreenwins
+
+if exp1 then
+        createexplosion (2156,1656) 130 150 blue,
+        createexplosion (2472,2004) 130 150 blue
+
+if exp2 then
+        createexplosion (2435,1980) 130 150 blue,
+        createexplosion (2262,2050) 130 150 blue
+
+if exp3 then
+        createexplosion (2153,1845) 130 150 blue,
+        createexplosion (2363,2060) 130 150 blue
+
+if exp4 then
+        createexplosion (2121,1785) 130 150 blue,
+        createexplosion (2200,1814) 130 150 blue
+
+if exp5 then
+        createexplosion (2063,1729) 130 150 blue,
+        createexplosion (2266,1910) 130 150 blue
+
+if exp6 then
+        createexplosion (2432,1749) 130 150 blue,
+        createexplosion (2435,1980) 130 150 blue
+
+if exp7 then
+        createexplosion (2156,1656) 130 150 blue,
+        createexplosion (2285,1816) 130 150 blue
+
+if exp8 then
+        createexplosion (2434,2082) 130 150 blue,
+        createexplosion (2232,1893) 130 150 blue
+
+if exp9 then
+        createexplosion (2040,1792) 130 150 blue,
+        createexplosion (2016,1715) 130 150 blue
+
+if exp10 then
+        createexplosion (2191,1703) 130 150 blue,
+        createexplosion (2096,1809) 130 150 blue,
+        createexplosion (2153,1845) 130 150 blue
+
+
+
+if showmiss2 then
+        showpda "Now that you have the key, destroy the Secret Weapon."
+
+//**Locked doors mechanics**//
+
+ if padon unlocked1 butnot onetime1 then
+        playsound "1102sarge3.wav" 16 0,
+        trigger onetime1
+
+ if padon unlocked2 then
+        playsound "1102sarge2.wav" 16 0
+
+ if padon unlocked3 then
+        playsound "1102sarge2.wav" 16 0
+
+ if padon unlocked4 then
+        playsound "1102sarge2.wav" 16 0
+
+ if padon unlocked5 then
+        playsound "1102sarge2.wav" 16 0
+
+ if padon unlocked6 then
+        playsound "1102sarge2.wav" 16 0
+
+ if padon unlocked7 then
+        playsound "1102sarge2.wav" 16 0
+
+
+//**Arect Weapon**
+ if padon actweapon butnot only_oneactweapon then
+        setobjstate gear gear_go,
+        setobjstate golfball golf_go,
+        trigger truckstart,
+        trigger only_oneactweapon
+
+ if truckstart then
+        playsound "TruckStart_8Bit.wav" greensarge1 2 0,
+        triggerdelay 1000 ideltruck
+
+ if ideltruck then
+        playsound "TruckIdle_8Bit.wav" idlerock 5 0 1
+
+ if hit weapon butnot onlyonehit then
+        triggerdelay 1000 LaunchQuadAttackers,
+        triggerdelay 1000 tankorders,
+        trigger globalalert,
+        trigger onlyonehit
+
+ if hit truck butnot onlyonehit then
+        triggerdelay 1000 LaunchQuadAttackers,
+        triggerdelay 1000 tankorders,
+        trigger globalalert,
+        trigger onlyonehit
+
+ if LaunchQuadAttackers then
+        createtrooper "Defender1" rifle (2570,2753) tan,
+        order Defender1 follow greensarge1,
+        createtrooper "Defender2" rifle (3166,2511) tan,
+        order Defender2 follow greensarge1,
+        createtrooper "Defender3" rifle (3166,2511) tan,
+        order Defender3 follow greensarge1,
+        createtrooper "Defender4" rifle (1986,2855) tan,
+        order Defender4 follow greensarge1,
+        triggerdelay 1500 SquadTeams1
+
+ if SquadTeams1 then
+        createtrooper "Swat1" rifle (2626,1421) tan,
+        order Swat1 follow GreenSarge1,
+        createtrooper "Swat2" rifle (2855,1842) tan,
+        order Swat2 follow GreenSarge1,
+        createtrooper "Swat3" rifle (3034,2292) tan,
+        order Swat3 follow GreenSarge1,
+        createtrooper "Swat4" rifle (2824,2545) tan,
+        order Swat4 follow GreenSarge1,
+        createtrooper "Swat5" grenade (1689,1421) tan,
+        order swat5 follow greensarge1
+
+ //**Tanks**//
+
+ if tankplacement then
+        createtrooper "defencebaz1"  bazooka tank1 tan,
+        createtrooper "defencebaz2"  bazooka tank2 tan,
+        createtrooper "defencebaz3"  bazooka tank3 tan,
+        createtrooper "defencebaz4"  bazooka tank4 tan,
+        createtrooper "defencebaz5"  bazooka tank5 tan,
+        createtrooper "defencebaz6"  bazooka tank6 tan
+
+if tankorders then
+        order defencebaz1 follow greensarge1 inmode attack,
+        order defencebaz2 follow greensarge1 inmode attack,
+        order defencebaz3 follow greensarge1 inmode attack,
+        order defencebaz4 follow greensarge1 inmode attack,
+        order defencebaz5 follow greensarge1 inmode attack,
+        order defencebaz6 follow greensarge1 inmode attack
+

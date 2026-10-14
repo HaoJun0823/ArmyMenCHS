@@ -1,0 +1,772 @@
+{
+ "game": "Army Men II",
+ "count": 95,
+ "verified_localized": 44,
+ "unverified_same_family": 51,
+ "todo": 0,
+ "criterion": "人工实图核对（_bmp_cmp/ 下的并排对比图）",
+ "scope_note": "load_*/bootcamp_* 覆盖全部标题条带；map*/data 同族抽验，未逐张验证",
+ "note": "差异率/字节比对均已被证明不可靠，见脚本 docstring",
+ "files": [
+  {
+   "path": "01-title/01_000_00_screen.bmp",
+   "size": 308276,
+   "sha256": "215ac4fb800a94074ff5793e4840a89c92cae7bc31197a6805f7959149597feb",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "整图确认：LOGO 为「玩具兵大战 II」"
+  },
+  {
+   "path": "bitmaps/bad_mp_prev.bmp",
+   "size": 37560,
+   "sha256": "baaf6815cc1323b271c2e0d0d9612b7a5664e29212db57aeb5f6f68d19653f2a",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "整图确认：Invalid map -> 地图无效"
+  },
+  {
+   "path": "bitmaps/bootcamp-bf.bmp",
+   "size": 308280,
+   "sha256": "573a6fa7dcf2011c79b920ca0b3b701db2c50ddb696b6740819d9891f41397db",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "整图确认：整幅训练说明为中文"
+  },
+  {
+   "path": "bitmaps/bootcamp-gm.bmp",
+   "size": 308280,
+   "sha256": "c158d3377f303a8a320ee18700d6b8d7d1c164cf3e482a814d260221737c39ca",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带确认（正文同族）"
+  },
+  {
+   "path": "bitmaps/bootcamp-iu.bmp",
+   "size": 308280,
+   "sha256": "b77f155141cb3e7c7dd990b53666fe2c42ded529d27dde89babd50f233ce6966",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带确认（正文同族）"
+  },
+  {
+   "path": "bitmaps/bootcamp-mf.bmp",
+   "size": 308280,
+   "sha256": "7c50823c41015235739b16399235eb2f623a4f2c6a7fa1d6fcc3c8fdc8913acb",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带确认（正文同族）"
+  },
+  {
+   "path": "bitmaps/bootcamp-mp.bmp",
+   "size": 308280,
+   "sha256": "2a33ecea372b3ec7ee176a2988d8fae84cbb7d290edfbadac727a869f89c94f6",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带确认（正文同族）"
+  },
+  {
+   "path": "bitmaps/bootcamp-rf.bmp",
+   "size": 308280,
+   "sha256": "92e4bd5c50bad2d0cbbd2b0339cec76f861fa88b12b61abe57d4219c0b3dbdaf",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带确认（正文同族）"
+  },
+  {
+   "path": "bitmaps/bootcamp-su.bmp",
+   "size": 308280,
+   "sha256": "c2f48b67af60c95133995211341c8194e9f1c4d160fde58d2eba2f8c3c7edc13",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带确认（正文同族）"
+  },
+  {
+   "path": "bitmaps/bootcamp-ut.bmp",
+   "size": 308280,
+   "sha256": "5e1f9c38cce897e810341ed7461bc22dcf131a125cf4c024b4548dfb87965483",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带确认（正文同族）"
+  },
+  {
+   "path": "bitmaps/bootcamp-wt.bmp",
+   "size": 308280,
+   "sha256": "bdb7d196db05faa38c5fcf9145fa92ce70747bc390e5f5a7056aa077e27fa92d",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带确认（正文同族）"
+  },
+  {
+   "path": "bitmaps/load_airborne.bmp",
+   "size": 308280,
+   "sha256": "171ab5675a4d2760558c608d2ca8847804aacc33c31b4b31867a95a662e5ac6c",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_areax.bmp",
+   "size": 308280,
+   "sha256": "31fa2040768edbd3d473e636f8ef92ee3a4ed98b5fb3a1bc0a41427a164ef5e0",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_areaz.bmp",
+   "size": 308280,
+   "sha256": "9cef4155bee78d891525f5c45cdb69e5ec44d68fc5aecca5f1b70f2aca127652",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_bedroom_bonanza.bmp",
+   "size": 308278,
+   "sha256": "869e129ce51b40e70bf4194aca7e798a57938b33695cedbeb093a0617817e21b",
+   "orig_present": false,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_bigbang.bmp",
+   "size": 308280,
+   "sha256": "554ff1e0cd4870cc263e1dac702f0c45b9039f122da2a18bf3c558bc11cc3118",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_bootcamp.bmp",
+   "size": 308280,
+   "sha256": "916ca342ecbca877b62a8ece6d8ebfffbaf72fe027824b1084349eb594b1d95f",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_carpet_carnage.bmp",
+   "size": 308278,
+   "sha256": "7c9a83e838a6e8d8431a82543f74f6580114610a2d9edf7d1eb919fafbff30a6",
+   "orig_present": false,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_default.bmp",
+   "size": 308280,
+   "sha256": "225d0a1a3a3b6d3f17c91ec710b2e4fd48c18faea6ec3fffac2c52ba70d4ad87",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_eightball.bmp",
+   "size": 308280,
+   "sha256": "bf57232790705ed4666a4a91af6a0b083ba7f21aab05dc24969aac676eb1ad77",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_fortress.bmp",
+   "size": 308280,
+   "sha256": "7ed0b04c100d269a374d8ae6f71efda0cca50f372f10ad1a8c2be9fc1c862cae",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_gonefishin.bmp",
+   "size": 308280,
+   "sha256": "3800f8f761c975f19767ff0d8f5ffe1d775717f8c0d287a74e28f4edf4fc86ba",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_graveyard.bmp",
+   "size": 308280,
+   "sha256": "5cd67c850f1452a1f96a4c3316971ac637ad2ce83e749b4ef4ed214f4f5e68a0",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_hobby.bmp",
+   "size": 308280,
+   "sha256": "29736e56f8f8560efadf4738125028b6c85230e53623f6e148fe92e6959b6e34",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_hobby_table_havoc.bmp",
+   "size": 308278,
+   "sha256": "afbc86207594c14f2c2b8b402ddef879d321664f2047a37c24a5bbccb2b0addb",
+   "orig_present": false,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_homeland.bmp",
+   "size": 308280,
+   "sha256": "4ccb8d2cc4f8366d1b8989aaf3b275f112ca6c0f3048e26bc5b33209928d6845",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_igd.bmp",
+   "size": 308280,
+   "sha256": "d400d27140b445601eb56e2133207fe828b30c59851310ec6983a39fafc3d66d",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_kitchen.bmp",
+   "size": 308280,
+   "sha256": "9f84ecfd1a4bd20e088c0feaea6a80e2cd471712c69d569a6f2c9f35c91acf0a",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_kitchenmadness.bmp",
+   "size": 308280,
+   "sha256": "b0559b94b32785efdf1448f32b1724e4c33506680eec93b7ca9b07a14f66e1ea",
+   "orig_present": false,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_mania.bmp",
+   "size": 308280,
+   "sha256": "3ac6f50b97c0c51aa86d9e69f58e6c2b2c688e0c624e471b66c30d20a5f37b52",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_mania_mp1.bmp",
+   "size": 308280,
+   "sha256": "bed4fc8c6901d7aa5cfe4cb7a3bf18bb762c164e85fa2e6c0c12841a043057c8",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_playset.bmp",
+   "size": 308280,
+   "sha256": "153fcb7d2cc71a43674b20061af334a9795d5b6927c5ce67b3901e57da988306",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_pueblogrande.bmp",
+   "size": 308280,
+   "sha256": "8e1d7393a4dff45881ef701f19c4ae22ebe7078648f8a8594610240b9b687ed5",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_rec_room_rumble.bmp",
+   "size": 308278,
+   "sha256": "a25ee1e0e7283f1e293b437fc103cffeeb8e19db42d6cfcb4224bd471aa71b68",
+   "orig_present": false,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_roadwars.bmp",
+   "size": 308280,
+   "sha256": "5f8b444d1bba76160c30f6a863094a380f1df09dfcd123db98cfea40b9e6e35b",
+   "orig_present": false,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_runforrestrun.bmp",
+   "size": 308280,
+   "sha256": "e135dabee8b50d1e79fc8d0722a9ad9b00bd497f0d8788d6c65ea242bf8b9184",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_sargespit.bmp",
+   "size": 308280,
+   "sha256": "79594d21ba33f4b960c0ca00c77cc5b0e8063c3a774e1c3ab36083d7373e50c0",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_tankstore.bmp",
+   "size": 308280,
+   "sha256": "2e1157ba1f5bd8221d8662bcae167174f0b6d1270d4109eb898183581aff817a",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_thebigeasy.bmp",
+   "size": 308280,
+   "sha256": "bb1e5255edbf42c06fbaa95fb27e03462a79161df73dce205c32d0e49501a9fe",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_walledcity.bmp",
+   "size": 308280,
+   "sha256": "a648d0397c623ab9e4fc50c0a308ed6d120d8f35ea05241660c4743d4e7d13a0",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/load_wildmansland.bmp",
+   "size": 308280,
+   "sha256": "6c93ae62b51a83d3ef796723516a0de34dddc7d949c681df368e3f36478f08a0",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "标题条带已核对（_bmp_cmp/bands_*.png）"
+  },
+  {
+   "path": "bitmaps/map00.bmp",
+   "size": 308280,
+   "sha256": "7ace5714b16b5c5b487dce324c2f037a3912c628d14f552733df653ca8a4493f",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "整图确认"
+  },
+  {
+   "path": "bitmaps/map01_1.bmp",
+   "size": 308280,
+   "sha256": "a555f8cd2fab1658ad06c62ca80cf7175bc63fc55e589b33d9a53f19ee989d7d",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map01_2.bmp",
+   "size": 308280,
+   "sha256": "71d9830988a7c0ea19a5cedcf5650b7207c0300f2fd0fc55984adea50fda2a24",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map02_1.bmp",
+   "size": 308280,
+   "sha256": "a14196525b2381084e1e99e06e550994b3d8c915326ed9ae099c0b32c5851969",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map02_2.bmp",
+   "size": 308280,
+   "sha256": "a52bef0911a416bc6a32b95fd202f7cfc263e810334c5a8ce4ddf60e1ab8af46",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map02_3.bmp",
+   "size": 308280,
+   "sha256": "5956733e331f1d16b99dc4a08eb066b4b216bb93310579e0e9b87d986780797f",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map03_1.bmp",
+   "size": 308280,
+   "sha256": "927f4ad1014231027a4ff9c3109999cc1f8089c4b8f8b71f09336ef0813dc43b",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map03_2.bmp",
+   "size": 308280,
+   "sha256": "98223d99c2cc2a78fb2e82aa632da7fe748d11c8f6c316269f46ed383ee71724",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map04_1.bmp",
+   "size": 308280,
+   "sha256": "028507ab28ce8ab32cde852ff210f9d3d1d542e6704f6e566d3671a3f1d3a427",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "整图确认：MISSION/BRIEFING/地名均中文"
+  },
+  {
+   "path": "bitmaps/map04_2.bmp",
+   "size": 308280,
+   "sha256": "681f4aa28078d9f623a221c800327759e8dcb13e6cd33e2b820a0fb6941a580b",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map04_3.bmp",
+   "size": 308280,
+   "sha256": "f987cc5d60ee2527161f6c5c041088bc368ab5658a0a29b3effa9f3f2301bb1d",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map05_1.bmp",
+   "size": 308280,
+   "sha256": "aef7ba62b6159045eff9ff159510e8f668011a0d184f502daf24f5659af7aff5",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map05_2.bmp",
+   "size": 308280,
+   "sha256": "40caeac29a0390c259c23c942effa7c81834064508ffa5cbdd7a25d09e19e81b",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map06_1.bmp",
+   "size": 308280,
+   "sha256": "41c00da9ef501bdd249281799e873524c1866f7248363e706504416e00e95ca7",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map06_2.bmp",
+   "size": 308280,
+   "sha256": "f4b68199852e2634cf49ca26069c5987acf69c0537d479fca80347c51f45aa36",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map07_1.bmp",
+   "size": 308280,
+   "sha256": "63a041a875a87ad80acbffafadb789b4fa87153fea42230dcf40d8bfa6f799b1",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map07_2.bmp",
+   "size": 308280,
+   "sha256": "2a479c6928f7bcbd1798d7da8b56e2141d6cb398526c574c4093ea8bdcd141e5",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map08_1.bmp",
+   "size": 308280,
+   "sha256": "c72b9321c59222aa6afe46569d20ab19bc637ecea6f02255cbddbea99cb53caa",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map08_2.bmp",
+   "size": 308280,
+   "sha256": "1fae33f986b9349f1df1df0f1e78812ac8b2759fdf11295f31541b75b7b92714",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map09_1.bmp",
+   "size": 308280,
+   "sha256": "b19dc32470a15d74a4fa20a3ef3b8280a04a80357cb65f6387d55ee9df580da7",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map09_2.bmp",
+   "size": 308280,
+   "sha256": "589224c985009d5050fc77c0bd397c15e0cd39a8325e8a4f02812359bb09e9b5",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map10_1.bmp",
+   "size": 308280,
+   "sha256": "dfacd528bd3e8c1d62dc049313b231d29ce032f4d89d07dc3257e0efb9ac27d9",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map10_2.bmp",
+   "size": 308280,
+   "sha256": "38c4f5227955eaf53ae5c8b9f1689f8a4e7bc9bc04f0e38a1d6e10f1a225c87a",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map11_1.bmp",
+   "size": 308280,
+   "sha256": "d84173c4d270f037073c815d4abbc6ef33b468959e96e8b4d9ed29614172b56e",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map11_2.bmp",
+   "size": 308280,
+   "sha256": "54c22fcf5e37c51ebb613a65507d742a26d22855e48448b47ab8acbeaac16033",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map11_3.bmp",
+   "size": 308280,
+   "sha256": "b1f925de758379e43f098ae0432600f1ea1bd3eca0e20a28444a9f774edf483b",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map12_1.bmp",
+   "size": 308280,
+   "sha256": "4cc03fcd4d3da4eb403a0af539edafe18c6d653968f2619ac5ba343bb8421617",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/map12_2.bmp",
+   "size": 308280,
+   "sha256": "857dfc2f430efb8b048185e0e649b649e0487216ffc8a5c4c54e5d7f45418b31",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/mapwait.bmp",
+   "size": 307268,
+   "sha256": "55ac8f11849497cb085e1302159818e268f6d7008e86fd6f53835d8abf0a38ea",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族同模板，已抽验 map00/map04_1"
+  },
+  {
+   "path": "bitmaps/mphostleft.bmp",
+   "size": 307268,
+   "sha256": "b1c5f27011a6d6c5f2778beee13cd5ac147929d8c4f9399a5ddc4d0ec1aae248",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "本轮未覆盖"
+  },
+  {
+   "path": "bitmaps/mplost.bmp",
+   "size": 307268,
+   "sha256": "32b6374776bdd310b0320d23ca01e74c27adacb6ace3ecf6dce34c3dfc085c99",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "本轮未覆盖"
+  },
+  {
+   "path": "bitmaps/mpwon.bmp",
+   "size": 307268,
+   "sha256": "bf261bb43c3ba3da6fc33f57e4723a46a600e954ebef2d81cfc80b5d09604a22",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "本轮未覆盖"
+  },
+  {
+   "path": "data/frontyard/roadwars.bmp",
+   "size": 18504,
+   "sha256": "a45d83f893b9f36adb4813f5f9767c343e85204f2e0529c20596bcb9a92e7c3d",
+   "orig_present": false,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/frontyard/roadwars_prev.bmp",
+   "size": 42288,
+   "sha256": "0864694978bece997c75aa9c27b73c6b8a1e2f559d50ec15c78f213b06c5ddcd",
+   "orig_present": false,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/hobby/hobby_multi1.bmp",
+   "size": 18502,
+   "sha256": "885d812ed729d6e86bb463e29a46797fb076480073294cbd7f708500d16a4e30",
+   "orig_present": false,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/hobby/hobby_multi1_prev.bmp",
+   "size": 42286,
+   "sha256": "89ee51a2edd6b5cf8f1232a0df23ccb2fb9fa319a41e2d5c1fcda9d3a82554e7",
+   "orig_present": false,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/hobby/hobby_multi2.bmp",
+   "size": 18502,
+   "sha256": "32c8ca4bb6fb0561febd0f9036c4f12b45d4f0a5b4b0cb553c3c91c981eb49ec",
+   "orig_present": false,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/hobby/hobby_multi2_prev.bmp",
+   "size": 42286,
+   "sha256": "e17d61cbb5390aab8949f550826c823242d211299f8cb7ccedea13f126bb7c94",
+   "orig_present": false,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/kitchen/Kitchenmadness_prev.bmp",
+   "size": 42288,
+   "sha256": "ff3a17c93454dd320f473d9b978441ef289cfeddf6893184bcc32e90a1503e9c",
+   "orig_present": false,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/kitchen/kitchenmadness.bmp",
+   "size": 18504,
+   "sha256": "a7256f0443adfa08e932220065c7e110dd2e3b0d411356063f5243bc0e217539",
+   "orig_present": false,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/mania/mania_mp1_prev.bmp",
+   "size": 42288,
+   "sha256": "a9f5ad26f6d3f5dd1c7e73789440bd93d171b5c4d9497b66cb2e382b6926a9d1",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/mpalpine/alpine3_mp_prev.bmp",
+   "size": 42288,
+   "sha256": "a71f1c5fd97d5c3e9feeee062f35c1a63fd91bee17e6109d1980284faa7101d6",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/mpalpine/alpine4_mp_prev.bmp",
+   "size": 42288,
+   "sha256": "db590687e84de15a1529b62acc1870a9c983cf1769977aabdb0382acd4434780",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/mpalpine/alpine5_mp_prev.bmp",
+   "size": 42288,
+   "sha256": "e48c2732be94c09a455c8ae5629c8d1619359739d60ed4bbc95d5782c649a4ad",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/mpalpine/areaz_prev.bmp",
+   "size": 42288,
+   "sha256": "68a1d4d20edb05cc977e7b0479e66bbeadfbe49cada09131b59f12c4f45d07c5",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/mpalpine/wildman_prev.bmp",
+   "size": 42288,
+   "sha256": "f9a064465f2fb7f39ac9ebd802370194535f03ceb60eaf9778c6270d6377833b",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/mpbayou/bayou2_mp_prev.bmp",
+   "size": 42288,
+   "sha256": "7cbf23dcdf8fd428fe753783f9bdeba52559c03f18cafead74dca940275f1d42",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/mpbayou/bayou3_mp_prev.bmp",
+   "size": 42288,
+   "sha256": "d0db8c6f6db8a8831fd670f509abdb9fb9d4ab7fda6aae528093dbcf75f7f23f",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/mpdesert/desert3_mp_prev.bmp",
+   "size": 42288,
+   "sha256": "c0ef036f587ffd71864b26ee1bdc880a3681578a0e143924159202c69ce75c24",
+   "orig_present": true,
+   "status": "已汉化",
+   "note": "整图确认：阵营名/地名均中文"
+  },
+  {
+   "path": "data/mpdesert/desert4_mp_prev.bmp",
+   "size": 42288,
+   "sha256": "4614c5fe079897ac8d7716ed50910a144a595bb59c409f0bade2fbda8170dc15",
+   "orig_present": true,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/playset/bedroom_bonanza.bmp",
+   "size": 18502,
+   "sha256": "85489c9bad787a582df5de17c32783b67bda5746a34ac56a0c6f508e8b2005c2",
+   "orig_present": false,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/playset/bedroom_bonanza_prev.bmp",
+   "size": 42286,
+   "sha256": "4a9de0090e7b3795ecf55fb0caa5b8b8b432dafc203e0439f557e5848fcdead0",
+   "orig_present": false,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/playset/rec_room_rumble.bmp",
+   "size": 18502,
+   "sha256": "65b32701708a4fa628ff994de229390bd2dee851eb07e5d2b0476631453d0813",
+   "orig_present": false,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  },
+  {
+   "path": "data/playset/rec_room_rumble_prev.bmp",
+   "size": 42286,
+   "sha256": "7d3388998ee63e03e31aee7c91adfa513740b45b9bc7c2314b8fc94425cb9b06",
+   "orig_present": false,
+   "status": "未逐张核对",
+   "note": "同族预览图，已抽验 desert3_mp_prev"
+  }
+ ]
+}

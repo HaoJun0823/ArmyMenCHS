@@ -1,0 +1,628 @@
+//////////////////////////////////////////////////////////////////////////////
+// Common section
+//////////////////////////////////////////////////////////////////////////////
+
+// remove all optional objects - game specific code will deploy them if required
+
+if startup1 then
+	undeploy greenflag1,
+	undeploy gflagbase,
+	undeploy tanflag1,
+	undeploy tflagbase,
+	undeploy blueflag1,
+	undeploy bflagbase,
+	undeploy greyflag1,
+	undeploy grflagbase,
+	undeploy blackflag1,
+	undeploy bkflagbase,
+	undeploy greenmark1,
+	undeploy greenmark2,
+	undeploy greenmark3,
+	undeploy greenmark4,
+	undeploy greenmark5,
+	undeploy greenmark6,
+	undeploy greenmark7,
+	undeploy greenmark8,
+	undeploy tanmark1,
+	undeploy tanmark2,
+	undeploy tanmark3,
+	undeploy tanmark4,
+	undeploy tanmark5,
+	undeploy tanmark6,
+	undeploy tanmark7,
+	undeploy tanmark8,
+	undeploy bluemark1,
+	undeploy bluemark2,
+	undeploy bluemark3,
+	undeploy bluemark4,
+	undeploy bluemark5,
+	undeploy bluemark6,
+	undeploy bluemark7,
+	undeploy bluemark8,
+	undeploy greymark1,
+	undeploy greymark2,
+	undeploy greymark3,
+	undeploy greymark4,
+	undeploy greymark5,
+	undeploy greymark6,
+	undeploy greymark7,
+	undeploy greymark8
+
+// where dead sarges resurrect
+
+pad GreenRes1 50	
+pad GreenRes2 51	
+pad GreenRes3 52
+pad GreenRes4 53	
+pad GreenRes5 54	
+pad GreenRes6 55
+	
+pad TanRes1 60
+pad TanRes2 61
+pad TanRes3 62
+pad TanRes4 63
+pad TanRes5 64
+pad TanRes6 65
+
+pad BlueRes1 70
+pad BlueRes2 71
+pad BlueRes3 72
+pad BlueRes4 73
+pad BlueRes5 74
+pad BlueRes6 75
+
+pad GreyRes1 80
+pad GreyRes2 81
+pad GreyRes3 82
+pad GreyRes4 83
+pad GreyRes5 84
+pad GreyRes6 85
+
+// resurrect the sarges
+
+if killed greensarge1 then
+	triggerdelay 3000 resurrectgreen
+
+if killed tansarge1 then
+	triggerdelay 3000 resurrecttan
+
+if killed bluesarge1 then
+	triggerdelay 3000 resurrectblue
+
+if killed greysarge1 then
+	triggerdelay 3000 resurrectgrey
+
+if resurrectgreen then random
+   resurrect greensarge1 GreenRes1,
+   resurrect greensarge1 GreenRes2,
+   resurrect greensarge1 GreenRes3,
+   resurrect greensarge1 GreenRes4,
+   resurrect greensarge1 GreenRes5,
+   resurrect greensarge1 GreenRes6
+
+if resurrecttan then random
+   resurrect tansarge1 TanRes1,
+   resurrect tansarge1 TanRes2,
+   resurrect tansarge1 TanRes3,
+   resurrect tansarge1 TanRes4,
+   resurrect tansarge1 TanRes5,
+   resurrect tansarge1 TanRes6
+
+if resurrectblue then random
+   resurrect bluesarge1 BlueRes1,
+   resurrect bluesarge1 BlueRes2,
+   resurrect bluesarge1 BlueRes3,
+   resurrect bluesarge1 BlueRes4,
+   resurrect bluesarge1 BlueRes5,
+   resurrect bluesarge1 BlueRes6
+
+if resurrectgrey then random
+   resurrect greysarge1 GreyRes1,
+   resurrect greysarge1 GreyRes2,
+   resurrect greysarge1 GreyRes3,
+   resurrect greysarge1 GreyRes4,
+   resurrect greysarge1 GreyRes5,
+   resurrect greysarge1 GreyRes6
+
+// define the pads around the flag bases (used by CTF and AI in many games)
+
+pad greenbase 11 greensarge1
+pad tanbase 12 tansarge1
+pad bluebase 13 bluesarge1
+pad greybase 14 greysarge1
+
+// check for a team reaching score limit
+
+if checkgreenwins testvar teamscore green >= gamescorelimit then
+	trigger endOfGame,
+	trigger greenteamwins
+
+if checktanwins testvar teamscore tan >= gamescorelimit then
+	trigger endOfGame,
+	trigger tanteamwins
+
+if checkbluewins testvar teamscore blue >= gamescorelimit then
+	trigger endOfGame,
+	trigger blueteamwins
+
+if checkgreywins testvar teamscore grey >= gamescorelimit then
+	trigger endOfGame,
+	trigger greyteamwins
+
+// sound effects
+
+if endOfGame then
+	playsound "mp_endgame.wav" (0,0) 1 1
+
+//////////////////////////////////////////////////////////////////////////////
+// Fairly common section - score a penalty if kill an allied sarge
+//////////////////////////////////////////////////////////////////////////////
+
+variable killedSelfPenalty -100
+variable killedAllyPenalty -50
+variable killedByAllyPenalty -50
+
+// check for green sarge being killed by self or an ally
+
+if killed greensarge1 by green then
+    showmessage "Green sarge killed by green friendly fire",
+	trigger friendlyFireDeath,
+	addvar greenscore killedSelfPenalty
+
+if killed greensarge1 by tan testvar isAlly tan green = 1 then
+    showmessage "Green sarge killed by tan friendly fire",
+	trigger friendlyFireDeath,
+	addvar tanscore killedAllyPenalty,
+	addvar greenscore killedByAllyPenalty
+
+if killed greensarge1 by blue testvar isAlly blue green = 1 then
+    showmessage "Green sarge killed by blue friendly fire",
+	trigger friendlyFireDeath,
+	addvar bluescore killedAllyPenalty,
+	addvar greenscore killedByAllyPenalty
+
+if killed greensarge1 by grey testvar isAlly grey green = 1 then
+    showmessage "Green sarge killed by grey friendly fire",
+	trigger friendlyFireDeath,
+	addvar greyscore killedAllyPenalty,
+	addvar greenscore killedByAllyPenalty
+
+// check for tan sarge being killed by self or an ally
+
+if killed tansarge1 by green testvar isAlly green tan = 1 then
+    showmessage "Tan sarge killed by green friendly fire",
+	trigger friendlyFireDeath,
+	addvar greenscore killedAllyPenalty,
+	addvar tanscore killedByAllyPenalty
+
+if killed tansarge1 by tan then
+    showmessage "Tan sarge killed by tan friendly fire",
+	trigger friendlyFireDeath,
+	addvar tanscore killedSelfPenalty
+
+if killed tansarge1 by blue testvar isAlly blue tan = 1 then
+    showmessage "Tan sarge killed by blue friendly fire",
+	trigger friendlyFireDeath,
+	addvar bluescore killedAllyPenalty,
+	addvar tanscore killedByAllyPenalty
+
+if killed tansarge1 by grey testvar isAlly grey tan = 1 then
+    showmessage "Tan sarge killed by grey friendly fire",
+	trigger friendlyFireDeath,
+	addvar greyscore killedAllyPenalty,
+	addvar tanscore killedByAllyPenalty
+
+// check for blue sarge being killed by self or an ally
+
+if killed bluesarge1 by green testvar isAlly green blue = 1 then
+    showmessage "Blue sarge killed by green friendly fire",
+	trigger friendlyFireDeath,
+	addvar greenscore killedAllyPenalty,
+	addvar bluescore killedByAllyPenalty
+
+if killed bluesarge1 by tan testvar isAlly tan blue = 1 then
+    showmessage "Blue sarge killed by tan friendly fire",
+	trigger friendlyFireDeath,
+	addvar tanscore killedAllyPenalty,
+	addvar bluescore killedByAllyPenalty
+
+if killed bluesarge1 by blue then
+    showmessage "Blue sarge killed by blue friendly fire",
+	trigger friendlyFireDeath,
+	addvar bluescore killedSelfPenalty
+
+if killed bluesarge1 by grey testvar isAlly grey blue = 1 then
+    showmessage "Blue sarge killed by grey friendly fire",
+	trigger friendlyFireDeath,
+	addvar greyscore killedAllyPenalty,
+	addvar bluescore killedByAllyPenalty
+
+// check for grey sarge being killed by self or an ally
+
+if killed greysarge1 by green testvar isAlly green grey = 1 then
+    showmessage "Grey sarge killed by green friendly fire",
+	trigger friendlyFireDeath,
+	addvar greenscore killedAllyPenalty,
+	addvar greyscore killedByAllyPenalty
+
+if killed greysarge1 by tan testvar isAlly tan grey = 1 then
+    showmessage "Grey sarge killed by tan friendly fire",
+	trigger friendlyFireDeath,
+	addvar tanscore killedAllyPenalty,
+	addvar greyscore killedByAllyPenalty
+
+if killed greysarge1 by blue testvar isAlly blue grey = 1 then
+    showmessage "Grey sarge killed by blue friendly fire",
+	trigger friendlyFireDeath,
+	addvar bluescore killedAllyPenalty,
+	addvar greyscore killedByAllyPenalty
+
+if killed greysarge1 by grey then
+    showmessage "Grey sarge killed by grey friendly fire",
+	trigger friendlyFireDeath,
+	addvar greyscore killedSelfPenalty
+
+// sound effects
+
+if friendlyFireDeath then
+	triggerdelay 500 friendlyFireDeathSound
+
+if friendlyFireDeathSound then
+	playsound "mp_ffire.wav" (0,0) 2 2
+
+//////////////////////////////////////////////////////////////////////////////
+// Capture the flag specific section
+//////////////////////////////////////////////////////////////////////////////
+
+// define the pads near each of the flag bases (used by AI)
+
+pad neargreenbase 15 greensarge1
+pad neartanbase 16 tansarge1
+pad nearbluebase 17 bluesarge1
+pad neargreybase 18 greysarge1
+
+variable captureFlagBonus 200
+
+// deploy flags for colors in game and set the flags to strategic
+
+if startup1 testvar iscoloringame green > 0 then
+	deploy gflagbase,
+	deploy greenflag1 gflagbase,
+	setitemflag greenflag1 strategic 1
+
+if startup1 testvar iscoloringame tan > 0 then
+	deploy tflagbase,
+	deploy tanflag1 tflagbase,
+	setitemflag tanflag1 strategic 1
+
+if startup1 testvar iscoloringame blue > 0 then
+	deploy bflagbase,
+	deploy blueflag1 bflagbase,
+	setitemflag blueflag1 strategic 1
+
+if startup1 testvar iscoloringame grey > 0 then
+	deploy grflagbase,
+	deploy greyflag1 grflagbase,
+	setitemflag greyflag1 strategic 1
+
+// check for green sarge bringing home an enemy flag
+
+if padon greenbase testvar hasitem greensarge1 tanflag1 = 1 and isAlly green tan = 0 then
+    showmessage "Tan flag captured by green",
+	trigger greenCapturedFlag,
+	dropitem greensarge1 tanflag1 tflagbase
+
+if padon greenbase testvar hasitem greensarge1 blueflag1 = 1 and isAlly green blue = 0 then
+    showmessage "Blue flag captured by green",
+	trigger greenCapturedFlag,
+	dropitem greensarge1 blueflag1 bflagbase
+
+if padon greenbase testvar hasitem greensarge1 greyflag1 = 1 and isAlly green grey = 0 then
+    showmessage "Grey flag captured by green",
+	trigger greenCapturedFlag,
+	dropitem greensarge1 greyflag1 grflagbase
+
+// check for tan sarge bringing home an enemy flag
+
+if padon tanbase testvar hasitem tansarge1 greenflag1 = 1 and isAlly tan green = 0 then
+    showmessage "Green flag captured by tan",
+	trigger tanCapturedFlag,
+	dropitem tansarge1 greenflag1 gflagbase
+
+if padon tanbase testvar hasitem tansarge1 blueflag1 = 1 and isAlly tan blue = 0 then
+    showmessage "Blue flag captured by tan",
+	trigger tanCapturedFlag,
+	dropitem tansarge1 blueflag1 bflagbase
+
+if padon tanbase testvar hasitem tansarge1 greyflag1 = 1 and isAlly tan grey = 0 then
+    showmessage "Grey flag captured by tan",
+	trigger tanCapturedFlag,
+	dropitem tansarge1 greyflag1 grflagbase
+
+// check for blue sarge bringing home an enemy flag
+
+if padon bluebase testvar hasitem bluesarge1 greenflag1 = 1 and isAlly blue green = 0 then
+    showmessage "Green flag captured by blue",
+	trigger blueCapturedFlag,
+	dropitem bluesarge1 greenflag1 gflagbase
+
+if padon bluebase testvar hasitem bluesarge1 tanflag1 = 1 and isAlly blue tan = 0 then
+    showmessage "Tan flag captured by blue",
+	trigger blueCapturedFlag,
+	dropitem bluesarge1 tanflag1 tflagbase
+
+if padon bluebase testvar hasitem bluesarge1 greyflag1 = 1 and isAlly blue grey = 0 then
+    showmessage "Grey flag captured by blue",
+	trigger blueCapturedFlag,
+	dropitem bluesarge1 greyflag1 grflagbase
+
+// check for grey sarge bringing home an enemy flag
+
+if padon greybase testvar hasitem greysarge1 greenflag1 = 1 and isAlly grey green = 0 then
+    showmessage "Green flag captured by grey",
+	trigger greyCapturedFlag,
+	dropitem greysarge1 greenflag1 gflagbase
+
+if padon greybase testvar hasitem greysarge1 tanflag1 = 1 and isAlly grey tan = 0 then
+    showmessage "Tan flag captured by grey",
+	trigger greyCapturedFlag,
+	dropitem greysarge1 tanflag1 tflagbase
+
+if padon greybase testvar hasitem greysarge1 blueflag1 = 1 and isAlly grey blue = 0 then
+    showmessage "Blue flag captured by grey",
+	trigger greyCapturedFlag,
+	dropitem greysarge1 blueflag1 bflagbase
+
+// update scores and show/play effects
+
+if greenCapturedFlag then
+	createexplosion greenbase 137 0 green,
+	playsound "mp_ctftobase.wav" (0,0) 1 2,
+	addvar greenscore captureFlagBonus,
+	trigger checkgreenwins
+
+if tanCapturedFlag then
+	createexplosion tanbase 128 0 tan,
+	playsound "mp_ctftobase.wav" (0,0) 1 2,
+	addvar tanscore captureFlagBonus,
+	trigger checktanwins
+
+if blueCapturedFlag then
+	createexplosion bluebase 128 0 blue,
+	playsound "mp_ctftobase.wav" (0,0) 1 2,
+	addvar bluescore captureFlagBonus,
+	trigger checkbluewins
+
+if greyCapturedFlag then
+	createexplosion greybase 128 0 grey,
+	playsound "mp_ctftobase.wav" (0,0) 1 2,
+	addvar greyscore captureFlagBonus,
+	trigger checkgreywins
+
+// if green flag is dropped and not picked up for 2 minutes then return it to it's base
+
+variable greenFlagTimeOutVar 0
+variable greenFlagLastTimeOutVar 1
+
+if dropped greenflag1 then
+	triggerdelay 120000 greenFlagCheckTimeOut
+
+if pickedup greenflag1 then
+    addvar greenFlagTimeOutVar 1
+
+if greenFlagCheckTimeOut testvar greenFlagTimeOutVar = greenFlagLastTimeOutVar then
+	showmessage "Green Flag was dropped and not picked up for 2 minutes - moved to base",
+	createexplosion greenflag1 128 0 green,
+	playsound "mp_rebaseflag.wav" (0,0) 2 1,
+    moveitem greenflag1 gflagbase,
+	triggerdelay 1000 greenFlagLastTimeOutIncr
+
+if greenFlagCheckTimeOut testvar greenFlagTimeOutVar <> greenFlagLastTimeOutVar then
+	triggerdelay 1000 greenFlagLastTimeOutIncr
+
+if greenFlagLastTimeOutIncr then
+	addvar greenFlagLastTimeOutVar 1
+
+// if tan flag is dropped and not picked up for 2 minutes then return it to it's base
+
+variable tanFlagTimeOutVar 0
+variable tanFlagLastTimeOutVar 1
+
+if dropped tanflag1 then
+	triggerdelay 120000 tanFlagCheckTimeOut
+
+if pickedup tanflag1 then
+    addvar tanFlagTimeOutVar 1
+
+if tanFlagCheckTimeOut testvar tanFlagTimeOutVar = tanFlagLastTimeOutVar then
+	showmessage "Tan Flag was dropped and not picked up for 2 minutes - moved to base",
+	createexplosion tanflag1 128 0 tan,
+	playsound "mp_rebaseflag.wav" (0,0) 2 1,
+    moveitem tanflag1 tflagbase,
+	triggerdelay 1000 tanFlagLastTimeOutIncr
+
+if tanFlagCheckTimeOut testvar tanFlagTimeOutVar <> tanFlagLastTimeOutVar then
+	triggerdelay 1000 tanFlagLastTimeOutIncr
+
+if tanFlagLastTimeOutIncr then
+	addvar tanFlagLastTimeOutVar 1
+
+// if blue flag is dropped and not picked up for 2 minutes then return it to it's base
+
+variable blueFlagTimeOutVar 0
+variable blueFlagLastTimeOutVar 1
+
+if dropped blueflag1 then
+	triggerdelay 120000 blueFlagCheckTimeOut
+
+if pickedup blueflag1 then
+    addvar blueFlagTimeOutVar 1
+
+if blueFlagCheckTimeOut testvar blueFlagTimeOutVar = blueFlagLastTimeOutVar then
+	showmessage "Blue Flag was dropped and not picked up for 2 minutes - moved to base",
+	createexplosion blueflag1 128 0 blue,
+	playsound "mp_rebaseflag.wav" (0,0) 2 1,
+    moveitem blueflag1 bflagbase,
+	triggerdelay 1000 blueFlagLastTimeOutIncr
+
+if blueFlagCheckTimeOut testvar blueFlagTimeOutVar <> blueFlagLastTimeOutVar then
+	triggerdelay 1000 blueFlagLastTimeOutIncr
+
+if blueFlagLastTimeOutIncr then
+	addvar blueFlagLastTimeOutVar 1
+
+// if grey flag is dropped and not picked up for 2 minutes then return it to it's base
+
+variable greyFlagTimeOutVar 0
+variable greyFlagLastTimeOutVar 1
+
+if dropped greyflag1 then
+	triggerdelay 120000 greyFlagCheckTimeOut
+
+if pickedup greyflag1 then
+    addvar greyFlagTimeOutVar 1
+
+if greyFlagCheckTimeOut testvar greyFlagTimeOutVar = greyFlagLastTimeOutVar then
+	showmessage "Grey Flag was dropped and not picked up for 2 minutes - moved to base",
+	createexplosion greyflag1 128 0 grey,
+	playsound "mp_rebaseflag.wav" (0,0) 2 1,
+    moveitem greyflag1 grflagbase,
+	triggerdelay 1000 greyFlagLastTimeOutIncr
+
+if greyFlagCheckTimeOut testvar greyFlagTimeOutVar <> greyFlagLastTimeOutVar then
+	triggerdelay 1000 greyFlagLastTimeOutIncr
+
+if greyFlagLastTimeOutIncr then
+	addvar greyFlagLastTimeOutVar 1
+
+// playsounds if a flag is picked up by an enemy
+
+if pickedup greenflag1 by tan testvar isAlly green tan = 0 then
+	playsound "mp_gotgreen.wav" (0,0) 3 1
+
+if pickedup greenflag1 by blue testvar isAlly green blue = 0 then
+	playsound "mp_gotgreen.wav" (0,0) 3 1
+
+if pickedup greenflag1 by grey testvar isAlly green grey = 0 then
+	playsound "mp_gotgreen.wav" (0,0) 3 1
+
+if pickedup tanflag1 by green testvar isAlly tan green = 0 then
+	playsound "mp_gottan.wav" (0,0) 3 1
+
+if pickedup tanflag1 by blue testvar isAlly tan blue = 0 then
+	playsound "mp_gottan.wav" (0,0) 3 1
+
+if pickedup tanflag1 by grey testvar isAlly tan grey = 0 then
+	playsound "mp_gottan.wav" (0,0) 3 1
+
+if pickedup blueflag1 by green testvar isAlly blue green = 0 then
+	playsound "mp_gotblue.wav" (0,0) 3 1
+
+if pickedup blueflag1 by tan testvar isAlly blue tan = 0 then
+	playsound "mp_gotblue.wav" (0,0) 3 1
+
+if pickedup blueflag1 by grey testvar isAlly blue grey = 0 then
+	playsound "mp_gotblue.wav" (0,0) 3 1
+
+if pickedup greyflag1 by green testvar isAlly grey green = 0 then
+	playsound "mp_gotgrey.wav" (0,0) 3 1
+
+if pickedup greyflag1 by blue testvar isAlly grey blue = 0 then
+	playsound "mp_gotgrey.wav" (0,0) 3 1
+
+if pickedup greyflag1 by tan testvar isAlly grey tan = 0 then
+	playsound "mp_gotgrey.wav" (0,0) 3 1
+
+//////////////////////////////////////////////////////////////////////////////
+// Deathmatch specific section
+//////////////////////////////////////////////////////////////////////////////
+
+variable killEnemySargeBonus 50
+
+// in deathmatch the enemy sarge should be shown on the stratmap
+if startup1 testvar iscoloringame green > 0 then
+	setitemflag greensarge1 strategic 1
+if startup1 testvar iscoloringame tan > 0 then
+	setitemflag tansarge1 strategic 1
+if startup1 testvar iscoloringame blue > 0 then
+	setitemflag bluesarge1 strategic 1
+if startup1 testvar iscoloringame grey > 0 then
+	setitemflag greysarge1 strategic 1
+
+// check for the green sarge being killed and who killed them
+
+if killed greensarge1 by tan testvar isAlly tan green = 0 then
+    showmessage "Green sarge killed by tan",
+	trigger tanKilledEnemySarge
+
+if killed greensarge1 by blue testvar isAlly blue green = 0 then
+    showmessage "Green sarge killed by blue",
+	trigger blueKilledEnemySarge
+
+if killed greensarge1 by grey testvar isAlly grey green = 0 then
+    showmessage "Green sarge killed by grey",
+	trigger greyKilledEnemySarge
+
+// check for the tan sarge being killed and who killed them
+
+if killed tansarge1 by green testvar isAlly green tan = 0 then
+    showmessage "Tan sarge killed by green",
+	trigger greenKilledEnemySarge
+
+if killed tansarge1 by blue testvar isAlly blue tan = 0 then
+    showmessage "Tan sarge killed by blue",
+	trigger blueKilledEnemySarge
+
+if killed tansarge1 by grey testvar isAlly grey tan = 0 then
+    showmessage "Tan sarge killed by grey",
+	trigger greyKilledEnemySarge
+
+// check for the blue sarge being killed and who killed them
+
+if killed bluesarge1 by green testvar isAlly green blue = 0 then
+    showmessage "Blue sarge killed by green",
+	trigger greenKilledEnemySarge
+
+if killed bluesarge1 by tan testvar isAlly tan blue = 0 then
+    showmessage "Blue sarge killed by tan",
+	trigger tanKilledEnemySarge
+
+if killed bluesarge1 by grey testvar isAlly grey blue = 0 then
+    showmessage "Blue sarge killed by grey",
+	trigger greyKilledEnemySarge
+
+// check for the grey sarge being killed and who killed them
+
+if killed greysarge1 by green testvar isAlly green grey = 0 then
+    showmessage "Grey sarge killed by green",
+	trigger greenKilledEnemySarge
+
+if killed greysarge1 by tan testvar isAlly tan grey = 0 then
+    showmessage "Grey sarge killed by tan",
+	trigger tanKilledEnemySarge
+
+if killed greysarge1 by blue testvar isAlly blue grey = 0 then
+    showmessage "Grey sarge killed by blue",
+	trigger blueKilledEnemySarge
+
+// deathmatch specific scoring events
+
+if greenKilledEnemySarge then
+	addvar greenscore killEnemySargeBonus,
+	playsound "mp_death.wav" (0,0) 1 2,
+	trigger checkgreenwins
+
+if tanKilledEnemySarge then
+	addvar tanscore killEnemySargeBonus,
+	playsound "mp_death.wav" (0,0) 1 2,
+	trigger checktanwins
+
+if blueKilledEnemySarge then
+	addvar bluescore killEnemySargeBonus,
+	playsound "mp_death.wav" (0,0) 1 2,
+	trigger checkbluewins
+
+if greyKilledEnemySarge then
+	addvar greyscore killEnemySargeBonus,
+	playsound "mp_death.wav" (0,0) 1 2,
+	trigger checkgreywins

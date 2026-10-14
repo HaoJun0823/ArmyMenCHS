@@ -1,0 +1,86 @@
+# this lists defines all of the maps that can be used for multi-play
+
+#command map_name        map_text           folder      victorycin loadscreen               loadmusic briefing briefsfx stratmap cycle?		losemovie1	losemovie2	losemovie3
+
+MAP      alpine3_mp      小河与森林    mpalpine    none       load_RunForrestRun.bmp     none      none     none     none	 true		none		none		none
+MAP      alpine4_mp      中士的战壕        mpalpine    none       load_SargesPit.bmp	      none      none     none     none	 true		none		none		none
+MAP      alpine5_mp      钓鱼       mpalpine    none       load_GoneFishin.bmp       none      none     none     none	 true		none		none		none
+MAP      areaz           Ｚ区             mpalpine    none       load_AreaZ.bmp             none      none     none     none	 FALSE		none		none		none
+MAP      bayou2_mp       墓地          mpbayou     none       load_Graveyard.bmp         none      none     none     none	 FALSE		none		none		none
+MAP      bayou3_mp       轻松一刻       mpbayou     none       load_TheBigEasy.bmp        none      none     none     none	 FALSE		none		none		none
+MAP      desert3_mp      大村庄      mpdesert    none       load_PuebloGrande.bmp      none      none     none     none	 FALSE		none		none		none
+MAP      desert4_mp      围城        mpdesert    none       load_WalledCity.bmp        none      none     none     none	 FALSE		none		none		none
+MAP      mania_mp1       环礁湖     mania       none       load_mania_mp1.bmp         none      none     none     none	 true		none		none		none
+MAP	 wildman	 疯狂战场	    mpalpine	none	   load_WildmansLand.bmp      none      none     none     none   true           none            none		none
+
+# this list defines all available multi-player rules files
+
+#command rules_file   rules_description_file   game_name
+RULES    death        death_desc               生死相搏
+RULES    ctf          ctf_desc                 争夺旗子
+RULES    koth         koth_desc                占领高地
+RULES    ctf_death    ctf_death_desc           生死相搏或争夺旗子
+RULES    killer       killer_desc              黑旗杀手
+RULES    holdflag     holdflag_desc            握紧黑旗
+
+# this list specifies which maps can be used with each of the rules files
+# this list must come after the RULES commands
+
+#command rules_file   map_file
+RULEMAP	 death        alpine3_mp
+RULEMAP  death        alpine4_mp
+RULEMAP	 death        alpine5_mp
+RULEMAP  death        areaz
+RULEMAP	 death        desert3_mp
+RULEMAP	 death        desert4_mp
+RULEMAP	 death        bayou2_mp
+RULEMAP	 death        bayou3_mp
+RULEMAP	 death        mania_mp1
+RULEMAP	 death        wildman
+RULEMAP	 ctf          alpine3_mp
+RULEMAP  ctf          alpine4_mp
+RULEMAP	 ctf          alpine5_mp
+RULEMAP  ctf          areaz
+RULEMAP	 ctf          bayou2_mp
+RULEMAP	 ctf          bayou3_mp
+RULEMAP	 ctf          desert3_mp
+RULEMAP	 ctf          desert4_mp
+RULEMAP	 ctf          mania_mp1
+RULEMAP	 ctf          wildman
+RULEMAP	 koth         alpine3_mp
+RULEMAP  koth         alpine4_mp
+RULEMAP	 koth         alpine5_mp
+RULEMAP  koth         areaz
+RULEMAP	 koth         bayou2_mp
+RULEMAP	 koth         bayou3_mp
+RULEMAP	 koth         desert3_mp
+RULEMAP	 koth	      mania_mp1
+RULEMAP	 koth	      wildman
+RULEMAP	 ctf_death    alpine3_mp
+RULEMAP  ctf_death    alpine4_mp
+RULEMAP	 ctf_death    alpine5_mp
+RULEMAP  ctf_death    areaz
+RULEMAP	 ctf_death    bayou2_mp
+RULEMAP	 ctf_death    bayou3_mp
+RULEMAP	 ctf_death    desert3_mp
+RULEMAP	 ctf_death    desert4_mp
+RULEMAP	 ctf_death    mania_mp1
+RULEMAP	 ctf_death    wildman
+RULEMAP	 killer       alpine3_mp
+RULEMAP  killer       alpine4_mp
+RULEMAP	 killer       alpine5_mp
+RULEMAP  killer       areaz
+RULEMAP	 killer       bayou2_mp
+RULEMAP	 killer       bayou3_mp
+RULEMAP	 killer       desert3_mp
+RULEMAP	 killer	      mania_mp1
+RULEMAP	 killer	      wildman
+RULEMAP	 holdflag     alpine3_mp
+RULEMAP  holdflag     alpine4_mp
+RULEMAP	 holdflag     alpine5_mp
+RULEMAP  holdflag     areaz
+RULEMAP	 holdflag     bayou2_mp
+RULEMAP	 holdflag     bayou3_mp
+RULEMAP	 holdflag     desert3_mp
+RULEMAP	 holdflag     mania_mp1
+RULEMAP	 holdflag     wildman

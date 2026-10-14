@@ -1,0 +1,107 @@
+// this gets loaded on the host if the blue army is AI controlled
+
+// This variable holds the current action for blue
+// 0 means no action, 1 means goto hill, 2 means get powerups, 3 means defend hill
+variable blueAction 0
+
+if startup1 then
+	triggerdelay 1000 blueChooseNewAction,
+	triggerdelay 2000 blueRegularOrders
+
+if blueChooseNewAction then
+	setvar blueAction 0,
+	trigger blueCheckIfOnHill,
+	trigger blueCheckIfHillEmpty,
+	trigger blueChoseAction
+
+// if it's time to choose a new action but we are currently owning the hill then
+// we should always stay on the hill
+
+if blueCheckIfOnHill testvar hillowner = 3 then
+	trigger blueDefendHill
+	
+// if it's time to choose a new action and the hill is not owned then head straight for it
+
+if blueCheckIfHillEmpty testvar hillowner = 0 then
+	trigger blueGotoHill
+	
+// if blue has no current action then pick an action
+// ideally we would base this on how well armed we are
+if blueChooseAction testvar blueAction = 0 then
+	trigger bluePickRandomAction,
+	triggerdelay 1000 blueChooseAction
+
+if bluePickRandomAction then random
+	trigger blueGotoHill,
+	trigger blueGetPowerUps
+
+// these events setup the blueAction variable and do the actions
+
+if blueGotoHill then
+	setvar blueAction 1,
+	order bluesarge1 goto bluehill inmode attack,
+	order blue group 1 follow bluesarge1 inmode defend,
+	order blue group 2 goto bluehill inmode attack,
+	order blue group 3 goto bluehill inmode attack,
+	order blue group 4 goto bluehill inmode attack,
+	order blue group 5 goto bluehill inmode attack,
+	order blue group 0 goto bluehill inmode attack,
+	trigger blueStartTimeOut
+
+if blueGetPowerUps then
+	setvar blueAction 2,
+	order bluesarge1 goto bluehill inmode attack,
+	order blue group 1 follow bluesarge1 inmode defend,
+	order blue group 2 goto bluehill inmode attack,
+	order blue group 3 goto bluehill inmode attack,
+	order blue group 4 goto bluehill inmode attack,
+	order blue group 5 goto bluehill inmode attack,
+	order blue group 0 goto bluehill inmode attack,
+	trigger blueStartTimeOut
+
+if blueDefendHill then
+	setvar blueAction 3,
+	order bluesarge1 goto bluehill inmode attack,
+	order blue group 1 follow bluesarge1 inmode defend,
+	order blue group 2 goto bluehill inmode defend,
+	order blue group 3 goto bluehill inmode defend,
+	order blue group 4 goto bluehill inmode defend,
+	order blue group 5 goto bluehill inmode defend,
+	order blue group 0 goto bluehill inmode defend,
+	trigger blueStartTimeOut
+
+// these events chose a new action if we get on the hill
+
+if hillOwnerChanged testvar hillowner = 3 then
+    trigger blueDefendHill
+
+if hillOwnerChanged testvar hillowner <> 0 then
+    trigger blueGotoHill
+
+// these events choose new actions if a sarge is killed
+
+if killed bluesarge1 then
+	triggerdelay 5000 blueGetPowerups
+
+// these are the sblueding order regardless of what mode sarge is in
+	
+if blueRegularOrders then
+	order blue group 7 goto bluebase inmode evade,
+	triggerdelay 5000 blueRegularOrders
+
+// timeout code - if mode has not changed for a while then change it
+
+variable blueTimeOutVar 0
+variable blueLastTimeOutVar 1
+
+if blueStartTimeOut then
+    addvar blueTimeOutVar 1,
+	triggerdelay 120000 blueCheckTimeOut
+
+if blueCheckTimeOut testvar blueTimeOutVar = blueLastTimeOutVar then
+    trigger blueChooseNewAction
+
+if blueCheckTimeOut testvar blueTimeOutVar <> blueLastTimeOutVar then
+	addvar blueLastTimeOutVar 1
+
+

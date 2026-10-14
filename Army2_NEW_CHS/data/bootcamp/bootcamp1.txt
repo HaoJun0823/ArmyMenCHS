@@ -1,0 +1,101 @@
+// map design and scripting by Alvin Muolic
+// Boot Camp - Map 0
+
+// How To Play Army Men
+
+// Pad Definitions
+
+PAD 	map 			10    	greensarge1 > 0
+PAD 	rifle1x			20	greensarge1 > 0
+PAD 	bazooka2x		21	greensarge1 > 0
+PAD 	grenades3x		22	greensarge1 > 0
+PAD 	mines4x			23	greensarge1 > 0
+PAD 	items 			30    	greensarge1 > 0
+PAD 	vehicles		40	greensarge1 > 0
+PAD 	units			50	greensarge1 > 0
+PAD 	exit			60	greensarge1 > 0
+
+if startup1 then
+	createtrooper "pow1" rifle (3121,395) tan,
+	createtrooper "pow2" rifle (3123,476) tan,
+	createtrooper "pow3" rifle (3218,426) tan,
+	createtrooper "mineman1" rifle (3950,3149) green,
+	createtrooper "mineman2" rifle (3938,2986) green,
+	createtrooper "mineman3" rifle (3868,3228) green,
+	setnpc mineman1 1,
+	setfacing mineman1 128,
+	setnpc mineman2 1,
+	setnpc mineman3 1,
+	setfacing mineman1 192,
+	damage pow1 1000 projectile,
+	damage pow2 1000 explosion,
+	damage pow3 1000 crush,
+	damage mineman1 1000 projectile,
+	damage mineman2 1000 explosion,
+	damage mineman3 1000 projectile,
+	deploy greensarge1,
+	heal greensarge1 100,
+	playsound "LocknLoad.wav" 16 0,
+	setbriefing "map00.bmp",
+	triggerdelay 10 brief,
+	createvehicle jeep1 jeep (929,2829) green,
+	setfacing jeep1 220,
+	createvehicle tank1 tank (1098,3144) green,
+	setfacing tank1 220,
+	createvehicle halftrack1 halftrack (1426,2994) green,
+	setfacing halftrack1 100,
+	createvehicle convoy1 convoy (1289,2681) green,
+	setfacing convoy1 100,
+	triggerdelay 3000 flyby
+
+if flyby butnot flyby2 then
+	playsound "airplane_8Bit.wav" 1 0,
+	trigger randfly
+	
+if randfly then
+random
+	triggerdelay 120000 flyby,
+	triggerdelay 60000 flyby,
+	triggerdelay 90000 flyby
+
+if brief then 
+	showpda "欢迎来到新兵训练中心！",
+	triggerdelay 100 showsign
+if showsign then
+	showbitmap "bootcamp-su.bmp"
+
+if padon map then
+	showbitmap "bootcamp-su.bmp"
+
+if padon items then
+	showbitmap "bootcamp-iu.bmp"
+ 
+if padon rifle1x then
+	showbitmap "bootcamp-rf.bmp"
+if padon bazooka2x then
+	showbitmap "bootcamp-bf.bmp"
+if padon grenades3x then
+	showbitmap "bootcamp-gm.bmp"
+if padon mines4x then
+	showbitmap "bootcamp-mf.bmp"
+	
+if padon vehicles then
+	showbitmap "bootcamp-mp.bmp"
+
+if padon units then
+	showbitmap "bootcamp-ut.bmp"
+
+if killed greensarge1 then
+	showpda "你应该小心一点！现在我们送你回新兵训练中心的始发点！",
+	triggerdelay 100 newsarge
+
+if newsarge then
+	playsound "letsGo.wav" 16 0,
+	resurrect greensarge1 (1697,1001)
+
+if padon exit then
+	showpda "现在离开新兵训练中心。",
+	trigger flyby2,
+	triggerdelay 10 greenwins
+
+

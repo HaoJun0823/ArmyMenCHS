@@ -1,0 +1,387 @@
+// map design and scripting by Alvin Muolic
+// The Hobby Table - Mission 3
+
+// Setting the stage for Tan's plans of world domination
+
+if startup2 then 
+	undeploy bridge,
+	deploy bridge2,
+	damage tanrunner1 100,
+	damage tanrunner2 100,
+	damage tanrunner3 100,
+	damage tanrunner4 100,
+	damage tanrunner5 100,
+	damage tanrunner1a 100,
+	damage tanrunner2a 100,
+	damage tanrunner3a 100,
+	damage tanrunner4a 100,
+	damage tanrunner5a 100,
+	damage tanrunner6 100,
+	damage tanrunner7 100,
+	damage tanrunner8 100,
+	damage tanrunner9 100,
+	damage tanrunner10 100,
+	triggerdelay 10 missionbrief3x,
+	triggerdelay 1000 sm2vo1x,
+	setbriefing "map09_2.bmp",
+	triggerdelay 3000 missionthree
+
+if sm2vo1x then
+	playsound "0901sarge.wav" 16 0
+
+if missionbrief3x then
+	showpda "别让黄军走私犯逃走。"
+
+if missionthree then
+	order tg1 follow greensarge1,
+	order tg2 follow greensarge1,
+	triggerdelay 15000 boomboys,
+	triggerdelay 30000 igd1
+
+if boomboys then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "prunner1" autorifle (1754,1351) tan,
+	createexplosion prunner1 133 0 tan,
+	setscientist prunner1,
+	order prunner1 goto pp_portal,
+	createtrooper "bb1" rifle (3374,1058) tan,
+	createexplosion bb1 133 0 tan,
+	setm80 bb1 green,
+	createtrooper "bb2" rifle (2420,971) tan,
+	createexplosion bb2 133 0 tan,
+	setm80 bb2 green,
+	createtrooper "bb3" rifle (2746,1278) tan,
+	createexplosion bb3 133 0 tan,
+	setm80 bb3 green,
+	createtrooper "bb4" rifle (1729,1057) tan,
+	createexplosion bb4 133 0 tan,
+	setm80 bb4 green,
+	createtrooper "bb5" rifle (3333,1052) tan,
+	createexplosion bb5 133 0 tan,
+	setm80 bb5 green,
+	order bb1 follow greensarge1,
+	order bb2 follow greensarge1,
+	order bb3 follow greensarge1,
+	order bb4 follow greensarge1,
+	order bb5 follow greensarge1,
+	triggerdelay 10000 boomboys2
+
+if boomboys2 then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "prunner2" autorifle (3242,1747) tan,
+	createexplosion prunner2 133 0 tan,
+	setscientist prunner2,
+	order prunner2 goto pp_portal,
+	createtrooper "bb6" rifle (3183,1572) tan,
+	createexplosion bb6 133 0 tan,
+	setm80 bb6 green,
+	createtrooper "bb7" rifle (2936,2109) tan,
+	createexplosion bb7 133 0 tan,
+	setm80 bb7 green,
+	createtrooper "bb8" rifle (1677,1376) tan,
+	createexplosion bb8 133 0 tan,
+	setm80 bb8 green,
+	createtrooper "bb9" rifle (3035,254) tan,
+	createexplosion bb9 133 0 tan,
+	setm80 bb9 green,
+	createtrooper "bb10" rifle (3867,1297) tan,
+	createexplosion bb10 133 0 tan,
+	setm80 bb10 green,
+	order bb6 follow greensarge1,
+	order bb7 follow greensarge1,
+	order bb8 follow greensarge1,
+	order bb9 follow greensarge1,
+	order bb10 follow greensarge1
+
+if igd1 then
+	createtrooper "prunner3" autorifle (2774,2346) tan,
+	createexplosion prunner3 133 0 tan,
+	setscientist prunner3,
+	order prunner3 goto pp_portal,
+	playsound "ZOMBIE_8Bit.wav" 6 0,
+	createtrooper "zombie1" rifle (2682,808) tan,
+	createexplosion zombie1 133 0 tan,
+	setzombie zombie1,
+	order zombie1 follow greensarge1,
+	createtrooper "zombie2" rifle (2500,1052) tan,
+	createexplosion zombie2 133 0 tan,
+	setzombie zombie2,
+	order zombie2 follow greensarge1,
+	createtrooper "zombie3" rifle (1667,1211) tan,
+	createexplosion zombie3 133 0 tan,
+	setzombie zombie3,
+	order zombie3 follow greensarge1,
+	createtrooper "zombie4" rifle (2281,1444) tan,
+	createexplosion zombie4 133 0 tan,
+	setzombie zombie4,
+	order zombie4 follow greensarge1,
+	createtrooper "zombie5" rifle (2428,1791) tan,
+	createexplosion zombie5 133 0 tan,
+	setzombie zombie5,
+	order zombie5 follow greensarge1,
+	triggerdelay 15000 igd2
+
+if igd2 then
+	createtrooper "prunner4" autorifle (2701,2168) tan,
+	createexplosion prunner4 133 0 tan,
+	setscientist prunner4,
+	order prunner4 goto pp_portal,
+	playsound "ZOMBIE_8Bit.wav" 6 0,
+	createtrooper "zombie6" rifle (3307,1658) tan,
+	createexplosion zombie6 133 0 tan,
+	setzombie zombie6,
+	order zombie6 follow greensarge1,
+	createtrooper "zombie7" rifle (3298,1168) tan,
+	createexplosion zombie7 133 0 tan,
+	setzombie zombie7,
+	order zombie7 follow greensarge1,
+	createtrooper "zombie8" rifle (3120,750) tan,
+	createexplosion zombie8 133 0 tan,
+	setzombie zombie8,
+	order zombie8 follow greensarge1,
+	createtrooper "zombie9" rifle (3521,668) tan,
+	createexplosion zombie9 133 0 tan,
+	setzombie zombie9,
+	order zombie9 follow greensarge1,
+	createtrooper "zombie10" rifle (2188,1757) tan,
+	createexplosion zombie10 133 0 tan,
+	setzombie zombie10,
+	order zombie10 follow greensarge1,
+	triggerdelay 15000 igd3
+
+if igd3 then
+	createtrooper "prunner5" autorifle (2271,820) tan,
+	createexplosion prunner5 133 0 tan,
+	setscientist prunner5,
+	order prunner5 goto pp_portal,
+	playsound "ZOMBIE_8Bit.wav" 6 0,
+	createtrooper "zombie11" rifle (2682,808) tan,
+	createexplosion zombie11 133 0 tan,
+	setzombie zombie11,
+	order zombie12 follow greensarge1,
+	createtrooper "zombie12" rifle (2500,1052) tan,
+	createexplosion zombie12 133 0 tan,
+	setzombie zombie12,
+	order zombie12 follow greensarge1,
+	createtrooper "zombie13" rifle (1667,1211) tan,
+	createexplosion zombie13 133 0 tan,
+	setzombie zombie13,
+	order zombie13 follow greensarge1,
+	createtrooper "zombie14" rifle (2281,1444) tan,
+	createexplosion zombie14 133 0 tan,
+	setzombie zombie14,
+	order zombie14 follow greensarge1,
+	createtrooper "zombie15" rifle (2428,1791) tan,
+	createexplosion zombie15 133 0 tan,
+	setzombie zombie15,
+	order zombie15 follow greensarge1,
+	triggerdelay 15000 igd4
+
+if igd4 then
+	createtrooper "prunner6" autorifle (2427,1670) tan,
+	createexplosion prunner6 133 0 tan,
+	setscientist prunner6,
+	order prunner6 goto pp_portal,
+	playsound "ZOMBIE_8Bit.wav" 6 0,
+	createtrooper "zombie16" rifle (3307,1658) tan,
+	createexplosion zombie16 133 0 tan,
+	setzombie zombie16,
+	order zombie16 follow greensarge1,
+	createtrooper "zombie17" rifle (3298,1168) tan,
+	createexplosion zombie17 133 0 tan,
+	setzombie zombie17,
+	order zombie17 follow greensarge1,
+	createtrooper "zombie18" rifle (3120,750) tan,
+	createexplosion zombie18 133 0 tan,
+	setzombie zombie18,
+	order zombie18 follow greensarge1,
+	createtrooper "zombie19" rifle (3521,668) tan,
+	createexplosion zombie19 133 0 tan,
+	setzombie zombie19,
+	order zombie19 follow greensarge1,
+	createtrooper "zombie20" rifle (2188,1757) tan,
+	createexplosion zombie20 133 0 tan,
+	setzombie zombie20,
+	order zombie20 follow greensarge1,
+	triggerdelay 15000 igd5
+
+if igd5 then
+	playsound "ZOMBIE_8Bit.wav" 6 0,
+	createtrooper "prunner7" autorifle (2327,552) tan,
+	createexplosion prunner7 133 0 tan,
+	setscientist prunner7,
+	order prunner7 goto pp_portal,
+	createtrooper "zombie21" rifle (2682,808) tan,
+	createexplosion zombie21 133 0 tan,
+	setzombie zombie21,
+	order zombie22 follow greensarge1,
+	createtrooper "zombie22" rifle (2500,1052) tan,
+	createexplosion zombie22 133 0 tan,
+	setzombie zombie22,
+	order zombie22 follow greensarge1,
+	createtrooper "zombie23" rifle (1667,1211) tan,
+	createexplosion zombie23 133 0 tan,
+	setzombie zombie23,
+	order zombie23 follow greensarge1,
+	createtrooper "zombie24" rifle (2281,1444) tan,
+	createexplosion zombie14 133 0 tan,
+	setzombie zombie24,
+	order zombie24 follow greensarge1,
+	createtrooper "zombie25" rifle (2428,1791) tan,
+	createexplosion zombie25 133 0 tan,
+	setzombie zombie25,
+	order zombie25 follow greensarge1,
+	triggerdelay 15000 igd6
+
+if igd6 then
+	playsound "ZOMBIE_8Bit.wav" 6 0,
+	createtrooper "prunner8" autorifle (3523,1749) tan,
+	createexplosion prunner8 133 0 tan,
+	setscientist prunner8,
+	order prunner8 goto pp_portal,
+	createtrooper "prunner9" autorifle (1679,1064) tan,
+	createexplosion prunner9 133 0 tan,
+	setscientist prunner9,
+	order prunner9 goto pp_portal,
+	createtrooper "zombie26" rifle (3307,1658) tan,
+	createexplosion zombie26 133 0 tan,
+	setzombie zombie26,
+	order zombie26 follow greensarge1,
+	createtrooper "zombie27" rifle (3298,1168) tan,
+	createexplosion zombie27 133 0 tan,
+	setzombie zombie27,
+	order zombie27 follow greensarge1,
+	createtrooper "zombie28" rifle (3120,750) tan,
+	createexplosion zombie28 133 0 tan,
+	setzombie zombie28,
+	order zombie28 follow greensarge1,
+	createtrooper "zombie29" rifle (3521,668) tan,
+	createexplosion zombie29 133 0 tan,
+	setzombie zombie29,
+	order zombie29 follow greensarge1,
+	createtrooper "zombie30" rifle (2188,1757) tan,
+	createexplosion zombie30 133 0 tan,
+	setzombie zombie30,
+	order zombie30 follow greensarge1
+
+if allof killed zombie26 killed zombie27 killed zombie28 killed zombie29 killed zombie30 then
+	triggerdelay 5000 sc316
+
+if killed berg1 then
+	createpowerup medkit (3701,378) 3
+
+if padon pp_portout1 then
+	playsound "map7mission1doctor1.wav" 2 0, 
+	undeploy prunner1
+if padon pp_portout2 then
+	playsound "map7mission1doctor1.wav" 2 0, 
+	undeploy prunner2
+if padon pp_portout3 then
+	playsound "map7mission1doctor1.wav" 2 0, 
+	undeploy prunner3
+if padon pp_portout4 then
+	playsound "map7mission1doctor1.wav" 2 0, 
+	undeploy prunner4
+if padon pp_portout5 then
+	playsound "map7mission1doctor1.wav" 2 0, 
+	undeploy prunner5
+if padon pp_portout6 then
+	playsound "map7mission1doctor1.wav" 2 0, 
+	undeploy prunner6
+if padon pp_portout7 then
+	playsound "map7mission1doctor1.wav" 2 0, 
+	undeploy prunner7
+if padon pp_portout8 then
+	playsound "map7mission1doctor1.wav" 2 0, 
+	undeploy prunner8
+if padon pp_portout9 then
+	playsound "map7mission1doctor1.wav" 2 0, 
+	undeploy prunner9
+		
+if sc316 then
+	playsound "portal2_8Bit.wav" 3 0,
+	playsound "map7mission1doctor1.wav" 2 0, 
+	createtrooper "stonecold" autorifle (2344,1957) tan,
+	createexplosion stonecold 133 0 tan,
+	addexp stonecold 460,
+	setmaxhealth stonecold 300,
+	heal stonecold 100,
+	trigger scportal1,
+	playitemsound "portal1_8Bit.wav" stonecold 7 1,
+	order stonecold follow greensarge1
+
+if scportal1 butnot scportal2 then
+	createexplosion stonecold 133 0 tan,
+	triggerdelay 280 scportal1
+
+if killed stonecold then
+	trigger scportal2,
+	playitemsound "" stonecold 7 1,
+	createexplosion stonecold 138 0 tan,
+	moveitem plure stonecold,
+	moveitem plans stonecold,
+	setitemflag plans strategic 1	
+
+// harder scenario
+// if killed stonecold then
+//	playsound "portal2_8Bit.wav" 3 2,
+//	createtrooper "stonecold2" vulcan (2989,2092) tan,
+//	createexplosion stonecold2 133 0 tan,
+//	addexp stonecold2 460,
+//	setmaxhealth stonecold2 150,
+//	heal stonecold2 100,
+//	trigger scportal3,
+//	order stonecold2 follow greensarge1
+
+if killed stonecold4 then
+	trigger scportal8,
+//	createexplosion stonecold4 138 0 tan,
+//	moveitem plure stonecold4,
+//	moveitem plans stonecold4	
+
+if pickedup plure by greensarge1 then
+	undeploy plans,
+	playsound "NotRight.wav" 16 0,
+	showbitmap "secretDiagram.bmp",
+	triggerdelay 1000 endmissionsc
+
+if endmissionsc butnot killed greensarge1 then
+	trigger greenwins
+
+if scportal3 butnot scportal4 then
+	createexplosion stonecold2 133 0 tan,
+	playsound "portal1_8Bit.wav" stonecold2 8 0,
+	triggerdelay 280 scportal3
+
+if killed stonecold2 then
+	trigger scportal4,
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "stonecold3" flamer (2344,1957) tan,
+	createexplosion stonecold3 133 0 tan,
+	addexp stonecold3 460,
+	setmaxhealth stonecold3 150,
+	heal stonecold3 100,
+	trigger scportal5,
+	order stonecold3 follow greensarge1
+
+if scportal5 butnot scportal6 then
+	createexplosion stonecold3 133 0 tan,
+	playsound "portal1_8Bit.wav" stonecold3 9 0,
+	triggerdelay 280 scportal5
+
+if killed stonecold3 then
+	trigger scportal6,	
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "stonecold4" autorifle (2344,1957) tan,
+	createexplosion stonecold4 133 0 tan,
+	addexp stonecold4 460,
+	setmaxhealth stonecold4 150,
+	heal stonecold4 100,
+	trigger scportal7,
+	order stonecold4 follow greensarge1
+
+if scportal7 butnot scportal8 then
+	createexplosion stonecold4 133 0 tan,
+	playsound "portal1_8Bit.wav" stonecold4 10 0,
+	triggerdelay 280 scportal7
+

@@ -1,0 +1,511 @@
+// map design and scripting by Alvin Muolic
+// Area X - Mission 2
+// That area somewhere off in Tan country that
+// most Tan (and Green, for that matter) don't
+// know exists. 
+
+if startup2 then
+	triggerdelay 10 missionbrief2x,
+	setbriefing "map10_2.bmp",
+	playsound "wasclose.wav" 16 0,
+	triggerdelay 1500 secondwave
+
+if secondwave then
+	playsound "portal2_8Bit.wav" 1 0,
+	createtrooper "m80c51" rifle (132,1360) tan,
+	createexplosion m80c51 133 0 tan,
+	setm80 m80c51 green,
+	createtrooper "m80c52" rifle (222,1597) tan,
+	createexplosion m80c52 133 0 tan,
+	setm80 m80c52 green,
+	createtrooper "m80c53" rifle (144,1843) tan,
+	createexplosion m80c53 133 0 tan,
+	setm80 m80c53 green,
+	createtrooper "m80c54" rifle (109,2115) tan,
+	createexplosion m80c54 133 0 tan,
+	setm80 m80c54 green,
+	createtrooper "m80c55" rifle (949,1383) tan,
+	createexplosion m80c55 133 0 tan,
+	setm80 m80c55 green,
+	createtrooper "m80c56" rifle (991,1493) tan,
+	createexplosion m80c56 133 0 tan,
+	setm80 m80c56 green,
+	createtrooper "m80c57" rifle (1284,1021) tan,
+	createexplosion m80c57 133 0 tan,
+	setm80 m80c57 green,
+	createtrooper "m80c58" rifle (1239,511) tan,
+	createexplosion m80c58 133 0 tan,
+	setm80 m80c58 green,
+	order m80c51 follow greensarge1,
+	order m80c52 follow greensarge1,
+	order m80c53 follow greensarge1,
+	order m80c54 follow greensarge1,
+	order m80c55 follow greensarge1,
+	order m80c56 follow greensarge1,
+	order m80c57 follow greensarge1,
+	order m80c58 follow greensarge1
+	
+if missionbrief2x then
+	showpda "Destroy all the equipment that Tan is using for their portal research."
+
+// if killed m80c51 then
+// 	createexplosion m80c51 131 50 tan
+// if killed m80c52 then
+//	createexplosion m80c52 131 50 tan
+// if killed m80c53 then
+//	createexplosion m80c53 131 50 tan
+// if killed m80c54 then
+//	createexplosion m80c54 131 50 tan
+// if killed m80c55 then
+//	createexplosion m80c55 131 50 tan
+// if killed m80c56 then
+//	createexplosion m80c56 131 50 tan
+// if killed m80c57 then
+//	createexplosion m80c57 131 50 tan
+// if killed m80c58 then
+//	createexplosion m80c58 131 50 tan
+
+
+if zombieshifter then
+	createtrooper "zshift1" rifle (132,1360) tan,
+	createexplosion zshift1 133 0 tan,
+	setzombie zshift1,
+	createtrooper "zshift2" rifle (222,1597) tan,
+	createexplosion zshift2 133 0 tan,
+	setzombie zshift2,
+	createtrooper "zshift3" rifle (144,1843) tan,
+	createexplosion zshift3 133 0 tan,
+	setzombie zshift3,
+	createtrooper "zshift4" rifle (109,2115) tan,
+	createexplosion zshift4 133 0 tan,
+	setzombie zshift4,
+	createtrooper "zshift5" rifle (949,1383) tan,
+	createexplosion zshift5 133 0 tan,
+	setzombie zshift5,
+	order zshift1 follow greensarge1,
+	order zshift2 follow greensarge1,
+	order zshift3 follow greensarge1,
+	order zshift4 follow greensarge1,
+	order zshift5 follow greensarge1
+
+if killed c1 then
+	playsound "" c1 10 3,
+	playsound "GenStutDown.wav" 0 1
+if killed c2 then
+	playsound "" c2 10 3,
+	playsound "GenStutDown.wav" 0 1
+if killed c3 then
+	playsound "" c3 10 3,
+	playsound "GenStutDown.wav" 0 1
+if killed c4 then
+	playsound "" c4 10 3,
+	playsound "GenStutDown.wav" 0 1
+if killed c5 then
+	playsound "" c5 11 3,
+	playsound "GenStutDown.wav" 0 1
+if killed c6 then
+	playsound "" c6 11 3,
+	playsound "GenStutDown.wav" 0 1
+if killed c7 then
+	playsound "" c7 11 3,
+	playsound "GenStutDown.wav" 0 1
+if killed c8 then
+	playsound "" c8 11 3,
+	playsound "GenStutDown.wav" 0 1
+if killed c9 then
+	playsound "" c9 12 3,
+	playsound "GenStutDown.wav" 0 1
+if killed c10 then
+	playsound "" c10 12 3,
+	playsound "GenStutDown.wav" 0 1
+if killed c11 then
+	playsound "" c11 12 3,
+	playsound "GenStutDown.wav" 0 1
+if killed c12 then
+	playsound "" c12 12 3,
+	playsound "GenStutDown.wav" 0 1
+if killed c13 then
+	playsound "" c13 13 3,
+	playsound "GenStutDown.wav" 0 1
+if killed c14 then
+	playsound "" c14 13 3,
+	playsound "GenStutDown.wav" 0 1
+if killed c15 then
+	playsound "" c15 13 3,
+	playsound "GenStutDown.wav" 0 1
+
+if allof killed c1 killed c2 killed c3 killed c4 killed c5 killed c6 killed c7 killed c8 killed c9 killed c10 killed c11 killed c12 killed c13 killed c14 killed c15 then
+	playsound "mission10_02.wav" 0 1, 
+	triggerdelay 3000 enditall
+if enditall then
+	showpda "Good job, Sarge. We've stopped their portal research--for now.",
+	triggerdelay 10 petertestgreenwins
+
+if killed c1 then
+	createexplosion c1 131 30 green,
+	makesmoke c1
+if killed c2 then
+	createexplosion c2 131 30 green,
+	makesmoke c2
+if killed c3 then
+	createexplosion c3 131 30 green,
+	makesmoke c3
+if killed c4 then
+	createexplosion c4 131 30 green,
+	makesmoke c4
+if killed c5 then
+	createexplosion c5 131 30 green,
+	makesmoke c5
+if killed c6 then
+	createexplosion c6 131 30 green,
+	makesmoke c6
+if killed c7 then
+	createexplosion c7 131 30 green,
+	makesmoke c7
+if killed c8 then
+	createexplosion c8 131 30 green,	
+	makesmoke c8
+if killed c9 then
+	createexplosion c9 131 30 green,
+	makesmoke c9
+if killed c10 then
+	createexplosion c10 131 30 green,
+	makesmoke c10
+if killed c11 then
+	createexplosion c11 131 30 green,
+	makesmoke c11
+if killed c12 then
+	createexplosion c12 131 30 green,
+	makesmoke c12
+if killed c13 then
+	createexplosion c13 131 30 green,
+	makesmoke c13
+if killed c14 then
+	createexplosion c14 131 30 green,
+	makesmoke c14
+if killed c15 then
+	createexplosion c15 131 30 green,
+	makesmoke c15
+	
+if padon area51go butnot area51gox then
+	trigger area51gox
+if area51gox then
+	trigger area51gox2,
+	order a51_g1 goto greensarge1,
+	order a51_g2 goto greensarge1,
+	order a51_s1 goto greensarge1,
+	order a51_s2 goto greensarge1,
+	order a51_s3 goto greensarge1,
+	order a51_s4 goto greensarge1,
+	order a51_s5 goto greensarge1,
+	order a51_s6 goto greensarge1,
+	order a51_s7 goto greensarge1,
+	order a51_s8 goto greensarge1,
+	triggerdelay 5000 nextup
+
+if nextup then
+	order a51_x1 goto greensarge1,
+	order a51_x2 goto greensarge1,
+	order a51_x3 goto greensarge1,
+	order a51_x4 goto greensarge1,
+	order a51_x5 goto greensarge1,
+	order a51_x6 goto greensarge1,
+	order a51_x7 goto greensarge1,
+	order a51_x8 goto greensarge1,
+	order a51_x9 goto greensarge1,
+	order a51_x10 goto greensarge1,
+	order a51_x11 goto greensarge1,
+	order a51_x12 goto greensarge1,
+	order a51_x13 goto greensarge1,
+	order a51_x14 goto greensarge1,
+	order a51_x15 goto greensarge1
+
+if area51gox2 butnot gotthegen then
+	trigger gozombies
+if gozombies then
+	playsound "portal2_8Bit.wav" 1 0,
+	createexplosion zombie1 133 0 tan,
+	createexplosion zombie2 133 0 tan,
+	createexplosion zombie3 133 0 tan,
+	createexplosion zombie4 133 0 tan,
+	createexplosion zombie5 133 0 tan,
+	createexplosion zombie6 133 0 tan,
+	createexplosion zombie7 133 0 tan,
+	createexplosion zombie8 133 0 tan,
+	createexplosion zombie9 133 0 tan,
+	createexplosion zombie10 133 0 tan,
+	createexplosion zombie11 133 0 tan,
+	createexplosion zombie12 133 0 tan,
+	createexplosion zombie13 133 0 tan,
+	createexplosion zombie14 133 0 tan,
+	createexplosion zombie15 133 0 tan,
+	createexplosion zombie16 133 0 tan,
+	createexplosion zombie17 133 0 tan,
+	createexplosion zombie18 133 0 tan,
+	createexplosion zombie19 133 0 tan,
+	createexplosion zombie20 133 0 tan,
+	createexplosion zombie21 133 0 tan,
+	createexplosion zombie22 133 0 tan,
+	createexplosion zombie23 133 0 tan,
+	createexplosion zombie24 133 0 tan,
+	createexplosion zombie25 133 0 tan,
+	createexplosion zombie26 133 0 tan,
+	createexplosion zombie27 133 0 tan,
+	createexplosion zombie28 133 0 tan,
+	createexplosion zombie29 133 0 tan,
+	createexplosion zombie30 133 0 tan,
+	createexplosion zombie31 133 0 tan,
+	createexplosion zombie32 133 0 tan,
+	createexplosion zombie33 133 0 tan,
+	createexplosion zombie34 133 0 tan,
+	createexplosion zombie35 133 0 tan,
+	createexplosion zombie36 133 0 tan,
+	createexplosion zombie37 133 0 tan,
+	createexplosion zombie38 133 0 tan,
+	createexplosion zombie39 133 0 tan,
+	createexplosion zombie40 133 0 tan,
+	undeploy zombie1,
+	undeploy zombie2,
+	undeploy zombie3,
+	undeploy zombie4,
+	undeploy zombie5,
+	undeploy zombie6,
+	undeploy zombie7,
+	undeploy zombie8,
+	undeploy zombie9,
+	undeploy zombie10,
+	undeploy zombie11,
+	undeploy zombie12,
+	undeploy zombie13,
+	undeploy zombie14,
+	undeploy zombie15,
+	undeploy zombie16,
+	undeploy zombie17,
+	undeploy zombie18,
+	undeploy zombie19,
+	undeploy zombie20,
+	undeploy zombie21,
+	undeploy zombie22,
+	undeploy zombie23,
+	undeploy zombie24,
+	undeploy zombie25,
+	undeploy zombie26,
+	undeploy zombie27,
+	undeploy zombie28,
+	undeploy zombie29,
+	undeploy zombie30,
+	undeploy zombie31,
+	undeploy zombie32,
+	undeploy zombie33,
+	undeploy zombie34,
+	undeploy zombie35,
+	undeploy zombie36,
+	undeploy zombie37,
+	undeploy zombie38,
+	undeploy zombie39,
+	undeploy zombie40,
+	createtrooper "zombie1x" rifle (2792,187) tan,
+	createexplosion zombie1x 133 0 tan,
+	setzombie zombie1x,
+	createtrooper "zombie2x" rifle (3087,128) tan,
+	createexplosion zombie2x 133 0 tan,
+	setzombie zombie2x,
+	createtrooper "zombie3x" rifle (2967,339) tan,
+	createexplosion zombie3x 133 0 tan,
+	setzombie zombie3x,
+	createtrooper "zombie4x" rifle (3168,409) tan,
+	createexplosion zombie4x 133 0 tan,
+	setzombie zombie4x,
+	createtrooper "zombie5x" rifle (3066,580) tan,
+	createexplosion zombie5x 133 0 tan,
+	setzombie zombie5x,
+	createtrooper "zombie6x" rifle (3232,512) tan,
+	createexplosion zombie6x 133 0 tan,
+	setzombie zombie6x,
+	createtrooper "zombie7x" rifle (2812,950) tan,
+	createexplosion zombie7x 133 0 tan,
+	setzombie zombie7x,
+	createtrooper "zombie8x" rifle (3116,1020) tan,
+	createexplosion zombie8x 133 0 tan,
+	setzombie zombie8x,
+	createtrooper "zombie9x" rifle (2808,1155) tan,
+	createexplosion zombie9x 133 0 tan,
+	setzombie zombie9x,
+	createtrooper "zombie10x" rifle (3197,1164) tan,
+	createexplosion zombie10x 133 0 tan,
+	setzombie zombie10x,
+	createtrooper "zombie11x" rifle (3794,1482) tan,
+	createexplosion zombie11x 133 0 tan,
+	setzombie zombie11x,
+	createtrooper "zombie12x" rifle (3733,1603) tan,
+	createexplosion zombie12x 133 0 tan,
+	setzombie zombie12x,
+	createtrooper "zombie13x" rifle (3618,1573) tan,
+	createexplosion zombie13x 133 0 tan,
+	setzombie zombie13x,
+	createtrooper "zombie14x" rifle (3373,1702) tan,
+	createexplosion zombie14x 133 0 tan,
+	setzombie zombie14x,
+	createtrooper "zombie15x" rifle (3523,1941) tan,
+	createexplosion zombie15x 133 0 tan,
+	setzombie zombie15x,
+	createtrooper "zombie16x" rifle (3099,1797) tan,
+	createexplosion zombie16x 133 0 tan,
+	setzombie zombie16x,
+	createtrooper "zombie17x" rifle (3309,1580) tan,
+	createexplosion zombie17x 133 0 tan,
+	setzombie zombie17x,
+	createtrooper "zombie18x" rifle (3139,1566) tan,
+	createexplosion zombie18x 133 0 tan,
+	setzombie zombie18x,
+	createtrooper "zombie19x" rifle (2917,1357) tan,
+	createexplosion zombie19x 133 0 tan,
+	setzombie zombie19x,
+	createtrooper "zombie20x" rifle (2746,1332) tan,
+	createexplosion zombie20x 133 0 tan,
+	setzombie zombie20x,
+	order zombie1x goto greensarge1,
+	order zombie2x goto greensarge1,
+	order zombie3x goto greensarge1,
+	order zombie4x goto greensarge1,
+	order zombie5x goto greensarge1,
+	order zombie6x goto greensarge1,
+	order zombie7x goto greensarge1,
+	order zombie8x goto greensarge1,
+	order zombie9x goto greensarge1,
+	order zombie10x goto greensarge1,
+	order zombie11x goto greensarge1,
+	order zombie12x goto greensarge1,
+	order zombie13x goto greensarge1,
+	order zombie14x goto greensarge1,
+	order zombie15x goto greensarge1,
+	order zombie16x goto greensarge1,
+	order zombie17x goto greensarge1,
+	order zombie18x goto greensarge1,
+	order zombie19x goto greensarge1,
+	order zombie20x goto greensarge1,
+	createexplosion zombie1 133 200 tan,
+	createexplosion zombie2 133 200 tan,
+	createexplosion zombie3 133 200 tan,
+	createexplosion zombie4 133 200 tan,
+	createexplosion zombie5 133 200 tan,
+	createexplosion zombie6 133 200 tan,
+	createexplosion zombie7 133 200 tan,
+	createexplosion zombie8 133 200 tan,
+	createexplosion zombie9 133 200 tan,
+	createexplosion zombie10 133 200 tan,
+	createexplosion zombie11 133 200 tan,
+	createexplosion zombie12 133 200 tan,
+	createexplosion zombie13 133 200 tan,
+	createexplosion zombie14 133 200 tan,
+	createexplosion zombie15 133 200 tan,
+	createexplosion zombie16 133 200 tan,
+	createexplosion zombie17 133 200 tan,
+	createexplosion zombie18 133 200 tan,
+	createexplosion zombie19 133 200 tan,
+	createexplosion zombie20 133 200 tan,
+	triggerdelay 30000 gozombies2
+	
+if gozombies2 then
+	playsound "portal2_8Bit.wav" 1 0,
+	createtrooper "zombie21x" rifle (2792,187) tan,
+	createexplosion zombie21x 133 0 tan,
+	setzombie zombie21x,
+	createtrooper "zombie22x" rifle (3087,128) tan,
+	createexplosion zombie22x 133 0 tan,
+	setzombie zombie22x,
+	createtrooper "zombie23x" rifle (2967,339) tan,
+	createexplosion zombie23x 133 0 tan,
+	setzombie zombie23x,
+	createtrooper "zombie24x" rifle (3168,409) tan,
+	createexplosion zombie24x 133 0 tan,
+	setzombie zombie24x,
+	createtrooper "zombie25x" rifle (3066,580) tan,
+	createexplosion zombie25x 133 0 tan,
+	setzombie zombie25x,
+	createtrooper "zombie26x" rifle (3232,512) tan,
+	createexplosion zombie26x 133 0 tan,
+	setzombie zombie26x,
+	createtrooper "zombie27x" rifle (2812,950) tan,
+	createexplosion zombie27x 133 0 tan,
+	setzombie zombie27x,
+	createtrooper "zombie28x" rifle (3116,1020) tan,
+	createexplosion zombie28x 133 0 tan,
+	setzombie zombie28x,
+	createtrooper "zombie29x" rifle (2808,1155) tan,
+	createexplosion zombie29x 133 0 tan,
+	setzombie zombie29x,
+	createtrooper "zombie30x" rifle (3197,1164) tan,
+	createexplosion zombie30x 133 0 tan,
+	setzombie zombie30x,
+	createtrooper "zombie31x" rifle (3794,1482) tan,
+	createexplosion zombie31x 133 0 tan,
+	setzombie zombie31x,
+	createtrooper "zombie32x" rifle (3733,1603) tan,
+	createexplosion zombie32x 133 0 tan,
+	setzombie zombie32x,
+	createtrooper "zombie33x" rifle (3618,1573) tan,
+	createexplosion zombie33x 133 0 tan,
+	setzombie zombie33x,
+	createtrooper "zombie34x" rifle (3373,1702) tan,
+	createexplosion zombie34x 133 0 tan,
+	setzombie zombie34x,
+	createtrooper "zombie35x" rifle (3523,1941) tan,
+	createexplosion zombie35x 133 0 tan,
+	setzombie zombie35x,
+	createtrooper "zombie36x" rifle (3099,1797) tan,
+	createexplosion zombie36x 133 0 tan,
+	setzombie zombie36x,
+	createtrooper "zombie37x" rifle (3309,1580) tan,
+	createexplosion zombie37x 133 0 tan,
+	setzombie zombie37x,
+	createtrooper "zombie38x" rifle (3139,1566) tan,
+	createexplosion zombie38x 133 0 tan,
+	setzombie zombie38x,
+	createtrooper "zombie39x" rifle (2917,1357) tan,
+	createexplosion zombie39x 133 0 tan,
+	setzombie zombie39x,
+	createtrooper "zombie40x" rifle (2746,1332) tan,
+	createexplosion zombie40x 133 0 tan,
+	setzombie zombie40x,
+	order zombie21x goto greensarge1,
+	order zombie22x goto greensarge1,
+	order zombie23x goto greensarge1,
+	order zombie24x goto greensarge1,
+	order zombie25x goto greensarge1,
+	order zombie26x goto greensarge1,
+	order zombie27x goto greensarge1,
+	order zombie28x goto greensarge1,
+	order zombie29x goto greensarge1,
+	order zombie30x goto greensarge1,
+	order zombie31x goto greensarge1,
+	order zombie32x goto greensarge1,
+	order zombie33x goto greensarge1,
+	order zombie34x goto greensarge1,
+	order zombie35x goto greensarge1,
+	order zombie36x goto greensarge1,
+	order zombie37x goto greensarge1,
+	order zombie38x goto greensarge1,
+	order zombie39x goto greensarge1,
+	order zombie40x goto greensarge1,
+	createexplosion zombie21 133 200 tan,
+	createexplosion zombie22 133 200 tan,
+	createexplosion zombie23 133 200 tan,
+	createexplosion zombie24 133 200 tan,
+	createexplosion zombie25 133 200 tan,
+	createexplosion zombie26 133 200 tan,
+	createexplosion zombie27 133 200 tan,
+	createexplosion zombie28 133 200 tan,
+	createexplosion zombie29 133 200 tan,
+	createexplosion zombie30 133 200 tan,
+	createexplosion zombie31 133 200 tan,
+	createexplosion zombie32 133 200 tan,
+	createexplosion zombie33 133 200 tan,
+	createexplosion zombie34 133 200 tan,
+	createexplosion zombie35 133 200 tan,
+	createexplosion zombie36 133 200 tan,
+	createexplosion zombie37 133 200 tan,
+	createexplosion zombie38 133 200 tan,
+	createexplosion zombie39 133 200 tan,
+	createexplosion zombie40 133 200 tan
+

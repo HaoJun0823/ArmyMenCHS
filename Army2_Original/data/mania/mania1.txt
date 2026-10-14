@@ -1,0 +1,939 @@
+
+
+Pad Bamboocagepad1      20      greensarge1 > 0
+Pad Bamboocagepad2      21      greensarge1 > 0
+Pad Bamboocagepad3      22      greensarge1 > 0
+Pad Bamboocagepad4      23      greensarge1 > 0
+Pad Bamboocagepad5      24      greensarge1 > 0
+
+Pad activateboat        50      GREENSARGE1 > 0
+
+Pad shore               60      pt_boat1 > 0
+
+PAD portalpad           99      GreenSarge1 > 0
+
+PAD Whirl1              71	UNIT > 0
+PAD Whirl2              72	UNIT > 0
+PAD Whirl3              73	UNIT > 0
+PAD Whirl4              74	UNIT > 0
+PAD Whirl5              75	UNIT > 0
+PAD Whirl6              76	UNIT > 0
+
+PAD isle1               30      GreenSarge1 > 0
+PAD isle2               31      GreenSarge1 > 0
+PAD isle3               32      GreenSarge1 > 0
+PAD isle4               33      GreenSarge1 > 0
+
+Variable boatactivated 0
+
+Variable soldiersdeployed 0
+
+Variable scoutloc 0
+VARIABLE goingtonukeem 0
+
+VARIABLE ONISLE 0
+
+
+
+IF startup1 Then
+        triggerdelay 10 init_vars1,
+        triggerdelay 10 init_vars_01
+
+
+
+IF init_vars_01 THEN
+        playsound "0501hq.wav" 0 0,
+        CREATEPOWERUP FLAK1 FLAK (277,3627) 80,
+        CREATEPOWERUP HMG1 HEAVYMG (1384,596),
+        CREATEPOWERUP nuclear AIRSTRIKE (16,16) 100,
+        Trigger startfire,
+        SHOWPDA "Find the scout and report back to HQ.",
+        setbriefing "map05_1.bmp",
+        SETMAXHEALTH Rogue_Green_Colonel 10000,
+        HEAL Rogue_Green_Colonel 100,
+        SETAIMODE Rogue_Green_Colonel IGNORE,
+        SETFORCECOLOR Rogue_Green_Colonel GREEN,
+        SETOBJSTATE Pool1 Pool1_rampup,
+        SETOBJSTATE Pool2 Pool2_rampup,
+        SETOBJSTATE Pool3 Pool3_rampup,
+        SETOBJSTATE Pool4 Pool4_rampup,
+        SETOBJSTATE Pool5 Pool5_rampup,
+        SETOBJSTATE Pool6 Pool6_rampup,
+	SETFORCECOLOR Trip GREEN,
+        SETFORCECOLOR Hicks GREY,
+        SETFORCECOLOR Nick TAN,
+        SETFORCECOLOR Fruin BLUE,
+        SETFORCECOLOR Jim TAN,
+        SETFORCECOLOR Keith GREY,
+        SETFORCECOLOR Mendheim BLUE,
+        SETFORCECOLOR Fowler GREEN,
+        TRIGGERDELAY 3000 showf1mess,
+        ALLY BLUE GREY,
+        ALLY BLUE TAN,
+        ALLY TAN GREY,
+        createtrooper "boatman1" bazooka rogue_green_colonel tan,
+	createtrooper "boatman2" rifle rogue_green_colonel tan,
+	createtrooper "boatman3" rifle rogue_green_colonel tan,
+        createtrooper "boatman4" rifle rogue_green_colonel tan,
+        createtrooper "boatman5" grenade rogue_green_colonel tan,
+        createtrooper "boatman6" rifle rogue_green_colonel tan,
+        DAMAGE boatman1 10000,
+        DAMAGE boatman2 10000,
+        DAMAGE boatman3 10000,
+        DAMAGE boatman4 10000,
+        DAMAGE boatman5 10000,
+        DAMAGE boatman6 10000
+
+
+
+
+IF showf1mess THEN
+        showmessage "Press the F1 key to view the strategic help map."
+
+
+
+IF init_vars1 THEN
+        RANDOM
+                trigger scoutat2,
+                trigger scoutat3,
+                trigger scoutat4,
+                trigger scoutat5
+
+
+
+IF scoutat2 THEN
+        createtrooper "scout" grenade (1538,669) green,
+        SETNPC scout 1,
+        setaimode scout ignore,
+        createtrooper "dummy1" vulcan (3486,484) GREEN,
+        createtrooper "dummy3" vulcan (2496,1167) GREEN,
+        createtrooper "dummy4" vulcan (405,1218) GREEN,
+        createtrooper "dummy5" vulcan (2398,3622) GREEN,
+        SETNPC dummy1 1,
+        SETNPC dummy2 1,
+        SETNPC dummy3 1,
+        SETNPC dummy4 1,
+        SETNPC dummy5 1,
+        SETFORCECOLOR dummy1 green,
+        SETFORCECOLOR dummy3 green,
+        SETFORCECOLOR dummy4 green,
+        SETFORCECOLOR dummy5 green
+
+
+
+IF scoutat3 THEN
+        createtrooper "scout" grenade (2496,1167) green,
+        SETNPC scout 1,
+        setaimode scout ignore,
+        createtrooper "dummy1" vulcan (3486,484) GREEN,
+        createtrooper "dummy2" vulcan (1538,669) GREEN,
+        createtrooper "dummy4" vulcan (405,1218) GREEN,
+        createtrooper "dummy5" vulcan (2398,3622) GREEN,
+        SETNPC dummy1 1,
+        SETNPC dummy2 1,
+        SETNPC dummy3 1,
+        SETNPC dummy4 1,
+        SETNPC dummy5 1,
+        SETFORCECOLOR dummy1 green,
+        SETFORCECOLOR dummy2 green,
+        SETFORCECOLOR dummy4 green,
+        SETFORCECOLOR dummy5 green
+
+
+IF scoutat4 THEN
+        createtrooper "scout" grenade (405,1218) green,
+        SETNPC scout 1,
+        setaimode scout ignore,
+        createtrooper "dummy1" vulcan (3486,484) GREEN,
+        createtrooper "dummy2" vulcan (1538,669) GREEN,
+        createtrooper "dummy3" vulcan (2496,1167) GREEN,
+        createtrooper "dummy5" vulcan (2398,3622) GREEN,
+        SETNPC dummy1 1,
+        SETNPC dummy2 1,
+        SETNPC dummy3 1,
+        SETNPC dummy4 1,
+        SETNPC dummy5 1,
+        SETFORCECOLOR dummy1 green,
+        SETFORCECOLOR dummy2 green,
+        SETFORCECOLOR dummy3 green,
+        SETFORCECOLOR dummy5 green
+
+
+
+IF scoutat5 THEN
+        createtrooper "scout" grenade (2398,3622) green,
+        SETNPC scout 1,
+        setaimode scout ignore,
+        createtrooper "dummy1" vulcan (3486,484) GREEN,
+        createtrooper "dummy2" vulcan (1538,669) GREEN,
+        createtrooper "dummy3" vulcan (2496,1167) GREEN,
+        createtrooper "dummy4" vulcan (405,1218) GREEN,
+        SETNPC dummy1 1,
+        SETNPC dummy2 1,
+        SETNPC dummy3 1,
+        SETNPC dummy4 1,
+        SETNPC dummy5 1,
+        SETFORCECOLOR dummy1 green,
+        SETFORCECOLOR dummy2 green,
+        SETFORCECOLOR dummy3 green,
+        SETFORCECOLOR dummy4 green
+
+
+
+
+
+IF startfire THEN
+        makeflame (3466,836) 10000,
+        makesmoke (3466,836) 10000,
+        makeflame (2299,1179) 10000,
+        makesmoke (2299,1179) 10000,
+        TRIGGERDELAY 10500 startfire
+
+
+
+ IF KILLED pt_boat1 TESTVAR ONISLE = 1 THEN
+        TRIGGERDELAY 3000 nukesarge,
+        SETVAR goingtonukeem 1
+
+
+
+
+
+ IF PADON isle4  THEN
+        SETVAR ONISLE 1
+
+
+ IF PADOFF isle4 THEN
+        SETVAR ONISLE 0
+
+
+ IF PADON isle3 THEN
+        SETVAR ONISLE 1
+
+
+ IF PADOFF isle3 THEN
+        SETVAR ONISLE 0
+
+
+
+ IF PADON isle2 THEN
+        SETVAR ONISLE 1
+
+
+ IF PADOFF isle2 THEN
+        SETVAR ONISLE 0
+
+
+
+ IF PADON isle1 THEN
+        SETVAR ONISLE 1
+
+
+ IF PADOFF isle1 THEN
+        SETVAR ONISLE 0
+
+
+
+
+
+
+
+IF killed pt_boat1 BUTNOT killed GreenSarge1 TESTVAR ONISLE = 0 THEN
+        TRIGGERDELAY 3000 RESBOAT
+
+
+
+IF RESBOAT THEN
+        setvar boatactivated 0,
+        setvar soldiersdeployed 0,
+        resurrect "pt_boat1" (300,300),
+        SETFACING PT_BOAT1 192,
+        setnpc pt_boat1 1,
+        order pt_boat1 goto (2699,300) INMODE IGNORE,
+        triggerdelay 15000 go_resboat
+
+IF sendtheboat testvar boatactivated = 0 then
+        setvar boatactivated 1,
+        createvehicle "pt_boat1" boat (300,300) green,
+        DAMAGE pt_boat1 10000
+
+
+IF go_boat TESTVAR soldiersdeployed = 0 then
+        Order pt_boat1 goto GreenSarge1,
+        TRIGGERDELAY 5000 go_boat
+
+IF go_resboat TESTVAR soldiersdeployed = 0 then
+        Order pt_boat1 goto cage1,
+        TRIGGERDELAY 5000 go_resboat
+
+
+
+IF padon shore AFTER padoff shore TESTVAR soldiersdeployed = 0 then
+        trigger deployptsoldiers,
+        order pt_boat1 goto pt_boat1 inmode ignore
+
+IF deployptsoldiers BUTNOT RESBOAT testvar soldiersdeployed = 0 then
+        setvar soldiersdeployed 1,
+        triggerdelay 2000 boatunderplyr,
+        triggerdelay 1000 go_boatmen,
+        createtrooper "boatman1" bazooka pt_boat1 tan,
+	createtrooper "boatman2" rifle pt_boat1 tan,
+	createtrooper "boatman3" rifle pt_boat1 tan,
+        createtrooper "boatman4" rifle pt_boat1 tan,
+        createtrooper "boatman5" grenade pt_boat1 tan,
+        createtrooper "boatman6" rifle pt_boat1 tan,
+	setaimode boatman1 ignore,
+	setaimode boatman2 ignore,
+	setaimode boatman3 ignore,
+	setaimode boatman4 ignore,
+	setaimode boatman5 ignore,
+	setaimode boatman6 ignore,
+        setforcecolor boatman1 blue,
+        setforcecolor boatman2 tan,
+        setforcecolor boatman3 blue,
+        setforcecolor boatman4 green,
+        setforcecolor boatman5 tan,
+        setforcecolor boatman6 grey
+
+
+IF deployptsoldiers AFTER RESBOAT testvar soldiersdeployed = 0 then
+        setvar soldiersdeployed 1,
+        triggerdelay 2000 boatunderplyr,
+        triggerdelay 1000 go_boatmen,
+        resurrect "boatman1" pt_boat1,
+	resurrect "boatman2" pt_boat1,
+	resurrect "boatman3" pt_boat1,
+        resurrect "boatman4" pt_boat1,
+        resurrect "boatman5" pt_boat1,
+        resurrect "boatman6" pt_boat1,
+	setaimode boatman1 ignore,
+	setaimode boatman2 ignore,
+	setaimode boatman3 ignore,
+	setaimode boatman4 ignore,
+	setaimode boatman5 ignore,
+	setaimode boatman6 ignore,
+        setforcecolor boatman1 grey,
+        setforcecolor boatman2 tan,
+        setforcecolor boatman3 blue,
+        setforcecolor boatman4 blue,
+        setforcecolor boatman5 tan,
+        setforcecolor boatman6 green
+
+
+
+IF go_boatmen then
+        triggerdelay 6000 go_boatmen2,
+        Order boatman1 goto GreenSarge1 inmode ignore,
+        Order boatman2 goto GreenSarge1 inmode ignore,
+        Order boatman3 goto GreenSarge1 inmode ignore,
+        Order boatman4 goto GreenSarge1 inmode ignore,
+        Order boatman5 goto GreenSarge1 inmode ignore,
+        Order boatman6 goto GreenSarge1 inmode ignore
+
+IF hit boatman1 hit boatman2 hit boatman3 hit boatman4 hit boatman5 hit boatman6 THEN
+        Order boatman1 goto GreenSarge1 inmode attack,
+        Order boatman2 goto GreenSarge1 inmode attack,
+        Order boatman3 goto GreenSarge1 inmode attack,
+        Order boatman4 goto GreenSarge1 inmode attack,
+        Order boatman5 goto GreenSarge1 inmode attack,
+        Order boatman6 goto GreenSarge1 inmode attack
+
+
+IF boatunderplyr then
+        setnpc pt_boat1 0
+
+
+
+IF padon activateboat BUTNOT sendtheboat THEN
+        trigger sendtheboat
+
+
+
+
+
+
+IF padon Bamboocagepad1 AFTER padoff Bamboocagepad1 then
+        onobjstate door1
+                static1		setobjstate door1 opening1
+
+
+IF padon Bamboocagepad2 AFTER padoff Bamboocagepad2 then
+        onobjstate door2
+                static2		setobjstate door2 opening2
+
+
+IF padon Bamboocagepad3 AFTER padoff Bamboocagepad3 then
+        onobjstate door3
+                static3		setobjstate door3 opening3
+
+
+IF padon Bamboocagepad4 AFTER padoff Bamboocagepad4 then
+        onobjstate door4
+                static4		setobjstate door4 opening4
+
+
+IF padon Bamboocagepad5 AFTER padoff Bamboocagepad5 then
+        onobjstate door5
+                static5		setobjstate door5 opening5
+
+
+IF killed cage1 THEN
+        setobjstate door1 dam1,
+        trigger freescout1
+
+
+IF killed cage2 THEN
+        setobjstate door2 dam2,
+        trigger freescout2
+
+
+IF killed cage3 THEN
+        setobjstate door3 dam3,
+        trigger freescout3
+
+
+IF killed cage4 THEN
+        setobjstate door4 dam4,
+        trigger freescout4
+
+
+IF killed cage5 THEN
+        setobjstate door5 dam5,
+        trigger freescout5
+
+
+
+
+object  door1
+	state static1
+       		frame 2000 0
+
+        state opening1
+	       	frame 50 1
+                frame 50 2
+                frame 50 3
+                frame 50 4
+                frame 50 4
+                frame 1 4
+                      setobjstate door1 open1
+
+        state open1
+                frame 100 4
+                        trigger freescout1
+                frame 10000 4
+
+        state dam1
+                frame 10000 5
+
+
+IF ALLOF freescout1 scoutat1 THEN
+        trigger victory1,
+        SETNPC scout 0,
+        order scout goto greensarge1
+
+IF freescout1 BUTNOT scoutat1 THEN
+        TRIGGERDELAY 3000 fakeout1,
+        CREATETROOPER faker1 RIFLE dummy1 TAN,
+        UNDEPLOY dummy1,
+        SETFORCECOLOR faker1 GREEN,
+        order faker1 goto greensarge1
+
+IF fakeout1 THEN
+        SETAIMODE dummy1 ATTACK
+
+
+
+object  door2
+	state static2
+       		frame 2000 0
+
+        state opening2
+	       	frame 50 1
+                frame 50 2
+                frame 50 3
+                frame 50 4
+                frame 50 4
+                frame 1 4
+                      setobjstate door2 open2
+
+        state open2
+                frame 100 4
+                        trigger freescout2
+                frame 10000 4
+
+        state dam2
+                frame 10000 5
+
+
+IF ALLOF freescout2 scoutat2 THEN
+        trigger victory1,
+        SETNPC scout 0,
+        order scout goto greensarge1
+
+IF freescout2 BUTNOT scoutat2 THEN
+        TRIGGERDELAY 3000 fakeout2,
+        CREATETROOPER faker2 RIFLE dummy2 TAN,
+        UNDEPLOY dummy2,
+        SETFORCECOLOR faker2 GREEN,
+        order faker2 goto greensarge1
+
+IF fakeout2 THEN
+        SETAIMODE dummy2 ATTACK
+
+
+
+object  door3
+	state static3
+       		frame 2000 0
+
+        state opening3
+	       	frame 50 1
+                frame 50 2
+                frame 50 3
+                frame 50 4
+                frame 50 4
+                frame 1 4
+                      setobjstate door3 open3
+
+        state open3
+                frame 100 4
+                        trigger freescout3
+                frame 10000 4
+
+        state dam3
+                frame 10000 5
+
+
+IF ALLOF freescout3 scoutat3 THEN
+        trigger victory1,
+        SETNPC scout 0,
+        order scout goto greensarge1
+
+IF freescout3 BUTNOT scoutat3 THEN
+        TRIGGERDELAY 3000 fakeout3,
+        CREATETROOPER faker3 RIFLE dummy3 TAN,
+        UNDEPLOY dummy3,
+        SETFORCECOLOR faker3 GREEN,
+        order faker3 goto greensarge1
+
+IF fakeout3 THEN
+        SETAIMODE dummy3 ATTACK
+
+
+
+
+object  door4
+	state static4
+       		frame 2000 0
+
+        state opening4
+	       	frame 50 1
+                frame 50 2
+                frame 50 3
+                frame 50 4
+                frame 50 4
+                frame 1 4
+                      setobjstate door4 open4
+
+        state open4
+                frame 100 4
+                        trigger freescout4
+                frame 10000 4
+
+        state dam4
+                frame 10000 5
+
+
+IF ALLOF freescout4 scoutat4 THEN
+        trigger victory1,
+        SETNPC scout 0,
+        order scout goto greensarge1
+
+IF freescout4 BUTNOT scoutat4 THEN
+        TRIGGERDELAY 3000 fakeout4,
+        CREATETROOPER faker4 RIFLE dummy4 TAN,
+        UNDEPLOY dummy4,
+        SETFORCECOLOR faker4 GREEN,
+        order faker4 goto greensarge1
+
+IF fakeout4 THEN
+        SETAIMODE dummy4 ATTACK
+
+
+
+
+
+object  door5
+	state static5
+       		frame 2000 0
+
+        state opening5
+	       	frame 50 1
+                frame 50 2
+                frame 50 3
+                frame 50 4
+                frame 50 4
+                frame 1 4
+                      setobjstate door5 open5
+
+        state open5
+                frame 100 4
+                        trigger freescout5
+                frame 10000 4
+
+        state dam5
+                frame 10000 5
+
+
+IF ALLOF freescout5 scoutat5 THEN
+        trigger victory1,
+        SETNPC scout 0,
+        order scout goto greensarge1
+
+IF freescout5 BUTNOT scoutat5 THEN
+        TRIGGERDELAY 3000 fakeout5,
+        CREATETROOPER faker5 RIFLE dummy5 TAN,
+        UNDEPLOY dummy5,
+        SETFORCECOLOR faker5 GREEN,
+        order faker5 goto greensarge1
+
+IF fakeout5 THEN
+        SETAIMODE dummy5 ATTACK
+
+
+
+
+
+
+
+IF victory1 TESTVAR goingtonukeem = 0 then
+        PLAYSOUND "0501Scout.wav" 3 0,
+        triggerdelay 13500 victory2
+
+IF victory2 BUTNOT KILLED GREENSARGE1 then
+        trigger greenwins
+
+
+IF killed scout BUTNOT startup2 then
+        trigger tanwins
+
+
+IF killed greensarge1 then
+        SHOWPDA "Sarge is dead!",
+        triggerdelay 200 tanwins
+
+
+
+
+OBJECT Pool1
+        STATE Pool1_initial
+                FRAME 100 0
+
+        STATE Pool1_rampup
+                FRAME 100 9
+                FRAME 100 10
+                FRAME 100 11
+                FRAME 100 12
+                FRAME 100 13
+                FRAME 100 13
+                	SETOBJSTATE Pool1 Pool1_spin
+                FRAME 10 13
+
+        STATE Pool1_spin
+                FRAME 100 1
+                FRAME 100 2
+                FRAME 100 3
+                FRAME 100 4
+                FRAME 100 5
+                FRAME 100 6
+                FRAME 100 7
+                FRAME 100 8
+                FRAME 100 9
+                FRAME 10 9
+                        SETOBJSTATE Pool1 Pool1_spin
+                FRAME 10 9
+
+        STATE Pool1_rampdown
+                FRAME 100 13
+                FRAME 100 12
+                FRAME 100 11
+                FRAME 100 10
+                FRAME 100 10
+                        SETOBJSTATE Pool1 Pool1_initial
+                FRAME 10 10
+
+IF PADON Whirl1 AFTER PADOFF Whirl1 THEN
+        ONOBJSTATE Pool1
+       		 Pool1_spin      DAMAGE ME 10000
+
+
+
+OBJECT Pool2
+        STATE Pool2_initial
+                FRAME 100 0
+
+        STATE Pool2_rampup
+                FRAME 100 9
+                FRAME 100 10
+                FRAME 100 11
+                FRAME 100 12
+                FRAME 100 13
+                FRAME 100 13
+                	SETOBJSTATE Pool2 Pool2_spin
+                FRAME 10 13
+
+        STATE Pool2_spin
+                FRAME 100 1
+                FRAME 100 2
+                FRAME 100 3
+                FRAME 100 4
+                FRAME 100 5
+                FRAME 100 6
+                FRAME 100 7
+                FRAME 100 8
+                FRAME 100 9
+                FRAME 10 9
+                        SETOBJSTATE Pool2 Pool2_spin
+                FRAME 10 9
+
+        STATE Pool2_rampdown
+                FRAME 100 13
+                FRAME 100 12
+                FRAME 100 11
+                FRAME 100 10
+                FRAME 100 10
+                        SETOBJSTATE Pool2 Pool2_initial
+                FRAME 10 10
+
+IF PADON Whirl2 AFTER PADOFF Whirl2 THEN
+        ONOBJSTATE Pool2
+       		 Pool2_spin      DAMAGE ME 10000
+
+
+
+OBJECT Pool3
+        STATE Pool3_initial
+                FRAME 100 0
+
+        STATE Pool3_rampup
+                FRAME 100 9
+                FRAME 100 10
+                FRAME 100 11
+                FRAME 100 12
+                FRAME 100 13
+                FRAME 100 13
+                	SETOBJSTATE Pool3 Pool3_spin
+                FRAME 10 13
+
+        STATE Pool3_spin
+                FRAME 100 1
+                FRAME 100 2
+                FRAME 100 3
+                FRAME 100 4
+                FRAME 100 5
+                FRAME 100 6
+                FRAME 100 7
+                FRAME 100 8
+                FRAME 100 9
+                FRAME 10 9
+                        SETOBJSTATE Pool3 Pool3_spin
+                FRAME 10 9
+
+        STATE Pool3_rampdown
+                FRAME 100 13
+                FRAME 100 12
+                FRAME 100 11
+                FRAME 100 10
+                FRAME 100 10
+                        SETOBJSTATE Pool3 Pool3_initial
+                FRAME 10 10
+
+IF PADON Whirl3 AFTER PADOFF Whirl3 THEN
+        ONOBJSTATE Pool3
+       		 Pool3_spin      DAMAGE ME 10000
+
+
+
+OBJECT Pool4
+        STATE Pool4_initial
+                FRAME 100 0
+
+        STATE Pool4_rampup
+                FRAME 100 9
+                FRAME 100 10
+                FRAME 100 11
+                FRAME 100 12
+                FRAME 100 13
+                FRAME 100 13
+                	SETOBJSTATE Pool4 Pool4_spin
+                FRAME 10 13
+
+        STATE Pool4_spin
+                FRAME 100 1
+                FRAME 100 2
+                FRAME 100 3
+                FRAME 100 4
+                FRAME 100 5
+                FRAME 100 6
+                FRAME 100 7
+                FRAME 100 8
+                FRAME 100 9
+                FRAME 10 9
+                        SETOBJSTATE Pool4 Pool4_spin
+                FRAME 10 9
+
+        STATE Pool4_rampdown
+                FRAME 100 13
+                FRAME 100 12
+                FRAME 100 11
+                FRAME 100 10
+                FRAME 100 10
+                        SETOBJSTATE Pool4 Pool4_initial
+                FRAME 10 10
+
+IF PADON Whirl4 AFTER PADOFF Whirl4 THEN
+        ONOBJSTATE Pool4
+       		 Pool4_spin      DAMAGE ME 10000
+
+
+
+
+OBJECT Pool5
+        STATE Pool5_initial
+                FRAME 100 0
+
+        STATE Pool5_rampup
+                FRAME 100 9
+                FRAME 100 10
+                FRAME 100 11
+                FRAME 100 12
+                FRAME 100 13
+                FRAME 100 13
+                	SETOBJSTATE Pool5 Pool5_spin
+                FRAME 10 13
+
+        STATE Pool5_spin
+                FRAME 100 1
+                FRAME 100 2
+                FRAME 100 3
+                FRAME 100 4
+                FRAME 100 5
+                FRAME 100 6
+                FRAME 100 7
+                FRAME 100 8
+                FRAME 100 9
+                FRAME 10 9
+                        SETOBJSTATE Pool5 Pool5_spin
+                FRAME 10 9
+
+        STATE Pool5_rampdown
+                FRAME 100 13
+                FRAME 100 12
+                FRAME 100 11
+                FRAME 100 10
+                FRAME 100 10
+                        SETOBJSTATE Pool5 Pool5_initial
+                FRAME 10 10
+
+IF PADON Whirl5 AFTER PADOFF Whirl5 THEN
+        ONOBJSTATE Pool5
+       		 Pool5_spin      DAMAGE ME 10000
+
+
+
+
+
+
+OBJECT Pool6
+        STATE Pool6_initial
+                FRAME 100 0
+
+        STATE Pool6_rampup
+                FRAME 100 9
+                FRAME 100 10
+                FRAME 100 11
+                FRAME 100 12
+                FRAME 100 13
+                FRAME 100 13
+                	SETOBJSTATE Pool6 Pool6_spin
+                FRAME 10 13
+
+        STATE Pool6_spin
+                FRAME 100 1
+                FRAME 100 2
+                FRAME 100 3
+                FRAME 100 4
+                FRAME 100 5
+                FRAME 100 6
+                FRAME 100 7
+                FRAME 100 8
+                FRAME 100 9
+                FRAME 10 9
+                        SETOBJSTATE Pool6 Pool6_spin
+                FRAME 10 9
+
+        STATE Pool6_rampdown
+                FRAME 100 13
+                FRAME 100 12
+                FRAME 100 11
+                FRAME 100 10
+                FRAME 100 10
+                        SETOBJSTATE Pool6 Pool6_initial
+                FRAME 10 10
+
+IF PADON Whirl6 AFTER PADOFF Whirl6 THEN
+        ONOBJSTATE Pool6
+       		 Pool6_spin      DAMAGE ME 10000
+
+
+
+
+
+ object portal
+        state portal_initial
+                frame 200 9
+                frame 200 9
+                        PLAYSOUND "portal1_8Bit.wav" PORTAL 1 3 1,
+                	setobjstate portal portal_animate 0
+
+	state portal_animate
+                frame 200 0
+		frame 200 1
+		frame 200 2
+		frame 200 3
+		frame 200 4
+                frame 200 5
+		frame 200 6
+		frame 200 7
+		frame 200 8
+		frame 200 7
+		frame 200 6
+		frame 200 5
+                frame 200 4
+		frame 200 3
+		frame 200 2
+		frame 200 1
+		frame 10  0
+			setobjstate portal portal_animate 0
+
+
+
+
+
+
+IF nukesarge THEN
+//        FIREWEAPON nuclear Rogue_Green_Colonel 160 GREENSARGE1,
+//        TRIGGERDELAY 10000 nukesarge
+        SHOWPDA "You've lost your only means of ever escaping this island.  You have failed in your mission.",
+        TRIGGERDELAY 1000 TANWINS
+
+
+
+If killed scorch then
+	createpowerup flamer scorch 50
+
+If killed veteran then
+	createpowerup bazooka veteran 10
+
+
+

@@ -1,0 +1,119 @@
+// This variable holds the current action for green
+// 0 means no action, 1 means attack tan, 2 means attack blue, 3 means attack grey,
+// 4 means follow black flag
+variable greenAction 0
+
+if startup1 then
+	triggerdelay 1000 greenChooseNewAction,
+	triggerdelay 2000 greenRegularOrders
+
+if greenChooseNewAction then
+	setvar greenAction 0,
+	trigger greenChooseAction
+
+// if green has no current action then pick a random action
+// keep doing this until an action is set
+if greenChooseAction testvar greenAction = 0 and hasitem greensarge1 blackflag1 = 1 then
+	trigger greenPickRandomAction,
+	triggerdelay 1000 greenChooseAction
+
+if greenChooseAction testvar greenAction = 0 and hasitem greensarge1 blackflag1 = 0 then
+	trigger greenFollowBlackFlag
+
+if greenPickRandomAction then random
+	trigger greenSetAttackTan,
+	trigger greenSetAttackBlue,
+	trigger greenSetAttackGrey
+
+// these events setup the greenAction variable
+
+// before attacking tan make sure tan is in the game and is not an ally
+if greenSetAttackTan testvar IsColorInGame tan > 0 and IsAlly green tan = 0 then
+	setvar greenAction 1,
+	trigger greenAttackTan,
+	trigger startTimeOut
+
+// before attacking blue make sure blue is in the game and is not an ally
+if greenSetAttackBlue testvar IsColorInGame blue > 0 and IsAlly green blue = 0 then
+	setvar greenAction 2,
+	trigger greenAttackBlue,
+	trigger startTimeOut
+
+// before attacking grey make sure grey is in the game and is not an ally
+if greenSetAttackGrey testvar IsColorInGame grey > 0 and IsAlly green grey = 0 then
+	setvar greenAction 3,
+	trigger greenAttackGrey,
+	trigger startTimeOut
+
+// these events do the actual attack orders
+
+if greenAttackTan testvar greenAction = 1 then
+	order greensarge1 follow tansarge1 inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 follow tansarge1 inmode attack,
+	order green group 3 follow tansarge1 inmode attack,
+	order green group 4 follow tansarge1 inmode attack,
+	order green group 5 follow tansarge1 inmode attack,
+	order green group 0 follow tansarge1 inmode attack
+
+if greenAttackBlue testvar greenAction = 2 then
+	order greensarge1 follow bluesarge1 inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 follow bluesarge1 inmode attack,
+	order green group 3 follow bluesarge1 inmode attack,
+	order green group 4 follow bluesarge1 inmode attack,
+	order green group 5 follow bluesarge1 inmode attack,
+	order green group 0 follow bluesarge1 inmode attack
+
+if greenAttackGrey testvar greenAction = 3 then
+	order greensarge1 follow greysarge1 inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 follow greysarge1 inmode attack,
+	order green group 3 follow greysarge1 inmode attack,
+	order green group 4 follow greysarge1 inmode attack,
+	order green group 5 follow greysarge1 inmode attack,
+	order green group 0 follow greysarge1 inmode attack
+
+if greenFollowBlackFlag then
+	setvar greenAction 4,
+	trigger startTimeOut,
+	order greensarge1 follow blackflag1 inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 follow blackflag1 inmode attack,
+	order green group 3 follow blackflag1 inmode attack,
+	order green group 4 follow blackflag1 inmode attack,
+	order green group 5 follow blackflag1 inmode attack,
+	order green group 0 follow blackflag1 inmode attack
+
+// these events choose new actions if a sarge is killed
+
+if killed sarge by green then
+	triggerdelay 5000 greenChooseNewAction
+
+if killed greensarge1 then
+	triggerdelay 5000 greenChooseNewAction
+
+if pickedup blackflag1 by greensarge1 then
+	triggerdelay 100 greenChooseNewAction
+
+// these are the sgreending order regardless of what mode sarge is in
+	
+if greenRegularOrders then
+	order green group 7 goto greenbase inmode evade,
+	triggerdelay 5000 greenRegularOrders
+
+// timeout code - if mode has not changed for a while then change it
+
+variable greenTimeOutVar 0
+variable greenLastTimeOutVar 1
+
+if greenStartTimeOut then
+    addvar greenTimeOutVar 1,
+	triggerdelay 120000 greenCheckTimeOut
+
+if greenCheckTimeOut testvar greenTimeOutVar = greenLastTimeOutVar then
+    trigger greenChooseNewAction
+
+if greenCheckTimeOut testvar greenTimeOutVar <> greenLastTimeOutVar then
+	addvar greenLastTimeOutVar 1
+

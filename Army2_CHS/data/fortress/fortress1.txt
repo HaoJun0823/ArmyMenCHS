@@ -1,0 +1,1315 @@
+                //Map11 Mission Script//
+//**Level and script created by, Jason Wildblood**//
+
+
+        //**Pads**
+pad patrol1     	10      PatrolGuard2 	> 0
+pad patrol2     	11      PatrolGuard2 	> 0
+pad patrol3     	12      PatrolGuard1 	> 0
+pad patrol4     	13      PatrolGuard1 	> 0
+pad patrol5             14      PatrolGuard3    > 0
+pad patrol6             15      PatrolGuard3    > 0
+pad patrol7             16      PatrolGuard4    > 0
+pad patrol8             17      PatrolGuard4    > 0
+pad patrol9             18      PatrolGuard5    > 0
+pad patrol10            19      PatrolGuard5    > 0
+pad patrol11            20      PatrolGuard6    > 0
+pad patrol12            21      PatrolGuard6    > 0
+//Flame Patrols
+pad flamepatrol13       22      FlamePatrol1    > 0
+pad flamepatrol14       23      FlamePatrol1    > 0
+pad flamepatrol15       24      FlamePatrol2    > 0
+pad flamepatrol16       25      FlamePatrol2    > 0
+pad flamepatrol17       26      FlamePatrol3    > 0
+pad flamepatrol18       27      FlamePatrol3    > 0
+pad flamepatrol19       28      FlamePatrol3    > 0
+pad flamepatrol20       29      FlamePatrol3    > 0
+//Bazooka Patrols
+pad bazpatrol27         30      BazPatrol2      > 0
+pad bazpatrol28         31      BazPatrol2      > 0
+pad bazpatrol29         32      BazPatrol2      > 0
+pad bazpatrol30         33      BazPatrol1      > 0
+pad bazpatrol31         34      BazPatrol1      > 0
+pad bazpatrol32         35      BazPatrol1      > 0
+pad bazpatrol33         36      BazPatrol1      > 0
+pad AttackerHome        100     attacker1     	> 0
+pad AttackerHome2       101     attacker2    	> 0
+pad AttackerHome3       102     attacker3     	> 0
+pad AttackerHome4       103     attacker4     	> 0
+pad AttackerHome5       104     attacker5     	> 0
+pad AttackerHome6       105     attacker6     	> 0
+pad AttackerHome7       106     attacker7     	> 0
+pad AttackerHome8       107     attacker8     	> 0
+pad AttackerHome9       108     attacker9     	> 0
+pad AttackerHome10      109     attacker10    	> 0
+pad AttackerHome11      110     attacker11    	> 0
+pad AttackerHome12      111     attacker12    	> 0
+pad AttackerHome13      112     attacker13    	> 0
+pad AttackerHome14      113     attacker14    	> 0
+pad AttackerHome15      116     attacker15    	> 0
+pad AttackerHome16      117     attacker16    	> 0
+pad AttackerHome17      118     attacker17    	> 0
+pad AttackerHome18      119     attacker18    	> 0
+pad AttackerHome19      120     attacker19    	> 0
+pad AttackerHome20      121     attacker20    	> 0
+//backmanpatrols
+pad bman1               176     backman1      	> 0
+pad bman2               177     backman1      	> 0
+pad man1                178     backman2      	> 0
+pad man2                179     backman2      	> 0
+
+//prison setup//
+pad open1             221     greensarge1       > 0
+pad open2             222     greensarge1       > 0
+pad open3             223     greensarge1       > 0
+pad open4             224     greensarge1       > 0
+pad open5             225     greensarge1       > 0
+
+//zombie pads//
+pad depzomb1            94      noone           > 0
+pad depzomb2            95      noone           > 0
+pad depzomb3            96      noone           > 0
+pad depzomb4            97      noone           > 0
+pad depzomb5            98      noone           > 0
+
+pad shon1               226     noone           > 0
+pad shon2               227     noone           > 0
+pad shon3               228     noone           > 0
+pad shon4               229     noone           > 0
+pad shon5               230     noone           > 0
+
+pad boris_born          91      noone           > 0
+pad bluespy             114     blueman         > 0
+pad blueguards          115     blueman1  	> 0
+pad remove_boris        255     Boris_S         > 0
+pad deployKM            253     greensarge1     > 0
+pad alarmtrig1          250     KM              > 0
+pad kmdeployed          251     noone           > 0
+//Tanks//
+pad tank1               170     noone           > 0
+pad tank2               171     noone           > 0
+pad tank3               172     noone           > 0
+pad tank4               173     noone           > 0
+pad tank5               174     noone           > 0
+pad tank6               175     noone           > 0
+
+pad locked1             40      greensarge1     > 0
+pad locked2             41      greensarge1     > 0
+pad locked3             42      greensarge1     > 0
+pad locked4             43      greensarge1     > 0
+pad locked5             44      greensarge1     > 0
+pad locked6             45      greensarge1     > 0
+pad locked7             46      greensarge1     > 0
+pad locked8             47      greensarge1     > 0
+pad locked9             48      greensarge1     > 0
+pad locked10            49      greensarge1     > 0
+pad locked11            50      greensarge1     > 0
+pad locked12            51      greensarge1     > 0
+pad locked13            52      greensarge1     > 0
+pad unlocked1           53      greensarge1     > 0
+pad unlocked2           54      greensarge1     > 0
+pad unlocked3           55      greensarge1     > 0
+pad unlocked4           56      greensarge1     > 0
+pad unlocked5           57      greensarge1     > 0
+pad unlocked6           58      greensarge1     > 0
+pad unlocked7           59      greensarge1     > 0
+
+//ending//
+pad endnightmare        60      greensarge1     > 0
+pad walker01            61      walkman1        > 0
+pad walker02            62      walkman1        > 0
+pad walker03            63      walkman1        > 0
+pad walker04            64      walkman1        > 0
+pad walker05            65      walkman1        > 0
+pad walker06            66      walkman1        > 0
+//dead heads//
+pad sendthedead         71      greensarge1     > 0
+pad resdead1            92      noone           > 0
+pad resdead2            93      noone           > 0
+
+//weapon launcher activation//
+pad actweapon           70      green trooper   > 0
+//tankmen segment//
+pad tanked1             80      noone           > 0
+pad tanked2             81      noone           > 0
+pad tanked3             82      noone           > 0
+pad tanked4             83      noone           > 0
+pad tanked5             84      noone           > 0
+pad tanked6             85      noone           > 0
+pad removetime          86      tankman1        > 0
+pad tankspot            87      noone           > 0
+pad tankguard           88      ta3             > 0
+pad tankguard2          200     ta3             > 0
+pad tankguard3          201     noone           > 0
+pad removetime2         89      tankman2        > 0
+pad removetime3         90      tankman3        > 0
+//Jeeps//
+pad jeep1               210     noone           > 0
+pad jeep2               211     noone           > 0
+pad jeep3               212     noone           > 0
+
+//Jeepster segment//
+pad jeepmove            240     jeepster1       > 0
+pad jeepmove1           241     jeepster1       > 0
+pad jeepmove2           242     jeepster1       > 0
+pad jeepmove3           243     jeepster1       > 0
+pad jeepmove4           244     jeepster1       > 0
+pad jeepmove5           245     jeepster1       > 0
+pad jeepmove6           246     jeepster1       > 0
+pad jeepmove7           247     jeepster1       > 0
+pad jeepmove8           248     jeepster1       > 0
+pad jeepmove9           249     jeepster1       > 0
+
+//Bluespy//
+pad openspydoor         220     greensarge1     > 0
+
+preloadsprite 37 317 0
+preloadsprite 37 317 1
+preloadsprite 37 317 2
+preloadsprite 37 317 3
+preloadsprite 37 317 4
+preloadsprite 37 317 5
+preloadsprite 37 317 6
+
+preloadsprite 43 101 0
+preloadsprite 43 101 1
+preloadsprite 43 101 2
+preloadsprite 43 101 3
+preloadsprite 43 101 4
+preloadsprite 43 101 5
+preloadsprite 43 101 6
+preloadsprite 43 101 7
+
+preloadsprite 43 105 0
+preloadsprite 43 105 1
+preloadsprite 43 105 2
+preloadsprite 43 105 3
+preloadsprite 43 105 4
+preloadsprite 43 105 5
+preloadsprite 43 105 6
+preloadsprite 43 105 7
+
+
+        //**Startup**
+if startup1 then
+        setbriefing "map11_1.bmp",
+        triggerdelay 2000 sarge1vo,
+        order PatrolGuard1 goto Patrol4,
+        order PatrolGuard2 goto Patrol2,
+        order PatrolGuard3 goto Patrol6,
+        order PatrolGuard4 goto Patrol8,
+        order PatrolGuard5 goto Patrol10,
+        order PatrolGuard6 goto patrol12,
+        order FlamePatrol1 goto flamepatrol14,
+        order FlamePatrol2 goto flamepatrol15,
+        order FlamePatrol3 goto flamepatrol18,
+        order BazPatrol1 goto bazpatrol31,
+        order BazPatrol2 goto bazpatrol28,
+        triggerdelay 18000 BlueAttackers,
+        triggerdelay 10000 sendmen,
+        trigger startwalking,
+        trigger backmenstart1,
+        trigger backstart2,
+        trigger deadmansetup,
+        trigger jeepster1_action,
+        trigger setupboris,
+        trigger turn_standg01,
+        trigger turn_standg02,
+        triggerdelay 1500 showpmiss1,
+        trigger makedefence,
+        triggerdelay 200 allingoodfacing
+
+        //**win mission**//
+if pickedup klure by greensarge1 then
+        trigger timetowin,
+        undeploy inviso,
+	undeploy key,
+        triggerdelay 1000 sarge2vo,
+        trigger gotkey
+
+if timetowin butnot doh then
+        triggerdelay 1500 failsafewin
+
+if failsafewin butnot startup2 then
+        trigger petertestgreenwins
+
+if petertestgreenwins butnot killed greensarge1 then
+	trigger greenwins
+
+if sarge2vo then
+        playsound "1102sarge1.wav" 16 0
+
+        //**Lose Mission**
+if killed greensarge1 then
+	trigger doh,
+        triggerdelay 1500 tanwins,
+        trigger lostagain
+
+if lostagain then
+        showfailure "中士死了！"
+
+if showpmiss1 then
+        showpda "找到秘密武器发射站的钥匙。"
+
+
+if sarge1vo then
+        playsound "1101sarge1.wav" 16 0
+
+        //**Facing script**//
+
+if allingoodfacing then
+        setfacing standg1 128,
+	setfacing standg2 128,
+        setfacing tanflamer2 148,
+        setfacing tanflamer9 128,
+        setfacing tanflamer8 132,
+        setfacing tanflamer1 139,
+        setfacing tanflamer20 145,
+        setfacing TanGrenadier2 192,
+        setfacing TanGrenadier3 64,
+        setfacing kmbaz1 128,
+        setfacing kmbaz2 192,
+        setfacing kmdefender1 138,
+        setfacing kmdefender2 192,
+        setfacing kmdefender3 178,
+        setfacing kmdefender4 148,
+        setfacing kmdefender5 64,
+        setfacing kmdefender6 199
+
+
+        //**mission setup**//
+
+//**Tank Deployment**//
+
+if makedefence then
+        createvehicle "fronttank1" tank (2762,3174) tan,
+        createvehicle "fronttank2" tank (3015,3083) tan,
+        createvehicle "sidetank1" tank (3711,1628) tan,
+        createvehicle "sidetank2" tank (3765,1402) tan,
+        createvehicle "jdefence" jeep (3296,451) tan,
+        setfacing sidetank2 64,
+        setfacing sidetank1 192,
+        setfacing fronttank1 138,
+        setfacing fronttank2 138,
+        setgunfacing fronttank1 148,
+        setgunfacing fronttank2 98,
+        setgunfacing sidetank1 138,
+        setgunfacing sidetank2 118,
+        setfacing jdefence 122
+
+//**DeadHead segment**//
+
+if deadmansetup then
+        createtrooper "zomb1" rifle resdead1 grey,
+        createtrooper "zomb2" rifle resdead2 grey,
+        createtrooper "priszomb1" rifle depzomb1 grey,
+	createtrooper "priszomb2" rifle depzomb2 grey,
+	createtrooper "priszomb3" rifle depzomb3 grey,
+	createtrooper "priszomb4" rifle depzomb4 grey,
+	createtrooper "priszomb5" rifle depzomb5 grey,
+        trigger turnundead
+
+if turnundead then
+        setzombie zomb1,
+        setzombie zomb2,
+        setzombie priszomb1,
+        setzombie priszomb2,
+        setzombie priszomb3,
+        setzombie priszomb4,
+        setzombie priszomb5,
+        trigger aboutface,
+        trigger set_ai
+
+if aboutface then
+        setfacing zomb1 112,
+        setfacing zomb2 112,
+        setfacing priszomb1 128,
+        setfacing priszomb2 90,
+        setfacing priszomb3 64,
+        setfacing priszomb4 200,
+        setfacing priszomb5 233
+
+if set_ai then
+        setaimode zomb1 defend,
+        setaimode zomb2 defend,
+        setaimode priszomb1 ignore,
+        setaimode priszomb2 ignore,
+        setaimode priszomb3 ignore,
+        setaimode priszomb4 ignore,
+        setaimode priszomb5 ignore
+
+        //**opening events**//
+
+ //**Attacker squade**
+
+if sendmen then
+        setspeed Attacker1 slow,
+        order Attacker1 goto AttackerHome inmode attack,
+
+        setspeed Attacker2 slow,
+ 	order Attacker2 goto AttackerHome2 inmode attack,
+
+        setspeed Attacker3 slow,
+        order Attacker3 goto AttackerHome3 inmode attack,
+
+        setspeed Attacker4 slow,
+        order Attacker4 goto AttackerHome4 inmode attack,
+
+        setspeed Attacker5 slow,
+      	order Attacker5 goto AttackerHome5 inmode attack,
+
+        setspeed Attacker6 slow,
+        order Attacker6 goto AttackerHome6 inmode attack,
+
+        setspeed Attacker7 slow,
+ 	order Attacker7 goto AttackerHome7 inmode attack,
+
+        setspeed Attacker8 slow,
+        order Attacker8 goto AttackerHome8 inmode attack,
+
+        setspeed Attacker9 slow,
+        order Attacker9 goto AttackerHome9 inmode attack,
+
+        setspeed Attacker10 slow,
+      	order Attacker10 goto AttackerHome10 inmode attack,
+
+        setspeed Attacker11 slow,
+        order Attacker11 goto AttackerHome11 inmode attack,
+
+        setspeed Attacker12 slow,
+ 	order Attacker12 goto AttackerHome12 inmode attack,
+
+        setspeed Attacker13 slow,
+        order Attacker13 goto AttackerHome13 inmode attack,
+
+        setspeed Attacker14 slow,
+        order Attacker14 goto AttackerHome14 inmode attack,
+
+        setspeed Attacker15 slow,
+        order Attacker15 goto AttackerHome15 inmode attack,
+
+        setspeed Attacker16 slow,
+        order Attacker16 goto AttackerHome16 inmode attack,
+
+        setspeed Attacker17 slow,
+        order Attacker17 goto AttackerHome17 inmode attack,
+
+        setspeed Attacker18 slow,
+        order Attacker18 goto AttackerHome18 inmode attack,
+
+        setspeed Attacker19 slow,
+        order Attacker19 goto AttackerHome19 inmode attack,
+
+        setspeed Attacker20 slow,
+        order Attacker20 goto AttackerHome20 inmode attack
+
+//**undeploying**//
+
+ if padon Attackerhome then
+        undeploy attacker1
+
+ if padon Attackerhome2 then
+        undeploy attacker2
+
+ if padon Attackerhome3 then
+        undeploy attacker3
+
+ if padon Attackerhome4 then
+        undeploy attacker4
+
+ if padon Attackerhome5 then
+        undeploy attacker5
+
+ if padon Attackerhome6 then
+        undeploy attacker6
+
+ if padon Attackerhome7 then
+        undeploy attacker7
+
+ if padon Attackerhome8 then
+        undeploy attacker8
+
+ if padon Attackerhome9 then
+        undeploy attacker9
+
+ if padon Attackerhome10 then
+        undeploy attacker10
+
+ if padon Attackerhome11 then
+        undeploy attacker11
+
+ if padon Attackerhome12 then
+        undeploy attacker12
+
+ if padon Attackerhome13 then
+        undeploy attacker13
+
+ if padon Attackerhome14 then
+        undeploy attacker14
+
+ if padon Attackerhome15 then
+        undeploy attacker15
+
+ if padon Attackerhome16 then
+        undeploy attacker16
+
+ if padon Attackerhome17 then
+        undeploy attacker17
+
+ if padon Attackerhome18 then
+        undeploy attacker18
+
+ if padon Attackerhome19 then
+        undeploy attacker19
+
+ if padon Attackerhome20 then
+        undeploy attacker20
+
+
+ 	//**Spy blue in the face**//
+
+ if padon bluespy then
+        undeploy blueman,
+        undeploy blueman2,
+        undeploy blueman3
+
+ if setupboris then
+        createtrooper "Boris_S" grenade boris_born blue,
+        setnpc boris_s 1,
+        setfacing boris_s 114,
+        setitemflag boris_s strategic 1,
+	trigger keepthepeace
+
+
+ if keepthepeace then
+	ally blue green,
+        ally green blue,
+	ally blue tan,
+        ally tan blue,
+        ally grey blue,
+        ally blue grey,
+	ally tan grey
+
+ if padon blueguards then
+        undeploy Blueman1
+
+ if BlueAttackers then
+        setspeed blueman slow,
+        order Blueman goto bluespy,
+        order Blueman1 goto blueguards,
+        setspeed blueman1 slow,
+        setspeed blueman2 slow,
+        order Blueman2 goto bluespy,
+        setspeed blueman3 slow,
+        order Blueman3 goto bluespy
+
+ if killed blueman3 then
+        createpowerup "" grenade blueman2 4
+
+ if killed Blueman then
+        createpowerup "" recon blueman 2
+
+ if killed blueman1 then
+        createpowerup "" medpack blueman1
+
+ //Boris setup//
+ if padon openspydoor butnot onetimespy then
+        setobjstate bord bord_go,
+        triggerdelay 1000 spyvoice,
+        trigger onetimespy
+
+ if spyvoice butnot killedBman then
+        playsound "1101BlueSpy.wav" 1 0
+
+ if free butnot killedbman2 then
+        triggerdelay 3500 givesargepower,
+        triggerdelay 4000 desguiseboris
+
+ if desguiseboris then
+        setforcecolor Boris_S tan,
+        playsound "zipper_8Bit.wav" boris_s 2 1
+
+ if givesargepower butnot onepower then
+        createpowerup "undercover2" disguisetan greensarge1 3,
+        trigger onepower
+
+ if boris_order then
+        order Boris_S goto bman2 inmode ignore,
+        triggerdelay 8000 boris_order2
+
+ if boris_order2 then
+        order Boris_S goto remove_boris
+
+ if padon remove_boris then
+        undeploy Boris_S
+
+ if killed Boris_S then
+        trigger killedBman,
+        trigger killedbman2,
+        setitemflag boris_s strategic 0,
+        createpowerup "sucker" medkit Boris_S,
+        trigger damnation
+
+ if damnation butnot onepower then
+         createpowerup "undercover2" disguisetan Boris_S 3,
+
+ //**Prison action**//
+ if padon open1 butnot oneopen1 then
+        setobjstate caged1 caged1_go,
+        order priszomb1 goto shon1 inmode defend,
+        triggerdelay 4500 zombattack1,
+        trigger oneopen1
+
+ if zombattack1 then
+        order priszomb1 follow greensarge1 inmode attack
+
+ if padon open2 butnot oneopen2 then
+        setobjstate caged2 caged2_go,
+        order priszomb2 goto shon2 inmode defend,
+        triggerdelay 4500 zombattack2,
+        trigger oneopen2
+
+ if zombattack2 then
+        order priszomb2 follow greensarge1 inmode attack
+
+ if padon open3 butnot oneopen3 then
+        setobjstate caged3 caged3_go,
+        order priszomb3 goto shon3 inmode defend,
+        triggerdelay 4500 zombattack3,
+        trigger oneopen3
+
+ if zombattack3 then
+        order priszomb3 follow greensarge1 inmode attack
+
+ if padon open4 butnot oneopen4 then
+        setobjstate caged4 caged4_go,
+        order priszomb4 goto shon4 inmode defend,
+        triggerdelay 4500 zombattack4,
+        trigger oneopen4
+
+ if zombattack4 then
+        order priszomb4 follow greensarge1 inmode attack
+
+ if padon open5 butnot oneopen5 then
+        setobjstate caged5 caged5_go,
+        order priszomb5 goto shon5 inmode defend,
+        triggerdelay 4500 zombattack5,
+        trigger oneopen5
+
+ if zombattack5 then
+        order priszomb5 follow greensarge1 inmode attack
+
+ //**Citizens**//
+
+ if startwalking then
+        setspeed walkman1 slow,
+        order walkman1 goto walker01 inmode ignore,
+        triggerdelay 4000 startwalk02
+
+ if startwalk02 then
+        setspeed walkman1 slow,
+        order walkman1 goto walker02 inmode ignore,
+        triggerdelay 10000 startwalk03
+
+ if startwalk03 then
+        setspeed walkman1 slow,
+        order walkman1 goto walker03 inmode ignore,
+        triggerdelay 10000 startwalk04
+
+ if startwalk04 then
+        setspeed walkman1 slow,
+        order walkman1 goto walker04 inmode ignore,
+        triggerdelay 20000 startwalk05
+
+ if startwalk05 then
+        setspeed walkman1 slow,
+        order walkman1 goto walker05 inmode ignore,
+        triggerdelay 20000 startwalk06
+
+if startwalk06 then
+        setspeed walkman1 slow,
+        order walkman1 goto walker06 inmode ignore,
+        triggerdelay 10000 startwalk07
+
+ if startwalk07 then
+        setspeed walkman1 slow,
+        order walkman1 goto walker01 inmode ignore,
+        triggerdelay 10000 startwalking
+
+
+        //Backmenpatrols//
+ if backmenstart1 then
+        setspeed backman1 slow,
+        order backman1 goto bman1 inmode defend
+ if padon bman1 then
+        order backman1 goto bman2 inmode defend
+ if padon bman2 then
+        order backman1 goto bman1 inmode defend
+
+ if backstart2 then
+        setspeed backman2 slow,
+        order backman2 goto man2 inmode defend
+ if padon man2 then
+        order backman2 goto man1 inmode defend
+ if padon man1 then
+        order backman2 goto man2 inmode defend
+
+ 	//backman alert//
+ if hit backman1 butnot canonlydieonce then
+        trigger toastnow,
+        trigger toastnow2,
+        trigger extracrispy,
+        triggerdelay 500 canonlydieonce
+
+ if hit backman2 butnot canonlydieonce then
+        trigger toastnow,
+        trigger extracrispy,
+        triggerdelay 500 canonlydieonce
+
+ if toastnow butnot onlyonebackhit then
+        trigger globalalert10,
+        trigger tankact1,
+        triggerdelay 30000 tankact2,
+        triggerdelay 10000 tankact3,
+        triggerdelay 2500 tankact4,
+        triggerdelay 2000 tankact5,
+        triggerdelay 1500 tankact6,
+        trigger onlyonebackhit
+
+ if tankact1 then
+        createtrooper "tankman1" rifle tanked1 tan,
+        order tankman1 goto removetime inmode ignore
+
+ if padon removetime then
+        undeploy tankman1,
+        createvehicle "ta1" tank tankspot tan,
+        setfacing ta1 130,
+        trigger ta_1_go
+
+ if ta_1_go then
+        order ta1 goto tankguard3 inmode attack,
+        triggerdelay 2000 ta1_killscum
+
+ if ta1_killscum then
+        order ta1 follow greensarge1 inmode attack,
+        triggerdelay 30000 ta1_retire
+
+ if ta1_retire then
+        order ta1 goto tankguard3
+
+ if tankact2 then
+        createtrooper "tankman2" rifle tanked2 tan,
+        order tankman2 goto removetime2 inmode ignore
+
+ if padon removetime2 then
+        undeploy tankman2,
+        createvehicle "ta2" tank tankspot tan,
+        setfacing ta2 130,
+        trigger ta2_go
+
+ if ta2_go then
+  order ta2 goto tankguard3 inmode attack,
+        triggerdelay 2000 ta2_killscum
+
+ if ta2_killscum then
+        order ta2 follow greensarge1 inmode attack,
+        triggerdelay 30000 ta2_retire
+
+ if ta2_retire then
+        order ta2 goto man1 inmode defend
+
+
+ if tankact3 then
+        createtrooper "tankman3" rifle tanked3 tan,
+        order tankman3 goto removetime3 inmode ignore
+
+ if padon removetime3 then
+        undeploy tankman3,
+        createvehicle "ta3" tank tankspot tan,
+        setfacing ta3 130,
+        trigger ta3_go
+        
+ if ta3_go then
+        triggerdelay 2000 ta3_defenddoor
+
+ if ta3_defenddoor then
+	order ta3 goto tankguard inmode defend
+
+ if padon tankguard then
+        triggerdelay 1000 turnmug1
+
+ if turnmug1 then
+        setfacing ta3 178,
+        triggerdelay 3000 turnmug2
+ if turnmug2 then
+        setfacing ta3 0,
+        triggerdelay 1000 turnmug1
+
+ if tankact4 then
+        createtrooper "tankman4" bazooka tanked4 tan,
+        order tankman4 follow greensarge1 inmode defend
+
+ if tankact5 then
+        createtrooper "tankman5" bazooka tanked5 tan,
+        order tankman5 follow greensarge1 inmode defend
+
+ if tankact6 then
+        createtrooper "tankman6" mortar tanked6 tan,
+        order tankman6 follow greensarge1 inmode defend
+
+ //jeep attack//
+
+ if jeepster1_action then
+        setfacing jeepster1 0,
+        trigger Jeep_dep_once,
+        triggerdelay 1000 jeep1_go
+
+ if Jeep_dep_once butnot jeep_onlyonce then
+        createtrooper "jeepster1" bazooka jeepmove tan,
+        setspeed jeepster1 slow,
+        triggerdelay 500 jeep_onlyonce
+
+ if jeep1_go then
+        order jeepster1 goto jeepmove1 inmode attack,
+        triggerdelay 5000 jeep1_go2
+
+ if jeep1_go2 then
+        order jeepster1 goto jeepmove2 inmode attack,
+        triggerdelay 5000 jeep1_go3
+
+ if jeep1_go3 then
+        order jeepster1 goto jeepmove3 inmode attack,
+        triggerdelay 5000 jeep1_go4
+
+ if jeep1_go4 then
+        order jeepster1 goto jeepmove4 inmode attack,
+        triggerdelay 5000 jeep1_go5
+
+ if jeep1_go5 then
+        order jeepster1 goto jeepmove5 inmode attack,
+        triggerdelay 5000 jeep1_go6
+ 
+ if jeep1_go6 then
+        order jeepster1 goto jeepmove6 inmode attack,
+        triggerdelay 5000 jeep1_go7
+
+ if jeep1_go7 then
+        order jeepster1 goto jeepmove7 inmode attack,
+        triggerdelay 5000 jeep1_go8
+
+ if jeep1_go8 then
+        order jeepster1 goto jeepmove8 inmode attack,
+        triggerdelay 5000 jeep1_go9
+
+ if jeep1_go9 then
+        order jeepster1 goto jeepmove9 inmode attack,
+        triggerdelay 5000 jeep1_go10
+
+ if jeep1_go10 then
+        order jeepster1 goto jeepmove5 inmode attack,
+        triggerdelay 5000 jeep1_go11
+
+ if jeep1_go11 then
+        order jeepster1 goto jeepmove4 inmode attack,
+        triggerdelay 5000 jeep1_go12
+
+ if jeep1_go12 then
+        order jeepster1 goto jeepmove3 inmode attack,
+        triggerdelay 5000 jeep1_go13
+
+ if jeep1_go13 then
+        order jeepster1 goto jeepmove inmode attack,
+        triggerdelay 5000 jeepster1_action
+
+ //**Jeep two action**//
+ if extracrispy then
+        createvehicle "jeepster2" jeep jeep1 tan,
+        triggerdelay 2000 jeep2_go
+
+ if jeep2_go then
+        order jeepster2 goto jeep2 inmode attack,
+        triggerdelay 5000 jeep2_gomore
+
+ if jeep2_gomore then
+        order jeepster2 goto jeep3 inmode attack,
+        triggerdelay 3000 jeep2_lastrun
+
+ if jeep2_lastrun then
+        order jeepster2 follow greensarge1 inmode defend,
+        triggerdelay 6000 retire_jeep
+
+ if retire_jeep then
+        order jeepster2 goto shon2
+
+        //**Unit Patrols**
+//Patrol1
+if padon patrol4 then
+        order PatrolGuard1 goto patrol3
+if padon patrol3 then
+        order PatrolGuard1 goto patrol4
+//Patrol2
+if padon patrol2 then
+        order PatrolGuard2 goto patrol1
+if padon patrol1 then
+        order PatrolGuard2 goto patrol2
+//Patrol3
+if padon patrol6 then
+        order PatrolGuard3 goto patrol5
+
+if padon patrol5 then
+        order PatrolGuard3 goto patrol6
+
+//Patrol4
+if padon patrol8 then
+        order PatrolGuard4 goto patrol7
+if padon patrol7 then
+        order PatrolGuard4 goto patrol8
+//Patrol5
+if padon patrol10 then
+        order PatrolGuard5 goto patrol9
+if padon patrol9 then
+        order PatrolGuard5 goto patrol10
+//Patrol6
+if padon patrol12 then
+        order PatrolGuard6 goto patrol11
+if padon patrol11 then
+        order PatrolGuard6 goto patrol12
+        //**Flame Patrols**
+//FPatrol1
+if padon flamepatrol14 then
+        order FlamePatrol1 goto flamepatrol13
+if padon flamepatrol13 then
+        order FlamePatrol1 goto flamepatrol14
+//FPatrol2
+if padon flamepatrol15 then
+        order FlamePatrol2 goto flamepatrol16
+if padon flamepatrol16 then
+        order FlamePatrol2 goto flamepatrol15
+//FPatrol3
+if padon flamepatrol18 then
+        order FlamePatrol3 goto flamepatrol19
+if padon flamepatrol19 then
+        order FlamePatrol3 goto flamepatrol20
+if padon flamepatrol20 then
+        order FlamePatrol3 goto (1802,847),
+	triggerdelay 5000 flamedirection2
+if flamedirection2 then
+        order FlamePatrol3 goto (1656,757),
+        triggerdelay 3000 flamedirection1
+if flamedirection1 then
+        order FlamePatrol3 goto flamepatrol17
+if padon flamepatrol17 then
+        order FlamePatrol3 goto flamepatrol18
+
+//BPatrol1
+if padon bazpatrol31 then
+        order BazPatrol1 goto bazpatrol32
+if padon bazpatrol32 then
+        order BazPatrol1 goto bazpatrol33
+if padon bazpatrol33 then
+        order BazPatrol1 goto bazpatrol30
+if padon bazpatrol30 then
+        order BazPatrol1 goto bazpatrol31
+//BPatrol2
+if padon bazpatrol28 then
+        order BazPatrol2 goto bazpatrol29
+if padon bazpatrol29 then
+        order BazPatrol2 goto (3133,1036),
+        triggerdelay 4000 bazdirection1
+if bazdirection1 then
+        order Bazpatrol2 goto bazpatrol27
+if padon bazpatrol27 then
+        order BazPatrol2 goto bazpatrol28
+
+//**Key Master segment**//
+
+if padon deployKM butnot nomorekm then
+        createtrooper "KM" rifle kmdeployed tan,
+        setfacing km 128,
+        triggerdelay 500 thesargespeaks,
+        triggerdelay 9000 sendthekm,
+        triggerdelay 500 nocovervo,
+        trigger nomorekm
+
+ if nocovervo testvar getdisguise greensarge1 <> 1 then
+        playsound "freeze.wav" 16 0,
+        triggerdelay 2000 sargenocover,
+        triggerdelay 700 sendthekm
+
+ if sargenocover then
+        playsound "HoldIt.wav" 16 0
+
+ if kmvoice butnot deadkm then
+        playsound "1101TanTrooper.wav" greensarge1 0 1
+
+ if sendthekm then
+        order KM goto alarmtrig1
+
+ if thesargespeaks testvar getdisguise greensarge1 <> 5 then
+        playsound "1101sarge2.wav" greensarge1 16 0,
+        triggerdelay 4500 kmvoice
+
+//**killing the Key master**//
+
+ if killed KM then
+        moveitem klure km,
+        moveitem key km,
+	trigger deadkm
+
+
+//**alarm activated sequence**//
+
+if padon alarmtrig1 butnot onealarm1trig then
+        order kmdefender1 follow greensarge1 inmode defend,
+        order kmdefender2 follow greensarge1 inmode defend,
+        order kmdefender3 follow greensarge1 inmode defend,
+        order kmdefender4 follow greensarge1 inmode defend,
+        order kmdefender5 follow greensarge1 inmode defend,
+        order kmdefender6 follow greensarge1 inmode defend,
+        order kmdefender7 follow greensarge1 inmode defend,
+        order kmbaz1 follow greensarge1 inmode defend,
+        order kmbaz2 follow greensarge1 inmode defend,
+	order kmbaz3 follow greensarge1 inmode defend,
+        order flamepatrol2 follow greensarge1 inmode defend,
+        trigger globalalert,
+        trigger onealarm1trig
+
+ //**KM alarm**//
+ if globalalert butnot offalarm then
+        playsound "alarm3_8Bit.wav" 4 0 1,
+        triggerdelay 60000 offalarm
+
+ //**Alarm activated sequence2**//
+
+ if hit tangrenadier2 by greensarge1 then
+        trigger globalalert,
+        trigger allkillthemug1
+
+ if hit tangrenadier3 by greensarge1 then
+        trigger globalalert,
+        trigger allkillthemug1
+
+ if hit patrolguard1 by greensarge1 then
+        trigger globalalert,
+        trigger allkillthemug1
+
+ if hit patrolguard2 by greensarge1 then
+        trigger globalalert,
+        trigger allkillthemug1
+
+ if hit patrolguard3 by greensarge1 then
+        trigger globalalert,
+        trigger allkillthemug1
+
+ if hit patrolguard4 by greensarge1 then
+        trigger globalalert,
+        trigger allkillthemug1
+
+ if hit patrolguard5 by greensarge1 then
+        trigger globalalert,
+        trigger allkillthemug1
+
+ if hit patrolguard6 by greensarge1 then
+        trigger globalalert,
+        trigger allkillthemug1
+
+ if hit standg1 by greensarge1 then
+        trigger globalalert,
+        trigger allkillthemug1
+
+ if hit standg2 by greensarge1 then
+        trigger globalalert,
+        trigger allkillthemug1
+
+ if hit tanflamer1 by greensarge1 then
+        trigger globalalert,
+        trigger allkillthemug1
+
+ if hit tanflamer2 by greensarge1 then
+        trigger globalalert,
+        trigger allkillthemug1
+
+ if hit fronttank1 hit fronttank2 hit sidetank1 hit sidetank2 by greensarge1 then
+        trigger globalalert ,
+        trigger allkillthemug1
+
+ if allkillthemug1 then
+        order tangrenadier2 follow greensarge1 inmode defend,
+        order tangrenadier3 follow greensarge1 inmode defend,
+        order patrolguard1 follow greensarge1 inmode defend,
+        order patrolguard2 follow greensarge1 inmode defend,
+        order patrolguard3 follow greensarge1 inmode defend,
+        order patrolguard4 follow greensarge1 inmode defend,
+ 	order patrolguard5 follow greensarge1 inmode defend,
+        order patrolguard6 follow greensarge1 inmode defend,
+        order standg1 follow greensarge1 inmode defend,
+        order standg2 follow greensarge1 inmode defend,
+        order tanflamer1 follow greensarge1 inmode defend,
+        order tanflamer2 follow greensarge1 inmode defend,
+        order tanflamer9 follow greensarge1 inmode defend,
+	order tanflamer8 follow greensarge1 inmode defend,
+	order tanflamer20 follow greensarge1 inmode defend,
+        order fronttank1 follow greensarge inmode defend,
+        order fronttank2 follow greensarge1 inmode defend,
+        order sidetank1 follow greensarge1 inmode defend,
+        order sidetank2 follow greensarge1 inmode defend,
+        order jdefence follow greensarge1 inmode defend,
+        order bazpatrol1 follow greensarge1 inmode defend,
+        order bazpatrol2 follow greensarge1 inmode defend,
+        order walkman1 follow greensarge1 inmode defend
+
+//**Locked segments**//
+ if padon locked2 butnot gotkey then
+        playsound "1101sarge3.wav" 16 0 
+
+ if padon locked3 butnot gotkey then
+        playsound "1101sarge3.wav" 16 0 
+
+ if padon locked4 butnot gotkey then
+        playsound "1101sarge3.wav" 16 0 
+
+ if padon locked5 butnot gotkey then
+        playsound "1101sarge3.wav" 16 0 
+
+ if padon locked6 butnot gotkey then
+        playsound "1101sarge3.wav" 16 0 
+
+ if padon locked7 butnot gotkey then
+        playsound "1101sarge3.wav" 16 0 
+
+ if padon locked8 butnot gotkey then
+        playsound "1101sarge3.wav" 16 0 
+
+ if padon locked9 butnot gotkey then
+        playsound "1101sarge3.wav" 16 0 
+
+ if padon locked10 butnot gotkey then
+        playsound "1101sarge3.wav" 16 0 
+
+ if padon locked11 butnot gotkey then
+        playsound "1101sarge3.wav" 16 0 
+
+ if padon locked12 butnot gotkey then
+        playsound "1101sarge3.wav" 16 0 
+
+ if padon locked13 butnot gotkey then
+        playsound "1101sarge3.wav" 16 0 
+
+ if padon locked1 butnot gotkey then
+        playsound "1101sarge3.wav" 16 0 
+
+        //**Powerup drop**//
+ if killed sweepercrate then
+        createpowerup "" sweeper sweepercrate
+
+ if killed kmcrate1 then
+        createpowerup "" medkit kmcrate1
+
+ if killed kmcrate2 then
+        createpowerup "" medpack kmcrate2 4
+
+ if killed kmcrate3 then
+        createpowerup "" grenade kmcrate3 10
+
+ if killed kmcrate4 then
+        createpowerup "" flamer kmcrate4 50
+
+ if killed mazecrate1 then
+        createpowerup "" medpack mazecrate1 10
+
+ if killed mazecrate2 then
+        createpowerup "" mine mazecrate2 10
+
+ if killed mazecrate3 then
+        createpowerup "" explosive mazecrate3 5
+
+ if killed extracrate1 then
+        createpowerup "" heavymg extracrate1
+
+ if killed extracrate2 then
+        createpowerup "" sniper extracrate2 69
+
+ if killed extracrate3 then
+        createpowerup "" flak extracrate3 30
+
+ if killed extracrate4 then
+        createpowerup "" mine extracrate4 35
+
+ if killed extracrate5 then
+        createpowerup "" explosive extracrate5 7,
+        setitemflag extracrate5 strategic 0
+
+
+//Secret Weapon//
+
+ object gear
+	state gear_initial
+		frame 1000 1
+
+        state gear_go
+                frame 100 1
+                frame 100 2
+                frame 100 3
+                frame 100 4
+                frame 100 5
+                frame 100 6
+                frame 100 7
+                frame 100 0
+                setobjstate gear gear_go
+
+ object golfball
+	state golf_initial
+		frame 1000 1
+        state golf_go
+                frame 5000 1
+                frame 7000 2
+                frame 9000 3
+                frame 11000 4
+                frame 13000 5
+                frame 15000 6
+                frame 17000 7
+                frame 10000 0
+                         triggerdelay 700 tanwins,
+                         showfailure "秘密武器发射了！我们完蛋了！"
+
+
+
+ object portal
+        state port_go
+                frame 80 1
+                frame 80 2
+                frame 80 3
+                frame 80 4
+                frame 80 5
+                frame 80 6
+                frame 80 7
+                frame 80 8
+                frame 80 0
+                setobjstate portal port_go
+
+ object caged1
+        state caged1_initial
+                frame 50 0
+        state caged1_stop
+                frame 900 6
+        state caged1_go
+                frame 50 0
+                frame 200 1
+                frame 300 2
+                frame 400 3
+                frame 500 4
+		frame 700 5
+		frame 900 6
+                        setobjstate caged1 caged1_stop
+
+ object caged2
+        state caged2_initial
+                frame 50 0
+        state caged2_stop
+                frame 900 6
+        state caged2_go
+                frame 50 0
+                frame 200 1
+                frame 300 2
+                frame 400 3
+                frame 500 4
+		frame 700 5
+		frame 900 6
+                        setobjstate caged2 caged2_stop
+
+ object caged3
+        state caged3_initial
+                frame 50 0
+        state caged3_stop
+                frame 900 6
+        state caged3_go
+                frame 50 0
+                frame 200 1
+                frame 300 2
+                frame 400 3
+                frame 500 4
+		frame 700 5
+		frame 900 6
+                        setobjstate caged3 caged3_stop
+
+ object caged4
+        state caged4_initial
+                frame 50 0
+        state caged4_stop
+                frame 900 6
+        state caged4_go
+                frame 50 0
+                frame 200 1
+                frame 300 2
+                frame 400 3
+                frame 500 4
+		frame 700 5
+		frame 900 6
+                        setobjstate caged4 caged4_stop
+
+ object caged5
+        state caged5_initial
+                frame 50 0
+        state caged5_stop
+                frame 900 6
+        state caged5_go
+                frame 50 0
+                frame 200 1
+                frame 300 2
+                frame 400 3
+                frame 500 4
+		frame 700 5
+		frame 900 6
+                        setobjstate caged5 caged5_stop
+
+ object bord
+        state bord_initial
+                frame 50 0
+        state bord_stop
+                frame 900 6
+        state bord_go
+                frame 50 0
+                frame 200 1
+                frame 300 2
+                frame 400 3
+                frame 500 4
+		frame 700 5
+		frame 900 6
+                        trigger free,
+                        triggerdelay 2500 boris_order,
+                        setobjstate bord bord_stop
+
+
+
+
+ object zombd1
+        state zombd1_initial
+                frame 50 0
+        state zombd1_stop
+                frame 900 6
+        state zombd1_go
+        	frame 50 0
+                frame 200 1
+                frame 300 2
+                frame 400 3
+                frame 500 4
+		frame 700 5
+                         order zomb1 follow greensarge1,
+                         setobjstate zombd1 zombd1_stop
+
+  object zombd2
+        state zombd2_initial
+                frame 50 0
+        state zombd2_stop
+                frame 900 6
+        state zombd2_go
+        	frame 50 0
+                frame 200 1
+                frame 300 2
+                frame 400 3
+                frame 500 4
+		frame 700 5
+                         order zomb2 follow greensarge1,
+                         setobjstate zombd1 zombd1_stop
+
+

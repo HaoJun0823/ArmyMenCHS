@@ -1,0 +1,165 @@
+#Item Flags		hex	decimal	   !!! use decimal
+# ITEMFLAG_MAP		0001	(1)
+# ITEMFLAG_VISBLOCK	0100	(256)
+# ITEMFLAG_WOOD		1000	(4096)
+# ITEMFLAG_STONE	2000	(8192)
+# ITEMFLAG_METAL	4000	(16384)
+# ITEMFLAG_CRUSH	1000000 (16777216)	can be crushed by tanks!
+
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis
+
+Miscellaneous	230	0	0	1	-1	100	15	1000	0.0	0	1
+
+Miscellaneous	300	0	0	257	-1	40	15	1000	0.69	0	1
+
+Miscellaneous	310	0	0	257	-1	40	15	1000	0.0	0	1
+Miscellaneous	311	0	0	257	-1	40	15	10000	0.0	0	1
+Miscellaneous	311	1	0	257	-1	40	15	10000	0.0	0	1
+Miscellaneous	311	2	0	257	-1	40	15	10000	0.0	0	1
+Miscellaneous	311	3	0	257	-1	40	15	10000	0.0	0	1
+Miscellaneous	311	4	0	257	-1	40	15	10000	0.0	0	1
+Miscellaneous	311	5	0	257	-1	40	15	10000	0.0	0	1
+Miscellaneous	311	6	0	257	-1	40	15	10000	0.0	0	1
+Miscellaneous	311	7	0	257	-1	40	15	10000	0.0	0	1
+Miscellaneous	311	8	0	257	-1	40	15	10000	0.0	0	1
+
+Miscellaneous	320	0	0	257	-1	24	15	1000	0.19	0	1
+
+Miscellaneous	400	0	0	257	-1	100	15	1000	0.0	0	1
+Miscellaneous	401	0	0	257	-1	100	15	1000	0.0	0	1
+Miscellaneous	402	0	0	0	-1	100	0	10000	0.0	0	1
+
+LINK		Miscellaneous 400	Miscellaneous 401	0	0
+LINK		Miscellaneous 400	Miscellaneous 402	0       0
+
+
+Miscellaneous	420	0	0	1	-1	32	15	1000	0.0	0	1
+
+Miscellaneous	430	0	0	1	-1	24	15	900	0.0	0	1
+
+Miscellaneous	435	0	0	1	-1	24	15	900	0.0	0	1
+
+
+Miscellaneous	550	0	0	257	100	40	15	1000	0.0	0	1
+Miscellaneous	550	1	0	257	-1	40	15	1000	0.0	0	1
+Miscellaneous	551	0	0	257	100	40	15	1000	-0.7	0	1
+Miscellaneous	551	1	0	257	-1	40	15	1000	-0.7	0	1
+Miscellaneous	552	0	0	257	100	40	0	100	0.0	0	1
+Miscellaneous	552	1	0	257	-1	40	0	100	0.0	0	1       1000
+Miscellaneous	553	0	0	257	100	40	0	10000	0.0	0	1
+Miscellaneous	553	1	0	257	-1	40	15	1000	-0.38	0	1       1000
+
+LINK		Miscellaneous 550	Miscellaneous 551	235     130
+LINK		Miscellaneous 550	Miscellaneous 552	0       0
+LINK		Miscellaneous 550	Miscellaneous 553	199     22
+
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis     Crush   Perm
+Miscellaneous	560	0	0	16385	20	64	15	1000	0.0	2	1
+Miscellaneous	560	1	0	16385	20	64	15	1000	0.0	2	1
+Miscellaneous	560	2	0	16385	-1	64	15	1000	0.0	2	1
+Miscellaneous	561	0	0	16385	20	64	15	1000	0.0	2	1
+Miscellaneous	561	1	0	16385	20	64	15	1000	0.0	2	1
+Miscellaneous	561	2	0	16385	-1	64	15	1000	0.0	2	1
+Miscellaneous	562	0	0	16385	20	64	15	10000	0.0	2	1
+Miscellaneous	562	1	0	16385	20	64	15	10000	0.0	2	1
+Miscellaneous	562	2	0	16385	-1	64	15	10000	0.0	2     	1
+
+Miscellaneous	570	0	0	257	-1	40	15	1000	-0.18	4	1
+
+Miscellaneous	580	0	0	16385	100	64	15	1000	0.0	2	1
+Miscellaneous	580	1	0	16385	100	64	15	1000	0.0	2	1       1000
+Miscellaneous	580	2	0	16385	-1	20	15	1000	0.0	2	1       1000
+Miscellaneous	581	0	0	16385	100	0	15	1000	0.0	2	1
+Miscellaneous	581	1	0	16385	100	0	15	1000	0.0	2	1       1000
+Miscellaneous	581	2	0	16385	-1	0	15	100	0.0	2	1       1000
+Miscellaneous	582	0	0	16385	100	40	15	1000	0.0	2	1
+Miscellaneous	582	1	0	16385	100	40	15	1000	0.0	2	1       1000
+Miscellaneous	582	2	0	16385	-1	20	15	1000	0.0	2     	1       1000
+
+Bush            600     0       0       257     -1      0     	0       1       0.0     0       1
+Bush            600     1       0       257     -1      0     	0       1       0.0     0       1
+Bush            600     2       0       257     -1      0     	0       1       0.0     0       1
+Bush            600     3       0       257     -1      0     	0       1       0.0     0       1
+Bush            600     4       0       257     -1      0     	0       1       0.0     0       1
+
+Miscellaneous	590	0	0	257	20	40	15	1000	0.0	2	1
+Miscellaneous	590	1	0	257	-1	40	15	1000	0.0	2	1
+
+Miscellaneous	600     0       0       257     -1      100    	0       900     0.0     0       1
+Miscellaneous	600     1       0       257     -1      100    	0       900     0.0     0       1
+Miscellaneous	600     2       0       257     -1      100    	0       900     0.0     0       1
+Miscellaneous	600     3       0       257     -1      100    	0       900     0.0     0       1
+Miscellaneous	600     4       0       257     -1      100    	0       900     0.0     0       1
+
+Miscellaneous   700     0       0       1       -1      24      15      1000    0.0     0       1
+Miscellaneous   710     0       0       1       -1      24      15      1000    0.0     0       1
+Miscellaneous   720     0       0       1       -1      24      15      1000    0.0     0       1
+Miscellaneous   730     0       0       1       -1      24      15      1000    0.0     0       1
+
+
+
+Miscellaneous   750     0       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   750     1       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   750     2       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   750     3       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   750     4       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   750     5       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   750     6       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   750     7       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   750     8       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   750     9       0       1       -1      0      	0      	1000    0.0     0       1
+
+
+
+Miscellaneous   800     0       0       257     -1      32      15      1000    -0.67   0       1
+Miscellaneous   810     0       0       257     -1      24      15      1000    -0.20   0       1
+Miscellaneous   820     0       0       257     -1      24      15      1000    -0.19   0       1
+Miscellaneous   830     0       0       257     -1      16      15      1000    0.0     0       1
+
+
+
+Miscellaneous   900     0       0       1       -1      16       0       1000     0.0    0       1
+
+
+
+
+
+LINK            MIscellaneous 580       Miscellaneous 582       159     134
+LINK            Miscellaneous 580       Miscellaneous 581       79      125
+
+
+LINK		Miscellaneous 560	Miscellaneous 561	0	0
+LINK		Miscellaneous 560	Miscellaneous 562	0       0
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis     Crush   Perm
+Rocks            500     0       0       1       -1      0       15      10      0.0     0       0
+
+
+Ground          300     0       0       1       -1      0      	15      1       0.0     2000	0
+
+Ground          320     0       0       1       -1      0      	15      1       0.0     2000	0
+
+Ground          330     0       0       1       -1      0      	15      1       0.0     2000	0
+
+Ground          350     0       0       1       -1      0      	15      1       0.0     2000	0
+
+Ground          360     0       0       1       -1      0      	15      1       0.0     2000	0
+
+Ground          380     0       0       1       -1      0      	15      1       0.0     2000	0
+
+Ground          390     0       0       1       -1      0      	15      1       0.0     2000	0
+
+Ground          410     0       0       1       -1      0      	0       1       0.0     2000	0
+
+
+Wall          	310     0       0       1       -1      100    	15      1       0.0     2000	0
+
+Wall          	340     0       0       1       -1      100    	15      1       0.0     2000	0
+                                                             
+Wall          	370     0       0       1       -1      100     15      1       0.0     2000	0
+
+Wall          	375     0       0       1       -1      100    	15      1       0.0     2000	0
+
+Wall          	385     0       0       1       -1      100    	15      1       0.0     2000	0

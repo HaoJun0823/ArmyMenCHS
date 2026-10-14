@@ -1,0 +1,677 @@
+		//Frontyard Mission 1//
+//**Level and script created by, Jason Wildblood**//
+
+
+//Pads//
+pad com                 11      noone > 0
+pad m                   12      Greensarge1 > 0
+pad depclone1           20      noone > 0
+pad depclone2           201     noone > 0
+pad clonning1           21      noone > 0
+pad clonning2           22      greytooper > 0
+pad tele1         	23      noone > 0
+pad tele2         	24      noone > 0
+pad roach1              26      noone > 0
+pad roach2              27      noone > 0
+pad roach3              28      noone > 0
+pad roachguard          29      noone > 0
+pad roachguard2         30      noone > 0
+pad votele              25      greensarge1 > 0
+pad winner              31      greensarge1 > 0
+pad meighty1            100     greensarge1 > 0
+pad meighty2            102     greensarge1 > 0
+pad stopeighty2         81      greensarge1 > 0
+pad meighty3            101     greensarge1 > 0
+pad meighty4            103     greensarge1 > 0
+pad stopeighty4         83      greensarge1 > 0
+pad meighty5            104     greensarge1 > 0
+pad meighty6            105     greensarge1 > 0
+
+pad green1              150     noone > 0
+pad grey1               151     noone > 0
+pad green2              152     noone > 0
+pad green3              153     noone > 0
+pad tan1                154     noone > 0
+
+//goose attackers//
+pad fueltofire          40      green trooper > 0
+pad goosedep1           41      noone   > 0
+pad goosedep2           42      noone   > 0
+pad goosedep3           43      noone   > 0
+pad goosedep4           44      noone   > 0
+pad goosedep5           45      noone   > 0
+pad goosedep6           46      noone   > 0
+pad sniperrun1          47      goose4  > 0
+pad sniperfinal         48      goose4  > 0
+
+//commander pads//
+pad commander1          51      noone   > 0
+pad commander2          52      noone   > 0
+pad commander3          53      noone   > 0
+pad commander4          54      noone   > 0
+
+
+//portal defence//
+pad portdef             200     greensarge1 > 0
+
+
+
+	//*Start*//
+
+if startup1 then
+        setbriefing "map06_1.bmp",
+        heal greensarge1 100,
+        trigger createthe80,
+        trigger setguarden,
+	triggerdelay 500 showmission1,
+        playsound "0601sarge1.wav" 16 0,
+        triggerdelay 1000 aboutface1,
+        trigger keepthepeace,
+	triggerdelay 500 startportsfx,
+        trigger setupporch
+
+if startportsfx then
+        playsound "portal1_8Bit.wav" portalsound 10 0 1
+
+if showmiss3 then
+        showpda "找到传送门，带士兵们回家。",
+        playsound "0602sarge2.wav" 16 0
+
+
+if showmission1 then
+        showpda "找到上校，把他带回来。"
+
+if keepthepeace then
+        ally tan grey,
+        ally grey tan,
+        ally blue grey,
+        ally grey blue,
+        ally tan blue,
+        ally blue tan
+
+        //**facings**//
+if aboutface1 then
+        setfacing greyguard1 74,
+        setfacing greyguard2 74,
+        setfacing greyguard3 74,
+        setfacing greyguard4 74,
+        setfacing greyguard5 74,
+        setfacing greyguard6 74,
+        setfacing tanguard1 74,
+        setfacing tanguard2 74,
+        setfacing tanguard3 74,
+        setfacing tanguard4 74,
+        setfacing tanguard5 74,
+        setfacing pathguard1 148,
+        setfacing pathguard2 148,
+        setfacing pathguard3 148,
+        setfacing pathguard4 148,
+        setfacing pathguard5 148,
+        setfacing lightbaz1 118,
+        setfacing flaming 118
+
+        //winfirst segment//
+if killed winmiscon then
+        triggerdelay 1000 petertestgreenwins
+
+if petertestgreenwins butnot killed greensarge1 then
+	trigger greenwins
+
+
+	//*Lose Conditions*//
+
+if killed greensarge1 then
+	trigger doh,
+        triggerdelay 1500 tanwins,
+        trigger loser
+if loser then
+        showfailure "中士死了！"
+
+	//*Mission 1 actions*//
+
+if createthe80 then
+        createpowerup "thedope" m80 (1056,103) 15
+
+        //**M80attackers**//
+
+if padon meighty1 butnot nomeighty1 then
+        trigger gomeighty1
+
+if gomeighty1 then
+        createtrooper "gren1" rifle (2748,4057) blue,
+        setm80 gren1 blue,
+        createexplosion gren1 135 0 green,
+
+        createtrooper "gry1" rifle (3464,3314) grey,
+        setm80 gry1 grey,
+        createexplosion gry1 135 0 green,
+
+        createtrooper "gren2" rifle (2592,4055) grey,
+        setm80 gren2 grey,
+        createexplosion gren2 135 0 green,
+
+        createtrooper "gren3" rifle (3691,3511) blue,
+        setm80 gren3 blue,
+        createexplosion gren3 135 0 green,
+
+        createtrooper "tn1" rifle (3513,3469) tan,
+        setm80 tn1 tan,
+        createexplosion tn1 135 0 green,
+
+        createtrooper "gren4" rifle (3507,3350) blue,
+        setm80 gren4 blue,
+        createexplosion gren4 135 0 green,
+
+        createtrooper "blue1" rifle (3419,3447) blue,
+        setm80 blue1 blue,
+        createexplosion blue1 135 0 green,
+
+        triggerdelay 500 timetogoto,
+        trigger nomeighty1
+
+if timetogoto then
+        order gren1 follow greensarge1,
+        order gren3 follow greensarge1,
+        order gren4 follow greensarge1
+
+if killed gren1 then
+        triggerdelay 500 resgren1
+
+if resgren1 butnot stopres1 then
+        resurrect gren1 (2748,4057),
+        setm80 gren1 blue,
+        createexplosion gren1 135 0 green,
+        triggerdelay 500 timetogoto
+
+if killed gren2 then
+        triggerdelay 1000 resgren2
+
+if resgren2 butnot stopres2 then
+        resurrect gren2 (2592,4055),
+        setm80 gren2 grey,
+        createexplosion gren2 135 0 green,
+        triggerdelay 500 timetogoto
+
+if killed gren3 then
+        triggerdelay 1500 resgren3
+
+if resgren3 butnot stopres3 then
+        resurrect gren3 (3513,3469),
+        setm80 gren3 blue,
+        createexplosion gren3 135 0 green,
+        triggerdelay 500 timetogoto
+
+if padon stopeighty2 then
+        trigger stopres1,
+        trigger stopres2,
+        trigger stopres3
+
+//m80 02//
+if padon meighty2 butnot nomeighty2 then
+        trigger gomeighty2
+
+if gomeighty2 then
+        createtrooper "gren5" rifle (3804,2737) tan,
+        setm80 gren5 tan,
+        createexplosion gren5 135 0 green,
+
+        createtrooper "gry2" rifle (3997,2849) grey,
+        setm80 gry2 grey,
+        createexplosion gry2 135 0 green,
+
+        createtrooper "gren6" rifle (3635,2716) tan,
+        setm80 gren6 tan,
+        createexplosion gren6 135 0 green,
+
+        createtrooper "gren7" rifle (3221,3901) grey,
+        setm80 gren7 grey,
+        createexplosion gren6 135 0 green,
+
+        createtrooper "gren8" rifle (3101,3744) tan,
+        setm80 gren8 tan,
+        createexplosion gren8 135 0 green,
+
+        createtrooper "blue2" rifle (3262,3796) blue,
+	setm80 blue2 blue,
+        createexplosion blue2 135 0 green,
+
+        triggerdelay 500 timetogoto2,
+        trigger nomeighty2
+
+if timetogoto2 then
+        order blue2 follow greensarge1,
+        order gry2 follow greensarge1,
+        order gren7 follow greensarge1
+
+if killed gren5 butnot stopres21 then
+        triggerdelay 500 resgren21
+if resgren21 then
+        resurrect gren5 (2748,4057),
+        setm80 gren5 tan,
+        createexplosion gren5 135 0 green,
+        triggerdelay 500 timetogoto2
+
+if killed gren6 butnot stopres22 then
+        triggerdelay 1000 resgren22
+if resgren22 then
+        resurrect gren6 (2592,4055),
+        setm80 gren6 tan,
+        createexplosion gren6 135 0 green,
+        triggerdelay 500 timetogoto2
+
+if killed gren7 butnot stopres23 then
+        triggerdelay 1500 resgren23
+if resgren23 then
+        resurrect gren7 (3513,3469),
+        setm80 gren7 grey,
+        createexplosion gren6 135 0 green,
+        triggerdelay 500 timetogoto2
+
+if padon stopeighty4 then
+        trigger stopres21,
+        trigger stopres22,
+        trigger stopres23
+//m 80 03
+if padon meighty3 butnot nomeighty3 then
+        trigger gomeighty3
+
+if gomeighty3 then
+        createtrooper "gren9" rifle (3511,3300) blue,
+        setm80 gren9 blue,
+        createexplosion gren9 135 0 green,
+
+        createtrooper "gren10" rifle (3182,2487) blue,
+        setm80 gren10 blue,
+        createexplosion gren10 135 0 green,
+
+        createtrooper "gren11" rifle (3411,2323) green,
+        setm80 gren11 green,
+        createexplosion gren11 135 0 green,
+
+        createtrooper "gren12" rifle (3564,3502) tan,
+        setm80 gren12 tan,
+        createexplosion gren12 135 0 green,
+
+        createtrooper "tn2" rifle (3802,3502) tan,
+        setm80 tn2 tan,
+        createexplosion tn2 135 0 green,
+
+        createtrooper "blue3" rifle (3321,2429) blue,
+        setm80 blue3 blue,
+        createexplosion blue3 135 0 green,
+
+        triggerdelay 500 timetogoto4,
+        trigger nomeighty3
+
+if timetogoto3 then
+        order blue3 follow greensarge1,
+        order gren11 follow greensarge1,
+        order gren12 follow greensarge1
+
+if killed blue3 butnot stopres31 then
+        triggerdelay 500 resgren31
+if resgren31 then
+        resurrect blue3 (2748,4057),
+        setm80 blue3 blue,
+        createexplosion blue3 135 0 green,
+        triggerdelay 500 timetogoto3
+
+if killed gren10 butnot stopres32 then
+        triggerdelay 1000 resgren32
+if resgren32 then
+        resurrect gren10 (2592,4055),
+        setm80 gren10 tan,
+        createexplosion gren10 135 0 green,
+        triggerdelay 500 timetogoto3
+
+if killed gren11 butnot stopres33 then
+        triggerdelay 1500 resgren33
+if resgren33 then
+        resurrect gren11 (3513,3469),
+        setm80 gren11 green,
+        createexplosion gren11 135 0 green,
+        triggerdelay 500 timetogoto3
+
+if padon stopeighty4 then
+        trigger stopres31,
+        trigger stopres32,
+        trigger stopres33
+
+//m80 04
+if padon meighty4 butnot nomeighty4 then
+        trigger gomeighty4
+
+if gomeighty4 then
+        createtrooper "gren13" rifle (4005,2855) grey,
+        setm80 gren13 grey,
+        createexplosion gren13 135 0 green,
+
+        createtrooper "gren14" rifle (3730,3046) green,
+        setm80 gren14 green,
+        createexplosion gren14 135 0 green,
+
+        createtrooper "gren15" rifle (2571,2001) green,
+        setm80 gren15 green,
+        createexplosion gren15 135 0 green,
+
+        createtrooper "gren16" rifle (2777,1821) grey,
+        setm80 gren16 grey,
+        createexplosion gren16 135 0 green,
+
+        createtrooper "tn3" rifle (3853,2922) tan,
+        setm80 tn3 tan,
+        createexplosion tn3 135 0 green,
+
+        createtrooper "tn4" rifle (2709,1920) tan,
+        setm80 tn4 tan,
+        createexplosion tn4 135 0 green,
+
+        triggerdelay 500 timetogoto4,
+        trigger nomeighty4
+
+if timetogoto4 then
+        order tn4 follow greensarge1,
+        order gren14 follow greensarge1,
+        order gren15 follow greensarge1
+
+if killed tn4 butnot stopres41 then
+        triggerdelay 500 resgren41
+if resgren41 then
+        resurrect tn4 (2709,1920),
+        setm80 tn4 tan,
+        createexplosion tn4 135 0 green,
+        triggerdelay 500 timetogoto4
+
+if killed gren16 butnot stopres42 then
+        triggerdelay 1000 resgren42
+if resgren42 then
+        resurrect gren16 (2777,1821),
+        setm80 gren16 green,
+        createexplosion gren16 135 0 green,
+        triggerdelay 500 timetogoto4
+
+if killed gren14 butnot stopres43 then
+        triggerdelay 1500 resgren43
+if resgren43 then
+        resurrect gren14 (3730,3046),
+        setm80 gren14 green,
+        createexplosion gren14 135 0 green,
+        triggerdelay 2000 timetogoto4
+
+if padon stopeighty4 then
+        trigger stopres41,
+        trigger stopres42,
+        trigger stopres43
+
+//m80 05
+
+if padon meighty5 butnot nomeighty5 then
+        trigger gomeighty5
+
+if gomeighty5 then
+        createtrooper "gren17" rifle (3025,2410) blue,
+        setm80 gren17 blue,
+        createexplosion gren17 135 0 green,
+
+        createtrooper "gren18" rifle (3262,3211) green,
+        setm80 gren18 green,
+        createexplosion gren18 135 0 green,
+
+        createtrooper "gren19" rifle (1774,1406) green,
+        setm80 gren19 green,
+        createexplosion gren19 135 0 green,
+
+        createtrooper "gren20" rifle (2041,1485) blue,
+        setm80 gren20 blue,
+        createexplosion gren20 135 0 green,
+
+        createtrooper "tn5" rifle (3853,2922) tan,
+        setm80 tn5 tan,
+        createexplosion tn5 135 0 green,
+
+        createtrooper "blue4" rifle (2709,1920) blue,
+        setm80 blue4 blue,
+        createexplosion blue4 135 0 green,
+
+        triggerdelay 500 timetogoto5,
+        trigger nomeighty5
+
+if timetogoto5 then
+        order tn5 follow greensarge1,
+        order blue4 follow greensarge1,
+        order gren19 follow greensarge1
+
+if killed tn5 butnot stopres51 then
+        triggerdelay 500 resgren51
+if resgren51 then
+        resurrect tn5 (3853,2922),
+        setm80 tn5 tan,
+        createexplosion tn5 135 0 green,
+        triggerdelay 500 timetogoto5
+
+if killed blue4 butnot stopres52 then
+        triggerdelay 1000 resgren52
+if resgren52 then
+        resurrect blue4 (2709,1920),
+        setm80 blue4 blue,
+        createexplosion blue4 135 0 green,
+        triggerdelay 500 timetogoto5
+
+if killed gren19 butnot stopres53 then
+        triggerdelay 1500 resgren53
+if resgren53 then
+        resurrect gren19 (1774,1406),
+        setm80 gren19 green,
+        createexplosion gren19 135 0 green,
+        triggerdelay 500 timetogoto5
+
+if padon stopeighty4 then
+        trigger stopres51,
+        trigger stopres52,
+        trigger stopres53
+
+        //Garden setup//
+
+if killed guardenbaz then
+        createpowerup "" bazooka guardenbaz 8
+
+if killed lightgren1 then
+        createpowerup "" grenade lightgren1 8
+
+if killed guardengren1 then
+        createpowerup "" grenade guardengren1 5
+
+if killed guardengren2 then
+        createpowerup "" grenade guardengren2 4
+
+if setguarden then
+	setaimode guardengren1 defend,
+        setaimode guardengren2 defend,
+        setaimode guarden1 defend,
+        setaimode guarden2 defend,
+        setaimode guarden3 defend,
+        setaimode guarden4 defend,
+        setaimode guarden5 defend,
+        setaimode guarden6 defend,
+        setaimode guardenbaz defend
+
+
+if hit guarden5 then
+        order guarden5 goto guardenbaz inmode evade
+
+        //**porch setup**//
+
+if setupporch then
+        setaipose greyguard2 prone,
+        setaipose greyguard3 kneel,
+        setaipose tanguard2 prone,
+        setaipose tanguard4 prone,
+        setaipose tanguard1 kneel,
+        setaipose tanguard3 kneel,
+        setaipose greyguard6 stand,
+        setaipose greyguard4 stand,
+        setaipose greyguard5 stand,
+        setaipose greyguard1 kneel,
+        setaipose pathguard1 kneel,
+        setaipose pathguard2 prone,
+        setaipose pathguard3 kneel,
+        setaipose pathguard4 prone,
+        setaipose pathguard5 kneel,
+        setaipose lightgen1 stand,
+        setaipose lightbaz1 stand,
+        setaipose flaming stand
+
+
+        //**Powerup drop**//
+
+if killed goose1 then
+        createpowerup "" medpack goose1 5
+
+if killed goose3 then
+        createpowerup "" grenade goose3 8
+
+if killed goose6 then
+        createpowerup "" medkit goose6
+
+if killed telguard1 then
+        createpowerup "" bazooka telguard1 10
+
+if killed telguard2 then
+        createpowerup "" bazooka telguard2 6,
+
+if killed goose4 then
+        createpowerup "" sniper goose4 69
+
+if killed portdeffend3 then
+        createpowerup "" medkit telguard2
+
+if killed portdeffend1 then
+        createpowerup "" flamer portdeffend1 20
+
+if killed portdeffend2 then
+        createpowerup "" flamer portdeffend1 25
+
+if killed portdeffend5 then
+        createpowerup "" flamer portdeffend1 2
+
+if killed greyguard1 then
+        createpowerup "" medpack greyguard1 5
+
+if killed tanguard1 then
+        createpowerup "" grenade tanguard1 10
+
+if killed greyguard6 then
+        createpowerup "" mortar greyguard6 15
+
+if killed greyguard4 then
+	createpowerup "" bazooka greyguard4 8
+
+if killed guarden5 then
+        createpowerup "" medpack guarded5 5
+
+if killed pathguard5 then
+        createpowerup "" medkit pathguard5
+
+if killed pathguard3 then
+        createpowerup "" grenade pathguard3 10
+
+if killed lightbaz1 then
+        createpowerup "" bazooka lightbaz1 10
+
+if killed flaming then
+        createpowerup "" flamer flaming 50
+
+if killed pathguard1 then
+        createpowerup "" flak pathguard1 30
+
+if killed guarden1 then
+        createpowerup "" flamer guarden1 60
+
+if killed guarden2 then
+        createpowerup "" recon guarden2 4
+
+if killed guarden3 then
+        createpowerup "" sniper guarden3 25
+
+if killed veteran then
+        createpowerup "" bazooka veteran 10
+
+if killed scorch then
+        createpowerup "" flamer scorch 50
+
+        //portal deffence//
+
+if padon portdef butnot offportdef then
+        createtrooper "portdeffend1" flamer (2336,0) grey,
+        createtrooper "portdeffend2" flamer (2721,0) grey,
+        createtrooper "portdeffend3" autorifle (2066,0) grey,
+        createtrooper "portdeffend4" autorifle (1991,0) grey,
+        createtrooper "portdeffend5" autorifle (2630,0) grey,
+        setforcecolor portdeffend1 tan,
+        setforcecolor portdeffend3 grey,
+	setforcecolor portdeffend5 tan,
+        createroach "defencecock1" (3976,2012) grey,
+        createroach "defencecock2" (3976,1914) grey,
+        createroach "defencecock3" (3976,1810) grey,
+        createroach "defencecock4" (3976,1698) grey,
+        createroach "defencecock5" (3976,2154) grey,
+        trigger defenceorders,
+	playsound "0601sarge2.wav" 16 0,
+        triggerdelay 5000 moremugs,
+        trigger offportdef
+
+if defenceorders then
+        order portdeffend1 follow greensarge1,
+        order portdeffend2 follow greensarge1,
+	order portdeffend3 follow greensarge1,
+	order portdeffend4 follow greensarge1,
+        order portdeffend5 follow greensarge1,
+        order defencecock1 follow greensarge1,
+        order defencecock2 follow greensarge1,
+        order defencecock3 follow greensarge1,
+        order defencecock4 follow greensarge1,
+        order defencecock5 follow greensarge1
+
+if moremugs then
+        createroach "defencecock6" (3976,2012) grey,
+        createroach "defencecock7" (3976,1810) grey,
+        createroach "defencecock8" (3976,1696) grey,
+        trigger defenceorders2
+
+if defenceorders2 then
+        order defencecock6 follow greensarge1,
+        order defencecock7 follow greensarge1,
+        order defencecock8 follow greensarge1
+
+	//**Grey Guards**//
+
+if killed grayguard4 then
+        trigger powerup1
+if powerup1 then
+        createpowerup "h1" medpack grayguard4 3
+
+
+
+Object portal
+        state effect_go
+                frame 200 0
+                frame 200 1
+                frame 200 2
+                frame 200 3
+                frame 200 4
+                frame 200 5
+                frame 200 6
+                frame 200 7
+                frame 200 8
+                frame 10 0
+                	SETOBJSTATE portal effect_go,
+                        triggerdelay 1800 portal_cycle
+
+if portal_cycle then
+        setobjstate portal effect_go
+
+
+
+
+
+

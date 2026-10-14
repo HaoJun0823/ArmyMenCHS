@@ -1,0 +1,402 @@
+#Object Defaults Table
+
+#Item Flags
+# ITEMFLAG_MAP		0001	(1)
+# ITEMFLAG_VISBLOCK	0100	(256)
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis
+Miscellaneous	1	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	1	1	0	1	-1	50	15	1000	0.0	0	1	9999
+Miscellaneous	2	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	2	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	3	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	3	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	4	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	4	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	5	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	5	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	6	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	6	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	7	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	7	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	8	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	8	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	9	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	9	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	10	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	10	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	11	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	11	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	12	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	12	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	13	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	13	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	14	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	14	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	15	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	15	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	16	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	16	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	17	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	17	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	18	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	18	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	19	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	19	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	20	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	20	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	21	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	21	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	22	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	22	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	23	0	0	1	125	50	15	1000	0.0	0	1
+Miscellaneous	23	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	24	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	24	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	25	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	25	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	26	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	26	1	0	1	-1	50	15	1000	0.0	0	1
+
+Miscellaneous	30	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	30	1	0	1	-1	50	0	3 	0.0	0	1
+Miscellaneous	31	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	31	1	0	1	-1	50	0	3 	0.0	0	1
+Miscellaneous	32	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	32	1	0	1	-1	50	0	3 	0.0	0	1
+Miscellaneous	33	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	33	1	0	1	-1	50	0	3 	0.0	0	1
+Miscellaneous	34	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	34	1	0	1	-1	50	0	3 	0.0	0	1
+Miscellaneous	35	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	35	1	0	1	-1	50	0	3 	0.0	0	1
+Miscellaneous	36	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	36	1	0	1	-1	50	0	3 	0.0	0	1
+Miscellaneous	52	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	52	1	0	1	-1	50	15	3 	0.0	0	1
+Miscellaneous	53	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	53	1	0	1	-1	50	0	3 	0.0	0	1
+
+Miscellaneous   900     0       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     1       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     2       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     3       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     4       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     5       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     6       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     7       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     8       0       1       -1      12      15      1000    0.0     0       1
+
+Miscellaneous   901     0       0       1       200     60      15      1000    0.0     0       1
+
+Miscellaneous 	990     0       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     1       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     2       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     3       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     4       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     5       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     6       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     7       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     8       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     9       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     10      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     11      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     12      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     13      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     14      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     15      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     16      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     17      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     18      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     19      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     20      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     21      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     22      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     23      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     24      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     25      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     26      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     27      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     28      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     29      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     30      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     31      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     32      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     33      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     34      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     35      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     36      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     37      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     38      0       1      	-1	60      15      1500   0.0     0       1
+
+Miscellaneous	600	0	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	605	0	0	1	-1	50	15	1000	0.0	0	1
+
+Building        1     	0       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	1       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	2       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	3       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	4       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	5       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	6       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	7       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	8       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	9       0       1      	-1	320     15      10000   0.0     0       1
+
+Building        10   	0       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	1       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	2       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	3       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	4       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	5       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	6       0       1       -1     	320     15      500     0.0     0       1
+Building        10   	7       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	8       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	9       0       1       -1     	320     15      500     0.0     0       1	
+
+Building        500     0       0       1       200     320     15      400    	0.0     0       1
+Building        500     1       0       1       -1     	320     15      400    	0.0     0       1	9999
+Building        530     0       0       1       -1     	320     15      500     0.0     0       1	
+Building        600   	0       0       1       -1     	320     15      1000    0.0     0       1	
+Building        630   	0       0       1       -1     	320     15      400     0.0     0       1	
+Building        660   	0       0       1       -1     	320     15      400    -0.91    0       1	
+
+Building        670   	0       0       1       -1     	320     15      500     0.0     0 	1   
+Building        670   	1       0       1       -1     	320     15      500     0.0     0 	1   
+Building        670   	2       0       1       -1     	320     15      500     0.0     0 	1   
+Building        670   	3       0       1       -1     	320     15      500     0.0     0 	1
+Building        670   	4       0       1       -1     	320     15      500     0.0     0 	1
+Building        670   	5       0       1       -1     	320     15      500     0.0     0 	1   
+Building        670   	6       0       1       -1     	320     15      500     0.0     0 	1   
+Building        670   	7       0       1       -1     	320     15      500     0.0     0 	1   
+Building        670   	8       0       1       -1     	320     15      500     0.0     0 	1   
+Building        670   	9       0       1       -1     	320     15      500     0.0     0 	1   
+
+Building        680   	0       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	1       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	2       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	3       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	4       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	5       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	6       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	7       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	8       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	9       0       1       -1     	320     15      450     0.0     0 	1   
+
+Bridge		200	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		205	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		210	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		215	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		220	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		225	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		230	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		235	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		240	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		245	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		250	0	0	1	-1	0	-15	2	0.0	0	1
+Bridge		255	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		260	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		265	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		270	0	0	1	-1	0	-15	3	0.0	0	1		
+
+Ground		230	0	0	0	-1	0	0	1	0.0	0	1		
+
+Miscellaneous	201	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	206	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	211	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	216	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	221	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	226	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	231	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	236	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	241	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	246	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	251	0	0	1	-1	50	15	1	0.0	0	1
+Miscellaneous	256	0	0	1	-1	50	15	1	0.0	0	1
+Miscellaneous	261	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	266	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	271	0	0	1	-1	50	15	1	0.0	0	1	
+
+Miscellaneous	202	0	0	1	-1	12	15	1000	1.02	0	1	
+Miscellaneous	203	0	0	1	-1	12	15	5 	1.23	0	1	
+Miscellaneous	207	0	0	1	-1	12	15	1000	2.64	0	1	
+Miscellaneous	208	0	0	1	-1	12	15	1000	2.64	0	1	
+Miscellaneous	212	0	0	1	-1	12	15	1000   -3.0	0	1	
+Miscellaneous	213	0	0	1	-1	12	15	1000   -3.13	0	1	
+Miscellaneous	217	0	0	1	-1	12	15	1000   -0.88	0	1	
+Miscellaneous	218	0	0	1	-1	12	15	5      -0.88	0	1	
+Miscellaneous	222	0	0	1	-1	12	15	1000   -0.27	0	1	
+Miscellaneous	223	0	0	1	-1	12	15	1000   -0.27	0	1	
+Miscellaneous	227	0	0	1	-1	12	15	1000	0.23	0	1	
+Miscellaneous	228	0	0	1	-1	12	15	1000	0.22	0	1	
+Miscellaneous	237	0	0	1	-1	12	15	1000   -0.89	0	1
+Miscellaneous	238	0	0	1	-1	12	15	1000	0.81	0	1
+Miscellaneous	242	0	0	1	-1	12	15	1000	0.85	0	1
+Miscellaneous	243	0	0	1	-1	12	15	1000   -0.88	0	1
+Miscellaneous	247	0	0	1	-1	12	15	1000	0.76	0	1
+Miscellaneous	248	0	0	1	-1	12	15	1000   -0.89	0	1
+Miscellaneous	252	0	0	1	-1	12	15	1000	0.86	0	1
+Miscellaneous	253	0	0	1	-1	12	15	1000   -0.88	0	1
+Miscellaneous	257	0	0	1	-1	12	15	1000   -0.86	0	1
+Miscellaneous	262	0	0	1	-1	12	15	1000   -0.9	0	1
+Miscellaneous	267	0	0	1	-1	12	15	1000	0.82	0	1
+Miscellaneous	272	0	0	1	-1	12	15	1000   -2.7	0	1
+Miscellaneous	273	0	0	1	-1	12	15	1000	2.30	0	1
+Miscellaneous	274	0	0	1	-1	12	15	1000	0.22	0	1
+Miscellaneous	275	0	0	1	-1	12	15	1000   -0.26	0	1
+Miscellaneous	276	0	0	1	-1	12	15	1000   -0.29	0	1
+Miscellaneous	277	0	0	1	-1	12	15	1000	0.27	0	1
+Miscellaneous	278	0	0	1	-1	12	15	1000	2.75	0	1
+Miscellaneous	279	0	0	1	-1	12	15	1000   -3.0	0	1
+
+Miscellaneous	204	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	209	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	214	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	219	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	234	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	239	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	244	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	249	0	0	1	-1	50	15	1	0.0	0	1
+Miscellaneous	254	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	259	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	264	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	269	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	280	0	0	1	-1	50	15	1	0.0	0	1
+Miscellaneous	350	0	0	1	-1	100	15	1000	0.0	0	1
+Miscellaneous   700     0       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     1       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     2       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     3       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     4       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     5       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     6       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     7       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     8       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     9       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     10      0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     11      0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     12      0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     13      0       0       -1      0       0       10      0.0     0       0
+
+Miscellaneous   100     0       0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     1       0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     2       0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     3       0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     4       0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     5       0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     6       0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     7       0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     8       0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     9       0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     10      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     11      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     12      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     13      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     14      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     15      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     16      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     17      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     18      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     19      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     20      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     21      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     22      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     23      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     24      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     25      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     26      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     27      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     28      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     29      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     30      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     31      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     32      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     33      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     34      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     35      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     36      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     37      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     38      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     39      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     40      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     41      0       0       -1      0       0       1000    0.0     0       0
+Miscellaneous   100     42      0       0       -1      0       0       1000    0.0     0       0
+
+Fence		1	0	0     16777217	20	32	15	1000    2.06	3	1	0	128
+Fence		1	1	0	1	-1	0	0	1	1.34	0	1
+Fence		2	0	0     16777217	20	32	15	1000   -1.96	3	1	0	128
+Fence		2	1	0	1	-1	0	0	1      -1.53	0	1
+Fence		3	0	0     16777217	20	32	15	1000   -0.36	3	1	0	128
+Fence		3	1	0	1	-1	0	0	1      -0.40	0	1
+Fence		4	0	0     16777217	20	32	15	1000	0.38	3	1	0	128
+Fence		4	1	0	1	-1	0	0	1	0.27	0	1
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis
+Trees		1	0	0	4353	20	100	15	1000	0.0	-4	1
+Trees		1	1	0	257	-1	64	15	1000	0.0	0       1
+
+Trees		2	0	0	4353	20	100	15	1000	0.0	-4	1
+Trees		2	1	0	4353	30	64	15	1000	0.0	-4	1
+Trees		2	2	0	257	-1	12	15	1000	0.0	0	1
+
+Trees		3	0	0	4353	20	100	15	1000	0.0	-4      1
+Trees		3	1	0	4353	30	64	15	1000	0.0	-4      1
+Trees		3	2	0	257	-1	12	15	1000	0.0	0	1
+
+Trees		4	0	0	4353	20	100	15	1000	0.0	-4	1
+Trees		4	1	0	4353	30	64	15	1000	0.0	-4	1
+Trees		4	2	0	257	-1	12	15	1000	0.0	0	1
+
+Trees		5	0	0	4353	20	100	15	1000	0.0	-4	1
+Trees		5	1	0	4353	30	64	15	1000	0.0	-4	1
+Trees		5	2	0	257	-1	12	15	1000	0.0	0	1
+
+Trees		6	0	0	4353	20	100	15	1000	0.0	-4	1
+Trees		6	1	0	4353	30	64	15	1000	0.0	-4	1
+Trees		6	2	0	257	-1	12	15	1000	0.0	0	1
+
+Trees		7	0	0	4353	20	100	15	1000	0.0	-4	1
+Trees		7	1	0	4353	30	64	15	1000	0.0	-4	1
+Trees		7	2	0	257	-1	12	15	1000	0.0	0	1
+
+Trees		8	0	0	4353	20	100	15	1000	0.0	-4	1
+Trees		8	1	0	4353	30	64	15	1000	0.0	-4	1
+Trees		8	2	0	257	-1	12	15	1000	0.0	0	1
+
+Trees		9	0	0	4353	20	100	15	1000	0.0	-4	1
+Trees		9	1	0	4353	30	64	15	1000	0.0	-4	1
+Trees		9	2	0	257	-1	12	15	1000	0.0	0	1
+
+
+Bush		10	0	0	4353	20	64	15	1000	0.0	-3	1
+Bush		10	1	0	4353	30	32	15	1000	0.0	-4	1
+Bush		10	2	0	0	-1	0	0	1 	0.0	0	1
+
+Bush		11	0	0	4353	20	64	15	1000	0.0	-3	1
+Bush		11	1	0	4353	30	32	15	1000	0.0	-4	1
+Bush		11	2	0	0	-1	0	0	1 	0.0	0	1
+
+Bush		12	0	0	4353	20	64	15	1000	0.0	-3	1
+Bush		12	1	0	4353	30	32	15	1000	0.0	-4	1
+Bush		12	2	0	0	-1	0	0	1 	0.0	0	1
+
+Bush		13	0	0	4353	20	64	15	1000	0.0	-3	1
+Bush		13	1	0	4353	30	32	15	1000	0.0	-4	1
+Bush		13	2	0	0	-1	0	0	1 	0.0	0	1
+
+Bush		14	0	0	4353	20	64	15	1000	0.0	-3	1
+Bush		14	1	0	4353	30	32	15	1000	0.0	-4	1
+Bush		14	2	0	0	-1	0	0	1 	0.0	0	1
+
+Bush		15	0	0	4353	20	64	15	1000	0.0	-3	1
+Bush		15	1	0	4353	30	32	15	1000	0.0	-4	1
+Bush		15	2	0	0	-1	0	0	1 	0.0	0	1
+
+Bush		16	0	0	4353	20	64	15	1000	0.0	-3	1
+Bush		16	1	0	4353	30	32	15	1000	0.0	-4	1
+Bush		16	2	0	0	-1	0	0	1 	0.0	0	1
+
+Bush		17	0	0	4353	20	64	15	1000	0.0	-3	1
+Bush		17	1	0	4353	30	32	15	1000	0.0	-4	1
+Bush		17	2	0	0	-1	0	0	1 	0.0	0	1
+

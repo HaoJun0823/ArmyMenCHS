@@ -1,0 +1,2421 @@
+
+
+
+
+PAD Victory1            99      UNIT
+
+PAD Doorway1            20      UNIT
+PAD Doorway2            21      UNIT
+
+PAD Doorway3            25      UNIT
+PAD Doorway4            26      UNIT
+
+PAD DoorWay5            30      UNIT
+PAD Doorway6            31      UNIT
+
+PAD Doorway7            35      UNIT
+PAD Doorway8            36      UNIT
+
+PAD card1               80     unit
+PAD card2               81     unit
+PAD card3               82     unit
+
+PAD card4               84     unit
+PAD card5               85     unit
+PAD card6               86     unit
+
+
+PAD angle1              100     GREENSARGE1 > 0
+PAD angle2              101     GREENSARGE1 > 0
+PAD angle3              102     GREENSARGE1 > 0
+PAD angle4              103     GREENSARGE1 > 0
+PAD angle5              104     GREENSARGE1 > 0
+PAD angle6              105     GREENSARGE1 > 0
+PAD angle7              106     GREENSARGE1 > 0
+PAD angle8              107     GREENSARGE1 > 0
+PAD angle9              108     GREENSARGE1 > 0
+PAD angle10             109     GREENSARGE1 > 0
+PAD angle11             110     GREENSARGE1 > 0
+PAD angle12             111     GREENSARGE1 > 0
+PAD angle13             112     GREENSARGE1 > 0
+PAD angle14             113     GREENSARGE1 > 0
+
+
+VARIABLE fromdoor1      0
+VARIABLE fromdoor2      0
+
+VARIABLE fromdoor3      0
+VARIABLE fromdoor4      0
+
+VARIABLE fromdoor5      0
+VARIABLE fromdoor6      0
+
+VARIABLE fromdoor7      0
+VARIABLE fromdoor8      0
+
+Variable turretdest     1
+Variable currentangle   0
+
+Variable mylarfired     0
+
+Variable lower_crenx  1319
+Variable lower_creny  1614
+
+Variable Cren1x 0
+Variable Cren1y 0
+
+Variable Cren2x 0
+Variable Cren2y 0
+
+Variable Cren3x 0
+Variable Cren3y 0
+
+Variable Cren4x 0
+Variable Cren4y 0
+
+Variable Cren5x 0
+Variable Cren5y 0
+
+Variable Cren6x 0
+Variable Cren6y 0
+
+Variable Cren7x 0
+Variable Cren7y 0
+
+Variable Cren8x 0
+Variable Cren8y 0
+
+Variable card1fallen 0
+Variable card2fallen 0
+Variable card3fallen 0
+Variable card4fallen 0
+Variable card5fallen 0
+Variable card6fallen 0
+
+
+
+IF Startup1 THEN
+        Triggerdelay 10 init_vars1,
+        SETOBJSTATE lower_crenellation lower_spinning,
+        SETOBJSTATE crenellation1 cren1_spinning,
+        SETOBJSTATE crenellation2 cren2_spinning,
+        SETOBJSTATE crenellation3 cren3_spinning,
+        SETOBJSTATE crenellation4 cren4_spinning,
+        SETOBJSTATE crenellation5 cren5_spinning,
+        SETOBJSTATE crenellation6 cren6_spinning,
+        SETOBJSTATE crenellation7 cren7_spinning,
+        SETOBJSTATE crenellation8 cren8_spinning,
+	setbriefing "map12_1.bmp"
+
+
+
+IF init_vars1 THEN
+        SETFACING Major_Mylar 128,
+        SETMAXHEALTH Major_Mylar 1000,
+        HEAL Major_Mylar 100,
+        ADDEXP TANRIFLE1 1000,
+        ADDEXP TANRIFLE2 1000,
+        ADDEXP TANRIFLE3 1000,
+        ADDEXP TANRIFLE4 1000,
+        ADDEXP TANRIFLE5 1000,
+        ADDEXP TANRIFLE6 1000,
+        ADDEXP TANRIFLE7 1000,
+        ADDEXP TANRIFLE8 1000,
+        ADDEXP TANRIFLE9 1000,
+        ADDEXP TANRIFLE10 1000,
+        ADDEXP TANRIFLE11 1000,
+        ADDEXP TANRIFLE12 1000,
+        ADDEXP TANRIFLE13 1000,
+        ADDEXP TANRIFLE14 1000,
+        ADDEXP TANRIFLE15 1000,
+        ADDEXP TANRIFLE16 1000,
+        ADDEXP TANRIFLE17 1000,
+        ADDEXP TANRIFLE18 1000,
+        ADDEXP TANRIFLE19 1000,
+        ADDEXP TANRIFLE20 1000,
+        ADDEXP TANRIFLE21 1000,
+        ADDEXP TANRIFLE22 1000,
+        ADDEXP TANRIFLE23 1000,
+        ADDEXP TANRIFLE24 1000,
+        ADDEXP TANRIFLE25 1000,
+        ADDEXP TANRIFLE26 1000,
+        ADDEXP TANRIFLE27 1000,
+        ADDEXP TANRIFLE28 1000,
+        ADDEXP TANRIFLE29 1000,
+        ADDEXP TANRIFLE30 1000,
+        SETAIPOSE TanGrenadier5 stand,
+        SETAIPOSE TanGrenadier6 stand,
+        SETAIPOSE TanGrenadier7 stand,
+        SETAIPOSE TanGrenadier8 stand,
+        SETAIPOSE TanGrenadier9 stand,
+        SETAIPOSE TanMortar7 stand,
+        SETAIPOSE TanMortar8 stand,
+        SETAIPOSE TanFlamer5 stand,
+        SETAIPOSE TanFlamer6 stand,
+        SETFACING TanGrenadier5 128,
+        SETFACING TanGrenadier6 128,
+        SETFACING TanGrenadier7 128,
+        SETFACING TanGrenadier8 128,
+        SETFACING TanGrenadier9 128,
+        SETFACING TanMortar7 128,
+        SETFACING TanMortar8 128,
+        SETFACING TanFlamer5 128,
+        SETFACING TanFlamer6 128,
+        Moveitem crenellation1 lower_crenellation,
+        Moveitem crenellation2 lower_crenellation,
+        Moveitem crenellation3 lower_crenellation,
+        Moveitem crenellation4 lower_crenellation,
+        Moveitem crenellation5 lower_crenellation,
+        Moveitem crenellation6 lower_crenellation,
+        Moveitem crenellation7 lower_crenellation,
+        Moveitem crenellation8 lower_crenellation,
+        SETAIMODE Major_Mylar IGNORE,
+        playsound "1201sarge.wav" 16 0,
+	SHOWPDA "Find Major Mylar's hiding spot.",
+        CREATEEXPlOSION GREENSARGE1 133 0 GREEN,
+        CREATEEXPlOSION WILDBLOOD 133 0 GREEN,
+        CREATEEXPlOSION ALVIN 133 0 GREEN,
+        CREATEEXPlOSION GREG 133 0 GREEN,
+        CREATEEXPlOSION SCOUT 133 0 GREEN,
+        CREATEEXPlOSION SCORCH 133 0 GREEN,
+        CREATEEXPlOSION VETERAN 133 0 GREEN,
+        CREATEPOWERUP turretweapon mortar (3,3) 1000,
+        TRIGGERDELAY 3000 showf1mess
+
+
+
+IF showf1mess THEN
+        showmessage "Press the F1 key to view the strategic help map."
+
+
+
+
+IF hit crenellation_mask1 TESTVAR getdmglvl crenellation_mask1 = 1 THEN
+        SETOBJSTATE crenellation1 cren1_dead
+
+
+IF hit crenellation_mask2 TESTVAR getdmglvl crenellation_mask2 = 1 THEN
+        SETOBJSTATE crenellation2 cren2_dead
+
+
+IF hit crenellation_mask3 TESTVAR getdmglvl crenellation_mask3 = 1 THEN
+        SETOBJSTATE crenellation3 cren3_dead
+
+
+IF hit crenellation_mask4 TESTVAR getdmglvl crenellation_mask4 = 1 THEN
+        SETOBJSTATE crenellation4 cren4_dead
+
+
+IF hit crenellation_mask5 TESTVAR getdmglvl crenellation_mask5 = 1 THEN
+        SETOBJSTATE crenellation5 cren5_dead
+
+
+IF hit crenellation_mask6 TESTVAR getdmglvl crenellation_mask6 = 1 THEN
+        SETOBJSTATE crenellation6 cren6_dead
+
+
+IF hit crenellation_mask7 TESTVAR getdmglvl crenellation_mask7 = 1 THEN
+        SETOBJSTATE crenellation7 cren7_dead
+
+
+IF hit crenellation_mask8 TESTVAR getdmglvl crenellation_mask8 = 1 THEN
+        SETOBJSTATE crenellation8 cren8_dead
+
+
+
+
+IF padon Victory1 BUTNOT Startup2 THEN
+        Trigger petertestgreenwins
+
+if petertestgreenwins butnot killed greensarge1 then
+        trigger greenwins
+
+
+
+IF killed GreenSarge1 THEN
+        SHOWPDA "Sarge is dead!",
+        Triggerdelay 200 Tanwins
+
+
+
+
+OBJECT lower_crenellation
+        STATE lower_initial
+                FRAME 10000 2
+
+        STATE lower_spinning
+                Frame 200 2
+                Frame 200 0
+                Frame 200 1
+                Frame 10  1
+                        Setobjstate lower_crenellation lower_spinning
+
+OBJECT crenellation1
+        STATE cren1_initial
+                Frame 200 0
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x 25,
+                        ADDVAR cren1y -46,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+        
+        State cren1_spinning
+                Frame 200 0
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x 25,
+                        ADDVAR cren1y -46,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 1
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x 44,
+                        ADDVAR cren1y -54,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 2
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x 61,
+                        ADDVAR cren1y -67,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 3
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x 73,
+                        ADDVAR cren1y -82,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 4
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x 81,
+                        ADDVAR cren1y -100,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 5
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x 85,
+                        ADDVAR cren1y -119,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 6
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x 81,
+                        ADDVAR cren1y -135,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 7
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x 73,
+                        ADDVAR cren1y -152,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 8
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x 59,
+                        ADDVAR cren1y -169,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 9
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x 42,
+                        ADDVAR cren1y -179,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 10
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x 21,
+                        ADDVAR cren1y -186,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 11
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x -2,
+                        ADDVAR cren1y -189,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 12
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x -23,
+                        ADDVAR cren1y -185,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 13
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x -43,
+                        ADDVAR cren1y -179,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 14
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x -60,
+                        ADDVAR cren1y -167,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 15
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x -74,
+                        ADDVAR cren1y -152,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 16
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x -83,
+                        ADDVAR cren1y -133,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 17
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x -86,
+                        ADDVAR cren1y -115,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 18
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x -81,
+                        ADDVAR cren1y -96,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 19
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x -72,
+                        ADDVAR cren1y -80,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 20
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x -59,
+                        ADDVAR cren1y -66,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 21
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x -42,
+                        ADDVAR cren1y -52,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 22
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x -22,
+                        ADDVAR cren1y -44,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 23
+                        SETVAR cren1x lower_crenx,
+                        SETVAR cren1y lower_creny,
+                        ADDVAR cren1x 0,
+                        ADDVAR cren1y -42,
+                        MOVEITEM crenellation1 (REFVAR cren1x,REFVAR cren1y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 10  0
+                        SETOBJSTATE crenellation1 cren1_spinning
+
+        State cren1_dead
+                Frame 1000 24
+
+
+OBJECT crenellation2
+        STATE cren2_initial
+		Frame 200 3
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x 73,
+                        ADDVAR cren2y -82,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+
+        State cren2_spinning
+		Frame 200 3
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x 73,
+                        ADDVAR cren2y -82,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 4
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x 81,
+                        ADDVAR cren2y -100,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 5
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x 85,
+                        ADDVAR cren2y -119,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 6
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x 81,
+                        ADDVAR cren2y -135,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 7
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x 73,
+                        ADDVAR cren2y -152,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 8
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x 59,
+                        ADDVAR cren2y -169,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 9
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x 42,
+                        ADDVAR cren2y -179,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 10
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x 21,
+                        ADDVAR cren2y -186,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 11
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x -2,
+                        ADDVAR cren2y -189,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 12
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x -23,
+                        ADDVAR cren2y -185,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 13
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x -43,
+                        ADDVAR cren2y -179,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 14
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x -60,
+                        ADDVAR cren2y -167,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 15
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x -74,
+                        ADDVAR cren2y -152,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 16
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x -83,
+                        ADDVAR cren2y -133,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 17
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x -86,
+                        ADDVAR cren2y -115,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 18
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x -81,
+                        ADDVAR cren2y -96,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 19
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x -72,
+                        ADDVAR cren2y -80,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 20
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x -59,
+                        ADDVAR cren2y -66,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 21
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x -42,
+                        ADDVAR cren2y -52,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 22
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x -22,
+                        ADDVAR cren2y -44,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 23
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x 0,
+                        ADDVAR cren2y -42,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+		Frame 200 0
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x 25,
+                        ADDVAR cren2y -46,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 1
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x 44,
+                        ADDVAR cren2y -54,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+                Frame 200 2
+                        SETVAR cren2x lower_crenx,
+                        SETVAR cren2y lower_creny,
+                        ADDVAR cren2x 61,
+                        ADDVAR cren2y -67,
+                        MOVEITEM crenellation2 (REFVAR cren2x,REFVAR cren2y),
+                        MOVEITEM crenellation_mask2 crenellation2
+
+                Frame 10  0
+                        SETOBJSTATE crenellation2 cren2_spinning
+
+        State cren2_dead
+                Frame 1000 24
+
+
+
+OBJECT crenellation3
+        STATE cren3_initial
+		Frame 200 6
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x 81,
+                        ADDVAR cren3y -135,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask1 crenellation1
+
+        State cren3_spinning
+		Frame 200 6
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x 81,
+                        ADDVAR cren3y -135,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 7
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x 73,
+                        ADDVAR cren3y -152,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 8
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x 59,
+                        ADDVAR cren3y -169,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 9
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x 42,
+                        ADDVAR cren3y -179,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 10
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x 21,
+                        ADDVAR cren3y -186,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 11
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x -2,
+                        ADDVAR cren3y -189,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 12
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x -23,
+                        ADDVAR cren3y -185,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 13
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x -43,
+                        ADDVAR cren3y -179,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 14
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x -60,
+                        ADDVAR cren3y -167,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 15
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x -74,
+                        ADDVAR cren3y -152,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 16
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x -83,
+                        ADDVAR cren3y -133,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 17
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x -86,
+                        ADDVAR cren3y -115,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 18
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x -81,
+                        ADDVAR cren3y -96,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 19
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x -72,
+                        ADDVAR cren3y -80,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 20
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x -59,
+                        ADDVAR cren3y -66,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 21
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x -42,
+                        ADDVAR cren3y -52,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 22
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x -22,
+                        ADDVAR cren3y -44,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 23
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x 0,
+                        ADDVAR cren3y -42,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+		Frame 200 0
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x 25,
+                        ADDVAR cren3y -46,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 1
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x 44,
+                        ADDVAR cren3y -54,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 2
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x 61,
+                        ADDVAR cren3y -67,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 3
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x 73,
+                        ADDVAR cren3y -82,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 4
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x 81,
+                        ADDVAR cren3y -100,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+                Frame 200 5
+                        SETVAR cren3x lower_crenx,
+                        SETVAR cren3y lower_creny,
+                        ADDVAR cren3x 85,
+                        ADDVAR cren3y -119,
+                        MOVEITEM crenellation3 (REFVAR cren3x,REFVAR cren3y),
+                        MOVEITEM crenellation_mask3 crenellation3
+
+                Frame 10  5
+                        SETOBJSTATE crenellation3 cren3_spinning
+
+        State cren3_dead
+                Frame 1000 24
+
+
+
+OBJECT crenellation4
+        STATE cren4_initial
+		Frame 200 9
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x 42,
+                        ADDVAR cren4y -179,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+
+        State cren4_spinning
+		Frame 200 9
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x 42,
+                        ADDVAR cren4y -179,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 10
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x 21,
+                        ADDVAR cren4y -186,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 11
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x -2,
+                        ADDVAR cren4y -189,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 12
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x -23,
+                        ADDVAR cren4y -185,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 13
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x -43,
+                        ADDVAR cren4y -179,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 14
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x -60,
+                        ADDVAR cren4y -167,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 15
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x -74,
+                        ADDVAR cren4y -152,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 16
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x -83,
+                        ADDVAR cren4y -133,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 17
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x -86,
+                        ADDVAR cren4y -115,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 18
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x -81,
+                        ADDVAR cren4y -96,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 19
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x -72,
+                        ADDVAR cren4y -80,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 20
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x -59,
+                        ADDVAR cren4y -66,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 21
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x -42,
+                        ADDVAR cren4y -52,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 22
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x -22,
+                        ADDVAR cren4y -44,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 23
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x 0,
+                        ADDVAR cren4y -42,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+		Frame 200 0
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x 25,
+                        ADDVAR cren4y -46,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 1
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x 44,
+                        ADDVAR cren4y -54,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 2
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x 61,
+                        ADDVAR cren4y -67,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 3
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x 73,
+                        ADDVAR cren4y -82,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 4
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x 81,
+                        ADDVAR cren4y -100,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 5
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x 85,
+                        ADDVAR cren4y -119,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 6
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x 81,
+                        ADDVAR cren4y -135,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 7
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x 73,
+                        ADDVAR cren4y -152,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+                Frame 200 8
+                        SETVAR cren4x lower_crenx,
+                        SETVAR cren4y lower_creny,
+                        ADDVAR cren4x 59,
+                        ADDVAR cren4y -169,
+                        MOVEITEM crenellation4 (REFVAR cren4x,REFVAR cren4y),
+                        MOVEITEM crenellation_mask4 crenellation4
+
+                Frame 10  8
+                        SETOBJSTATE crenellation4 cren4_spinning
+
+        State cren4_dead
+                Frame 1000 24
+
+
+OBJECT crenellation5
+        STATE cren5_initial
+		Frame 200 12
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x -23,
+                        ADDVAR cren5y -185,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+
+        State cren5_spinning
+		Frame 200 12
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x -23,
+                        ADDVAR cren5y -185,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 13
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x -43,
+                        ADDVAR cren5y -179,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 14
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x -60,
+                        ADDVAR cren5y -167,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 15
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x -74,
+                        ADDVAR cren5y -152,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 16
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x -83,
+                        ADDVAR cren5y -133,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 17
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x -86,
+                        ADDVAR cren5y -115,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 18
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x -81,
+                        ADDVAR cren5y -96,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 19
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x -72,
+                        ADDVAR cren5y -80,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 20
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x -59,
+                        ADDVAR cren5y -66,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 21
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x -42,
+                        ADDVAR cren5y -52,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 22
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x -22,
+                        ADDVAR cren5y -44,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 23
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x 0,
+                        ADDVAR cren5y -42,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+		Frame 200 0
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x 25,
+                        ADDVAR cren5y -46,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 1
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x 44,
+                        ADDVAR cren5y -54,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 2
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x 61,
+                        ADDVAR cren5y -67,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 3
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x 73,
+                        ADDVAR cren5y -82,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 4
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x 81,
+                        ADDVAR cren5y -100,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 5
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x 85,
+                        ADDVAR cren5y -119,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 6
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x 81,
+                        ADDVAR cren5y -135,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 7
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x 73,
+                        ADDVAR cren5y -152,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 8
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x 59,
+                        ADDVAR cren5y -169,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 9
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x 42,
+                        ADDVAR cren5y -179,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 10
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x 21,
+                        ADDVAR cren5y -186,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+                Frame 200 11
+                        SETVAR cren5x lower_crenx,
+                        SETVAR cren5y lower_creny,
+                        ADDVAR cren5x -2,
+                        ADDVAR cren5y -189,
+                        MOVEITEM crenellation5 (REFVAR cren5x,REFVAR cren5y),
+                        MOVEITEM crenellation_mask5 crenellation5
+
+                Frame 10  11
+                        SETOBJSTATE crenellation5 cren5_spinning
+
+        State cren5_dead
+                Frame 1000 24
+
+
+
+
+OBJECT crenellation6
+        STATE cren6_initial
+                Frame 200 15
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x -74,
+                        ADDVAR cren6y -152,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+
+        State cren6_spinning
+                Frame 200 15
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x -74,
+                        ADDVAR cren6y -152,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 16
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x -83,
+                        ADDVAR cren6y -133,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 17
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x -86,
+                        ADDVAR cren6y -115,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 18
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x -81,
+                        ADDVAR cren6y -96,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 19
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x -72,
+                        ADDVAR cren6y -80,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 20
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x -59,
+                        ADDVAR cren6y -66,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 21
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x -42,
+                        ADDVAR cren6y -52,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 22
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x -22,
+                        ADDVAR cren6y -44,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 23
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x 0,
+                        ADDVAR cren6y -42,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 0
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x 25,
+                        ADDVAR cren6y -46,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 1
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x 44,
+                        ADDVAR cren6y -54,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 2
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x 61,
+                        ADDVAR cren6y -67,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 3
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x 73,
+                        ADDVAR cren6y -82,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 4
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x 81,
+                        ADDVAR cren6y -100,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 5
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x 85,
+                        ADDVAR cren6y -119,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 6
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x 81,
+                        ADDVAR cren6y -135,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 7
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x 73,
+                        ADDVAR cren6y -152,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 8
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x 59,
+                        ADDVAR cren6y -169,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 9
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x 42,
+                        ADDVAR cren6y -179,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 10
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x 21,
+                        ADDVAR cren6y -186,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 11
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x -2,
+                        ADDVAR cren6y -189,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 12
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x -23,
+                        ADDVAR cren6y -185,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 13
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x -43,
+                        ADDVAR cren6y -179,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+                Frame 200 14
+                        SETVAR cren6x lower_crenx,
+                        SETVAR cren6y lower_creny,
+                        ADDVAR cren6x -60,
+                        ADDVAR cren6y -167,
+                        MOVEITEM crenellation6 (REFVAR cren6x,REFVAR cren6y),
+                        MOVEITEM crenellation_mask6 crenellation6
+
+                Frame 10  14
+                        SETOBJSTATE crenellation6 cren6_spinning
+
+        State cren6_dead
+                Frame 1000 24
+
+
+
+
+OBJECT crenellation7
+        STATE cren7_initial
+                Frame 200 18
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x -81,
+                        ADDVAR cren7y -96,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+        
+        State cren7_spinning
+                Frame 200 18
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x -81,
+                        ADDVAR cren7y -96,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 19
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x -72,
+                        ADDVAR cren7y -80,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 20
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x -59,
+                        ADDVAR cren7y -66,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 21
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x -42,
+                        ADDVAR cren7y -52,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 22
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x -22,
+                        ADDVAR cren7y -44,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 23
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x 0,
+                        ADDVAR cren7y -42,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                 Frame 200 0
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x 25,
+                        ADDVAR cren7y -46,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 1
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x 44,
+                        ADDVAR cren7y -54,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 2
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x 61,
+                        ADDVAR cren7y -67,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 3
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x 73,
+                        ADDVAR cren7y -82,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 4
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x 81,
+                        ADDVAR cren7y -100,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 5
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x 85,
+                        ADDVAR cren7y -119,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 6
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x 81,
+                        ADDVAR cren7y -135,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 7
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x 73,
+                        ADDVAR cren7y -152,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 8
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x 59,
+                        ADDVAR cren7y -169,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 9
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x 42,
+                        ADDVAR cren7y -179,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 10
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x 21,
+                        ADDVAR cren7y -186,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 11
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x -2,
+                        ADDVAR cren7y -189,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 12
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x -23,
+                        ADDVAR cren7y -185,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 13
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x -43,
+                        ADDVAR cren7y -179,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 14
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x -60,
+                        ADDVAR cren7y -167,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 15
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x -74,
+                        ADDVAR cren7y -152,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 16
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x -83,
+                        ADDVAR cren7y -133,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 200 17
+                        SETVAR cren7x lower_crenx,
+                        SETVAR cren7y lower_creny,
+                        ADDVAR cren7x -86,
+                        ADDVAR cren7y -115,
+                        MOVEITEM crenellation7 (REFVAR cren7x,REFVAR cren7y),
+                        MOVEITEM crenellation_mask7 crenellation7
+                Frame 10  17
+                        SETOBJSTATE crenellation7 cren7_spinning
+
+        State cren7_dead
+                Frame 1000 24
+
+
+
+OBJECT crenellation8
+        STATE cren8_initial
+                Frame 200 21
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x -42,
+                        ADDVAR cren8y -52,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+
+        State cren8_spinning
+                Frame 200 21
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x -42,
+                        ADDVAR cren8y -52,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 22
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x -22,
+                        ADDVAR cren8y -44,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 23
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x 0,
+                        ADDVAR cren8y -42,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 0
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x 25,
+                        ADDVAR cren8y -46,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 1
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x 44,
+                        ADDVAR cren8y -54,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 2
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x 61,
+                        ADDVAR cren8y -67,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 3
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x 73,
+                        ADDVAR cren8y -82,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 4
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x 81,
+                        ADDVAR cren8y -100,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 5
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x 85,
+                        ADDVAR cren8y -119,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 6
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x 81,
+                        ADDVAR cren8y -135,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask1 crenellation1
+                Frame 200 7
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x 73,
+                        ADDVAR cren8y -152,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 8
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x 59,
+                        ADDVAR cren8y -169,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 9
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x 42,
+                        ADDVAR cren8y -179,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 10
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x 21,
+                        ADDVAR cren8y -186,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 11
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x -2,
+                        ADDVAR cren8y -189,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 12
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x -23,
+                        ADDVAR cren8y -185,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 13
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x -43,
+                        ADDVAR cren8y -179,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 14
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x -60,
+                        ADDVAR cren8y -167,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 15
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x -74,
+                        ADDVAR cren8y -152,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 16
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x -83,
+                        ADDVAR cren8y -133,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 17
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x -86,
+                        ADDVAR cren8y -115,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 18
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x -81,
+                        ADDVAR cren8y -96,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 19
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x -72,
+                        ADDVAR cren8y -80,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+                Frame 200 20
+                        SETVAR cren8x lower_crenx,
+                        SETVAR cren8y lower_creny,
+                        ADDVAR cren8x -59,
+                        ADDVAR cren8y -66,
+                        MOVEITEM crenellation8 (REFVAR cren8x,REFVAR cren8y),
+                        MOVEITEM crenellation_mask8 crenellation8
+
+                Frame 10  20
+                        SETOBJSTATE crenellation8 cren8_spinning
+
+        State cren8_dead
+                Frame 1000 24
+
+
+
+
+OBJECT Turret
+        STATE TURR7
+                FRAME 1000 6
+                	SETVAR currentangle 7
+
+        STATE TURR1
+                FRAME 1000 0
+                	SETVAR currentangle 1
+
+        STATE TURR2
+                FRAME 1000 1
+                	SETVAR currentangle 2
+
+        STATE TURR3
+                FRAME 1000 2
+                	SETVAR currentangle 3
+
+        STATE TURR4
+                FRAME 1000 3
+                	SETVAR currentangle 4
+
+        STATE TURR5
+                FRAME 1000 4
+                	SETVAR currentangle 5
+
+        STATE TURR6
+                FRAME 1000 5
+                	SETVAR currentangle 6
+
+        STATE TURR8
+                FRAME 1000 7
+                	SETVAR currentangle 8
+
+        STATE TURR9
+                FRAME 1000 8
+                	SETVAR currentangle 9
+
+        STATE TURR10
+                FRAME 1000 9
+                	SETVAR currentangle 10
+
+        STATE TURR11
+                FRAME 1000 10
+                	SETVAR currentangle 11
+
+        STATE TURR12
+                FRAME 1000 11
+                	SETVAR currentangle 12
+
+        STATE TURR13
+                FRAME 1000 12
+                	SETVAR currentangle 13
+
+        STATE TURR14
+                FRAME 1000 13
+                	SETVAR currentangle 14
+
+        STATE TURR15
+                FRAME 1000 14
+                	SETVAR currentangle 7
+
+        STATE TURR16
+                FRAME 1000 15
+                	SETVAR currentangle 1
+
+        STATE TURR17
+                FRAME 1000 16
+                	SETVAR currentangle 2
+
+        STATE TURR18
+                FRAME 1000 17
+                	SETVAR currentangle 3
+
+        STATE TURR19
+                FRAME 1000 18
+                	SETVAR currentangle 4
+
+        STATE TURR20
+                FRAME 1000 19
+                	SETVAR currentangle 5
+
+        STATE TURR21
+                FRAME 1000 20
+                	SETVAR currentangle 6
+
+        STATE TURR22
+                FRAME 1000 21
+                	SETVAR currentangle 8
+
+        STATE TURR23
+                FRAME 1000 22
+                	SETVAR currentangle 9
+
+        STATE TURR24
+                FRAME 1000 23
+                	SETVAR currentangle 10
+
+        STATE TURR25
+                FRAME 1000 24
+                	SETVAR currentangle 11
+
+        STATE TURR26
+                FRAME 1000 25
+                	SETVAR currentangle 12
+
+        STATE TURR27
+                FRAME 1000 26
+                	SETVAR currentangle 13
+
+        STATE TURR28
+                FRAME 1000 27
+                	SETVAR currentangle 14
+
+        STATE TURR29
+                FRAME 1000 28
+                	SETVAR currentangle 14,
+                        DAMAGE major_mylar 2000
+
+
+OBJECT  popper
+        STATE popper_initial
+                FRAME 100 0
+
+        STATE popper_popping1
+                FRAME 20 3
+                FRAME 20 4
+                FRAME 20 5
+                FRAME 20 6
+                FRAME 20 7
+                FRAME 20 8
+                FRAME 20 9
+                FRAME 20 10
+                FRAME 20 11
+                FRAME 20 12
+                FRAME 20 13
+                FRAME 20 14
+                FRAME 20 15
+                FRAME 20 16
+                FRAME 20 17
+                FRAME 20 18
+                FRAME 20 1
+
+        STATE popper_popping2
+                FRAME 20 3
+                FRAME 20 4
+                FRAME 20 5
+                FRAME 20 6
+                FRAME 20 7
+                FRAME 20 8
+                FRAME 20 9
+                FRAME 20 10
+                FRAME 20 11
+                FRAME 20 12
+                FRAME 20 13
+                FRAME 20 14
+                FRAME 20 15
+                FRAME 20 16
+                FRAME 20 17
+                FRAME 20 18
+                FRAME 20 18
+                        SETOBJSTATE popper popper_initial
+
+        STATE popper_destroyed
+                FRAME 100 2
+                        CREATEPOWERUP infinitebazooka BAZOOKA popper -1
+                FRAME 100 2
+
+IF hit popper_mask TESTVAR getdmglvl popper_mask = 0 THEN
+        SETOBJSTATE popper popper_popping2
+
+IF hit popper_mask TESTVAR getdmglvl popper_mask = 1 THEN
+        SETOBJSTATE popper popper_popping1
+
+IF hit popper_mask TESTVAR getdmglvl popper_mask = 2 THEN
+        SETOBJSTATE popper popper_destroyed
+
+
+
+OBJECT card_main1
+        STATE card1_initial
+                FRAME 100 0
+                        TRIGGER nostruggle1
+                FRAME 100 0
+
+        STATE card1_falling
+                FRAME 100 1
+		        setvar card1fallen 1,
+		        trigger teststruggle1
+                FRAME 100 2
+                FRAME 100 3
+                FRAME 100 4
+                FRAME 50 5
+                FRAME 50 5
+                FRAME 50 6
+                        setvar card1fallen 2,
+			TRIGGER nostruggle1
+                FRAME 50 6
+
+        STATE card1_struggle
+                FRAME 100 7
+		        setvar card1fallen 2
+                FRAME 100 8
+                FRAME 100 9
+                FRAME 100 10
+                FRAME 100 11
+                FRAME 100 12
+                FRAME 100 13
+                FRAME 100 12
+                FRAME 100 11
+                FRAME 100 10
+                FRAME 100 9
+                FRAME 100 8
+                FRAME 100 7
+                        SETOBJSTATE card_main1 card1_struggle
+
+
+
+OBJECT card_main2
+        STATE card2_initial
+                FRAME 100 0
+                        TRIGGER nostruggle2
+                FRAME 100 0
+
+        STATE card2_falling
+                FRAME 100 1
+                        SETVAR card2fallen 1,
+                        TRIGGER teststruggle2
+                FRAME 100 2
+                FRAME 100 3
+                FRAME 100 4
+                FRAME 50 5
+                FRAME 50 5
+                FRAME 50 5
+                FRAME 50 6
+                        SETVAR card2fallen 2,
+                        TRIGGER nostruggle2
+                FRAME 50 6
+
+        STATE card2_struggle
+                FRAME 100 7
+                        SETVAR card2fallen 2
+                FRAME 100 8
+                FRAME 100 9
+                FRAME 100 10
+                FRAME 100 11
+                FRAME 100 12
+                FRAME 100 13
+                FRAME 100 12
+                FRAME 100 11
+                FRAME 100 10
+                FRAME 100 9
+                FRAME 100 8
+                FRAME 100 7
+                        SETOBJSTATE card_main2 card2_struggle
+
+
+
+
+OBJECT card_main3
+        STATE card3_initial
+                FRAME 100 0
+                        TRIGGER nostruggle3
+                FRAME 100 0
+
+        STATE card3_falling
+                FRAME 100 1
+                        SETVAR card3fallen 1,
+                        TRIGGER teststruggle3
+                FRAME 100 2
+                FRAME 100 3
+                FRAME 100 4
+                FRAME 50 5
+                FRAME 50 5
+                FRAME 50 6
+                        SETVAR card3fallen 2,
+                        TRIGGER nostruggle3
+                FRAME 50 6
+
+        STATE card3_struggle
+                FRAME 100 7
+                        SETVAR card3fallen 2
+                FRAME 100 8
+                FRAME 100 9
+                FRAME 100 10
+                FRAME 100 11
+                FRAME 100 12
+                FRAME 100 13
+                FRAME 100 12
+                FRAME 100 11
+                FRAME 100 10
+                FRAME 100 9
+                FRAME 100 8
+                FRAME 100 7
+                        SETOBJSTATE card_main3 card3_struggle
+
+
+
+OBJECT card_main4
+        STATE card4_initial
+                FRAME 100 0
+                        TRIGGER nostruggle4
+                FRAME 100 0
+
+        STATE card4_falling
+                FRAME 100 1
+                        SETVAR card4fallen 1,
+                        TRIGGER teststruggle4
+                FRAME 100 2
+                FRAME 100 3
+                FRAME 100 4
+                FRAME 50 5
+                FRAME 50 5
+                FRAME 50 6
+                        SETVAR card4fallen 2,
+                        TRIGGER nostruggle4
+                FRAME 50 6
+
+        STATE card4_struggle
+                FRAME 100 7
+                        SETVAR card4fallen 2
+                FRAME 100 8
+                FRAME 100 9
+                FRAME 100 10
+                FRAME 100 11
+                FRAME 100 12
+                FRAME 100 13
+                FRAME 100 12
+                FRAME 100 11
+                FRAME 100 10
+                FRAME 100 9
+                FRAME 100 8
+                FRAME 100 7
+                        SETOBJSTATE card_main4 card4_struggle
+
+
+
+
+OBJECT card_main5
+        STATE card5_initial
+                FRAME 100 0
+                        TRIGGER nostruggle5
+                FRAME 100 0
+
+        STATE card5_falling
+                FRAME 100 1
+                        SETVAR card5fallen 1,
+                        TRIGGER teststruggle5
+                FRAME 100 2
+                FRAME 100 3
+                FRAME 100 4
+                FRAME 50 5
+                FRAME 50 5
+                FRAME 50 6
+                        SETVAR card5fallen 2,
+                        TRIGGER nostruggle5
+                FRAME 50 6
+
+        STATE card5_struggle
+                FRAME 100 7
+                        SETVAR card5fallen 2
+                FRAME 100 8
+                FRAME 100 9
+                FRAME 100 10
+                FRAME 100 11
+                FRAME 100 12
+                FRAME 100 13
+                FRAME 100 12
+                FRAME 100 11
+                FRAME 100 10
+                FRAME 100 9
+                FRAME 100 8
+                FRAME 100 7
+                        SETOBJSTATE card_main5 card5_struggle
+
+
+
+
+
+OBJECT card_main6
+        STATE card6_initial
+                FRAME 100 0
+                        TRIGGER nostruggle6
+                FRAME 100 0
+
+        STATE card6_falling
+                FRAME 100 1
+                        SETVAR card6fallen 1,
+                        TRIGGER teststruggle6
+                FRAME 100 2
+                FRAME 100 3
+                FRAME 100 4
+                FRAME 50 5
+                FRAME 50 5
+                FRAME 50 6
+                        SETVAR card6fallen 2,
+                        TRIGGER nostruggle6
+                FRAME 50 6
+
+        STATE card6_struggle
+                FRAME 100 7
+                        SETVAR card6fallen 2
+                FRAME 100 8
+                FRAME 100 9
+                FRAME 100 10
+                FRAME 100 11
+                FRAME 100 12
+                FRAME 100 13
+                FRAME 100 12
+                FRAME 100 11
+                FRAME 100 10
+                FRAME 100 9
+                FRAME 100 8
+                FRAME 100 7
+                        SETOBJSTATE card_main6 card6_struggle
+
+
+IF HIT card_main1 TESTVAR GETDMGLVL card_main1 = 1 THEN
+        SETOBJSTATE card_main1 card1_falling,
+        SETOBJBMP card_top1 1,
+        SETOBJBMP card_right1 1,
+        SETOBJBMP card_left1 1
+
+
+IF padon card1 AFTER padoff card1 and teststruggle1 AFTER nostruggle1 TESTVAR card1fallen = 1 THEN
+        DAMAGE ME 10000,
+        SETOBJSTATE card_main1 card1_struggle
+
+
+IF HIT card_main2 TESTVAR GETDMGLVL card_main2 = 1 THEN
+        SETOBJSTATE card_main2 card2_falling,
+        SETOBJBMP card_top2 1,
+        SETOBJBMP card_right2 1,
+        SETOBJBMP card_left2 1
+
+IF padon card2 AFTER padoff card2 and teststruggle2 AFTER nostruggle2 TESTVAR card2fallen = 1 THEN
+        DAMAGE ME 10000,
+        SETOBJSTATE card_main2 card2_struggle
+
+
+IF HIT card_main3 TESTVAR GETDMGLVL card_main3 = 1 THEN
+        SETOBJSTATE card_main3 card3_falling,
+        SETOBJBMP card_top3 1,
+        SETOBJBMP card_right3 1,
+        SETOBJBMP card_left3 1
+
+IF padon card3 AFTER padoff card3 and teststruggle3 AFTER nostruggle3 TESTVAR card3fallen = 1 THEN
+        DAMAGE ME 10000,
+        SETOBJSTATE card_main3 card3_struggle
+
+
+
+IF HIT card_main4 TESTVAR GETDMGLVL card_main4 = 1 THEN
+        SETOBJSTATE card_main4 card4_falling,
+        SETOBJBMP card_top4 1,
+        SETOBJBMP card_right4 1,
+        SETOBJBMP card_left4 1
+
+IF padon card4 AFTER padoff card4 and teststruggle4 AFTER nostruggle4 TESTVAR card4fallen = 1 THEN
+        DAMAGE ME 10000,
+        SETOBJSTATE card_main4 card4_struggle
+
+
+IF HIT card_main5 TESTVAR GETDMGLVL card_main5 = 1 THEN
+        SETOBJSTATE card_main5 card5_falling,
+        SETOBJBMP card_top5 1,
+        SETOBJBMP card_right5 1,
+        SETOBJBMP card_left5 1
+
+IF padon card5 AFTER padoff card5 and teststruggle5 AFTER nostruggle5 TESTVAR card5fallen = 1 THEN
+        DAMAGE ME 10000,
+        SETOBJSTATE card_main5 card5_struggle
+
+
+IF HIT card_main6 TESTVAR GETDMGLVL card_main6 = 1 THEN
+        SETOBJSTATE card_main6 card6_falling,
+        SETOBJBMP card_top6 1,
+        SETOBJBMP card_right6 1,
+        SETOBJBMP card_left6 1
+
+IF padon card6 AFTER padoff card6 AND teststruggle6 AFTER nostruggle6 TESTVAR card6fallen = 1 THEN
+        DAMAGE ME 10000,
+        SETOBJSTATE card_main6 card6_struggle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// From door #1 to door #2
+IF PADON Doorway1 AFTER teleport21 TESTVAR fromdoor2 = 0 THEN
+//	showmessage "teleport from door 1 to 2",
+        SETVAR fromdoor1 1,
+	undeploy me,
+	triggerdelay 500 teleport12
+
+if teleport12 then
+        TRIGGERDELAY 100 RESETDOOR1,
+	setfacing me 160,
+	deploy me doorway2
+
+IF RESETDOOR1 THEN
+        SETVAR fromdoor1 0
+
+
+// From door #2 to door #1
+IF PADON Doorway2 AFTER teleport12 TESTVAR fromdoor1 = 0 THEN
+//	showmessage "teleport from door 2 to 1",
+        SETVAR fromdoor2 1,
+	undeploy me,
+	triggerdelay 500 teleport21
+
+if teleport21 then
+        TRIGGERDELAY 100 RESETDOOR2,
+	setfacing me 160,
+	deploy me doorway1
+
+IF RESETDOOR2 THEN
+        SETVAR fromdoor2 0
+
+
+// From door #3 to door #4
+IF PADON Doorway3 AFTER teleport43 TESTVAR fromdoor4 = 0 THEN
+//	showmessage "teleport from door 3 to door 4",
+        SETVAR fromdoor3 1,
+	undeploy me,
+	triggerdelay 500 teleport34
+
+if teleport34 then
+        TRIGGERDELAY 100 RESETDOOR3,
+	setfacing me 160,
+	deploy me doorway4
+
+IF RESETDOOR3 THEN
+        SETVAR fromdoor3 0
+
+
+// From door #4 to door #3
+IF PADON Doorway4 AFTER teleport34 TESTVAR fromdoor3 = 0 THEN
+//	showmessage "teleport from door 4 to door 3",
+        SETVAR fromdoor4 1,
+	undeploy me,
+	triggerdelay 500 teleport43
+
+if teleport43 then
+        TRIGGERDELAY 100 RESETDOOR4,
+	setfacing me 160,
+	deploy me doorway3
+
+IF RESETDOOR4 THEN
+        SETVAR fromdoor4 0
+
+
+// From door #5 to door #6
+IF PADON Doorway5 AFTER teleport65 TESTVAR fromdoor6 = 0 THEN
+//	showmessage "teleport from door 5 to door 6",
+        SETVAR fromdoor5 1,
+	undeploy me,
+        SETOBJSTATE elevator going_up,
+	triggerdelay 1300 teleport56
+
+if teleport56 then
+        TRIGGERDELAY 100 RESETDOOR5,
+	setfacing me 160,
+	deploy me doorway6
+
+IF RESETDOOR5 THEN
+	SETVAR fromdoor5 0
+
+
+// From door #6 to door #5
+IF PADON Doorway6 AFTER teleport56 TESTVAR fromdoor5 = 0 THEN
+//	showmessage "teleport from door 6 to door 5",
+        SETVAR fromdoor6 1,
+	undeploy me,
+        SETOBJSTATE elevator going_down,
+	triggerdelay 1300 teleport65
+
+if teleport65 then
+        TRIGGERDELAY 100 RESETDOOR6,
+	setfacing me 160,
+	deploy me doorway5
+
+IF RESETDOOR6 THEN
+        SETVAR fromdoor6 0
+
+
+
+
+
+// From door #7 to door #8
+IF PADON Doorway7 AFTER teleport87 TESTVAR fromdoor8 = 0 THEN
+//	showmessage "teleport from door 7 to door 8",
+        SETVAR fromdoor7 1,
+	undeploy me,
+	triggerdelay 500 teleport78
+
+if teleport78 then
+        TRIGGERDELAY 100 RESETDOOR7,
+	setfacing me 160,
+	deploy me doorway8
+        
+        
+IF RESETDOOR7 THEN
+	SETVAR fromdoor7 0
+
+
+
+
+
+// From door #8 to door #7
+IF PADON Doorway8 AFTER teleport78 TESTVAR fromdoor7 = 0 THEN
+//	showmessage "teleport from door 8 to door 7",
+        SETVAR fromdoor8 1,
+	undeploy me,
+	triggerdelay 500 teleport87
+
+if teleport87 then
+        TRIGGERDELAY 100 RESETDOOR8,
+	setfacing me 160,
+	deploy me doorway7
+
+IF RESETDOOR8 THEN
+        SETVAR fromdoor8 0
+
+
+
+OBJECT elevator
+        STATE at_bottom
+                Frame 100 0
+
+        STATE going_up
+                FRAME 200 0
+                FRAME 200 1
+                FRAME 200 2
+                FRAME 200 3
+                FRAME 200 4
+                        SETOBJSTATE elevator at_top
+
+        STATE going_down
+                FRAME 200 4
+                FRAME 200 3
+                FRAME 200 2
+                FRAME 200 1
+                FRAME 200 0
+                        SETOBJSTATE elevator at_bottom
+
+        STATE at_top
+                FRAME 100 4
+
+
+
+If killed scorch then
+	createpowerup flamer scorch 50
+
+If killed veteran then
+	createpowerup bazooka veteran 10

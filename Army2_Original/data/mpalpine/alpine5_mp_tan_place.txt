@@ -1,0 +1,25 @@
+#cmd	type		x	y	facing	group	name
+
+place	tank        	3160	590	88	0	-
+place	ptboat      	3037	893	88	0	-
+place	rifleman    	3311	313	88	0	-
+place	rifleman    	3587	836	88	0	-
+place	rifleman    	3852	857	120	0	-
+place	bazookaman  	3812	554	120	0	-
+place	bazookaman  	3566	321	64	0	-
+place	grenadier   	3671	224	76	0	-
+place	grenadier   	3765	271	132	0	-
+place	mortarman   	3759	163	112	0	-
+place	flamerman   	3477	726	80	0	-
+place	mgpill      	3507	165	80	0	-
+place	bazookapill 	3959	473	108	0	-
+place	aagun       	3885	183	108	0	-
+place	ptboat      	3172	1070	100	0	-
+place	radar       	3400	624	100	0	-
+place	bazookaman  	3092	266	60	0	-
+place	bazookaman  	3907	928	120	0	-
+place	mortarman   	3910	355	120	0	-
+place	flamerman   	3060	403	80	0	-
+place	flamerman   	3670	942	108	0	-
+place	tank        	3540	1054	108	0	-
+place	jeep        	3231	177	68	0	-

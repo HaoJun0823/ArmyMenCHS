@@ -1,0 +1,26 @@
+#cmd	type		x	y	facing	group	name
+
+place	bazookapill 	3749	861	248	0	-
+place	bazookapill 	3938	760	16	0	-
+place	bazookapill 	3752	1129	248	0	-
+place	bazookapill 	3793	364	76	0	-
+place	bazookapill 	3934	527	48	0	-
+place	bazookapill 	3699	689	16	0	-
+place	mortarman   	3501	455	84	0	-
+place	mortarman   	3513	512	84	2	-
+place	mortarman   	3523	571	56	2	-
+place	mortarman   	3524	616	56	2	-
+place	flamerman   	3568	444	56	3	-
+place	flamerman   	3578	497	56	3	-
+place	flamerman   	3587	549	56	3	-
+place	flamerman   	3586	603	56	3	-
+place	flamerman   	3629	529	56	3	-
+place	flamerman   	3616	446	56	3	-
+place	flamerman   	3629	593	56	3	-
+place	aagun       	3681	440	244	0	-
+place	tank        	3888	445	72	4	-
+place	tank        	3951	644	52	4	-
+place	bazookaman  	3841	529	52	1	-
+place	grenadier   	3782	478	52	1	-
+place	grenadier   	3764	545	52	1	-
+place	grenadier   	3798	605	52	1	-

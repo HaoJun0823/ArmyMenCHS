@@ -1,0 +1,316 @@
+#Object Defaults Table
+
+#Item Flags
+# ITEMFLAG_MAP		0001	(1)
+# ITEMFLAG_VISBLOCK	0100	(256)
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis     Crush
+##Trees		0	1	0	4353	-1	100	15	1000	0.0	0	0
+Trees		1	0	0	4353	35	100	15	1000	0.0	-12	0
+Trees		1	1	0	1	-1	32	15	1000	0.0	0	0
+Trees		2	0	0	4353	35	100	15	1000	0.0	-12	0
+Trees		2	1	0	1	-1	32	15	1000	0.0	0	0
+Trees		3	0	0	4353	35	100	15	1000	0.0	-12	0
+Trees		3	1	0	1	-1	32	15	1000	0.0	0	0
+Trees		4	0	0	4353	35	100	15	1000	0.0	-12	0
+Trees		4	1	0	4353	25	100	15	1000	0.0	-12	0
+Trees		4	2	0	1	-1	32	15	1000	0.0	0	0
+Trees		5	0	0	4353	35	100	15	1000	0.0	-12	0
+Trees		5	1	0	4353	25	100	15	1000	0.0	-12	0
+Trees		5	2	0	1	-1	32	15	1000	0.0	0	0
+Trees		6	0	0	4353	45	100	15	1000	0.0	-12	0
+Trees		6	1	0	4353	25	100	15	1000	0.0	-8	0
+Trees		6	2	0	1	-1	32	15	1000	0.0	0	0
+Trees		7	0	0	4353	45	100	15	1000	0.0	-12	0
+Trees		7	1	0	4353	35	100	15	1000	0.0	-8	0
+Trees		7	2	0	1	-1	32	15	1000	0.0	0	0
+Trees		8	0	0	4353	45	100	15	1000	0.0	-12	0
+Trees		8	1	0	4353	25	100	15	1000	0.0	-8	0
+Trees		8	2	0	4353	15	100	15	1000	0.0	-4	0
+Trees		8	3	0	1	-1	32	15	1000	0.0	0	0
+Trees		9	0	0	4353	35	100	15	1000	0.0	-12	0
+Trees		9	1	0	4353	25	100	15	1000	0.0	-8	0
+Trees		9	2	0	1	-1	32	15	1000	0.0	0	0
+Trees		10	0	0	4353	30	100	15	1000	0.0	-12	0
+Trees		10	1	0	4353	20	100	15	1000	0.0	-8	0
+Trees		10	2	0	1	-1	32	15	1000	0.0	0	0
+Trees		101	0	0	4353	-1	10	0	1	0.0	0	0
+Trees		102	0	0	4353	-1	10	0	1	0.0	0	0
+
+##rocks##
+##Rocks		0	0	0	257	-1	16	15	1000	0.0	0	1
+Rocks		201	0	0	257	-1	16	15	1000	0.0	0	1
+Rocks		202	0	0	257	-1	16	15	1000	0.0	0	1
+Rocks		203	0	0	257	-1	16	15	1000	0.0	0	1
+Rocks		204	0	0	257	-1	16	15	1000	0.0	0	1
+Rocks		205	0	0	257	-1	16	15	1000	0.0	0	1
+Rocks		206	0	0	257	-1	14	15	1000	0.0	0	1
+Rocks		207	0	0	257	-1	10	15	1000	0.0	0	1
+Rocks		208	0	0	257	-1	8	15	1000	0.0	0	1
+Rocks		209	0	0	257	-1	16	15	1000	0.0	0	1
+Rocks		210	0	0	257	-1	16	15	1000	0.0	0	1
+Rocks		211	0	0	257	-1	16	15	1000	0.0	0	1
+Rocks		212	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		213	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		214	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		215	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		216	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		217	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		218	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		219	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		220	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		221	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		222	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		224	0	0	257	-1	8	15	1000	0.0	0	1
+
+##Crates
+Miscellaneous	20	0	0	4353	20	32	15	1000	0.0	-3	1
+Miscellaneous	20	1	0	257	-1	0	0	1	0.0	0	1
+Miscellaneous	21	0	0	4353	30	32	15	1000	0.0	-3	1
+Miscellaneous	21	1	0	257	-1	0	0	1	0.0	0	1
+Miscellaneous	22	0	0	4353	15	32	15	1000	0.0	-3	1
+Miscellaneous	22	1	0	257	-1	0	0	1	0.0	0	1
+Miscellaneous	23	0	0	4353	20	32	15	1000	0.0	-3	1
+Miscellaneous	23	1	0	257	-1	0	0	1	0.0	0	1
+Miscellaneous	24	0	0	4353	30	32	15	1000	0.0	-3	1
+Miscellaneous	24	1	0	257	-1	0	0	1	0.0	0	1
+Miscellaneous	25	0	0	4353	15	32	15	1000	0.527	-3	1
+Miscellaneous	25	1	0	257	-1	0	0	1	0.0	0	1
+
+Ground		10	0	0	1	30	0	-15	1	0.0	3	1		
+Ground		10	1	0	1	-1	0	-15	1	0.0	3	1		
+Ground		11	0	0	1	30	0	-15	1	0.0	3	1		
+Ground		11	1	0	1	-1	0	-15	1	0.0	3	1		
+Ground		12	0	0	1	30	0	-15	1	0.0	3	1		
+Ground		12	1	0	1	-1	0	-15	1	0.0	3	1		
+Ground		13	0	0	1	30	0	-15	1	0.0	3	1		
+Ground		13	1	0	1	-1	0	-15	1	0.0	3	1		
+
+Fence		1	0	0	1	20	32	15	1000    2.06	3	1	
+Fence		1	1	0	1	-1	32	15	1000	1.34	0	1
+Fence		2	0	0	1	20	32	15	1000   -1.96	3	1	
+Fence		2	1	0	1	-1	32	15	1000   -1.53	0	1
+Fence		3	0	0	1	20	32	15	1000   -0.36	3	1	
+Fence		3	1	0	1	-1	32	15	1000   -0.40	0	1
+Fence		4	0	0	1	20	32	15	1000	0.38	3	1	
+Fence		4	1	0	1	-1	32	15	1000	0.27	0	1
+
+Fence		901	0	0	257	20	32	15	1000	0.83	3	1
+Fence		901	1	0	257	-1	32	15	1000	0.83	0	1
+Fence		902	0	0	257	20	32	15	1000	-0.83	3	1
+Fence		902	1	0	257	-1	32	15	1000	-0.83	0	1
+
+Miscellaneous	920	0	0	257	30	40	15	1000	0.0	3	1
+Miscellaneous	920	1	0	257	-1	40	15	1000	0.0	0	1
+Miscellaneous	921	0	0	257	30	40	15	1000	0.0	3	1
+Miscellaneous	921	1	0	257	-1	40	15	1000	0.0	0	1
+Miscellaneous	922	0	0	257	30	40	15	1000	0.0	3	1
+Miscellaneous	922	1	0	257	-1	40	15	1000	0.0	0	1
+
+Building	900	0	0	257	120	60	15	1000	0.0	3	1
+Building	900	1	0	257	-1	60	15	1000	0.0	0	1
+Building	910	0	0	257	120	60	15	1000	0.0	3	1
+Building	910	1	0	257	-1	60	15	1000	0.0	0	1
+
+Fence		900	0	0	1	40	32	15	1000	2.34	3	1	
+Fence		900	1	0	1	-1	32	15	1000	1.14	0	1
+Fence		904	0	0	1	40	32	15	1000   -0.36	3	1	
+Fence		904	1	0	1	-1	32	15	1000   -0.73	0	1
+Fence		905	0	0	1	40	32	15	1000	2.0	3	1	
+Fence		905	1	0	1	-1	32	15	1000	1.13	0	1
+Fence		903	0	0	1	40	32	15	1000   -0.37	3	1	
+Fence		903	1	0	1	-1	32	15	1000   -0.80	0	1
+
+##alpine4##
+
+##Plains##
+Miscellaneous	800	0	0	257	100	32	15	1000	0.0	3	1	1000
+Miscellaneous	800	1	0	257	-1	32	15	1000	0.0	3	1	
+Miscellaneous	805	0	0	257	100	32	15	1000	0.0	3	1	1000
+Miscellaneous	805	1	0	257	-1	32	15	1000	0.0	3	1
+
+##RunwayLights##
+Miscellaneous	308	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	308	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	309	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	309	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	310	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	310	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	312	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	312	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	313	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	313	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	314	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	314	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	315	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	315	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	316	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	316	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	317	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	317	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	318	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	318	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	319	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	319	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	320	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	320	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	321	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	321	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	322	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	322	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	323	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	323	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	324	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	324	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	325	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	325	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	326	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	326	1	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	327	0	0	1	-1	4	0	1	0.0	0	1
+Miscellaneous	327	1	0	1	-1	4	0	1	0.0	0	1
+
+##Hanger##
+Building	301	0	0	257	100	40	15	10000	0.0	3	1
+Building	301	1	0	257	-1	40	15	10000	0.0	3	1
+Building	302	0	0	257	100	40	15	900	0.0	3	1
+Building	302	1	0	257	-1	40	15	900	0.0	3	1
+Building	303	0	0	257	100	40	15	1000	-0.379	3	1
+Building	303	1	0	257	-1	40	15	1000	-0.379	3	1
+Building	304	0	0	257	100	40	15	1000	2.023	3	1
+Building	304	1	0	257	-1	40	15	1000	2.023	3	1
+Building	305	0	0	257	100	40	15	1000	-0.360	3	1
+Building	305	1	0	257	-1	40	15	1000	-0.360	3	1
+
+link 	building	300		building	301		244  	14
+link 	building	300		building	302		239	476
+link 	building	300		building	303		235	465
+link 	building	300		building	304		235	444
+link 	building	300		building	305		108	205
+
+
+##Control Tower##
+Building	351	0	2	257	100	60	15	10000	0.0	3	1
+Building	351	1	2	257	-1	60	15	10000	0.0	3	1
+Building	352	0	0	257	100	60	15	1000	-0.38	3	1
+Building	352	1	0	257	-1	60	15	1000	-0.38	3	1
+Building	353	0	0	257	100	60	15	900	0.638	3	1
+Building	353	1	0	257	-1	60	15	900	0.638	3	1
+Building	355	0	0	257	100	60	15	900	0.0	3	1
+Building	355	1	0	257	-1	60	15	900	0.0	3	1
+
+link 	building	350		building	351		122  	3
+link 	building	350		building	352		122	400
+link 	building	350		building	353		122	398
+link 	building	350		building	355		185	397
+
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis
+#Building       600     0      15       257     -1      60      15     1000    0.0     0       1
+Building        601     0       0       257     -1      60      0      2010    0.0     0       1
+Building        602     0       0       257     -1      60      0      1990    0.0     0       1
+Building        603     0       0       257     -1      60      0      1990    0.0     0       1
+Building        604     0       0       257     -1      60      0      1990    0.0     0       1
+Building        605     0       0       257     -1      60      0      1990    0.0     0       1
+Building        606     0       0       257     -1      60      15     1000    -0.88   0       1
+Building        607     0       0       257     -1      60      15     1000    -0.88   0       1
+Building        608     0       0       257     -1      60      15     1000    -0.88   0       1
+Building        609     0       0       257     -1      60      15     1000    -0.88   0       1
+Building        610     0       0       257     -1      60      15     1000    -0.88   0       1
+Building        611     0       0       257     -1      60      15     1000    -0.88   0       1
+Building        612     0       0       257     -1      60      15     1000    -0.88   0       1
+Building        613     0       0       257     -1      60      15     1000    -0.88   0       1
+Building        614     0       0       257     -1      60      15     1000    0.85    0       1
+Building        615     0       0       257     -1      60      15     1000    0.85    0       1
+
+
+Building        620     0       0       257     -1      60      15      2000    0.0     0       1
+
+
+#Building        650     0       5       257     -1      60      15     1000    0.0     0       1
+Building        651     0       0       257     -1      60      15      1000    0.59    0       1
+Building        652     0       0       257     -1      60      15      1001    0.73    0       1
+Building        653     0       0       257     -1      60      15      1001    0.0     0       1
+Building        654     0       0       257     -1      60      0      1990    0.0     0       1
+Building        655     0       0       257     -1      60      0      1990    0.0     0       1
+
+Building        660     0       0       257     -1      60      0       1980    0.0     0       1
+
+Building        400     0       3       257     -1      10      15      1000    0.0     0       1
+Building        401     0       0       257     -1      10      15      1000    -0.89   0       1
+Building        402     0       0       257     -1      10      15      1000    0.83    0       1
+Building        403     0       0       257     -1      10      15      1000    0.0     0       1
+
+Building        420     0       3       257     -1      10      15      1000    0.0     0       1
+Building        421     0       0       257     -1      10      15      1000    -0.96   0       1
+Building        422     0       0       257     -1      10      15      1000    -0.90   0       1
+Building        423     0       0       257     -1      10      15      1000    0.0     0       1
+
+Building        430     0       3       257     -1      10      15      1000    0.0     0       1
+Building        431     0       0       257     -1      10      15      1000    -0.82   0       1
+Building        432     0       0       257     -1      10      15      1000    -0.87   0       1
+Building        433     0       0       257     -1      10      15      1000    0.0     0       1
+
+#Building        440     0       5       257     -1      10      15      1000    0.0     0       1
+Building        441     0       0       257     -1      10      15      1000    -0.81   0       1
+Building        442     0       0       257     -1      10      15      1000    0.82    0       1
+Building        443     0       0       257     -1      10      15      1000    0.78    0       1
+Building        444     0       0       257     -1      10      15      1000    -0.87   0       1
+Building        445     0       0       257     -1      10      15      1000    0.0     0       1
+
+Building        449     0       0       257     -1      10      0      2000    0.0     0       1
+
+#Building        450     0       6       257     -1      10      15      1000    0.0     0       1
+Building        451     0       0       257     -1      10      0       2010    0.0     0       1
+Building        452     0       0       257     -1      10      0       1990    0.0     0       1
+Building        453     0       0       257     -1      10      15      1010    0.0     0       1
+Building        454     0       0       257     -1      10      15      1010    0.0     0       1
+Building        455     0       0       257     -1      10      15      1010    0.0     0       1
+Building        456     0       0       257     -1      10      15      1010    0.0     0       1
+
+Building        460     0       0       257     -1      10      15      1000    -0.86   0       1
+
+Building        470     0       0       257     -1      10      15      2000    0.0     0       1
+
+Building        480     0       0       257     -1      10      15      1000    0.0     0       1
+
+Building        490     0       0       257     -1      10      15      1990    0.0     0       1
+Building        490     1       0       257     -1      10      15      1990    0.0     0       1
+Building        490     2       0       257     -1      10      15      1990    0.0     0       1
+Building        490     3       0       257     -1      10      15      1990    0.0     0       1
+Building        490     4       0       257     -1      10      15      1990    0.0     0       1
+Building        490     5       0       257     -1      10      15      1990    0.0     0       1
+Building        490     6       0       257     -1      10      15      1990    0.0     0       1
+Building        490     7       0       257     -1      10      15      1990    0.0     0       1
+Building        490     8       0       257     -1      10      15      1990    0.0     0       1
+Building        490     9       0       257     -1      10      15      1990    0.0     0       1
+Building        490     10      0       257     -1      10      15      1990    0.0     0       1
+
+Building        500     0       0       257     -1      10      15      1999    0.0     0       1
+
+
+##Alpine Lights##
+Miscellaneous   2       0       0       257     50      10      15      1000    0.0     20      1
+
+Miscellaneous   2       1       0       257     -1      10      15      1000    0.0     20      1
+
+Miscellaneous   3       0       0       257     50      10      15      1000    0.0     20      1
+
+Miscellaneous   3       1       0       257     -1      10      15      1000    0.0     20      1
+
+Miscellaneous   4       0       0       257     50      10      15      1000    0.0     20      1
+
+Miscellaneous   4       1       0       257     -1      10      15      1000    0.0     20      1
+
+Miscellaneous   5       0       0       257     50      10      15      1000    0.0     20      1
+
+Miscellaneous   5       1       0       257     -1      10      15      1000    0.0     20      1
+
+Radar           127    	0       0       257     60      60      15      1000    0.0     4       1
+Radar           127    	1       0       257     -1      50      15      1000    0.0     4       1
+
+
+#link	parent cat.	parent num.	child cat	child num	offset x y
+
+
+
+

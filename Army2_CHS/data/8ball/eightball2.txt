@@ -1,0 +1,225 @@
+// map design and scripting by Alvin Muolic
+// Behind The 8-Ball - Mission 2
+
+// Re-Introducing the threat of portable portal technology
+
+if startup2 then
+	triggerdelay 10 missiononebrief2x,
+	setbriefing "map08_2.bmp",
+	trigger sciencewin,
+	trigger stportal2,
+	trigger 8ballwave1,
+	trigger 8ballwave2,
+	trigger 8ballwave3,
+	trigger 8ballwave4,
+	trigger devportal1,
+	playsound "map8mission2hq.wav" 0 1,
+	triggerdelay 15000 8b_rush1
+
+if missiononebrief2x then
+	showpda "找到８号球，摧毁保护它的高射炮！"
+
+
+if startup2 
+testvar
+	aagun1alive = 0 and
+	aagun2alive = 0 and
+	aagun3alive = 0 and
+	aagun4alive = 0 
+then
+	trigger startwin
+
+if killed aagun1
+testvar
+	aagun2alive = 0 and
+	aagun3alive = 0 and
+	aagun4alive = 0 
+then
+	trigger startwin
+
+if killed aagun2
+testvar
+	aagun1alive = 0 and
+	aagun3alive = 0 and
+	aagun4alive = 0 
+then
+	trigger startwin
+
+if killed aagun3
+testvar
+	aagun1alive = 0 and
+	aagun2alive = 0 and
+	aagun4alive = 0 
+then
+	trigger startwin
+
+if killed aagun4
+testvar
+	aagun1alive = 0 and
+	aagun2alive = 0 and
+	aagun3alive = 0 
+then
+	trigger startwin
+
+if startwin
+then	
+	playsound "0802sarge.wav" 16 0,
+	triggerdelay 2100 endmission2
+
+if endmission2 butnot killed greensarge1 then
+	playsound "HQairStrike.wav" 16 0,
+	triggerdelay 1850 petertestgreenwins
+	
+if petertestgreenwins butnot killed greensarge1 then
+	trigger greenwins	
+
+if 8b_rush1 then
+	createtrooper "8b_rusher1" autorifle 8b_re1 tan,
+	createtrooper "8b_rusher2" autorifle 8b_re2 tan,
+	createtrooper "8b_rusher3" autorifle 8b_re3 tan,
+	createtrooper "8b_rusher4" flamer 8b_re4 tan,
+	setaimode 8b_rusher1 attack,
+	setaimode 8b_rusher2 attack,
+	setaimode 8b_rusher3 attack,
+	setaimode 8b_rusher4 attack,	
+	order 8b_rusher1 goto greensarge1, 
+	order 8b_rusher1 follow greensarge1,
+	order 8b_rusher2 goto greensarge1, 
+	order 8b_rusher2 follow greensarge1,
+	order 8b_rusher3 goto greensarge1, 
+	order 8b_rusher3 follow greensarge1,
+	order 8b_rusher4 goto greensarge1, 
+	order 8b_rusher5 follow greensarge1,
+	triggerdelay 30000 8b_rush2
+
+if 8b_rush2 then
+	createtrooper "8b_rusher5" autorifle 8b_re1 tan,
+	createtrooper "8b_rusher6" autorifle 8b_re2 tan,
+	createtrooper "8b_rusher7" autorifle 8b_re3 tan,
+	createtrooper "8b_rusher8" flamer 8b_re4 tan,
+	setaimode 8b_rusher5 attack,
+	setaimode 8b_rusher6 attack,
+	setaimode 8b_rusher7 attack,
+	setaimode 8b_rusher8 attack,	
+	order 8b_rusher5 goto greensarge1, 
+	order 8b_rusher6 follow greensarge1,
+	order 8b_rusher7 goto greensarge1, 
+	order 8b_rusher8 follow greensarge1,
+	order 8b_rusher5 goto greensarge1, 
+	order 8b_rusher6 follow greensarge1,
+	order 8b_rusher7 goto greensarge1, 
+	order 8b_rusher8 follow greensarge1,
+	triggerdelay 30000 8b_rush3
+
+if 8b_rush3 then
+	createtrooper "8b_rusher9" autorifle 8b_re1 tan,
+	createtrooper "8b_rusher10" autorifle 8b_re2 tan,
+	createtrooper "8b_rusher11" autorifle 8b_re3 tan,
+	createtrooper "8b_rusher12" bazooka 8b_re4 tan,
+	setaimode 8b_rusher9 attack,
+	setaimode 8b_rusher10 attack,
+	setaimode 8b_rusher11 attack,
+	setaimode 8b_rusher12 attack,	
+	order 8b_rusher9 goto greensarge1, 
+	order 8b_rusher10 follow greensarge1,
+	order 8b_rusher11 goto greensarge1, 
+	order 8b_rusher12 follow greensarge1,
+	order 8b_rusher9 goto greensarge1, 
+	order 8b_rusher10 follow greensarge1,
+	order 8b_rusher11 goto greensarge1, 
+	order 8b_rusher12 follow greensarge1,
+	triggerdelay 30000 8b_rush4	
+
+if 8b_rush4 then
+	createtrooper "8b_rusher13" autorifle 8b_re1 tan,
+	createtrooper "8b_rusher14" autorifle 8b_re2 tan,
+	createtrooper "8b_rusher15" autorifle 8b_re3 tan,
+	createtrooper "8b_rusher16" bazooka 8b_re4 tan,
+	setaimode 8b_rusher13 attack,
+	setaimode 8b_rusher14 attack,
+	setaimode 8b_rusher15 attack,
+	setaimode 8b_rusher16 attack,	
+	order 8b_rusher15 goto greensarge1, 
+	order 8b_rusher16 follow greensarge1,
+	order 8b_rusher17 goto greensarge1, 
+	order 8b_rusher18 follow greensarge1,
+	order 8b_rusher15 goto greensarge1, 
+	order 8b_rusher16 follow greensarge1,
+	order 8b_rusher17 goto greensarge1, 
+	order 8b_rusher18 follow greensarge1	
+
+if killed 8b_rusher4 then
+	createpowerup medpack 8b_rusher4
+if killed 8b_rusher8 then
+	createpowerup flamer 8b_rusher8 99
+if killed 8b_rusher12 then
+	createpowerup bazooka 8b_rusher12 10
+if killed 8b_rusher16 then
+	createpowerup medpack 8b_rusher16
+
+if 8ballwave1 then
+	createtrooper "8b_wave1" autorifle (154,2238) tan,
+	createtrooper "8b_wave2" autorifle (204,2606) tan,
+	createtrooper "8b_wave3" autorifle (552,2367) tan,
+	createtrooper "8b_wave4" mortar (128,2611) tan,
+	trigger setstatus1
+if setstatus1 butnot setstatus1a then
+	trigger setstatus1a,
+	setaimode 8b_wave1 defend,
+	setaimode 8b_wave2 defend,
+	setaimode 8b_wave3 defend,
+	setaimode 8b_wave4 defend,	
+	setfacing 8b_wave1 190,	
+	setfacing 8b_wave2 190,	
+	setfacing 8b_wave3 128,	
+	setfacing 8b_wave4 190
+
+if 8ballwave2 then
+	createtrooper "8b_wave5" autorifle (585,2754) tan,
+	createtrooper "8b_wave6" autorifle (561,2567) tan,
+	createtrooper "8b_wave7" autorifle (157,2913) tan,
+	createtrooper "8b_wave8" sniper (620,2864) tan,
+	trigger setstatus2
+if setstatus2 butnot setstatus2a then
+	trigger	setstatus2a,
+	setaimode 8b_wave5 defend,
+	setaimode 8b_wave6 defend,
+	setaimode 8b_wave7 defend,
+	setaimode 8b_wave8 defend,	
+	setfacing 8b_wave5 190,	
+	setfacing 8b_wave6 140,	
+	setfacing 8b_wave7 128,	
+	setfacing 8b_wave8 128
+
+if 8ballwave3 then
+	createtrooper "8b_wave9" autorifle (690,3200) tan,
+	createtrooper "8b_wave10" autorifle (648,3346) tan,
+	createtrooper "8b_wave11" autorifle (1000,3888) tan,
+	createtrooper "8b_wave12" flamer (310,3892) tan,
+	trigger setstatus3
+if setstatus3 butnot setstatus3a then
+	trigger setstatus3a,
+	setaimode 8b_wave9 defend,
+	setaimode 8b_wave10 defend,
+	setaimode 8b_wave11 defend,
+	setaimode 8b_wave12 defend,	
+	setfacing 8b_wave10 190,	
+	setfacing 8b_wave11 190,	
+	setfacing 8b_wave12 190
+	
+if 8ballwave4 then
+	createtrooper "8b_wave13" autorifle (155,3139) tan,
+	createtrooper "8b_wave14" autorifle (153,2826) tan,
+	createtrooper "8b_wave15" autorifle (501,3003) tan,
+	createtrooper "8b_wave16" bazooka (1076,3134) tan,
+	trigger setstatus4
+if setstatus4 butnot setstatus4a then
+	trigger setstatus4a,
+	setaimode 8b_wave13 defend,
+	setaimode 8b_wave14 defend,
+	setaimode 8b_wave15 defend,
+	setaimode 8b_wave16 defend,	
+	setfacing 8b_wave13 128,	
+	setfacing 8b_wave14 128,	
+	setfacing 8b_wave15 190
+	

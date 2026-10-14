@@ -1,0 +1,57 @@
+#Object Defaults Table
+
+#Item Flags
+# ITEMFLAG_MAP		0001	(1)
+# ITEMFLAG_VISBLOCK	0100	(256)
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis
+Miscellaneous	728	0	0	0	-1	0	0	1	0.0	0	1
+Miscellaneous	729	0	0	0	-1	0	0	1	0.0	0	1
+Miscellaneous	730	0	0	0	-1	0	0	1	0.0	0	1
+
+Building	141	0	0	1	-1	60	0	2000   0.0	0	1
+Building	142	0	0	1	-1	60	15	1000   -0.52	0	1
+Building	143	0	0	1	-1	60	15	1000   -0.52	0	1
+Building	144	0	0	1	-1	60	15	1000   -0.52	0	1
+Building	408	0	0	1	-1	0	0	2001	0.0	0	1
+Building	409	0	0	1	-1	0	0	2001	0.0	0	1
+Building	410	0	0	1	-1	0	0	2001	0.0	0	1
+Building	411	0	0	1	-1	0	0	2001	0.0	0	1
+Building	432	0	0	1	-1	0	0	1000	0.0	0	1
+Building	440	0	0	1	-1	0	0	1000	0.0	0	1
+Building	441	0	0	1	-1	0	0	1000	0.0	0	1
+Building	442	0	0	1	-1	0	0	1000	0.0	0	1
+Building	443	0	0	1	-1	0	0	1000	0.0	0	1
+Building	444	0	0	1	-1	0	0	1000	0.0	0	1
+
+Building	950	0	0	1	-1	60	15	1000	0.0	0	1
+Building	951	0	0	1	-1	60	0	10000	0.0	0	1
+Building	952	0	0	1	-1	60	15	1000   -0.24	0	1
+Building	953	0	0	1	-1	60	15	1000   -0.24	0	1
+
+link 	building	140		building	141		0 	0
+link 	building	140		building	142		0	0
+link 	building	140		building	143		0	0
+link 	building	140		building	144		0	0
+
+link 	building	950		building	951		15	319
+link 	building	950		building	952		15	319
+link 	building	950		building	953		15	319
+
+
+Fence		2	0	0   16777217    20	50	15	1000    2.06	3	1	
+Fence		2	1	0	1	-1	0	0	1	0.0	0	1
+Fence		4	0	0   16777217	20	50	15	1000   -1.96	3	1	
+Fence		4	1	0	1	-1	0	0	1       0.0	0	1
+Fence		730	0	0   16777217    20	30	15	1000    2.06	3	1	
+Fence		730	1	0	1	-1	0	0	1	0.0	0	1
+Fence		731	0	0   16777217	20	30	15	1000   -1.96	3	1	
+Fence		731	1	0	1	-1	0	0	1       0.0	0	1
+Fence		732	0	0   16777217	20	30	15	1000   -0.36	3	1	
+Fence		732	1	0	1	-1	0	0	1       0.0	0	1
+Fence		733	0	0   16777217	20	30	15	1000	0.38	3	1	
+Fence		733	1	0	1	-1	0	0	1	0.0	0	1
+Fence		734	0	0   16777217	20	30	15	1000   -0.36	3	1	
+Fence		734	1	0	1	-1	0	0	1       0.0	0	1
+Fence		735	0	0   16777217	20	30	15	1000	0.38	3	1	
+Fence		735	1	0	1	-1	0	0	1	0.0	0	1

@@ -1,0 +1,13 @@
+#command map_name	map_text		folder		victorycin	loadscreen		loadmusic	briefing		briefsfx	stratmap		cycling?	losemovie1	losemovie2	losemovie3	movienum
+MAP	kitchen		Kitchen			kitchen		portal		load_kitchen.bmp	kitchen.wav	brief_kitchen1.bmp	none		map_kitchen1.bmp	FALSE		mag		mag		mag		
+MAP	homeland	Homeland		homeland	none		load_homeland.bmp	homeland.wav	Alp1Mission1.bmp	none		load_homeland.bmp	true		grave		grave		grave
+MAP	tankstore	The_Tank_Store		tankstore	none		load_tankstore.bmp	tankstore.wav	brief_tankstore1.bmp	none		map_tankstore1.bmp	true		inter		inter		inter
+MAP	airborne	Airborne 		airborne	act2		load_airborne.bmp	airborne.wav	Alp4Mission1.bmp	none		load_airborn.bmp	FALSE		airfld		airfld		airfld		1
+MAP	mania		Mania			mania		portal		load_mania.bmp		mania.wav	brief_mania1.bmp	none		map_mania1.bmp		true		monkey		grave		inter		1
+MAP	bigbang		The_Big_Bang		frontyard	portal		load_bigbang.bmp	frontyard.wav	frontyard1.bmp		none		load_bigbang.bmp        FALSE		m80		m80		m80		1
+MAP	igd		I.G.D.			igd		none		load_igd.bmp		igd.wav		trop_brief01.bmp	none		igd_strat.bmp		true		hosp		hosp		hosp		1
+MAP	eightball	Eightball		8ball		act3		load_eightball.bmp	bootcamp.wav	8ball_brief01.bmp	none		eightball_strat.bmp	FALSE		grave		monkey		inter		2
+MAP	hobby		Hobby_Table		hobby		portal		load_hobby.bmp		hobby.wav	hobby_brief01.bmp	none		hobby_strat.bmp		FALSE		m80		monkey		grave		2
+MAP	areax		Area_X			areax		none		load_areax.bmp		areax.wav	areax_brief01.bmp	none		areax_strat.bmp		FALSE		inter		hosp		monkey		2
+MAP	fortress	Tan_Fortress		fortress	portal		load_fortress.bmp	fortress.wav	des11mission1.bmp	none		load_fortress.bmp	FALSE		weapon		weapon		weapon		2
+MAP	playset		Playset			playset		act4		load_playset.bmp	playset.wav	brief_playset1.bmp	none		map_playset1.bmp	FALSE		grave		inter		monkey		3

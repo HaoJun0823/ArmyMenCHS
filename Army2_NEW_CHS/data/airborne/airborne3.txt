@@ -1,0 +1,79 @@
+//*Startup*//
+
+
+
+		//**Startup**//
+if startup3 then
+        triggerdelay 500 showmiss3,
+        setbriefing "map04_3.bmp",
+        trigger Sargeonplatform,
+        triggerdelay 1000 mission2vo
+
+if showmiss3 then
+	showpda "把蓝军间谍和老兵护送至直升飞机场。"
+
+if mission2vo then
+        playsound "0403HQ.wav" 0 1
+
+//**Win Game**
+
+if padon blood30 then
+        trigger spypad1
+
+if padon blood27 then
+        trigger oldmanpad
+
+
+if allof spypad1 oldmanpad then
+        triggerdelay 200 removetheppl,
+	triggerdelay 500 showfinalpdabit,
+        trigger timetowin3
+
+if showfinalpdabit then
+	showpda "干得好，中士！"
+
+if timetowin3 butnot doh then
+        triggerdelay 1000 petertestgreenwins
+
+if removetheppl then
+        setnpc oldman 1,
+        setnpc Boris_S 1,
+        undeploy Boris_S,
+        undeploy oldman
+
+        //**Last Attack**//
+if padon final butnot stopfinal then
+        trigger placefinalattackers,
+        trigger stopfinal
+
+if placefinalattackers then
+        createtrooper "SpyKiller" grenade (3750,1662) tan,
+        createtrooper "SpyKiller1" autorifle (3677,1639) tan,
+        createtrooper "OldManmurderer" grenade (4041,2172) tan,
+        createtrooper "OldManmurderer1" autorifle (4045,2013) tan,
+        triggerdelay 1000 killthebastard
+
+if killthebastard then
+        order Spykiller follow Boris_S inmode attack,
+        order SpyKiller1 follow Boris_S inmode attack,
+        order OldManmurderer follow OldMan inmode attack,
+        order OldManmurderer1 follow OldMan inmode attack
+
+if hit OldManmurderer1 then
+        setaipose OldManmurderer1 prone
+
+if hit SpyKiller1 then
+        setaipose SpyKiller1 prone
+
+        //**for added heat**//
+
+if padon spyoldheat butnot onlyonedrop then
+        triggerdelay 2000 hitthespy,
+        triggerdelay 500 hitoldman,
+        trigger onlyonedrop
+
+if hitthespy then
+        fireweapon p tanpara1 Boris_S
+
+if hitoldman then
+        fireweapon p tanpara1 Oldman

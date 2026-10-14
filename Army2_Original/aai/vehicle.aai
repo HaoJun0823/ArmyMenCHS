@@ -1,0 +1,9 @@
+#Vehicle Defaults Table
+
+#VehicleType	Capacity	FSpd	RSpd	Acc	Turn	HP	Col	Arm	
+Jeep		2		200	-150	200	50	69	20	2
+Tank		1		120	-120	120	110	128	40	6	
+Half_Track	4		140	-120	140	85	105	35	4
+Convoy		6		160	-94	140	75	80	30	2
+Sarge		0		0	-56	0	0	60	0	0
+Boat		6		200	-150	200	80	105	20	4

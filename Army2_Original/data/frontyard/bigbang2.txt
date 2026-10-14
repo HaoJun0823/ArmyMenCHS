@@ -1,0 +1,189 @@
+ //*Frontyard Mission2*//
+
+
+//*Startup*//
+
+ if startup2 then
+        triggerdelay 1000 mission2,
+        triggerdelay 2000 greyclone1,
+        triggerdelay 4000 greyclone2
+
+ variable stopcloning	0
+ variable stopcloning2  0
+
+ if mission2 then
+        triggerdelay 1000 deploymortars
+
+ //**Win conditions**//
+ if killed GreenC then
+        trigger timetowin,
+        trigger nores1,
+        trigger nores2
+
+if timetowin butnot doh then
+        triggerdelay 1500 petertestgreenwins
+
+ //**facings**//
+
+ if allingoodfacing then
+        setfacing m1 230,
+        setfacing m2 230,
+        setfacing m3 230,
+        setfacing m4 230,
+        setfacing m5 230,
+        setfacing auto1 158,
+        setfacing auto2 158,
+        setfacing baz1 230,
+        setfacing baz2 254
+
+//**Mission 2 action**//
+
+ if greyclone1 then
+	trigger defencemech
+ if greyclone2 then
+        triggerdelay 2000 defencemech2
+
+ //**Clone1**//
+ if defencemech then
+        createtrooper "clone1" rifle depclone1 grey,
+        trigger link1
+ if defencemech2 then
+        createtrooper "clone2" rifle depclone2 grey,
+        trigger link2
+
+ if killed clone1 testvar stopcloning2 < 20 then
+        triggerdelay 1000 rescloney1,
+        addvar stopcloning2 1,
+        trigger verifyclone2
+
+ if rescloney1 butnot nores1 then
+        resurrect clone1 depclone1,
+        trigger link1
+
+ if link1 then
+ 	order clone1 goto clonning1,
+        triggerdelay 2000 firstpad1
+
+ if firstpad1 then
+        order clone1 goto clonning2,
+        triggerdelay 2500 gogethim1
+
+
+  //**Clone2**//
+
+ if killed clone2 testvar stopcloning < 7 then
+        triggerdelay 600 rescloney2,
+        addvar stopcloning 1,
+        trigger link2,
+        createpowerup "" medkit clone2 1
+
+ if rescloney2 butnot nores2 then
+        resurrect clone2 depclone2
+
+ if link2 then
+        order clone2 goto clonning2,
+        triggerdelay 5000 firstpad2
+
+ if firstpad2 then
+        order clone2 goto clonning2,
+        triggerdelay 3000 gogethim2
+
+ //**clones attack**//
+
+ if gogethim1 then
+        order clone1 follow greensarge1
+
+ if gogethim2 then
+        order clone2 follow greensarge1
+
+
+ //**commanders defence**//
+ if deploymortars then
+        createtrooper "m1" mortar (690,3629) grey,
+        createtrooper "m2" mortar (671,3567) blue,
+	createtrooper "m3" mortar (633,3519) tan,
+        createtrooper "m4" mortar (585,3462) grey,
+        createtrooper "m5" mortar (491,3446) tan,
+        createtrooper "auto1" sniper (439,3778) blue,
+        createtrooper "auto2" autorifle (613,3626) tan,
+        createtrooper "baz1" bazooka (718,3285) tan,
+        createtrooper "baz2" bazooka (429,3285) blue,
+        addexp auto2 200,
+        trigger duewgatisay,
+        triggerdelay 500 allingoodfacing
+
+ if duewgatisay then
+        setaimode m1 defend,
+        setaimode m2 defend,
+        setaimode m3 defend,
+        setaimode m4 defend,
+        setaimode m5 defend,
+        setaimode baz1 defend,
+        setaimode baz2 defend
+
+ //**Green commander**//
+
+ if commander then
+        createtrooper "GreenC" vulcan (613,3682) grey,
+        addexp GreenC 1000,
+        order GreenC goto com,
+        setforcecolor GreenC green,
+        trigger AI
+
+        //more setups//
+ if allof killed m1 killed m2 killed m3 killed m4 killed m5
+ killed baz1 killed baz2 then
+        triggerdelay 800 commander,
+	playsound "0602colonel1.wav" 3 0,
+	triggerdelay 7000 othercolonel,
+        triggerdelay 1000 commanderorder,
+        triggerdelay 5000 showcommander
+
+ if showcommander then
+        setitemflag greenc strategic 1
+
+ if commanderorder then
+        order greenc goto commander1 inmode evade,
+        triggerdelay 2000 autorunners,
+        triggerdelay 1000 commanderorder2
+
+ if autorunners then
+        order auto1 follow greenc inmode defend,
+        order auto2 follow greenc inmode defend
+
+ if commanderorder2 then
+        order greenc goto commander1 inmode evade,
+        triggerdelay 2000 commanderorder3
+
+ if commanderorder3 then
+        order greenc goto commander2 inmode evade,
+        triggerdelay 3000 commanderorder4
+
+ if commanderorder4 then
+        order greenc goto commander3 inmode evade,
+        triggerdelay 5000 commanderorder5
+
+ if commanderorder5 then
+        order greenc goto commander4 inmode evade
+
+ if othercolonel then
+	playsound "0602colonel2.wav" 3 0,
+	triggerdelay 4000 sargevotime,
+        triggerdelay 200000 getbraveGC
+
+ if getbraveGC then
+        order greenc follow greensarge1 inmode attack,
+        setaimode auto1 attack,
+        setaimode auto2 attack
+
+ if sargevotime then
+	playsound "0602sarge1.wav" 16 0
+
+	
+
+
+
+
+
+
+

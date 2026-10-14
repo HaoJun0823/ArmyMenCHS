@@ -1,0 +1,204 @@
+// this gets loaded on the host if the green army is AI controlled
+
+// maintain a variable which knows when we are on our base pad
+// this is used if we accidentally pickup our own flag and we are already on our base
+variable greenOnBase 0
+
+if padon greenbase then
+	setvar greenOnBase 1
+
+if padoff greenbase then
+	setvar greenOnBase 0
+
+// This variable holds the current action for green
+// 0 means no action, 1 means goto tan flag, 2 means goto blue flag, 3 means goto grey flag,
+// 4 means rescue green flag, 5 means take flag to base
+variable greenAction 0
+
+if startup1 then
+	triggerdelay 1000 greenChooseNewAction,
+	triggerdelay 2000 greenRegularOrders
+
+if greenChooseNewAction then
+	setvar greenAction 0,
+	trigger greenCheckIfHoldingFlags,
+	trigger greenChooseAction
+
+// if it's time to choose a new action but we are currently holding a flag then we should
+// always choose to take it to a base
+
+if greenCheckIfHoldingFlags testvar hasitem greensarge1 tanflag1 = 1 then
+	setvar greenAction 5,
+	trigger greenTakeFlagToBase
+	
+if greenCheckIfHoldingFlags testvar hasitem greensarge1 greenflag1 = 1 then
+	setvar greenAction 5,
+	trigger greenTakeFlagToBase
+	
+if greenCheckIfHoldingFlags testvar hasitem greensarge1 blueflag1 = 1 then
+	setvar greenAction 5,
+	trigger greenTakeFlagToBase
+	
+if greenCheckIfHoldingFlags testvar hasitem greensarge1 greyflag1 = 1 then
+	setvar greenAction 5,
+	trigger greenTakeFlagToBase
+	
+// if green has no current action then pick a random action
+// keep doing this until an action is set
+if greenChooseAction testvar greenAction = 0 then
+	trigger greenPickRandomAction,
+	triggerdelay 1000 greenChooseAction
+
+if greenPickRandomAction then random
+	trigger greenSetCaptureTan,
+	trigger greenSetCaptureBlue,
+	trigger greenSetCaptureGrey
+
+// these events setup the greenAction variable
+
+// before attacking tan make sure tan is in the game and is not an ally
+if greenSetCaptureTan testvar IsColorInGame tan > 0 and IsAlly green tan = 0 then
+	setvar greenAction 1,
+	trigger greenCaptureTan,
+	trigger greenStartTimeOut
+
+// before attacking blue make sure blue is in the game and is not an ally
+if greenSetCaptureBlue testvar IsColorInGame blue > 0 and IsAlly green blue = 0 then
+	setvar greenAction 2,
+	trigger greenCaptureBlue,
+	trigger greenStartTimeOut
+
+// before attacking grey make sure grey is in the game and is not an ally
+if greenSetCaptureGrey testvar IsColorInGame grey > 0 and IsAlly green grey = 0 then
+	setvar greenAction 3,
+	trigger greenCaptureGrey,
+	trigger greenStartTimeOut
+
+// these events do the base attack orders
+
+if greenCaptureTan testvar greenAction = 1 then
+	order greensarge1 follow tanflag1 inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 follow tanflag1 inmode attack,
+	order green group 3 follow tanflag1 inmode attack
+
+if greenCaptureBlue testvar greenAction = 2 then
+	order greensarge1 follow blueflag1 inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 follow blueflag1 inmode attack,
+	order green group 3 follow blueflag1 inmode attack
+
+if greenCaptureGrey testvar greenAction = 3 then
+	order greensarge1 follow greyflag1 inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 follow greyflag1 inmode attack,
+	order green group 3 follow greyflag1 inmode attack
+
+// this event is for rescuing our own flag
+if greenRescueGreen testvar greenAction = 4 then
+	order greensarge1 follow greenflag1 inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 follow greenflag1 inmode attack,
+	order green group 3 follow greenflag1 inmode attack
+
+// this event is for taking an enemy flag to my base
+if greenTakeFlagToBase testvar greenAction = 5 then
+	order greensarge1 goto greenbase inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 goto neargreenbase inmode attack,
+	order green group 3 goto neargreenbase inmode attack
+
+// these events choose new actions if my flag is captured by an enemy
+
+if pickedup greenflag1 by tan testvar isAlly green tan = 0 and greenAction < 5 then
+	setvar greenAction 4,
+	trigger greenRescueGreen
+
+if pickedup greenflag1 by blue testvar isAlly green blue = 0 and greenAction < 5 then
+	setvar greenAction 4,
+	trigger greenRescueGreen
+
+if pickedup greenflag1 by grey testvar isAlly green grey = 0 and greenAction < 5 then
+	setvar greenAction 4,
+	trigger greenRescueGreen
+
+// these events choose new actions if I capture an enemy flag
+
+if pickedup tanflag1 by green then
+	setvar greenAction 5,
+	trigger greenTakeFlagToBase
+
+if pickedup blueflag1 by green then
+	setvar greenAction 5,
+	trigger greenTakeFlagToBase
+
+if pickedup greyflag1 by green then
+	setvar greenAction 5,
+	trigger greenTakeFlagToBase
+
+// or if I rescue my own flag
+
+if pickedup greenflag1 by green testvar greenOnBase = 0 then
+	setvar greenAction 5,
+	trigger greenTakeFlagToBase
+
+if pickedup greenflag1 by green testvar greenOnBase = 1 then
+	triggerdelay 100 greenDropGreenFlag
+
+if greenDropGreenFlag then
+	dropitem greensarge1 greenflag1 gflagbase
+
+// these events choose new actions if any other flag is captured by an enemy
+
+if pickedup tanflag1 testvar greenAction < 4 then
+	setvar greenAction 1,
+	trigger greenCaptureTan
+
+if pickedup blueflag1 testvar greenAction < 4 then
+	setvar greenAction 2,
+	trigger greenCaptureBlue
+
+if pickedup greyflag1 testvar greenAction < 4 then
+	setvar greenAction 3,
+	trigger greenCaptureGrey
+
+// these events chose a new action if we get an enemy flag to home base
+
+if padon greenbase then
+    triggerdelay 1000 greenChooseNewAction
+
+// if we get our own flag back to base then drop that too
+
+if padon greenbase testvar hasitem greensarge1 greenflag1 = 1 then
+	dropitem greensarge1 greenflag1 gflagbase
+
+// these events choose new actions if a sarge is killed
+
+if killed greensarge1 then
+	triggerdelay 5000 greenChooseNewAction
+
+// these are the sgreending order regardless of what mode sarge is in
+	
+if greenRegularOrders then
+	order green group 0 follow greensarge1 inmode attack,
+	setaimode green group 4 defend,
+	setaimode green group 5 defend,
+	order green group 7 goto greenbase inmode evade,
+	triggerdelay 5000 greenRegularOrders
+
+// timeout code - if mode has not changed for a while then change it
+
+variable greenTimeOutVar 0
+variable greenLastTimeOutVar 1
+
+if greenStartTimeOut then
+    addvar greenTimeOutVar 1,
+	triggerdelay 120000 greenCheckTimeOut
+
+if greenCheckTimeOut testvar greenTimeOutVar = greenLastTimeOutVar then
+    trigger greenChooseNewAction
+
+if greenCheckTimeOut testvar greenTimeOutVar <> greenLastTimeOutVar then
+	addvar greenLastTimeOutVar 1
+
+

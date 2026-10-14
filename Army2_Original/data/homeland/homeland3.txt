@@ -1,0 +1,720 @@
+// ALPINE Map 2 Mission 3 Jump The Train
+
+VARIABLE engineframe 0
+
+Variable engx 3938
+Variable engy 847
+
+Variable tendoffsetx 0
+Variable tendoffsety 0
+
+Variable boxoffsetx 0
+Variable boxoffsety 0
+
+Variable flat1offsetx 0
+Variable flat1offsety 0
+
+Variable flat2offsetx 0
+Variable flat2offsety 0
+
+Variable flat3offsetx 0
+Variable flat3offsety 0
+
+Variable caboffsetx 0
+Variable caboffsety 0
+
+Variable tendx 0
+Variable tendy 0
+
+Variable boxx 0
+Variable boxy 0
+
+Variable flat1x 0
+Variable flat1y 0
+
+Variable flat2x 0
+Variable flat2y 0
+
+Variable flat3x 0
+Variable flat3y 0
+
+Variable cabx 0
+Variable caby 0
+
+Variable traininitialized 0
+
+Variable enginecycles 0
+Variable enginecycles2 0
+Variable max_enginecycles 34
+Variable extra_enginecycles 100
+
+		//**Startup**//
+if startup3 then
+        triggerdelay 17000 finalbitmap,
+        setbriefing "map02_3.bmp",
+        triggerdelay 1500 finalvo1
+
+if finalvo1 then
+        playsound "0203sarge1.wav" 16 0,
+        triggerdelay 3500 finalvo2
+
+if finalvo2 then
+         playsound "0203hq1.wav" 1 0,
+         triggerdelay 11500 finalvo3
+
+if finalvo3 then
+         playsound "0203hq2.wav" 1 0
+
+if finalbitmap then
+        showpda "Get to the train platform and jump on the train."
+
+                //**Win Conditions**//
+if padon traintrigger3 AFTER PADOFF traintrigger3 then
+	setcamerafocus greensarge1,
+        setuilock 1,
+        triggerdelay 600 showfinalmission,
+        triggerdelay 500 undeployallmen,
+        triggerdelay 1000 timetowin3,
+        trigger Sargeonplatform
+
+if showfinalmission then
+        showpda "You have accomplished all you can in this area, Sarge. Good job!"
+
+if Sargeonplatform TestVar traininitialized < 1 THEN
+        setobjstate engine towardfactory,
+        SETVAR traininitialized 1
+
+if undeployallmen then
+        UNDEPLOY GreenSarge1,
+	undeploy Wildblood,
+	undeploy Greg,
+	undeploy Alvin,
+	undeploy Veteran
+
+		//**Getting to the train, First Attack**
+
+//**Train Triggers**//
+
+if padon traintrigger2 butnot NoTrainGuard THEN
+	createtrooper "TrainRifle1" rifle tg1 tan,
+
+
+	createtrooper "TrainG1" grenade tg2 tan,
+	createtrooper "TrainRifle2" rifle tg3 tan,
+	createtrooper "TrainRifle3" rifle tg4 tan,
+	createtrooper "TrainRifle4" rifle tg5 tan,
+	createtrooper "TrainRifle5" rifle tg6 tan,
+        trigger TGonthemove,
+        trigger NoTrainGuard
+
+if TGonthemove then
+         order TrainRifle1 follow greensarge1,
+         order TrainG1 follow GreenSarge1,
+         order TrainRifle2 follow greensarge1,
+         order TrainRifle3 follow greensarge1,
+         order TrainRifle4 follow greensarge1,
+         order TrainRifle5 follow greensarge1
+
+
+		//Train Info//
+object engine
+        state initial
+                frame 10 0
+
+        state towardfactory
+                frame 50 5
+
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 0,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 5
+
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 1,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 2,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 3,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 4,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 5,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 6,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 7,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 1
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 8,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine,
+                        trigger loopcheck
+
+                frame 5 1
+
+                        //Final train event//
+
+ state towardvictory
+                frame 50 5
+
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 0,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 5
+
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 1,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 2,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 3,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 4,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 5,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 6,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 7,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 1
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 8,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine,
+                        trigger loopcheck2
+
+                frame 5 1
+
+
+IF movetrain THEN
+        setvar tendx engx,
+        setvar tendy engy,
+        addvar tendx 112,
+        addvar tendy 84,
+        trigger movetender,
+        setvar boxx engx,
+        setvar boxy engy,
+        addvar boxx 322,
+        addvar boxy 256,
+        trigger moveboxcar,
+        setvar flat1x engx,
+        setvar flat1y engy,
+        addvar flat1x 506,
+        addvar flat1y 409,
+        trigger moveflat1,
+        setvar flat2x engx,
+        setvar flat2y engy,
+        addvar flat2x 690,
+        addvar flat2y 562,
+        trigger moveflat2,
+        setvar flat3x engx,
+        setvar flat3y engy,
+        addvar flat3x 874,
+        addvar flat3y 715,
+        trigger moveflat3,
+        setvar cabx engx,
+        setvar caby engy,
+        addvar cabx 993,
+        addvar caby 815,
+        trigger movecab
+
+object tender1
+        state tenderinitial
+                frame 10 0
+
+        state tendertowardfactory
+                frame 1000000 5
+                        moveitem tender1 (refvar tendx,refvar tendy),
+                        moveitem tend_mask tender1
+
+                frame 1000000 4
+                        moveitem tender1 (refvar tendx,refvar tendy),
+                        moveitem tend_mask tender1
+
+
+		frame 1000000 3
+                        moveitem tender1 (refvar tendx,refvar tendy),
+                        moveitem tend_mask tender1
+
+
+                frame 1000000 2
+                        moveitem tender1 (refvar tendx,refvar tendy),
+                        moveitem tend_mask tender1
+
+
+                frame 1000000 1
+                        moveitem tender1 (refvar tendx,refvar tendy),
+                        moveitem tend_mask tender1
+
+
+                frame 5 1
+
+        STATE tender_derail
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                frame 100 10
+
+
+
+IF movetender TESTVAR tendx < 4096 THEN
+        trigger movetender2
+
+IF movetender2 TESTVAR tendy < 4096 THEN
+        trigger movetender3
+
+IF movetender3 THEN
+        SEQUENTIAL
+                setobjstate tender1 tendertowardfactory 0,
+                setobjstate tender1 tendertowardfactory 0,
+                setobjstate tender1 tendertowardfactory 1,
+                setobjstate tender1 tendertowardfactory 1,
+                setobjstate tender1 tendertowardfactory 2,
+                setobjstate tender1 tendertowardfactory 2,
+                setobjstate tender1 tendertowardfactory 3,
+                setobjstate tender1 tendertowardfactory 3,
+                setobjstate tender1 tendertowardfactory 4,
+                setobjstate tender1 tendertowardfactory 4
+
+
+
+object boxcar1
+        state boxcarinitial
+                frame 10 0
+
+        state boxcartowardfactory
+                frame 1000000 5
+                        moveitem boxcar1 (refvar boxx,refvar boxy),
+                        moveitem box_mask boxcar1
+
+                frame 1000000 4
+                        moveitem boxcar1 (refvar boxx,refvar boxy),
+                        moveitem box_mask boxcar1
+
+
+		frame 1000000 3
+                        moveitem boxcar1 (refvar boxx,refvar boxy),
+                        moveitem box_mask boxcar1
+
+
+                frame 1000000 2
+                        moveitem boxcar1 (refvar boxx,refvar boxy),
+                        moveitem box_mask boxcar1
+
+
+                frame 1000000 1
+                        moveitem boxcar1 (refvar boxx,refvar boxy),
+                        moveitem box_mask boxcar1
+
+
+                frame 5 1
+
+        STATE boxcar1_derail
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                frame 100 10
+
+
+
+IF moveboxcar TESTVAR boxx < 4096 THEN
+        trigger moveboxcar2
+
+IF moveboxcar2 TESTVAR boxy < 4096 THEN
+        trigger moveboxcar3
+
+IF moveboxcar3 THEN
+        SEQUENTIAL
+                setobjstate boxcar1 boxcartowardfactory 0,
+                setobjstate boxcar1 boxcartowardfactory 0,
+                setobjstate boxcar1 boxcartowardfactory 1,
+                setobjstate boxcar1 boxcartowardfactory 1,
+                setobjstate boxcar1 boxcartowardfactory 2,
+                setobjstate boxcar1 boxcartowardfactory 2,
+                setobjstate boxcar1 boxcartowardfactory 3,
+                setobjstate boxcar1 boxcartowardfactory 3,
+                setobjstate boxcar1 boxcartowardfactory 4,
+                setobjstate boxcar1 boxcartowardfactory 4
+
+
+object flatcar1
+        state flatcar1initial
+                frame 10 0
+
+        state flatcar1towardfactory
+                frame 1000000 5
+                        moveitem flatcar1 (refvar flat1x,refvar flat1y),
+                        moveitem flat1_mask flatcar1
+
+                frame 1000000 4
+                        moveitem flatcar1 (refvar flat1x,refvar flat1y),
+                        moveitem flat1_mask flatcar1
+
+
+		frame 1000000 3
+                        moveitem flatcar1 (refvar flat1x,refvar flat1y),
+                        moveitem flat1_mask flatcar1
+
+
+                frame 1000000 2
+                        moveitem flatcar1 (refvar flat1x,refvar flat1y),
+                        moveitem flat1_mask flatcar1
+
+
+                frame 1000000 1
+                        moveitem flatcar1 (refvar flat1x,refvar flat1y),
+                        moveitem flat1_mask flatcar1
+
+
+                frame 5 1
+
+        STATE flatcar1_derail
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                frame 100 10
+
+
+
+IF moveflat1 TESTVAR flat1x < 4096 THEN
+        trigger moveflat12
+
+IF moveflat12 TESTVAR flat1y < 4096 THEN
+        trigger moveflat13
+
+IF moveflat13 THEN
+        SEQUENTIAL
+                setobjstate flatcar1 flatcar1towardfactory 0,
+                setobjstate flatcar1 flatcar1towardfactory 0,
+                setobjstate flatcar1 flatcar1towardfactory 1,
+                setobjstate flatcar1 flatcar1towardfactory 1,
+                setobjstate flatcar1 flatcar1towardfactory 2,
+                setobjstate flatcar1 flatcar1towardfactory 2,
+                setobjstate flatcar1 flatcar1towardfactory 3,
+                setobjstate flatcar1 flatcar1towardfactory 3,
+                setobjstate flatcar1 flatcar1towardfactory 4,
+                setobjstate flatcar1 flatcar1towardfactory 4
+
+
+
+object flatcar2
+        state flatcar2initial
+                frame 10 0
+
+        state flatcar2towardfactory
+                frame 1000000 5
+                        moveitem flatcar2 (refvar flat2x,refvar flat2y),
+                        moveitem flat2_mask flatcar2
+
+                frame 1000000 4
+                        moveitem flatcar2 (refvar flat2x,refvar flat2y),
+                        moveitem flat2_mask flatcar2
+
+
+		frame 1000000 3
+                        moveitem flatcar2 (refvar flat2x,refvar flat2y),
+                        moveitem flat2_mask flatcar2
+
+
+                frame 1000000 2
+                        moveitem flatcar2 (refvar flat2x,refvar flat2y),
+                        moveitem flat2_mask flatcar2
+
+
+                frame 1000000 1
+                        moveitem flatcar2 (refvar flat2x,refvar flat2y),
+                        moveitem flat2_mask flatcar2
+
+
+                frame 5 1
+
+        STATE flatcar2_derail
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                frame 100 10
+
+
+
+IF moveflat2 TESTVAR flat2x < 4096 THEN
+        trigger moveflat22
+
+IF moveflat22 TESTVAR flat2y < 4096 THEN
+        trigger moveflat23
+
+IF moveflat23 THEN
+        SEQUENTIAL
+                setobjstate flatcar2 flatcar2towardfactory 0,
+                setobjstate flatcar2 flatcar2towardfactory 0,
+                setobjstate flatcar2 flatcar2towardfactory 1,
+                setobjstate flatcar2 flatcar2towardfactory 1,
+                setobjstate flatcar2 flatcar2towardfactory 2,
+                setobjstate flatcar2 flatcar2towardfactory 2,
+                setobjstate flatcar2 flatcar2towardfactory 3,
+                setobjstate flatcar2 flatcar2towardfactory 3,
+                setobjstate flatcar2 flatcar2towardfactory 4,
+                setobjstate flatcar2 flatcar2towardfactory 4
+
+
+
+
+object flatcar3
+        state flatcar3initial
+                frame 10 0
+
+        state flatcar3towardfactory
+                frame 1000000 5
+                        moveitem flatcar3 (refvar flat3x,refvar flat3y),
+                        moveitem flat3_mask flatcar3
+
+                frame 1000000 4
+                        moveitem flatcar3 (refvar flat3x,refvar flat3y),
+                        moveitem flat3_mask flatcar3
+
+
+		frame 1000000 3
+                        moveitem flatcar3 (refvar flat3x,refvar flat3y),
+                        moveitem flat3_mask flatcar3
+
+
+                frame 1000000 2
+                        moveitem flatcar3 (refvar flat3x,refvar flat3y),
+                        moveitem flat3_mask flatcar3
+
+
+                frame 1000000 1
+                        moveitem flatcar3 (refvar flat3x,refvar flat3y),
+                        moveitem flat3_mask flatcar3
+
+
+                frame 5 1
+
+
+         STATE flatcar3_derail
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                frame 100 10
+
+
+
+IF moveflat3 TESTVAR flat3x < 4096 THEN
+        trigger moveflat32
+
+IF moveflat32 TESTVAR flat3y < 4096 THEN
+        trigger moveflat33
+
+IF moveflat33 THEN
+        SEQUENTIAL
+                setobjstate flatcar3 flatcar3towardfactory 0,
+                setobjstate flatcar3 flatcar3towardfactory 0,
+                setobjstate flatcar3 flatcar3towardfactory 1,
+                setobjstate flatcar3 flatcar3towardfactory 1,
+                setobjstate flatcar3 flatcar3towardfactory 2,
+                setobjstate flatcar3 flatcar3towardfactory 2,
+                setobjstate flatcar3 flatcar3towardfactory 3,
+                setobjstate flatcar3 flatcar3towardfactory 3,
+                setobjstate flatcar3 flatcar3towardfactory 4,
+                setobjstate flatcar3 flatcar3towardfactory 4
+
+
+
+object caboose1
+        state cabooseinitial
+                frame 10 0
+
+        state caboosetowardfactory
+                frame 1000000 5
+                        moveitem caboose1 (refvar cabx,refvar caby),
+                        moveitem caboose_mask caboose1
+
+                frame 1000000 4
+                        moveitem caboose1 (refvar cabx,refvar caby),
+                        moveitem caboose_mask caboose1
+
+
+		frame 1000000 3
+                        moveitem caboose1 (refvar cabx,refvar caby),
+                        moveitem caboose_mask caboose1
+
+
+                frame 1000000 2
+                        moveitem caboose1 (refvar cabx,refvar caby),
+                        moveitem caboose_mask caboose1
+
+
+                frame 1000000 1
+                        moveitem caboose1 (refvar cabx,refvar caby),
+                        moveitem caboose_mask caboose1
+
+
+                frame 5 1
+
+        STATE caboose_derail
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                frame 100 10
+
+
+
+IF movecab TESTVAR cabx < 4096 THEN
+        trigger movecab2
+
+IF movecab2 TESTVAR caby < 4096 THEN
+        trigger movecab3
+
+IF movecab3 THEN
+        SEQUENTIAL
+                setobjstate caboose1 caboosetowardfactory 0,
+                setobjstate caboose1 caboosetowardfactory 0,
+                setobjstate caboose1 caboosetowardfactory 1,
+                setobjstate caboose1 caboosetowardfactory 1,
+                setobjstate caboose1 caboosetowardfactory 2,
+                setobjstate caboose1 caboosetowardfactory 2,
+                setobjstate caboose1 caboosetowardfactory 3,
+                setobjstate caboose1 caboosetowardfactory 3,
+                setobjstate caboose1 caboosetowardfactory 4,
+                setobjstate caboose1 caboosetowardfactory 4
+
+
+IF loopcheck testvar enginecycles < max_enginecycles THEN
+        ADDVAR enginecycles 1,
+        SETOBJSTATE engine towardfactory
+
+
+IF loopcheck2 testvar enginecycles2 < extra_enginecycles THEN
+        ADDVAR enginecycles2 1,
+        SETOBJSTATE engine towardvictory
+
+
+IF loopcheck testvar enginecycles >= max_enginecycles THEN
+        Trigger testSarge
+
+
+IF ALLOF testSarge Sargeonplatform THEN
+        TRIGGERDELAY 2000 loopcheck2
+
+if timetowin3 butnot doh then
+        triggerdelay 3500 petertestgreenwins
+
+
+
+
+
+
+

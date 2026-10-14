@@ -5,6 +5,13 @@ build_out/
 stage/
 dist/
 
+# 2 代的对应产物（1 代用 build_out/stage，2 代带 _am2 后缀）
+build_out_am2/
+stage_am2/
+
+# BMP 对比核对材料（由 Tools/bmp_*_am2.py 生成，可随时重跑）
+_bmp_cmp/
+
 # DLL 编译中间与输出（build_dll_local.py / compile_dll_wine.py 产出）
 Army1_Extend_Dll/Release/
 Army1_Extend_Dll/Debug/

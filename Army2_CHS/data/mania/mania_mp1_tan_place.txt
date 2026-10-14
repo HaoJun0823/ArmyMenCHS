@@ -1,0 +1,20 @@
+#cmd	type		x	y	facing	group	name
+
+place	tank        	2974	2787	0	2	-
+place	tank        	3047	2909	0	3	-
+place	bazookaman  	3529	3450	0	1	-
+place	bazookaman  	3256	3449	0	1	-
+place	bazookaman  	3399	3328	0	1	-
+place	aagun       	2806	3165	0	4	-
+place	mgpill      	2861	2732	0	4	-
+place	mgpill      	3120	2812	0	4	-
+place	mgpill      	2571	3519	112	4	-
+place	mgpill      	2680	3670	68	4	-
+place	mgpill      	3529	3322	128	4	-
+place	mgpill      	3358	3507	100	4	-
+place	tank        	2751	3430	100	2	-
+place	tank        	2872	3454	100	3	-
+place	ptboat      	2628	3076	36	1	-
+place	ptboat      	2648	3219	36	2	-
+place	bazookaman  	3462	3115	36	1	-
+place	mortarman   	3569	3139	36	4	-

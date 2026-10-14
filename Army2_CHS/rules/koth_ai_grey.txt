@@ -1,0 +1,107 @@
+// this gets loaded on the host if the grey army is AI controlled
+
+// This variable holds the current action for grey
+// 0 means no action, 1 means goto hill, 2 means get powerups, 3 means defend hill
+variable greyAction 0
+
+if startup1 then
+	triggerdelay 1000 greyChooseNewAction,
+	triggerdelay 2000 greyRegularOrders
+
+if greyChooseNewAction then
+	setvar greyAction 0,
+	trigger greyCheckIfOnHill,
+	trigger greyCheckIfHillEmpty,
+	trigger greyChoseAction
+
+// if it's time to choose a new action but we are currently owning the hill then
+// we should always stay on the hill
+
+if greyCheckIfOnHill testvar hillowner = 4 then
+	trigger greyDefendHill
+	
+// if it's time to choose a new action and the hill is not owned then head straight for it
+
+if greyCheckIfHillEmpty testvar hillowner = 0 then
+	trigger greyGotoHill
+	
+// if grey has no current action then pick an action
+// ideally we would base this on how well armed we are
+if greyChooseAction testvar greyAction = 0 then
+	trigger greyPickRandomAction,
+	triggerdelay 1000 greyChooseAction
+
+if greyPickRandomAction then random
+	trigger greyGotoHill,
+	trigger greyGetPowerUps
+
+// these events setup the greyAction variable and do the actions
+
+if greyGotoHill then
+	setvar greyAction 1,
+	order greysarge1 goto greyhill inmode attack,
+	order grey group 1 follow greysarge1 inmode defend,
+	order grey group 2 goto greyhill inmode attack,
+	order grey group 3 goto greyhill inmode attack,
+	order grey group 4 goto greyhill inmode attack,
+	order grey group 5 goto greyhill inmode attack,
+	order grey group 0 goto greyhill inmode attack,
+	trigger greyStartTimeOut
+
+if greyGetPowerUps then
+	setvar greyAction 2,
+	order greysarge1 goto greyhill inmode attack,
+	order grey group 1 follow greysarge1 inmode defend,
+	order grey group 2 goto greyhill inmode attack,
+	order grey group 3 goto greyhill inmode attack,
+	order grey group 4 goto greyhill inmode attack,
+	order grey group 5 goto greyhill inmode attack,
+	order grey group 0 goto greyhill inmode attack,
+	trigger greyStartTimeOut
+
+if greyDefendHill then
+	setvar greyAction 3,
+	order greysarge1 goto greyhill inmode attack,
+	order grey group 1 follow greysarge1 inmode defend,
+	order grey group 2 goto greyhill inmode defend,
+	order grey group 3 goto greyhill inmode defend,
+	order grey group 4 goto greyhill inmode attack,
+	order grey group 5 goto greyhill inmode attack,
+	order grey group 0 goto greyhill inmode attack,
+	trigger greyStartTimeOut
+
+// these events chose a new action if we get on the hill
+
+if hillOwnerChanged testvar hillowner = 4 then
+    trigger greyDefendHill
+
+if hillOwnerChanged testvar hillowner <> 0 then
+    trigger greyGotoHill
+
+// these events choose new actions if a sarge is killed
+
+if killed greysarge1 then
+	triggerdelay 5000 greyGetPowerups
+
+// these are the sgreyding order regardless of what mode sarge is in
+	
+if greyRegularOrders then
+	order grey group 7 goto greybase inmode evade,
+	triggerdelay 5000 greyRegularOrders
+
+// timeout code - if mode has not changed for a while then change it
+
+variable greyTimeOutVar 0
+variable greyLastTimeOutVar 1
+
+if greyStartTimeOut then
+    addvar greyTimeOutVar 1,
+	triggerdelay 120000 greyCheckTimeOut
+
+if greyCheckTimeOut testvar greyTimeOutVar = greyLastTimeOutVar then
+    trigger greyChooseNewAction
+
+if greyCheckTimeOut testvar greyTimeOutVar <> greyLastTimeOutVar then
+	addvar greyLastTimeOutVar 1
+
+

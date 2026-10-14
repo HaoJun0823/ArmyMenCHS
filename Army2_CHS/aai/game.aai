@@ -1,0 +1,21 @@
+VEHICLE_DANGER			15	#tiles from vehicle to start avoiding it
+VEHICLE_STANDOFF		9	#tiles from frnd vehicle to stop
+TROOPER_TURN_RATE		256	#per frame change of direction allowed on run
+TROOPER_POSE_RATE		150	#frames to maintain prone,kneel,stand 
+TROOPER_SLIDE_RATE		2	#round directions to this power of two (= 4)
+DEFENSE_RADIUS			7	#tiles within to attack victim 
+ATTACK_RADIUS			12	#tiles within to attack people 
+ATTACK_HUNT				12	#tiles from attack center to roam in patrol
+FOLLOW_RADIUS			5	#tiles from sarge before we must move towardhim
+FOLLOW_ENGAGED_RADIUS	12	#tiles if we are engaged before we must break
+GRAVITY					440	#
+SCROLL_SPEED			500 #
+
+ROACH_HEIGHT			32
+ROACH_HEALTH			60
+ROACH_ARMOR			2
+ROACH_DAMAGE			16
+ROACH_FORVEL			130
+ROACH_REVVEL			80
+ROACH_FORACC			100
+ROACH_REVACC			80

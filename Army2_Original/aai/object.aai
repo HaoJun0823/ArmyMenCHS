@@ -1,0 +1,212 @@
+#Object Defaults Table
+
+#Item Flags		hex	decimal	   !!! use decimal
+# ITEMFLAG_MAP		0001	(1)
+# ITEMFLAG_VISBLOCK	0100	(256)
+# ITEMFLAG_WOOD		1000	(4096)
+# ITEMFLAG_STONE	2000	(8192)
+# ITEMFLAG_METAL	4000	(16384)
+# ITEMFLAG_CRUSH	1000000 (16777216)	can be crushed by tanks!
+
+#Armor
+# Armor subtracts itself from damage done
+# Objects with negative armor have positive armor vs. everything but fire, no armor vs. fire
+
+#Crush
+# When item is placed (or changes states) it does this much damage to each tile it covers
+
+#Permeability (Perm)
+# Chance in 255 that a rifle-type projectile will pass through this object
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis 	Crush	Perm
+
+Rocks		0	0	0	257	-1	16	15	1000	0.0	0	1
+
+Bush		0	0	0	0	-1	100	15	1	0.0	0	1		
+
+Trees		0	0	0	4353	120	100	15	1000	0.0	0	1		
+
+Ground		0	0	0	1	-1	0	15	1	0.0	0	1		
+
+Fence		0	0	0     16777217	20	64	15	1000	0.0	0	1	0	128
+Fence		0	1	0     1		-1	16	0	1000	0.0	0	1	0
+
+Wall		0	0	0	257	-1	48	15	1000	0.0	0	1		
+
+Bridge		0	0	0	1	-1	0	-15	1	0.0	0	1		
+
+Building	0	0	0	257	-1	60	15	1000	0.0	0	1
+
+Miscellaneous	0	0	0	257	-1	40	15	1000	0.0	0	1
+
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis 	Crush	Perm
+
+Barrel       	0       0       0       257     6       64      15      1000    0.0     0       1
+Barrel       	0       1       0       257     -1      0       0       10      0.0     0       1
+
+Barrel		11	0	0	257	1	0	0	8	0.0	0	0
+Barrel		12	0	0	257	1	16	0	10	0.0	0	0
+
+Barrel       	20      0       0       4353    20      100     15      1000    -0.25   0       1
+Barrel       	20      1       0       1	-1      16      15      1000    -0.25   0       1
+
+
+Barrel       	21      0       0       4353    20      100     15      1000    -0.43   0       1
+Barrel       	21      1       0       1	-1      16      15      1000    -0.43   0       1
+
+Powerups	0	0	0	1	-1	0	0	100	0.0	0	1
+
+# make flags order 1000 so they don't render under rocks
+Powerups	15	0	0	1	-1	0	0	1000	0.0	0	1
+Powerups	16	0	0	1	-1	0	0	1000	0.0	0	1
+Powerups	17	0	0	1	-1	0	0	1000	0.0	0	1
+Powerups	18	0	0	1	-1	0	0	1000	0.0	0	1
+Powerups	19	0	0	1	-1	0	0	1000	0.0	0	1
+
+############################
+# Multiplayer assets
+
+# AAGun
+
+AAGun		0	0	0	257	100	40	15	1000	0.0	5	1
+AAGun		0	1	0	257	0	40	15	1000	0.0	0	1
+
+# Medical tent
+
+Tent		0	0	0	257	50	40	15	2000	0.0	5	1
+Tent		0	1	0	257	0	0	0	1	0.0	0	1
+Tent		11	0	0	1	50	0	0	1	0.0	5	0
+Tent		11	1	0	1	0	0	0	1	0.0	0	0
+Tent		21	0	0	1	50	0	0	1	0.0	5	0
+Tent		21	1	0	1	0	0	0	1	0.0	0	0
+Tent		31	0	0	1	50	0	0	1	0.0	5	0
+Tent		31	1	0	1	0	0	0	1	0.0	0	0
+Tent		41	0	0	1	50	0	0	1	0.0	5	0
+Tent		41	1	0	1	0	0	0	1	0.0	0	0
+
+#link	parent cat.	parent num.	child cat	child num	offset x y
+Link    Tent		1              Tent		10              0       0
+Link    Tent		1              Tent		11              0       0
+Link    Tent		2              Tent		20              0       0
+Link    Tent		2              Tent		21              0       0
+Link    Tent		3              Tent		30              0       0
+Link    Tent		3              Tent		31              0       0
+Link    Tent		4              Tent		40              0       0
+Link    Tent		4              Tent		41              0       0
+
+# Vehicle Repair Facility
+
+Garage		10	0	0	257	100	0	0	10	0.0	5	1
+Garage		10	1	0	257	0	0	0	10	0.0	0	1
+Garage		11	0	0	257	100	32	15	1000	0.0	5	1
+Garage		11	1	0	257	0	32	15	1000	0.0	0	1	1000
+Garage		12	0	0	257	100	64	0	10000	0.0	5	1
+Garage		12	1	0	257	0	16	15	100	0.0	0	1	1000
+
+Garage		20	0	0	257	100	0	0	10	0.0	5	1
+Garage		20	1	0	257	0	0	0	10	0.0	0	1
+Garage		21	0	0	257	100	32	15	1000	0.0	5	1
+Garage		21	1	0	257	0	32	15	1000	0.0	0	1	1000
+Garage		22	0	0	257	100	64	0	10000	0.0	5	1
+Garage		22	1	0	257	0	16	15	100	0.0	0	1	1000
+
+Garage		30	0	0	257	100	0	0	10	0.0	5	1
+Garage		30	1	0	257	0	0	0	10	0.0	0	1
+Garage		31	0	0	257	100	32	15	1000	0.0	5	1
+Garage		31	1	0	257	0	32	15	1000	0.0	0	1	1000
+Garage		32	0	0	257	100	64	0	10000	0.0	5	1
+Garage		32	1	0	257	0	16	15	100	0.0	0	1	1000
+
+Garage		40	0	0	257	100	0	0	10	0.0	5	1
+Garage		40	1	0	257	0	0	0	10	0.0	0	1
+Garage		41	0	0	257	100	32	15	1000	0.0	5	1
+Garage		41	1	0	257	0	32	15	1000	0.0	0	1	1000
+Garage		42	0	0	257	100	64	0	10000	0.0	5	1
+Garage		42	1	0	257	0	16	15	100	0.0	0	1	1000
+
+#link	parent cat.	parent num.	child cat	child num	offset x y
+Link    Garage		1              Garage		10              0       0
+Link    Garage		1              Garage		11              -50     -60
+Link    Garage		1              Garage		12              3       -85
+Link    Garage		2              Garage		20              0       0
+Link    Garage		2              Garage		21              -50     -60
+Link    Garage		2              Garage		22              3       -85
+Link    Garage		3              Garage		30              0       0
+Link    Garage		3              Garage		31              -50     -60
+Link    Garage		3              Garage		32              3       -85
+Link    Garage		4              Garage		40              0       0
+Link    Garage		4              Garage		41              -50     -60
+Link    Garage		4              Garage		42              3       -85
+
+# Pillbox
+
+Pillbox		0	0	0	257	-1	30	15	1000	0.0	25	1
+Pillbox		10	0	0	257	200	40	15	100	0.0	25	1
+Pillbox		10	1	0	257	0	10	15	1000	0.0	0	1	1000
+Pillbox		11	0	0	256	200	40	15	1000	0.0	25	1
+Pillbox		12	0	0	256	200	50	15	2000	0.0	25	1
+Pillbox		20	0	0	257	200	40	15	100	0.0	25	1
+Pillbox		20	1	0	257	0	10	15	1000	0.0	0	1	1000
+Pillbox		21	0	0	256	200	40	15	1000	0.0	25	1
+Pillbox		22	0	0	256	200	50	15	2000	0.0	25	1
+Pillbox		30	0	0	257	200	40	15	100	0.0	25	1
+Pillbox		30	1	0	257	0	10	15	1000	0.0	0	1	1000
+Pillbox		31	0	0	256	200	40	15	1000	0.0	25	1
+Pillbox		32	0	0	256	200	50	15	2000	0.0	25	1
+Pillbox		40	0	0	257	200	40	15	100	0.0	25	1
+Pillbox		40	1	0	257	0	10	15	1000	0.0	0	1	1000
+Pillbox		41	0	0	256	200	40	15	1000	0.0	25	1
+Pillbox		42	0	0	256	200	50	15	2000	0.0	25	1
+
+#link	parent cat.	parent num.	child cat	child num	offset x y
+Link    Pillbox		1              Pillbox		10              0       0
+Link    Pillbox		1              Pillbox		11              0       0
+Link    Pillbox		1              Pillbox		12              0       0
+Link    Pillbox		2              Pillbox		20              0       0
+Link    Pillbox		2              Pillbox		21              0       0
+Link    Pillbox		2              Pillbox		22              0       0
+Link    Pillbox		3              Pillbox		30              0       0
+Link    Pillbox		3              Pillbox		31              0       0
+Link    Pillbox		3              Pillbox		32              0       0
+Link    Pillbox		4              Pillbox		40              0       0
+Link    Pillbox		4              Pillbox		41              0       0
+Link    Pillbox		4              Pillbox		42              0       0
+
+# Radar
+
+Radar           0	0	0	257	100	60	15	1000	0.0	5	1
+Radar           0	1	0	257	0	60	15	1000	0.0	0	1
+
+# Signs for radar
+
+Miscellaneous	981	0	0	256	100	10	15	1000	0.0	5	1
+Miscellaneous	981	1	0	256	0	10	15	1000	0.0	0	1
+Miscellaneous	982	0	0	256	100	10	15	1000	0.0	5	1
+Miscellaneous	982	1	0	256	0	10	15	1000	0.0	0	1
+Miscellaneous	983	0	0	256	100	10	15	1000	0.0	5	1
+Miscellaneous	983	1	0	256	0	10	15	1000	0.0	0	1
+Miscellaneous	984	0	0	256	100	10	15	1000	0.0	5	1
+Miscellaneous	984	1	0	256	0	10	15	1000	0.0	0	1
+
+#link	parent cat.	parent num.	child cat	child num	offset x y	noanim
+Link    Radar           2              Radar            1               0       0
+Link    Radar           2              Miscellaneous	981             0       1	1
+Link    Radar           3              Radar            1               0       0
+Link    Radar           3              Miscellaneous	982             0       1	1
+Link    Radar           4              Radar            1               0       0
+Link    Radar           4              Miscellaneous	983             0       1	1
+Link    Radar           5              Radar            1               0       0
+Link    Radar           5              Miscellaneous	984             0       1	1
+
+# Marker flags
+
+Miscellaneous	994	0	0	256	-1	40	0	1	0.0	0	1
+Miscellaneous	995	0	0	256	-1	40	0	1	0.0	0	1
+Miscellaneous	996	0	0	256	-1	40	0	1	0.0	0	1
+Miscellaneous	997	0	0	256	-1	40	0	1	0.0	0	1
+
+# Flag base
+
+Miscellaneous	998	0	0	256	-1	1	0	1	0.0	0	1
+

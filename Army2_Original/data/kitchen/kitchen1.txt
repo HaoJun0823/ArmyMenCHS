@@ -1,0 +1,1225 @@
+
+
+//				Map 1 	The Kitchen
+
+
+// PRELOAD
+preloadsprite 43 600  1
+preloadsprite 43 600  2
+preloadsprite 43 600  3
+preloadsprite 43 600  4
+preloadsprite 21 600  1
+preloadsprite 21 600  2
+preloadsprite 21 600  3
+preloadsprite 21 600  4
+preloadsprite 21 100  1
+preloadsprite 21 100  2
+preloadsprite 21 100  3
+preloadsprite 21 100  4
+preloadsprite 21 100  5
+preloadsprite 21 100  6
+preloadsprite 21 100  7
+
+
+//PAD DEFINITIONS
+
+Pad	portal1		99
+Pad	portal2		98
+Pad	portal3		97
+
+Pad     victory1        30      GreenSarge1
+
+Pad	rr_burner_pad	20	UNIT
+Pad	rf_burner_pad	21      UNIT
+Pad	lr_burner_pad	22	UNIT
+Pad	lf_burner_pad	23      UNIT
+
+Pad	Padroachc_1      100
+Pad	Padroachc_2      101
+Pad	Padroachc_3      102
+Pad	Padroachc_4      103
+Pad	Padroachc_5      104
+Pad	Padroachc_6      105
+Pad	Padroachc_7      106
+Pad	Padroachc_8      107
+
+
+Pad	Padroachc1_1	  100  roachc1
+Pad	Padroachc1_2      101  roachc1
+Pad	Padroachc1_3      102  roachc1
+Pad	Padroachc1_4      103  roachc1
+Pad	Padroachc1_5      104  roachc1
+Pad	Padroachc1_6      105  roachc1
+Pad	Padroachc1_7      106  roachc1
+Pad	Padroachc1_8      107  roachc1
+
+Pad	Padroachc2_1	  100  roachc2
+Pad	Padroachc2_2      101  roachc2
+Pad	Padroachc2_3      102  roachc2
+Pad	Padroachc2_4      103  roachc2
+Pad	Padroachc2_5      104  roachc2
+Pad	Padroachc2_6      105  roachc2
+Pad	Padroachc2_7      106  roachc2
+Pad	Padroachc2_8      107  roachc2
+
+Pad	Padroachc3_1	  100  roachc3
+Pad	Padroachc3_2      101  roachc3
+Pad	Padroachc3_3      102  roachc3
+Pad	Padroachc3_4      103  roachc3
+Pad	Padroachc3_5      104  roachc3
+Pad	Padroachc3_6      105  roachc3
+Pad	Padroachc3_7      106  roachc3
+Pad	Padroachc3_8      107  roachc3
+
+Pad	Padroachc4_1	  100  roachc4
+Pad	Padroachc4_2      101  roachc4
+Pad	Padroachc4_3      102  roachc4
+Pad	Padroachc4_4      103  roachc4
+Pad	Padroachc4_5      104  roachc4
+Pad	Padroachc4_6      105  roachc4
+Pad	Padroachc4_7      106  roachc4
+Pad	Padroachc4_8      107  roachc4
+
+Pad	Padroachc5_1	  100  roachc5
+Pad	Padroachc5_2      101  roachc5
+Pad	Padroachc5_3      102  roachc5
+Pad	Padroachc5_4      103  roachc5
+Pad	Padroachc5_5      104  roachc5
+Pad	Padroachc5_6      105  roachc5
+Pad	Padroachc5_7      106  roachc5
+Pad	Padroachc5_8      107  roachc5
+
+Pad	Padroachc6_1	  100  roachc6
+Pad	Padroachc6_2      101  roachc6
+Pad	Padroachc6_3      102  roachc6
+Pad	Padroachc6_4      103  roachc6
+Pad	Padroachc6_5      104  roachc6
+Pad	Padroachc6_6      105  roachc6
+Pad	Padroachc6_7      106  roachc6
+Pad	Padroachc6_8      107  roachc6
+
+Pad	Padroachc7_1	  100  roachc7
+Pad	Padroachc7_2      101  roachc7
+Pad	Padroachc7_3      102  roachc7
+Pad	Padroachc7_4      103  roachc7
+Pad	Padroachc7_5      104  roachc7
+Pad	Padroachc7_6      105  roachc7
+Pad	Padroachc7_7      106  roachc7
+Pad	Padroachc7_8      107  roachc7
+
+Pad	Padroachc8_1	  100  roachc8
+Pad	Padroachc8_2      101  roachc8
+Pad	Padroachc8_3      102  roachc8
+Pad	Padroachc8_4      103  roachc8
+Pad	Padroachc8_5      104  roachc8
+Pad	Padroachc8_6      105  roachc8
+Pad	Padroachc8_7      106  roachc8
+Pad	Padroachc8_8      107  roachc8
+
+Pad     Padroachs1_1      120   roachs1
+Pad     Padroachs2_1      121   roachs1
+Pad     Padroachs3_1      122   roachs1
+Pad     Padroachs4_1      123   roachs1
+Pad     Padroachs5_1      124   roachs1
+Pad     Padroachs6_1      125   roachs1
+Pad     Padroachs7_1      126   roachs1
+
+
+pad	cookie 	50	GreenSarge1 > 0
+
+
+variable  tankilled 0
+
+variable reztimes 0
+
+
+//Startup
+IF startup1 THEN
+	triggerdelay 10 portgrn1,
+	setbriefing "map01_1.bmp",
+	triggerdelay 500 showbmp,
+	triggerdelay 500 doportal1,
+	triggerdelay 1000 init_roaches,
+	CREATEPOWERUP lens1 magnifying (466,2166) 30,
+//	CREATEPOWERUP Aerosolcan1 aerosol (1424,3382) 15,
+//	CREATEPOWERUP flak (1432,3365) 80,
+        DAMAGE cookiejar 23,
+	triggerdelay 1 initvars
+
+if initvars then
+	trigger burn_sound_delay,
+        trigger lr_damage,
+        trigger lf_damage,
+        trigger rr_damage,
+        ADDEXP Alvin 100,
+        ADDEXP Wildblood 100,
+        ADDEXP Greg 100,
+        SETFACING GreenSarge1 165,
+        SETFACING Alvin 165,
+        SETFACING Wildblood 165,
+        SETFACING Greg 165,
+        trigger rf_damage,
+        TRIGGERDELAY 3000 showf1mess
+
+
+
+IF showf1mess THEN
+        showmessage "Press the F1 key to view the strategic help map."
+
+
+
+if showbmp then
+	playsound "0101Sarge.wav" 16 0,
+	showpda "Elude Tan commandos. Proceed to a safe zone."
+
+
+//Victory Conditions
+
+if killed GreenSarge1 then
+        SHOWPDA "Sarge is dead!",
+	triggerdelay 200 tanwins
+
+if killed tan by GreenSarge1 then
+	addvar tankilled 1,
+	trigger test3
+
+if test3 testvar tankilled = 3 then
+        trigger nothing
+
+
+
+
+IF padon victory1 BUTNOT startup2 THEN
+        triggerdelay 200 petertestgreenwins
+
+if petertestgreenwins butnot killed greensarge1 then
+        trigger greenwins
+
+
+
+
+//Green Coming through the portal
+
+//if portgrn1 then
+//	deploy GreenSarge1,
+//        createexplosion GreenSarge1 135 0 green,
+//	triggerdelay 150 portgrn2
+
+
+//if portgrn2 then
+//	deploy Wildblood,
+//        createexplosion Wildblood 135 0 green,
+//	triggerdelay 300 portgrn3
+
+
+//if portgrn3 then
+//	deploy Alvin,
+//        createexplosion Alvin 135 0 green,
+//	triggerdelay 200 portgrn4
+
+//if portgrn4 then
+//	deploy Greg,
+//        createexplosion Greg 135 0 green,
+//        trigger foo
+
+//Tan using the portal
+if doportal1 then
+	triggerdelay 100000 doportal2,
+	createtrooper "tanguard2" rifle portal2 tan,
+        createexplosion tanguard2 133 0 tan,
+	createtrooper "tanguard3" rifle portal3 tan,
+        createexplosion tanguard3 133 0 tan,
+	order tanguard2 goto GreenSarge1,
+	order tanguard3 goto GreenSarge1
+
+if doportal2 then
+	triggerdelay 180000 doportal3,
+	createtrooper "tanguard1" RIFLE portal1 tan,
+        createexplosion tanguard1 133 0 tan,
+	order tanguard1 goto GreenSarge1
+
+if killed "tanguard1" then
+	triggerdelay 15000 restan1
+
+if killed "tanguard2" then
+	triggerdelay 8000 restan2
+
+if killed "tanguard3" then
+	triggerdelay 8000 restan3
+
+if restan1 testvar reztimes < 15 then
+        addvar reztimes 1,
+	resurrect tanguard1 portal1,
+        order tanguard1 follow GreenSarge1
+
+if restan2 testvar reztimes < 15 then
+        addvar reztimes 1,
+	resurrect tanguard2 portal2,
+        createexplosion tanguard2 133 0 tan,
+        order tanguard2 follow GreenSarge1
+
+if restan3 testvar reztimes < 15 then
+        addvar reztimes 1,
+	resurrect tanguard3 portal3,
+        createexplosion tanguard3 133 0 tan,
+        order tanguard3 follow GreenSarge1
+
+if doportal3 then
+	createtrooper "tanguard4" RIFLE portal1 tan,
+        createexplosion tanguard4 133 0 green,
+	createtrooper "tanguard5" rifle portal2 tan,
+        createexplosion tanguard5 133 0 green,
+	createtrooper "tanguard6" rifle portal3 tan,
+        createexplosion tanguard6 133 0 green,
+	order tanguard4 goto GreenSarge1,
+	order tanguard5 follow tanguard4,
+	order tanguard6 follow tanguard4,
+	triggerdelay 30000 doportal4
+
+if doportal4 then
+	createtrooper "tanguard7" RIFLE portal1 tan,
+        createexplosion tanguard7 133 0 green,
+	createtrooper "tanguard8" rifle portal2 tan,
+        createexplosion tanguard8 133 0 green,
+	createtrooper "tanguard9" rifle portal3 tan,
+        createexplosion tanguard9 133 0 green,
+	order tanguard7 goto GreenSarge1,
+	order tanguard8 follow tanguard7,
+	order tanguard9 follow tanguard7,
+	triggerdelay 30000 doportal5
+
+
+if doportal5 then
+	createtrooper "tanguard10" RIFLE portal1 tan,
+        createexplosion tanguard10 133 0 green,
+	createtrooper "tanguard11" rifle portal2 tan,
+        createexplosion tanguard11 133 0 green,
+	createtrooper "tanguard12" rifle portal3 tan,
+        createexplosion tanguard12 133 0 green,
+	order tanguard10 goto GreenSarge1,
+	order tanguard11 follow tanguard10,
+	order tanguard12 follow tanguard10,
+	triggerdelay 30000 doportal6
+
+
+//IF burn_GreenSarge1 AFTER GreenSarge1_burned THEN
+//        damage ME 1000,
+//        trigger GreenSarge1_burned,
+//        playsound "fire.wav" GreenSarge1
+
+
+
+
+if rr_on then
+	setdamagepad rr_burner_pad 5 250 fire
+if rr_off then
+	setdamagepad rr_burner_pad 0
+
+if rf_on then
+	setdamagepad rf_burner_pad 5 250 fire
+if rf_off then
+	setdamagepad rf_burner_pad 0
+
+if lr_on then
+	setdamagepad lr_burner_pad 5 250 fire
+if lr_off then
+	setdamagepad lr_burner_pad 0
+
+if lf_on then
+	setdamagepad lf_burner_pad 5 250 fire
+if lf_off then
+	setdamagepad lf_burner_pad 0
+
+
+
+
+
+
+object	rr_knob
+	state rr_knob_animate
+
+		frame 6000 4
+			setobjstate rr_burner rr_burner_low 0
+		frame 500 3
+			setobjstate rr_burner rr_burner_medlow 0
+		frame 500 2
+			setobjstate rr_burner rr_burner_med 0
+		frame 500 1
+			setobjstate rr_burner rr_burner_medhigh 0
+                frame 3000 0
+			setobjstate rr_burner rr_burner_high 0
+		frame 500 1
+			setobjstate rr_burner rr_burner_medhigh2 0
+		frame 500 2
+			setobjstate rr_burner rr_burner_med2 0
+		frame 500 3
+			setobjstate rr_burner rr_burner_medlow2 0
+		frame 10   4
+			setobjstate rr_knob rr_knob_animate 0
+
+
+        state rr_knob_low
+		frame 2000 4
+			setobjstate rr_burner rr_burner_low 0
+
+	state rr_knob_medlow
+		frame 1000 3
+                        setobjstate rr_burner rr_burner_medlow 0
+
+	state rr_knob_med
+		frame 1000 2
+			setobjstate rr_burner rr_burner_med 0
+
+	state rr_knob_medhigh
+		frame 1000 1
+			setobjstate rr_burner rr_burner_medhigh 0
+
+	state rr_knob_high
+		frame 1000 0
+			setobjstate rr_burner rr_burner_high 0
+
+	state rr_knob_medhigh2
+		frame 1000 1
+			setobjstate rr_burner rr_burner_medhigh2 0
+
+	state rr_knob_med2
+		frame 1000 2
+			setobjstate rr_burner rr_burner_med2 0
+
+	state rr_knob_medlow2
+		frame 1000 3
+                        setobjstate rr_burner rr_burner_medlow2 0
+
+
+object	rr_burner
+	state rr_burner_low
+		frame 1000 0
+                        trigger rr_off
+
+	state rr_burner_medlow
+		frame 1000 1
+                        trigger rr_on
+
+	state rr_burner_med
+		frame 1000 2
+                         trigger rr_on
+
+	state rr_burner_medhigh
+		frame 1000 3
+                    	trigger rr_on
+
+	state rr_burner_high
+		frame 1000 4
+                	trigger rr_on
+
+	state rr_burner_medhigh2
+		frame 1000 3
+                    	trigger rr_on
+
+	state rr_burner_med2
+		frame 1000 2
+                         trigger rr_on
+
+	state rr_burner_medlow2
+		frame 1000 1
+                      trigger rr_on
+
+
+
+//IF padon rr_burner_pad AFTER padoff rr_burner_pad and rr_damage after startup THEN
+//        trigger rr_dodamage,
+//        triggerdelay 250 rr_damage
+
+
+//if rr_dodamage after startup and rr_on after rr_off then
+//       	trigger burn_GreenSarge1,
+//        damage me 100 fire
+
+
+
+
+if hit rr_knob then
+	onobjstate rr_knob
+	rr_knob_animate		trigger rr_knob_stop,
+	rr_knob_low		setobjstate rr_knob rr_knob_medlow,
+	rr_knob_medlow		setobjstate rr_knob rr_knob_med,
+	rr_knob_med		setobjstate rr_knob rr_knob_medhigh,
+	rr_knob_medhigh		setobjstate rr_knob rr_knob_high,
+	rr_knob_high            setobjstate rr_knob rr_knob_medhigh2,
+	rr_knob_medhigh2	setobjstate rr_knob rr_knob_med2,
+	rr_knob_med2		setobjstate rr_knob rr_knob_medlow2,
+	rr_knob_medlow2		setobjstate rr_knob rr_knob_low
+
+
+if rr_knob_stop then
+	onobjstate rr_burner
+	rr_burner_low		setobjstate rr_knob rr_knob_low,
+	rr_burner_medlow	setobjstate rr_knob rr_knob_medlow,
+	rr_burner_med		setobjstate rr_knob rr_knob_med,
+	rr_burner_medhigh	setobjstate rr_knob rr_knob_medhigh,
+	rr_burner_high		setobjstate rr_knob rr_knob_high,
+	rr_burner_medhigh2	setobjstate rr_knob rr_knob_medhigh2,
+	rr_burner_med2		setobjstate rr_knob rr_knob_med2,
+	rr_burner_medlow2	setobjstate rr_knob rr_knob_medlow2
+
+
+
+
+
+
+
+
+
+
+object	rf_knob
+	state rf_knob_animate
+
+		frame 6000 4
+			setobjstate rf_burner rf_burner_low 0
+		frame 500 3
+			setobjstate rf_burner rf_burner_medlow 0
+		frame 500 2
+			setobjstate rf_burner rf_burner_med 0
+		frame 500 1
+			setobjstate rf_burner rf_burner_medhigh 0
+        	frame 3000 0
+			setobjstate rf_burner rf_burner_high 0
+		frame 500 1
+			setobjstate rf_burner rf_burner_medhigh2 0
+		frame 500 2
+			setobjstate rf_burner rf_burner_med2 0
+		frame 500 3
+			setobjstate rf_burner rf_burner_medlow2 0
+		frame 10   4
+			setobjstate rf_knob rf_knob_animate 0
+
+
+
+        state rf_knob_low
+		frame 2000 4
+			setobjstate rf_burner rf_burner_low 0
+
+    	state rf_knob_medlow
+		frame 1000 3
+                        setobjstate rf_burner rf_burner_medlow 0
+
+	state rf_knob_med
+		frame 1000 2
+			setobjstate rf_burner rf_burner_med 0
+
+	state rf_knob_medhigh
+		frame 1000 1
+			setobjstate rf_burner rf_burner_medhigh 0
+
+	state rf_knob_high
+		frame 1000 0
+			setobjstate rf_burner rf_burner_high 0
+
+	state rf_knob_medhigh2
+		frame 1000 1
+			setobjstate rf_burner rf_burner_medhigh2 0
+
+	state rf_knob_med2
+		frame 1000 2
+			setobjstate rf_burner rf_burner_med2 0
+
+	state rf_knob_medlow2
+		frame 1000 3
+                        setobjstate rf_burner rf_burner_medlow2 0
+
+
+object	rf_burner
+	state rf_burner_low
+		frame 1000 0
+                        trigger rf_off
+
+	state rf_burner_medlow
+		frame 1000 1
+                        trigger rf_on
+
+	state rf_burner_med
+		frame 1000 2
+                         trigger rf_on
+
+	state rf_burner_medhigh
+		frame 1000 3
+                    	trigger rf_on
+
+	state rf_burner_high
+		frame 1000 4
+                	trigger rf_on
+
+	state rf_burner_medhigh2
+		frame 1000 3
+                    	trigger rf_on
+
+	state rf_burner_med2
+		frame 1000 2
+                         trigger rf_on
+
+	state rf_burner_medlow2
+		frame 1000 1
+                      trigger rf_on
+
+
+
+//IF padon rf_burner_pad AFTER padoff rf_burner_pad and rf_damage after startup THEN
+ //       trigger rf_dodamage,
+ //       triggerdelay 250 rf_damage
+
+
+//if rf_dodamage after startup and rf_on after rf_off then
+//       	trigger burn_GreenSarge1,
+//        damage me 100 fire
+
+
+
+
+if hit rf_knob then
+	onobjstate rf_knob
+	rf_knob_animate		trigger rf_knob_stop,
+	rf_knob_low		setobjstate rf_knob rf_knob_medlow,
+	rf_knob_medlow		setobjstate rf_knob rf_knob_med,
+	rf_knob_med		setobjstate rf_knob rf_knob_medhigh,
+	rf_knob_medhigh		setobjstate rf_knob rf_knob_high,
+	rf_knob_high            setobjstate rf_knob rf_knob_medhigh2,
+	rf_knob_medhigh2	setobjstate rf_knob rf_knob_med2,
+	rf_knob_med2		setobjstate rf_knob rf_knob_medlow2,
+	rf_knob_medlow2		setobjstate rf_knob rf_knob_low
+
+
+if rf_knob_stop then
+	onobjstate rf_burner
+	rf_burner_low		setobjstate rf_knob rf_knob_low,
+	rf_burner_medlow	setobjstate rf_knob rf_knob_medlow,
+	rf_burner_med		setobjstate rf_knob rf_knob_med,
+	rf_burner_medhigh	setobjstate rf_knob rf_knob_medhigh,
+	rf_burner_high		setobjstate rf_knob rf_knob_high,
+	rf_burner_medhigh2	setobjstate rf_knob rf_knob_medhigh2,
+	rf_burner_med2		setobjstate rf_knob rf_knob_med2,
+	rf_burner_medlow2	setobjstate rf_knob rf_knob_medlow2
+
+
+
+
+
+
+
+
+
+object	lf_knob
+        state lf_knob_low
+		frame 2000 4
+			setobjstate lf_burner lf_burner_low 0
+
+	state lf_knob_animate
+
+		frame 2000 4
+			setobjstate lf_burner lf_burner_low 0
+		frame 500 3
+			setobjstate lf_burner lf_burner_medlow 0
+		frame 500 2
+			setobjstate lf_burner lf_burner_med 0
+		frame 500 1
+			setobjstate lf_burner lf_burner_medhigh 0
+                frame 3000 0
+			setobjstate lf_burner lf_burner_high 0
+		frame 500 1
+			setobjstate lf_burner lf_burner_medhigh2 0
+		frame 500 2
+			setobjstate lf_burner lf_burner_med2 0
+		frame 500 3
+			setobjstate lf_burner lf_burner_medlow2 0
+		frame 10   4
+			setobjstate lf_knob lf_knob_animate 0
+
+
+
+
+	state lf_knob_medlow
+		frame 1000 3
+                        setobjstate lf_burner lf_burner_medlow 0
+
+	state lf_knob_med
+		frame 1000 2
+			setobjstate lf_burner lf_burner_med 0
+
+	state lf_knob_medhigh
+		frame 1000 1
+			setobjstate lf_burner lf_burner_medhigh 0
+
+	state lf_knob_high
+		frame 1000 0
+			setobjstate lf_burner lf_burner_high 0
+
+	state lf_knob_medhigh2
+		frame 1000 1
+			setobjstate lf_burner lf_burner_medhigh2 0
+
+	state lf_knob_med2
+		frame 1000 2
+			setobjstate lf_burner lf_burner_med2 0
+
+	state lf_knob_medlow2
+		frame 1000 3
+                        setobjstate lf_burner lf_burner_medlow2 0
+
+
+object	lf_burner
+	state lf_burner_low
+		frame 1000 0
+                        trigger lf_off
+
+	state lf_burner_medlow
+		frame 1000 1
+                        trigger lf_on
+
+	state lf_burner_med
+		frame 1000 2
+                         trigger lf_on
+
+	state lf_burner_medhigh
+		frame 1000 3
+                    	trigger lf_on
+
+	state lf_burner_high
+		frame 1000 4
+                	trigger lf_on
+
+	state lf_burner_medhigh2
+		frame 1000 3
+                    	trigger lf_on
+
+	state lf_burner_med2
+		frame 1000 2
+                         trigger lf_on
+
+	state lf_burner_medlow2
+		frame 1000 1
+                      trigger lf_on
+
+
+
+//IF padon lf_burner_pad AFTER padoff lf_burner_pad and lf_damage after startup THEN
+//        trigger lf_dodamage,
+//        triggerdelay 250 lf_damage
+//
+
+//if lf_dodamage after startup and lf_on after lf_off then
+//       	trigger burn_GreenSarge1,
+//        damage me 100 fire
+
+
+
+
+if hit lf_knob then
+	onobjstate lf_knob
+	lf_knob_animate		trigger lf_knob_stop,
+	lf_knob_low		setobjstate lf_knob lf_knob_medlow,
+	lf_knob_medlow		setobjstate lf_knob lf_knob_med,
+	lf_knob_med		setobjstate lf_knob lf_knob_medhigh,
+	lf_knob_medhigh		setobjstate lf_knob lf_knob_high,
+	lf_knob_high            setobjstate lf_knob lf_knob_medhigh2,
+	lf_knob_medhigh2	setobjstate lf_knob lf_knob_med2,
+	lf_knob_med2		setobjstate lf_knob lf_knob_medlow2,
+	lf_knob_medlow2		setobjstate lf_knob lf_knob_low
+
+
+if lf_knob_stop then
+	onobjstate lf_burner
+	lf_burner_low		setobjstate lf_knob lf_knob_low,
+	lf_burner_medlow	setobjstate lf_knob lf_knob_medlow,
+	lf_burner_med		setobjstate lf_knob lf_knob_med,
+	lf_burner_medhigh	setobjstate lf_knob lf_knob_medhigh,
+	lf_burner_high		setobjstate lf_knob lf_knob_high,
+	lf_burner_medhigh2	setobjstate lf_knob lf_knob_medhigh2,
+	lf_burner_med2		setobjstate lf_knob lf_knob_med2,
+	lf_burner_medlow2	setobjstate lf_knob lf_knob_medlow2
+
+
+
+
+
+
+
+
+
+object	lr_knob
+
+        state lr_knob_low
+		frame 2000 4
+			setobjstate lr_burner lr_burner_low 0
+
+
+	state lr_knob_animate
+
+		frame 2000 4
+			setobjstate lr_burner lr_burner_low 0
+		frame 500 3
+			setobjstate lr_burner lr_burner_medlow 0
+		frame 500 2
+			setobjstate lr_burner lr_burner_med 0
+		frame 500 1
+			setobjstate lr_burner lr_burner_medhigh 0
+                frame 3000 0
+			setobjstate lr_burner lr_burner_high 0
+		frame 500 1
+			setobjstate lr_burner lr_burner_medhigh2 0
+		frame 500 2
+			setobjstate lr_burner lr_burner_med2 0
+		frame 500 3
+			setobjstate lr_burner lr_burner_medlow2 0
+		frame 10   4
+			setobjstate lr_knob lr_knob_animate 0
+
+
+
+	state lr_knob_medlow
+		frame 1000 3
+                        setobjstate lr_burner lr_burner_medlow 0
+
+	state lr_knob_med
+		frame 1000 2
+			setobjstate lr_burner lr_burner_med 0
+
+	state lr_knob_medhigh
+		frame 1000 1
+			setobjstate lr_burner lr_burner_medhigh 0
+
+	state lr_knob_high
+		frame 1000 0
+			setobjstate lr_burner lr_burner_high 0
+
+	state lr_knob_medhigh2
+		frame 1000 1
+			setobjstate lr_burner lr_burner_medhigh2 0
+
+	state lr_knob_med2
+		frame 1000 2
+			setobjstate lr_burner lr_burner_med2 0
+
+	state lr_knob_medlow2
+		frame 1000 3
+                        setobjstate lr_burner lr_burner_medlow2 0
+
+
+object	lr_burner
+	state lr_burner_low
+		frame 1000 0
+                        trigger lr_off
+
+	state lr_burner_medlow
+		frame 1000 1
+                        trigger lr_on
+
+	state lr_burner_med
+		frame 1000 2
+                         trigger lr_on
+
+	state lr_burner_medhigh
+		frame 1000 3
+                    	trigger lr_on
+
+	state lr_burner_high
+		frame 1000 4
+                	trigger lr_on
+
+	state lr_burner_medhigh2
+		frame 1000 3
+                    	trigger lr_on
+
+	state lr_burner_med2
+		frame 1000 2
+                         trigger lr_on
+
+	state lr_burner_medlow2
+		frame 1000 1
+                      trigger lr_on
+
+
+
+//IF padon lr_burner_pad AFTER padoff lr_burner_pad and lr_damage after startup THEN
+//        trigger lr_dodamage,
+//        triggerdelay 250 lr_damage
+
+
+//if lr_dodamage after startup and lr_on after lr_off then
+//       	trigger burn_GreenSarge1,
+//        damage me 100 fire
+
+
+
+
+if hit lr_knob then
+	onobjstate lr_knob
+	lr_knob_animate		trigger lr_knob_stop,
+	lr_knob_low		setobjstate lr_knob lr_knob_medlow,
+	lr_knob_medlow		setobjstate lr_knob lr_knob_med,
+	lr_knob_med		setobjstate lr_knob lr_knob_medhigh,
+	lr_knob_medhigh		setobjstate lr_knob lr_knob_high,
+	lr_knob_high            setobjstate lr_knob lr_knob_medhigh2,
+	lr_knob_medhigh2	setobjstate lr_knob lr_knob_med2,
+	lr_knob_med2		setobjstate lr_knob lr_knob_medlow2,
+	lr_knob_medlow2		setobjstate lr_knob lr_knob_low
+
+
+if lr_knob_stop then
+	onobjstate lr_burner
+	lr_burner_low		setobjstate lr_knob lr_knob_low,
+	lr_burner_medlow	setobjstate lr_knob lr_knob_medlow,
+	lr_burner_med		setobjstate lr_knob lr_knob_med,
+	lr_burner_medhigh	setobjstate lr_knob lr_knob_medhigh,
+	lr_burner_high		setobjstate lr_knob lr_knob_high,
+	lr_burner_medhigh2	setobjstate lr_knob lr_knob_medhigh2,
+	lr_burner_med2		setobjstate lr_knob lr_knob_med2,
+	lr_burner_medlow2	setobjstate lr_knob lr_knob_medlow2
+
+
+
+
+
+
+
+
+
+//if ALLOF burn_GreenSarge1 burn_sound_delay THEN
+//        playsound "fire.wav" GreenSarge1,
+//        triggerdelay 1000 burn_sound_delay
+
+
+
+
+
+
+
+
+object  ripple
+	state rippling
+		frame 2000 0
+                frame 150 1
+                        playsound "drip.wav" ripple 3 0
+                frame 150 2
+                frame 150 3
+                frame 150 4
+                frame 150 5
+                frame 150 6
+                frame 150 7
+                frame 150 0
+                        setobjstate ripple rippling 0
+
+
+
+//  Roaches
+
+if init_roaches then
+	createroach roachc1 Padroachc_1 blue,
+        createroach roachc2 Padroachc_2 blue,
+        createroach roachc3 Padroachc_3 blue,
+        createroach roachc4 Padroachc_4 blue,
+        createroach roachs1 Padroachs1_1 blue,
+      	createroach roach80 (1178,1775) blue,
+	createroach roach90 (1256,1400) blue,
+      	createroach roach100 (2277,615) blue,
+        createroach roach110 (3363,1935) tan,
+        SETFACING roach80 90,
+        SETFACING roach90 90,
+        SETFACING roach100 90,
+        SETFACING roach110 40,
+        triggerdelay 3000 init_roaches2
+
+
+
+if init_roaches2 then
+        trigger roachc1_go,
+        trigger roachc2_go,
+        trigger roachc3_go,
+        trigger roachc4_go,
+        trigger roachc5_1,
+        trigger roachc6_1,
+        trigger roachc7_1,
+        trigger roachc8_1,
+        trigger roachsink1_1
+
+//
+//	ROACH1
+//
+if roachc1_go then
+	trigger roachc1_move,
+	triggerdelay 4000 roachc1_go
+
+if roachc1_move then sequential
+	trigger roachc1_1,
+	trigger roachc1_2,
+	trigger roachc1_3,
+	trigger roachc1_4,
+	trigger roachc1_5,
+	trigger roachc1_6,
+	trigger roachc1_7,
+	trigger roachc1_8
+
+if roachc1_1 then 
+	order roachc1 goto padroachc1_5
+
+if roachc1_2 then 
+	order roachc1 goto padroachc1_6
+
+if roachc1_3 then 
+	order roachc1 goto padroachc1_7
+
+if roachc1_4 then 
+	order roachc1 goto padroachc1_8
+
+if roachc1_5 then 
+	order roachc1 goto padroachc1_2
+
+if roachc1_6 then
+	order roachc1 goto padroachc1_3
+
+if roachc1_7 then
+	order roachc1 goto padroachc1_4
+
+if roachc1_8 then
+	order roachc1 goto padroachc1_1
+
+
+//
+//	ROACH2
+//
+if roachc2_go then
+	trigger roachc2_move,
+	triggerdelay 4000 roachc2_go
+
+if roachc2_move then sequential
+	trigger roachc2_1,
+	trigger roachc2_2,
+	trigger roachc2_3,
+	trigger roachc2_4,
+	trigger roachc2_5,
+	trigger roachc2_6,
+	trigger roachc2_7,
+	trigger roachc2_8
+
+if roachc2_1 then 
+	order roachc2 goto padroachc2_5
+
+if roachc2_2 then 
+	order roachc2 goto padroachc2_6
+
+if roachc2_3 then 
+	order roachc2 goto padroachc2_7
+
+if roachc2_4 then 
+	order roachc2 goto padroachc2_8
+
+if roachc2_5 then 
+	order roachc2 goto padroachc2_2
+
+if roachc2_6 then
+	order roachc2 goto padroachc2_3
+
+if roachc2_7 then
+	order roachc2 goto padroachc2_4
+
+if roachc2_8 then
+	order roachc2 goto padroachc2_1
+
+
+//
+//	ROACH3
+//
+if roachc3_go then
+	trigger roachc3_move,
+	triggerdelay 4000 roachc3_go
+
+if roachc3_move then sequential
+	trigger roachc3_1,
+	trigger roachc3_2,
+	trigger roachc3_3,
+	trigger roachc3_4,
+	trigger roachc3_5,
+	trigger roachc3_6,
+	trigger roachc3_7,
+	trigger roachc3_8
+
+if roachc3_1 then 
+	order roachc3 goto padroachc3_5
+
+if roachc3_2 then 
+	order roachc3 goto padroachc3_6
+
+if roachc3_3 then 
+	order roachc3 goto padroachc3_7
+
+if roachc3_4 then 
+	order roachc3 goto padroachc3_8
+
+if roachc3_5 then 
+	order roachc3 goto padroachc3_2
+
+if roachc3_6 then
+	order roachc3 goto padroachc3_3
+
+if roachc3_7 then
+	order roachc3 goto padroachc3_4
+
+if roachc3_8 then
+	order roachc3 goto padroachc3_1
+
+
+//
+//	ROACH4
+//
+if roachc4_go then
+	trigger roachc4_move,
+	triggerdelay 4000 roachc4_go
+
+if roachc4_move then sequential
+	trigger roachc4_1,
+	trigger roachc4_2,
+	trigger roachc4_3,
+	trigger roachc4_4,
+	trigger roachc4_5,
+	trigger roachc4_6,
+	trigger roachc4_7,
+	trigger roachc4_8
+
+if roachc4_1 then
+	order roachc4 goto padroachc4_5
+
+if roachc4_2 then
+	order roachc4 goto padroachc4_6
+
+if roachc4_3 then 
+	order roachc4 goto padroachc4_7
+
+if roachc4_4 then
+	order roachc4 goto padroachc4_8
+
+if roachc4_5 then
+	order roachc4 goto padroachc4_2
+
+if roachc4_6 then
+	order roachc4 goto padroachc4_3
+
+if roachc4_7 then
+	order roachc4 goto padroachc4_4
+
+if roachc4_8 then
+	order roachc4 goto padroachc4_1
+
+
+
+
+IF roachsink1_1 Then
+        Trigger roachs1_1_go
+
+IF roachs1_1_go Then
+ //       SHowmessage "Go sink roach!",
+        Trigger roachs1_1_go2
+
+IF roachs1_1_go2 Then Sequential
+	trigger roachs1_2,
+	trigger roachs1_3,
+	trigger roachs1_4,
+	trigger roachs1_5,
+	trigger roachs1_6,
+	trigger roachs1_7,
+        trigger roachs1_2,
+        trigger roachs1_1
+
+
+if roachs1_1 then
+        Triggerdelay 4000 roachs1_1_go,
+	order roachs1 goto (1023,1661)
+
+if roachs1_2 then
+        Triggerdelay 4000 roachs1_1_go,
+	order roachs1 goto (1209,1813)
+
+if roachs1_3 then
+        Triggerdelay 4000 roachs1_1_go,
+	order roachs1 goto (737,1858)
+
+if roachs1_4 then
+        Triggerdelay 4000 roachs1_1_go,
+       	order roachs1 goto (964,2027)
+
+if roachs1_5 then
+        Triggerdelay 4000 roachs1_1_go,
+	order roachs1 goto (647,2255)
+
+if roachs1_6 then
+        Triggerdelay 8000 roachs1_1_go,
+	order roachs1 goto (764,2460)
+
+if roachs1_7 then
+        Triggerdelay 4000 roachs1_1_go,
+	order roachs1 goto (449,2097)
+
+
+
+
+
+
+
+
+
+object  shakerhandle
+	state static
+       		frame 2000 0
+
+        state spin
+	       	frame 50 1
+                frame 50 2
+                frame 50 3
+                frame 50 4
+                frame 50 5
+                frame 50 6
+                frame 50 7
+                frame 50 8
+                frame 1 0
+                      setobjstate shakerhandle static 0
+
+
+if hit peppershaker then
+	onobjstate shakerhandle
+		static		setobjstate shakerhandle spin
+
+
+
+
+
+
+ object portal
+        state portal_initial
+        	frame 200 9
+
+	state portal_animate
+                frame 200 0
+		frame 200 1
+		frame 200 2
+		frame 200 3
+		frame 200 4
+                frame 200 5
+		frame 200 6
+		frame 200 7
+		frame 200 8
+		frame 200 7
+		frame 200 6
+		frame 200 5
+                frame 200 4
+		frame 200 3
+		frame 200 2
+		frame 200 1
+		frame 10  0
+			setobjstate portal portal_animate 0
+
+
+
+ IF KILLED cookiejar THEN
+        UNDEPLOY invisible_object,
+ 	setobjstate portal portal_animate 0
+
+
+ IF hit PHONE THEN
+        PLAYSOUND "PhoneHitByBeeBeeBell_8Bit.wav" 2 2

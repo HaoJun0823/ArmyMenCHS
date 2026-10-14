@@ -1,0 +1,20 @@
+// map design and scripting by Alvin Muolic
+// The Hobby Table - Mission 4
+
+// Setting the stage for Tan's plans of world domination
+
+if startup3 then
+	triggerdelay 10 missionfourx,
+	playsound "0902sarge.wav" 16 0,
+	trigger missionfour
+
+if missionfourx then
+	showpda "Good work, Sarge. Now find a way home!"
+
+if allof padon portal missionfour then
+	triggerdelay 500 endmissiontp
+
+if endmissiontp butnot killed greensarge1 then
+	playsound "kingoftheworld.wav" 16 0,
+	triggerdelay 1300 petertestgreenwins
+

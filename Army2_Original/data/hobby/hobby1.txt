@@ -1,0 +1,570 @@
+// map design and scripting by Alvin Muolic
+// The Hobby Table - Missions 1/2
+
+// Setting the stage for Tan's plans of world domination
+
+// Pad Definitions
+
+// Tragic Ship "bridge" pads
+
+pad tp_01			10		 
+pad tp_02			11		 
+pad tp_03			12		 
+pad tp_04			13		 
+pad tp_05			14		 
+pad tp_06			15		 
+pad tp_07			16		 
+pad tp_08			17		 
+pad tp_09			18		 
+pad tp_10			19		 
+pad tp_20			20		tanrunner1 > 0
+pad tp_21			21		tanrunner2 > 0
+pad tp_22			22		tanrunner3 > 0
+pad tp_23			23		tanrunner4 > 0
+pad tp_24			24		tanrunner5 > 0
+pad tp_25			25		tanrunner6 > 0
+pad tp_26			26		tanrunner7 > 0
+pad tp_27			27		tanrunner8 > 0
+pad tp_28			28		tanrunner9 > 0
+pad tp_29			29		tanrunner10 > 0
+pad tp_60			60		tanrunner1a > 0
+pad tp_61			61		tanrunner2a > 0
+pad tp_62			62		tanrunner3a > 0
+pad tp_63			63		tanrunner4a > 0
+pad tp_64			64		tanrunner5a > 0
+	
+pad pp_portal			31		tan trooper > 0 
+pad pp_portout1			40		prunner1 > 0
+pad pp_portout2			40		prunner2 > 0
+pad pp_portout3			40		prunner3 > 0
+pad pp_portout4			40		prunner4 > 0
+pad pp_portout5			40		prunner5 > 0
+pad pp_portout6			40		prunner6 > 0
+pad pp_portout7			40		prunner7 > 0
+pad pp_portout8			40		prunner8 > 0
+pad pp_portout9			40		prunner9 > 0
+pad pp_portout10		40		prunner10 > 0
+
+pad pp_49			49		stonecold > 0
+pad pp_50			50		stonecold > 0
+ 
+pad mis_02			100		green trooper > 0
+pad portal			101		green trooper > 0
+pad mis_03			102		green trooper > 0
+	
+if killed greensarge1 THEN
+	triggerdelay 1000 hesdead
+
+if hesdead then
+	showfailure "Sarge is dead!",
+	triggerdelay 10 tanwins
+
+if killed scorch then
+	createpowerup flamer scorch 50
+
+if killed veteran then
+	createpowerup bazooka veteran 10
+
+if padon portal butnot missionfour then
+	playsound "0601sarge2.wav" 16 0
+
+if startup1 then
+	undeploy ruler2,
+	undeploy bridge2,
+	createtrooper "g1" autorifle (2848,3069) tan,
+	setfacing g1 180,
+	createtrooper "g2" autorifle (2865,3157) tan,
+	setfacing g2 180,
+	createtrooper "bg1" autorifle (1690,2020) tan,
+	setfacing bg1 128,
+	createtrooper "bg2" bazooka (1801,2106) tan,
+	setfacing bg2 128,
+	createtrooper "bg3" autorifle (1935,1966) tan,
+	setfacing bg3 128,
+	createtrooper "tg1" flamer (3245,477) tan,
+	setfacing tg1 100,
+	createtrooper "tg2" autorifle (3304,532) tan,
+	setfacing tg2 100,	
+	createtrooper "eg1" autorifle (856,2082) tan,
+	setfacing eg1 180,	
+	createtrooper "eg2" autorifle (1154,2122) tan,
+	setfacing eg2 180,
+	createtrooper "tm_guard1" autorifle (3361,2697) tan,
+	setfacing tm_guard1 172,
+	createtrooper "tm_guard2" autorifle (3190,2592) tan,
+	setfacing tm_guard2 154,
+	createtrooper "tm_guard3" autorifle (3225,2679) tan,
+	setfacing tm_guard3 172,
+	createtrooper "tm_guard4" autorifle (3223,2727) tan,
+	setfacing tm_guard4 172,
+	createtrooper "tm_guard5" autorifle (3291,2729) tan,
+	setfacing tm_guard5 172,
+//	createtrooper "tm_guard6" autorifle (3216,2493) tan,
+//	setfacing tm_guard6 172,
+	order tm_guard1 follow greensarge1,
+	order tm_guard2 follow greensarge1,
+	triggerdelay 10 missionbrief1x,
+	setbriefing "map09_1.bmp",
+	deploy greensarge1,
+	createexplosion greensarge1 133 0 green,
+	heal greensarge1 100,
+	inactivateregion 68,
+	inactivateregion 72,
+	inactivateregion 73,
+	inactivateregion 74,
+	inactivateregion 93,
+	inactivateregion 37,
+	inactivateregion 94,
+	triggerdelay 1000 goguards
+
+
+if hit g1 by green then
+	order g1 follow greensarge1,
+	order g2 follow greensarge1
+if hit g2 by green then
+	order g1 follow greensarge1,
+	order g2 follow greensarge1
+if hit bg1 by green then
+	order bg1 follow greensarge1,
+	order bg2 follow greensarge1,
+	order bg3 follow greensarge1
+if hit bg2 by green then
+	order bg1 follow greensarge1,
+	order bg2 follow greensarge1,
+	order bg3 follow greensarge1
+if hit bg3 by green then
+	order bg1 follow greensarge1,
+	order bg2 follow greensarge1,
+	order bg3 follow greensarge1
+if hit tg1 by green then
+	order tg1 follow greensarge1,
+	order tg2 follow greensarge1
+if hit tg2 by green then
+	order tg1 follow greensarge1,
+	order tg2 follow greensarge1
+if hit eg1 by green then
+	order eg1 follow greensarge1,
+	order eg2 follow greensarge1
+if hit eg2 by green then
+	order eg1 follow greensarge1,
+	order eg2 follow greensarge1
+
+if messageone then
+	playsound "map9mission1hq1.wav" 1 0,
+	triggerdelay 50000 messagetwo
+if messagetwo then
+	playsound "map9mission1hq2.wav" 1 0,
+	triggerdelay 50000 messagethree
+if messagethree then
+	playsound "map9mission1hq3.wav" 1 0,
+	triggerdelay 1000 blackrazors
+	
+if goguards then
+	order tm_guard3 goto greensarge1,
+	order tm_guard4 goto greensarge1,
+	order tm_guard5 goto greensarge1,
+	order tm_guard6 goto greensarge1
+
+if padon mis_02 butnot mis_02x then
+	trigger mis_02x
+
+if mis_02x then
+	order g1 goto greensarge1,
+	order g2 goto greensarge2,
+	trigger missiontwo,
+	triggerdelay 3000 eguards,
+	triggerdelay 1000 messageone
+
+if missionbrief1x then
+	showpda "Hold the main bridge until reinforcements arrive."
+
+if eguards then
+	order eg1 follow greensarge1,
+	order eg2 follow greensarge1
+
+if missiontwo then
+	undeploy ruler1,
+	deploy ruler2,
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "tanrunner1" rifle (2696,2805) tan,
+	setfacing tanrunner1 64,
+	createexplosion tanrunner1 133 0 tan,
+	setm80 tanrunner1 green,
+	triggerdelay 500 missiontwox3
+if missiontwox3 then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "tanrunner4" rifle (2859,3427) tan,
+	setfacing tanrunner4 64,
+	createexplosion tanrunner4 133 0 tan,
+	setm80 tanrunner4 green,
+	triggerdelay 500 missiontwox4
+if missiontwox4 then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "tanrunner5" rifle (2185,3126) tan,
+	createexplosion tanrunner5 133 0 tan,
+	setm80 tanrunner5 green,
+	triggerdelay 5000 runningmen2,
+	triggerdelay 5000 runningmen3,
+	triggerdelay 20000 runningmen1,
+	triggerdelay 32000 missiontwoa
+
+if runningmen1 then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "tanrunner2" rifle (482,2353) tan,
+	createexplosion tanrunner2 133 0 tan,
+	setm80 tanrunner2 green,
+	createtrooper "tanrunner3" rifle (702,2126) tan,
+	createexplosion tanrunner3 133 0 tan,
+	setm80 tanrunner3 green,
+	order tanrunner2 goto tp_02,
+	order tanrunner3 goto tp_03
+if runningmen2 then
+	order tanrunner1 goto tp_01,
+	order tanrunner4 goto tp_04
+if runningmen3 then
+	order tanrunner5 goto tp_05
+
+if missiontwoa then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "tanrunner1a" rifle (1812,3461) tan,
+	setfacing tanrunner1a 64,
+	createexplosion tanrunner1a 133 0 tan,
+	setm80 tanrunner1a green,
+	triggerdelay 500 missiontwox1a
+if missiontwox1a then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "tanrunner2a" rifle (2024,2718) tan,
+	createexplosion tanrunner2a 133 0 tan,
+	setm80 tanrunner2a green,
+	triggerdelay 500 missiontwox2a
+if missiontwox2a then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "tanrunner3a" rifle (335,2442) tan,
+	createexplosion tanrunner3a 133 0 tan,
+	setm80 tanrunner3a green,
+	triggerdelay 500 missiontwox3a
+if missiontwox3a then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "tanrunner4a" rifle (3241,3190) tan,
+	setfacing tanrunner4a 64,
+	createexplosion tanrunner4a 133 0 tan,
+	setm80 tanrunner4a green,
+	triggerdelay 500 missiontwox4a
+if missiontwox4a then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "tanrunner5a" rifle (2659,3077) tan,
+	setfacing tanrunner5a 64,
+	createexplosion tanrunner5a 133 0 tan,
+	setm80 tanrunner5a green,
+	triggerdelay 4000 runningmen1a,
+	triggerdelay 5000 runningmen2a,
+	triggerdelay 6000 runningmen3a,
+	triggerdelay 31000 wavetwo
+
+if runningmen1a then
+	order tanrunner1a goto tp_01,
+	order tanrunner2a goto tp_02,
+	triggerdelay 20000 boomtanrunner2a
+if runningmen2a then
+	order tanrunner3a goto tp_03,
+	order tanrunner4a goto tp_04
+if runningmen3a then
+	order tanrunner5a goto tp_05
+
+if padon tp_20 butnot trig1 then
+	trigger trig1
+if trig1 then
+	damage tanrunner1 100,
+	damage bridge 10,
+	createexplosion tanrunner1 131 0 tan
+
+if padon tp_21 butnot trig2 then
+	trigger trig2
+if trig2 then
+	damage tanrunner2 100,
+	damage bridge 10,
+	createexplosion tanrunner2 138 0 tan
+
+if padon tp_22 butnot trig3 then
+	trigger trig3
+if trig3 then
+	damage tanrunner3 100,
+	damage bridge 10,
+	createexplosion tanrunner3 139 0 tan
+
+if padon tp_23 butnot trig4 then
+	trigger trig4
+if trig4 then
+	damage tanrunner4 100,
+	damage bridge 10,
+	createexplosion tanrunner4 131 0 tan
+
+if padon tp_24 butnot trig5 then
+	trigger trig5
+if trig5 then
+	damage tanrunner5 100,
+	damage bridge 10,
+	createexplosion tanrunner5 138 0 tan
+
+if padon tp_60 butnot trig6 then
+	trigger trig6
+if trig6 then
+	damage tanrunner1a 100,
+	damage bridge 10,
+	createexplosion tanrunner1a 139 0 tan
+
+if padon tp_61 butnot trig7 then
+	trigger trig7
+if trig7 then
+	damage tanrunner2a 100,
+	damage bridge 10,
+	createexplosion tanrunner2a 131 0 tan
+
+if padon tp_62 butnot trig8 then
+	trigger trig8
+if trig8 then
+	damage tanrunner3a 100,
+	damage bridge 10,
+	createexplosion tanrunner3a 138 0 tan
+
+if padon tp_63 butnot trig9 then
+	trigger trig9
+if trig9 then
+	damage tanrunner4a 100,
+	damage bridge 10,
+	createexplosion tanrunner4a 139 0 tan
+
+if padon tp_64 butnot trig10 then
+	trigger trig10
+if trig10 then
+	damage tanrunner5a 100,
+	damage bridge 10,
+	createexplosion tanrunner5a 131 0 tan
+
+if wavetwo then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "tanrunner6" rifle (484,2635) tan,
+	createexplosion tanrunner6 133 0 tan,
+	setm80 tanrunner6 green,
+	triggerdelay 500 wavetwox1
+if wavetwox1 then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "tanrunner7" rifle (728,1846) tan,
+	createexplosion tanrunner7 133 0 tan,
+	setm80 tanrunner7 green,
+	triggerdelay 500 wavetwox2
+if wavetwox2 then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "tanrunner8" rifle (1520,3159) tan,
+	createexplosion tanrunner8 133 0 tan,
+	setm80 tanrunner8 green,
+	triggerdelay 500 wavetwox3
+if wavetwox3 then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "tanrunner9" rifle (2047,3413) tan,
+	setfacing tanrunner9 64,
+	createexplosion tanrunner9 133 0 tan,
+	setm80 tanrunner9 green,
+	triggerdelay 500 wavetwox4
+if wavetwox4 then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "tanrunner10" rifle (1823,2874) tan,
+	createexplosion tanrunner10 133 0 tan,
+	setm80 tanrunner10 green,
+	triggerdelay 4000 runningmen4,
+	triggerdelay 5000 runningmen5,
+	triggerdelay 6000 runningmen6
+
+if runningmen4 then
+	order tanrunner6 goto tp_06,
+	order tanrunner7 goto tp_07,
+	triggerdelay 20000 boomtanrunner6
+if runningmen5 then
+	order tanrunner8 goto tp_08,
+	order tanrunner9 goto tp_09,
+	triggerdelay 20000 boomtanrunner9
+if runningmen6 then
+	order tanrunner10 goto tp_10
+
+if padon tp_25 butnot trigg1 then
+	trigger trigg1
+if trigg1 then
+	damage tanrunner6 100,
+	damage bridge 50,
+	createexplosion tanrunner6 131 0 tan
+
+if padon tp_26 butnot trigg2 then
+	trigger trigg2
+if trigg2 then
+	damage tanrunner7 100,
+	damage bridge 50,
+	createexplosion tanrunner7 138 0 tan
+
+if padon tp_27 butnot trigg3 then
+	trigger trigg3
+if trigg3 then
+	damage tanrunner8 100,
+	damage bridge 50,
+	createexplosion tanrunner8 139 0 tan
+
+if padon tp_28 butnot trigg4 then
+	trigger trigg4
+if trigg4 then
+	damage tanrunner9 100,
+	damage bridge 50,
+	createexplosion tanrunner9 131 0 tan
+
+if padon tp_29 butnot trigg5 then
+	trigger trigg5
+if trigg5 then
+	damage tanrunner10 100,
+	damage bridge 50,
+	createexplosion tanrunner10 138 0 tan
+
+if killed bridge butnot bridgegobang then
+	trigger bridgegobang
+if bridgegobang then
+	createexplosion (1812,1630) 131 999 tan,
+	createexplosion (1889,1636) 138 999 tan,
+	createexplosion (1970,1634) 139 999 tan,
+	createexplosion (1811,1713) 131 999 tan,
+	createexplosion (1894,1714) 138 999 tan,
+	createexplosion (1972,1714) 139 999 tan,
+	createexplosion (1841,1795) 131 999 tan,
+	createexplosion (1925,1795) 138 999 tan,
+	createexplosion (2005,1793) 139 999 tan,
+	createexplosion (1923,1873) 131 999 tan,
+	triggerdelay 500 bridgebuhbye
+
+if bridgebuhbye then
+	showfailure "The bridge is gone! We can't make it to the other side!",
+	triggerdelay 10 tanwins
+
+if blackrazors butnot brazor1 then
+	trigger brazor1
+if brazor1 then
+	playsound "portal2_8Bit.wav" 3 0,
+	createtrooper "Grey_" vulcan (3528,2528) green,
+	addexp Grey_ 660,
+	createexplosion Grey_ 133 0 green,
+	createtrooper "Santini" vulcan (3608,2590) green,
+	addexp Santini 660,
+	createexplosion Santini 133 0 green,
+	createtrooper "Jay" flamer (3032,3083) green,
+	addexp Jay 660,
+	createexplosion Jay 133 0 green,
+	createtrooper "Bob" bazooka (3205,3163) green,
+	addexp Bob 660,
+	createexplosion Bob 133 0 green,
+	triggerdelay 2200 brvo1x,
+	triggerdelay 3000 endmission1
+
+if endmission1 butnot bridgegobang then
+	trigger petertestgreenwins
+
+if petertestgreenwins butnot killed greensarge1 then
+	trigger greenwins
+
+
+if brvo1x then
+	playsound "map9mission1trooper2.wav" 5 0
+
+if killed can1 then
+	createexplosion (1894,3403) 131 200 green,
+	createexplosion (2036,3308) 131 200 green,
+	createexplosion (1757,3294) 131 200 green,
+	createexplosion (1711,3480) 131 200 green,
+	createexplosion (1888,3569) 131 200 green,
+	createexplosion (2023,3495) 131 200 green
+
+if killed can2 then
+	createexplosion (963,1905) 131 200 green,
+	createexplosion (1161,1796) 131 200 green,
+	createexplosion (1260,1950) 131 200 green,
+	createexplosion (1212,2103) 131 200 green,
+	createexplosion (1083,2175) 131 200 green,
+	createexplosion (912,2097) 131 200 green,
+	createexplosion (1097,2015) 131 200 green
+
+if killed can3 then
+	createexplosion (2537,778) 131 200 green,
+	createexplosion (2561,555) 131 200 green,
+	createexplosion (2744,757) 131 200 green,
+	createexplosion (2608,933) 131 200 green,
+	createexplosion (2333,886) 131 200 green,
+	createexplosion (2234,743) 131 200 green,
+	createexplosion (2360,589) 131 200 green,
+	createexplosion (2511,831) 131 200 green
+
+if killed rocket1 then
+	createexplosion (2956,2346) 131 200 green,
+	createexplosion (2954,2271) 131 200 green,
+	createexplosion (2948,2174) 131 200 green,
+	createexplosion (3062,2289) 131 200 green,
+	createexplosion (2825,2278) 131 200 green,
+	createexplosion (2939,2426) 131 200 green,
+	createexplosion (2924,2352) 131 200 green
+
+if killed plane1 then
+	createexplosion (2161,2337) 131 200 green,
+	createexplosion (2255,2263) 131 200 green,
+	createexplosion (2066,2237) 131 200 green,
+	createexplosion (2265,2414) 131 200 green,
+	createexplosion (2103,2431) 131 200 green,
+	createexplosion (2017,2296) 131 200 green,
+	createexplosion (2200,2212) 131 200 green,
+	createexplosion (2323,2306) 131 200 green
+
+if killed ruler1 butnot missiontwo then
+	showfailure "Great! We can't over to the other side now!",
+	triggerdelay 10 tanwins
+
+object portal1
+        state portal1_go
+                frame 100 0
+			playsound "portal1_8Bit.wav" portal1 7 0 1
+                frame 100 1
+                frame 100 2
+                frame 100 3
+                frame 100 4
+                frame 100 5
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 10 0
+                	setobjstate portal1 portal1_go
+
+	state portal1_stopped
+		frame 100 0
+
+if killed lighter1 then
+	createexplosion (2990,3265) 131 200 green,
+	createexplosion (2986,3186) 131 200 green,
+	createexplosion (3057,3256) 131 200 green,
+	createexplosion (2921,3264) 131 200 green,
+	createexplosion (2986,3298) 131 200 green
+
+if killed lighter2 then
+	createexplosion (387,2391) 131 200 green,
+	createexplosion (368,2324) 131 200 green,
+	createexplosion (458,2389) 131 200 green,
+	createexplosion (389,2458) 131 200 green,
+	createexplosion (318,2398) 131 200 green
+
+if killed rocket2 then
+	createexplosion (2250,1854) 131 500 green,
+	createexplosion (2330,1885) 138 500 green,
+	createexplosion (2464,1871) 139 500 green,
+	createexplosion (2441,1933) 131 500 green,
+	createexplosion (2436,1973) 138 500 green,
+	createexplosion (2509,1948) 138 500 green
+
+if killed rocket3 then
+	createexplosion (2805,2096) 131 500 green,
+	createexplosion (2850,2147) 138 500 green,
+	createexplosion (2808,2196) 139 500 green,
+	createexplosion (2753,2145) 131 500 green,
+	createexplosion (2802,2152) 138 500 green
+
+
+

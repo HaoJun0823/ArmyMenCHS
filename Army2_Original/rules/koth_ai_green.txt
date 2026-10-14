@@ -1,0 +1,107 @@
+// this gets loaded on the host if the green army is AI controlled
+
+// This variable holds the current action for green
+// 0 means no action, 1 means goto hill, 2 means get powerups, 3 means defend hill
+variable greenAction 0
+
+if startup1 then
+	triggerdelay 1000 greenChooseNewAction,
+	triggerdelay 2000 greenRegularOrders
+
+if greenChooseNewAction then
+	setvar greenAction 0,
+	trigger greenCheckIfOnHill,
+	trigger greenCheckIfHillEmpty,
+	trigger greenChoseAction
+
+// if it's time to choose a new action but we are currently owning the hill then
+// we should always stay on the hill
+
+if greenCheckIfOnHill testvar hillowner = 1 then
+	trigger greenDefendHill
+	
+// if it's time to choose a new action and the hill is not owned then head straight for it
+
+if greenCheckIfHillEmpty testvar hillowner = 0 then
+	trigger greenGotoHill
+	
+// if green has no current action then pick an action
+// ideally we would base this on how well armed we are
+if greenChooseAction testvar greenAction = 0 then
+	trigger greenPickRandomAction,
+	triggerdelay 1000 greenChooseAction
+
+if greenPickRandomAction then random
+	trigger greenGotoHill,
+	trigger greenGetPowerUps
+
+// these events setup the greenAction variable and do the actions
+
+if greenGotoHill then
+	setvar greenAction 1,
+	order greensarge1 goto greenhill inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 goto greenhill inmode attack,
+	order green group 3 goto greenhill inmode attack,
+	order green group 4 goto greenhill inmode attack,
+	order green group 5 goto greenhill inmode attack,
+	order green group 0 goto greenhill inmode attack,
+	trigger greenStartTimeOut
+
+if greenGetPowerUps then
+	setvar greenAction 2,
+	order greensarge1 goto greenhill inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 goto greenhill inmode attack,
+	order green group 3 goto greenhill inmode attack,
+	order green group 4 goto greenhill inmode attack,
+	order green group 5 goto greenhill inmode attack,
+	order green group 0 goto greenhill inmode attack,
+	trigger greenStartTimeOut
+
+if greenDefendHill then
+	setvar greenAction 3,
+	order greensarge1 goto greenhill inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 goto greenhill inmode defend,
+	order green group 3 goto greenhill inmode defend,
+	order green group 4 goto greenhill inmode defend,
+	order green group 5 goto greenhill inmode defend,
+	order green group 0 goto greenhill inmode defend,
+	trigger greenStartTimeOut
+
+// these events chose a new action if we get on the hill
+
+if hillOwnerChanged testvar hillowner = 1 then
+    trigger greenDefendHill
+
+if hillOwnerChanged testvar hillowner <> 0 then
+    trigger greenGotoHill
+
+// these events choose new actions if a sarge is killed
+
+if killed greensarge1 then
+	triggerdelay 5000 greenGetPowerups
+
+// these are the sgreending order regardless of what mode sarge is in
+	
+if greenRegularOrders then
+	order green group 7 goto greenbase inmode evade,
+	triggerdelay 5000 greenRegularOrders
+
+// timeout code - if mode has not changed for a while then change it
+
+variable greenTimeOutVar 0
+variable greenLastTimeOutVar 1
+
+if greenStartTimeOut then
+    addvar greenTimeOutVar 1,
+	triggerdelay 120000 greenCheckTimeOut
+
+if greenCheckTimeOut testvar greenTimeOutVar = greenLastTimeOutVar then
+    trigger greenChooseNewAction
+
+if greenCheckTimeOut testvar greenTimeOutVar <> greenLastTimeOutVar then
+	addvar greenLastTimeOutVar 1
+
+

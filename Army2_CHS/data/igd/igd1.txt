@@ -1,0 +1,1050 @@
+// map design and scripting by Alvin Muolic
+// Island Of The Insane Grey Doctor - Mission 1
+// version 2.0
+// Ever wonder what happens to the parts and pieces of fallen Army Men?
+
+// pad definitions
+
+pad message1 		10		green trooper > 0
+pad message2 		11		green trooper > 0
+pad message3 		12		green trooper > 0
+pad message4 		13		green trooper > 0
+pad boo1		20		green trooper > 0
+pad dock		30		green trooper > 0
+pad lookdoc		200		green trooper > 0
+pad om			201		green trooper > 0
+pad ambushed		203		green trooper > 0
+
+// zombie encounter pads
+
+pad ze1			100		green trooper > 0
+pad ze2			101		green trooper > 0
+pad ze3			102		green trooper > 0
+pad ze4			103		green trooper > 0
+pad ze5			104		green trooper > 0
+pad ze6			105		green trooper > 0
+pad ze7			106		green trooper > 0
+pad ze8			107		green trooper > 0
+
+// zombie deployment pens
+
+pad zpen1		90		 
+pad zpen2		91	
+pad zpen3		92		 
+pad zpen4		93	
+pad zpen5		94		 
+pad zpen6		95	
+pad zpen7		96	
+pad zpen8		97	
+
+// zombie molds 
+pad zmold1		159
+pad zmold2		160
+
+// waypoints for stupid zombies
+
+pad wp1			40	
+pad wp2			41	
+pad wp3			42
+pad wp4			43
+pad wp5 		44
+pad wp6 		45	
+pad wp7 		46	
+pad wp8 		47	
+pad wp9 		48	
+pad wp10 		49	
+pad wp11 		50	
+pad wp12 		51	
+
+// Game Termination Conditions
+ 
+
+if killed greensarge1 THEN
+	triggerdelay 1000 hesdead
+
+if hesdead then
+	showfailure "中士，你在听吗？中士？中士！",
+	triggerdelay 10 tanwins
+
+if killed scorch then
+	createpowerup flamer scorch 50
+
+if killed veteran then
+	createpowerup bazooka veteran 10
+
+// Game Startup and Prep
+
+preloadsprite 37 1 1
+preloadsprite 37 1 2
+preloadsprite 37 1 3
+preloadsprite 37 1 4
+preloadsprite 37 1 5
+preloadsprite 37 1 6
+preloadsprite 37 1 7
+preloadsprite 37 1 8
+preloadsprite 37 1 9
+preloadsprite 37 10 1
+preloadsprite 37 10 2
+preloadsprite 37 10 3
+preloadsprite 37 10 4
+preloadsprite 37 10 5
+preloadsprite 37 10 6
+preloadsprite 37 10 7
+preloadsprite 37 10 8
+preloadsprite 37 10 9
+preloadsprite 37 670 1
+preloadsprite 37 670 2
+preloadsprite 37 670 3
+preloadsprite 37 670 4
+preloadsprite 37 670 5
+preloadsprite 37 670 6
+preloadsprite 37 670 7
+preloadsprite 37 670 8
+preloadsprite 37 670 9
+preloadsprite 37 680 1
+preloadsprite 37 680 2
+preloadsprite 37 680 3
+preloadsprite 37 680 4
+preloadsprite 37 680 5
+preloadsprite 37 680 6
+preloadsprite 37 680 7
+preloadsprite 37 680 8
+preloadsprite 37 680 9
+preloadsprite 43 900 1
+preloadsprite 43 900 2
+preloadsprite 43 900 3
+preloadsprite 43 900 4
+preloadsprite 43 900 5
+preloadsprite 43 900 6
+preloadsprite 43 900 7
+preloadsprite 43 900 8
+preloadsprite 43 990 1
+preloadsprite 43 990 2
+preloadsprite 43 990 3
+preloadsprite 43 990 4
+preloadsprite 43 990 5
+preloadsprite 43 990 6
+preloadsprite 43 990 7
+preloadsprite 43 990 8
+preloadsprite 43 990 9
+preloadsprite 43 990 10
+preloadsprite 43 990 11
+preloadsprite 43 990 12
+preloadsprite 43 990 13
+preloadsprite 43 990 14
+preloadsprite 43 990 15
+preloadsprite 43 990 16
+preloadsprite 43 990 17
+preloadsprite 43 990 18
+preloadsprite 43 990 19
+preloadsprite 43 990 20
+preloadsprite 43 990 21
+preloadsprite 43 990 22
+preloadsprite 43 990 23
+preloadsprite 43 990 24
+preloadsprite 43 990 25
+preloadsprite 43 990 26
+preloadsprite 43 990 27
+preloadsprite 43 990 28
+preloadsprite 43 990 29
+preloadsprite 43 990 30
+preloadsprite 43 990 31
+preloadsprite 43 990 32
+preloadsprite 43 990 33
+preloadsprite 43 990 34
+preloadsprite 43 990 35
+preloadsprite 43 990 36
+preloadsprite 43 990 37
+preloadsprite 43 990 38
+
+if startup1 then
+	undeploy generator1,
+	undeploy generator2,
+	undeploy generator3,
+	undeploy generator4,
+	undeploy generator5,
+	undeploy generator6,
+	playsound "map7mission1hq.wav" 0 1,
+	setobjstate belt belt_stopped,
+	setobjstate mulcher mulcher_stopped,
+	setobjstate mold1 mold1_stopped,
+	setobjstate mold2 mold2_stopped,
+	setobjstate mold3 mold3_stopped,
+	setobjstate mold4 mold4_stopped,
+	setobjstate goop1 goop1stop,
+	setobjstate goop2 goop2stop,
+	createexplosion (511,3303) 121 100 green,
+	makesmoke (511,3303),
+  	triggerdelay 10 showbrief1x,
+	setbriefing "map07_1.bmp",
+	heal GreenSarge1 100,
+	makesmoke helicopter1,
+	makesmoke (410,3335),
+	makesmoke (334,3405),
+	makesmoke (379,3340),
+	makesmoke (423,3382),
+	createtrooper "zombie3" rifle (408,3468) blue,
+	setfacing zombie3 140,
+	setzombie zombie3,
+	setmaxhealth zombie3 150,
+	heal zombie3 100,
+	order zombie3 follow greensarge1,
+	createtrooper "zombie1" rifle (390,3489) blue,
+	setfacing zombie1 100,
+	setzombie zombie1,
+	triggerdelay 2000 zombiego,
+	playsound "generatorHum_8Bit.wav" dg1 1 0 1,
+	playsound "generatorHum_8Bit.wav" dg2 2 0 1,
+	playsound "generatorHum_8Bit.wav" dg3 3 0 1,
+	playsound "generatorHum_8Bit.wav" dg4 4 0 1,
+	playsound "generatorHum_8Bit.wav" dg5 5 0 1,
+	playsound "generatorHum_8Bit.wav" dg6 6 0 1
+
+if showbrief1x then
+     	showpda "找到并救出老兵。"
+
+if zombiego then 
+	order zombie1 follow greensarge1,
+	playsound "theheck.wav" 16 0,
+	triggerdelay 2000 zattack2
+
+if zattack2 then
+	createtrooper "zombie2" rifle (184,3463) blue,
+	setfacing zombie2 140,
+	setzombie zombie2,
+	order zombie2 follow greensarge1
+		
+if allof killed zombie1 killed zombie2 killed zombie3 then
+	playsound "NotRight.wav" 16 0
+
+if padon message1 butnot info1 then
+	trigger info1
+if info1 butnot m2 then
+	playsound "OldManNotHere.wav" 16 0
+
+if padon message4 butnot info4 then
+	trigger info4
+if info4 then
+	playsound "LooksLikeGen.wav" 16 0
+
+if padon ze2 butnot ze2a then
+	trigger ze2a
+if ze2a then
+	playsound "TheOldMan.wav" 16 0,
+	playsound "ZOMBIE_8Bit.wav" 7 0,
+	createtrooper "zombie13" rifle (854,3671) blue,
+	setfacing zombie13 90,
+	setzombie zombie13,
+	order zombie13 follow greensarge1,
+	createtrooper "zombie4" rifle (771,2969) blue,
+	setfacing zombie4 128,
+	setzombie zombie4,
+	order zombie4 follow greensarge1,
+	createtrooper "zombie5" rifle (1366,3426) blue,
+	setfacing zombie5 128,
+	setzombie zombie5,
+	order zombie5 follow greensarge1,
+	createtrooper "zombie6" rifle (953,2822) blue,
+	setfacing zombie6 128,
+	setzombie zombie6,
+	order zombie6 follow greensarge1,
+	createtrooper "zombie7" rifle (1306,2730) blue,
+	setfacing zombie7 128,
+	setzombie zombie7,
+	createtrooper "zombie8" rifle (710,2670) blue,
+	setfacing zombie8 150,
+	setzombie zombie8,
+	createtrooper "zombie9" rifle (1156,2630) blue,
+	setfacing zombie9 128,
+	setzombie zombie9,
+	createtrooper "zombie10" rifle (1375,2732) blue,
+	setfacing zombie10 128,
+	setzombie zombie10,
+	createtrooper "zombie11" rifle (1491,3149) blue,
+	setfacing zombie11 64,
+	setzombie zombie11,
+	createtrooper "zombie12" rifle (1378,3407) blue,
+	setfacing zombie12 64,
+	setzombie zombie12
+
+if killed zombie13 killed zombie4 killed zombie5 killed zombie6 butnot backup1 then
+	trigger backup1
+
+if backup1 then
+	order zombie7 follow greensarge1,
+	order zombie8 follow greensarge1,
+	order zombie9 follow greensarge1,
+	order zombie10 follow greensarge1
+
+if padon ze3 butnot ze3a then
+	trigger ze3a
+
+if ze3a then 
+	playsound "ZOMBIE_8Bit.wav" 7 0,
+	createtrooper "zombie26" rifle (788,2243) tan,
+	setfacing zombie26 128,
+	setzombie zombie26,
+	order zombie26 follow greensarge1,
+	createtrooper "zombie27" rifle (953,2217) tan,
+	setfacing zombie27 128,
+	setzombie zombie27,
+	order zombie27 follow greensarge1,
+	createtrooper "zombie28" rifle (993,2278) tan,
+	setfacing zombie28 128,
+	setzombie zombie28,
+	order zombie28 follow greensarge1,
+	createtrooper "zombie14" rifle (1085,2121) tan,
+	setfacing zombie14 128,
+	setzombie zombie14,
+	createtrooper "zombie15" rifle (939,2100) tan,
+	setfacing zombie15 128,
+	setzombie zombie15
+
+if killed zombie26 killed zombie27 killed zombie28 butnot backup2 then
+	trigger backup2
+
+if backup2 then
+	order zombie14 follow greensarge1,
+	order zombie15 follow greensarge1
+
+if padon ze4 butnot ze4a then
+	trigger ze4a
+
+if ze4a then 
+	playsound "ZOMBIE_8Bit.wav" 7 0,
+	createtrooper "zombie16" rifle (870,1611) grey,
+	setfacing zombie16 128,
+	setzombie zombie16,
+	order zombie16 follow greensarge1,
+	createtrooper "zombie17" rifle (749,1565) grey,
+	setfacing zombie17 128,
+	setzombie zombie17,
+	order zombie17 follow greensarge1,
+	createtrooper "zombie29" rifle (533,1942) grey,
+	setfacing zombie29 180,
+	setzombie zombie29,
+	order zombie29 follow old_man,
+	createtrooper "zombie30" rifle (424,1976) grey,
+	setfacing zombie30 130,
+	setzombie zombie30,
+	order zombie30 follow greensarge1,
+	createtrooper "zombie31" rifle (466,1534) grey,
+	setfacing zombie31 128,
+	setzombie zombie31,
+	order zombie31 follow old_man,
+	createtrooper "zombie18" rifle (167,1781) grey,
+	setfacing zombie18 180,
+	setzombie zombie18,
+	createtrooper "zombie19" rifle (538,1487) grey,
+	setfacing zombie19 128,
+	setzombie zombie19,
+	createtrooper "zombie20" rifle (570,1369) grey,
+	setfacing zombie20 128,
+	setzombie zombie20
+
+if killed zombie16 killed zombie17 killed zombie29 killed zombie30 killed zombie31 butnot backup3 then
+	trigger backup3
+
+if backup3 then
+	order zombie18 follow greensarge1,
+	order zombie19 follow greensarge1,
+	order zombie20 follow greensarge1
+
+if padon message2 butnot info2 then
+	trigger info2
+if info2 then
+	playsound "NotRight.wav" 16 0,
+	playsound "ZOMBIE_8Bit.wav" 7 0,	
+	createtrooper "zombie21s" rifle (1132,953) tan,
+	setfacing zombie21s 64,
+	setzombie zombie21s,
+	order zombie21s follow greensarge1,
+	createtrooper "zombie22s" rifle (1034,1031) tan,
+	setfacing zombie22s 10,	
+	setzombie zombie22s,
+	order zombie22s follow greensarge1,
+	createtrooper "zombie23s" rifle (785,826) tan,
+	setfacing zombie23s 190,
+	setzombie zombie23s,
+	order zombie23s follow greensarge1,
+	createtrooper "zombie25s" rifle (629,1095) tan,
+	setfacing zombie25s 250,
+	setzombie zombie25s,
+	order zombie25s follow greensarge1,
+	triggerdelay 1500 itsatrapdude
+
+if itsatrapdude then
+	playsound "trap.wav" 16 0,
+	trigger scream2
+
+if scream2 then
+	createtrooper "zombie21s2" rifle (1132,953) tan,
+	setfacing zombie21s2 64,
+	setzombie zombie21s2,
+	order zombie21s2 follow greensarge1,
+	createtrooper "zombie22s2" rifle (1034,1031) tan,
+	setfacing zombie22s2 10,	
+	setzombie zombie22s2,
+	order zombie22s2 follow greensarge1,
+	createtrooper "zombie23s2" rifle (785,826) tan,
+	setfacing zombie23s2 190,
+	setzombie zombie23s2,
+	order zombie23s2 follow greensarge1,
+	createtrooper "zombie25s2" rifle (629,1095) tan,
+	setfacing zombie25s2 250,
+	setzombie zombie25s2,
+	order zombie25s2 follow greensarge1,
+	trigger scream3
+
+if scream2 then
+	createtrooper "zombie21s3" rifle (1132,953) tan,
+	setfacing zombie21s3 64,
+	setzombie zombie21s3,
+	order zombie21s3 follow greensarge1,
+	createtrooper "zombie22s3" rifle (1034,1031) tan,
+	setfacing zombie22s3 10,	
+	setzombie zombie22s3,
+	order zombie22s3 follow greensarge1,
+	createtrooper "zombie23s3" rifle (785,826) tan,
+	setfacing zombie23s3 190,
+	setzombie zombie23s3,
+	order zombie23s3 follow greensarge1,
+	createtrooper "zombie25s3" rifle (629,1095) tan,
+	setfacing zombie25s3 250,
+	setzombie zombie25s3,
+	order zombie25s3 follow greensarge1,
+	triggerdelay 1000 scream4
+
+if scream4 then
+	createtrooper "zombie21s4" rifle (1132,953) tan,
+	setfacing zombie21s4 64,
+	setzombie zombie21s4,
+	order zombie21s4 follow greensarge1,
+	createtrooper "zombie22s4" rifle (1034,1031) tan,
+	setfacing zombie22s4 10,	
+	setzombie zombie22s4,
+	order zombie22s4 follow greensarge1,
+	createtrooper "zombie23s4" rifle (785,826) tan,
+	setfacing zombie23s4 190,
+	setzombie zombie23s4,
+	order zombie23s4 follow greensarge1,
+	createtrooper "zombie25s4" rifle (629,1095) tan,
+	setfacing zombie25s4 250,
+	setzombie zombie25s4,
+	order zombie25s4 follow greensarge1
+
+if padon boo1 butnot boo1a then
+	trigger boo1a
+if boo1a then
+	playsound "whatthe.wav" 16 0,	
+	createtrooper "zombie32" rifle (1078,3581) blue,
+	setfacing zombie32 64,
+	setzombie zombie32,
+	order zombie32 follow greensarge1
+
+if padon ze5 butnot ze5a then
+	trigger ze5a
+
+if ze5a then 
+	playsound "ZOMBIE_8Bit.wav" 7 0,
+	createtrooper "zombie33" rifle (1701,3371) tan,
+	setfacing zombie33 250,
+	setzombie zombie33,
+	order zombie33 follow old_man,
+	createtrooper "zombie39" rifle (1327,3287) tan,
+	setzombie zombie39,
+	order zombie39 follow greensarge1,
+	createtrooper "zombie40" rifle (1773,3389) tan,
+	setfacing zombie40 128,
+	setzombie zombie40,
+	order zombie40 follow greensarge1,
+	createtrooper "zombie34" rifle (2301,3602) tan,
+	setfacing zombie34 64,
+	setzombie zombie34,
+	order zombie34 follow greensarge1,
+	createtrooper "zombie35" rifle (2292,3786) tan,
+	setfacing zombie35 64,
+	setzombie zombie35,
+	order zombie35 follow old_man,
+	createtrooper "zombie36" rifle (2447,3551) tan,
+	setfacing zombie36 64,
+	setzombie zombie36,
+	createtrooper "zombie37" rifle (2329,3566) tan,
+	setfacing zombie37 64,
+	setzombie zombie37,
+	createtrooper "zombie38" rifle (2331,3832) tan,
+	setfacing zombie38 64,
+	setzombie zombie38
+
+if killed zombie34 killed zombie35 butnot backup4 then
+	trigger backup4
+
+if backup4 then
+	order zombie36 follow greensarge1,
+	order zombie37 follow greensarge1,
+	order zombie38 follow greensarge1
+
+if padon message3 butnot info3 then
+	trigger info3
+if info3 then
+	playsound "SomeoneElse.wav" 16 0
+
+if padon ze6 butnot ze6a then
+	trigger ze6a
+
+if ze6a then
+	playsound "GreyLanding.wav" 16 0,
+	createtrooper "grayrifle1" autorifle (3163,3221) grey,
+	setfacing grayrifle1 128,
+	addexp grayrifle1 100,
+	createtrooper "grayrifle2" autorifle (3155,3420) grey,
+	setfacing grayrifle2 64,
+	addexp grayrifle2 100,
+	createtrooper "grayrifle3" autorifle (3225,3390) grey,
+	setfacing grayrifle3 64,
+	addexp grayrifle3 100,
+	createtrooper "graybazooka1" bazooka (3389,3330) grey,
+	setfacing graybazooka1 90,
+	addexp graybazooka1 100,
+	order grayrifle1 follow greensarge1,
+	order grayrifle2 follow greensarge1,
+	order grayrifle3 follow greensarge1,
+	order graybazooka1 follow greensarge1
+
+if allof killed grayrifle1 killed grayrifle2 killed grayrifle3 killed grayrifle4 then
+	playsound "WeaponsThanks.wav" 16 0,
+	trigger zcharge1
+
+if zcharge1 then
+	playsound "ZOMBIE_8Bit.wav" 7 0,
+	createtrooper "zcharger1" rifle zpen1 tan,
+	createtrooper "zcharger2" rifle zpen2 tan,
+	setzombie zcharger1,
+	setzombie zcharger2,
+	order zcharger1 follow old_man,
+	order zcharger2 follow greensarge1,
+	triggerdelay 3000 zcharge1a
+
+if zcharge1a then
+	createtrooper "zcharger3" rifle zpen3 tan,
+	createtrooper "zcharger4" rifle zpen4 tan,
+	setzombie zcharger3,
+	setzombie zcharger4,
+	order zcharger3 follow greensarge1,
+	order zcharger4 follow greensarge1,
+	triggerdelay 3000 zcharge1b
+
+if zcharge1b then
+	createtrooper "zcharger5" rifle zpen2 tan,
+	createtrooper "zcharger6" rifle zpen3 tan,
+	setzombie zcharger5,
+	setzombie zcharger6,
+	order zcharger5 follow greensarge1,
+	order zcharger6 follow greensarge1
+
+if padon ze7 butnot ze7a then
+	trigger ze7a
+
+if ze7a then 
+	playsound "ZOMBIE_8Bit.wav" 7 0,
+	createtrooper "zombie41" rifle (2212,2761) tan,
+	setfacing zombie41 128,
+	setzombie zombie41,
+	order zombie41 follow greensarge1,
+	createtrooper "zombie42" rifle (2280,2852) tan,
+	setfacing zombie42 128,
+	setzombie zombie42,
+	order zombie42 follow greensarge1,
+	createtrooper "zombie43" rifle (2162,2899) tan,
+	setfacing zombie43 64,
+	setzombie zombie43,
+	order zombie43 follow greensarge1,
+	createtrooper "zombie44" rifle (2033,2830) tan,
+	setfacing zombie44 64,
+	setzombie zombie44,
+	order zombie44 follow old_man,
+	createtrooper "zombie45" rifle (2327,3096) tan,
+	setfacing zombie45 64,
+	setzombie zombie45,
+	order zombie45 follow greensarge1,
+	createtrooper "zombie46" rifle (2634,3129) tan,
+	setfacing zombie46 64,
+	setzombie zombie46,
+	createtrooper "zombie47" rifle (2814,2579) tan,
+	setfacing zombie47 128,
+	setzombie zombie47,
+	createtrooper "zombie48" rifle (3309,2428) tan,
+	setfacing zombie48 64,
+	setzombie zombie48,
+	createtrooper "zombie49" rifle (3289,2268) tan,
+	setfacing zombie49 64,
+	setzombie zombie49,
+	createtrooper "zombie50" rifle (2941,2287) tan,
+	setfacing zombie50 128,
+	setzombie zombie50
+
+if killed zombie41 killed zombie42 killed zombie43 killed zombie44 killed zombie45 butnot backup5 then
+	trigger backup5
+
+if backup5 then
+	order zombie46 follow greensarge1,
+	order zombie47 follow greensarge1,
+	order zombie48 follow greensarge1,
+	order zombie49 follow greensarge1,
+	order zombie50 follow greensarge1
+
+if padon ze8 butnot ze8a then
+	trigger ze8a
+
+if ze8a then
+	playsound "GotTrouble.wav" 16 0,
+	createtrooper "zombie51" rifle (1763,2154) blue,
+	setfacing zombie51 180,
+	setzombie zombie51,
+	order zombie51 follow greensarge1,
+	createtrooper "zombie52" rifle (1946,1835) blue,
+	setfacing zombie52 128,
+	setzombie zombie52,
+	order zombie52 follow greensarge1,
+	createtrooper "zombie53" rifle (1505,2052) blue,
+	setfacing zombie53 180,
+	setzombie zombie53,
+	order zombie53 follow greensarge1,
+	createtrooper "zombie54" rifle (1444,2002) blue,
+	setfacing zombie54 180,
+	setzombie zombie54,
+	order zombie54 follow greensarge1,
+	createtrooper "zombie55" rifle (1859,1823) blue,
+	setfacing zombie55 128,
+	setzombie zombie55,
+	order zombie55 follow greensarge1,
+	createtrooper "zombie56" rifle (1879,1759) blue,
+	setfacing zombie56 128,
+	setzombie zombie56,
+	order zombie56 follow greensarge1,
+	createtrooper "zombie57" rifle (1807,1475) blue,
+	setfacing zombie57 128,
+	setzombie zombie57,
+	order zombie57 follow greensarge1,
+	createtrooper "zombie58" rifle (1485,2099) blue,
+	setfacing zombie58 180,
+	setzombie zombie58,
+	order zombie58 follow greensarge1,
+	createtrooper "zombie59" rifle (1491,1982) blue,
+	setfacing zombie59 180,
+	setzombie zombie59,
+	order zombie59 follow old_man,
+	triggerdelay 5000 zcharge2
+
+if zcharge2 then
+	createtrooper "zcharger7" rifle zpen5 tan,
+	createtrooper "zcharger8" rifle zpen6 tan,
+	createtrooper "zcharger9" rifle zpen7 tan,
+	createtrooper "zcharger10" rifle zpen8 tan,
+	setzombie zcharger7,
+	setzombie zcharger8,
+	setzombie zcharger9,
+	setzombie zcharger10,
+	order zcharger7 follow greensarge1,
+	order zcharger8 follow greensarge1,
+	order zcharger9 follow greensarge1,
+	order zcharger10 follow greensarge1,
+	triggerdelay 5000 zcharge2a
+
+if zcharge2a then
+	createtrooper "zcharger11" rifle zpen8 tan,
+	createtrooper "zcharger12" rifle zpen7 tan,
+	createtrooper "zcharger13" rifle zpen6 tan,
+	createtrooper "zcharger14" rifle zpen5 tan,
+	setzombie zcharger11,
+	setzombie zcharger12,
+	setzombie zcharger13,
+	setzombie zcharger14,
+	order zcharger11 follow greensarge1,
+	order zcharger12 follow greensarge1,
+	order zcharger13 follow greensarge1,
+	order zcharger14 follow greensarge1
+
+if padon om butnot om1 then	
+	triggerdelay 10 om1
+
+if om1 then
+	undeploy oldman1,
+	setobjstate oldman oldman_gone,
+	playsound "OldManMakeIt.wav" 16 0,
+	createtrooper "old_man" autorifle (1378,2530) green,
+	addexp old_man 300,
+	setfacing old_man 160,
+	trigger endmission1
+
+if endmission1 butnot killed greensarge1 then 
+	triggerdelay 3000 petertestgreenwins
+
+if petertestgreenwins butnot killed greensarge1 then
+	trigger greenwins
+
+
+if killed oldman1 then
+	setobjstate oldman oldman_dead,
+	showfailure "老兵，他，他死了！",
+	playsound "OldManDead.wav" 16 0,
+	triggerdelay 1000 tanwins	
+
+if killed old_man then
+	playsound "map7mission1oldman.wav" 8 1,
+	showfailure "老兵，他，他死了！",
+	triggerdelay 1000 tanwins
+
+if buhbye then
+	setobjstate igd	igd_gone,
+	playsound "map7mission1doctor1.wav" 9 0,
+	triggerdelay 2300 igdvoice2
+
+if igdvoice2 then
+	playsound "map7mission1doctor2.wav" 9 0
+
+if hit igd2 by green then
+	trigger portaway
+
+if portaway then
+	undeploy igd2,	
+	playsound "portal2_8Bit.wav" 10 0,
+        setobjstate igd igd_port,
+	triggerdelay 1400 buhbye
+
+if padon lookdoc butnot lookie1 then
+	trigger lookie1
+
+if lookie1 butnot portaway then
+	setobjstate igd igd_lookleft,
+	triggerdelay 800 lookie2
+
+if lookie2 then
+	setobjstate igd igd_lookleft2
+
+if padoff lookdoc butnot portaway then
+	setobjstate igd igd_working
+
+// object animation sequences
+
+object belt
+	state belt_initial
+		frame 150 0
+			playsound "conveyorbelt_8Bit.wav" belt 11 0 
+		frame 150 1
+		frame 150 2
+		frame 150 3
+		frame 150 4
+		frame 150 5			
+		frame 150 6
+		frame 150 7
+		frame 150 8
+		frame 150 9
+		frame 10 0
+			setobjstate belt belt_initial
+
+	state belt_stopped
+		frame 100 0
+
+object mulcher
+	state mulcher_initial
+		frame 100 0
+		frame 100 1			
+		frame 100 2
+		frame 100 3
+		frame 100 4
+		frame 100 5
+		frame 100 6
+		frame 100 7
+		frame 100 8
+		frame 100 9
+		frame 10 0
+			setobjstate mulcher mulcher_initial
+
+	state mulcher_stopped
+		frame 100 0
+
+object mold1
+	state mold1_initial
+		frame 400 0
+		frame 400 1
+		frame 400 2
+		frame 400 3
+		frame 400 4
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 6
+			playsound "AIRRELEASEMOLDING_8Bit.wav" mold1 12 1
+		frame 400 7
+		frame 400 8
+		frame 400 9
+		frame 10 0
+			setobjstate mold1 mold1_initial
+
+	state mold1_stopped
+		frame 100 0
+
+object mold2
+	state mold2_initial
+		frame 400 0
+		frame 400 1
+		frame 400 2
+		frame 400 3
+		frame 400 4
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 6
+		frame 400 7
+		frame 400 8
+		frame 400 9
+		frame 10 0
+			setobjstate mold2 mold2_initial
+
+	state mold2_stopped
+		frame 100 0
+
+object mold3
+	state mold3_initial
+		frame 400 0
+		frame 400 1
+		frame 400 2
+		frame 400 3
+		frame 400 4
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 6
+			playsound "AIRRELEASEMOLDING_8Bit.wav" mold3 13 1
+		frame 400 7
+		frame 400 8
+		frame 400 9
+		frame 10 0
+			setobjstate mold3 mold3_initial
+
+	state mold3_stopped
+		frame 100 0
+
+
+object mold4
+	state mold4_initial
+		frame 400 0
+		frame 400 1
+		frame 400 2
+		frame 400 3
+		frame 400 4
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 5
+		frame 400 6
+		frame 400 7
+		frame 400 8
+		frame 400 9
+		frame 10 0
+			setobjstate mold4 mold4_initial
+
+	state mold4_stopped
+		frame 100 0
+
+object igd
+	state igd_working
+		frame 100 0
+			playsound "InsaneDoctor_8Bit.wav" igd 9 0
+		frame 100 1
+		frame 100 2
+		frame 100 3
+		frame 100 4
+		frame 100 5
+		frame 100 6
+		frame 100 7
+		frame 100 8
+		frame 100 9
+		frame 100 10
+		frame 100 11
+		frame 100 12
+		frame 100 13
+		frame 100 14
+		frame 100 15
+		frame 100 16
+		frame 100 17
+		frame 100 18
+		frame 100 19
+		frame 100 20
+			playsound "InsaneDoctor_8Bit.wav" igd 9 0
+		frame 100 21
+		frame 10 0
+			setobjstate igd igd_working
+
+	state igd_stopped
+		frame 100 0
+
+	state igd_lookleft
+		frame 150 21
+		frame 150 22
+		frame 150 23
+		frame 150 24
+		frame 150 25
+		frame 150 26
+		frame 10 21
+
+	state igd_lookleft2
+		frame 100 26
+
+	state igd_gone
+		frame 100 27
+
+	state igd_port
+		frame 100 28
+		frame 100 29
+		frame 100 30
+		frame 100 31
+		frame 100 32
+		frame 100 33
+		frame 100 34
+		frame 100 35
+		frame 100 36
+		frame 100 37
+		frame 100 38
+		frame 10 28
+
+object oldman
+        state oldman_go
+                frame 200 0
+                frame 200 1
+                frame 200 2
+                frame 200 3
+                frame 200 4
+                frame 200 5
+                frame 200 6
+                frame 200 7
+		frame 10 0
+                         setobjstate oldman oldman_go
+	state oldman_dead
+		frame 100 3
+	state oldman_gone
+		frame 100 8
+
+object goop1
+	state goop1go
+		frame 100 0
+			playsound "MOLDINGmACHINE_8Bit.wav" goop1 12 0
+		frame 100 1
+		frame 100 2
+		frame 100 3
+		frame 100 4
+		frame 100 5
+		frame 100 6
+		frame 100 7
+		frame 100 8
+		frame 100 9
+		frame 100 10
+		frame 100 11
+		frame 100 12
+		frame 100 13
+		frame 100 14
+		frame 100 15
+		frame 100 16
+		frame 100 17
+		frame 100 18
+		frame 100 19
+		frame 100 20
+		frame 100 21
+		frame 100 22
+		frame 100 23
+		frame 100 24
+		frame 100 25
+		frame 100 26
+		frame 100 27
+		frame 100 28
+		frame 100 29
+		frame 100 30
+		frame 100 31
+		frame 100 32
+		frame 100 33
+		frame 100 34
+		frame 100 35
+		frame 100 36
+		frame 100 37
+		frame 100 38
+		frame 100 39
+		frame 100 40
+		frame 100 41
+		frame 10 0
+			setobjstate goop1 goop1go
+
+	state goop1stop
+		frame 100 42
+
+object goop2
+	state goop2go
+		frame 100 0
+			playsound "MOLDINGmACHINE_8Bit.wav" goop2 13 0
+		frame 100 1
+		frame 100 2
+		frame 100 3
+		frame 100 4
+		frame 100 5
+		frame 100 6
+		frame 100 7
+		frame 100 8
+		frame 100 9
+		frame 100 10
+		frame 100 11
+		frame 100 12
+		frame 100 13
+		frame 100 14
+		frame 100 15
+		frame 100 16
+		frame 100 17
+		frame 100 18
+		frame 100 19
+		frame 100 20
+		frame 100 21
+		frame 100 22
+		frame 100 23
+		frame 100 24
+		frame 100 25
+		frame 100 26
+		frame 100 27
+		frame 100 28
+		frame 100 29
+		frame 100 30
+		frame 100 31
+		frame 100 32
+		frame 100 33
+		frame 100 34
+		frame 100 35
+		frame 100 36
+		frame 100 37
+		frame 100 38
+		frame 100 39
+		frame 100 40
+		frame 100 41
+		frame 10 0
+			setobjstate goop2 goop2go
+
+	state goop2stop
+		frame 100 42
+
+	
+
+	
+
+

@@ -1,0 +1,709 @@
+#Object Defaults Table
+
+#Item Flags
+# ITEMFLAG_MAP		0001	(1)
+# ITEMFLAG_VISBLOCK	0100	(256)
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis
+Miscellaneous	1	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	1	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	2	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	2	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	3	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	3	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	4	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	4	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	5	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	5	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	6	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	6	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	7	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	7	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	8	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	8	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	9	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	9	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	10	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	10	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	11	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	11	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	12	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	12	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	13	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	13	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	14	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	14	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	15	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	15	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	16	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	16	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	17	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	17	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	18	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	18	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	19	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	19	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	20	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	20	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	21	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	21	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	22	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	22	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	23	0	0	1	125	50	15	1000	0.0	0	1
+Miscellaneous	23	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	24	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	24	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	25	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	25	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	26	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	26	1	0	1	-1	50	15	1000	0.0	0	1
+
+Miscellaneous	30	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	30	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	31	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	31	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	32	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	32	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	33	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	33	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	34	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	34	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	35	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	35	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	36	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	36	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	52	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	52	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	53	0	0	1	30	50	15	1000	0.0	0	1
+Miscellaneous	53	1	0	1	-1	50	15	1000	0.0	0	1
+
+Miscellaneous   900     0       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     1       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     2       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     3       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     4       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     5       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     6       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     7       0       1       30      20      15      1000    0.0     0       1
+Miscellaneous   900     8       0       1       -1      12      15      1000    0.0     0       1
+
+Miscellaneous   901     0       0       1       15      60      15      1000    0.0     0       1
+
+Miscellaneous 	990     0       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     1       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     2       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     3       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     4       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     5       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     6       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     7       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     8       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     9       0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     10      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     11      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     12      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     13      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     14      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     15      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     16      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     17      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     18      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     19      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     20      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     21      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     22      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     23      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     24      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     25      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     26      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     27      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     28      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     29      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     30      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     31      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     32      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     33      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     34      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     35      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     36      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     37      0       1      	-1	60      15      1500   0.0     0       1
+Miscellaneous 	990     38      0       1      	-1	60      15      1500   0.0     0       1
+
+Building        100     0       4       1       -1      40      15      1000    0.0     0       1
+Building        101     0       0       1       -1      40      15      2000    0.0     0       1
+Building        102     0       0       1       -1      40      0       1000    0.0     0       1
+Building        103     0       0       1       -1      40      0       1000    -0.54   0       1
+Building        104     0       0       1       -1      40      0       1000    0.54    0       1
+
+LINK            Building 100            Building 101    66      164
+LINK            Building 100            Building 102    62      151
+LINK            Building 100            Building 103    93      129
+LINK            Building 100            Building 104    32      128
+
+
+Building        120     0       3       1       -1      40      15      1000    0.0     0       1
+Building        121     0       0       1       -1      40      15      2000    0.0     0       1
+Building        122     0       0       1       -1      40      15      1000    0.71    0       1
+Building        123     0       0       1       -1      40      15      1000   -0.74    0       1
+
+LINK            Building 120            Building 121    85      163
+LINK            Building 120            Building 122    85      152
+LINK            Building 120            Building 123    73      130
+
+
+Building        130     0       3       1       -1      40      15      1000    0.0     0       1
+Building        131     0       0       1       -1      40      15      2000    0.0     0       1
+Building        132     0       0       1       -1      40      15      1000    0.0     0       1
+Building        133     0       0       1       -1      40      15      1000   -0.76    0       1
+
+LINK            Building 130            Building 131    106     189
+LINK            Building 130            Building 132    165     121
+LINK            Building 130            Building 133    116     166
+
+
+Building        140     0       3       1       -1      40      15      1000    0.0     0       1
+Building        141     0       0       1       -1      40      15      2000    0.0     0       1
+Building        142     0       0       1       -1      40      15      1000    0.72    0       1
+Building        143     0       0       1       -1      40      15      1000   -0.75    0       1
+
+LINK            Building 140            Building 141    88      176
+LINK            Building 140            Building 142    82      160
+LINK            Building 140            Building 143    94      137
+
+
+Building        150     0       3       1       -1      40      15      1000    0.0     0       1
+Building        151     0       0       1       -1      40      15      2000    0.0     0       1
+Building        152     0       0       1       -1      40      15      1000   -0.63    0       1
+Building        153     0       0       1       -1      40      15      1000   -0.77    0       1
+
+LINK            Building 150            Building 151    73      172
+LINK            Building 150            Building 152    8       118
+LINK            Building 150            Building 153    59      159
+
+
+Building        160     0       8       256     -1      40      15      1000    0.0     0       1
+Building        161     0       0       256     -1      40      15      2000    0.0     0       1
+Building        162     0       0       256     -1      40      15      1000    0.75    0       1
+Building        163     0       0       256     -1      40      15      1000    0.75    0       1
+Building        164     0       0       256     -1      40      15      1000   -0.75    0       1
+Building        165     0       0       256     -1      40      15      1000    0.0     0       1
+Building        166     0       0       256     -1      40      15      1000    0.0     0       1
+Building        167     0       0       256     -1      40      15      1000    0.0     0       1
+Building        168     0       0       256     -1      40      15      1000   -0.72    0       1
+
+LINK            Building 160            Building 161    172     328
+LINK            Building 160            Building 162    77      196
+LINK            Building 160            Building 163    130     315
+LINK            Building 160            Building 164    209     314
+LINK            Building 160            Building 165    27      137
+LINK            Building 160            Building 166    310     132
+LINK            Building 160            Building 167    174     296
+LINK            Building 160            Building 168    255     192
+
+Building        169     0       0       1       -1      32      15      1       0.0     0       1
+
+
+Building        170     0       7       256     -1      40      15      1000    0.0     0       1
+Building        171     0       0       256     -1      40      15      2000    0.0     0       1
+Building        172     0       0       256     -1      40      15      1000   -0.72    0       1
+Building        173     0       0       256     -1      40      15      1000    0.60    0       1
+Building        174     0       0       256     -1      40      15      1000   -0.83    0       1
+Building        175     0       0       256     -1      40      15      1000    0.77    0       1
+Building        176     0       0       256     -1      40      15      1000    0.0     0       1
+Building        177     0       0       256     -1      40      15      1000    0.0     0       1
+
+LINK            Building 170            Building 171    169     310
+LINK            Building 170            Building 172    222     272
+LINK            Building 170            Building 173    54      286
+LINK            Building 170            Building 174    86      271
+LINK            Building 170            Building 175    210     251
+LINK            Building 170            Building 176    293     77
+LINK            Building 170            Building 177    82      261
+
+Building        178     0       0       1       -1      32      15      1       0.0     0       1
+
+
+Building        180     0       7       256     -1      40      15      1000    0.0     0       1
+Building        181     0       0       256     -1      40      15      2000    0.0     0       1
+Building        182     0       0       256     -1      40      15      1000   -0.75    0       1
+Building        183     0       0       256     -1      40      15      1000    0.82    0       1
+Building        184     0       0       256     -1      40      15      1000   -0.84    0       1
+Building        185     0       0       256     -1      40      15      1000    0.66    0       1
+Building        186     0       0       256     -1      40      15      1000    0.0     0       1
+Building        187     0       0       256     -1      40      15      1000    0.0     0       1
+
+LINK            Building 180            Building 181    180     384
+LINK            Building 180            Building 182    211     317
+LINK            Building 180            Building 183    203     307
+LINK            Building 180            Building 184    93      345
+LINK            Building 180            Building 185    62      360
+LINK            Building 180            Building 186    31      137
+LINK            Building 180            Building 187    91      335
+
+Building        188     0       0       1       -1      32      15      1       0.0     0       1
+
+
+Building        190     0       7       256     -1      40      15      1000    0.0     0       1
+Building        191     0       0       256     -1      40      15      2000    0.0     0       1
+Building        192     0       0       256     -1      40      15      1000    0.71    0       1
+Building        193     0       0       256     -1      40      15      1000   -0.63    0       1
+Building        194     0       0       256     -1      40      15      1000   -0.81    0       1
+Building        195     0       0       256     -1      40      15      1000    0.0     0       1
+Building        196     0       0       256     -1      40      15      1000    0.79    0       1
+Building        197     0       0       256     -1      40      15      1000    0.0     0       1
+
+LINK            Building 190            Building 191    151     367
+LINK            Building 190            Building 192    102     315
+LINK            Building 190            Building 193    255     357
+LINK            Building 190            Building 194    271     166
+LINK            Building 190            Building 195    230     332
+LINK            Building 190            Building 196    225     342
+LINK            Building 190            Building 197    283     132
+
+Building        198     0       0       1       -1      32      15      1       0.0     0       1
+
+
+Building        200     0       6       256     -1      40      15      1000    0.0     0       1
+Building        201     0       0       256     -1      40      15      2000    0.0     0       1
+Building        202     0       0       256     -1      40      15      1000   -0.83    0       1
+Building        203     0       0       256     -1      40      15      1000    0.80    0       1
+Building        204     0       0       256     -1      40      15      1000    0.66    0       1
+Building        205     0       0       256     -1      40      15      1000   -0.63    0       1
+Building        206     0       0       256     -1      40      15      1000    0.0     0       1
+
+LINK            Building 200            Building 201    176     380
+LINK            Building 200            Building 202    89      341
+LINK            Building 200            Building 203    251     341
+LINK            Building 200            Building 204    60      360
+LINK            Building 200            Building 205    284     353
+LINK            Building 200            Building 206    266     327
+
+Building        207     0       0       1       -1      32      15      1       0.0     0       1
+
+
+Building        210     0       6       256     -1      40      15      1000    0.0     0       1
+Building        211     0       0       256     -1      40      15      2000    0.0     0       1
+Building        212     0       0       256     -1      40      15      1000    0.66    0       1
+Building        213     0       0       256     -1      40      15      1000   -0.61    0       1
+Building        214     0       0       256     -1      40      15      1000    0.79    0       1
+Building        215     0       0       256     -1      40      15      1000    0.78    0       1
+Building        216     0       0       256     -1      40      15      1000   -0.82    0       1
+
+LINK            Building 210            Building 211    171     303
+LINK            Building 210            Building 212    102     275
+LINK            Building 210            Building 213    267     282
+LINK            Building 210            Building 214    250     257
+LINK            Building 210            Building 215    235     268
+LINK            Building 210            Building 216    112     252
+
+Building        217     0       0       1       -1      32      15      1       0.0     0       1
+
+
+Building        220     0       7       1       -1      40      15      1000    0.0     0       1
+Building        221     0       0       1       -1      40      0       2000    0.0     0       1
+Building        222     0       0       1       -1      40      0       1000   -0.93    0       1
+Building        223     0       0       1       -1      40      0       1000    0.59    0       1
+Building        224     0       0       1       -1      40      0       1000   -0.88    0       1
+Building        225     0       0       1       -1      40      0       1000    0.85    0       1
+Building        226     0       0       1       -1      40      0       1000   -0.51    0       1
+Building        227     0       0       1       -1      40      0       1000    0.42    0       1
+
+LINK            Building 220            Building 221    134     272
+LINK            Building 220            Building 222    214     235
+LINK            Building 220            Building 223    42      237
+LINK            Building 220            Building 224    99      274
+LINK            Building 220            Building 225    167     274
+LINK            Building 220            Building 226    168     274
+LINK            Building 220            Building 227    97      274
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis     Crush
+Building        310     0       0       4353    50      64      15      100   	0.0     0       1
+Building        311     0       0       4353    50      64      15      100    	0.0     0       1
+Building        311     1       0       1       -1      0       0       100   	0.0     0       1
+Building        312     0       0       4353    50      0       0       10000   0.0     0       1
+Building        313     0       0       4353    50      0       0       1000   	-0.88   0       1
+Building        313     1       0       1       -1      24      15      1000   	-0.88   0       1
+Building        314     0       0       4353    50      0       0       1000   	0.87    0       1
+Building        314     1       0       1       -1      24      15      1000   	0.87    0       1
+Building        315     0       0       4353    50      0       0       1000   	0.83    0       1
+Building        315     1       0       1       -1      24      15      1000   	0.83    0       1
+Building        316     0       0       4353    50      0       0       1000   	-0.87   0       1
+Building        316     1       0       1       -1      24      15      1000   	-0.87   0       1
+
+
+LINK            Building 310            Building 311    121     123
+LINK            Building 310            Building 312    123     86
+LINK            Building 310            Building 313    124     171
+LINK            Building 310            Building 314    122     171
+LINK            Building 310            Building 315    171     121
+LINK            Building 310            Building 316    74      121
+
+
+Building        340     0       0       4353    -1      64      15      1000    0.0     0       1
+Building        340     1       0       4353    -1      0       15      1000    0.0     0       1
+Building        340     2       0       4353    -1      0       15      1000    0.0     0       1
+Building        340     3       0       4353    -1      0       15      1000    0.0     0       1
+Building        340     4       0       4353    -1      0       0       1000    0.0     0       1
+Building        340     5       0       0       -1      0       0       1000    0.0     0       1
+
+
+
+Building        1     	0       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	1       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	2       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	3       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	4       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	5       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	6       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	7       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	8       0       1      	-1	320     15      10000   0.0     0       1
+Building        1     	9       0       1      	-1	320     15      10000   0.0     0       1
+
+Building        10   	0       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	1       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	2       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	3       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	4       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	5       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	6       0       1       -1     	320     15      500     0.0     0       1
+Building        10   	7       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	8       0       1       -1     	320     15      500     0.0     0       1	
+Building        10   	9       0       1       -1     	320     15      500     0.0     0       1	
+
+Building        500     0       0       1       200     320     15      400    	0.0     0       1
+Building        500     1       0       1       -1     	320     15      400    	0.0     0       1
+Building        530     0       0       1       -1     	320     15      500     0.0     0       1	
+Building        600   	0       0       1       -1     	320     15      1000    0.0     0       1	
+Building        630   	0       0       1       -1     	320     15      400     0.0     0       1	
+Building        660   	0       0       1       -1     	320     15      400    -0.91    0       1	
+
+Building        670   	0       0       1       -1     	320     15      500     0.0     0 	1   
+Building        670   	1       0       1       -1     	320     15      500     0.0     0 	1   
+Building        670   	2       0       1       -1     	320     15      500     0.0     0 	1   
+Building        670   	3       0       1       -1     	320     15      500     0.0     0 	1
+Building        670   	4       0       1       -1     	320     15      500     0.0     0 	1
+Building        670   	5       0       1       -1     	320     15      500     0.0     0 	1   
+Building        670   	6       0       1       -1     	320     15      500     0.0     0 	1   
+Building        670   	7       0       1       -1     	320     15      500     0.0     0 	1   
+Building        670   	8       0       1       -1     	320     15      500     0.0     0 	1   
+Building        670   	9       0       1       -1     	320     15      500     0.0     0 	1   
+
+Building        680   	0       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	1       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	2       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	3       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	4       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	5       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	6       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	7       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	8       0       1       -1     	320     15      450     0.0     0 	1   
+Building        680   	9       0       1       -1     	320     15      450     0.0     0 	1
+
+
+Building        400     0       0       1       120     64      15      1000    0.0     0       1
+Building        401     0       0       4353    120     64      15      1       0.0     0       1
+Building        401     1       0       1       -1      24      15      1       0.0     0       1
+Building        402     0       0       0       120     0       0       10000   0.0     0       1
+Building        403     0       0       0       120     0       0       1000    0.86    0       1
+Building        404     0       0       0       120     0       0       1000    0.86    0       1
+Building        405     0       0       0       120     0       0       1000    0.87    0       1
+Building        406     0       0       1       120     24      15      1000    -0.80   0       1
+Building        407     0       0       1       120     24      15      1000    -0.81   0       1
+Building        408     0       0       0       120     0       0       1000    -0.83   0       1
+Building        409     0       0       0       120     0       0       1000    -0.81   0       1
+
+
+LINK            Building 400            Building 401    133     146
+LINK            Building 400            Building 402    124     180
+LINK            Building 400            Building 403    91      224
+LINK            Building 400            Building 404    222     119
+LINK            Building 400            Building 405    192     191
+LINK            Building 400            Building 406    193     191
+LINK            Building 400            Building 407    111     207
+LINK            Building 400            Building 408    92      222
+LINK            Building 400            Building 409    67      150
+
+
+
+
+Building        420     0       0       1       120     64      15      1000    0.0     0       1
+Building        421     0       0       4353    120     64      15      1       0.0     0       1
+Building        421     1       0       1       -1      24      15      1       0.0     0       1
+Building        422     0       0       0       120     0       0       10000   0.0     0       1
+Building        423     0       0       4353    120     24      15      1000    0.87    0       1
+Building        424     0       0       0       120     0       0       1000    0.86    0       1
+Building        425     0       0       4353    120     24      15      1000    -0.84   0       1
+Building        426     0       0       0       120     0       0       1000    -0.82   0       1
+Building        427     0       0       4353    120     24      15      1000    0.85    0       1
+Building        428     0       0       0       120     0       0       1000    0.86    0       1
+Building        429     0       0       0       120     0       0       1000    -0.81   0       1
+Building        430     0       0       0       120     0       0       1000    -0.81   0       1
+Building        431     0       0       0       120     0       0       1000    0.82    0       1
+
+
+LINK            Building 420            Building 421    241     119
+LINK            Building 420            Building 422    238     94
+LINK            Building 420            Building 423    128     220
+LINK            Building 420            Building 424    149     238
+LINK            Building 420            Building 425    170     222
+LINK            Building 420            Building 426    150     238
+LINK            Building 420            Building 427    290     216
+LINK            Building 420            Building 428    292     218
+LINK            Building 420            Building 429    295     220
+LINK            Building 420            Building 430    127     163
+LINK            Building 420            Building 431    324     142
+
+
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis
+Building        440     0       0       1       120     64      15      1000    0.0     0       1
+Building        441     0       0       4353    120     64      15      1       0.0     0       1
+Building        441     1       0       1       -1      24      15      1       0.0     0       1
+Building        442     0       0       1       120     0       0       10000   0.0     0       1
+Building        443     0       0       0       120     0       0       1000    -0.82   0       1
+Building        444     0       0       4353    120     24      15      1000    0.86    0       1
+Building        445     0       0       0       120     0       0       1000    0.86    0       1
+Building        446     0       0       0       120     0       0       1000    -0.79   0       1
+Building        447     0       0       0       120     0       0       1000    0.82    0       1
+
+
+LINK            Building 440            Building 441    114     119
+LINK            Building 440            Building 442    119     49
+LINK            Building 440            Building 443    86      193
+LINK            Building 440            Building 444    85      193
+LINK            Building 440            Building 445    118     167
+LINK            Building 440            Building 446    33      141
+LINK            Building 440            Building 447    140     89
+
+
+
+
+Building        450     0       0       1       120     64      15      1000    0.0     0       1
+Building        451     0       0       4353    120     64      15      1       0.0     0       1
+Building        451     1       0       0       -1      24      15      1       0.0     0       1
+Building        452     0       0       0       120     0       0       10000   0.0     0       1
+Building        453     0       0       0       120     0       0       1000    0.86    0       1
+Building        454     0       0       4353    120     24      15      1000    -0.87   0       1
+Building        455     0       0       0       120     0       0       1000    -0.81   0       1
+Building        456     0       0       0       120     0       0       1000    0.80    0       1
+Building        457     0       0       0       120     0       0       1000    -0.74   0       1
+
+
+LINK            Building 450            Building 451    117     134
+LINK            Building 450            Building 452    118     62
+LINK            Building 450            Building 453    116     179
+LINK            Building 450            Building 454    138     163
+LINK            Building 450            Building 455    117     180
+LINK            Building 450            Building 456    141     104
+LINK            Building 450            Building 457    93      105
+
+
+
+
+Bridge		200	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		205	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		210	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		215	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		220	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		225	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		230	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		235	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		240	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		245	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		250	0	0	1	-1	0	-15	2	0.0	0	1
+Bridge		255	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		260	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		265	0	0	1	-1	0	-15	2	0.0	0	1		
+Bridge		270	0	0	1	-1	0	-15	3	0.0	0	1
+
+
+
+
+Ground		230	0	0	0	-1	0	0	1	0.0	0	1
+
+
+
+
+
+Miscellaneous	201	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	206	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	211	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	216	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	221	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	226	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	231	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	236	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	241	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	246	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	251	0	0	1	-1	50	15	1	0.0	0	1
+Miscellaneous	256	0	0	1	-1	50	15	1	0.0	0	1
+Miscellaneous	261	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	266	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	271	0	0	1	-1	50	15	1	0.0	0	1	
+
+Miscellaneous	202	0	0	1	-1	12	0	1000	1.02	0	1	
+Miscellaneous	203	0	0	1	-1	12	0	1000	1.05	0	1	
+Miscellaneous	207	0	0	1	-1	12	0	1000	2.64	0	1	
+Miscellaneous	208	0	0	1	-1	12	0	1000	2.64	0	1	
+Miscellaneous	212	0	0	1	-1	12	0	1000   -3.0	0	1	
+Miscellaneous	213	0	0	1	-1	12	0	1000   -3.13	0	1	
+Miscellaneous	217	0	0	1	-1	12	0	1000   -0.88	0	1	
+Miscellaneous	218	0	0	1	-1	12	0	1000   -0.88	0	1	
+Miscellaneous	222	0	0	1	-1	12	0	1000   -0.27	0	1	
+Miscellaneous	223	0	0	1	-1	12	0	1000   -0.27	0	1	
+Miscellaneous	227	0	0	1	-1	12	0	1000	0.23	0	1
+Miscellaneous	228	0	0	1	-1	12	0	1000	0.22	0	1
+Miscellaneous	237	0	0	1	-1	12	0	1000   -0.89	0	1
+Miscellaneous	238	0	0	1	-1	12	0	1000	0.81	0	1
+Miscellaneous	242	0	0	1	-1	12	0	1000	0.85	0	1
+Miscellaneous	243	0	0	1	-1	12	0	1000   -0.88	0	1
+Miscellaneous	247	0	0	1	-1	12	0	1000	0.76	0	1
+Miscellaneous	248	0	0	1	-1	12	0	1000   -0.89	0	1
+Miscellaneous	252	0	0	1	-1	12	0	1000	0.86	0	1
+Miscellaneous	253	0	0	1	-1	12	0	1000   -0.88	0	1
+Miscellaneous	257	0	0	1	-1	12	0	1000   -0.86	0	1
+Miscellaneous	262	0	0	1	-1	12	0	1000   -0.9	0	1
+Miscellaneous	267	0	0	1	-1	12	0	1000	0.82	0	1
+Miscellaneous	272	0	0	1	-1	12	0	1000   -2.7	0	1
+Miscellaneous	273	0	0	1	-1	12	0	1000	2.30	0	1
+Miscellaneous	274	0	0	1	-1	12	0	1000	0.22	0	1
+Miscellaneous	275	0	0	1	-1	12	0	1000   -0.26	0	1
+Miscellaneous	276	0	0	1	-1	12	0	1000   -0.29	0	1
+Miscellaneous	277	0	0	1	-1	12	0	1000	0.27	0	1
+Miscellaneous	278	0	0	1	-1	12	0	1000	2.75	0	1
+Miscellaneous	279	0	0	1	-1	12	0	1000   -3.0	0	1
+
+Miscellaneous	204	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	209	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	214	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	219	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	234	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	239	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	244	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	249	0	0	1	-1	50	15	1	0.0	0	1
+Miscellaneous	254	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	259	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	264	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	269	0	0	1	-1	50	15	1	0.0	0	1	
+Miscellaneous	280	0	0	1	-1	50	15	1	0.0	0	1
+
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis
+Trees		1	0	0	4353	100	100	15	1000	0.0	-20	1
+Trees		1	1	0	257	-1	64	15	1000	0.0	0       1
+
+Trees		2	0	0	4353	100	100	15	1000	0.0	-20	1
+Trees		2	1	0	4353	30	64	15	1000	0.0	-20	1
+Trees		2	2	0	257	-1	32	15	1000	0.0	0	1
+
+Trees		3	0	0	4353	100	100	15	1000	0.0	-20	1
+Trees		3	1	0	4353	30	64	15	1000	0.0	-20	1
+Trees		3	2	0	257	-1	32	15	1000	0.0	0	1
+
+Trees		4	0	0	4353	100	100	15	1000	0.0	-20	1
+Trees		4	1	0	4353	30	64	15	1000	0.0	-20	1
+Trees		4	2	0	257	-1	32	15	1000	0.0	0	1
+
+Trees		5	0	0	4353	100	100	15	1000	0.0	-20	1
+Trees		5	1	0	4353	30	64	15	1000	0.0	-20	1
+Trees		5	2	0	257	-1	32	15	1000	0.0	0	1
+
+Trees		6	0	0	4353	100	100	15	1000	0.0	-20	1
+Trees		6	1	0	4353	30	64	15	1000	0.0	-20	1
+Trees		6	2	0	257	-1	32	15	1000	0.0	0	1
+
+Trees		7	0	0	4353	100	100	15	1000	0.0	-20	1
+Trees		7	1	0	4353	30	64	15	1000	0.0	-20	1
+Trees		7	2	0	257	-1	32	15	1000	0.0	0	1
+
+Trees		8	0	0	4353	100	100	15	1000	0.0	-20	1
+Trees		8	1	0	4353	30	64	15	1000	0.0	-20	1
+Trees		8	2	0	257	-1	32	15	1000	0.0	0	1
+
+Trees		9	0	0	4353	100	100	15	1000	0.0	-20	1
+Trees		9	1	0	4353	30	64	15	1000	0.0	-20	1
+Trees		9	2	0	257	-1	32	15	1000	0.0	0	1
+
+
+Bush		10	0	0	4353	100	64	15	1000	0.0	-20	1
+Bush		10	1	0	4353	30	32	15	1000	0.0	-20	1
+Bush		10	2	0	0	-1	0	0	1000	0.0	0	1
+
+Bush		11	0	0	4353	100	64	15	1000	0.0	-20	1
+Bush		11	1	0	4353	30	32	15	1000	0.0	-20	1
+Bush		11	2	0	0	-1	0	0	1000	0.0	0	1
+
+Bush		12	0	0	4353	100	64	15	1000	0.0	-20	1
+Bush		12	1	0	4353	30	32	15	1000	0.0	-20 1
+Bush		12	2	0	0	-1	0	0	1000	0.0	0	1
+
+Bush		13	0	0	4353	100	64	15	1000	0.0	-20	1
+Bush		13	1	0	4353	30	32	15	1000	0.0	-20	1
+Bush		13	2	0	0	-1	0	0	1000	0.0	0	1
+
+Bush		14	0	0	4353	100	64	15	1000	0.0	-20	1
+Bush		14	1	0	4353	30	32	15	1000	0.0	-20	1
+Bush		14	2	0	0	-1	0	0	1000	0.0	0	1
+
+Bush		15	0	0	4353	100	64	15	1000	0.0	-20	1
+Bush		15	1	0	4353	30	32	15	1000	0.0	-20	1
+Bush		15	2	0	0	-1	0	0	1000	0.0	0	1
+
+Bush		16	0	0	4353	100	64	15	1000	0.0	-20	1
+Bush		16	1	0	4353	30	32	15	1000	0.0	-20	1
+Bush		16	2	0	0	-1	0	0	1000	0.0	0	1
+
+Bush		17	0	0	4353	100	64	15	1000	0.0	-20	1
+Bush		17	1	0	4353	30	32	15	1000	0.0	-20	1
+Bush		17	2	0	0	-1	0	0	1000	0.0	0	1
+
+	
+Miscellaneous	350	0	0	1	-1	100	15	1000	0.0	0	1
+
+Miscellaneous   700     0       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     1       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     2       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     3       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     4       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     5       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     6       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     7       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     8       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     9       0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     10      0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     11      0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     12      0       0       -1      0       0       10      0.0     0       0
+Miscellaneous   700     13      0       0       -1      0       0       10      0.0     0       0
+
+FENCE           10      0       0       1       40      24      15      1000    0.40    0       1       1000
+FENCE           10      1       0       1       -1      24      15      100     0.0    	0       1       1000
+
+FENCE           20      0       0       1       40      24      15      1000    0.40    0       1       1000
+FENCE           20      1       0       1       -1      24      15      100     0.0    	0       1       1000
+
+FENCE           30      0       0       1       40      24      15      1000    -0.40   0       1       1000
+FENCE           30      1       0       1       -1      24      15      100     0.0     0       1       1000
+
+FENCE           40      0       0       1       40      24      15      1000    -0.40   0       1       1000
+FENCE           40      1       0       1       -1      24      15      100     0.0   	0       1       1000
+
+FENCE           50      0       0       1       -1      24      15      1000    0.0     0       1       0
+
+
+
+Miscellaneous   500     0       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   500     1       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   500     2       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   500     3       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   500     4       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   500     5       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   500     6       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   500     7       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   500     8       0       1       -1      0      	0      	1000    0.0     0       1
+Miscellaneous   500     9       0       1       -1      0      	0      	1000    0.0     0       1
+
+Building        240     0       0       1       -1      64      15      1000    0.5     0       1
+Building        250     0       0       1       -1      64      15      1000    -0.5    0       1
+Building        260     0       0       1       -1      64      15      1000    0.5     0       1
+Building        270     0       0       1       -1      64      15      1000    -0.5    0       1
+

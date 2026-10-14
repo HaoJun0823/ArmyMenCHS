@@ -1,0 +1,44 @@
+
+		//**Desert 11 Mission 3**//
+
+                //**Start**//
+if startup3 then
+        triggerdelay 500 showmiss3,
+        setbriefing "map11_3.bmp",
+        trigger movetheport
+
+if showmiss3 then
+        showpda "找到传送门，离开那儿。"
+
+		//**Win Condition**//
+if padon endnightmare then
+        triggerdelay 1000 showfinalpdamis,
+        playsound "portal2_8Bit.wav" 2 0,
+        trigger timetowin3
+
+if timetowin3 butnot doh then
+        triggerdelay 1500 petertestgreenwins
+
+if showfinalpdamis then
+        showpda "你摧毁了秘密武器并安全离开，太棒了！"
+
+
+//portal setup//
+
+if movetheport then
+        moveitem portal (135,2953),
+        playsound "portal1_8Bit.wav" portalsound 6 0 1
+
+
+        //add open cages commands at this point//
+if padon sendthedead butnot onlyonedeath then
+        triggerdelay 1000 damagecage,
+        trigger onlyonedeath
+
+if damagecage then
+        setobjstate zombd1 zombd1_go,
+        setobjstate zombd2 zombd2_go
+
+
+
+

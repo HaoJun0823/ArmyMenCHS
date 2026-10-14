@@ -1,0 +1,89 @@
+#Object Defaults Table
+
+#Item Flags
+# ITEMFLAG_MAP		0001	(1)
+# ITEMFLAG_VISBLOCK	0100	(256)
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis
+Miscellaneous	905	0	0	1	-1	120	15	1000	0.0	5	1
+Miscellaneous	905	1	0	1	-1	120	15	1000	0.0	5	1
+
+Miscellaneous	10	0	0	1	50	50	15	1000	0.0	0	1
+Miscellaneous	10	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	11	0	0	1	50	50	15	1000	0.0	0	1
+Miscellaneous	11	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	12	0	0	1	50	50	15	1000	0.0	0	1
+Miscellaneous	12	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	13	0	0	1	50	50	15	1000	0.0	0	1
+Miscellaneous	13	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	14	0	0	1	50	50	15	1000	0.0	0	1
+Miscellaneous	14	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	15	0	0	1	25	50	15	1000	0.0	0	1
+Miscellaneous	15	1	0	1	-1	50	15	1000	0.0	0	1
+Miscellaneous	16	0	0	1	15	50	15	1000	0.0	0	1
+Miscellaneous	16	1	0	1	-1	50	15	1000	0.0	0	1
+
+##Crates##
+Miscellaneous	20	0	0	4353	20	32	15	1000	0.0	-3	1
+Miscellaneous	20	1	0	257	-1	0	0	1	0.0	0	1
+Miscellaneous	21	0	0	4353	30	32	15	1000	0.0	-3	1
+Miscellaneous	21	1	0	257	-1	0	0	1	0.0	0	1
+Miscellaneous	22	0	0	4353	15	32	15	1000	0.0	-3	1
+Miscellaneous	22	1	0	257	-1	0	0	1	0.0	0	1
+Miscellaneous	23	0	0	4353	20	32	15	1000	0.0	-3	1
+Miscellaneous	23	1	0	257	-1	0	0	1	0.0	0	1
+Miscellaneous	24	0	0	4353	30	32	15	1000	0.0	-3	1
+Miscellaneous	24	1	0	257	-1	0	0	1	0.0	0	1
+Miscellaneous	25	0	0	4353	15	32	15	1000	0.527	-3	1
+Miscellaneous	25	1	0	257	-1	0	0	1	0.0	0	1
+
+Building	11	0	0	257	50	90	15	10000	0.0	0	1
+Building	12	0	0	257	100	90	15	1000	0.0	0	1
+Building	11	1	0	257	-1	90	15	10000	0.0	0	1
+Building	12	1	0	257	-1	90	15	1000	0.0	0	1
+
+link 	building	10		building	11		233 	108
+link 	building	10		building	12		222	127
+
+Building	900	1	0	257	-1	100	15	10000	0.0	0	1
+Building	910	1	0	257	-1	40	15	1000	0.0	0	1
+Building	920	1	0	257	-1	40	15	1000	0.0	0	1
+
+Ground		531	0	0	1	-1	0	0	1	0.0	0	1
+
+Rocks		1	0	0	257	-1	16	15	1	0.0	0	1
+Rocks		2	0	0	257	-1	16	15	1	0.0	0	1
+Rocks		3	0	0	257	-1	16	15	1	0.0	0	1
+Rocks		4	0	0	257	-1	16	15	1	0.0	0	1
+Rocks		5	0	0	257	-1	16	15	1	0.0	0	1
+Rocks		6	0	0	257	-1	16	15	1	0.0	0	1
+Rocks		7	0	0	257	-1	16	15	1	0.0	0	1
+Rocks		8	0	0	257	-1	16	15	1	0.0	0	1
+Rocks		9	0	0	257	-1	16	15	1	0.0	0	1
+Rocks		10	0	0	257	-1	16	15	1	0.0	0	1
+Rocks		11	0	0	257	-1	16	15	1	0.0	0	1
+Rocks		12	0	0	257	-1	16	15	1	0.0	0	1
+Rocks		13	0	0	257	-1	16	15	1	0.0	0	1
+Rocks		201	0	0	257	-1	16	15	1 	0.0	0	1
+Rocks		202	0	0	257	-1	16	15	1 	0.0	0	1
+Rocks		203	0	0	257	-1	16	15	1 	0.0	0	1
+Rocks		204	0	0	257	-1	16	15	1 	0.0	0	1
+Rocks		205	0	0	257	-1	16	15	1 	0.0	0	1
+Rocks		206	0	0	257	-1	14	15	1 	0.0	0	1
+Rocks		207	0	0	257	-1	10	15	1 	0.0	0	1
+Rocks		208	0	0	257	-1	8	15	1 	0.0	0	1
+Rocks		209	0	0	257	-1	16	15	1 	0.0	0	1
+Rocks		210	0	0	257	-1	16	15	1 	0.0	0	1
+Rocks		211	0	0	257	-1	16	15	1 	0.0	0	1
+Rocks		212	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		213	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		214	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		215	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		216	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		217	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		218	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		219	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		220	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		221	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		222	0	0	257	-1	1	0	1	0.0	0	1
+Rocks		224	0	0	257	-1	8	15	1 	0.0	0	1

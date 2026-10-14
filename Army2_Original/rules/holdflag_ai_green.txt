@@ -1,0 +1,118 @@
+// this gets loaded on the host if the green army is AI controlled
+
+// This variable holds the current action for green
+// 0 means no action, 1 means follow black flag, 2 means get powerups, 3 means hold the flag
+variable greenAction 0
+
+if startup1 then
+	triggerdelay 1000 greenChooseNewAction,
+	triggerdelay 2000 greenRegularOrders
+
+if greenChooseNewAction then
+	setvar greenAction 0,
+	trigger greenCheckIfHoldFlag,
+	trigger greenCheckIfFlagUnheld,
+	trigger greenChoseAction
+
+// if it's time to choose a new action but we are currently owning the hill then
+// we should always stay on the hill
+
+if greenCheckIfHoldFlag testvar hasitem greensarge1 blackflag1 = 1 then
+	trigger greenReturnToBase
+	
+// if it's time to choose a new action and the hill is not owned then head straight for it
+
+if greenCheckIfFlagUnheld testvar hasitem tansarge1 blackflag1 = 0 and hasitem bluesarge1 blackflag1 = 0 and hasitem greysarge1 blackflag1 = 0 then
+	trigger greenFollowFlag
+	
+// if green has no current action then pick an action
+// ideally we would base this on how well armed we are
+if greenChooseAction testvar greenAction = 0 then
+	trigger greenPickRandomAction,
+	triggerdelay 1000 greenChooseAction
+
+if greenPickRandomAction then random
+	trigger greenFollowFlag,
+	trigger greenGetPowerUps
+
+// these events setup the greenAction variable and do the actions
+
+if greenFollowFlag then
+	setvar greenAction 1,
+	order greensarge1 follow blackflag1 inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 follow blackflag1 inmode attack,
+	order green group 3 follow blackflag1 inmode attack,
+	trigger greenStartTimeOut
+
+if greenGetPowerUps then
+	setvar greenAction 2,
+	order greensarge1 follow blackflag1 inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 follow blackflag1 inmode attack,
+	order green group 3 follow blackflag1 inmode attack,
+	trigger greenStartTimeOut
+
+if greenReturnToBase then
+	setvar greenAction 3,
+	order greensarge1 goto greenbase inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 goto greenbase inmode defend,
+	order green group 3 goto greenbase inmode defend,
+	trigger greenStartTimeOut
+
+if greenHoldFlag then
+	setvar greenAction 4,
+	order greensarge1 goto greenbase inmode attack,
+	order green group 1 follow greensarge1 inmode defend,
+	order green group 2 goto greenbase inmode defend,
+	order green group 3 goto greenbase inmode defend,
+	trigger greenStartTimeOut
+
+// these events chose a new action if we get on the hill
+
+if pickedup blackflag1 by greensarge1 then
+	trigger greenReturnToBase
+
+if pickedup blackflag1 by tansarge1 then
+	trigger greenFollowFlag
+
+if pickedup blackflag1 by bluesarge1 then
+	trigger greenFollowFlag
+
+if pickedup blackflag1 by greysarge1 then
+	trigger greenFollowFlag
+
+if padon greenbase testvar hasitem greensarge1 blackflag1 = 1 then
+    trigger greenHoldFlag
+
+// these events choose new actions if a sarge is killed
+
+if killed greensarge1 then
+	triggerdelay 5000 greenGetPowerups
+
+// these are the sgreending order regardless of what mode sarge is in
+	
+if greenRegularOrders then
+	order green group 0 follow greensarge1 inmode attack,
+	setaimode green group 4 defend,
+	setaimode green group 5 defend,
+	order green group 7 goto greenbase inmode evade,
+	triggerdelay 5000 greenRegularOrders
+
+// timeout code - if mode has not changed for a while then change it
+
+variable greenTimeOutVar 0
+variable greenLastTimeOutVar 1
+
+if greenStartTimeOut then
+    addvar greenTimeOutVar 1,
+	triggerdelay 120000 greenCheckTimeOut
+
+if greenCheckTimeOut testvar greenTimeOutVar = greenLastTimeOutVar then
+    trigger greenChooseNewAction
+
+if greenCheckTimeOut testvar greenTimeOutVar <> greenLastTimeOutVar then
+	addvar greenLastTimeOutVar 1
+
+

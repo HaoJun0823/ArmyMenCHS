@@ -1,0 +1,204 @@
+// this gets loaded on the host if the grey army is AI controlled
+
+// maintain a variable which knows when we are on our base pad
+// this is used if we accidentally pickup our own flag and we are already on our base
+variable greyOnBase 0
+
+if padon greybase then
+	setvar greyOnBase 1
+
+if padoff greybase then
+	setvar greyOnBase 0
+
+// This variable holds the current action for grey
+// 0 means no action, 1 means goto green flag, 2 means goto blue flag, 3 means goto tan flag,
+// 4 means rescue grey flag, 5 means take flag to base
+variable greyAction 0
+
+if startup1 then
+	triggerdelay 1000 greyChooseNewAction,
+	triggerdelay 2000 greyRegularOrders
+
+if greyChooseNewAction then
+	setvar greyAction 0,
+	trigger greyCheckIfHoldingFlags,
+	trigger greyChooseAction
+
+// if it's time to choose a new action but we are currently holding a flag then we should
+// always choose to take it to a base
+
+if greyCheckIfHoldingFlags testvar hasitem greysarge1 greenflag1 = 1 then
+	setvar greyAction 5,
+	trigger greyTakeFlagToBase
+	
+if greyCheckIfHoldingFlags testvar hasitem greysarge1 greyflag1 = 1 then
+	setvar greyAction 5,
+	trigger greyTakeFlagToBase
+	
+if greyCheckIfHoldingFlags testvar hasitem greysarge1 blueflag1 = 1 then
+	setvar greyAction 5,
+	trigger greyTakeFlagToBase
+	
+if greyCheckIfHoldingFlags testvar hasitem greysarge1 tanflag1 = 1 then
+	setvar greyAction 5,
+	trigger greyTakeFlagToBase
+	
+// if grey has no current action then pick a random action
+// keep doing this until an action is set
+if greyChooseAction testvar greyAction = 0 then
+	trigger greyPickRandomAction,
+	triggerdelay 1000 greyChooseAction
+
+if greyPickRandomAction then random
+	trigger greySetCaptureGreen,
+	trigger greySetCaptureBlue,
+	trigger greySetCaptureTan
+
+// these events setup the greyAction variable
+
+// before attacking green make sure green is in the game and is not an ally
+if greySetCaptureGreen testvar IsColorInGame green > 0 and IsAlly grey green = 0 then
+	setvar greyAction 1,
+	trigger greyCaptureGreen,
+	trigger greyStartTimeOut
+
+// before attacking blue make sure blue is in the game and is not an ally
+if greySetCaptureBlue testvar IsColorInGame blue > 0 and IsAlly grey blue = 0 then
+	setvar greyAction 2,
+	trigger greyCaptureBlue,
+	trigger greyStartTimeOut
+
+// before attacking tan make sure tan is in the game and is not an ally
+if greySetCaptureTan testvar IsColorInGame tan > 0 and IsAlly grey tan = 0 then
+	setvar greyAction 3,
+	trigger greyCaptureTan,
+	trigger greyStartTimeOut
+
+// these events do the base attack orders
+
+if greyCaptureGreen testvar greyAction = 1 then
+	order greysarge1 follow greenflag1 inmode attack,
+	order grey group 1 follow greysarge1 inmode defend,
+	order grey group 2 follow greenflag1 inmode attack,
+	order grey group 3 follow greenflag1 inmode attack
+
+if greyCaptureBlue testvar greyAction = 2 then
+	order greysarge1 follow blueflag1 inmode attack,
+	order grey group 1 follow greysarge1 inmode defend,
+	order grey group 2 follow blueflag1 inmode attack,
+	order grey group 3 follow blueflag1 inmode attack
+
+if greyCaptureTan testvar greyAction = 3 then
+	order greysarge1 follow tanflag1 inmode attack,
+	order grey group 1 follow greysarge1 inmode defend,
+	order grey group 2 follow tanflag1 inmode attack,
+	order grey group 3 follow tanflag1 inmode attack
+
+// this event is for rescuing our own flag
+if greyRescueGrey testvar greyAction = 4 then
+	order greysarge1 follow greyflag1 inmode attack,
+	order grey group 1 follow greysarge1 inmode defend,
+	order grey group 2 follow greyflag1 inmode attack,
+	order grey group 3 follow greyflag1 inmode attack
+
+// this event is for taking an enemy flag to my base
+if greyTakeFlagToBase testvar greyAction = 5 then
+	order greysarge1 goto greybase inmode attack,
+	order grey group 1 follow greysarge1 inmode defend,
+	order grey group 2 goto neargreybase inmode attack,
+	order grey group 3 goto neargreybase inmode attack
+
+// these events choose new actions if my flag is captured by an enemy
+
+if pickedup greyflag1 by green testvar isAlly grey green = 0 and greyAction < 5 then
+	setvar greyAction 4,
+	trigger greyRescueGrey
+
+if pickedup greyflag1 by blue testvar isAlly grey blue = 0 and greyAction < 5 then
+	setvar greyAction 4,
+	trigger greyRescueGrey
+
+if pickedup greyflag1 by tan testvar isAlly grey tan = 0 and greyAction < 5 then
+	setvar greyAction 4,
+	trigger greyRescueGrey
+
+// these events choose new actions if I capture an enemy flag
+
+if pickedup greenflag1 by grey then
+	setvar greyAction 5,
+	trigger greyTakeFlagToBase
+
+if pickedup blueflag1 by grey then
+	setvar greyAction 5,
+	trigger greyTakeFlagToBase
+
+if pickedup tanflag1 by grey then
+	setvar greyAction 5,
+	trigger greyTakeFlagToBase
+
+// or if I rescue my own flag
+
+if pickedup greyflag1 by grey testvar greyOnBase = 0 then
+	setvar greyAction 5,
+	trigger greyTakeFlagToBase
+
+if pickedup greyflag1 by grey testvar greyOnBase = 1 then
+	triggerdelay 100 greyDropGreyFlag
+
+if greyDropGreyFlag then
+	dropitem greysarge1 greyflag1 grflagbase
+
+// these events choose new actions if any other flag is captured by an enemy
+
+if pickedup greenflag1 testvar greyAction < 4 then
+	setvar greyAction 1,
+	trigger greyCaptureGreen
+
+if pickedup blueflag1 testvar greyAction < 4 then
+	setvar greyAction 2,
+	trigger greyCaptureBlue
+
+if pickedup tanflag1 testvar greyAction < 4 then
+	setvar greyAction 3,
+	trigger greyCaptureTan
+
+// these events chose a new action if we get an enemy flag to home base
+
+if padon greybase then
+    triggerdelay 1000 greyChooseNewAction
+
+// if we get our own flag back to base then drop that too
+
+if padon greybase testvar hasitem greysarge1 greyflag1 = 1 then
+	dropitem greysarge1 greyflag1 grflagbase
+
+// these events choose new actions if a sarge is killed
+
+if killed greysarge1 then
+	triggerdelay 5000 greyChooseNewAction
+
+// these are the sgreyding order regardless of what mode sarge is in
+	
+if greyRegularOrders then
+	order grey group 0 follow greysarge1 inmode attack,
+	setaimode grey group 4 defend,
+	setaimode grey group 5 defend,
+	order grey group 7 goto greybase inmode evade,
+	triggerdelay 5000 greyRegularOrders
+
+// timeout code - if mode has not changed for a while then change it
+
+variable greyTimeOutVar 0
+variable greyLastTimeOutVar 1
+
+if greyStartTimeOut then
+    addvar greyTimeOutVar 1,
+	triggerdelay 120000 greyCheckTimeOut
+
+if greyCheckTimeOut testvar greyTimeOutVar = greyLastTimeOutVar then
+    trigger greyChooseNewAction
+
+if greyCheckTimeOut testvar greyTimeOutVar <> greyLastTimeOutVar then
+	addvar greyLastTimeOutVar 1
+
+

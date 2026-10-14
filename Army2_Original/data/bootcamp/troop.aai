@@ -1,0 +1,11 @@
+#Default Trooper Information File
+
+#Trooper Type	HP	ViewAngle	ViewRange	HearRange	Aggression	Defense		Experience	
+TrooperLevel1	30	48		280		120		250		32		40
+TrooperLevel2	35	52		285		130		220		48		100
+TrooperLevel3	45	56		290		140		200		56		180
+TrooperLevel4	50	60		295		150		180		64		300
+TrooperLevel5	55	64		300		160		160		80		460
+TrooperLevel6	60	68		305		170		140		96		660
+TrooperLevel7	65	72		310		180		120		112		920
+TrooperLevel8	70	76		320		190		100		128		1000

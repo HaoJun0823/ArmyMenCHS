@@ -1,0 +1,1254 @@
+// map design and scripting by Alvin Muolic
+// Behind The 8-Ball - Mission 1
+
+// Re-Introducing the threat of portable portal technology
+
+// Pad Definitions
+
+pad commgridon			150		green trooper > 0	
+pad gocomp			150		green trooper > 0	
+pad sportal1			152		scientist1 > 0
+pad sportal2			152		scientist2 > 0
+pad sportal3			152		scientist3 > 0
+pad sportal4			152		scientist4 > 0
+
+pad sportalx			202
+pad badportalx			202		green trooper > 0
+
+pad er1				153		tan trooper > 0 
+pad er2				154		tan trooper > 0
+pad er3				155		tan trooper > 0
+pad er4				156		tan trooper > 0
+pad er5				157		tan trooper > 0
+
+pad triggerone			160		green trooper > 0	
+pad triggertwo			161		green trooper > 0	
+pad triggerthree		162		green trooper > 0	
+pad triggerfour			163		green trooper > 0	
+
+pad alarm1			165		ce_runner1 > 0
+pad alarm2			166		ce_runner2 > 0
+pad alarm1x			167		ce_runner1 > 0
+pad alarm2x			168		ce_runner2 > 0
+
+// tan unit deployment pads
+  
+pad cc_re1			100		
+pad cc_re2			101	
+pad cc_re3			102		
+pad cc_re4			103		
+
+pad as_re1			205
+pad as_re2			206
+pad as_re3			106
+pad as_re4			107
+
+pad 8b_re1			116
+pad 8b_re2			117
+pad 8b_re3			208
+pad 8b_re4			209
+
+// tan scientist pads
+
+pad as_ts1			108		scientist1 > 0
+pad as_ts2			109		scientist2 > 0
+pad as_ts3			110		scientist3 > 0
+pad as_ts4			111		scientist4 > 0
+
+pad as_ts5			112		scientist1 > 0
+pad as_ts6			113		scientist2 > 0
+pad as_ts7			114		scientist3 > 0
+pad as_ts8			115		scientist4 > 0
+
+// Tan Patrol routes  
+
+// comm center patrol a
+
+pad cc1				10		cc_patrol_a1	> 0
+pad cc2				11		cc_patrol_a1	> 0
+pad cc3				12		cc_patrol_a1	> 0
+pad cc4				13		cc_patrol_a1	> 0
+pad cc5				14		cc_patrol_a1	> 0
+pad cc6				15		cc_patrol_a1	> 0
+pad cc7				16		cc_patrol_a1	> 0
+pad cc8				17		cc_patrol_a1	> 0
+pad cc9				18		cc_patrol_a1	> 0
+pad cc10			19		cc_patrol_a1	> 0
+pad cc11			20		cc_patrol_a1	> 0
+pad cc12			21		cc_patrol_a1	> 0
+pad cc13			22		cc_patrol_a1	> 0
+pad cc14			23		cc_patrol_a1	> 0
+
+// comm center patrol b 
+
+pad cc15			24		cc_patrol_b1	> 0
+pad cc16			25		cc_patrol_b1	> 0
+pad cc17			26		cc_patrol_b1	> 0
+pad cc18			27		cc_patrol_b1	> 0
+pad cc19			28		cc_patrol_b1	> 0
+pad cc20			29		cc_patrol_b1	> 0
+pad cc21			30		cc_patrol_b1	> 0
+pad cc22			31		cc_patrol_b1	> 0
+pad cc23			32		cc_patrol_b1	> 0
+pad cc24			33		cc_patrol_b1	> 0
+pad cc25			34		cc_patrol_b1	> 0
+pad cc26			35		cc_patrol_b1	> 0
+pad cc27			36		cc_patrol_b1	> 0
+pad cc28			37		cc_patrol_b1	> 0 
+
+// archeological site patrol a
+
+pad as1				38		as_patrol_a1	> 0
+pad as2				39		as_patrol_a1	> 0
+pad as3				40		as_patrol_a1	> 0
+pad as4				41		as_patrol_a1	> 0
+pad as5				42		as_patrol_a1	> 0
+pad as6				43		as_patrol_a1	> 0
+
+// archeological site patrol b
+
+pad as7				44		as_patrol_b1	> 0
+pad as8				45		as_patrol_b1	> 0
+pad as9				46		as_patrol_b1	> 0
+pad as10			47		as_patrol_b1	> 0
+pad as11			48		as_patrol_b1	> 0
+pad as12			49		as_patrol_b1	> 0
+
+
+// 8ball site patrol a
+
+pad 8b1				50		8b_patrol_a1	> 0
+pad 8b2				51		8b_patrol_a1	> 0
+pad 8b3				52		8b_patrol_a1	> 0
+pad 8b4				53		8b_patrol_a1	> 0 
+
+// 8ball site patrol b
+
+pad 8b5				54		8b_patrol_b1	> 0
+pad 8b6				55		8b_patrol_b1	> 0
+pad 8b7				56		8b_patrol_b1	> 0
+pad 8b8				57		8b_patrol_b1	> 0
+
+// 8ball site patrol c
+
+pad 8b9				58		8b_patrol_c1	> 0
+pad 8b10			59		8b_patrol_c1	> 0
+pad 8b11			60		8b_patrol_c1	> 0
+pad 8b12			61		8b_patrol_c1	> 0 
+
+pad easteregg			222		greensarge1 > 0	
+
+
+//==========================================================================
+// aaguns		mod by PH 01-29-99
+variable	aagun1alive	 	1
+variable	aagun2alive	 	1
+variable	aagun3alive	 	1
+variable	aagun4alive	 	1
+
+// 	this applies in mission 2 as well!
+if killed aagun1 then setvar aagun1alive 0
+if killed aagun2 then setvar aagun2alive 0
+if killed aagun3 then setvar aagun3alive 0
+if killed aagun4 then setvar aagun4alive 0
+
+//	if you waste time killing the aaguns, then the scientists will escape!
+if allof 
+	killed aagun1
+	killed aagun2
+	killed aagun3
+	killed aagun4
+butnot
+	startup2
+then
+	trigger escape
+
+//	create guys to fix the aaguns
+IF startup1
+then
+	createtrooper "fixitguy1" rifle (200,200) tan,
+	createtrooper "fixitguy2" rifle (200,200) tan,
+	createtrooper "fixitguy3" rifle (200,200) tan,
+	createtrooper "fixitguy4" rifle (200,200) tan,	
+	undeploy fixitguy1,
+	undeploy fixitguy2,
+	undeploy fixitguy3,
+	undeploy fixitguy4
+
+						// fixit guy status
+variable  fixit1alive 0
+variable  fixit2alive 0
+variable  fixit3alive 0
+variable  fixit4alive 0
+
+
+if	playwarning then
+	playsound "ScientistsGettingAway.wav" 16 0
+
+
+// ================================
+// Fixit guy 1
+						// send him in 5 secs
+IF	killed aagun1 
+butnot 	startup2
+then	
+	triggerdelay 7500 fixaagun1,
+	triggerdelay 2000 playwarning
+	
+						// create him
+IF	fixaagun1
+then
+	deploy fixitguy1 aagun1,
+	setaipose fixitguy1 kneel,
+	createexplosion fixitguy1 133,
+	playsound "portal2_8bit.wav" fixitguy1 13 0,
+	setvar fixit1alive 1,
+	triggerdelay 1000 donefixit1
+
+						// if he dies
+IF	killed fixitguy1
+then
+	triggedelay 2000 resfixitguy1,
+	setvar fixit1alive 0
+
+IF resfixitguy1
+then
+	resurrect fixitguy1 (50,50),
+	undeploy fixitguy1,
+	trigger escape,				// startup the scientists!
+	triggerdelay 7000 fixaagun1
+
+						// fix the aagun
+IF	donefixit1	
+testvar	fixit1alive = 1
+then
+	heal aagun1 100,
+	undeploy fixitguy1,
+	createexplosion fixitguy1 133,
+	playsound "portal2_8bit.wav" fixitguy1 13 0,
+	setvar aagun1alive 1
+
+// ================================
+// Fixit guy 2	
+						// send him in 5 secs
+IF	killed aagun2
+butnot 	startup2
+then	
+	triggerdelay 9000 fixaagun2,
+	triggerdelay 2000 playwarning
+
+						// create him
+IF	fixaagun2
+then
+	deploy fixitguy2 aagun2,
+	createexplosion fixitguy2 133,
+	setaipose fixitguy2 kneel,
+	playsound "portal2_8bit.wav" fixitguy2 13 0,
+	setvar fixit2alive 1,
+	triggerdelay 1000 donefixit2
+
+						// if he dies
+IF	killed fixitguy2
+then
+	triggedelay 2000 resfixitguy2,
+	setvar fixit2alive 0
+
+IF resfixitguy2
+then
+	resurrect fixitguy2 (50,50),
+	undeploy fixitguy2,
+	trigger escape,				// startup the scientists!
+	triggerdelay 7000 fixaagun2
+
+						// fix the aagun
+IF	donefixit2	
+testvar	fixit2alive = 1
+then
+	heal aagun2 100,
+	undeploy fixitguy2,
+	createexplosion fixitguy2 133,
+	playsound "portal2_8bit.wav" fixitguy2 13 0,
+	setvar aagun2alive 1
+
+
+// ================================
+// Fixit guy 3	
+						// send him in 5 secs
+IF	killed aagun3
+butnot 	startup2
+then	
+	triggerdelay 8000 fixaagun3,
+	triggerdelay 2000 playwarning
+
+						// create him
+IF	fixaagun3
+then
+	deploy fixitguy3 aagun3,
+	createexplosion fixitguy3 133,
+	setaipose fixitguy3 kneel,
+	playsound "portal2_8bit.wav" fixitguy3 13 0,
+	setvar fixit3alive 1,
+	triggerdelay 1000 donefixit3
+
+						// if he dies
+IF	killed fixitguy3
+then
+	triggedelay 2000 resfixitguy3,
+	setvar fixit3alive 0
+
+IF resfixitguy3
+then
+	resurrect fixitguy3 (50,50),
+	undeploy fixitguy3,
+	trigger escape,				// startup the scientists!
+	triggerdelay 7000 fixaagun3
+
+						// fix the aagun
+IF	donefixit3
+testvar	fixit3alive = 1
+then
+	heal aagun3 100,
+	undeploy fixitguy3,
+	createexplosion fixitguy3 133,
+	playsound "portal2_8bit.wav" fixitguy3 13 0,
+	setvar aagun3alive 1
+
+// ================================
+// Fixit guy 4	
+						// send him in 5 secs
+IF	killed aagun4
+butnot 	startup2
+then	
+	triggerdelay 7000 fixaagun4,
+	triggerdelay 2000 playwarning
+
+						// create him
+IF	fixaagun4
+then
+	deploy fixitguy4 aagun4,
+	createexplosion fixitguy4 133,
+	setaipose fixitguy4 kneel,
+	playsound "portal2_8bit.wav" fixitguy4 13 0,
+	setvar fixit4alive 1,
+	triggerdelay 1000 donefixit4
+
+						// if he dies
+IF	killed fixitguy4
+then
+	triggedelay 2000 resfixitguy4,
+	setvar fixit4alive 0
+
+IF resfixitguy4
+then
+	resurrect fixitguy4 (50,50),
+	undeploy fixitguy4,
+	trigger escape,				// startup the scientists!
+	triggerdelay 5000 fixaagun4
+
+						// fix the aagun
+IF	donefixit4
+testvar	fixit4alive = 1
+then
+	heal aagun4 100,
+	undeploy fixitguy4,
+	createexplosion fixitguy4 133,
+	playsound "portal2_8bit.wav" fixitguy4 13 0,
+	setvar aagun4alive 1
+
+
+
+
+//==========================================================================
+
+if killed greensarge1 THEN
+	triggerdelay 1000 hesdead
+
+if hesdead then
+	showfailure "Sarge is dead!",
+	triggerdelay 10 tanwins
+
+if padon badportalx butnot stportal2 then
+	createexplosion (204,208) 139 500 tan
+
+if killed scorch then
+	createpowerup flamer scorch 50
+
+if killed veteran then
+	createpowerup bazooka veteran 10
+
+// mission one -- communications center 
+
+if startup1 then
+	undeploy eggman,
+	triggerdelay 10 missiononebrief1x,
+	setbriefing "map08_1.bmp",
+	playsound "map8mission1hq.wav" 0 1,
+	inactivateregion 86,
+	heal greensarge1 100,
+	createvehicle "PikaMobile" jeep (506,158) green,
+	setfacing PikaMobile 90,
+	createvehicle "Wampa" tank (649,3642) tan,
+	setfacing Wampa 190,
+	setaimode Wampa defend,
+	createtrooper "cc_patrol_a1" autorifle (3629,1204) tan,
+	createtrooper "cc_patrol_a2" autorifle (3514,1160) tan,
+	createtrooper "cc_patrol_a3" autorifle (3638,1119) tan,
+	setaimode cc_patrol_a1 attack,
+	setaimode cc_patrol_a2 attack,
+	setaimode cc_patrol_a3 attack,
+	setfacing cc_patrol_a1 128,
+	setfacing cc_patrol_a2 90,
+	setfacing cc_patrol_a3 110,
+	setaipose cc_patrol_a1 prone,
+	setaipose cc_patrol_a2 kneel,
+	setaipose cc_patrol_a3 kneel,
+	createtrooper "cc_patrol_b1" autorifle (3100,772) tan,
+	createtrooper "cc_patrol_b2" autorifle (2876,1179) tan,
+	createtrooper "cc_patrol_b3" autorifle (3202,1382) tan,
+	setaimode cc_patrol_b1 attack,
+	setaimode cc_patrol_b2 attack,
+	setaimode cc_patrol_b3 attack,
+	setfacing cc_patrol_b1 128,
+	setfacing cc_patrol_b2 160,
+	setfacing cc_patrol_b3 110,
+	setaipose cc_patrol_b1 kneel,
+	setaipose cc_patrol_b2 kneel,
+	createtrooper "cc_sentry_a1" autorifle (3095,1919) tan,
+	createtrooper "cc_sentry_a2" autorifle (3265,1797) tan,
+	createtrooper "cc_sentry_b1" autorifle (3345,988) tan,
+	createtrooper "cc_sentry_b2" sniper (3699,2348) tan,
+	setaimode cc_sentry_a1 attack,
+	setaimode cc_sentry_a2 attack,
+	setaimode cc_sentry_b1 attack,
+	setaimode cc_sentry_b2 attack,
+	setfacing cc_sentry_a1 140,
+	setfacing cc_sentry_a2 130,
+	setfacing cc_sentry_b1 64,
+	setfacing cc_sentry_b2 128,
+	setaipose cc_sentry_b1 kneel,
+	setaipose cc_sentry_b2 prone,
+	createtrooper "as_patrol_a1" autorifle (432,846) tan,
+	createtrooper "as_patrol_a2" sniper (395,985) tan,
+	createtrooper "as_patrol_a3" sniper (157,1069) tan,
+	setaimode as_patrol_a1 attack,
+	setaimode as_patrol_a2 attack,
+	setaimode as_patrol_a3 attack,
+	setfacing as_patrol_a1 140,
+	setfacing as_patrol_a2 140,
+	setfacing as_patrol_a3 192,
+	setaipose as_patrol_a1 kneel,
+	setaipose as_patrol_a2 prone,
+	setaipose as_patrol_a3 prone,
+	createtrooper "as_patrol_b1" sniper (1718,557) tan,
+	createtrooper "as_patrol_b2" autorifle (2076,562) tan,
+	createtrooper "as_patrol_b3" autorifle (1881,939) tan,
+	setaimode as_patrol_b1 attack,
+	setaimode as_patrol_b2 attack,
+	setaimode as_patrol_b3 attack,
+	setfacing as_patrol_b1 140,
+	setfacing as_patrol_b2 140,
+	setfacing as_patrol_b3 90,
+	setaipose as_patrol_b1 prone,
+	setaipose as_patrol_b2 kneel,
+	createtrooper "as_sentry_a1" autorifle (2327,880) tan,
+	createtrooper "as_sentry_a2" sniper (2597,1000) tan,
+	createtrooper "as_sentry_b1" autorifle (2055,1785) tan,
+	createtrooper "as_sentry_b2" autorifle (2026,1935) tan,
+	createtrooper "as_sentry_c1" sniper (1308,1218) tan,
+	createtrooper "as_sentry_c2" autorifle (1503,1583) tan,
+	createtrooper "as_sentry_d1" autorifle (415,1382) tan,
+	createtrooper "as_sentry_d2" sniper (268,1603) tan,
+	setaimode as_sentry_a1 attack,
+	setaimode as_sentry_a2 attack,
+	setaimode as_sentry_b1 attack,
+	setaimode as_sentry_b2 attack,
+	setaimode as_sentry_c1 attack,
+	setaimode as_sentry_c2 attack,
+	setaimode as_sentry_d1 attack,
+	setaimode as_sentry_d2 attack,
+	setfacing as_sentry_a1 128,
+	setfacing as_sentry_a2 90,
+	setfacing as_sentry_b1 140,
+	setfacing as_sentry_b2 140,
+	setfacing as_sentry_c1 210,
+	setfacing as_sentry_c2 128,
+	setfacing as_sentry_d1 128,
+	setfacing as_sentry_d2 150,
+	setaipose as_sentry_a1 prone,
+	setaipose as_sentry_a2 prone,
+	setaipose as_sentry_b1 prone,
+	setaipose as_sentry_c1 prone,
+	setaipose as_sentry_d2 prone,
+  	createtrooper "scientist1" rifle (1274,444) tan,
+	createtrooper "scientist2" rifle (1395,442) tan,
+	createtrooper "scientist3" rifle (1243,496) tan,
+	createtrooper "scientist4" rifle (1366,517) tan,
+	setscientist scientist1,
+	setscientist scientist2,
+	setscientist scientist3,
+	setscientist scientist4,
+	setaimode scientist1 ignore,
+	setaimode scientist2 ignore,
+	setaimode scientist3 ignore,
+	setaimode scientist4 ignore,
+	addexp scientist1 300,
+	addexp scientist2 300,
+	addexp scientist3 300,
+	addexp scientist4 300,
+	createtrooper "devastator" autorifle (1330,366) tan,
+	addexp devastator 660,
+	setaimode devastator attack,
+	setmaxhealth devastator 300,
+	heal devastator 100,
+	setfacing devastator 128,
+	trigger devportal1,
+	trigger stportal1,
+	createtrooper "8b_sentry_a1" sniper (1997,3621) tan,
+	setaipose 8b_sentry_a1 prone,
+	createtrooper "8b_sentry_a2" autorifle (1931,3812) tan,
+	setaipose 8b_sentry_a2 kneel,
+	createtrooper "8b_sentry_a3" autorifle (1620,3795) tan,
+	createtrooper "8b_sentry_b1" sniper (787,2347) tan,
+	setaipose 8b_sentry_b1 prone,
+	createtrooper "8b_sentry_b2" autorifle (1010,2441) tan,
+	setaipose 8b_sentry_b2 kneel,
+	createtrooper "8b_sentry_b3" autorifle (1126,2352) tan,
+	createtrooper "8b_patrol_a1" autorifle (202,2575) tan,
+	createtrooper "8b_patrol_a2" autorifle (533,2348) tan,
+	createtrooper "8b_patrol_a3" autorifle (541,2766) tan,
+	createtrooper "8b_patrol_b1" autorifle (379,3009) tan,
+	createtrooper "8b_patrol_b2" sniper (849,3269) tan,
+	setaipose 8b_patrol_b2 prone,
+	createtrooper "8b_patrol_b3" autorifle (664,3177) tan,
+	createtrooper "8b_patrol_c1" autorifle (842,3741) tan,	
+	createtrooper "8b_patrol_c2" flamer (635,3951) tan,
+	createtrooper "8b_patrol_c3" autorifle (606,3567) tan,
+	setfacing 8b_sentry_a3 192,
+	setfacing 8b_patrol_a1 192,
+	setfacing 8b_patrol_a2 128,
+	setfacing 8b_patrol_a3 128,
+	setfacing 8b_patrol_b1 128,
+	setfacing 8b_patrol_b3 200,
+	setfacing 8b_patrol_c1 140,
+	setfacing 8b_patrol_c2 128,
+	setfacing 8b_patrol_c3 160,
+	addexp 8b_sentry_a1 300,
+	addexp 8b_sentry_a2 300,
+	addexp 8b_sentry_a3 300,
+	addexp 8b_sentry_b1 300,
+	addexp 8b_sentry_b2 300,
+	addexp 8b_sentry_b3 300,
+	addexp 8b_sentry_c1 300,
+	addexp 8b_sentry_c2 300,
+	addexp 8b_sentry_c3 300,
+	addexp 8b_patrol_a1 300,
+	addexp 8b_patrol_a2 300,
+	addexp 8b_patrol_a3 300,
+	addexp 8b_patrol_b1 300,
+	addexp 8b_patrol_b2 300,
+	addexp 8b_patrol_b3 300,
+	addexp 8b_patrol_c1 300,
+	addexp 8b_patrol_c2 300,
+	addexp 8b_patrol_c3 300,
+//	setaimode 8b_sentry_a1 defend,
+//	setaimode 8b_sentry_a2 defend,
+//	setaimode 8b_sentry_a3 defend,
+//	setaimode 8b_sentry_b1 defend,
+//	setaimode 8b_sentry_b2 defend,
+//	setaimode 8b_sentry_b3 defend,
+//	setaimode 8b_patrol_a1 defend,
+//	setaimode 8b_patrol_a2 defend,
+//	setaimode 8b_patrol_a3 defend,
+//	setaimode 8b_patrol_b1 defend,
+//	setaimode 8b_patrol_b2 defend,
+//	setaimode 8b_patrol_b3 defend,
+//	setaimode 8b_patrol_c1 defend,
+//	setaimode 8b_patrol_c2 defend,
+//	setaimode 8b_patrol_c3 defend,
+ 	createtrooper "aaoperator1" vulcan (273,2400) tan,
+ 	createtrooper "aaoperator2" vulcan (302,2843) tan,
+ 	createtrooper "aaoperator3" sniper (852,3537) tan,
+ 	createtrooper "aaoperator4" bazooka (414,3674) tan,
+	setfacing aaoperator1 140,
+	setfacing aaoperator2 160,
+	setfacing aaoperator3 128,
+	setfacing aaoperator4 140,
+	setaipose aaoperator3 prone,
+	setaipose aaoperator4 prone,
+	setaimode aaoperator1 defend,
+	setaimode aaoperator2 defend,
+	setaimode aaoperator3 defend,
+	setaimode aaoperator4 defend,
+	addexp aaoperator1 460,
+	addexp aaoperator2 460,
+	addexp aaoperator3 460,
+	addexp aaoperator4 460,
+ 	createtrooper "ce_runner1" autorifle (3339,3005) tan,
+ 	createtrooper "ce_runner2" autorifle (3398,3088) tan,
+ 	createtrooper "ce_defender1" autorifle (3471,3313) tan,
+ 	createtrooper "ce_defender2" autorifle (3600,3351) tan,
+	addexp ce_runner1 180,
+	addexp ce_runner2 180,
+	setfacing ce_defender1 128,
+	setfacing ce_defender2 128,
+	setaimode ce_runner1 evade,
+	setaimode ce_runner2 evade,
+	setaimode ce_defender1 defend,
+	setaimode ce_defender2 defend,
+	setfacing ce_runner1 64,
+	setfacing ce_runner2 200,
+	playsound "generatorHum_8Bit.wav" c1 3 0 1,
+	playsound "generatorHum_8Bit.wav" c2 4 0 1,
+	playsound "generatorHum_8Bit.wav" c3 5 0 1,
+	playsound "AmbientComputer_8Bit.wav" comp1 6 0 1,
+	playsound "AmbientComputer_8Bit.wav" comp2 7 0 1,
+	playsound "AmbientComputer_8Bit.wav" comp3 8 0 1,
+	playsound "AmbientComputer_8Bit.wav" comp4 9 0 1,
+	playitemsound "portal1_8Bit.wav" devastator 10 0 1,
+	playsound "portal1_8Bit.wav" (204,208) 12 0 1,
+	triggerdelay 3000 cordy
+
+if missiononebrief1x then
+	showpda "Eliminate the Tan scientists. We cannot allow their work to reach the Tan High Command."
+
+if devportal1 butnot devportal2 then
+	createexplosion devastator 133 0 tan,
+	triggerdelay 280 devportal1
+
+if stportal1 butnot stportal2 then
+	createexplosion (204,208) 133 0 tan,
+	triggerdelay 280 stportal1
+
+if allof killed cc_sentry_a1 killed cc_sentry_a2 then
+	triggerdelay 5000 avengers1
+if avengers1 then
+	createtrooper "backup1" rifle cc_re3 tan,
+	createtrooper "backup2" rifle cc_re4 tan,
+	setaimode backup1 attack,
+	setaimode backup2 attack,
+	order backup1 goto greensarge1,
+	order backup2 goto greensarge1,
+	order cc_patrol_b1 goto greensarge1,
+	order cc_patrol_b2 goto greensarge1,
+	order cc_patrol_b3 goto greensarge1,
+	setaimode cc_patrol_b1 attack,
+	setaimode cc_patrol_b2 attack,
+	setaimode cc_patrol_b3 attack
+
+if allof killed cc_patrol_b1 killed cc_patrol_b2 killed cc_patrol_b3 then
+	triggerdelay 5000 avengers2
+if avengers2 then
+	createtrooper "backup3" rifle cc_re3 tan,
+	createtrooper "backup4" rifle cc_re4 tan,
+	setaimode backup1 attack,
+	setaimode backup2 attack,
+	order backup3 goto greensarge1,
+	order backup4 goto greensarge1,
+	order cc_sentry_a1 goto greensarge1,
+	order cc_sentry_a2 goto greensarge1,
+	setaimode cc_sentry_a1 attack,
+	setaimode cc_sentry_a2 attack
+
+if killed cc_patrol_b1 then
+	createpowerup medkit cc_patrol_b1
+
+if killed cc_patrol_b2 then
+	createpowerup mortar cc_patrol_b2 5
+
+if allof killed cc_sentry_b1 killed cc_sentry_b2 then
+	triggerdelay 5000 avengers3
+if avengers3 then
+	createtrooper "backup5" rifle cc_re1 tan,
+	createtrooper "backup6" rifle cc_re2 tan,
+	setaimode backup5 attack,
+	setaimode backup6 attack,
+	order backup5 goto greensarge1,
+	order backup6 goto greensarge1,
+	order cc_patrol_a1 goto greensarge1,
+	order cc_patrol_a2 goto greensarge1,
+	order cc_patrol_a3 goto greensarge1,
+	setaimode cc_patrol_a1 attack,
+	setaimode cc_patrol_a2 attack,
+	setaimode cc_patrol_a3 attack
+
+if killed cc_sentry_b1 then
+	createpowerup bazooka cc_sentry_b1
+
+if killed cc_sentry_b2 then
+	createpowerup medkit cc_sentry_b2
+	
+if allof killed cc_patrol_a1 killed cc_patrol_a2 killed cc_patrol_a3 then
+	triggerdelay 5000 avengers4
+if avengers4 then
+	createtrooper "backup7" autorifle cc_re1 tan,
+	createtrooper "backup8" autorifle cc_re2 tan,
+	setaimode backup7 attack,
+	setaimode backup8 attack,
+	order backup7 goto greensarge1,
+	order backup8 goto greensarge1,
+	order cc_sentry_b1 goto greensarge1,
+	order cc_sentry_b2 goto greensarge1,
+	setaimode cc_sentry_b1 attack,
+	setaimode cc_sentry_b2 attack
+
+if killed cc_patrol_a1 then
+	createpowerup medpack cc_patrol_a1 
+
+if killed cc_patrol_a2 then
+	createpowerup grenade cc_patrol_a2 
+
+if killed cc_patrol_c2 then
+	createpowerup flamer cc_patrol_c2 100
+
+if padon gocomp butnot gocomp1 THEN 
+	trigger gocomp1
+if allof gocomp1 commgridisoff then
+	trigger gogetem3
+if gogetem3 butnot sciencewin then
+	order devastator follow greensarge1,
+	playsound "ScientistRup.wav" 16 1,
+	triggerdelay 3000 escape
+
+if padon commgridon butnot commgridisoff THEN
+	trigger gogetem
+	
+if gogetem butnot gogetem2 then
+ 	trigger gogetem2,
+	order devastator follow greensarge1,
+	triggerdelay 5000 escape,
+	triggerdelay 1000 gsa,
+	createtrooper "reinf1" autorifle as_re1 tan,
+	createtrooper "reinf2" autorifle as_re2 tan,
+	createtrooper "reinf3" autorifle as_re3 tan,
+	createtrooper "reinf4" autorifle as_re4 tan,
+	setaimode reinf1 attack,
+	setaimode reinf2 attack,
+	setaimode reinf3 attack,
+	setaimode reinf4 attack,
+	order reinf1 goto greensarge1, 
+	order reinf1 follow greensarge1,
+	order reinf2 goto greensarge1, 
+	order reinf2 follow greensarge1,
+	order reinf3 goto greensarge1, 
+	order reinf3 follow greensarge1,
+	order reinf4 goto greensarge1, 
+	order reinf4 follow greensarge1,
+	playsound "alarm_8Bit.wav" 2 0 1,
+        triggerdelay 6600 commgridon2
+
+if gsa then
+	playsound "GridStillActive.wav" 16 0
+
+if commgridon2 then
+	playsound "GotTrouble.wav" 16 0,
+	createtrooper "reinf5" autorifle as_re1 tan,
+	createtrooper "reinf6" autorifle as_re2 tan,
+	createtrooper "reinf7" autorifle as_re3 tan,
+	createtrooper "reinf8" autorifle as_re4 tan,
+	setaimode reinf5 attack,
+	setaimode reinf6 attack,
+	setaimode reinf7 attack,
+	setaimode reinf8 attack,
+	order reinf5 goto greensarge1, 
+	order reinf5 follow greensarge1,
+	order reinf6 goto greensarge1, 
+	order reinf6 follow greensarge1,
+	order reinf7 goto greensarge1, 
+	order reinf7 follow greensarge1,
+	order reinf8 goto greensarge1, 
+	order reinf8 follow greensarge1
+//	triggerdelay 13000 commgridon3
+
+if commgridon3 then
+	createtrooper "reinf9" autorifle as_re1 tan,
+	createtrooper "reinf10" autorifle as_re2 tan,
+	createtrooper "reinf11" autorifle as_re3 tan,
+	createtrooper "reinf12" autorifle as_re4 tan,
+	setaimode reinf9 attack,
+	setaimode reinf10 attack,
+	setaimode reinf11 attack,
+	setaimode reinf12 attack,
+	order reinf9 goto greensarge1, 
+	order reinf9 follow greensarge1,
+	order reinf10 goto greensarge1, 
+	order reinf10 follow greensarge1,
+	order reinf11 goto greensarge1, 
+	order reinf11 follow greensarge1,
+	order reinf12 goto greensarge1, 
+	order reinf12 follow greensarge1,
+	triggerdelay 13000 commgridon4
+
+if commgridon4 then
+	createtrooper "reinf13" autorifle as_re1 tan,
+	createtrooper "reinf14" autorifle as_re2 tan,
+	createtrooper "reinf15" autorifle as_re3 tan,
+	createtrooper "reinf16" autorifle as_re4 tan,
+	setaimode reinf13 attack,
+	setaimode reinf14 attack,
+	setaimode reinf15 attack,
+	setaimode reinf16 attack,
+	order reinf13 goto greensarge1, 
+	order reinf13 follow greensarge1,
+	order reinf14 goto greensarge1, 
+	order reinf14 follow greensarge1,
+	order reinf15 goto greensarge1, 
+	order reinf15 follow greensarge1,
+	order reinf16 goto greensarge1, 
+	order reinf16 follow greensarge1
+
+if killed c1 then
+	playsound "" c1 3 3,
+	createexplosion c1 131 0 tan,
+	makesmoke c1
+
+if killed c3 then
+	playsound "" c3 5 3,
+	createexplosion c3 131 0 tan,
+	makesmoke c3
+
+if killed c2 then
+	playsound "" c2 4 3,
+	createexplosion c2 131 0 tan,
+	makesmoke c2
+
+if allof killed c1 killed c2 killed c3 then
+	trigger commgridisoff,
+	playsound "GridDeactive.wav" 0 1
+	
+if escape then
+	order scientist1 goto sportalx,
+	order scientist2 goto sportalx,
+	order scientist3 goto sportalx,
+	order scientist4 goto sportalx,
+	playsound "ScientistsGettingAway.wav" 16 0
+
+if padon sportal1 then
+	playsound "ScientistsGotAway.wav" 16 0,
+	showfailure "A scientist has gotten away! None of them can escape!",
+	undeploy scientist1,
+	triggerdelay 10 tanwins
+if padon sportal2 then
+	playsound "ScientistsGotAway.wav" 16 0,
+	showfailure "A scientist has gotten away! None of them can escape!",
+	undeploy scientist2,
+	triggerdelay 10 tanwins
+if padon sportal3 then
+	playsound "ScientistsGotAway.wav" 16 0,
+	showfailure "A scientist has gotten away! None of them can escape!",
+	undeploy scientist3,
+	triggerdelay 10 tanwins
+if padon sportal4 then
+	playsound "ScientistsGotAway.wav" 16 0,
+	showfailure "A scientist has gotten away! None of them can escape!",
+	undeploy scientist4,
+	triggerdelay 10 tanwins
+
+if killed comp1 then
+	playsound "" comp1 6 3,
+	createexplosion comp1 131 0 tan,
+	makesmoke comp1
+if killed comp2 then
+	playsound "" comp2 7 3,
+	createexplosion comp2 131 0 tan,
+	makesmoke comp2
+if killed comp3 then
+	playsound "" comp3 8 3,
+	createexplosion comp3 131 0 tan,
+	makesmoke comp3
+if killed comp4 then
+	playsound "" comp4 9 3,
+	createexplosion comp4 131 0 tan,
+	makesmoke comp4
+
+if allof killed comp1 killed comp2 killed comp3 killed comp4 then
+	damage devastator 300
+
+if killed devastator then
+	trigger devportal2,	
+	playitemsound "" devastator 10 1 1,
+	createexplosion devastator 138 0 tan,
+	undeploy devastator
+//	playsound "portal2_8Bit.wav" devastator,
+//	createexplosion devastator 133 0 tan,
+//	createpowerup medkit devastator,
+//	undeploy devastator,
+//	triggerdelay 3000 devastator2go
+	
+if devastator2go then
+	createtrooper "devastator2" vulcan (403,199) tan,
+	createexplosion devastator2 133 0 tan,	
+	trigger devportal3,
+	playitemsound "portal1_8Bit.wav" devastator2 11 0 1,
+	addexp devastator2 660,
+	setaimode devastator2 attack,
+	setmaxhealth devastator2 100,
+	heal devastator2 100,
+	setfacing devastator2 128,
+	order devastator2 follow greensarge1 
+
+if devportal3 butnot devportal4 then
+	createexplosion devastator2 133 0 tan,
+	triggerdelay 280 devportal3
+
+if killed devastator2 then
+	trigger devportal4,
+	playitemsound "" devastator2 11 0 1,
+	createexplosion devastator2 138 0 tan
+	
+if allof killed scientist1 killed scientist2 killed scientist3 killed scientist4 then
+	playsound "" 2 0 1,			// turn off alarm!
+	trigger win2,
+	triggerdelay 3000 endmission
+
+if endmission butnot killed greensarge1 then
+	trigger greenwins
+
+//if allof killed aagun1 killed aagun2 killed aagun3 killed aagun4 butnot win2 then
+//	playsound "ScientistsGotAway.wav" 16 0,
+//	showfailure "The AA Guns are down! But the scientists have gotten away!",	
+//	triggerdelay 10 tanwins
+
+if killed aagun1 butnot win2 then
+	createexplosion aagun1 130,
+	makesmoke aagun1 7000,
+	trigger 8b_bad1
+
+if killed aagun2 butnot win2 then
+	createexplosion aagun2 130,
+	makesmoke aagun2 7000,
+	trigger 8b_bad2
+
+if killed aagun3 butnot win2 then
+	createexplosion aagun3 130,
+	makesmoke aagun3 7000,
+	trigger 8b_bad3
+
+if killed aagun4 butnot win2 then
+	createexplosion aagun4 130,
+	makesmoke aagun4 7000,
+	trigger 8b_bad4
+
+if 8b_bad1 then
+	createtrooper "8b_reinf1" autorifle 8b_re1 tan,
+	createtrooper "8b_reinf2" autorifle 8b_re2 tan,
+	createtrooper "8b_reinf3" autorifle 8b_re3 tan,
+	createtrooper "8b_reinf4" autorifle 8b_re4 tan,
+	setaimode 8b_reinf1 attack,
+	setaimode 8b_reinf2 attack,
+	setaimode 8b_reinf3 attack,
+	setaimode 8b_reinf4 attack,	
+	order 8b_reinf1 goto greensarge1, 
+	order 8b_reinf1 follow greensarge1,
+	order 8b_reinf2 goto greensarge1, 
+	order 8b_reinf2 follow greensarge1,
+	order 8b_reinf3 goto greensarge1, 
+	order 8b_reinf3 follow greensarge1,
+	order 8b_reinf4 goto greensarge1, 
+	order 8b_reinf5 follow greensarge1
+
+if 8b_bad2 then
+	createtrooper "8b_reinf5" autorifle 8b_re1 tan,
+	createtrooper "8b_reinf6" autorifle 8b_re2 tan,
+	createtrooper "8b_reinf7" autorifle 8b_re3 tan,
+	createtrooper "8b_reinf8" autorifle 8b_re4 tan,
+	setaimode 8b_reinf5 attack,
+	setaimode 8b_reinf6 attack,
+	setaimode 8b_reinf7 attack,
+	setaimode 8b_reinf8 attack,	
+	order 8b_reinf5 goto greensarge1, 
+	order 8b_reinf6 follow greensarge1,
+	order 8b_reinf7 goto greensarge1, 
+	order 8b_reinf8 follow greensarge1,
+	order 8b_reinf5 goto greensarge1, 
+	order 8b_reinf6 follow greensarge1,
+	order 8b_reinf7 goto greensarge1, 
+	order 8b_reinf8 follow greensarge1
+
+if 8b_bad3 then
+	createtrooper "8b_reinf9" autorifle 8b_re1 tan,
+	createtrooper "8b_reinf10" autorifle 8b_re2 tan,
+	createtrooper "8b_reinf11" autorifle 8b_re3 tan,
+	createtrooper "8b_reinf12" autorifle 8b_re4 tan,
+	setaimode 8b_reinf9 attack,
+	setaimode 8b_reinf10 attack,
+	setaimode 8b_reinf11 attack,
+	setaimode 8b_reinf12 attack,	
+	order 8b_reinf9 goto greensarge1, 
+	order 8b_reinf10 follow greensarge1,
+	order 8b_reinf11 goto greensarge1, 
+	order 8b_reinf12 follow greensarge1,
+	order 8b_reinf9 goto greensarge1, 
+	order 8b_reinf10 follow greensarge1,
+	order 8b_reinf11 goto greensarge1, 
+	order 8b_reinf12 follow greensarge1
+
+if 8b_bad4 then
+	createtrooper "8b_reinf13" autorifle 8b_re1 tan,
+	createtrooper "8b_reinf14" autorifle 8b_re2 tan,
+	createtrooper "8b_reinf15" autorifle 8b_re3 tan,
+	createtrooper "8b_reinf16" autorifle 8b_re4 tan,
+	setaimode 8b_reinf13 attack,
+	setaimode 8b_reinf14 attack,
+	setaimode 8b_reinf15 attack,
+	setaimode 8b_reinf16 attack,	
+	order 8b_reinf15 goto greensarge1, 
+	order 8b_reinf16 follow greensarge1,
+	order 8b_reinf17 goto greensarge1, 
+	order 8b_reinf18 follow greensarge1,
+	order 8b_reinf15 goto greensarge1, 
+	order 8b_reinf16 follow greensarge1,
+	order 8b_reinf17 goto greensarge1, 
+	order 8b_reinf18 follow greensarge1
+
+if cordy then
+	createtrooper "Xander" rifle (4074,3756) green,
+	setnpc Xander 1,
+   	createpowerup "slayerettes" paratroopers Xander 1,
+	fireweapon slayerettes Xander (3675,3762),
+	undeploy slayerettes,
+	undeploy Xander,
+	triggerdelay 1000 triggerfivea
+
+if triggerfivea then
+	playsound "map8mission1trooper.wav" 1 1,	
+	order ce_defender1 goto greensarge1,
+	order ce_defender2 goto greensarge1,
+	order ce_defender1 follow greensarge1,
+	order ce_defender2 follow greensarge1,
+	order ce_runner1 goto alarm1, 
+	order ce_runner2 goto alarm2,
+	triggerdelay 2500 splitup
+if splitup then
+	playsound "SplittingUp.wav" 1 1
+		
+if padon alarm1x then 
+	createtrooper "alarmed1" autorifle cc_re1 tan,
+	createtrooper "alarmed2" autorifle cc_re2 tan,
+	setaimode alarmed1 attack,
+	setaimode alarmed2 attack,	
+	order alarmed1 goto greensarge1,
+	order alarmed1 follow greensarge1,
+	order alarmed2 goto greensarge1,
+	order alarmed2 follow greensarge1,
+	order ce_runner1 goto greensarge1,
+	order ce_runner1 follow greensarge1,
+	setaimode ce_runner1 attack,
+	triggerdelay 3000 triggeronea
+
+if triggeronea then
+	order cc_sentry_a1 goto greensarge1,
+	order cc_sentry_a2 goto greensarge1,
+	order cc_sentry_a1 follow greensarge1,
+	order cc_sentry_a2 follow greensarge1,
+	setaimode cc_sentry_a1 attack,
+	setaimode cc_sentry_a2 attack,
+	triggerdelay 5000 alarm1a
+
+if alarm1a then 
+	createtrooper "alarmed3" autorifle cc_re1 tan,
+	createtrooper "alarmed4" autorifle cc_re2 tan,
+	setaimode alarmed3 attack,
+	setaimode alarmed4 attack,
+	order alarmed3 goto greensarge1,
+	order alarmed3 follow greensarge1,
+	order alarmed4 goto greensarge1,
+	order alarmed4 follow greensarge1,
+	triggerdelay 5000 wave2b
+
+if wave2b then
+	order cc_patrol_a1 goto greensarge1,
+	order cc_patrol_a2 goto greensarge1,
+	order cc_patrol_a3 goto greensarge1,
+	order cc_patrol_a1 follow greensarge1,
+	order cc_patrol_a2 follow greensarge1,
+	order cc_patrol_a3 follow greensarge1,
+	setaimode cc_patrol_a1 attack,
+	setaimode cc_patrol_a2 attack,
+	setaimode cc_patrol_a3 attack
+
+
+if padon alarm2x then 
+	createtrooper "alarmed5" autorifle as_re3 tan,
+	createtrooper "alarmed6" autorifle as_re4 tan,
+	setaimode alarmed5 attack,
+	setaimode alarmed6 attack,
+	order alarmed5 goto greensarge1,
+	order alarmed5 follow greensarge1,
+	order alarmed6 goto greensarge1,
+	order alarmed6 follow greensarge1,
+	order ce_runner2 goto greensarge1,
+	order ce_runner2 follow greensarge1,
+	triggerdelay 3000 alarm2a
+
+if alarm2a then 
+	createtrooper "alarmed7" flamer as_re3 tan,
+	createtrooper "alarmed8" autorifle as_re4 tan,
+	setaimode alarmed7 attack,
+	setaimode alarmed8 attack,
+	order alarmed7 goto greensarge1,
+	order alarmed7 follow greensarge1,
+	order alarmed8 goto greensarge1,
+	order alarmed8 follow greensarge1
+
+if killed alarmed7 then
+	createpowerup flamer alarmed7 100
+
+if killed alarmed8 then
+	createpowerup medkit alarmed7 
+
+if killed aaoperator1 then
+	createpowerup explosive aaoperator1 5
+if killed aaoperator2 then
+	createpowerup mortar aaoperator2 10
+if killed aaoperator3 then
+	createpowerup medkit aaoperator3 
+if killed aaoperator4 then
+	createpowerup bazooka aaoperator4 10
+
+if hit cc_patrol_a1 by green then
+	setaipose cc_patrol_a1 stand,
+	order cc_patrol_a1 follow greensarge1
+
+if hit cc_patrol_a2 by green then
+	setaipose cc_patrol_a2 stand,
+	order cc_patrol_a2 follow greensarge1
+
+if hit cc_patrol_a3 by green then
+	setaipose cc_patrol_a3 stand,
+	order cc_patrol_a3 follow greensarge1
+
+if hit cc_patrol_b1 by green then
+	setaipose cc_patrol_b1 stand,
+	order cc_patrol_b1 follow greensarge1
+
+if hit cc_patrol_b2 by green then
+	setaipose cc_patrol_b2 stand,
+	order cc_patrol_b2 follow greensarge1
+
+if hit cc_sentry_b1 by green then
+	setaipose cc_sentry_b1 stand,
+	order cc_sentry_b1 follow greensarge1
+
+if hit cc_sentry_b2 by green then
+	setaipose cc_sentry_b2 stand,
+	order cc_sentry_b2 follow greensarge1
+
+if hit as_patrol_a1 by green then
+	setaipose as_patrol_a1 stand,
+	order as_patrol_a1 follow greensarge1
+
+if hit as_patrol_a2 by green then
+	setaipose as_patrol_a2 stand,
+	order as_patrol_a2 follow greensarge1
+
+if hit as_patrol_a3 by green then
+	setaipose as_patrol_a3 stand,
+	order as_patrol_a3 follow greensarge1
+
+if hit as_patrol_b1 by green then
+	setaipose as_patrol_b1 stand,
+	order as_patrol_b1 follow greensarge1
+
+if hit as_patrol_b2 by green then
+	setaipose as_patrol_b2 stand,
+	order as_patrol_b2 follow greensarge1
+
+if hit 8b_patrol_b2 by green then
+	setaipose 8b_patrol_b2 stand,
+	order 8b_patrol_b2 follow greensarge1
+
+if hit as_sentry_a1 by green then
+	setaipose as_sentry_a1 stand,
+	order as_sentry_a1 follow greensarge1
+
+if hit as_sentry_a2 by green then
+	setaipose as_sentry_a2 stand,
+	order as_sentry_a2 follow greensarge1
+
+if hit as_sentry_b1 by green then
+	setaipose as_sentry_b1 stand,
+	order as_sentry_b1 follow greensarge1
+
+if hit as_sentry_c1 by green then
+	setaipose as_sentry_c1 stand,
+	order as_sentry_c1 follow greensarge1
+
+if hit as_sentry_d2 by green then
+	setaipose as_sentry_d2 stand,
+	order as_sentry_d2 follow greensarge1
+
+if hit 8b_sentry_a1 by green then
+	setaipose 8b_sentry_a1 stand,
+	order 8b_sentry_a1 follow greensarge1
+
+if hit 8b_sentry_a2 by green then
+	setaipose 8b_sentry_a2 stand,
+	order 8b_sentry_a2 follow greensarge1
+
+if hit 8b_sentry_b1 by green then
+	setaipose 8b_sentry_b1 stand,
+	order 8b_sentry_b1 follow greensarge1
+
+if hit 8b_sentry_b2 by green then
+	setaipose 8b_sentry_b2 stand,
+	order 8b_sentry_b2 follow greensarge1
+
+if hit aaoperator3 by green then
+	setaipose aaoperator3 stand,
+	order aaoperator3 follow greensarge1
+
+if hit aaoperator4 by green then
+	setaipose aaoperator4 stand,
+	order aaoperator4 follow greensarge1
+
+
+// easter egg 914
+
+variable greenonegg 0
+variable greenGainsEggCount 0
+variable greenKeepsEggCheck 0
+
+if padon easteregg then
+	setvar greenonegg 1,
+    	triggerdelay 20000 checkgreenscores
+
+if padoff easteregg then
+	setvar greenonegg 0
+
+if checkgreenscores then
+	addvar greenKeepsEggCheck 1
+
+if checkgreenscores testvar greenonegg = 1 and greenKeepsEggCheck = 1 then
+	trigger goegggo
+
+if goegggo butnot forRebecca then
+	trigger forRebecca
+if forRebecca then
+	deploy eggman,
+	createexplosion (3012,2133) 133 0 green,
+	createexplosion (2982,2186) 133 0 green,
+	createexplosion (3018,2256) 133 0 green,
+	createexplosion (3099,2276) 133 0 green,
+	createexplosion (3166,2236) 133 0 green,
+	createexplosion (3179,2192) 133 0 green,
+	createexplosion (3171,2143) 133 0 green,
+	playsound "portal2_8Bit.wav" 0 2,
+	heal greensarge1 100,
+	createpowerup "PikaPower" vulcan (2859,2133) -1,
+	createpowerup "HaunterPower" flamer (2841,2210) 99,
+	createpowerup "WampaDance" flak (2867,2281) 99,
+	triggerdelay 1500 byeeggman
+
+if byeeggman then
+	createexplosion (3012,2133) 133 0 green,
+	createexplosion (2982,2186) 133 0 green,
+	createexplosion (3018,2256) 133 0 green,
+	createexplosion (3099,2276) 133 0 green,
+	createexplosion (3166,2236) 133 0 green,
+	createexplosion (3179,2192) 133 0 green,
+	createexplosion (3171,2143) 133 0 green,
+	playsound "portal2_8Bit.wav" 0 2,
+	triggerdelay 400 byeeggy
+if byeeggy then
+	undeploy eggman
+

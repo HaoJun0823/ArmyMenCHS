@@ -1,0 +1,204 @@
+// this gets loaded on the host if the blue army is AI controlled
+
+// maintain a variable which knows when we are on our base pad
+// this is used if we accidentally pickup our own flag and we are already on our base
+variable blueOnBase 0
+
+if padon bluebase then
+	setvar blueOnBase 1
+
+if padoff bluebase then
+	setvar blueOnBase 0
+
+// This variable holds the current action for blue
+// 0 means no action, 1 means goto green flag, 2 means goto tan flag, 3 means goto grey flag,
+// 4 means rescue blue flag, 5 means take flag to base
+variable blueAction 0
+
+if startup1 then
+	triggerdelay 1000 blueChooseNewAction,
+	triggerdelay 2000 blueRegularOrders
+
+if blueChooseNewAction then
+	setvar blueAction 0,
+	trigger blueCheckIfHoldingFlags,
+	trigger blueChooseAction
+
+// if it's time to choose a new action but we are currently holding a flag then we should
+// always choose to take it to a base
+
+if blueCheckIfHoldingFlags testvar hasitem bluesarge1 greenflag1 = 1 then
+	setvar blueAction 5,
+	trigger blueTakeFlagToBase
+	
+if blueCheckIfHoldingFlags testvar hasitem bluesarge1 blueflag1 = 1 then
+	setvar blueAction 5,
+	trigger blueTakeFlagToBase
+	
+if blueCheckIfHoldingFlags testvar hasitem bluesarge1 tanflag1 = 1 then
+	setvar blueAction 5,
+	trigger blueTakeFlagToBase
+	
+if blueCheckIfHoldingFlags testvar hasitem bluesarge1 greyflag1 = 1 then
+	setvar blueAction 5,
+	trigger blueTakeFlagToBase
+	
+// if blue has no current action then pick a random action
+// keep doing this until an action is set
+if blueChooseAction testvar blueAction = 0 then
+	trigger bluePickRandomAction,
+	triggerdelay 1000 blueChooseAction
+
+if bluePickRandomAction then random
+	trigger blueSetCaptureGreen,
+	trigger blueSetCaptureTan,
+	trigger blueSetCaptureGrey
+
+// these events setup the blueAction variable
+
+// before attacking green make sure green is in the game and is not an ally
+if blueSetCaptureGreen testvar IsColorInGame green > 0 and IsAlly blue green = 0 then
+	setvar blueAction 1,
+	trigger blueCaptureGreen,
+	trigger blueStartTimeOut
+
+// before attacking tan make sure tan is in the game and is not an ally
+if blueSetCaptureTan testvar IsColorInGame tan > 0 and IsAlly blue tan = 0 then
+	setvar blueAction 2,
+	trigger blueCaptureTan,
+	trigger blueStartTimeOut
+
+// before attacking grey make sure grey is in the game and is not an ally
+if blueSetCaptureGrey testvar IsColorInGame grey > 0 and IsAlly blue grey = 0 then
+	setvar blueAction 3,
+	trigger blueCaptureGrey,
+	trigger blueStartTimeOut
+
+// these events do the base attack orders
+
+if blueCaptureGreen testvar blueAction = 1 then
+	order bluesarge1 follow greenflag1 inmode attack,
+	order blue group 1 follow bluesarge1 inmode defend,
+	order blue group 2 follow greenflag1 inmode attack,
+	order blue group 3 follow greenflag1 inmode attack
+
+if blueCaptureTan testvar blueAction = 2 then
+	order bluesarge1 follow tanflag1 inmode attack,
+	order blue group 1 follow bluesarge1 inmode defend,
+	order blue group 2 follow tanflag1 inmode attack,
+	order blue group 3 follow tanflag1 inmode attack
+
+if blueCaptureGrey testvar blueAction = 3 then
+	order bluesarge1 follow greyflag1 inmode attack,
+	order blue group 1 follow bluesarge1 inmode defend,
+	order blue group 2 follow greyflag1 inmode attack,
+	order blue group 3 follow greyflag1 inmode attack
+
+// this event is for rescuing our own flag
+if blueRescueBlue testvar blueAction = 4 then
+	order bluesarge1 follow blueflag1 inmode attack,
+	order blue group 1 follow bluesarge1 inmode defend,
+	order blue group 2 follow blueflag1 inmode attack,
+	order blue group 3 follow blueflag1 inmode attack
+
+// this event is for taking an enemy flag to my base
+if blueTakeFlagToBase testvar blueAction = 5 then
+	order bluesarge1 goto bluebase inmode attack,
+	order blue group 1 follow bluesarge1 inmode defend,
+	order blue group 2 goto nearbluebase inmode attack,
+	order blue group 3 goto nearbluebase inmode attack
+
+// these events choose new actions if my flag is captured by an enemy
+
+if pickedup blueflag1 by green testvar isAlly blue green = 0 and blueAction < 5 then
+	setvar blueAction 4,
+	trigger blueRescueBlue
+
+if pickedup blueflag1 by tan testvar isAlly blue tan = 0 and blueAction < 5 then
+	setvar blueAction 4,
+	trigger blueRescueBlue
+
+if pickedup blueflag1 by grey testvar isAlly blue grey = 0 and blueAction < 5 then
+	setvar blueAction 4,
+	trigger blueRescueBlue
+
+// these events choose new actions if I capture an enemy flag
+
+if pickedup greenflag1 by blue then
+	setvar blueAction 5,
+	trigger blueTakeFlagToBase
+
+if pickedup tanflag1 by blue then
+	setvar blueAction 5,
+	trigger blueTakeFlagToBase
+
+if pickedup greyflag1 by blue then
+	setvar blueAction 5,
+	trigger blueTakeFlagToBase
+
+// or if I rescue my own flag
+
+if pickedup blueflag1 by blue testvar blueOnBase = 0 then
+	setvar blueAction 5,
+	trigger blueTakeFlagToBase
+
+if pickedup blueflag1 by blue testvar blueOnBase = 1 then
+	triggerdelay 100 blueDropBlueFlag
+
+if blueDropBlueFlag then
+	dropitem bluesarge1 blueflag1 bflagbase
+
+// these events choose new actions if any other flag is captured by an enemy
+
+if pickedup greenflag1 testvar blueAction < 4 then
+	setvar blueAction 1,
+	trigger blueCaptureGreen
+
+if pickedup tanflag1 testvar blueAction < 4 then
+	setvar blueAction 2,
+	trigger blueCaptureTan
+
+if pickedup greyflag1 testvar blueAction < 4 then
+	setvar blueAction 3,
+	trigger blueCaptureGrey
+
+// these events chose a new action if we get an enemy flag to home base
+
+if padon bluebase then
+    triggerdelay 1000 blueChooseNewAction
+
+// if we get our own flag back to base then drop that too
+
+if padon bluebase testvar hasitem bluesarge1 blueflag1 = 1 then
+	dropitem bluesarge1 blueflag1 bflagbase
+
+// these events choose new actions if a sarge is killed
+
+if killed bluesarge1 then
+	triggerdelay 5000 blueChooseNewAction
+
+// these are the sblueding order regardless of what mode sarge is in
+	
+if blueRegularOrders then
+	order blue group 0 follow bluesarge1 inmode attack,
+	setaimode blue group 4 defend,
+	setaimode blue group 5 defend,
+	order blue group 7 goto bluebase inmode evade,
+	triggerdelay 5000 blueRegularOrders
+
+// timeout code - if mode has not changed for a while then change it
+
+variable blueTimeOutVar 0
+variable blueLastTimeOutVar 1
+
+if blueStartTimeOut then
+    addvar blueTimeOutVar 1,
+	triggerdelay 120000 blueCheckTimeOut
+
+if blueCheckTimeOut testvar blueTimeOutVar = blueLastTimeOutVar then
+    trigger blueChooseNewAction
+
+if blueCheckTimeOut testvar blueTimeOutVar <> blueLastTimeOutVar then
+	addvar blueLastTimeOutVar 1
+
+

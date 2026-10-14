@@ -1,0 +1,107 @@
+// this gets loaded on the host if the tan army is AI controlled
+
+// This variable holds the current action for tan
+// 0 means no action, 1 means goto hill, 2 means get powerups, 3 means defend hill
+variable tanAction 0
+
+if startup1 then
+	triggerdelay 1000 tanChooseNewAction,
+	triggerdelay 2000 tanRegularOrders
+
+if tanChooseNewAction then
+	setvar tanAction 0,
+	trigger tanCheckIfOnHill,
+	trigger tanCheckIfHillEmpty,
+	trigger tanChoseAction
+
+// if it's time to choose a new action but we are currently owning the hill then
+// we should always stay on the hill
+
+if tanCheckIfOnHill testvar hillowner = 2 then
+	trigger tanDefendHill
+	
+// if it's time to choose a new action and the hill is not owned then head straight for it
+
+if tanCheckIfHillEmpty testvar hillowner = 0 then
+	trigger tanGotoHill
+	
+// if tan has no current action then pick an action
+// ideally we would base this on how well armed we are
+if tanChooseAction testvar tanAction = 0 then
+	trigger tanPickRandomAction,
+	triggerdelay 1000 tanChooseAction
+
+if tanPickRandomAction then random
+	trigger tanGotoHill,
+	trigger tanGetPowerUps
+
+// these events setup the tanAction variable and do the actions
+
+if tanGotoHill then
+	setvar tanAction 1,
+	order tansarge1 goto tanhill inmode attack,
+	order tan group 1 follow tansarge1 inmode defend,
+	order tan group 2 goto tanhill inmode attack,
+	order tan group 3 goto tanhill inmode attack,
+	order tan group 4 goto tanhill inmode attack,
+	order tan group 5 goto tanhill inmode attack,
+	order tan group 0 goto tanhill inmode attack,
+	trigger tanStartTimeOut
+
+if tanGetPowerUps then
+	setvar tanAction 2,
+	order tansarge1 goto tanhill inmode attack,
+	order tan group 1 follow tansarge1 inmode defend,
+	order tan group 2 goto tanhill inmode attack,
+	order tan group 3 goto tanhill inmode attack,
+	order tan group 4 goto tanhill inmode attack,
+	order tan group 5 goto tanhill inmode attack,
+	order tan group 0 goto tanhill inmode attack,
+	trigger tanStartTimeOut
+
+if tanDefendHill then
+	setvar tanAction 3,
+	order tansarge1 goto tanhill inmode attack,
+	order tan group 1 follow tansarge1 inmode defend,
+	order tan group 2 goto tanhill inmode defend,
+	order tan group 3 goto tanhill inmode defend,
+	order tan group 4 goto tanhill inmode defend,
+	order tan group 5 goto tanhill inmode defend,
+	order tan group 0 goto tanhill inmode defend,
+	trigger tanStartTimeOut
+
+// these events chose a new action if we get on the hill
+
+if hillOwnerChanged testvar hillowner = 2 then
+    trigger tanDefendHill
+
+if hillOwnerChanged testvar hillowner <> 0 then
+    trigger tanGotoHill
+
+// these events choose new actions if a sarge is killed
+
+if killed tansarge1 then
+	triggerdelay 5000 tanGetPowerups
+
+// these are the standing order regardless of what mode sarge is in
+	
+if tanRegularOrders then
+	order tan group 7 goto tanbase inmode evade,
+	triggerdelay 5000 tanRegularOrders
+
+// timeout code - if mode has not changed for a while then change it
+
+variable tanTimeOutVar 0
+variable tanLastTimeOutVar 1
+
+if tanStartTimeOut then
+    addvar tanTimeOutVar 1,
+	triggerdelay 120000 tanCheckTimeOut
+
+if tanCheckTimeOut testvar tanTimeOutVar = tanLastTimeOutVar then
+    trigger tanChooseNewAction
+
+if tanCheckTimeOut testvar tanTimeOutVar <> tanLastTimeOutVar then
+	addvar tanLastTimeOutVar 1
+
+

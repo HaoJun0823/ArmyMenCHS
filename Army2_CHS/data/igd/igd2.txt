@@ -1,0 +1,1084 @@
+// map design and scripting by Alvin Muolic
+// Island Of The Insane Grey Doctor - Mission 2
+// version 2.0
+// Ever wonder what happens to the parts and pieces of fallen Army Men?
+
+if startup2 then
+	trigger m2,
+	playsound "map7mission2hq.wav" 0 1,
+	triggerdelay 6000 igdzax1,
+	undeploy dg1,
+	undeploy dg2,
+	undeploy dg3,
+	undeploy dg4,
+	undeploy dg5,
+	undeploy dg6,
+	deploy generator1,
+	deploy generator2,
+	deploy generator3,
+	deploy generator4,
+	deploy generator5,
+	deploy generator6,
+	playsound "generatorHum_8Bit.wav" generator1 1 0 1,
+	playsound "generatorHum_8Bit.wav" generator2 2 0 1,
+	playsound "generatorHum_8Bit.wav" generator3 3 0 1,
+	playsound "generatorHum_8Bit.wav" generator4 4 0 1,
+	playsound "generatorHum_8Bit.wav" generator5 5 0 1,
+	playsound "generatorHum_8Bit.wav" generator6 6 0 1,
+	setbriefing "map07_2.bmp",
+	triggerdelay 10 showbrief2x,
+	createtrooper "assassin1" autorifle (408,3468) grey,
+	createtrooper "assassin2" autorifle (184,3463) grey,
+	createtrooper "assassin3" autorifle (390,3489) grey,
+	addexp assassin1 180,
+	addexp assassin2 180,
+	addexp assassin3 180,
+	order assassin1 follow old_man,
+	order assassin2 follow old_man,	
+	order assassin3 follow old_man,
+	createtrooper "zombie80" rifle (2324,1730) grey,
+	setzombie zombie80,
+	createtrooper "zombie81" rifle (2256,1507) grey,
+	setzombie zombie81,
+	createtrooper "zombie82" rifle (2557,1638) grey,
+	setzombie zombie82,
+	createtrooper "zombie83" rifle (2357,1554) grey,
+	setzombie zombie83,
+	createtrooper "zombie84" rifle (2509,1414) grey,
+	setzombie zombie84,
+	trigger mission2,
+	createtrooper "zombie65" rifle (1484,1438) grey,
+	setfacing zombie65 140,
+	setzombie zombie65,
+	createtrooper "zombie66" rifle (1141,1322) grey,
+	setfacing zombie66 140,
+	setzombie zombie66,
+	createtrooper "zombie67" rifle (1285,1242) grey,
+	setfacing zombie67 64,
+	setzombie zombie67,
+	createtrooper "zombie68" rifle (1321,941) grey,
+	setfacing zombie68 128,
+	setzombie zombie68,
+	createtrooper "zombie69" rifle (1433,885) grey,
+	setfacing zombie69 128,
+	setzombie zombie69,
+	trigger moldy,
+//	triggerdelay 300000 assassins3,
+	triggerdelay 150000 assassins2
+
+if igdzax1 then
+	playsound "map7mission1doctor4.wav" 9 0
+
+if showbrief2x then
+     	showpda "找到并摧毁所有僵尸制造机的发电机。"
+
+if assassins2 then
+	createtrooper "assassin4" autorifle (408,3468) grey,
+	createtrooper "assassin5" autorifle (184,3463) grey,
+	createtrooper "assassin6" autorifle (390,3489) grey,
+	addexp assassin4 180,
+	addexp assassin5 180,
+	addexp assassin6 180,
+	order assassin4 follow old_man,
+	order assassin5 follow old_man,	
+	order assassin6 follow old_man
+
+if assassins3 then
+	createtrooper "assassin7" vulcan (3163,3221) grey,
+	createtrooper "assassin8" bazooka (3155,3420) grey,
+	createtrooper "assassin9" bazooka (3225,3390) grey,
+	order assassin7 follow old_man,
+	order assassin8 follow old_man,	
+	order assassin9 follow old_man
+
+if moldy then
+	setobjstate belt belt_initial,
+	setobjstate mulcher mulcher_initial,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldy2
+
+if moldstop then
+	setobjstate mold1 mold1_stopped,
+	setobjstate mold2 mold2_stopped,
+	setobjstate mold3 mold3_stopped,
+	setobjstate mold4 mold4_stopped
+if goopstop then	
+	setobjstate goop1 goop1stop,
+	setobjstate goop2 goop2stop
+
+if moldy2 then
+	createtrooper "moldman1" rifle zmold1 grey,
+	addexp moldman1 40,
+	setzombie moldman1,
+	order moldman1 follow old_man,
+	createtrooper "moldman2" rifle zmold2 grey,
+	addexp moldman2 40,
+	setzombie moldman2,
+	order moldman2 follow old_man,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldy3
+
+if moldy3 then
+	createtrooper "moldman3" rifle zmold1 grey,
+	addexp moldman3 40,
+	setzombie moldman3,
+	order moldman3 goto wp3,
+	createtrooper "moldman4" rifle zmold2 grey,
+	addexp moldman4 40,
+	setzombie moldman4,
+	order moldman4 goto wp4,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldy4
+
+if moldy4 then
+	createtrooper "moldman5" rifle zmold1 grey,
+	addexp moldman5 40,
+	setzombie moldman5,
+	order moldman5 goto wp5,
+	createtrooper "moldman6" rifle zmold2 grey,
+	addexp moldman6 40,
+	setzombie moldman6,
+	order moldman6 goto wp6,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0, 
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldy5
+
+if moldy5 then
+	createtrooper "moldman7" rifle zmold1 grey,
+	addexp moldman7 40,
+	setzombie moldman7,
+	order moldman7 goto wp7,
+	createtrooper "moldman8" rifle zmold2 grey,
+	addexp moldman8 40,
+	setzombie moldman8,
+	order moldman8 goto wp8,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldy6
+
+if moldy6 then
+	createtrooper "moldman9" rifle zmold1 grey,
+	addexp moldman9 40,
+	setzombie moldman9,
+	order moldman9 goto wp9,
+	createtrooper "moldman10" rifle zmold2 grey,
+	addexp moldman10 40,
+	setzombie moldman10,
+	order moldman10 goto wp10,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldy6extra
+if moldy6extra then
+	createtrooper "moldman11" rifle zmold1 grey,
+	addexp moldman11 40,
+	setzombie moldman11,
+	order moldman11 goto wp11,
+	createtrooper "moldman12" rifle zmold2 grey,
+	addexp moldman12 40,
+	setzombie moldman12,
+	order moldman12 goto wp12,
+	triggerdelay 30000 zwave1x
+
+if zwave1x then
+	order moldman3 follow greensarge1,
+	order moldman4 follow greensarge1,
+	order moldman5 follow greensarge1,
+	order moldman6 follow greensarge1,
+	order moldman7 follow greensarge1,
+	order moldman8 follow greensarge1,
+	order moldman9 follow greensarge1,
+	order moldman10 follow greensarge1,
+	order moldman11 follow greensarge1,
+	order moldman12 follow greensarge1,
+	playsound "map7mission1doctor4.wav" 9 0
+
+if allof killed moldman1 killed moldman2 killed moldman3 killed moldman4 killed moldman5 killed moldman6 killed moldman7 killed moldman8 killed moldman9 killed moldman10 killed moldman11 killed moldman12 butnot moldoff then 
+	playsound "OhBoy.wav" 16 0,
+	trigger moldyness
+
+if killed generator1 then
+	playsound "" generator1 1 0,
+	makesmoke generator1
+if killed generator2 then
+	playsound "" generator2 2 0,
+	makesmoke generator2
+if killed generator3 then
+	playsound "" generator3 3 0,
+	makesmoke generator3
+if killed generator4 then
+	playsound "" generator4 4 0,
+	makesmoke generator4
+if killed generator5 then
+	playsound "" generator5 5 0,
+	makesmoke generator5
+if killed generator6 then
+	playsound "" generator6 6 0,
+	makesmoke generator6,
+	trigger portbye
+
+if portbye butnot portaway then
+	trigger portaway
+
+if killed generator1 killed generator2 killed generator3 killed generator4 killed generator5 killed generator6 then
+	playsound "GenStutDown.wav" 16 0
+
+if allof killed generator1 killed generator2 killed generator3 killed generator4 killed generator5 killed generator6 then
+	playsound "GeneratorsDown.wav" 16 0,
+	trigger moldoff,
+	setobjstate belt belt_stopped,
+	setobjstate mulcher mulcher_stopped,
+	setobjstate mold1 mold1_stopped,
+	setobjstate mold2 mold2_stopped,
+	setobjstate mold3 mold3_stopped,
+	setobjstate mold4 mold4_stopped,
+	setnpc old_man 1,
+	undeploy old_man,
+	triggerdelay 1000 youbeatthedoc
+
+if youbeatthedoc then
+	showpda "干得好，中士，我们已经阻止了博士。",
+	triggerdelay 10 petertestgreenwins
+
+if moldyness then
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyness2
+
+if moldyness2 then
+	createtrooper "moldman1x" rifle zmold1 grey,
+	addexp moldman1x 40,
+	setzombie moldman1x,
+	order moldman1x follow old_man,
+	createtrooper "moldman2x" rifle zmold2 grey,
+	addexp moldman2x 40,
+	setzombie moldman2x,
+	order moldman2x follow old_man,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyness3
+
+if moldyness3 then
+	createtrooper "moldman3x" rifle zmold1 grey,
+	addexp moldman3x 40,
+	setzombie moldman3x,
+	order moldman3x follow greensarge1,
+	createtrooper "moldman4x" rifle zmold2 grey,
+	addexp moldman4x 40,
+	setzombie moldman4x,
+	order moldman4x follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyness4
+
+if moldyness4 then
+	createtrooper "moldman5x" rifle zmold1 grey,
+	addexp moldman5x 40,
+	setzombie moldman5x,
+	order moldman5x follow greensarge1,
+	createtrooper "moldman6x" rifle zmold2 grey,
+	addexp moldman6x 40,
+	setzombie moldman6x,
+	order moldman6x follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyness5
+
+if moldyness5 then
+	createtrooper "moldman7x" rifle zmold1 grey,
+	addexp moldman7x 40,
+	setzombie moldman7x,
+	order moldman7x follow old_man,
+	createtrooper "moldman8x" rifle zmold2 grey,
+	addexp moldman8x 40,
+	setzombie moldman8x,
+	order moldman8x follow old_man,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyness6
+
+if moldyness6 then
+	createtrooper "moldman9x" rifle zmold1 grey,
+	addexp moldman9x 40,
+	setzombie moldman9x,
+	order moldman9x follow greensarge1,
+	createtrooper "moldman10x" rifle zmold2 grey,
+	addexp moldman10x 40,
+	setzombie moldman10x,
+	order moldman10x follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyness6extra
+if moldyness6extra then
+	createtrooper "moldman11x" rifle zmold1 grey,
+	addexp moldman11x 40,
+	setzombie moldman11x,
+	order moldman11x follow greensarge1,
+	createtrooper "moldman12x" rifle zmold2 grey,
+	addexp moldman12x 40,
+	setzombie moldman12x,
+	order moldman12x follow greensarge1
+
+if allof killed moldman1x killed moldman2x killed moldman3x killed moldman4x killed moldman5x killed moldman6x killed moldman7x killed moldman8x killed moldman9x killed moldman10x killed moldman11x killed moldman12x butnot moldoff then 
+	playsound "HowDoWe.wav" 16 0,
+	trigger moldymess
+
+if moldymess then
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldymess2
+
+if moldymess2 then
+	createtrooper "moldman1y" rifle zmold1 grey,
+	addexp moldman1y 100,
+	setzombie moldman1y,
+	order moldman1y follow old_man,
+	createtrooper "moldman2y" rifle zmold2 grey,
+	addexp moldman2y 100,
+	setzombie moldman2y,
+	order moldman2y follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldymess3
+
+if moldymess3 then
+	createtrooper "moldman3y" rifle zmold1 grey,
+	addexp moldman3y 100,
+	setzombie moldman3y,
+	order moldman3y follow greensarge1,
+	createtrooper "moldman4y" rifle zmold2 grey,
+	addexp moldman4y 100,
+	setzombie moldman4y,
+	order moldman4y follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldymess4
+
+if moldymess4 then
+	createtrooper "moldman5y" rifle zmold1 grey,
+	addexp moldman5y 100,
+	setzombie moldman5y,
+	order moldman5y follow greensarge1,
+	createtrooper "moldman6y" rifle zmold2 grey,
+	addexp moldman6y 100,
+	setzombie moldman6y,
+	order moldman6y follow old_man,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldymess5
+
+if moldymess5 then
+	createtrooper "moldman7y" rifle zmold1 grey,
+	addexp moldman7y 100,
+	setzombie moldman7y,
+	order moldman7y follow greensarge1,
+	createtrooper "moldman8y" rifle zmold2 grey,
+	addexp moldman8y 100,
+	setzombie moldman8y,
+	order moldman8y follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldymess6
+
+if moldymess6 then
+	createtrooper "moldman9y" rifle zmold1 grey,
+	addexp moldman9y 100,
+	setzombie moldman9y,
+	order moldman9y follow greensarge1,
+	createtrooper "moldman10y" rifle zmold2 grey,
+	addexp moldman10y 100,
+	setzombie moldman10y,
+	order moldman10y follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldymess6extra
+if moldymess6extra then
+	createtrooper "moldman11y" rifle zmold1 grey,
+	addexp moldman11y 100,
+	setzombie moldman11y,
+	order moldman11y follow greensarge1,
+	createtrooper "moldman12y" rifle zmold2 grey,
+	addexp moldman12y 100,
+	setzombie moldman12y,
+	order moldman12y follow greensarge1
+
+if allof killed moldman1y killed moldman2y killed moldman3y killed moldman4y killed moldman5y killed moldman6y killed moldman7y killed moldman8y killed moldman9y killed moldman10y killed moldman11y killed moldman12y butnot moldoff then 
+	playsound "HowStopThis.wav" 16 0,
+	trigger moldyoldy
+
+if moldyoldy then
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyoldy2
+
+if moldyoldy2 then
+	createtrooper "moldman1z" rifle zmold1 grey,
+	addexp moldman1z 100,
+	setzombie moldman1z,
+	order moldman1z follow greensarge1,
+	createtrooper "moldman2z" rifle zmold2 grey,
+	addexp moldman2z 100,	
+	setzombie moldman2z,
+	order moldman2z follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyoldy3
+
+if moldyoldy3 then
+	createtrooper "moldman3z" rifle zmold1 grey,
+	addexp moldman3z 100,
+	setzombie moldman3z,
+	order moldman3z follow greensarge1,
+	createtrooper "moldman4z" rifle zmold2 grey,
+	addexp moldman4z 100,	
+	setzombie moldman4z,
+	order moldman4z follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyoldy4
+
+if moldyoldy4 then
+	createtrooper "moldman5z" rifle zmold1 grey,
+	addexp moldman5z 100,
+	setzombie moldman5z,
+	order moldman5z follow greensarge1,
+	createtrooper "moldman6z" rifle zmold2 grey,
+        addexp moldman6z 100,
+	setzombie moldman6z,
+	order moldman6z follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyoldy5
+
+if moldyoldy5 then
+	createtrooper "moldman7z" rifle zmold1 grey,
+	addexp moldman7z 100,
+	setzombie moldman7z,
+	order moldman7z follow greensarge1,
+	createtrooper "moldman8z" rifle zmold2 grey,
+	addexp moldman8z 100,	
+	setzombie moldman8z,
+	order moldman8z follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyoldy6
+
+if moldyoldy6 then
+	createtrooper "moldman9z" rifle zmold1 grey,
+	addexp moldman9z 100,
+	setzombie moldman9z,
+	order moldman9z follow greensarge1,
+	createtrooper "moldman10z" rifle zmold2 grey,
+	addexp moldman10z 100,	
+	setzombie moldman10z,
+	order moldman10z follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyoldy6extra
+if moldyoldy6extra then
+	createtrooper "moldman11z" rifle zmold1 grey,
+	addexp moldman11z 100,	
+	setzombie moldman11z,
+	order moldman11z follow greensarge1,
+	createtrooper "moldman12z" rifle zmold2 grey,
+	addexp moldman12z 100,
+	setzombie moldman12z,
+	order moldman12z follow greensarge1
+
+if allof killed moldman1z killed moldman2z killed moldman3z killed moldman4z killed moldman5z killed moldman6z killed moldman7z killed moldman8z killed moldman9z killed moldman10z killed moldman11z killed moldman12z butnot moldoff then 
+	playsound "Can_tMakeIt.wav" 9 0,
+	trigger moldyboldy
+
+// b
+
+if moldyboldy then
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyboldy2
+
+if moldyboldy2 then
+	createtrooper "moldman1b" rifle zmold1 grey,
+	addexp moldman1b 180,
+	setzombie moldman1b,
+	order moldman1b follow greensarge1,
+	createtrooper "moldman2b" rifle zmold2 grey,
+	addexp moldman2b 180,
+	setzombie moldman2b,
+	order moldman2b follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyboldy3
+
+if moldyboldy3 then
+	createtrooper "moldman3b" rifle zmold1 grey,
+	addexp moldman3b 180,
+	setzombie moldman3b,
+	order moldman3b follow greensarge1,
+	createtrooper "moldman4b" rifle zmold2 grey,
+	addexp moldman4b 180,
+	setzombie moldman4b,
+	order moldman4b follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyboldy4
+
+if moldyboldy4 then
+	createtrooper "moldman5b" rifle zmold1 grey,
+	addexp moldman5b 180,
+	setzombie moldman5b,
+	order moldman5b follow greensarge1,
+	createtrooper "moldman6b" rifle zmold2 grey,
+	addexp moldman6b 180,
+        setzombie moldman6b,
+	order moldman6b follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyboldy5
+
+if moldyboldy5 then
+	createtrooper "moldman7b" rifle zmold1 grey,
+	addexp moldman7b 180,
+	setzombie moldman7b,
+	order moldman7b follow greensarge1,
+	createtrooper "moldman8b" rifle zmold2 grey,
+	addexp moldman8b 180,
+	setzombie moldman8b,
+	order moldman8b follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyboldy6
+
+if moldyboldy6 then
+	createtrooper "moldman9b" rifle zmold1 grey,
+	addexp moldman9b 180,
+	setzombie moldman9b,
+	order moldman9b follow greensarge1,
+	createtrooper "moldman10b" rifle zmold2 grey,
+	addexp moldman10b 180,
+	setzombie moldman10b,
+	order moldman10b follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldyboldy6extra
+if moldyboldy6extra then
+	createtrooper "moldman11b" rifle zmold1 grey,
+	addexp moldman11b 180,
+	setzombie moldman11b,
+	order moldman11b follow greensarge1,
+	createtrooper "moldman12b" rifle zmold2 grey,
+	addexp moldman12b 180,
+	setzombie moldman12b,
+	order moldman12b follow greensarge1
+
+if allof killed moldman1b killed moldman2b killed moldman3b killed moldman4b killed moldman5b killed moldman6b killed moldman7b killed moldman8b killed moldman9b killed moldman10b killed moldman11b killed moldman12b butnot moldoff then 
+	playsound "ZOMBIE_8Bit.wav" 7 0,
+	trigger moldycoldy
+
+// c
+
+if moldycoldy then
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldycoldy2
+
+if moldycoldy2 then
+	createtrooper "moldman1c" rifle zmold1 grey,
+	addexp moldman1c 460,
+	setmaxhealth moldman1c 200,
+	heal moldman1c 100,
+	setzombie moldman1c,
+	order moldman1c follow greensarge1,
+	createtrooper "moldman2c" rifle zmold2 grey,
+	addexp moldman2c 460,
+	setmaxhealth moldman2c 200,
+	heal moldman2c 100,
+	setzombie moldman2c,
+	order moldman2c follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldycoldy3
+
+if moldycoldy3 then
+	createtrooper "moldman3c" rifle zmold1 grey,
+	addexp moldman3c 460,
+	setmaxhealth moldman3c 200,
+	heal moldman3c 100,
+	setzombie moldman3c,
+	order moldman3c follow greensarge1,
+	createtrooper "moldman4c" rifle zmold2 grey,
+	addexp moldman4c 460,
+	setmaxhealth moldman4c 200,
+	heal moldman4c 100,
+	setzombie moldman4c,
+	order moldman4c follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldycoldy4
+
+if moldycoldy4 then
+	createtrooper "moldman5c" rifle zmold1 grey,
+	addexp moldman5c 460,
+	setmaxhealth moldman5c 200,
+	heal moldman5c 100,
+	setzombie moldman5c,
+	order moldman5c follow greensarge1,
+	createtrooper "moldman6c" rifle zmold2 grey,
+	addexp moldman6c 460,
+	setmaxhealth moldman6c 200,
+	heal moldman6c 100,
+        setzombie moldman6c,
+	order moldman6c follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldycoldy5
+
+if moldycoldy5 then
+	createtrooper "moldman7c" rifle zmold1 grey,
+	addexp moldman7c 460,
+	setmaxhealth moldman7c 200,
+	heal moldman7c 100,
+	setzombie moldman7c,
+	order moldman7c follow greensarge1,
+	createtrooper "moldman8c" rifle zmold2 grey,
+	addexp moldman8c 460,
+	setmaxhealth moldman8c 200,
+	heal moldman8c 100,
+	setzombie moldman8c,
+	order moldman8c follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldycoldy6
+
+if moldycoldy6 then
+	createtrooper "moldman9c" rifle zmold1 grey,
+	addexp moldman9c 460,
+	setmaxhealth moldman9c 200,
+	heal moldman9c 100,
+	setzombie moldman9c,
+	order moldman9c follow greensarge1,
+	createtrooper "moldman10c" rifle zmold2 grey,
+	addexp moldman10c 460,
+	setmaxhealth moldman10c 200,
+	heal moldman10c 100,
+	setzombie moldman10c,
+	order moldman10c follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldycoldy6extra
+if moldycoldy6extra then
+	createtrooper "moldman11c" rifle zmold1 grey,
+	addexp moldman11c 460,
+	setmaxhealth moldman11c 200,
+	heal moldman11c 100,
+	setzombie moldman11c,
+	order moldman11c follow greensarge1,
+	createtrooper "moldman12c" rifle zmold2 grey,
+	addexp moldman12c 460,
+	setmaxhealth moldman12c 200,
+	heal moldman12c 100,
+	setzombie moldman12c,
+	order moldman12c follow greensarge1
+
+if allof killed moldman1c killed moldman2c killed moldman3c killed moldman4c killed moldman5c killed moldman6c killed moldman7c killed moldman8c killed moldman9c killed moldman10c killed moldman11c killed moldman12c butnot moldoff then 
+	playsound "ZOMBIE_8Bit.wav" 7 0,
+	trigger moldydoldy
+
+// d
+
+if moldydoldy then
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldydoldy2
+
+if moldydoldy2 then
+	createtrooper "moldman1d" rifle zmold1 grey,
+	addexp moldman1d 1000,
+	setmaxhealth moldman1d 1000,
+	heal moldman1d 100,
+	setzombie moldman1d,
+	order moldman1d follow greensarge1,
+	createtrooper "moldman2d" rifle zmold2 grey,
+	addexp moldman2d 1000,
+	setmaxhealth moldman2d 1000,
+	heal moldman2d 100,
+	setzombie moldman2d,
+	order moldman2d follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldydoldy3
+
+if moldydoldy3 then
+	createtrooper "moldman3d" rifle zmold1 grey,
+	addexp moldman3d 1000,
+	setmaxhealth moldman3d 1000,
+	heal moldman3d 100,
+	setzombie moldman3d,
+	order moldman3d follow greensarge1,
+	createtrooper "moldman4d" rifle zmold2 grey,
+	addexp moldman4d 1000,
+	setmaxhealth moldman4d 1000,
+	heal moldman4d 100,
+	setzombie moldman4d,
+	order moldman4d follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldydoldy4
+
+if moldydoldy4 then
+	createtrooper "moldman5d" rifle zmold1 grey,
+	addexp moldman5d 1000,
+	setmaxhealth moldman5d 1000,
+	heal moldman5d 100,
+	setzombie moldman5d,
+	order moldman5d follow greensarge1,
+	createtrooper "moldman6d" rifle zmold2 grey,
+	addexp moldman6d 1000,
+	setmaxhealth moldman6d 1000,
+	heal moldman6d 100,
+        setzombie moldman6d,
+	order moldman6d follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldydoldy5
+
+if moldydoldy5 then
+	createtrooper "moldman7d" rifle zmold1 grey,
+	addexp moldman7d 1000,
+	setmaxhealth moldman7d 1000,
+	heal moldman7d 100,
+	setzombie moldman7d,
+	order moldman7d follow greensarge1,
+	createtrooper "moldman8d" rifle zmold2 grey,
+	addexp moldman8d 1000,
+	setmaxhealth moldman8d 1000,
+	heal moldman8d 100,
+	setzombie moldman8d,
+	order moldman8d follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldydoldy6
+
+if moldydoldy6 then
+	createtrooper "moldman9d" rifle zmold1 grey,
+	addexp moldman9d 1000,
+	setmaxhealth moldman9d 1000,
+	heal moldman9d 100,
+	setzombie moldman9d,
+	order moldman9d follow greensarge1,
+	createtrooper "moldman10d" rifle zmold2 grey,
+	addexp moldman10d 1000,
+	setmaxhealth moldman10d 1000,
+	heal moldman10d 100,
+	setzombie moldman10d,
+	order moldman10d follow greensarge1,
+	setobjstate mold1 mold1_initial,
+	setobjstate mold2 mold2_initial,
+	setobjstate mold3 mold3_initial,
+	setobjstate mold4 mold4_initial,
+	setobjstate goop1 goop1go,
+	setobjstate goop2 goop2go,
+	playsound "map7mission1doctor3a.wav" 9 0,
+	triggerdelay 6400 moldstop,
+	triggerdelay 4100 goopstop,
+	triggerdelay 6800 moldydoldy6extra
+if moldydoldy6extra then
+	createtrooper "moldman11d" rifle zmold1 grey,
+	addexp moldman11d 1000,
+	setmaxhealth moldman11d 1000,
+	heal moldman11d 100,
+	setzombie moldman11d,
+	order moldman11d follow old_man,
+	createtrooper "moldman12d" rifle zmold2 grey,
+	addexp moldman12d 1000,
+	setmaxhealth moldman12d 1000,
+	heal moldman12d 100,
+	setzombie moldman12d,
+	order moldman12d follow old_man

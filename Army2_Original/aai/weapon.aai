@@ -1,0 +1,57 @@
+# Weapon Default Table
+# weapontype        Rec     Vel     ZVel    MxRng   MnRng   MxAmmo  AF      HDam    EDam    Respawn Prob    RndAmm
+
+NoWeapon            0       0       0       0       0       0       False   0       0       False   0       0
+TrooperRifle        600     500     0       300     0       -1      False   3       0       True    0       0
+Grenade             500     190     210     215     90      30      False   4      35       True    7       20
+Flamer              150     90      0       140     20      99      True    2       0       True    4       40
+Bazooka             1200    400     0       400     0       20      False   30     20       True    6       20
+
+Mortar              1500    280	    400     540     200     20      False   90     40       True    5       20
+LargeCannon         1000    400     0       400     0       80      False   30     20       True    0       30
+MediumMG            250     500     0       260     0       -1      True    6       0       False   0       -1
+HeavyMG             300     500     0       280     0       -1      True    8       0       False   1       -1
+Rifle               250     500     0       250     0       -1      False   5       0       False   0       0
+
+AutoRifle           250     500     0       250     0       -1      True    5       0       False   0       0
+Mine                0       0       0       0       0       30      False   30      0       True    5       20
+Explosive           0       0       0       0       0       10      False   150     0       True    3       6
+Detonator           0       0       0       0       0       10      False   0       0       True    0       0
+HotTarget           0       0       0       0       0       0       False   0       0       True    0       0
+
+Flag                0       0       0       0       0       0       False   0       0       False   0       0
+GreenFlag           0       0       0       0       0       0       False   0       0       False   0       0
+TanFlag             0       0       0       0       0       0       False   0       0       False   0       0
+GreyFlag            0       0       0       0       0       0       False   0       0       False   0       0
+BlueFlag            0       0       0       0       0       0       False   0       0       False   0       0
+
+Sweeper             0       0       0       100     0       1       False   0       0       False   0       0
+GuardTowerRifle     0       0       0       0       0       -1      False   0       0       False   0       -1
+MedKit              0       0       0       0       0       0       False   50      0       True    5       1
+MedPack             0       0       0       200     0       9       False   100     0       True    5       4
+Airstrike           1000    0       0       0       0       3       False   0       0       True    1       2
+
+Paratrooper         1000    0       0       0       0       3       False   0       0       True    1       2
+Recon               1000    0       0       0       0       6       False   0       0       True    8       3
+Note                0       0       0       0       0       0       False   0       0       True    0       0
+FlakJacket          0       0       0       0       0       99      False   50      0       True    4       80
+Vulcan              200     700     0       280     0       -1      True    8       0       False   1       -1
+
+Sniper              1000    1000    0       540     0       20      False   20      0       True    2       15
+VehicleAmmo         0       0       0       0       0       0       False   0       0       True    0       10
+VehicleArmor        0       0       0       0       0       0       False   0       0       True    0       10
+VehicleNitro        0       0       0       0       0       0       False   0       0       True    0       10
+Camouflage          0       0       0       0       0       0       False   0       0       True    0       0
+
+DisguiseGreen       0       0       0       200     0       9       False   0       0       True    1       2
+DisguiseTan         0       0       0       200     0       9       False   0       0       True    1       2
+DisguiseBlue        0       0       0       200     0       9       False   0       0       True    1       2
+DisguiseGrey        0       0       0       200     0       9       False   0       0       True    1       2
+Magnifying          200     0       0       9999    0       90      True    7       0       True    1       30
+
+Aerosol             200     0       0       9999    0       30      True    9       0       True    1       15
+Wrench              0       0       0       200     0       6       False   100     0       True    1       5
+M80                 0       0       0       240     0       30      False   100     0       True    2       2
+ZombieHands         500     0       0       32      0       -1      False   20      0       False   0       0
+
+# weapontype        Rec     Vel     ZVel    MxRng   MnRng   MxAmmo  AF      HDam    EDam

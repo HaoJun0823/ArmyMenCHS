@@ -1,0 +1,119 @@
+// This variable holds the current action for blue
+// 0 means no action, 1 means attack green, 2 means attack tan, 3 means attack grey,
+// 4 means follow black flag
+variable blueAction 0
+
+if startup1 then
+	triggerdelay 1000 blueChooseNewAction,
+	triggerdelay 2000 blueRegularOrders
+
+if blueChooseNewAction then
+	setvar blueAction 0,
+	trigger blueChooseAction
+
+// if blue has no current action then pick a random action
+// keep doing this until an action is set
+if blueChooseAction testvar blueAction = 0 and hasitem bluesarge1 blackflag1 = 1 then
+	trigger bluePickRandomAction,
+	triggerdelay 1000 blueChooseAction
+
+if blueChooseAction testvar blueAction = 0 and hasitem bluesarge1 blackflag1 = 0 then
+	trigger blueFollowBlackFlag
+
+if bluePickRandomAction then random
+	trigger blueSetAttackGreen,
+	trigger blueSetAttackTan,
+	trigger blueSetAttackGrey
+
+// these events setup the blueAction variable
+
+// before attacking green make sure green is in the game and is not an ally
+if blueSetAttackGreen testvar IsColorInGame green > 0 and IsAlly blue green = 0 then
+	setvar blueAction 1,
+	trigger blueAttackGreen,
+	trigger startTimeOut
+
+// before attacking tan make sure tan is in the game and is not an ally
+if blueSetAttackTan testvar IsColorInGame tan > 0 and IsAlly blue tan = 0 then
+	setvar blueAction 2,
+	trigger blueAttackTan,
+	trigger startTimeOut
+
+// before attacking grey make sure grey is in the game and is not an ally
+if blueSetAttackGrey testvar IsColorInGame grey > 0 and IsAlly blue grey = 0 then
+	setvar blueAction 3,
+	trigger blueAttackGrey,
+	trigger startTimeOut
+
+// these events do the actual attack orders
+
+if blueAttackGreen testvar blueAction = 1 then
+	order bluesarge1 follow greensarge1 inmode attack,
+	order blue group 1 follow bluesarge1 inmode defend,
+	order blue group 2 follow greensarge1 inmode attack,
+	order blue group 3 follow greensarge1 inmode attack,
+	order blue group 4 follow greensarge1 inmode attack,
+	order blue group 5 follow greensarge1 inmode attack,
+	order blue group 0 follow greensarge1 inmode attack
+
+if blueAttackTan testvar blueAction = 2 then
+	order bluesarge1 follow tansarge1 inmode attack,
+	order blue group 1 follow bluesarge1 inmode defend,
+	order blue group 2 follow tansarge1 inmode attack,
+	order blue group 3 follow tansarge1 inmode attack,
+	order blue group 4 follow tansarge1 inmode attack,
+	order blue group 5 follow tansarge1 inmode attack,
+	order blue group 0 follow tansarge1 inmode attack
+
+if blueAttackGrey testvar blueAction = 3 then
+	order bluesarge1 follow greysarge1 inmode attack,
+	order blue group 1 follow bluesarge1 inmode defend,
+	order blue group 2 follow greysarge1 inmode attack,
+	order blue group 3 follow greysarge1 inmode attack,
+	order blue group 4 follow greysarge1 inmode attack,
+	order blue group 5 follow greysarge1 inmode attack,
+	order blue group 0 follow greysarge1 inmode attack
+
+if blueFollowBlackFlag then
+	setvar blueAction 4,
+	trigger startTimeOut,
+	order bluesarge1 follow blackflag1 inmode attack,
+	order blue group 1 follow bluesarge1 inmode defend,
+	order blue group 2 follow blackflag1 inmode attack,
+	order blue group 3 follow blackflag1 inmode attack,
+	order blue group 4 follow blackflag1 inmode attack,
+	order blue group 5 follow blackflag1 inmode attack,
+	order blue group 0 follow blackflag1 inmode attack
+
+// these events choose new actions if a sarge is killed
+
+if killed sarge by blue then
+	triggerdelay 5000 blueChooseNewAction
+
+if killed bluesarge1 then
+	triggerdelay 5000 blueChooseNewAction
+
+if pickedup blackflag1 by bluesarge1 then
+	triggerdelay 100 blueChooseNewAction
+
+// these are the sblueding order regardless of what mode sarge is in
+	
+if blueRegularOrders then
+	order blue group 7 goto bluebase inmode evade,
+	triggerdelay 5000 blueRegularOrders
+
+// timeout code - if mode has not changed for a while then change it
+
+variable blueTimeOutVar 0
+variable blueLastTimeOutVar 1
+
+if blueStartTimeOut then
+    addvar blueTimeOutVar 1,
+	triggerdelay 120000 blueCheckTimeOut
+
+if blueCheckTimeOut testvar blueTimeOutVar = blueLastTimeOutVar then
+    trigger blueChooseNewAction
+
+if blueCheckTimeOut testvar blueTimeOutVar <> blueLastTimeOutVar then
+	addvar blueLastTimeOutVar 1
+

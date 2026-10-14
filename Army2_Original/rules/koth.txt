@@ -1,0 +1,634 @@
+//////////////////////////////////////////////////////////////////////////////
+// Common section
+//////////////////////////////////////////////////////////////////////////////
+
+// remove all optional objects - game specific code will deploy them if required
+
+if startup1 then
+	undeploy greenflag1,
+	undeploy gflagbase,
+	undeploy tanflag1,
+	undeploy tflagbase,
+	undeploy blueflag1,
+	undeploy bflagbase,
+	undeploy greyflag1,
+	undeploy grflagbase,
+	undeploy blackflag1,
+	undeploy bkflagbase,
+	undeploy greenmark1,
+	undeploy greenmark2,
+	undeploy greenmark3,
+	undeploy greenmark4,
+	undeploy greenmark5,
+	undeploy greenmark6,
+	undeploy greenmark7,
+	undeploy greenmark8,
+	undeploy tanmark1,
+	undeploy tanmark2,
+	undeploy tanmark3,
+	undeploy tanmark4,
+	undeploy tanmark5,
+	undeploy tanmark6,
+	undeploy tanmark7,
+	undeploy tanmark8,
+	undeploy bluemark1,
+	undeploy bluemark2,
+	undeploy bluemark3,
+	undeploy bluemark4,
+	undeploy bluemark5,
+	undeploy bluemark6,
+	undeploy bluemark7,
+	undeploy bluemark8,
+	undeploy greymark1,
+	undeploy greymark2,
+	undeploy greymark3,
+	undeploy greymark4,
+	undeploy greymark5,
+	undeploy greymark6,
+	undeploy greymark7,
+	undeploy greymark8
+
+// where dead sarges resurrect
+
+pad GreenRes1 50	
+pad GreenRes2 51	
+pad GreenRes3 52
+pad GreenRes4 53	
+pad GreenRes5 54	
+pad GreenRes6 55
+	
+pad TanRes1 60
+pad TanRes2 61
+pad TanRes3 62
+pad TanRes4 63
+pad TanRes5 64
+pad TanRes6 65
+
+pad BlueRes1 70
+pad BlueRes2 71
+pad BlueRes3 72
+pad BlueRes4 73
+pad BlueRes5 74
+pad BlueRes6 75
+
+pad GreyRes1 80
+pad GreyRes2 81
+pad GreyRes3 82
+pad GreyRes4 83
+pad GreyRes5 84
+pad GreyRes6 85
+
+// resurrect the sarges
+
+if killed greensarge1 then
+	triggerdelay 3000 resurrectgreen
+
+if killed tansarge1 then
+	triggerdelay 3000 resurrecttan
+
+if killed bluesarge1 then
+	triggerdelay 3000 resurrectblue
+
+if killed greysarge1 then
+	triggerdelay 3000 resurrectgrey
+
+if resurrectgreen then random
+   resurrect greensarge1 GreenRes1,
+   resurrect greensarge1 GreenRes2,
+   resurrect greensarge1 GreenRes3,
+   resurrect greensarge1 GreenRes4,
+   resurrect greensarge1 GreenRes5,
+   resurrect greensarge1 GreenRes6
+
+if resurrecttan then random
+   resurrect tansarge1 TanRes1,
+   resurrect tansarge1 TanRes2,
+   resurrect tansarge1 TanRes3,
+   resurrect tansarge1 TanRes4,
+   resurrect tansarge1 TanRes5,
+   resurrect tansarge1 TanRes6
+
+if resurrectblue then random
+   resurrect bluesarge1 BlueRes1,
+   resurrect bluesarge1 BlueRes2,
+   resurrect bluesarge1 BlueRes3,
+   resurrect bluesarge1 BlueRes4,
+   resurrect bluesarge1 BlueRes5,
+   resurrect bluesarge1 BlueRes6
+
+if resurrectgrey then random
+   resurrect greysarge1 GreyRes1,
+   resurrect greysarge1 GreyRes2,
+   resurrect greysarge1 GreyRes3,
+   resurrect greysarge1 GreyRes4,
+   resurrect greysarge1 GreyRes5,
+   resurrect greysarge1 GreyRes6
+
+// check for a team reaching score limit
+
+if checkgreenwins testvar teamscore green >= gamescorelimit then
+	trigger endOfGame,
+	trigger greenteamwins
+
+if checktanwins testvar teamscore tan >= gamescorelimit then
+	trigger endOfGame,
+	trigger tanteamwins
+
+if checkbluewins testvar teamscore blue >= gamescorelimit then
+	trigger endOfGame,
+	trigger blueteamwins
+
+if checkgreywins testvar teamscore grey >= gamescorelimit then
+	trigger endOfGame,
+	trigger greyteamwins
+
+// sound effects
+
+if endOfGame then
+	playsound "mp_endgame.wav" (0,0) 1 1
+
+//////////////////////////////////////////////////////////////////////////////
+// Fairly common section - score a penalty if kill an allied sarge
+//////////////////////////////////////////////////////////////////////////////
+
+variable killedSelfPenalty -100
+variable killedAllyPenalty -50
+variable killedByAllyPenalty -50
+
+// check for green sarge being killed by self or an ally
+
+if killed greensarge1 by green then
+    showmessage "Green sarge killed by green friendly fire",
+	trigger friendlyFireDeath,
+	addvar greenscore killedSelfPenalty
+
+if killed greensarge1 by tan testvar isAlly tan green = 1 then
+    showmessage "Green sarge killed by tan friendly fire",
+	trigger friendlyFireDeath,
+	addvar tanscore killedAllyPenalty,
+	addvar greenscore killedByAllyPenalty
+
+if killed greensarge1 by blue testvar isAlly blue green = 1 then
+    showmessage "Green sarge killed by blue friendly fire",
+	trigger friendlyFireDeath,
+	addvar bluescore killedAllyPenalty,
+	addvar greenscore killedByAllyPenalty
+
+if killed greensarge1 by grey testvar isAlly grey green = 1 then
+    showmessage "Green sarge killed by grey friendly fire",
+	trigger friendlyFireDeath,
+	addvar greyscore killedAllyPenalty,
+	addvar greenscore killedByAllyPenalty
+
+// check for tan sarge being killed by self or an ally
+
+if killed tansarge1 by green testvar isAlly green tan = 1 then
+    showmessage "Tan sarge killed by green friendly fire",
+	trigger friendlyFireDeath,
+	addvar greenscore killedAllyPenalty,
+	addvar tanscore killedByAllyPenalty
+
+if killed tansarge1 by tan then
+    showmessage "Tan sarge killed by tan friendly fire",
+	trigger friendlyFireDeath,
+	addvar tanscore killedSelfPenalty
+
+if killed tansarge1 by blue testvar isAlly blue tan = 1 then
+    showmessage "Tan sarge killed by blue friendly fire",
+	trigger friendlyFireDeath,
+	addvar bluescore killedAllyPenalty,
+	addvar tanscore killedByAllyPenalty
+
+if killed tansarge1 by grey testvar isAlly grey tan = 1 then
+    showmessage "Tan sarge killed by grey friendly fire",
+	trigger friendlyFireDeath,
+	addvar greyscore killedAllyPenalty,
+	addvar tanscore killedByAllyPenalty
+
+// check for blue sarge being killed by self or an ally
+
+if killed bluesarge1 by green testvar isAlly green blue = 1 then
+    showmessage "Blue sarge killed by green friendly fire",
+	trigger friendlyFireDeath,
+	addvar greenscore killedAllyPenalty,
+	addvar bluescore killedByAllyPenalty
+
+if killed bluesarge1 by tan testvar isAlly tan blue = 1 then
+    showmessage "Blue sarge killed by tan friendly fire",
+	trigger friendlyFireDeath,
+	addvar tanscore killedAllyPenalty,
+	addvar bluescore killedByAllyPenalty
+
+if killed bluesarge1 by blue then
+    showmessage "Blue sarge killed by blue friendly fire",
+	trigger friendlyFireDeath,
+	addvar bluescore killedSelfPenalty
+
+if killed bluesarge1 by grey testvar isAlly grey blue = 1 then
+    showmessage "Blue sarge killed by grey friendly fire",
+	trigger friendlyFireDeath,
+	addvar greyscore killedAllyPenalty,
+	addvar bluescore killedByAllyPenalty
+
+// check for grey sarge being killed by self or an ally
+
+if killed greysarge1 by green testvar isAlly green grey = 1 then
+    showmessage "Grey sarge killed by green friendly fire",
+	trigger friendlyFireDeath,
+	addvar greenscore killedAllyPenalty,
+	addvar greyscore killedByAllyPenalty
+
+if killed greysarge1 by tan testvar isAlly tan grey = 1 then
+    showmessage "Grey sarge killed by tan friendly fire",
+	trigger friendlyFireDeath,
+	addvar tanscore killedAllyPenalty,
+	addvar greyscore killedByAllyPenalty
+
+if killed greysarge1 by blue testvar isAlly blue grey = 1 then
+    showmessage "Grey sarge killed by blue friendly fire",
+	trigger friendlyFireDeath,
+	addvar bluescore killedAllyPenalty,
+	addvar greyscore killedByAllyPenalty
+
+if killed greysarge1 by grey then
+    showmessage "Grey sarge killed by grey friendly fire",
+	trigger friendlyFireDeath,
+	addvar greyscore killedSelfPenalty
+
+// sound effects
+
+if friendlyFireDeath then
+	triggerdelay 500 friendlyFireDeathSound
+
+if friendlyFireDeathSound then
+	playsound "mp_ffire.wav" (0,0) 2 2
+
+//////////////////////////////////////////////////////////////////////////////
+// King of the hill specific section
+//////////////////////////////////////////////////////////////////////////////
+
+variable ownHillBonus 10
+
+variable greenonhill 0
+variable tanonhill 0
+variable blueonhill 0
+variable greyonhill 0
+
+// 0 = no owner, 1 = green, 2 = tan, 3 = blue, 4 = grey
+variable hillowner 0
+variable oldhillowner 0
+
+// these pairs of variables are used to prevent sarge leaving and returning to the hill within
+// 1 second and scoring at a double rate
+variable greenGainsHillCount 0
+variable greenKeepsHillCheck 0
+variable tanGainsHillCount 0
+variable tanKeepsHillCheck 0
+variable blueGainsHillCount 0
+variable blueKeepsHillCheck 0
+variable greyGainsHillCount 0
+variable greyKeepsHillCheck 0
+
+pad greenhill 20 greensarge1
+pad tanhill 20 tansarge1
+pad bluehill 20 bluesarge1
+pad greyhill 20 greysarge1
+
+// check for green sarge owning the hill
+
+if padon greenhill then
+	setvar greenonhill 1,
+    trigger checkgreenownshill
+
+if padoff greenhill then
+	setvar greenonhill 0,
+	trigger greenoffhill
+
+if killed greensarge1 then
+	setvar greenonhill 0,
+	trigger greenoffhill
+
+if greenoffhill testvar hillowner = 1 then
+	setvar hillowner 0,
+	trigger hillOwnerChanged,
+	trigger checktanownshill,
+	trigger checkblueownshill,
+	trigger checkgreyownshill
+
+if checkgreenownshill testvar greenonhill = 1 and hillowner = 0 then
+	setvar hillowner 1,
+	trigger hillOwnerChanged,
+    showmessage "Green is king of the hill",
+	addvar greenGainsHillCount 1,
+	triggerdelay 3000 checkgreenscoresinitial
+
+if checkgreenscoresinitial then
+	addvar greenKeepsHillCheck 1
+
+if checkgreenscoresinitial testvar hillowner = 1 then
+	trigger checkgreenscores
+
+if checkgreenscores testvar hillowner = 1 and greenKeepsHillCheck = greenGainsHillCount then
+	addvar greenscore ownHillBonus,
+	playsound "mp_tick.wav" (0,0) 2 3,
+	trigger checkgreenwins,
+	triggerdelay 3000 checkgreenscores
+
+// check for tansarge owning the hill
+
+if padon tanhill then
+	setvar tanonhill 1,
+    trigger checktanownshill
+
+if padoff tanhill then
+	setvar tanonhill 0,
+	trigger tanoffhill
+
+if killed tansarge1 then
+	setvar tanonhill 0,
+	trigger tanoffhill
+
+if tanoffhill testvar hillowner = 2 then
+	setvar hillowner 0,
+	trigger hillOwnerChanged,
+	trigger checkblueownshill,
+	trigger checkgreyownshill,
+	trigger checkgreenownshill
+
+if checktanownshill testvar tanonhill = 1 and hillowner = 0 then
+	setvar hillowner 2,
+	trigger hillOwnerChanged,
+    showmessage "Tan is king of the hill",
+	addvar tanGainsHillCount 1,
+	triggerdelay 3000 checktanscoresinitial
+
+if checktanscoresinitial then
+	addvar tanKeepsHillCheck 1
+
+if checktanscoresinitial testvar hillowner = 2 then
+	trigger checktanscores
+
+if checktanscores testvar hillowner = 2 and tanKeepsHillCheck = tanGainsHillCount then
+	addvar tanscore ownHillBonus,
+	playsound "mp_tick.wav" (0,0) 2 3,
+	trigger checktanwins,
+	triggerdelay 3000 checktanscores
+
+// check for blue sarge owning the hill
+
+if padon bluehill then
+	setvar blueonhill 1,
+    trigger checkblueownshill
+
+if padoff bluehill then
+	setvar blueonhill 0,
+	trigger blueoffhill
+
+if killed bluesarge1 then
+	setvar blueonhill 0,
+	trigger blueoffhill
+
+if blueoffhill testvar hillowner = 3 then
+	setvar hillowner 0,
+	trigger hillOwnerChanged,
+	trigger checkgreyownshill,
+	trigger checkgreenownshill,
+	trigger checktanownshill
+
+if checkblueownshill testvar blueonhill = 1 and hillowner = 0 then
+	setvar hillowner 3,
+	trigger hillOwnerChanged,
+    showmessage "Blue is king of the hill",
+	addvar blueGainsHillCount 1,
+	triggerdelay 3000 checkbluescoresinitial
+
+if checkbluescoresinitial then
+	addvar blueKeepsHillCheck 1
+
+if checkbluescoresinitial testvar hillowner = 3 then
+	trigger checkbluescores
+
+if checkbluescores testvar hillowner = 3 and blueKeepsHillCheck = blueGainsHillCount then
+	addvar bluescore ownHillBonus,
+	playsound "mp_tick.wav" (0,0) 2 3,
+	trigger checkbluewins,
+	triggerdelay 3000 checkbluescores
+
+
+// check for grey sarge owning the hill
+
+if padon greyhill then
+	setvar greyonhill 1,
+    trigger checkgreyownshill
+
+if padoff greyhill then
+	setvar greyonhill 0,
+	trigger greyoffhill
+
+if killed greysarge1 then
+	setvar greyonhill 0,
+	trigger greyoffhill
+
+if greyoffhill testvar hillowner = 4 then
+	setvar hillowner 0,
+	trigger hillOwnerChanged,
+	trigger checkgreenownshill,
+	trigger checktanownshill,
+	trigger checkblueownshill
+
+if checkgreyownshill testvar greyonhill = 1 and hillowner = 0 then
+	setvar hillowner 4,
+	trigger hillOwnerChanged,
+    showmessage "Grey is king of the hill",
+	addvar greyGainsHillCount 1,
+	triggerdelay 3000 checkgreyscoresinitial
+
+if checkgreyscoresinitial then
+	addvar greyKeepsHillCheck 1
+
+if checkgreyscoresinitial testvar hillowner = 4 then
+	trigger checkgreyscores
+
+if checkgreyscores testvar hillowner = 4 and greyKeepsHillCheck = greyGainsHillCount then
+	addvar greyscore ownHillBonus,
+	playsound "mp_tick.wav" (0,0) 2 3,
+	trigger checkgreywins,
+	triggerdelay 3000 checkgreyscores
+
+// update the flags to display the owner of the hill
+
+if hillOwnerChanged testvar oldhillowner = 0 then
+	setvar oldhillowner hillowner,
+	trigger showNewHillOwner
+
+if hillOwnerChanged testvar oldhillowner = 1 then
+	undeploy greenmark1,
+	undeploy greenmark2,
+	undeploy greenmark3,
+	undeploy greenmark4,
+	undeploy greenmark5,
+	undeploy greenmark6,
+	undeploy greenmark7,
+	undeploy greenmark8,
+	setitemflag greenmark1 strategic 0,
+	setitemflag greenmark2 strategic 0,
+	setitemflag greenmark3 strategic 0,
+	setitemflag greenmark4 strategic 0,
+	setitemflag greenmark5 strategic 0,
+	setitemflag greenmark6 strategic 0,
+	setitemflag greenmark7 strategic 0,
+	setitemflag greenmark8 strategic 0,
+	setvar oldhillowner hillowner,
+	trigger showNewHillOwner
+
+if hillOwnerChanged testvar oldhillowner = 2 then
+	undeploy tanmark1,
+	undeploy tanmark2,
+	undeploy tanmark3,
+	undeploy tanmark4,
+	undeploy tanmark5,
+	undeploy tanmark6,
+	undeploy tanmark7,
+	undeploy tanmark8,
+	setitemflag tanmark1 strategic 0,
+	setitemflag tanmark2 strategic 0,
+	setitemflag tanmark3 strategic 0,
+	setitemflag tanmark4 strategic 0,
+	setitemflag tanmark5 strategic 0,
+	setitemflag tanmark6 strategic 0,
+	setitemflag tanmark7 strategic 0,
+	setitemflag tanmark8 strategic 0,
+	setvar oldhillowner hillowner,
+	trigger showNewHillOwner
+
+if hillOwnerChanged testvar oldhillowner = 3 then
+	undeploy bluemark1,
+	undeploy bluemark2,
+	undeploy bluemark3,
+	undeploy bluemark4,
+	undeploy bluemark5,
+	undeploy bluemark6,
+	undeploy bluemark7,
+	undeploy bluemark8,
+	setitemflag bluemark1 strategic 0,
+	setitemflag bluemark2 strategic 0,
+	setitemflag bluemark3 strategic 0,
+	setitemflag bluemark4 strategic 0,
+	setitemflag bluemark5 strategic 0,
+	setitemflag bluemark6 strategic 0,
+	setitemflag bluemark7 strategic 0,
+	setitemflag bluemark8 strategic 0,
+	setvar oldhillowner hillowner,
+	trigger showNewHillOwner
+
+if hillOwnerChanged testvar oldhillowner = 4 then
+	undeploy greymark1,
+	undeploy greymark2,
+	undeploy greymark3,
+	undeploy greymark4,
+	undeploy greymark5,
+	undeploy greymark6,
+	undeploy greymark7,
+	undeploy greymark8,
+	setitemflag greymark1 strategic 0,
+	setitemflag greymark2 strategic 0,
+	setitemflag greymark3 strategic 0,
+	setitemflag greymark4 strategic 0,
+	setitemflag greymark5 strategic 0,
+	setitemflag greymark6 strategic 0,
+	setitemflag greymark7 strategic 0,
+	setitemflag greymark8 strategic 0,
+	setvar oldhillowner hillowner,
+	trigger showNewHillOwner
+
+if showNewHillOwner testvar hillowner = 1 then
+	deploy greenmark1,
+	deploy greenmark2,
+	deploy greenmark3,
+	deploy greenmark4,
+	deploy greenmark5,
+	deploy greenmark6,
+	deploy greenmark7,
+	deploy greenmark8,
+	setitemflag greenmark1 strategic 1,
+	setitemflag greenmark2 strategic 1,
+	setitemflag greenmark3 strategic 1,
+	setitemflag greenmark4 strategic 1,
+	setitemflag greenmark5 strategic 1,
+	setitemflag greenmark6 strategic 1,
+	setitemflag greenmark7 strategic 1,
+	setitemflag greenmark8 strategic 1
+
+if showNewHillOwner testvar hillowner = 2 then
+	deploy tanmark1,
+	deploy tanmark2,
+	deploy tanmark3,
+	deploy tanmark4,
+	deploy tanmark5,
+	deploy tanmark6,
+	deploy tanmark7,
+	deploy tanmark8,
+	setitemflag tanmark1 strategic 1,
+	setitemflag tanmark2 strategic 1,
+	setitemflag tanmark3 strategic 1,
+	setitemflag tanmark4 strategic 1,
+	setitemflag tanmark5 strategic 1,
+	setitemflag tanmark6 strategic 1,
+	setitemflag tanmark7 strategic 1,
+	setitemflag tanmark8 strategic 1
+
+if showNewHillOwner testvar hillowner = 3 then
+	deploy bluemark1,
+	deploy bluemark2,
+	deploy bluemark3,
+	deploy bluemark4,
+	deploy bluemark5,
+	deploy bluemark6,
+	deploy bluemark7,
+	deploy bluemark8,
+	setitemflag bluemark1 strategic 1,
+	setitemflag bluemark2 strategic 1,
+	setitemflag bluemark3 strategic 1,
+	setitemflag bluemark4 strategic 1,
+	setitemflag bluemark5 strategic 1,
+	setitemflag bluemark6 strategic 1,
+	setitemflag bluemark7 strategic 1,
+	setitemflag bluemark8 strategic 1
+
+if showNewHillOwner testvar hillowner = 4 then
+	deploy greymark1,
+	deploy greymark2,
+	deploy greymark3,
+	deploy greymark4,
+	deploy greymark5,
+	deploy greymark6,
+	deploy greymark7,
+	deploy greymark8,
+	setitemflag greymark1 strategic 1,
+	setitemflag greymark2 strategic 1,
+	setitemflag greymark3 strategic 1,
+	setitemflag greymark4 strategic 1,
+	setitemflag greymark5 strategic 1,
+	setitemflag greymark6 strategic 1,
+	setitemflag greymark7 strategic 1,
+	setitemflag greymark8 strategic 1
+
+// whenever hillowner changes create explosions to make flags appear/dissapper in a
+// puf of smoke
+if hillOwnerChanged then
+	createexplosion greenmark1 128 0 green,	
+	createexplosion greenmark2 128 0 green,	
+	createexplosion greenmark3 128 0 green,	
+	createexplosion greenmark4 128 0 green,	
+	createexplosion greenmark5 128 0 green,	
+	createexplosion greenmark6 128 0 green,	
+	createexplosion greenmark7 128 0 green,	
+	createexplosion greenmark8 128 0 green
+
+// if there is a new hill owner then play one sound
+if showNewHillOwner testvar hillowner <> 0 then
+	playsound "mp_own.wav" (0,0) 1 2
+
+// if the hill is now empty play a different sound
+//if showNewHillOwner testvar hillowner = 0 then
+//	playsound "mp_koth2.wav" 0 1

@@ -1,0 +1,6 @@
+Sarge becomes king of the hill when he is the only
+sarge on the hill. The king scores 10 pts every 3
+seconds he remains on the hill. The current king
+of the hill is indicated by colored flags.
+There is a 100 pt penalty for friendly fire deaths.
+The first player/team to reach the point goal wins.

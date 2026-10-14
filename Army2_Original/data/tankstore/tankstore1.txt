@@ -1,0 +1,1729 @@
+
+
+Pad	tankfactory             20      GREEN > 0
+
+PAD     repairvehicle           66      GREEN VEHICLE > 0
+
+PAD     Tunnel1                 100     TUNSAB1 > 0
+
+
+PAD     Bridge1                 101     BRIDSAB1 > 0
+
+
+PAD     RADAR1                  102     RADSAB1  > 0
+
+
+
+PAD     firstramp               51      Enemyboat1 > 0
+PAD     secondramp              52      Enemyboat1 > 0
+PAD     thirdramp               53      Enemyboat1 > 0
+
+
+
+
+VARIABLE engineframe 0
+
+Variable engx 3860
+Variable engy 3461
+
+Variable tendoffsetx 140
+Variable tendoffsety 117
+
+Variable boxoffsetx 0
+Variable boxoffsety 0
+
+Variable flat1offsetx 0
+Variable flat1offsety 0
+
+Variable flat2offsetx 0
+Variable flat2offsety 0
+
+Variable flat3offsetx 0
+Variable flat3offsety 0
+
+Variable caboffsetx 0
+Variable caboffsety 0
+
+Variable tendx 0
+Variable tendy 0
+
+Variable boxx 0
+Variable boxy 0
+
+Variable flat1x 0
+Variable flat1y 0
+
+Variable flat2x 0
+Variable flat2y 0
+
+Variable flat3x 0
+Variable flat3y 0
+
+Variable cabx 0
+Variable caby 0
+
+Variable tank1x 0
+Variable tank1y 0
+
+Variable tank2x 0
+Variable tank2y 0
+
+Variable tank3x 0
+Variable tank3y 0
+
+Variable tank4x 0
+Variable tank4y 0
+
+Variable tank5x 0
+Variable tank5y 0
+
+Variable tank6x 0
+Variable tank6y 0
+
+Variable cranex 3326
+Variable craney 2978
+
+VARIABLE sargedeployed 0
+
+Variable enginecycles 0
+Variable max_enginecycles  60
+
+Variable reversecycles  0
+
+Variable tankcycles2    0
+Variable tankcycles3    0
+Variable tankcycles4    0
+Variable tankcycles5    0
+Variable tankcycles6    0
+
+
+
+If killed scorch then
+	createpowerup flamer scorch 50
+
+If killed veteran then
+	createpowerup bazooka veteran 10
+
+
+
+
+IF Startup1 then
+	TRIGGER trainbacksfx1,
+        TRIGGER trainsound3,
+        TRIGGER trainbacksfx2,
+        TRIGGERDELAY 10 init_vars,
+	SETBRIEFING "map03_1.bmp",
+        CREATEVEHICLE "GTANK1" TANK (3267,3577) GREEN,
+        CREATEVEHICLE "GTANK2" TANK (3162,3504) GREEN,
+        CREATEVEHICLE "GTANK3" TANK (3388,3479) GREEN,
+        CREATEVEHICLE "GTANK4" TANK (3280,3390) GREEN,
+        SETFACING GTANK1 96,
+        SETFACING GTANK2 96,
+        SETFACING GTANK3 96,
+        SETFACING GTANK4 96,
+        SETGUNFACING GTANK1 96,
+        SETGUNFACING GTANK2 96,
+        SETGUNFACING GTANK3 96,
+        SETGUNFACING GTANK4 96,
+        SETOBJSTATE engine towardfactory,
+        SETOBJSTATE crane1 crane_return,
+        CREATEPOWERUP explosive1 explosive (4,4) 100,
+        CREATEPOWERUP Wrench1 WRENCH (2134,1881) 6,
+        SETCAMERAFOCUS engine
+
+
+IF init_vars THEN
+        TRIGGER trainsound1,
+        CREATEVEHICLE "GreenBoat1" BOAT (422,2834) GREEN,
+        UNDEPLOY GreenSarge1,
+        UNDEPLOY Wildblood,
+        UNDEPLOY Alvin,
+        UNDEPLOY Greg,
+        UNDEPLOY Veteran,
+//        CREATETROOPER "Colonel" RIFLE (2679,2791) GREEN,
+        CREATETROOPER "Scorch" FLAMER (2768,2794) GREEN,
+//        SETNPC Colonel 1,
+        SETNPC Scorch 1,
+        SETUILOCK 1
+
+IF KILLED COLONEL THEN
+        SHOWPDA "The Colonel is dead.  All is lost.",
+        TRIGGERDELAY 1000 testTANWINS2
+
+IF deploysarge testvar sargedeployed = 0 THEN
+        SETVAR sargedeployed 1,
+        RESTORECAMERAFOCUS,
+        DEPLOY GreenSarge1 (2595,2704),
+        DEPLOY Veteran (2523,2705),
+        DEPLOY Wildblood (2516,2631),
+        DEPLOY Alvin (2597,2630),
+        DEPLOY Greg (2459,2705),
+        SETFACING Veteran 160,
+        SETFACING Wildblood 160,
+        SETFACING Alvin 160,
+        SETFACING Greg 160,
+        SETFACING SCORCH 32,
+//        SETFACING Colonel 32,
+        SETFACING GREENSARGE1 160,
+        TRIGGERDELAY 1000 testGREENWINS
+
+
+
+
+IF testGREENWINS BUTNOT KILLED Greensarge1 THEN
+        SETUILOCK 0,
+        TRIGGER Greenwins
+
+
+
+
+
+
+
+
+object engine
+        state initial
+                frame 10 0
+
+        state towardfactory
+                frame 50 5
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 0,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 5
+
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 1,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 2,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 3,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 4,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 5,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 6,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 7,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 1
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 8,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine,
+                        trigger loopcheck
+
+                frame 5 1
+
+        STATE train_backup1
+                frame 50 5
+                     	addvar engx 2,
+                        addvar engy 2,
+                        trigger movetrain,
+                        SETVAR engineframe 0,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 5
+
+                     	addvar engx 2,
+                        addvar engy 2,
+                        trigger movetrain,
+                        SETVAR engineframe 1,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx 2,
+                        addvar engy 1,
+                        trigger movetrain,
+                        SETVAR engineframe 2,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx 2,
+                        addvar engy 2,
+                        trigger movetrain,
+                        SETVAR engineframe 3,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx 2,
+                        addvar engy 2,
+                        trigger movetrain,
+                        SETVAR engineframe 4,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx 2,
+                        addvar engy 1,
+                        trigger movetrain,
+                        SETVAR engineframe 5,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx 2,
+                        addvar engy 2,
+                        trigger movetrain,
+                        SETVAR engineframe 6,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx 2,
+                        addvar engy 2,
+                        trigger movetrain,
+                        SETVAR engineframe 7,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 1
+
+                        addvar engx 2,
+                        addvar engy 1,
+                        trigger movetrain,
+                        SETVAR engineframe 8,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine,
+                        trigger loopcheck2
+
+                frame 5 1
+                	SETOBJSTATE crane1 crane_fill
+
+
+        STATE load_tank2
+                frame 50 5
+                        TRIGGER trainbacksfx1,
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 0,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 5
+
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 1,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 2,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 3,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 4,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 5,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 6,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 7,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 1
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 8,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine,
+                        Trigger loopcheck3
+
+                frame 5 1
+                	SETOBJSTATE crane1 crane_fill
+
+        STATE load_tank3
+                frame 50 5
+                        TRIGGER trainbacksfx1,
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 0,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 5
+
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 1,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 2,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 3,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 4,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 5,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 6,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 7,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 1
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 8,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine,
+                        Trigger loopcheck4
+
+                frame 5 1
+                	SETOBJSTATE crane1 crane_fill
+
+
+        STATE load_tank4
+                frame 50 5
+                        TRIGGER trainbacksfx1,
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 0,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 5
+
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 1,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 2,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 3,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 4,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 5,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 6,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 7,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 1
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 8,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine,
+                        Trigger loopcheck5
+
+                frame 5 1
+                	SETOBJSTATE crane1 crane_fill
+
+
+        STATE load_tank5
+                frame 50 5
+                        TRIGGER trainbacksfx1,
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 0,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 5
+
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 1,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 2,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 3,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 4,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 5,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 6,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 7,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 1
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 8,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine,
+                        Trigger loopcheck6
+
+                frame 5 1
+                	SETOBJSTATE crane1 crane_fill
+
+        STATE load_tank6
+                frame 50 5
+                        TRIGGER trainbacksfx1,
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 0,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 5
+
+                     	addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 1,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 2,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 4
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 3,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 4,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 3
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 5,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 6,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 2
+
+                        addvar engx -2,
+                        addvar engy -2,
+                        trigger movetrain,
+                        SETVAR engineframe 7,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine
+
+                frame 50 1
+
+                        addvar engx -2,
+                        addvar engy -1,
+                        trigger movetrain,
+                        SETVAR engineframe 8,
+                        moveitem engine (refvar engx,refvar engy),
+                        moveitem loco_mask engine,
+                        Trigger loopcheck7
+
+                frame 5 1
+                	SETOBJSTATE crane1 crane_fill
+
+
+        STATE engine_derail
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                frame 100 10
+
+
+IF loopcheck3 testvar tankcycles2 < 4 THEN
+        ADDVAR tankcycles2 1,
+        SETOBJSTATE engine load_tank2
+
+IF loopcheck4 testvar tankcycles3 < 5 THEN
+        ADDVAR tankcycles3 1,
+        SETOBJSTATE engine load_tank3
+
+IF loopcheck5 testvar tankcycles4 < 4 THEN
+        ADDVAR tankcycles4 1,
+        SETOBJSTATE engine load_tank4
+
+IF loopcheck6 testvar tankcycles5 < 4 THEN
+        ADDVAR tankcycles5 1,
+        SETOBJSTATE engine load_tank5
+
+IF loopcheck7 testvar tankcycles6 < 4 THEN
+        ADDVAR tankcycles6 1,
+        SETOBJSTATE engine load_tank6
+
+
+
+
+IF loopcheck2 testvar reversecycles < 11 THEN
+        ADDVAR reversecycles 1,
+        SETOBJSTATE engine train_backup1
+
+IF loopcheck testvar enginecycles < max_enginecycles THEN
+        ADDVAR enginecycles 1,
+        SETOBJSTATE engine towardfactory
+
+IF loopcheck testvar enginecycles = max_enginecycles THEN
+        TRIGGER trainbacksfx2,
+        TRIGGER trainsound2,
+        trigger deploysarge
+
+
+IF startloading THEN
+        SETOBJSTATE engine train_backup1
+
+
+
+
+IF movetrain THEN
+        setvar tendx engx,
+        setvar tendy engy,
+        addvar tendx 112,
+        addvar tendy 84,
+        trigger movetender,
+        setvar boxx engx,
+        setvar boxy engy,
+        addvar boxx 322,
+        addvar boxy 256,
+        trigger moveboxcar,
+        setvar flat1x engx,
+        setvar flat1y engy,
+        addvar flat1x 506,
+        addvar flat1y 409,
+        trigger moveflat1,
+        setvar flat2x engx,
+        setvar flat2y engy,
+        addvar flat2x 690,
+        addvar flat2y 562,
+        trigger moveflat2,
+        setvar flat3x engx,
+        setvar flat3y engy,
+        addvar flat3x 874,
+        addvar flat3y 715,
+        trigger moveflat3,
+        setvar cabx engx,
+        setvar caby engy,
+        addvar cabx 993,
+        addvar caby 815,
+        trigger movecab,
+        setvar tank1x engx,
+        setvar tank1y engy,
+        addvar tank1x 365,
+        addvar tank1y 320,
+        setvar tank2x engx,
+        setvar tank2y engy,
+        addvar tank2x 445,
+        addvar tank2y 386,
+        setvar tank3x engx,
+        setvar tank3y engy,
+        addvar tank3x 545,
+        addvar tank3y 468,
+        setvar tank4x engx,
+        setvar tank4y engy,
+        addvar tank4x 625,
+        addvar tank4y 534,
+        setvar tank5x engx,
+        setvar tank5y engy,
+        addvar tank5x 725,
+        addvar tank5y 616,
+        setvar tank6x engx,
+        setvar tank6y engy,
+        addvar tank6x 805,
+        addvar tank6y 682,
+        trigger movetanks
+
+IF movetanks THEN
+        Moveitem HQTANK1 (refvar tank1x, refvar tank1y),
+        Moveitem HQTANK2 (refvar tank2x, refvar tank2y),
+        Moveitem HQTANK3 (refvar tank3x, refvar tank3y),
+        Moveitem HQTANK4 (refvar tank4x, refvar tank4y),
+        Moveitem HQTANK5 (refvar tank5x, refvar tank5y),
+        Moveitem HQTANK6 (refvar tank6x, refvar tank6y)
+
+
+OBJECT HQTANK1
+        State HQTANK1_initial
+                Frame 10 0
+
+        State HQTANK1_visible
+                Frame 100 1
+
+        State HQTANK1_derail
+                Frame 100 2
+                Frame 100 3
+                Frame 100 4
+                Frame 100 5
+                Frame 100 6
+
+OBJECT HQTANK2
+        State HQTANK2_initial
+                Frame 10 0
+
+        State HQTANK2_visible
+                Frame 100 1
+
+        State HQTANK2_derail
+                Frame 100 2
+                Frame 100 3
+                Frame 100 4
+                Frame 100 5
+                Frame 100 6
+
+
+OBJECT HQTANK3
+        State HQTANK3_initial
+                Frame 10 0
+
+        State HQTANK3_visible
+                Frame 100 1
+
+        State HQTANK3_derail
+                Frame 100 2
+                Frame 100 3
+                Frame 100 4
+                Frame 100 5
+                Frame 100 6
+
+
+OBJECT HQTANK4
+        State HQTANK4_initial
+                Frame 10 0
+
+        State HQTANK4_visible
+                Frame 100 1
+
+        State HQTANK4_derail
+                Frame 100 2
+                Frame 100 3
+                Frame 100 4
+                Frame 100 5
+                Frame 100 6
+
+OBJECT HQTANK5
+        State HQTANK5_initial
+                Frame 10 0
+
+        State HQTANK5_visible
+                Frame 100 1
+
+        State HQTANK5_derail
+                Frame 100 2
+                Frame 100 3
+                Frame 100 4
+                Frame 100 5
+                Frame 100 6
+
+
+OBJECT HQTANK6
+        State HQTANK6_initial
+                Frame 10 0
+
+        State HQTANK6_visible
+                Frame 100 1
+
+        State HQTANK6_derail
+                Frame 100 2
+                Frame 100 3
+                Frame 100 4
+                Frame 100 5
+                Frame 100 6
+
+
+
+
+object tender1
+        state tenderinitial
+                frame 10 0
+
+        state tendertowardfactory
+                frame 1000000 5
+                        moveitem tender1 (refvar tendx,refvar tendy),
+                        moveitem tend_mask tender1
+
+                frame 1000000 4
+                        moveitem tender1 (refvar tendx,refvar tendy),
+                        moveitem tend_mask tender1
+
+
+		frame 1000000 3
+                        moveitem tender1 (refvar tendx,refvar tendy),
+                        moveitem tend_mask tender1
+
+
+                frame 1000000 2
+                        moveitem tender1 (refvar tendx,refvar tendy),
+                        moveitem tend_mask tender1
+
+
+                frame 1000000 1
+                        moveitem tender1 (refvar tendx,refvar tendy),
+                        moveitem tend_mask tender1
+
+
+                frame 5 1
+
+        STATE tender_derail
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                frame 100 10
+
+
+
+IF movetender TESTVAR tendx < 4096 THEN
+        trigger movetender2
+
+IF movetender2 TESTVAR tendy < 4096 THEN
+        trigger movetender3
+
+IF movetender3 THEN
+        SEQUENTIAL
+                setobjstate tender1 tendertowardfactory 0,
+                setobjstate tender1 tendertowardfactory 0,
+                setobjstate tender1 tendertowardfactory 1,
+                setobjstate tender1 tendertowardfactory 1,
+                setobjstate tender1 tendertowardfactory 2,
+                setobjstate tender1 tendertowardfactory 2,
+                setobjstate tender1 tendertowardfactory 3,
+                setobjstate tender1 tendertowardfactory 3,
+                setobjstate tender1 tendertowardfactory 4,
+                setobjstate tender1 tendertowardfactory 4
+
+
+
+object boxcar1
+        state boxcarinitial
+                frame 10 0
+
+        state boxcartowardfactory
+                frame 1000000 5
+                        moveitem boxcar1 (refvar boxx,refvar boxy),
+                        moveitem box_mask boxcar1
+
+                frame 1000000 4
+                        moveitem boxcar1 (refvar boxx,refvar boxy),
+                        moveitem box_mask boxcar1
+
+
+		frame 1000000 3
+                        moveitem boxcar1 (refvar boxx,refvar boxy),
+                        moveitem box_mask boxcar1
+
+
+                frame 1000000 2
+                        moveitem boxcar1 (refvar boxx,refvar boxy),
+                        moveitem box_mask boxcar1
+
+
+                frame 1000000 1
+                        moveitem boxcar1 (refvar boxx,refvar boxy),
+                        moveitem box_mask boxcar1
+
+
+                frame 5 1
+
+        STATE boxcar1_derail
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                frame 100 10
+
+
+
+IF moveboxcar TESTVAR boxx < 4096 THEN
+        trigger moveboxcar2
+
+IF moveboxcar2 TESTVAR boxy < 4096 THEN
+        trigger moveboxcar3
+
+IF moveboxcar3 THEN
+        SEQUENTIAL
+                setobjstate boxcar1 boxcartowardfactory 0,
+                setobjstate boxcar1 boxcartowardfactory 0,
+                setobjstate boxcar1 boxcartowardfactory 1,
+                setobjstate boxcar1 boxcartowardfactory 1,
+                setobjstate boxcar1 boxcartowardfactory 2,
+                setobjstate boxcar1 boxcartowardfactory 2,
+                setobjstate boxcar1 boxcartowardfactory 3,
+                setobjstate boxcar1 boxcartowardfactory 3,
+                setobjstate boxcar1 boxcartowardfactory 4,
+                setobjstate boxcar1 boxcartowardfactory 4
+
+
+object flatcar1
+        state flatcar1initial
+                frame 10 0
+
+        state flatcar1towardfactory
+                frame 1000000 5
+                        moveitem flatcar1 (refvar flat1x,refvar flat1y),
+                        moveitem flat1_mask flatcar1
+
+                frame 1000000 4
+                        moveitem flatcar1 (refvar flat1x,refvar flat1y),
+                        moveitem flat1_mask flatcar1
+
+
+		frame 1000000 3
+                        moveitem flatcar1 (refvar flat1x,refvar flat1y),
+                        moveitem flat1_mask flatcar1
+
+
+                frame 1000000 2
+                        moveitem flatcar1 (refvar flat1x,refvar flat1y),
+                        moveitem flat1_mask flatcar1
+
+
+                frame 1000000 1
+                        moveitem flatcar1 (refvar flat1x,refvar flat1y),
+                        moveitem flat1_mask flatcar1
+
+
+                frame 5 1
+
+        STATE flatcar1_derail
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                frame 100 10
+
+
+
+IF moveflat1 TESTVAR flat1x < 4096 THEN
+        trigger moveflat12
+
+IF moveflat12 TESTVAR flat1y < 4096 THEN
+        trigger moveflat13
+
+IF moveflat13 THEN
+        SEQUENTIAL
+                setobjstate flatcar1 flatcar1towardfactory 0,
+                setobjstate flatcar1 flatcar1towardfactory 0,
+                setobjstate flatcar1 flatcar1towardfactory 1,
+                setobjstate flatcar1 flatcar1towardfactory 1,
+                setobjstate flatcar1 flatcar1towardfactory 2,
+                setobjstate flatcar1 flatcar1towardfactory 2,
+                setobjstate flatcar1 flatcar1towardfactory 3,
+                setobjstate flatcar1 flatcar1towardfactory 3,
+                setobjstate flatcar1 flatcar1towardfactory 4,
+                setobjstate flatcar1 flatcar1towardfactory 4
+
+
+
+object flatcar2
+        state flatcar2initial
+                frame 10 0
+
+        state flatcar2towardfactory
+                frame 1000000 5
+                        moveitem flatcar2 (refvar flat2x,refvar flat2y),
+                        moveitem flat2_mask flatcar2
+
+                frame 1000000 4
+                        moveitem flatcar2 (refvar flat2x,refvar flat2y),
+                        moveitem flat2_mask flatcar2
+
+
+		frame 1000000 3
+                        moveitem flatcar2 (refvar flat2x,refvar flat2y),
+                        moveitem flat2_mask flatcar2
+
+
+                frame 1000000 2
+                        moveitem flatcar2 (refvar flat2x,refvar flat2y),
+                        moveitem flat2_mask flatcar2
+
+
+                frame 1000000 1
+                        moveitem flatcar2 (refvar flat2x,refvar flat2y),
+                        moveitem flat2_mask flatcar2
+
+
+                frame 5 1
+
+        STATE flatcar2_derail
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                frame 100 10
+
+
+
+IF moveflat2 TESTVAR flat2x < 4096 THEN
+        trigger moveflat22
+
+IF moveflat22 TESTVAR flat2y < 4096 THEN
+        trigger moveflat23
+
+IF moveflat23 THEN
+        SEQUENTIAL
+                setobjstate flatcar2 flatcar2towardfactory 0,
+                setobjstate flatcar2 flatcar2towardfactory 0,
+                setobjstate flatcar2 flatcar2towardfactory 1,
+                setobjstate flatcar2 flatcar2towardfactory 1,
+                setobjstate flatcar2 flatcar2towardfactory 2,
+                setobjstate flatcar2 flatcar2towardfactory 2,
+                setobjstate flatcar2 flatcar2towardfactory 3,
+                setobjstate flatcar2 flatcar2towardfactory 3,
+                setobjstate flatcar2 flatcar2towardfactory 4,
+                setobjstate flatcar2 flatcar2towardfactory 4
+
+
+
+
+object flatcar3
+        state flatcar3initial
+                frame 10 0
+
+        state flatcar3towardfactory
+                frame 1000000 5
+                        moveitem flatcar3 (refvar flat3x,refvar flat3y),
+                        moveitem flat3_mask flatcar3
+
+                frame 1000000 4
+                        moveitem flatcar3 (refvar flat3x,refvar flat3y),
+                        moveitem flat3_mask flatcar3
+
+
+		frame 1000000 3
+                        moveitem flatcar3 (refvar flat3x,refvar flat3y),
+                        moveitem flat3_mask flatcar3
+
+
+                frame 1000000 2
+                        moveitem flatcar3 (refvar flat3x,refvar flat3y),
+                        moveitem flat3_mask flatcar3
+
+
+                frame 1000000 1
+                        moveitem flatcar3 (refvar flat3x,refvar flat3y),
+                        moveitem flat3_mask flatcar3
+
+
+                frame 5 1
+
+
+         STATE flatcar3_derail
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                frame 100 10
+
+
+
+IF moveflat3 TESTVAR flat3x < 4096 THEN
+        trigger moveflat32
+
+IF moveflat32 TESTVAR flat3y < 4096 THEN
+        trigger moveflat33
+
+IF moveflat33 THEN
+        SEQUENTIAL
+                setobjstate flatcar3 flatcar3towardfactory 0,
+                setobjstate flatcar3 flatcar3towardfactory 0,
+                setobjstate flatcar3 flatcar3towardfactory 1,
+                setobjstate flatcar3 flatcar3towardfactory 1,
+                setobjstate flatcar3 flatcar3towardfactory 2,
+                setobjstate flatcar3 flatcar3towardfactory 2,
+                setobjstate flatcar3 flatcar3towardfactory 3,
+                setobjstate flatcar3 flatcar3towardfactory 3,
+                setobjstate flatcar3 flatcar3towardfactory 4,
+                setobjstate flatcar3 flatcar3towardfactory 4
+
+
+
+object caboose1
+        state cabooseinitial
+                frame 10 0
+
+        state caboosetowardfactory
+                frame 1000000 5
+                        moveitem caboose1 (refvar cabx,refvar caby),
+                        moveitem caboose_mask caboose1
+
+                frame 1000000 4
+                        moveitem caboose1 (refvar cabx,refvar caby),
+                        moveitem caboose_mask caboose1
+
+
+		frame 1000000 3
+                        moveitem caboose1 (refvar cabx,refvar caby),
+                        moveitem caboose_mask caboose1
+
+
+                frame 1000000 2
+                        moveitem caboose1 (refvar cabx,refvar caby),
+                        moveitem caboose_mask caboose1
+
+
+                frame 1000000 1
+                        moveitem caboose1 (refvar cabx,refvar caby),
+                        moveitem caboose_mask caboose1
+
+
+                frame 5 1
+
+        STATE caboose_derail
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                frame 100 10
+
+
+
+IF movecab TESTVAR cabx < 4096 THEN
+        trigger movecab2
+
+IF movecab2 TESTVAR caby < 4096 THEN
+        trigger movecab3
+
+IF movecab3 THEN
+        SEQUENTIAL
+                setobjstate caboose1 caboosetowardfactory 0,
+                setobjstate caboose1 caboosetowardfactory 0,
+                setobjstate caboose1 caboosetowardfactory 1,
+                setobjstate caboose1 caboosetowardfactory 1,
+                setobjstate caboose1 caboosetowardfactory 2,
+                setobjstate caboose1 caboosetowardfactory 2,
+                setobjstate caboose1 caboosetowardfactory 3,
+                setobjstate caboose1 caboosetowardfactory 3,
+                setobjstate caboose1 caboosetowardfactory 4,
+                setobjstate caboose1 caboosetowardfactory 4
+
+
+
+OBJECT crane1
+        State crane_intitial
+                Frame 100 0
+
+        State crane_return
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 5,
+                        SETOBJSTATE tank1 tank_return,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 6,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 6,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 6,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 6,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 6,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 7,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex -6,
+                        ADDVAR craney 5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 3000 0
+                        trigger crane_returned
+
+                Frame 10 0
+
+
+        State crane_fill
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        SETOBJSTATE tank1 tank_fill,
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -6,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -6,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -6,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -6,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -6,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -7,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 100 0
+                        ADDVAR cranex 6,
+                        ADDVAR craney -5,
+                        Moveitem crane1 (refvar cranex,refvar craney),
+                        Moveitem tank1 crane1
+
+                Frame 2000 0
+
+                Frame 10 0
+                        SETOBJSTATE tank1 tank_drop
+
+
+
+OBJECT tank1
+        STATE tank_initial
+                Frame 100 10
+
+        STATE tank_fill
+                Frame 100 9
+
+        STATE tank_return
+                Frame 100 10
+
+        STATE tank_drop
+                Frame 100 9
+
+                Frame 100 8
+
+                Frame 100 7
+
+                Frame 100 6
+
+                Frame 100 5
+
+                Frame 100 4
+
+                Frame 100 3
+
+                Frame 100 2
+
+                Frame 100 1
+
+                Frame 100 0
+
+                Frame 2000 10
+                	Trigger tankloaded
+
+                Frame 10 10
+                        SETOBJSTATE crane1 crane_return
+
+IF tankloaded THEN
+        SEQUENTIAL
+                SETOBJSTATE HQTANK1 HQTANK1_visible,
+                SETOBJSTATE HQTANK2 HQTANK2_visible,
+                SETOBJSTATE HQTANK3 HQTANK3_visible,
+                SETOBJSTATE HQTANK4 HQTANK4_visible,
+                SETOBJSTATE HQTANK5 HQTANK5_visible,
+                SETOBJSTATE HQTANK6 HQTANK6_visible
+
+IF crane_returned THEN
+        SEQUENTIAL
+                trigger return_initialized,
+                SETOBJSTATE engine load_tank2,
+                SETOBJSTATE engine load_tank3,
+                SETOBJSTATE engine load_tank4,
+                SETOBJSTATE engine load_tank5,
+                SETOBJSTATE engine load_tank6
+
+
+IF killed loco_mask killed tend_mask killed caboose_mask killed flat3_mask killed flat2_mask killed flat1_mask killed box_mask THEN
+        SETOBJSTATE engine engine_derail,
+        SETOBJSTATE tender1 tender_derail,
+        SETOBJSTATE boxcar1 boxcar_derail,
+        SETOBJSTATE flatcar1 flatcar1_derail,
+        SETOBJSTATE flatcar2 flatcar2_derail,
+        SETOBJSTATE flatcar3 flatcar3_derail,
+        SETOBJSTATE caboose1 caboose_derail,
+        PLAYSOUND "trainwreck.wav" 2 3,
+        UNDEPLOY HQTANK1,
+        UNDEPLOY HQTANK2,
+        UNDEPLOY HQTANK3,
+        UNDEPLOY HQTANK4,
+        UNDEPLOY HQTANK5,
+        UNDEPLOY HQTANK6,
+        TRIGGERDELAY 3000 testTanwins
+
+IF testTanwins THEN
+        SHOWPDA "You lost the train.  You have failed your mission.",
+        SETUILOCK 0,
+        TRIGGERDELAY 1000 TANWINS
+
+
+IF testTanwins2 THEN
+        TRIGGER TANWINS
+
+
+
+
+IF trainsound1 THEN
+        playsound "chugga.wav" 3 3 1
+
+IF trainsound2 THEN
+        playsound "" 3 3 1,
+        playsound "trainscreech.wav" 4 3
+
+
+IF trainsound1 AFTER trainsound3 THEN
+        TRIGGERDELAY 13500 trainsound3,
+        playsound "trainhornFar_8Bit.wav" 5 3
+
+
+
+IF trainbacksfx1 THEN
+	PLAYSOUND "TrainAir!_8Bit.wav" 6 3
+
+
+

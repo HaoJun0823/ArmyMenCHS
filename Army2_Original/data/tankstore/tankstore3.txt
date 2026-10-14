@@ -1,0 +1,85 @@
+Variable 	GATE1X 	3166
+Variable 	GATE1Y 	3650
+Variable 	GATE2X  3249
+Variable 	GATE2Y  3717
+
+
+Variable        opening_cycles  0
+Variable        maxopening_cycles       14
+
+
+
+
+
+IF Startup3 then
+        Triggerdelay 10 init_vars3,
+	setbriefing "map03_2.bmp"
+
+
+IF init_vars3 THEN
+        TRIGGERDELAY 30000 GENERATE_TANKS,
+        TRIGGERDELAY 1000 message2,
+        SHOWPDA "Defend the train from Tan armor units.",
+        playsound "0302COLONEL.wav" 9 0,
+        TRIGGERDELAY 2000 opengate,
+        SETUILOCK 0
+
+//IF message2 THEN
+//        SETCAMERAFOCUS GTANK1,
+//        TRIGGERDELAY 3000 timetorestore
+
+IF opengate TESTVAR opening_cycles < Maxopening_cycles THEN
+        ADDVAR GATE1X -6,
+        ADDVAR GATE1Y -5,
+        Moveitem Gate1 (refvar GATE1X,refvar GATE1Y),
+        ADDVAR GATE2X 6,
+        ADDVAR GATE2Y 5,
+        ADDVAR opening_cycles 1,
+        Moveitem Gate2 (refvar GATE2X,refvar GATE2Y),
+        Triggerdelay 300 opengate
+
+
+//IF timetorestore THEN
+//        TRIGGERDELAY 1000 unlockthecamera,
+//        RESTORECAMERAFOCUS
+
+
+//IF unlockthecamera THEN
+//        SETUILOCK 0
+
+
+IF GENERATE_TANKS THEN
+        CREATEVEHICLE "TTANK1" TANK (3968,200) TAN,
+        CREATEVEHICLE "TTANK2" TANK (3968,600) TAN,
+        CREATEVEHICLE "TTANK3" TANK (3968,1000) TAN,
+        CREATEVEHICLE "TTANK4" TANK (3968,1400) TAN,
+        TRIGGERDELAY 10000 Tankpos1
+
+
+IF Tankpos1 THEN
+        ORDER TTANK1 goto radar INMODE ATTACK,
+        ORDER TTANK2 goto radar INMODE ATTACK,
+        TRIGGERDELAY 20000 ATTACK_TRAIN
+
+
+IF ATTACK_TRAIN THEN
+        ORDER TTANK1 goto engine INMODE ATTACK,
+        ORDER TTANK4 goto engine INMODE ATTACK,
+        TRIGGERDELAY 10000 ATTACK_TRAIN2
+
+
+IF ATTACK_TRAIN2 THEN
+        ORDER TTANK2 goto engine INMODE ATTACK,
+        ORDER TTANK3 goto engine INMODE ATTACK
+
+
+IF ALLOF killed TTANK1 killed TTANK2 killed TTANK3 killed TTANK4 THEN
+	showpda "Good work, Sarge.",
+        TRIGGERDELAY 10 petertestgreenwins
+
+
+
+
+
+
+

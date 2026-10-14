@@ -1,0 +1,223 @@
+
+
+
+
+
+
+IF Startup2 THEN
+        Triggerdelay 10 init_vars2,
+	setbriefing "map12_2.bmp"
+
+
+IF init_vars2 THEN
+        playsound "1202sarge.wav" 16 0,
+        Setobjstate lower_crenellation lower_spinning,
+        Setobjstate crenellation1 cren1_spinning,
+        Setobjstate crenellation2 cren2_spinning,
+        Setobjstate crenellation3 cren3_spinning,
+        Setobjstate crenellation4 cren4_spinning,
+        Setobjstate crenellation5 cren5_spinning,
+        Setobjstate crenellation6 cren6_spinning,
+        Setobjstate crenellation7 cren7_spinning,
+        Setobjstate crenellation8 cren8_spinning,
+	SHOWPDA "消灭梅拉少校，格杀勿论！",
+        TRIGGER moveturrettest,
+        HEAL Major_Mylar 100,
+        TRIGGERDELAY 3000 showf1mess
+
+
+
+
+IF padon angle1 AFTER padoff angle1 THEN
+        SETVAR turretdest 1,
+        Trigger moveturrettest
+
+IF padon angle2 AFTER padoff angle2 THEN
+        SETVAR turretdest 2,
+        Trigger moveturrettest
+
+IF padon angle3 AFTER padoff angle3 THEN
+        SETVAR turretdest 3,
+        Trigger moveturrettest
+
+IF padon angle4 AFTER padoff angle4 THEN
+        SETVAR turretdest 4,
+        Trigger moveturrettest
+
+IF padon angle5 AFTER padoff angle5 THEN
+        SETVAR turretdest 5,
+        Trigger moveturrettest
+
+IF padon angle6 AFTER padoff angle6 THEN
+        SETVAR turretdest 6,
+        Trigger moveturrettest
+
+IF padon angle7 AFTER padoff angle7 THEN
+        SETVAR turretdest 7,
+        Trigger moveturrettest
+
+IF padon angle8 AFTER padoff angle8 THEN
+        SETVAR turretdest 8,
+        Trigger moveturrettest
+
+IF padon angle9 AFTER padoff angle9 THEN
+        SETVAR turretdest 9,
+        Trigger moveturrettest
+
+IF padon angle10 AFTER padoff angle10 THEN
+        SETVAR turretdest 10,
+        Trigger moveturrettest
+
+IF padon angle11 AFTER padoff angle11 THEN
+        SETVAR turretdest 11,
+        Trigger moveturrettest
+
+IF padon angle12 AFTER padoff angle12 THEN
+        SETVAR turretdest 12,
+        Trigger moveturrettest
+
+IF padon angle13 AFTER padoff angle13 THEN
+        SETVAR turretdest 13,
+        Trigger moveturrettest
+
+IF padon angle14 AFTER padoff angle14 THEN
+        SETVAR turretdest 14,
+        Trigger moveturrettest
+
+
+IF moveturrettest TESTVAR currentangle < turretdest THEN
+        ADDVAR currentangle 1,
+        TRIGGER setturretangletest1,
+        TRIGGERDELAY 300 moveturrettest
+
+IF moveturrettest TESTVAR currentangle > turretdest THEN
+        ADDVAR currentangle -1,
+        TRIGGER setturretangletest1,
+        TRIGGERDELAY 300 moveturrettest
+
+IF moveturrettest TESTVAR currentangle = turretdest THEN
+        TRIGGERDELAY 1000 firemylar
+
+IF setturretangletest1 TESTVAR getdmglvl turret_mask = 0 THEN
+        TRIGGER setturretangle
+
+IF setturretangletest1 TESTVAR getdmglvl turret_mask = 1 THEN
+        TRIGGER setturretangle2
+
+IF HIT turret_mask TESTVAR getdmglvl turret_mask = 2 THEN
+        SETOBJSTATE turret TURR29
+
+IF HIT turret_mask TESTVAR getdmglvl turret_mask = 1 THEN
+        TRIGGER setturretangle2
+
+
+
+IF setturretangle TESTVAR currentangle = 1 THEN
+        SETOBJSTATE turret TURR1
+
+IF setturretangle TESTVAR currentangle = 2 THEN
+        SETOBJSTATE turret TURR2
+
+IF setturretangle TESTVAR currentangle = 3 THEN
+        SETOBJSTATE turret TURR3
+
+IF setturretangle TESTVAR currentangle = 4 THEN
+        SETOBJSTATE turret TURR4
+
+IF setturretangle TESTVAR currentangle = 5 THEN
+        SETOBJSTATE turret TURR5
+
+IF setturretangle TESTVAR currentangle = 6 THEN
+        SETOBJSTATE turret TURR6
+
+IF setturretangle TESTVAR currentangle = 7 THEN
+        SETOBJSTATE turret TURR7
+
+IF setturretangle TESTVAR currentangle = 8 THEN
+        SETOBJSTATE turret TURR8
+
+IF setturretangle TESTVAR currentangle = 9 THEN
+        SETOBJSTATE turret TURR9
+
+IF setturretangle TESTVAR currentangle = 10 THEN
+        SETOBJSTATE turret TURR10
+
+IF setturretangle TESTVAR currentangle = 11 THEN
+        SETOBJSTATE turret TURR11
+
+IF setturretangle TESTVAR currentangle = 12 THEN
+        SETOBJSTATE turret TURR12
+
+IF setturretangle TESTVAR currentangle = 13 THEN
+        SETOBJSTATE turret TURR13
+
+IF setturretangle TESTVAR currentangle = 14 THEN
+        SETOBJSTATE turret TURR14
+
+
+
+
+IF setturretangle2 TESTVAR currentangle = 1 THEN
+        SETOBJSTATE turret TURR15
+
+IF setturretangle2 TESTVAR currentangle = 2 THEN
+        SETOBJSTATE turret TURR16
+
+IF setturretangle2 TESTVAR currentangle = 3 THEN
+        SETOBJSTATE turret TURR17
+
+IF setturretangle2 TESTVAR currentangle = 4 THEN
+        SETOBJSTATE turret TURR18
+
+IF setturretangle2 TESTVAR currentangle = 5 THEN
+        SETOBJSTATE turret TURR19
+
+IF setturretangle2 TESTVAR currentangle = 6 THEN
+        SETOBJSTATE turret TURR20
+
+IF setturretangle2 TESTVAR currentangle = 7 THEN
+        SETOBJSTATE turret TURR21
+
+IF setturretangle2 TESTVAR currentangle = 8 THEN
+        SETOBJSTATE turret TURR22
+
+IF setturretangle2 TESTVAR currentangle = 9 THEN
+        SETOBJSTATE turret TURR23
+
+IF setturretangle2 TESTVAR currentangle = 10 THEN
+        SETOBJSTATE turret TURR24
+
+IF setturretangle2 TESTVAR currentangle = 11 THEN
+        SETOBJSTATE turret TURR25
+
+IF setturretangle2 TESTVAR currentangle = 12 THEN
+        SETOBJSTATE turret TURR26
+
+IF setturretangle2 TESTVAR currentangle = 13 THEN
+        SETOBJSTATE turret TURR27
+
+IF setturretangle2 TESTVAR currentangle = 14 THEN
+        SETOBJSTATE turret TURR28
+
+
+
+
+IF firemylar AFTER setturretangle TESTVAR mylarfired = 0 THEN
+        FIREWEAPON turretweapon Major_Mylar GREENSARGE1,
+        SETVAR mylarfired 1,
+        TRIGGERDELAY 6000 firemylar2
+
+IF killed major_mylar THEN
+        TRIGGER mylardead
+
+IF firemylar2 BUTNOT mylardead THEN
+        SETVAR mylarfired 0,
+        TRIGGER firemylar
+
+
+IF STARTUP2 TESTVAR Mylarisdead = 1 THEN
+        TRIGGER petertestgreenwins
+
+
+
+

@@ -1,0 +1,927 @@
+//**Alpine Map 2 Mission 1>Take the radio installation**//
+//**Level and script created by, Jason Wildblood**//
+
+pad trigger1 		10  		GreenSarge1 > 0
+pad trigger2 		11		GreenSarge1 > 0
+pad trigger4 		13		GreenSarge1 > 0
+pad trigger5 		14		GreenSarge1 > 0
+pad trigger7 		16		GreenSarge1 > 0
+pad mugged 		30		GreenSarge1 > 0
+pad finaldude           55        	GreenSarge1 > 0
+//Mission one Attack//
+pad scoutman1           34         	TanScout1 > 0
+pad scoutman2           35        	TanScout2 > 0
+//Runaways//
+pad cavemen1    	58              TanRifle20 > 0
+pad cavemen2    	59              TanRifle20 > 0
+pad cavemen3    	60              TanRifle20 > 0
+pad cavemen4    	61              TanRifle20 > 0
+pad cavemen5    	62              TanRifle20 > 0
+pad cavemen6    	63              TanRifle20 > 0
+pad cavemen7            64        	TanRifle20 > 0
+pad cavemen8            80        	TanRifle15 > 0
+pad cavemen9            81        	TanRifle15 > 0
+pad cavemen10           82              TanRifle15 > 0
+pad cavemen11           83              TanRifle15 > 0
+pad cavemen12           84              TanRifle15 > 0
+pad cavemen13           85              TanRifle15 > 0
+pad cavemen14           86              TanRifle15 > 0
+pad cavemen15           87              TanRifle15 > 0
+pad cavemen16           90              TanRifle19 > 0
+pad cavemen17           91              TanRifle19 > 0
+pad cavemen18           92              TanRifle19 > 0
+pad cavemen19           93              TanRifle19 > 0
+pad cavemen20           94              TanRifle19 > 0
+pad cavemen21           95              TanRifle19 > 0
+pad cavemen22           96              TanRifle19 > 0
+pad cavemen23           97              TanRifle19 > 0
+pad veton1      	100             TanRifle16 > 0
+pad veton2      	101             TanRifle16 > 0
+pad veton3      	102             TanRifle16 > 0
+pad veton11      	103             TanRifle16 > 0
+pad veton4      	110             TanRifle18 > 0
+pad veton5      	104             TanRifle18 > 0
+pad veton6      	105             TanRifle18 > 0
+pad veton7      	106             TanRifle18 > 0
+pad veton8      	107             TanRifle17 > 0
+pad veton9      	108             TanRifle17 > 0
+pad veton10      	109             TanRifle17 > 0
+pad veton12             50              TanRifle17 > 0
+
+//Jumping the train//
+pad traintrigger2 	15		green trooper > 0
+pad traintrigger3 	18 		green trooper > 0
+pad trainguard1   	66            	green trooper > 0
+pad trainguard2   	67            	green trooper > 0
+pad trainguard3   	68            	green trooper > 0
+pad tg1                 21              noone > 0
+pad tg2                 22              noone > 0
+pad tg3                 23              noone > 0
+pad tg4                 24              noone > 0
+pad tg5                 25              noone > 0
+pad tg6                 26              noone > 0
+
+//other pads//
+pad sargemanVO    	70            	green trooper 	> 0
+pad veteran3            245             Veteran     	> 0
+pad freevet             200             green trooper 	> 0
+pad paratroops          199             green trooper 	> 0
+pad strandedisland	199		greensarge1 > 0
+
+preloadsprite 43 503 0
+preloadsprite 43 503 1
+preloadsprite 43 503 2
+preloadsprite 43 503 3
+preloadsprite 43 503 4
+preloadsprite 43 503 5
+preloadsprite 43 503 6
+preloadsprite 43 503 7
+preloadsprite 43 503 8
+preloadsprite 43 503 9
+preloadsprite 43 503 10
+
+preloadsprite 43 501 0
+preloadsprite 43 501 1
+preloadsprite 43 501 2
+preloadsprite 43 501 3
+preloadsprite 43 501 4
+preloadsprite 43 501 5
+preloadsprite 43 501 6
+preloadsprite 43 501 7
+preloadsprite 43 501 8
+preloadsprite 43 501 9
+preloadsprite 43 501 10
+
+preloadsprite 43 100 1
+preloadsprite 43 100 2
+preloadsprite 43 100 3
+preloadsprite 43 100 4
+preloadsprite 43 100 5
+preloadsprite 43 100 6
+preloadsprite 43 100 7
+preloadsprite 43 100 8
+preloadsprite 43 100 0
+
+preloadsprite 43 950 0
+preloadsprite 43 950 1
+preloadsprite 43 950 2
+preloadsprite 43 950 3
+preloadsprite 43 950 4
+preloadsprite 43 950 5
+preloadsprite 43 950 6
+preloadsprite 43 950 7
+preloadsprite 43 950 8
+
+	//**Setting Facings**//
+	if allingoodfacing then
+setfacing tanrifle26 88,
+setfacing tanrifle24 138,
+setfacing tanrifle19 64,
+setfacing tanrifle1 118,
+setfacing tanrifle2 128,
+setfacing tanrifle3 148,
+setfacing tanrifle4 118,
+setfacing tanrifle5 138,
+setfacing radbackup1 128,
+setfacing killmetowin 118,
+setfacing radbackup4 164,
+setfacing radbackup5 154,
+setfacing radbackup6 128,
+setfacing theman1 128,
+setfacing theman2 128,
+setfacing theman3 128,
+setfacing theman4 128,
+setfacing theman5 128,
+setfacing backstabedG1 128,
+setfacing backstabed2 128,
+setfacing tanscout1 118,
+setfacing tanscout2 138,
+setfacing backstabed3 128,
+setfacing tanhealth 128,
+setfacing calpara 118,
+setfacing added1 128,
+setfacing added2 148,
+setfacing added3 118,
+setfacing added4 14,
+setfacing added5 128,
+setfacing added6 168,
+setfacing added7 14,
+setfacing added8 14,
+setfacing added9 200,
+setfacing added10 197,
+setfacing added11 14
+
+variable testboat 0
+variable watersound 0
+
+
+                        //**Game Start**//
+
+IF startup1 THEN
+        triggerdelay 500 showbeg,
+        setbriefing "map02_1.bmp",
+        trigger allingoodfacing,
+        trigger makeboat,
+        trigger openvo,
+        triggerdelay 3000 destroy_equipt,
+        createpowerup "p" paratroopers pararock 2,
+	createpowerup "a" airstrike pararock 2,
+        trigger scoutabout,
+        trigger makebonusitems,
+        triggerdelay 1700 launchparadrop,
+	triggerdelay 1000 Lonthemove,
+	triggerdelay 1500 ronthemove,
+        trigger wateron,
+        triggerdelay 10000 showf1mess,
+        trigger smoking
+
+if showf1mess then
+        showmessage "按Ｆ１键，寻求帮助。"
+
+if wateron then
+       playsound "waterfall_8Bit.wav" waterrock 4 0 1
+
+if makebonusitems then
+        createpowerup "" flak bazbonus 86,
+        createpowerup "" mortar bazbonus 10,
+        createpowerup "" medpack bazbonus 9,
+	createpowerup "" heavymg bazbonus
+
+if destroy_equipt then
+        damage equipt 201
+
+if openvo then
+        triggerdelay 500 vo1,
+        triggerdelay 3700 vo2
+
+if vo1 then
+        playsound "0201sarge1.wav" 16 0
+
+if vo2 then
+ 	playsound "0201sarge2.wav" 16 0
+
+if showbeg then
+     	showpda "收复无线电台。"
+
+		//Startup creation//
+if makeboat then
+	createvehicle "grenship" boat (3899,3759) green,
+        triggerdelay 500 setshipface
+
+if setshipface then
+        setfacing grenship 64
+
+
+			//**Lose Conditions**
+if killed GreenSarge1 then
+	triggerdelay 200 tanwins,
+        trigger doh,
+        showfailure "中士死了！"
+
+
+if killed tunntop then
+	triggerdelay 1000 tanwins,
+        trigger structurefail2,
+        playsound "TrainTunnel_8Bit.wav" tunntop 5 0
+
+if killed radb then
+        undeploy radiowaves,
+        trigger structurefail,
+	trigger radwavesfailsafe,
+        triggerdelay 1000 tanwins,
+        playsound "TrainTunnel_8Bit.wav" radb 6 0
+
+if killed radtower then
+        undeploy radiowaves,
+        trigger structurefail,
+        trigger radwavesfailsafe,
+        triggerdelay 1000 tanwins,
+        playsound "TrainTunnel_8Bit.wav" radtower 7 0
+
+
+if structurefail2 then
+        showfailure "糟糕！你无法和上校会合了。"
+
+
+if structurefail then
+        showfailure "你无法和总部联系了，任务失败。"
+
+//boat death//
+if killed grenship testvar testboat >= 1 then
+        trigger your_a_loser
+
+if your_a_loser butnot doh then
+        triggerdelay 1000 showtheloser,
+        triggerdelay 1500 tanwins
+
+
+if showtheloser then
+       	showfailure "你被困在台兹岛，没人会来救你，任务失败。"
+
+if padon strandedisland then
+	setvar testboat 1
+
+if padoff strandedisland then
+	setvar testboat 0
+
+			//**Win Conditions**//
+
+if timetowin butnot doh then
+        triggerdelay 1500 failsafewin
+
+if failsafewin butnot startup2 then
+        trigger petertestgreenwins
+
+if petertestgreenwins butnot killed greensarge1 then
+	trigger greenwins
+
+
+         //**The Sarge's Men**
+
+if padon sargemanVO butnot nofinalguard then
+        playsound "0201sarge3.wav" 16 0,
+        triggerdelay 100 nofinalguard
+
+        //Wrenchsetup//
+
+if hit engin butnot onestaber then
+        trigger staberson,
+        trigger wrenchpower,
+        trigger onestaber
+
+if wrenchpower then
+        createpowerup "tools1" wrench (688,889) 3
+
+        //**The back stabers**//
+
+if staberson then
+        order backstabedG1 follow greensarge1,
+        order backstabed2 follow greensarge1,
+        order backstabed3 follow greensarge1
+
+if hit backstaberscrate butnot onestabered then
+        createtrooper "lonestaber" autorifle (1406,277)tan,
+        triggerdelay 2000 loneman,
+        trigger onestabered
+if loneman then
+        addexp Lonestaber 120,
+        order Lonestaber follow greensarge1 inmode attack
+
+if hit lonestaber butnot actiononce then
+        setaipose lonestaber prone,
+        trigger actiononce
+
+
+	//Game Events
+
+ 		//**Runaways**
+         //Left
+
+if Lonthemove then
+        order TanRifle20 goto cavemen1,
+        order TanRifle15 goto cavemen8,
+        order TanRifle19 goto cavemen16
+if padon cavemen1 then
+        order TanRifle20 goto cavemen2
+if padon cavemen2 then
+        order TanRifle20 goto cavemen3
+if padon cavemen3 then
+        order TanRifle20 goto cavemen4
+if padon cavemen4 then
+        order TanRifle20 goto cavemen5
+if padon cavemen5 then
+        order TanRifle20 goto cavemen6
+if padon cavemen6 then
+        order TanRifle20 goto cavemen7
+
+if padon cavemen8 then
+        order TanRifle15 goto cavemen9
+if padon cavemen9 then
+        order TanRifle15 goto cavemen10
+if padon cavemen10 then
+        order TanRifle15 goto cavemen11
+if padon cavemen11 then
+        order TanRifle15 goto cavemen12
+if padon cavemen12 then
+        order TanRifle15 goto cavemen13
+if padon cavemen13 then
+        order TanRifle15 goto cavemen14
+if padon cavemen14 then
+        order TanRifle15 goto cavemen15
+
+if padon cavemen16 then
+        order TanRifle19 goto cavemen17
+if padon cavemen17 then
+        order TanRifle19 goto cavemen18
+if padon cavemen18 then
+        order TanRifle19 goto cavemen19
+if padon cavemen19 then
+        order TanRifle19 goto cavemen20
+if padon cavemen20 then
+        order TanRifle19 goto cavemen21
+if padon cavemen21 then
+        order TanRifle19 goto cavemen22
+if padon cavemen22 then
+        order TanRifle19 goto cave23
+//Right
+
+if Ronthemove then
+	ORDER TanRifle18 GOTO veton4,
+	ORDER TanRifle16 GOTO veton1,
+	ORDER TanRifle17 GOTO veton8
+if padon veton4 then
+        order TanRifle18 goto veton5
+if padon veton5 then
+        order TanRifle18 goto veton6
+if padon veton6 then
+        order TanRifle18 goto veton7
+
+if padon veton1 then
+        order TanRifle16 goto veton2
+if padon veton2 then
+        order TanRifle16 goto veton3
+if padon veton3 then
+        order TanRifle16 goto veton11
+
+if padon veton8 then
+        order TanRifle17 goto veton9
+if padon veton9 then
+        order TanRifle17 goto veton10
+if padon veton10 then
+        order TanRifle17 goto veton12
+
+	//**Bottleneck Attack**
+IF padon trigger1 THEN
+	ORDER TanRifle3 follow greensarge1,
+	ORDER TanRifle2 follow greensarge1,
+	ORDER TanRifle1 follow greensarge1,
+	ORDER TanRifle4 follow greensarge1,
+	ORDER TanRifle5 follow greensarge1
+
+if allof killed tanrifle2 killed tanrifle3 killed tanrifle4
+        killed tanrifle5 then
+        order radbackup1 follow greensarge1 inmode attack,
+        order radbackup3 follow greensarge1 inmode attack,
+        order radbackup6 follow greensarge1 inmode attack
+
+	//**TanScout & VO Asset**
+IF padon trigger2 butnot noscoutvo THEN
+	ORDER TanScout1 GOTO scoutman1,
+	ORDER TanScout2 GOTO scoutman2,
+        playsound "0201TanTrooper.wav" tanscout1 3 0,
+        trigger noscoutvo
+
+        //**Above Attackers**//
+
+if allof killed scout1 killed scout2 then
+        order theman1 follow greensarge1 inmode attack,
+        order theman2 follow greensarge1 inmode attack,
+        order theman3 follow greensarge1 inmode attack,
+        order theman4 follow greensarge1 inmode attack
+
+if scoutabout then
+        setfacing scout1 138,
+        setfacing scout2 38,
+        triggerdelay 1000 scoutabout2
+
+if scoutabout2 then
+        setfacing scout1 192,
+        setfacing scout2 64,
+        triggerdelay 1000 scoutabout3
+
+if scoutabout3 then
+        setfacing scout1 197,
+        triggerdelay 1000 scoutabout4,
+        triggerdelay 1500 branchscout1
+
+if scoutabout4 then
+        setfacing scout1 138,
+        triggerdelay 700 scoutabout5
+
+if scoutabout4 then
+        setfacing scout1 192,
+        triggerdelay 1000 scoutabout6
+
+if scoutabout6 then
+        setfacing scout1 0,
+        triggerdelay 1000 scoutabout7
+
+if scoutabout7 then
+        setfacing scout1 64,
+        triggerdelay 1000 scoutabout8
+
+if scoutabout8 then
+        setfacing scout1 100,
+        triggerdelay 800 scoutabout9
+
+if scoutabout9 then
+        setfacing scout1 128
+
+if branchscout1 then
+        setfacing scout2 28,
+        triggerdelay 1500 branchscout2
+
+if branchscout2 then
+        setfacing scout2 0,
+        triggerdelay 1000 branchscout3
+
+if branchscout3 then
+        setfacing scout2 180,
+        triggerdelay 800 branchscout4
+
+if branchscout4 then
+        setfacing scout2 178,
+        triggerdelay 1000 branchscout5
+
+if branchscout5 then
+        setfacing scout2 128,
+        triggerdelay 700 branchscout6
+
+if branchscout6 then
+        setfacing scout2 64,
+        triggerdelay 3000 scoutabout
+
+	//**Veteran's shack**
+
+IF killed TanRifle17 THEN
+	createtrooper "TanRifle21" rifle (2991,2082) tan,
+	ORDER TanRifle21 follow greensarge1 inmode attack
+IF killed TanRifle16 THEN
+	createtrooper "TanRifle22" rifle (3498,2077) tan,
+	ORDER TanRifle22 follow greensarge1 inmode attack
+IF killed TanRifle18 THEN
+	createtrooper "TanRifle23" rifle (3183,2084) tan,
+	ORDER TanRifle23 follow greensarge1 inmode attack
+IF padon trigger4 THEN
+	ORDER TanRifle24 follow greensarge1 inmode attack,
+	ORDER TanRifle25 follow greensarge1 inmode attack,
+	ORDER TanRifle26 follow greensarge1 inmode attack,
+        ORDER TanRifle19 follow greensarge1 inmode attack
+
+if killed vshack then
+        createexplosion (3493,2494) 130 100 blue,
+        triggerdelay 900 flames,
+        triggerdelay 8000 stop_smoking
+
+if flames then
+        makeflame (3369,2462),
+        makeflame (3422,2506),
+        makeflame (3446,2454),
+        makeflame (3394,2537)
+
+if smoking butnot stop_smoking then
+        makesmoke (3471,2354) 9000000
+
+if pickedup recedcon by green butnot only_oneredcon then
+        fireweapon p paratrooperman (3219,2342),
+        trigger only_oneredcon
+
+
+        //**freeing the old fart**//
+
+if padon freevet butnot nofreevet then
+        createtrooper "Veteran" bazooka prisvet green,
+        undeploy prisvet,
+        moveitem chair veteran,
+        addexp veteran 100,
+        trigger followinggreensarge,
+        triggerdelay 1000 veterantalk,
+        fireweapon p paratrooperman (518,2992),
+        fireweapon p paratrooperman (2660,3799),
+        trigger nofreevet
+
+if veterantalk then
+        playsound "0201VeteranVern.wav" 2 0
+
+if followinggreensarge then
+        order veteran follow GreenSarge1
+
+        //**without the veteran**//
+
+if padon finaldude butnot stopfinalguards then
+        order FinalGuard1 follow GreenSarge1,
+        order FinalGuard2 follow GreenSarge1,
+        trigger makeanotherfinal,
+        triggerdelay 500 orderFinalguard3,
+        trigger sargetalk,
+        trigger novetwinner,
+        trigger timetowin,
+        trigger stopfinalguards
+
+if sargetalk then
+        playsound "0202sarge.wav" 16 0
+
+if makeanotherfinal butnot onlyonefinal then
+        createtrooper "finalguard3" rifle (1863,1626) tan,
+        trigger onlyonefinal
+
+if orderFinalguard3 then
+        order FinalGuard3 follow greensarge1 inmode attack
+
+
+                //Island deffence//
+
+if padon paratroops butnot noparatroops then
+        order islanddef1 follow greensarge1 inmode attack,
+        order islanddef2 follow greensarge1 inmode attack,
+        order islanddef3 follow greensarge1 inmode attack,
+        order islanddef4 follow greensarge1 inmode attack,
+        trigger settheposers,
+        trigger noparatroops
+
+if hit islanddef1 butnot onepose then
+        setaipose islanddef1 prone,
+        trigger onepose
+
+if hit islanddef2 butnot onepose1 then
+        setaipose islanddef2 prone,
+        trigger onepose1
+
+if hit islanddef3 butnot onepose2 then
+        setaipose islanddef3 kneel,
+        trigger onepose2
+
+if hit islanddef4 butnot onepose3 then
+        setaipose islanddef4 kneel,
+        trigger onepose3
+
+if hit calpara butnot nocalpara then
+        fireweapon p paratrooperman paratree3,
+        trigger nocalpara
+
+if launchparadrop then
+        fireweapon p paratrooperman paratree2
+
+        	//**Powerup Drop**//
+
+ if killed islanddef4 then
+        createpowerup "" medpack islanddef4 2
+
+ if killed islanddef3 then
+        createpowerup "" medkit islanddef3
+
+ if killed islanddef1 then
+        createpowerup "" grenade islanddef1 10
+
+ if killed TheMan1 then
+        createpowerup "" medpack TheMan1 1
+
+ if killed TheMan4 then
+        createpowerup "" medpack theman4 2
+
+ if killed FinalGuard1 then
+        createpowerup "pack1" medpack FinalGuard1 2
+
+ if killed FinalGuard2 then
+        createpowerup "pack1" medpack FinalGuard2 3
+
+ if killed FinalGuard3 then
+        createpowerup "pack1" medpack FinalGuard3 2
+
+ if killed TanRifle23 then
+        createpowerup "pack2" medpack TanRifle23
+
+ if killed TanRifle1 then
+        createpowerup "kit1" medkit TanRifle1 2
+
+ if killed veteran then
+        createpowerup "vetbaz" bazooka veteran 5,
+        trigger stopthevo
+
+ if killed TanRifle20 then
+        createpowerup "pack3" medpack TanRifle20 3
+
+ if killed TrainG1 then
+        createpowerup "G1" grenade TrainG1 2
+
+ if killed TrainRifle1 then
+        createpowerup "kit3" medkit TrainRifle1
+
+ if killed lonestaber then
+        createpowerup "kit4" medkit lonestaber
+
+ if killed backstabed3 then
+        createpowerup "" medpack backstabed3 2
+
+ if killed island1 THEN
+	createpowerup "" bazooka island1 10
+
+ if killed island2 THEN
+	createpowerup "" medpack island2 8
+
+ if killed island2 THEN
+	createpowerup "" grenade island2 10
+
+ if killed island3 THEN
+	createpowerup "" flamer island3 30
+
+ if killed island4 THEN
+	createpowerup "" mortar island4 10
+ 
+ if killed TheMan5 THEN
+	createpowerup "" medkit TheMan5
+ 
+ if killed BonusCrate1 THEN
+	createpowerup "" medkit BonusCrate1
+
+ if killed BonusCrate2 THEN
+	createpowerup "" grenade BonusCrate2 3
+
+ if killed backstaberscrate then
+        createpowerup "" bazooka backstaberscrate 5
+ 
+ if killed backstabedG1 then
+        createpowerup "" grenade backstabedG1 5
+
+ if killed Mug3 THEN
+	createpowerup "" medpack Mug3 2
+
+ if killed Mug5 THEN
+	createpowerup "" grenade Mug5 5
+
+ if killed Mug7 THEN
+	createpowerup "" medpack Mug7 3
+
+ if killed tanhealth THEN
+	createpowerup "" medkit tanhealth
+
+ if killed calpara then
+        createpowerup "" bazooka calpara 5
+
+ if killed nonexp1 then
+        createpowerup "" bazooka nonexp1 5
+
+ if killed nonexp2 then
+ 	createpowerup "" flamer nonexp2 40
+
+ if killed radbackup1 then
+        createpowerup "" grenade radbackup1 10
+
+ if killed radbackup3 then
+        createpowerup "" medkit radbackup3
+
+ if killed killmetowin then
+        createpowerup "" bazooka killmetowin 8
+
+ if killed radbackup6 then
+        createpowerup "" medpack radbackup6 5
+
+ if killed startcrate1 then
+        createpowerup "" mortar startcrate1 6
+
+ if killed startcrate2 then
+        createpowerup "" flamer startcrate2 40
+
+ if killed startcrate3 then
+        createpowerup "" bazooka startcrate3 5
+
+ if killed startcrate4 then
+        createpowerup "" medpack startcrate4 4
+
+ if killed sidecrate1 then
+        createpowerup "f1" flamer sidecrate1 30
+
+ if killed sidecrate2 then
+        createpowerup "fl1" flak sidecrate2 30
+
+ if killed sidecrate3 then
+        createpowerup "bz1" bazooka sidecrate3 10
+
+ if killed sidecrate4 then
+        createpowerup "gr1" grenade sidecrate4 10
+
+ if killed action2 then
+        createpowerup "" grenade action2 5
+
+ if killed action4 then
+        createpowerup "" medkit action4
+
+ if killed added1 then
+        createpowerup "" grenade added1 5
+
+ if killed added8 then
+        createpowerup "" medpack added8 3
+
+ if killed added10 then
+        createpowerup "" bazooka added10 5
+
+ if killed bonuscrate3 then
+        createpowerup "" bazooka bonuscrate3 5
+
+ if killed bonuscrate4 then
+        createpowerup "" mortar bonuscrate4 6
+
+ if killed bonuscrate5 then
+        createpowerup "" flak bonuscrate5 50
+
+ if killed bonusdeath1 then
+        createpowerup "" flak bonusdeath1 25
+
+ if killed bonusdeath2 then
+        createpowerup "" medkit bonusdeath2
+
+ if killed TanScout1 then
+        createpowerup "" recon TanScout1 4
+
+ if killed TanScout2 then
+        createpowerup "" recon TanScout2 4
+
+
+
+                //**for added action**//
+if pickedup bz1 by greensarge1 then
+        createtrooper "action1" autorifle (3465,1502) tan,
+        triggerdelay 500 orderaction1,
+        triggerdelay 3000 makesecond
+
+if orderaction1 then
+        order action1 follow greensarge1 inmode attack
+
+if makesecond then
+        createtrooper "action2" autorifle (3465,1502) tan,
+        triggerdelay 500 orderaction2
+
+if orderaction2 then
+        order action2 follow greensarge1 inmode attack
+
+if pickedup fl1 by greensarge1 then
+        createtrooper "action3" autorifle (3115,1034) tan,
+        triggerdelay 500 orderaction3,
+        triggerdelay 5000 makefourth
+
+if orderaction3 then
+        order action3 follow greensarge1 inmode attack
+
+if makefourth then
+        createtrooper "action4" autorifle (3115,1034) tan,
+        triggerdelay 500 orderaction4
+
+if orderaction4 then
+        order action4 follow greensarge1 inmode attack
+
+if hit bonuscrate4 butnot makeonetime then
+        createtrooper "bonusdeath1" autorifle (2384,1904) tan,
+        createtrooper "bonusdeath2" autorifle (2784,1940) tan,
+        setfacing bonusdeath1 178,
+        setfacing bonusdeath2 84,
+        setaipose bonusdeath1 prone,
+        setaipose bonusdeath2 prone,
+        setaimode bonusdeath1 defend,
+        setaimode bonusdeath2 defend,
+        trigger makeonetime
+
+if hit bonuscrate3 butnot makeonetime1 then
+        createtrooper "bonusdeath3" autorifle (2176,2223) tan,
+        createtrooper "bonusdeath4" autorifle (2733,2312) tan,
+        setfacing bonusdeath3 178,
+        setfacing bonusdeath4 84,
+        setaipose bonusdeath3 prone,
+        setaipose bonusdeath4 prone,
+        setaimode bonusdeath3 defend,
+        setaimode bonusdeath4 defend,
+        trigger makeonetime1
+
+                //**Mug Attack**
+
+IF padon mugged butnot NoTrigger THEN
+	createtrooper "Mug3" rifle (2364,1931) tan,
+	createtrooper "Mug4" rifle (2456,1923) tan,
+	createtrooper "Mug5" rifle (2539,1923) tan,
+	createtrooper "Mug6" rifle (2651,3371) tan,
+	ORDER Mug3 follow GreenSarge1,
+	ORDER Mug4 follow GreenSarge1,
+	ORDER Mug5 follow GreenSarge1,
+	ORDER Mug6 follow GreenSarge1,
+	ORDER Mug7 follow GreenSarge1,
+	ORDER Mug8 follow GreenSarge1,
+	ORDER Mug9 follow GreenSarge1,
+        trigger NoTrigger
+
+
+                //Animated Art//
+
+ object sparks
+	state sparks_go
+		frame 50 1
+                frame 50 2
+                frame 50 3
+                frame 50 4
+                frame 50 5
+                frame 50 6
+                frame 50 7
+                frame 50 8
+                frame 50 0
+                        setobjstate sparks sparks_go
+
+ object radiowaves
+        state radio_initial
+                frame 500 0
+
+        state radio_go
+                frame 100 1
+                frame 100 2
+                frame 100 3
+                frame 100 4
+                frame 100 5
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                frame 100 10
+                        setobjstate radiowaves radio_go,
+                        triggerdelay 1100 radio_cycle
+
+ if radio_cycle then
+        setobjstate radiowaves radio_go
+
+ if startradiosig then
+        setobjstate radiowaves radio_go
+
+ object waterfall
+        state waterfall_go
+                frame 200 0
+                frame 200 1
+                frame 200 2
+                frame 200 3
+                frame 200 4
+                frame 200 5
+                frame 200 6
+                frame 200 7
+                frame 200 8
+                frame 200 9
+                frame 200 10
+                        setobjstate waterfall waterfall_go
+
+  object watersmall
+        state watersmall_go
+                frame 200 0
+                frame 200 1
+                frame 200 2
+                frame 200 3
+                frame 200 4
+                frame 200 5
+                frame 200 6
+                frame 200 7
+                frame 200 8
+                frame 200 9
+                frame 200 10
+                        setobjstate watersmall watersmall_go
+
+
+
+  object prisvet
+        state prisvet_go
+                frame 200 0
+		frame 200 1
+                frame 200 2
+                frame 200 3
+                frame 200 4
+                frame 200 5
+                frame 200 6
+                frame 200 7
+                frame 200 8
+                        setobjstate prisvet prisvet_go,
+			triggerdelay 3000 prisvet_cycle
+
+if prisvet_cycle then
+	setobjstate prisvet prisvet_go

@@ -1,0 +1,54 @@
+//Alpine Map 2 Mission 2 Take the Fix Radio//
+
+if startup2 then
+	triggerdelay 1500 showmiss1,
+        setbriefing "map02_2.bmp",
+        trigger novet2,
+        trigger onlyonevo,
+        trigger testdamlevel
+
+if padon veteran3 butnot stopthevo then
+        triggerdelay 1000 talknowvern,
+        trigger stopthevo
+
+if talknowvern then
+        playsound "0202VeteranVern.wav" 2 0
+
+
+if showmiss1 then
+	showpda "Find the wrench to fix the radio transmitter.",
+	triggerdelay 500 showmessbar
+
+if showmessbar then
+	showmessage "Hit F1 for help."
+
+if testdamlevel testvar getdmglvl equipt = 0 then
+        trigger timetowin2
+
+
+	//**Win Conditions**//
+
+if healed equipt by greensarge1 butnot radwavesfailsafe then
+        trigger startradiosig,
+        undeploy sparks,
+        trigger timetowin2
+
+if timetowin2 butnot doh then
+        triggerdelay 1500 failsafewin2
+
+if failsafewin2 butnot startup3 then
+        trigger petertestgreenwins
+
+
+//**Lose condition**//
+
+if killed greensarge1 then
+        triggerdelay 2000 tanwins
+
+
+
+
+
+
+
+

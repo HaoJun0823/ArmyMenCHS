@@ -1,0 +1,204 @@
+// this gets loaded on the host if the tan army is AI controlled
+
+// maintain a variable which knows when we are on our base pad
+// this is used if we accidentally pickup our own flag and we are already on our base
+variable tanOnBase 0
+
+if padon tanbase then
+	setvar tanOnBase 1
+
+if padoff tanbase then
+	setvar tanOnBase 0
+
+// This variable holds the current action for tan
+// 0 means no action, 1 means goto green flag, 2 means goto blue flag, 3 means goto grey flag,
+// 4 means rescue tan flag, 5 means take flag to base
+variable tanAction 0
+
+if startup1 then
+	triggerdelay 1000 tanChooseNewAction,
+	triggerdelay 2000 tanRegularOrders
+
+if tanChooseNewAction then
+	setvar tanAction 0,
+	trigger tanCheckIfHoldingFlags,
+	trigger tanChooseAction
+
+// if it's time to choose a new action but we are currently holding a flag then we should
+// always choose to take it to a base
+
+if tanCheckIfHoldingFlags testvar hasitem tansarge1 greenflag1 = 1 then
+	setvar tanAction 5,
+	trigger tanTakeFlagToBase
+	
+if tanCheckIfHoldingFlags testvar hasitem tansarge1 tanflag1 = 1 then
+	setvar tanAction 5,
+	trigger tanTakeFlagToBase
+	
+if tanCheckIfHoldingFlags testvar hasitem tansarge1 blueflag1 = 1 then
+	setvar tanAction 5,
+	trigger tanTakeFlagToBase
+	
+if tanCheckIfHoldingFlags testvar hasitem tansarge1 greyflag1 = 1 then
+	setvar tanAction 5,
+	trigger tanTakeFlagToBase
+	
+// if tan has no current action then pick a random action
+// keep doing this until an action is set
+if tanChooseAction testvar tanAction = 0 then
+	trigger tanPickRandomAction,
+	triggerdelay 1000 tanChooseAction
+
+if tanPickRandomAction then random
+	trigger tanSetCaptureGreen,
+	trigger tanSetCaptureBlue,
+	trigger tanSetCaptureGrey
+
+// these events setup the tanAction variable
+
+// before attacking green make sure green is in the game and is not an ally
+if tanSetCaptureGreen testvar IsColorInGame green > 0 and IsAlly tan green = 0 then
+	setvar tanAction 1,
+	trigger tanCaptureGreen,
+	trigger tanStartTimeOut
+
+// before attacking blue make sure blue is in the game and is not an ally
+if tanSetCaptureBlue testvar IsColorInGame blue > 0 and IsAlly tan blue = 0 then
+	setvar tanAction 2,
+	trigger tanCaptureBlue,
+	trigger tanStartTimeOut
+
+// before attacking grey make sure grey is in the game and is not an ally
+if tanSetCaptureGrey testvar IsColorInGame grey > 0 and IsAlly tan grey = 0 then
+	setvar tanAction 3,
+	trigger tanCaptureGrey,
+	trigger tanStartTimeOut
+
+// these events do the base attack orders
+
+if tanCaptureGreen testvar tanAction = 1 then
+	order tansarge1 follow greenflag1 inmode attack,
+	order tan group 1 follow tansarge1 inmode defend,
+	order tan group 2 follow greenflag1 inmode attack,
+	order tan group 3 follow greenflag1 inmode attack
+
+if tanCaptureBlue testvar tanAction = 2 then
+	order tansarge1 follow blueflag1 inmode attack,
+	order tan group 1 follow tansarge1 inmode defend,
+	order tan group 2 follow blueflag1 inmode attack,
+	order tan group 3 follow blueflag1 inmode attack
+
+if tanCaptureGrey testvar tanAction = 3 then
+	order tansarge1 follow greyflag1 inmode attack,
+	order tan group 1 follow tansarge1 inmode defend,
+	order tan group 2 follow greyflag1 inmode attack,
+	order tan group 3 follow greyflag1 inmode attack
+
+// this event is for rescuing our own flag
+if tanRescueTan testvar tanAction = 4 then
+	order tansarge1 follow tanflag1 inmode attack,
+	order tan group 1 follow tansarge1 inmode defend,
+	order tan group 2 follow tanflag1 inmode attack,
+	order tan group 3 follow tanflag1 inmode attack
+
+// this event is for taking an enemy flag to my base
+if tanTakeFlagToBase testvar tanAction = 5 then
+	order tansarge1 goto tanbase inmode attack,
+	order tan group 1 follow tansarge1 inmode defend,
+	order tan group 2 goto neartanbase inmode attack,
+	order tan group 3 goto neartanbase inmode attack
+
+// these events choose new actions if my flag is captured by an enemy
+
+if pickedup tanflag1 by green testvar isAlly tan green = 0 and tanAction < 5 then
+	setvar tanAction 4,
+	trigger tanRescueTan
+
+if pickedup tanflag1 by blue testvar isAlly tan blue = 0 and tanAction < 5 then
+	setvar tanAction 4,
+	trigger tanRescueTan
+
+if pickedup tanflag1 by grey testvar isAlly tan grey = 0 and tanAction < 5 then
+	setvar tanAction 4,
+	trigger tanRescueTan
+
+// these events choose new actions if I capture an enemy flag
+
+if pickedup greenflag1 by tan then
+	setvar tanAction 5,
+	trigger tanTakeFlagToBase
+
+if pickedup blueflag1 by tan then
+	setvar tanAction 5,
+	trigger tanTakeFlagToBase
+
+if pickedup greyflag1 by tan then
+	setvar tanAction 5,
+	trigger tanTakeFlagToBase
+
+// or if I rescue my own flag
+
+if pickedup tanflag1 by tan testvar tanOnBase = 0 then
+	setvar tanAction 5,
+	trigger tanTakeFlagToBase
+
+if pickedup tanflag1 by tan testvar tanOnBase = 1 then
+	triggerdelay 100 tanDropTanFlag
+
+if tanDropTanFlag then
+	dropitem tansarge1 tanflag1 tflagbase
+
+// these events choose new actions if any other flag is captured by an enemy
+
+if pickedup greenflag1 testvar tanAction < 4 then
+	setvar tanAction 1,
+	trigger tanCaptureGreen
+
+if pickedup blueflag1 testvar tanAction < 4 then
+	setvar tanAction 2,
+	trigger tanCaptureBlue
+
+if pickedup greyflag1 testvar tanAction < 4 then
+	setvar tanAction 3,
+	trigger tanCaptureGrey
+
+// these events chose a new action if we get an enemy flag to home base
+
+if padon tanbase then
+    triggerdelay 1000 tanChooseNewAction
+
+// if we get our own flag back to base then drop that too
+
+if padon tanbase testvar hasitem tansarge1 tanflag1 = 1 then
+	dropitem tansarge1 tanflag1 tflagbase
+
+// these events choose new actions if a sarge is killed
+
+if killed tansarge1 then
+	triggerdelay 5000 tanChooseNewAction
+
+// these are the standing order regardless of what mode sarge is in
+	
+if tanRegularOrders then
+	order tan group 0 follow tansarge1 inmode attack,
+	setaimode tan group 4 defend,
+	setaimode tan group 5 defend,
+	order tan group 7 goto tanbase inmode evade,
+	triggerdelay 5000 tanRegularOrders
+
+// timeout code - if mode has not changed for a while then change it
+
+variable tanTimeOutVar 0
+variable tanLastTimeOutVar 1
+
+if tanStartTimeOut then
+    addvar tanTimeOutVar 1,
+	triggerdelay 120000 tanCheckTimeOut
+
+if tanCheckTimeOut testvar tanTimeOutVar = tanLastTimeOutVar then
+    trigger tanChooseNewAction
+
+if tanCheckTimeOut testvar tanTimeOutVar <> tanLastTimeOutVar then
+	addvar tanLastTimeOutVar 1
+
+

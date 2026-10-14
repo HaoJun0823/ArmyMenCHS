@@ -1,0 +1,106 @@
+// This variable holds the current action for tan
+// 0 means no action, 1 means attack green, 2 means attack blue, 3 means attack grey
+variable tanAction 0
+
+// this variable is 
+// this gets loaded on the host if the tan army is AI controlled
+if startup1 then
+	triggerdelay 1000 tanChooseNewAction,
+	triggerdelay 2000 tanRegularOrders
+
+if tanChooseNewAction then
+	setvar tanAction 0,
+	trigger tanChooseAction
+
+// if tan has no current action then pick a random action
+// keep doing this until an action is set
+if tanChooseAction testvar tanAction = 0 then
+	trigger tanPickRandomAction,
+	triggerdelay 1000 tanChooseAction
+
+if tanPickRandomAction then random
+	trigger tanSetAttackGreen,
+	trigger tanSetAttackBlue,
+	trigger tanSetAttackGrey
+
+// these events setup the tanAction variable
+
+// before attacking green make sure green is in the game and is not an ally
+if tanSetAttackGreen testvar IsColorInGame green > 0 and IsAlly tan green = 0 then
+	setvar tanAction 1,
+	trigger tanAttackGreen,
+	trigger startTimeOut
+
+// before attacking blue make sure blue is in the game and is not an ally
+if tanSetAttackBlue testvar IsColorInGame blue > 0 and IsAlly tan blue = 0 then
+	setvar tanAction 2,
+	trigger tanAttackBlue,
+	trigger startTimeOut
+
+// before attacking grey make sure grey is in the game and is not an ally
+if tanSetAttackGrey testvar IsColorInGame grey > 0 and IsAlly tan grey = 0 then
+	setvar tanAction 3,
+	trigger tanAttackGrey,
+	trigger startTimeOut
+
+// these events do the actual attack orders
+
+if tanAttackGreen testvar tanAction = 1 then
+	order tansarge1 follow greensarge1 inmode attack,
+	order tan group 1 follow tansarge1 inmode defend,
+	order tan group 2 follow greensarge1 inmode attack,
+	order tan group 3 follow greensarge1 inmode attack,
+	order tan group 4 follow greensarge1 inmode attack,
+	order tan group 5 follow greensarge1 inmode attack,
+	order tan group 0 follow greensarge1 inmode attack,
+	triggerdelay 500 tanAttackGreen
+
+if tanAttackBlue testvar tanAction = 2 then
+	order tansarge1 follow bluesarge1 inmode attack,
+	order tan group 1 follow tansarge1 inmode defend,
+	order tan group 2 follow bluesarge1 inmode attack,
+	order tan group 3 follow bluesarge1 inmode attack,
+	order tan group 4 follow bluesarge1 inmode attack,
+	order tan group 5 follow bluesarge1 inmode attack,
+	order tan group 0 follow bluesarge1 inmode attack,
+	triggerdelay 500 tanAttackBlue
+
+if tanAttackGrey testvar tanAction = 3 then
+	order tansarge1 follow greysarge1 inmode attack,
+	order tan group 1 follow tansarge1 inmode defend,
+	order tan group 2 follow greysarge1 inmode attack,
+	order tan group 3 follow greysarge1 inmode attack,
+	order tan group 4 follow greysarge1 inmode attack,
+	order tan group 5 follow greysarge1 inmode attack,
+	order tan group 0 follow greysarge1 inmode attack,
+	triggerdelay 500 tanAttackGrey
+
+// these events choose new actions if a sarge is killed
+
+if killed sarge by tan then
+	triggerdelay 5000 tanChooseNewAction
+
+if killed tansarge1 then
+	triggerdelay 5000 tanChooseNewAction
+
+// these are the standing order regardless of what mode sarge is in
+	
+if tanRegularOrders then
+	order tan group 7 goto tanbase inmode evade,
+	triggerdelay 5000 tanRegularOrders
+
+// timeout code - if mode has not changed for a while then change it
+
+variable tanTimeOutVar 0
+variable tanLastTimeOutVar 1
+
+if tanStartTimeOut then
+    addvar tanTimeOutVar 1,
+	triggerdelay 120000 tanCheckTimeOut
+
+if tanCheckTimeOut testvar tanTimeOutVar = tanLastTimeOutVar then
+    trigger tanChooseNewAction
+
+if tanCheckTimeOut testvar tanTimeOutVar <> tanLastTimeOutVar then
+	addvar tanLastTimeOutVar 1
+

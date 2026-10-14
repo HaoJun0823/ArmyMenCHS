@@ -1,0 +1,306 @@
+#Object Defaults Table
+
+#Item Flags		hex	decimal	   !!! use decimal
+# ITEMFLAG_MAP		0001	(1)
+# ITEMFLAG_VISBLOCK	0100	(256)
+# ITEMFLAG_WOOD		1000	(4096)
+# ITEMFLAG_STONE	2000	(8192)
+# ITEMFLAG_METAL	4000	(16384)
+# ITEMFLAG_CRUSH	1000000 (16777216)	can be crushed by tanks!
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis
+
+##Crates
+Miscellaneous	20	0	0	4353	20	32	15	1000	0.0	-3	1
+Miscellaneous	20	1	0	257	-1	0	0	1	0.0	0	1
+Miscellaneous	21	0	0	4353	30	32	15	1000	0.0	-3	1
+Miscellaneous	21	1	0	257	-1	0	0	1	0.0	0	1
+Miscellaneous	22	0	0	4353	15	32	15	1000	0.0	-3	1
+Miscellaneous	22	1	0	257	-1	0	0	1	0.0	0	1
+Miscellaneous	23	0	0	4353	20	32	15	1000	0.0	-3	1
+Miscellaneous	23	1	0	257	-1	0	0	1	0.0	0	1
+Miscellaneous	24	0	0	4353	30	32	15	1000	0.0	-3	1
+Miscellaneous	24	1	0	257	-1	0	0	1	0.0	0	1
+Miscellaneous	25	0	0	4353	15	32	15	1000	0.527	-3	1
+Miscellaneous	25	1	0	257	-1	0	0	1	0.0	0	1
+
+##Fence##
+Fence		1	0	0     16777217	20	32	15	1000    2.06	3	1	0	128
+Fence		1	1	0	1	-1	0	0	1	1.34	0	1
+Fence		3	0	0     16777217	20	32	15	1000   -0.36	3	1	0	128
+Fence		3	1	0	1	-1	0	0	1      -0.40	0	1
+
+##Desert11##
+##Wall##
+##Outer Base Walls##
+wall		200	0	0	257	-1	82	15	1000	1.659	0	1
+wall		202	0	0	257	-1	82	15	1000	0.0	0	1
+wall		205	0	0	257	-1	82	15	1000	-0.391	0	1
+wall		207	0	0	257	-1	82	15	1000	0.0	0	1
+
+wall		208	0	0	257	-1	82	15	1000	-0.351	0	1
+wall		209	0	0	257	-1	82	15	1000	-0.336	0	1
+wall		210	0	0	257	-1	82	15	1000	-0.336	0	1
+wall		211	0	0	257	-1	82	15	1000	-0.392	0	1
+wall		356	0	0	257	-1	82	0	1000	-1.42	0	1
+wall		355	0	0	257	-1	82	0	999	0.0	0	1
+wall		229	0	0	257	-1	82	15	1000	-0.410	0	1
+wall		270	0	0	257	-1	82	15	1000	-0.367	0	1
+wall		351	0	0	257	-1	82	0	1000	0.0	0	1
+wall		352	0	0	257	-1	82	0	1000	0.0	0	1
+wall		350	0	0	257	-1	0	0	1400	0.0	0	1		
+
+wall		212	0	0	257	-1	82	15	1000	-0.298	0	1
+wall		213	0	0	257	-1	82	15	1000	1.674	0	1
+wall		214	0	0	257	-1	82	15	1000	2.046	0	1
+wall		215	0	0	257	-1	82	15	1000	2.070	0	1
+wall		216	0	0	257	-1	82	15	1000	2.053	0	1
+
+wall		217	0	0	257	-1	82	15	1000	0.0	0	1
+wall		218	0	0	257	-1	82	15	1001	0.0	0	1
+wall		219	0	0	257	-1	82	15	1000	-0.382	0	1
+wall		220	0	0	257	-1	82	15	1000	1.892	0	1
+wall		221	0	0	257	-1	82	15	1000	1.953	0	1
+wall		222	0	0	257	-1	82	15	1000	-0.331	0	1
+
+wall		223	0	0	257	-1	82	15	1000	0.0	0	1
+wall		224	0	0	257	-1	82	15	1001	0.0	0	1
+wall		225	0	0	257	-1	82	15	1000	2.173	0	1
+wall		226	0	0	257	-1	82	15	1000	-0.357	0	1
+wall		227	0	0	257	-1	82	15	1000	-0.317	0	1
+wall		228	0	0	257	-1	82	15	1000	1.800	0	1
+##SmallWalls##
+wall		35	0	0	1	-1	12	15	1000	-0.294	0	1
+wall		31	0	0	1	-1	12	15	1000	-0.294	0	1
+wall		11	0	0	1	-1	12	15	1000	-0.294	0	1
+wall		15	0	0	1	-1	12	15	1000	-0.294	0	1
+wall		13	0	0	1	-1	12	15	1000	1.810	0	1
+wall		17	0	0	1	-1	12	15	1000	1.810	0	1
+wall		37	0	0	1	-1	12	15	1000	1.810	0	1
+wall		33	0	0	1	-1	12	15	1000	1.810	0	1
+
+##Corner Walls##
+
+wall		250	0	0	257	-1	82	15	1000	-0.387	0	1
+wall		251	0	0	257	-1	82	15	1000	2.208	0	1
+wall		255	0	0	257	-1	82	15	1000	-0.317	0	1
+wall		256	0	0	257	-1	82	15	1000	1.464	0	1
+wall		260	0	0	257	-1	82	15	1000	1.666	0	1
+wall		261	0	0	257	-1	82	15	1000	-0.347	0	1
+wall		265	0	0	257	-1	82	15	1000	1.666	0	1
+wall		266	0	0	257	-1	82	15	1000	-0.421	0	1
+
+##Desert Fountain##
+Miscellaneous	901	0	0	257	-1	0	15	999	0.0	0	0
+
+##The Key##
+Miscellaneous	700	0	0	1	-1	0	0	999	0.0	0	0
+
+##Prison building##
+Building	101	0	0	257	150	60	15	1000	0.0	3	1
+Building	101	1	0	257	75	60	15	1000	0.0	3	1	500
+Building	101	2	0	257	-1	60	15	1000	0.0	3	1	500
+Building	102	0	0	257	150	60	0	1100	0.0	3	1
+Building	102	1	0	257	75	60	0	1100	0.0	3	1	500
+Building	102	2	0	257	-1	60	0	1100	0.0	3	1	500
+Building	103	0	0	257	150	60	15	1000	0.0	3	1
+Building	103	1	0	257	75	60	15	1000	0.0	3	1	500
+Building	103	2	0	257	-1	60	15	1000	0.0	3	1	500
+Building	104	0	0	257	150	60	15	1000	0.466	3	1
+Building	105	0	0	257	150	60	15	1000	0.846	3	1
+Building	105	1	0	257	75	60	15	1000	0.846	3	1	500
+Building	105	2	0	257	-1	60	15	1000	0.846	3	1	500
+Building	106	0	0	257	150	60	15	1000	0.615	3	1
+Building	106	1	0	257	75	60	15	1000	0.615	3	1	500
+Building	106	2	0	257	-1	60	15	1000	0.615	3	1	500
+Building	107	0	0	257	150	60	15	1000	0.0	3	1
+Building	107	1	0	257	75	60	15	1000	0.0	3	1	500
+Building	107	2	0	257	-1	60	15	1000	0.0	3	1	500
+
+link 	building	100		building	101		28 	119
+link 	building	100		building	102		85  	271
+link 	building	100		building	103		128  	176
+link 	building	100		building	104		95  	283
+link 	building	100		building	105		62  	216
+link 	building	100		building	106		28	143
+link 	building	100		building	107		117	248
+
+Building	108	0	0	257	100	60	15	1000	0.0615	3	1
+Building	108	1	0	257	-1	60	15	1000	0.0615	3	1	500
+
+##Prison Cells##
+Building        311     0       0       257     -1      40      15      1   	0.0     0       1	0	128
+Building        312     0       0       257     -1      40      15      10000  	0.0     0       1	0	128
+Building        313     0       0       257     -1      40      15      1000   	-0.349  0       1	0	128
+Building        314     0       0       257     -1      40      15      1000   	-0.350  0       1	0	128
+Building        315     0       0       257     -1      40      15      1000   	1.80    0       1	0	128
+Building        316     0       0       257     -1      40      15      1000   	1.821   0       1	0	128
+Building        317     0       0       1       -1      40      15      1000   	2.055   0       1	0	128
+Building        317     1       0       1       -1      40      15      1000   	4.60    0       1	0	128
+Building        317     2       0       1       -1      40      15      1000   	-4.090  0       1	0	128
+Building        317     3       0       1       -1      40      15      1000   	-1.869  0       1	0	128
+Building        317     4       0       1       -1      40      15      1000   	-1.117  0       1	0	128
+Building        317     5       0       1       -1      40      15      1000   	-0.617  0       1	0	128
+Building        317     6       0       1       -1      40      15      1000   	-0.551  0       1	0	128
+
+
+link 	building	310		building	311		0	0
+link 	building	310		building	312		76	117
+link 	building	310		building	313		73	115
+link 	building	310		building	314		54	56
+link 	building	310		building	315		72	110
+link 	building	310		building	316		143	83
+
+
+
+##Top Left Corner Building##
+Building	801	0	0	257	100	60	15	1000	-0.36	0	0
+Building	801	1	0	257	-1	60	15	1000	-0.36	0	0
+Building	802	0	0	257	100	60	15	1000	2.17	0	0
+Building	802	1	0	257	-1	60	15	1000	2.17	0	0
+Building	803	0	0	257	100	60	15	10000	0.0	0	0
+Building	803	1	0	257	-1	60	15	10000	0.0	0	0
+Building	804	0	0	257	100	60	15	1000	0.0	0	0
+Building	804	1	0	257	-1	60	15	1000	0.0	0	0
+
+link 	building	800		building	804		37  	0
+link 	building	800		building	803		121  	304
+link 	building	800		building	802		116  	349
+link 	building	800		building	801		116  	353
+
+##Lower Right Corner Building##
+Building	811	0	0	257	100	60	15	1000	-0.357	0	0
+Building	811	1	0	257	-1	60	15	1000	-0.357	0	0	500
+Building	812	0	0	257	100	60	15	1000	2.033	0	0
+Building	812	1	0	257	-1	60	15	1000	2.033	0	0	500
+Building	813	0	0	257	100	60	15	1000	-2.033	0	0
+Building	813	1	0	257	-1	60	15	1000	-2.233	0	0	500
+Building	814	0	0	257	100	60	15	1000	0.0	0	0
+Building	814	1	0	257	-1	60	15	1000	0.0	0	0	500
+Building	815	0	0	257	100	60	15	1000	0.0	0	0
+Building	815	1	0	257	-1	60	15	1000	0.0	0	0	500
+
+link 	building	810		building	815		95	194
+link 	building	810		building	814		104	298
+link 	building	810		building	813		297  	294
+link 	building	810		building	812		105	350
+link 	building	810		building	811		104  	353
+
+##upper right corner building##
+Building	821	0	0	257	100	60	15	1000	-0.34	0	0
+Building	821	1	0	257	-1	60	15	1000	-0.34	0	0	500
+Building	822	0	0	257	100	60	15	1000	2.132	0	0
+Building	822	1	0	257	-1	60	15	1000	2.132	0	0	500
+Building	823	0	0	257	100	60	15	1000	0.0	0	0
+Building	823	1	0	257	-1	60	15	1000	0.0	0	0	500
+Building	824	0	0	257	100	60	15	1000	0.0	0	0
+Building	824	1	0	257	-1	60	15	1000	0.0	0	0	500
+
+link 	building	820		building	824		184	338
+link 	building	820		building	823		103	332
+link 	building	820		building	822		103	377
+link 	building	820		building	821		103	377
+
+##lower left corner building##
+Building	831	0	0	257	100	60	15	1000	-0.353	0	0
+Building	831	1	0	257	-1	60	15	1000	-0.353	0	0	500
+Building	832	0	0	257	100	60	15	1000	2.036	0	0
+Building	832	1	0	257	-1	60	15	1000	2.036	0	0	500
+Building	833	0	0	257	100	60	15	1000	-0.352	0	0
+Building	833	1	0	257	-1	60	15	1000	-0.352	0	0	500
+Building	834	0	0	257	100	60	15	1000	0.0	0	0
+Building	834	1	0	257	-1	60	15	1000	0.0	0	0	500
+Building	835	0	0	257	100	60	15	1000	0.0	0	0
+Building	835	1	0	257	-1	60	15	1000	0.0	0	0	500
+
+link 	building	830		building	835		82	274
+link 	building	830		building	834		125	268
+link 	building	830		building	833		158	332
+link 	building	830		building	832		89	305
+link 	building	830		building	831		158	331
+
+##Larger buildings##
+Building	840	0	0	257	100	60	15	1000	0.500	0	0
+Building	840	1	0	257	-1	60	15	1000	0.500	0	0	500
+Building	847	0	0	257	100	60	15	1000	0.545	0	0
+Building	847	1	0	257	-1	60	15	1000	0.565	0	0	500
+Building	848	0	0	257	100	60	15	1000	0.545	0	0
+Building	848	1	0	257	-1	60	15	1000	0.565	0	0	500
+Building	845	0	0	257	100	60	15	1000	0.207	0	0
+Building	845	1	0	257	-1	60	15	1000	0.167	0	0	500
+Building	846	0	0	257	100	60	15	1000	0.207	0	0
+Building	846	1	0	257	-1	60	15	1000	0.167	0	0	500
+
+##Key Master building##
+Building	851	0	0	257	100	60	15	1000	1.955	0	0
+Building	851	1	0	257	-1	60	15	1000	1.955	0	0	500
+Building	852	0	0	257	100	60	15	1000	-0.352	0	0
+Building	852	1	0	257	-1	60	15	1000	-0.352	0	0	500
+Building	853	0	0	257	100	60	15	1000	0.398	0	0
+Building	853	1	0	257	-1	60	15	1000	0.398	0	0	500
+Building	854	0	0	257	100	60	15	1000	0.333	0	0
+Building	854	1	0	257	-1	60	15	1000	0.333	0	0	500
+Building	855	0	0	257	100	60	15	1000	0.0	0	0
+Building	855	1	0	257	-1	60	15	1000	0.0	0	0	500
+Building	856	0	0	257	100	60	15	1000	0.0	0	0
+Building	856	1	0	257	-1	60	15	1000	0.0	0	0	500
+
+link 	building	850		building	856		260	372
+link 	building	850		building	855		133	359
+link 	building	850		building	854		426	402
+link 	building	850		building	853		262	458
+link 	building	850		building	852		259	392
+link 	building	850		building	851		149	432
+
+##Archway for portal##
+Miscellaneous	30	0	0	257	-1	12	15	1000	-0.320	0	1
+Miscellaneous	31	0	0	257	-1	32	15	1000	0.0	0	1
+Miscellaneous	32	0	0	257	-1	12	15	1000	0.093	0	1
+
+Miscellaneous	999	0	0	257	-1	32	15	1000	-1.112	0	1
+Miscellaneous	999	1	0	257	-1	32	15	1000	-1.112	0	1
+Miscellaneous	999	2	0	257	-1	32	15	1000	-1.112	0	1
+Miscellaneous	999	3	0	257	-1	32	15	1000	-1.112	0	1
+Miscellaneous	999	4	0	257	-1	32	15	1000	-1.112	0	1
+Miscellaneous	999	5	0	257	-1	32	15	1000	-1.112	0	1
+Miscellaneous	999	6	0	257	-1	32	15	1000	-1.112	0	1
+Miscellaneous	999	7	0	257	-1	32	15	1000	-1.112	0	1
+Miscellaneous	999	8	0	257	-1	32	15	1000	-1.112	0	1
+
+fence		500	0	0	257	-1	60	15	10000	1.5	0	1
+fence		501	0	0	257	-1	60	15	10000	1.5	0	1
+
+##Weapon Launcher##
+Miscellaneous	101	0	0	257	150	32	15	1000	0.551	90	1
+Miscellaneous	101	1	0	257	-1	20	15	1000	0.551	0	1
+Miscellaneous	101	2	0	257	-1	20	15	1000	0.551	0	1
+Miscellaneous	101	3	0	257	-1	20	15	1000	0.551	0	1
+Miscellaneous	101	4	0	257	-1	20	15	1000	0.551	0	1
+Miscellaneous	101	5	0	257	-1	20	15	1000	0.551	0	1
+Miscellaneous	101	6	0	257	-1	20	15	1000	0.551	0	1
+Miscellaneous	101	7	0	257	-1	20	15	1000	0.551	0	1
+
+
+Miscellaneous	105	0	0	257	-1	20	0	1100	0.0	0	1
+Miscellaneous	105	1	0	257	-1	20	0	1100	0.0	0	1
+Miscellaneous	105	2	0	257	-1	20	0	1100	0.0	0	1
+Miscellaneous	105	3	0	257	-1	20	0	1100	0.0	0	1
+Miscellaneous	105	4	0	257	-1	20	0	1100	0.0	0	1
+Miscellaneous	105	5	0	257	-1	20	0	1100	0.0	0	1
+Miscellaneous	105	6	0	257	-1	20	0	1100	0.0	0	1
+Miscellaneous	105	7	0	257	-1	20	0	1100	0.0	0	1
+
+Miscellaneous	104	0	0	257	-1	20	0	1300	0.0	0	1
+Miscellaneous	103	0	0	257	150	20	15	1000	0.2044	90	1
+Miscellaneous	103	1	0	257	-1	20	15	1000	0.2044	0	1	1000
+Miscellaneous	102	0	0	257	-1	20	0	1000	1.431	0	1
+
+Miscellaneous	110	0	0	257	100	32	15	1000	0.256	90	1
+Miscellaneous	110	1	0	257	150	32	15	1000	0.256	90	1	1000
+Miscellaneous	110	2	0	257	-1	32	15	1000	0.256	0	1	1000
+
+Miscellaneous	111	0	0	257	-1	20	15	900	0.0	0	1
+
+##Remote Control##
+Miscellaneous	39	0	0	257	100	50	15	1000	0.0	0	0
+Miscellaneous	39	1	0	257	-1	50	15	1000	0.0	0	0

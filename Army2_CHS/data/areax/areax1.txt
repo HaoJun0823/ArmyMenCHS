@@ -1,0 +1,846 @@
+// map design and scripting by Alvin Muolic
+// Area X - Mission 1
+// That area somewhere off in Tan country that
+// most Tan (and Green, for that matter) don't
+// know exists. 
+
+PAD area51go 	160		green trooper > 0
+
+// mission termination conditions
+ 
+if killed scorch then
+	createpowerup flamer scorch 50
+
+if killed veteran then
+	createpowerup bazooka veteran 10
+
+if killed greensarge1 THEN
+	triggerdelay 1000 hesdead
+
+if hesdead then
+	showfailure "中士死了！",
+	triggerdelay 10 tanwins
+
+if endmission1 butnot killed greensarge1 then
+	triggerdelay 10 petertestgreenwins
+
+if petertestgreenwins butnot killed greensarge1 then
+	trigger greenwins
+
+// Game Startup and Prep
+
+if startup1 then
+	triggerdelay 10 missionbrief1x,
+	setbriefing "map10_1.bmp",
+	HEAL GreenSarge1 100,
+	playsound "map10m1.wav" 16 0,
+	createvehicle tank1 tank (3836,3857) green,
+	setmaxhealth tank1 100,
+	heal tank1 100,
+	setfacing tank1 32,
+	createtrooper "pow1" rifle (3964,3904) green,
+	setnpc pow1 1,
+	damage pow1 1000 crush,
+	createtrooper "pow2" rifle (3818,3933) green,
+	setnpc pow2 1,
+	damage pow2 1000 projectile,
+	createtrooper "pow3" rifle (3868,3944) green,
+	setnpc pow3 1,
+	damage pow3 1000 explosion,
+	createtrooper "tg1" vulcan (3639,3744) tan,
+	setfacing tg1 32,
+	createtrooper "tg2" sniper (3583,3899) tan,
+	setfacing tg2 64,
+	setaipose tg2 prone,
+	createtrooper "tg3" autorifle (3776,3669) tan,
+	setfacing tg3 20,
+	createtrooper "tg4" bazooka (3874,3585) tan,
+	setaipose tg4 kneel,
+	playsound "AmbientComputer_8Bit.wav" c5 5 0 1,
+	playsound "AmbientComputer_8Bit.wav" c6 6 0 1,
+	playsound "AmbientComputer_8Bit.wav" c7 7 0 1,
+	playsound "AmbientComputer_8Bit.wav" c8 8 0 1,
+	playsound "AmbientComputer_8Bit.wav" c9 9 0 1,
+	playsound "AmbientComputer_8Bit.wav" c10 10 0 1,
+	playsound "AmbientComputer_8Bit.wav" c11 11 0 1,
+	playsound "AmbientComputer_8Bit.wav" c12 12 0 1,
+	playsound "AmbientComputer_8Bit.wav" c13 13 0 1,
+	playsound "AmbientComputer_8Bit.wav" c14 14 0 1,
+	playsound "AmbientComputer_8Bit.wav" c15 15 0 1,
+	playsound "generatorHum_8Bit.wav" zombiegen1 2 0 1,
+	playsound "generatorHum_8Bit.wav" zombiegen2 3 0 1,
+	playsound "generatorHum_8Bit.wav" zombiegen3 4 0 1,
+	triggerdelay 300 letthefunbegin
+
+if letthefunbegin then	
+	trigger mission1,
+	playsound "portal2_8Bit.wav" 1 0,
+	createtrooper "m80c1x" rifle (190,546) tan,
+	createexplosion m80c1x 133 0 tan,
+	setm80 m80c1x green,
+	order m80c1x follow greensarge1,
+	createtrooper "m80c1y" rifle (389,565) tan,
+	createexplosion m80c1y 133 0 tan,
+	setm80 m80c1y green,
+	order m80c1y follow greensarge1,
+	createtrooper "m80c1z" rifle (329,255) tan,
+	createexplosion m80c1z 133 0 tan,
+	setm80 m80c1z green,
+	order m80c1z follow greensarge1,
+	triggerdelay 3000 itsatrap,
+	createtrooper "scientist1" rifle (3583,630) tan,
+	createtrooper "scientist2" rifle (3743,653) tan,
+	createtrooper "scientist3" rifle (3589,824) tan,
+	createtrooper "scientist4" rifle (3794,761) tan,
+	setmaxhealth scientist1 1,
+	heal scientist1 100,
+	setmaxhealth scientist2 1,
+	heal scientist2 100,
+	setmaxhealth scientist3 1,
+	heal scientist3 100,
+	setmaxhealth scientist4 1,
+	heal scientist4 100,
+	setscientist scientist1,
+	setscientist scientist2,
+	setscientist scientist3,
+	setscientist scientist4,
+	setaimode scientist1 evade,
+	setaimode scientist2 evade,
+	setaimode scientist3 evade,
+	setaimode scientist4 evade
+
+if missionbrief1x then
+	showpda "找到并潜入黄军秘密基地。"
+
+if itsatrap then
+	playsound "portal2_8Bit.wav" 1 0,
+	createtrooper "m80c1" rifle (490,748) tan,
+	createexplosion m80c1 133 0 tan,
+	setm80 m80c1 green,
+	order m80c1 follow greensarge1,
+	createtrooper "m80c2" rifle (954,415) tan,
+	createexplosion m80c2 133 0 tan,
+	setm80 m80c2 green,
+	order m80c2 follow greensarge1,
+	createtrooper "m80c3" rifle (789,1093) tan,
+	createexplosion m80c3 133 0 tan,
+	setm80 m80c3 green,
+	order m80c3 follow greensarge1,
+	createtrooper "m80c4" rifle (1025,993) tan,
+	createexplosion m80c4 133 0 tan,
+	setm80 m80c4 green,
+	order m80c4 follow greensarge1,
+	createtrooper "m80c5" rifle (886,645) tan,
+	createexplosion m80c5 133 0 tan,
+	setm80 m80c5 green,
+	order m80c5 follow greensarge1,
+	createtrooper "m80c6" rifle (725,515) tan,
+	createexplosion m80c6 133 0 tan,
+	setm80 m80c6 green,
+	order m80c6 follow greensarge1,
+	createtrooper "m80c7" rifle (906,1422) tan,
+	createexplosion m80c7 133 0 tan,
+	setm80 m80c7 green,
+	order m80c7 follow greensarge1,
+	createtrooper "m80c8" rifle (1083,1042) tan,
+	createexplosion m80c8 133 0 tan,
+	setm80 m80c8 green,
+	order m80c8 follow greensarge1,
+	createtrooper "m80c9" rifle (402,1219) tan,
+	createexplosion m80c9 133 0 tan,
+	setm80 m80c9 green,
+	order m80c9 follow greensarge1,
+	createtrooper "m80c10" rifle (1259,1015) tan,
+	createexplosion m80c10 133 0 tan,
+	setm80 m80c10 green,
+	order m80c10 follow greensarge1,
+	triggerdelay 7500 wave2,
+	triggerdelay 12500 wave3,
+	triggerdelay 17500 wave4,
+	triggerdelay 22500 wave5
+
+if wave2 then
+	playsound "portal2_8Bit.wav" 1 0,
+	createtrooper "m80c11" rifle (490,748) tan,
+	createexplosion m80c11 133 0 tan,
+	setm80 m80c11 green,
+	order m80c11 follow greensarge1,
+	createtrooper "m80c12" rifle (954,415) tan,
+	createexplosion m80c12 133 0 tan,
+	setm80 m80c12 green,
+	order m80c12 follow greensarge1,
+	createtrooper "m80c13" rifle (789,1093) tan,
+	createexplosion m80c13 133 0 tan,
+	setm80 m80c13 green,
+	order m80c13 follow greensarge1,
+	createtrooper "m80c14" rifle (1025,993) tan,
+	createexplosion m80c14 133 0 tan,
+	setm80 m80c14 green,
+	order m80c14 follow greensarge1,
+	createtrooper "m80c15" rifle (886,645) tan,
+	createexplosion m80c15 133 0 tan,
+	setm80 m80c15 green,
+	order m80c15 follow greensarge1,
+	createtrooper "m80c16" rifle (725,515) tan,
+	createexplosion m80c16 133 0 tan,
+	setm80 m80c16 green,
+	order m80c16 follow greensarge1,
+	createtrooper "m80c17" rifle (906,1422) tan,
+	createexplosion m80c17 133 0 tan,
+	setm80 m80c17 green,
+	order m80c17 follow greensarge1,
+	createtrooper "m80c18" rifle (1083,1042) tan,
+	createexplosion m80c18 133 0 tan,
+	setm80 m80c18 green,
+	order m80c18 follow greensarge1,
+	createtrooper "m80c19" rifle (402,1219) tan,
+	createexplosion m80c19 133 0 tan,
+	setm80 m80c19 green,
+	order m80c19 follow greensarge1,
+	createtrooper "m80c20" rifle (1259,1015) tan,
+	createexplosion m80c20 133 0 tan,
+	setm80 m80c20 green,
+	order m80c20 follow greensarge1
+
+if wave3 then
+	playsound "portal2_8Bit.wav" 1 0,
+	createtrooper "m80c21" rifle (490,748) tan,
+	createexplosion m80c21 133 0 tan,
+	setm80 m80c21 green,
+	order m80c21 follow greensarge1,
+	createtrooper "m80c22" rifle (954,415) tan,
+	createexplosion m80c22 133 0 tan,
+	setm80 m80c22 green,
+	order m80c22 follow greensarge1,
+	createtrooper "m80c23" rifle (789,1093) tan,
+	createexplosion m80c23 133 0 tan,
+	setm80 m80c23 green,
+	order m80c23 follow greensarge1,
+	createtrooper "m80c24" rifle (1025,993) tan,
+	createexplosion m80c24 133 0 tan,
+	setm80 m80c24 green,
+	order m80c24 follow greensarge1,
+	createtrooper "m80c25" rifle (886,645) tan,
+	createexplosion m80c25 133 0 tan,
+	setm80 m80c25 green,
+	order m80c25 follow greensarge1,
+	createtrooper "m80c26" rifle (725,515) tan,
+	createexplosion m80c26 133 0 tan,
+	setm80 m80c26 green,
+	order m80c26 follow greensarge1,
+	createtrooper "m80c27" rifle (906,1422) tan,
+	createexplosion m80c27 133 0 tan,
+	setm80 m80c27 green,
+	order m80c27 follow greensarge1,
+	createtrooper "m80c28" rifle (1083,1042) tan,
+	createexplosion m80c28 133 0 tan,
+	setm80 m80c28 green,
+	order m80c28 follow greensarge1,
+	createtrooper "m80c29" rifle (402,1219) tan,
+	createexplosion m80c29 133 0 tan,
+	setm80 m80c29 green,
+	order m80c29 follow greensarge1,
+	createtrooper "m80c30" rifle (1259,1015) tan,
+	createexplosion m80c30 133 0 tan,
+	setm80 m80c30 green,
+	order m80c30 follow greensarge1
+
+if wave4 then
+	playsound "portal2_8Bit.wav" 1 0,
+	createtrooper "m80c31" rifle (490,748) tan,
+	createexplosion m80c31 133 0 tan,
+	setm80 m80c31 green,
+	order m80c31 follow greensarge1,
+	createtrooper "m80c32" rifle (954,415) tan,
+	createexplosion m80c32 133 0 tan,
+	setm80 m80c32 green,
+	order m80c32 follow greensarge1,
+	createtrooper "m80c33" rifle (789,1093) tan,
+	createexplosion m80c33 133 0 tan,
+	setm80 m80c33 green,
+	order m80c33 follow greensarge1,
+	createtrooper "m80c34" rifle (1025,993) tan,
+	createexplosion m80c34 133 0 tan,
+	setm80 m80c34 green,
+	order m80c34 follow greensarge1,
+	createtrooper "m80c35" rifle (886,645) tan,
+	createexplosion m80c35 133 0 tan,
+	setm80 m80c35 green,
+	order m80c35 follow greensarge1,
+	createtrooper "m80c36" rifle (725,515) tan,
+	createexplosion m80c36 133 0 tan,
+	setm80 m80c36 green,
+	order m80c36 follow greensarge1,
+	createtrooper "m80c37" rifle (906,1422) tan,
+	createexplosion m80c37 133 0 tan,
+	setm80 m80c37 green,
+	order m80c37 follow greensarge1,
+	createtrooper "m80c38" rifle (1083,1042) tan,
+	createexplosion m80c38 133 0 tan,
+	setm80 m80c38 green,
+	order m80c38 follow greensarge1,
+	createtrooper "m80c39" rifle (402,1219) tan,
+	createexplosion m80c39 133 0 tan,
+	setm80 m80c39 green,
+	order m80c39 follow greensarge1,
+	createtrooper "m80c40" rifle (1259,1015) tan,
+	createexplosion m80c40 133 0 tan,
+	setm80 m80c40 green,
+	order m80c40 follow greensarge1
+
+if wave5 then
+	playsound "portal2_8Bit.wav" 1 0,
+	createtrooper "m80c41" rifle (490,748) tan,
+	createexplosion m80c41 133 0 tan,
+	setm80 m80c41 green,
+	order m80c41 follow greensarge1,
+	createtrooper "m80c42" rifle (954,415) tan,
+	createexplosion m80c42 133 0 tan,
+	setm80 m80c42 green,
+	order m80c42 follow greensarge1,
+	createtrooper "m80c43" rifle (789,1093) tan,
+	createexplosion m80c43 133 0 tan,
+	setm80 m80c43 green,
+	order m80c43 follow greensarge1,
+	createtrooper "m80c44" rifle (1025,993) tan,
+	createexplosion m80c44 133 0 tan,
+	setm80 m80c44 green,
+	order m80c44 follow greensarge1,
+	createtrooper "m80c45" rifle (886,645) tan,
+	createexplosion m80c45 133 0 tan,
+	setm80 m80c45 green,
+	order m80c45 follow greensarge1,
+	createtrooper "m80c46" rifle (725,515) tan,
+	createexplosion m80c46 133 0 tan,
+	setm80 m80c46 green,
+	order m80c46 follow greensarge1,
+	createtrooper "m80c47" rifle (906,1422) tan,
+	createexplosion m80c47 133 0 tan,
+	setm80 m80c47 green,
+	order m80c47 follow greensarge1,
+	createtrooper "m80c48" rifle (1083,1042) tan,
+	createexplosion m80c48 133 0 tan,
+	setm80 m80c48 green,
+	order m80c48 follow greensarge1,
+	createtrooper "m80c49" rifle (402,1219) tan,
+	createexplosion m80c49 133 0 tan,
+	setm80 m80c49 green,
+	order m80c49 follow greensarge1,
+	createtrooper "m80c50" rifle (1259,1015) tan,
+	createexplosion m80c50 133 0 tan,
+	setm80 m80c50 green,
+	order m80c50 follow greensarge1
+
+if killed veteran then
+	createpowerup bazooka greensarge1 5
+
+if allof killed m80c1 killed m80c2 killed m80c3 killed m80c4 killed m80c5 killed m80c6 killed m80c7 killed m80c8 killed m80c9 killed m80c10 then
+	trigger win1x
+if allof killed m80c11 killed m80c12 killed m80c13 killed m80c14 killed m80c15 killed m80c16 killed m80c17 killed m80c18 killed m80c19 killed m80c20 then
+	trigger win2x
+if allof killed m80c21 killed m80c22 killed m80c23 killed m80c24 killed m80c25 killed m80c26 killed m80c27 killed m80c28 killed m80c29 killed m80c30 then
+	trigger win3x
+if allof killed m80c31 killed m80c32 killed m80c33 killed m80c34 killed m80c35 killed m80c36 killed m80c37 killed m80c38 killed m80c39 killed m80c40 then
+	trigger win4x
+if allof killed m80c41 killed m80c42 killed m80c43 killed m80c44 killed m80c45 killed m80c46 killed m80c47 killed m80c48 killed m80c49 killed m80c50 then
+	trigger win5x
+
+if allof win1x win2x win3x win4x win5x then
+//	showmessage "That was a tough fight!",
+	trigger endmission1
+
+// boom (taken out because it was a bit unfair!)
+
+if boom then 
+	showmessage "倒计时开始",
+	triggerdelay 500 boom10
+if boom10 then
+	showmessage "...10",
+	triggerdelay 500 boom9
+if boom9 then
+	showmessage "...9",
+	triggerdelay 500 boom8
+if boom8 then
+	showmessage "...8",
+	triggerdelay 500 boom7
+if boom7 then
+	showmessage "...7",
+	triggerdelay 500 boom6
+if boom6 then
+	showmessage "...6",
+	triggerdelay 500 boom5
+if boom5 then
+	showmessage "...5",
+	triggerdelay 500 boom4
+if boom4 then
+	showmessage "...4",
+	triggerdelay 500 boom3
+if boom3 then
+	showmessage "...3",
+	triggerdelay 500 boom2
+if boom2 then
+	showmessage "...2",
+	triggerdelay 500 boom1
+if boom1 then
+	showmessage "...1",
+	showmessage "听起来不妙！",
+	triggerdelay 500 boom0
+if boom0 then
+	createexplosion (628,180) 131 125 tan,
+	triggerdelay 750 boom0a
+if boom0a then
+	createexplosion (401,393) 138 125 tan,
+	triggerdelay 1000 boom0b
+if boom0b then
+	createexplosion (470,65) 139 125 tan,
+	triggerdelay 750 boom0c
+if boom0c then
+	createexplosion (643,37) 131 125 tan,
+	triggerdelay 1000 boom0d
+if boom0d then
+	createexplosion (306,241) 139 125 tan,
+	triggerdelay 750 boom0e
+if boom0e then
+	createexplosion (358,359) 138 125 tan,
+	triggerdelay 1000 boom0f
+if boom0f then
+	createexplosion (697,247) 138 125 tan,
+	triggerdelay 750 boom0g,
+if boom0g then
+	createexplosion (628,180) 131 125 tan,
+	triggerdelay 1000 boom0h
+if boom0h then
+	createexplosion (375,348) 139 125 tan,
+	triggerdelay 750 boom0i
+if boom0i then
+	createexplosion (470,65) 131 125 tan,
+	triggerdelay 1000 boom0j
+if boom0j then
+	createexplosion (266,431) 138 125 tan,
+	triggerdelay 750 boom0k
+if boom0k then
+	createexplosion (369,473) 131 125 tan,
+	triggerdelay 1000 boom0l
+if boom0l then
+	createexplosion (415,491) 138 125 tan,
+	triggerdelay 750 boom0m
+if boom0m then
+	createexplosion (354,452) 139 125 tan
+	
+if mission1 then
+	triggerdelay 1000 a51s1,
+	triggerdelay 1000 a51s2,
+	triggerdelay 1000 zombiefarm 
+
+// Area 51 Perimeter Guards
+
+if a51s1 then
+	createtrooper "a51_g1" autorifle (2446,1369) tan,
+	setfacing a51_g1 110,
+	createtrooper "a51_g2" autorifle (2549,1609) tan,
+	setfacing a51_g2 110
+
+// Area 51 Sentry 2
+
+if a51s2 then
+	createtrooper "a51_s1" autorifle (2536,218) tan,
+	createtrooper "a51_s2" autorifle (2466,375) tan,
+	createtrooper "a51_s3" autorifle (2493,559) tan,
+	createtrooper "a51_s4" autorifle (2589,931) tan,
+	createtrooper "a51_s5" autorifle (2978,1714) tan,
+	createtrooper "a51_s6" autorifle (3261,1949) tan,
+	createtrooper "a51_s7" autorifle (3563,1907) tan,
+	createtrooper "a51_s8" autorifle (3900,1803) tan,
+	setfacing a51_s1 64,
+	setfacing a51_s2 64,
+	setfacing a51_s3 64,
+	setfacing a51_s4 64,
+	setfacing a51_s5 64,
+	setfacing a51_s6 128,
+	setfacing a51_s7 140,
+	setfacing a51_s8 140,
+	createtrooper "a51_x1" autorifle (2778,769) tan,
+	createtrooper "a51_x2" autorifle (2879,831) tan,
+	createtrooper "a51_x3" flamer (2899,741) tan,
+	setfacing a51_x1 110,
+	setfacing a51_x2 128,
+	setfacing a51_x3 140,
+	createtrooper "a51_x4" autorifle (3208,612) tan,
+	createtrooper "a51_x5" autorifle (3283,668) tan,
+	createtrooper "a51_x6" vulcan (3327,561) tan,
+	setfacing a51_x4 80,
+	setfacing a51_x5 80,
+	setfacing a51_x6 64,
+	createtrooper "a51_x7" autorifle (3107,844) tan,
+	createtrooper "a51_x8" autorifle (3091,1093) tan,
+	createtrooper "a51_x9" grenade (3071,974) tan,
+	setfacing a51_x7 90,
+	setfacing a51_x8 90,
+	setfacing a51_x9 90,
+	createtrooper "a51_x10" autorifle (3114,1417) tan,
+	createtrooper "a51_x11" autorifle (3051,1359) tan,
+	createtrooper "a51_x12" mortar (3090,1269) tan,
+	setfacing a51_x10 64,
+	setfacing a51_x11 90,
+	setfacing a51_x12 75,
+	createtrooper "a51_x13" autorifle (3401,931) tan,
+	createtrooper "a51_x14" autorifle (3468,1006) tan,
+	createtrooper "a51_x15" bazooka (3579,1013) tan,
+	setfacing a51_x13 64,
+	setfacing a51_x14 90,
+	setfacing a51_x15 160
+
+if hit a51_g1 by green then
+	order a51_g2 follow greensarge1
+if hit a51_g2 by green then
+	order a51_g1 follow greensarge1
+
+if hit a51_s1 by green then
+	order a51_s1 follow greensarge1,
+	order a51_s2 follow greensarge1,
+	order a51_s3 follow greensarge1,
+	order a51_s4 follow greensarge1
+if hit a51_s2 by green then
+	order a51_s1 follow greensarge1,
+	order a51_s2 follow greensarge1,
+	order a51_s3 follow greensarge1,
+	order a51_s4 follow greensarge1
+if hit a51_s3 by green then
+	order a51_s3 follow greensarge1,
+	order a51_s2 follow greensarge1,
+	order a51_s1 follow greensarge1,
+	order a51_s4 follow greensarge1
+if hit a51_s4 by green then
+	order a51_s4 follow greensarge1,
+	order a51_s2 follow greensarge1,
+	order a51_s3 follow greensarge1,
+	order a51_s1 follow greensarge1
+if hit a51_s5 by green then
+	order a51_s5 follow greensarge1,
+	order a51_s6 follow greensarge1,
+	order a51_s7 follow greensarge1,
+	order a51_s8 follow greensarge1
+if hit a51_s6 by green then
+	order a51_s6 follow greensarge1,
+	order a51_s5 follow greensarge1,
+	order a51_s7 follow greensarge1,
+	order a51_s8 follow greensarge1
+if hit a51_s7 by green then
+	order a51_s7 follow greensarge1,
+	order a51_s6 follow greensarge1,
+	order a51_s5 follow greensarge1,
+	order a51_s8 follow greensarge1
+if hit a51_s8 by green then
+	order a51_s8 follow greensarge1,
+	order a51_s6 follow greensarge1,
+	order a51_s7 follow greensarge1,
+	order a51_s5 follow greensarge1
+
+if hit tg1 by green then
+	order tg1 follow greensarge1,
+	order tg2 follow greensarge1,
+	order tg3 follow greensarge1,
+	order tg4 follow greensarge1,
+	order a51_g1 follow greensarge1, 
+	order a51_g2 follow greensarge1 
+if hit tg2 by green then
+	order tg1 follow greensarge1,
+	order tg2 follow greensarge1,
+	order tg3 follow greensarge1,
+	order tg4 follow greensarge1,
+	order a51_g1 follow greensarge1, 
+	order a51_g2 follow greensarge1 
+if hit tg3 by green then
+	order tg1 follow greensarge1,
+	order tg2 follow greensarge1,
+	order tg3 follow greensarge1,
+	order tg4 follow greensarge1,
+	order a51_g1 follow greensarge1, 
+	order a51_g2 follow greensarge1 
+if hit tg4 by green then
+	order tg1 follow greensarge1,
+	order tg2 follow greensarge1,
+	order tg3 follow greensarge1,
+	order tg4 follow greensarge1,
+	order a51_g1 follow greensarge1, 
+	order a51_g2 follow greensarge1 
+
+if zombiefarm then
+	createtrooper "zombie1" rifle (344,3443) tan,
+	setfacing zombie1 128,
+	setzombie zombie1,
+//	createtrooper "zombie2" rifle (301,3608) tan,
+//	setfacing zombie2 128,
+//	setzombie zombie2,
+	createtrooper "zombie3" rifle (357,3525) tan,
+	setfacing zombie3 64,
+	setzombie zombie3,
+//	createtrooper "zombie4" rifle (465,3380) tan,
+//	setfacing zombie4 64,
+//	setzombie zombie4,
+	createtrooper "zombie5" rifle (431,3457) tan,
+	setfacing zombie5 140,
+	setzombie zombie5,
+//	createtrooper "zombie6" rifle (359,3660) tan,
+//	setfacing zombie6 140,
+//	setzombie zombie6,
+	createtrooper "zombie7" rifle (436,3610) tan,
+	setfacing zombie7 64,
+	setzombie zombie7,
+//	createtrooper "zombie8" rifle (508,3541) tan,
+//	setfacing zombie8 128,
+//	setzombie zombie8,
+	createtrooper "zombie9" rifle (678,3345) tan,
+	setfacing zombie9 128,
+	setzombie zombie9,
+//	createtrooper "zombie10" rifle (727,3254) tan,
+//	setfacing zombie10 128,
+//	setzombie zombie10,
+	createtrooper "zombie11" rifle (850,3230) tan,
+	setfacing zombie11 128,
+	setzombie zombie11,
+//	createtrooper "zombie12" rifle (840,3334) tan,
+//	setfacing zombie12 128,
+//	setzombie zombie12,
+	createtrooper "zombie13" rifle (748,3363) tan,
+	setfacing zombie13 64,
+	setzombie zombie13,
+//	createtrooper "zombie14" rifle (629,3406) tan,
+//	setfacing zombie14 64,
+//	setzombie zombie14,
+	createtrooper "zombie15" rifle (596,3488) tan,
+	setfacing zombie15 140,
+	setzombie zombie15,
+//	createtrooper "zombie16" rifle (608,3618) tan,
+//	setfacing zombie16 140,
+//	setzombie zombie16,
+	createtrooper "zombie17" rifle (303,3771) tan,
+	setfacing zombie17 64,
+	setzombie zombie17,
+//	createtrooper "zombie18" rifle (469,3663) tan,
+//	setfacing zombie18 128,
+//	setzombie zombie18,
+	createtrooper "zombie19" rifle (518,3739) tan,
+	setfacing zombie19 128,
+	setzombie zombie19,
+//	createtrooper "zombie20" rifle (426,3835) tan,
+//	setfacing zombie20 128,
+//	setzombie zombie20,
+	createtrooper "zombie21" rifle (615,3818) tan,
+	setfacing zombie21 128,
+	setzombie zombie21,
+//	createtrooper "zombie22" rifle (711,3670) tan,
+//	setfacing zombie22 128,
+//	setzombie zombie22,
+	createtrooper "zombie23" rifle (786,3699) tan,
+	setfacing zombie23 64,
+	setzombie zombie23,
+//	createtrooper "zombie24" rifle (821,3618) tan,
+//	setfacing zombie24 64,
+//	setzombie zombie24,
+	createtrooper "zombie25" rifle (864,3439) tan,
+	setfacing zombie25 140,
+	setzombie zombie25,
+//	createtrooper "zombie26" rifle (903,3562) tan,
+//	setfacing zombie26 140,
+//	setzombie zombie26,
+	createtrooper "zombie27" rifle (907,3667) tan,
+	setfacing zombie27 64,
+	setzombie zombie27,
+//	createtrooper "zombie28" rifle (1039,3642) tan,
+//	setfacing zombie28 128,
+//	setzombie zombie28,
+	createtrooper "zombie29" rifle (965,3175) tan,
+	setfacing zombie29 128,
+	setzombie zombie29,
+//	createtrooper "zombie30" rifle (1276,3255) tan,
+//	setfacing zombie30 128,
+//	setzombie zombie30,
+	createtrooper "zombie31" rifle (1092,3283) tan,
+	setfacing zombie31 128,
+	setzombie zombie31,
+//	createtrooper "zombie32" rifle (1024,3300) tan,
+//	setfacing zombie32 128,
+//	setzombie zombie32,
+	createtrooper "zombie33" rifle (980,3382) tan,
+	setfacing zombie33 64,
+	setzombie zombie33,
+//	createtrooper "zombie34" rifle (1237,3354) tan,
+//	setfacing zombie34 64,
+//	setzombie zombie34,
+	createtrooper "zombie35" rifle (1102,3400) tan,
+	setfacing zombie35 140,
+	setzombie zombie35,
+//	createtrooper "zombie36" rifle (1003,3485) tan,
+//	setfacing zombie36 140,
+//	setzombie zombie36,
+	createtrooper "zombie37" rifle (1100,3489) tan,
+	setfacing zombie37 64,
+	setzombie zombie37,
+//	createtrooper "zombie38" rifle (1208,3459) tan,
+//	setfacing zombie38 128,
+//	setzombie zombie38,
+//	createtrooper "zombie40" rifle (1211,3577) tan,
+//	setfacing zombie40 128,
+//	setzombie zombie40,
+	createtrooper "zombie39" rifle (1327,3449) tan,
+	setfacing zombie39 128,
+	setzombie zombie39,
+	setaimode zombie1 defend,
+	setaimode zombie2 defend,
+	setaimode zombie3 defend,
+	setaimode zombie4 defend,
+	setaimode zombie5 defend,
+	setaimode zombie6 defend,
+	setaimode zombie7 defend,
+	setaimode zombie8 defend,
+	setaimode zombie9 defend,
+	setaimode zombie10 defend,
+	setaimode zombie11 defend,
+	setaimode zombie12 defend,
+	setaimode zombie13 defend,
+	setaimode zombie14 defend,
+	setaimode zombie15 defend,
+	setaimode zombie16 defend,
+	setaimode zombie17 defend,
+	setaimode zombie18 defend,
+	setaimode zombie19 defend,
+	setaimode zombie20 defend,
+	setaimode zombie21 defend,
+	setaimode zombie22 defend,
+	setaimode zombie23 defend,
+	setaimode zombie24 defend,
+	setaimode zombie25 defend,
+	setaimode zombie26 defend,
+	setaimode zombie27 defend,
+	setaimode zombie28 defend,
+	setaimode zombie29 defend,
+	setaimode zombie30 defend,
+	setaimode zombie31 defend,
+	setaimode zombie32 defend,
+	setaimode zombie33 defend,
+	setaimode zombie34 defend,
+	setaimode zombie35 defend,
+	setaimode zombie36 defend,
+	setaimode zombie37 defend,
+	setaimode zombie38 defend,
+	setaimode zombie39 defend,
+	setaimode zombie40 defend
+
+if killed can1 then
+	createexplosion (3171,530) 131 200 green,
+	createexplosion (3128,398) 131 200 green,
+	createexplosion (3284,489) 131 200 green,
+	createexplosion (3211,631) 131 200 green,
+	createexplosion (3052,573) 131 200 green,
+	createexplosion (3012,473) 131 200 green,
+	createexplosion (3293,588) 131 200 green,
+	makesmoke can1
+
+if killed lighter1 then
+	createexplosion (3437,999) 131 50 green,
+	createexplosion (3365,992) 131 50 green,
+	createexplosion (3497,995) 131 50 green,
+	createexplosion (3435,1054) 131 50 green,
+	createexplosion (3429,918) 131 50 green
+
+if killed zombiegen1 by green then
+	playsound "" zombiegen1 2 0,
+	createexplosion zombiegen1 131 0 green,
+	playsound "GenStutDown.wav" 16 0,
+	makesmoke zombiegen1
+if killed zombiegen2 by green then
+	playsound "" zombiegen2 3 0,
+	createexplosion zombiegen2 138 0 green,
+	playsound "GenStutDown.wav" 16 0,
+	makesmoke zombiegen2
+if killed zombiegen3 by green then
+	playsound "" zombiegen3 4 0,
+	createexplosion zombiegen3 139 0 green,
+	playsound "GenStutDown.wav" 16 0,
+	makesmoke zombiegen3
+
+if allof killed zombiegen1 killed zombiegen2 killed zombiegen3 then
+	playsound "GeneratorsDown.wav" 16 0,
+	trigger gotthegen,
+	playsound "portal2_8Bit.wav" 1 0,
+	createexplosion zombie1 133 0 tan,
+	createexplosion zombie2 133 0 tan,
+	createexplosion zombie3 133 0 tan,
+	createexplosion zombie4 133 0 tan,
+	createexplosion zombie5 133 0 tan,
+	createexplosion zombie6 133 0 tan,
+	createexplosion zombie7 133 0 tan,
+	createexplosion zombie8 133 0 tan,
+	createexplosion zombie9 133 0 tan,
+	createexplosion zombie10 133 0 tan,
+	createexplosion zombie11 133 0 tan,
+	createexplosion zombie12 133 0 tan,
+	createexplosion zombie13 133 0 tan,
+	createexplosion zombie14 133 0 tan,
+	createexplosion zombie15 133 0 tan,
+	createexplosion zombie16 133 0 tan,
+	createexplosion zombie17 133 0 tan,
+	createexplosion zombie18 133 0 tan,
+	createexplosion zombie19 133 0 tan,
+	createexplosion zombie20 133 0 tan,
+	createexplosion zombie21 133 0 tan,
+	createexplosion zombie22 133 0 tan,
+	createexplosion zombie23 133 0 tan,
+	createexplosion zombie24 133 0 tan,
+	createexplosion zombie25 133 0 tan,
+	createexplosion zombie26 133 0 tan,
+	createexplosion zombie27 133 0 tan,
+	createexplosion zombie28 133 0 tan,
+	createexplosion zombie29 133 0 tan,
+	createexplosion zombie30 133 0 tan,
+	createexplosion zombie31 133 0 tan,
+	createexplosion zombie32 133 0 tan,
+	createexplosion zombie33 133 0 tan,
+	createexplosion zombie34 133 0 tan,
+	createexplosion zombie35 133 0 tan,
+	createexplosion zombie36 133 0 tan,
+	createexplosion zombie37 133 0 tan,
+	createexplosion zombie38 133 0 tan,
+	createexplosion zombie39 133 0 tan,
+	createexplosion zombie40 133 0 tan,
+	damage zombie1 200,
+	damage zombie2 200,
+	damage zombie3 200,
+	damage zombie4 200,
+	damage zombie5 200,
+	damage zombie6 200,
+	damage zombie7 200,
+	damage zombie8 200,
+	damage zombie9 200,
+	damage zombie10 200,
+	damage zombie11 200,
+	damage zombie12 200,
+	damage zombie13 200,
+	damage zombie14 200,
+	damage zombie15 200,
+	damage zombie16 200,
+	damage zombie17 200,
+	damage zombie18 200,
+	damage zombie19 200,
+	damage zombie20 200,
+	damage zombie21 200,
+	damage zombie22 200,
+	damage zombie23 200,
+	damage zombie24 200,
+	damage zombie25 200,
+	damage zombie26 200,
+	damage zombie27 200,
+	damage zombie28 200,
+	damage zombie29 200,
+	damage zombie30 200,
+	damage zombie31 200,
+	damage zombie32 200,
+	damage zombie33 200,
+	damage zombie34 200,
+	damage zombie35 200,
+	damage zombie36 200,
+	damage zombie37 200,
+	damage zombie38 200,
+	damage zombie39 200,
+	damage zombie40 200

@@ -1,0 +1,591 @@
+	//Map 4 Army Men II PC//
+//**Level and script created by, Jason Wildblood**//
+
+			//**PADS**//
+pad spyoldheat          8       Boris_S
+pad pt1patrol1          10      pt1 > 0
+pad pt1patrol2          11      pt1 > 0
+pad pt1patrol3          12      pt1 > 0
+pad pt1patrol4          13      pt1 > 0
+pad pt2patrol1          14      pt2 > 0
+pad pt2patrol2          15      pt2 > 0
+pad pt2patrol3          16      pt2 > 0
+pad pt2patrol4          17      pt2 > 0
+pad pt3patrol1          18      pt3 > 0
+pad pt3patrol2          19      pt3 > 0
+pad pt3patrol3          20      pt3 > 0
+pad pt3patrol4          21      pt3 > 0
+
+pad blood26             50      greensarge1 > 0
+pad blood27             51      OldMan > 0
+pad armymen6            75      green trooper > 0
+pad radarer             110     greensarge1 > 0
+pad blood30             120     Boris_S     > 0
+pad blood31             121     greensarge1 > 0
+pad attacker1           130     green trooper > 0
+pad attacker2           140     green trooper > 0
+pad attacker3           150     green trooper > 0
+pad attacker4           160     green trooper > 0
+pad attacker5           170     green trooper > 0
+pad attacker6           180     green trooper > 0
+pad attacker7           190     green trooper > 0
+
+pad final               131     Boris_S       > 0
+pad deployment          122     noone   > 0
+pad failsafewin1        5       green trooper > 0
+pad killradar           6       green trooper > 0
+
+//**All in good facing**//
+if aboutface then
+setfacing alerttank1 84,
+setfacing alerttank2 222,
+setfacing alertman1 64,
+setfacing alertman2 64,
+setfacing jt1 222,
+setfacing jt2 158,
+setfacing jt3 222,
+setfacing jt4 158,
+setfacing killingtime1 64,
+setaipose killingtime1 kneel,
+setfacing killingtime2 94,
+setaipose killingtime3 kneel,
+setfacing killingtime3 113,
+setaimode killingtime3 defend,
+setfacing killingtime4 113,
+setaipose killingtime4 prone,
+setfacing killingtime5 100,
+setaipose killingtime stand,
+setfacing TanRifle35 200,
+setfacing TanRifle36 200,
+setfacing TanRifle23 14,
+setfacing TanRifle24 3,
+setaimode tanpara1 ignore
+
+
+		//**Startup**//
+if startup1 then
+        triggerdelay 500 showmiss1,
+        setbriefing "map04_1.bmp",
+        trigger trap,
+        triggerdelay 2000 pat1order,
+        triggerdelay 2000 pat2order,
+        triggerdelay 2000 pat3order,
+        trigger aboutface,
+        trigger setheai,
+        createpowerup "a" airstrike parastump -1
+
+if showmiss1 then
+	showpda "Secure Maynard Airfield.",
+        triggerdelay 500 playmiss1sound
+
+if playmiss1sound then
+        playsound "0401HQ.wav" 0 1
+
+        	//**endgames**//
+if killed greensarge1 then
+        triggerdelay 3000 tanwins,
+	trigger doh,
+	trigger endingbits
+
+if killed Boris_S then
+        triggerdelay 3000 tanwins,
+        showfailure "You let the Blue Spy die!"
+
+if killed OldMan then
+	triggerdelay 3000 tanwins,
+        showfailure "You let the Old Man die!"
+
+if endingbits then
+        showfailure "Sarge is dead!"
+
+        	//**Win Game**//
+
+ if allof killed oldmankiller1 killed oldmankiller2 killed oldmankiller3
+ killed oldmankiller4 butnot alreadywon then
+        trigger timetowin
+
+ if padon failsafewin1 butnot alreadywon then
+        trigger timetowin
+
+ if timetowin butnot doh then
+ 	trigger alreadywon,
+        triggerdelay 1500 petertestgreenwins
+
+if petertestgreenwins butnot killed greensarge1 then
+	trigger greenwins
+
+        //**trooper trap**//
+
+if trap then
+        createvehicle "alerttank1" tank (1479,181) tan,
+        createvehicle "alerttank2" tank (1744,3855) tan,
+        createvehicle "pt1" tank (1079,3657) tan,
+        createvehicle "pt2" tank (789,3645) tan,
+        createvehicle "pt3" tank (1256,261) tan
+
+if killed Alertman1 then
+        order alerttank2 goto Alertman1 inmode attack,
+        createpowerup "" recon alertman1 3
+
+
+if killed Alertman2 then
+        order alerttank1 goto Alertman2 inmode attack
+
+
+	//**First Patrol**//
+ if pat1order then
+ 	order pt1 goto pt1patrol1
+
+ if padon pt1patrol1 then
+        triggerdelay 5000 pat2
+
+ if pat2 then
+ 	order pt1 goto pt1patrol2,
+        triggerdelay 10000 pat3
+
+ if pat3 then
+        order pt1 goto pt1patrol3,
+        triggerdelay 10000 pat4
+
+ if pat4 then
+        order pt1 goto pt1patrol4,
+        triggerdelay 10000 pat1order
+
+
+
+	//**Second Patrol**//
+
+ if pat2order then
+ 	order pt2 goto pt2patrol1
+
+ if padon pt2patrol1 then
+        triggerdelay 5000 pat5
+
+ if pat5 then
+ 	order pt2 goto pt2patrol2,
+        triggerdelay 10000 pat6
+
+ if pat6 then
+        order pt2 goto pt2patrol3,
+        triggerdelay 10000 pat7
+
+ if pat7 then
+        order pt2 goto pt2patrol4,
+        triggerdelay 10000 pat2order
+
+	//**Third Patrol**//
+
+ if pat3order then
+ 	order pt3 goto pt3patrol1
+
+ if padon pt3patrol1 then
+        triggerdelay 5000 pat8
+
+ if pat8 then
+ 	order pt3 goto pt3patrol2,
+        triggerdelay 10000 pat9
+
+ if pat9 then
+        order pt3 goto pt3patrol3,
+        triggerdelay 10000 pat10
+
+ if pat10 then
+        order pt3 goto pt3patrol4,
+        triggerdelay 10000 pat3order
+
+        //**The Wild attackers**//
+
+if setheai then
+        setaimode Wildblood1 defend,
+        setaimode Wildblood2 defend,
+        setaimode Wildblood3 defend,
+        setaimode Wild1 defend,
+        setaimode Wild2 defend,
+        setaimode Wild3 defend,
+        setaimode Wildone1 defend,
+        setaimode Wildone2 defend,
+        setaimode Wildman1 defend,
+        setaimode Wildman2 defend,
+        setaimode Wildman3 defend,
+        setaimode Wildman4 defend
+
+if killed Wildblood1 then
+        order Wildblood2 follow GreenSarge1 inmode attack,
+        order Wildblood3 follow GreenSarge1 inmode attack
+
+if killed Wildblood2 then
+        order Wildblood1 follow GreenSarge1 inmode attack,
+        order Wildblood3 follow GreenSarge1 inmode attack
+
+if killed Wildblood3 then
+        order Wildblood1 follow GreenSarge1 inmode attack,
+        order Wildblood2 follow GreenSarge1 inmode attack
+
+if killed Wild1 then
+        order Wild2 follow GreenSarge1 inmode attack,
+        order Wild3 follow GreenSarge1 inmode attack
+
+if killed Wild2 then
+        order Wild1 follow GreenSarge1 inmode attack,
+        order Wild3 follow GreenSarge1 inmode attack
+
+if killed Wild3 then
+        order Wild1 follow GreenSarge1 inmode attack,
+        order Wild2 follow GreenSarge1 inmode attack
+
+if killed Wildone1 then
+	order Wildone2 follow GreenSarge1 inmode attack
+
+if killed Wildone2 then
+	order Wildone1 follow GreenSarge1 inmode attack
+
+if killed Wildman1 then
+	order Wildman2 follow GreenSarge1 inmode attack,
+        order Wildman3 follow GreenSarge1 inmode attack,
+        order Wildman4 follow GreenSarge1 inmode attack
+
+if killed Wildman2 then
+	order Wildman1 follow GreenSarge1 inmode attack,
+        order Wildman3 follow GreenSarge1 inmode attack,
+        order Wildman4 follow GreenSarge1 inmode attack
+
+if killed Wildman3 then
+	order Wildman1 follow GreenSarge1 inmode attack,
+        order Wildman2 follow GreenSarge1 inmode attack,
+        order Wildman4 follow GreenSarge1 inmode attack
+
+if killed Wildman4 then
+	order Wildman1 follow GreenSarge1 inmode attack,
+        order Wildman2 follow GreenSarge1 inmode attack,
+        order Wildman3 follow GreenSarge1 inmode attack
+
+                //**RadarBuilding**
+if padon radarer then
+        createtrooper "RadarTank" bazooka (1961,3567) tan,
+        order RadarTank goto radar,
+        order RadarMan1 follow GreenSarge1,
+        order RadarMan2 follow GreenSarge1,
+        triggerdelay 5000 Flanked
+if Flanked then
+        order RadarMan3 follow GreenSarge1,
+        order RadarMan4 follow GreenSarge1
+
+        //**OldMan segment**//
+if padon blood26 butnot foroldman then
+        createtrooper "OldMan" autorifle (4026,1081) green,
+        addexp OldMan 200,
+        order OldMan follow GreenSarge1 inmode attack,
+        triggerdelay 2000 highheat,
+        trigger stillinthefire,
+        trigger foroldman
+
+        //**oldmanattackers**//
+
+if stillinthefire then
+        createtrooper "oldmankiller1" rifle (2198,1409) tan,
+        createtrooper "oldmankiller2" rifle (1631,1843) tan,
+        createtrooper "oldmankiller3" autorifle (1897,2431) tan,
+        createtrooper "oldmankiller4" autorifle (2434,1886) tan,
+        trigger oldfartsgo1,
+        triggerdelay 1000 oldfartsgo2,
+        triggerdelay 2000 oldfartsgo3,
+        triggerdelay 3000 oldfartsgo4
+
+ if hit oldmankiller1 then
+        setaipose oldmankiller1 prone
+
+ if hit oldmankiller2 then
+        setaipose oldmankiller2 prone
+
+ if hit oldmankiller3 then
+        setaipose oldmankiller3 prone
+
+ if hit oldmankiller4 then
+        setaipose oldmankiller4 prone
+
+
+ if oldfartsgo1 then
+        order oldmankiller1 follow OldMan inmode attack
+
+ if oldfartsgo2 then
+        order oldmankiller2 follow OldMan inmode attack
+
+ if oldfartsgo3 then
+        order oldmankiller3 follow OldMan inmode attack
+
+ if oldfartsgo4 then
+        order oldmankiller4 follow OldMan inmode attack
+
+if highheat then
+        playsound "0402oldman.wav" 1
+
+        //**airstrike mania**//
+
+ if padon attacker1 butnot onestrike1 then
+        fireweapon a tanpara1 attacker1,
+        trigger onestrike1
+
+ if padon attacker2 butnot onestrike2 then
+        fireweapon a tanpara1 attacker2,
+        trigger onestrike2
+
+ if padon attacker3 butnot onestrike3 then
+        fireweapon a tanpara1 attacker3,
+        trigger onestrike3
+
+ if padon attacker4  butnot onestrike4 then
+        triggerdelay 500 firedealy1,
+        trigger onestrike4
+
+ if firedealy1 then
+        fireweapon a tanpara1 attacker5
+
+ if padon attacker5  butnot onestrike5 then
+        triggerdelay 1000 firedealy2,
+        trigger onestrike5
+
+ if firedealy2 then
+        fireweapon a tanpara1 attacker6,
+
+if padon attacker6  butnot onestrike6 then
+        triggerdelay 1500 firedealy3,
+        trigger onestrike6
+
+ if firedealy3 then
+        fireweapon a tanpara1 attacker7,
+
+
+ if padon attacker7  butnot onestrike7 then
+        triggerdelay 1500 firedealy4,
+        trigger onestrike7
+
+ if firedealy4 then
+        fireweapon a tanpara1 droppara
+
+
+        //**drop items**//
+
+ if killed veteran then
+	createpowerup "" bazooka veteran 5
+
+ if killed oldmankiller4 then
+        createpowerup "ar1" autorifle oldmankiller4
+ 
+ if killed oldmankiller1 then
+        createpowerup "Mk1" medkit oldmankiller1 5
+
+ if killed OldManmurderer then
+        createpowerup "G1" grenade OldManmurderer 3
+
+ if killed OldManmurderer1 then
+        createpowerup "" bazooka OldManmurderer1 5
+
+ if killed SpyKiller then
+        createpowerup "G2" grenade SpyKiller 2
+
+ if killed SpyKiller1 then
+        createpowerup "" medpack SpyKiller1
+
+ if killed wildman1 then
+        createpowerup "" bazooka wildman1 5
+
+ if killed wildone1 then
+        createpowerup "" grenade wildone1 10
+
+ if killed wildblood1 then
+        createpowerup "" flamer wildblood1 40
+
+ if killed wild1 then
+        createpowerup "" medkit wild1
+
+ if killed bonuscrate1 then
+        createpowerup "" flak bonuscrate1 69
+
+ if killed bonuscrate2 then
+        createpowerup "" sniper bonuscrate2 15
+
+ if killed bonuscrate3 then
+        createpowerup "" wrench bonuscrate3 1,
+        fireweapon a tanpara1 radar,
+        fireweapon a tanpara1 radar,
+        trigger fixedonce
+
+ if killed TanRifle35 then
+        createpowerup "" flamer TanRifle35 25
+
+ if killed TanRifle36 then
+        createpowerup "" medkit TanRifle36
+
+ if killed TanRifle23 then
+        createpowerup "" grenade TanRifle23 10
+
+ if killed TanRifle3 then
+        createpowerup "" bazooka TanRifle3 5
+
+ if killed bonuscrate4 then
+        createpowerup "" medpack bonuscrate4 6
+
+ if killed uppercorn1 then
+        createpowerup "" sniper uppercorn1 15
+
+ if killed lowercorn then
+        createpowerup "" airstrike lowercorn 1
+
+ if killed hanger then
+        createpowerup "" sniper (2975,1327) 40,
+        makesmoke (3132,1342) 8000,
+        makesmoke (3131,1254) 6000,
+        makesmoke (2975,1337) 15000,
+        makesmoke (3134,1426) 11000
+
+ if padon killradar butnot fixedonce then
+        trigger timetokillit
+
+ if timetokillit butnot onekill then
+        fireweapon a tanpara1 radar,
+        fireweapon a tanpara1 radar,
+        trigger onekill
+
+                //Light Anim//
+
+object runlight1
+                state runlight1_on
+                frame 200 1
+                frame 500 0
+                frame 50 1
+                        setobjstate runlight1 runlight1_on
+
+object runlight2
+                state runlight2_on
+                frame 200 1
+                frame 500 0
+                frame 50 1
+                        setobjstate runlight2 runlight2_on
+
+object runlight3
+                state runlight3_on
+                frame 200 1
+                frame 700 0
+                frame 50 1
+			setobjstate runlight3 runlight3_on
+
+object runlight4
+                state runlight4_on
+                frame 200 1
+                frame 700 0
+                frame 50 1
+                        setobjstate runlight4 runlight4_on
+
+object runlight5
+                state runlight5_on
+                frame 200 1
+                frame 900 0
+                frame 50 1
+                        setobjstate runlight5 runlight5_on
+
+object runlight6
+                state runlight6_on
+                frame 200 1
+                frame 900 0
+                frame 50 1
+                        setobjstate runlight6 runlight6_on
+
+object runlight7
+                state runlight7_on
+                frame 200 1
+                frame 1100 0
+                frame 50 1
+                        setobjstate runlight7 runlight7_on
+
+object runlight8
+                state runlight8_on
+                frame 200 1
+                frame 1100 0
+                frame 50 1
+                        setobjstate runlight8 runlight8_on
+
+object runlight9
+                state runlight9_on
+                frame 200 1
+                frame 1300 0
+                frame 50 1
+                        setobjstate runlight9 runlight9_on
+
+object runlight10
+                state runlight10_on
+                frame 200 1
+                frame 1300 0
+                frame 50 1
+                        setobjstate runlight10 runlight10_on
+
+
+ object runlight11
+                state runlight11_on
+                frame 200 1
+                frame 1500 0
+                frame 50 1
+                        setobjstate runlight11 runlight11_on
+
+
+object runlight12
+                state runlight12_on
+                frame 200 1
+                frame 1500 0
+                frame 50 1
+                        setobjstate runlight12 runlight12_on
+
+object runlight13
+                state runlight13_on
+                frame 200 1
+                frame 1700 0
+                frame 50 1
+                        setobjstate runlight13 runlight13_on
+
+
+object runlight14
+                state runlight14_on
+                frame 200 1
+                frame 1700 0
+                frame 50 1
+                        setobjstate runlight14 runlight14_on
+
+
+object helalight1
+                state helalight1_on
+                frame 200 1
+                frame 1000 0
+                frame 50 1
+                        setobjstate helalight1 helalight1_on
+
+ 
+object helalight2
+                state helalight2_on
+                frame 200 1
+                frame 2000 0
+                frame 50 1
+                        setobjstate helalight2 helalight2_on
+
+object helalight3
+                state helalight3_on
+                frame 200 1
+                frame 3000 0
+                frame 50 1
+                        setobjstate helalight3 helalight3_on
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,425 @@
+PAD     way1    54      Enemyboat1 > 0
+PAD     way2    55      Enemyboat1 > 0
+PAD     way3    56      Enemyboat1 > 0
+PAD     COLONELS_INSPECTION     25      GREENSARGE1 > 0
+PAD     BOATSABPAD1     30
+
+
+Variable PDADISPLAYED   0
+Variable RADARSABDEP    0
+Variable RADEXPSET    	0
+VARIABLE PTDEST         0
+
+Variable TUNNSABDEP    0
+Variable TUNNEXPSET    0
+
+Variable BRIDSABDEP    0
+Variable BRIDEXPSET    0
+
+VARIABLE INSPECTED      0
+VARIABLE INSPANG        128
+
+
+IF Startup2 then
+	Triggerdelay 10 init_vars2,
+	Triggerdelay 10 DealwCOLONEL
+
+
+IF init_vars2 THEN
+        DEPLOY BOATSAB1,
+//        SETCAMERAFOCUS COLONEL,
+        CREATETROOPER "RADSAB1" RIFLE (10,10) TAN,
+        CREATETROOPER "BOATSAB1" RIFLE (168,683) TAN,
+        CREATETROOPER "TUNSAB1" RIFLE (10,10) TAN,
+        CREATETROOPER "BRIDSAB1" RIFLE (10,10) TAN,
+        DAMAGE RADSAB1 10000,
+        DAMAGE TUNSAB1 10000,
+	DAMAGE BRIDSAB1 10000,
+        SETFACING GREENSARGE1 160,
+        TRIGGERDELAY 19000 SENDBOATSAB,
+        SETUILOCK 1,
+        TRIGGERDELAY 3000 showf1mess
+
+
+
+IF showf1mess THEN
+        showmessage "按Ｆ１键，查看战略地图。"
+
+
+IF SENDBOATSAB THEN
+        ORDER BOATSAB1 GOTO BOATSABPAD INMODE ATTACK
+
+
+IF testgreenwins1 BUTNOT init_vars3 THEN
+        SETUILOCK 0,
+        TRIGGER petertestgreenwins
+
+if petertestgreenwins butnot killed greensarge1 then
+        trigger greenwins
+
+
+IF killed GREENSARGE1 THEN
+        SHOWPDA "中士死了！",
+        SETUILOCK 0,
+        TRIGGERDELAY 200 Tanwins
+
+
+IF killed traintunnel BUTNOT tanwinset THEN
+        Showpda "隧道被毁，任务失败。",
+        TRIGGER tanwinset,
+        playsound "TrainTunnel_8Bit.wav" 7 1,
+        TRIGGERDELAY 500 setcameraontunnel
+
+IF setcameraontunnel THEN
+        SETCAMERAFOCUS traintunnel,
+        SETUILOCK 1,
+        TRIGGERDELAY 4800 FREELOCK,
+        Triggerdelay 5000 Tanwins
+
+
+IF killed trainbridge BUTNOT tanwinset THEN
+        Showpda "铁路桥被毁，任务失败。",
+        playsound "TrainBridgeCollapse_8Bit.wav" 8 1,
+        TRIGGER tanwinset,
+        TRIGGERDELAY 500 setcameraonbridge
+
+IF setcameraonbridge THEN
+        SETCAMERAFOCUS trainbridge,
+        SETUILOCK 1,
+        TRIGGERDELAY 4800 FREELOCK,
+        Triggerdelay 5000 Tanwins
+
+IF FREELOCK THEN
+        SETUILOCK 0
+
+IF DealwCOLONEL THEN
+        TRIGGERDELAY 9000 SHOWTHEPDA,
+        playsound "0301COLONEL.wav" 9 0,
+        TRIGGERDELAY 9000 SENDSCORCH,
+        TRIGGERDELAY 25000 deployenemyboat,
+        TRIGGERDELAY 25000 startloading,
+        TRIGGERDELAY 13000 sendcoleng
+
+IF SHOWTHEPDA THEN
+        SHOWPDA "粉碎黄军破坏分子的阴谋，然后在坦克工厂向上校报告。"
+
+IF SENDSCORCH THEN
+        ORDER Scorch GOTO (2596,2577) INMODE DEFEND,
+        SETNPC Scorch 0
+
+IF sendcoleng THEN
+        SETCAMERAFOCUS GREENSARGE1,
+        SETUILOCK 0,
+//        ORDER colonel goto (3073,2973) INMODE DEFEND,
+        TRIGGERDELAY 6000 INSPECTING1
+
+
+IF INSPECTING1 BUTNOT ENDINSPECTION TESTVAR INSPECTED < 9 THEN
+        ADDVAR INSPECTED 1,
+        ADDVAR INSPANG 16,
+//        SETFACING COLONEL REFVAR INSPANG,
+        TRIGGERDELAY 1200 INSPECTING1
+
+IF INSPECTING1 BUTNOT ENDINSPECTION TESTVAR INSPECTED > 8 AND INSPECTED < 15 THEN
+        ADDVAR INSPECTED 1,
+        ADDVAR INSPANG -16,
+//        SETFACING COLONEL REFVAR INSPANG,
+        TRIGGERDELAY 1200 INSPECTING1
+
+
+IF INSPECTING1 TESTVAR INSPECTED > 15 THEN
+        SETVAR INSPECTED 0
+
+
+
+
+//IF Undeploythecol THEN
+//        UNDEPLOY colonel
+
+
+IF deployenemyboat THEN
+        CREATEVEHICLE "Enemyboat1" BOAT (1797,160) TAN,
+        SETFACING Enemyboat1 96,
+        TRIGGERDELAY 8000 gotofirstramp
+
+
+
+
+
+
+
+
+IF gotofirstramp TESTVAR PTDEST = 0 THEN
+        ORDER Enemyboat1 GOTO firstramp INMODE DEFEND,
+        SETVAR PTDEST 1,
+        SETVAR RADARSABDEP 0
+
+
+IF resfirstramp TESTVAR PTDEST = 0 THEN
+        ORDER Enemyboat1 GOTO firstramp INMODE DEFEND,
+        SETVAR PTDEST 1,
+        SETVAR RADARSABDEP 2
+
+
+IF padon firstramp AFTER padoff firstramp TESTVAR RADARSABDEP = 0 THEN
+	RESURRECT RADSAB1 (1708,385),
+        SETVAR RADARSABDEP 1,
+        TRIGGER RADSABALIVE,
+        SETVAR PTDEST 0,
+        TRIGGERDELAY 9000 gotosecondramp,
+        TRIGGERDELAY 9000 Assaultradar
+
+IF padon firstramp AFTER padoff firstramp TESTVAR RADARSABDEP = 2 THEN
+        RESURRECT RADSAB1 (1708,385),
+        TRIGGER RADSABALIVE,
+        SETVAR RADARSABDEP 1,
+        SETVAR PTDEST 0,
+        ORDER Enemyboat1 GOTO (1359,366) INMODE DEFEND,
+        TRIGGERDELAY 3000 Assaultradar
+
+
+
+IF assaultradar THEN
+        SETVAR RADEXPSET 0,
+        ORDER RADSAB1 goto Radar INMODE ATTACK
+
+
+
+IF PADON RADAR1 AFTER PADOFF RADAR1 TESTVAR RADEXPSET = 0 THEN
+        FIREWEAPON explosive1 RADSAB1 RADAR,
+        SETVAR RADEXPSET 1,
+        ORDER RADSAB1 GOTO firstramp INMODE DEFEND,
+        TRIGGERDELAY 20000 TESTRADDES
+
+
+IF TESTRADDES BUTNOT Killed Radar THEN
+        TRIGGER Assaultradar
+
+
+IF KILLED RADSAB1 BUTNOT KILLED EnemyBoat1 TESTVAR RADARSABDEP > 0 THEN
+        SETVAR RADARSABDEP 0,
+        TRIGGER resfirstramp
+
+
+
+
+
+
+
+
+
+
+IF gotosecondramp TESTVAR PTDEST = 0 THEN
+        ORDER Enemyboat1 GOTO secondramp INMODE DEFEND,
+        SETVAR TUNNSABDEP 0
+
+
+IF ressecondramp TESTVAR PTDEST = 0 THEN
+        ORDER Enemyboat1 GOTO secondramp INMODE DEFEND,
+        SETVAR TUNNSABDEP 2
+
+
+
+IF padon secondramp AFTER padoff secondramp TESTVAR TUNNSABDEP = 0 THEN
+        RESURRECT TUNSAB1 (1359,366),
+        SETVAR TUNNSABDEP 1,
+        TRIGGER TUNSABALIVE,
+        SETVAR PTDEST 0,
+        TRIGGERDELAY 6000 gotothirdramp,
+        TRIGGERDELAY 10000 Assaulttunnel
+
+IF padon secondramp AFTER padoff secondramp TESTVAR TUNNSABDEP = 2 THEN
+        RESURRECT TUNSAB1 (1359,366),
+        SETVAR TUNNSABDEP 1,
+        TRIGGER TUNSABALIVE,
+        SETVAR PTDEST 0,
+        ORDER Enemyboat1 GOTO (582,2093) INMODE DEFEND,
+        TRIGGERDELAY 5000 Assaulttunnel
+
+
+
+IF assaulttunnel THEN
+        ORDER TUNSAB1 GOTO (1342,171) INMODE DEFEND,
+        TRIGGERDELAY 6000 assaulttunnel2
+
+IF assaulttunnel2 THEN
+        SETVAR TUNNEXPSET 0,
+        ORDER TUNSAB1 goto (580,800) INMODE DEFEND,
+        TRIGGERDELAY 8000 assaulttunnel3
+
+
+IF assaulttunnel3 THEN
+        SETVAR TUNNEXPSET 0,
+        ORDER TUNSAB1 goto (331,542) INMODE DEFEND
+
+
+IF TESTTUNNDES BUTNOT Killed traintunnel THEN
+        TRIGGER Assaulttunnel
+
+
+IF KILLED TUNSAB1 BUTNOT KILLED EnemyBoat1 TESTVAR TUNNSABDEP > 0 THEN
+        SETVAR TUNNSABDEP 0,
+        TRIGGER ressecondramp
+
+
+
+
+IF PADON TUNNEL1 AFTER PADOFF TUNNEL1 TESTVAR TUNNEXPSET = 0 THEN
+        FIREWEAPON explosive1 TUNSAB1 (312,516),
+        SETVAR TUNNEXPSET 1,
+        ORDER TUNSAB1 GOTO firstramp INMODE DEFEND,
+        TRIGGERDELAY 20000 TESTTUNNDES
+
+
+
+
+IF padon way1 AFTER padoff way1 TESTVAR BRIDSABDEP = 0 AND PTDEST = 0 THEN
+//        SHOWMESSAGE "toramp1",
+        SETVAR PTDEST 1,
+        order Enemyboat1 GOTO way2 INMODE DEFEND
+
+
+
+IF padon way2 AFTER padoff way2 TESTVAR BRIDSABDEP = 0 AND PTDEST = 1 THEN
+//        SHOWMESSAGE "toramp2",
+        SETVAR PTDEST 1,
+        order Enemyboat1 GOTO way3 INMODE DEFEND
+
+
+IF padon way3 AFTER padoff way3 TESTVAR BRIDSABDEP = 0 AND PTDEST = 1 THEN
+//        SHOWMESSAGE "toramp3",
+        SETVAR PTDEST 0,
+        order Enemyboat1 GOTO thirdramp INMODE DEFEND
+
+
+
+
+IF padon way1 AFTER padoff way1 TESTVAR BRIDSABDEP > 0 AND PTDEST = 0 THEN
+//        SHOWMESSAGE "awayramp1",
+        order Enemyboat1 GOTO firstramp INMODE DEFEND
+
+
+
+IF padon way2 AFTER padoff way2 TESTVAR BRIDSABDEP > 0 AND PTDEST = 0 THEN
+//        SHOWMESSAGE "awayramp2",
+        order Enemyboat1 GOTO way1 INMODE DEFEND
+
+
+IF padon way3 AFTER padoff way3 TESTVAR BRIDSABDEP > 0 AND PTDEST = 0 THEN
+//        SHOWMESSAGE "awayramp3",
+        order Enemyboat1 GOTO way2 INMODE DEFEND
+
+
+
+
+
+
+
+
+IF gotothirdramp TESTVAR PTDEST = 0 THEN
+        SHOWMESSAGE "我正在路上。",
+        ORDER Enemyboat1 GOTO Way1 INMODE DEFEND,
+        SETVAR BRIDSABDEP 0
+
+
+IF resthirdramp THEN
+        ORDER Enemyboat1 GOTO thirdramp INMODE DEFEND,
+        SETVAR BRIDSABDEP 2
+
+
+IF padon thirdramp AFTER padoff thirdramp TESTVAR BRIDSABDEP = 0 THEN
+        RESURRECT BRIDSAB1 (804,1320),
+        SETFACING EnemyBoat1 0,
+        SETVAR BRIDSABDEP 1,
+        TRIGGER BRIDSABALIVE,
+        SETVAR PTDEST 0,
+        TRIGGERDELAY 6000 gotofirstramp,
+        TRIGGERDELAY 8000 Assaultbridge
+
+IF padon thirdramp AFTER padoff thirdramp TESTVAR BRIDSABDEP = 2 THEN
+        RESURRECT BRIDSAB1 (804,1320),
+        SETFACING EnemyBoat1 0,
+        SETVAR BRIDSABDEP 1,
+        TRIGGER BRIDSABALIVE,
+        SETVAR PTDEST 0,
+        ORDER Enemyboat1 GOTO (1692,379) INMODE EVADE,
+        TRIGGERDELAY 3000 Assaultbridge
+
+
+
+
+IF assaultbridge THEN
+        SETVAR BRIDEXPSET 0,
+        ORDER BRIDSAB1 goto (1017,1065) INMODE ATTACK
+
+
+
+IF PADON Bridge1 AFTER PADOFF Bridge1 TESTVAR BRIDEXPSET = 0 THEN
+        FIREWEAPON explosive1 BRIDSAB1 (1017,1065),
+        SETVAR BRIDEXPSET 1,
+        ORDER BRIDSAB1 GOTO thirdramp,
+        TRIGGERDELAY 20000 TESTBRIDDES
+
+
+IF TESTBRIDDES BUTNOT Killed trainbridge THEN
+        TRIGGER Assaultradar
+
+
+IF KILLED BRIDSAB1 BUTNOT KILLED EnemyBoat1 TESTVAR BRIDSABDEP > 0 THEN
+        SETVAR BRIDSABDEP 0,
+        TRIGGER resthirdramp
+
+
+
+
+
+IF KILLED Enemyboat1 AFTER STARTUP AND KILLED RADSAB1 AFTER RADSABALIVE AND KILLED TUNSAB1 AFTER TUNSABALIVE AND KILLED BRIDSAB1 AFTER BRIDSABALIVE TESTVAR PDADISPLAYED = 0 THEN
+        SETVAR PDADISPLAYED 1,
+        TRIGGER testGREENWINS1
+//        SHOWPDA "There are no more saboteurs.  Return to the factory to receive new orders from the Colonel."
+
+
+
+
+
+
+
+IF KILLED Enemyboat1 AFTER STARTUP AND KILLED RADSAB1 AFTER RADSABALIVE AND KILLED TUNSAB1 AFTER TUNSABALIVE AND KILLED BRIDSAB1 AFTER BRIDSABALIVE AND PADON COLONELS_INSPECTION AFTER PADOFF COLONELS_INSPECTION THEN
+        SETUILOCK 0,
+        TRIGGERDELAY 300 testGREENWINS1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

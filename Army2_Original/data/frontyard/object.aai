@@ -1,0 +1,220 @@
+#Object Defaults Table
+
+#Item Flags
+# ITEMFLAG_MAP		0001	(1)
+# ITEMFLAG_VISBLOCK	0100	(256)
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis
+
+Rocks		10	0	0	257	-1	32	15	1000	0.0	0	1
+Rocks		20	0	0	257	-1	32	15	1000	0.0	0	1
+Rocks		30	0	0	257	-1	32	15	1000	-0.269	0	1
+Rocks		40	0	0	257	-1	32	15	1000	0.0	0	1
+Rocks		50	0	0	257	-1	32	15	1000	0.0	0	1
+Rocks		60	0	0	257	-1	32	15	1000	0.0	0	1
+Rocks		70	0	0	257	-1	32	15	1000	0.0	0	1
+Rocks		80	0	0	257	-1	32	15	1000	0.0	0	1
+
+##ferns##
+Trees		10	0	0	257	-1	50	0	2000	0.0	0	1		
+Trees		11	0	0	257	-1	0	15	1000	0.0	0	1		
+Trees		20	0	0	257	-1	50	0	2000	0.0	0	1		
+Trees		21	0	0	257	-1	0	15	1000	0.0	0	1		
+Trees		30	0	0	257	-1	50	0	2000	0.0	0	1		
+Trees		31	0	0	257	-1	0	15	1000	0.0	0	1		
+
+##cactus##
+Trees		40	0	0	257	-1	0	15	1000	0.0	0	1		
+##shrooms##
+Trees		100	0	0	257	-1	32	15	1000	0.0	0	1		
+Trees		101	0	0	257	-1	32	15	1000	0.0	0	1		
+Trees		102	0	0	257	-1	16	15	999	0.0	0	1		
+Trees		103	0	0	257	-1	32	15	1000	0.0	0	1		
+Trees		104	0	0	257	-1	32	15	1000	0.0	0	1		
+Trees		105	0	0	257	-1	32	15	1000	0.0	0	1		
+Trees		106	0	0	257	-1	16	15	1000	0.0	0	1		
+Trees		107	0	0	257	-1	16	15	1000	0.0	0	1		
+Trees		108	0	0	257	-1	16	15	1000	0.0	0	1		
+Trees		109	0	0	257	-1	0	15	1000	0.0	0	1		
+##shrubs##
+Trees		200	0	0	257	-1	32	15	1000	0.0	0	1		
+Trees		201	0	0	257	-1	32	15	1000	0.0	0	1
+##flowers##
+Trees		300	0	0	257	-1	10	15	1000	0.0	0	1		
+Trees		301	0	0	257	-1	10	15	1000	0.0	0	1		
+Trees		302	0	0	257	-1	10	15	1000	0.0	0	1		
+Trees		303	0	0	257	-1	10	15	1000	0.0	0	1		
+Trees		304	0	0	257	-1	10	15	1000	0.0	0	1		
+Trees		305	0	0	257	-1	10	15	1000	0.0	0	1		
+Trees		306	0	0	257	-1	10	15	1000	0.0	0	1		
+Trees		307	0	0	257	-1	10	15	1000	0.0	0	1		
+Trees		308	0	0	257	-1	10	15	1000	0.0	0	1		
+		
+
+Wall		201	0	2	257	-1	48	15	1000	2.15	0	1		
+Wall		202	0	0	257	-1	48	15	1000	2.15	0	1		
+Wall		203	0	0	257	-1	48	15	1000	2.15	0	1		
+Wall		210	0	0	257	-1	48	15	1000	2.15	0	1		
+
+##Pick and Spade##
+Miscellaneous	401	0	0	257	-1	40	15	1	0.0	0	1
+
+Miscellaneous	150	0	0	257	-1	40	15	1	0.0	0	1
+
+##frog##
+building	480	0	0	257	-1	40	15	1000	0.0	0	1
+building	482	0	0	257	-1	40	15	10000	0.0	0	1
+
+Miscellaneous	504	0	0	0	-1	40	15	1000	0.0	0	1
+
+Miscellaneous	503	0	0	0	-1	40	15	1500	0.0	0	1
+
+##Flamingo##
+Miscellaneous	250	0	0	257	-1	20	15	1000	0.0	0	1
+Miscellaneous	251	0	0	257	-1	0	0	1500	0.0	0	1
+
+##loader##
+Miscellaneous	400	0	0	257	-1	40	15	1000	0.326	0	1
+
+##Path Lights##
+Miscellaneous	420	0	0	257	-1	50	0	10000	0.0	0	1
+Miscellaneous	421	0	0	257	-1	30	15	1000	0.0	0	1
+
+
+
+##post damage##
+Miscellaneous	351	0	0	257	100	40	15	1000	0.0	3	1
+Miscellaneous	351	1	0	257	-1	40	0	900	0.0	0	1
+
+Miscellaneous	352	0	0	257	100	40	15	1000	0.0	3	1
+Miscellaneous	352	1	0	257	-1	40	0	900	0.0	0	1
+
+##posts nondamaged##
+
+Miscellaneous	380	0	0	257	-1	40	15	1000	0.0	0	1
+Miscellaneous	381	0	0	257	-1	40	15	1000	0.0	0	1
+Miscellaneous	382	0	0	257	-1	40	15	1000	0.0	0	1
+
+##Fence##
+Miscellaneous	200	0	0	257	-1	40	0	1000	1.11	0	1
+
+Miscellaneous	201	0	0	257	-1	40	0	1000	1.11	0	1
+
+Miscellaneous	202	0	0	257	-1	40	0	1000	1.11	0	1
+
+Miscellaneous	302	0	0	0	-1	40	15	10000	0.0	0	1
+
+Miscellaneous	303	0	0	0	-1	40	15	10000	0.0	0	1
+
+Miscellaneous	304	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	305	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	306	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	307	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	308	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	309	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	310	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	311	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	312	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	313	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	314	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	315	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	316	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	317	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	318	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	319	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	320	0	0	0	-1	40	0	10000	0.0	0	1
+
+##Rail Shadow##
+Miscellaneous	110	0	0	0	-1	0	0	10000	0.0	0	1
+
+Miscellaneous	113	0	0	0	-1	0	0	10000	0.0	0	1
+
+Miscellaneous	114	0	0	0	-1	0	0	10000	0.0	0	1
+
+Miscellaneous	116	0	0	0	-1	0	0	10000	0.0	0	1
+
+Miscellaneous	121	0	0	0	-1	0	0	10000	0.0	0	1
+
+Miscellaneous	122	0	0	0	-1	0	0	10000	0.0	0	1
+
+Miscellaneous	123	0	0	0	-1	0	0	10000	0.0	0	1
+
+Miscellaneous	125	0	0	0	-1	0	0	10000	0.0	0	1
+
+Miscellaneous	127	0	0	0	-1	0	0	10000	0.0	0	1
+
+Miscellaneous	129	0	0	0	-1	0	0	10000	0.0	0	1
+
+##Hose##
+
+Miscellaneous	405	0	0	0	-1	40	15	1000	0.0	0	1
+
+Miscellaneous	406	0	0	0	-1	40	15	1000	0.0	0	1
+
+Miscellaneous	407	0	0	0	-1	40	15	1000	0.0	0	1
+
+Miscellaneous	408	0	0	0	-1	40	15	1000	0.0	0	1
+
+
+##tele drain##
+##		SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis
+
+Miscellaneous	111	0	0	0	-1	40	15	10000	0.0	0	1
+
+Miscellaneous	112	0	0	0	-1	40	15	1000	0.0	0	1
+
+##Anims##
+##Portal##
+Miscellaneous	1	0	0	0	-1	40	0	1000	0.692	0	1
+Miscellaneous	1	1	0	0	-1	40	0	1000	0.692	0	1
+Miscellaneous	1	2	0	0	-1	40	0	1000	0.692	0	1
+Miscellaneous	1	3	0	0	-1	40	0	1000	0.692	0	1
+Miscellaneous	1	4	0	0	-1	40	0	1000	0.692	0	1
+Miscellaneous	1	5	0	0	-1	40	0	1000	0.692	0	1
+Miscellaneous	1	6	0	0	-1	40	0	1000	0.692	0	1
+Miscellaneous	1	7	0	0	-1	40	0	1000	0.692	0	1
+Miscellaneous	1	8	0	0	-1	40	0	1000	0.692	0	1
+
+##Fountain##
+Miscellaneous	260	0	0	0	-1	40	0	10000	0.0	0	1
+Miscellaneous	261	0	0	0	-1	40	0	10000	0.0	0	1
+Miscellaneous	262	0	0	0	-1	40	0	10000	0.0	0	1
+Miscellaneous	263	0	0	0	-1	40	0	10000	0.0	0	1
+Miscellaneous	264	0	0	0	-1	40	0	10000	0.0	0	1
+Miscellaneous	265	0	0	0	-1	40	0	10000	0.0	0	1
+Miscellaneous	266	0	0	0	-1	40	0	10000	0.0	0	1
+Miscellaneous	267	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	259	0	0	0	-1	40	0	10000	0.0	0	1
+
+Miscellaneous	255	0	0	257	-1	40	15	1000	0.0	0	1
+Miscellaneous	256	0	0	257	-1	40	15	1000	0.0	0	1
+Miscellaneous	257	0	0	257	-1	40	15	1000	0.0	0	1
+Miscellaneous	258	0	0	257	-1	40	15	1000	0.0	0	1
+
+##Fountain Shadow##
+Miscellaneous	268	0	0	0	-1	0	0	10000	0.0	0	1
+Miscellaneous	269	0	0	0	-1	0	0	10000	0.0	0	1
+Miscellaneous	270	0	0	0	-1	0	0	10000	0.0	0	1
+
+##WhiteFence##
+
+fence		200	0	0	257	-1	64	15	1000	0.674	0	1
+fence		201	0	0	257	-1	64	15	1000	0.674	0	1
+fence		202	0	0	257	-1	64	15	1000	0.795	0	1

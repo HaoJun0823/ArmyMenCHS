@@ -1,0 +1,130 @@
+PAD sargeinboat               60      GreenSarge1 > 0
+PAD Colonels_escape           98      GreenSarge1 > 0
+PAD Portal2                   99      Rogue_Green_Colonel > 0
+PAD Activate_troops           97      GREEN > 0
+
+VARIABLE boatscreated 0
+VARIABLE troops_activated_1 0
+
+IF startup2 THEN
+	setbriefing "map05_2.bmp",
+       	playsound "0502hq1.wav" 0 0,
+        TRIGGERDELAY 10 init_vars2,
+        SETOBJSTATE Pool5 Pool5_rampdown,
+        SETOBJSTATE Pool6 Pool6_rampdown
+
+
+IF init_vars2 then
+        SHOWPDA "找到上校，然后向总部报告。",
+        TRIGGERDELAY 3000 showf1mess,
+        SETAIPOSE ROGUE_GREEN_COLONEL stand
+
+
+
+
+IF ALLOF padon sargeinboat startup2 TESTVAR boatscreated = 0 THEN
+        TRIGGERDELAY 3000 createboats
+
+
+
+IF padon Activate_troops hit trip hit Mendheim hit Hicks hit Colonel TESTVAR troops_activated_1 = 0 THEN
+        SETVAR troops_activated_1 1,
+        ORDER Drone1 GOTO GREENSARGE1 INMODE ATTACK,
+        ORDER Drone2 GOTO GREENSARGE1 INMODE ATTACK,
+        ORDER Drone3 GOTO GREENSARGE1 INMODE ATTACK,
+        ORDER Fruin GOTO GREENSARGE1 INMODE ATTACK,
+        ORDER Fowler GOTO GREENSARGE1 INMODE ATTACK,
+        ORDER Nick GOTO GREENSARGE1 INMODE ATTACK
+
+
+IF createboats TESTVAR boatscreated = 0 THEN
+        SETVAR boatscreated 1,
+        CREATEVEHICLE pt_boat2 BOAT (1000,1000) TAN,
+        SETFORCECOLOR pt_boat2 GREEN,
+        ORDER pt_boat2 GOTO GreenSarge1 INMODE ATTACK
+
+
+
+IF padon Colonels_escape BUTNOT Do_crap THEN
+        TRIGGER Do_crap
+
+
+IF Do_crap THEN
+	setuilock 1,
+        setcamerafocus COLONEL,
+        SETAIMODE colonel IGNORE,
+        SETAIMODE Trip IGNORE,
+        SETAIMODE Hicks IGNORE,
+        SETAIMODE Nick IGNORE,
+        SETAIMODE Fruin IGNORE,
+        SETAIMODE Jim IGNORE,
+        SETAIMODE Keith IGNORE,
+        SETAIMODE Mendheim IGNORE,
+        SETAIMODE Fowler IGNORE,
+        SETAIPOSE Trip KNEEL,
+        SETAIPOSE Hicks KNEEL,
+        SETAIPOSE Nick KNEEL,
+        SETAIPOSE Fruin KNEEL,
+        SETAIPOSE Jim KNEEL,
+        SETAIPOSE Keith KNEEL,
+        SETAIPOSE Fowler KNEEL,
+        SETAIPOSE Mendheim KNEEL,
+        playsound "0502colonel.wav" 4 0,
+        TRIGGERDELAY 12000 Send_Colonel
+
+IF Send_Colonel THEN
+        SETAIPOSE Rogue_Green_Colonel none,
+        ORDER Rogue_Green_Colonel GOTO Portal2 INMODE IGNORE,
+        TRIGGERDELAY 4000 wingreen
+
+
+IF padon portal2 THEN
+        UNDEPLOY Rogue_Green_Colonel
+
+
+
+
+
+
+IF wingreen BUTNOT playwave2 THEN
+        SETCAMERAFOCUS GREENSARGE1,
+	playsound "0502sarge3.wav" 16 0,
+        TRIGGERDELAY 4000 playwave2
+
+IF playwave2 BUTNOT playwave3 THEN
+	playsound "0502hq2.wav" 0 0,
+        TRIGGERDELAY 3000 playwave3
+
+IF playwave3 BUTNOT playwave4 THEN
+	playsound "0502sarge4.wav" 16 0,
+        TRIGGERDELAY 5000 playwave4
+
+
+IF playwave4 BUTNOT playwave5 THEN
+	playsound "0502hq3.wav" 0 0,
+        TRIGGERDELAY 4000 playwave5
+
+IF playwave5 BUTNOT Greenwins THEN
+	setuilock 0,
+        TRIGGERDELAY 3000 revive_troops,
+	playsound "0502sarge5.wav" 16 0
+
+
+
+IF revive_troops THEN
+        SETAIMODE Trip ATTACK,
+        SETAIMODE Hicks ATTACK,
+        SETAIMODE Nick ATTACK,
+        SETAIMODE Fruin ATTACK,
+        SETAIMODE Jim ATTACK,
+        SETAIMODE Keith ATTACK,
+        SETAIMODE Mendheim ATTACK,
+        SETAIMODE Fowler ATTACK
+
+
+IF PADON Portalpad THEN
+        TRIGGERDELAY 1000 testGreenwins
+
+IF testGREENWINS BUTNOT KILLED GREENSARGE1 THEN
+        PLAYSOUND "" 1 3 1,
+        TRIGGERDELAY 10 GREENWINS

@@ -1,0 +1,125 @@
+#Object Defaults Table
+
+#Item Flags
+# ITEMFLAG_MAP		0001	(1)
+# ITEMFLAG_VISBLOCK	0100	(256)
+
+#Obj Type	SubT	State	Lnks	Fl	MxHlth	Hght	Move	Ord	Slope	Arm	Vis 	Crush	Perm
+Bridge		500	0	0	1	900	0	-15	1	0.0	3	1		
+Bridge		500	1	0	1	-1	0	0	1	0.0	0	1		
+Bridge		505	0	0	1	-1	0	-15	1	0.0	3	1		
+
+Bridge		900	0	0	1	50	0	-15	1	0.0	3	1
+Bridge		900	1	0	1	-1	0	-15	1	0.0	0	1	
+Bridge		905	0	0	1	-1	0	-15	1	0.0	3	1			
+
+Ground		10	0	0	1	30	0	-15	1	0.0	3	1		
+Ground		10	1	0	1	-1	0	-15	1	0.0	3	1		
+Ground		11	0	0	1	30	0	-15	1	0.0	3	1		
+Ground		11	1	0	1	-1	0	-15	1	0.0	3	1		
+Ground		12	0	0	1	30	0	-15	1	0.0	3	1		
+Ground		12	1	0	1	-1	0	-15	1	0.0	3	1		
+Ground		13	0	0	1	30	0	-15	1	0.0	3	1		
+Ground		13	1	0	1	-1	0	-15	1	0.0	3	1		
+
+Ground		291	0	0	1	-1	0	0	1	0.0	0	1
+
+Miscellaneous   1	0       0       1       -1      0       -15     1    	0.0     0       1
+Miscellaneous   1       1       0       1       -1      0       -15     1     	0.0     0       1
+Miscellaneous   1       2       0       1       -1      0       -15     1     	0.0     0       1
+Miscellaneous   1       3       0       1       -1      0       -15     1     	0.0     0       1
+Miscellaneous   1       4       0       1       -1      0       -15     1 	0.0     0       1
+Miscellaneous   1       5       0       1       -1      0       -15     1 	0.0     0       1
+Miscellaneous   1       6       0       1       -1      0       -15     1    	0.0     0       1
+Miscellaneous   1       7       0       1       -1      0       -15     1  	0.0     0       1
+Miscellaneous   1       8       0       1       -1      0       -15     1     	0.0     0       1
+
+Miscellaneous	2	0	0	257	30	40	15	1 	0.0	3	1
+Miscellaneous	2	1	0	257	-1	12	15	1 	0.0	0	1	9999
+Miscellaneous	3	0	0	257	30	40	15	1 	0.0	3	1
+Miscellaneous	3	1	0	257	-1	12	15	1 	0.0	0	1	9999
+Miscellaneous	4	0	0	257	30	40	15	1 	0.0	3	1
+Miscellaneous	4	1	0	257	-1	12	15	1 	0.0	0	1	9999
+
+Miscellaneous	292	0	0	257	50	50	15	1000   -0.67	3	1
+Miscellaneous	292	1	0	257	-1	50	15	1000   -0.67	0	1
+Miscellaneous	293	0	0	257	50	50	15	1000	0.48	3	1
+Miscellaneous	293	1	0	257	-1	50	15	1000	0.48	0	1	9999
+Miscellaneous	294	0	0	257	25	50	15	1000   -0.44	0	1
+Miscellaneous	294	1	0	257	-1	50	15	1000   -0.44	0	1	9999
+
+Miscellaneous	180	0	0	257	20	50	15	1000	0.0	0	1
+Miscellaneous	180	1	0	257	-1	1 	15 	1 	0.0	0	0	9999
+Miscellaneous	200	0	0	257	20	12	15	1 	0.0	0	1
+Miscellaneous	200	1	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	220	0	0	257	10	0 	0	1 	0.0	0	0
+Miscellaneous	220	1	0	257	-1	0 	0	1 	0.0	0	0
+Miscellaneous	230	0	0	257	10	0	0	1 	0.0	0	0
+Miscellaneous	230	1	0	257	-1	0	0	1 	0.0	0	0
+Miscellaneous	260	0	0	257	20	50	15	1000	0.0	0	1
+Miscellaneous	260	1	0	257	-1	1 	15	1 	0.0	0	0	9999
+Miscellaneous	700	0	0	257	100	300	15	1 	0.0	0	1	
+Miscellaneous	700	1	0	257	-1	200	15	1 	0.0	0	1	9999
+Miscellaneous	710	0	0	257	100	100	15	1 	0.0	0	1
+Miscellaneous	710	1	0	257	-1	12	15	1 	0.0	0	1	9999
+Miscellaneous	730	0	0	257	20	50	15	1000 	0.0	0	1
+Miscellaneous	730	1	0	257	-1	1 	15	1 	0.0	0	0	9999
+Miscellaneous	740	0	0	257	20	50	15	1000  	0.0	0	1
+Miscellaneous	740	1	0	257	-1	1 	15	1       0.0	0	0	9999
+Miscellaneous	750	0	0	257	40	50	15	1 	0.39	0	1
+Miscellaneous	750	1	0	257	-1	50	15	1 	0.39	0	0	9999
+Miscellaneous	770	0	0	257	40	50	15	1      -0.98	0	1
+Miscellaneous	770	1	0	257	-1	50	15	1      -0.98	0	0	9999
+Miscellaneous	790	0	0	257	30	12	15	1 	0.0	0	1
+Miscellaneous	790	1	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	810	0	0	257	120	70	15	1	0.0	0	1
+Miscellaneous	810	1	0	257	80	70	15	1	0.0	0	1
+Miscellaneous	810	2	0	257	40	70	15	1	0.0	0	1
+Miscellaneous	810	3	0	257	-1	70	15	1 	0.0	0	1
+Miscellaneous	830	0	0	257	30	60	15	1 	0.0	0	1
+Miscellaneous	830	1	0	257	15	60	15	1 	0.0	0	1	9999
+Miscellaneous	830	2	0	257	-1	0      -15	1	0.0	0	0
+Miscellaneous	850	0	0	257	30	40	15	1 	0.0	0	1
+Miscellaneous	850	1	0	257	15	40	15	1 	0.0	0	1	9999
+Miscellaneous	850	2	0	257	-1	0      -15	1 	0.0	0	0
+Miscellaneous	860	0	0	257	80	120	15	1 	0.0	0	1
+Miscellaneous	860	1	0	257	-1	12	15	1	0.0	0	1	9999
+Miscellaneous	880	0	0	257	20	12 	15	1 	0.0	0	0
+Miscellaneous	880	1	0	257	-1	12     -15	1 	0.0	0	0
+Miscellaneous	890	0	0	257	20	50	15	1000	0.0	0	1
+Miscellaneous	890	1	0	257	-1	1 	15	1 	0.0	0	0	9999
+Miscellaneous	900	0	0	257	20	1 	0	1 	0.0	0	0
+Miscellaneous	900	1	0	257	-1	1 	0	1 	0.0	0	0
+Miscellaneous	930	0	0	257	120	100	15	1 	0.0	0	1
+Miscellaneous	930	1	0	257	-1	100	15	1	0.0	0	1	9999
+Miscellaneous	940	0	0	257	50	80	15	1	0.0	0	1
+Miscellaneous	940	1	0	257	25	80	15	1	0.0	0	1	9999
+Miscellaneous	940	2	0	257	-1	80	15	1 	0.0	0	1	9999
+Miscellaneous	970	0	0	257	-1	25	15	1 	0.0	0	1
+Miscellaneous	970	1	0	257	-1	12     -15 	1 	0.0	0	1	9999
+Miscellaneous	980	0	0	257	-1	25	15	1 	0.0	0	1
+Miscellaneous	980	1	0	257	-1	12     -15 	1 	0.0	0	1
+Miscellaneous	990	0	0	257	40	40	15	1 	0.0	0	1
+Miscellaneous	990	1	0	257	-1	12	15	1 	0.0	0	0	9999
+
+Miscellaneous	190	0	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	210	0	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	240	0	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	250	0	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	270	0	0	257	-1	12	15	1000	0.0	0	1
+Miscellaneous	280	0	0	257	-1	12	15	1000	0.0	0	1
+Miscellaneous	650	0	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	720	0	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	760	0	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	780	0	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	800	0	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	820	0	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	870	0	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	910	0	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	920	0	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	950	0	0	257	-1	12	15	1 	0.0	0	1
+Miscellaneous	960	0	0	257	-1	12	15	1 	0.0	0	1
+
+Miscellaneous   999	0       0       257     -1      0      -15      1    	0.0     0       1
+
+

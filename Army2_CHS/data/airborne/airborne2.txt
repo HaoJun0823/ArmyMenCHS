@@ -1,0 +1,63 @@
+
+
+
+if startup2 then
+	triggerdelay 400 showmiss2,
+        setbriefing "map04_2.bmp",
+        triggerdelay 500 spysegment,
+        createpowerup "p" paratroopers parastump -1
+
+
+if showmiss2 then
+	showpda "从黄军手中救出蓝军间谍。"
+
+	//**Win conditions**//
+if padon blood31 butnot onlyonce then
+        order Boris_S follow greensarge1 inmode attack,
+        playsound "0402BlueSpy2.wav" 0 0,
+	setnpc Boris_S 0,
+	triggerdelay 100 timetowin2,
+	trigger onlyonce
+
+
+if timetowin2 butnot doh then
+        triggerdelay 1000 petertestgreenwins
+
+	//**Start Mission 2**//
+
+        //**Spy Movie**//
+
+if spysegment then
+        createtrooper "Boris_S" sniper deployment green,
+        setforcecolor Boris_S blue,
+        setaimode Borsi_S ignore,
+        setaipose Boris_S prone,
+	setnpc Boris_S 1,
+        addexp Boris_S 50,
+        triggerdelay 4000 vo
+
+        //**Spy movement**//
+
+if vo butnot onespyvo then
+        playsound "0402BlueSpy1.wav" 0 0,
+        trigger onespyvo
+
+        //Tan Trooper Vos//
+if killed killingtime5 then
+        trigger stoptanvos,
+        createpowerup bazooka killingtime5 8
+
+if padon armymen6 butnot onlyonetanvo then
+        trigger startvo
+
+if startvo butnot stoptanvos then
+        trigger tanvo1,
+        triggerdelay 4000 tanvo2,
+        trigger onlyonetanvo
+
+if tanvo1 butnot stoptanvos then
+        playsound "0402TanTrooper1.wav" killingtime5 2 0
+
+if tanvo2 butnot stoptanvos then
+        playsound "0402TanTrooper2.wav" killingtime5 2 0
+
