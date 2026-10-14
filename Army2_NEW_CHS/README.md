@@ -22,9 +22,20 @@
 | `.asi` | 1 | 0.2 |
 | `.ini` | 2 | 0.0 |
 
-## 待人工处理
+## 资产状态
 
-部分 `bitmaps/*.bmp` 尚未汉化（中文母盘里仍是英文烧字），
-需手工处理后覆盖本目录同名文件。详见 `MANIFEST_BMP.md`。
+BMP 共 95 个，**全部已汉化**（人工实图核对，见 `MANIFEST_BMP.md`）。
 
-全量 sha256 见 `_filehash.csv`。
+> 判定方法见 `Tools/ci/verify_hzk_offset.py` 与
+> `docs/06-am2-pitfalls.md` 坑 11 —— 字节比对与像素差异率
+> 都已被证伪为不可靠，必须以人看图为准。
+
+## 清单文件
+
+| 文件 | 内容 |
+|---|---|
+| `_filehash.csv` | 全量 sha256（相对路径 / 字节 / 哈希） |
+| `MANIFEST.json` | 差异资产明细（路径 / 字节 / 理由） |
+| `MANIFEST.md` | 同上，Markdown 版 |
+| `MANIFEST_BMP.md` | BMP 汉化状态（人工核对结论） |
+| `BMP_STATUS.json` | 同上，机器可读版 |

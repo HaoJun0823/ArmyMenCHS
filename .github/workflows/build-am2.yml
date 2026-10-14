@@ -1,0 +1,331 @@
+name: build-am2
+
+# ============================================================================
+# ArmyMenCHS —— 《玩具兵大战 II》汉化补丁 · CI 门禁
+# 架构：ubuntu-latest + msvc-wine (MSVC v141, 32 位 x86)
+# ----------------------------------------------------------------------------
+# ★★ 这个 workflow **不做完整构建**，原因是一个硬约束：
+#
+#     仓库里的 Army2_Original / Army2_CHS **不含 ArmyMen2.exe**
+#     （exe 不入库，与 1 代同样的策略：版权 + 避免把商业二进制放进 git）。
+#     而 2 代的多数校验器需要 exe 才能跑：
+#
+#       verify_hook_sigs.py      需要 exe（逐 hook 比对签名）
+#       verify_stub_boundary.py  需要 exe（反汇编确认指令边界）
+#       verify_globals.py        需要 exe（解引用全局量）
+#       verify_codepatch.py      需要 exe（多字节原文比对）
+#       gen_am2_strings_ini.py   需要 exe（读英文原文做闸门）
+#       verify_release_am2.py    需要 exe
+#
+#     所以 CI 只跑「不依赖 exe」的那部分，作为**回归门禁**：
+#       ① 编译 32 位 DLL（确保源码改动不破坏构建）
+#       ② Hzk16 字形偏移判据（用仓库内 Army2_CHS/Hzk16，不依赖 exe）
+#       ③ Hzk16 离线几何/墨迹自测
+#       ④ 资产树结构自检（MANIFEST + sha256 逐文件回读）
+#       ⑤ 译文表容量自检（读 INI 算 cap，不需要 exe）
+#       ⑥ 文档内链有效性（避免改了链接没人发现）
+#
+#     完整 17 步构建在**本地**跑（有 exe）：
+#         python Tools/ci/build_all_am2.py
+#
+# ★★ 为什么 CI 不"静默跳过"需要 exe 的步骤：
+#   本项目踩过 4 次"校验器空转报绿"（见 docs/07-am2-build-and-release.md §5）。
+#   空转的校验器比没有校验器更危险 —— 它给出虚假的安全感。
+#   因此这里对每个跑不了的步骤**显式报告**并计入汇总，让结论诚实：
+#     "4 项已校验，6 项因缺 exe 未覆盖（需本地构建）"
+#   而不是假装"全部通过"。
+#
+# ★★ 32 位编译的三处专属处理（与 1 代 build-release.yml 相同，勿删）：
+#     1. vsdownload --architecture **x86 x64**：x86 cl 启动时按 PATH 找
+#        mspdbcore.dll，而该文件只存在于 Hostx64/x64。只拉 x86 会报 C1356。
+#     2. compile_dll_wine.py 用 bin/x86/cl + bin/x86/link，并把 bin/x64 也
+#        加进 PATH（双保险）。
+#     3. 产物校验断言 machine == 0x14C (i386)。
+# ============================================================================
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'Army2_Extend_Dll/**'
+      - 'Army2_CHS/**'
+      - 'Army2_Original/**'
+      - 'Army2_NEW_CHS/**'
+      - 'Tools/ci/compile_dll_wine.py'
+      - 'Tools/ci/verify_hzk_offset.py'
+      - 'Tools/ci/build_test_hzk16.py'
+      - 'Tools/ci/verify_assets_am2.py'
+      - 'Tools/ci/verify_strings_cap_am2.py'
+      - 'Tools/ci/verify_doc_links.py'
+      - '.github/workflows/build-am2.yml'
+  pull_request:
+    branches: [main, master]
+    paths:
+      - 'Army2_Extend_Dll/**'
+      - 'Army2_CHS/**'
+      - 'Army2_Original/**'
+      - 'Army2_NEW_CHS/**'
+      - 'Tools/ci/compile_dll_wine.py'
+      - 'Tools/ci/verify_hzk_offset.py'
+      - 'Tools/ci/build_test_hzk16.py'
+      - 'Tools/ci/verify_assets_am2.py'
+      - 'Tools/ci/verify_strings_cap_am2.py'
+      - 'Tools/ci/verify_doc_links.py'
+      - '.github/workflows/build-am2.yml'
+  workflow_dispatch:
+    inputs:
+      skip_dll:
+        description: '跳过 DLL 编译（只跑 Python 侧门禁）'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ══════════════════════════════════════════════════════════════════════
+  #  Job 1：CI 可跑的回归门禁
+  # ══════════════════════════════════════════════════════════════════════
+  gate:
+    name: CI 门禁（编译 + 字库判据 + 资产结构 + 译文容量）
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    env:
+      PYTHONUTF8: '1'
+      PYTHONIOENCODING: 'utf-8'
+      MSVC_WINE_PREFIX: ${{ github.workspace }}/.msvc
+      MSVC_SDK_DIR: ${{ github.workspace }}/.msvc-sdk
+      MSVCWINE_REF: master
+
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v7.0.1
+
+      # ★ 必须完整 checkout msvc-wine：install.sh 要用仓库里的 lowercase /
+      #   fixinclude（Linux 大小写敏感必需）、wrappers/、msvctricks.cpp。
+      - name: 检出 msvc-wine
+        uses: actions/checkout@v7.0.1
+        with:
+          repository: mstorsjo/msvc-wine
+          ref: ${{ env.MSVCWINE_REF }}
+          path: .msvc-wine
+
+      - name: 配置 Python
+        uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.12'
+
+      - name: 安装 Python 依赖
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet Pillow capstone
+
+      - name: 安装 wine / msitools 等依赖
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y wine64 msitools ca-certificates winbind
+          wine --version
+
+      # ── MSVC 工具链（与 1 代同一套；缓存命中则跳过下载）──────────────
+      - name: 还原 MSVC 工具链缓存
+        uses: actions/cache@v6.1.0
+        with:
+          path: .msvc
+          key: armymenchs-msvcwine-v141-x86-sdk26100-${{ env.MSVCWINE_REF }}-v1
+
+      # ── 下载工具链（缓存未命中时）：两段 vsdownload + 合并 ──────────
+      #   段1 VC 14.16：--major 15 是**关键** —— VC.Tools.14.16 (v141) 只
+      #     存在于 VS2017 manifest；VS2022+ 清单里 v141 兼容组件 ID 不同，
+      #     vsdownload 找不到会**静默回退最新工具集**。
+      #     ★ --architecture **x86 x64**：x64 是 mspdbcore.dll 的来源（见文件头）。
+      #     --with-sdk=no：SDK 走段 2。
+      #   段2 SDK 26100：与 vcxproj 的 WindowsTargetPlatformVersion 一致
+      #     （10.0.26100）。VS2017 manifest 里没有 26100，故走 VS2022 channel。
+      - name: 下载并装配 MSVC v141 + Win10 SDK 26100（缓存未命中时）
+        run: |
+          set -euo pipefail
+          if [ -x "${MSVC_WINE_PREFIX}/bin/x86/cl" ] && [ -d "${MSVC_WINE_PREFIX}/kits/10/include/10.0.26100.0" ]; then
+            echo "工具链缓存命中（VC 14.16 + SDK 26100），跳过下载。"
+          else
+            echo "==> [1/3] 下载 VC 14.16 (v141, VS2017 channel, x86+x64)"
+            python3 .msvc-wine/vsdownload.py \
+              --accept-license --major 15 --msvc-version 15.9 \
+              --architecture x86 x64 --host-arch x64 \
+              --with-sdk=no --with-atl=no --with-asan=no --with-dia=no \
+              --with-msbuild=no --with-devcmd=no \
+              --dest "${MSVC_WINE_PREFIX}"
+
+            echo "==> [2/3] 下载 Win10 SDK 26100 (VS2022 channel)"
+            python3 .msvc-wine/vsdownload.py \
+              --accept-license --major 17 \
+              --sdk-version 10.0.26100 \
+              --with-default=no \
+              --architecture x86 --host-arch x64 \
+              --dest "${MSVC_SDK_DIR}"
+
+            echo "==> [3/3] 合并 SDK 26100 进 MSVC prefix"
+            if [ -d "${MSVC_WINE_PREFIX}/Windows Kits" ]; then
+              echo "!! .msvc/Windows Kits 已存在，意外状态" >&2; exit 1
+            fi
+            mv "${MSVC_SDK_DIR}/Windows Kits" "${MSVC_WINE_PREFIX}/"
+          fi
+          rm -rf "${MSVC_SDK_DIR}"
+
+      - name: install.sh（生成包装脚本 / 大小写修复）
+        run: |
+          set -euo pipefail
+          sh .msvc-wine/install.sh "${MSVC_WINE_PREFIX}"
+
+      # ── 编译器验证（门禁）────────────────────────────────────────
+      #   必须看到 19.16 才放行（防止 vsdownload 静默回退新版工具集）。
+      #   同时显式检查 mspdbcore.dll 就位（C1356 根因诊断）。
+      - name: 验证编译器为 MSVC v141 x86（诊断 + 门禁）
+        if: ${{ github.event.inputs.skip_dll != 'true' }}
+        run: |
+          set -euo pipefail
+          export PATH="${MSVC_WINE_PREFIX}/bin/x86:$PATH"
+          echo "-- mspdbcore.dll 就位检查（32位 cl 必需）--"
+          find "${MSVC_WINE_PREFIX}/vc/tools/msvc" -name mspdbcore.dll 2>/dev/null || true
+          echo "-- cl banner --"
+          banner="$(cl 2>&1 || true)"
+          echo "$banner" | head -2
+          if ! echo "$banner" | grep -q "19\.16"; then
+            echo "!! cl 不是 MSVC 14.16 (v141)" >&2
+            exit 1
+          fi
+          echo "-- Win SDK 版本（应含 10.0.26100.0）--"
+          ls "${MSVC_WINE_PREFIX}/kits/10/include/"
+          echo "-- 磁盘余量 --"
+          df -h .
+
+      # ── 编译 2 代 DLL（32 位）─────────────────────────────────────
+      #   msvc-wine 无 MSBuild，故由 compile_dll_wine.py 把 vcxproj 的
+      #   Release|Win32 选项逐项翻译成 cl/link 命令行。
+      #   ★ 编译后必须断言：32 位 PE + 3 个导出齐全（空转的链接器会
+      #     复用陈旧 .obj，产出"零导出且不报错"的 DLL —— 1 代真实踩过）。
+      - name: 编译 Army2_Extend_Dll.dll（32 位）+ 断言导出
+        if: ${{ github.inputs.skip_dll != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/compile_dll_wine.py --msvc-prefix "${MSVC_WINE_PREFIX}" \
+            --proj Army2_Extend_Dll
+
+          echo "── 断言 32 位 PE + 导出 ──"
+          dll="Army2_Extend_Dll/Release/Army2_Extend_Dll.dll"
+          test -f "$dll" || { echo "!! 未产出 $dll" >&2; exit 1; }
+          ls -l "$dll"
+          python3 - "$dll" <<'PY'
+          import struct, sys
+          p = sys.argv[1]
+          b = open(p, "rb").read()
+          pe = struct.unpack_from("<I", b, 0x3C)[0]
+          machine = struct.unpack_from("<H", b, pe + 4)[0]
+          assert machine == 0x14C, f"不是 32 位 PE: 0x{machine:X}"
+          print(f"✓ machine=0x{machine:X} (i386), {len(b)} bytes")
+          # 导出表检查（避免"零导出且不报错"）
+          n = struct.unpack_from("<H", b, pe + 6)[0]
+          opt = struct.unpack_from("<H", b, pe + 20)[0]
+          dirs = pe + 24 + opt
+          exp_rva = struct.unpack_from("<I", b, dirs)[0]
+          if exp_rva == 0:
+              print("!! 没有导出表", file=sys.stderr); sys.exit(1)
+          for want in (b"InitializeASI", b"ArmyMenCHS_Install", b"ArmyMenCHS_Uninstall"):
+              if want not in b:
+                  print(f"!! 缺少导出 {want.decode()}", file=sys.stderr); sys.exit(1)
+          print("✓ 导出表齐全（InitializeASI / ArmyMenCHS_Install / ArmyMenCHS_Uninstall）")
+          PY
+
+      # ── 门禁 1：Hzk16 字形偏移公式（不依赖 exe）─────────────────────
+      #   ★ 用**不可混淆**的判据：全角 ASCII（ＡＢＣＤＥＦ / ０１２３）。
+      #   该问题被误判过两次（目视把噪声当字形 / 推导出"缺 dataStart"），
+      #   测试会**自证区分力**（全偏移扫描误通过率 <1%），不是空转校验器。
+      - name: 门禁 1/5：Hzk16 字形偏移公式（全角 ASCII 判据）
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/verify_hzk_offset.py \
+            --file "Army2_CHS/Hzk16"
+
+      # ── 门禁 2：Hzk16 离线自测（不依赖 exe）─────────────────────────
+      - name: 门禁 2/5：Hzk16 离线几何与墨迹自测
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/build_test_hzk16.py
+
+      # ── 门禁 3：资产树结构（MANIFEST + sha256 回读）─────────────────
+      #   ★ 这一项防的是"资产被 autocrlf 改写"和"MANIFEST 与实际不符"。
+      #     git 的 blob 与工作区必须逐字节一致，否则游戏按字节解析即崩溃。
+      - name: 门禁 3/5：资产树结构与 sha256 回读
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/verify_assets_am2.py
+
+      # ── 门禁 4：译文表容量自检（不依赖 exe）─────────────────────────
+      #   ★ 防"中文译文超出槽容量"，那会覆盖相邻字符串。
+      #     本地构建时 gen_am2_strings_ini.py 会另外与 exe 里的英文原文
+      #     逐条比对（更强的闸门），CI 上退化为容量算术校验。
+      - name: 门禁 4/5：译文表容量自检
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/verify_strings_cap_am2.py
+
+      # ── 门禁 5：文档内链有效性─────────────────────────────────────
+      #   2 代新增 4 篇文档（05~07 + 移植指南），改了文件名没人发现
+      #   就会留下一堆死链。
+      - name: 门禁 5/5：文档内链有效性
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/verify_doc_links.py
+
+      # ── 汇总：诚实报告覆盖率 ─────────────────────────────────────
+      #   ★ 关键：把"没跑的步骤"显式列出来，而不是只报"已跑的都通过"。
+      #     否则读者会以为 CI 覆盖了全部校验。
+      - name: 汇总（含未覆盖项）
+        if: ${{ always() }}
+        run: |
+          set -uo pipefail
+          cat <<'EOF'
+          ────────────────────────────────────────────────────────
+          CI 覆盖范围
+          ────────────────────────────────────────────────────────
+          ✅ 编译 32 位 DLL + 导出断言
+          ✅ Hzk16 字形偏移公式（全角 ASCII 判据 + 自证区分力）
+          ✅ Hzk16 离线几何/墨迹自测
+          ✅ 资产树结构 + sha256 回读
+          ✅ 译文表容量算术校验
+          ✅ 文档内链有效性
+          ────────────────────────────────────────────────────────
+          ❌ 以下步骤**需要 ArmyMen2.exe**，CI 无法覆盖，须本地构建：
+             verify_hook_sigs.py       逐 hook 签名比对
+             verify_stub_boundary.py   patchLen 指令边界
+             verify_globals.py         全局量 VA 语义
+             verify_codepatch.py       代码补丁原文比对
+             gen_am2_strings_ini.py    英文原文闸门
+             verify_release_am2.py     最终产物校验
+             make_patch_am2.py         组装发布包
+
+             本地跑： python Tools/ci/build_all_am2.py
+          ────────────────────────────────────────────────────────
+          EOF
+
+  # ══════════════════════════════════════════════════════════════════════
+  #  Job 2：文档链接（轻量，无需 MSVC）
+  # ══════════════════════════════════════════════════════════════════════
+  docs:
+    name: 文档内链检查（轻量）
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.12'
+      - name: 校验文档相对链接
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/verify_doc_links.py

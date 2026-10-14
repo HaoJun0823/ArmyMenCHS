@@ -32,9 +32,34 @@ import sys
 import subprocess
 import shutil
 
+# ── 工程配置表 ─────────────────────────────────────────────────────────
+# ★ 为什么做成表：1 代与 2 代的源码清单、包含路径、导出都不同，
+#   而 1 代早期把 SOURCES 硬编码在模块顶层，导致 2 代只能整份复制脚本
+#   （两份脚本各维护一份 cl/link 参数，早晚对不上）。
+#   现在按工程名选配置，wine 下的编译流程（pch /Yu /link /PE 校验）完全共用。
+PROJECTS = {
+    "Army1_Extend_Dll": {
+        "sources": ["dllmain.cpp", r"src\hooks.cpp", r"src\ini_reader.cpp",
+                    "pch.cpp"],
+        "includes": ["."],          # pch.h 在根，src/*.h 用 "hooks.h" 相对自身目录
+    },
+    "Army2_Extend_Dll": {
+        # 2 代源码在 src\，且多了 target/renderer/hzk16/strings/codepatch/log
+        "sources": [
+            "dllmain.cpp",
+            r"src\hooks.cpp",
+            r"src\target.cpp",
+            r"src\renderer.cpp",
+            r"src\hzk16.cpp",
+            r"src\strings.cpp",
+            r"src\codepatch.cpp",
+            r"src\log.cpp",
+        ],
+        "includes": ["src", "."],
+    },
+}
+
 PROJ = "Army1_Extend_Dll"
-SOURCES = ["dllmain.cpp", r"src\hooks.cpp", r"src\ini_reader.cpp", "pch.cpp"]
-INCLUDES = ["."]           # pch.h 在根，src/*.h 用 "hooks.h" 相对自身目录
 DEFINES = ["_WINDLL", "_UNICODE", "UNICODE", "NDEBUG"]
 CL_FLAGS = [
     "/nologo", "/c", "/GS", "/W3", "/Gy", "/Zc:wchar_t", "/Zc:inline",
@@ -53,6 +78,14 @@ def main():
     prefix = args[args.index("--msvc-prefix") + 1] if "--msvc-prefix" in args \
         else os.environ.get("MSVC_WINE_PREFIX", ".msvc")
     proj_dir = args[args.index("--proj") + 1] if "--proj" in args else PROJ
+
+    if proj_dir not in PROJECTS:
+        print(f"!! 未知工程 {proj_dir}；可选：{', '.join(sorted(PROJECTS))}",
+              file=sys.stderr)
+        return 1
+    cfg = PROJECTS[proj_dir]
+    SOURCES = cfg["sources"]
+    INCLUDES = cfg["includes"]
 
     bin_dir = os.path.join(prefix, "bin", "x86")
     cl = os.path.join(bin_dir, "cl")

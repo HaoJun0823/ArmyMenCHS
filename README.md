@@ -48,7 +48,8 @@ python Tools\ci\verify_release.py stage               # 独立校验
 
 | 文档 | 内容 |
 |---|---|
-| **[`docs/00-porting-map.md`](docs/00-porting-map.md)** | **移植地图**：当前状态、开工前四项核查、可复用工具清单、开工顺序 |
+| **[`docs/00-porting-map.md`](docs/00-porting-map.md)** | **移植地图**（1 代视角）：当前状态、开工前四项核查、可复用工具清单、开工顺序 |
+| **[`docs/05-am2-porting-guide.md`](docs/05-am2-porting-guide.md)** | **移植指南（2→3/4 代）**：逐项标注「可照搬 / 需重测 / 需重做」，含 2 代走过的 6 轮弯路 |
 
 ### 技术资料
 
@@ -58,6 +59,17 @@ python Tools\ci\verify_release.py stage               # 独立校验
 | [`docs/02-pitfalls.md`](docs/02-pitfalls.md) | **踩坑清单**：13 个真实坑（崩溃根因、不可译区域、静默失败） |
 | [`docs/03-build-and-release.md`](docs/03-build-and-release.md) | 工具链、构建流程、CI、发布包布局、校验清单 |
 | [`docs/04-asset-pipeline.md`](docs/04-asset-pipeline.md) | 资产对账、差异移植、掩膜剥离、视频/音频判定 |
+
+### 2 代（Army Men II）专属
+
+2 代与 3/4 代引擎几乎一致，这部分文档是**移植的主要依据**。
+
+| 文档 | 内容 |
+|---|---|
+| [`docs/05-am2-technical-archive.md`](docs/05-am2-technical-archive.md) | **2 代技术档案**：4 个文字函数（3 绘制 + 1 测量）实测地址/参数、全局量表、Hzk16 偏移公式、逐字节渐显陷阱 |
+| [`docs/05-am2-porting-guide.md`](docs/05-am2-porting-guide.md) | **2→3/4 移植指南**：逐项对照表 + 开工清单 |
+| [`docs/06-am2-pitfalls.md`](docs/06-am2-pitfalls.md) | **2 代踩坑清单**：15 个坑，按代价排序 |
+| [`docs/07-am2-build-and-release.md`](docs/07-am2-build-and-release.md) | 2 代构建（17 步）、部署幂等性、CI 覆盖范围说明 |
 
 ### 子系统文档
 

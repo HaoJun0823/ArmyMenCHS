@@ -38,6 +38,10 @@ STEPS = [
     #   本测试用不可混淆的形状指纹，并**自证区分力**（全偏移扫描，
     #   误通过率 0.717%），从根上堵住这两种误判。
     ("③b 校验字形偏移公式",   [PY, os.path.join(TOOLS, "ci", "verify_hzk_offset.py")]),
+    # ③c / ③d：CI 与本地共用。CI 上跑的是不依赖 exe 的子集，
+    # 本地（有 exe）则能跑更强的版本 —— 两者共用同一脚本，避免两套判据对不上。
+    ("③c 资产结构与 sha256",   [PY, os.path.join(TOOLS, "ci", "verify_assets_am2.py")]),
+    ("③d 译文表容量自检",      [PY, os.path.join(TOOLS, "ci", "verify_strings_cap_am2.py")]),
     ("④ 校验 hook 签名",     [PY, os.path.join(TOOLS, "ci", "verify_hook_sigs.py")]),
     ("④b 校验全局量 VA",     [PY, os.path.join(TOOLS, "ci", "verify_globals.py")]),
     ("④c 校验 stub 边界",    [PY, os.path.join(TOOLS, "ci", "verify_stub_boundary.py")]),
