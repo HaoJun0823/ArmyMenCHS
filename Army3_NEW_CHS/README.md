@@ -20,8 +20,49 @@
 
 ```
 army3_new_chs\
-└─ strings\strings.txt      中文译文（GBK / CRLF / 320 行 / 无 BOM）
+├─ strings\strings.txt      中文译文（GBK / CRLF / 320 行 / 无 BOM）
+├─ rules\                   联机规则：10 个 *_desc.txt 说明 + 9 个机制文件的 showmessage
+└─ data\                    15 个关卡脚本的 showpda / showfailure / showmessage
 ```
+
+## 本轮新增（rules / data）
+
+3 代无官方中文母盘，`strings.txt` 之外还有一批脚本内显示文本，本轮一并汉化。
+
+| 目录 | 文件数 | 内容 |
+|---|---|---|
+| `rules\*_desc.txt` | 10 | 联机模式的玩法说明（`mpmaps.txt` 的 `rules_description_file` 列指向它们） |
+| `rules\` 机制文件 | 9 | `death_common` `ffire` `caf` `ctf_common` `holdflag_common` `killer` `it` `koth` `node_common` 的 `showmessage` 联机播报 |
+| `data\` 关卡脚本 | 15 | 任务 PDA、失败提示与阶段性播报 |
+
+### 两个关键约束（改动时必须守住）
+
+1. **颜色实参必须跟着汉化**：`rules` 里 `expand` 的第二个参数是显示用颜色名，
+   原文形如 `expand koth_macro ( green "Green" 1 ... )`。只译 `showmessage`
+   模板而留着 `"Green"`，会渲染出「绿队 is king of the hill」这类中英混拼。
+   本轮已统一改为 `绿队 / 棕队 / 蓝队 / 灰队`（与 `strings.txt` 第 302-305 行一致）。
+2. **只碰引号内的字符串**：指令名、缩进（含 TAB）、逗号、`@N` 占位符、
+   `playsound` 文件名一律保持原样。校验脚本用「骨架比对」逐字节确认了这一点。
+
+### 译文规格（全部已自动校验）
+
+- **GBK**、**CRLF**、**无 BOM**，与 `Army2_NEW_CHS` 既有译文一致
+- 逐行保留 `@N` 占位符及其**顺序**（`@2` 是颜色名，`@3`/`@4` 是敌方颜色/节点号）
+- 无 TAB 变动、无 `^`（`^` 是渲染器的颜色转义符，会吃掉后一个字符）
+- 关卡脚本**行数严格对齐**原文；`*_desc.txt` 允许压缩行数（2 代先例如此）
+- 译文用到的 **48 个汉字**全部在 `Hzk16` 字库中有点阵（用 DLL 的官方公式
+  `idx = trail + 94*lead - 15295; off = bpg*idx - 9688` 逐字验证，零缺字）
+
+### 校验脚本
+
+| 脚本 | 作用 |
+|---|---|
+| `Tools/verify_army3_assets.py` | 基线资产校验（原有） |
+| `_am3_verify_final.py` | rules+data 结构校验：编码 / CRLF / BOM / 骨架一致 / 行数 / 占位符 |
+| `_am3_verify_font.py` | Hzk16 缺字校验（官方公式 + DLL 自检表交叉验证） |
+| `_am3_trans_data.py` | data 关卡脚本的译文映射表（幂等，可重复执行） |
+
+> 三者位于 `I:\LocalGames\Army Men\`，未入 git；如需入库可移到 `Tools\`。
 
 ## 译文规格（全部已自动校验）
 

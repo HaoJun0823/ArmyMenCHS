@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "target.h"
 #include "log.h"
 
@@ -189,7 +189,12 @@ static std::vector<GameProfile> MakeProfiles() {
         //     2 代 0x6598D4 + 0x40 -> 0x659914（charWidth）, + 0x200 -> 0x659AD4
         //     3 代 0x698D6C + 0x40 -> 0x698DAC（charWidth）, + 0x200 -> 0x698F6C
         g.atlasOffsetVA = 0x698D6C;     // word_698D6C：WORD[262*font + c] 字形偏移
-        g.charWidthVA   = 0x698DAC;     // word_698DAC：WORD[262*font + c] 步进宽
+        g.charWidthVA   = 0x698DAC;     // ★★ 不是宽度表，是上面的表右移 32 项
+                                        //   （0x698DAC - 0x698D6C == 0x40 == 32 个
+                                        //   WORD），即 CharWidth[c] ≡ atlasOffset[c+32]。
+                                        //   实测值 0,60,134,206,… 是图集字节偏移，
+                                        //   当宽度用会让混排串从首个 ASCII 字符起整段消失。
+                                        //   代码里已无读取点，仅登记备查。
         g.atlasBaseVA   = 0x698F6C;     // dword_698F6C：DWORD[131*font]
                                         //   ★ 其**内容**是堆指针，不是 RVA
 

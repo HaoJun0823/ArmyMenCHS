@@ -1,9 +1,10 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "hooks.h"
 #include "log.h"
 #include "target.h"
 #include "hzk16.h"
 #include "renderer.h"
+#include "mpunlock.h"
 
 #include <string>
 #include <cstdio>
@@ -165,6 +166,21 @@ bool InstallAll()
     }
 
     g_installed = hooked;
+
+    // ④ 多人联机菜单解锁（与渲染 hook 无关，独立 1 字节内存补丁）
+    //
+    // ★ 放在这里而不是最前面：它只需要"档位识别成功"这一个前提，
+    //   不需要字库也不需要渲染 hook。放最后只是为了让日志按
+    //   「识别 -> 字库 -> 渲染 -> 杂项」的顺序读起来顺。
+    //
+    // ★ 幂等 + fail-closed：字节不是 EB 41/74 41 就只写日志不动内存，
+    //   详见 mpunlock.cpp 顶部说明。
+    if (MpUnlockInstall()) {
+        Log("InstallAll: 多人联机菜单解锁完成");
+    } else {
+        Log("InstallAll: 多人联机菜单解锁未生效（不影响汉化，详见上一条日志）");
+    }
+
     Log("InstallAll -> hook=%d(成功%d/失败%d) 字库=%d",
         (int)hooked, hookOk, hookFail, g_pFont ? 1 : 0);
     return hooked;
@@ -173,6 +189,7 @@ bool InstallAll()
 void UninstallAll()
 {
     RendererUninstall();
+    MpUnlockRemove();
     g_installed = false;
 }
 

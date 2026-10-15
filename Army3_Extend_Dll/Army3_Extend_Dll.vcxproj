@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -164,6 +164,7 @@
     <ClInclude Include="src\hooks.h" />
     <ClInclude Include="src\hzk16.h" />
     <ClInclude Include="src\log.h" />
+    <ClInclude Include="src\mpunlock.h" />
     <ClInclude Include="src\renderer.h" />
     <ClInclude Include="src\target.h" />
   </ItemGroup>
@@ -172,6 +173,7 @@
     <ClCompile Include="src\hooks.cpp" />
     <ClCompile Include="src\hzk16.cpp" />
     <ClCompile Include="src\log.cpp" />
+    <ClCompile Include="src\mpunlock.cpp" />
     <ClCompile Include="src\renderer.cpp" />
     <ClCompile Include="src\target.cpp" />
     <ClCompile Include="pch.cpp">

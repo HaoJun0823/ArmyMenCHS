@@ -1,4 +1,4 @@
-﻿// renderer.h —— 文字渲染器（ASCII + CJK），Army Men: Toys in Space（3 代）
+// renderer.h —— 文字渲染器（ASCII + CJK），Army Men: Toys in Space（3 代）
 //
 // 背景（✅ 实测，本轮 IDA 逆向）：
 //   游戏原本的渲染器 sub_450EA7 是 **ASCII-only**：
@@ -63,7 +63,15 @@ struct RendererEnv {
     DWORD atlasOffsetVA = 0;    // ★ VA：WORD[262*font + c]   字形在 atlas 内的偏移
                                 //   同时是字形头（宽/高）的入口：base + offs[c]
     DWORD atlasBaseVA = 0;      // ★ VA：DWORD[131*font]，其**内容**是 malloc 的堆指针
-    DWORD charWidthVA = 0;      // ★ VA：WORD[262*font + c]   字符步进宽度
+    DWORD charWidthVA = 0;      // ★ VA：word_698DAC
+                                //   ★★ 警告：这**不是宽度表** ★★
+                                //   它与 atlasOffsetVA(0x698D6C) 只差
+                                //   0x40 == 32 个 WORD，实为字形偏移表右移
+                                //   32 项：CharWidth[c] ≡ atlasOffset[c+32]。
+                                //   当宽度用会让累加器一步跳出裁剪框，症状是
+                                //   "中英混排从第一个 ASCII 字符起整段消失"。
+                                //   代码里已无读取点，仅保留地址备查；
+                                //   推进量一律取 SafeGlyphHeader 的 gh[0]。
                                 //   （原版只在"测量函数的出参"里用到它）
     DWORD clipRectVA = 0;       // ★ VA：RECT  全局裁剪框 rcSrc2
                                 //   原版每字形都按它裁剪；漏了会花屏

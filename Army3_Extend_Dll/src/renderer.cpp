@@ -138,10 +138,19 @@ static inline BYTE* AtlasBase(int font) {
 static inline WORD* AtlasOffset(int font) {
     return (WORD*)VaToPtr(g_env.atlasOffsetVA + 262 * font * 2);
 }
-static inline WORD* CharWidth(int font) {
-    if (!g_env.charWidthVA) return nullptr;
-    return (WORD*)VaToPtr(g_env.charWidthVA + 262 * font * 2);
-}
+// ★★ 此处曾有一个 CharWidth(font) 辅助函数，已删除 ★★
+//
+//   它读 g_env.charWidthVA(0x698DAC)，而该地址与 atlasOffsetVA(0x698D6C)
+//   只差 0x40 == 32 个 WORD，即
+//       CharWidth(font)[c]  ≡  atlasOffset(font)[c + 32]
+//   —— **根本不是宽度表，是字形偏移表右移 32 项**。
+//
+//   实测 font=2 的值序列：0, 60, 134, 206, 294, 386, 486, 574, … , 3540，
+//   是逐字递增的图集字节偏移。当宽度用会让累加器一步跳出裁剪框，
+//   症状是"中英混排从第一个 ASCII 字符起整段消失"。
+//
+//   保留这个函数只会招来下一次误用，故连同 RendererValidateEnv 里的
+//   charWidthVA 自检项一起移除。推进量一律走 SafeGlyphHeader。
 
 // ★★ 3 代的**推进量来源**（2 代靠 stub 返回值，这里靠字形头）
 //
@@ -151,7 +160,7 @@ static inline WORD* CharWidth(int font) {
 //   这两条对应原函数里的 `v18 += v15` 与 `v25 += v15 - 3`。
 //
 //   ★ atlasBase 为 0 说明图集尚未构建（首次绘制时才建），
-//     此时返回 0，由调用方退回 CharWidth 表 / 经验值，保证循环终止。
+//     此时返回 0，由调用方退回经验值，保证循环终止。
 static inline WORD* GlyphHeader(int font, BYTE c) {
     BYTE* base = AtlasBase(font);
     if (!base) return nullptr;
@@ -414,7 +423,9 @@ bool RendererValidateEnv(std::string* report) {
         {"pitch",     g_env.pitchVA,        true},
         {"atlasBase", g_env.atlasBaseVA,    true},
         {"atlasOffs", g_env.atlasOffsetVA,  true},
-        {"charWidth", g_env.charWidthVA,    true},
+        // ★ charWidthVA 刻意**不再自检**：它不是宽度表（见 CharWidth 处的
+        //   说明），代码里已无任何读取点。字段与 profile 保留仅为地址备查，
+        //   列在自检里反而暗示它"可用"，是不必要的误导。
         {"clipRect",  g_env.clipRectVA,     true},   // 裁剪必须转调它
         {"rect",      g_env.rectVA,         true},   // 裁剪函数本体
         {"rc",        g_env.rcVA,           true},   // 落笔原点偏移
@@ -638,19 +649,37 @@ static void RenderCore(int kind, int x, int y, const char* str, int font,
             else if (kind == RK_CENTER && g_origCenter)
                 g_origCenter(anchor, acc, tmp, font, clipL, clipT, clipR, clipB, (char)curColor);
 
-            // ★★ 推进量计算（崩溃修复：RVA 0x4D5C 空读）
+            // ★★ 推进量计算（唯一正确来源：字形头）
             //
-            // 原实现：统一走 GlyphHeader(font,*s) -> 读 gh[0]/gh[1]。
-            // 崩因：gh = base + offs[c]，offs[c] 在引擎图集半更新状态可读到
-            //      异常值，base+offs 落到不可读页，movzx eax,[eax] 空读 AV
-            //      （实测 EAX=0，异常地址 ASI+0x4D5C）。
+            // ★★★ 这里**绝不能**改用 charWidthVA（曾经的 bug，现象：
+            //    中英混排的字符串**从第一个 ASCII 字符起整段消失**）★★★
             //
-            // 修复的防御顺序（任何一步异常都安全回退，绝不空读）：
+            //   charWidthVA(0x698DAC) 与 atlasOffsetVA(0x698D6C) 只差
+            //   0x40 == 32 个 WORD，即：
+            //       CharWidth(font)[c]  ≡  atlasOffset(font)[c + 32]
+            //   它**不是宽度表，而是字形偏移表右移 32 项**。实机实测
+            //   font=2 的值序列为
+            //       0, 60, 134, 206, 294, 386, 486, 574, … , 3540
+            //   —— 逐字递增的**图集字节偏移**，不是像素宽。
+            //
+            //   把它当步进宽用会怎样（实测）：
+            //     串 "-- 电台 --" 里的那个空格 (0x20)，
+            //     cw[0x20] 取到 0x0DD4 == **3540**
+            //   于是 acc 一步跳出裁剪框，其后所有字符都画在框外，
+            //   视觉上就是"到空格为止，后面全没了"。
+            //
+            //   而且旧代码的回退条件是 `if (adv <= 0)` —— 偏移值恒为正，
+            //   **回退分支永远进不去**，SafeGlyphHeader 根本没机会执行。
+            //   两个缺陷叠加，才让这个 bug 一直躲过自检。
+            //
+            //   原版 sub_450EA7 从来没查过这张表，它用的就是字形头：
+            //       v11 = atlasBase[font] + atlasOffset[262*font + c];
+            //       v15 = *v11;   ...   v18 += v15;
+            //
+            //   防御顺序（任何一步异常都安全回退，绝不空读）：
             //   LEFT/DIALOG（横向 = 宽）：
-            //     ① CharWidth 表（引擎专门给测量用，ASI 在 MEASURE 里一直
-            //        用它算宽、从未崩过 —— 稳定来源，优先）
-            //     ② SafeGlyphHeader 宽（加页校验后读）
-            //     ③ 经验值 8
+            //     ① SafeGlyphHeader 宽（加页校验后读）—— 与原版逐字等价
+            //     ② 经验值 8
             //   CENTER（纵向 = 高-3）：
             //     ① SafeGlyphHeader 高-3（页校验后读）
             //     ② CJK_ADV_Y（= 15-3，官方对汉字的同名推进）
@@ -664,13 +693,9 @@ static void RenderCore(int kind, int x, int y, const char* str, int font,
                     adv = CJK_ADV_Y;                  // 兜底，保证循环推进
                 }
             } else {
-                WORD* cw = CharWidth(font);
-                if (cw) adv = (int)cw[*s];            // ① 引擎稳定推进宽表
-                if (adv <= 0) {
-                    WORD* gh = SafeGlyphHeader(font, *s);
-                    if (gh) adv = (int)gh[0];         // ② 页校验后的字形宽
-                }
-                if (adv <= 0) adv = 8;                // ③ 经验值兜底
+                WORD* gh = SafeGlyphHeader(font, *s);
+                if (gh) adv = (int)gh[0];             // ① 页校验后的字形宽（原版同路）
+                if (adv <= 0) adv = 8;                // ② 经验值兜底，保证循环推进
             }
             acc += adv;
             s += 1;
@@ -774,10 +799,31 @@ extern "C" int __cdecl Hook_MEASURE(const char* str, int font, int* out)
     if (!str) return 0;
     if (font < 0 || font > 16) font = 0;
 
-    // 官方也有这个前置判断（表面未锁定时不测量）
-    if (g_env.enabledVA && *(const DWORD*)VaToPtr(g_env.enabledVA) == 0)
-        return 0;
-
+    // ★★ 这里**绝不能**加"表面锁标志"判断（曾经的 bug，现象：所有
+    //    checkbox / 单选项的标签全部不显示）★★
+    //
+    //   原版 sub_450E3A 反编译（IDA 确认）函数体里只有 strlen 循环，
+    //   **没有** dword_521D2C 检查 —— 扫描该全局的 12 处引用也证明：
+    //   引用者是 3 个绘制函数（0x450EAF / 0x450FDC / 0x451121）和
+    //   加锁/解锁对（sub_42078A / sub_420810），**不含任何测量函数**。
+    //
+    //   为什么加了会毁掉 UI 布局：
+    //     dword_521D2C 只在 sub_42078A(lock) -> sub_420810(unlock) 之间
+    //     为 1，即**仅绘制那一瞬**。而控件宽度是在**布局期**算的，
+    //     那一刻不在锁内：
+    //         sub_43A889 @0x43A8FC
+    //             v13 = sub_450E3A(label, 2, nullptr) + 19;
+    //             sub_435EAE(rc, x, y, v13, 13);      // 宽度 = 文本宽 + 19
+    //     我们返回 0 -> 宽度只剩 19（复选框方框本身）-> 控件矩形塌陷。
+    //     而绘制函数把文字画在 rect.left + 19，裁剪框正是这个矩形：
+    //         sub_45E078 -> sub_450FCF(rect.left + 19, ...)
+    //     于是 x == rcDst.right -> sub_435EDE 第一步就 `>=` 判失败
+    //     -> 整个标签被裁光，**一个像素都不画**。
+    //
+    //   实测佐证（本轮）：所有 checkbox 的宽度字段 this+0x0C 都是 19，
+    //   捕获到的裁剪矩形 {59,116,78,129} 满足 78 == 59 + 19。
+    //
+    //   测量是**纯几何计算**，不写任何像素，本来就不需要表面锁。
     int w = 0;
     bool hasCjk = false;
     const unsigned char* s = (const unsigned char*)str;
@@ -803,8 +849,17 @@ extern "C" int __cdecl Hook_MEASURE(const char* str, int font, int* out)
             int r = g_origMeasure ? g_origMeasure(tmp, font, nullptr) : 0;
             if (r <= 0) {
                 // 兜底：原实现返回 0（例如 c < 31 的控制字符）时给个合理步进
-                WORD* cw = CharWidth(font);
-                int adv = cw ? (int)cw[*s] : 0;
+                //
+                // ★★ 这里**绝不能**退回 charWidthVA ★★
+                //   它不是宽度表，是字形偏移表右移 32 项（0x698DAC 与
+                //   atlasOffsetVA 0x698D6C 相差 0x40 == 32 个 WORD）。
+                //   取到的是数百~数千的图集偏移，会让测量宽度虚高，
+                //   进而把控件矩形撑大 / 行高算错。详见 RenderCore 里
+                //   ASCII 推进量处的长注释。
+                //   正确来源与原版一致：字形头 gh[0]。
+                int adv = 0;
+                WORD* gh = SafeGlyphHeader(font, *s);
+                if (gh) adv = (int)gh[0];
                 r = (adv > 0 ? adv : 6);
             }
             w += r;
@@ -865,8 +920,11 @@ extern "C" int __cdecl Hook_MEASURE_H(const char* str, int font)
 {
     if (!str) return 0;
     if (font < 0 || font > 16) font = 0;
-    if (g_env.enabledVA && *(const DWORD*)VaToPtr(g_env.enabledVA) == 0)
-        return 0;
+
+    // ★★ 同 Hook_MEASURE：**绝不能**加表面锁判断 ★★
+    //   原版 sub_451267 反编译确认函数体里没有 dword_521D2C 检查。
+    //   加了会让居中菜单在布局期量到高度 0 -> 总行高为 0 ->
+    //   垂直居中错位 / 裁剪矩形算错。详见 Hook_MEASURE 处的长注释。
 
     int h = 0;
     const unsigned char* s = (const unsigned char*)str;

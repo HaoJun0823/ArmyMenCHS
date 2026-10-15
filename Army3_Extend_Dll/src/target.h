@@ -1,4 +1,4 @@
-﻿// target.h —— 目标识别与配置（Army Men: Toys in Space / 3 代）
+// target.h —— 目标识别与配置（Army Men: Toys in Space / 3 代）
 //
 // 与 2 代 target.h 的关系：
 //   2 代要同时覆盖 AM2 英文版 / AM2 官方简体中文版 / TIS 三个档位，
@@ -114,7 +114,11 @@ struct GameProfile {
     DWORD  atlasOffsetVA = 0;   // WORD[262*font + c]  字形在 atlas 内的偏移
     DWORD  atlasBaseVA   = 0;   // DWORD[131*font]     ★ 存的是 malloc 出来的
                                 //   **堆绝对地址**，不是 RVA！
-    DWORD  charWidthVA   = 0;   // WORD[262*font + c]  字符步进宽度
+    DWORD  charWidthVA   = 0;   // word_698DAC —— ★★ 注意：**不是宽度表** ★★
+                                // 与 atlasOffsetVA 只差 0x40 == 32 个 WORD，
+                                // 实为字形偏移表右移 32 项，当宽度用会导致
+                                // "混排串从第一个 ASCII 字符起整段消失"。
+                                // 仅保留地址备查，代码里已无读取点。
     // ★ 全局裁剪矩形 rcSrc2（RECT: left/top/right/bottom）
     DWORD  clipRectVA    = 0;
     DWORD  rcVA          = 0;   // rc 原点偏移（RECT）
