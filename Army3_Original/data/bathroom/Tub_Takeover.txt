@@ -1,0 +1,121 @@
+//--This is the bathtub map--//
+
+pad dryerdam                            205     trooper
+pad dryerpul                            206
+pad sponge                     		 20     trooper
+
+
+//--Preloaded Sprites--//
+
+preloadsprite 43 500 0
+preloadsprite 43 500 1
+preloadsprite 43 500 2
+preloadsprite 43 500 3
+preloadsprite 43 500 4
+preloadsprite 43 500 5
+preloadsprite 43 500 6
+preloadsprite 43 500 7
+preloadsprite 43 500 8
+
+
+//--Variables--//
+
+variable spongecount           		0
+variable switch                         0
+variable switchon                       0
+variable switchoff                      0
+
+if startup1 then
+	triggerdelay 100 dryersound
+	
+
+//--Floating Sponge--//
+if padon sponge then
+        addvar spongecount 1,
+        trigger spongestart
+
+if spongestart testvar spongecount > 0 then
+        setobjstate blueisle blueisle_active
+
+if padoff sponge then
+        addvar spongecount -1,
+        trigger spongestop
+
+if spongestop testvar spongecount = 0 then
+        setobjstate blueisle blueisle_init
+
+object blueisle
+        state blueisle_init
+                frame 10 0
+
+        state blueisle_active
+                frame 100 1
+                frame 100 2
+                frame 100 3
+                frame 100 4
+                frame 100 5
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                triggerdelay 100 sponge_reloop
+
+if sponge_reloop testvar spongecount > 0 then
+          setobjstate blueisle blueisle_active
+
+if hit rubberducky then
+        playsound "RubberDuckSqueak.wav" rubberducky 16 1 20
+
+if killed rubberducky then
+         playsound "RubberDuckHdOff.wav" rubberducky 14 1 20
+
+
+//--Blow-dryer--//
+
+if dryersound then
+        playsound "DryerActive.wav" drymotor 3 16 1 20
+
+if hit dryerswitch testvar switchoff = 0 then
+        setvar switchoff 1,
+        setvar switch 1,
+        setobjstate dryerswitch switch_off,
+        playsound "TVSwitch.wav" remote 2 15 10,
+        playsound "Dryeron.wav" drymotor 2 14 40,
+        playsound "" drymotor 3 11 40,
+        triggerdelay 2000 setswitchvar_off
+
+if setswitchvar_off then
+        setvar switchon 1
+
+if hit dryerswitch testvar switchon = 1 then
+        setvar switchon 0,
+        setvar switch 0,
+        setobjstate dryerswitch switch_on,
+        playsound "TVSwitch.wav" remote 2 14 10,
+        playsound "Dryeron.wav" drymotor 2 13 40,
+        playsound "" drymotor 3 16 40,
+        triggerdelay 1000 dryersound,
+        triggerdelay 2000 setswitchvar_on
+
+if setswitchvar_on then
+        setvar switchoff 0
+
+object dryerswitch
+        state switch_on
+                frame 100 00
+
+        state switch_off
+                frame 100 01
+
+//setforce unit-name forcetype location heading decaytype decayrate magnitude maxdist affects other period angle
+
+if dryersound then
+        playsound "DryerActive.wav" drymotor 3 16 1 20
+
+if padon dryerdam testvar switch = 0 then
+        SETFORCE me omni dryerpul 128 Linear 300 -200 260 ground 50 0 128,
+        setdamagepad dryerdam 1 500 fire 
+
+if padoff dryerdam testvar switch = 0 then
+        SETFORCE me none,
+        setdamagepad dryerdam 0 fire blue
+

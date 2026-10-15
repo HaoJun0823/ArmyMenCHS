@@ -1,0 +1,3 @@
+#cmd	type		x	y	facing	group	name
+
+place	truck       	940	3703	0	1	-

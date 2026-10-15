@@ -1,0 +1,5 @@
+#cmd	type		x	y	facing	group	name
+
+place	ptboat      	2171	1509	60	1	-
+place	ptboat      	2202	1638	60	1	-
+place	ptboat      	2192	1572	60	1	-

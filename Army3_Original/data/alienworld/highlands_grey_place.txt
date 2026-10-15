@@ -1,0 +1,10 @@
+#cmd	type		x	y	facing	group	name
+
+place	halftrack   	257	393	128	1	-
+place	halftrack   	523	281	188	1	-
+place	stunner     	211	271	148	1	-
+place	paralyzer   	299	210	148	1	-
+place	gunner      	255	271	148	1	-
+place	gunner      	286	247	148	1	-
+place	commander   	265	254	148	1	-
+place	gunner      	250	296	148	1	-

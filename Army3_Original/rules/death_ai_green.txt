@@ -1,0 +1,2 @@
+include death_ai.txt
+expand death_ai_macro ( green tan blue grey )

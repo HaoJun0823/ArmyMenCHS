@@ -1,0 +1,7 @@
+#cmd	type		x	y	facing	group	name
+
+place	jeep        	1989	537	96	2	-
+place	commander   	2033	619	96	2	-
+place	commander   	2107	677	96	2	-
+place	gunner      	2026	673	96	2	-
+place	truck       	1840	535	96	2	-

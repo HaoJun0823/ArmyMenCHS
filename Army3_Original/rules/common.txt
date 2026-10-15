@@ -1,0 +1,162 @@
+//////////////////////////////////////////////////////////////////////////////
+// Common section
+//////////////////////////////////////////////////////////////////////////////
+
+// remove all optional objects - game specific code will deploy them if required
+
+macro undeploy_color 2
+{
+	if startup1 then
+		undeploy @1flag1,
+		undeploy @2flagbase,
+		undeploy @1mark1,
+		undeploy @1mark2,
+		undeploy @1mark3,
+		undeploy @1mark4,
+		undeploy @1mark5,
+		undeploy @1mark6,
+		undeploy @1mark7,
+		undeploy @1mark8,
+		undeploy @1node1,
+		undeploy @1node2,
+		undeploy @1node3,
+		undeploy @1node4,
+		undeploy @1node5
+}
+
+expand undeploy_color ( green g )
+expand undeploy_color ( tan t )
+expand undeploy_color ( blue b )
+expand undeploy_color ( grey gr )
+
+if startup1 then
+	undeploy blackflag1,
+	undeploy bkflagbase,
+	undeploy blacknode1,
+	undeploy blacknode2,
+	undeploy blacknode3,
+	undeploy blacknode4,
+	undeploy blacknode5
+
+// where dead sarges resurrect
+
+pad GreenRes1 50	
+pad GreenRes2 51	
+pad GreenRes3 52
+pad GreenRes4 53	
+pad GreenRes5 54	
+pad GreenRes6 55
+	
+pad TanRes1 60
+pad TanRes2 61
+pad TanRes3 62
+pad TanRes4 63
+pad TanRes5 64
+pad TanRes6 65
+
+pad BlueRes1 70
+pad BlueRes2 71
+pad BlueRes3 72
+pad BlueRes4 73
+pad BlueRes5 74
+pad BlueRes6 75
+
+pad GreyRes1 80
+pad GreyRes2 81
+pad GreyRes3 82
+pad GreyRes4 83
+pad GreyRes5 84
+pad GreyRes6 85
+
+// resurrect the sarges
+
+macro killedsarge 1
+{
+	if killed @1sarge1 then
+		triggerdelay 3000 resurrect@1
+
+	if resurrect@1 then random
+	   resurrect @1sarge1 @1Res1,
+	   resurrect @1sarge1 @1Res2,
+	   resurrect @1sarge1 @1Res3,
+	   resurrect @1sarge1 @1Res4,
+	   resurrect @1sarge1 @1Res5,
+	   resurrect @1sarge1 @1Res6
+}
+
+expand killedsarge ( green )
+expand killedsarge ( tan )
+expand killedsarge ( blue )
+expand killedsarge ( grey )
+
+// define the pads around the flag bases (used by CTF and AI in many games)
+
+pad greenbase 11 greensarge1
+pad tanbase 12 tansarge1
+pad bluebase 13 bluesarge1
+pad greybase 14 greysarge1
+
+// check for a team reaching score limit
+
+macro checkcolorwins 1
+{
+	if check@1wins testvar teamscore @1 >= gamescorelimit then
+		trigger endOfGame,
+		trigger @1teamwins
+}
+
+expand checkcolorwins ( green )
+expand checkcolorwins ( tan )
+expand checkcolorwins ( blue )
+expand checkcolorwins ( grey )
+
+// sound effects
+
+if endOfGame then
+	playsound "mp_endgame.wav" (0,0) 1 1
+
+
+//////////////////////////////////////////////////////////////////////////////
+// Teleport pads
+//////////////////////////////////////////////////////////////////////////////
+
+// @1 and @2 are physical pad numbers of the two pads that are connected
+macro teleportpad 2
+{
+	if padon teleport@1 testvar teleport@1inUse = 0 and isinvehicle me = 0 then
+		addvar teleport@2inUse 1,
+		moveitem me teleport@1,
+		beam me 1000,
+		playsound "mp_rebaseflag.wav" (0,0) 3 1,
+		triggerdelay 500 teleportTo@2
+
+	if teleportTo@2 then
+		moveitem me teleport@2,
+		triggerdelay 5000 reenableteleport@2
+
+	if reenableteleport@2 then
+		addvar teleport@2inUse -1
+}
+
+// @1 and @2 are physical pad numbers of the two pads that are connected
+macro teleporter 2
+{
+	pad teleport@1	@1 trooper
+	pad teleport@2	@2 trooper
+
+	variable teleport@1inUse 0
+	variable teleport@2inUse 0
+
+	expand teleportpad ( @1 @2 )
+	expand teleportpad ( @2 @1 )
+}
+
+expand teleporter ( 100 101 )
+expand teleporter ( 102 103 )
+expand teleporter ( 104 105 )
+expand teleporter ( 106 107 )
+expand teleporter ( 108 109 )
+expand teleporter ( 110 111 )
+expand teleporter ( 112 113 )
+expand teleporter ( 114 115 )
+

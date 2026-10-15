@@ -1,0 +1,608 @@
+PAD 	stoprez			10	green trooper > 0
+PAD 	tinatalk		200	green trooper > 0
+PAD 	notUFOexit		210	green trooper > 0
+PAD 	deathpad		215	green trooper > 0
+PAD 	warning			199	green trooper > 0
+PAD 	tunnelX			205	green trooper > 0
+
+// ants
+
+variable sargeisdead 0
+variable allgood 0
+
+VARIABLE dancer1 0
+VARIABLE dancer2 0
+VARIABLE dancer3 0
+VARIABLE dancer4 0
+VARIABLE dancer5 0
+VARIABLE dancer6 0
+VARIABLE dancer7 0
+VARIABLE dancer8 0
+VARIABLE dancer9 0
+
+VARIABLE fdancer1 0
+VARIABLE fdancer2 0 
+VARIABLE fdancer3 0
+VARIABLE fdancer4 0
+VARIABLE fdancer5 0
+VARIABLE fdancer6 0
+VARIABLE fdancer7 0
+VARIABLE fdancer8 0
+VARIABLE fdancer9 0
+VARIABLE fdancer10 0
+VARIABLE fdancer11 0
+VARIABLE fdancer12 0
+
+VARIABLE hancer1 0
+VARIABLE hancer2 0
+VARIABLE hancer3 0
+
+macro pantdance 2
+
+{
+if pantdance@1 testvar dancer@1 < 99999 then
+	addvar dancer@1 1, 
+	triggerdelay @2 pantdance@1,
+	trigger pantdance@1x
+
+if pantdance@1x then
+RANDOM
+	order pant@1 goto (1363,3068),
+	order pant@1 goto (1335,3133),
+	order pant@1 goto (1401,3195),
+	order pant@1 goto (1405,3294)
+
+}
+
+expand pantdance (1 100)
+expand pantdance (2 175)
+expand pantdance (3 125)
+expand pantdance (4 100)
+
+macro pant2dance 2
+
+{
+if pantdance@1 testvar dancer@1 < 99999 then
+	addvar dancer@1 1, 
+	triggerdelay @2 pantdance@1,
+	trigger pantdance@1x
+
+if pantdance@1x then
+RANDOM
+	order pant@1 goto (126,1679),
+	order pant@1 goto (212,1678),
+	order pant@1 goto (253,1742),
+	order pant@1 goto (239,1625),
+	order pant@1 goto (275,1579) 
+}
+
+expand pant2dance (5 200)
+expand pant2dance (6 75)
+expand pant2dance (7 150)
+expand pant2dance (8 200)
+expand pant2dance (9 150)
+
+macro fantdance 2
+
+{
+if fantdance@1 testvar fdancer@1 < 99999 then
+	addvar fdancer@1 1, 
+	triggerdelay @2 fantdance@1,
+	trigger fantdance@1x
+
+if fantdance@1x then
+RANDOM
+	order fant@1 goto (287,2112),
+	order fant@1 goto (259,2194), 
+	order fant@1 goto (333,2248), 
+	order fant@1 goto (344,2719), 
+	order fant@1 goto (421,2638), 
+	order fant@1 goto (354,2407),
+	order fant@1 goto (397,2497), 
+	order fant@1 goto (358,2328), 
+	order fant@1 goto (523,2445), 
+	order fant@1 goto (631,2369),
+	order fant@1 goto (744,2375), 
+	order fant@1 goto (524,2577)
+}
+
+expand fantdance (1 225)
+expand fantdance (2 225)
+expand fantdance (3 275)
+expand fantdance (4 250)
+expand fantdance (5 200)
+expand fantdance (6 200)
+expand fantdance (7 250)
+expand fantdance (8 200)
+expand fantdance (9 225)
+expand fantdance (10 275)
+expand fantdance (11 250)
+expand fantdance (12 275)
+
+macro hantmove 2
+
+{
+if hantmove@1 testvar hancer@1 < 99999 then
+	addvar hancer@1 1, 
+	triggerdelay @2 hantmove@1,
+	trigger hantmove@1x
+
+if hantmove@1x then
+RANDOM
+	order hant@1 goto (897,625),
+	order hant@1 goto (836,2684),
+	order hant@1 goto (813,2757)
+
+}
+
+expand hantmove (1 100)
+expand hantmove (2 75)
+expand hantmove (3 125)
+
+// end of ants
+
+
+variable reztimes1 0
+variable reztimes2 0
+variable reztimes3 0
+variable reztimes4 0
+
+variable strikeout 0
+variable randomdeploy 0 
+
+
+if startup1 then
+	createpowerup "FSS1" flyswatter (323,1698) 3,
+	createpowerup "FSS2" flyswatter (1206,2939) 3,
+	createpowerup "BBS1" baseball (755,2711) 3,
+	createpowerup "DDTS1" raid (357,3605) 3,
+	createpowerup "AA" airattack (209,3432) 1,
+	createpowerup "AS" airstrike (385,1721) 2,
+	createpowerup "AP" paratroopers (279,2093) 2,
+	playsound "SprinklerLong.wav" 12 1 1,
+	triggerdelay 1000 ufovoice,
+	deploy greensarge1,
+	SETDAMAGEPAD notUFOexit 0,
+	SETDAMAGEPAD deathpad 0,
+	createpowerup "X" airstrike (1895,3118) -1,
+	createunit "DanStriker" rifleman (1563,41) tan rifle,
+	moveitem "DanStriker" (1563,41),
+	triggerdelay 3000 uforush1,
+	triggerdelay 7500 tanstrike,
+	trigger randomness,
+// ants-plate 1
+	createunit "pant1" ant (1371,3129) tan spiderbite,
+	createunit "pant2" ant (1431,3181) tan spiderbite,
+	createunit "pant3" ant (1423,3269) tan spiderbite,
+	createunit "pant4" ant (1530,3203) tan spiderbite,
+// ants-plate 2
+	createunit "pant5" ant (126,1679) tan spiderbite,
+	createunit "pant6" ant (212,1678) tan spiderbite,
+	createunit "pant7" ant (253,1742) tan spiderbite,
+	createunit "pant8" ant (239,1625) tan spiderbite,
+	createunit "pant9" ant (275,1579) tan spiderbite,
+	setaimode pant1 ignore,
+	setaimode pant2 ignore,
+	setaimode pant3 ignore,
+	setaimode pant4 ignore,
+	setaimode pant5 ignore,
+	setaimode pant6 ignore,
+	setaimode pant7 ignore,
+	setaimode pant8 ignore,
+	setaimode pant9 ignore,
+	trigger pantdance1,
+	trigger pantdance2,
+	trigger pantdance3,
+	trigger pantdance4,
+	trigger pantdance5,
+	trigger pantdance6,
+	trigger pantdance7,
+	trigger pantdance8,
+	trigger pantdance9,
+// sandbox ants
+	createunit "fant1" ant (287,2112) tan spiderbite,
+	createunit "fant2" ant (259,2194) tan spiderbite,
+	createunit "fant3" ant (333,2248) tan spiderbite,
+	createunit "fant4" ant (358,2328) tan spiderbite,
+	createunit "fant5" ant (354,2407) tan spiderbite,
+	createunit "fant6" ant (397,2497) tan spiderbite,
+	createunit "fant7" ant (523,2445) tan spiderbite,
+	createunit "fant8" ant (631,2369) tan spiderbite,
+	createunit "fant9" ant (744,2375) tan spiderbite,
+	createunit "fant10" ant (524,2577) tan spiderbite,
+	createunit "fant11" ant (421,2638) tan spiderbite,
+	createunit "fant12" ant (344,2719) tan spiderbite,
+	setaimode fant1 ignore,
+	setaimode fant2 ignore,
+	setaimode fant3 ignore,
+	setaimode fant4 ignore,
+	setaimode fant5 ignore,
+	setaimode fant6 ignore,
+	setaimode fant7 ignore,
+	setaimode fant8 ignore,
+	setaimode fant9 ignore,
+	setaimode fant10 ignore,
+	setaimode fant11 ignore,
+	setaimode fant12 ignore,
+	trigger fantdance1,
+	trigger fantdance2,
+	trigger fantdance3,
+	trigger fantdance4,
+	trigger fantdance5,
+	trigger fantdance6,
+	trigger fantdance7,
+	trigger fantdance8,
+	trigger fantdance9,
+	trigger fantdance10,
+	trigger fantdance11,
+	trigger fantdance12,
+// misc ants
+	createunit "hant1" ant (897,2700) tan spiderbite,
+	createunit "hant2" ant (836,2684) tan spiderbite,
+	createunit "hant3" ant (813,2757) tan spiderbite,
+	setaimode hant1 ignore,
+	setaimode hant2 ignore,
+	setaimode hant3 ignore,
+	triggerdelay 1500 hantmove1,	
+	triggerdelay 1000 hantmove2,
+	triggerdelay 500 hantmove3,
+// tan tank 
+	createvehicle "Haunter" tank (335,2850) tan,
+	setfacing Haunter 150,
+	setaimode Haunter defend
+
+if ufovoice then
+	playsound "Sarge_HowGetThere3.wav" 16 0
+
+if hit pant1 then
+	addvar dancer1 99999,
+	setaimode pant1 attack
+if hit pant2 then
+	addvar dancer2 99999,
+	setaimode pant2 attack
+if hit pant3 then
+	addvar dancer3 99999,
+	setaimode pant3 attack
+if hit pant4 then
+	addvar dancer4 99999,
+	setaimode pant4 attack
+if hit pant5 then
+	addvar dancer5 99999,
+	setaimode pant5 attack
+if hit pant6 then
+	addvar dancer6 99999,
+	setaimode pant6 attack
+if hit pant7 then
+	addvar dancer7 99999,
+	setaimode pant7 attack
+if hit pant8 then
+	addvar dancer8 99999,
+	setaimode pant8 attack
+if hit pant9 then
+	addvar dancer9 99999,
+	setaimode pant9 attack
+
+if hit fant1 then
+	addvar fdancer1 99999,
+	setaimode fant1 attack
+if hit fant2 then
+	addvar fdancer2 99999,
+	setaimode fant2 attack
+if hit fant3 then
+	addvar fdancer3 99999,
+	setaimode fant3 attack
+if hit fant4 then
+	addvar fdancer4 99999,
+	setaimode fant4 attack
+if hit fant5 then
+	addvar fdancer5 99999,
+	setaimode fant5 attack
+if hit fant6 then
+	addvar fdancer6 99999,
+	setaimode fant6 attack
+if hit fant7 then
+	addvar fdancer7 99999,
+	setaimode fant7 attack
+if hit fant8 then
+	addvar fdancer8 99999,
+	setaimode fant8 attack
+if hit fant9 then
+	addvar fdancer9 99999,
+	setaimode fant9 attack
+if hit fant10 then
+	addvar fdancer10 99999,
+	setaimode fant10 attack
+if hit fant11 then
+	addvar fdancer11 99999,
+	setaimode fant11 attack
+if hit fant12 then
+	addvar fdancer12 99999,
+	setaimode fant12 attack
+
+if hit hant1 then	
+	addvar hancer1 99999,
+	setaimode hant1 attack
+if hit hant2 then
+	addvar hancer2 99999,
+	setaimode hant2 attack	
+if hit hant3 then
+	addvar hancer3 99999,
+	setaimode hant3 attack
+
+if killed fant1 then
+	playsound "Sarge_HateAnts2.wav" 16 0
+
+if randomness testvar randomdeploy < 1 then
+	addvar randomdeploy 1,
+	trigger grandom1,
+	trigger grandom2,
+	trigger grandom3,
+	trigger grandom4,
+	setfacing wtg1 110,
+	setaimode wtg1 attack,
+	setfacing wtg2 127,
+	setaimode wtg2 attack,
+	setfacing wtg3 100,
+	setaimode wtg3 attack,
+	setfacing wtg4 140,
+	setaimode wtg4 attack,
+	setfacing wtg5 160,
+	setaimode wtg5 attack,
+	setaipose wtg5 kneel,	
+	setfacing ufog1 140,
+	setaipose ufog1 kneel,
+	setaimode ufog1 defend,
+	setfacing ufog2 140,
+	setaimode ufog2 attack,
+	setaipose ufog2 kneel,
+	setfacing ufog3 127,
+	setaipose ufog3 kneel,
+	setaimode ufog3 attack,
+	setfacing ufog4 127,
+	setaipose ufog4 kneel,
+	setaimode ufog4 defend,
+	trigger randomness 
+	
+// guards for the steps
+if grandom1 then
+	createunit "wtg1" mortarman (1494,1584) tan mortar,
+	createunit "wtg2" grenadier (1685,1587) tan grenade
+//guards for the entrance
+if grandom2 then
+	createunit "wtg3" rifleman (873,2629) tan rifle,
+	createunit "wtg4" rifleman (1017,2623) tan rifle,
+	createunit "wtg5" rifleman (1054,2522) tan rifle
+
+if killed wtg4 then 
+    	createpowerup "" explosive wtg4 10
+
+if killed wtg5 then 
+    	createpowerup "" explosive wtg5 10
+
+// guards for the UFO
+if grandom3 then
+random
+	createunit "ufog1" bazookaman (422,2690) tan bazooka,
+	createunit "ufog2" bazookaman (437,2954) tan bazooka
+if grandom4 then
+random
+	createunit "ufog3" grenadier (563,2864) tan grenade,
+	createunit "ufog4" grenadier (458,2387) tan grenade
+
+if killed wtg3 then
+    	createpowerup "" medkit wtg3 1
+if killed wtg1 then
+    	createpowerup "" mortar wtg1 10
+if killed wtg2 then
+    	createpowerup "" grenade wtg2 10
+if killed ufog1 then
+    	createpowerup "" bazooka ufog1 10
+if killed ufog2 then
+    	createpowerup "" bazooka ufog2 10
+if killed ufog3 then
+    	createpowerup "" grenade ufog3 10
+if killed ufog4 then
+    	createpowerup "" grenade ufog4 10
+
+// Tan coming out of the UFO
+if uforush1 then
+	triggerdelay 10000 uforush2,
+	createunit "tanguard2" grenadier (834,2198) tan grenade,
+	createunit "tanguard3" rifleman (799,2198) tan autorifle,
+	setaimode tanguard2 attack,
+	setaimode tanguard3 attack,
+	order tanguard2 goto greensarge1,
+	order tanguard3 goto greensarge1
+
+if uforush2 then
+	createunit "tanguard1" rifleman (786,2233) tan rifle,
+	createunit "tanguard4" mortarman (325,2040) tan mortar,
+	setaimode tanguard1 attack,
+	setaimode tanguard4 attack,
+	order tanguard1 goto greensarge1,
+	order tanguard4 goto greensarge1
+
+if killed tanguard1 then
+	triggerdelay 10000 restan1
+if killed tanguard2 then
+	triggerdelay 10000 restan2
+if killed tanguard3 then
+	triggerdelay 10000 restan3
+if killed tanguard4 then
+	triggerdelay 12000 restan4
+
+if restan1 testvar reztimes1 < 999 then
+        addvar reztimes1 1,
+	resurrect tanguard1 (786,2233),
+	setaimode tanguard1 attack,
+        order tanguard1 goto GreenSarge1
+
+if restan2 testvar reztimes2 < 999 then
+        addvar reztimes2 1,
+	resurrect tanguard2 (834,2198),
+	setaimode tanguard2 attack,
+        order tanguard2 goto GreenSarge1
+
+if restan3 testvar reztimes3 < 999 then
+        addvar reztimes3 1,
+	resurrect tanguard3 (799,2198),
+	setaimode tanguard3 attack,
+        order tanguard3 goto GreenSarge1
+
+if restan4 testvar reztimes4 < 999 then
+        addvar reztimes4 1,
+	resurrect tanguard4 (325,2040),
+	setaimode tanguard4 attack,
+        order tanguard4 goto GreenSarge1
+
+if padon stoprez butnot stoprez1 then
+	trigger stoprez1
+if stoprez1 then
+	addvar reztimes1 999,
+	addvar reztimes2 999,
+	addvar reztimes3 999,
+	addvar reztimes4 999
+
+if padon warning butnot warning1x then
+	trigger warning1x,
+	trigger ufoportal1,
+	trigger ufofield
+if warning1x then
+	playsound "Sarge_TooClose3.wav" 0 1,
+	trigger stoprez1,
+	trigger ufodamage,
+	triggerdelay 1500 whatthe
+
+if whatthe then
+	playsound "Sarge_WhatNow2.wav" 16 0
+
+if ufofield then
+	playsound "alienforcefield.wav" (843,2244) 3 0 1 20
+	
+if ufoportal1 butnot ufoportal2 then
+	makesmoke (786,2251) 10000, 
+	makesmoke (843,2244) 10000, 
+	makesmoke (855,2194) 10000, 
+	makeflame (786,2251) 100, 
+	makeflame (843,2244) 100, 
+	makeflame (855,2194) 100, 
+	createexplosion (786,2251) 133 0 tan,
+	createexplosion (843,2244) 133 0 tan,
+	createexplosion (855,2194) 133 0 tan,
+	triggerdelay 280 ufoportal1
+
+if ufodamage then
+	SETDAMAGEPAD deathpad 50 250 FIRE,
+	SETDAMAGEPAD notUFOexit 25 500 FIRE
+
+if killed tunnel then
+	playsound "" 12 1 1,
+	playsound "SandBoxExplode.wav" 15 0,
+	addvar allgood 1
+
+if PADON tunnelX testvar allgood = 1 then
+	trigger youwinbaby
+if youwinbaby butnot youwinbabyX then
+	trigger youwinbabyX
+if youwinbabyX then
+	triggerdelay 500 endmission1
+
+if endmission1 butnot killed greensarge1 then
+	playsound "Sarge_AwayInGo1.wav" 16 0,
+	showpda "It's a way in! GO! GO! GO!",
+	dropitem greensarge1 AA (3,6),
+	moveitem AA (3,6),
+	dropitem greensarge1 AS (3,6),
+	moveitem AS (3,6),
+	dropitem greensarge1 AP (3,6),
+	moveitem AP (3,6),
+	dropitem greensarge1 FSH1 (3,6),
+	moveitem FSH1 (3,6),
+	dropitem greensarge1 FSH2 (3,6),
+	moveitem FSH2 (3,6),
+	dropitem greensarge1 DDTH1 (3,6),
+	moveitem DDTH1 (3,6),
+	dropitem greensarge1 DDTH2 (3,6),
+	moveitem DDTH2 (3,6),
+	dropitem greensarge1 FSB1 (3,6),
+	moveitem FSB1 (3,6),
+	dropitem greensarge1 DDTB1 (3,6),
+	moveitem DDTB1 (3,6),
+	dropitem greensarge1 MGB1 (3,6),
+	moveitem MGB1 (3,6),
+	dropitem greensarge1 PTB1 (3,6),
+	moveitem PTB1 (3,6),
+	dropitem greensarge1 FSS1 (3,6),
+	moveitem FSS1 (3,6),
+	dropitem greensarge1 FSS2 (3,6),
+	moveitem FSS2 (3,6),
+	dropitem greensarge1 BBS1 (3,6),
+	moveitem BBS1 (3,6),
+	dropitem greensarge1 DDTS1 (3,6),
+	moveitem DDTS1 (3,6),
+	triggerdelay 100 gotestgreenwins
+	
+if gotestgreenwins butnot killed greensarge1 then
+	trigger greenwins	
+
+if killed greensarge1 then
+        setuilock 1,
+        setcamerafocus greensarge1,
+        setvar sargeisdead 1,
+	triggerdelay 1500 gameoverman
+if gameoverman then
+	playsound "" 12 1 1,
+	playsound "HQ_radio_crackling.wav" 0 1,
+	showfailure "Sarge? Sarge? Sarge!",
+	triggerdelay 1000 tanwins
+
+// airstrikes
+
+if tanstrike testvar strikeout < 255 then
+	addvar strikeout 1, 
+	playsound "airplane_8Bit.wav" 1 0,
+	triggerdelay 25000 tanstrike,
+	trigger strikefx
+
+if strikefx then
+random
+	trigger warning2,
+//	fireweapon X DanStriker (649,3305),
+	fireweapon X DanStriker (1338,2467),
+	fireweapon X DanStriker (1489,3219),
+	fireweapon X DanStriker (1393,2049),
+//	fireweapon X DanStriker (717,2345),
+	fireweapon X DanStriker (1218,1889),
+	trigger warning3,
+	fireweapon X DanStriker (544,2827),
+	fireweapon X DanStriker (1132,2749),
+//	fireweapon X DanStriker (713,3187),
+	fireweapon X DanStriker (1248,3469),
+	fireweapon X DanStriker (309,2298),
+	fireweapon X DanStriker (302,1646)
+
+if warning2 then
+	playsound "TakeCover.wav" 16 0,
+	fireweapon X DanStriker greensarge1
+if warning3 then
+	playsound "TakeCover.wav" 16 0,
+	fireweapon X DanStriker greensarge1
+
+if padon tinatalk butnot tinatalk1X then
+	playsound "RadioSquelch.wav" 14 0,
+	trigger tinatalk1X
+if tinatalk1X then
+	playsound "Tina_GalacticSoldiers.wav" 2 1,
+	triggerdelay 12000 tinatalk2x
+
+if killed soda1 killed soda2 killed soda3 killed soda4 killed soda5 killed soda6 killed soda7 killed soda8 killed soda9 then
+	playsound "sodacanexplode.wav" 3 0
+
+if killed chip1 killed chip2 then
+	playsound "ChipDestroy.wav" 3 0
+
+if killed bucket1 killed bucket2 killed bucket3 then
+	playsound "SandBucketDestroy.wav" 3 0
+
+if hit wich1 hit wich2 then
+	playsound "SandwichShoot.wav" 3 0

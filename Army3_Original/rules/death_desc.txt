@@ -1,0 +1,7 @@
+Killing an enemy sarge scores 100 pts.
+
+There is a 100 pt penalty for friendly
+fire deaths.
+
+The first player/team to reach the point
+goal wins.

@@ -1,0 +1,12 @@
+When a sarge is killed by an enemy he
+becomes "it". He remains "it" until the
+next sarge is killed by an enemy. That
+sarge then becomes "it".
+While a player is "it" all players in
+other teams score 10 pts every 3 seconds.
+
+The "it" sarge is indicated by a square on
+the strategic map.
+
+The first player/team to reach the point
+goal wins.

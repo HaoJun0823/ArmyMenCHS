@@ -1,0 +1,4 @@
+#cmd	type		x	y	facing	group	name
+
+place	tank        	412	334	0	1	-
+place	tank        	267	409	0	1	-

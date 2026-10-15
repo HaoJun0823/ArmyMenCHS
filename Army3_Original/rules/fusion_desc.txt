@@ -1,0 +1,8 @@
+A combination of Node Control, Hold the
+Black Flag and Capture the Flag.
+
+All rules from those games apply plus you
+score points for every enemy unit killed.
+
+The first player/team to reach the point
+goal wins.

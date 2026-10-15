@@ -1,0 +1,7 @@
+#cmd	type		x	y	facing	group	name
+
+place	stunner     	2869	1066	32	1	-
+place	stunner     	2811	1117	32	1	-
+place	riflepill   	2841	859	32	1	-
+place	riflepill   	2717	1019	32	1	-
+place	commander   	2880	1119	32	1	-

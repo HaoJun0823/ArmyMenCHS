@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.37530.8
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Army3_Extend_Dll", "Army3_Extend_Dll.vcxproj", "{EB51E860-F523-48F3-9A4B-3D1FBB23B810}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB51E860-F523-48F3-9A4B-3D1FBB23B810}.Release|x86.ActiveCfg = Release|Win32
+		{EB51E860-F523-48F3-9A4B-3D1FBB23B810}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {118F34BB-AACB-4FC3-8C8F-199D1E763830}
+	EndGlobalSection
+EndGlobal

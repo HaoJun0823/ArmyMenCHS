@@ -1,0 +1,2 @@
+include ctf_ai.txt
+expand ctf_ai_macro ( green tan blue grey g )

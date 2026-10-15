@@ -1,0 +1,12 @@
+#command map_name	map_text		folder		tileset		loadcof	victorycin	loadscreen		loadmusic			briefing	briefsfx			stratmap		cycling?	losemovie1	losemovie2	losemovie3	movienum
+MAP	hostage		Hostage			backyard	backyard	TRUE	none		load_hostage.bmp	action2r.wav			none		HQ_RescueHostages.wav		hostage			FALSE		lose1		lose1		lose2		
+MAP	backyard	Backyard		backyard	backyard	TRUE	none		load_backyard.bmp	action1r.wav			none		HQ_SecretBase.wav		backyard		FALSE		lose1		lose1		lose2		
+MAP	sandbox		sandbox			backyard	sandbox		TRUE	none		load_sandbox.bmp	exploration_tension1.wav	none		HQ_INTO_UFO.wav			sandbox			FALSE		lose1		lose1		lose2		
+MAP	sandcastle	sandcastle		sandcastle	sandcastle	TRUE	act2		load_sandcastle.bmp	aliensdark.wav			none		HQ_distress_signal.wav		sandcastle		FALSE		lose1		lose1		grave		1
+MAP	playroom	Playroom		playroom	playroom	FALSE	none		load_playroom.bmp	bootcamp.wav			none		HQ_Protectourpeople.wav		playroom		FALSE		lose3		lose2		grave		
+MAP	bathtub		Bathtub			bathroom	bathtub		FALSE	none		load_bathtub.bmp	exploration_tension2.wav 	none		HQ_BigHead.wav			none			FALSE		lose3		lose2		grave		
+MAP	bathroom	Bathroom		bathroom	bathroom	FALSE	none		load_bathroom.bmp	exploration_tension3.wav 	none		HQ_FoxTrot.wav			none			FALSE		lose3		lose2		grave		
+MAP	livingroom	Livingroom		livingroom	livingroom	FALSE	act3		load_livingroom.bmp	action3r.wav			none		HQ_strategic.wav		backyard		FALSE		lose3		lose2		grave		2
+MAP	alienated	Alienated		alienworld	alienated	FALSE	none		load_alienated.bmp	aliensdigredoom.wav		none		SpaceHQ_ReadingsNorth_t.wav	none			FALSE		grave		grave		grave		
+MAP	spacesavers	Space_Saviors		alienworld 	spacesavers	FALSE	none		load_spacesavers.bmp 	aleins2.wav     		none		SpaceHQ_LargeWaves_t.wav	none			FALSE		grave		grave		grave		
+MAP	bugged		The_Hive		alienhive	bugged		FALSE	act4		load_bugged.bmp		finale_mastered.wav		none		SpaceHQ_chamber.wav		none			FALSE		lose4		lose4		lose4		3

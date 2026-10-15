@@ -1,0 +1,72 @@
+//**********Highland was designed and built by Jason Wildblood**********//
+
+        // @1 = Object name @2 = pad //
+macro boil 2
+{
+variable boilvar@1 0
+
+pad Boilpad@1                                  @2 trooper
+
+if padon Boilpad@1 then
+        setvar boilvar@1 1,
+        trigger animate@1_boil,
+        setdamagepad boilpad@1 1 100 fire
+
+if killed boil@1 testvar boilvar@1 = 0 then
+        setvar boilvar@1 1,
+        trigger animate@1_boil,
+        setdamagepad boilpad@1 1 100 fire
+
+if animate@1_boil butnot onlyonceanim@1boil then
+        setobjstate boil@1 boil@1_explode,
+        trigger boilsound@1,
+        trigger onlyonceanim@1boil
+
+if boilsound@1 then
+        playsound "fruitgore.wav" boil@1,
+        addsoundorigin "fruitgore.wav" boil@1 2 20
+
+
+
+
+object boil@1
+        state boil@1_initial
+                frame 100 0
+
+        state boil@1_explode
+                frame 100 2
+                frame 100 3
+                frame 100 4
+                frame 100 5
+                frame 100 1
+                setobjstate boil@1 boil@1_finished
+
+        state boil@1_finished
+                frame 10 1
+}
+
+expand boil ( 1 201 )
+expand boil ( 2 202 )
+expand boil ( 3 203 )
+expand boil ( 4 204 )
+expand boil ( 5 205 )
+expand boil ( 6 206 )
+expand boil ( 7 207 )
+expand boil ( 8 208 )
+expand boil ( 9 209 )
+expand boil ( 10 210 )
+expand boil ( 11 211 )
+expand boil ( 12 212 )
+expand boil ( 13 213 )
+expand boil ( 14 214 )
+expand boil ( 15 215 )
+expand boil ( 16 216 )
+expand boil ( 17 217 )
+expand boil ( 18 218 )
+expand boil ( 19 219 )
+expand boil ( 20 220 )
+expand boil ( 21 221 )
+expand boil ( 22 222 )
+expand boil ( 23 223 )
+expand boil ( 24 224 )
+expand boil ( 25 225 )

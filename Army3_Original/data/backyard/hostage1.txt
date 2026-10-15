@@ -1,0 +1,836 @@
+PAD hostage1	10	greensarge1 > 0
+PAD hostage2	11	greensarge1 > 0
+PAD hostage3	12	greensarge1 > 0
+
+PAD hostage1vo	50	greensarge1 > 0
+PAD hostage2vo	60	greensarge1 > 0
+PAD hostage3vo	70	greensarge1 > 0
+
+VARIABLE hostages1 0
+VARIABLE hostages2 0
+VARIABLE hostages3 0
+
+VARIABLE dancer1 0
+VARIABLE dancer2 0
+VARIABLE dancer3 0
+VARIABLE dancer4 0
+VARIABLE dancer5 0
+VARIABLE dancer6 0
+VARIABLE dancer7 0
+VARIABLE dancer8 0
+VARIABLE dancer9 0
+
+VARIABLE fdancer1 0
+VARIABLE fdancer2 0
+VARIABLE fdancer3 0
+VARIABLE fdancer4 0
+VARIABLE fdancer5 0
+VARIABLE fdancer6 0
+VARIABLE fdancer7 0
+VARIABLE fdancer8 0
+VARIABLE fdancer9 0
+VARIABLE fdancer10 0
+VARIABLE fdancer11 0
+VARIABLE fdancer12 0
+
+VARIABLE hancer1 0
+VARIABLE hancer2 0
+VARIABLE hancer3 0
+
+VARIABLE nom801 0
+VARIABLE nom802 0
+VARIABLE nom803 0
+
+VARIABLE sargeisdead 0
+
+macro fantdance 2
+
+{
+if fantdance@1 testvar fdancer@1 < 99999 then
+	addvar fdancer@1 1, 
+	triggerdelay @2 fantdance@1,
+	trigger fantdance@1x
+
+if fantdance@1x then
+RANDOM
+	order fant@1 goto (203,1577),
+	order fant@1 goto (336,1821), 
+	order fant@1 goto (311,1978), 
+	order fant@1 goto (258,2117), 
+	order fant@1 goto (153,2260) 
+
+}
+
+expand fantdance (1 225)
+expand fantdance (2 225)
+expand fantdance (3 275)
+expand fantdance (4 250)
+expand fantdance (5 200)
+expand fantdance (6 200)
+expand fantdance (7 250)
+expand fantdance (8 200)
+expand fantdance (9 225)
+expand fantdance (10 275)
+expand fantdance (11 250)
+expand fantdance (12 275)
+
+macro pantdance 2
+
+{
+if pantdance@1 testvar dancer@1 < 99999 then
+	addvar dancer@1 1, 
+	triggerdelay @2 pantdance@1,
+	trigger pantdance@1x
+
+if pantdance@1x then
+RANDOM
+	order pant@1 goto (203,1577),
+	order pant@1 goto (231,1634),
+	order pant@1 goto (276,1658),
+	order pant@1 goto (344,1676)
+
+}
+
+expand pantdance (1 100)
+expand pantdance (2 175)
+expand pantdance (3 125)
+expand pantdance (9 100)
+
+macro pant2dance 2
+
+{
+if pantdance@1 testvar dancer@1 < 99999 then
+	addvar dancer@1 1, 
+	triggerdelay @2 pantdance@1,
+	trigger pantdance@1x
+
+if pantdance@1x then
+RANDOM
+	order pant@1 goto (463,1487),
+	order pant@1 goto (483,1546),
+	order pant@1 goto (469,1604),
+	order pant@1 goto (443,1641)
+}
+
+expand pant2dance (4 150)
+expand pant2dance (5 200)
+expand pant2dance (6 75)
+expand pant2dance (7 150)
+expand pant2dance (8 200)
+
+macro hantmove 2
+
+{
+if hantmove@1 testvar hancer@1 < 99999 then
+	addvar hancer@1 1, 
+	triggerdelay @2 hantmove@1,
+	trigger hantmove@1x
+
+if hantmove@1x then
+RANDOM
+	order hant@1 goto (1051,1742),
+	order hant@1 goto (1137,1740),
+	order hant@1 goto (1084,1758)
+
+}
+
+expand hantmove (1 100)
+expand hantmove (2 75)
+expand hantmove (3 125)
+
+if startup1 then
+	createpowerup "FSH1" flyswatter (520,1264) 3,
+	createpowerup "FSH2" flyswatter (958,383) 3,
+	createpowerup "DDTH1" raid (1420,2142) 3,
+	createpowerup "DDTH2" raid (1114,1026) 3,
+	playsound "birds.wav" 6 1 1,
+	deploy greensarge1,
+// green hostages 
+	createunit "LynchX" rifleman (244,1755) green autorifle,
+	setscientist LynchX,
+	createunit "SantiniX" rifleman (1492,707) green autorifle,
+	setscientist SantiniX,
+	createunit "FairchildX" rifleman (1142,1706) green autorifle,
+	setscientist FairchildX,
+	setnpc LynchX 1,
+	setnpc SantiniX 1,
+	setnpc FairchildX 1,
+	setfacing LynchX 127,
+	setfacing SantiniX 127,
+	setfacing FairchildX 127,
+	setaimode LynchX ignore,
+	setaimode SantiniX ignore,
+	setaimode FairchildX ignore,
+	setmaxhealth LynchX 800,
+	heal LynchX 100,
+	setmaxhealth SantiniX 800,
+	heal SantiniX 100,
+	setmaxhealth FairchildX 800,
+	heal FairchildX 100,
+// tan guards for the start area
+	createunit "tanguard1" rifleman (759,900) tan rifle,
+	setfacing tanguard1 150,
+	createunit "tanguard2" rifleman (919,774) tan rifle,
+	setfacing tanguard2 150,
+	setaimode tanguard1 defend,
+	setaimode tanguard2 defend,
+// tan firing squad (Santini)
+	createunit "f1squad1" rifleman (1312,725) tan rifle,
+	setfacing f1squad1 190,
+	createunit "f1squad2" rifleman (1419,732) tan rifle,
+	setfacing f1squad2 110,
+//	createunit "f1squad3" rifleman (1399,823) tan rifle,
+	setfacing f1squad3 30,
+	setaimode f1squad1 ignore,
+	setaimode f1squad2 ignore,
+	setaimode f1squad3 ignore,
+// tan firing squad (Fairchild)
+	createunit "fsquad1" rifleman (1420,1935) tan rifle,
+	setfacing fsquad1 150,
+	createunit "fsquad2" rifleman (1342,1977) tan rifle,
+	setfacing fsquad2 127,
+//	createunit "fsquad3" rifleman (1416,2041) tan rifle,
+	setfacing fsquad3 30,
+	setaimode fsquad1 ignore,
+	setaimode fsquad2 ignore,
+	setaimode fsquad3 ignore,
+// tan firing squad (Lynch)
+	createunit "f0squad1" rifleman (538,1669) tan rifle,
+	setfacing f0squad1 90,
+	createunit "f0squad2" rifleman (472,1782) tan rifle,
+	setfacing f0squad2 190,
+//	createunit "f0squad3" rifleman (606,1797) tan rifle,
+	setfacing f0squad3 40,
+	setaimode f0squad1 ignore,
+	setaimode f0squad2 ignore,
+	setaimode f0squad3 ignore,
+// more tan guards for the start area (by the soda can)
+	createunit "sguard1" rifleman (1232,1230) tan rifle,
+	setfacing sguard1 20,
+	createunit "sguard2" rifleman (619,1379) tan rifle,
+	setaimode sguard1 defend,
+	setaimode sguard2 defend,
+// ants! for plate area
+	createunit "pant1" ant (192,1595) tan spiderbite,
+	createunit "pant2" ant (182,1692) tan spiderbite,
+	createunit "pant3" ant (331,1695) tan spiderbite,
+	createunit "pant4" ant (477,1473) tan spiderbite,
+	createunit "pant5" ant (513,1549) tan spiderbite,
+	createunit "pant6" ant (485,1614) tan spiderbite,
+	createunit "pant7" ant (477,1473) tan spiderbite,
+	createunit "pant8" ant (513,1549) tan spiderbite,
+	createunit "pant9" ant (192,1595) tan spiderbite,
+	setaimode pant1 ignore,
+	setaimode pant2 ignore,
+	setaimode pant3 ignore,
+	setaimode pant4 ignore,
+	setaimode pant5 ignore,
+	setaimode pant6 ignore,
+	setaimode pant7 ignore,
+	setaimode pant8 ignore,
+	setaimode pant9 ignore,
+	trigger pantdance1,
+	trigger pantdance2,
+	trigger pantdance3,
+	trigger pantdance4,
+	trigger pantdance5,
+	trigger pantdance6,
+	trigger pantdance7,
+	trigger pantdance8,
+	trigger pantdance9,
+// ants! food line
+	createunit "fant1" ant (357,1704) tan spiderbite,
+	createunit "fant2" ant (367,1771) tan spiderbite,
+	createunit "fant3" ant (336,1821) tan spiderbite,
+	createunit "fant4" ant (290,1875) tan spiderbite,
+	createunit "fant5" ant (267,1926) tan spiderbite,
+	createunit "fant6" ant (311,1978) tan spiderbite,
+	createunit "fant7" ant (325,2033) tan spiderbite,
+	createunit "fant8" ant (288,2071) tan spiderbite,
+	createunit "fant9" ant (258,2117) tan spiderbite,
+	createunit "fant10" ant (200,2155) tan spiderbite,
+	createunit "fant11" ant (197,2219) tan spiderbite,
+	createunit "fant12" ant (153,2260) tan spiderbite,
+	setaimode fant1 ignore,
+	setaimode fant2 ignore,
+	setaimode fant3 ignore,
+	setaimode fant4 ignore,
+	setaimode fant5 ignore,
+	setaimode fant6 ignore,
+	setaimode fant7 ignore,
+	setaimode fant8 ignore,
+	setaimode fant9 ignore,
+	setaimode fant10 ignore,
+	setaimode fant11 ignore,
+	setaimode fant12 ignore,
+	trigger fantdance1,
+	trigger fantdance2,
+	trigger fantdance3,
+	trigger fantdance4,
+	trigger fantdance5,
+	trigger fantdance6,
+	trigger fantdance7,
+	trigger fantdance8,
+	trigger fantdance9,
+	trigger fantdance10,
+	trigger fantdance11,
+	trigger fantdance12,
+// ants! for hostages
+	createunit "hant1" ant (996,1780) tan spiderbite,
+	createunit "hant2" ant (1094,1779) tan spiderbite,
+	createunit "hant3" ant (1182,1741) tan spiderbite,
+	setaimode hant1 ignore,
+	setaimode hant2 ignore,
+	setaimode hant3 ignore,
+	setfacing hant1 230,
+	setfacing hant2 255,
+	setfacing hant2 15,
+	triggerdelay 1500 hantmove1,	
+	triggerdelay 1000 hantmove2,
+	triggerdelay 500 hantmove3,
+	triggerdelay 180000 firingsquadgogogo
+
+///
+		
+if hit tanguard1 butnot settmode1 then
+	trigger settmode1
+if settmode1 then
+	playsound "Guard_Intruders.wav" 13 0,
+	setaimode tanguard1 attack
+
+if hit tanguard2 butnot settmode2 then
+	trigger settmode2
+if settmode2 then
+	playsound "Guard_Stop.wav" 13 0,
+	setaimode tanguard2 attack
+
+if killed sguard1 then
+    	createpowerup "" grenade sguard1 10
+
+if killed sguard2 then
+    	createpowerup "" grenade sguard2 10
+
+if hit pant1 then
+	addvar dancer1 99999,
+	setaimode pant1 attack
+if hit pant2 then
+	addvar dancer2 99999,
+	setaimode pant2 attack
+if hit pant3 then
+	addvar dancer3 99999,
+	setaimode pant3 attack
+if hit pant4 then
+	addvar dancer4 99999,
+	setaimode pant4 attack
+if hit pant5 then
+	addvar dancer5 99999,
+	setaimode pant5 attack
+if hit pant6 then
+	addvar dancer6 99999,
+	setaimode pant6 attack
+if hit pant7 then
+	addvar dancer7 99999,
+	setaimode pant7 attack
+if hit pant8 then
+	addvar dancer8 99999,
+	setaimode pant8 attack
+if hit pant9 then
+	addvar dancer9 99999,
+	setaimode pant9 attack
+
+if hit fant1 then
+	addvar fdancer1 99999,
+	setaimode fant1 attack
+if hit fant2 then
+	addvar fdancer2 99999,
+	setaimode fant2 attack
+if hit fant3 then
+	addvar fdancer3 99999,
+	setaimode fant3 attack
+if hit fant4 then
+	addvar fdancer4 99999,
+	setaimode fant4 attack
+if hit fant5 then
+	addvar fdancer5 99999,
+	setaimode fant5 attack
+if hit fant6 then
+	addvar fdancer6 99999,
+	setaimode fant6 attack
+if hit fant7 then
+	addvar fdancer7 99999,
+	setaimode fant7 attack
+if hit fant8 then
+	addvar fdancer8 99999,
+	setaimode fant8 attack
+if hit fant9 then
+	addvar fdancer9 99999,
+	setaimode fant9 attack
+if hit fant10 then
+	addvar fdancer10 99999,
+	setaimode fant10 attack
+if hit fant11 then
+	addvar fdancer11 99999,
+	setaimode fant11 attack
+if hit fant12 then
+	addvar fdancer12 99999,
+	setaimode fant12 attack
+
+if hit hant1 then
+	addvar hancer1 99999,
+	setaimode hant1 attack,
+	order hant1 goto FairchildX
+if hit hant2 then
+	trigger playsounds2,
+	addvar hancer2 99999,
+	setaimode hant2 attack,
+	order hant1 goto FairchildX
+if hit hant3 then
+	trigger playsounds1,
+	addvar hancer3 99999,
+	setaimode hant3 attack,
+	order hant1 goto FairchildX
+
+if hit sguard1 butnot setsmode1 then
+	trigger setsmode1
+if setsmode1 then
+	setaimode sguard1 attack
+
+if hit sguard2 butnot setsmode2 then
+	trigger setsmode2
+if setsmode2 then
+	setaimode sguard2 attack
+
+if hit sguard3 butnot setsmode3 then
+	trigger setsmode3
+if setsmode3 then
+	setaimode sguard3 attack
+
+if hit sguard4 butnot setsmode4 then
+	trigger setsmode4
+if setsmode4 then
+	setaimode sguard4 attack
+
+if playsounds1 butnot playsounds1x then
+	trigger playsounds1x
+if playsounds1x then
+	playsound "GreenUnits_KillItSarge.wav" 5 0
+
+if playsounds2 butnot playsounds2x then
+	trigger playsounds2x
+if playsounds2x then
+	playsound "EatenByAnts.wav" 5 0
+
+if padon hostage1 butnot killed LynchX then
+	trigger hostage1x
+if hostage1x butnot hostage1xx then
+	playsound "Sarge_YouAllright1.wav" 16 2,
+	trigger hostage1xx
+if hostage1xx butnot killed LynchX then
+	undeploy LynchX,	
+	createunit "Lynch" rifleman (244,1755) green autorifle,
+	setnpc Lynch 1,
+	setfacing Lynch 127,
+	damage Lynch 50,
+	setnpc Lynch 0,
+	trigger f0squad1x,
+	trigger f0squad2x,
+	trigger f0squad3x,
+	trigger free1
+
+if padon hostage2 butnot killed SantiniX then
+	trigger hostage2x
+if hostage2x butnot hostage2xx then
+	playsound "Sarge_YourFreeNow.wav" 16 2,
+	trigger hostage2xx
+if hostage2xx butnot killed SantiniX then
+	undeploy SantiniX,	
+	createunit "Santini" rifleman (1492,707) green autorifle,
+	setnpc Santini 1,
+	setfacing Santini 127,
+	damage Santini 50,
+	setnpc Santini 0,
+	trigger f1squad1x,
+	trigger f1squad2x,
+	trigger f1squad3x,
+	trigger free2
+
+if padon hostage3 butnot killed FairchildX then
+	trigger hostage3x
+if hostage3x butnot hostage3xx then
+	playsound "Sarge_TanLesson3.wav" 16 2,
+	trigger hostage3xx
+if hostage3xx butnot killed FairchildX then
+	undeploy FairchildX,	
+	createunit "Fairchild" rifleman (1142,1706) green autorifle,
+	setnpc Fairchild 1,
+	setfacing Fairchild 127,
+	damage Fairchild 50,
+	setnpc Fairchild 0,
+	trigger fsquad1x,
+	trigger fsquad2x,
+	trigger fsquad3x,
+	trigger free3
+
+if killed LynchX killed SantiniX killed FairchildX then
+	playsound "" 6 1 1,
+	playsound "TanUnits_bwahahaha3.wav" 16 0,
+	triggerdelay 1000 m80death
+
+if killed Lynch killed Fairchild killed Santini killed LynchX killed FairchildX killed SantiniX then
+	trigger randomdeathsounds
+if randomdeathsounds then 
+RANDOM
+	playsound "GreenUnits_no1.wav" 9 0, 
+	playsound "GreenUnits_unit_ahieee1.wav" 9 0, 
+	playsound "GreenUnits_no3.wav" 9 0 
+
+if m80death then
+	playsound "Sarge_Hostage3.wav" 16 0
+
+if hit f0squad1 butnot f0squad1x then 
+	trigger f0squad1x
+if f0squad1x then
+	setaimode f0squad1 attack,
+	setaimode f0squad2 attack,
+	setaimode f0squad3 attack,
+	setaimode sguard2 attack,
+	order sguard2 goto greensarge1,
+	setaimode sguard4 attack,
+	order sguard4 goto greensarge1,
+	order f0squad2 goto greensarge1,
+	order f0squad3 goto greensarge1,
+	order f0squad1 goto LynchX
+
+if hit f0squad2 butnot f0squad2x then 
+	trigger f0squad2x
+if f0squad2x then
+	setaimode f0squad1 attack,
+	setaimode f0squad2 attack,
+	setaimode f0squad3 attack,
+	setaimode sguard2 attack,
+	order sguard2 goto greensarge1,
+	setaimode sguard4 attack,
+	order sguard4 goto greensarge1,
+	order f0squad2 goto greensarge1,
+	order f0squad3 goto greensarge1,
+	order f0squad1 goto LynchX
+
+if hit f0squad3 butnot f0squad3x then 
+	trigger f0squad3x
+if f0squad3x then
+	setaimode f0squad1 attack,
+	setaimode f0squad2 attack,
+	setaimode f0squad3 attack,
+	setaimode sguard2 attack,
+	order sguard2 goto greensarge1,
+	setaimode sguard4 attack,
+	order sguard4 goto greensarge1,
+	order f0squad2 goto greensarge1,
+	order f0squad3 goto greensarge1,
+	order f0squad1 goto LynchX
+
+if hit f1squad1 butnot f1squad1x then 
+	trigger f1squad1x
+if f1squad1x then
+	setaimode f1squad1 attack,
+	setaimode f1squad2 attack,
+	setaimode f1squad3 attack,
+	setaimode sguard2 attack,
+	order sguard2 goto greensarge1,
+	setaimode tanguard1 attack,
+	order tanguard1 goto greensarge1,
+	setaimode tanguard2 attack,
+	order tanguard2 goto greensarge1,
+	setaimode sguard4 attack,
+	order sguard4 goto greensarge1,
+	order f1squad2 goto greensarge1,
+	order f1squad3 goto greensarge1,
+	order f1squad1 goto SantiniX
+
+if hit f1squad2 butnot f1squad2x then 
+	trigger f1squad2x
+if f1squad2x then
+	setaimode f1squad1 attack,
+	setaimode f1squad2 attack,
+	setaimode f1squad3 attack,
+	setaimode sguard2 attack,
+	order sguard2 goto greensarge1,
+	setaimode tanguard1 attack,
+	order tanguard1 goto greensarge1,
+	setaimode tanguard2 attack,
+	order tanguard2 goto greensarge1,
+	setaimode sguard4 attack,
+	order sguard4 goto greensarge1,
+	order f1squad2 goto greensarge1,
+	order f1squad3 goto greensarge1,
+	order f1squad1 goto SantiniX
+
+if hit f1squad3 butnot f1squad3x then 
+	trigger f1squad3x
+if f1squad3x then
+	setaimode f1squad1 attack,
+	setaimode f1squad2 attack,
+	setaimode f1squad3 attack,
+	setaimode sguard2 attack,
+	order sguard2 goto greensarge1,
+	setaimode tanguard1 attack,
+	order tanguard1 goto greensarge1,
+	setaimode tanguard2 attack,
+	order tanguard2 goto greensarge1,
+	setaimode sguard4 attack,
+	order sguard4 goto greensarge1,
+	order f1squad2 goto greensarge1,
+	order f1squad3 goto greensarge1,
+	order f1squad1 goto SantiniX
+
+if hit fsquad1 butnot fsquad1x then 
+	trigger fsquad1x
+if fsquad1x then
+	setaimode fsquad1 attack,
+	setaimode fsquad2 attack,
+	setaimode fsquad3 attack,
+	setaimode sguard1 attack,
+	order sguard1 goto greensarge1,
+	setaimode sguard3 attack,
+	order sguard3 goto greensarge1,
+	setaimode sguard4 attack,
+	order sguard4 goto greensarge1,
+	order fsquad2 goto greensarge1,
+	order fsquad3 goto greensarge1,
+	order fsquad1 goto FairchildX
+
+if hit fsquad2 butnot fsquad2x then 
+	trigger fsquad2x
+if fsquad2x then
+	setaimode fsquad1 attack,
+	setaimode fsquad2 attack,
+	setaimode fsquad3 attack,
+	setaimode sguard1 attack,
+	order sguard1 goto greensarge1,
+	setaimode sguard3 attack,
+	order sguard3 goto greensarge1,
+	setaimode sguard4 attack,
+	order sguard4 goto greensarge1,
+	order fsquad2 goto greensarge1,
+	order fsquad3 goto greensarge1,
+	order fsquad1 goto FairchildX
+
+if hit fsquad3 butnot fsquad3x then 
+	trigger fsquad3x
+if fsquad3x then
+	setaimode fsquad1 attack,
+	setaimode fsquad2 attack,
+	setaimode fsquad3 attack,
+	setaimode sguard1 attack,
+	order sguard1 goto greensarge1,
+	setaimode sguard3 attack,
+	order sguard3 goto greensarge1,
+	setaimode sguard4 attack,
+	order sguard4 goto greensarge1,
+	order fsquad2 goto greensarge1,
+	order fsquad3 goto greensarge1,
+	order fsquad1 goto FairchildX
+
+if killed f0squad1 then
+//	playsound "TanUnits_arrrgh2.wav" 4 0,
+    	createpowerup "" medpack f0squad1 3,
+	addvar hostages1 1,
+	addvar nom801 1
+if killed f0squad2 then
+	addvar hostages1 1,
+	addvar nom801 1
+if killed f0squad3 then
+	addvar hostages1 1,
+	addvar nom801 1
+
+if killed fsquad1 then
+//	playsound "TanUnits_arrrgh2.wav" 4 0,
+    	createpowerup "" medkit fsquad1 1,
+	addvar hostages3 1,
+	addvar nom802 1
+if killed fsquad2 then
+	addvar hostages3 1,
+	addvar nom802 1
+if killed fsquad3 then
+	addvar hostages3 1,
+	addvar nom802 1
+
+if killed f1squad1 then
+//	playsound "TanUnits_arrrgh2.wav" 4 0,
+    	createpowerup "" medpack f1squad1 3,
+	addvar hostages2 1,
+	addvar nom803 1
+if killed f1squad2 then
+	addvar hostages2 1,
+	addvar nom803 1
+if killed f1squad3 then
+	addvar hostages2 1,
+	addvar nom803 1
+
+if allof killed tanguard1 killed tanguard2 killed f1squad1 killed f1squad2 killed fsquad1 killed fsquad2 killed f0squad1 killed f0squad2 killed sguard1 killed sguard2 then
+	triggerdelay 3000 last2dudes
+
+if last2dudes then
+	playsound "TanUnits_attack.wav" 13 0,
+	createunit "sguard3" rifleman (606,141) tan rifle,
+	setfacing sguard3 127,
+	createunit "sguard4" rifleman (675,189) tan rifle,
+	setfacing sguard4 127,
+	setaimode sguard3 attack,
+	setaimode sguard4 attack,
+	order sguard3 goto greensarge1,
+	order sguard4 goto greensarge1,
+	order sguard3 follow greensarge1,
+	order sguard4 follow greensarge1	
+
+if allof killed sguard3 killed sguard4 then
+	triggerdelay 3000 endmission1
+
+if endmission1 butnot killed greensarge1 then
+	playsound "" 16 2 1,	
+	playsound "" 6 1 1,
+	showpda "Good work, Sarge! The area is secure!",
+	trigger hostage1x,
+	playsound "" 16 2 1,	
+	trigger hostage2x,
+	playsound "" 16 2 1,	
+	trigger hostage3x,
+	playsound "" 16 2 1,	
+	playsound "HQ_Goodwork.wav" 0 1,
+	triggerdelay 100 gotestgreenwins
+	
+if gotestgreenwins butnot killed greensarge1 then
+	trigger greenwins	
+
+if killed greensarge1 then
+        setuilock 1,
+        setcamerafocus greensarge1,
+        setvar sargeisdead 1,
+	triggerdelay 1500 hesgone
+if hesgone then
+	playsound "" 6 1 1,
+	trigger randomvoices,
+	showfailure "Sarge is down!",
+	triggerdelay 1000 tanwins
+
+if randomvoices then
+RANDOM
+	playsound "GreenUnits_SargeIsDead1.wav" 9 0,
+	playsound "GreenUnits_SargeIsDead3.wav" 9 0
+
+if firingsquadgogogo testvar hostages1 = 0 and hostages2 =0 and hostages3 = 0 then
+	playsound "Sarge_FiringSquad1.wav" 16 0,
+	triggerdelay 1500 squadvoices1,	
+	triggerdelay 4000 squadfirego
+if squadvoices1 then
+	playsound "TanUnits_ready4.wav" 10 1,
+	triggerdelay 1000 squadvoices2	
+if squadvoices2 then
+	playsound "TanUnits_aim3.wav" 10 1
+
+if squadfirego butnot squadfiregoxx then
+	trigger squadfiregoxx
+if squadfiregoxx then
+	trigger firingsquadgo1,
+	trigger firingsquadgo2,
+	trigger firingsquadgo3
+
+if firingsquadgo1 testvar nom801 = 0 then
+	playsound "TanUnits_meetmaker3.wav" 8 0,
+	playsound "MilitaryCadenceFiringLine.wav" 10 0,
+	order f0squad1 goto LynchX,
+	order f0squad2 goto LynchX,
+	order f0squad3 goto LynchX,
+	triggerdelay 3700 hahaha1
+if hahaha1 then
+	playsound "TanUnits_Fire1.wav" 11 0,
+	setnpc LynchX 1,
+	setfacing LynchX 127,
+	setm80 LynchX tan,
+	order LynchX goto greensarge1
+
+if firingsquadgo2 testvar nom802 = 0 then
+	playsound "TanUnits_meetmaker3.wav" 8 0,
+	playsound "MilitaryCadenceFiringLine.wav" 10 0,
+	order fsquad1 goto FairchildX,
+	order fsquad2 goto FairchildX,
+	order fsquad3 goto FairchildX,
+	triggerdelay 3700 hahaha2
+if hahaha2 then
+	playsound "TanUnits_Fire1.wav" 11 0,
+	setnpc FairchildX 1,
+	setfacing FairchildX 127,
+	setm80 FairchildX tan,
+	order FairchildX goto greensarge1
+
+if firingsquadgo3 testvar nom803 = 0 then
+	playsound "TanUnits_meetmaker3.wav" 8 0,
+	playsound "MilitaryCadenceFiringLine.wav" 10 0,
+	order f1squad1 goto SantiniX,
+	order f1squad2 goto SantiniX,
+	order f1squad3 goto SantiniX,
+	triggerdelay 3700 hahaha3
+if hahaha3 then
+	playsound "TanUnits_Fire1.wav" 11 0,
+	setnpc SantiniX 1,
+	setfacing SantiniX 127,
+	setm80 SantiniX tan,
+	order SantiniX goto greensarge1
+
+if hit LynchX hit FairchildX hit SantiniX then
+	trigger randomhitsounds
+if randomhitsounds then 
+RANDOM
+	trigger ohno1,
+	playsound "GreenUnits_ahgieie1.wav" 9 0, 
+	playsound "GreenUnits_ahgieie2.wav" 9 0, 
+	playsound "GreenUnits_ahgieie3.wav" 9 0, 
+	playsound "GreenUnits_ahhhh2.wav" 9 0, 
+	playsound "GreenUnits_ahieee2.wav" 9 0, 
+	playsound "GreenUnits_ahieee3.wav" 9 0,
+	playsound "GreenUnits_arrrgh1.wav" 9 0, 
+	playsound "GreenUnits_arrrgh2.wav" 9 0, 
+	playsound "GreenUnits_arrrgh3.wav" 9 0, 
+	playsound "PrisonersDying.wav" 9 0
+
+if ohno1 butnot ohno1x then
+	trigger ohno1x
+if ohno1x then
+	playsound "ArmyMen2Doom.wav" 9 0
+	
+if padon hostage1vo butnot hostage1vox then 
+	trigger hostage1vox
+if hostage1vox testvar hostages2 = 0 then
+	trigger hostage1voxx
+if hostage1voxx butnot killed SantiniX then
+	playsound "TanUnits_noOnCanSaveU3.wav" 3 0,
+	triggerdelay 1500 f1squad1x	
+
+if padon hostage2vo butnot hostage2vox then 
+	trigger hostage2vox
+if hostage2vox testvar hostages1 = 0 then
+	trigger hostage2voxx
+if hostage2voxx butnot killed LynchX then
+	playsound "GreenUnits_WhenIGetOut1.wav" 3 0,
+	triggerdelay 5000 f0squad1x	
+
+if padon hostage3vo butnot hostage3vox then 
+	trigger hostage3vox
+if hostage3vox testvar hostages3 = 0 then 
+	trigger hostage3voxx
+if hostage3voxx butnot killed FairchildX then
+	playsound "TanUnits_NotSarge1.wav" 3 0,
+	triggerdelay 3000 fsquad1x
+
+if killed soda1 killed soda2 killed soda3 killed soda4 then
+	playsound "sodacanexplode.wav" 3 0
+
+if killed chip1 then
+	playsound "ChipDestroy.wav" 3 0
+
+if killed bucket1 killed bucket2 then
+	playsound "SandBucketDestroy.wav" 3 0
+
+if hit wich1 then
+	playsound "SandwichShoot.wav" 3 0
+

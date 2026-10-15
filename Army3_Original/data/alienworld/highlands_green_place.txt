@@ -1,0 +1,10 @@
+#cmd	type		x	y	facing	group	name
+
+place	jeep        	281	2902	0	1	-
+place	jeep        	444	2898	0	1	-
+place	rifleman    	319	2820	0	1	-
+place	rifleman    	350	2820	0	1	-
+place	rifleman    	379	2820	0	1	-
+place	rifleman    	405	2816	0	1	-
+place	paralyzer   	321	2864	0	1	-
+place	robot       	393	2842	0	1	-

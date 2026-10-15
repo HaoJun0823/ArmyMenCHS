@@ -1,0 +1,2 @@
+#cmd	type		x	y	facing	group	name
+

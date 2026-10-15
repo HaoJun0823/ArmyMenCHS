@@ -1,0 +1,83 @@
+// @1 = color to do AI for, @2 = color of enemy, @3 = value for @1Action variable
+macro death_ai_enemy 3
+{
+	// these events setup the @1Action variable
+
+	// before attacking @2 make sure @2 is in the game and is not an ally
+	if @1SetAttack@2 testvar IsColorInGame @2 > 0 and IsAlly @1 @2 = 0 then
+		setvar @1Action @3,
+		trigger @1Attack@2,
+		trigger @1StartTimeOut
+
+	// these events do the actual attack orders
+
+	if @1Attack@2 testvar @1Action = @3 then
+		order @1sarge1 follow @2sarge1 inmode attack,
+		order @1 group 1 follow @1sarge1 inmode defend,
+		order @1 group 2 follow @2sarge1 inmode attack,
+		order @1 group 3 follow @2sarge1 inmode attack,
+		order @1 group 4 follow @2sarge1 inmode attack,
+		order @1 group 5 follow @2sarge1 inmode attack,
+		triggerdelay 500 @1Attack@2
+}
+
+// @1 = color of army to do AI for, @2-@4 = other colors
+macro death_ai_macro 4
+{
+	// This variable holds the current action for @1
+	// 0 means no action, 1 means attack @2, 2 means attack @3, 3 means attack @4
+	variable @1Action 0
+
+	// this variable is 
+	// this gets loaded on the host if the @1 army is AI controlled
+	if startup1 then
+		triggerdelay 1000 @1ChooseNewAction,
+		triggerdelay 2000 @1RegularOrders
+
+	if @1ChooseNewAction then
+		setvar @1Action 0,
+		trigger @1ChooseAction
+
+	// if @1 has no current action then pick a random action
+	// keep doing this until an action is set
+	if @1ChooseAction testvar @1Action = 0 then
+		trigger @1PickRandomAction,
+		triggerdelay 1000 @1ChooseAction
+
+	if @1PickRandomAction then random
+		trigger @1SetAttack@2,
+		trigger @1SetAttack@3,
+		trigger @1SetAttack@4
+
+	expand death_ai_enemy ( @1 @2 1 )
+	expand death_ai_enemy ( @1 @3 2 )
+	expand death_ai_enemy ( @1 @4 3 )
+	// these events choose new actions if a sarge is killed
+
+	if killed sarge by @1 then
+		triggerdelay 5000 @1ChooseNewAction
+
+	if killed @1sarge1 then
+		triggerdelay 5000 @1ChooseNewAction
+
+	// these are the standing order regardless of what mode sarge is in
+		
+	if @1RegularOrders then
+		order @1 group 7 goto @1base inmode defend,
+		triggerdelay 5000 @1RegularOrders
+
+	// timeout code - if mode has not changed for a while then change it
+
+	variable @1TimeOutVar 0
+	variable @1LastTimeOutVar 1
+
+	if @1StartTimeOut then
+		addvar @1TimeOutVar 1,
+		triggerdelay 120000 @1CheckTimeOut
+
+	if @1CheckTimeOut testvar @1TimeOutVar = @1LastTimeOutVar then
+		trigger @1ChooseNewAction
+
+	if @1CheckTimeOut testvar @1TimeOutVar <> @1LastTimeOutVar then
+		addvar @1LastTimeOutVar 1
+}

@@ -1,0 +1,2 @@
+include koth_ai.txt
+expand koth_ai_macro ( blue grey green tan 3 4 1 2 )

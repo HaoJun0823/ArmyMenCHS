@@ -1,0 +1,2063 @@
+
+//***Map layout and concept was designed by Jason Wildblood***//
+
+//Load Sprites//
+
+preloadsprite 37 101 0
+preloadsprite 37 101 2
+preloadsprite 37 101 3
+
+preloadsprite 37 102 0
+preloadsprite 37 102 2
+preloadsprite 37 102 3
+
+preloadsprite 37 103 0
+preloadsprite 37 103 2
+preloadsprite 37 103 3
+
+preloadsprite 37 104 0
+preloadsprite 37 104 1
+
+preloadsprite 37 105 0
+preloadsprite 37 105 1
+
+preloadsprite 43 105 0
+preloadsprite 43 105 1
+preloadsprite 43 105 2
+preloadsprite 43 105 3
+preloadsprite 43 105 4
+
+preloadsprite 43 106 0
+preloadsprite 43 106 1
+preloadsprite 43 106 2
+preloadsprite 43 106 3
+preloadsprite 43 106 4
+
+preloadsprite 43 107 0
+preloadsprite 43 107 1
+preloadsprite 43 107 2
+preloadsprite 43 107 3
+preloadsprite 43 107 4
+
+preloadsprite 43 350 0
+preloadsprite 43 350 1
+preloadsprite 43 350 2
+preloadsprite 43 350 3
+
+preloadsprite 43 100 0
+preloadsprite 43 100 1
+preloadsprite 43 100 3
+preloadsprite 43 100 4
+preloadsprite 43 100 5
+preloadsprite 43 100 6
+preloadsprite 43 100 7
+preloadsprite 43 100 8
+preloadsprite 43 100 9
+preloadsprite 43 100 0
+
+preloadsprite 43 101 0
+preloadsprite 43 101 2
+preloadsprite 43 101 3
+
+preloadsprite 43 102 0
+preloadsprite 43 102 2
+preloadsprite 43 102 3
+
+preloadsprite 43 103 0
+preloadsprite 43 103 2
+preloadsprite 43 103 3
+
+preloadsprite 43 110 0
+preloadsprite 43 110 2
+preloadsprite 43 110 3
+
+preloadsprite 43 111 0
+preloadsprite 43 111 2
+preloadsprite 43 111 3
+
+preloadsprite 43 112 0
+preloadsprite 43 112 2
+preloadsprite 43 112 3
+
+preloadsprite 43 113 0
+preloadsprite 43 113 2
+preloadsprite 43 113 3
+
+
+
+
+//**Pads**//
+
+//Center Attack//
+pad Centerattack20                               20     green
+
+pad Centerattack30                               30     green
+
+//Spider attacks//
+pad spidersattack1                              100     green
+
+pad runspider01                                 150
+pad runspider02                                 151
+
+pad spaceshiptrigger                            150     green
+
+//North Attack//
+
+pad northattack                                 160     green
+
+//Boil Pads//
+pad boiltrap                                    11      green trooper
+pad kelliepad01                                 11      kellie01
+pad kelliepad02					11      kellie02
+
+//Trap//
+pad traptrigger                                 50      green trooper > 0
+
+//Main Computer//
+
+pad makedatamap                                 200     Tina_Tomorrow
+
+//FCrandom pads
+
+pad fcran1                                      120
+pad fcran2                                      121
+pad fcran3                                      122
+pad fcran4                                      123
+pad fcran5                                      124
+pad fcran6                                      125
+pad fcran7                                      126
+
+
+//Fuel Depo//
+
+pad unitdef1                                     51
+pad unitdef2                                     52
+pad unitdef3                                     53
+pad unitdef4                                     54
+pad unitdef5                                     55
+pad unitdef11                                    56
+pad unitdef12                                    57
+pad unitdef13                                    58
+pad unitdef14                                    59
+pad unitdef15                                    60
+pad unitdef16                                    61
+pad unitdef17                                    62
+pad unitdef18                                    63
+pad unitdef19                                    64
+pad unitdef20                                    65
+
+pad deadmanpad                                   66
+pad deadmanpad2                                  67 Deadman
+pad deadmanmiss                                  68
+
+pad showtinpdapad                                254    green
+
+pad spidmove1                                    40
+pad spidmove2                                    41
+pad spidmove3                                    42
+
+//**Variables**//
+variable cosmoisdead 0
+variable sargeisdead 0
+variable datamapisdead 0
+variable mainframeisdead 0
+
+variable fuelbattle 0
+variable fuelbattleenemy 0
+
+variable fcp01variable 0
+
+variable mainframefcvar 0
+
+//**Startup formula**//
+
+if startup1 then
+	triggerdelay 1000 playopenningVO,
+        triggerdelay 500 startrandomdep,
+        triggerdelay 100 maketeleportexp,
+        triggerdelay 50 makeinitialunits,
+        triggerdelay 2500 makelabunits,
+        triggerdelay 100 makepowerups,
+        triggerdelay 1000 startmainframe,
+        triggerdelay 200 activatecrates,
+        triggerdelay 300 playsound1,
+        triggerdelay 300 playsound2,
+        triggerdelay 300 playsound3,
+        triggerdelay 500 startfuelaction
+
+
+if playopenningVO then
+        triggerdelay 13000 playopen02
+
+if playopen02 then
+        playsound "Tina09_01.wav" tina_tomorrow 8 2
+
+//**TinaPDapad**//
+
+if padon showtinpdapad butnot onetinpda then
+        playsound "Tina09_02.wav" 0 1,
+        trigger playmainframSFX,
+        trigger onetinpda
+
+if playmainframSFX then
+        playsound "computer.wav" mainframe 1 3 1 10
+
+
+if maketeleportexp then
+        beam greensarge1 1000,
+        createunit "Tina_Tomorrow" spacewomanp (2021,5435) green freezelaser,
+        beam Tina_Tomorrow 1000,
+        setfacing Tina_Tomorrow 14,
+        setmaxhealth Tina_Tomorrow 400,
+        heal Tina_Tomorrow 100,
+
+        createunit "Kellie_Star" spacewomanp (2073,5435) green freezelaser,
+        beam Kellie_Star 1000,
+        setfacing Kellie_Star 200,
+        createunit "Eclipse" spacemang (2002,5315) green lasergatling,
+        beam Eclipse 1000,
+        setfacing Eclipse 192,
+
+        createunit "Tearin" spacemang (2021,5479) green lasergatling,
+        beam Tearin 1000,
+        setfacing Tearin 34,
+
+        createunit "Scrappy" bazookaman (1926,5430) green bazooka,
+        beam Scrappy 1000,
+        setfacing Scrappy 192,
+
+        createunit "Burns" flamerman (1881,5430) green flamer,
+        beam Burns 1000,
+        setfacing Burns 24,
+
+        createunit "Crosshair" rifleman (1911,5337) green rifle,
+        beam Crosshair 1000,
+        setfacing Crosshair 24,
+
+        createunit "CP-3doRadar" robot smcrate4 green electricshock,
+        setfacing CP-3doRadar 142,
+        setnpc CP-3doRadar 1,
+
+        setunitgroup Crosshair 1,
+        setunitgroup Burns 1,
+        setunitgroup Scrappy 1,
+        setsquadleader Tina_Tomorrow 2,
+        setunitgroup Kellie_Star 2,
+        setunitgroup Eclipse 2,
+        setunitgroup Tearin 2
+
+if killed Burns then
+        createpowerup "" flamer burns 69
+
+if killed Scrappy then
+        createpowerup "" bazooka Scrappy 14
+
+
+//**lose condition**//
+
+if killed greensarge1 testvar cosmoisdead = 0 and datamapisdead = 0 then
+        setuilock 1,
+        setcamerafocus greensarge1,
+        showfailure "Sarge was taken out! Mission failed.",
+        setvar sargeisdead 1,
+        triggerdelay 3000 tanwins
+
+if killed Tina_Tomorrow testvar sargeisdead = 0 and datamapisdead = 0 then
+        setuilock 1,
+        setcamerafocus Tina_Tomorrow,
+        showpda "Tina Tomorrow was killed in action. Mission failed.",
+        setvar cosmoisdead 1,
+        triggerdelay 3000 tanwins
+
+if destroyedthecomp then
+        playsound "" mainframe 1 1,
+        showpda "The Data Map was destroyed! Mission aborted.",
+        setvar datamapisdead 1,
+        triggerdelay 3000 tanwins
+
+
+//**Win condition**//
+
+if padon makedatamap testvar cosmoisdead = 0 and sargeisdead = 0 and
+datamapisdead = 0 and mainframeisdead = 1 then
+        playsound "communicator.wav",
+        triggerdelay 1000 ini_sfx
+
+if ini_sfx then
+        playsound "Tina09_03.wav" 0,
+        triggerdelay 500 showdatamap,
+        triggerdelay 2000 showcompletion
+
+if showdatamap butnot makeonedatamap then
+        setuilock 1,
+        setcamerafocus mainframe,
+	moveitem datamapobj mainframe,
+        triggerdelay 100 activatedata,
+        trigger makeonedatamap
+
+if activatedata then
+        setobjstate datamapobj datamap_active
+
+object datamapobj
+        state datamap_initial
+                frame 10 00
+
+        state datamap_active
+                frame 10 00
+                frame 10 01
+                frame 10 02
+                frame 10 03
+                frame 10 04
+                frame 10 05
+                playsound "Tina09_04.wav" 1 1,
+                setobjstate datamapobj datamap_flashing
+
+        state datamap_flashing
+                frame 100 06
+                frame 100 05
+                frame 100 06
+                frame 100 05
+                frame 100 06
+                frame 100 05
+                frame 100 06
+                frame 100 05
+                frame 100 06
+                frame 100 05
+                frame 100 06
+                frame 100 05
+                setobjstate datamapobj datamap_flashing
+
+if showcompletion butnot onlyshowonepda then
+        showpda "Uploading the datamap to Galactic HQ, mission successful!",
+        triggerdelay 2000 greenwins,
+        trigger onlyshowonepda
+
+if killed mainframefc then
+        setvar mainframeisdead 1
+
+//**Segment 01 Unit attack/deployment**//
+
+if makeinitialunits then
+        createunit "Welcome1" humanoid (1691,4946) tan lightlaser,
+        createunit "Welcome2" humanoid (1917,4880) tan lightlaser,
+        createunit "Welcome3" alienspider (1874,4801) tan spiderbite,
+        createunit "Welcome4" alienspider (1715,4909) tan spiderbite,
+        createunit "Welcome5" alienspider (1867,4907) tan spiderbite,
+        setaimode welcome1 attack,
+        setaimode welcome2 attack,
+        order welcome1 follow Tina_Tomorrow inmode attack,
+        order welcome2 follow greensarge1 inmode attack,
+        order welcome3 follow Tina_Tomorrow inmode attack,
+        order welcome4 follow greensarge1 inmode attack,
+        order welcome5 follow Tina_Tomorrow inmode attack,
+        createunit "Plat02_1" eyeball (2348,3541) tan deathray,
+        setaimode Play02_1 defend,
+        setforcecolor Plat02_1 grey,
+        setmaxhealth Plat02_1 500,
+        heal plat02_1 100,
+        setfacing plat02_1 118,
+
+        createunit "Plat01_1" eyeball (1354,3584) tan deathray,
+        setaimode Play01_1 defend,
+        setforcecolor Plat01_1 grey,
+        setmaxhealth Plat01_1 500,
+        heal Plat01_1 100,
+        setfacing plat01_1 148,
+
+        createunit "Plat03_1" eyeball (1897,3024) tan deathray,
+        setaimode Play03_1 defend,
+        setforcecolor Plat03_1 grey,
+        setmaxhealth Plat03_1 500,
+        heal Plat03_1 1000,
+        setfacing plat03_1 108,
+
+        createunit "Plat04_1" eyeball (2351,2413) tan deathray,
+        beam Plat04_1 1000,
+        setforcecolor Plat04_1 grey,
+        setmaxhealth Plat04_1 500,
+        heal Plat04_1 1000,
+        setfacing plat04_1 128,
+        setaimode Plat04_1 defend,
+
+        createunit "Plat05_1" eyeball (1437,2592) tan deathray,
+        beam Plat05_1 1000,
+        setforcecolor Plat05_1 grey,
+        setmaxhealth Plat05_1 500,
+        heal Plat05_1 1000,
+        setfacing plat05_1 124,
+
+        setaimode Play01_1 defend,
+        setaimode Play02_1 defend,
+        setaimode Play03_1 defend,
+        setaimode Play04_1 defend,
+        setaimode Play05_1 defend
+
+
+if hit welcome3 butnot onehit3 then
+        setaimode welcome3 attack,
+        trigger onehit3
+
+if hit welcome4 butnot onehit4 then
+        setaimode welcome4 attack,
+        trigger onehit4
+
+if hit welcome5 butnot onehit5 then
+        setaimode welcome5 attack,
+        trigger onehit5
+
+if allof killed welcome1 killed welcome2 killed welcome3 killed welcome4
+killed welcome5 then
+        createunit "kellie01" humanoid (1691,4946) tan lightlaser,
+        Beam Kellie01 1000,
+        createunit "kellie02" humanoid (1917,4880) tan lightlaser,
+        beam kellie02 1000,
+        order kellie01 follow greensarge1 inmode attack,
+        order kellie02 follow Tina_Tomorrow inmode attack
+
+if hit kellie01 butnot onekellieshot01 then
+        order kellie01 goto kelliepad01 inmode ignore,
+        trigger onekellieshot01
+
+if padon kelliepad01 butnot kellie01once then
+        order kellie01 follow Tina_Tomorrow inmode attack,
+        trigger kellie01once
+
+if hit kellie02 butnot onekellieshot02 then
+        order kellie02 goto kelliepad02 inmode ignore,
+        trigger onekellieshot02
+
+if padon kelliepad02 butnot kellie02once then
+        order kellie02 follow greensarge1 inmode attack,
+        trigger kellie02once
+
+
+//**Robot segment**//
+if killed robotridge butnot ridgeisdes then
+        playsound "PicnicBasketDestroy.wav" robotridge 2 2 30,
+        setnpc CP-3doRadar 0,
+        setunitgroup CP-3doRadar 1,
+        trigger ridgeisdes
+
+//**Ridge setup**//
+
+if killed ridge02 then
+        playsound "PicnicBasketDestroy.wav" ridge02 11 2 30
+
+if killed ridge03 then
+        playsound "PicnicBasketDestroy.wav" ridge03 12 2 30
+
+if killed ridge04 then
+        playsound "PicnicBasketDestroy.wav" ridge04 13 2 30
+
+if killed ridge05 then
+        playsound "PicnicBasketDestroy.wav" ridge05 14 2 30
+
+
+//**Fuel Depo Setup**//
+
+if startfuelaction then
+        createunit "alien1fuel" humanoid unitdef11 tan Lightlaser,
+        setfacing alien1fuel 64,
+
+        createunit "alien2fuel" humanoid unitdef14 tan Lightlaser,
+        setfacing alien2fuel 84,
+
+        createunit "alien3fuel" humanoid unitdef19 tan Lightlaser,
+        setfacing alien3fuel 18,
+        trigger createdeadmen,
+        trigger createlivemen
+
+if killed alien1fuel testvar fuelbattleenemy < 5 and fuelbattle = 0 then
+        triggerdelay 500 randomregen1
+if killed alien2fuel testvar fuelbattleenemy < 5 and fuelbattle = 0 then
+        triggerdelay 500 randomregen2
+if killed alien3fuel testvar fuelbattleenemy < 5 and fuelbattle = 0 then
+        triggerdelay 500 randomregen3
+
+if createlivemen then
+	createunit "Cosmo" spacemang unitdef1 green lasergatling,
+        setfacing Cosmo 252,
+        setnpc Cosmo 1,
+        setaimode Cosmo standfire,
+
+        createunit "Sun" spacemang unitdef2 green lasergatling,
+        setfacing Sun 192,
+        setnpc Sun 1,
+        setaimode Sun standfire,
+
+        createunit "Raybeam" spacemang unitdef3 green lasergatling,
+        setfacing Raybeam 188,
+        setnpc Raybeam 1,
+        setaimode Raybeam standfire,
+
+        createunit "Limelight" spacemang unitdef4 green lasergatling,
+        setfacing Limelight 190,
+        setnpc Limelight 1,
+        setaimode Limelight standfire,
+
+        createunit "Sky" spacemang unitdef5 green lasergatling,
+        setfacing Sky 190,
+        setnpc Sky 1,
+        setaimode Sky standfire
+
+
+if createdeadmen butnot onedeadmen then
+        createunit "Laserlight" spacemang unitdef12 green lasergatling,
+        createunit "SpacePlastic" spacemang unitdef17 green lasergatling,
+        createunit "Orian" spacemang unitdef16 green lasergatling,
+        createunit "Tazer" spacemang unitdef13 green lasergatling,
+        createunit "MoonOgle" spacemang unitdef11 green lasergatling,
+        createunit "deadman" spacemang deadmanpad green lasergatling,
+        setnpc LaserLight 1,
+        setnpc SpacePlastic 1,
+        setnpc Orian 1,
+        setnpc Tazer 1,
+        setnpc MoonOgle 1,
+        order deadman goto deadmanpad2 inmode ignore,
+        trigger givedeadman,
+        triggerdelay 1000 damagestuff,
+	trigger onedeadmen
+
+if padon deadmanpad2 butnot onetimeexp then
+        triggerdelay 500 Firethatweapon,
+        order deadman follow Tinia_Tomorrow,
+        trigger onetimeexp
+
+if Firethatweapon then
+        fireweapon deadmanexp deadman deadmanmiss
+
+if hit deadman butnot deadmanvuln then
+        heal deadman 20
+
+if killed welcome1 then
+        trigger deadmanvuln
+
+
+if killed deadman then
+        createpowerup "" explosive deadman 2
+
+//healing//
+
+//if hit Cosmo butnot spacemenwon then
+        //heal comso 7
+
+//if hit Sun butnot spacemenwon then
+        //heal Sun 7
+
+//if hit Sky butnot spacemenwon then
+        //heal Sky 5
+
+//if hit Raybeam butnot spacemenwon then
+        //heal Raybeam 5
+
+//if hit Limelight butnot spacemenwon then
+        //heal Limelight 5
+
+//if hit MoonOgle butnot spacemenwon then
+        //heal MoonOgle 7
+
+
+
+//Aliens Win//
+
+if allof killed Cosmo killed Sun killed Raybeam killed Limelight killed sky
+killed MoonOgle killed SpacePlastic killed Orian killed Tazer killed Laserlight then
+        setvar fuelbattleenemy 1,
+        setvar fuelbattle 0
+
+//Spacemen Win//
+
+if padon spidersattack1 butnot onespiderattack then
+        triggerdelay 30000 makegochaspiders,
+        triggerdelay 1000 gocha,
+        
+        setnpc Sun 0,
+        setnpc Sky 0,
+        setnpc Raybeam 0,
+        setnpc Limelight 0,
+        setnpc MoonOgle 0,
+        setnpc Tazer 0,
+        setnpc Cosmo 0,
+        setnpc Orian 0,
+        setnpc Laserlight 0,
+        setnpc spaceplastic 0,
+        
+        setunitgroup Sun 6,
+        setunitgroup Sky 6,
+        setunitgroup Raybeam 6,
+        setunitgroup LimeLight 6,
+        setunitgroup MoonOgle 6,
+        setunitgroup Tazer 6,
+        setunitgroup Cosmo 6,
+        setunitgroup Orian 6,
+        setunitgroup Laserlight 6,
+        setunitgroup spaceplastic 6,
+
+        trigger spacemenwon,
+        setvar fuelbattle 1,
+
+        trigger onespiderattack
+
+//Gocha Spider random gen//
+
+if makegochaspiders then
+        random
+                trigger spidertype1,
+                triggerdelay 10000 spidertype2
+//1//
+if spidertype1 then
+        createunit "spidergp1_03" alienspider (1121,4270) tan spiderbite,
+        beam spidergp1_03 1000,
+
+        createunit "spidergp2_01" alienspider (1574,4668) tan spiderbite,
+        beam spidergp2_01 1000,
+
+        createunit "spidergp2_02" alienspider (1574,4668) tan spiderbite,
+        beam spidergp2_02 1000,
+
+        createunit "spidergp3_01" alienspider (1121,4270) tan spiderbite,
+        beam spidergp3_01 1000,
+        triggerdelay 2100 spidgp1orders
+
+if spidgp1orders then
+        order spidergp1_03 goto spidersattack1,
+        order spidergp2_01 goto spidersattack1,
+        order spidergp2_02 goto spidersattack1,
+        order spidergp3_01 goto spidersattack1
+
+//2//
+if spidertype2 then
+        createunit "spidergp1_01" alienspider (1930,4405) tan spiderbite,
+        beam spidergp1_01 1000,
+
+        createunit "spidergp1_03" alienspider (1236,4947) tan spiderbite,
+        beam spidergp1_03 1000,
+
+        createunit "spidergp2_03" alienspider (1420,4380) tan spiderbite,
+        beam spidergp2_03 1000,
+
+        createunit "spidergp3_01" alienspider (1963,4302) tan spiderbite,
+        beam spidergp3_01 1000,
+
+        triggerdelay 1100 spidgp2orders
+
+if spidgp2orders then
+        order spidergp1_01 goto spidersattack1,
+        order spidergp1_03 goto spidersattack1,
+        order spidergp2_03 goto spidersattack1,
+        order spidergp3_01 goto spidersattack1
+
+
+//random regeneration//
+//1//
+if randomregen1 then
+        random
+                triggerdelay 2000 af1area1,
+                triggerdelay 500 af1area2,
+                triggerdelay 1000 af1area3
+if af1area1 then
+        resurrect alien1fuel unitdef11,
+        beam alien1fuel 1000
+if af1area2 then
+        resurrect alien1fuel unitdef20,
+        beam alien1fuel 1000
+if af1area3 then
+        resurrect alienfuel unitdef15,
+        beam alien1fuel 1000
+
+//2//
+if randomregen2 then
+        random
+                triggerdelay 2000 af2area1,
+                triggerdelay 500 af2area2,
+                triggerdelay 1000 af2area3,
+                triggerdelay 800 af2area4
+if af2area1 then
+        resurrect alien2fuel unitdef17,
+        beam alien2fuel 1000
+if af2area2 then
+        resurrect alien2fuel unitdef13,
+        beam alien2fuel 1000
+if af2area3 then
+        resurrect alien2fuel unitdef19,
+        beam alien2fuel 1000
+if af2area4 then
+        resurrect alien2fuel unitdef17,
+        beam alien2fuel 1000
+
+//3//
+if randomregen3 then
+        random
+                triggerdelay 2000 af3area1,
+                triggerdelay 1500 af3area2,
+                triggerdelay 1000 af3area3
+if af3area1 then
+        resurrect alien3fuel unitdef14,
+        beam alien3fuel 1000
+if af3area2 then
+        resurrect alien3fuel unitdef16,
+        beam alien3fuel 1000
+if af3area3 then
+        resurrect alien3fuel unitdef12,
+        beam alien3fuel 1000
+
+
+if givedeadman then
+        setnpc deadman 0
+
+if damagestuff then
+        damage Fulestation 2000,
+        makesmoke (386,5193) 60000,
+        makesmoke (470,5134) 200000,
+        makesmoke (343,5325) 80000,
+        damage MoonOgle 1000,
+        damage SpacePlastic 1000,
+        damage Sun 1000,
+        damage sky 1000,
+        triggerdelay 1000 damagemeat1,
+        triggerdelay 2000 damagemeat2,
+        triggerdelay 5000 damagemeat3,
+        triggerdelay 10000 damagemeat4,
+        triggerdelay 14000 damagemeat5
+
+if damagemeat1 then
+        createunit "killman1" humanoid MoonOgle tan heavylaser,
+        beam killman1 500,
+        order killman1 follow MoonOgle
+if damagemeat2 then
+        createunit "killman2" humanoid Laserlight tan heavylaser,
+        beam killman2 500,
+        order killman2 follow Laserlight
+if damagemeat3 then
+        createunit "killman3" humanoid SpacePlastic tan heavylaser,
+        beam killman3 500,
+        order killman3 follow SpacePlastic
+if damagemeat4 then
+        createunit "killman4" humanoid Orian tan heavylaser,
+        beam killman4 500,
+        order killman4 follow Orian
+if damagemeat5 then
+        createunit "killman5" humanoid Tazer tan heavylaser,
+        beam killman5 500,
+        order killman5 follow Tazer
+
+
+//**Random Deployment Init**//
+
+if startrandomdep then
+        random
+                trigger randomset1,
+                trigger randomset2,
+                trigger randomset3
+
+if randomset1 then
+        createunit "ran1_1" humanoid (1365,4953) tan lightlaser,
+        createunit "ran1_2" humanoid (1916,4655) tan lightlaser,
+        createunit "ran1_3" humanoid (1741,4441) tan lightlaser,
+        createunit "ran1_4" humanoid (1980,4146) tan lightlaser,
+        createunit "ran1_5" humanoid (1026,4576) tan lightlaser,
+        createunit "ran1_6" humanoid (1080,4988) tan lightlaser,
+        createunit "ran1_7" humanoid (1436,4381) tan lightlaser,
+        createunit "ran1_8" humanoid (1208,4827) tan lightlaser,
+        setfacing ran1_1 192,
+        setfacing ran1_2 108,
+        setfacing ran1_3 148,
+        setfacing ran1_4 118,
+        setfacing ran1_5 158,
+        setfacing ran1_6 148,
+        setfacing ran1_7 94,
+        setfacing ran1_8 138,
+        setaimode ran1_1 defend,
+        setaimode ran1_2 defend,
+        setaimode ran1_3 defend,
+        setaimode ran1_4 defend,
+        setaimode ran1_5 defend,
+        setaimode ran1_6 defend,
+        setaimode ran1_7 defend,
+        setaimode ran1_8 defend
+
+if randomset2 then
+        createunit "ran2_1" humanoid (980,4636) tan lightlaser,
+        createunit "ran2_2" humanoid (1045,4513) tan lightlaser,
+        createunit "ran2_3" humanoid (1057,4907) tan lightlaser,
+        createunit "ran2_4" humanoid (1083,5007) tan lightlaser,
+        createunit "ran2_5" humanoid (1214,4738) tan lightlaser,
+        createunit "ran2_6" humanoid (1901,4553) tan lightlaser,
+        createunit "ran2_7" humanoid (1697,4442) tan lightlaser,
+        createunit "ran2_8" humanoid (1993,3930) tan lightlaser,
+        setfacing ran2_1 138,
+        setfacing ran2_2 192,
+        setfacing ran2_3 182,
+        setfacing ran2_4 192,
+        setfacing ran2_5 128,
+        setfacing ran2_6 128,
+        setfacing ran2_7 148,
+        setfacing ran2_8 138,
+        setaimode ran2_1 Defend,
+        setaimode ran2_2 defend,
+        setaimode ran2_3 defend,
+        setaimode ran2_4 defend,
+        setaimode ran2_5 defend,
+        setaimode ran2_6 defend,
+        setaimode ran2_7 defend,
+        setaimode ran2_8 defend
+
+if randomset3 then
+        createunit "ran3_1" humanoid (1812,4543) tan lightlaser,
+        createunit "ran3_2" humanoid (1958,4544) tan lightlaser,
+        createunit "ran3_3" humanoid (1978,4260) tan lightlaser,
+        createunit "ran3_4" humanoid (1691,4433) tan lightlaser,
+        createunit "ran3_5" humanoid (1294,4546) tan lightlaser,
+        createunit "ran3_6" humanoid (1390,4110) tan lightlaser,
+        createunit "ran3_7" humanoid (1070,5002) tan lightlaser,
+        createunit "ran3_8" humanoid (1016,4573) tan lightlaser,
+        setfacing ran3_1 148,
+        setfacing ran3_2 128,
+        setfacing ran3_3 128,
+        setfacing ran3_4 148,
+        setfacing ran3_5 74,
+        setfacing ran3_6 128,
+        setfacing ran3_7 172,
+        setfacing ran3_8 148,
+        setaimode ran3_1 defend,
+        setaimode ran3_2 defend,
+        setaimode ran3_3 defend,
+        setaimode ran3_4 defend,
+        setaimode ran3_5 defend,
+        setaimode ran3_6 defend,
+        setaimode ran3_7 defend,
+        setaimode ran3_8 defend
+
+//**Crater Trap**//
+
+//**Powerup Attack**//
+if makepowerups then
+	createpowerup "spiderpower" SpaceBeamers (481,3171) 1
+
+if pickedup spiderpower by greensarge1 butnot spiderpoweronce then
+        trigger makepoweratt1,
+        triggerdelay 10000 makepoweratt2
+
+if makepoweratt1 then
+        createunit "powerdef01" humanoid (1039,3993) tan lightlaser,
+        createunit "powerdef02" alienspider (1138,3933) tan spiderbite,
+        createunit "powerdef03" alienspider (2058,3823) tan spiderbite,
+        createunit "powerdef04" humanoid (1957,3789) tan lightlaser,
+        createunit "powerdef05" alienspider (1883,3829) tan spiderbite,
+        order powerdef01 goto spidmove1 inmode attack,
+        order powerdef02 goto spidmove2 inmode attack,
+        order powerdef03 goto spidmove3 inmode attack,
+        order powerdef04 goto spidmove3 inmode attack,
+        order powerdef05 goto spidmove2 inmode attack
+
+if makepoweratt2 then
+        createunit "powerdef11" humanoid (1815,2407) tan lightlaser,
+        createunit "powerdef12" alienspider (2019,2569) tan spiderbite,
+        createunit "powerdef13" alienspider (1680,2208) tan spiderbite,
+        createunit "powerdef14" humanoid (1442,2028) tan lightlaser,
+        createunit "powerdef15" alienspider (1687,1986) tan spiderbite,
+        order powerdef11 goto spidmove1 inmode attack,
+        order powerdef12 goto spidmove2 inmode attack,
+        order powerdef13 goto spidmove3 inmode attack,
+        order powerdef14 goto spidmove1 inmode attack,
+        order powerdef15 goto spidmove3 inmode attack
+
+//**Vehicle Trap**//
+
+
+if gocha butnot onetrap then
+        trigger startfinalfuelrandom,
+        trigger onetrap
+
+if startfinalfuelrandom then
+        random
+              trigger finalfuel1,
+              trigger finalfuel2,
+              trigger finalfuel3,
+              trigger finalfuel4,
+              trigger finalfuel5
+//1//
+if finalfuel1 then
+        triggerdelay 1000 makefueleye1,
+        triggerdelay 1100 makefueleye2,
+        triggerdelay 800 makefueleye3,
+        triggerdelay 2000 makefueleye4,
+        triggerdelay 1000 makefueleye5,
+        triggerdelay 500 makefueleye6,
+        triggerdelay 700 makefueleye7,
+        triggerdelay 900 makefueleye8,
+        triggerdelay 1300 makefueleye9,
+        triggerdelay 200 makefueleye10
+
+//2//
+if finalfuel2 then
+        triggerdelay 900 makefueleye1,
+        triggerdelay 200 makefueleye2,
+        triggerdelay 1000 makefueleye3,
+        triggerdelay 500 makefueleye4,
+        triggerdelay 1000 makefueleye5,
+        triggerdelay 3000 makefueleye6,
+        triggerdelay 700 makefueleye7,
+        triggerdelay 900 makefueleye8,
+        triggerdelay 1500 makefueleye9,
+        triggerdelay 900 makefueleye10
+
+//3//
+if finalfuel3 then
+        triggerdelay 2000 makefueleye1,
+        triggerdelay 3000 makefueleye2,
+        triggerdelay 600 makefueleye3,
+        triggerdelay 1000 makefueleye4,
+        triggerdelay 200 makefueleye5,
+        triggerdelay 1000 makefueleye6,
+        triggerdelay 1000 makefueleye7,
+        triggerdelay 1100 makefueleye8,
+        triggerdelay 900 makefueleye9,
+        triggerdelay 3000 makefueleye10
+
+//4//
+if finalfuel4 then
+        triggerdelay 900 makefueleye1,
+        triggerdelay 300 makefueleye2,
+        triggerdelay 1500 makefueleye3,
+        triggerdelay 500 makefueleye4,
+        triggerdelay 800 makefueleye5,
+        triggerdelay 2300 makefueleye6,
+        triggerdelay 2900 makefueleye7,
+        triggerdelay 2000 makefueleye8,
+        triggerdelay 2500 makefueleye9,
+        triggerdelay 1000 makefueleye10
+
+//5//
+if finalfuel5 then
+        triggerdelay 600 makefueleye1,
+        triggerdelay 900 makefueleye2,
+        triggerdelay 1000 makefueleye3,
+        triggerdelay 900 makefueleye4,
+        triggerdelay 900 makefueleye5,
+        triggerdelay 400 makefueleye6,
+        triggerdelay 700 makefueleye7,
+        triggerdelay 500 makefueleye8,
+        triggerdelay 200 makefueleye9,
+        triggerdelay 1000 makefueleye10
+
+
+if makefueleye1 then
+        createunit "trapunit01" eyeball (544,5185) tan deathray,
+        beam trapunit01 1000
+
+if makefueleye2 then
+        createunit "trapunit03" eyeball (676,5371) tan deathray,
+        beam trapunit03 1000
+
+if makefueleye3 then
+        createunit "trapunit04" eyeball (593,5471) tan deathray,
+        beam trapunit04 1000
+
+if makefueleye4 then
+        createunit "trapunit06" eyeball (309,4978) tan deathray,
+        beam trapunit06 1000
+
+if makefueleye5 then
+        createunit "trapunit08" eyeball (527,4835) tan deathray,
+        beam trapunit08 1000
+
+if makefueleye6 then
+        createunit "trapunit09" eyeball (649,4864) tan deathray,
+        beam trapunit09 1000
+
+if makefueleye7 then
+        createunit "trapunit11" eyeball (859,4813) tan deathray,
+        beam trapunit11 1000
+
+if makefueleye8 then
+        createunit "trapunit12" eyeball (796,4661) tan deathray,
+        beam trapunit12 1000
+
+if makefueleye9 then
+        createunit "trapunit14" eyeball (556,4670) tan deathray,
+        beam trapunit14 1000
+
+if makefueleye10 then
+        createunit "trapunit15" eyeball (679,4767) tan deathray,
+        beam trapunit15 1000,
+        triggerdelay 1100 trapunitorders,
+        trigger onetrap
+
+if trapunitorders then
+        order trapunit01 follow green inmode attack,
+        order trapunit02 follow green inmode attack,
+        order trapunit03 follow green inmode attack,
+        order trapunit04 follow green inmode attack,
+        order trapunit05 follow green inmode attack,
+        order trapunit06 follow green inmode attack,
+        order trapunit07 follow green inmode attack,
+        setaimode trapunit08 defend,
+        setaimode trapunit09 defend,
+        setaimode trapunit10 defend,
+        setaimode trapunit11 defend,
+        setaimode trapunit12 defend,
+        setaimode trapunit13 defend,
+        setaimode trapunit14 defend,
+        setaimode trapunit15 defend
+
+//**Segment 02 Unit attack/deployment**//
+
+if hit plat01_1 butnot hitplat01_1 then
+        createunit "Plat01_2" humanoid (1292,3641) tan mediumlaser,
+        beam Plat01_2 1000,
+        createunit "Plat01_3" humanoid (1414,3641) tan mediumlaser,
+        beam Plat01_3 1000,
+        createunit "Plat01_4" humanoid (1414,3529) tan mediumlaser,
+        beam Plat01_4 1000,
+        createunit "Plat01_5" humanoid (1283,3529) tan mediumlaser,
+        beam Plat01_5 1000,
+        triggerdelay 1100 setaimodesplat01,
+        trigger hitplat01_1
+
+if setaimodesplat01 then
+        setaimode Plat01_2 defend,
+        setaimode Plat01_3 defend,
+        setaimode Plat01_4 defend,
+        setaimode Plat01_5 defend
+
+if hit plat02_1 butnot hitplat02_1 then
+        createunit "Plat02_2" humanoid (2303,3460) tan mediumlaser,
+        beam Plat02_2 1000,
+        createunit "Plat02_3" humanoid (2261,3523) tan mediumlaser,
+        beam Plat02_3 1000,
+        createunit "Plat02_4" humanoid (2279,3590) tan mediumlaser,
+        beam Plat02_4 1000,
+        triggerdelay 1100 setaimodesplat02,
+        trigger hitplat02_1
+
+if setaimodesplat02 then
+        setaimode Plat02_2 defend,
+        setaimode Plat02_3 defend,
+        setaimode Plat02_4 defend
+
+if hit plat03_1 butnot hitplat03_1 then
+        createunit "Plat03_2" humanoid (1826,3060) tan mediumlaser,
+        beam Plat03_2 1000,
+        createunit "Plat03_3" humanoid (1971,3060) tan mediumlaser,
+        beam Plat03_3 1000,
+        createunit "Plat03_4" humanoid (1971,2983) tan mediumlaser,
+        beam Plat03_4 1000,
+        createunit "Plat03_5" humanoid (1829,2983) tan mediumlaser,
+        beam Plat03_5 1000,
+        triggerdelay 1100 setaimodesplat03,
+        trigger hitplat03_1
+
+
+if setaimodesplat03 then
+        setaimode Plat03_2 defend,
+        setaimode Plat03_3 defend,
+        setaimode Plat03_4 defend,
+        setaimode Plat03_5 defend
+
+if hit plat04_1 butnot hitplat04_1 then
+        createunit "Plat04_2" humanoid (2291,2346) tan mediumlaser,
+        beam Plat04_2 1000,
+        createunit "Plat04_3" humanoid (2262,2419) tan mediumlaser,
+        beam Plat04_3 1000,
+        createunit "Plat04_4" humanoid (2301,2494) tan mediumlaser,
+        beam Plat04_4 1000,
+        createunit "Plat04_5" humanoid (1829,2983) tan mediumlaser,
+        beam Plat04_5 1000,
+        triggerdelay 1100 setaimodesplat04,
+        trigger hitplat04_1
+
+
+if setaimodesplat04 then
+        setaimode Plat04_2 defend,
+        setaimode Plat04_3 defend,
+        setaimode Plat04_4 defend,
+        setaimode Plat04_5 defend
+
+if hit plat05_1 butnot hitplat05_1 then
+        createunit "Plat05_2" humanoid (1364,2532) tan mediumlaser,
+        beam Plat05_2 1000,
+        createunit "Plat05_3" humanoid (1364,2656) tan mediumlaser,
+        beam Plat05_3 1000,
+        createunit "Plat05_4" humanoid (1501,2656) tan mediumlaser,
+        beam Plat05_4 1000,
+        createunit "Plat05_5" humanoid (1501,2525) tan mediumlaser,
+        beam Plat05_5 1000,
+        triggerdelay 1100 setaimodesplat05,
+        trigger hitplat05_1
+
+
+if setaimodesplat05 then
+        setaimode Plat05_2 defend,
+        setaimode Plat05_3 defend,
+        setaimode Plat05_4 defend,
+        setaimode Plat05_5 defend
+
+
+if padon Centerattack30 butnot Centertriggeronce then
+        createunit "Commander01" humanoid (1579,1998) tan mediumlaser 1 2,
+        beam Commander01 1000,
+        createunit "Commander02" humanoid (1685,1999) tan mediumlaser 1 2,
+        beam commander02 1000,
+
+        trigger Centertriggeronce,
+        triggerdelay 1100 COMorders
+
+if COMorders then
+        order Commander01 follow greensarge1 inmode attack,
+        order Commander02 follow greensarge1 inmode attack
+
+
+//**Segment 03 UnitAttack/Deployment**//
+
+//**Spider Lure**//
+
+if padon Centerattack20 butnot onecenterattack20 then
+        createunit "Spiderlure01" alienspider (1703,1912) tan spiderbite,
+        beam Spiderlure01 1000,
+        createunit "Spiderlure02" alienspider (1674,1960) tan spiderbite,
+        beam Spiderlure02 1000,
+        createunit "Spiderlure03" alienspider (1601,1987) tan spiderbite,
+        beam Spiderlure03 1000,
+        createunit "Spiderlure04" alienspider (1607,1918) tan spiderbite,
+        beam Spiderlure04 1000,
+	createunit "Spiderlure05" alienspider (1372,1972) tan spiderbite,
+        beam Spiderlure05 1000,
+        createunit "Spiderlure06" alienspider (1421,1988) tan spiderbite,
+        beam Spiderlure06 1000,
+        createunit "Spiderlure07" alienspider (1371,2029) tan spiderbite,
+        beam Spiderlure07 1000,
+        triggerdelay 1100 spiderlureais,
+        trigger onecenterattack20
+
+if spiderlureais then
+        setaimode Spiderlure01 defend,
+        setaimode Spiderlure02 defend,
+        setaimode Spiderlure03 defend,
+        setaimode Spiderlure04 defend,
+        setaimode Spiderlure05 defend,
+        setaimode Spiderlure06 defend,
+        setaimode Spiderlure07 defend
+
+
+if hit Spiderlure01 butnot spider01_hitonce then
+        order Spiderlure01 goto runspider01 inmode ignore,
+        trigger spider01_hitonce
+
+if hit Spiderlure02 butnot spider02_hitonce then
+        order Spiderlure02 goto runspider02 inmode ignore,
+        trigger spider02_hitonce
+
+if hit Spiderlure03 butnot spider03_hitonce then
+        order Spiderlure03 goto runspider01 inmode ignore,
+        trigger spider03_hitonce
+
+if hit Spiderlure04 butnot spider04_hitonce then
+        order Spiderlure04 goto runspider02 inmode ignore,
+        trigger spider04_hitonce
+
+if hit Spiderlure05 butnot spider05_hitonce then
+        order Spiderlure05 goto runspider01 inmode ignore,
+        trigger spider05_hitonce
+
+if hit Spiderlure06 butnot spider06_hitonce then
+        order Spiderlure06 goto runspider02 inmode ignore,
+        trigger spider06_hitonce
+
+if hit Spiderlure07 butnot spider07_hitonce then
+        order Spiderlure07 goto runspider01 inmode ignore,
+        trigger spider07_hitonce
+
+
+//**Boil Explosions**//
+        // @1 = Object name @2 = pad //
+macro boil 2
+{
+variable boilvar@1 0
+
+pad Boilpad@1                                  @2 green
+
+if padon Boilpad@1 then
+        setvar boilvar@1 1,
+        trigger animate@1_boil,
+        setdamagepad boilpad@1 1 100 fire tan,
+        trigger create@1spiders
+
+if killed boil@1 testvar boilvar@1 = 0 then
+        setvar boilvar@1 1,
+        trigger animate@1_boil,
+        setdamagepad boilpad@1 1 fire tan,
+        trigger create@1spiders
+
+if create@1spiders butnot onlyoncreation@1 then
+        createunit "boil@1spider1" alienworm boil@1 tan wormspit,
+        createunit "boil@1spider2" alienworm boil@1 tan wormspit,
+        createunit "boil@1spider3" alienworm boil@1 tan wormspit,
+        trigger onlyoncreation@1
+
+if animate@1_boil butnot onlyonceanim@1boil then
+        setobjstate boil@1 boil@1_explode,
+        trigger boilsound@1,
+        trigger onlyonceanim@1boil
+
+if boilsound@1 then
+        playsound "fruitgore.wav" boil@1,
+        addsoundorigin "fruitgore.wav" boil@1 2 20
+
+
+
+
+object boil@1
+        state boil@1_initial
+                frame 100 0
+
+        state boil@1_explode
+                frame 100 2
+                frame 100 3
+                frame 100 4
+                frame 100 5
+                frame 100 1
+                setobjstate boil@1 boil@1_finished
+
+        state boil@1_finished
+                frame 10 1
+}
+
+expand boil ( 1 201 )
+expand boil ( 2 202 )
+expand boil ( 3 203 )
+expand boil ( 4 204 )
+expand boil ( 5 205 )
+expand boil ( 6 206 )
+expand boil ( 7 207 )
+expand boil ( 8 208 )
+expand boil ( 9 209 )
+expand boil ( 10 210 )
+expand boil ( 11 211 )
+expand boil ( 12 212 )
+expand boil ( 13 213 )
+expand boil ( 14 214 )
+expand boil ( 15 215 )
+expand boil ( 16 216 )
+expand boil ( 17 217 )
+expand boil ( 18 218 )
+expand boil ( 19 219 )
+expand boil ( 20 220 )
+expand boil ( 21 221 )
+expand boil ( 22 222 )
+expand boil ( 23 223 )
+expand boil ( 24 224 )
+expand boil ( 25 225 )
+
+//**Space Craft Deployment**//
+
+if padon spaceshiptrigger butnot spaceshiponetime then
+	trigger startrandomship,
+        trigger spaceshiponetime
+
+if startrandomship then
+	random
+        	trigger variety1,
+        	trigger variety2,
+        	trigger variety3
+
+//Random Variety1//
+if variety1 then
+        createunit "Shipeye1" eyeball (1702,965) tan deathray,
+        setforcecolor Shipeye1 grey,
+        setmaxhealth Shipeye1 300,
+        heal Shipeye1 100,
+        order Shipeye1 follow Tina_Tomorrow inmode attack,
+        triggerdelay 1000 makehumanoid
+
+if makehumanoid then
+        triggerdelay 1000 make1,
+        triggerdelay 2000 make2,
+        triggerdelay 3000 make3,
+        triggerdelay 4000 make4,
+        triggerdelay 5000 makeeye2
+
+if make1 then
+        createunit "shipdef1" humanoid (1702,965) tan lightlaser,
+        order shipdef1 follow Tina_Tomorrow inmode attack
+
+if make2 then
+        createunit "shipdef2" humanoid (1702,965) tan lightlaser,
+        order shipdef1 follow Tina_Tomorrow inmode attack
+
+if make3 then
+        createunit "shipdef3" humanoid (1702,965) tan lightlaser,
+        order shipdef1 follow Greensarge1 inmode attack
+
+if make4 then
+        createunit "shipdef4" humanoid (1702,965) tan lightlaser,
+        order shipdef1 follow Greensarge1 inmode attack
+
+if makeeye2 then
+        createunit "Shipeye2" eyeball (1702,965)tan deathray,
+        setforcecolor Shipeye1 grey,
+        setmaxhealth Shipeye1 300,
+        heal Shipeye1 100,
+        order Shipeye1 follow greensarge1 inmode attack
+
+//Random Variety 2//
+
+if variety2 then
+        createunit "fc01" fieldcommander (1702,965) tan heavylaser,
+        order fc01 follow greensarge1 inmode attack,
+        triggerdelay 1000 make1,
+        triggerdelay 2000 make2,
+        triggerdelay 3000 makefcom
+
+if makefcom then
+        createunit "fc02" fieldcommander (1702,965) tan heavylaser,
+        order fc02 follow Tina_Tomorrow inmode attack
+
+//Random Variety 3//
+
+if variety3 then
+        createunit "badass01" humanoid (1702,965) tan lightlaser,
+        setforcecolor badass01 grey,
+        setmaxhealth badass01 150,
+        heal badass01 100,
+        order badass01 follow greensarge1 inmode attack,
+        triggerdelay 1000 boost1,
+        triggerdelay 2000 boost2,
+        triggerdelay 3000 boost3
+
+if boost1 then
+        createunit "badass02" humanoid (1702,965) tan lightlaser,
+        setforcecolor badass02 grey,
+        setmaxhealth badass02 150,
+        heal badass02 100,
+        order badass02 follow greensarge1 inmode attack
+
+if boost2 then
+        createunit "badass03" humanoid (1702,965) tan lightlaser,
+        setforcecolor badass03 grey,
+        setmaxhealth badass03 150,
+        heal badass03 100,
+        order badass03 follow Tina_Tomorrow inmode attack
+
+if boost3 then
+        createunit "badass04" humanoid (1702,965) tan lightlaser,
+        setforcecolor badass04 grey,
+        setmaxhealth badass04 150,
+        heal badass04 100,
+        order badass04 follow Tina_Tomorrow inmode attack
+
+//**Northern attack**//
+        
+if padon northattack butnot northattackonce then
+        createunit "northunit1" humanoid (2021,5435) tan lightlaser,
+        createunit "northunit2" eyeball (2021,5435) tan deathray,
+        createunit "northunit3" humanoid (2021,5435) tan lightlaser,
+	createunit "northunit4" eyeball (2021,5435) tan deathray,
+        createunit "northunit5" humanoid (2021,5435) tan lightlaser,
+        createunit "northunit6" eyeball (2021,5435) tan deathray,
+        createunit "northunit7" humanoid (2021,5435) tan lightlaser,
+        createunit "northunit8" eyeball (2021,5435) tan deathray,
+        moveitem northunit1 (2370,182),
+        moveitem northunit2 (2370,232),
+        moveitem northunit3 (2370,330),
+        moveitem northunit4 (2370,330),
+        moveitem northunit5 (2175,100),
+        moveitem northunit6 (1728,100),
+        moveitem northunit7 (1912,100),
+        moveitem northunit8 (2330,100),
+        order northunit1 follow greensarge1 inmode attack,
+        order northunit2 follow greensarge1 inmode attack,
+        order northunit3 follow greensarge1 inmode attack,
+        order northunit4 follow greensarge1 inmode attack,
+        order northunit5 follow Tina_Tomorrow inmode attack,
+        order northunit6 follow Tina_Tomorrow inmode attack,
+        order northunit7 follow Tina_Tomorrow inmode attack,
+        order northunit8 follow Tina_Tomorrow inmode attack,
+        triggerdelay 30000 makenortherharder,
+        trigger northattackonce
+
+if makenortherharder then
+        createunit "northunit10" humanoid (2021,5435) tan mediumlaser,
+        createunit "northunit11" humanoid (2021,5435) tan mediumlaser,
+        createunit "northunit12" humanoid (2021,5435) tan mediumlaser,
+	createunit "northunit13" humanoid (2021,5435) tan mediumlaser,
+        setforcecolor northunit10 grey,
+        setforcecolor northunit11 grey,
+        setforcecolor northunit12 grey,
+        setforcecolor northunit13 grey,
+        setmaxhealth northunit10 150,
+        setmaxhealth northunit11 150,
+        setmaxhealth northunit12 150,
+        setmaxhealth northunit13 150,
+        heal northunit10 100,
+        heal northunit11 100,
+        heal northunit12 100,
+        heal northunit13 100,
+        moveitem northunit10 (2370,182),
+        moveitem northunit11 (2370,232),
+        moveitem northunit12 (1912,100),
+        moveitem northunit13 (2330,100),
+        order northunit10 follow greensarge1 inmode attack,
+        order northunit11 follow greensarge1 inmode attack,
+        order northunit12 follow Tina_Tomorrow inmode attack,
+        order northunit13 follow Tina_Tomorrow inmode attack
+
+//**The Lab Setup**//
+
+if makelabunits then
+        createunit "mainframefc" fieldcommander (512,444) tan heavylaser 3,
+        createunit "fcguard1" humanoid (632,528) tan mediumlaser 2,
+        createunit "fcguard2" humanoid (389,528) tan mediumlaser 2,
+        createunit "enterguard" humanoid (1526,289) tan lightlaser,
+        setaimode mainframefc ignore,
+        setaimode fcguard1 standfire,
+        setaimode fcguard2 standfire,
+	createunit "fcp01" humanoid (245,494) tan heavylaser 3,
+        triggerdelay 100 labpatrol
+
+if hit fcguard1 butnot onehitenterguard1 then
+        order fcguard1 follow greensarge1 inmode attack,
+        order fcguard2 follow Tina_Tomorrow inmode attack,
+        trigger onehitenterguard1
+
+if hit fcguard2 butnot onehitenterguard2 then
+        order fcguard1 follow greensarge1 inmode attack,
+        order fcguard2 follow Tina_Tomorrow inmode attack,
+        trigger onehitenterguard2
+
+
+if hit mainframefc butnot onehitmffc then
+        playsound "AliensBeam.wav" mainframefc 0 20,
+        beam mainframefc 1000,
+
+        triggerdelay 1100 telefc,
+
+        createunit "comp1" eyeball (403,1523) tan deathray 2,
+        beam comp1 1000,
+        createunit "comp2" eyeball (479,1585) tan deathray 2,
+        beam comp2 1000,
+	createunit "comp3" eyeball (334,1585) tan deathray 2,
+        beam comp3 1000,
+	createunit "comp4" eyeball (403,1620) tan deathray 2,
+        beam comp4 1000,
+        triggerdelay 1100 comporders,
+        setaimode mainframefc attack,
+        trigger onehitmffc
+
+if hit mainframefc testvar mainframefcvar = 1 and
+gethealth mainframefc <= 800 then
+        addvar mainframefcvar 1,
+        setmaxhealth mainframefc 800,
+        heal mainframefc 100,
+        beam mainframefc 900,
+        playsound "AliensBeam.wav" mainframefc 0 20,
+        triggerdelay 800 undepfc,
+        trigger location_init
+
+if hit mainframefc testvar mainframefcvar = 2 and
+gethealth mainframefc <= 600 then
+        addvar mainframefcvar 1,
+        setmaxhealth mainframefc 600,
+        heal mainframefc 100,
+        beam mainframefc 900,
+        playsound "AliensBeam.wav" mainframefc 0 20,
+        triggerdelay 800 undepfc,
+        trigger location_init
+
+if hit mainframefc testvar mainframefcvar = 3 and
+gethealth mainframefc <= 400 then
+        addvar mainframefcvar 1,
+        setmaxhealth mainframefc 400,
+        heal mainframefc 100,
+        beam mainframefc 900,
+        playsound "AliensBeam.wav" mainframefc 0 20,
+        triggerdelay 800 undepfc,
+        trigger location_init
+
+if hit mainframefc testvar mainframefcvar = 4 and
+gethealth mainframefc <= 200 then
+        addvar mainframefcvar 1,
+        setmaxhealth mainframefc 200,
+        heal mainframefc 100,
+        beam mainframefc 900,
+        playsound "AliensBeam.wav" mainframefc 0 20,
+        triggerdelay 800 undepfc,
+        trigger location_init
+
+if hit mainframefc testvar mainframefcvar = 5 and
+gethealth mainframefc <= 100 then
+        addvar mainframefcvar 1,
+        setmaxhealth mainframefc 100,
+        heal mainframefc 100,
+        beam mainframefc 900,
+        playsound "AliensBeam.wav" mainframefc 0 20,
+        triggerdelay 800 undepfc,
+        trigger location_init
+
+if undepfc then
+        undeploy mainframefc
+
+
+if telefc then
+        undeploy mainframefc,
+	triggerdelay 30000 telefcrandom
+
+if telefcrandom testvar mainframefcvar = 0 then
+        setvar mainframefcvar 1,
+        triggerdelay 3000 location_init
+
+macro locationmac 1
+{
+if location@1 then
+        deploy mainframefc fcran@1,
+        beam mainframefc 900,
+        playsound "AliensBeam.wav" mainframefc 0 20,
+        triggerdelay 900 locorders
+}
+
+expand locationmac ( 1 )
+expand locationmac ( 2 )
+expand locationmac ( 3 )
+expand locationmac ( 4 )
+expand locationmac ( 5 )
+expand locationmac ( 6 )
+expand locationmac ( 7 )
+expand locationmac ( 8 )
+
+if locorders then
+        order mainframefc goto mainframe inmode attack
+
+
+if location_init then
+        random
+                triggerdelay 3000 location1,
+                triggerdelay 3000 location2,
+                triggerdelay 3000 location3,
+                triggerdelay 3000 location4,
+                triggerdelay 3000 location5,
+                triggerdelay 3000 location6,
+                triggerdelay 3000 location7,
+                triggerdelay 3000 location8
+
+
+if comporders then
+        order comp1 goto mainframefc inmode attack,
+        order comp2 goto mainframefc inmode attack,
+        order comp3 goto mainframefc inmode attack,
+        order comp4 goto mainframefc inmode attack
+
+if hit fcp01 testvar fcp01variable = 0 then
+        setvar fcp01variable 1
+
+if labpatrol then
+        setfacing fcguard1 128,
+        setfacing fcguard2 128,
+        triggerdelay 8000 fcp01order1
+
+if fcp01order1 butnot fcp01death testvar fcp01variable = 0 then
+        order fcp01 goto (543,415) inmode defend,
+        triggerdelay 7000 fcp01facing1,
+        triggerdelay 8000 fcp01order2
+if fcp01facing1 then
+        setfacing fcp01 230
+
+if fcp01order2 butnot fcp01death testvar fcp01variable = 0 then
+        order fcp01 goto (850,635) inmode defend,
+        triggerdelay 7000 fcp02facing01_2,
+        triggerdelay 7500 fcp02facing02_2,
+        triggerdelay 8500 fcp02facing03_2,
+        triggerdelay 9000 fcp01order3
+if fcp02facing01_2 then
+        setfacing fcp01 192
+if fcp02facing02_2 then
+        setfacing fcp01 225
+if fcp02facing01_2 then
+        setfacing fcp01 192
+
+if fcp01order3 butnot fcp01death testvar fcp01variable = 0 then
+        order fcp01 goto (1188,523) inmode defend,
+        triggerdelay 7000 fcp03facing01_3,
+        triggerdelay 8000 fcp03facing02_3,
+        triggerdelay 9500 fcp03facing03_3,
+        triggerdelay 10000 fcp03facing04_3,
+        triggerdelay 10500 fcp01order4
+if fcp03facing01_3 then
+        setfacing fcp01 200
+if fcp03facing02_3 then
+        setfacing fcp01 182
+if fcp03facing03_3 then
+        setfacing fcp01 148
+if fcp03facing04_3 then
+        setfacing fcp01 192
+
+if fcp01order4 butnot fcp01death testvar fcp01variable = 0 then
+        order fcp01 goto (1526,379) inmode defend,
+        triggerdelay 7000 fcp01facing01_4,
+        triggerdelay 7500 fcp01facing02_4,
+        triggerdelay 8000 fcp01facing03_4,
+        triggerdelay 9000 fcp01facing04_4,
+        triggerdelay 9500 fcp01order5
+if fcp01facing01_4 then
+        setfacing fcp01 200
+if fcp01facing02_4 then
+        setfacing fcp01 0
+if fcp01facing03_4 then
+        setfacing fcp01 14
+if fcp01facing04_4 then
+        setfacing fcp01 0
+
+if fcp01order5 butnot fcp01death testvar fcp01variable = 0 then
+        order fcp01 goto (1154,671) inmode defend,
+        triggerdelay 7000 fcp01facing01_5,
+        triggerdelay 8000 fcp01facing02_5,
+        triggerdelay 9000 fcp01facing03_5,
+        triggerdelay 10000 fcp01order6
+if fcp01facing01_5 then
+        setfacing fcp01 14
+if fcp01facing02_5 then
+        setfacing fcp01 0
+if fcp01facing03_5 then
+        setfacing fcp01 230
+
+if fcp01order6 butnot fcp01death testvar fcp01variable = 0 then
+        order fcp01 goto (858,879) inmode defend,
+        triggerdelay 6000 fcp01facing01_6,
+        triggerdelay 7000 fcp01facing02_6,
+        triggerdelay 8000 fcp01facing03_6,
+        triggerdelay 8500 fcp01order7
+if fcp01facing01_6 then
+        setfacing fcp01 192
+if fcp01facing02_6 then
+        setfacing fcp01 158
+if fcp01facing03_6 then
+        setfacing fcp01 128
+
+if fcp01order7 butnot fcp01death testvar fcp01variable = 0 then
+        order fcp01 goto (503,1000) inmode defend,
+        triggerdelay 6000 fcp01facing01_7,
+        triggerdelay 7000 fcp01facing02_7,
+        triggerdelay 8000 fcp01facing03_7,
+        triggerdelay 9000 fcp01order8
+if fcp01facing01_7 then
+        setfacing fcp01 128
+if fcp01facing02_7 then
+        setfacing fcp01 158
+if fcp01facing03_7 then
+        setfacing fcp01 192
+
+if fcp01order8 butnot fcp01death testvar fcp01variable = 0 then
+        order fcp01 goto (236,792) inmode defend,
+        triggerdelay 6000 fcp01facing8,
+        triggerdelay 8000 fcp01order1
+if fcp01facing8 then
+        setfacing fcp01 182
+
+if killed fcp01 then
+        trigger fcp01death
+
+
+
+
+
+//**Object Setup**//
+
+//**Computer Action**//
+
+if startmainframe then
+        setobjstate mainframe mainframe_on
+
+if killed mainframe then
+        setobjstate mainframe mainframe_initial,
+        createexplosion mainframe 136 10 blue,
+        makesmoke mainframe 10000,
+        trigger destroyedthecomp
+
+object Mainframe
+	state mainframe_initial
+                frame 50 1
+
+        state mainframe_on
+                frame 100 0
+                frame 100 3
+                frame 100 4
+                frame 100 5
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                setobjstate mainframe mainframe_on
+
+if hit mainframe by tan then
+        heal mainframe 100
+
+object labbolt
+        state labboltactive
+                frame 80 0
+                frame 70 1
+                frame 80 2
+                frame 80 3
+                frame 70 1
+                frame 50 2
+                frame 70 3
+                frame 60 0
+                frame 80 1
+                frame 70 3
+                frame 70 2
+                frame 80 1
+                triggerdelay 80 reloopelabbolt
+
+        state labbolt_toast
+                frame 10 0
+
+if reloopelabbolt butnot labtoast then
+        trigger labboltSFX,
+        setobjstate labbolt labboltactive
+
+if killed labbuilding then
+        trigger labtoast,
+        setobjstate labbolt labbolt_toast,
+        undeploy labbolt,
+        playsound "" 15 3 1 20,
+        undeploy labbolt
+
+if labboltSFX butnot oneboltSFX then
+        playitemsound "ElectricArc3.wav" labbolt 15 3 1,
+        trigger oneboltSFX
+
+
+//**Gen systems**//
+macro generator 1
+{
+
+variable gen@1killed 0
+
+if reloopgen@1 testvar gen@1killed = 0 then
+        setobjstate gen0@1 gen@1_active
+
+object gen0@1
+        state gen@1_active
+                frame 200 3
+                frame 200 2
+                frame 200 0
+                frame 200 2
+                triggerdelay 200 reloopgen@1
+
+        state gen@1_damstate
+                frame 10 1
+
+if hit gen0@1 testvar gethealth gen0@1 <= 20 and gen@1killed = 0 then
+        trigger irregular_bolt@1,
+        trigger gen@1_secondST,
+        setobjstate bolt0@1 gen@1_boltirregular
+
+
+if killed gen0@1 then
+        setvar gen@1killed 1,
+        createexplosion gen0@1 130 1 blue,
+        makesmoke gen0@1 10000,
+        setobjstate bolt0@1 bolt@1_off,
+        trigger offsound@1,
+        undeploy bolt0@1,
+        setobjstate gen0@1 gen@1_damstate
+        //setobjstate gen0@1 gen@1_toast
+
+        //state gen@1_toast
+                //frame 10 1
+
+if offsound@1 then
+        playsound "" bolt0@1 2 3 10
+
+object bolt0@1
+        state boltactive@1
+                frame 100 0
+                frame 100 1
+                frame 100 2
+                frame 100 3
+                frame 100 1
+                frame 100 3
+                frame 100 2
+                frame 100 1
+                frame 100 0
+                trigger reloopbolt@1
+
+        state gen@1_boltirregular
+                frame 100 1
+                frame 100 3
+                frame 200 4
+                frame 100 1
+                frame 200 4
+                frame 100 0
+                frame 100 2
+                frame 100 3
+                frame 200 4
+                frame 100 0
+                setobjstate bolt0@1 gen@1_boltirregular
+
+        state bolt@1_off
+                frame 10 4
+
+if reloopbolt@1 butnot irregular_bolt@1 then
+                setobjstate bolt0@1 boltactive@1
+
+if playsound@1 butnot onesound@1 then
+                playsound "ElectricArc2.wav" bolt0@1 2 3 1 10,
+                addsoundorigin "ElectricArc2.wav" bolt0@1 2 10,
+                trigger onesound@1
+
+}
+
+expand generator ( 1 )
+expand generator ( 2 )
+expand generator ( 3 )
+
+        //**Animated Crates**//
+
+if activatecrates then
+        triggerdelay 200 startanimScrate,
+        triggerdelay 400 startanimlcrate,
+        triggerdelay 600 startanimcasket1,
+        triggerdelay 800 startanimcasket2
+
+
+macro smallcrate 1
+{
+
+variable smcratetoast@1 0
+
+if startanimScrate then
+        setobjstate smcrate@1 smcrate_active@1
+
+object smcrate@1
+
+        state smcrate_init@1
+                frame 10 0
+
+        state smcrate_active@1
+                frame 200 3
+                frame 200 2
+                frame 200 0
+                frame 200 2
+                triggerdelay 200 reloopsmcrt@1
+
+	state smcrate_toast@1
+                frame 5 1
+
+
+if reloopsmcrt@1 testvar smcratetoast@1 = 0 then
+        setobjstate smcrate@1 smcrate_active@1
+
+if killed smcrate@1 then
+        setvar smcratetoast@1 1,
+        setobjstate smcrate@1 smcrate_toast@1
+
+}
+
+expand smallcrate ( 1 )
+expand smallcrate ( 2 )
+expand smallcrate ( 3 )
+expand smallcrate ( 4 )
+expand smallcrate ( 5 )
+expand smallcrate ( 6 )
+expand smallcrate ( 7 )
+expand smallcrate ( 8 )
+expand smallcrate ( 9 )
+expand smallcrate ( 10 )
+expand smallcrate ( 11 )
+
+if killed smcrate4 then
+        createpowerup "med01" medpack smcrate4 4
+
+if killed smcrate5 then
+        createpowerup "" wrench smcrate5 1
+
+if killed smcrate6 then
+        createpowerup "" explosive smcrate6 8
+
+if killed smcrate7 then
+        createpowerup "flat01" Flak smcrate7 80
+
+if killed smcrate8 then
+        createpowerup "" medpack smcrate8 3
+
+if killed smcrate9 then
+        createpowerup "" medpack smcrate9 2
+
+if killed smcrate10 then
+        createpowerup "" heavymg smcrate10
+
+
+macro largcrate 1
+{
+
+variable lgcratetoast@1 0
+
+if startanimlcrate then
+        setobjstate lgcrate@1 lgcrate_active@1
+
+object lgcrate@1
+
+        state lgcrate_init@1
+                frame 10 0
+
+        state lgcrate_active@1
+                frame 200 3
+                frame 200 2
+                frame 200 0
+                frame 200 2
+                triggerdelay 200 relooplgcrt@1
+
+        state lgcrate_toast@1
+                frame 5 1
+
+if relooplgcrt@1 testvar lgcratetoast@1 = 0 then
+        setobjstate lgcrate@1 lgcrate_active@1
+
+if killed lgcrate@1 then
+        setvar lgcratetoast@1 1,
+        setobjstate lgcrate@1 lgcrate_toast@1
+}
+expand largcrate ( 1 )
+expand largcrate ( 2 )
+expand largcrate ( 3 )
+expand largcrate ( 4 )
+expand largcrate ( 5 )
+
+macro horizcasket 1
+{
+
+variable hcaskettoast@1 0
+
+if startanimcasket1 then
+        setobjstate hcasket@1 hcasket_active@1
+
+object hcasket@1
+
+        state hcasket_init@1
+                frame 10 0
+
+        state hcasket_active@1
+                frame 200 3
+                frame 200 2
+                frame 200 0
+                frame 200 2
+                triggerdelay 200 reloophckt@1
+
+        state hcasket_toast@1
+                frame 5 1
+
+if reloophckt@1 testvar hcaskettoast@1 = 0 then
+        setobjstate hcasket@1 hcasket_active@1
+
+if killed hcasket@1 then
+        setvar hcaskettoast@1 1,
+        setobjstate hcasket@1 hcasket_toast@1
+}
+expand horizcasket ( 1 )
+expand horizcasket ( 2 )
+
+macro verticcasket 1
+{
+
+variable vcaskettoast@1 0
+
+if startanimcasket2 then
+        setobjstate vcasket@1 vcasket_active@1
+
+object vcasket@1
+
+        state vcasket_init@1
+                frame 10 0
+
+        state vcasket_active@1
+                frame 200 3
+                frame 200 2
+                frame 200 0
+                frame 200 2
+                triggerdelay 200 reloopvckt@1
+
+        state vcasket_toast@1
+                frame 5 1
+
+if reloopvckt@1 testvar vcaskettoast@1 = 0 then
+        setobjstate vcasket@1 vcasket_active@1
+
+if killed vcasket@1 then
+        setvar vcaskettoast@1 1,
+        setobjstate vcasket@1 vcasket_toast@1
+}
+expand verticcasket ( 1 )
+expand verticcasket ( 2 )
+
+
+
+//**Saucer Action**//
+
+object leftdoorlight
+        state leftdoorlight_initial
+                frame 100 1
+                trigger resetLDLight
+
+        state leftdoorlight_active
+                frame 200 0
+                frame 70 1
+                triggerdelay 100 resetback03
+
+if resetLDLight then
+        setobjstate leftdoorlight leftdoorlight_active
+
+object rightdoorlight
+        state rightdoorlight_initial
+                frame 100 1
+
+        state rightdoorlight_active
+                frame 200 0
+                frame 70 1
+                triggerdelay 100 resetLDLight
+
+if resetRDLight then
+        setobjstate rightdoorlight rightdoorlight_active
+
+
+object backlight01
+        state Back01_initial
+                frame 100 1
+
+        state Back01_active
+                frame 200 0
+                frame 70 1
+                triggerdelay 100 resetRDLight
+
+if resetback01 then
+        trigger playsaucerSFX,
+        setobjstate backlight01 Back01_active
+
+object backlight03
+        state back03_initial
+                frame 100 1
+
+        state Back03_active
+                frame 200 0
+                frame 70 1
+                triggerdelay 100 resetback02
+
+if resetback03 then
+        setobjstate backlight03 Back03_active
+
+object backlight02
+        state Back02_inital
+                frame 200 1
+
+        state Back02_active
+                frame 200 0
+                frame 70 1
+                triggerdelay 100 resetback01
+
+if resetback02 then
+        setobjstate backlight02 Back02_active
+
+
+if playsaucerSFX butnot onesaucer then
+        playsound "UFOambient.wav" saucership 3 2 1 30,
+        trigger onesaucer
+
+

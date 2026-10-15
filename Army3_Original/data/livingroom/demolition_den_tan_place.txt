@@ -1,0 +1,13 @@
+#cmd	type		x	y	facing	group	name
+
+place	jeep        	738	349	128	1	-
+place	truck       	889	331	128	1	-
+place	truck       	1047	331	128	1	-
+place	paralyzer   	828	253	128	1	-
+place	paralyzer   	965	257	128	1	-
+place	stunner     	941	302	128	1	-
+place	stunner     	845	301	128	1	-
+place	stunner     	894	233	128	1	-
+place	truck       	893	361	128	1	-
+place	truck       	1066	358	128	1	-
+place	halftrack   	717	354	128	1	-

@@ -1,0 +1,11 @@
+#cmd	type		x	y	facing	group	name
+
+place	spider      	330	3521	220	1	-
+place	spider      	360	3540	220	1	-
+place	spider      	383	3567	220	1	-
+place	spider      	420	3588	220	1	-
+place	spider      	305	3544	220	1	-
+place	spider      	332	3570	220	1	-
+place	spider      	367	3598	220	1	-
+place	spider      	404	3622	220	1	-
+place	commander   	280	3617	220	1	-

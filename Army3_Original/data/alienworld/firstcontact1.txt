@@ -1,0 +1,130 @@
+//**PADS**//
+pad lside1          20       noone > 0
+pad lside2          21       noone > 0
+pad lside3          22       noone > 0
+pad lside4          23       noone > 0
+pad lside5          24       noone > 0
+pad lside6          25       noone > 0
+
+pad rside1	    30	     noone > 0
+pad rside2	    31	     noone > 0
+pad rside3	    32	     noone > 0
+pad rside4	    33	     noone > 0
+pad rside5	    34	     noone > 0
+pad rside6	    36	     noone > 0
+
+pad initramp	    100	     tan trooper > 0
+
+//Plant Life//
+pad plantstart	    101	     green trooper > 0
+
+
+
+if startup1 then
+	triggerdelay 1000 showmiss,
+	triggerdelay 6000 startalien,
+	triggerdelay 50000 startorders,
+	setmaxhealth greensarge1 200,
+	heal greensarge1 100
+	
+if showmiss then
+showpda "Welcome to this Alien World! v.05. Defend this plateau!"
+
+if startorders then
+	order tantemp1 goto greensarge1,
+	order tantemp2 goto greensarge1,
+	order tantemp3 goto greensarge1,
+	order tantemp4 goto greensarge1,
+	order tantemp5 goto greensarge1
+
+if startalien then
+	Createunit "Alien1" humanoid lside1 tan lightlaser,
+	Createunit "Alien2" humanoid lside2 tan lightlaser,
+	Createunit "Alien3" humanoid lside3 tan lightlaser,
+	Createunit "Alien4" humanoid lside4 tan lightlaser,
+	Createunit "Alien5" humanoid lside5 tan lightlaser,
+	Createunit "Alien6" humanoid lside6 tan lightlaser,
+	trigger orderssetup,
+	triggerdelay 3000 alienorders
+	
+if orderssetup then
+	setforcecolor alien1 red,
+	setforcecolor alien2 red,
+	setforcecolor alien3 red,
+	setforcecolor alien4 red,
+	setforcecolor alien5 red,
+	setforcecolor alien6 red
+
+if alienorders then
+	order alien1 goto initramp,
+	order alien2 goto initramp,
+	order alien3 goto initramp,
+	order alien4 goto initramp,
+	order alien5 goto initramp,
+	order alien6 goto initramp
+
+if padon initramp then
+	order alien1 follow greensarge1 inmode attack,
+ 	order alien2 follow greensarge1 inmode attack,
+	order alien3 follow greensarge1 inmode attack,
+	order alien4 follow greensarge1 inmode attack,
+	order alien5 follow greensarge1 inmode attack,
+	order alien6 follow greensarge1 inmode attack
+					
+if killed greensarge1 then
+	showpda "Loooooooser!...",
+	triggerdelay 2000 tanwins
+
+if allof killed alien1 killed alien2 killed alien3 killed alien4 killed alien5 killed alien6
+killed tantemp1 killed tantemp2 killed tantemp3 killed tantemp4 killed tantemp5 then
+	Createunit "Alien10" humanoid rside1 tan lightlaser,
+	Createunit "Alien11" humanoid rside2 tan lightlaser,
+	Createunit "Alien12" humanoid rside3 tan lightlaser,
+	Createunit "Alien13" humanoid rside4 tan lightlaser,
+	Createunit "Alien14" humanoid rside5 tan lightlaser,
+	Createunit "Alien15" humanoid rside6 tan lightlaser,
+	triggerdelay 500 orderssetup2
+
+if orderssetup2 then
+	setforcecolor alien10 red,
+	setforcecolor alien11 red,
+	setforcecolor alien12 red,
+	setforcecolor alien13 red,
+	setforcecolor alien14 red,
+	setforcecolor alien15 red,
+	triggerdelay 500 orders2
+	
+if orders2 then
+	order alien10 follow greensarge1 inmode attack,
+ 	order alien11 follow greensarge1 inmode attack,
+	order alien12 follow greensarge1 inmode attack,
+	order alien13 follow greensarge1 inmode attack,
+	order alien14 follow greensarge1 inmode attack,
+	order alien15 follow greensarge1 inmode attack
+
+if allof killed alien10 killed alien11 killed alien12 killed alien13 killed alien14 killed alien15 then
+	showpda "Nice work! You Win!",
+	triggerdelay 1500 greenwins
+
+if padon plantstart butnot deadplant then 
+	setobjstate plantlife plant_alerted
+
+object plantlife
+	state plant_initial
+		frame 100 0
+	
+	state plant_alerted
+		frame 200 2
+		frame 500 3
+		triggerdelay 800 reinitplant
+
+if reinitplant then
+		setobjstate plantlife plant_initial
+
+if killed plantlife then
+	trigger deadplant
+
+if hit plantlife then
+	setobjstate plantlife plant_alerted
+
+	

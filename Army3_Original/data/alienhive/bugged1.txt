@@ -1,0 +1,1239 @@
+//**pre loaded sprites**//
+preloadsprite 37 101 0
+preloadsprite 37 101 2
+preloadsprite 37 101 3
+
+preloadsprite 37 102 0
+preloadsprite 37 102 2
+preloadsprite 37 102 3
+
+preloadsprite 37 103 0
+preloadsprite 37 103 2
+preloadsprite 37 103 3
+
+preloadsprite 43 105 0
+preloadsprite 43 105 1
+preloadsprite 43 105 2
+preloadsprite 43 105 3
+preloadsprite 43 105 4
+
+preloadsprite 43 106 0
+preloadsprite 43 106 1
+preloadsprite 43 106 2
+preloadsprite 43 106 3
+preloadsprite 43 106 4
+
+preloadsprite 43 107 0
+preloadsprite 43 107 1
+preloadsprite 43 107 2
+preloadsprite 43 107 3
+preloadsprite 43 107 4
+
+preloadsprite 26 401 0
+preloadsprite 26 401 1
+preloadsprite 26 401 2
+
+preloadsprite 43 110 0
+preloadsprite 43 110 2
+preloadsprite 43 110 3
+
+preloadsprite 43 111 0
+preloadsprite 43 111 2
+preloadsprite 43 111 3
+
+preloadsprite 43 112 0
+preloadsprite 43 112 2
+preloadsprite 43 112 3
+
+preloadsprite 43 113 0
+preloadsprite 43 113 2
+preloadsprite 43 113 3
+preloadsprite 43 100 0
+preloadsprite 43 100 1
+preloadsprite 43 100 3
+preloadsprite 43 100 4
+preloadsprite 43 100 5
+preloadsprite 43 100 6
+preloadsprite 43 100 7
+preloadsprite 43 100 8
+preloadsprite 43 100 9
+preloadsprite 43 100 0
+
+
+
+//**Pads**//
+
+PAD bossactivation			200     green trooper > 0
+pad aimodessecseg                       240     green trooper > 0
+
+variable overlordisdead 1
+
+variable miteskilled 0
+
+variable bossinmotion 0
+
+variable bossresscore 0
+
+variable mitetobossscore 0
+
+variable gamewin 0
+
+variable sargekilled 0
+
+//**Startup**//
+
+if startup1 then
+        triggerdelay 500 shiwmisspda,
+        triggerdelay 100 preventplayermove,
+        triggerdelay 700 deployenemies,
+        triggerdelay 800 glowcolumns,
+        triggerdelay 800 techglow,
+        triggerdelay 800 startmainframe,
+        triggerdelay 800 startanimScrate,
+        triggerdelay 800 startanimcasket1,
+        triggerdelay 800 startanimlcrate,
+        triggerdelay 1000 opencasket
+
+
+//**Win Condition**//
+
+if killed overlord testvar sargekilled = 0 and miteskilled = 8 and
+overlordisdead = 0 then
+        trigger lookslikeawinner
+
+if lookslikeawinner butnot lookslikeawinnerX then
+	trigger lookslikeawinnerX
+if lookslikeawinnerX then 	
+       	playsound "Sarge_deadOverlord.wav" 0 3,
+        triggerdelay 1100 greenwins,
+        triggerdelay 1000 showmisswin,
+        setvar gamewin 1
+
+if showmisswin then
+        showpda "The Alien menace is no more. You win!"
+
+
+
+//if killed mite1 then
+        //addvar miteskilled 1
+//if killed mite2 then
+        //addvar miteskilled 1
+//if killed mite3 then
+        //addvar miteskilled 1
+//if killed mite4 then
+        //addvar miteskilled 1
+//if killed mite5 then
+        //addvar miteskilled 1
+//if killed mite6 then
+        //addvar miteskilled 1
+//if killed mite7 then
+        //addvar miteskilled 1
+//if killed mite8 then
+        //addvar miteskilled 1
+
+
+//**Lose Condition**//
+
+if killed greensarge1 then
+        setuilock 1,
+        setcamerafocus greensarge1,
+        playsound "AlienLaugh.wav" 0 3,
+        triggerdelay 3000 tanwins,
+        triggerdelay 1000 showloser,
+        setvar sargekilled 1
+
+if showloser then
+        showfailure "Sarge was killed by the Aliens! Mission failed."
+
+//**Game Setup**//
+
+if shiwmisspda then
+        playsound "AlienHive.wav" 6 3 1,
+        triggerdelay 1000 playhq,
+        triggerdelay 4000 playopenvo
+
+if playhq then
+        playsound "SpaceHQ_ShowAliens_t.wav" 10 2
+
+if playopenvo then
+        playsound "Sarge11_01.wav" greensarge1 0 3
+
+
+if preventplayermove then
+        setnpc greensarge1 1,
+        //setaimode greensarge1 ignore,
+        setnpc Fruinator 1,
+        //setaimode Fruinator ignore,
+        setnpc Warhead 1,
+        //setaimode Warhead ignore,
+        setnpc Wildone 1,
+        //setaimode Wildone ignore,
+        setnpc Plastic_Fire 1,
+        //setaimode Plastic_Fire ignore,
+        setnpc Armor 1,
+       // setaimode Armor ignore,
+        createunit "Tina_Tomorrow" spacewomanp (1027,3828) green freezelaser,
+        createunit "Head_Space" spacewomanp (1069,3835) green freezelaser,
+        createunit "Golacticus" spacewomanp (986,3835) green freezelaser,
+        createunit "Blueeye" spacemang (1027,3876) green lasergatling,
+        createunit "Venom" spacemang (984,3876) green lasergatling,
+        createunit "Icejpeg" spacemang (1069,3876) green lasergatling,
+        setnpc Tina_Tomorrow 1,
+        //setaimode Tina_Tomorrow ignore,
+        setnpc Head_Space 1,
+        //setaimode Head_Space ignore,
+        setnpc Golacticus 1,
+        //setaimode Golacticus ignore,
+        setnpc Blueeye 1,
+        //setaimode Blueeye ignore,
+        setnpc Venom 1,
+        //setaimode Venom ignore,
+        setnpc Icejpeg 1,
+        //setaimode Icejpeg ignore,
+        setsquadleader Tina_Tomorrow 2,
+        setunitgroup Head_Space 2,
+        setunitgroup Golacticus 2,
+        setunitgroup Blueeye 2,
+        setunitgroup Venom 2,
+
+        setunitgroup Icejpeg 2,
+        setunitgroup Blueeye 2,
+        
+        createunit "Niki_Nova" spacewomanp (566,3837) green freezelaser,
+        createunit "Kellie_Star" spacewomanm (563,3873) green freezemortar,
+        createunit "Antialias" spacemang (663,3873) green lasergatling,
+        createunit "Firepars" spacemanm (614,3873) green napalmmortar,
+        createunit "Burningsun" spacemang (654,3837) green lasergatling,
+        createunit "Ridlelin" spacemang (611,3826) green lasergatling,
+
+        setnpc Niki_Nova 1,
+       // setaimode Niki_Nova ignore,
+        setnpc Kellie_Star 1,
+        setaimode Kellie_Star ignore,
+        setnpc AntiAlias 1,
+       // setaimode Antialias ignore,
+        setnpc Firepars 1,
+        setaimode Firepars ignore,
+        setnpc Burningsun 1,
+       // setaimode Burningsun ignore,
+        setnpc Ridlelin 1,
+       // setaimode Ridlelin ignore,
+        setsquadleader Ridlelin 3,
+        setunitgroup Niki_Nova 3,
+        setunitgroup Kellie_Star 3,
+        setunitgroup Antialias 3,
+        setunitgroup Firepars 3,
+        setunitgroup Burningsun 3,
+        setmaxhealth Tina_Tomorrow 400,
+        heal Tina_Tomorrow 100
+
+
+if giveplayercontrol then
+        setnpc greensarge1 0,
+        setnpc Fruinator 0,
+        setnpc Warhead 0,
+        setnpc Wildone 0,
+        setnpc Plastic_Fire 0,
+        setnpc Armor 0,
+        setnpc Tina_Tomorrow 0,
+        setnpc Head_Space 0,
+        setnpc Golacticus 0,
+        setnpc Blueeye 0,
+        setnpc Venom 0,
+        setnpc Chan_Icejpeg 0,
+        setnpc Niki_Nova 0,
+        setnpc Kellie_Star 0,
+        setnpc Antialias 0,
+        setnpc Firepars 0,
+        setnpc Burningsun 0,
+        setnpc Ridlelin 0,
+        setnpc Icejpeg 0
+
+//**Enemy Deployment**//
+
+if deployenemies then
+        createunit "crony1" humanoid (652,3447) tan mediumlaser 2,
+        createunit "crony2" humanoid (529,3447) tan mediumlaser 2,
+        createunit "crony3" humanoid (1095,3447) tan mediumlaser 2,
+        createunit "crony4" humanoid (970,3447) tan mediumlaser 2,
+        createunit "fc1" fieldcommander (826,3315) tan heavylaser 2,
+        createunit "crony5" humanoid (1234,2707) tan mediumlaser 3,
+        createunit "crony6" humanoid (1146,2707) tan mediumlaser 3,
+        setfacing crony5 128,
+        setfacing crony6 128,
+        createunit "crony7" humanoid (829,2707) tan mediumlaser 3,
+        createunit "crony8" humanoid (734,2707) tan mediumlaser 3,
+        createunit "crony9" humanoid (418,2707) tan mediumlaser 3,
+        createunit "crony10" humanoid (329,2707) tan mediumlaser 3,
+        setfacing crony7 128,
+        setfacing crony8 128,
+        setfacing crony9 128,
+        setfacing crony10 128,
+        createunit "crony11" humanoid (344,3635) tan mediumlaser 2,
+        createunit "crony12" humanoid (255,3635) tan mediumlaser 2,
+        createunit "crony13" humanoid (1286,3635) tan mediumlaser 2,
+        createunit "crony14" humanoid (1378,3635) tan mediumlaser 2,
+        createunit "crony15" humanoid (1238,3164) tan mediumlaser 2,
+        createunit "crony16" humanoid (1238,3229) tan mediumlaser 2,
+        setfacing crony15 64,
+        setfacing crony16 64,
+        setaimode crony15 standfire,
+        setaimode crony16 standfire,
+        createunit "crony17" humanoid (348,3138) tan mediumlaser 2,
+        createunit "crony18" humanoid (348,3204) tan mediumlaser 2,
+        setfacing crony17 192,
+        setfacing crony18 192,
+        setaimode crony17 standfire,
+        setaimode crony18 standfire,
+        createunit "crony19" eyeball (823,2784) tan plasmacannon 3,
+        triggerdelay 1000 bossdef,
+        trigger groupcronys,
+        trigger 19orders
+
+if groupcronys then
+        setunitgroup crony1 1,
+        setunitgroup crony2 1,
+        setunitgroup crony3 1,
+        setunitgroup crony4 1,
+        setunitgroup crony5 1,
+        setunitgroup crony6 1,
+	setunitgroup crony7 1,
+        setunitgroup crony8 1,
+        setunitgroup crony9 1,
+	setunitgroup crony10 1,
+        setunitgroup crony11 1,
+        setunitgroup crony12 1,
+	setunitgroup crony13 1,
+        setunitgroup crony14 1,
+        setunitgroup crony15 1,
+	setunitgroup crony16 1,
+        setunitgroup crony17 1,
+        setunitgroup crony18 1,
+        setunitgroup crony19 1
+
+if hit crony19 butnot one19hit then
+        order crony17 follow greensarge1 inmode attack,
+        order crony18 follow greensarge1 inmode attack,
+        order crony15 follow greensarge1 inmode attack,
+        order crony16 follow greensarge1 inmode attack,
+        trigger one19hit
+
+if hit fc1 butnot onefc1hit then
+        order crony4 follow greensarge1 inmode attack,
+        order crony3 follow greensarge1 inmode attack,
+        order crony2 follow greensarge1 inmode attack,
+        order crony1 follow greensarge1 inmode attack,
+        Triggerdelay 10000 fc1orders,
+        trigger onefc1hit
+
+if fc1orders then
+        order fc1 follow greensarge1 inmode attack
+
+
+if bossdef then
+        createunit "bosscrony1" eyeball (542,2236) tan deathray 2,
+        createunit "bosscrony2" eyeball (1108,2228) tan deathray 2,
+        createunit "bosscrony3" eyeball (819,2348) tan deathray 2,
+        setfacing bosscrony1 128,
+        setfacing bosscrony2 128,
+        setfacing bosscrony3 128,
+        setaimode bosscrony1 ignore,
+        setaimode bosscrony2 ignore,
+        setaimode bosscrony3 ignore,
+        triggerdelay 500 makebossunits
+
+if makebossunits then
+        createunit "bosscrony4" humanoid (624,1200) tan heavylaser 3,
+        createunit "bosscrony5" humanoid (956,1200) tan heavylaser 3,
+        createunit "bosscrony6" humanoid (956,934) tan heavylaser 3,
+        createunit "bosscrony7" humanoid (641,934) tan heavylaser 3,
+        //createunit "bosscrony8" humanoid (624,1200) tan heavylaser 3,
+        setfacing bosscrony4 84,
+        setfacing bosscrony5 148,
+        setfacing bosscrony6 200,
+        setfacing bosscrony7 24,
+        setaimode bosscrony4 ignore,
+        setaimode bosscrony5 ignore,
+        setaimode bosscrony6 ignore,
+        setaimode bosscrony7 ignore,
+        //setaimode bosscrony8 ignore,
+        //setfacing bosscrony8 84
+        triggerdelay 500 makepatrollers
+
+if makepatrollers then
+        createunit "bosspatroler1" humanoid (192,2602) tan heavylaser 2,
+        createunit "bosspatroler2" humanoid (1366,2602) tan heavylaser 2,
+        setaimode bosspatroler1 ignore,
+        setaimode bosspatroler2 ignore,
+        trigger groupbossunits,
+        triggerdelay 500 orders
+
+if groupbossunits then
+        setunitgroup bosscrony1 2,
+        setunitgroup bosscrony2 2,
+        setunitgroup bosscrony3 2,
+        setunitgroup bosscrony4 3,
+        setunitgroup bosscrony5 3,
+        setunitgroup bosscrony6 3,
+        setunitgroup bosscrony7 3,
+        setunitgroup bosscrony8 3,
+        setunitgroup bosspatroler1 4,
+        setunitgroup bosspatroler2 4
+
+//**Boss Setup**//
+
+if orders then
+        triggerdelay 10000 fc1order1,
+        triggerdelay 10000 fc2order1
+
+if fc1order1 then
+        order bosspatroler1 goto (801,2602),
+        triggerdelay 10000 fc1order2
+
+if fc2order1 then
+        order bosspatroler2 goto (852,2602),
+        triggerdelay 10000 fc2order2
+
+if fc1order2 then
+        order bosspatroler1 goto (192,2602),
+        triggerdelay 10000 fc1order1
+
+if fc2order2 then
+        order bosspatroler2 goto (1366,2602),
+        triggerdelay 10000 fc2order1
+
+if padon aimodessecseg butnot onseg then
+        setaimode tan group 2 attack,
+        setaimode tan group 3 defend,
+        setaimode tan group 4 attack,
+        trigger onseg
+
+
+
+if padon bossactivation testvar bossinmotion = 0 then
+        triggerdelay 30000 opendomes,
+        setvar bossinmotion 1
+
+if opendomes then
+        createunit "queenguard1" fieldcommander (800,738) tan heavylaser 2,
+        createunit "queenguard2" fieldcommander (1197,1081) tan heavylaser 2,
+        createunit "queenguard3" fieldcommander (793,1417) tan heavylaser 2,
+        createunit "queenguard4" fieldcommander (398,1090) tan heavylaser 2,
+        trigger opendomesmac
+
+if fcorders then
+        order queenguard1 follow greensarge1 inmode attack,
+        setaimode queenguard2 defend,
+        setfacing queenguard2 128,
+        order queenguard3 follow greensarge1 inmode attack,
+        setaimode queenguard4 defend,
+        setfacing queenguard4 128
+
+if allof killed queenguard1 killed queenguard3 then
+        order queenguard2 follow greensarge1 inmode attack,
+        order queenguard4 follow greensarge1 inmode attack,
+        triggerdelay 30000 freefc,
+        triggerdelay 40000 freeoverlord
+
+
+macro openfcdomes 1
+{
+
+if opendomesmac then
+setobjstate dome@1 fcdomesopen@1,
+        setobjstate dome@1 fcdomesopen@1,
+        setobjstate dome@1 fcdomesopen@1,
+        setobjstate dome@1 fcdomesopen@1,
+        playsound "AlienDomeOpen.wav" 15 3
+
+
+object dome@1
+                state dome_initial@1
+                frame 50 0
+
+        	state fcdomesopen@1
+                frame 100 1
+                frame 100 2
+                frame 100 3
+                frame 100 4
+		triggerdelay 500 fcorders
+
+                state fcdomeopen@1
+                frame 100 1
+                frame 100 2
+                frame 100 3
+                frame 100 4
+		triggerdelay 500 kingfc
+
+                state fcdomeclose@1
+                frame 100 4
+                frame 100 3
+                frame 100 2
+                frame 100 1
+                frame 100 0
+
+
+}
+
+expand openfcdomes ( 1 )
+expand openfcdomes ( 2 )
+expand openfcdomes ( 3 )
+expand openfcdomes ( 4 )
+
+
+
+//**Overlord segment**//
+
+if freefc then
+        playsound "AlienDomeOpen.wav" 13 1,
+        setobjstate dome1 fcdomeclose1,
+        triggerdelay 1500 makeking
+
+if makeking then
+        createunit "fcking" fieldcommander (794,1375) tan plasmacannon 3,
+        setaimode fcking ignore,
+        triggerdelay 2000 openkingdome
+
+if openkingdome then
+        setobjstate dome1 fcdomeopen1,
+        playsound "AlienDomeOpen.wav" 14 1
+
+if kingfc then
+        setaimode fcking attack,
+        order fcking follow greensarge1 inmode attack
+
+if freeoverlord then
+        createunit "Overlord" alienboss (794,1076) tan bossmortar,
+        setobjstate bossdome bossdome_open,
+        playsound "AlienDomeOpen.wav" bossdome 11 3 30
+
+object bossdome
+        state bossdome_initial
+                frame 100 00
+
+        state bossdome_open
+                frame 100 1
+                frame 100 2
+                frame 100 3
+                frame 100 4
+                setaimode overlord defend,
+                triggerdelay 2000 overlordSFX,
+                setfacing overlord 128
+
+if overlordSFX then
+        playsound "AlienLaugh.wav" Overlord 0 3 1 90,
+        triggerdelay 3000 shutup
+
+if shutup then
+        playsound "" overlord 0 3 90,
+        playsound "Sarge_Eatplastic.wav" 0 3
+
+//**Worms**//
+
+macro mitemac 1
+
+{
+if mitedomeactivation then
+        setobjstate mitedome@1 mitedome@1_open,
+        setobjstate mitedome@1 mitedome@1_open,
+        playsound "AlienDomeOpen.wav" 11 1
+
+
+object mitedome@1
+        state mitedome@1_initial
+                frame 100 00
+
+        state mitedome@1_open
+                frame 100 1
+                trigger domeSFX@1
+                frame 100 2
+                frame 100 3
+                frame 100 4
+               	trigger miteorders,
+                triggerdelay 7000 closedomes
+
+        state mitedome@1_close
+                frame 100 3
+                frame 100 2
+                frame 100 1
+                frame 100 0
+
+if domeSFX@1 then
+        playsound "AlienDomeOpen.wav" mitedome@1 13 3
+
+
+if closedomes then
+        setobjstate mitedome@1 mitedome@1_close,
+        playsound "AlienDomeClose.wav" mitedome@1 12 3
+
+}
+
+expand mitemac ( 1 )
+expand mitemac ( 2 )
+
+//**Overlord resurrection**//
+
+if mite_overlord testvar mitetobossscore > 2 then
+        setvar mitetobossscore 0,
+        setvar overlordisdead 1,
+        resurrect overlord overlord,
+        heal overlord 100,
+        setaimode mite1 attack,
+        setaimode mite2 attack,
+        setaimode mite3 attack,
+        setaimode mite4 attack,
+        setaimode mite5 attack,
+        setaimode mite6 attack,
+        setaimode mite7 attack,
+        setaimode mite8 attack
+
+if killed overlord testvar bossresscore = 0 then
+        createunit "mite1" alienworm (584,2122) tan wormspit,
+        createunit "mite2" alienworm (565,2126) tan wormspit,
+        createunit "mite3" alienworm (524,2125) tan wormspit,
+        createunit "mite4" alienworm (504,2119) tan wormspit,
+        createunit "mite5" alienworm (1069,2093) tan wormspit,
+        createunit "mite6" alienworm (1104,2093) tan wormspit,
+        createunit "mite7" alienworm (1139,2077) tan wormspit,
+        createunit "mite8" alienworm (1106,2110) tan wormspit,
+        setvar bossresscore 1,
+        setvar miteskilled 0,
+        setvar overlordisdead 0,
+        trigger mitedomeactivation
+
+
+if killed overlord testvar bossresscore = 1 then
+        //damage mite1 1000,
+        //damage mite2 1000,
+        //damage mite3 1000,
+        //damage mite4 1000,
+        //damage mite5 1000,
+        //damage mite6 1000,
+        //damage mite7 1000,
+        //damage mite8 1000,
+        resurrect mite1 (584,2122),
+        resurrect mite2 (565,2126),
+        resurrect mite3 (524,2125),
+        resurrect mite4 (504,2119),
+        resurrect mite5 (1069,2093),
+        resurrect mite6 (1104,2093),
+        resurrect mite7 (1139,2077),
+        resurrect mite8 (1106,2110),
+        //setvar bossresscore 0,
+        setvar miteskilled 0,
+        setvar overlordisdead 0,
+        trigger mitedomeactivation
+
+//**Worms**//
+
+if miteorders then
+        trigger Sargesound,
+        order mite1 goto overlord inmode ignore,
+        order mite2 goto overlord inmode ignore,
+        order mite3 goto overlord inmode ignore,
+        order mite4 goto overlord inmode ignore,
+        order mite5 goto overlord inmode ignore,
+        order mite6 goto overlord inmode ignore,
+        order mite7 goto overlord inmode ignore,
+        order mite8 goto overlord inmode ignore,
+        trigger testmitetravel
+
+if testmitetravel then
+        trigger showmitemess,
+        triggerdelay 2000 testmitetravel,
+        triggerdelay 6000 stopmitemess,
+        trigger ismite
+
+if showmitemess butnot stopmitemess then
+        showmessage "Larva!!!"
+
+
+if Sargesound butnot onessound then
+        playsound "Sarge_WhatNow2.wav" 8 2,
+        trigger onessound
+
+macro mitetest 1
+
+{
+
+if ismite testvar itemtoitemdistance mite@1 overlord < 48 then
+        trigger mite_overlord,
+        createexplosion overlord 132 1 tan,
+        damage mite@1 1000,
+        moveitem mite@1 (1,1),
+        addvar mitetobossscore 1
+
+if killed mite@1 then
+        triggerdelay 1000 addmitevar@1,
+        triggerdelay 2000 checkmitewin
+
+if addmitevar@1 then
+        addvar miteskilled 1
+
+if checkmitewin testvar sargekilled = 0 and miteskilled = 8 and
+overlordisdead = 0 then
+      trigger lookslikeawinner
+
+
+}
+expand mitetest ( 1 )
+expand mitetest ( 2 )
+expand mitetest ( 3 )
+expand mitetest ( 4 )
+expand mitetest ( 5 )
+expand mitetest ( 6 )
+expand mitetest ( 7 )
+expand mitetest ( 8 )
+
+// 1 = unit hit = ordercommand//
+
+macro cronykill 1
+
+{
+
+if killed crony@1 then
+        createunit "hits2pider@1" alienspider (346,1933) tan spiderbite,
+        createunit "hits5pider@1" alienspider (1229,1811) tan spiderbite,
+        triggerdelay 2000 spiderorders@1
+
+if spiderorders@1 then
+        order hits2pider@1 goto greensarge1 inmode attack,
+        order hits5pider@1 goto greensarge1 inmode attack
+}
+
+expand cronykill ( 1 )
+expand cronykill ( 2 )
+expand cronykill ( 3 )
+expand cronykill ( 4 )
+expand cronykill ( 5 )
+expand cronykill ( 6 )
+expand cronykill ( 7 )
+expand cronykill ( 8 )
+expand cronykill ( 9 )
+expand cronykill ( 10 )
+expand cronykill ( 11 )
+expand cronykill ( 12 )
+expand cronykill ( 13 )
+expand cronykill ( 14 )
+expand cronykill ( 15 )
+expand cronykill ( 16 )
+expand cronykill ( 17 )
+expand cronykill ( 18 )
+expand cronykill ( 19 )
+
+//**Patrols**//
+
+if 19orders then
+        order crony19 goto (1091,3072) inmode defend,
+        triggerdelay 10000 19orders2
+
+if 19orders2 then
+        order crony19 goto (903,3384) inmode defend,
+        triggerdelay 10000 19orders3
+
+if 19orders3 then
+        order crony19 goto (751,3384) inmode defend,
+        triggerdelay 10000 19orders4
+
+if 19orders4 then
+        order crony19 goto (584,3060) inmode defend,
+        triggerdelay 10000 19orders5
+
+if 19orders5 then
+        order crony19 goto (823,2784) inmode defend,
+        triggerdelay 10000 19orders
+
+
+
+
+
+
+macro openunitdomes 1
+{
+if opencasket then
+        setobjstate unitdome@1 unitdome_open@1,
+        setobjstate unitdome@1 unitdome_open@1,
+        setobjstate unitdome@1 unitdome_open@1,
+        playsound "AlienDomeOpen.wav" 14 1
+
+object unitdome@1
+        state unitdome_initial@1
+                frame 50 0
+
+        state unitdome_open@1
+                frame 100 1
+                frame 100 2
+                frame 100 3
+                frame 100 4
+                trigger giveplayercontrol
+}
+expand openunitdomes ( 1 )
+expand openunitdomes ( 2 )
+expand openunitdomes ( 3 )
+
+// @2 = pad deff @ 1 = object names//
+
+macro door 2
+{
+pad dooropen@1                         @2       trooper > 0
+
+variable dooropened@1 0
+variable doorkilled@1 0
+
+if padon dooropen@1 then
+        addvar dooropened@1 1,
+        trigger variabletest@1
+
+if variabletest@1 testvar dooropened@1 >= 1 and doorkilled@1 = 0 then
+        playsound "boiling.wav" 4 3 20,
+        addsoundorigin "boiling.wav" door@1 4 20,
+        setobjstate door@1 door_opening@1
+
+
+if padoff dooropen@1 then
+        addvar dooropened@1 -1,
+        trigger variabletestclose@1
+
+if variabletestclose@1 testvar dooropened@1 < 1 and doorkilled@1 = 0 then
+        trigger closethedoor@1
+
+if closethedoor@1 then
+        playsound "boiling.wav" 4 3 20,
+        addsoundorigin "boiling.wav" door@1 4 20,
+	setobjstate door@1 door_closeing@1
+
+object door@1
+        state door_initial@1
+                frame 50 00
+
+        state door_opening@1
+                frame 200 02
+                frame 200 03
+                frame 200 04
+
+        state door_closeing@1
+                frame 200 04
+                frame 200 03
+                frame 200 02
+                frame 200 00
+
+if killed door@1 testvar dooropened@1 = 0 then
+        setvar doorkilled@1 2
+
+}
+expand door ( 1  11 )
+expand door ( 2  12 )
+expand door ( 3  13 )
+expand door ( 4  14 )
+expand door ( 5  15 )
+expand door ( 6  16 )
+expand door ( 7  17 )
+
+
+macro columns 1
+{
+
+variable columnvar@1 0
+
+if glowcolumns then
+        setobjstate column@1 column@1_on
+
+
+        object column@1
+                state column@1_initial
+                        frame 10 02
+
+                state column@1_on
+                        frame 200 00
+                        frame 300 01
+                        frame 400 02
+                        frame 300 01
+                        trigger reloop@1_columns
+
+if reloop@1_columns testvar columnvar@1 = 0 then
+	setobjstate column@1 column@1_on
+
+}
+expand columns ( 1 )
+expand columns ( 2 )
+expand columns ( 3 )
+expand columns ( 4 )
+
+//**Gen systems**//
+
+macro bolts 1
+{
+
+object bolt0@1
+        state boltactive@1
+                frame 100 0
+                frame 100 1
+                frame 100 2
+                frame 100 3
+                frame 100 1
+                frame 100 3
+                frame 100 2
+                frame 100 1
+                frame 100 0
+                trigger reloopbolt@1
+
+        state gen@1_boltirregular
+                frame 100 1
+                frame 100 3
+                frame 200 4
+                frame 100 1
+                frame 200 4
+                frame 100 0
+                frame 100 2
+                frame 100 3
+                frame 200 4
+                frame 100 0
+                setobjstate bolt0@1 gen@1_boltirregular
+
+        state bolt@1_off
+                frame 10 4
+
+if reloopbolt@1 butnot irregular_bolt@1 then
+                trigger boltSFX@1,
+		setobjstate bolt0@1 boltactive@1
+
+if boltSFX@1 butnot boltSFXstop@1 then
+        playsound "ElectricArc3.wav" bolt0@1 1 3 1 10,
+        addsoundorigin "ElectricArc3.wav" bolt0@1 1 10,
+        trigger boltSFXstop@1
+
+}
+expand bolts ( 1 )
+expand bolts ( 2 )
+expand bolts ( 3 )
+expand bolts ( 4 )
+expand bolts ( 5 )
+
+macro generator 1
+{
+
+variable gen@1killed 0
+
+if reloopgen@1 testvar gen@1killed = 0 then
+        setobjstate gen0@1 gen@1_active
+
+object gen0@1
+        state gen@1_active
+                frame 200 3
+                frame 200 2
+                frame 200 0
+                frame 200 2
+                triggerdelay 200 reloopgen@1
+
+        state gen@1_damstate
+                frame 10 1
+
+if hit gen0@1 testvar gethealth gen0@1 <= 20 and gen@1killed = 0 then
+        trigger irregular_bolt@1,
+        trigger gen@1_secondST,
+        setobjstate bolt0@1 gen@1_boltirregular
+
+
+if killed gen0@1 then
+        setvar gen@1killed 1,
+        createexplosion gen0@1 130 1 blue,
+        makesmoke gen0@1 10000,
+        setobjstate bolt0@1 bolt@1_off,
+        playsound "" bolt0@1 1,
+        undeploy bolt0@1,
+        setobjstate gen0@1 gen@1_damstate
+        //setobjstate gen0@1 gen@1_toast
+
+        //state gen@1_toast
+                //frame 10 1
+
+}
+
+expand generator ( 1 )
+expand generator ( 2 )
+expand generator ( 3 )
+
+macro techs 2
+{
+
+pad techpad@1                           @2 trooper > 0
+
+variable techvar@1 0
+
+if techglow then
+        setobjstate tech@1 tech@1_active
+
+if padon techpad@1 testvar techvar@1 = 0 then
+        setdamagepad techpad@1 100 fire tan
+
+
+        object tech@1
+                state tech@1_initial
+                        frame 10 03
+
+                state tech@1_active
+                        frame 200 00
+                        frame 200 02
+                        frame 200 03
+                        frame 200 02
+                        trigger reloop@1_tech
+
+                state tech@1_toast
+                        frame 10 01
+
+if reloop@1_tech testvar techvar@1 = 0 then
+        setobjstate tech@1 tech@1_active
+
+if killed tech@1 then
+        createexplosion tech@1 138 150 blue,
+        makesmoke tech@1,
+	setvar techvar@1 1,
+	setobjstate tech@1 tech@1_toast,
+        trigger removebolts@1,
+        trigger changecolumn@1,
+        trigger tech@1damaged
+
+}
+expand techs ( 1 21 )
+expand techs ( 2 20 )
+
+
+//**Field Generators**//
+
+if removebolts1 then
+        undeploy bolt05,
+        playsound "" bolt05 1 3 10
+
+if removebolts2 then
+        undeploy bolt04,
+        playsound "" bolt05 1 3 10
+
+
+if changecolumn1 then
+        setobjstate column3 column3_initial,
+        setobjstate column4 column4_initial
+
+if changecolumn2 then
+        setobjstate column1 column1_initial,
+        setobjstate column2 column2_initial
+
+//if killed tech2 then
+	//setvar techvar2 1,
+	//setobjstate tech2 tech2_toast,
+        //undeploy bolt04,
+        //
+        //trigger tech1damaged
+
+//**Alien Computer**//
+
+variable mianframevar 0
+
+macro aliencomps 1
+{
+
+if startmainframe then
+        setobjstate mainframe@1 mainframe@1_on
+
+if killed mainframe@1 then
+        //setvar mianframevar 1,
+        createexplosion mainframe@1 138 150 blue,
+        makesmoke mainframe@1,
+	setobjstate mainframe@1 main@1_toast
+
+object Mainframe@1
+	state mainframe@1_initial
+                frame 50 0
+
+        state mainframe@1_on
+                frame 100 0
+                frame 100 3
+                frame 100 4
+                frame 100 5
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                frame 100 9
+                trigger reloopframe
+
+        state main@1_toast
+                frame 100 2
+
+if reloopframe testvar mianframevar = 0 then
+                setobjstate mainframe@1 mainframe@1_on
+
+}
+expand aliencomps ( 1 )
+
+
+//**Crates**//
+
+macro smallcrate 1
+{
+
+variable smcratetoast@1 0
+
+if startanimScrate then
+        setobjstate smcrate@1 smcrate_active@1
+
+object smcrate@1
+
+        state smcrate_init@1
+                frame 10 0
+
+        state smcrate_active@1
+                frame 200 3
+                frame 200 2
+                frame 200 0
+                frame 200 2
+                triggerdelay 200 reloopsmcrt@1
+
+	state smcrate_toast@1
+                frame 5 1
+
+
+if reloopsmcrt@1 testvar smcratetoast@1 = 0 then
+        setobjstate smcrate@1 smcrate_active@1
+
+if killed smcrate@1 then
+        setvar smcratetoast@1 1,
+        setobjstate smcrate@1 smcrate_toast@1
+
+}
+
+expand smallcrate ( 1 )
+expand smallcrate ( 2 )
+expand smallcrate ( 3 )
+expand smallcrate ( 4 )
+expand smallcrate ( 5 )
+expand smallcrate ( 6 )
+expand smallcrate ( 7 )
+expand smallcrate ( 8 )
+expand smallcrate ( 9 )
+expand smallcrate ( 10 )
+expand smallcrate ( 11 )
+expand smallcrate ( 12 )
+expand smallcrate ( 13 )
+expand smallcrate ( 14 )
+expand smallcrate ( 15 )
+expand smallcrate ( 16 )
+expand smallcrate ( 17 )
+expand smallcrate ( 18 )
+expand smallcrate ( 19 )
+expand smallcrate ( 20 )
+expand smallcrate ( 21 )
+expand smallcrate ( 22 )
+
+if killed smcrate20 then
+        createpowerup "" bazooka smcrate20 23
+
+if killed smcrate15 then
+        createpowerup "" grenade smcrate15 10
+
+if killed smcrate20 then
+        createpowerup "" bazooka smcrate20 20
+
+if killed smcrate22 then
+        createpowerup "" vulcan smcrate22
+
+
+macro largcrate 1
+{
+
+variable lgcratetoast@1 0
+
+if startanimlcrate then
+        setobjstate lgcrate@1 lgcrate_active@1
+
+object lgcrate@1
+
+        state lgcrate_init@1
+                frame 10 0
+
+        state lgcrate_active@1
+                frame 200 3
+                frame 200 2
+                frame 200 0
+                frame 200 2
+                triggerdelay 200 relooplgcrt@1
+
+        state lgcrate_toast@1
+                frame 5 1
+
+if relooplgcrt@1 testvar lgcratetoast@1 = 0 then
+        setobjstate lgcrate@1 lgcrate_active@1
+
+if killed lgcrate@1 then
+        setvar lgcratetoast@1 1,
+        setobjstate lgcrate@1 lgcrate_toast@1
+}
+expand largcrate ( 1 )
+expand largcrate ( 2 )
+//expand largcrate ( 3 )
+//expand largcrate ( 4 )
+//expand largcrate ( 5 )
+
+macro horizcasket 1
+{
+
+variable hcaskettoast@1 0
+
+if startanimcasket1 then
+        setobjstate hcasket@1 hcasket_active@1
+
+object hcasket@1
+
+        state hcasket_init@1
+                frame 10 0
+
+        state hcasket_active@1
+                frame 200 3
+                frame 200 2
+                frame 200 0
+                frame 200 2
+                triggerdelay 200 reloophckt@1
+
+        state hcasket_toast@1
+                frame 5 1
+
+if reloophckt@1 testvar hcaskettoast@1 = 0 then
+        setobjstate hcasket@1 hcasket_active@1
+
+if killed hcasket@1 then
+        setvar hcaskettoast@1 1,
+        setobjstate hcasket@1 hcasket_toast@1
+}
+expand horizcasket ( 1 )
+//expand horizcasket ( 2 )
+
+macro verticcasket 1
+{
+
+variable vcaskettoast@1 0
+
+if startanimcasket2 then
+        setobjstate vcasket@1 vcasket_active@1
+
+object vcasket@1
+
+        state vcasket_init@1
+                frame 10 0
+
+        state vcasket_active@1
+                frame 200 3
+                frame 200 2
+                frame 200 0
+                frame 200 2
+                triggerdelay 200 reloopvckt@1
+
+        state vcasket_toast@1
+                frame 5 1
+
+if reloopvckt@1 testvar vcaskettoast@1 = 0 then
+        setobjstate vcasket@1 vcasket_active@1
+
+if killed vcasket@1 then
+        setvar vcaskettoast@1 1,
+        setobjstate vcasket@1 vcasket_toast@1
+}
+//expand verticcasket ( 1 )
+//expand verticcasket ( 2 )

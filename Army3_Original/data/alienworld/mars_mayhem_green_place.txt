@@ -1,0 +1,7 @@
+#cmd	type		x	y	facing	group	name
+
+place	oculon      	344	366	0	1	-
+place	oculon      	452	345	0	1	-
+place	oculon      	507	435	0	1	-
+place	oculon      	346	436	0	1	-
+place	oculon      	312	579	0	1	-

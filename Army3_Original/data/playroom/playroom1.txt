@@ -1,0 +1,1164 @@
+//--pad definitions--//
+pad house101                                    101     green trooper > 0
+pad civgoto1                                    240     greencivi1
+
+//pad house102                                    102     green trooper
+//pad civgoto2                                    240     greencivi2
+
+pad house103                                    103     green trooper > 0
+pad civgoto2                                    242     greencivi2
+
+pad house104                                    104     green trooper > 0
+pad civgoto3                                    243     greencivi3
+pad civgoto4                                    243     greencivi4
+
+pad house105                                    105     green trooper > 0
+pad civgoto5                                    244     greencivi5
+
+pad house106                                    106     green trooper > 0
+pad civgoto6                                    245     greencivi6
+
+pad house107                                    107     green trooper > 0
+pad civgoto7                                    246     greencivi7
+pad civgoto8                                    246     greencivi8
+pad civgoto9                                    246     greencivi9
+
+//pad house108                                    108     green trooper > 0
+//pad civgoto1                                    240     greencivi8
+
+pad house109                                    109     green trooper > 0
+pad civgoto17                                   248     greencivi17
+pad civgoto18                                   248     greencivi18
+
+pad house110                                    110     green trooper > 0
+pad civgoto14                                   249     greencivi14
+pad civgoto15                                   249     greencivi15
+pad civgoto16                                   249     greencivi16
+
+pad house111                                    111     green trooper > 0
+pad civgoto12                                   250     greencivi12
+pad civgoto13                                   250     greencivi13
+
+pad house112                                    112     green trooper > 0
+pad civgoto10                                   251     greencivi10
+pad civgoto11                                   251     greencivi11
+
+pad house113                                    113     green trooper > 0
+pad civgoto19                                   252     greencivi19
+pad civgoto20                                   252     greencivi20
+pad civgoto21                                   252     greencivi21
+
+//pad house114                                    114     green trooper
+//pad civgoto1                                    240     greencivi14
+
+pad house115                                    115     green trooper > 0
+pad civgoto26                                   254     greencivi26
+pad civgoto27                                   254     greencivi27
+
+pad house116                                    116     green trooper > 0
+pad civgoto22                                   230     greencivi22
+pad civgoto23                                   230     greencivi23
+
+pad house117                                    117     green trooper > 0
+pad civgoto24                                   231     greencivi24
+
+pad house118                                    118     green trooper > 0
+pad civgoto25                                   232     greencivi25
+
+pad house119                                    119     green trooper > 0
+pad civgoto34                                   233     greencivi34
+
+pad house120                                    120     green trooper > 0
+pad civgoto32                                   234     greencivi32
+pad civgoto33                                   234     greencivi33
+
+pad house121                                    121     green trooper > 0
+pad civgoto31                                   235     greencivi31
+pad civgoto35                                   235     greencivi35
+pad civgoto36                                   235     greencivi36
+
+pad house122                                    122     green trooper > 0
+pad civgoto28                                   236     greencivi28
+pad civgoto29                                   236     greencivi29
+pad civgoto30                                   236     greencivi30
+
+pad recpad                                      11
+
+pad diecivpad1                                  12
+pad diecivpad2                                  13
+
+
+//pad house123                                  123     green trooper
+
+
+pad NW                                          125     tan trooper
+pad SE                                          126     tan trooper
+pad house124                                    124     green trooper
+pad tso1                                        188     tansarge1
+pad te1o1                                       188     tanelite1
+pad te2o1                                       188     tanelite2
+pad gateway                                     100     blue trooper
+pad retreat                                     200     blue trooper
+pad dmz						255     blue trooper
+
+pad tansarge                                    100     tansarge1
+pad tanelite1pad                                99      tanelite1
+pad tanelite2pad                                98      tanelite2
+
+//--vars--//
+
+variable civiliandeaths				0
+variable civiliansescaped			0
+variable civiliantest				0
+variable aliendeathcount			0
+
+variable alientopattack1                        0
+variable alientopattack2                        0
+
+
+//--startup--//
+
+if startup1 then
+        triggerdelay 100 gstart
+
+if gstart then
+        setglobalflag revealunitsonmap 1,
+        playsound "Sarge_DoOrDie3.wav" 1 1,
+	trigger makegreens,
+        trigger makecivs,
+        trigger alliance,
+        trigger alertplayer1,
+        triggerdelay 500 paniccivs1,
+        triggerdelay 1500 ethnic1,
+        triggerdelay 3000 deadcivorder2,
+        triggerdelay 7000 deadcivorder3,
+        triggerdelay 5000 deadcivorder4,
+        triggerdelay 2000 ethnic2,
+        triggerdelay 2500 ethnic3,
+        triggerdelay 3000 ethnic4,
+        trigger aireconsetup,
+        //trigger makealiens,
+	//trigger maketans,
+        trigger tanguards,
+        triggerdelay 40000 antisarge,
+        triggerdelay 41000 tanorders
+
+//**Recon**//
+
+if aireconsetup then
+        moveitem airecon recpad,
+        moveitem aiairstrike recpad,
+        moveitem aiairattack recpad,
+        triggerdelay 1000 fire1,
+        triggerdelay 10000 fire2,
+        triggerdelay 26000 fire3
+
+if fire1 then
+        fireweapon airecon tanguard1 tanguard1
+
+if fire2 then
+        fireweapon airecon tanguard1 tanguard1
+
+if fire3 then
+        fireweapon airecon tanguard1 tanguard1
+
+pad fchitlerpad                 14      fchitler
+macro alienredrum 6
+{
+
+if ethnic@6 then
+        createunit "@1" @2 @3 tan @4,
+        order @1 goto fchitlerpad inmode defend,
+        setfacing @1 @5
+}
+
+expand alienredrum ( fchitler fieldcommander recpad mediumlaser 99 1 )
+expand alienredrum ( crony1 humanoid recpad lightlaser 99 2 )
+expand alienredrum ( crony2 humanoid recpad lightlaser 99 3 )
+expand alienredrum ( crony3 humanoid recpad lightlaser 99 4 )
+
+
+macro opendeath 9
+{
+pad civscramble@1       @8  deadciv@1
+pad deadmenpad@1        @5  noone
+
+if alertplayer@1 then
+        createunit "deadciv@1" @2 @3 blue @4,
+        setforcecolor deadciv@1 @6,
+        setscientist deadciv@1,
+        setnpc deadciv@1 1,
+        setfacing deadciv@1 @7,
+        setaimode deadciv@1 standfire
+
+if hit deadciv@1 then
+        damage deadciv@1 120
+
+if killed deadciv@1 then
+        playsound "AlienLaugh.wav" fchitler 10 3 50,
+        triggerdelay 100 diecivs
+
+if diecivs butnot onedieciv then
+        playsound "Civilians_helpMe1.wav" 11 3,
+        trigger onedieciv
+
+if paniccivs@1 then
+        order deadciv@1 goto deadmenpad@1
+
+if panicfinal@1 then
+        order deadciv@1 goto civscramble@1
+
+if padon civscramble@1 then
+        order deadciv@1 goto civscramble@1,
+        triggerdelay 1000 civinane@1
+
+if civinane@1 then
+        order deadciv@1 follow @9 inmode attack
+
+if hit deadciv@1 butnot hitthatciv@1 then
+        trigger randomSFX@1,
+        trigger hitthatciv@1
+
+if randomSFX@1 then
+        random
+                playsound "Civilians_aahhh1.wav" 6 3,
+                playsound "Civilians_ahhh1.wav" 7 3,
+                playsound "Civilians_ahhh4.wav" 8 3,
+                playsound "Civilians_Tanya_Civilian_Ahhhhhh3.wav" 13 3,
+                playsound "Civilians_Ann_Civilian_Ahhhhhh3.wav" 9 3
+
+
+
+
+}
+
+expand opendeath ( 1 rifleman recpad rifle 199 grey 64 180 fchitler )
+expand opendeath ( 2 rifleman diecivpad1 rifle 198 blue 201 181 crony2 )
+expand opendeath ( 3 rifleman recpad rifle 197 red  118 182 crony1 )
+expand opendeath ( 4 rifleman diecivpad2 rifle 196 blue 34 183 crony2 )
+expand opendeath ( 5 rifleman recpad rifle 195 grey 209 184 crony3 )
+expand opendeath ( 6 rifleman diecivpad1 rifle 194 black 54 185 crony1 )
+expand opendeath ( 7 rifleman diecivpad2 rifle 193 green 128 186 fchitler )
+
+if deadcivorder2 then
+        trigger alertplayer2,
+        triggerdelay 200 paniccivs2
+
+if deadcivorder3 then
+        trigger alertplayer3,
+        triggerdelay 200 paniccivs3,
+        trigger alertplayer4,
+        triggerdelay 200 paniccivs4
+
+if deadcivorder4 then
+        trigger alertplayer5,
+        triggerdelay 200 paniccivs5,
+        trigger alertplayer6,
+        triggerdelay 200 paniccivs6,
+        trigger alertplayer7,
+        triggerdelay 200 paniccivs8
+
+
+
+if allof killed deadciv1 killed deadciv2 killed deadciv5 then
+        order crony1 goto (3134,457) inmode attack,
+        order crony2 goto (3323,520) inmode attack,
+        order crony3 goto (3402,632) inmode attack
+
+
+//--Win condition--//
+
+if checkvictory then
+        setvar civiliantest 0,
+        addvar civiliantest civiliansescaped,
+//      addvar civiliantest civiliandeaths,
+        trigger checkgreenwins,
+        trigger checkwinnote
+
+if checkwinnote butnot greenlosing testvar civiliantest = 5 then
+        showmessage "5 Civilians safe..."
+
+if checkwinnote butnot greenlosing testvar civiliantest = 10 then
+        showmessage "10 Civilians safe..."
+
+if checkwinnote butnot greenlosing testvar civiliantest = 15 then
+        showmessage "15 Civilians safe..."
+
+if checkwinnote butnot greenlosing testvar civiliantest = 20 then
+        showmessage "20 Civilians safe..."
+
+if checkgreenwins butnot greenlosing testvar civiliantest = 25 then
+	triggerdelay 2000 startgreenwins
+
+if startgreenwins butnot greenlosing then
+	playsound "HQ_Civilian_Convoy.wav" 1 1,
+        showpda "Good job Sarge, you rescued the civilians!",
+       	triggerdelay 100 greenwins
+
+//--Lose conditions--//
+
+if killed greensarge1 butnot greenlosing then
+        setuilock 1,
+        setcamerafocus greensarge1,
+	trigger greenlosing,
+	triggerdelay 3000 tanwins,
+        setuilock 1,
+        setcamerafocus greensarge1,
+        showpda "You let Sarge die!"
+
+if killed gcp butnot greenlosing then
+        setuilock 1,
+        setcamerafocus camfoc,
+	trigger greenlosing,
+        triggerdelay 3000 tanwins,
+        showpda "Headquarters is destroyed!"
+
+if checkmessage testvar civiliandeaths >= 10 then
+        showmessage "WARNING!!! Low Civilian count.",
+        showmessage "WARNING!!! Low Civilian count.",
+        showmessage "WARNING!!! Low Civilian count."
+
+
+if checklose butnot greenlosing testvar civiliandeaths >= 13 then
+        trigger greenlosing,
+        triggerdelay 3000 tanwins,
+        showpda "You let too many civilians die!"
+
+
+variable fodderdeath 0
+
+//--Green setup--//
+macro greens 8
+// @1 = unit name, @2 = unit type, @3 = x coordinate, @4 = y coordinate, //
+// @5 = weapon, @6 = group #, @7 = facing @8 = group //
+{
+if makegreens then
+	createunit "@1" @2 (@3,@4) green @5 1 @6,
+	setfacing @1 @7,
+        setaimode @1 defend,
+        setunitgroup @1 @8
+
+if killed @1 then
+        addvar fodderdeath 1
+
+if killed @1 testvar fodderdeath = 3 then
+        createpowerup paratroopers @1 1
+
+if killed @1 testvar fodderdeath = 8 then
+        createpowerup paratroopers @1 2
+
+if killed @1 testvar fodderdeath = 13 then
+        createpowerup paratroopers @1 1
+
+
+}
+expand greens ( Fodder grenadier 2210 1560 grenade 6 224 2 )
+expand greens ( Grace grenadier 2460 1760 grenade 6 224 3 )
+expand greens ( Wholly rifleman 1850 1660 rifle 2 32 6 )
+expand greens ( Steal rifleman 2500 2070 rifle 1 160 1 )
+expand greens ( Ruggles rifleman 2350 2210 rifle 1 160 1 )
+expand greens ( Gracia rifleman 1870 1670 rifle 1 32 6 )
+expand greens ( Cats rifleman 2270 2010 rifle 1 160 1 )
+expand greens ( Snipe rifleman 1540 2230 rifle 5 32 5 )
+expand greens ( Shirly rifleman 1660 2330 rifle 5 160 5 )
+expand greens ( Fischer bazookaman 2600 2170 bazooka 1 160 4 )
+expand greens ( Iron bazookaman 2450 2310 bazooka 1 160 4 )
+expand greens ( Brimstone mortarman 1760 1950 mortar 6 96 2 )
+expand greens ( DeathReach mortarman 1960 2150 mortar 6 96 3 )
+expand greens ( Jeep_401K jeep 2460 2160 mediumMG 1 224 1 )
+expand greens ( TankB12 tank 1730 1550 largecannon 1 96 6 )
+
+if killed Grace then
+        createpowerup "" grenade grace 8
+if killed Fodder then
+        createpowerup "" grenade Fodder 10
+
+if killed Fischer then
+        createpowerup "" bazooka Fischer 5
+if killed Iron then
+        createpowerup "" bazooka Iron 10
+
+if killed Brimstone then
+        createpowerup "" mortar Brimstone 4
+if killed DeathReach then
+        createpowerup "" mortar DeathReach 6
+
+
+
+//--Alliance--//
+if alliance then
+        ally blue green,
+	ally green blue,
+        entervehicle Wholly TankB12
+
+//--Macro Aliens--//
+if tophomes1 testvar alientopattack1 = 0 then
+        triggerdelay 1000 alienwave1
+
+if tophomes2 testvar alientopattack2 = 0 then
+        triggerdelay 1000 alienwave2
+
+
+        //triggerdelay 151000 alienwave3,
+        //triggerdelay 201000 alienlasthurrah
+
+macro aliens 8
+// @1 = alien wave #, @2 = alien #, @3 = alien type, @4 = x coordinate, //
+// @5 = y coordinate, @6 = target wave, @7 = weapon, @8 = strength //
+{
+
+if alienwave@1 then
+	createunit alien@2 @3 (@4,@5) tan @7 @8,
+        setaimode alien@2 defend,
+        order alien@2 goto @6
+
+if alienlasthurrah then
+        order alien@2 goto gcp
+
+}
+expand aliens ( 1 1 humanoid 1934 3629 house101 lightlaser 1 )
+expand aliens ( 1 2 humanoid 3690 88 house102 lightlaser 1 )
+expand aliens ( 1 3 humanoid 1934 3629 house103 lightlaser 1 )
+expand aliens ( 1 4 humanoid 3690 88 house104 lightlaser 1 )
+expand aliens ( 1 5 humanoid 1934 3629 house105 lightlaser 1 )
+expand aliens ( 1 6 humanoid 3690 88 house106 lightlaser 1 )
+expand aliens ( 1 7 humanoid 1934 3629 house107 lightlaser 1 )
+expand aliens ( 1 8 humanoid 3690 88 house101 lightlaser 1 )
+expand aliens ( 1 9 humanoid 1934 3629 NW mediumlaser 2 )
+expand aliens ( 1 10 humanoid 3690 88 SE mediumlaser 2 )
+expand aliens ( 1 11 humanoid 1934 3629 gcp heavylaser 3 )
+expand aliens ( 2 12 humanoid 2522 3625 house102 lightlaser 1 )
+expand aliens ( 2 13 humanoid 3690 88 house103 lightlaser 1 )
+expand aliens ( 2 14 humanoid 3690 88 house104 lightlaser 1 )
+expand aliens ( 2 15 humanoid 2522 3625 house105 lightlaser 1 )
+expand aliens ( 2 16 humanoid 3690 88 house106 lightlaser 1 )
+expand aliens ( 2 17 humanoid 2522 3625 house107 lightlaser 1 )
+expand aliens ( 2 18 humanoid 3690 88 house107 lightlaser 1 )
+expand aliens ( 2 19 humanoid 2522 3625 house107 lightlaser 1 )
+expand aliens ( 2 20 humanoid 3690 88 SE mediumlaser 2 )
+expand aliens ( 2 21 humanoid 2522 3625 NW mediumlaser 2 )
+expand aliens ( 2 22 humanoid 3690 88 greensarge1 heavylaser 3 )
+expand aliens ( 2 23 humanoid 2522 3625 house106 lightlaser 1 )
+expand aliens ( 2 24 humanoid 3690 88 house106 lightlaser 1 )
+expand aliens ( 2 25 humanoid 2522 3625 house106 lightlaser 1 )
+expand aliens ( 2 26 humanoid 3690 88 house103 lightlaser 1 )
+expand aliens ( 2 27 humanoid 2522 3625 house103 lightlaser 1 )
+expand aliens ( 2 28 humanoid 3690 88 house101 lightlaser 1 )
+expand aliens ( 2 29 humanoid 2522 3625 house101 lightlaser 1 )
+expand aliens ( 2 30 humanoid 3690 88 house101 lightlaser 1 )
+expand aliens ( 2 31 humanoid 2522 3625 NW mediumlaser 2 )
+expand aliens ( 2 32 humanoid 3690 88 SE mediumlaser 2 )
+expand aliens ( 2 33 humanoid 2522 3625 gcp mediumlaser 2 )
+expand aliens ( 2 34 humanoid 3690 88 gcp mediumlaser 2 )
+
+
+//--Macro Tans--//
+//if maketans then
+        //triggerdelay 1000 tanwave1,
+        //triggerdelay 60000 tanwave2,
+        //triggerdelay 170000 tanwave3,
+        //triggerdelay 230000 tanlasthurrah
+
+macro tans 7
+// @1 = tan wave #, @2 = tan #, @3 = x coordinate, @4 = y coordinate, //
+// @5 = target, @6 = trooper type, @7 = weapon //
+{
+
+if tanwave@1 then
+	createunit "@2" @6 (@3,@4) tan @7,
+        setaimode tantroop@2 defend,
+        order @2 goto @5
+
+if padon SE then
+        order @2 goto gcp inmode attack
+
+}
+
+expand tans ( 1 entank1 3680 98 gcp tank largecannon )
+expand tans ( 2 jpen1 3690 68 gcp jeep mediumMG )
+expand tans ( 2 jpen2  3690 68 gcp jeep mediumMG )
+expand tans ( 2 jpen3  3690 68 gcp jeep mediumMG )
+expand tans ( 1 mort1  3690 88 gcp mortarman mortar )
+expand tans ( 1 flam1  3690 88 gcp flamerman flamer )
+expand tans ( 3 wave3R1 3690 88 SE rifleman autorifle )
+expand tans ( 3 wave3R2 3690 88 SE rifleman autorifle )
+expand tans ( 3 wave3R3 3690 88 SE rifleman autorifle )
+expand tans ( 3 wave3R4 3690 88 SE rifleman autorifle )
+expand tans ( 3 wave3R5 3690 88 SE rifleman autorifle )
+expand tans ( 3 wave3R6 3690 88 SE rifleman autorifle )
+expand tans ( 3 wave3R7 3690 88 SE rifleman autorifle )
+expand tans ( 3 wave3R8 3690 88 SE rifleman autorifle )
+expand tans ( 1 sealien1 3690 108 SE fieldcommander mediumlaser )
+expand tans ( 1 sealien2 3690 88 SE humanoid lightlaser )
+expand tans ( 1 sealien3 3690 88 SE humanoid lightlaser )
+expand tans ( 1 sealien4 3690 88 SE humanoid lightlaser )
+expand tans ( 1 sealien5 3690 88 gcp humanoid lightlaser )
+
+if tanguards then
+	createunit tanguard1 rifleman (2010,260) tan rifle,
+        setaimode tanguard1 defend,
+        setfacing tanguard1 112,
+	createunit tanguard2 rifleman (2440,260) tan rifle,
+        setaimode tanguard2 defend,
+        setfacing tanguard2 144,
+	createunit tanguard3 flamerman (2410,410) tan flamer,
+        setaimode tanguard3 defend,
+        setfacing tanguard3 128
+
+//--Macro Hit Team--//
+macro hitteam 7
+// @1 = unit name, @2 = unit type, @3 = x coordinate, @4 = y coordinate, //
+// @5 = weapon, @6 = level, @7 ai mode //
+{
+if antisarge then
+        createunit @1 @2 (@3,@4) tan @5 @6,
+        setaimode @1 @7
+}
+
+expand hitteam (tansarge1 rifleman 2450 3600 vulcan 4 attack)
+expand hitteam (tanelite1 rifleman 2400 3600 heavymg 1 attack)
+expand hitteam (tanelite2 rifleman 2500 3600 heavymg 1 attack)
+
+//--Tan AI--//
+if tanorders then
+        order tansarge1 goto greenaagun inmode ignore,
+        setitemflag tansarge1 targetobjects 1,
+        order tanelite1 goto greenaagun inmode ignore,
+        setitemflag tanelite1 targetobjects 1,
+        order tanelite2 goto greenaagun inmode ignore,
+        setitemflag tanelite2 targetobjects 1,
+        triggerdelay 14000 settheais
+
+if settheais then
+        setaimode tansarge1 attack,
+        setaimode tanelite1 attack,
+        setaimode tanelite2 attack
+
+
+if killed greenaagun butnot hqrun then
+	order tansarge1 goto tansarge inmode ignore,
+        order tanelite1 goto tanelite1pad inmode ignore,
+        order tanelite2 goto tanelite2pad inmode ignore
+
+if padon tansarge then
+        setfacing tansarge1 250,
+        setaimode tansarge1 standfire,
+        setaipose tansarge1 prone,
+        triggerdelay 3000 airattacks
+
+if killed tansarge1 then
+        trigger tansarge1isdead
+
+if padon tanelite1pad then
+        setfacing tanelite1 240,
+        setaimode tanelite1 standfire,
+        setaipose tanelite1 prone
+
+if padon tanelite2pad then
+        setfacing tanelite2 10,
+        setaimode tanelite2 standfire,
+        setaipose tanelite2 prone
+
+if airattacks butnot tansarge1isdead then
+        fireweapon aiairstrike tansarge1 gcp,
+        triggerdelay 2000 firesarg2
+
+if firesarg2 butnot tansarge1isdead then
+        fireweapon aiairstrike tansarge1 gcp,
+        triggerdelay 6000 firesarg3
+
+if firesarg3 butnot tansarge1isdead then
+        fireweapon aiairstrike tansarge1 house1,
+        triggerdelay 2000 firesarg4
+
+if firesarg4 butnot tansarge1isdead then
+        fireweapon aiairstrike tansarge1 house2,
+        triggerdelay 1000 firesarge5
+
+if firesarge5 butnot tansarge1isdead then
+        fireweapon aiairstrike tansarge1 house3,
+        triggerdelay 1000 firesarge6
+
+if firesarge6 butnot tansarge1isdead then
+        fireweapon aiairstrike tansarge1 house4,
+        triggerdelay 1000 firesarge7
+
+if firesarge7 butnot tansarge1isdead then
+        fireweapon aiairstrike tansarge1 house5,
+	triggerdelay 1000 firesarge8
+
+if firesarge8 butnot tansarge1isdead then
+        fireweapon aiairattack tansarge1 gcp
+
+
+
+
+
+
+
+//--Macro Civs--//
+macro civs 4
+// @1 = unit, @2 = x location , @3 = y location  //
+{
+
+if makecivs then
+	createunit greencivi@1 rifleman (@2,@3) blue rifle,
+        setscientist greencivi@1,
+        setitemflag greencivi@1 strategic 1,
+        setforcecolor greencivi@1 @4,
+        setaimode greencivi@1 ignore,
+        setnpc greencivi@1 1
+
+//if hit greencivi@1 then
+        //order greencivi@1 follow retreat inmode ignore
+
+if killed greencivi@1 then
+        addvar civiliandeaths 1,
+        trigger checklose,
+        trigger checkmessage
+        //trigger checkvictory
+
+if carrycivis then
+        deploy greencivi@1 (1200,20),
+        setaimode greencivi@1 ignore
+
+
+}
+expand civs ( 1 2830 800 blue )
+expand civs ( 2 3400 1360 green )
+expand civs ( 3 2530 970 grey )
+expand civs ( 4 2590 1050 grey )
+expand civs ( 5 2780 1190 black )
+expand civs ( 6 3070 1460 black )
+expand civs ( 7 3040 2130 green )
+expand civs ( 8 3110 2200 green )
+expand civs ( 9 2970 2190 red )
+expand civs ( 10 3300 2410 red )
+expand civs ( 11 3260 2490 black )
+expand civs ( 12 2940 2690 black )
+expand civs ( 13 3070 2670 black )
+expand civs ( 14 2810 2890 blue )
+expand civs ( 15 2660 3010 blue )
+expand civs ( 16 2680 2890 green )
+expand civs ( 17 2450 2610 green )
+expand civs ( 18 2390 2740 green )
+expand civs ( 19 1620 2630 blue )
+expand civs ( 20 1730 2720 blue )
+expand civs ( 21 1660 2790 black )
+expand civs ( 22 1280 2920 black )
+expand civs ( 23 1470 3000 green )
+expand civs ( 24 1060 2700 green )
+expand civs ( 25 750 2400 blue )
+expand civs ( 26 1010 2190 red )
+expand civs ( 27 1110 2320 red )
+expand civs ( 28 1570 770 red )
+expand civs ( 29 1380 840 blue )
+expand civs ( 30 1400 780 green )
+expand civs ( 31 1780 930 black )
+expand civs ( 32 1480 1170 green )
+expand civs ( 33 1380 1280 green )
+expand civs ( 34 1170 1470 red )
+expand civs ( 35 1720 990 black )
+expand civs ( 36 1650 1050 green )
+
+//New Tan Attacks************//
+ // @6 = padnum @1 = paddef @7 = Goto Spots
+macro h119_120 7
+{
+
+pad 119_120pad@1              @6
+
+if tanattack1 butnot oneattack then
+        createunit "@2" @3 @4 tan @5,
+        trigger 119_120orders,
+        triggerdelay 5000 alienmac1
+
+if 119_120orders then
+        order @2 goto @7 inmode attack
+
+
+}
+
+expand h119_120 ( 1 tanman1 mortarman 119_120pad1 mortar 20 tso1 )
+expand h119_120 ( 2 tanman2 mortarman 119_120pad2 mortar 21 tso1 )
+expand h119_120 ( 3 tanman3 grenadier 119_120pad3 grenade 22 gcp )
+expand h119_120 ( 4 tanman4 rifleman 119_120pad4 autorifle 23 gcp )
+expand h119_120 ( 5 tanman5 rifleman 119_120pad5 autorifle 24 gcp )
+expand h119_120 ( 6 tanman6 rifleman 119_120pad6 autorifle 25 gcp )
+
+
+macro alien_121mac 7
+
+{
+pad alienpad@1          @6
+
+if alienciv_121 then
+        createunit "@2" @3 @4 tan @5,
+        order @2 goto @7 inmode attack
+
+
+}
+
+expand alien_121mac ( 1 alienciv31 humanoid alienpad1 mediumlaser 40
+house121 )
+expand alien_121mac ( 2 alienciv35 humanoid alienpad2 mediumlaser 41
+house121 )
+expand alien_121mac ( 3 alienciv36 fieldcommander alienpad3 heavylaser 42
+house121 )
+
+macro alien_122mac 7
+
+{
+pad alienpad@1          @6
+
+if alienciv_122 then
+        createunit "@2" @3 @4 tan @5,
+        order @2 goto @7 inmode attack
+
+
+}
+
+expand alien_122mac ( 4 alienciv04 humanoid alienpad4 mediumlaser 50
+house122 )
+expand alien_122mac ( 5 alienciv05 humanoid alienpad5 mediumlaser 51
+house122 )
+expand alien_122mac ( 6 alienciv06 humanoid alienpad6 mediumlaser 52
+house122 )
+expand alien_122mac ( 7 alienciv07 humanoid alienpad7 mediumlaser 29
+house122 )
+expand alien_122mac ( 8 alienciv08 humanoid alienpad8 mediumlaser 30
+house122 )
+expand alien_122mac ( 9 alienciv09 fieldcommander alienpad9 heavylaser 28
+house122 )
+
+macro alien_120mac 7
+
+{
+pad alienpad@1          @6
+
+if alienciv_120 then
+        createunit "@2" @3 @4 tan @5,
+        order @2 goto @7 inmode attack
+
+
+}
+
+expand alien_120mac ( 10 alienciv_10 humanoid alienpad10 mediumlaser 50
+house120 )
+expand alien_120mac ( 11 alienciv_11 humanoid alienpad11 mediumlaser 51
+house120 )
+expand alien_120mac ( 12 alienciv_12 humanoid alienpad12 mediumlaser 52
+house120 )
+expand alien_120mac ( 13 alienciv_13 humanoid alienpad13 mediumlaser 30
+house120 )
+expand alien_120mac ( 14 alienciv_14 humanoid alienpad14 mediumlaser 29
+house120 )
+expand alien_120mac ( 15 alienciv_15 fieldcommander alienpad15 heavylaser 28
+house120 )
+expand alien_120mac ( 16 alienciv_16 flamerman alienpad16 flamer 20
+gcp )
+expand alien_120mac ( 17 alienciv_17 mortarman alienpad17 mortar 21
+gcp )
+expand alien_120mac ( 18 alienciv_18 rifleman alienpad18 heavymg 22
+house120 )
+expand alien_120mac ( 19 alienciv_19 rifleman alienpad19 heavymg 23
+house120 )
+
+
+macro alien_107mac 9
+
+{
+pad alienpad@1          @6
+pad defend@8            @9
+
+if alienciv_107 butnot 107_triggered then
+        createunit "@2" @3 @4 tan @5,
+        order @2 goto @7 inmode attack
+
+
+
+}
+
+expand alien_107mac ( 20 alienciv_20 flamerman alienpad20 flamer 60
+gcp 1 60 )
+expand alien_107mac ( 21 alienciv_21 mortarman alienpad21 mortar 61
+gcp 2 64)
+expand alien_107mac ( 22 alienciv_22 grenadier alienpad22 grenade 62
+gcp 3 65)
+expand alien_107mac ( 23 alienciv_23 humanoid alienpad23 mediumlaser 63
+gcp 4 66)
+expand alien_107mac ( 24 alienciv_24 rifleman alienpad24 autorifle 64
+defend5 5 70)
+expand alien_107mac ( 25 alienciv_25 humanoid alienpad25 mediumlaser 65
+defend7 7 73)
+expand alien_107mac ( 26 alienciv_26 rifleman alienpad26 autorifle 66
+defend8 8 75)
+expand alien_107mac ( 27 alienciv_27 humanoid alienpad27 mediumlaser 67
+defend9 9 76)
+expand alien_107mac ( 28 alienciv_28 rifleman alienpad28 autorifle 68
+defend10 10 71 )
+expand alien_107mac ( 29 alienciv_29 humanoid alienpad29 mediumlaser 69
+defend11 11 72)
+
+macro alien_110mac 9
+
+{
+pad tanpad@1            @6
+pad defend@8            @9
+
+if alienciv_110 butnot 110_triggered then
+        createunit "@2" @3 @4 tan @5,
+        order @2 goto @7 inmode attack
+
+
+
+}
+
+expand alien_110mac ( 30 alienciv_30 grenadier tanpad30 grenade 60
+gcp 100 60 )
+expand alien_110mac ( 31 alienciv_31 rifleman tanpad31 autorifle 61
+gcp 200 64)
+expand alien_110mac ( 32 alienciv_32 grenadier tanpad32 grenade 62
+gcp 300 65)
+expand alien_110mac ( 33 alienciv_33 rifleman tanpad33 autorifle 63
+gcp 400 66)
+expand alien_110mac ( 34 alienciv_34 rifleman tanpad34 autorifle 64
+defend22 22 80 )
+expand alien_110mac ( 35 alienciv_35 rifleman tanpad35 autorifle 65
+defend23 23 81 )
+expand alien_110mac ( 36 alienciv_36 rifleman tanpad36 autorifle 66
+defend24 24 82 )
+expand alien_110mac ( 37 alienciv_37 rifleman tanpad37 autorifle 67
+defend25 25 83 )
+expand alien_110mac ( 38 alienciv_38 rifleman tanpad38 autorifle 68
+defend26 26 84 )
+expand alien_110mac ( 39 alienciv_39 rifleman tanpad39 autorifle 69
+defend27 27 85 )
+expand alien_110mac ( 40 alienciv_40 rifleman tanpad40 autorifle 68
+defend28 28 86 )
+expand alien_110mac ( 41 alienciv_41 rifleman tanpad41 autorifle 69
+defend29 29 87 )
+
+
+
+//--Civilian escape triggers--//
+
+//101 active
+
+if padon house101 butnot randocivvo1 then
+        order greencivi1 goto civgoto1 inmode ignore,
+        trigger tophomes1,
+        setvar alientopattack1 1,
+        trigger randocivvo1
+
+if padon civgoto1 then
+        order greencivi1 goto retreat inmode ignore
+
+//103 active
+
+if padon house103 butnot randocivvo2 then
+        //order greencivi2 goto civgoto2 inmode ignore,
+        order greencivi2 goto civgoto2 inmode ignore,
+        trigger tophomes1,
+        setvar alientopattack1 1,
+        trigger randocivvo2
+
+if padon civgoto2 then
+        order greencivi2 goto retreat inmode ignore
+
+
+//104 active
+if padon house104 butnot randocivvo3 then
+        order greencivi3 goto civgoto3 inmode ignore,
+        order greencivi4 goto civgoto4 inmode ignore,
+        trigger tophomes2,
+        setvar alientopattack2 1,
+        trigger randocivvo3
+
+if padon civgoto3 then
+        order greencivi3 goto retreat inmode ignore
+
+if padon civgoto4 then
+        order greencivi4 goto retreat inmode ignore
+
+
+//105 active
+
+if padon house105 butnot randocivvo4 then
+        order greencivi5 goto civgoto5 inmode ignore,
+        trigger tophomes2,
+        setvar alientopattack2 1,
+        trigger randocivvo4
+
+if padon civgoto5 then
+        order greencivi5 goto retreat inmode ignore
+
+
+//106 active
+if padon house106 butnot randocivvo5  then
+        order greencivi6 goto civgoto6 inmode ignore,
+        trigger tophomes2,
+        setvar alientopattack2 1,
+        trigger randocivvo5
+
+if padon civgoto6 then
+        order greencivi6 goto retreat inmode ignore
+
+//107 active
+if padon house107 butnot randocivvo6 then
+        order greencivi7 goto civgoto7 inmode ignore,
+        order greencivi8 goto civgoto8 inmode ignore,
+        order greencivi9 goto civgoto9 inmode ignore,
+        trigger alienciv_107,
+        trigger 107_triggered,
+        trigger randocivvo6
+
+if padon civgoto7 then
+        order greencivi7 goto retreat inmode ignore
+
+if padon civgoto8 then
+        order greencivi8 goto retreat inmode ignore
+
+if padon civgoto9 then
+        order greencivi9 goto retreat inmode ignore
+
+//109 Active
+if padon house109 butnot randocivvo7 then
+        order greencivi17 goto civgoto17 inmode ignore,
+        order greencivi18 goto civgoto18 inmode ignore,
+        trigger alienciv_107,
+        trigger 107_triggered,
+        trigger randocivvo7
+
+if padon civgoto17 then
+        order greencivi17 goto retreat inmode ignore
+
+if padon civgoto18 then
+        order greencivi18 goto retreat inmode ignore
+
+//110 Active
+if padon house110 butnot randocivvo8 then
+        order greencivi14 goto civgoto14 inmode ignore,
+        order greencivi15 goto civgoto15 inmode ignore,
+        order greencivi16 goto civgoto16 inmode ignore,
+        trigger alienciv_110,
+        trigger randocivvo8
+
+if padon civgoto14 then
+        order greencivi14 goto retreat inmode ignore
+
+if padon civgoto15 then
+        order greencivi15 goto retreat inmode ignore
+
+if padon civgoto16 then
+        order greencivi16 goto retreat inmode ignore
+
+//111 Active
+if padon house111 butnot randocivvo9 then
+        order greencivi12 goto civgoto12 inmode ignore,
+        order greencivi13 goto civgoto13 inmode ignore,
+        trigger randocivvo9
+
+if padon civgoto12 then
+        order greencivi12 goto retreat inmode ignore
+
+if padon civgoto13 then
+        order greencivi13 goto retreat inmode ignore
+
+
+//112 Active
+if padon house112 butnot randocivvo10 then
+        order greencivi10 goto civgoto10 inmode ignore,
+        order greencivi11 goto civgoto11 inmode ignore,
+        trigger randocivvo10
+
+if padon civgoto10 then
+        order greencivi10 goto retreat inmode ignore
+
+if padon civgoto11 then
+        order greencivi11 goto retreat inmode ignore
+
+
+//113 active
+if padon house113 butnot randocivvo11 then
+        order greencivi19 goto civgoto19 inmode ignore,
+        order greencivi20 goto civgoto20 inmode ignore,
+        order greencivi21 goto civgoto21 inmode ignore,
+        trigger tanwave1,
+        trigger randocivvo11
+
+if padon civgoto19 then
+        order greencivi19 goto retreat inmode ignore
+
+if padon civgoto20 then
+        order greencivi20 goto retreat inmode ignore
+
+if padon civgoto21 then
+        order greencivi21 goto retreat inmode ignore
+
+//115 active
+if padon house115 butnot randocivvo12 then
+      order greencivi26 goto civgoto26 inmode ignore,
+      order greencivi27 goto civgoto27 inmode ignore,
+      trigger tanwave3,
+      trigger randocivvo12
+
+if padon civgoto26 then
+        order greencivi26 goto retreat inmode ignore
+
+if padon civgoto27 then
+        order greencivi27 goto retreat inmode ignore
+
+
+//116 active
+if padon house116 butnot randocivvo13 then
+       order greencivi22 goto civgoto22 inmode ignore,
+       order greencivi23 goto civgoto23 inmode ignore,
+       trigger tanwave2,
+       trigger randocivvo13
+
+if padon civgoto22 then
+        order greencivi22 goto retreat inmode ignore
+
+if padon civgoto23 then
+        order greencivi23 goto retreat inmode ignore
+
+//117 active
+if padon house117 butnot randocivvo14 then
+       order greencivi24 goto civgoto24 inmode ignore,
+       trigger randocivvo14
+
+if padon civgoto24 then
+        order greencivi24 goto retreat inmode ignore
+
+//118 active
+if padon house118 butnot randocivvo15 then
+       order greencivi25 goto civgoto25 inmode ignore,
+       trigger randocivvo15
+
+if padon civgoto25 then
+        order greencivi25 goto retreat inmode ignore
+
+//119 active
+if padon house119 butnot randocivvo16 then
+        order greencivi34 goto civgoto34 inmode ignore,
+        triggerdelay 500 tanattack1,
+        trigger randocivvo16
+
+if padon civgoto34 then
+        order greencivi34 goto retreat inmode ignore
+
+//120 active
+if padon house120 butnot randocivvo17 then
+        order greencivi32 goto civgoto32 inmode ignore,
+        order greencivi33 goto civgoto33 inmode ignore,
+        trigger alienciv_120,
+        trigger randocivvo17
+
+if padon civgoto32 then
+        order greencivi32 goto retreat inmode ignore
+
+if padon civgoto33 then
+        order greencivi33 goto retreat inmode ignore
+
+//121 active
+if padon house121 butnot randocivvo18 then
+        order greencivi31 goto civgoto31 inmode ignore,
+        order greencivi35 goto civgoto35 inmode ignore,
+        trigger alienciv_121,
+        triggerdelay 2000 civ36delay,
+        trigger randocivvo18
+
+if civ36delay then
+        order greencivi36 goto civgoto36 inmode ignore
+
+
+if padon civgoto31 then
+        order greencivi31 goto retreat inmode ignore
+
+if padon civgoto35 then
+        order greencivi35 goto retreat inmode ignore
+
+if padon civgoto36 then
+        order greencivi36 goto retreat inmode ignore
+
+//122 Active
+if padon house122 butnot randocivvo19 then
+        order greencivi28 goto civgoto28 inmode ignore,
+        order greencivi29 goto civgoto29 inmode ignore,
+        order greencivi30 goto civgoto30 inmode ignore,
+        trigger alienciv_122,
+        triggerdelay 2000 civ30delay,
+        trigger randocivvo19
+
+
+if civ30delay then
+        order greencivi30 goto civgoto30 inmode ignore
+
+
+if padon civgoto28 then
+        order greencivi28 goto retreat inmode ignore
+
+if padon civgoto29 then
+        order greencivi29 goto retreat inmode ignore
+
+if padon civgoto30 then
+        order greencivi30  goto retreat inmode ignore
+
+
+if padon retreat then
+        moveitem me dmz
+
+if padon dmz then
+        addvar civiliansescaped 1,
+	undeploy me,
+        trigger checkvictory
+
+macro vomac 1
+{
+
+if randocivvo@1 then
+                random
+                        playsound "Civilians_aahhh1.wav" 6 3,
+                        playsound "Civilians_ahhh1.wav" 7 3,
+                        playsound "Civilians_ahhh4.wav" 8 3,
+                        playsound "Civilians_Ann_Civilian_Ahhhhhh3.wav" 9 3,
+                        playsound "Civilians_Ann_Civilian_PleasesaveUs.wav" 10 3,
+                        playsound "Civilians_helpMe1.wav" 11 3,
+                        playsound "Civilians_pleassaveus3.wav" 12 3,
+                        playsound "Civilians_Tanya_Civilian_Ahhhhhh3.wav" 13 3,
+                        playsound "Civilians_Tanya_Civilian_PleaseSaveMe3.wav" 14 3,
+                        playsound "Civilians_thoseThings1.wav" 15 3,
+                        playsound "Civilians_thoseThings1.wav" 16 3
+
+}
+expand vomac ( 1 )
+expand vomac ( 2 )
+expand vomac ( 3 )
+expand vomac ( 4 )
+expand vomac ( 5 )
+expand vomac ( 6 )
+expand vomac ( 7 )
+expand vomac ( 8 )
+expand vomac ( 9 )
+expand vomac ( 10 )
+expand vomac ( 11 )
+expand vomac ( 12 )
+expand vomac ( 13 )
+expand vomac ( 14 )
+expand vomac ( 15 )
+expand vomac ( 16 )
+expand vomac ( 17 )
+expand vomac ( 18 )
+expand vomac ( 19 )
+
+
+//--Alien order pads--//
+
+if padon NW then
+        order me goto gateway inmode defend
+
+if padon SE then
+        order me goto gateway inmode defend
+
+

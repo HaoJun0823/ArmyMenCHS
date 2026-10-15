@@ -1,0 +1,2 @@
+include killer_ai.txt
+expand killer_ai_macro ( tan green blue grey )

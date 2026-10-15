@@ -1,0 +1,9 @@
+#cmd	type		x	y	facing	group	name
+
+place	jeep        	2377	1027	92	1	-
+place	riflepill   	2447	1185	92	1	-
+place	mortarman   	2523	983	92	1	-
+place	flamerman   	2520	1047	92	1	-
+place	flamerman   	2556	1079	92	1	-
+place	stunner     	2562	1037	92	1	-
+place	robot       	2650	1096	92	2	-

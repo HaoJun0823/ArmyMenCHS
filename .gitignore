@@ -21,6 +21,10 @@ Army2_Extend_Dll/Release/
 Army2_Extend_Dll/Debug/
 Army2_Extend_Dll/x64/
 Army2_Extend_Dll/build_tmp/
+Army3_Extend_Dll/Release/
+Army3_Extend_Dll/Debug/
+Army3_Extend_Dll/x64/
+Army3_Extend_Dll/build_tmp/
 Army1_Extend_Dll/*.obj
 Army1_Extend_Dll/*.pch
 Army1_Extend_Dll/*.ilk

@@ -1,0 +1,2 @@
+include caf_ai.txt
+expand caf_ai_macro ( blue green tan grey b )

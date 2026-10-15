@@ -1,0 +1,3 @@
+#cmd	type		x	y	facing	group	name
+
+place	jeep        	3161	393	0	1	-

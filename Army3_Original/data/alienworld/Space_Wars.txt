@@ -1,0 +1,366 @@
+//**SPACE WARS**// 
+
+
+macro boil 2
+{
+//**Variables**//
+
+variable boilvar@1 0
+
+pad Boilpad@1                                   @2 trooper
+
+
+
+
+if padon Boilpad@1 then
+        setvar boilvar@1 1,
+        trigger animate@1_boil,
+        setdamagepad boilpad@1 1 100 fire
+
+if killed boil@1 testvar boilvar@1 = 0 then
+        setvar boilvar@1 1,
+        trigger animate@1_boil,
+        setdamagepad boilpad@1 1 100 fire
+
+if animate@1_boil butnot onlyonceanim@1boil then
+        setobjstate boil@1 boil@1_explode,
+        trigger boilsound@1,
+        trigger onlyonceanim@1boil
+
+if boilsound@1 then
+        playsound "fruitgore.wav" boil@1,
+        addsoundorigin "fruitgore.wav" boil@1 2 20
+
+
+
+
+object boil@1
+        state boil@1_initial
+                frame 100 0
+
+        state boil@1_explode
+                frame 100 2
+                frame 100 3
+                frame 100 4
+                frame 100 5
+                frame 100 1
+                setobjstate boil@1 boil@1_finished
+
+        state boil@1_finished
+                frame 10 1
+}
+
+expand boil ( 1 201 )
+expand boil ( 2 202 )
+expand boil ( 3 203 )
+expand boil ( 4 204 )
+expand boil ( 5 205 )
+expand boil ( 6 206 )
+expand boil ( 7 207 )
+expand boil ( 8 208 )
+expand boil ( 9 209 )
+expand boil ( 10 210 )
+expand boil ( 11 211 )
+expand boil ( 12 212 )
+expand boil ( 13 213 )
+
+//Variables//
+variable open_closen 0
+variable ndoorhealth 0
+
+variable open_closen02 0
+variable sdoorhealth 0
+
+//South Door Activation//
+pad sdoor_activate                              199      trooper > 0
+
+//North Door Activation//
+pad ndoor_activate                              200      trooper > 0
+
+
+//**Sdoor Scripting**//
+
+if padon sdoor_activate testvar open_closen02 = 0 then
+        playsound "HQdoor.wav" ndoor 7 2 20,
+        setobjstate sdoor sdoor_open,
+        setvar open_closen02 1
+
+if padoff sdoor_activate testvar open_closen02 = 1 then
+        playsound "HQdoor.wav" ndoor 8 2 20,
+        setobjstate sdoor sdoor_close,
+        setvar open_closen02 0
+
+//**Ndoor Scripting**//
+
+if padon ndoor_activate testvar open_closen = 0 then
+        playsound "HQdoor.wav" ndoor 5 2 20,
+        setobjstate ndoor ndoor_open,
+        setvar open_closen 1
+
+if padoff ndoor_activate testvar open_closen = 1 then
+        playsound "HQdoor.wav" ndoor 6 2 20,
+        setobjstate ndoor ndoor_close,
+        setvar open_closen 0
+
+
+
+//**South Door Setup**//
+
+object sdoor
+        state sdoor_initial
+                frame 100 0
+
+        state sdoor_open
+        	frame 300 5
+                frame 300 6
+                triggerdelay 200 initndooropen02
+
+        state sdoor_openend
+		frame 100 7
+
+
+        state sdoor_close
+                frame 300 6
+                frame 300 5
+                triggerdelay 200 initndoorclose02
+
+        state sdoor_cool
+                frame 2000 10
+                frame 5000 11
+                frame 8000 12
+
+        state sdoor_dam_01
+                frame 100 01
+
+        state sdoor_dam_02
+                frame 100 02
+
+        state sdoor_dam_03
+                frame 100 03
+
+if initndooropen02 then
+        setobjstate sdoor sdoor_openend
+
+if initndoorclose02 then
+        setobjstate sdoor sdoor_initial
+
+if killed sdoor then
+        setobjstate sdoor sdoor_cool
+
+if hit sdoor butnot killed sdoor testvar gethealth sdoor <= 100 and sdoorhealth = 0 then
+        setobjstate sdoor sdoor_dam_01,
+        setvar open_closen02 10,
+        triggerdelay 100 setsdoorhealth1
+
+if hit sdoor butnot killed sdoor testvar gethealth sdoor <= 75 and sdoorhealth = 1 then
+        setobjstate sdoor sdoor_dam_02,
+        triggerdelay 100 setsdoorhealth2
+
+if hit sdoor butnot killed sdoor testvar gethealth sdoor <= 50 and sdoorhealth = 2 then
+        setobjstate sdoor sdoor_dam_03,
+        triggerdelay 100 setsdoorhealth3
+
+if setsdoorhealth1 then
+        setvar sdoorhealth 1
+
+if setsdoorhealth2 then
+        setvar sdoorhealth 2
+
+if setsdoorhealth3 then
+        setvar sdoorhealth 3
+
+
+ //**North Door Setup**//
+
+object ndoor
+        state ndoor_initial
+                frame 100 0
+
+        state ndoor_open
+        	frame 300 5
+                frame 300 6
+                triggerdelay 200 initndooropen
+
+        state ndoor_openend
+		frame 100 7
+
+
+        state ndoor_close
+                frame 300 6
+                frame 300 5
+                triggerdelay 200 initndoorclose
+
+        state ndoor_cool
+                frame 2000 11
+                frame 5000 12
+                frame 8000 13
+
+        state ndoor_dam_01
+                frame 100 01
+
+        state ndoor_dam_02
+                frame 100 02
+
+        state ndoor_dam_03
+                frame 100 03
+
+
+if initndooropen then
+        setobjstate ndoor ndoor_openend
+
+if initndoorclose then
+        setobjstate ndoor ndoor_initial
+
+if killed ndoor then
+        setobjstate ndoor ndoor_cool
+
+if hit ndoor butnot killed ndoor testvar gethealth ndoor <= 100 and ndoorhealth = 0 then
+        setobjstate ndoor ndoor_dam_01,
+        setvar open_closen 10,
+		triggerdelay 100 setndoorhealth1
+
+if hit ndoor butnot killed ndoor testvar gethealth ndoor <= 75 and ndoorhealth = 1 then
+        setobjstate ndoor ndoor_dam_02,
+		triggerdelay 100 setndoorhealth2
+
+if hit ndoor butnot killed ndoor testvar gethealth ndoor <= 50 and ndoorhealth = 2 then
+        setobjstate ndoor ndoor_dam_03,
+		triggerdelay 100 setndoorhealth3
+
+if setndoorhealth1 then
+        setvar ndoorhealth 1
+
+if setndoorhealth2 then
+        setvar ndoorhealth 2
+
+if setndoorhealth3 then
+        setvar ndoorhealth 3
+
+object labbolt
+        state labboltactive
+                frame 80 0
+                frame 70 1
+                frame 80 2
+                frame 80 3
+                frame 70 1
+                frame 50 2
+                frame 70 3
+                frame 60 0
+                frame 80 1
+                frame 70 3
+                frame 70 2
+                frame 80 1
+                triggerdelay 80 reloopelabbolt
+
+        state labbolt_toast
+                frame 10 0
+
+if reloopelabbolt butnot labtoast then
+        trigger labboltSFX,
+        setobjstate labbolt labboltactive
+
+if killed labbuilding then
+        trigger labtoast,
+        setobjstate labbolt labbolt_toast,
+        playsound "" 2 3 20,
+        undeploy labbolt
+
+if labboltSFX butnot oneboltSFX then
+        playitemsound "ElectricArc3.wav" labbolt 1 3 1,
+        trigger oneboltSFX
+
+
+//**Gen systems**//
+macro generator 1
+{
+
+variable boltaction@1 0
+
+variable gen@1killed 0
+
+if reloopgen@1 testvar gen@1killed = 0 then
+        setobjstate gen@1 gen@1_active
+
+object gen@1
+        state gen@1_active
+                frame 200 3
+                frame 200 2
+                frame 200 0
+                frame 200 2
+                triggerdelay 200 reloopgen@1
+
+        state gen@1_damstate
+                frame 10 1
+
+
+if hit gen@1 testvar gethealth gen@1 <= 20 and gen@1killed = 0 then
+        trigger irregular_bolt@1,
+        trigger gen@1_secondST,
+        setobjstate bolt@1 gen@1_boltirregular
+
+
+if killed gen@1 then
+        setvar gen@1killed 1,
+	setvar boltaction@1 1,
+        createexplosion gen@1 130 1 blue,
+        makesmoke gen@1 10000,
+        setobjstate bolt@1 bolt@1_off,
+        triggerdelay 100 offsound@1,
+        undeploy bolt@1,
+        setobjstate gen@1 gen@1_damstate
+
+        
+if offsound@1 then
+        playsound "" bolt@1 2 3 10
+
+object bolt@1
+        state boltactive@1
+                frame 100 0
+                frame 100 1
+                frame 100 2
+                frame 100 3
+                frame 100 1
+                frame 100 3
+                frame 100 2
+                frame 100 1
+                frame 100 0
+                trigger reloopbolt@1
+
+        state bolt@1_boltirregular
+                frame 100 1
+                frame 100 3
+                frame 200 4
+                frame 100 1
+                frame 200 4
+                frame 100 0
+                frame 100 2
+                frame 100 3
+                frame 200 4
+                frame 100 0
+                setobjstate bolt@1 bolt@1_boltirregular
+
+        state bolt@1_off
+                frame 10 4
+
+if reloopbolt@1 butnot irregular_bolt@1 then
+                setobjstate bolt@1 boltactive@1
+
+if playsound@1 butnot onesound@1 then
+                playsound "ElectricArc2.wav" bolt@1 2 3 1 10,
+                addsoundorigin "ElectricArc2.wav" bolt@1 2 10,
+                trigger onesound@1
+
+if hit gen@1 testvar gethealth gen@1 < 20 and boltaction@1 = 0 then
+	setobjstate bolt@1 bolt@1_boltirregular
+
+
+
+
+}
+
+expand generator ( 1 )
+expand generator ( 2 )
+expand generator ( 3 )
+expand generator ( 4 )
+expand generator ( 5 )
+

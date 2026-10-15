@@ -1,0 +1,96 @@
+//////////////////////////////////////////////////////////////////////////////
+// Section common to all game types
+//////////////////////////////////////////////////////////////////////////////
+include common.txt
+
+//////////////////////////////////////////////////////////////////////////////
+// It specific section
+//////////////////////////////////////////////////////////////////////////////
+
+variable notItBonus 10
+
+// 0 = no one is it, 1 = green, 2 = tan, 3 = blue, 4 = grey
+variable itplayer 0
+
+variable greenIsOnItTeam	0
+variable tanIsOnItTeam		0
+variable blueIsOnItTeam		0
+variable greyIsOnItTeam		0
+
+if startup1 then
+	triggerdelay 3000 updateScores
+
+if updateScores then
+	trigger greenUpdateScore,
+	trigger tanUpdateScore,
+	trigger blueUpdateScore,
+	trigger greyUpdateScore,
+	triggerdelay 3000 updateScores
+
+// @1 = color killed, @2 = Capitalized color (e.g. "Green"), @3 = color of killer
+macro killed_sarge 3
+{
+	if killed @1sarge1 by @3 testvar isAlly @3 @1 = 0 and @1IsOnItTeam = 0  then
+		showmessage "@2 sarge killed by enemy @3 and becomes it",
+		playsound "mp_death.wav" (0,0) 1 2,
+		trigger @1SargeBecomesIt
+
+	if killed @1sarge1 by @3 testvar isAlly @3 @1 = 1 and @1IsOnItTeam = 0 then
+		showmessage "@2 sarge killed by ally @3 and becomes it",
+		playsound "mp_ffire.wav" (0,0) 2 2,
+		trigger @1SargeBecomesIt
+}
+
+// @1 = color of it player, @2 is color of player to set flag of
+macro set_it_flag 2
+{
+	if @1SetupTeamFlags testvar isAlly @1 @2 = 1 then
+		setvar @2IsOnItTeam 1,
+		setitemflag @2sarge1 stratsquare 1
+
+	if @1SetupTeamFlags testvar isAlly @1 @2 = 0 then
+		setvar @2IsOnItTeam 0,
+		setitemflag @2sarge1 stratsquare 0
+}
+
+// @1 = color, @2 = Capitalized color (e.g. "Green"), @3 = itplayer value,
+// @4-6 are other colors
+macro it_macro 6
+{
+	// in it the enemy sarges should be shown on the stratmap
+	if startup1 testvar iscoloringame @1 > 0 then
+		setitemflag @1sarge1 strategic 1
+
+	// check for the @1 sarge being killed and who killed them
+	expand killed_sarge ( @1 "@2" @4 )
+	expand killed_sarge ( @1 "@2" @5 )
+	expand killed_sarge ( @1 "@2" @6 )
+
+	// killer scoring events
+
+	if @1SargeBecomesIt then
+		setvar itplayer @3,
+		clearscoresymbols @1,
+		clearscoresymbols @4,
+		clearscoresymbols @5,
+		clearscoresymbols @6,
+		addscoresymbol @1 it,
+		playsound "mp_it@1.wav" (0,0) 3 1,
+		trigger @1SetupTeamFlags,
+		trigger itHasChanged					// for AI players
+
+	expand set_it_flag ( @1 @1 )
+	expand set_it_flag ( @1 @4 )
+	expand set_it_flag ( @1 @5 )
+	expand set_it_flag ( @1 @6 )
+
+	if @1UpdateScore testvar iscoloringame @1 > 0 and @1IsOnItTeam = 0 and itplayer <> 0 then
+		addvar @1score notItBonus,
+		playsound "mp_tick.wav" (0,0) 2 3,
+		trigger check@1wins		
+}
+
+expand it_macro ( green "Green" 1 tan   blue  grey  )
+expand it_macro ( tan   "Tan"   2 green blue  grey  )
+expand it_macro ( blue  "Blue"  3 green tan   grey  )
+expand it_macro ( grey  "Grey"  4 green tan   blue  )

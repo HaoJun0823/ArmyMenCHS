@@ -1,0 +1,195 @@
+# this lists defines all of the maps that can be used for multi-play
+
+#command map_name        map_text           folder      tileset		loadcof		victorycin loadscreen               loadmusic briefing briefsfx stratmap cycle?		losemovie1	losemovie2	losemovie3
+
+MAP	 Picnic_Invasion Picnic_Invasion     mpsideyard  backyard        FALSE		none	   load_picnicinvasion.bmp    none      none     none     none   FALSE          none            none		none	
+MAP	 Sandbox_Blitz   Sandbox_Blitz	     mpsideyard  Sandbox_Blitz   FALSE		none	   load_sandboxblitz.bmp      none      none     none     none   FALSE          none            none		none	
+MAP    The_Log_Labyrinth The_Log_Labyrinth   bootcamp    bootcamp        FALSE		none	   load_loglabyrinth.bmp	      none      none     none     none   FALSE		none		none		none
+MAP	 Backyard_Brawl  Backyard_Brawl      mpsideyard  Backyard_Brawl  FALSE		none	   load_backyardbrawl.bmp     none	none	 none	  none	 FALSE		none		none		none
+MAP      The_Airfield	  The_Airfield	     mpplayroom	 mpplayroom      FALSE		none	   load_theairfield.bmp	      none	none	 none	  none   FALSE		none		none		none
+MAP	 Camp_Conflict   Camp_Conflict	     mpplayroom  mpplayroom      FALSE		none	   load_campconflict.bmp      none	none	 none	  none   FALSE		none		none		none
+MAP	 Mars_Mayhem	  Mars_Mayhem	     alienworld  mpalienworld	 FALSE		none	   load_marsmayhem.bmp	      none	none	 none	  none   FALSE		none		none		none
+MAP	Hobbyland_Ho-Down Hobbyland_Hodown  mpplayroom  mpplayroom      FALSE	        none	   load_hobbylandhodown.bmp   none	none	 none	  none   FALSE		none		none		none
+#MAP       mptestmap       MP_Test_Map        mptestmap   mptestmap      FALSE		none       load_mptestmap.bmp         none      none     none     none	 true		none		none		none
+MAP	 Garden_Warfare  Garden_Warfare      mpsideyard  Mpsideyard      FALSE		none	   load_gardenwarfare.bmp     none	none	 none	  none	 FALSE		none		none		none
+MAP	 Demolition_Den	  Demolition_Den     livingroom	 Demolition_Den	 FALSE		none	   load_demolitionden.bmp	      none	none	 none	  none   FALSE		none		none		none
+MAP      First_Contact    First_Contact      alienworld  firstcontact	 FALSE		none	   load_firstcontact.bmp	      none	none	 none	  none   FALSE		none		none		none
+MAP	 Tub_Takeover	  Tub_Takeover       bathroom    bathtub	 FALSE		none	   load_tubtakeover.bmp	      none	none	 none	  none   true		none		none		none
+MAP	 Space_Wars	  Space_Wars	     alienworld  mpalienworld	 FALSE		none	   load_spacewars.bmp	      none	none	 none	  none   FALSE		none		none		none
+MAP	 highlands	  High_Lands	     alienworld  highlands	 FALSE		none	   load_highlands.bmp	      none	none	 none	  none   FALSE		none		none		none
+
+# this list defines all available multi-player rules files
+
+#command rules_file   rules_description_file   game_name
+RULES    death        death_desc               Death_Match
+RULES    ctf_death    ctf_death_desc           Death_or_Capture_the_Flag
+RULES    ctf          ctf_desc                 Capture_the_Flag
+RULES    caf          caf_desc                 Capture_All_Flags
+RULES    koth         koth_desc                King_of_the_Hill
+RULES    it           it_desc                  It
+RULES    killer       killer_desc              Black_Flag_Killer
+RULES    holdflag     holdflag_desc            Hold_the_Black_Flag
+RULES    node         node_desc                Node_Control
+RULES    fusion       fusion_desc              Meltdown_Fusion
+
+# this list specifies which maps can be used with each of the rules files
+# this list must come after the RULES commands
+
+RULEMAP  death	      Picnic_Invasion
+RULEMAP  death	      Sandbox_Blitz
+RULEMAP  death	      The_Log_Labyrinth
+RULEMAP  death	      Backyard_Brawl
+RULEMAP  death	      The_Airfield
+#RULEMAP	 death        mptestmap
+RULEMAP  death        Camp_Conflict
+RULEMAP  death        Mars_Mayhem
+RULEMAP  death	      Hobbyland_Ho-Down
+RULEMAP  death	      Garden_Warfare
+RULEMAP  death	      Demolition_Den
+RULEMAP  death	      First_Contact
+RULEMAP  death	      Tub_Takeover
+RULEMAP  death        Space_Wars
+RULEMAP  death        highlands
+
+RULEMAP  ctf	      Picnic_Invasion
+RULEMAP  ctf	      Sandbox_Blitz
+RULEMAP  ctf	      The_Log_Labyrinth
+RULEMAP  ctf	      Backyard_Brawl
+RULEMAP  ctf	      The_Airfield
+#RULEMAP	 ctf          mptestmap
+RULEMAP	 ctf	      Camp_Conflict
+RULEMAP  ctf	      Mars_Mayhem
+RULEMAP  ctf	      Hobbyland_Ho-Down
+RULEMAP  ctf	      Garden_Warfare
+RULEMAP  ctf	      Demolition_Den
+RULEMAP  ctf	      First_Contact
+RULEMAP  ctf	      Tub_Takeover
+RULEMAP  ctf          Space_Wars
+RULEMAP  ctf          highlands
+
+RULEMAP  koth	      Picnic_Invasion
+RULEMAP  koth	      Sandbox_Blitz
+RULEMAP  koth	      The_Log_Labyrinth
+RULEMAP  koth	      Backyard_Brawl
+RULEMAP  koth	      The_Airfield
+#RULEMAP	 koth	      mptestmap
+RULEMAP  koth	      Camp_Conflict
+RULEMAP  koth	      Mars_Mayhem
+RULEMAP  koth	      Hobbyland_Ho-Down
+RULEMAP  koth	      Garden_Warfare
+RULEMAP  koth	      Demolition_Den
+RULEMAP  koth	      First_Contact
+RULEMAP  koth	      Tub_Takeover
+RULEMAP  koth         Space_Wars
+RULEMAP  koth         highlands
+
+RULEMAP  ctf_death    Picnic_Invasion
+RULEMAP  ctf_death    Sandbox_Blitz
+RULEMAP  ctf_death    The_Log_Labyrinth
+RULEMAP  ctf_death    Backyard_Brawl
+RULEMAP  ctf_death    The_Airfield
+#RULEMAP	 ctf_death    mptestmap
+RULEMAP	 ctf_death    Camp_Conflict
+RULEMAP  ctf_death    Mars_Mayhem
+RULEMAP  ctf_death    Hobbyland_Ho-Down
+RULEMAP  ctf_death    Garden_Warfare
+RULEMAP  ctf_death    Demolition_Den
+RULEMAP  ctf_death    First_Contact
+RULEMAP  ctf_death    Tub_Takeover
+RULEMAP  ctf_death    Space_Wars
+RULEMAP  ctf_death    highlands
+
+RULEMAP  killer       Picnic_Invasion
+RULEMAP  killer       Sandbox_Blitz
+RULEMAP  killer	      The_Log_Labyrinth
+RULEMAP  killer	      Backyard_Brawl
+RULEMAP  killer	      The_Airfield
+#RULEMAP	 killer	      mptestmap
+RULEMAP	 killer	      Camp_Conflict
+RULEMAP  killer	      Mars_Mayhem
+RULEMAP  killer       Hobbyland_Ho-Down
+RULEMAP  killer	      Garden_Warfare
+RULEMAP  killer	      Demolition_Den
+RULEMAP  killer	      First_Contact
+RULEMAP  killer	      Tub_Takeover
+RULEMAP  killer       Space_Wars
+RULEMAP  killer       highlands
+
+RULEMAP  holdflag     Picnic_Invasion
+RULEMAP  holdflag     Sandbox_Blitz
+RULEMAP  holdflag     The_Log_Labyrinth
+RULEMAP  holdflag     Backyard_Brawl
+RULEMAP  holdflag     The_Airfield
+#RULEMAP	 holdflag     mptestmap
+RULEMAP	 holdflag     Camp_Conflict
+RULEMAP  holdflag     Mars_Mayhem
+RULEMAP  holdflag     Hobbyland_Ho-Down
+RULEMAP  holdflag     Garden_Warfare
+RULEMAP  holdflag     Demolition_Den
+RULEMAP  holdflag     First_Contact
+RULEMAP  holdflag     Tub_Takeover
+RULEMAP  holdflag     Space_Wars
+RULEMAP  holdflag     highlands
+
+RULEMAP  it           Picnic_Invasion
+RULEMAP  it           Sandbox_Blitz
+RULEMAP  it	      The_Log_Labyrinth
+RULEMAP  it	      Backyard_Brawl
+RULEMAP  it	      The_Airfield
+#RULEMAP  it           mptestmap
+RULEMAP  it	      Camp_Conflict
+RULEMAP  it	      Mars_Mayhem
+RULEMAP  it	      Hobbyland_Ho-Down
+RULEMAP  it	      Garden_Warfare
+RULEMAP  it	      Demolition_Den
+RULEMAP  it	      First_Contact
+RULEMAP  it	      Tub_Takeover
+RULEMAP  it           Space_Wars
+RULEMAP  it           highlands
+
+RULEMAP  node	      Picnic_Invasion
+RULEMAP  node	      Sandbox_Blitz
+RULEMAP  node	      The_Log_Labyrinth
+RULEMAP  node	      Backyard_Brawl
+RULEMAP  node	      The_Airfield
+#RULEMAP  node	      mptestmap
+RULEMAP  node	      Camp_Conflict
+RULEMAP  node	      Mars_Mayhem
+RULEMAP  node         Hobbyland_Ho-Down
+RULEMAP  node         Garden_Warfare
+RULEMAP  node	      Demolition_Den
+RULEMAP  node	      First_Contact
+RULEMAP  node	      Tub_Takeover
+RULEMAP  node         highlands
+
+RULEMAP  caf	      Picnic_Invasion
+RULEMAP  caf	      Sandbox_Blitz
+RULEMAP  caf	      The_Log_Labyrinth
+RULEMAP  caf	      Backyard_Brawl
+RULEMAP  caf	      The_Airfield
+#RULEMAP  caf	      mptestmap
+RULEMAP  caf	      Camp_Conflict
+RULEMAP  caf	      Mars_Mayhem
+RULEMAP  caf	      Hobbyland_Ho-Down
+RULEMAP  caf          Garden_Warfare
+RULEMAP  caf	      Demolition_Den
+RULEMAP  caf	      First_Contact
+RULEMAP  caf	      Tub_Takeover
+RULEMAP  caf          Space_Wars
+RULEMAP  caf          highlands
+
+RULEMAP  fusion	      Picnic_Invasion
+RULEMAP  fusion	      Sandbox_Blitz
+RULEMAP  fusion	      The_Log_Labyrinth
+RULEMAP  fusion	      Backyard_Brawl
+RULEMAP  fusion       The_Airfield
+#RULEMAP	 fusion       mptestmap
+RULEMAP  fusion	      Camp_Conflict
+RULEMAP  fusion       Mars_Mayhem
+RULEMAP  fusion       Hobbyland_Ho-Down
+RULEMAP  fusion       Garden_Warfare
+RULEMAP  fusion       Demolition_Den
+RULEMAP  fusion	      First_Contact
+RULEMAP  fusion	      Tub_Takeover
+RULEMAP  fusion       Space_Wars
+RULEMAP  fusion       highlands

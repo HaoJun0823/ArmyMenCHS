@@ -1,0 +1,22 @@
+#cmd	type		x	y	facing	group	name
+
+place	spider      	1824	3763	20	1	-
+place	spider      	1878	3777	20	1	-
+place	spider      	1810	3822	20	1	-
+place	spider      	1752	3800	20	1	-
+place	spider      	1792	3729	20	1	-
+place	spider      	1709	3690	20	1	-
+place	spider      	1796	3793	20	1	-
+place	spider      	1754	3754	20	1	-
+place	spider      	1717	3813	20	1	-
+place	spider      	1723	3845	20	1	-
+place	spider      	1797	3862	20	1	-
+place	spider      	1833	3854	20	1	-
+place	spider      	1891	3830	20	1	-
+place	spider      	1869	3802	20	1	-
+place	spider      	1850	3796	20	1	-
+place	spider      	1866	3733	20	1	-
+place	spider      	1888	3727	20	1	-
+place	spider      	1897	3748	20	1	-
+place	spider      	1913	3809	20	1	-
+place	spider      	1937	3849	20	1	-

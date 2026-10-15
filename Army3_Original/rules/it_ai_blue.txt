@@ -1,0 +1,2 @@
+include it_ai.txt
+expand it_ai_macro ( blue grey green tan )
