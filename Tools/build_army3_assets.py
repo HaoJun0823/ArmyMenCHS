@@ -7,12 +7,26 @@
   入库（方案 B）
     · 全部 *.txt          —— 文本载体（strings.txt / 地图脚本 / rules / 顶层表）
     · 全部 *.bmp          —— 可能烧入文字（菜单、简报、载入图、战略图）
+    · audio/vos/*.wav     —— 英文配音基线，239 个 / 12.86 MB
   排除
     · 主程序 exe / *.dll / IDA 库 / 安装器 / 英文文档(PDF)
     · 运行期 save/、第三方广告 3do.smk
-    · 二进制媒体 audio/ 与 avi/（无中文母盘，暂无可译内容）
+    · **update/ 整目录**（★ 见下）
+    · audio/ 根的音效与 audio/music/（无人声，非 i18n 载体）
+    · avi/（无中文母盘，暂无可译内容）
     · 非文本资产 .ani/.amm/.atl/.dat/.aai（无文字）
     · 非资产 .ico/.vdf/.sdb
+
+★ 为什么必须排除 update/
+    游戏根目录下的 update/ 是**本补丁安装后的产物**（3 代汉化载荷 97 个
+    .txt/.bmp）。而本脚本是从游戏目录**重建英文基线**的 —— 若不排除，
+    重跑会用中文补丁内容覆盖英文基线，且 sha256 全部"新"，校验器抓不到。
+    早期版本只排除了 save/，这是真实踩过的坑：装过补丁的机器上重跑即污染。
+
+★ 为什么 audio/vos 入库而 audio/ 根不入
+    只有 audio/vos/ 是人声台词（配音汉化的对照基线，与
+    Army3_Voice_CHS/audio/vos 逐文件一一对应）；
+    audio/ 根是 106 个音效、music/ 是 147 MB 音轨，都不含台词。
 
 用法:
     python Tools/build_army3_assets.py --dry-run
@@ -30,8 +44,12 @@ DST = r"G:\Projects\ArmyMenCHS\Army3_Original"
 # 方案 B：按扩展名入库
 INCLUDE_EXT = {".txt", ".bmp"}
 
+# 逐目录例外：只有 audio/vos 下的 .wav 入（人声台词基线）
+INCLUDE_DIR_EXT = {"audio/vos": {".wav"}}
+
 # 顶层目录整目录排除
-EXCLUDE_TOP = {"save"}
+# ★ update/ 是本补丁安装后的产物，必须排除，否则重跑会污染英文基线
+EXCLUDE_TOP = {"save", "update"}
 
 # 精确文件名排除（小写）
 EXCLUDE_NAME = {"3do.smk"}
@@ -54,11 +72,16 @@ def collect(base):
         if top.lower() in EXCLUDE_TOP:
             dirnames[:] = []
             continue
+        extra_ext = set()
+        for d, exts in INCLUDE_DIR_EXT.items():
+            if rel_dir.lower() == d.lower():
+                extra_ext |= exts
         for fn in filenames:
             rel = (rel_dir + "/" + fn) if rel_dir else fn
             ext = os.path.splitext(fn)[1].lower()
             key = ext or fn.lower()
-            if ext in INCLUDE_EXT and fn.lower() not in EXCLUDE_NAME:
+            if (ext in INCLUDE_EXT or ext in extra_ext) and \
+                    fn.lower() not in EXCLUDE_NAME:
                 inc[rel] = os.path.join(dirpath, fn)
             else:
                 exc.setdefault(key, []).append(rel)
@@ -153,8 +176,14 @@ def main():
         f.write("2 代**有** 1999 上海育碧官方简体中文母盘，所以整棵资产树"
                 "（含中文配音/贴图/视频）都属 i18n 依据。\n")
         f.write("3 代**无**官方中文母盘（已核实），可译面只有文本载体，"
-                "故本树只收 `.txt` 与 `.bmp`。\n")
-        f.write("媒体与二进制资产留在游戏目录，不入库；完整排除清单见下。\n\n")
+                "故本树收 `.txt` + `.bmp` + `audio/vos/*.wav`。\n")
+        f.write("`audio/vos`（239 个英文台词）入库的原因：它是配音汉化的"
+                "**对照基线** —— 与 `Army3_Voice_CHS/audio/vos` 同名单一一对应，"
+                "缺了它就无法核\"哪句被替换、哪句漏了\"。\n")
+        f.write("其余媒体与二进制资产留在游戏目录，不入库；"
+                "完整排除清单见下。\n")
+        f.write("★ `update/` 整目录排除：那是本补丁**安装后**的产物，"
+                "入库会污染英文基线（详见脚本头部注释）。\n\n")
         f.write("## 总量\n\n| 项 | 值 |\n|---|---|\n")
         f.write("| 文件数 | %d |\n" % len(rows))
         f.write("| 总体积 | %.2f MB |\n" % (tot / 1048576))
@@ -167,7 +196,8 @@ def main():
         f.write("\n## 未收录（完整清单）\n\n")
         f.write("| 类别 | 文件数 | 体积 (MB) | 原因 |\n|---|---|---|---|\n")
         reason = {
-            ".wav": "英文配音，无中文母盘可比对",
+            ".wav": "音效(audio/)与音乐(audio/music/)，无人声台词"
+                    "（台词在 audio/vos/，已入库）",
             ".smk": "英文视频，无中文母盘可比对",
             ".ani": "动画帧数据，无文字",
             ".amm": "地图数据，无文字",

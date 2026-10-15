@@ -39,11 +39,6 @@
   游戏拿不到函数 —— 表现是"补丁装了但中文完全不出现且无报错"。
   这是必须在 CI 上拦下的失效模式（见 verify_release_am3.py）。
 
-★ 为什么代理必须落名为 dinput.dll 而不是随便一个名字：
-  游戏是按名字解析导入的；代理名不对，DirectInputCreateA 解析失败，
-  游戏拿不到函数 —— 表现是"补丁装了但中文完全不出现且无报错"。
-  这是必须在 CI 上拦下的失效模式（见 verify_release_am3.py）。
-
 ★ 包根说明与许可（本轮补齐，与 1/2 代同一套约定 S11/S12/S13）：
     LICENSE      <- 仓库根 LICENSE（项目主许可，含游戏版权声明）
     License.txt  <- LICENSES/*.txt 合并：ASILoader + cnc-ddraw + qwen3-tts

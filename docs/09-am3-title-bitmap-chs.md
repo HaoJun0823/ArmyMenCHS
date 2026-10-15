@@ -279,7 +279,8 @@ Hzk16 点阵本身是 **1 bit 无抗锯齿**，再套一圈描边只会糊掉笔
 
 ## 5. 复现步骤
 
-工具当前位于**工作区** `I:\LocalGames\Army Men\scripts\`：
+工具位于 **`Tools/title/`**（原在工作区 `I:\LocalGames\Army Men\scripts\`，
+3 代完工后迁入仓库，供 4 代复用）：
 
 | 脚本 | 职责 |
 |---|---|
@@ -289,7 +290,11 @@ Hzk16 点阵本身是 **1 bit 无抗锯齿**，再套一圈描边只会糊掉笔
 | `am3_title_build.py` | 按译文表批量构建 |
 | `am3_title_pack_verify.py` | 回包 + 往返校验 |
 
-> 如需纳入本仓库，建议放 `Tools/`（与 `am3_dat.py` 同处）。
+> 使用说明见 [`../Tools/README_pipelines.md`](../Tools/README_pipelines.md)。
+> **迁移时保留了工作区路径常量**：`am3_title_lines.py` /
+> `am3_title_render.py` / `am3_title_pack_verify.py` 里的 `WORK`
+> 仍指向 `I:\LocalGames\Army Men\_am3_title_work`（中间产物，不入库），
+> 换机器运行时改这三个常量。
 
 ### 5.1 完整流程
 
@@ -301,13 +306,13 @@ $W  = "I:\LocalGames\Army Men\_am3_title_work"
 python Tools/am3_dat.py unpack "<游戏目录>/title.dat" Army3_Object_CHS/title
 
 # 1) 检测文字行（输出 lines.json；改过原图后需重跑）
-& $PY scripts\am3_title_lines.py
+& $PY Tools\title\am3_title_lines.py
 
 # 2) 按译文表构建（内置字形自检闸门，不通过则中止）
-& $PY scripts\am3_title_build.py --table $W\translations.tsv --out $W\out
+& $PY Tools\title\am3_title_build.py --table $W\translations.tsv --out $W\out
 
 # 3) 回包并验证往返
-& $PY scripts\am3_title_pack_verify.py
+& $PY Tools\title\am3_title_pack_verify.py
 ```
 
 ### 5.2 译文表格式

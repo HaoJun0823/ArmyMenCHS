@@ -349,68 +349,87 @@ poweruprespawn %lu   unitrespawn %lu   options1..3 %lu   goal %lu
 中文配音/贴图/视频本身就是 i18n 依据，所以整棵树都相关。
 
 3 代**没有**母盘，可译面天然只有文本载体。因此本树采用
-**i18n 精确入库**：只收 `.txt` 与 `.bmp`。
+**i18n 精确入库**：收 `.txt` + `.bmp`，另加 `audio/vos/*.wav`（见下）。
 
 ### 5.2 实际入库
 
 | 项 | 值 |
 |---|---|
-| 文件数 | **264** |
-| 总体积 | **16.63 MB** |
-| 生成脚本 | `am3_build_assets.py` |
+| 文件数 | **503** |
+| 总体积 | **29.50 MB** |
+| 生成脚本 | `Tools/build_army3_assets.py` |
 | 清单 | `Army3_Original/MANIFEST.md` |
 | 全量哈希 | `Army3_Original/_filehash.csv` |
 
 | 扩展名 | 文件数 | 体积 (MB) |
 |---|---|---|
 | `.bmp` | 116 | 16.06 |
+| `.wav` | 239 | 12.86 |
 | `.txt` | 148 | 0.57 |
 
 | 顶层 | 文件数 | 体积 (MB) |
 |---|---|---|
 | `bitmaps` | 61 | 14.71 |
+| `audio/vos` | 239 | 12.86 |
 | `data` | 121 | 1.48 |
 | `01-title` | 1 | 0.29 |
 | `rules` | 75 | 0.10 |
 | `(根)` | 5 | 0.04 |
 | `strings` | 1 | 0.004 |
 
-### 5.3 未收录（505 文件 / 494.70 MB）
+> ★ **`audio/vos` 为什么后来要入库**：初版按"无母盘即无可译内容"把
+> 全部 `.wav` 排除了，但做配音汉化时发现 —— **没有英文原声基线，
+> 就无法核"哪句被替换、哪句漏了"**（171 个中文 wav 与 239 个英文
+> 台词文件名一一对应，缺一侧就失去对照）。
+> 音效（`audio/` 根 106 个）与音乐（`audio/music/` 15 个）仍排除。
+
+> ⚠ **路径必须是 `audio/vos/`**，不能是顶层 `vos/`：整棵资产树按
+> **源相对路径镜像**，`verify_army3_assets.py` 用 `SRC/<rel>` 找源文件。
+> 放在顶层会报 239 个"源缺失"（真实踩过）。
+
+### 5.3 未收录（完整清单）
 
 | 类别 | 文件数 | 体积 (MB) | 原因 |
 |---|---|---|---|
-| `.wav` | 360 | 162.78 | 英文配音，无中文母盘可比对 |
+| `.wav` | 121 | 149.92 | 音效与音乐，无人声台词 |
 | `.smk` | 10 | 169.07 | 英文视频，无中文母盘可比对 |
 | `.atl` | 23 | 62.57 | 图集数据，无文字 |
-| `.dat` | 13 | 42.96 | 打包数据（objects/title/shared） |
+| `.dat` | 13 | 42.96 | 打包数据（title/shared） |
 | `.ani` | 42 | 31.92 | 动画帧数据，无文字 |
 | `.amm` | 28 | 12.44 | 地图数据，无文字 |
-| `.i64` | 1 | 9.67 | IDA 数据库（会话产物） |
-| `.dll` | 5 | 1.33 | 第三方/兼容 DLL；其中 **`amtisged.dll` 含独立 UI 文本（见 §3.5）** |
+| `.i64` | 1 | 10.39 | IDA 数据库（会话产物） |
+| `.dll` | 6 | 2.73 | 第三方/兼容 DLL；其中 **`amtisged.dll` 含独立 UI 文本（见 §3.5）** |
 | `.pdf` | 1 | 1.22 | 英文文档 |
 | `.exe` | 1 | 0.61 | 主程序（硬约束：不改 exe） |
 | `.aai` | 18 | 0.11 | AI 行为表，非显示文本 |
-| `.ico`/`.vdf`/`.sdb` | 3 | 0.00 | 非资产 |
+| `.ico`/`.vdf`/`.sdb`/`.ini`/`.asi`/`.log` | 6 | 0.09 | 非资产 |
 | `3do.smk` | 1 | 1.54 | 第三方广告 |
-| `.id0/.id1/.id2/.nam/.til` | 5 | 9.68 | IDA 松散工作文件（打开 IDB 时解出，会话产物） |
 
 另有运行期 `save/` 整目录未收（存档，非资产）。
+
+> ★ **`update/` 整目录必须排除**（真实踩过的坑）：游戏根目录下的
+> `update/` 是**本补丁安装后**的产物（3 代中文载荷 97 个 `.txt`/`.bmp`）。
+> 本脚本是从游戏目录**重建英文基线**的 —— 若不排除，在不干净的机器上
+> 重跑会用中文补丁内容覆盖英文基线，且 sha256 全部"新"，校验器抓不到。
+> 早期版本只排除了 `save/`；现已在 `EXCLUDE_TOP` 中锁死。
 
 > ⚠ **一处待定**：`amtisged.dll`（49 KB）的 UI 文本**当前未入库**，
 > 因为它被 `*.dll` 规则排除了。若决定汉化启动配置器界面，
 > 需单独纳入该 DLL（或因"不改 exe/dll"硬约束改为走内存补丁）。
 
-> 后续若要做中文配音，需再拉 `audio/`（162.78 MB）；
-> 若要嵌视频字幕，需再拉 `avi/`（169.07 MB）。
+> 视频字幕：若要嵌视频字幕，需再拉 `avi/`（169.07 MB）。
+> 中文配音已完成，见 [`10-am3-build-and-release.md`](10-am3-build-and-release.md)。
 
 ### 5.4 校验结果
 
+`python Tools/verify_army3_assets.py`（实测输出）：
+
 | 检查 | 结果 |
 |---|---|
-| 与源逐字节 sha256 一致 | ✅ 264/264，0 不一致 |
-| `_filehash.csv` 自校验 | ✅ 264 条，0 不符 |
+| 与源逐字节 sha256 一致 | ✅ 503/503，0 不一致、0 源缺失 |
+| `_filehash.csv` 自校验 | ✅ 503 条，0 不符 |
 | `strings.txt` 行数 | ✅ 320（= 数组容量） |
-| `strings.txt` 非 ASCII 字节 | ✅ 0 |
+| `strings.txt` 非 ASCII 字节 | ✅ 0（英文基线本就纯 ASCII） |
 | 单行超 510 字节 | ✅ 无（最长 103） |
 | `rules`/`data`/`strings` 的 `.txt` 计数与源一致 | ✅ 75/75、67/67、1/1 |
 
@@ -418,30 +437,47 @@ poweruprespawn %lu   unitrespawn %lu   options1..3 %lu   goal %lu
 
 ## 6. 对 3 代汉化路线的影响
 
-与 [`05-am2-porting-guide.md`](05-am2-porting-guide.md) 的对照，3 代新增/变化的项：
+与 [`05-am2-porting-guide.md`](05-am2-porting-guide.md) 的对照。
+**下表已按 3 代完工后的实测结果回填**（原文写于开工前，标 ❓ 的三项现已定论）：
 
 | 项 | 2 代 | 3 代 | 影响 |
 |---|---|---|---|
 | UI 文本改法 | 内存补丁（RVA 表） | **直接改 `strings.txt`** | 🟢 大幅简化 |
 | 行数约束 | 槽容量 `len(en)+1` | **320 行硬闸 + 510 B/行** | 🟡 新增约束 |
+| 文本编码 | GBK（与母盘一致） | **GBK**（实测 `stage_am3` 载荷：3425 B / 320 行 / 2224 非 ASCII 字节 / 无 BOM） | 🟡 必须 GBK，不能 UTF-8 |
 | 地图脚本文本 | 同 | 同（`showpda`/`showmessage`） | 🟢 照搬 |
-| 中文字库 | 复用中文母盘 `Hzk16` | **需自备**（无母盘） | 🟡 需解决 |
-| 文本渲染器 | 3 绘制 + 1 测量 | ❓ 需重测（源码里已有 `probeOnly` 档位） | 🟡 需重测 |
-| 注入方式 | `dinput.dll`（按名导入） | ❓ 需查导入表 | 🟡 需重测 |
-| 启动配置器 | 无独立界面 | **`amtisged.dll` 自带一套 UI 文本** | 🟡 新增载体 |
+| 中文字库 | 复用中文母盘 `Hzk16` | ✅ **已解决：复用 `Army2_CHS/Hzk16`** | 🟢 无母盘也能解决 |
+| 文本渲染器 | 3 绘制 + 1 测量 | ✅ **已实机验证**（沿用 2 代结构） | 🟢 已定 |
+| 注入方式 | `dinput.dll`（按名导入） | ✅ **同样是 `dinput.dll`**（按名导入 `DirectInputCreateA`） | 🟢 照搬 |
+| 启动配置器 | 无独立界面 | ⚠ **`amtisged.dll` 自带一套 UI 文本**（仍未处理） | 🟡 遗留载体 |
 
-> **`target.cpp` 里已有 TIS 档位且标为 `probeOnly = true`**（不接管渲染）。
-> 3 代的渲染正确性尚未实机验证，ASCII 宽度与字形头语义未确认。
+> **关于字库**：虽然 3 代无中文母盘，但 2 代中文版自带的 `Hzk16`
+> （13×13 宋体点阵，6,768 字形）是同一引擎的字库格式，直接复用后
+> 实机渲染**同源无差异**。这推翻了我原先"无母盘就得自造字库"的担心 ——
+> **字库可以跨代复用，只要引擎没换**。详见
+> [`09-am3-title-bitmap-chs.md`](09-am3-title-bitmap-chs.md) §2。
 
-### 建议的下一步
+> **关于渲染器**：`Army3_Extend_Dll/src/hooks.cpp` 里的 `probeOnly`
+> 档位是**开发期的探针模式**（只识别不接管），现已可由正式档位接管。
+> 实机验证时发现一个隐蔽 bug：`charWidthVA`(0x698DAC) 并非宽度表，
+> 而是 `atlasOffsetVA`(0x698D6C) 右移 32 个 WORD ——
+> 误用会导致"混合字符串从第一个 ASCII 字符起整段消失"。
+> 已移除该误用，推进量一律走 `SafeGlyphHeader`。详见
+> [`10-am3-build-and-release.md`](10-am3-build-and-release.md)。
+
+### 当初的下一步计划（现已全部完成）
 
 ```
-① 打通 strings.txt 改字（唯一门槛是行数与编码）—— 风险最低，先做
+① 打通 strings.txt 改字（唯一门槛是行数与编码）—— ✅ 已完成
 ② 确认中文字库来源（无母盘，需自备 13×13 点阵或改用其它方案）
-③ 重测 3 代文本渲染器（能否沿用 2 代的 3+1 函数结构）
-④ 查 3 代导入表，确认 ASI 代理 DLL
-⑤ 再处理 BMP 烧字与地图脚本
+   —— ✅ 已解决：复用 Army2_CHS/Hzk16
+③ 重测 3 代文本渲染器（能否沿用 2 代的 3+1 函数结构）—— ✅ 已实机验证
+④ 查 3 代导入表，确认 ASI 代理 DLL —— ✅ dinput.dll
+⑤ 再处理 BMP 烧字与地图脚本 —— ✅ 已完成（title 126 张 + data/rules）
 ```
+
+> 3 代的完整构建、打包、校验流程见
+> [`10-am3-build-and-release.md`](10-am3-build-and-release.md)。
 
 ---
 
@@ -449,8 +485,11 @@ poweruprespawn %lu   unitrespawn %lu   options1..3 %lu   goal %lu
 
 | 文档 | 内容 |
 |---|---|
+| [`09-am3-title-bitmap-chs.md`](09-am3-title-bitmap-chs.md) | 3 代 title 贴图烧字（Hzk16 直出、13 位对齐陷阱） |
+| [`10-am3-build-and-release.md`](10-am3-build-and-release.md) | 3 代构建、打包、校验、配音与许可 |
 | [`05-am2-technical-archive.md`](05-am2-technical-archive.md) | 2 代技术档案（渲染器、Hzk16、内存补丁原理） |
 | [`05-am2-porting-guide.md`](05-am2-porting-guide.md) | 2 → 3/4 代移植指南（逐项对照表） |
 | [`06-am2-pitfalls.md`](06-am2-pitfalls.md) | 2 代踩坑清单（15 个真实坑） |
-| [`00-porting-map.md`](00-porting-map.md) | 1 代视角的移植地图 |
+| [`00-porting-map.md`](00-porting-map.md) | 移植地图（含 4 代开工清单） |
+| [`11-am4-reuse-plan.md`](11-am4-reuse-plan.md) | 4 代复用方案 |
 | [`../Army3_Original/MANIFEST.md`](../Army3_Original/MANIFEST.md) | 3 代入库资产清单 |
