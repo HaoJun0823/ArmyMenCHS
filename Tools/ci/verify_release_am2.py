@@ -15,6 +15,9 @@
   6. update\\ 里**不含任何 exe/dll**（硬约束：不改游戏文件）
   7. update\\ 的文件清单与 MANIFEST 一致，且总大小在预期范围
   8. 必读说明.txt 为 UTF-8 BOM + CRLF（记事本友好）
+  9. 包根 cnc-ddraw（ddraw.dll / ddraw.ini）—— 缺了在新系统上直接黑屏；
+     License.txt 必须含随包分发的 cnc-ddraw 的 MIT 声明与版权行
+     （只查"文件存在"挡不住合并时漏掉一份声明）
 
 用法：
     python Tools/ci/verify_release_am2.py [stage_dir]
@@ -167,6 +170,39 @@ def main():
         txt = open(ini, encoding="utf-8").read()
         for sec in ("[General]", "[Target]", "[Font]", "[Strings]"):
             ok(sec in txt, "含 %s 节" % sec, "缺 %s 节" % sec)
+
+    # ── 3b. 包根 cnc-ddraw + 许可与说明 ───────────────────────────────
+    #   ★ 这些是 2/3 代共有的分发义务与渲染前提，缺了都不报错：
+    #     · 缺 ddraw.dll   -> 新系统上黑屏/无图像（玩家以为是补丁坏了）
+    #     · 缺 License.txt -> 少了 cnc-ddraw 的 MIT 声明（合规缺口）
+    #     · 缺 必读说明    -> 玩家不知道要先导入 Disable_...reg
+    print("\n[3b] 包根 cnc-ddraw / 许可 / 说明")
+    for f in ("ddraw.dll", "ddraw.ini", "LICENSE", "License.txt",
+              "必读说明.txt",
+              "如果不会安装，请把该文件发给AI，让AI教你.txt",
+              "将此文件交给AI，让AI协助完善本项目.txt",
+              "Disable_AM2ExeWinCompatShim.reg",
+              "Restore_AM2ExeWinCompatShim.reg"):
+        ok(os.path.isfile(os.path.join(STAGE, f)), "包根 %s" % f, "缺 %s" % f)
+
+    dd = os.path.join(STAGE, "ddraw.ini")
+    if os.path.isfile(dd):
+        dtxt = open(dd, encoding="utf-8", errors="replace").read()
+        ok("cnc-ddraw" in dtxt, "ddraw.ini 是 cnc-ddraw 配置",
+           "ddraw.ini 不像 cnc-ddraw 配置（缺 cnc-ddraw 标识）")
+        ok("[ddraw]" in dtxt, "ddraw.ini 含 [ddraw] 节", "缺 [ddraw] 节")
+
+    lt = os.path.join(STAGE, "License.txt")
+    if os.path.isfile(lt):
+        ltxt = open(lt, encoding="utf-8", errors="replace").read()
+        # ★ 三方声明必须随包：cnc-ddraw 是 MIT，随二进制分发须附版权声明。
+        #   只查"文件非空"挡不住"合并时漏了 cnc-ddraw 这一份"。
+        for mark, label in (("MIT License", "MIT 正文"),
+                            ("github.com/FunkyFr3sh", "cnc-ddraw 版权行"),
+                            ("== ASILoader.txt", "UAL 声明"),
+                            ("GPL", "项目主许可（GPLv3）")):
+            ok(mark in ltxt, "License.txt 含 %s" % label,
+               "License.txt 缺 %s —— 随包分发的第三方声明不全" % label)
 
     # ── 4. 译文表（逐条对照 Steam exe）───────────────────────────────
     print("\n[4] 译文表（逐条对照 Steam exe）")

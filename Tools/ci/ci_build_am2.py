@@ -20,7 +20,13 @@
     ├─ Army2_Extend_Dll.dll
     ├─ ArmyMenCHS.ini
     ├─ Hzk16
+    ├─ ddraw.dll  ddraw.ini                 <- cnc-ddraw（进包根）
     └─ strings\am2_strings.ini
+
+★ cnc-ddraw 由本脚本从仓库 cnc-ddraw/ 取（与 3 代同一份文件）：
+    2 代同样是 DirectDraw 程序，在新系统上必须靠 cnc-ddraw 才能渲染。
+    早先 2 代说明书写的是"请自行安装 cnc-ddraw"，现在改为**随包分发**，
+    ddraw.dll / ddraw.ini 直接落包根（不进 update\，也不进 MANIFEST 载荷）。
 
 ★ 为什么 Army2_NEW_CHS 是**权威载荷**而不是"从母盘算出的差异"：
     1 代的 Army1_NEW_CHS 就是「仓库里手工维护、可直接整树覆盖」的载荷，
@@ -60,6 +66,10 @@ PAYLOAD_FORBIDDEN_EXT = {".exe", ".dll", ".asi", ".sys", ".ocx"}
 HZK_CANDIDATES = [
     os.path.join("Army2_CHS", HZK_NAME),
 ]
+
+# 包根文件（由 cnc-ddraw 提供）——不属于 update\ 载荷，也不进 MANIFEST
+ROOT_FILES = ["ddraw.dll", "ddraw.ini"]
+CNC_DIR = "cnc-ddraw"
 
 
 def sha256(p):
@@ -193,12 +203,31 @@ def main():
     stats["files"] += 1
     stats["bytes"] += os.path.getsize(hzk_src)
     print("      %s  <- %s" % (HZK_NAME, os.path.relpath(hzk_src, root)))
+
+    # ── 2b. 包根文件：cnc-ddraw 的 ddraw.dll / ddraw.ini ───────────────
+    #   ★ 与 3 代（ci_build_am3.py 第 4 步）取的是**同一个** cnc-ddraw/。
+    #     2 代同样是 DirectDraw 程序，不给它就没法在新系统上渲染。
+    for f in ROOT_FILES:
+        s = os.path.join(root, CNC_DIR, f)
+        if not os.path.isfile(s):
+            print("  [2b] !! 缺少 %s/%s（随包分发的 cnc-ddraw，不能少）"
+                  % (CNC_DIR, f), file=sys.stderr)
+            return 1
+        shutil.copyfile(s, os.path.join(out, f))
+        stats["files"] += 1
+        stats["bytes"] += os.path.getsize(s)
+        print("      %s  <- %s/%s  (%d B)"
+              % (f, CNC_DIR, f, os.path.getsize(s)))
     print()
 
     print("总计: %d 文件 / %.1f MB" % (stats["files"], stats["bytes"] / 1048576))
 
     # ── 3. MANIFEST.json（build_out 的权威清单；verify_release_am2 用它核对）──
-    runtime = {DLL_NAME, INI_NAME, HZK_NAME, STRINGS_DIR}
+    #   ★ runtime 里必须含 ROOT_FILES：它们与 dll/ini/Hzk16 一样是**包根**
+    #     运行期文件，不属于 update\ 载荷。漏掉的话 ddraw.dll/ini 会被写进
+    #     清单，verify_release_am2.py 的 [7] 段就会把它们当成 update\ 内容
+    #     去找，报"清单里有但磁盘没有"。
+    runtime = {DLL_NAME, INI_NAME, HZK_NAME, STRINGS_DIR} | set(ROOT_FILES)
     rows = []
     for dp, _, fns in os.walk(out):
         for fn in fns:
@@ -249,7 +278,7 @@ def main():
         print("  载荷 %d 个文件  OK" % len(rows))
 
     for k in (DLL_NAME, INI_NAME, HZK_NAME,
-              os.path.join(STRINGS_DIR, "am2_strings.ini")):
+              os.path.join(STRINGS_DIR, "am2_strings.ini")) + tuple(ROOT_FILES):
         p = os.path.join(out, k)
         exists = os.path.isfile(p)
         print("  %-34s %s" % (k, "OK" if exists else "缺失"))

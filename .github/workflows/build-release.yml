@@ -251,6 +251,9 @@ jobs:
       #      Army2_NEW_CHS/  权威载荷（336 文件，游戏原生目录布局）
       #      Army2_CHS/      中文母盘（HZK16 字库、资产审计基线）
       #      asi/dsound.dll  UAL，落名为 dinput.dll
+      #      cnc-ddraw/      ddraw.dll + ddraw.ini，随包落**包根**
+      #                      （2 代同样是 DirectDraw 程序；早先说明书让玩家
+      #                       自行去下载，现已改为随包分发，故必须清掉那句）
       #    这一步以前只在本机能跑（默认路径写死 I:\），CI 上必失败。
       #
       #  ★ 需要 ArmyMen2.exe 的校验（hook 签名 / 全局量 / stub 边界 /
@@ -281,7 +284,7 @@ jobs:
           # ③ 独立校验产物
           python3 Tools/ci/verify_release_am2.py stage_am2
 
-          echo "── 断言产物 ──"
+          # ── 断言产物 ──
           ls -l stage_am2/*.zip
           test -f stage_am2/*.zip || { echo "!! 未产出 zip" >&2; exit 1; }
 
@@ -315,13 +318,21 @@ jobs:
           bad = [n for n in z.namelist()
                  if n.startswith("update/") and n.lower().endswith((".exe", ".dll", ".asi"))]
           assert not bad, "update/ 里混入了可执行文件: %s" % bad
-          # 包根必备文件（与 1 代同一套：dsound/dinput + LICENSE + License.txt + 必读说明）
+          # 包根必备文件（与 1 代同一套：dinput/ddraw + LICENSE + License.txt
+          # + 必读说明 + shim .reg）
           names = set(z.namelist())
-          for want in ("dinput.dll", "LICENSE", "License.txt", "必读说明.txt",
+          for want in ("dinput.dll", "ddraw.dll", "ddraw.ini",
+                       "LICENSE", "License.txt", "必读说明.txt",
+                       "Disable_AM2ExeWinCompatShim.reg",
+                       "Restore_AM2ExeWinCompatShim.reg",
                        "scripts/Army2_Extend_Dll.asi", "scripts/Hzk16",
                        "scripts/ArmyMenCHS.ini", "scripts/strings/am2_strings.ini"):
               assert want in names, "包内缺 %s" % want
-          print("✓ update/ 不含可执行文件，包根必备文件齐全，共 %d 条目"
+          # 随包分发的 cnc-ddraw 是 MIT：声明必须真的合进 License.txt
+          lt = z.read("License.txt").decode("utf-8", errors="replace")
+          for mark in ("MIT License", "github.com/FunkyFr3sh", "== ASILoader.txt"):
+              assert mark in lt, "License.txt 缺 %s（第三方声明不全）" % mark
+          print("✓ update/ 不含可执行文件，包根必备文件齐全，License.txt 含 cnc-ddraw 声明，共 %d 条目"
                 % len(z.namelist()))
           PY
 
@@ -355,6 +366,14 @@ jobs:
       #     （3 代在 Steam 版上需要它才能正常渲染）。ci_build_am3.py
       #     从仓库 cnc-ddraw/ 取，make_patch_am3.py 落包根。
       #
+      #  ④ 中文配音 171 个 wav 来自 Army3_Voice_CHS/audio（qwen3-tts 生成，
+      #     非官方母盘），由 ci_build_am3.py 第 5 步拷进 build_out_am3/audio，
+      #     随 update\audio\ 覆盖游戏英文原声，并**纳入 MANIFEST** ——
+      #     否则这 171 个文件会绕过 verify_release_am3.py 的载荷逐条核对。
+      #
+      #  ⑤ 包根补齐 LICENSE / License.txt / 必读说明.txt / 两份 AI 辅助文件。
+      #     License.txt 必须含 cnc-ddraw(MIT) 与 qwen3-tts(Apache-2.0) 声明。
+      #
       #  ★ scripts\ 里**没有** ini：3 代界面文本全在游戏自己的
       #    strings\strings.txt，不需要译文表（2 代有 ArmyMenCHS.ini）。
       - name: 编译 Army3_Extend_Dll.dll（32 位）
@@ -364,17 +383,20 @@ jobs:
           python3 Tools/ci/compile_dll_wine.py --msvc-prefix "${MSVC_WINE_PREFIX}" \
             --proj Army3_Extend_Dll
 
-      - name: 组装《太空玩具》发布包（含 dat 无损回包）
+      - name: 组装《太空玩具》发布包（含 dat 无损回包 + 中文配音）
         run: |
           set -euo pipefail
           # ① 载荷 + 回包 title.dat/shared.dat + ASI + 字库 + cnc-ddraw
-          #    -> build_out_am3（--verify 断言载荷无可执行文件、大小符合预期）
+          #    + 中文配音 -> build_out_am3
+          #    （--verify 断言载荷无可执行文件、dat 大小符合预期、
+          #      配音 171 个 wav / 体积达标）
           python3 Tools/ci/ci_build_am3.py --out build_out_am3 --verify
 
-          # ② 打补丁包 -> stage_am3（scripts\ + update\ + 包根）
+          # ② 打补丁包 -> stage_am3（scripts\ + update\ + 包根 + 许可 + 说明）
           python3 Tools/ci/make_patch_am3.py --out stage_am3
 
-          # ③ 独立校验产物（结构 / 代理导出 / PE 位数 / dat 尾部完整性）
+          # ③ 独立校验产物（结构 / 代理导出 / PE 位数 / dat 尾部完整性 /
+          #    配音数量 / 三方许可声明）
           python3 Tools/ci/verify_release_am3.py stage_am3
 
           echo "── 断言产物 ──"
@@ -418,20 +440,42 @@ jobs:
 
           # 包内不得含 exe/dll/asi 落在 update\（不改游戏文件）
           python3 - <<'PY'
-          import zipfile, glob
+          import zipfile, glob, os
           z = zipfile.ZipFile(sorted(glob.glob("stage_am3/*.zip"))[0])
-          bad = [n for n in z.namelist()
+          names = z.namelist()
+          bad = [n for n in names
                  if n.startswith("update/")
                  and n.lower().endswith((".exe", ".dll", ".asi"))]
           assert not bad, "update/ 里混入了可执行文件: %s" % bad
-          names = set(z.namelist())
           for want in ("dinput.dll", "ddraw.dll", "ddraw.ini",
+                       "LICENSE", "License.txt", "必读说明.txt",
+                       "如果不会安装，请把该文件发给AI，让AI教你.txt",
+                       "将此文件交给AI，让AI协助完善本项目.txt",
                        "scripts/Army3_Extend_Dll.asi", "scripts/Hzk16",
                        "update/title.dat", "update/shared.dat",
                        "update/strings/strings.txt"):
               assert want in names, "包内缺 %s" % want
-          print("✓ update/ 不含可执行文件，结构与必备项齐全，共 %d 条目"
-                % len(z.namelist()))
+          # ★ 中文配音：只查"目录存在"挡不住"只拷了几个文件"。
+          #   配音丢失的表现是游戏照常跑但语音全英文，不报错、不崩。
+          wav = [n for n in names
+                 if n.startswith("update/audio/vos/") and n.lower().endswith(".wav")]
+          assert len(wav) >= 171, "update/audio/vos/ 只有 %d 个 wav（期望 171）" % len(wav)
+          for probe in ("update/audio/vos/Aah.wav", "update/audio/vos/HQ_Goodwork.wav"):
+              assert probe in names, "缺配音 %s" % probe
+          audio_mb = sum(z.getinfo(n).file_size for n in wav) / 1048576
+          assert audio_mb > 10, "配音总体积异常: %.2f MB" % audio_mb
+          # ★ 三方许可声明必须真的合进 License.txt（cnc-ddraw 是 MIT，
+          #   qwen3-tts 是 Apache-2.0，随产物分发须附声明）
+          lt = z.read("License.txt").decode("utf-8", errors="replace")
+          for mark in ("MIT License", "github.com/FunkyFr3sh",
+                       "Apache License", "== ASILoader.txt"):
+              assert mark in lt, "License.txt 缺 %s（第三方声明不全）" % mark
+          rb = z.read("必读说明.txt")
+          assert rb[:3] == b"\xef\xbb\xbf", "必读说明.txt 缺 UTF-8 BOM（记事本乱码）"
+          assert b"\r\n" in rb, "必读说明.txt 不是 CRLF"
+          print("✓ update/ 不含可执行文件；配音 %d 个 wav / %.2f MB；"
+                "License.txt 含三方声明；必读说明带 BOM，共 %d 条目"
+                % (len(wav), audio_mb, len(names)))
           PY
 
       - name: 上传《太空玩具》发布包
@@ -556,7 +600,9 @@ jobs:
             echo "- **《玩具兵大战 II》**：官方中文母盘差异移植；界面文本由 Army2_Extend_Dll.asi 运行时接管渲染"
             echo "- **《太空玩具》（3 代）**：无官方中文母盘，为从零翻译。界面文本走游戏自己的 strings.txt；"
             echo "  title.dat / shared.dat 由解包工作区**无损回包**（对象头与尾部逐字节保留，产物与原版等长）；"
-            echo "  中文字形由 Army3_Extend_Dll.asi 直接喂 Hzk16 点阵，不经过 GDI"
+            echo "  中文字形由 Army3_Extend_Dll.asi 直接喂 Hzk16 点阵，不经过 GDI；"
+            echo "  中文配音 171 段由 qwen3-tts 合成（非克隆，音色与语气有已知差距，删除 update/audio 可退回英文原声）"
+            echo "- **cnc-ddraw**：2 代与 3 代均**已整合**（包根 ddraw.dll / ddraw.ini，MIT），无需自行安装或调兼容模式"
           } >> release_notes.md
 
           # ── 下载表（附件名是上传时由 curl ?name= 赋的 ASCII 名）─────────────
@@ -572,19 +618,68 @@ jobs:
             echo
             echo "### 📖 必读说明（安装 / 卸载 / 已知问题）"
             echo
-            echo "> ⚠️ 3 代（太空玩具）的包内**暂无** 必读说明.txt —— 安装方式与其它两代相同："
-            echo "> 把包内全部内容解压到游戏安装目录（ARMYMENTIS.exe 所在处）。"
-            echo "> 3 代包根另含 cnc-ddraw 的 \`ddraw.dll\` / \`ddraw.ini\`，请勿单独删除。"
+            echo "> 每代补丁的 zip **包根都带 必读说明.txt**（解压后在游戏目录里）。"
+            echo "> 下面是从三个 zip 内**原样取出**的全文，与玩家拿到手的逐字一致。"
+            echo "> 安装方式三代相同：把包内全部内容解压到游戏安装目录"
+            echo "> （Armymen.exe / ArmyMen2.exe / ARMYMENTIS.exe 所在处）。"
+            echo "> 2 代与 3 代的包根都新增了 cnc-ddraw 的 \`ddraw.dll\` / \`ddraw.ini\`，"
+            echo "> 请勿单独删除；3 代需以**管理员模式**运行（详见包内说明）。"
           } >> release_notes.md
 
           {
             echo
-            # ★ 必读说明在 zip 内部（artifact 只上传 zip，不含独立的说明文件），
-            #   故从 zip 里取 —— 保证 Release 正文与玩家实际拿到的包内说明逐字一致。
-            zip_path="$(find dist -name '*.zip' -print -quit 2>/dev/null || true)"
-            unzip -p "$zip_path" '必读说明.txt' 2>/dev/null | tr -d '\r' > readme_embed.txt || true
+            # ★ 说明在 zip 内部（artifact 只上传 zip，不含独立的说明文件），
+            #   故从 zip 里取 —— 保证 Release 正文与玩家实际拿到的包内说明
+            #   逐字一致。三代各取一份，合并进同一个 details。
+            #   unzip 对中文条目名在部分 locale 下会匹配失败，故用 Python
+            #   读 zip（与 build 阶段同一套 zip 解析，不引额外依赖）。
+          python3 - <<'PY' > readme_embed.txt
+          import glob, io, sys, zipfile
+
+          # ★ 显式把 stdout 钉成 UTF-8：说明正文里有 BOM 字符与中文，
+          #   任何非 UTF-8 的默认输出编码（Windows GBK、C locale）都会让
+          #   这个 step 直接 UnicodeEncodeError 挂掉。
+          #   publish job **没有** build job 那份 PYTHONIOENCODING 环境变量，
+          #   故不能指望外部设置。
+          sys.stdout.reconfigure(encoding="utf-8")
+
+          # (zip glob, 包根说明文件名, 标题)
+          JOBS = [
+              ("dist", "必读说明.txt", "《玩具兵大战》(1 代)"),
+              ("dist2", "必读说明.txt", "《玩具兵大战 II》(2 代)"),
+              ("dist3", "必读说明.txt", "《玩具兵大战：太空玩具》(3 代)"),
+          ]
+          out = io.StringIO()
+          got = 0
+          for d, name, title in JOBS:
+              zs = sorted(glob.glob("%s/*.zip" % d))
+              if not zs:
+                  out.write("!! %s 下没有 zip\n" % d)
+                  continue
+              with zipfile.ZipFile(zs[0]) as z:
+                  try:
+                      raw = z.read(name)
+                  except KeyError:
+                      out.write("!! %s 内没有 %s（%s）\n" % (zs[0], name, title))
+                      continue
+              txt = raw.decode("utf-8-sig", errors="replace").replace("\r\n", "\n")
+              out.write("\n" + "=" * 70 + "\n== %s\n" % title + "=" * 70 + "\n\n")
+              out.write(txt.strip() + "\n")
+              got += 1
+          if got == 0:
+              raise SystemExit("!! 三个 zip 里一个 必读说明.txt 都没取到")
+          print(out.getvalue(), end="")
+          PY
+            # ★ 断言三份都取到了：少一份就说明某个包没带说明（或改了文件名），
+            #   那种情况必须在发版前拦下 —— 玩家拿到没有说明的包等于没头绪。
+            n_doc="$(grep -c '^== 《玩具兵大战' readme_embed.txt || true)"
+            if [ "$n_doc" -lt 3 ]; then
+              echo "!! 只取到 $n_doc 份必读说明（期望 3）" >&2
+              sed -n '1,40p' readme_embed.txt >&2
+              exit 1
+            fi
             if [ -s readme_embed.txt ]; then
-              echo "<details><summary>展开完整必读说明（与包内 必读说明.txt 一致）</summary>"
+              echo "<details><summary>展开三代完整必读说明（与包内 必读说明.txt 逐字一致）</summary>"
               echo
               echo "<pre>"
               cat readme_embed.txt

@@ -50,6 +50,15 @@ def main():
                 if fn.lower().endswith(".md"):
                     mds.append(os.path.join(dp, fn))
     mds = [m for m in mds if ".msvc" not in m.split(os.sep)]
+    # ★ 跳过本地 Python 虚拟环境（venv311 / venv-qwen312 等）：
+    #   它们未入库，CI 上根本不存在，但本机跑时里面有成百上千个 .md /
+    #   README，site-packages 里的相对链接（如 onnxruntime 的 ../README.md）
+    #   与实际布局对不上，会报一堆与本仓库无关的"死链"。
+    #   本地红、CI 绿 —— 与 docs 记录的"假绿镜像"同类，会让人不敢相信本地结果。
+    _VENV_DIRS = {"venv", ".venv", "env"}
+    mds = [m for m in mds
+           if not any(p in _VENV_DIRS or p.startswith(("venv", ".venv"))
+                      for p in m.split(os.sep))]
 
     if not mds:
         print("!! 没找到任何 .md —— 校验器空转，不算通过", file=sys.stderr)

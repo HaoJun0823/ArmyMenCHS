@@ -54,7 +54,12 @@ AI_FILES = [
     "将此文件交给AI，让AI协助完善本项目.txt",
 ]
 LICENSE_DIR = "LICENSES"
-# 合并顺序：先第三方（随包分发者），最后 GPLv3.txt 作为主许可正文
+# 合并顺序：先随包分发的第三方（UAL），最后 GPLv3.txt 作为主许可正文
+#   ★ 显式清单，不是"目录里有什么就合什么"：LICENSES/ 是三代共用目录，
+#     cnc-ddraw.txt / qwen3-tts.txt 是 2 代与 3 代才随包分发的声明，
+#     混进 1 代包会给玩家一份与包内容无关的许可文件。
+#   ★ 与 2 代 make_patch_am2.py、3 代 make_patch_am3.py 一样，
+#     少一份就**直接失败**（缺第三方声明＝合规缺口，不能静默少合）。
 LICENSE_ORDER = ["ASILoader.txt", "GPLv3.txt"]
 
 
@@ -183,32 +188,35 @@ def main():
         n += 1
         total += os.path.getsize(ap)
 
-    # License.txt：把 LICENSES/ 下各 txt 合并成一份，便于随包分发
+    # License.txt：把随包分发的声明 + 主许可合并成一份。
+    #   ★ 用 LICENSE_ORDER 显式清单（见文件头常量注释）：LICENSES/ 是
+    #     三代共用目录，早先"目录里有什么就合什么"会把 2/3 代才随包分发的
+    #     cnc-ddraw / qwen3-tts 声明也塞进 1 代包。
     lic_dir = os.path.join(root, LICENSE_DIR)
     if not os.path.isdir(lic_dir):
         missing.append(LICENSE_DIR + "/")
     else:
-        files = sorted(f for f in os.listdir(lic_dir)
-                       if f.lower().endswith(".txt"))
-        if not files:
-            missing.append(LICENSE_DIR + "/ (无 txt)")
-        else:
-            known = [f for f in LICENSE_ORDER if f in files]
-            rest = [f for f in files if f not in LICENSE_ORDER]
-            bar = "=" * 78
-            parts = []
-            for f in known + rest:
-                with open(os.path.join(lic_dir, f), "r",
-                          encoding="utf-8-sig", errors="replace") as fh:
-                    parts.append("%s\n== %s\n%s\n\n%s\n"
-                                 % (bar, f, bar, fh.read().strip()))
-            lp = os.path.join(stage, "License.txt")
-            with open(lp, "w", encoding="utf-8", newline="\n") as fh:
-                fh.write("\n\n".join(parts) + "\n")
-            n += 1
-            total += os.path.getsize(lp)
-            print("  License.txt 合并 %d 份: %s"
-                  % (len(files), ", ".join(known + rest)))
+        have = [f for f in LICENSE_ORDER
+                if os.path.isfile(os.path.join(lic_dir, f))]
+        absent = [f for f in LICENSE_ORDER if f not in have]
+        if absent:
+            # 1 代只分发 UAL，缺了它就是合规缺口，不能静默少合。
+            print("!! LICENSES/ 缺少: %s" % ", ".join(absent), file=sys.stderr)
+            return 1
+        bar = "=" * 78
+        parts = []
+        for f in have:
+            with open(os.path.join(lic_dir, f), "r",
+                      encoding="utf-8-sig", errors="replace") as fh:
+                parts.append("%s\n== %s\n%s\n\n%s\n"
+                             % (bar, f, bar, fh.read().strip()))
+        lp = os.path.join(stage, "License.txt")
+        with open(lp, "w", encoding="utf-8", newline="\n") as fh:
+            fh.write("\n\n".join(parts) + "\n")
+        n += 1
+        total += os.path.getsize(lp)
+        print("  License.txt 合并 %d 份: %s"
+              % (len(have), ", ".join(have)))
 
     if missing:
         print("!! 缺少: %s" % ", ".join(missing), file=sys.stderr)

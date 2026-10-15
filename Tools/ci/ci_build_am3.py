@@ -26,11 +26,20 @@ r"""CI 构建入口（《玩具兵大战：太空玩具》/ Army Men: Toys in Sp
      3 代在 Steam 版上需要 cnc-ddraw 才能正常渲染（DirectDraw 包装）。
      这两个文件直接放**包根**（游戏根目录），不进 update/。
 
+  4. **中文配音是外部载荷，不在 Army3_NEW_CHS 里。**
+     3 代没有官方中文母盘，update\audio\vos\ 的 171 个 wav 全部由
+     qwen3-tts 生成，源目录是 Army3_Voice_CHS/audio/（与英文原版 vos
+     同名同数量，游戏按原名加载）。它不是"母盘资产"，故不混进
+     Army3_NEW_CHS，构建期作为**第 5 步载荷**单独拷入 build_out，
+     并同样纳入 MANIFEST.json —— 否则这 171 个文件会绕过
+     verify_release_am3.py 的 K 段载荷对照，成为校验盲区。
+
 ★ 载荷来源全部是**仓库内已跟踪**路径，不依赖作者本机的 I:\\ 盘：
      Army3_NEW_CHS/（去掉 README.md）
      Army3_Object_CHS/{title,shared}/
      Army3_Extend_Dll/Release/Army3_Extend_Dll.dll
      Army2_CHS/Hzk16（官方中文版 13x13 宋体点阵，与 2 代共用同一份）
+     Army3_Voice_CHS/audio/（171 个 wav；qwen3-tts 生成的中文配音）
      cnc-ddraw/{ddraw.dll,ddraw.ini}
 
 ★ 硬约束：update/ 载荷里**绝不允许**出现可执行文件（本项目承诺"不改游戏文件"）。
@@ -39,7 +48,8 @@ r"""CI 构建入口（《玩具兵大战：太空玩具》/ Army Men: Toys in Sp
 产物目录结构（= make_patch_am3.py 的输入）：
 
     build_out_am3/
-    ├─ 01-title/  bitmaps/  strings/        <- Army3_NEW_CHS 载荷
+    ├─ 01-title/  bitmaps/  strings/  data/  rules/   <- Army3_NEW_CHS 载荷
+    ├─ audio/vos/*.wav                      <- 中文配音（进 update\audio\）
     ├─ title.dat  shared.dat                <- 回包产物（无损）
     ├─ ddraw.dll  ddraw.ini                 <- cnc-ddraw（进包根）
     ├─ Army3_Extend_Dll.dll                 <- 进 scripts\*.asi
@@ -47,7 +57,8 @@ r"""CI 构建入口（《玩具兵大战：太空玩具》/ Army Men: Toys in Sp
     └─ MANIFEST.json
 
 用法：
-    python Tools/ci/ci_build_am3.py [--root <仓库根>] [--out build_out_am3] [--verify]
+    python Tools/ci/ci_build_am3.py [--root <仓库根>] [--out build_out_am3]
+                                    [--audio Army3_Voice_CHS/audio] [--verify]
 """
 
 import hashlib
@@ -83,6 +94,18 @@ DAT_JOBS = [
 # 包根文件（由 cnc-ddraw 提供）——不属于 update\ 载荷
 ROOT_FILES = ["ddraw.dll", "ddraw.ini"]
 CNC_DIR = "cnc-ddraw"
+
+# ── 中文配音（qwen3-tts 生成）─────────────────────────────────────────
+#   ★ 源目录默认 Army3_Voice_CHS/audio，拷到 build_out_am3/audio/，
+#     由 make_patch_am3.py 分流进 update\audio\（游戏按 update\ 覆盖层
+#     读 vos\*.wav）。文件名必须与英文原版一致，不做任何改名。
+#   ★ 期望文件数与字节数写死（与 verify_release_am3.py 的 AUDIO_MIN_FILES
+#     一致）：音频缺失 = 玩家听到的仍是英文，属"装了但没效果"的静默失效，
+#     必须在构建期就失败，而不是靠人耳发现。
+AUDIO_DIR_NAME = "audio"
+AUDIO_SRC_DEFAULT = os.path.join("Army3_Voice_CHS", AUDIO_DIR_NAME)
+AUDIO_EXPECT_FILES = 171
+AUDIO_MIN_BYTES = 10000000        # ~9.5 MiB；明显低于此值说明拷漏了
 
 # 字库来源候选（仓库内路径优先：CI 上没有 I:\ 盘）
 HZK_CANDIDATES = [os.path.join("Army2_CHS", HZK_NAME)]
@@ -149,6 +172,8 @@ def main():
             os.path.dirname(os.path.dirname(here)))
     out_name = args[args.index("--out") + 1] if "--out" in args else "build_out_am3"
     verify = "--verify" in args
+    audio_src_rel = (args[args.index("--audio") + 1] if "--audio" in args
+                     else AUDIO_SRC_DEFAULT)
 
     new_chs = os.path.join(root, "Army3_NEW_CHS")
     dll_dir = os.path.join(root, "Army3_Extend_Dll")
@@ -271,6 +296,35 @@ def main():
               % (f, CNC_DIR, f, os.path.getsize(s)))
     print()
 
+    # ── 5. 中文配音：Army3_Voice_CHS/audio -> build_out_am3/audio ──────
+    #     ★ 保持 vos\ 子目录结构：游戏读 update\audio\vos\*.wav。
+    #     ★ 数量与体积都要核：只查"目录非空"挡不住"只拷了 3 个文件"。
+    audio_src = (audio_src_rel if os.path.isabs(audio_src_rel)
+                 else os.path.join(root, audio_src_rel))
+    if not os.path.isdir(audio_src):
+        print("  [5] !! 缺少配音目录: %s" % audio_src, file=sys.stderr)
+        print("      它是仓库内已跟踪载荷（Army3_Voice_CHS/audio）；"
+              "缺失则 3 代包不带中文配音。", file=sys.stderr)
+        return 1
+    audio_dst = os.path.join(out, AUDIO_DIR_NAME)
+    os.makedirs(audio_dst, exist_ok=True)
+    n_audio0 = stats["files"]
+    copy_tree(audio_src, audio_dst, stats)
+    n_audio = stats["files"] - n_audio0
+    audio_bytes = 0
+    for dp, _, fns in os.walk(audio_dst):
+        for fn in fns:
+            audio_bytes += os.path.getsize(os.path.join(dp, fn))
+    print("  [5] %s/  %d 文件 / %.2f MB  <- %s"
+          % (AUDIO_DIR_NAME, n_audio, audio_bytes / 1048576,
+             os.path.relpath(audio_src, root)))
+    if n_audio != AUDIO_EXPECT_FILES or audio_bytes < AUDIO_MIN_BYTES:
+        print("  [5] !! 配音数量/体积不符：%d 文件（期望 %d）/ %d B（下限 %d）"
+              % (n_audio, AUDIO_EXPECT_FILES, audio_bytes, AUDIO_MIN_BYTES),
+              file=sys.stderr)
+        return 1
+    print()
+
     print("总计: %d 文件 / %.1f MB" % (stats["files"], stats["bytes"] / 1048576))
 
     # ── 5. MANIFEST.json（build_out 的权威清单；verify_release_am3 用它核对）──
@@ -353,6 +407,17 @@ def main():
             ok = False
 
     print("  DLL sha = %s" % sha256(os.path.join(out, DLL_NAME))[:12])
+
+    # 配音必须真的落到 build_out（不是"拷了 0 个文件也算过"）
+    n_wav = 0
+    for dp, _, fns in os.walk(audio_dst):
+        n_wav += sum(1 for fn in fns if fn.lower().endswith(".wav"))
+    print("  %-38s %s" % ("audio/vos/*.wav",
+                          "%d 个 OK" % n_wav if n_wav >= AUDIO_EXPECT_FILES
+                          else "%d 个 !! 少于预期 %d"
+                          % (n_wav, AUDIO_EXPECT_FILES)))
+    if n_wav < AUDIO_EXPECT_FILES:
+        ok = False
     return 0 if ok else 1
 
 

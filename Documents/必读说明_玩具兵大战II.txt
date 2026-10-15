@@ -40,17 +40,18 @@ Steam 再发行版本）。
    记录汉化加载情况，可用于排查问题。
 
 
-现代系统（Win10/11）必读：先装 cnc-ddraw
-----------------------------------------
+现代系统（Win10/11）必读：cnc-ddraw **已随包附上**
+----------------------------------------------
 本作是 1999 年的 DirectDraw 5 程序，在新系统上**无法直接运行**
-（表现为黑屏、无图像、或鼠标错位）。
+（表现为黑屏、无图像、或鼠标错位）。本补丁**已整合** cnc-ddraw，
+不需要你另外去下载：
 
-请自行安装 cnc-ddraw：
-    https://github.com/FunkyFr3sh/cnc-ddraw
+    ddraw.dll     cnc-ddraw 7.0.0.1（MIT，https://github.com/FunkyFr3sh/cnc-ddraw）
+    ddraw.ini     已按本作调好的配置
 
-按其官方说明把 ddraw.dll 放到游戏根目录（ArmyMen2.exe 同级），
-ddraw.ini 请用该项目自带的默认配置按需调整。
-本补丁**不包含也不修改** cnc-ddraw 的任何文件。
+两个文件都放在**游戏根目录**（ArmyMen2.exe 同级），**不要单独删除或替换**。
+默认窗口化运行（windowed=true），按 Alt+Enter 在窗口/无边框全屏之间切换；
+想调整分辨率、缩放方式等，直接改 ddraw.ini（注释为英文）。
 
 注意：本补丁的 dinput.dll（ASI Loader）与 ddraw.dll 是两个不同的代理，
 互不冲突，但都需要在游戏根目录。
@@ -62,7 +63,7 @@ Steam 版给 ArmyMen2.exe 打了 Windows 兼容性 shim，它会干扰 cnc-ddraw
 游戏根目录提供两个注册表文件：
 
     Disable_AM2ExeWinCompatShim.reg   抵消 shim
-      —— 想让 cnc-ddraw 正常工作，请双击导入这个
+      —— 若出现黑屏/无图像，双击导入这个
 
     Restore_AM2ExeWinCompatShim.reg   恢复 shim
       —— 仅用于回滚：如果抵消后反而跑不起来，导入这个恢复原状
@@ -70,7 +71,7 @@ Steam 版给 ArmyMen2.exe 打了 Windows 兼容性 shim，它会干扰 cnc-ddraw
 两个文件都要**管理员权限**双击导入，导入后重启游戏。
 
 操作顺序建议：
-    先装 cnc-ddraw → 导入 Disable → 启动游戏
+    先直接启动游戏 → 若黑屏/无图像，导入 Disable → 重启游戏
   若仍无法运行，再导入 Restore 恢复 shim 试试。
 
 

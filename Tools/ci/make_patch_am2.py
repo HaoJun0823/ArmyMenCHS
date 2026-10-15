@@ -4,6 +4,8 @@
 ★ 与 1 代 Tools/ci/make_patch.py **同构**（刻意保持一致的布局与做法）：
     <Game>\\
       ├─ dinput.dll                 ASI Loader（asi/dsound.dll 改名；见下方 ★）
+      ├─ ddraw.dll                  cnc-ddraw（2 代渲染所需，随包分发）
+      ├─ ddraw.ini                  cnc-ddraw 配置（已按本作调好）
       ├─ 必读说明.txt
       ├─ 如果不会安装，请把该文件发给AI，让AI教你.txt
       ├─ 将此文件交给AI，让AI协助完善本项目.txt
@@ -20,13 +22,15 @@
            01-title audio avi bitmaps data rules mpmaps.txt readme.txt
            shared.dat title.dat
 
-★ 与 1 代的唯一结构差异是包根的 dinput.dll 名与两个 .reg：
+★ 与 1 代的唯一结构差异是包根的 dinput.dll 名、两个 .reg 与 ddraw：
     · 代理名不同：1 代用 dsound.dll；本作按**序号**导入 dsound.dll，
       而 UAL 导出表是多 DLL 合并表，序号 1 并非 DirectSoundCreate，
       沿用会让游戏拿到错误函数（无声音且无报错）。本作按**名字**导入
       dinput.dll!DirectInputCreateA，用该名作代理可可靠命中。
     · 两个 .reg 是 Steam 给 ArmyMen2.exe 打的兼容性 shim 的抵消/恢复脚本，
       1 代无此需求。它们来自仓库 compat/，随包原样分发（UTF-16LE + BOM）。
+    · ddraw.dll / ddraw.ini 是随包分发的 cnc-ddraw（与 3 代同一份，来自
+      仓库 cnc-ddraw/）。1 代的 DirectDraw 调用不走这条路（见 1 代说明）。
 
 用法：
     python Tools/ci/make_patch_am2.py [--root <仓库根>] [--out stage_am2]
@@ -51,9 +55,21 @@ DLL_SRC = "Army2_Extend_Dll.dll"
 DLL_DST = "scripts/Army2_Extend_Dll.asi"
 SCRIPTS_FILES = ["ArmyMenCHS.ini", "Hzk16"]
 SCRIPTS_DIRS = ["strings"]
+
+# 包根文件：由 build_out 直接搬（cnc-ddraw 的 ddraw.dll / ddraw.ini）
+#   ★ 2 代与 3 代一样**随包分发** cnc-ddraw：Steam 版是 DirectDraw 5 程序，
+#     不给它在新系统上直接黑屏/无图像。早先 2 代说明书写的是"请自行安装
+#     cnc-ddraw"，那会让玩家照着去下载、覆盖掉包内这份已调好的配置。
+ROOT_FROM_BUILD = ["ddraw.dll", "ddraw.ini"]
+
 # update/ 的内容 = build_out 里除运行期文件之外的一切（目录名与游戏一致）
-RUNTIME_TOP = {"Army2_Extend_Dll.dll", "ArmyMenCHS.ini", "Hzk16",
-               "strings", "MANIFEST.json", "MANIFEST.md"}
+#   ★ ROOT_FROM_BUILD 必须并进 RUNTIME_TOP：否则下面"除运行期外一切 -> update\"
+#     的兜底逻辑会把 ddraw.dll / ddraw.ini **同时**塞进 update\ —— 结果是
+#     update\ 里出现 dll（违反「不改游戏文件」硬约束），
+#     而 verify_release_am2.py 的 [6]/[7] 段会直接报失败。
+RUNTIME_TOP = ({"Army2_Extend_Dll.dll", "ArmyMenCHS.ini", "Hzk16",
+                "strings", "MANIFEST.json", "MANIFEST.md"}
+               | set(ROOT_FROM_BUILD))
 
 # ASI Loader 源。
 # ★ 用仓库内 asi/dsound.dll（Ultimate ASI Loader，MIT，已入库）——
@@ -76,8 +92,11 @@ AI_FILES = [
     "将此文件交给AI，让AI协助完善本项目.txt",
 ]
 LICENSE_DIR = "LICENSES"
-# 合并顺序：先第三方（随包分发者），最后 GPLv3.txt 作为主许可正文
-LICENSE_ORDER = ["ASILoader.txt", "GPLv3.txt"]
+# 合并顺序：先随包分发的第三方（UAL / cnc-ddraw），最后 GPLv3.txt 作为主许可正文
+#   ★ 显式清单，不再"目录里有什么就合什么"：LICENSES/ 是三代共用目录，
+#     qwen3-tts.txt（3 代配音用）不该出现在 2 代包里。
+#   ★ cnc-ddraw 是 MIT：随二进制分发必须附版权声明，故必须在此列出。
+LICENSE_ORDER = ["ASILoader.txt", "cnc-ddraw.txt", "GPLv3.txt"]
 
 # Windows 兼容性 shim 的抵消/恢复脚本（2 代特有，来自仓库 compat/）
 COMPAT_REG_DIR = "compat"
@@ -219,6 +238,10 @@ def main():
              "%s (ASI Loader)" % ASI_LOADER_SRC)
     put_root(os.path.join(root, LICENSE_SRC), "LICENSE", LICENSE_SRC)
 
+    # cnc-ddraw：直接从 build_out 搬（已由 ci_build_am2.py 从 cnc-ddraw/ 取来）
+    for f in ROOT_FROM_BUILD:
+        put_root(os.path.join(build_out, f), f, f)
+
     # 必读说明.txt 写 UTF-8 **带 BOM**：Windows 记事本靠 BOM 判断编码，
     # 无 BOM 的 UTF-8 在旧版系统上会显示成乱码。目标用户是中文玩家，
     # 直接双击打开是首要场景。（与 1 代 make_patch.py 完全同一做法。）
@@ -263,33 +286,34 @@ def main():
         total += os.path.getsize(src)
         print("   + %s  (%d B)" % (reg, os.path.getsize(src)))
 
-    # License.txt：把 LICENSES/ 下各 txt 合并成一份，便于随包分发
+    # License.txt：把随包分发的第三方声明 + 主许可合并成一份
+    #   ★ 用 LICENSE_ORDER 显式清单：LICENSES/ 是三代共用目录，
+    #     "目录里有什么就合什么"会把 3 代的 qwen3-tts 声明混进 2 代包。
     lic_dir = os.path.join(root, LICENSE_DIR)
     if not os.path.isdir(lic_dir):
         missing.append(LICENSE_DIR + "/")
     else:
-        import os as _os
-        files = sorted(f for f in _os.listdir(lic_dir)
-                       if f.lower().endswith(".txt"))
-        if not files:
-            missing.append(LICENSE_DIR + "/ (无 txt)")
-        else:
-            known = [f for f in LICENSE_ORDER if f in files]
-            rest = [f for f in files if f not in LICENSE_ORDER]
-            bar = "=" * 78
-            parts = []
-            for f in known + rest:
-                with open(os.path.join(lic_dir, f), "r",
-                          encoding="utf-8-sig", errors="replace") as fh:
-                    parts.append("%s\n== %s\n%s\n\n%s\n"
-                                 % (bar, f, bar, fh.read().strip()))
-            lp = os.path.join(stage, "License.txt")
-            with open(lp, "w", encoding="utf-8", newline="\n") as fh:
-                fh.write("\n\n".join(parts) + "\n")
-            n += 1
-            total += os.path.getsize(lp)
-            print("   + License.txt（合并 %d 份: %s）"
-                  % (len(files), ", ".join(known + rest)))
+        have = [f for f in LICENSE_ORDER
+                if os.path.isfile(os.path.join(lic_dir, f))]
+        absent = [f for f in LICENSE_ORDER if f not in have]
+        if absent:
+            # ★ 不静默少合一份：cnc-ddraw 是 MIT，声明缺失＝合规缺口。
+            print("!! LICENSES/ 缺少: %s" % ", ".join(absent), file=sys.stderr)
+            return 1
+        bar = "=" * 78
+        parts = []
+        for f in have:
+            with open(os.path.join(lic_dir, f), "r",
+                      encoding="utf-8-sig", errors="replace") as fh:
+                parts.append("%s\n== %s\n%s\n\n%s\n"
+                             % (bar, f, bar, fh.read().strip()))
+        lp = os.path.join(stage, "License.txt")
+        with open(lp, "w", encoding="utf-8", newline="\n") as fh:
+            fh.write("\n\n".join(parts) + "\n")
+        n += 1
+        total += os.path.getsize(lp)
+        print("   + License.txt（合并 %d 份: %s）"
+              % (len(have), ", ".join(have)))
 
     if missing:
         print("!! 缺少: %s" % ", ".join(missing), file=sys.stderr)
@@ -330,11 +354,15 @@ def main():
     print("     zip 自检通过：%d 条目，CRC 全部正确" % n_zip)
 
     for key in ("scripts/Army2_Extend_Dll.asi", "scripts/Hzk16", PROXY_NAME,
-                "LICENSE", "License.txt", README_DST):
+                "LICENSE", "License.txt", README_DST,
+                "ddraw.dll", "ddraw.ini"):
         p = os.path.join(stage, key.replace("/", os.sep))
         if os.path.isfile(p):
             print("  %-34s %9d  sha=%s" % (key, os.path.getsize(p),
                                            sha256(p)[:16]))
+        else:
+            print("  %-34s !! 缺失" % key)
+            return 1
     return 0
 
 

@@ -7,11 +7,17 @@
       ├─ dinput.dll               ASI Loader（asi/dsound.dll 改名；见下方 ★）
       ├─ ddraw.dll                cnc-ddraw（3 代渲染所需，直接落包根）
       ├─ ddraw.ini                cnc-ddraw 配置
+      ├─ LICENSE                  项目主许可（仓库根 LICENSE）
+      ├─ License.txt              LICENSES/*.txt 合并，供随包分发
+      ├─ 必读说明.txt             安装说明（UTF-8 带 BOM + CRLF）
+      ├─ 如果不会安装，请把该文件发给AI，让AI教你.txt
+      ├─ 将此文件交给AI，让AI协助完善本项目.txt
       ├─ scripts\\
       │    Army3_Extend_Dll.asi   ← build_out 里叫 .dll，落包时改名
       │    Hzk16                  ← 中文字库（13x13 点阵；ASI 按 DLL 目录找）
       └─ update\\
-           01-title\\  bitmaps\\  strings\\
+           01-title\\  bitmaps\\  data\\  rules\\  strings\\
+           audio\\vos\\*.wav      ← 中文配音（qwen3-tts 生成）
            title.dat  shared.dat
 
 ★ 与 2 代的差异（都是刻意的）：
@@ -24,15 +30,28 @@
     strings\\strings.txt，不需要译文表文件（2 代有 ArmyMenCHS.ini）。
   · **没有**兼容性 .reg（那是 2 代 ArmyMen2.exe 特有的 shim 问题）。
   · 3 代的 title.dat / shared.dat 进 **update\\**（与 2 代同位置）。
+  · update\\audio\\vos\\ 是 qwen3-tts 生成的中文配音（2 代用的是官方母盘配音）。
+    它由 ci_build_am3.py 第 5 步拷进 build_out，这里随 update\\ 一起搬，
+    不需要单独分支。
 
 ★ 为什么代理必须落名为 dinput.dll 而不是随便一个名字：
   游戏是按名字解析导入的；代理名不对，DirectInputCreateA 解析失败，
   游戏拿不到函数 —— 表现是"补丁装了但中文完全不出现且无报错"。
   这是必须在 CI 上拦下的失效模式（见 verify_release_am3.py）。
 
-★ 本轮**不含** 必读说明.txt / LICENSE / License.txt（作者决定本轮先不出说明
-  文件）。verify_release_am3.py 相应不把它们列为必备项。补说明文件时，
-  在此加 put_root(...) 即可，2 代那套 UTF-8 BOM + CRLF 写法可直接沿用。
+★ 为什么代理必须落名为 dinput.dll 而不是随便一个名字：
+  游戏是按名字解析导入的；代理名不对，DirectInputCreateA 解析失败，
+  游戏拿不到函数 —— 表现是"补丁装了但中文完全不出现且无报错"。
+  这是必须在 CI 上拦下的失效模式（见 verify_release_am3.py）。
+
+★ 包根说明与许可（本轮补齐，与 1/2 代同一套约定 S11/S12/S13）：
+    LICENSE      <- 仓库根 LICENSE（项目主许可，含游戏版权声明）
+    License.txt  <- LICENSES/*.txt 合并：ASILoader + cnc-ddraw + qwen3-tts
+                    + GPLv3。★ 三方组件（UAL / cnc-ddraw / qwen3-tts）的
+                    许可要求随二进制或产物分发时附上版权声明，缺一不可。
+    必读说明.txt <- Documents/必读说明_太空玩具.txt，写 UTF-8 **带 BOM** +
+                    CRLF（Windows 记事本靠 BOM 判编码，目标用户直接双击打开）
+    AI 辅助文件  <- 与 1/2 代同源的两份 txt，同样 BOM + CRLF
 
 用法：
     python Tools/ci/make_patch_am3.py [--root <仓库根>] [--out stage_am3]
@@ -69,6 +88,28 @@ RUNTIME_TOP = {DLL_SRC, "Hzk16", "MANIFEST.json", "MANIFEST.md"} | set(ROOT_FROM
 #   asi/dsound.dll 是 Ultimate ASI Loader（MIT，已入库），与 1/2 代同一份文件。
 ASI_LOADER_SRC = "asi/dsound.dll"
 PROXY_NAME = "dinput.dll"           # ★ 见文件头说明
+
+# 仓库根 LICENSE（项目主许可）-> 包根 LICENSE
+LICENSE_SRC = "LICENSE"
+# 包内说明：与 1/2 代同一套约定（统一标准 S11，名为「必读说明.txt」），
+# 3 代单独一份源文件，避免三代说明混在一起。
+README_SRC = "Documents/必读说明_太空玩具.txt"
+README_DST = "必读说明.txt"
+# 两份 AI 辅助文件（统一标准 S12/S13），与必读说明同源目录，随包分发到包根
+AI_FILES = [
+    "如果不会安装，请把该文件发给AI，让AI教你.txt",
+    "将此文件交给AI，让AI协助完善本项目.txt",
+]
+LICENSE_DIR = "LICENSES"
+# ★ 显式清单，不是"目录里有什么就合什么"：LICENSES/ 是三代共用目录，
+#   1 代包不该混进 3 代才用到的 qwen3-tts 声明（反之亦然）。
+#   合并顺序：先随包分发的第三方（UAL / cnc-ddraw / qwen3-tts），
+#   最后 GPLv3.txt 作为主许可正文。
+LICENSE_ORDER = ["ASILoader.txt", "cnc-ddraw.txt", "qwen3-tts.txt", "GPLv3.txt"]
+
+# 配音落位自证：与 ci_build_am3.py 的 AUDIO_EXPECT_FILES 保持一致
+AUDIO_REL = "update/audio/vos"
+AUDIO_EXPECT_FILES = 171
 
 
 def sha256(p):
@@ -192,22 +233,68 @@ def main():
     for f in ROOT_FROM_BUILD:
         put_root(os.path.join(build_out, f), f, f)
 
-    # ── 3b) 可选说明文件（本轮不产出；存在才放）─────────────────────────
-    #   作者决定本轮不出说明文件，故此块默认空转。补文件时把源路径填进来，
-    #   并按 2 代做法写 UTF-8 **带 BOM** + CRLF（Windows 记事本靠 BOM 判编码）。
-    OPTIONAL_README = None          # e.g. "Documents/必读说明_太空玩具.txt"
-    if OPTIONAL_README:
-        readme_src = os.path.join(root, OPTIONAL_README)
-        if not os.path.isfile(readme_src):
-            missing.append(OPTIONAL_README)
-        else:
-            rp = os.path.join(stage, "必读说明.txt")
-            with open(readme_src, "r", encoding="utf-8") as fh:
-                txt = fh.read()
-            with open(rp, "w", encoding="utf-8-sig", newline="\r\n") as fh:
-                fh.write(txt)
+    # 项目主许可（含游戏版权声明）
+    put_root(os.path.join(root, LICENSE_SRC), "LICENSE", LICENSE_SRC)
+
+    # 必读说明.txt：写 UTF-8 **带 BOM** + CRLF。
+    #   ★ Windows 记事本靠 BOM 判断编码，无 BOM 的 UTF-8 在旧版系统上会
+    #     显示成乱码；目标用户是中文玩家，双击打开是首要场景。
+    #     （与 1/2 代 make_patch*.py 完全同一做法。）
+    readme_src = os.path.join(root, README_SRC)
+    if not os.path.isfile(readme_src):
+        missing.append(README_SRC)
+    else:
+        rp = os.path.join(stage, README_DST)
+        with open(readme_src, "r", encoding="utf-8") as fh:
+            txt = fh.read()
+        with open(rp, "w", encoding="utf-8-sig", newline="\r\n") as fh:
+            fh.write(txt)
+        n += 1
+        total += os.path.getsize(rp)
+        print("   + %s  (%d B, UTF-8 BOM)  <- %s"
+              % (README_DST, os.path.getsize(rp), README_SRC))
+
+    # 两份 AI 辅助文件（S12/S13）：同样 UTF-8 带 BOM + CRLF
+    for ai in AI_FILES:
+        ai_src = os.path.join(root, "Documents", ai)
+        if not os.path.isfile(ai_src):
+            missing.append("Documents/%s" % ai)
+            continue
+        ap = os.path.join(stage, ai)
+        with open(ai_src, "r", encoding="utf-8") as fh:
+            ai_txt = fh.read()
+        with open(ap, "w", encoding="utf-8-sig", newline="\r\n") as fh:
+            fh.write(ai_txt)
+        n += 1
+        total += os.path.getsize(ap)
+
+    # License.txt：把随包分发的第三方声明 + 主许可合并成一份
+    #   ★ 用 LICENSE_ORDER 显式清单（LICENSES/ 是三代共用目录，
+    #     "目录里有什么就合什么"会让 1 代包混进 3 代的 TTS 声明）。
+    lic_dir = os.path.join(root, LICENSE_DIR)
+    if not os.path.isdir(lic_dir):
+        missing.append(LICENSE_DIR + "/")
+    else:
+        have = [f for f in LICENSE_ORDER
+                if os.path.isfile(os.path.join(lic_dir, f))]
+        absent = [f for f in LICENSE_ORDER if f not in have]
+        if absent:
+            missing.append("%s/(%s)" % (LICENSE_DIR, ", ".join(absent)))
+        if have:
+            bar = "=" * 78
+            parts = []
+            for f in have:
+                with open(os.path.join(lic_dir, f), "r",
+                          encoding="utf-8-sig", errors="replace") as fh:
+                    parts.append("%s\n== %s\n%s\n\n%s\n"
+                                 % (bar, f, bar, fh.read().strip()))
+            lp = os.path.join(stage, "License.txt")
+            with open(lp, "w", encoding="utf-8", newline="\n") as fh:
+                fh.write("\n\n".join(parts) + "\n")
             n += 1
-            total += os.path.getsize(rp)
+            total += os.path.getsize(lp)
+            print("   + License.txt（合并 %d 份: %s）"
+                  % (len(have), ", ".join(have)))
 
     if missing:
         print("!! 缺少: %s" % ", ".join(missing), file=sys.stderr)
@@ -247,7 +334,8 @@ def main():
     print("     zip 自检通过：%d 条目，CRC 全部正确" % n_zip)
 
     for key in ("scripts/Army3_Extend_Dll.asi", "scripts/Hzk16", PROXY_NAME,
-                "ddraw.dll", "ddraw.ini", "update/title.dat", "update/shared.dat"):
+                "ddraw.dll", "ddraw.ini", "LICENSE", "License.txt", README_DST,
+                "update/title.dat", "update/shared.dat"):
         p = os.path.join(stage, key.replace("/", os.sep))
         if os.path.isfile(p):
             print("  %-38s %9d  sha=%s" % (key, os.path.getsize(p),
@@ -255,6 +343,17 @@ def main():
         else:
             print("  %-38s !! 缺失" % key)
             return 1
+
+    # 配音落位自证：只查"目录存在"挡不住"只拷了 3 个 wav"
+    vos = os.path.join(stage, AUDIO_REL.replace("/", os.sep))
+    n_wav = sum(1 for f in os.listdir(vos)
+                if f.lower().endswith(".wav")) if os.path.isdir(vos) else 0
+    if n_wav < AUDIO_EXPECT_FILES:
+        print("  %-38s !! 只有 %d 个 wav（期望 >= %d）—— 中文配音缺失"
+              % (AUDIO_REL + "/*.wav", n_wav, AUDIO_EXPECT_FILES),
+              file=sys.stderr)
+        return 1
+    print("  %-38s %9d 个 wav" % (AUDIO_REL + "/*.wav", n_wav))
     return 0
 
 

@@ -17,7 +17,11 @@
 检查项：
     A. zip 存在、可打开、CRC 全对
     B. 包根必备：dinput.dll / ddraw.dll / ddraw.ini
+    B2. 包根说明与许可：LICENSE / License.txt / 必读说明.txt(BOM+CRLF) /
+        两份 AI 辅助文件；License.txt 必须含随包分发的三方声明
+        （cnc-ddraw / qwen3-tts），且项目主许可正文在内
     C. scripts/：Army3_Extend_Dll.asi + Hzk16
+    C2. update/audio/vos/：中文配音 wav 数量（qwen3-tts 生成）
     D. update/：01-title / bitmaps / strings / title.dat / shared.dat
     E. update/ 里**没有**任何可执行文件（硬约束：不改游戏文件）
     F. dinput.dll 含具名导出 DirectInputCreateA（代理真的能命中）
@@ -28,6 +32,7 @@
        **每个对象 blob 落在其 offset 区间内且长度 >= 28+graphicSize**
        （即回包没有丢尾部数据 —— 这正是 am3_dat.py pack 的老毛病）
     K. 与 build_out_am3/MANIFEST.json 逐条 sha256 对照（载荷未在打包期被改动）
+        —— 配音 171 个 wav 也在清单内，故同样被逐条核对
 
 用法：
     python Tools/ci/verify_release_am3.py stage_am3
@@ -53,6 +58,29 @@ DAT_SPECS = {
 }
 
 REQUIRED_ROOT = ["dinput.dll", "ddraw.dll", "ddraw.ini"]
+
+# ── 包根说明与许可（统一标准 S11/S12/S13，与 1/2 代同一套命名）──────────
+REQUIRED_ROOT_DOCS = ["LICENSE", "License.txt", "必读说明.txt"]
+AI_FILES = [
+    "如果不会安装，请把该文件发给AI，让AI教你.txt",
+    "将此文件交给AI，让AI协助完善本项目.txt",
+]
+# ★ 三方声明必须随包分发：cnc-ddraw(MIT) 与 qwen3-tts(Apache-2.0) 分发的
+#   是二进制/产物，许可要求附版权声明；UAL 是 MIT 同理。
+#   ★ 只查 .txt 正文里出现这些标识，不查"文件多大" —— 空壳声明没意义。
+LICENSE_REQUIRED_MARKS = [
+    ("MIT License", "LICENSES/cnc-ddraw.txt 的 MIT 正文"),
+    ("github.com/FunkyFr3sh", "cnc-ddraw 版权行"),
+    ("Apache License", "LICENSES/qwen3-tts.txt 的 Apache-2.0 正文"),
+    ("== ASILoader.txt", "随包分发的 Ultimate ASI Loader 声明"),
+]
+
+# ── 中文配音（qwen3-tts 生成，随 update\ 覆盖游戏英文原声）──────────────
+#   ★ 数量下限写死：配音丢失的表现是"游戏照常跑但全是英文语音"，
+#     不会报错、不会崩 —— 典型静默失效，只能靠数量断言拦。
+AUDIO_PREFIX = "update/audio/vos/"
+AUDIO_EXPECT_FILES = 171
+
 REQUIRED_SCRIPTS = ["scripts/Army3_Extend_Dll.asi", "scripts/Hzk16"]
 REQUIRED_UPDATE = [
     "update/title.dat", "update/shared.dat",
@@ -159,10 +187,52 @@ def main():
     for n in REQUIRED_ROOT:
         check(n in names, "包根 %s" % n)
 
+    # ── B2. 包根说明与许可 ─────────────────────────────────────────────
+    print()
+    print("B2. 包根说明与许可（S11/S12/S13）")
+    for n in REQUIRED_ROOT_DOCS:
+        check(n in names, "包根 %s" % n)
+    for n in AI_FILES:
+        check(n in names, "包根 %s" % n)
+
+    readme = "必读说明.txt"
+    if readme in names:
+        rb = z.read(readme)
+        check(rb[:3] == b"\xef\xbb\xbf", "必读说明.txt 带 UTF-8 BOM",
+              "（记事本靠 BOM 判编码，缺了中文显示乱码）")
+        check(b"\r\n" in rb, "必读说明.txt 为 CRLF 换行")
+        check(len(rb) >= 500, "必读说明.txt 内容非空壳",
+              "%d B" % len(rb))
+    if "License.txt" in names:
+        lt = z.read("License.txt").decode("utf-8", errors="replace")
+        for mark, label in LICENSE_REQUIRED_MARKS:
+            check(mark in lt, "License.txt 含 %s" % label)
+        check("GNU GENERAL PUBLIC LICENSE" in lt.upper()
+              or "GPL" in lt, "License.txt 含项目主许可（GPLv3）正文")
+        print("       License.txt %d B" % len(z.read("License.txt")))
+
     print()
     print("C. scripts\\ 运行期文件")
     for n in REQUIRED_SCRIPTS:
         check(n in names, "%s" % n)
+
+    # ── C2. 中文配音 ───────────────────────────────────────────────────
+    print()
+    print("C2. update\\audio\\vos\\ 中文配音（qwen3-tts 生成）")
+    n_wav = [x for x in names
+             if x.startswith(AUDIO_PREFIX) and x.lower().endswith(".wav")]
+    check(len(n_wav) >= AUDIO_EXPECT_FILES,
+          "配音 wav 数量 >= %d" % AUDIO_EXPECT_FILES,
+          "%d 个（配音丢失的表现是游戏照常跑但语音全英文，不会报错）"
+          % len(n_wav))
+    # 抽查若干必须存在的关键台词：号手/HQ/平民三类各取一，
+    #   防"数量够了但全是同一批文件重复"这类构造错误。
+    for probe in ("Aah.wav", "Sarge_Eatplastic.wav", "HQ_Goodwork.wav",
+                  "Tina_ImTina.wav"):
+        check(AUDIO_PREFIX + probe in names, "配音含 %s" % probe)
+    tot_audio = sum(z.getinfo(x).file_size for x in n_wav)
+    check(tot_audio > 10000000, "配音总体积 > 10 MB",
+          "%.2f MB" % (tot_audio / 1048576))
 
     print()
     print("D. update\\ 载荷")
