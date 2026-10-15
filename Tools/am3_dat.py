@@ -129,14 +129,25 @@ def palette_rgb(pal):
 
 
 def decode_bmp(idx, w, h, pal_rgb, Image):
+    """未压缩 256 色位图。
+
+    ★ 两个坑，都必须处理，否则图像会坏：
+
+    1) **行按 4 字节对齐**（stride = align4(w)），不是紧密 w 字节。
+       按 w 紧读会让每行少吞填充字节，错位逐行累积 -> **斜向撕裂**。
+       实测 3 代 869 个 BMP 对象全部满足 graphicSize == align4(w) * h。
+
+    2) **行序自下而上**（标准 BMP 约定）：文件里第一行是图像的**最底行**。
+       按自上而下读 -> 图像**上下镜像**（文字倒过来）。
+    """
+    stride = (w + 3) & ~3
     img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     px = img.load()
-    p = 0
     for y in range(h):
+        row = (h - 1 - y) * stride          # ← bottom-up
         for x in range(w):
-            r, g, b = pal_rgb[idx[p]]
+            r, g, b = pal_rgb[idx[row + x]]
             px[x, y] = (r, g, b, 255)
-            p += 1
     return img
 
 
@@ -204,13 +215,20 @@ def export_png(blob, pal_rgb, out_png, Image):
 # ---------------------------------------------------------------- 编码
 
 def encode_bmp(img, pal_rgb, palette_lookup):
-    """RGBA -> 256 色索引流（精确匹配调色板，找不到取最近色）。"""
+    """RGBA -> 256 色索引流（精确匹配调色板，找不到取最近色）。
+
+    ★ 与 decode_bmp 严格对称：
+      - 每行按 **4 字节对齐**（stride = align4(w)），填充字节写 0
+      - 行序 **自下而上**（先写图像最底行）
+      否则重打包后游戏按原约定读取会出现撕裂 / 镜像。
+    """
     w, h = img.size
+    stride = (w + 3) & ~3
     px = img.convert("RGB").load()
-    out = bytearray(w * h)
+    out = bytearray(stride * h)
     cache = {}
-    p = 0
     for y in range(h):
+        base = (h - 1 - y) * stride          # ← bottom-up，与解码对称
         for x in range(w):
             c = px[x, y]
             idx = cache.get(c)
@@ -227,8 +245,8 @@ def encode_bmp(img, pal_rgb, palette_lookup):
                                 break
                     idx = best
                 cache[c] = idx
-            out[p] = idx
-            p += 1
+            out[base + x] = idx
+        # 填充字节保持 0（与原始数据一致）
     return bytes(out)
 
 

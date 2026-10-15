@@ -57,6 +57,25 @@ python Tools/am3_dat.py pack Army3_Object_CHS/shared <输出>/shared.dat
 改 PNG 后   重新打包成功，输出与原始不同  ✔
 ```
 
+## 位图格式（两个坑，已在工具里处理）
+
+3 代未压缩位图的对象数据里有**两个**容易读错的约定，任一读错图像都会坏：
+
+| 约定 | 读错的后果 | 实测依据 |
+|---|---|---|
+| 每行按 **4 字节对齐**（stride = `align4(w)`） | **斜向撕裂**（错位逐行累积） | 869 个 BMP 对象**全部**满足 `graphicSize == align4(w) × h` |
+| 行序 **自下而上**（文件首行 = 图像最底行） | **上下镜像**（文字倒置） | 605×370 面板翻转后 `CASUALTY REPLACEMENT DELAY` 等方可读 |
+
+`Tools/am3_dat.py` 的 `decode_bmp` / `encode_bmp` 已按这两条对称实现。
+**修复前已生成的 PNG 必须重新解包**（旧图是撕裂+镜像的）：
+
+```bash
+python Tools/am3_dat.py unpack "<游戏目录>/title.dat"  Army3_Object_CHS/title
+python Tools/am3_dat.py unpack "<游戏目录>/shared.dat" Army3_Object_CHS/shared
+```
+
+> RLE 族（WRLE/TRLE/SRLE）不受影响：它们按行偏移表定位，行内自成一格。
+
 ## 用途判定（哪些需要改）
 
 | key 范围 | 尺寸 | 说明 |
