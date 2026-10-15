@@ -1,0 +1,882 @@
+{
+  "Aah.wav": {
+    "speaker": "Sarge",
+    "value_en": "Sigh.",
+    "value_ch": "唉……",
+    "note": "受伤/用力叹息"
+  },
+  "Aah2.wav": {
+    "speaker": "Sarge",
+    "value_en": "",
+    "value_ch": "呃！",
+    "note": "TTS 优化改写"
+  },
+  "Aah3.wav": {
+    "speaker": "Sarge",
+    "value_en": "Oh.",
+    "value_ch": "哦！",
+    "note": "TTS 优化改写"
+  },
+  "Aah4.wav": {
+    "speaker": "Sarge",
+    "value_en": "Hmm.",
+    "value_ch": "唔……"
+  },
+  "Adrenaline.wav": {
+    "speaker": "Sarge",
+    "value_en": "Adrenaline.",
+    "value_ch": "肾上腺素！"
+  },
+  "Aerosol.wav": {
+    "speaker": "Sarge",
+    "value_en": "And aerosol.",
+    "value_ch": "喷雾罐！"
+  },
+  "AirAttack.wav": {
+    "speaker": "Sarge",
+    "value_en": "an air attack.",
+    "value_ch": "空中打击！"
+  },
+  "AirStrike.wav": {
+    "speaker": "Sarge",
+    "value_en": "An airstrike.",
+    "value_ch": "空袭！"
+  },
+  "AllRight.wav": {
+    "speaker": "Sarge",
+    "value_en": "All right.",
+    "value_ch": "好。"
+  },
+  "ArmyMen2Doom.wav": {
+    "speaker": "UnknownVoice",
+    "value_en": "Oh, no! Please, no! No, please, no!",
+    "value_ch": "哦，不！求你了，不要！不，求你别这样！"
+  },
+  "AutoRifle.wav": {
+    "speaker": "Sarge",
+    "value_en": "An auto rifle.",
+    "value_ch": "自动步枪！"
+  },
+  "Baseball.wav": {
+    "speaker": "Sarge",
+    "value_en": "All right.",
+    "value_ch": "好。",
+    "note": "原声为 all right"
+  },
+  "Bazooka.wav": {
+    "speaker": "Sarge",
+    "value_en": "A bazooka.",
+    "value_ch": "火箭筒！",
+    "note": "用户指定"
+  },
+  "Civilians_Ann_Civilian_Ahhhhhh3.wav": {
+    "speaker": "Civilian_Ann",
+    "value_en": "AAAAAAAAAAAAAAAA",
+    "value_ch": "啊啊啊啊——！",
+    "note": "TTS 优化改写"
+  },
+  "Civilians_Ann_Civilian_PleasesaveUs.wav": {
+    "speaker": "Civilian_Ann",
+    "value_en": "Please save us!",
+    "value_ch": "救救我们！"
+  },
+  "Civilians_Tanya_Civilian_Ahhhhhh3.wav": {
+    "speaker": "Civilian_Tanya",
+    "value_en": "(scream)",
+    "value_ch": "啊啊啊——！",
+    "note": "TTS 优化改写"
+  },
+  "Civilians_Tanya_Civilian_PleaseSaveMe3.wav": {
+    "speaker": "Civilian_Tanya",
+    "value_en": "Oh, you saved me!",
+    "value_ch": "哦，你救了我！"
+  },
+  "Civilians_aahhh1.wav": {
+    "speaker": "Civilian",
+    "value_en": "AAAAAAAAH!",
+    "value_ch": "啊啊啊啊！"
+  },
+  "Civilians_ahhh1.wav": {
+    "speaker": "Civilian",
+    "value_en": "AHHHHH!",
+    "value_ch": "啊啊啊！"
+  },
+  "Civilians_ahhh4.wav": {
+    "speaker": "Civilian",
+    "value_en": "AHHHHH!",
+    "value_ch": "啊啊啊！"
+  },
+  "Civilians_helpMe1.wav": {
+    "speaker": "Civilian",
+    "value_en": "Help me! Help me!",
+    "value_ch": "快救救我们！",
+    "note": "TTS 友好改写（重复单字）"
+  },
+  "Civilians_pleassaveus3.wav": {
+    "speaker": "Civilian",
+    "value_en": "Please save us!",
+    "value_ch": "救救我们！"
+  },
+  "Civilians_thoseThings1.wav": {
+    "speaker": "Civilian",
+    "value_en": "Those things are everywhere!",
+    "value_ch": "那些怪物到处都是！"
+  },
+  "DDT.wav": {
+    "speaker": "Sarge",
+    "value_en": "All right.",
+    "value_ch": "好。",
+    "note": "原声为 all right"
+  },
+  "Disguise.wav": {
+    "speaker": "Sarge",
+    "value_en": "disguise",
+    "value_ch": "伪装！"
+  },
+  "Explosives.wav": {
+    "speaker": "Sarge",
+    "value_en": "Explosives.",
+    "value_ch": "炸药！"
+  },
+  "FlakJack.wav": {
+    "speaker": "Sarge",
+    "value_en": "Flakjacket.",
+    "value_ch": "防弹衣！"
+  },
+  "FlameThrower.wav": {
+    "speaker": "Sarge",
+    "value_en": "A flamethrower!",
+    "value_ch": "火焰喷射器！"
+  },
+  "Flyswatter.wav": {
+    "speaker": "Sarge",
+    "value_en": "A fly swatter.",
+    "value_ch": "苍蝇拍！",
+    "note": "用户指定"
+  },
+  "ForceField.wav": {
+    "speaker": "Sarge",
+    "value_en": "A force field!",
+    "value_ch": "力场！"
+  },
+  "Glue.wav": {
+    "speaker": "Sarge",
+    "value_en": "All right.",
+    "value_ch": "好。",
+    "note": "原声为 all right"
+  },
+  "GreenUnits_KillItSarge.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "Kill it, Sarge! Kill it!",
+    "value_ch": "干掉它，中士！干掉它！"
+  },
+  "GreenUnits_SargeIsDead1.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "Sarge is dead. What are we going to do now?",
+    "value_ch": "中士阵亡了。咱们现在怎么办？",
+    "note": "ASR mis-heard 'Sarge' as 'search'; corrected."
+  },
+  "GreenUnits_SargeisDead3.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "Sarge is dead. What are we going to do now?",
+    "value_ch": "中士阵亡了。咱们现在怎么办？"
+  },
+  "GreenUnits_WhenIGetOut1.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "When I get out of here.",
+    "value_ch": "等我逃出这儿再说。"
+  },
+  "GreenUnits_ahgieie1.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "HIGHER!",
+    "value_ch": "抬高点！"
+  },
+  "GreenUnits_ahgieie2.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "OUCH!",
+    "value_ch": "哎哟！"
+  },
+  "GreenUnits_ahgieie3.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "AHHHHH!",
+    "value_ch": "啊啊啊！"
+  },
+  "GreenUnits_ahhhh2.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "ARRRRRRRRRRRRRRRRRRRRRRRR",
+    "value_ch": "啊啊啊啊啊——"
+  },
+  "GreenUnits_ahieee2.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "AAAAAAAH!",
+    "value_ch": "啊啊啊啊！"
+  },
+  "GreenUnits_ahieee3.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "Woo!",
+    "value_ch": "嗬啊！",
+    "note": "TTS 友好改写（重复单字）"
+  },
+  "GreenUnits_arrrgh1.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "Grrrrrrrrrrrrrrrrrrrr",
+    "value_ch": "呃……"
+  },
+  "GreenUnits_arrrgh2.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "ARGH!",
+    "value_ch": "呃啊！",
+    "note": "TTS 友好改写（重复单字）"
+  },
+  "GreenUnits_arrrgh3.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "ARGH!",
+    "value_ch": "呃啊！",
+    "note": "TTS 友好改写（重复单字）"
+  },
+  "GreenUnits_no1.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "NOOOOOO!",
+    "value_ch": "不——！"
+  },
+  "GreenUnits_no3.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "NOOOOOO!",
+    "value_ch": "不——！"
+  },
+  "GreenUnits_unit_ahieee1.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_en": "AAAAAAAAAAAAAAAAAAAAAAAA",
+    "value_ch": "啊啊啊啊啊啊啊！"
+  },
+  "Grenades.wav": {
+    "speaker": "Sarge",
+    "value_en": "Grenades.",
+    "value_ch": "手雷！"
+  },
+  "Guard_Intruders.wav": {
+    "speaker": "Guard",
+    "value_en": "intruders",
+    "value_ch": "有入侵者！"
+  },
+  "Guard_Stop.wav": {
+    "speaker": "Guard",
+    "value_en": "STOP!",
+    "value_ch": "站住！"
+  },
+  "HQAirAttack.wav": {
+    "speaker": "Sarge",
+    "value_en": "I NEED AN AIR ATTACK!",
+    "value_ch": "我要空中打击！"
+  },
+  "HQNapalmAirstrike.wav": {
+    "speaker": "Sarge",
+    "value_en": "HQ, I need some napalm.",
+    "value_ch": "总部，我需要凝固汽油弹。"
+  },
+  "HQReinforcements.wav": {
+    "speaker": "Sarge",
+    "value_en": "HQ, send in the Flyboys.",
+    "value_ch": "总部，派飞行员来。",
+    "note": "Flyboys=航空兵"
+  },
+  "HQSpaceBeamers.wav": {
+    "speaker": "Sarge",
+    "value_en": "HQ, beam them in.",
+    "value_ch": "总部，把他们传送过来。"
+  },
+  "HQ_BigHead.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "Sarge, we have reports that the aliens are being led by a larger alien with a big head. Your orders are to take this alien commander out of the picture so we can get the civilian convoy through. Good luck. HQ out.",
+    "value_ch": "中士，据报外星人由一只大脑袋的大个子外星人率领。你的任务是除掉这个外星指挥官，好让平民车队通过。祝好运。总部完毕。"
+  },
+  "HQ_BootCamp.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "Welcome to Boot Camp, Sarge. Here you will learn the tools to help you defeat the Tan and stay in one piece. Make sure to follow the signs and do exactly what they tell you to do. Go for it. HQ out.",
+    "value_ch": "欢迎来到新兵营，中士。在这里你将学会击败黄军的本领，还能全身而退。务必跟着路标走，指示让你做什么就做什么。放手干吧。总部完毕。"
+  },
+  "HQ_CivilianDestination.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "Good job eliminating that alien commander. Now that the path is cleared, you can escort the civilian convoy to their final destination. HQ, out.",
+    "value_ch": "干得漂亮，解决了那个外星指挥官。既然路已打通，你可以护送平民车队前往终点了。总部完毕。"
+  },
+  "HQ_CivilianSafe.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "The civilians are finally safe. Thanks to you, Sarge.",
+    "value_ch": "平民终于安全了。多亏了你，中士。"
+  },
+  "HQ_Civilian_Convoy.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "Good work on saving those civilians, Sarge. Unfortunately, we don't have enough manpower to defend this area. You'll have to move the civilians to a safer location before more of those aliens attack. HQ out.",
+    "value_ch": "救出那些平民干得不错，中士。可惜我们兵力不足以防守此地。在更多外星人来袭前，你得把平民转移到更安全的地方。总部完毕。"
+  },
+  "HQ_Congratulations.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "Congratulations, Sarge. Report back to HQ for your first assignment.",
+    "value_ch": "恭喜，中士。回总部报到，领取你的第一项任务。"
+  },
+  "HQ_FoxTrot.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "Sarge, escort the civilian convoy to Sector Foxtrot Whiskey 1. Secure a safe position and report back to us when your mission is successful. HQ, out.",
+    "value_ch": "中士，护送平民车队前往狐步威士忌目标点。占据安全位置，任务达成后向我们报告。总部完毕。"
+  },
+  "HQ_Goodwork.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "Good work, Sarge. The area is secure.",
+    "value_ch": "干得好，中士。这片区域安全了。"
+  },
+  "HQ_INTO_UFO.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "Sarge, this is the area where the UFO landed. We think Plastro has an alliance with something out of this world. We have suspicions that there is more to it than just that ship. Go investigate and try to sneak your way inside the UFO. HQ out.",
+    "value_ch": "中士，这里是飞碟降落的区域。我们认为普拉斯托和外星势力结了盟。我们怀疑背后的东西不止那艘船。去调查，想办法潜入飞碟内部。总部完毕。"
+  },
+  "HQ_Protectourpeople.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "Sarge, those aliens found another way in. They're rumored to be moving in on the town in your area. You are the only hope for the civilians in this region. Go in, or have a unit go inside each house and order the people living there to run to the old vehicle depot on the south. Let's try and get as many civilians out as possible. Sarge, you're holding all the cards. Good luck. HQ out.",
+    "value_ch": "中士，那些外星人找到了另一条路进来。听说他们正逼近你那片区域的城镇。你是这地带平民唯一的希望。亲自进去，或者派兵挨家挨户通知居民逃往南边的旧车场。尽量多撤出平民。中士，主动权在你手里。祝好运。总部完毕。"
+  },
+  "HQ_RescueHostages.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "Sarge, we found out where your men are being held. Recon can't tell if your men are dead or alive, but they do know your guys are just east of you. There were a lot more TAN in the area than we thought, so I guess the helicopter drop wasn't the best planned out operation. In any case, we're glad you made it out okay. Your guys are tough, and I'm sure they're making TAN's life miserable. Now, go get those guys and clear out the area of any remaining TAN. HQ out.",
+    "value_ch": "中士，我们查明了你的人被关在哪里。侦察兵分不清他们是死是活，但确认他们就在你东边。那一带黄军比预想的多得多，看来直升机空投这招计划得不太妙。不管怎样，你活着出来就好。你的人很硬气，肯定把黄军折腾得够呛。现在去把他们救出来，清掉残敌。总部完毕。"
+  },
+  "HQ_SecretBase.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "Sarge, we now know where all those tan are coming from. There seems to be a tan base somewhere in this area. Find and destroy that base. HQ out.",
+    "value_ch": "中士，我们现在知道那帮黄军从哪来了。这片区域某处似乎有个黄军基地。找到并摧毁它。总部完毕。"
+  },
+  "HQ_base_history.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "Good work, Sarge. Tan's base is history.",
+    "value_ch": "干得好，中士。黄军基地已成历史。"
+  },
+  "HQ_distress_signal.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "Sarge, we intercepted that message from the walkie-talkie, and it's from someone named Tina Tomorrow. She says she's trapped and needs assistance. She seems to think that unless someone helps her take out some force field generators, the aliens will be here shortly. Aliens? Find her, and help her deactivate the three force field generators so you can both get out of there. HQ out.",
+    "value_ch": "中士，我们截获了那条对讲机讯息，发信人叫蒂娜·图莫罗。她说自己被困，需要救援。她认为除非有人帮她关掉几台力场发生器，外星人马上就会杀到。外星人？找到她，帮她关闭那三台力场发生器，你们俩才能脱身。总部完毕。"
+  },
+  "HQ_radio_crackling.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "Sorry! Sorry! SORRY!",
+    "value_ch": "抱歉！抱歉！真对不起！"
+  },
+  "HQ_strategic.wav": {
+    "speaker": "HQ_Command",
+    "value_en": "Sarge, take these tanks and secure the three indicated strategic points. By doing so, Tina and her troopers will be able to beam in and reveal why this area seems so important. Make sure Tina succeeds in her mission. HQ, out.",
+    "value_ch": "中士，接管这些坦克，占住标注的三个战略点。这样蒂娜和她的队员就能传送进来，弄清这片区域为何如此重要。务必确保蒂娜完成任务。总部完毕。"
+  },
+  "HQairStrike.wav": {
+    "speaker": "Sarge",
+    "value_en": "HQ, give me an airstrike!",
+    "value_ch": "总部，给我来次空袭！"
+  },
+  "HQreconn.wav": {
+    "speaker": "Sarge",
+    "value_en": "HQ, send me a recon.",
+    "value_ch": "总部，派侦察来。"
+  },
+  "HammerMine.wav": {
+    "speaker": "Sarge",
+    "value_en": "Hammer mine.",
+    "value_ch": "锤击地雷！"
+  },
+  "HeavyLaser.wav": {
+    "speaker": "Sarge",
+    "value_en": "A laser rifle.",
+    "value_ch": "激光步枪！"
+  },
+  "HeavyMacGun.wav": {
+    "speaker": "Sarge",
+    "value_en": "A heavy machine gun.",
+    "value_ch": "重机枪！"
+  },
+  "HitsSpot.wav": {
+    "speaker": "UnknownVoice",
+    "value_en": "Ah, that hit the spot.",
+    "value_ch": "啊，正合需要。"
+  },
+  "IneededThat.wav": {
+    "speaker": "UnknownVoice",
+    "value_en": "Mmm, I needed that.",
+    "value_ch": "嗯，正需要这个。"
+  },
+  "M80s.wav": {
+    "speaker": "Sarge",
+    "value_en": "M80s.",
+    "value_ch": "M80s！"
+  },
+  "MagnifyingGlass.wav": {
+    "speaker": "Sarge",
+    "value_en": "A magnifying glass!",
+    "value_ch": "放大镜！"
+  },
+  "MedKit.wav": {
+    "speaker": "Sarge",
+    "value_en": "A med kit.",
+    "value_ch": "医疗包！"
+  },
+  "MineSweeper.wav": {
+    "speaker": "Sarge",
+    "value_en": "A Minesweeper.",
+    "value_ch": "扫雷器！"
+  },
+  "Mortar.wav": {
+    "speaker": "Sarge",
+    "value_en": "Mortars.",
+    "value_ch": "迫击炮！"
+  },
+  "NapalmAirstrike.wav": {
+    "speaker": "Sarge",
+    "value_en": "Napalm.",
+    "value_ch": "凝固汽油弹！"
+  },
+  "NapalmMortar.wav": {
+    "speaker": "Sarge",
+    "value_en": "Incendiary mortars.",
+    "value_ch": "燃烧迫击炮！"
+  },
+  "Reconn.wav": {
+    "speaker": "Sarge",
+    "value_en": "Ah, recon.",
+    "value_ch": "啊，侦察。"
+  },
+  "Sarge08_01.wav": {
+    "speaker": "Sarge",
+    "value_en": "Men, we need to secure three points inside enemy lines with a tank at each point. With that in mind, lock and load, people.",
+    "value_ch": "弟兄们，我们要在敌军防线内拿下三个据点，每处配一辆坦克。既然如此，全体上膛，准备战斗。"
+  },
+  "Sarge10_01.wav": {
+    "speaker": "Sarge",
+    "value_en": "All right, men, wipe those nervous expressions off your plastic faces. We have a job to do.",
+    "value_ch": "好了弟兄们，把你们塑料脸上那副紧张相给我抹掉。咱们有活要干。"
+  },
+  "Sarge10_02.wav": {
+    "speaker": "Sarge",
+    "value_en": "You heard the lady. Get to work, soldiers.",
+    "value_ch": "都听见女士的话了。干活吧，士兵们。"
+  },
+  "Sarge11_01.wav": {
+    "speaker": "Sarge",
+    "value_en": "It's time to take out the Overlord!",
+    "value_ch": "该干掉霸主了！"
+  },
+  "Sarge_AwayInGo1.wav": {
+    "speaker": "Sarge",
+    "value_en": "It's a way in. Go, go, go!",
+    "value_ch": "找到入口了，听我号令！冲锋！"
+  },
+  "Sarge_CommanderMe2.wav": {
+    "speaker": "Sarge",
+    "value_en": "There's only room for one commander in this battlefield today, and that's me.",
+    "value_ch": "今天这片战场，只容得下一个指挥官——那就是我。"
+  },
+  "Sarge_DoOrDie3.wav": {
+    "speaker": "Sarge",
+    "value_en": "All the chips are down, boys. Time to do or die.",
+    "value_ch": "筹码全压上了，兄弟们。不是干掉敌人，就是拼到底。"
+  },
+  "Sarge_Eatplastic.wav": {
+    "speaker": "Sarge",
+    "value_en": "Eat plastic.",
+    "value_ch": "吃塑料去吧。"
+  },
+  "Sarge_FiringSquad1.wav": {
+    "speaker": "Sarge",
+    "value_en": "The firing squad is up to something.",
+    "value_ch": "行刑队在搞什么名堂。"
+  },
+  "Sarge_FoxTrot1.wav": {
+    "speaker": "Sarge",
+    "value_en": "We have to get to Foxtrot Whiskey One without losing any civilians. Let's roll out!",
+    "value_ch": "我们必须赶到狐步威士忌目标点，不能丢下一个平民。出发！"
+  },
+  "Sarge_GoinDownThere2.wav": {
+    "speaker": "Sarge",
+    "value_en": "Something's going on down there.",
+    "value_ch": "下面那边有动静。"
+  },
+  "Sarge_HateAnts2.wav": {
+    "speaker": "Sarge",
+    "value_en": "Ants! I hate ants!",
+    "value_ch": "蚂蚁！我讨厌蚂蚁！"
+  },
+  "Sarge_HitSpot1.wav": {
+    "speaker": "Sarge",
+    "value_en": "Ah, that hit the spot.",
+    "value_ch": "啊，正合需要。"
+  },
+  "Sarge_Hostage3.wav": {
+    "speaker": "Sarge",
+    "value_en": "No! They've killed a hostage!",
+    "value_ch": "不！他们杀了一个人质！"
+  },
+  "Sarge_HowGetThere3.wav": {
+    "speaker": "Sarge",
+    "value_en": "How do we get over there?",
+    "value_ch": "咱们怎么过去？"
+  },
+  "Sarge_IHateAnts3.wav": {
+    "speaker": "Sarge",
+    "value_en": "I hate ants.",
+    "value_ch": "我讨厌蚂蚁。"
+  },
+  "Sarge_TanLesson3.wav": {
+    "speaker": "Sarge",
+    "value_en": "Let's teach those Tan a lesson.",
+    "value_ch": "让咱们给那帮黄军一个教训。",
+    "note": "ASR mis-heard 'Tan' as '10'; corrected from filename context."
+  },
+  "Sarge_TooClose3.wav": {
+    "speaker": "Sarge",
+    "value_en": "That was too close.",
+    "value_ch": "太险了。"
+  },
+  "Sarge_WhatAreThoseThings4.wav": {
+    "speaker": "Sarge",
+    "value_en": "What are those things?",
+    "value_ch": "那些东西是什么？"
+  },
+  "Sarge_WhatNow2.wav": {
+    "speaker": "Sarge",
+    "value_en": "What now?",
+    "value_ch": "现在怎么办？"
+  },
+  "Sarge_WhatWithThis2.wav": {
+    "speaker": "Sarge",
+    "value_en": "What are they going to do with this?",
+    "value_ch": "他们拿这个要干什么？"
+  },
+  "Sarge_WhatisThat3.wav": {
+    "speaker": "Sarge",
+    "value_en": "What is that?",
+    "value_ch": "那是什么？"
+  },
+  "Sarge_WhoAreYou1.wav": {
+    "speaker": "Sarge",
+    "value_en": "Who are you?",
+    "value_ch": "你是谁？"
+  },
+  "Sarge_YouAllright1.wav": {
+    "speaker": "Sarge",
+    "value_en": "Are you all right?",
+    "value_ch": "你没事吧？"
+  },
+  "Sarge_YourFreeNow.wav": {
+    "speaker": "Sarge",
+    "value_en": "You're free now.",
+    "value_ch": "你自由了。"
+  },
+  "Sarge_bootcamp.wav": {
+    "speaker": "Sarge",
+    "value_en": "Reporting to boot camp as ordered, sir.",
+    "value_ch": "遵命报到新兵营，长官。"
+  },
+  "Sarge_deadOverlord.wav": {
+    "speaker": "Sarge",
+    "value_en": "That's one dead alien overlord who won't bother us again.",
+    "value_ch": "又干掉一个外星霸主，他再也不会来烦我们了。"
+  },
+  "Sarge_picnicBasket5.wav": {
+    "speaker": "Sarge",
+    "value_en": "That's no ordinary picnic basket.",
+    "value_ch": "那可不是普通的野餐篮。"
+  },
+  "Sarge_poorCow1.wav": {
+    "speaker": "Sarge",
+    "value_en": "Poor cow.",
+    "value_ch": "可怜的牛。"
+  },
+  "SniperRifle.wav": {
+    "speaker": "Sarge",
+    "value_en": "A sniper rifle.",
+    "value_ch": "狙击步枪！"
+  },
+  "SpaceBeamers.wav": {
+    "speaker": "UnknownVoice",
+    "value_en": "Spaceman Reinforcements.",
+    "value_ch": "太空兵增援。"
+  },
+  "SpaceHQ10_04.wav": {
+    "speaker": "SpaceHQ",
+    "value_en": "Commander, we're not picking up any more aliens. It looks like you got them all.",
+    "value_ch": "指挥官，扫描不到更多外星人了。看来你把它们全收拾干净了。"
+  },
+  "SpaceHQ_LargeWaves_t.wav": {
+    "speaker": "SpaceHQ",
+    "value_en": "Commander, our scanners indicate large waves of aliens approaching the base from all directions.",
+    "value_ch": "指挥官，扫描显示大批外星人正从四面八方逼近基地。"
+  },
+  "SpaceHQ_ReadingsNorth_t.wav": {
+    "speaker": "SpaceHQ",
+    "value_en": "Sarge, Tina, this is HQ. Our scanners are picking up some strange reading to the north of your current location. This could be the alien lab we've been looking for. Your mission is to infiltrate the alien lab and upload any useful information about the alien hive from the main computer. HQ out.",
+    "value_ch": "中士、蒂娜，这里是总部。扫描在你们当前位置以北发现异常读数。那可能就是我们一直在找的外星实验室。你们的任务是潜入实验室，从主机里拷取有关外星巢穴的可用情报。总部完毕。"
+  },
+  "SpaceHQ_ShowAliens_t.wav": {
+    "speaker": "SpaceHQ",
+    "value_en": "Men, let's show these aliens what we're made of.",
+    "value_ch": "弟兄们，让这些外星人见识见识我们的厉害。"
+  },
+  "SpaceHQ_chamber.wav": {
+    "speaker": "SpaceHQ",
+    "value_en": "The aliens are supposed to be led by some sort of overlord. It is said to be in those chambers. Take it out, whatever it is. If this mission fails, all of our efforts will have been for nothing. Good luck, and HQ out.",
+    "value_ch": "外星人据说由某个霸主统领，据说它就在那些密室里。不管是什么，除掉它。若此次任务失败，我们所有努力都将付诸东流。祝好运，总部完毕。"
+  },
+  "StingOut.wav": {
+    "speaker": "Sarge",
+    "value_en": "That takes the sting out of it.",
+    "value_ch": "这下好受多了。"
+  },
+  "TakeCover.wav": {
+    "speaker": "UnknownVoice",
+    "value_en": "Take cover.",
+    "value_ch": "隐蔽！"
+  },
+  "TanUnits_Fire1.wav": {
+    "speaker": "TanArmy",
+    "value_en": "WOW!",
+    "value_ch": "哇哦！",
+    "note": "TTS 友好改写（重复单字）"
+  },
+  "TanUnits_NotSarge1.wav": {
+    "speaker": "TanArmy",
+    "value_en": "What? No! Not him! Not Sarge!",
+    "value_ch": "什么？不！别是他！别是中士！"
+  },
+  "TanUnits_aim3.wav": {
+    "speaker": "TanArmy",
+    "value_en": "HEEEP",
+    "value_ch": "嘿——！",
+    "note": "Shout/yell 'HEEEP' (aiming cry); kept as onomatopoeia."
+  },
+  "TanUnits_arrrgh2.wav": {
+    "speaker": "TanArmy",
+    "value_en": "AAAHHHHHHHHHHHHHHH",
+    "value_ch": "啊啊啊啊啊——"
+  },
+  "TanUnits_attack.wav": {
+    "speaker": "TanArmy",
+    "value_en": "ATTACK!",
+    "value_ch": "进攻！"
+  },
+  "TanUnits_bwahahaha3.wav": {
+    "speaker": "TanArmy",
+    "value_en": "Ha ha ha ha ha ha!",
+    "value_ch": "哈哈哈哈哈哈！"
+  },
+  "TanUnits_charge.wav": {
+    "speaker": "TanArmy",
+    "value_en": "Charge!",
+    "value_ch": "冲啊！"
+  },
+  "TanUnits_meetmaker3.wav": {
+    "speaker": "TanArmy",
+    "value_en": "Prepare to meet your maker.",
+    "value_ch": "准备见你的造物主吧。"
+  },
+  "TanUnits_noOnCanSaveU3.wav": {
+    "speaker": "TanArmy",
+    "value_en": "No one can save you.",
+    "value_ch": "没人能救你。"
+  },
+  "TanUnits_ready4.wav": {
+    "speaker": "TanArmy",
+    "value_en": "Buh-dip!",
+    "value_ch": "来吧！",
+    "note": "TTS 友好改写（重复单字）"
+  },
+  "ThePitch.wav": {
+    "speaker": "UnknownVoice",
+    "value_en": "And the pitch.",
+    "value_ch": "投球了。",
+    "note": "Baseball mini-game line ('the pitch')."
+  },
+  "Tina08_01.wav": {
+    "speaker": "Tina",
+    "value_en": "The portal to our homeworld is inside that black box. You need to get me there so I can open it.",
+    "value_ch": "通往我们母星的传送门就在那个黑匣子里。你得把我送过去，我才能把它打开。"
+  },
+  "Tina08_02.wav": {
+    "speaker": "Tina",
+    "value_en": "We can probably expect some alien resistance on the other side of this portal.",
+    "value_ch": "传送门那头多半会有外星人抵抗。"
+  },
+  "Tina09_01.wav": {
+    "speaker": "Tina",
+    "value_en": "We've just lost contact with an outpost in this sector. We should go there and investigate.",
+    "value_ch": "我们刚和这个星区的一个前哨站失去联络。得过去查一查。"
+  },
+  "Tina09_02.wav": {
+    "speaker": "Tina",
+    "value_en": "The main computer has the data map which contains the location of the alien hive.",
+    "value_ch": "主机里有数据地图，上面标注着外星巢穴的位置。"
+  },
+  "Tina09_03.wav": {
+    "speaker": "Tina",
+    "value_en": "We've got the data map. Let's go.",
+    "value_ch": "数据地图到手了。走。"
+  },
+  "Tina09_04.wav": {
+    "speaker": "Tina",
+    "value_en": "HQ, I'm sending the data map now. We're headed your way.",
+    "value_ch": "总部，我现在把数据地图发过去。我们正往你那边赶。"
+  },
+  "Tina10_01.wav": {
+    "speaker": "Tina",
+    "value_en": "The aliens know we've got the data map. We can expect a full-scale assault.",
+    "value_ch": "外星人知道我们拿到了数据地图。接下来恐怕是全面进攻。"
+  },
+  "Tina_AlienOverLord.wav": {
+    "speaker": "Tina",
+    "value_en": "The aliens are reeling from that last assault. Now is our chance to eliminate the alien overlord.",
+    "value_ch": "外星人刚被那轮攻势打得晕头转向。现在是干掉外星霸主的好机会。"
+  },
+  "Tina_AlmostThere.wav": {
+    "speaker": "Tina",
+    "value_en": "Almost there.",
+    "value_ch": "快到了。"
+  },
+  "Tina_CouldUseHelp.wav": {
+    "speaker": "Tina",
+    "value_en": "I could use some help here.",
+    "value_ch": "我这儿需要帮手。"
+  },
+  "Tina_ForceField.wav": {
+    "speaker": "Tina",
+    "value_en": "I need to rewire their generators so that we can shut down the force field. Help me find those machines so we can get out of here.",
+    "value_ch": "我得改装他们的发电机，才能关掉力场。帮我找到那些机器，咱们就能出去了。"
+  },
+  "Tina_GalacticSoldiers.wav": {
+    "speaker": "Tina",
+    "value_en": "Galactic soldiers, come in. I'm outnumbered and need assistance. I'm in the tunnels beneath their ship. Repeat. Galactic soldiers, come in. I'm outnumbered and need assistance. I'm in the tunnels beneath their ship. Anyone copy?",
+    "value_ch": "银河战士，收到请回答。我寡不敌众，需要支援。我在他们飞船下方的隧道里。重复，银河战士，收到请回答。我寡不敌众，需要支援。我在飞船下方的隧道里。有人收到吗？"
+  },
+  "Tina_GotIt.wav": {
+    "speaker": "Tina",
+    "value_en": "Got it. Let's go.",
+    "value_ch": "搞定。走。"
+  },
+  "Tina_HoldOn.wav": {
+    "speaker": "Tina",
+    "value_en": "Hold on, almost done.",
+    "value_ch": "撑住，马上好。"
+  },
+  "Tina_ImTina.wav": {
+    "speaker": "Tina",
+    "value_en": "I'm Tina, Tina Tomorrow.",
+    "value_ch": "我是蒂娜，蒂娜·图莫罗。"
+  },
+  "Tina_KeepOff.wav": {
+    "speaker": "Tina",
+    "value_en": "Keep those things away from me.",
+    "value_ch": "别让那些东西靠近我。"
+  },
+  "Tina_WayOut.wav": {
+    "speaker": "Tina",
+    "value_en": "There is a way out of here, but we have to take down the force field generators.",
+    "value_ch": "这儿有出路，但咱们得先干掉力场发生器。"
+  },
+  "Tina_WhatDoing.wav": {
+    "speaker": "Tina",
+    "value_en": "What are you doing?",
+    "value_ch": "你在干什么？"
+  },
+  "Tina_WorkingOnIt.wav": {
+    "speaker": "Tina",
+    "value_en": "I'm working on it.",
+    "value_ch": "我正在弄。"
+  },
+  "Tina_coverme.wav": {
+    "speaker": "Tina",
+    "value_en": "Cover me.",
+    "value_ch": "掩护我。"
+  },
+  "Tina_hello.wav": {
+    "speaker": "Tina",
+    "value_en": "Hello?",
+    "value_ch": "喂？"
+  },
+  "VulcanGun.wav": {
+    "speaker": "Sarge",
+    "value_en": "A Vulcan gun.",
+    "value_ch": "火神炮！"
+  },
+  "YoureOut.wav": {
+    "speaker": "UnknownVoice",
+    "value_en": "You're out.",
+    "value_ch": "你出局了。",
+    "note": "Baseball mini-game line ('you're out')."
+  },
+  "mines.wav": {
+    "speaker": "Sarge",
+    "value_en": "Mines.",
+    "value_ch": "地雷！"
+  },
+  "moreAmmo.wav": {
+    "speaker": "Sarge",
+    "value_en": "Ah, more ammo.",
+    "value_ch": "啊，更多弹药。"
+  },
+  "mp_gotblue.wav": {
+    "speaker": "Multiplayer",
+    "value_en": "Blue flag captured!",
+    "value_ch": "蓝旗已夺！"
+  },
+  "mp_gotflag.wav": {
+    "speaker": "Multiplayer",
+    "value_en": "Flag captured!",
+    "value_ch": "旗帜已夺！"
+  },
+  "mp_gotgreen.wav": {
+    "speaker": "Multiplayer",
+    "value_en": "Green flag captured!",
+    "value_ch": "绿旗已夺！"
+  },
+  "mp_gotgrey.wav": {
+    "speaker": "Multiplayer",
+    "value_en": "Gray flag captured.",
+    "value_ch": "灰旗已夺。"
+  },
+  "mp_gottan.wav": {
+    "speaker": "Multiplayer",
+    "value_en": "And flag captured!",
+    "value_ch": "黄旗已夺！",
+    "note": "用户确认无误"
+  },
+  "mp_itblue.wav": {
+    "speaker": "Multiplayer",
+    "value_en": "Blue is it.",
+    "value_ch": "蓝方当鬼！",
+    "note": "tag 玩法"
+  },
+  "mp_itgreen.wav": {
+    "speaker": "Multiplayer",
+    "value_en": "Green is it.",
+    "value_ch": "绿方当鬼！"
+  },
+  "mp_itgrey.wav": {
+    "speaker": "Multiplayer",
+    "value_en": "Gray is it.",
+    "value_ch": "灰方当鬼！"
+  },
+  "mp_ittan.wav": {
+    "speaker": "Multiplayer",
+    "value_en": "Tan is it.",
+    "value_ch": "黄方当鬼！"
+  },
+  "paraTroopers.wav": {
+    "speaker": "Sarge",
+    "value_en": "Paratroopers.",
+    "value_ch": "伞兵！"
+  },
+  "ufotrap.wav": {
+    "speaker": "Sarge",
+    "value_en": "That was too close.",
+    "value_ch": "太险了。",
+    "note": "与 Sarge_TooClose3.wav 同句；游戏单独调用此文件"
+  },
+  "wrench.wav": {
+    "speaker": "Sarge",
+    "value_en": "A wrench.",
+    "value_ch": "扳手！"
+  }
+}

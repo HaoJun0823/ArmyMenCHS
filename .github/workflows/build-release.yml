@@ -333,6 +333,115 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+      # ══════════════════════════════════════════════════════════════════
+      #  《玩具兵大战：太空玩具》（3 代）汉化补丁
+      # ══════════════════════════════════════════════════════════════════
+      #  与 1/2 代同构的三段式（compile_dll_wine -> ci_build_am3 ->
+      #  make_patch_am3 -> verify_release_am3），但有 **三处实质差异**：
+      #
+      #  ① title.dat / shared.dat 是**回包产物**，不是仓库里的现成文件。
+      #     仓库存的是 Army3_Object_CHS 解包后的 raw/*.bin + png/*.png，
+      #     构建期由 Tools/am3_dat_pack.py 回包。
+      #     ★ 必须用该工具，**不能**用 am3_dat.py pack：后者会丢掉每个
+      #       重编码对象尾部的 24 字节（实测 title 少 3048 B、shared 少
+      #       384 B），文件变短 -> 其后对象偏移全部前移 -> 目录表失效。
+      #
+      #  ② 中文控件以**覆盖层**形式提供：
+      #     Army3_Object_CHS/title/png_control_chs/ 覆盖到 title/png/ 之上。
+      #     这样 png/ 永远是英文基线，"改了哪几张"可 diff、可复现，
+      #     不依赖工作区里 png/ 是否被人工改过。
+      #
+      #  ③ 包根多两个文件：cnc-ddraw 的 ddraw.dll / ddraw.ini
+      #     （3 代在 Steam 版上需要它才能正常渲染）。ci_build_am3.py
+      #     从仓库 cnc-ddraw/ 取，make_patch_am3.py 落包根。
+      #
+      #  ★ scripts\ 里**没有** ini：3 代界面文本全在游戏自己的
+      #    strings\strings.txt，不需要译文表（2 代有 ArmyMenCHS.ini）。
+      - name: 编译 Army3_Extend_Dll.dll（32 位）
+        if: ${{ github.event.inputs.skip_dll != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/compile_dll_wine.py --msvc-prefix "${MSVC_WINE_PREFIX}" \
+            --proj Army3_Extend_Dll
+
+      - name: 组装《太空玩具》发布包（含 dat 无损回包）
+        run: |
+          set -euo pipefail
+          # ① 载荷 + 回包 title.dat/shared.dat + ASI + 字库 + cnc-ddraw
+          #    -> build_out_am3（--verify 断言载荷无可执行文件、大小符合预期）
+          python3 Tools/ci/ci_build_am3.py --out build_out_am3 --verify
+
+          # ② 打补丁包 -> stage_am3（scripts\ + update\ + 包根）
+          python3 Tools/ci/make_patch_am3.py --out stage_am3
+
+          # ③ 独立校验产物（结构 / 代理导出 / PE 位数 / dat 尾部完整性）
+          python3 Tools/ci/verify_release_am3.py stage_am3
+
+          echo "── 断言产物 ──"
+          ls -l stage_am3/*.zip
+
+          # ASI 必须是 32 位且导出齐全（复用 1/2 代同一套判据）
+          python3 - <<'PY'
+          import struct, glob
+          dll = sorted(glob.glob("build_out_am3/Army3_Extend_Dll.dll"))
+          assert dll, "缺 build_out_am3/Army3_Extend_Dll.dll"
+          b = open(dll[0], "rb").read()
+          pe = struct.unpack_from("<I", b, 0x3C)[0]
+          machine = struct.unpack_from("<H", b, pe + 4)[0]
+          assert machine == 0x14C, f"不是 32 位 PE: 0x{machine:X}"
+          for want in (b"ArmyMenTIS_Install", b"ArmyMenTIS_Uninstall"):
+              assert want in b, "缺少导出 " + want.decode()
+          print(f"✓ ASI 32 位 (0x{machine:X})，导出齐全，{len(b)} bytes")
+          PY
+
+          # 两条 dat 必须与原版**等长**（等长 => 对象偏移不变）
+          python3 - <<'PY'
+          import os
+          for name, want in (("title.dat", 4298896), ("shared.dat", 2936433)):
+              p = os.path.join("stage_am3", "update", name)
+              assert os.path.isfile(p), "缺 " + p
+              got = os.path.getsize(p)
+              assert got == want, f"{name} 大小 {got} != 原版 {want}（回包丢数据？）"
+              print(f"✓ {name} {got} B（与原版等长）")
+          PY
+
+          # 代理 DLL 必须在**包根**且含具名导出 DirectInputCreateA：
+          #   ARMYMENTIS.exe 按名字导入它，代理名不对则补丁完全不加载。
+          python3 - <<'PY'
+          import os
+          proxy = "stage_am3/dinput.dll"
+          assert os.path.isfile(proxy), "缺包根代理 dll"
+          pb = open(proxy, "rb").read()
+          assert b"DirectInputCreateA" in pb, "代理缺少 DirectInputCreateA 导出"
+          print(f"✓ 代理 {proxy} 含 DirectInputCreateA，{len(pb)} bytes")
+          PY
+
+          # 包内不得含 exe/dll/asi 落在 update\（不改游戏文件）
+          python3 - <<'PY'
+          import zipfile, glob
+          z = zipfile.ZipFile(sorted(glob.glob("stage_am3/*.zip"))[0])
+          bad = [n for n in z.namelist()
+                 if n.startswith("update/")
+                 and n.lower().endswith((".exe", ".dll", ".asi"))]
+          assert not bad, "update/ 里混入了可执行文件: %s" % bad
+          names = set(z.namelist())
+          for want in ("dinput.dll", "ddraw.dll", "ddraw.ini",
+                       "scripts/Army3_Extend_Dll.asi", "scripts/Hzk16",
+                       "update/title.dat", "update/shared.dat",
+                       "update/strings/strings.txt"):
+              assert want in names, "包内缺 %s" % want
+          print("✓ update/ 不含可执行文件，结构与必备项齐全，共 %d 条目"
+                % len(z.namelist()))
+          PY
+
+      - name: 上传《太空玩具》发布包
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: armymen3-chs
+          path: stage_am3/*.zip
+          if-no-files-found: error
+          retention-days: 30
+
       # 文档内链有效性。原在 build-am2.yml 的 gate job 里，
       # 合并进本 workflow 后保留 —— 改了文档文件名没人发现就会留死链。
       - name: 校验文档相对链接
@@ -368,6 +477,13 @@ jobs:
         with:
           name: armymen2-chs
           path: dist2
+
+      # ★ 3 代的包同样下到独立目录，避免三个 zip 混在同一层
+      - name: 下载《太空玩具》发布包
+        uses: actions/download-artifact@v8.0.2
+        with:
+          name: armymen3-chs
+          path: dist3
 
       - name: 计算日期-时间 tag
         id: tag
@@ -437,6 +553,10 @@ jobs:
             echo "- 视频/音频/文本/贴图：取自中文母盘，未汉化部分保留 Steam 原版"
             echo "- objects.dat：以 Steam 版为基底，仅覆盖被本地化的精灵块（Alpine 41 / Bayou 37 / Desert 37）"
             echo "- exe 内硬编码文本：由 Army1_Extend_Dll.dll 运行时内存补丁（124 条）"
+            echo "- **《玩具兵大战 II》**：官方中文母盘差异移植；界面文本由 Army2_Extend_Dll.asi 运行时接管渲染"
+            echo "- **《太空玩具》（3 代）**：无官方中文母盘，为从零翻译。界面文本走游戏自己的 strings.txt；"
+            echo "  title.dat / shared.dat 由解包工作区**无损回包**（对象头与尾部逐字节保留，产物与原版等长）；"
+            echo "  中文字形由 Army3_Extend_Dll.asi 直接喂 Hzk16 点阵，不经过 GDI"
           } >> release_notes.md
 
           # ── 下载表（附件名是上传时由 curl ?name= 赋的 ASCII 名）─────────────
@@ -446,9 +566,15 @@ jobs:
             echo
             echo "| 附件名 | 内容 |"
             echo "|---|---|"
-            echo "| \`ArmyMen-CHS-Patch-${{ steps.tag.outputs.stamp }}.zip\` | 简体中文汉化补丁（解压到游戏根目录） |"
+            echo "| \`ArmyMen-CHS-Patch-${{ steps.tag.outputs.stamp }}.zip\` | 《玩具兵大战》简体中文汉化补丁（解压到游戏根目录） |"
+            echo "| \`ArmyMen2-CHS-Patch-${{ steps.tag.outputs.stamp }}.zip\` | 《玩具兵大战 II》简体中文汉化补丁（解压到游戏根目录） |"
+            echo "| \`ArmyMen3-CHS-Patch-${{ steps.tag.outputs.stamp }}.zip\` | 《玩具兵大战：太空玩具》简体中文汉化补丁（解压到游戏根目录） |"
             echo
             echo "### 📖 必读说明（安装 / 卸载 / 已知问题）"
+            echo
+            echo "> ⚠️ 3 代（太空玩具）的包内**暂无** 必读说明.txt —— 安装方式与其它两代相同："
+            echo "> 把包内全部内容解压到游戏安装目录（ARMYMENTIS.exe 所在处）。"
+            echo "> 3 代包根另含 cnc-ddraw 的 \`ddraw.dll\` / \`ddraw.ini\`，请勿单独删除。"
           } >> release_notes.md
 
           {
@@ -527,13 +653,24 @@ jobs:
             --data-binary "@$src2" \
             "${BASE}?name=${ascii2}" | jq -r '.name'
 
-          # 断言两个附件都在（防"只传了一个却报成功"）
+          # ── 上传 3 代（太空玩具）───────────────────────────────────────
+          src3="$(ls dist3/*.zip | head -1)"
+          ascii3="ArmyMen3-CHS-Patch-${stamp}.zip"
+          echo "上传 $ascii3"
+          curl -fsSL -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/zip" \
+            -H "Accept: application/vnd.github+json" \
+            --data-binary "@$src3" \
+            "${BASE}?name=${ascii3}" | jq -r '.name'
+
+          # 断言三个附件都在（防"只传了一部分却报成功"）
           names="$(gh api "repos/$slug/releases/tags/$tag" --jq '.assets[].name')"
-          for want in "$ascii" "$ascii2"; do
+          for want in "$ascii" "$ascii2" "$ascii3"; do
             echo "$names" | grep -qxF "$want" \
               || { echo "!! Release 缺少附件 $want（实有：$names）" >&2; exit 1; }
           done
-          echo "✓ 两个附件均已上传"
+          echo "✓ 三个附件均已上传"
 
           # body 自检：非空、非占位符、首行符合预期
           body="$(gh api "repos/$slug/releases/tags/$tag" --jq .body)"

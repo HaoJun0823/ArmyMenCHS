@@ -1,0 +1,749 @@
+//--pads--//
+pad jeep1point1				101     tanjeep1
+pad jeep1point2				102     tanjeep1
+pad jeep1point3				103     tanjeep1
+pad jeep1point4				104     tanjeep1
+pad jeep2point1				105     tanjeep2
+pad jeep2point2				106     tanjeep2
+pad jeep2point3				107     tanjeep2
+pad jeep2point4				108     tanjeep2
+pad tank2point1				113     tantank2
+pad tank2point2				114     tantank2
+pad tank2point3				115     tantank2
+pad tank2point4				116     tantank2
+pad toiletattack                        145     greentrooper
+pad toilet                              150     greensarge1
+
+PAD pinchtank01                         200     tankpinch1
+pad pinchtank02                         201     tankpinch2
+pad forcepinch                          210     green vehicle
+
+pad forcepinch2                         220     green vehicle
+PAD pinch2tank01                        221     tank2pinch1
+pad pinch2tank02                        222     tank2pinch2
+pad pinch2tank03                        223     tank2pinch3
+
+pad dryerdam                            205     trooper
+pad dryerpul                            206
+
+pad toiletpad1				20      tan trooper
+pad toiletpad2				21      tan trooper
+pad toiletpad3				22      tan trooper
+pad toiletpad4				23      tan trooper
+
+pad stratpad1				32      tan trooper
+pad stratpad2				31      tan trooper
+pad stratpad3				30      tan trooper
+
+pad stratpad4				33      tan trooper
+pad stratpad5				34      tan trooper
+pad stratpad6				35      tan trooper
+
+pad stratpad7				36      tan trooper
+pad stratpad8				37      tan trooper
+pad stratpad9				38      tan trooper
+
+pad stratpad10				39      tan trooper
+pad stratpad11				40      tan trooper
+pad stratpad12				41      tan trooper
+
+//--Variables--//
+variable civiliansescaped		0
+variable civiliandeaths			0
+variable civiliantest                   0
+
+variable switch                         0
+variable switchon                       0
+variable switchoff                      0
+
+//--Startup--//
+if startup1 then
+        triggerdelay 10 gstart
+
+//--Win condition--//
+
+if checkvictory then
+        setvar civiliantest 0,
+        addvar civiliantest civiliansescaped,
+        addvar civiliantest civiliandeaths,
+        trigger checkgreenwins
+
+if checkgreenwins butnot greenlosing testvar civiliantest = 36 then
+	triggerdelay 2000 startgreenwins
+
+if startgreenwins butnot greenlosing then
+        playsound "HQ_CivilianSafe.wav" 1 1,
+        showpda "干得好，中士，你救出了平民！",
+       	triggerdelay 100 greenwins
+
+//--Lose conditions--//
+
+if killed greensarge1 butnot greenlosing then
+        setuilock 1,
+        setcamerafocus greensarge1,
+	trigger greenlosing,
+	triggerdelay 3000 tanwins,
+        setuilock 1,
+        setcamerafocus greensarge1,
+        showpda "你让中士死了！"
+
+if checklose butnot greenlosing testvar civiliandeaths >= 13 then
+        trigger greenlosing,
+        triggerdelay 3000 tanwins,
+        showpda "太多平民死了！"
+
+
+if gstart then
+        triggerdelay 2500 playsargewave,
+        trigger makegreens,
+        trigger maketrucks,
+        trigger makecivs,
+	trigger maketans,
+        trigger loadrides,
+        trigger patrols,
+        trigger triggerpinch,
+        trigger dryersound,
+        triggerdelay 40000 tanwave1
+
+if playsargewave then
+        playsound "Sarge_FoxTrot1.wav" 9 1
+
+//setforce unit-name forcetype location heading decaytype decayrate magnitude maxdist affects other period angle
+
+if dryersound then
+        playsound "DryerActive.wav" drymotor 3 16 1 20
+
+if padon dryerdam testvar switch = 0 then
+        SETFORCE me omni dryerpul 128 Linear 300 -200 260 ground 50 0 128,
+        setdamagepad dryerdam 1 500 fire blue
+
+if padoff dryerdam testvar switch = 0 then
+        SETFORCE me none,
+        setdamagepad dryerdam 0 fire blue
+
+
+
+macro greens 7
+// @1 = unit name, @2 = troop type, @3 = x coord, @4 = y coord, //
+// @5 = weapon, @6 = group #, @7 = facing //
+{
+if makegreens then
+        createunit @1 @2 (@3,@4) green @5 1 @6,
+        setaimode @1 defend,
+        setfacing @1 @7
+}
+expand greens (Warfield grenadier 610 1760 grenade 1 224)
+expand greens (Wildblood rifleman 510 1660 rifle 1 224)
+expand greens (Bullet rifleman 710 1860 autorifle 1 224)
+expand greens (Smaha rifleman 350 1700 autorifle 2 224)
+expand greens (Duke rifleman 650 2000 autorifle 2 224)
+expand greens (Spike rifleman 300 1750 autorifle 2 224)
+expand greens (Redneck rifleman 600 2050 autorifle 2 224)
+expand greens (Monte flamerman 10 10 flamer 3 224)
+expand greens (Hawk grenadier 10 10 grenade 3 224)
+expand greens (Warhead bazookaman 10 10 bazooka 3 224)
+expand greens (Range mortarman 10 10 mortar 3 224)
+expand greens (greenjeep1 jeep 610 1760 mediumMG 1 224)
+expand greens (greentank1 tank 510 1660 largecannon 1 224)
+expand greens (greentank2 tank 710 1860 largecannon 1 224)
+expand greens (greenhtrack1 halftrack 280 2060 heavyMG 3 224)
+
+if killed Range then
+        createpowerup "" mortar Range 8
+
+if killed Warhead then
+        createpowerup "" bazooka Warhead 12
+
+if killed Monte then
+        createpowerup "" flamer Monte 86
+
+if killed Hawk then
+        createpowerup "" grenade Hawk 23
+
+if killed Warfield then
+        createpowerup "" grenade Warfield 12
+
+
+
+
+
+macro pinchattack 7
+{
+if triggerpinch then
+        createvehicle "@1" @2 (@3,@4) @5,
+        setgunfacing @1 @6,
+        setfacing @1 @7
+
+if killed @1 then
+        createpowerup "" wrench @1 1
+
+}
+expand pinchattack ( tankpinch1 tank 3410 437 tan 74 90 )
+expand pinchattack ( tankpinch2 tank 3553 543 tan 80 90)
+expand pinchattack ( tank2pinch1 tank 3657 634 tan 74 90 )
+expand pinchattack ( tank2pinch2 tank 3644 458 tan 80 90)
+expand pinchattack ( tank2pinch3 tank 3489 283 tan 80 90)
+
+
+
+//**TankPinch setup**//
+
+if padon forcepinch butnot onepinch then
+        order tankpinch1 goto pinchtank01 inmode attack,
+        order tankpinch2 goto pinchtank02 inmode attack,
+        trigger onepinch
+
+if padon pinchtank01 butnot one01 then
+        setaimode tankpinch1 standfire,
+        triggerdelay 8000 gunpitch01,
+        trigger one01
+
+if gunpitch01 butnot pinch01hit then
+        setgunfacing tankpinch1 64,
+        triggerdelay 3000 gunpinch02
+
+if gunpinch02 butnot pinch01hit then
+        setgunfacing tankpinch1 90,
+        triggerdelay 6000 gunpinch03
+
+if gunpinch03 butnot pinch01hit then
+        setgunfacing tankpinch1 110,
+        triggerdelay 3000 gunpinch04
+
+if gunpinch04 butnot pinch01hit then
+        setgunfacing tankpinch1 90,
+        triggerdelay 6000 gunpinch01
+
+//Pinch02//
+if padon pinchtank02 butnot one202 then
+        setaimode tankpinch2 standfire,
+        triggerdelay 8000 gunpitch01,
+        trigger one202
+
+if gun2pitch01 butnot pinch202hit then
+        setgunfacing tankpinch2 64,
+        triggerdelay 3000 gun2pinch02
+
+if gun2pinch02 butnot pinch202hit then
+        setgunfacing tankpinch2 90,
+        triggerdelay 6000 gun2pinch03
+
+if gun2pinch03 butnot pinch202hit then
+        setgunfacing tankpinch2 110,
+        triggerdelay 3000 gun2pinch04
+
+if gun2pinch04 butnot pinch202hit then
+        setgunfacing tankpinch2 90,
+        triggerdelay 6000 gun2pinch01
+
+        //**secondSetup**//
+if padon forcepinch2 butnot onpinch then
+        order tank2pinch1 goto pinch2tank01 inmode attack,
+        order tank2pinch2 goto pinch2tank02 inmode attack,
+        order tank2pinch3 goto pinch2tank03 inmode attack,
+        trigger onpinch
+
+if padon pinch2tank01 butnot one101 then
+        setaimode tank2pinch1 standfire,
+        triggerdelay 8000 gunpitch05,
+        trigger one101
+
+if gunpitch05 butnot pinch101hit then
+        setgunfacing tank2pinch1 64,
+        triggerdelay 3000 gunpinch06
+
+if gunpinch06 butnot pinch101hit then
+        setgunfacing tank2pinch1 90,
+        triggerdelay 6000 gunpinch07
+
+if gunpinch07 butnot pinch101hit then
+        setgunfacing tank2pinch1 110,
+        triggerdelay 3000 gunpinch08
+
+if gunpinch08 butnot pinch101hit then
+        setgunfacing tank2pinch1 90,
+        triggerdelay 6000 gunpinch05
+//Pinch02//
+if padon pinch2tank03 butnot one202 then
+        setaimode tank2pinch2 standfire,
+        triggerdelay 8000 gunpitch09,
+        trigger one02
+
+if gunpitch09 butnot pinch202hit then
+        setgunfacing tank2pinch2 64,
+        triggerdelay 3000 gunpinch10
+
+if gunpinch10 butnot pinch202hit then
+        setgunfacing tank2pinch2 90,
+        triggerdelay 6000 gunpinch11
+
+if gunpinch11 butnot pinch202hit then
+        setgunfacing tank2pinch2 110,
+        triggerdelay 3000 gunpinch12
+
+if gunpinch12 butnot pinch202hit then
+        setgunfacing tank2pinch2 90,
+        triggerdelay 6000 gunpinch13
+//Pinch03//
+
+if padon pinch2tank03 butnot one303 then
+        setaimode tank2pinch3 standfire,
+        triggerdelay 8000 gunpitch14,
+        triggerdelay 3000 orderpatrooler,
+        trigger one303
+
+if gunpitch14 butnot pinch303hit then
+        setgunfacing tank2pinch3 64,
+        triggerdelay 3000 gunpinch15
+
+if gunpinch15 butnot pinch303hit then
+        setgunfacing tank2pinch3 90,
+        triggerdelay 6000 gunpinch16
+
+if gunpinch16 butnot pinch303hit then
+        setgunfacing tank2pinch3 110,
+        triggerdelay 3000 gunpinch17
+
+if gunpinch17 butnot pinch303hit then
+        setgunfacing tank2pinch3 90,
+        triggerdelay 6000 gunpinch14
+
+if orderpatrooler then
+        order tantank2 goto tank2point2 inmode defend
+
+macro civs 4
+// @1 = civ name, @2 = squad #, @3 = truck assign //
+{
+pad fw@1 				255 	@1
+
+if makecivs then
+        createunit @1 rifleman (20,20) green rifle 1 @2,
+        setforcecolor @1 @4,
+        setscientist @1,
+        setaimode @1 ignore,
+        entervehicle @1 truck@3
+
+if hit @1 then
+        order @1 goto greensarge1
+
+if killed @1 then
+        addvar civiliandeaths 1,
+        trigger checklose,
+        trigger checkvictory
+
+if padon fw@1 butnot fwon@1 then
+        trigger fwon@1,
+        addvar civiliansescaped 1,
+        tracevar civiliansescaped,
+        trigger checkvictory,
+        trigger checklose
+
+}
+
+expand civs (greencivi1 4 1 black )
+expand civs (greencivi2 4 1 green )
+expand civs (greencivi3 4 1 blue )
+expand civs (greencivi4 4 1 red )
+expand civs (greencivi5 4 1 green )
+expand civs (greencivi6 4 1 black )
+expand civs (greencivi7 4 2 black )
+expand civs (greencivi8 4 2 red )
+expand civs (greencivi9 4 2 green )
+expand civs (greencivi10 4 2 grey )
+expand civs (greencivi11 4 2 grey )
+expand civs (greencivi12 4 2 black )
+expand civs (greencivi13 4 3 green )
+expand civs (greencivi14 4 3 blue )
+expand civs (greencivi15 4 3 blue )
+expand civs (greencivi16 4 3 green )
+expand civs (greencivi17 4 3 red )
+expand civs (greencivi18 4 3 blue )
+expand civs (greencivi19 5 4 green )
+expand civs (greencivi20 5 4 grey )
+expand civs (greencivi21 5 4 grey )
+expand civs (greencivi22 5 4 black )
+expand civs (greencivi23 5 4 blue )
+expand civs (greencivi24 5 4 green )
+expand civs (greencivi25 5 5 black )
+expand civs (greencivi26 5 5 green )
+expand civs (greencivi27 5 5 grey )
+expand civs (greencivi28 5 5 blue )
+expand civs (greencivi29 5 5 green )
+expand civs (greencivi30 5 5 grey )
+expand civs (greencivi31 5 6 green )
+expand civs (greencivi32 5 6 red )
+expand civs (greencivi33 5 6 red )
+expand civs (greencivi34 5 6 black )
+expand civs (greencivi35 5 6 blue )
+expand civs (greencivi36 5 6 red )
+
+macro trucks 4
+// @1 truck #, @2 = x coord, @3 y coord, @4 = squad # //
+{
+if maketrucks then
+        createunit @1 convoy (@2,@3) green rifle 1 @4,
+        setaimode @1 ignore,
+        setfacing @1 224
+}
+
+expand trucks (truck1 400 1750 4)
+expand trucks (truck2 500 1850 4)
+expand trucks (truck3 600 1950 4)
+expand trucks (truck4 300 1850 5)
+expand trucks (truck5 400 1950 5)
+expand trucks (truck6 500 2050 5)
+
+macro tans 8
+// @1 = unit name, @2 = troop type, @3 = x coord, @4 = y coord, //
+// @5 = weapon, @6 = group #, @7 = ai mode, @8 = facing
+{
+if maketans then
+        createunit @1 @2 (@3,@4) tan @5 1 @6,
+        setaimode @1 @7,
+        setfacing @1 @8,
+        setaipose tanrifle6 prone,
+        setaipose tanbaz1 kneel,
+        setaipose tanrifle1 kneel,
+	setaipose tanrifle2 prone,
+        setaipose tangren1 kneel,
+        setaipose tanrifle3 prone
+
+}
+expand tans (tanmortar1 mortarman 890 1070 mortar 1 defend 128 )
+expand tans (tanrifle4 rifleman 850 1130 rifle 1 defend 96)
+expand tans (tanrifle5 rifleman 930 1130 rifle 1 defend 160)
+expand tans (tanflamer2 flamerman 890 1190 flamer 1 defend 128)
+expand tans (tangren2 grenadier 3630 1560 grenade 1 standfire 48)
+expand tans (tanmortar2 mortarman 3734 1364 mortar 1 standfire 24)
+expand tans (tanflamer3 flamerman 3740 2080 flamer 1 defend 16)
+expand tans (tanflamer4 flamerman 3620 2080 flamer 1 defend 0)
+expand tans (tanrifle6 rifleman 3770 1615 heavymg 1 standfire 84)
+expand tans (tansac rifleman 3739 1564 autorifle 1 defend 74)
+expand tans (tanrifle7 rifleman 3130 1850 rifle 1 defend 32)
+expand tans (tanrifle8 rifleman 3130 1920 rifle 1 defend 96)
+expand tans (tangren3 grenadier 2580 1390 grenade 1 standfire 64)
+expand tans (tanbaz2 bazookaman 2760 1550 bazooka 1 defend 96)
+expand tans (tanbaz3 bazookaman 1320 1800 bazooka 1 defend 80)
+expand tans (tanrifle9 rifleman 1425 1025 autorifle 1 standfire 96)
+expand tans (tanrifle10 rifleman 1525 1134 autorifle 1 standfire 96)
+expand tans (tanrifle11 rifleman 1557 1115 autorifle 1 standfire 96)
+expand tans (tanrifle12 rifleman 1539 1022 autorifle 1 standfire 96)
+//--patrol vehicles--//
+expand tans (tanjeep1 jeep 1950 1960 mediumMG 1 attack 32)
+expand tans (tanjeep2 jeep 2600 1230 mediumMG 1 attack 96)
+expand tans (tantank2 tank 3440 790 largecannon 1 attack 32)
+//--toliet guards--//
+expand tans (tanrifle1 rifleman 2114 1721 rifle 6 standfire 112)
+expand tans (tanrifle2 rifleman 1552 1746 rifle 6 standfire 48)
+expand tans (tangren1 grenadier 1823 1388 grenade 6 standfire 64)
+expand tans (tanrifle3 rifleman 1675 1677 rifle 7 standfire 44 )
+expand tans (tanbaz1 bazookaman 2007 1240 bazooka 7 standfire 108)
+
+if killed tanjeep1 then
+        createpowerup "" heavymg tanjeep1
+
+if killed tanrifle3 then
+        createpowerup medpack tanrifle3 4
+
+if killed tanrifle9 then
+        createpowerup Flak tanrifle9 46
+
+if killed tanrifle4 then
+        createpowerup Flak tanrifle4 32
+
+if killed tanrifle12 then
+        createpowerup Flak tanrifle12 39
+
+if killed tanmortar2 then
+        createpowerup "" mortar tanmortar2 6
+
+if killed tanbaz2 then
+        createpowerup "" bazooka tanbaz2 10
+
+if killed tanbaz3 then
+        createpowerup "" bazooka tanbaz3 7
+
+       //@8==facing @9 == aipose
+
+macro tanwaves 7
+{
+
+pad @3                       @7
+
+if tanwave@6 then
+        createunit @1 @2 @3 tan @4,
+        order @1 goto @5 inmode attack
+
+}
+
+macro tanwavesdef 7
+{
+
+if tanwave@6 then
+        createunit @1 @2 @3 tan @4,
+        order @1 goto @5 inmode attack
+
+if padon @5 then
+        order @1 goto toiletpad2 inmode attack
+
+if padon toiletpad2 then
+        order @1 goto toiletpad3 inmode attack
+
+if padon toiletpad3 then
+        order @1 goto toiletpad4 inmode attack
+
+if padon toiletpad4 then
+        order @1 follow greensarge1 inmode attack
+}
+
+macro tanwavesstrat 9
+{
+
+if tanwave@6 then
+        createunit @1 @2 @3 tan @4,
+        order @1 goto @5 inmode ignore
+
+if padon @5 then
+        setfacing @1 @8,
+        setaimode @1 defend
+
+if hit @1 then
+        setaipose @1 @9
+
+}
+
+expand tanwavesstrat (tanattacker1 rifleman toilet heavymg stratpad3 1 150 64 prone )
+expand tanwavesstrat (tanattacker2 rifleman toilet heavymg stratpad2 1 150 64 prone )
+expand tanwavesstrat (tanattacker3 mortarman toilet mortar stratpad1 1 150 75 kneel )
+expand tanwaves (tanattacker4 rifleman attackerdep4 heavymg truck4 1 193 )
+expand tanwaves (tanattacker5 rifleman attackerdep5 heavymg truck5 1 194 )
+expand tanwaves (tanattacker6 rifleman attackerdep6 heavymg truck6 1 195 )
+expand tanwavesdef (tanattacker7 rifleman toilet autorifle toiletpad1 1 150 )
+expand tanwavesdef (tanattacker8 rifleman toilet autorifle toiletpad1 1 150 )
+expand tanwavesdef (tanattacker9 rifleman toilet autorifle toiletpad1 1 150 )
+expand tanwaves (tanattacker10 rifleman attackerdep10 autorifle truck4 1 190 )
+expand tanwaves (tanattacker11 rifleman attackerdep11 autorifle truck5 1 195 )
+expand tanwaves (tanattacker12 rifleman attackerdep12 autorifle truck6 1 195 )
+//wave two
+expand tanwavesdef (tanattacker21 rifleman toilet heavymg toiletpad1 2 150 )
+expand tanwavesdef (tanattacker22 rifleman toilet heavymg toiletpad1 2 150 )
+expand tanwavesdef (tanattacker23 rifleman toilet heavymg toiletpad1 2 150 )
+expand tanwavesstrat (tanattacker24 rifleman toilet heavymg stratpad4 2 150 74 prone )
+expand tanwavesstrat (tanattacker25 rifleman toilet heavymg stratpad5 2 150 80 prone )
+expand tanwavesstrat (tanattacker26 rifleman toilet heavymg stratpad6 2 150 90 prone )
+expand tanwaves (tanattacker27 rifleman attackerdep27 autorifle truck1 2 190 )
+expand tanwaves (tanattacker28 rifleman attackerdep28 autorifle truck2 2 191 )
+expand tanwaves (tanattacker29 rifleman attackerdep29 autorifle truck3 2 192 )
+expand tanwaves (tanattacker30 rifleman attackerdep30 autorifle truck4 2 190 )
+expand tanwaves (tanattacker31 rifleman attackerdep31 autorifle truck5 2 195 )
+expand tanwaves (tanattacker32 rifleman attackerdep32 autorifle truck6 2 195 )
+//wave three
+expand tanwavesstrat (tanattacker41 rifleman toilet heavymg stratpad7 3 150 54 prone )
+expand tanwavesstrat (tanattacker42 rifleman toilet heavymg stratpad8 3 150 74 prone )
+expand tanwavesstrat (tanattacker43 rifleman toilet heavymg stratpad9 3 150 74 prone)
+expand tanwaves (tanattacker44 rifleman attackerdep44 heavymg truck4 3 193 )
+expand tanwaves (tanattacker45 rifleman attackerdep45 heavymg truck5 3 194 )
+expand tanwaves (tanattacker46 rifleman attackerdep46 heavymg truck6 3 195 )
+expand tanwaves (tanattacker47 rifleman attackerdep47 autorifle truck1 3 190 )
+expand tanwaves (tanattacker48 rifleman attackerdep48 autorifle truck2 3 191 )
+expand tanwaves (tanattacker49 rifleman attackerdep49 autorifle truck3 3 192 )
+expand tanwaves (tanattacker50 rifleman attackerdep50 autorifle truck4 3 190 )
+expand tanwaves (tanattacker51 rifleman attackerdep51 autorifle truck5 3 195 )
+expand tanwaves (tanattacker52 rifleman attackerdep52 autorifle truck6 3 195 )
+//wave four
+expand tanwavesstrat (tanattacker61 rifleman toilet sniper stratpad10 4 150 128 prone )
+expand tanwavesstrat (tanattacker62 mortarman toilet mortar stratpad11 4 150 64 kneel )
+expand tanwavesstrat (tanattacker63 rifleman toilet sniper stratpad12 4 150 79 prone )
+expand tanwaves (tanattacker64 rifleman attackerdep64 heavymg truck4 4 190 )
+expand tanwaves (tanattacker65 rifleman attackerdep65 heavymg truck5 4 194 )
+expand tanwaves (tanattacker66 rifleman attackerdep66 heavymg truck6 4 195 )
+expand tanwaves (tanattacker67 rifleman attackerdep67 autorifle truck1 4 190 )
+expand tanwaves (tanattacker68 rifleman attackerdep68 autorifle truck2 4 191 )
+expand tanwaves (tanattacker69 rifleman attackerdep69 autorifle truck3 4 192 )
+expand tanwaves (tanattacker70 rifleman attackerdep70 autorifle truck4 4 190 )
+expand tanwaves (tanattacker71 rifleman attackerdep71 autorifle truck5 4 195 )
+expand tanwaves (tanattacker72 rifleman attackerdep72 autorifle truck6 4 195 )
+
+//wave five
+expand tanwaves (tanattacker81 rifleman toiletatt1 heavymg greensarge1 5 151 )
+expand tanwaves (tanattacker82 rifleman toiletatt2 heavymg greensarge1 5 151 )
+expand tanwaves (tanattacker83 rifleman toiletatt3 heavymg greensarge1 5 151 )
+expand tanwaves (tanattacker84 rifleman toiletatt4 heavymg truck4 5 151 )
+expand tanwaves (tanattacker85 rifleman toiletatt5 heavymg truck5 5 151 )
+expand tanwaves (tanattacker86 rifleman attackerdep86 heavymg truck6 5 195 )
+expand tanwaves (tanattacker87 rifleman attackerdep87 autorifle truck1 5 190 )
+expand tanwaves (tanattacker88 rifleman attackerdep88 autorifle truck2 5 191 )
+expand tanwaves (tanattacker89 rifleman attackerdep89 autorifle truck3 5 192 )
+expand tanwaves (tanattacker90 rifleman attackerdep90 autorifle truck4 5 190 )
+expand tanwaves (tanattacker91 rifleman attackerdep91 autorifle truck5 5 195 )
+expand tanwaves (tanattacker92 rifleman attackerdep92 autorifle truck6 5 195 )
+//wave six
+expand tanwaves (tanattacker101 rifleman toiletatt6 heavymg greensarge1 4 151 )
+expand tanwaves (tanattacker102 rifleman toiletatt7 heavymg greensarge1 4 151 )
+expand tanwaves (tanattacker103 rifleman toiletatt8 heavymg greensarge1 4 151 )
+expand tanwaves (tanattacker104 rifleman toiletatt9 heavymg truck4 4 151 )
+expand tanwaves (tanattacker105 rifleman toiletatt10 heavymg truck5 4 151 )
+expand tanwaves (tanattacker106 rifleman toiletatt11 heavymg truck6 4 151 )
+expand tanwaves (tanattacker107 rifleman attackerdep107 autorifle truck1 4 191 )
+expand tanwaves (tanattacker108 rifleman attackerdep108 autorifle truck2 4 192 )
+expand tanwaves (tanattacker109 rifleman attackerdep109 autorifle truck3 4 193 )
+expand tanwaves (tanattacker120 rifleman attackerdep120 autorifle truck4 4 190 )
+expand tanwaves (tanattacker121 rifleman attackerdep121 autorifle truck5 4 195 )
+expand tanwaves (tanattacker122 rifleman attackerdep122 autorifle truck6 4 195 )
+
+
+
+if allof killed tankpinch1 killed tankpinch2 killed tank2pinch1 killed
+tank2pinch2 killed tank2pinch3 then
+        trigger tanwave4
+
+//--toilet attack--//
+//if padon toiletattack butnot toiletattackdone then
+        //trigger toiletattackdone,
+        //order tan group 6 goto greensarge1 inmode attack,
+        //order tan group 7 goto greensarge1 inmode attack
+
+//--patrols--//
+if patrols then
+        order tanjeep1 goto jeep1point2,
+        order tanjeep2 goto jeep2point2
+
+if padon jeep1point1 then
+        order tanjeep1 goto jeep1point2
+
+if padon jeep1point2 then
+        order tanjeep1 goto jeep1point3
+
+if padon jeep1point3 then
+        order tanjeep1 goto jeep1point4
+
+if padon jeep1point4 then
+        order tanjeep1 goto jeep1point1
+
+if padon jeep2point1 then
+        order tanjeep2 goto jeep2point2
+
+if padon jeep2point2 then
+        order tanjeep2 goto jeep2point3
+
+if padon jeep2point3 then
+        order tanjeep2 goto jeep2point4
+
+if padon jeep2point4 then
+        order tanjeep2 goto jeep2point1
+
+if padon tank2point1 then
+        order tantank2 goto tank2point2
+
+if padon tank2point2 then
+        order tantank2 goto tank2point3
+
+if padon tank2point3 then
+        order tantank2 goto tank2point4
+
+if padon tank2point4 then
+        order tantank2 goto tank2point1
+
+if hit tanjeep1 then
+        order "tanjeep1" follow greensarge1 inmode attack
+
+if hit tanjeep2 then
+        order "tanjeep2" follow greensarge1 inmode attack
+
+if hit tankpinch1 butnot onehittp1 then
+        order tanjeep2 follow greenmortar1 inmode attack,
+        triggerdelay 1000 tanwave2,
+        trigger onehittp1
+
+if hit tankpinch2 butnot onehittp2 then
+        order tanjeep2 follow greenmortar1 inmode attack,
+        triggerdelay 2000 tanwave3,
+        trigger onehittp2
+
+if hit tank2pinch1 butnot onehittp3 then
+        triggerdelay 2000 tanwave5,
+        trigger onehittp3
+
+if hit tank2pinch2 butnot onehittp4 then
+        triggerdelay 2000 tanwave6,
+        trigger onehittp4
+
+if killed greenmortar1 then
+        createpowerup "" mortar greenmortar1 5
+if killed greenbaz1 then
+        createpowerup "" bazooka greenbaz1 10
+if killed greenflamer1 then
+        createpowerup "" flamer greenflamer1 34
+if killed greengren2 then
+        createpowerup "" grenade greengren2 10
+if killed greengren1 then
+        createpowerup "" grenade greengren1 12
+
+
+
+//--load rides--//
+if loadrides then
+        entervehicle tanrifle1 tanhtrack1,
+        entervehicle tanrifle2 tanhtrack1,
+        entervehicle tanflamer1 tanhtrack1,
+        entervehicle tangren1 tanhtrack1,
+        entervehicle Warfield greenjeep1,
+        entervehicle Wildblood greentank1,
+        entervehicle Bullet greentank2,
+        entervehicle Monte greenhtrack1,
+        entervehicle Hawk greenhtrack1,
+        entervehicle Warhead greenhtrack1,
+        entervehicle Range greenhtrack1
+
+//--sounds--//
+//if padon toilet butnot oneflush then
+
+if pickedup fly by greensarge1 butnot oneflush then
+        triggerdelay 2000 playtoiletSFX,
+        trigger oneflush
+
+if playtoiletSFX then
+        playsound "toiletflush.wav" 5 2
+
+if hit rubberducky then
+        playsound "RubberDuckSqueak.wav" rubberducky 16 1 20
+
+if killed rubberducky then
+         playsound "RubberDuckHdOff.wav" rubberducky 14 1 20
+
+if hit dryerswitch testvar switchoff = 0 then
+        setvar switchoff 1,
+        setvar switch 1,
+        setobjstate dryerswitch switch_off,
+        playsound "TVSwitch.wav" remote 2 15 10,
+        playsound "Dryeron.wav" drymotor 2 14 40,
+        playsound "" drymotor 3 11 40,
+        triggerdelay 2000 setswitchvar_off
+
+if setswitchvar_off then
+        setvar switchon 1
+
+if hit dryerswitch testvar switchon = 1 then
+        setvar switchon 0,
+        setvar switch 0,
+        setobjstate dryerswitch switch_on,
+        playsound "TVSwitch.wav" remote 2 14 10,
+        playsound "Dryeron.wav" drymotor 2 13 40,
+        playsound "" drymotor 3 16 40,
+        triggerdelay 1000 dryersound,
+        triggerdelay 2000 setswitchvar_on
+
+if setswitchvar_on then
+        setvar switchoff 0
+
+object dryerswitch
+        state switch_on
+                frame 100 00
+
+        state switch_off
+                frame 100 01
+
+
+
+
+

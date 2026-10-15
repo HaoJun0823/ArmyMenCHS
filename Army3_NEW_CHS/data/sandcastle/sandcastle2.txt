@@ -1,0 +1,350 @@
+preloadsprite 43 10 0
+preloadsprite 43 10 1
+preloadsprite 43 10 2
+preloadsprite 43 10 3
+preloadsprite 43 10 4
+
+preloadsprite 43 20 0
+preloadsprite 43 20 1
+preloadsprite 43 20 2
+preloadsprite 43 20 3
+preloadsprite 43 20 4
+
+VARIABLE nagme 0
+
+PAD genpad1	51	Tina_Tomorrow > 0
+PAD genpad2	52	Tina_Tomorrow > 0
+PAD genpad3	53	Tina_Tomorrow > 0
+
+if startup2 then
+	setmaxhealth Tina_Tomorrow 400,
+	heal Tina_Tomorrow 100,
+	setnpc Tina_Tomorrow 0,
+	setmaxhealth Buffy 300,
+	heal Buffy 100,
+	setnpc Buffy 0,
+	triggerdelay 100 brief2,
+	trigger gen1active,
+	trigger gen2active,
+	trigger gen3active,
+	setaimode pant1 ignore,
+	setaimode pant2 ignore,
+	setaimode pant3 ignore,
+	setaimode pant4 ignore,
+	setaimode pant5 ignore,
+	setaimode pant6 ignore,
+	setaimode pant7 ignore,
+	setaimode pant8 ignore,
+	setaimode pant9 ignore,
+	trigger pantdance1,
+	trigger pantdance2,
+	trigger pantdance3,
+	trigger pantdance4,
+	trigger pantdance5,
+	trigger pantdance6,
+	trigger pantdance7,
+	trigger pantdance8,
+	trigger pantdance9,
+	setaimode fant1 ignore,
+	setaimode fant2 ignore,
+	setaimode fant3 ignore,
+	setaimode fant4 ignore,
+	setaimode fant5 ignore,
+	setaimode fant6 ignore,
+	setaimode fant7 ignore,
+	setaimode fant8 ignore,
+	setaimode fant9 ignore,
+	setaimode fant10 ignore,
+	setaimode fant11 ignore,
+	setaimode fant12 ignore,
+	trigger fantdance1,
+	trigger fantdance2,
+	trigger fantdance3,
+	trigger fantdance4,
+	trigger fantdance5,
+	trigger fantdance6,
+	trigger fantdance7,
+	trigger fantdance8,
+	trigger fantdance9,
+	trigger fantdance10,
+	trigger fantdance11,
+	trigger fantdance12,
+	setaimode hant1 ignore,
+	setaimode hant2 ignore,
+	setaimode hant3 ignore,
+	triggerdelay 1500 hantmove1,	
+	triggerdelay 1000 hantmove2,
+	triggerdelay 500 hantmove3
+//	triggerdelay 12000 nagnagnag
+
+if hit pant1 then
+	addvar dancer1 99999,
+	setaimode pant1 attack
+if hit pant2 then
+	addvar dancer2 99999,
+	setaimode pant2 attack
+if hit pant3 then
+	addvar dancer3 99999,
+	setaimode pant3 attack
+if hit pant4 then
+	addvar dancer4 99999,
+	setaimode pant4 attack
+if hit pant5 then
+	addvar dancer5 99999,
+	setaimode pant5 attack
+if hit pant6 then
+	addvar dancer6 99999,
+	setaimode pant6 attack
+if hit pant7 then
+	addvar dancer7 99999,
+	setaimode pant7 attack
+if hit pant8 then
+	addvar dancer8 99999,
+	setaimode pant8 attack
+if hit pant9 then
+	addvar dancer9 99999,
+	setaimode pant9 attack
+
+if hit fant1 then
+	addvar fdancer1 99999,
+	setaimode fant1 attack
+if hit fant2 then
+	addvar fdancer2 99999,
+	setaimode fant2 attack
+if hit fant3 then
+	addvar fdancer3 99999,
+	setaimode fant3 attack
+if hit fant4 then
+	addvar fdancer4 99999,
+	setaimode fant4 attack
+if hit fant5 then
+	addvar fdancer5 99999,
+	setaimode fant5 attack
+if hit fant6 then
+	addvar fdancer6 99999,
+	setaimode fant6 attack
+if hit fant7 then
+	addvar fdancer7 99999,
+	setaimode fant7 attack
+if hit fant8 then
+	addvar fdancer8 99999,
+	setaimode fant8 attack
+if hit fant9 then
+	addvar fdancer9 99999,
+	setaimode fant9 attack
+if hit fant10 then
+	addvar fdancer10 99999,
+	setaimode fant10 attack
+if hit fant11 then
+	addvar fdancer11 99999,
+	setaimode fant11 attack
+if hit fant12 then
+	addvar fdancer12 99999,
+	setaimode fant12 attack
+
+if hit hant1 then	
+	addvar hancer1 99999,
+	setaimode hant1 attack
+if hit hant2 then
+	addvar hancer2 99999,
+	setaimode hant2 attack	
+if hit hant3 then
+	addvar hancer3 99999,
+	setaimode hant3 attack
+
+if gen1active then
+	setobjstate gen1 gen1_go
+
+if gen2active then
+	setobjstate gen2 gen3_go
+
+if gen3active then
+	setobjstate gen3 gen3_go
+
+if brief2 then
+	playsound "Tina_ForceField.wav" 2 0,
+	showpda "蒂娜需要重新接线那台异形机器，才能关掉飞碟周围的力场。帮蒂娜找到这些机器！",
+	triggerdelay 5000 reminder
+if reminder then
+	playsound "Tina_WayOut.wav" 2 0	
+
+if nagnagnag then
+	trigger chatter,
+	addvar nagme 1,
+	triggerdelay 10000 nagnagnag	
+
+if chatter testvar nagme < 999 then
+RANDOM
+	playsound "Tina_WayOut.wav" 2 2,
+	playsound "Tina_KeepOff.wav" 2 2,
+	playsound "Tina_CouldUseHelp.wav" 2 2,
+	playsound "Tina_WhatDoing.wav" 2 2,
+	playsound "AlienLaugh.wav" 13 2,
+	playsound "AlienCowDie.wav" 13 2
+	
+if padon genpad1 butnot genpad1x then
+	trigger genpad1x
+
+if genpad1x then
+	setnpc Tina_Tomorrow 1,
+	setfacing Tina_Tomorrow 180,
+	setaimode Tina_Tomorrow ignore,
+	order Tina_Tomorrow goto Tina_Tomorrow,
+	triggerdelay 3000 bumrush1,
+	triggerdelay 15000 genpad1off
+
+if genpad1off then
+	setaimode Tina_Tomorrow defend,
+	setnpc Tina_Tomorrow 0,
+	trigger shutdown1,
+	setobjstate gen1 gen1_dead,
+	playsound "Tina_GotIt.wav" 2 0
+
+if bumrush1 then
+	playsound "Tina_WorkingOnIt.wav" 2 0,
+	createunit "brusher11" humanoid (2152,174) tan lightlaser,
+	playsound "AliensBeamingIn.wav" 6 0,
+	beam brusher11 1000,
+	order brusher11 goto gen1,
+	setaimode brusher11 attack,
+	triggerdelay 3000 bumrush2
+
+if bumrush2 then
+	playsound "Tina_CouldUseHelp.wav" 2 0,
+	createunit "brusher12" humanoid (2441,557) tan lightlaser,
+	playsound "AliensBeamingIn.wav" 6 0,
+	beam brusher12 1000,
+	order brusher12 goto gen1,
+	setaimode brusher12 attack,
+	triggerdelay 3000 bumrush3
+
+if bumrush3 then
+	createunit "brusher13" humanoid (2013,869) tan lightlaser,
+	playsound "AliensBeamingIn.wav" 6 0,
+	beam brusher13 1000,
+	order brusher13 goto gen1,
+	setaimode brusher13 attack
+
+if padon genpad2 butnot genpad2x then
+	trigger genpad2x
+
+if genpad2x then 
+	setnpc Tina_Tomorrow 1,
+	setfacing Tina_Tomorrow 180,
+	setaimode Tina_Tomorrow ignore,
+	order Tina_Tomorrow goto Tina_Tomorrow,
+	playsound "Tina_coverme.wav" 2 0,
+	triggerdelay 3000 bumrush21,
+	triggerdelay 15000 genpad2off
+
+if genpad2off then
+	setaimode Tina_Tomorrow defend,
+	setnpc Tina_Tomorrow 0,
+	trigger shutdown2,
+	setobjstate gen2 gen2_dead,
+	playsound "Tina_GotIt.wav" 2 0
+
+if bumrush21 then
+	playsound "Tina_AlmostThere.wav" 2 0,	
+	createunit "brusher21" humanoid (3915,2300)tan lightlaser,
+	playsound "AliensBeamingIn.wav" 6 0,
+	beam brusher21 1000,
+	order brusher21 goto Tina_Tomorrow,
+	setaimode brusher21 attack,
+	triggerdelay 3000 bumrush22
+
+if bumrush22 then
+	playsound "Tina_KeepOff.wav" 2 0,
+	createunit "brusher22" humanoid (3656,2493) tan lightlaser,
+	playsound "AliensBeamingIn.wav" 6 0,
+	beam brusher22 1000,
+	order brusher22 goto Tina_Tomorrow,
+	setaimode brusher22 attack,
+	triggerdelay 3000 bumrush23
+
+if bumrush23 then
+	createunit "brusher23" humanoid (3381,2060) tan lightlaser,
+	playsound "AliensBeamingIn.wav" 6 0,
+	beam brusher23 1000,
+	order brusher23 goto Tina_Tomorrow,
+	setaimode brusher23 attack
+
+if padon genpad3 butnot genpad3x then
+	trigger genpad3x
+
+if genpad3x then 
+	setnpc Tina_Tomorrow 1,
+	setfacing Tina_Tomorrow 180,
+	setaimode Tina_Tomorrow ignore,
+	order Tina_Tomorrow goto Tina_Tomorrow,
+	playsound "Tina_hello.wav" 2 0,	
+	triggerdelay 3000 bumrush31,
+	triggerdelay 15000 genpad3off
+
+if genpad3off then
+	setaimode Tina_Tomorrow defend,
+	setnpc Tina_Tomorrow 0,
+	trigger shutdown3,
+	setobjstate gen3 gen3_dead,
+	playsound "Tina_GotIt.wav" 2 0
+
+if bumrush31 then
+	playsound "Tina_HoldOn.wav" 2 0,	
+	createunit "brusher31" humanoid (3230,164) tan lightlaser,
+	playsound "AliensBeamingIn.wav" 6 0,
+	beam brusher31 1000,
+	order brusher31 goto Tina_Tomorrow,
+	setaimode brusher31 attack,
+	triggerdelay 3000 bumrush32
+
+if bumrush32 then
+	playsound "Tina_WhatDoing.wav" 2 0,
+	createunit "brusher32" humanoid (3500,225) tan lightlaser,
+	playsound "AliensBeamingIn.wav" 6 0,
+	beam brusher32 1000,
+	order brusher32 goto Tina_Tomorrow,
+	setaimode brusher32 attack,
+	triggerdelay 3000 bumrush33
+
+if bumrush33 then
+	createunit "brusher33" humanoid (3109,428) tan lightlaser,
+	playsound "AliensBeamingIn.wav" 6 0,
+	beam brusher33 1000,
+	order brusher33 goto Tina_Tomorrow,
+	setaimode brusher33 attack
+
+if allof shutdown1 shutdown2 shutdown3 then
+	triggerdelay 5000 endmission2
+
+if endmission2 butnot youlostit then
+	showpda "力场已经关掉了！",
+	triggerdelay 100 gotestgreenwins2
+	
+if gotestgreenwins2 butnot killed greensarge1 then
+	trigger gotestTina
+if gotestTina butnot killed Tina_Tomorrow then
+	trigger greenwins	
+
+if killed greensarge1 testvar tinaisdead = 0 then
+        setuilock 1,
+        setcamerafocus greensarge1,
+        setvar sargeisdead 1,
+	triggerdelay 1500 gameoverman1
+
+if killed Tina_Tomorrow testvar sargeisdead = 0 then
+	setuilock 1,
+        setcamerafocus Tina_Tomorrow,
+	setvar tinaisdead 1,
+	triggerdelay 1500 gameoverman2
+
+if gameoverman1 then
+	playsound "HQ_radio_crackling.wav" 0 1,
+	showfailure "中士？中士？中士！",
+	triggerdelay 1000 tanwins
+
+if gameoverman2 then
+	playsound "AlienLaugh.wav" 0 1,
+	showfailure "蒂娜倒下了！",
+	triggerdelay 1000 tanwins
+
+

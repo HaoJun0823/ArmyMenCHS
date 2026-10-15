@@ -1,0 +1,230 @@
+[
+  {
+    "speaker": "中士",
+    "wav": "Aah.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Aah2.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Aah3.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Aah4.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Adrenaline.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Aerosol.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "AirStrike.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "AutoRifle.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Baseball.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Bazooka.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "DDT.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Disguise.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Explosives.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "FlakJack.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "FlameThrower.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Flyswatter.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "ForceField.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Glue.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "HQAirAttack.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "HQNapalmAirstrike.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "HQReinforcements.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "HQSpaceBeamers.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "HQairStrike.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "HQreconn.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "HammerMine.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "HeavyLaser.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "HeavyMacGun.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "M80s.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "MagnifyingGlass.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "MedKit.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "MineSweeper.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Mortar.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "NapalmAirstrike.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "NapalmMortar.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Reconn.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Sarge08_01.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Sarge10_01.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Sarge10_02.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "Sarge11_01.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "SniperRifle.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "StingOut.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "VulcanGun.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "mines.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "moreAmmo.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "paraTroopers.wav"
+  },
+  {
+    "speaker": "中士",
+    "wav": "wrench.wav"
+  },
+  {
+    "speaker": "多人",
+    "wav": "mp_gotblue.wav"
+  },
+  {
+    "speaker": "多人",
+    "wav": "mp_gotflag.wav"
+  },
+  {
+    "speaker": "多人",
+    "wav": "mp_gotgreen.wav"
+  },
+  {
+    "speaker": "多人",
+    "wav": "mp_gotgrey.wav"
+  },
+  {
+    "speaker": "多人",
+    "wav": "mp_gottan.wav"
+  },
+  {
+    "speaker": "多人",
+    "wav": "mp_itblue.wav"
+  },
+  {
+    "speaker": "多人",
+    "wav": "mp_itgreen.wav"
+  },
+  {
+    "speaker": "多人",
+    "wav": "mp_itgrey.wav"
+  },
+  {
+    "speaker": "多人",
+    "wav": "mp_ittan.wav"
+  },
+  {
+    "speaker": "未知",
+    "wav": "ArmyMen2Doom.wav"
+  },
+  {
+    "speaker": "未知",
+    "wav": "SpaceBeamers.wav"
+  }
+]

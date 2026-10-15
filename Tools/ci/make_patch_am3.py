@@ -1,0 +1,262 @@
+# -*- coding: utf-8 -*-
+"""把 build_out_am3 组装成**可直接解压到游戏根目录**的 3 代汉化补丁。
+
+★ 与 1 代 Tools/ci/make_patch.py、2 代 Tools/ci/make_patch_am2.py **同构**：
+
+    <游戏>\\
+      ├─ dinput.dll               ASI Loader（asi/dsound.dll 改名；见下方 ★）
+      ├─ ddraw.dll                cnc-ddraw（3 代渲染所需，直接落包根）
+      ├─ ddraw.ini                cnc-ddraw 配置
+      ├─ scripts\\
+      │    Army3_Extend_Dll.asi   ← build_out 里叫 .dll，落包时改名
+      │    Hzk16                  ← 中文字库（13x13 点阵；ASI 按 DLL 目录找）
+      └─ update\\
+           01-title\\  bitmaps\\  strings\\
+           title.dat  shared.dat
+
+★ 与 2 代的差异（都是刻意的）：
+
+  · 代理 DLL 名同样是 **dinput.dll**：ARMYMENTIS.exe 的导入表**按名字**
+    导入 dinput.dll!DirectInputCreateA（VA 0x479008），故用该名作代理可可靠
+    命中。与 2 代同一结论，与 1 代（dsound.dll 按序号导入）不同。
+  · 包根多了 cnc-ddraw 的 ddraw.dll / ddraw.ini（2 代无此需求）。
+  · scripts\\ 里**没有** ini：3 代的界面文本全在游戏自己的
+    strings\\strings.txt，不需要译文表文件（2 代有 ArmyMenCHS.ini）。
+  · **没有**兼容性 .reg（那是 2 代 ArmyMen2.exe 特有的 shim 问题）。
+  · 3 代的 title.dat / shared.dat 进 **update\\**（与 2 代同位置）。
+
+★ 为什么代理必须落名为 dinput.dll 而不是随便一个名字：
+  游戏是按名字解析导入的；代理名不对，DirectInputCreateA 解析失败，
+  游戏拿不到函数 —— 表现是"补丁装了但中文完全不出现且无报错"。
+  这是必须在 CI 上拦下的失效模式（见 verify_release_am3.py）。
+
+★ 本轮**不含** 必读说明.txt / LICENSE / License.txt（作者决定本轮先不出说明
+  文件）。verify_release_am3.py 相应不把它们列为必备项。补说明文件时，
+  在此加 put_root(...) 即可，2 代那套 UTF-8 BOM + CRLF 写法可直接沿用。
+
+用法：
+    python Tools/ci/make_patch_am3.py [--root <仓库根>] [--out stage_am3]
+
+★ root 默认由 __file__ 上溯三层推导，CI 上无需显式传。
+"""
+
+import hashlib
+import os
+import shutil
+import sys
+import zipfile
+from datetime import datetime, timezone
+
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+BUILD_OUT_NAME = "build_out_am3"
+
+# ★ DLL 必须落名为 .asi：Ultimate ASI Loader 只扫描 scripts\*.asi，
+#   .dll 直接放进去不会被加载。
+DLL_SRC = "Army3_Extend_Dll.dll"
+DLL_DST = "scripts/Army3_Extend_Dll.asi"
+
+# scripts\ 下的运行期文件（3 代无 ini）
+SCRIPTS_FILES = ["Hzk16"]
+
+# 包根文件：由 build_out 直接搬（cnc-ddraw 的 ddraw.dll / ddraw.ini）
+ROOT_FROM_BUILD = ["ddraw.dll", "ddraw.ini"]
+
+# build_out 里除运行期/包根文件外的一切 -> update\
+RUNTIME_TOP = {DLL_SRC, "Hzk16", "MANIFEST.json", "MANIFEST.md"} | set(ROOT_FROM_BUILD)
+
+# ASI Loader 源。★ 必须是**仓库内已跟踪**的路径：
+#   asi/dsound.dll 是 Ultimate ASI Loader（MIT，已入库），与 1/2 代同一份文件。
+ASI_LOADER_SRC = "asi/dsound.dll"
+PROXY_NAME = "dinput.dll"           # ★ 见文件头说明
+
+
+def sha256(p):
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for c in iter(lambda: f.read(1 << 20), b""):
+            h.update(c)
+    return h.hexdigest()
+
+
+def main():
+    a = sys.argv[1:]
+    root = (a[a.index("--root") + 1] if "--root" in a else ROOT)
+    out_name = a[a.index("--out") + 1] if "--out" in a else "stage_am3"
+
+    build_out = os.path.join(root, BUILD_OUT_NAME)
+    stage = os.path.join(root, out_name)
+
+    if not os.path.isdir(build_out):
+        print("!! 缺少 %s —— 请先跑 Tools/ci/ci_build_am3.py" % build_out,
+              file=sys.stderr)
+        return 1
+
+    # 清理 stage：必须保证**没有陈旧文件混入**。
+    #   ★ 不断言"整个目录能删掉"：Windows 上目录本身可能被索引器/杀软/
+    #     Git 缓存临时持有句柄，rmtree(dir) 会 PermissionError，
+    #     而那与"产物是否干净"无关。改为**清空内容**。
+    if os.path.isdir(stage):
+        for name in os.listdir(stage):
+            p = os.path.join(stage, name)
+            if os.path.isdir(p):
+                shutil.rmtree(p, ignore_errors=True)
+            else:
+                try:
+                    os.remove(p)
+                except OSError:
+                    pass
+    os.makedirs(os.path.join(stage, "scripts"), exist_ok=True)
+    os.makedirs(os.path.join(stage, "update"), exist_ok=True)
+
+    n = 0
+    total = 0
+    missing = []
+
+    # ── 1) scripts/ —— ASI(改名) + Hzk16 ──────────────────────────────
+    dll_sp = os.path.join(build_out, DLL_SRC)
+    if os.path.isfile(dll_sp):
+        dll_dp = os.path.join(stage, DLL_DST.replace("/", os.sep))
+        os.makedirs(os.path.dirname(dll_dp), exist_ok=True)
+        shutil.copyfile(dll_sp, dll_dp)
+        n += 1
+        total += os.path.getsize(dll_sp)
+        print("   + %s  (%d B)" % (DLL_DST, os.path.getsize(dll_sp)))
+    else:
+        missing.append(DLL_SRC)
+
+    for f in SCRIPTS_FILES:
+        sp = os.path.join(build_out, f)
+        if not os.path.isfile(sp):
+            missing.append(f)
+            continue
+        shutil.copyfile(sp, os.path.join(stage, "scripts", f))
+        n += 1
+        total += os.path.getsize(sp)
+        print("   + scripts/%s  (%d B)" % (f, os.path.getsize(sp)))
+
+    if missing:
+        print("!! build_out 中缺少: %s" % ", ".join(missing), file=sys.stderr)
+        return 1
+
+    # ── 2) update/ —— build_out 里除运行期/包根文件外的一切 ─────────────
+    upd_dst = os.path.join(stage, "update")
+    n_upd = 0
+    for entry in sorted(os.listdir(build_out)):
+        if entry in RUNTIME_TOP:
+            continue
+        sp = os.path.join(build_out, entry)
+        if os.path.isfile(sp):
+            os.makedirs(upd_dst, exist_ok=True)
+            shutil.copyfile(sp, os.path.join(upd_dst, entry))
+            n += 1
+            n_upd += 1
+            total += os.path.getsize(sp)
+        else:
+            for dp, _, files in os.walk(sp):
+                for fn in sorted(files):
+                    full = os.path.join(dp, fn)
+                    rel = os.path.relpath(full, build_out).replace(os.sep, "/")
+                    dp2 = os.path.join(upd_dst, rel.replace("/", os.sep))
+                    os.makedirs(os.path.dirname(dp2), exist_ok=True)
+                    shutil.copyfile(full, dp2)
+                    n += 1
+                    n_upd += 1
+                    total += os.path.getsize(full)
+    print("   + update/  (%d 文件)" % n_upd)
+    if n_upd == 0:
+        print("!! update/ 为空 —— 载荷缺失，产物无意义", file=sys.stderr)
+        return 1
+
+    # ── 3) 包根附加文件 ────────────────────────────────────────────────
+    def put_root(src_path, dst_name, label):
+        # ★ 必须 nonlocal：这是 main() 的嵌套函数，用 global 会 NameError
+        #   （n/total 是 main 的局部变量，不是模块级）。
+        nonlocal n, total
+        if not os.path.isfile(src_path):
+            missing.append(label)
+            return
+        shutil.copyfile(src_path, os.path.join(stage, dst_name))
+        n += 1
+        total += os.path.getsize(src_path)
+        print("   + %s  <- %s  (%d B)"
+              % (dst_name, os.path.relpath(src_path, root),
+                 os.path.getsize(src_path)))
+
+    # ★ 这里**不做** PE 位数断言：UAL 的位数由 verify_release_am3.py
+    #   独立校验（含导出表检查），构建侧只负责搬运，避免两处判据不一致。
+    put_root(os.path.join(root, ASI_LOADER_SRC), PROXY_NAME,
+             "%s (ASI Loader)" % ASI_LOADER_SRC)
+
+    # cnc-ddraw：直接从 build_out 搬（已由 ci_build_am3.py 从 cnc-ddraw/ 取来）
+    for f in ROOT_FROM_BUILD:
+        put_root(os.path.join(build_out, f), f, f)
+
+    # ── 3b) 可选说明文件（本轮不产出；存在才放）─────────────────────────
+    #   作者决定本轮不出说明文件，故此块默认空转。补文件时把源路径填进来，
+    #   并按 2 代做法写 UTF-8 **带 BOM** + CRLF（Windows 记事本靠 BOM 判编码）。
+    OPTIONAL_README = None          # e.g. "Documents/必读说明_太空玩具.txt"
+    if OPTIONAL_README:
+        readme_src = os.path.join(root, OPTIONAL_README)
+        if not os.path.isfile(readme_src):
+            missing.append(OPTIONAL_README)
+        else:
+            rp = os.path.join(stage, "必读说明.txt")
+            with open(readme_src, "r", encoding="utf-8") as fh:
+                txt = fh.read()
+            with open(rp, "w", encoding="utf-8-sig", newline="\r\n") as fh:
+                fh.write(txt)
+            n += 1
+            total += os.path.getsize(rp)
+
+    if missing:
+        print("!! 缺少: %s" % ", ".join(missing), file=sys.stderr)
+        return 1
+
+    # ── 4) 打 zip（ASCII 文件名，GitHub 附件不支持中文）────────────────
+    #    CI 里 upload-artifact 取 stage_am3/*.zip，所以 zip 落在 stage 下。
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
+    zname = "ArmyMen3-CHS-Patch-%s.zip" % stamp
+    zpath = os.path.join(stage, zname)
+
+    with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED,
+                         compresslevel=6) as z:
+        for dp, _, files in os.walk(stage):
+            for fn in sorted(files):
+                full = os.path.join(dp, fn)
+                rel = os.path.relpath(full, stage).replace(os.sep, "/")
+                if rel == zname:          # 别把上一次残留的 zip 打进自己
+                    continue
+                z.write(full, rel)
+
+    # 自证：zip 必须真的能打开且条目数与非压缩文件数一致
+    #   （防"声称打了包但实际是空 zip/损坏 zip"）
+    with zipfile.ZipFile(zpath) as z:
+        bad = z.testzip()
+        if bad is not None:
+            print("!! zip 校验失败: %s" % bad, file=sys.stderr)
+            return 1
+        n_zip = len(z.namelist())
+
+    print()
+    print("stage: %s  (%d 文件 / %.1f MB)" % (stage, n, total / 1048576))
+    print("zip  : %s  (%.2f MB)" % (zpath, os.path.getsize(zpath) / 1048576))
+    if n_zip != n:
+        print("!! zip 条目数 %d != stage 文件数 %d" % (n_zip, n), file=sys.stderr)
+        return 1
+    print("     zip 自检通过：%d 条目，CRC 全部正确" % n_zip)
+
+    for key in ("scripts/Army3_Extend_Dll.asi", "scripts/Hzk16", PROXY_NAME,
+                "ddraw.dll", "ddraw.ini", "update/title.dat", "update/shared.dat"):
+        p = os.path.join(stage, key.replace("/", os.sep))
+        if os.path.isfile(p):
+            print("  %-38s %9d  sha=%s" % (key, os.path.getsize(p),
+                                           sha256(p)[:16]))
+        else:
+            print("  %-38s !! 缺失" % key)
+            return 1
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

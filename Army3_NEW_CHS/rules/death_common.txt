@@ -1,0 +1,34 @@
+// Common rules for death and ctf_death.txt
+
+// @1 = color killed, @2 = Capitalized color (e.g. "Green"), @3 = color of killer
+macro killed_sarge 3
+{
+	if killed @1sarge1 by @3 testvar isAlly @3 @1 = 0 then
+		showmessage "@2 中士被 @3 击毙",
+		trigger @3KilledEnemySarge
+}
+
+// @1 = color, @2 = Capitalized color (e.g. "Green"), @3-5 are other colors
+macro death_rules 5
+{
+	// in deathmatch the enemy sarge should be shown on the stratmap
+	if startup1 testvar iscoloringame @1 > 0 then
+		setitemflag @1sarge1 strategic 1
+
+	// check for the sarge being killed and who killed them
+	expand killed_sarge ( @1 @2 @3 )
+	expand killed_sarge ( @1 @2 @4 )
+	expand killed_sarge ( @1 @2 @5 )
+
+	// deathmatch specific scoring events
+
+	if @1KilledEnemySarge then
+		addvar @1score killEnemySargeBonus,
+		playsound "mp_death.wav" (0,0) 1 2,
+		trigger check@1wins
+}
+
+expand death_rules ( green 绿队 tan blue grey )
+expand death_rules ( tan 棕队 green blue grey )
+expand death_rules ( blue 蓝队 green tan grey )
+expand death_rules ( grey 灰队 green tan blue )

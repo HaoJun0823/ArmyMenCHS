@@ -1,0 +1,344 @@
+[
+  {
+    "wav": "Aah.wav",
+    "speaker_label": "中士",
+    "asr_en": "Sigh.",
+    "avg_logprob": -1.076
+  },
+  {
+    "wav": "Aah2.wav",
+    "speaker_label": "中士",
+    "asr_en": "",
+    "avg_logprob": 0.0
+  },
+  {
+    "wav": "Aah3.wav",
+    "speaker_label": "中士",
+    "asr_en": "Oh.",
+    "avg_logprob": -0.891
+  },
+  {
+    "wav": "Aah4.wav",
+    "speaker_label": "中士",
+    "asr_en": "Hmm.",
+    "avg_logprob": -0.829
+  },
+  {
+    "wav": "Adrenaline.wav",
+    "speaker_label": "中士",
+    "asr_en": "Adrenaline.",
+    "avg_logprob": -0.409
+  },
+  {
+    "wav": "Aerosol.wav",
+    "speaker_label": "中士",
+    "asr_en": "And aerosol.",
+    "avg_logprob": -0.444
+  },
+  {
+    "wav": "AirStrike.wav",
+    "speaker_label": "中士",
+    "asr_en": "An airstrike.",
+    "avg_logprob": -0.447
+  },
+  {
+    "wav": "AutoRifle.wav",
+    "speaker_label": "中士",
+    "asr_en": "An auto rifle.",
+    "avg_logprob": -0.551
+  },
+  {
+    "wav": "Baseball.wav",
+    "speaker_label": "中士",
+    "asr_en": "All right.",
+    "avg_logprob": -0.825
+  },
+  {
+    "wav": "Bazooka.wav",
+    "speaker_label": "中士",
+    "asr_en": "A bazooka.",
+    "avg_logprob": -0.39
+  },
+  {
+    "wav": "DDT.wav",
+    "speaker_label": "中士",
+    "asr_en": "All right.",
+    "avg_logprob": -0.825
+  },
+  {
+    "wav": "Disguise.wav",
+    "speaker_label": "中士",
+    "asr_en": "disguise",
+    "avg_logprob": -0.556
+  },
+  {
+    "wav": "Explosives.wav",
+    "speaker_label": "中士",
+    "asr_en": "Explosives.",
+    "avg_logprob": -0.318
+  },
+  {
+    "wav": "FlakJack.wav",
+    "speaker_label": "中士",
+    "asr_en": "Flakjacket.",
+    "avg_logprob": -0.646
+  },
+  {
+    "wav": "FlameThrower.wav",
+    "speaker_label": "中士",
+    "asr_en": "A flamethrower!",
+    "avg_logprob": -0.372
+  },
+  {
+    "wav": "Flyswatter.wav",
+    "speaker_label": "中士",
+    "asr_en": "A fly swatter.",
+    "avg_logprob": -0.338
+  },
+  {
+    "wav": "ForceField.wav",
+    "speaker_label": "中士",
+    "asr_en": "A force field!",
+    "avg_logprob": -0.376
+  },
+  {
+    "wav": "Glue.wav",
+    "speaker_label": "中士",
+    "asr_en": "All right.",
+    "avg_logprob": -0.825
+  },
+  {
+    "wav": "HQAirAttack.wav",
+    "speaker_label": "中士",
+    "asr_en": "I NEED AN AIR ATTACK!",
+    "avg_logprob": -0.407
+  },
+  {
+    "wav": "HQNapalmAirstrike.wav",
+    "speaker_label": "中士",
+    "asr_en": "HQ, I need some napalm.",
+    "avg_logprob": -0.134
+  },
+  {
+    "wav": "HQReinforcements.wav",
+    "speaker_label": "中士",
+    "asr_en": "HQ, send in the Flyboys.",
+    "avg_logprob": -0.216
+  },
+  {
+    "wav": "HQSpaceBeamers.wav",
+    "speaker_label": "中士",
+    "asr_en": "HQ, beam them in.",
+    "avg_logprob": -0.134
+  },
+  {
+    "wav": "HQairStrike.wav",
+    "speaker_label": "中士",
+    "asr_en": "HQ, give me an airstrike!",
+    "avg_logprob": -0.28
+  },
+  {
+    "wav": "HQreconn.wav",
+    "speaker_label": "中士",
+    "asr_en": "HQ, send me a recon.",
+    "avg_logprob": -0.185
+  },
+  {
+    "wav": "HammerMine.wav",
+    "speaker_label": "中士",
+    "asr_en": "Hammer mine.",
+    "avg_logprob": -0.466
+  },
+  {
+    "wav": "HeavyLaser.wav",
+    "speaker_label": "中士",
+    "asr_en": "A laser rifle.",
+    "avg_logprob": -0.518
+  },
+  {
+    "wav": "HeavyMacGun.wav",
+    "speaker_label": "中士",
+    "asr_en": "A heavy machine gun.",
+    "avg_logprob": -0.29
+  },
+  {
+    "wav": "M80s.wav",
+    "speaker_label": "中士",
+    "asr_en": "M80s.",
+    "avg_logprob": -0.455
+  },
+  {
+    "wav": "MagnifyingGlass.wav",
+    "speaker_label": "中士",
+    "asr_en": "A magnifying glass!",
+    "avg_logprob": -0.265
+  },
+  {
+    "wav": "MedKit.wav",
+    "speaker_label": "中士",
+    "asr_en": "A med kit.",
+    "avg_logprob": -0.558
+  },
+  {
+    "wav": "MineSweeper.wav",
+    "speaker_label": "中士",
+    "asr_en": "A Minesweeper.",
+    "avg_logprob": -0.232
+  },
+  {
+    "wav": "Mortar.wav",
+    "speaker_label": "中士",
+    "asr_en": "Mortars.",
+    "avg_logprob": -0.523
+  },
+  {
+    "wav": "NapalmAirstrike.wav",
+    "speaker_label": "中士",
+    "asr_en": "Napalm.",
+    "avg_logprob": -0.355
+  },
+  {
+    "wav": "NapalmMortar.wav",
+    "speaker_label": "中士",
+    "asr_en": "Incendiary mortars.",
+    "avg_logprob": -0.338
+  },
+  {
+    "wav": "Reconn.wav",
+    "speaker_label": "中士",
+    "asr_en": "Ah, recon.",
+    "avg_logprob": -0.483
+  },
+  {
+    "wav": "Sarge08_01.wav",
+    "speaker_label": "中士",
+    "asr_en": "Men, we need to secure three points inside enemy lines with a tank at each point. With that in mind, lock and load, people.",
+    "avg_logprob": -0.086
+  },
+  {
+    "wav": "Sarge10_01.wav",
+    "speaker_label": "中士",
+    "asr_en": "All right, men, wipe those nervous expressions off your plastic faces. We have a job to do.",
+    "avg_logprob": -0.222
+  },
+  {
+    "wav": "Sarge10_02.wav",
+    "speaker_label": "中士",
+    "asr_en": "You heard the lady. Get to work, soldiers.",
+    "avg_logprob": -0.213
+  },
+  {
+    "wav": "Sarge11_01.wav",
+    "speaker_label": "中士",
+    "asr_en": "It's time to take out the Overlord!",
+    "avg_logprob": -0.203
+  },
+  {
+    "wav": "SniperRifle.wav",
+    "speaker_label": "中士",
+    "asr_en": "A sniper rifle.",
+    "avg_logprob": -0.487
+  },
+  {
+    "wav": "StingOut.wav",
+    "speaker_label": "中士",
+    "asr_en": "That takes the sting out of it.",
+    "avg_logprob": -0.235
+  },
+  {
+    "wav": "VulcanGun.wav",
+    "speaker_label": "中士",
+    "asr_en": "A Vulcan gun.",
+    "avg_logprob": -0.415
+  },
+  {
+    "wav": "mines.wav",
+    "speaker_label": "中士",
+    "asr_en": "Mines.",
+    "avg_logprob": -0.576
+  },
+  {
+    "wav": "moreAmmo.wav",
+    "speaker_label": "中士",
+    "asr_en": "Ah, more ammo.",
+    "avg_logprob": -0.423
+  },
+  {
+    "wav": "paraTroopers.wav",
+    "speaker_label": "中士",
+    "asr_en": "Paratroopers.",
+    "avg_logprob": -0.499
+  },
+  {
+    "wav": "wrench.wav",
+    "speaker_label": "中士",
+    "asr_en": "A wrench.",
+    "avg_logprob": -0.461
+  },
+  {
+    "wav": "mp_gotblue.wav",
+    "speaker_label": "多人",
+    "asr_en": "Blue flag captured!",
+    "avg_logprob": -0.339
+  },
+  {
+    "wav": "mp_gotflag.wav",
+    "speaker_label": "多人",
+    "asr_en": "Flag captured!",
+    "avg_logprob": -0.45
+  },
+  {
+    "wav": "mp_gotgreen.wav",
+    "speaker_label": "多人",
+    "asr_en": "Green flag captured!",
+    "avg_logprob": -0.489
+  },
+  {
+    "wav": "mp_gotgrey.wav",
+    "speaker_label": "多人",
+    "asr_en": "Gray flag captured.",
+    "avg_logprob": -0.343
+  },
+  {
+    "wav": "mp_gottan.wav",
+    "speaker_label": "多人",
+    "asr_en": "And flag captured!",
+    "avg_logprob": -0.402
+  },
+  {
+    "wav": "mp_itblue.wav",
+    "speaker_label": "多人",
+    "asr_en": "Blue is it.",
+    "avg_logprob": -0.181
+  },
+  {
+    "wav": "mp_itgreen.wav",
+    "speaker_label": "多人",
+    "asr_en": "Green is it.",
+    "avg_logprob": -0.093
+  },
+  {
+    "wav": "mp_itgrey.wav",
+    "speaker_label": "多人",
+    "asr_en": "Gray is it.",
+    "avg_logprob": -0.172
+  },
+  {
+    "wav": "mp_ittan.wav",
+    "speaker_label": "多人",
+    "asr_en": "Tan is it.",
+    "avg_logprob": -0.2
+  },
+  {
+    "wav": "ArmyMen2Doom.wav",
+    "speaker_label": "未知",
+    "asr_en": "Oh, no! Please, no! No, please, no!",
+    "avg_logprob": -0.492
+  },
+  {
+    "wav": "SpaceBeamers.wav",
+    "speaker_label": "未知",
+    "asr_en": "Spaceman Reinforcements.",
+    "avg_logprob": -0.25
+  }
+]

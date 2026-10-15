@@ -1,0 +1,1481 @@
+
+//***Map layout and concept was designed by Jason Wildblood***//
+
+//Pads//
+//Cosmo's pads//
+
+pad ejectaction                         11      Tina_Tomorrow
+pad cosmocontrol                        140     Tina_Tomorrow
+pad cosmo1                              141     Tina_Tomorrow
+
+pad winconpad                           150     greensarge1
+pad winout                              150     green
+
+//vehicle pads//
+
+pad sargejeep                           106
+
+pad mortarchump                         109
+pad flamerchump                         110
+pad bazookachump1                       108
+pad bazookachump2                       107
+
+pad tankpilot1                          111
+pad tankpilot2                          112
+pad tankpilot3                          113
+pad tankpilot4                          114
+pad tankpilot5                          115
+pad tankpilot6                          116
+
+//Attackers//
+//pad mattacker1                          120
+//pad mattacker2                          121
+//pad mattacker3                          122
+//pad mattacker4                          123
+//pad mattacker5                          124
+pad spidergoto                            250   tan trooper
+
+//Frashunits//
+pad freshrifle1                         200
+pad freshrifle2                         201
+pad freshrifle3                         202
+pad freshrifle4                         204
+pad freshrifle5                         205
+
+pad freshtank1                          203
+
+//Shewpad//
+pad shewattack                          190     green
+pad sattackerpad                        191
+pad sgoto	                        192
+pad spowerup                            193
+
+pad sgoto194                            194
+pad sgoto195                            195
+pad sgoto196                            196
+pad sgoto197                            197
+pad sgoto198                            198
+pad sgoto199                            199
+
+
+//Tina//
+pad cosmopad                            210
+pad gunner1                             211
+pad gunner2                             212
+pad gunner3                             213
+pad gunner4                             214
+
+//Convoy//
+pad track21                     	230    	tantrack2
+pad track22                     	231    	tantrack2
+
+//Vac//
+pad vacpad                              60      trooper
+pad vacactivation                       61      trooper
+
+//Tina Pads//
+
+pad Tinaattack01                        70      green
+pad Tinaattack02                        71      Green
+pad Tinaattack04                        73      green
+pad Tinaattack05                        74      green
+
+
+
+
+
+
+
+//Variables//
+
+variable countervar 0
+
+variable relights 0
+variable areavariable 0
+variable areacounter 3
+variable sargeisdead 0
+variable tinaisdead 0
+
+variable trooperloser 0
+
+variable tankvar 0
+
+variable allpadsweretrig 0
+
+variable enablemission2 0
+
+variable mission1finished 0
+
+variable Vacumevar 0
+
+variable vacsndvar 0
+
+variable remotevar 0
+
+//**Startup**//
+
+if startup1 then
+	triggerdelay 50 makevehicles,
+        triggerdelay 200 showopeningpda,
+        triggerdelay 100 vacsnd_init
+
+//**Lose Condition**//
+
+if killed Tina_Tomorrow testvar sargeisdead = 0 then
+        setuilock 1,
+        setcamerafocus Tina_Tomorrow,
+        setvar tinaisdead 1,
+        triggerdelay 3000 tanwins,
+        triggerdelay 2000 showtinapda
+
+if killed greensarge1 testvar tinaisdead = 0 then
+        setuilock 1,
+        setcamerafocus greensarge1,
+        setvar sargeisdead 1,
+        triggerdelay 3000 tanwins,
+        triggerdelay 2000 showsargepda
+
+if killed Skull testvar mission1finished = 0 then
+        addvar trooperloser 1,
+        trigger testtrooperlose,
+        showmessage "一名坦克驾驶员阵亡！"
+
+if killed Discord testvar mission1finished = 0 then
+        addvar trooperloser 1,
+        trigger testtrooperlose,
+        showmessage "一名坦克驾驶员阵亡！"
+
+if killed Shank testvar mission1finished = 0 then
+        addvar trooperloser 1,
+        trigger testtrooperlose,
+        showmessage "一名坦克驾驶员阵亡！"
+
+if killed Cron testvar mission1finished = 0 then
+        addvar trooperloser 1,
+        trigger testtrooperlose,
+        showmessage "一名坦克驾驶员阵亡！"
+
+if killed Mental testvar mission1finished = 0 then
+        addvar trooperloser 1,
+        trigger testtrooperlose,
+        showmessage "一名坦克驾驶员阵亡！"
+
+if killed HeavyMetal testvar mission1finished = 0 then
+        addvar trooperloser 1,
+        trigger testtrooperlose,
+        showmessage "一名坦克驾驶员阵亡！"
+
+if killed Flazer testvar mission1finished = 0 then
+        addvar trooperloser 1,
+        trigger testtrooperlose,
+        createpowerup "" flamer Flazer 69,
+        showmessage "喷火兵阵亡！"
+
+if killed Butch then
+        addvar trooperloser 1,
+        trigger testtrooperlose,
+        createpowerup "" mortar Butch 10,
+        showmessage "迫击炮手阵亡！"
+
+if killed Demise  testvar mission1finished = 0 then
+        addvar trooperloser 1,
+        trigger testtrooperlose,
+        createpowerup "" bazooka Demise 10,
+        showmessage "火箭兵阵亡！"
+
+if killed baz testvar mission1finished = 0 then
+        addvar trooperloser 1,
+        trigger testtrooperlose,
+        createpowerup "" bazooka baz 10,
+        showmessage "火箭兵阵亡！"
+
+
+if testtrooperlose testvar trooperloser = 9 and mission1finished = 0 then
+        triggerdelay 1000 checktanwins
+
+if checktanwins testvar tankvar < 3 then
+        showpda "没有足够的士兵来驾驶坦克。任务失败。",
+        triggerdelay 1000 tanwins
+
+
+//**PDAs**//
+
+if showopeningpda then
+	triggerdelay 500 showareas,
+        triggerdelay 900 showsecondpda
+
+if showsecondpda then
+        playsound "Sarge08_01.wav" 0 0
+
+if showsargepda then
+        showfailure "中士在行动中阵亡。任务失败。"
+
+if showtinapda then
+        showpda "蒂娜·托马在行动中牺牲。任务失败。"
+
+if tankpda then
+        showpda "你的坦克不够，无法控制该区域。任务中止。"
+
+//**Win Conditions**//
+
+if stageonedone testvar areacounter = 3 and mission1finished = 0 and areavariable = 1
+and countervar = 0 then
+        showmessage "已控制区域 10 秒",
+        setvar countervar 1,
+        triggerdelay 10000 stagetwodone
+
+if stagetwodone testvar areacounter = 3 and mission1finished = 0 and areavariable = 1 
+and countervar = 1 then
+        showmessage "已控制区域 20 秒",
+        setvar countervar 2,
+        triggerdelay 10000 stagethreedone,
+
+        triggerdelay 11000 makespiderhold1,
+        triggerdelay 15000 makespiderhold2,
+        triggerdelay 20000 makespiderhold3
+
+
+if stagethreedone testvar areacounter = 3 and mission1finished = 0 and areavariable = 1
+and countervar = 2 then
+        showmessage "已控制区域 30 秒。还剩 10 秒！",
+        setvar countervar 3,
+        triggerdelay 10000 triggerwincon
+
+if triggerwincon testvar areacounter = 3 and areavariable = 1
+and mission1finished = 0 and countervar = 3  then
+        trigger temptrigger
+
+if temptrigger testvar areacounter = 3 then
+        triggerdelay 3000 greenwinscheck1
+
+if greenwinscheck1 testvar tinaisdead = 0 and areacounter = 3 and sargeisdead = 0
+and then
+        setvar enablemission2 1,
+        trigger greenwins
+
+
+macro spidholdmac 7
+{
+if makespiderhold@7 butnot onetimespidhold@7 then
+        createunit "@1" @2 (@3,@4) tan @5,
+        beam @1 1000,
+        order @1 goto @6 inmode attack,
+        trigger onetimespidhold@7
+
+}
+
+expand spidholdmac ( spid1 alienspider 928 305 spiderbite flash1 1 )
+expand spidholdmac ( spid2 alienspider 1271 223 spiderbite flash1 1 )
+expand spidholdmac ( spid3 alienspider 928 305 spiderbite flash1 1 )
+expand spidholdmac ( spid4 alienspider 1521 280 spiderbite flash1 1 )
+expand spidholdmac ( spid5 alienspider 1271 223 spiderbite flash1 1 )
+expand spidholdmac ( spid6 alienspider 1090 232 spiderbite flash1 1 )
+expand spidholdmac ( spid7 alienspider 1271 223 spiderbite flash1 1 )
+expand spidholdmac ( spid8 alienspider 1090 232 spiderbite flash1 1 )
+expand spidholdmac ( spid9 alienspider 1271 223 spiderbite flash1 1 )
+
+expand spidholdmac ( spid11 alienspider 928 305 spiderbite flash2 2 )
+expand spidholdmac ( spid12 alienspider 1521 280 spiderbite flash2 2 )
+expand spidholdmac ( spid13 alienspider 928 305 spiderbite flash2 2 )
+expand spidholdmac ( spid14 alienspider 1691 370 spiderbite flash2 2 )
+expand spidholdmac ( spid15 alienspider 1271 223 spiderbite flash2 2 )
+expand spidholdmac ( spid16 alienspider 1090 232 spiderbite flash2 2 )
+expand spidholdmac ( spid17 alienspider 1271 223 spiderbite flash2 2 )
+expand spidholdmac ( spid18 alienspider 1090 232 spiderbite flash2 2 )
+expand spidholdmac ( spid19 alienspider 1271 223 spiderbite flash2 2 )
+
+expand spidholdmac ( spid21 alienspider 1691 370 spiderbite flash3 3 )
+expand spidholdmac ( spid22 alienspider 928 305 spiderbite flash3 3 )
+expand spidholdmac ( spid23 alienspider 1521 280 spiderbite flash3 3 )
+expand spidholdmac ( spid24 alienspider 928 305 spiderbite flash3 3 )
+expand spidholdmac ( spid25 alienspider 1271 223 spiderbite flash3 3 )
+expand spidholdmac ( spid26 alienspider 1691 370 spiderbite flash3 3 )
+expand spidholdmac ( spid27 alienspider 1271 223 spiderbite flash3 3 )
+expand spidholdmac ( spid28 alienspider 1090 232 spiderbite flash3 3 )
+expand spidholdmac ( spid29 alienspider 1271 223 spiderbite flash3 3 )
+
+
+macro areamac 2
+{
+pad area@1                      @2      green tank >0
+
+if showareas then
+        setitemflag flash@1 strategic 1,
+        setitemflag flash@1 strategic 1,
+        setitemflag flash@1 strategic 1
+
+if turnoffstratmap then
+        setitemflag flash@1 strategic 0,
+        setitemflag flash@1 strategic 0,
+        setitemflag flash@1 strategic 0
+
+
+
+if padoff area@1 testvar mission1finished = 0
+and allpadsweretrig = 1 and areavariable = 1 THEN
+        setvar countervar 0,
+        showmessage "位置不安全！守住全部三个区域。",
+        setitemflag flash@1 strategic 1,
+	addvar areacounter -1
+
+if padon AREA@1 testvar allpadsweretrig = 1 and mission1finished = 0
+and areavariable = 1 then
+        setitemflag flash@1 strategic 0,
+	addvar areacounter 1,
+	triggerdelay 10000 stageonedone
+	
+}
+expand areamac ( 1 251 )
+expand areamac ( 2 252 )
+expand areamac ( 3 253 )
+
+//Long Formula//
+
+if allof padon area1 padon area2 padon area3 testvar allpadsweretrig = 0
+and mission1finished = 0 then
+        showmessage "所有区域均已安全。",
+        setvar areavariable 1,
+        setvar areacounter 3,
+	trigger turnoffstratmap,
+        setvar allpadsweretrig 1,
+	trigger retakeit,
+        triggerdelay 10000 stageonedone
+
+//Init Setup//
+
+//**Vacume**//
+//setforce unit-name forcetype location heading decaytype decayrate magnitude maxdist affects other period angle
+
+if vacsnd_init testvar vacsndvar = 0 then
+        playsound "Vacuumrun.wav" vacbutton 10 3 1 30
+
+if padon vacactivation testvar Vacumevar = 0 then
+        triggerdelay 500 vacume_on
+
+if vacume_on then
+        SETFORCE me omni vacpad 128 Linear 200 1100 360 ground 50 0 128
+
+if padoff vacactivation testvar Vacumevar = 0 then
+        SETFORCE me none
+
+if padon vacpad testvar Vacumevar = 0 then
+        damage me 10000
+
+if hit vacbutton testvar Vacumevar = 0 then
+        triggerdelay 1000 vacisgoing
+
+if vacisgoing then
+        setvar vacsndvar 1,
+        playsound "" vabutton 10 3 0 30,
+        playsound "VacuumOff.wav" vacbutton 11 3 0 30,
+        setobjstate vacbutton vacbutton_off,
+        setobjstate vacnose vacnose_off,
+        triggerdelay 1000 offvac
+
+
+if hit vacbutton testvar Vacumevar = 1 then
+        playsound "VacuumOn.wav" vacbutton 12 3 0 30,
+        triggerdelay 1500 vacrun,
+        setobjstate vacbutton vacbutton_initial,
+        setobjstate vacnose vacnose_initial,
+        triggerdelay 1000 manualvac_off
+
+if vacrun then
+        playsound "Vacuumrun.wav" vacbutton 10 3 1 30
+
+
+if manualvac_off then
+        setvar Vacumevar 0
+
+
+if offvac then
+        setvar Vacumevar 1,
+        setforce me none
+
+object vacbutton
+        state vacbutton_initial
+                frame 10 00
+
+        state vacbutton_off
+                frame 10 01
+
+object vacnose
+        state vacnose_initial
+                frame 10 00
+
+        state vacnose_off
+                frame 10 01
+
+
+if hit vacume testvar vacumevar = 1 then
+        setvar Vacumevar 0
+
+
+
+
+
+
+//**Unitdeployment**//
+macro tankmac 2
+{
+pad tank@1                               @2
+
+if makevehicles then
+        createvehicle "@1tank" tank tank@1 green,
+        setfacing @1tank 230,
+        trigger morefriendlyunits
+
+if killed @1tank testvar mission1finished = 0 then
+        trigger testtanklose,
+        addvar tankvar 1,
+        showmessage "一辆坦克被毁！"
+
+if testtanklose testvar tankvar = 3 and sargeisdead = 0 and tinaisdead = 0 then
+        triggerdelay 3000 tanwins,
+        triggerdelay 2000 tankpda
+
+
+
+}
+expand tankmac ( 1 100 )
+expand tankmac ( 2 101 )
+expand tankmac ( 3 102 )
+expand tankmac ( 4 103 )
+expand tankmac ( 5 104 )
+expand tankmac ( 6 105 )
+
+if entertanks then
+        entervehicle Skull 1tank,
+        entervehicle Shank 2tank,
+        entervehicle Cron 3tank,
+        entervehicle Mental 4tank,
+        entervehicle Discord 5tank,
+        entervehicle HeavyMetal 6tank,
+        setfacing 1tank 230,
+        setfacing 2tank 230,
+	setfacing 3tank 230,
+        setfacing 4tank 230,
+        setfacing 5tank 230,
+        setfacing 6tank 230
+
+
+
+if morefriendlyunits butnot onefriendlygen then
+        createvehicle "sargejeep" jeep sargejeep green,
+        createunit "Flazer" flamerman flamerchump green flamer,
+        createunit "Butch" mortarman mortarchump green mortar,
+        createunit "Baz" bazookaman bazookachump1 green bazooka,
+        createunit "Demise" bazookaman bazookachump2 green bazooka,
+        createunit "Skull" Rifleman tankpilot1 green heavymg,
+        createunit "Discord" Rifleman tankpilot2 green heavymg,
+        createunit "Shank" Rifleman tankpilot3 green heavymg,
+        createunit "Cron" Rifleman tankpilot4 green heavymg,
+        createunit "Mental" Rifleman tankpilot5 green heavymg,
+        createunit "HeavyMetal" Rifleman tankpilot6 green heavymg,
+
+        createpowerup "Fdope" Vulcan (429,1057),
+        createpowerup "hmine" HammerMine (390,1068) 10,
+        createpowerup "aattak" AirAttack (416,1096) 3,
+
+        setfacing Flazer 108,
+        setfacing Butch 78,
+	setfacing Baz 148,
+        setfacing Demise 14,
+        setfacing Skull 230,
+        setfacing Mental 230,
+        setfacing HeavyMetal 230,
+        setfacing Discord 230,
+        setfacing Shank 230,
+        setfacing Cron 230,
+
+        setfacing SargewheelA-5 230,
+
+        setsquadleader HeavyMetal 2,
+        setunitgroup Skull 2,
+        setunitgroup Discord 2,
+        setunitgroup Shank 2,
+        setunitgroup Cron 2,
+        setunitgroup Mental 2,
+
+        setunitgroup Baz 1,
+        setunitgroup Butch 1,
+        setunitgroup Flazer 1,
+        setunitgroup Demise 1,
+        trigger onefriendlygen,
+        triggerdelay 1500 entertanks,
+
+        createpowerup "HiddenP1" Adrenaline spowerup 3,
+
+        triggerdelay 1200 maketandefence,
+        triggerdelay 1300 makealiendefence
+
+//Precaustion//
+// @1 unit name @2 unit type @3 unit location @4 unit weapon @5 pad name @6 padnum @7 goto pad @8 follow thing @9 seg
+
+macro forareamac 1
+
+{
+if hit tanarea@1tank butnot ontime@1 then
+        trigger triggrushers@1,
+        trigger ontime@1
+
+}
+
+macro death 9
+{
+
+pad @5                  @6
+
+if triggrushers@9 then
+        createunit "@1" @2 @3 tan @4,
+        //trigger ontime@1,
+        order @1 goto @7
+
+if padon @7 then
+        order @1 follow @8 inmode attack
+
+
+}
+expand forareamac ( 1 )
+expand forareamac ( 2 )
+expand forareamac ( 3 )
+
+expand death ( spider1 alienspider mattacker1 spiderbite mattacker1 120 spidergoto  1tank 1 )
+expand death ( spider2 alienspider mattacker2 spiderbite mattacker2 121 spidergoto 1tank  1)
+expand death ( spider3 alienspider mattacker3 spiderbite mattacker3 122 spidergoto butch  1)
+expand death ( tan1 Rifleman mattacker4 spiderbite mattacker4 123 spidergoto 2tank 1 )
+expand death ( tan2 Rifleman mattacker5 spiderbite mattacker5 124 spidergoto 3tank 1 )
+expand death ( spider11 alienspider mattacker6 spiderbite mattacker6 120 spidergoto  1tank 2 )
+expand death ( spider12 alienspider mattacker7 spiderbite mattacker7 121 spidergoto 1tank  2)
+expand death ( spider13 alienspider mattacker8 spiderbite mattacker8 122 spidergoto butch  2)
+expand death ( tan11 Rifleman mattacker9 spiderbite mattacker9 123 spidergoto 2tank 2 )
+expand death ( tan12 Rifleman mattacker10 spiderbite mattacker10 124 spidergoto 3tank 2 )
+expand death ( spider21 alienspider mattacker11 spiderbite mattacker11 120 spidergoto  1tank 3 )
+expand death ( spider22 alienspider mattacker12 spiderbite mattacker12 121 spidergoto 1tank  3)
+expand death ( spider23 alienspider mattacker13 spiderbite mattacker13 122 spidergoto butch  3)
+expand death ( tan21 Rifleman mattacker14 spiderbite mattacker14 123 spidergoto 2tank 3 )
+expand death ( tan22 Rifleman mattacker15 spiderbite mattacker15 124 spidergoto 3tank 3 )
+
+
+if hit tan1 butnot onetan1hit then
+        setaipose tan1 prone,
+        trigger onetan1hit
+
+if hit tan2 butnot onetan2hit then
+        setaipose tan2 prone,
+        trigger onetan2hit
+
+
+
+
+//**Defences**//
+
+//foot defence//
+
+if padon shewattack butnot onefootattack then
+        createunit "footrifle" rifleman sattackerpad tan Autorifle,
+        trigger flamerorders,
+        trigger onefootattack
+
+if flamerorders then
+        order footrifle goto sgoto inmode ignore,
+        triggerdelay 1500 createmore1
+
+if createmore1 then
+        order footrifle follow greensarge1 inmode attack,
+        createunit "1footrifle" rifleman sattackerpad tan Autorifle,
+        trigger autoorders1
+
+if autoorders1 then
+        order 1footrifle goto sgoto inmode ignore,
+        triggerdelay 1500 createmore2
+
+if createmore2 then
+        order 1footrifle follow greensarge1 inmode attack,
+        createunit "2footrifle" rifleman sattackerpad tan Autorifle,
+        trigger autoorders2
+
+if autoorders2 then
+        order 2footrifle goto sgoto inmode ignore,
+        triggerdelay 1500 createmore3
+
+if createmore3 then
+        order 2footrifle follow greensarge1 inmode attack,
+        createunit "3footrifle" rifleman sattackerpad tan Autorifle,
+        trigger autoorders3
+
+if autoorders3 then
+        order 3footrifle goto sgoto inmode ignore,
+        triggerdelay 1500 createmore4
+
+if createmore4 then
+        order 3footrifle follow greensarge1 inmode attack,
+        createunit "4footrifle" rifleman sattackerpad tan Autorifle,
+        trigger autoorders4
+
+if autoorders4 then
+        order 4footrifle goto sgoto inmode ignore,
+        createunit "5footrifle" rifleman sattackerpad tan Autorifle,
+        trigger autoorders5
+
+if autoorders5 then
+        order 5footrifle goto sgoto inmode ignore,
+        createunit "6footrifle" flamerman sattackerpad tan flamer,
+        triggerdelay 1500 finalfootorder
+
+if finalfootorder then
+        order 6footrifle goto sattackers inmode attack,
+        triggerdelay 1500 setposition1
+
+if setposition1 then
+        setfacing 6footrifle 128,
+        createunit "7footrifle" rifleman sattackerpad tan autorifle,
+        order 7footrifle goto sgoto194 inmode ignore,
+        triggerdelay 4000 setposition2
+
+if setposition2 then
+        setfacing 7footrifle 200,
+        setaipose 7footrifle prone,
+        setaimode 7footrifle attack,
+        createunit "8footrifle" rifleman sattackerpad tan autorifle,
+        order 8footrifle goto sgoto195 inmode ignore,
+        triggerdelay 4000 setposition3
+
+if setposition3 then
+        setfacing 8footrifle 64,
+        setaipose 8footrifle prone,
+        setaimode 8footrifle attack,
+        createunit "9footrifle" rifleman sattackerpad tan autorifle,
+        order 9footrifle goto sgoto196 inmode ignore,
+        triggerdelay 4000 setposition4
+
+if setposition4 then
+        setfacing 9footrifle 138,
+        setaipose 9footrifle prone,
+        setaimode 9footrifle attack,
+        createunit "10footrifle" rifleman sattackerpad tan autorifle,
+        order 10footrifle goto sgoto197 inmode ignore,
+        triggerdelay 4000 setposition5
+
+if setposition5 then
+        setfacing 10footrifle 128,
+        setaipose 10footrifle prone,
+        setaimode 10footrifle attack,
+        createunit "11footrifle" rifleman sattackerpad tan autorifle,
+        order 11footrifle goto sgoto198 inmode ignore,
+        triggerdelay 4000 setposition6
+
+if setposition6 then
+        setfacing 11footrifle 138,
+        setaipose 11footrifle prone,
+        setaimode 11footrifle attack,
+        createunit "12footrifle" bazookaman sattackerpad tan bazooka,
+        order 12footrifle goto sgoto199 inmode ignore,
+        triggerdelay 4000 setposition7
+
+if setposition7 then
+        setfacing 12footrifle 138,
+        setaipose 12footrifle kneel,
+        setaimode 12footrifle attack
+
+
+if maketandefence then
+        createvehicle "tanarea1tank" tank area1 tan,
+        createvehicle "tanarea2tank" tank area2 tan,
+        createvehicle "tanarea3tank" tank area3 tan,
+        setfacing tanarea1tank 46,
+        setfacing tanarea2tank 118,
+        setfacing tanarea3tank 148,
+        setaimode tanarea1tank standfire,
+        setaimode tanarea2tank standfire,
+        setaimode tanarea3tank standfire,
+
+        createvehicle "tankdef1" tank (1669,2472) tan,
+        setfacing tankdef1 108,
+        setaimode tankdef1 standfire,
+
+        createvehicle "tankdef2" tank (1958,2552) tan,
+        setfacing tankdef2 88,
+        setaimode tankdef2 standfire,
+
+        createvehicle "tankdef3" tank (1937,1988) tan,
+        setfacing tankdef3 148,
+        setaimode tankdef3 standfire,
+
+        createvehicle "tankdef4" tank (1134,1922) tan,
+        setfacing tankdef4 98,
+        setaimode tankdef4 standfire,
+
+        createvehicle "tankdef5" tank (526,1276) tan,
+        setfacing tankdef5 128,
+        setaimode tankdef5 standfire,
+
+        createvehicle "tankdef6" tank (1155,1169) tan,
+        setfacing tankdef6 128,
+        trigger tankdef6order1,
+
+
+        createunit "bazdef1" bazookaman (1545,1852) tan bazooka,
+        setfacing bazdef1 108,
+        setaipose bazdef1 kneel,
+
+        createunit "mgdef1" Rifleman (1361,1872) tan heavymg,
+        setfacing mgdef1 162,
+        setaipose mgdef1 prone,
+
+        createunit "mgdef2" Rifleman (1674,1950) tan heavymg,
+        setfacing mgdef2 78,
+        setaipose mgdef2 prone,
+
+        createunit "bazdef2" bazookaman (828,1559) tan bazooka,
+        setfacing bazdef2 118,
+        setaipose bazdef2 kneel,
+
+        createunit "mgdef3" Rifleman (673,1493) tan heavymg,
+        setfacing mgdef3 128,
+        setaipose mgdef3 prone,
+
+        createunit "mgdef4" Rifleman (948,1723) tan heavymg,
+        setfacing mgdef4 64,
+        setaipose mgdef4 prone,
+
+        createunit "bazdef3" bazookaman (910,816) tan bazooka,
+        setfacing bazdef3 18,
+        setaipose bazdef3 kneel,
+
+        createunit "mgdef5" Rifleman (719,958) tan heavymg,
+        setfacing mgdef5 235,
+        setaipose mgdef5 prone,
+
+        createunit "mgdef6" Rifleman (1103,630) tan heavymg,
+        setfacing mgdef6 50,
+        setaipose mgdef6 prone,
+
+        createunit "autodef1" Rifleman (846,1418) tan autorifle,
+        setfacing autodef1 128,
+        setaimode autodef1 defend,
+
+        createunit "autodef2" Rifleman (1092,1656) tan autorifle,
+        setfacing autodef2 54,
+        setaimode autodef2 defend,
+
+        createunit "autodef3" Rifleman (1577,1607) tan autorifle,
+        setfacing autodef3 118,
+        setaimode autodef3 defend,
+
+        createunit "autodef4" Rifleman (1832,1716) tan autorifle,
+        setfacing autodef4 78,
+        setaimode autodef4 defend,
+
+        createunit "autodef5" Rifleman (883,1013) tan autorifle,
+        setfacing autodef5 44,
+        setaimode autodef5 defend,
+
+        createunit "autodef6" Rifleman (1128,773) tan autorifle,
+        setfacing autodef6 64,
+        setaimode autodef6 defend
+
+if killed autodef6 then
+        createpowerup "" flak autodef6 50
+
+if killed autodef1 then
+        createpowerup "" medpack autodef1 1
+
+if hit autodef6 butnot auto6 then
+        setaipose autodef6 prone,
+        setaimode autodef6 attack,
+        trigger auto6
+
+if hit autodef5 butnot auto5 then
+        setaipose autodef5 prone,
+        setaimode autodef5 attack,
+        trigger auto5
+
+if hit autodef1 butnot auto1 then
+        setaipose autodef1 prone,
+        setaimode autodef1 attack,
+        trigger auto1
+
+if hit autodef2 butnot auto2 then
+        setaipose autodef2 prone,
+        setaimode autodef2 attack,
+        trigger auto2
+
+if hit autodef3 butnot auto3 then
+        setaipose autodef3 prone,
+        setaimode autodef3 attack,
+        trigger auto3
+
+if hit autodef4 butnot auto4 then
+        setaipose autodef4 prone,
+        setaimode autodef4 attack,
+        trigger auto4
+
+
+//
+if tankdef6order1 butnot tankdef6death then
+        order tankdef6 goto (1044,1347) inmode defend,
+        setgunfacing tankdef6 64,
+        triggerdelay 3000 gunfacing2
+
+if gunfacing2 then
+        setgunfacing tankdef6 84,
+        triggerdelay 1000 gunfacing3
+
+if gunfacing3 then
+        setgunfacing tankdef6 104,
+        triggerdelay 1000 gunfacing4
+
+if gunfacing4 then
+        setgunfacing tankdef6 114,
+        triggerdelay 1000 gunfacing5
+
+if gunfacing5 then
+        setgunfacing tankdef6 124,
+        triggerdelay 1000 gunfacing6
+
+if gunfacing6 then
+        setgunfacing tankdef6 134,
+        triggerdelay 1000 gunfacing7
+
+if gunfacing7 then
+        setgunfacing tankdef6 124,
+        triggerdelay 1000 gunfacing8
+
+if gunfacing8 then
+        setgunfacing tankdef6 114,
+        triggerdelay 1000 gunfacing9
+
+if gunfacing9 then
+        setgunfacing tankdef6 104,
+        triggerdelay 1000 gunfacing10
+
+if gunfacing10 then
+        setgunfacing tankdef6 84,
+        triggerdelay 1000 gunfacing11
+
+if gunfacing11 then
+        setgunfacing tankdef6 124,
+        triggerdelay 1000 tankdef6order2
+//
+if tankdef6order2 butnot tankdef6death then
+        order tankdef6 goto (1211,1718) inmode defend,
+        setgunfacing tankdef6 128,
+        triggerdelay 3000 gunfacing12
+
+if gunfacing12 then
+        setgunfacing tankdef6 138,
+        triggerdelay 1000 gunfacing13
+
+if gunfacing13 then
+        setgunfacing tankdef6 148,
+        triggerdelay 1000 gunfacing14
+
+if gunfacing14 then
+        setgunfacing tankdef6 138,
+        triggerdelay 1000 gunfacing15
+
+if gunfacing15 then
+        setgunfacing tankdef6 124,
+        triggerdelay 1000 gunfacing16
+
+if gunfacing16 then
+        setgunfacing tankdef6 114,
+        triggerdelay 1000 gunfacing17
+
+if gunfacing17 then
+        setgunfacing tankdef6 94,
+        triggerdelay 1000 gunfacing18
+
+if gunfacing18 then
+        setgunfacing tankdef6 84,
+        triggerdelay 1000 gunfacing19
+
+if gunfacing19 then
+        setgunfacing tankdef6 74,
+        triggerdelay 1000 gunfacing20
+
+if gunfacing20 then
+        setgunfacing tankdef6 84,
+        triggerdelay 1000 gunfacing21
+
+if gunfacing21 then
+        setgunfacing tankdef6 94,
+        triggerdelay 1000 tankdef6order3
+//
+if tankdef6order3 butnot tankdef6death then
+        order tankdef6 goto (1461,1650) inmode defend,
+        setgunfacing tankdef6 104,
+        triggerdelay 3000 gunfacing22
+
+if gunfacing22 then
+        setgunfacing tankdef6 114,
+        triggerdelay 1000 gunfacing23
+
+if gunfacing23 then
+        setgunfacing tankdef6 124,
+        triggerdelay 1000 gunfacing24
+
+if gunfacing24 then
+        setgunfacing tankdef6 134,
+        triggerdelay 1000 gunfacing25
+
+if gunfacing25 then
+        setgunfacing tankdef6 144,
+        triggerdelay 1000 gunfacing26
+
+if gunfacing26 then
+        setgunfacing tankdef6 154,
+        triggerdelay 1000 gunfacing27
+
+if gunfacing27 then
+        setgunfacing tankdef6 164,
+        triggerdelay 1000 gunfacing28
+
+if gunfacing28 then
+        setgunfacing tankdef6 174,
+        triggerdelay 1000 gunfacing29
+
+if gunfacing29 then
+        setgunfacing tankdef6 184,
+        triggerdelay 1000 gunfacing30
+
+if gunfacing30 then
+        setgunfacing tankdef6 174,
+        triggerdelay 1000 gunfacing31
+
+if gunfacing31 then
+        setgunfacing tankdef6 164,
+        triggerdelay 1000 tankdef6order4
+//
+if tankdef6order4 butnot tankdef6death then
+        order tankdef6 goto (1581,1402) inmode defend,
+        setgunfacing tankdef6 154,
+        triggerdelay 3000 gunfacing32
+
+if gunfacing32 then
+        setgunfacing tankdef6 164,
+        triggerdelay 1000 gunfacing33
+
+if gunfacing33 then
+        setgunfacing tankdef6 174,
+        triggerdelay 1000 gunfacing34
+
+if gunfacing34 then
+        setgunfacing tankdef6 184,
+        triggerdelay 1000 gunfacing35
+
+if gunfacing35 then
+        setgunfacing tankdef6 194,
+        triggerdelay 1000 gunfacing36
+
+if gunfacing36 then
+        setgunfacing tankdef6 204,
+        triggerdelay 1000 gunfacing37
+
+if gunfacing37 then
+        setgunfacing tankdef6 214,
+        triggerdelay 1000 gunfacing38
+
+if gunfacing38 then
+        setgunfacing tankdef6 224,
+        triggerdelay 1000 gunfacing39
+
+if gunfacing39 then
+        setgunfacing tankdef6 234,
+        triggerdelay 1000 gunfacing40
+
+if gunfacing40 then
+        setgunfacing tankdef6 244,
+        triggerdelay 1000 gunfacing41
+
+if gunfacing41 then
+        setgunfacing tankdef6 254,
+        triggerdelay 1000 tankdef6order5
+//
+if tankdef6order5 butnot tankdef6death then
+        order tankdef6 goto (1263,1089) inmode defend,
+        setgunfacing tankdef6 4,
+        triggerdelay 3000 gunfacing42
+
+if gunfacing42 then
+        setgunfacing tankdef6 14,
+        triggerdelay 1000 gunfacing43
+
+if gunfacing43 then
+        setgunfacing tankdef6 24,
+        triggerdelay 1000 gunfacing44
+
+if gunfacing44 then
+        setgunfacing tankdef6 34,
+        triggerdelay 1000 gunfacing45
+
+if gunfacing45 then
+        setgunfacing tankdef6 24,
+        triggerdelay 1000 gunfacing46
+
+if gunfacing46 then
+        setgunfacing tankdef6 14,
+        triggerdelay 1000 gunfacing47
+
+if gunfacing47 then
+        setgunfacing tankdef6 4,
+        triggerdelay 1000 gunfacing48
+
+if gunfacing48 then
+        setgunfacing tankdef6 254,
+        triggerdelay 1000 gunfacing49
+
+if gunfacing49 then
+        setgunfacing tankdef6 244,
+        triggerdelay 1000 gunfacing50
+
+if gunfacing50 then
+        setgunfacing tankdef6 254,
+        triggerdelay 1000 gunfacing51
+
+if gunfacing51 then
+        setgunfacing tankdef6 4,
+        triggerdelay 1000 tankdef6order1
+
+if killed tankdef6 then
+        trigger tankdef6death
+
+//**Retake the areas**//
+
+if retakeit butnot takeitonce then
+        createunit "takeit1" humanoid (406,324) tan mediumlaser,
+        beam takeit1 1000,
+        createunit "takeit2" humanoid (607,169) tan mediumlaser 2,
+        beam takeit2 1000,
+        createunit "takeit3" humanoid (206,534) tan mediumlaser,
+        beam takeit3 1000,
+        //
+        createunit "takeit4" humanoid (148,1681) tan mediumlaser,
+        beam takeit4 1000,
+        createunit "takeit5" humanoid (173,1907) tan mediumlaser 2,
+        beam takeit5 1000,
+        createunit "takeit6" humanoid (244,2017) tan mediumlaser,
+        beam takeit6 1000,
+        //
+        createunit "takeit7" humanoid (2731,1573) tan mediumlaser,
+        beam takeit7 1000,
+        createunit "takeit8" humanoid (2735,1723) tan mediumlaser 2,
+        beam takeit8 1000,
+        createunit "takeit9" humanoid (2710,1857) tan mediumlaser,
+        beam takeit9 1000,
+        triggerdelay 1100 takeitorders,
+        triggerdelay 20000 tanretaketrack1,
+        triggerdelay 20000 tanretaketrack2,
+        triggerdelay 3000 switch_ai_Mode,
+        trigger takeitonce
+
+if takeitorders then
+        order takeit1 goto area1 inmode ignore,
+        order takeit2 goto area1 inmode ignore,
+        order takeit3 goto area1 inmode ignore,
+        order takeit4 goto area2 inmode ignore,
+        order takeit5 goto area2 inmode ignore,
+        order takeit6 goto area2 inmode ignore,
+        order takeit7 goto area3 inmode ignore,
+        order takeit8 goto area3 inmode ignore,
+        order takeit9 goto area3 inmode ignore
+
+
+if switch_ai_Mode then
+        setaimode takeit1 attack,
+        setaimode takeit2 defend,
+        setaimode takeit3 attack,
+        setaimode takeit4 defend,
+        setaimode takeit5 attack,
+        setaimode takeit6 defend,
+        setaimode takeit7 attack,
+        setaimode takeit8 defend,
+        setaimode takeit9 attack
+
+
+//**Halftrack attack**//
+
+macro halftrack1 3
+
+{
+pad track@2                             @3      tantrack1
+
+if tanretaketrack1 butnot oneretaketrack then
+        createvehicle "tantrack1" convoy (217,2544) tan,
+        createunit "tantrack1unit@1" grenadier tantrack1 tan grenade,
+        createunit "tantrack2unit@1" rifleman tantrack1 tan heavymg,
+        createunit "tantrack3unit@1" rifleman tantrack1 tan heavymg,
+        createunit "tantrack4unit@1" rifleman tantrack1 tan heavymg,
+        createunit "tantrack5unit@1" rifleman tantrack1 tan heavymg,
+        createunit "tantrack6unit@1" rifleman tantrack1 tan heavymg,
+
+        entervehicle tantrack1unit@1 tantrack1,
+        entervehicle tantrack2unit@1 tantrack1,
+        entervehicle tantrack3unit@1 tantrack1,
+        entervehicle tantrack4unit@1 tantrack1,
+        entervehicle tantrack5unit@1 tantrack1,
+        entervehicle tantrack6unit@1 tantrack1,
+        triggerdelay 1000 ordertrack1,
+        trigger oneretaketrack
+
+if onpad6 then
+        exitvehicle tantrack1unit@1 tantrack1,
+        exitvehicle tantrack2unit@1 tantrack1,
+        exitvehicle tantrack3unit@1 tantrack1,
+        exitvehicle tantrack4unit@1 tantrack1,
+        exitvehicle tantrack5unit@1 tantrack1,
+        exitvehicle tantrack6unit@1 tantrack1,
+        trigger track1madeit,
+        triggerdelay 1000 ordertrackunits1
+
+if ordertrackunits1 then
+        order tantrack1unit@1 follow green inmode attack,
+        order tantrack2unit@1 follow green inmode attack,
+        order tantrack3unit@1 follow greensarge1 inmode attack,
+        order tantrack4unit@1 follow greensarge1 inmode attack,
+        order tantrack5unit@1 follow greensarge1 inmode attack,
+        order tantrack6unit@1 follow greensarge1 inmode attack
+}
+
+expand halftrack1 ( 1 1 235 )
+expand halftrack1 ( 2 2 236 )
+expand halftrack1 ( 3 3 237 )
+expand halftrack1 ( 4 4 238 )
+expand halftrack1 ( 5 5 239 )
+expand halftrack1 ( 6 6 240 )
+
+if ordertrack1 then
+        order tantrack1 goto track6 inmode ignore
+
+if padon track6 butnot track6once then
+        trigger onpad6,
+        trigger track6once
+
+//Convoy02//
+
+if tanretaketrack2 butnot oneretaketrack2 then
+        createvehicle "tantrack2" convoy (477,2759) tan,
+        createunit "tantrack21unit" grenadier tantrack1 tan grenade,
+        createunit "tantrack22unit" rifleman tantrack2 tan heavymg,
+        createunit "tantrack23unit" rifleman tantrack2 tan heavymg,
+        createunit "tantrack24unit" rifleman tantrack2 tan heavymg,
+        createunit "tantrack25unit" rifleman tantrack2 tan heavymg,
+        createunit "tantrack26unit" rifleman tantrack2 tan heavymg,
+
+        entervehicle tantrack21unit tantrack2,
+        entervehicle tantrack22unit tantrack2,
+        entervehicle tantrack23unit tantrack2,
+        entervehicle tantrack24unit tantrack2,
+        entervehicle tantrack25unit tantrack2,
+        entervehicle tantrack26unit tantrack2,
+        triggerdelay 1000 ordertrack2,
+        trigger oneretaketrack2
+
+if onpad22 then
+        exitvehicle tantrack21unit tantrack2,
+        exitvehicle tantrack22unit tantrack2,
+        exitvehicle tantrack23unit tantrack2,
+        exitvehicle tantrack24unit tantrack2,
+        exitvehicle tantrack25unit tantrack2,
+        exitvehicle tantrack26unit tantrack2,
+        trigger track2madeit,
+        triggerdelay 1000 ordertrackunits2
+
+if ordertrackunits2 then
+        order tantrack21unit follow Tina_Tomorrow inmode attack,
+        order tantrack22unit follow greensarge1 inmode attack,
+        order tantrack23unit follow greensarge1 inmode attack,
+        order tantrack24unit follow greensarge1 inmode attack,
+        order tantrack25unit follow greensarge1 inmode attack,
+        order tantrack26unit follow greensarge1 inmode attack
+
+if ordertrack2 then
+        order tantrack2 goto track21 inmode ignore
+
+if padon track21 butnot track21once then
+        order tantrack2 goto track22 inmode ignore,
+        trigger track21once
+
+if padon track22 butnot track22once then
+        trigger onpad22,
+        trigger track22once
+
+if killed tantrack1 butnot track1madeit then
+        triggerdelay 1000 ordertrackunits1
+
+if killed tantrack2 butnot track2madeit then
+        triggerdelay 1000 ordertrackunits2
+
+//**Powerup Drop**//
+if killed tanarea1tank then
+        createpowerup "" wrench tanarea1tank 1
+
+if killed tanarea2tank then
+        createpowerup "" wrench tanarea2tank 1
+
+if killed tanarea3tank then
+        createpowerup "" wrench tanarea3tank 1
+
+if killed tankdef6 then
+        createpowerup "" wrench tankdef6 1
+
+if killed mortar1tanman1 then
+        createpowerup "" medpack mortar1tanman1 3
+
+if killed mortar2tanman1 then
+        createpowerup "" medpack mortar2tanman1 3
+
+if killed mgdef1 then
+        createpowerup "" medpack mgdef1 1
+
+if killed mgdef2 then
+        createpowerup "" medpack mgdef2 2
+
+if killed mgdef3 then
+        createpowerup "" medpack mgdef3 1
+
+if killed mgdef4 then
+        createpowerup "" medpack mgdef4 1
+
+if killed mgdef5 then
+        createpowerup "" medpack mgdef5 1
+
+if killed mgdef6 then
+        createpowerup "" medpack mgdef6 2
+
+if killed tankdef4 then
+        createpowerup "" wrench tankdef4 1
+
+if killed tankdef5 then
+        createpowerup "" wrench tankdef5 1
+
+if killed tankdef6 then
+        createpowerup "" wrench tankdef6 1
+
+
+//**Opera System**//
+
+if padon ejectaction butnot ejectonce then
+        playsound "TVSwitch.wav" eject 2 1 10,
+        setobjstate eject ejectdrive,
+        triggerdelay 8000 tinafinal_orders,
+        trigger ejectonce
+
+if tinafinal_orders then
+        order Tina_Tomorrow goto winout
+
+object eject
+	state ejectbutton_initial
+        	frame 50 00
+
+        state ejectdrive
+                frame 1000 01
+                triggerdelay 1200 flickercdlight
+
+if flickercdlight then
+        setobjstate cdlight cdlight_flicker
+
+object cdlight
+        state cdlight_initial
+                frame 50 00
+
+        state cdlight_flicker
+                frame 50 01
+                frame 100 00
+                frame 150 01
+                frame 100 00
+                frame 50 01
+                frame 300 00
+                frame 50 01
+                frame 800 00
+                frame 150 01
+                frame 50 00
+                frame 50 01
+                triggerdelay 1200 openthelid
+
+if openthelid then
+        setobjstate cdlid cdlid_open
+
+object cdlid
+        state cdlid_initial
+               frame 50 00
+
+        state cdlid_open
+                frame 100 01
+                trigger cdlidsound
+                frame 100 02
+                frame 100 03
+                frame 100 04
+                triggerdelay 800 portalaffect
+
+if cdlidsound then
+         playsound "cdplayer.wav" cdlid 2 3 10
+
+if portalaffect then
+        playsound "ArmyMenPortal.wav" portal 16 2 1 30,
+        setobjstate portal portal_startup
+
+
+object portal
+        state portal_initial
+                frame 10 0
+
+        state portal_startup
+                frame 100 1
+                frame 100 2
+                frame 100 3
+                frame 100 4
+                frame 100 5
+                frame 100 6
+                frame 100 7
+                frame 100 7
+                setobjstate portal portal_active
+
+        state portal_active
+                frame 100 4
+                frame 100 5
+                frame 100 6
+                frame 100 7
+                frame 100 7
+                setobjstate portal portal_active
+
+
+
+//**Popcorn Macro/setup**//
+
+macro popcorn 1
+{
+
+if killed pop@1 then
+         setobjstate pop@1 pop@1_popping
+
+
+
+
+object pop@1
+        state pop@1_initial
+                frame 50 00
+
+        state pop@1_popping
+                frame 100 02
+                frame 100 03
+                frame 100 04
+                frame 100 05
+                frame 100 06
+                setobjstate pop@1 pop@1_final
+
+        state pop@1_final
+		frame 70 07
+
+}
+
+expand popcorn ( 1 )
+expand popcorn ( 2 )
+expand popcorn ( 3 )
+expand popcorn ( 4 )
+expand popcorn ( 5 )
+expand popcorn ( 6 )
+expand popcorn ( 7 )
+expand popcorn ( 8 )
+expand popcorn ( 9 )
+expand popcorn ( 10 )
+expand popcorn ( 11 )
+expand popcorn ( 12 )
+expand popcorn ( 13 )
+expand popcorn ( 14 )
+expand popcorn ( 15 )
+expand popcorn ( 16 )
+expand popcorn ( 17 )
+expand popcorn ( 18 )
+expand popcorn ( 19 )
+expand popcorn ( 20 )
+expand popcorn ( 21 )
+expand popcorn ( 22 )
+expand popcorn ( 23 )
+expand popcorn ( 24 )
+expand popcorn ( 25 )
+expand popcorn ( 26 )
+
+
+//**Remote Control Setup**//
+
+if hit remote by green testvar remotevar = 0 then
+        triggerdelay 100 change01
+
+if change01 then
+        playsound "TVSwitch.wav" remote 2 1 10,
+        setobjstate Remotelights light_signal,
+        playsound "" soundpower 3 3 1 2350,
+        setobjstate tvscreen screen_blue,
+        triggerdelay 2000 setthevariable,
+	setvar relights 1
+
+if setthevariable then
+        setvar remotevar 10
+
+if hit remote by green testvar remotevar = 10 then
+        triggerdelay 100 change02
+
+if change02 then
+        playsound "TVSwitch.wav" remote 2 2 10,
+        setobjstate Remotelights light_signal,
+        setobjstate tvscreen screen_snow,
+        playsound "TVSnow.wav" soundpower 3 3 1 2350,
+        triggerdelay 2000 setthevariable02,
+        setvar relights 1
+
+if setthevariable02 then
+        setvar remotevar 1
+
+if hit remote by green testvar remotevar = 1 then
+        triggerdelay 100 change03
+
+if change03 then
+        playsound "TVSwitch.wav" remote 2 3 10,
+        setobjstate Remotelights light_signal,
+        setobjstate tvscreen screen_initial,
+        playsound "" soundpower 3 3 1 2350,
+        triggerdelay 2000 setthevariable03,
+        setvar relights 1
+
+if setthevariable03 then
+        setvar remotevar 0
+
+object Remotelights
+        state light_initial
+                frame 50 00
+
+        state light_signal
+                frame 50 01
+                frame 300 00
+                frame 50 01
+                frame 50 00
+                setvar relights 0
+
+object tvscreen
+        state screen_initial
+                frame 10 10
+
+        state screen_blue
+                frame 500 00
+                frame 500 01
+                frame 500 01
+                trigger reloopblue
+
+        state screen_snow
+                frame 50 05
+                frame 50 06
+                frame 50 07
+                frame 50 08
+                frame 50 08
+                trigger reloopsnow
+
+if reloopblue then
+        setobjstate tvscreen screen_blue
+
+if reloopsnow then
+        setobjstate tvscreen screen_snow
+
+
+

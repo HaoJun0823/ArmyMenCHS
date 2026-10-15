@@ -9,6 +9,10 @@ dist/
 build_out_am2/
 stage_am2/
 
+# 3 代（太空玩具）的对应产物
+build_out_am3/
+stage_am3/
+
 # BMP 对比核对材料（由 Tools/bmp_*_am2.py 生成，可随时重跑）
 _bmp_cmp/
 
@@ -61,6 +65,7 @@ ipch/
 _work/
 _vr/
 _backup_deployed/
+_trash/
 
 # 逐个备份/对比用的散落文件（下划线前缀）
 _bak_*.dat

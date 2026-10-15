@@ -57,6 +57,33 @@ PROJECTS = {
         ],
         "includes": ["src", "."],
     },
+    "Army3_Extend_Dll": {
+        # 3 代源码同样在 src\。
+        # ★ 与 2 代的差异：没有 strings.cpp / codepatch.cpp
+        #   —— 3 代的界面文本全在游戏自己的 strings\strings.txt，
+        #   不需要内存字符串补丁与译文表（见 dllmain.cpp 的设计要点）。
+        # 源码清单必须与 Army3_Extend_Dll.vcxproj 的 <ClCompile> **完全一致**。
+        #   ★ 漏一个会怎样（两类都会让 CI 直接红，不是"参考清单"）：
+        #     · 漏 .cpp -> 链接期 LNK2019 无法解析的外部符号
+        #       （hooks.cpp 无条件调用 MpUnlockInstall / MpUnlockRemove，
+        #        它们的实现在 src\mpunlock.cpp）
+        #     · 漏被 #include 的头 -> 编译期 C1083 无法打开包括文件
+        #   vcxproj 与这份清单是两处独立维护的同一事实，改一处必须改另一处。
+        "sources": [
+            "dllmain.cpp",
+            r"src\hooks.cpp",
+            r"src\mpunlock.cpp",
+            r"src\hzk16.cpp",
+            r"src\log.cpp",
+            r"src\renderer.cpp",
+            r"src\target.cpp",
+        ],
+        # ★ includes 里 **不需要** 加 "src"：3 代源码的头文件引用一律写成
+        #   "src\hooks.h"（dllmain.cpp）或 "hooks.h"（src/ 内部互引）。
+        #   后者靠"包含当前文件所在目录"即可解析；前者相对工程根。
+        #   这里加 "." 是为了 pch.h / framework.h 在工程根也能被找到。
+        "includes": ["."],
+    },
 }
 
 PROJ = "Army1_Extend_Dll"

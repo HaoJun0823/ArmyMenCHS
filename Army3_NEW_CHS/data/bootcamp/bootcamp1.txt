@@ -1,0 +1,929 @@
+//--Pads--//
+
+//--gauntlet pads--//
+pad gauntletactive      50      greensarge1 > 0
+pad gauntletnotactive	51      greensarge1 > 0
+pad healjeep1		51      jeep1 > 0
+pad healhalftrack1	51      halftrack1 > 0
+pad healtank1		51      tank1 > 0
+pad healtruck1		51      truck1 > 0
+pad transtroops1        40      transtrooperrescue1 > 0
+pad transtroops2        40      transtrooperrescue2 > 0
+pad transtroops3        40      transtrooperrescue3 > 0
+
+
+//--sign pads--//
+pad entrysign		101      greensarge1 > 0
+pad shortrangesign      102      greensarge1 > 0
+pad shortlongrangesign	103      greensarge1 > 0
+pad longrangesign       104      greensarge1 > 0
+pad longmediumrangesign	105      greensarge1 > 0
+pad mediumrangesign	106      greensarge1 > 0
+pad unitareasign	107      greensarge1 > 0
+pad flamersign		108      greensarge1 > 0
+pad grenadiersign	109      greensarge1 > 0
+pad riflemansign	110      greensarge1 > 0
+pad bazookamansign	111      greensarge1 > 0
+pad mortarmansign	112      greensarge1 > 0
+pad duelingsign		113      greensarge1 > 0
+pad smallbattlesign	114      greensarge1 > 0
+pad squadingsign	115      greensarge1 > 0
+pad squad1sign		116      greensarge1 > 0
+pad squad2sign		117      greensarge1 > 0
+pad squad3sign		118      greensarge1 > 0
+pad squadvehiclessign	119      greensarge1 > 0
+pad vehiclessign	120      greensarge1 > 0
+pad turretingsign	121      greensarge1 > 0
+pad slalomsign		122      greensarge1 > 0
+pad gauntletsign	123      greensarge1 > 0
+pad battle1sign		124      greensarge1 > 0
+pad battle2sign		125      greensarge1 > 0
+pad battle3sign		126      greensarge1 > 0
+pad battle4sign		127      greensarge1 > 0
+pad exitsign		128      greensarge1 > 0
+
+
+//--target pads--//
+pad targetjeep1turn1		150      targetjeep1 > 0
+pad targetjeep1turn2		151      targetjeep1 > 0
+pad targettrooper1turn1 	152      targettrooper1 > 0
+pad targettrooper1turn2 	153      targettrooper1 > 0
+pad targettank1turn1		154      targettank1 > 0
+pad targettank1turn2		155      targettank1 > 0
+pad targetjeep2turn1		156      targetjeep2 > 0
+pad targetjeep2turn2		157      targetjeep2 > 0
+pad targettank6turn1		158      targettank6 > 0
+pad targettank6turn2		159      targettank6 > 0
+pad targettrooper10turn1 	160      targettrooper10 > 0
+pad targettrooper10turn2 	161      targettrooper10 > 0
+pad targettrooper11turn1 	162      targettrooper11 > 0
+pad targettrooper11turn2 	163      targettrooper11 > 0
+pad targettrooper12turn1 	164      targettrooper12 > 0
+pad targettrooper12turn2 	165      targettrooper12 > 0
+pad targettrooper8turn1 	166      targettrooper8 > 0
+pad targettrooper8turn2 	167      targettrooper8 > 0
+pad targettrooper9turn1 	168      targettrooper9 > 0
+pad targettrooper9turn2 	169      targettrooper9 > 0
+pad targettrooper3turn1 	170      targettrooper3 > 0
+pad targettrooper3turn2 	171      targettrooper3 > 0
+pad targettrooper3turn3 	172      targettrooper3 > 0
+pad targettrooper8turn3 	173      targettrooper8 > 0
+pad shortammo			55      greensarge1 > 0
+pad mediumammo			56      greensarge1 > 0
+pad longammo			57      greensarge1 > 0
+pad mineregen			58      greensarge1 > 0
+
+
+//--unit pads--//
+pad enterthedragon      200     green trooper > 0
+pad enemyflamertest     201     green trooper > 0
+pad enemyrifletest      202     green trooper > 0
+pad enemybaztest        203     green trooper > 0
+pad enemymortartest     204     green trooper > 0
+pad exitthedragon	205     green trooper > 0
+pad startlittlebighorn	206     green trooper > 0
+pad endlittlebighorn	207     green trooper > 0
+
+//--vehicle pads--//
+pad gauntletstart	208     green trooper > 0
+pad gauntletend		209     green trooper > 0
+
+//--battle pads--//
+pad battle1start	210     green trooper > 0
+pad battle1end		211     green trooper > 0
+pad battle2start	212     green trooper > 0
+pad battle2end		213     green trooper > 0
+pad battle3start	214     green trooper > 0
+pad battle3end		215     green trooper > 0
+pad battle4start	216     green trooper > 0
+pad battle4end		217     green trooper > 0
+pad exitstageleft	218     greensarge1 > 0
+
+//--raise zone pads--//
+pad raisezone2              252		green trooper > 0
+pad raisezone3              253		green trooper > 0
+pad raisezone4              254		green trooper > 0
+
+//--resurrection pads--//
+pad respad1			221
+pad respad2			222
+pad respad3			223
+pad respad4			224
+
+//--variables--//
+
+variable raisezone		1
+
+//--Start--//
+if startup1 then
+	inactivateregion 24,
+	inactivateregion 255,
+	setaimode greensarge1 ignore,
+        triggerdelay 100 gstart
+
+if gstart then
+        trigger targetpractice,
+        trigger unitpractice,
+        trigger vehiclesection,
+        trigger battlesection,
+        triggerdelay 100 briefing
+
+//--Win condition--//
+if padon exitstageleft then
+	triggerdelay 1000 greenwins
+
+//--Resurrection--//
+
+if padon raisezone2 testvar raisezone = 1 then
+        addvar raisezone 1
+
+if padon raisezone3 testvar raisezone = 2 then
+	setnpc alpha 1,
+	setnpc baker 1,
+	setnpc charlie 1,
+	setnpc delta 1,
+	setnpc echo 1,
+	setnpc foxtrot 1,
+	setnpc x-ray 1,
+	setnpc yankee 1,
+	setnpc zulu 1,
+        order alpha goto (3060,1070),
+        order baker goto (3160,1020),
+        order charlie goto (3060,970),
+        order delta goto (3320,800),
+        order echo goto (3430,900),
+        order foxtrot goto (3320,900),
+        order x-ray goto (3370,700),
+        order yankee goto (3460,650),
+        order zulu goto (3550,700),
+        addvar raisezone 1
+
+if padon raisezone4 testvar raisezone = 3 then
+        addvar raisezone 1
+
+macro dudesdead 1
+// @1 = name of trooper //
+{
+
+if killed @1 then
+        triggerdelay 3000 raise@1
+
+}
+
+expand dudesdead (crispy)
+expand dudesdead (lobby)
+expand dudesdead (bangy)
+expand dudesdead (smokey)
+expand dudesdead (boomy)
+
+if killed greensarge1 then
+	setcamerafocus greensarge1,
+        setuilock 1,
+        triggerdelay 10 deathpda,
+	triggerdelay 2800 freelock,
+        triggerdelay 3000 raisegreensarge1
+
+if deathpda then
+        showpda "你没有通过这个区域，再试一次。"
+
+if freelock then
+        setuilock 0,
+	restorecamerafocus
+
+macro raisethedead 1
+// @1 = name of trooper //
+{
+
+if raise@1 testvar raisezone = 1 then
+        resurrect @1 respad1
+
+if raise@1 testvar raisezone = 2 then
+        resurrect @1 respad2
+
+if raise@1 testvar raisezone = 3 then
+        resurrect @1 respad3
+
+if raise@1 testvar raisezone = 4 then
+        resurrect @1 respad4
+
+}
+expand raisethedead (greensarge1)
+expand raisethedead (crispy)
+expand raisethedead (lobby)
+expand raisethedead (bangy)
+expand raisethedead (smokey)
+expand raisethedead (boomy)
+
+
+
+//--sign pads--//
+if briefing then
+        playsound "HQ_Bootcamp.wav" 1 1
+
+if padon entrysign then
+        showbitmap "bcs001.bmp"
+
+if padon shortrangesign then
+        showbitmap "bcs003.bmp"
+
+if padon shortlongrangesign then
+        showbitmap "bcs004.bmp"
+
+if padon longrangesign then
+        showbitmap "bcs005.bmp"
+
+//if padon longmediumrangesign then
+//        showbitmap "bcs006.bmp"
+
+if padon mediumrangesign then
+        showbitmap "bcs006.bmp"
+
+if padon unitareasign then
+        showbitmap "bcs007.bmp"
+
+if padon flamersign then
+        showbitmap "bcs027.bmp",
+//      setaipose Crispy stand,
+        setnpc Crispy 0
+
+if padon grenadiersign then
+        showbitmap "bcs008.bmp",
+//      setaipose Lobby stand,
+        setnpc Lobby 0
+
+if padon riflemansign then
+        showbitmap "bcs009.bmp",
+//      setaipose Bangy stand,
+        setnpc Bangy 0
+
+if padon bazookamansign then
+        showbitmap "bcs010.bmp",
+//      setaipose Smokey stand,
+        setnpc Smokey 0
+
+if padon mortarmansign then
+        showbitmap "bcs011.bmp",
+//      setaipose Boomy stand,
+        setnpc Boomy 0
+
+if padon duelingsign then
+        showbitmap "bcs012.bmp"
+
+if padon smallbattlesign then
+        showbitmap "bcs013.bmp"
+
+if padon squadingsign then
+        showbitmap "bcs014.bmp"
+
+if padon squad1sign then
+	setnpc alpha 0,
+	setnpc baker 0,
+	setnpc charlie 0,
+        showbitmap "bcs015.bmp"
+
+if padon squad2sign then
+	setnpc alpha 1,
+	setnpc baker 1,
+	setnpc charlie 1,
+	setnpc delta 0,
+	setnpc echo 0,
+	setnpc foxtrot 0,
+        showbitmap "bcs016.bmp"
+
+if padon squad3sign then
+	setnpc delta 1,
+	setnpc echo 1,
+	setnpc foxtrot 1,
+	setnpc x-ray 0,
+	setnpc yankee 0,
+	setnpc zulu 0,
+        showbitmap "bcs017.bmp"
+
+// pad 119 //
+if padon squadvehiclessign then
+	setnpc alpha 1,
+	setnpc baker 1,
+	setnpc charlie 1,
+	setnpc delta 1,
+	setnpc echo 1,
+	setnpc foxtrot 1,
+	setnpc x-ray 1,
+	setnpc yankee 1,
+	setnpc zulu 1
+//        showbitmap "bcs020.bmp"
+
+if padon vehiclessign then
+        showbitmap "bcs018.bmp"
+
+if padon turretingsign then
+        showbitmap "bcs019.bmp"
+
+if padon slalomsign then
+        showbitmap "bcs020.bmp"
+
+if padon gauntletsign then
+        showbitmap "bcs021.bmp"
+
+if padon battle1sign then
+        showbitmap "bcs022.bmp"
+
+if padon battle2sign then
+        showbitmap "bcs023.bmp"
+
+if padon battle3sign then
+        showbitmap "bcs024.bmp"
+
+if padon battle4sign then
+        showbitmap "bcs025.bmp"
+
+if padon exitsign then
+        showbitmap "bcs026.bmp",
+        playsound "HQ_Congratulations.wav" 1 1
+
+
+//--Target practice area--//
+
+if targetpractice then
+        trigger makepowerups,
+        trigger shorttargetsetup,
+        trigger longtargetsetup,
+        trigger mediumtargetsetup
+
+//--Short Range Area--//
+
+if shorttargetsetup then
+		createunit "targettank1" tank (570,2860) tan largecannon,
+		setfacing targettank1 160,
+		setaimode targettank1 ignore,
+		order targettank1 goto targettank1turn2,
+//		createunit "targetjeep1" jeep (180,2560) tan mediumMG,
+//		setfacing targetjeep1 128,
+//		setaimode targetjeep1 ignore,
+//		order targetjeep1 goto targetjeep1turn2,
+		createunit "targettrooper1" rifleman (850,3135) tan rifle,
+		setfacing targettrooper1 32,
+		setaimode targettrooper1 ignore,
+		order targettrooper1 goto targettrooper1turn1
+
+if padon targettrooper1turn1 then
+	order targettrooper1 goto targettrooper1turn2
+
+if padon targettrooper1turn2 then
+	order targettrooper1 goto targettrooper1turn1
+
+if padon targetjeep1turn1 then
+	order targetjeep1 goto targetjeep1turn2
+
+if padon targetjeep1turn2 then
+	order targetjeep1 goto targetjeep1turn1
+
+if padon targettank1turn1 then
+	order targettank1 goto targettank1turn2
+
+if padon targettank1turn2 then
+	order targettank1 goto targettank1turn1
+
+//--Long Range Area--//
+
+if longtargetsetup then
+		createunit "targettrooper2" rifleman (1020,1400) tan rifle 1 1,
+		setfacing targettrooper2 128,
+		setaimode targettrooper2 ignore,
+		createunit "targettrooper3" rifleman (1040,3020) tan rifle 1 1,
+		setfacing targettrooper3 0,
+		setaimode targettrooper3 ignore,
+		order targettrooper3 goto targettrooper3turn2,
+		createunit "targettrooper4" rifleman (400,2450) tan rifle 1 1,
+		setfacing targettrooper4 224,
+		setaimode targettrooper4 ignore,
+		createunit "targettrooper5" rifleman (1380,2720) tan rifle 1 1,
+		setfacing targettrooper5 0,
+		setaimode targettrooper5 ignore,
+		createunit "targettrooper6" rifleman (1250,1560) tan rifle 1 1,
+		setfacing targettrooper6 128,
+		setaimode targettrooper6 ignore,
+		createunit "targettrooper7" rifleman (380,1940) tan rifle 1 1,
+		setfacing targettrooper7 160,
+		setaimode targettrooper7 ignore,
+		createunit "targettrooper8" rifleman (550,2060) tan rifle 1 1,
+		setfacing targettrooper8 128,
+		setaimode targettrooper8 ignore,
+		order targettrooper8 goto targettrooper8turn2,
+		createunit "targettrooper9" rifleman (900,1580) tan rifle 1 1,
+		setfacing targettrooper9 128,
+		setaimode targettrooper9 ignore,
+		order targettrooper9 goto targettrooper9turn2,
+		createunit "targetjeep3" jeep (1340,1960) tan,
+		setfacing targetjeep3 32,
+		setaimode targetjeep3 ignore,
+		createunit "targetjeep4" jeep (915,2405) tan,
+		setfacing targetjeep4 192,
+		setaimode targetjeep4 ignore,
+		createunit "targethtrack1" halftrack (1230,2460) tan,
+		setfacing targethtrack1 224,
+		setaimode targethtrack1 ignore,
+		createunit "targettruck1" convoy (840,1940) tan,
+		setfacing targettruck1 224,
+		setaimode targettruck1 ignore,
+		createunit "targettruck2" convoy (1720,2290) tan,
+		setfacing targettruck2 64,
+		setaimode targettruck2 ignore,
+		createunit "targettank2" tank (380,2210) tan,
+		setfacing targettank2 192,
+		setaimode targettank2 ignore,
+		createunit "targettank3" tank (685,1825) tan,
+		setfacing targettank3 96,
+		setaimode targettank3 ignore,
+		createunit "targettank4" tank (850,2730) tan,
+		setfacing targettank4 0,
+		setaimode targettank4 ignore,
+		createunit "targettank5" tank (1570,1900) tan,
+		setfacing targettank5 96,
+		setaimode targettank5 ignore
+
+if padon targettrooper3turn1 then
+	order targettrooper3 goto targettrooper3turn2
+
+if padon targettrooper3turn2 then
+	order targettrooper3 goto targettrooper3turn3
+
+if padon targettrooper3turn3 then
+	order targettrooper3 goto targettrooper3turn1
+
+if padon targettrooper8turn1 then
+	order targettrooper8 goto targettrooper8turn2
+
+if padon targettrooper8turn2 then
+	order targettrooper8 goto targettrooper8turn3
+
+if padon targettrooper8turn3 then
+	order targettrooper8 goto targettrooper8turn1
+
+if padon targettrooper9turn1 then
+	order targettrooper9 goto targettrooper9turn2
+
+if padon targettrooper9turn2 then
+	order targettrooper9 goto targettrooper9turn1
+
+//--Medium Range Area--//
+
+if mediumtargetsetup then
+		createvehicle "targettank6" tank (602,1085) tan,
+		setfacing targettank6 160,
+		setaimode targettank6 ignore,
+//		order targettank6 goto targettank6turn2,
+		createvehicle "targetjeep2" jeep (200,840) tan,
+		setfacing targetjeep2 128,
+		setaimode targetjeep2 ignore,
+		order targetjeep2 goto targetjeep2turn2,
+		createunit "targettrooper10" rifleman (250,1830) tan rifle 1 1,
+		setfacing targettrooper10 224,
+		setaimode targettrooper10 ignore,
+		order targettrooper10 goto targettrooper10turn2,
+		createunit "targettrooper11" rifleman (280,1830) tan rifle 1 1,
+		setfacing targettrooper11 224,
+		setaimode targettrooper11 ignore,
+		order targettrooper11 goto targettrooper11turn2,
+		createunit "targettrooper12" rifleman (250,1860) tan rifle 1 1,
+		setfacing targettrooper12 224,
+		setaimode targettrooper12 ignore,
+		order targettrooper12 goto targettrooper12turn2
+
+// if padon targettank6turn1 then
+//	order targettank6 goto targettank6turn2
+
+// if padon targettank6turn2 then
+//	order targettank6 goto targettank6turn1
+
+if padon targetjeep2turn1 then
+	order targetjeep2 goto targetjeep2turn2
+
+if padon targetjeep2turn2 then
+	order targetjeep2 goto targetjeep2turn1
+
+if padon targettrooper10turn1 then
+	order targettrooper10 goto targettrooper10turn2
+
+if padon targettrooper10turn2 then
+	order targettrooper10 goto targettrooper10turn1
+
+if padon targettrooper11turn1 then
+	order targettrooper11 goto targettrooper11turn2
+
+if padon targettrooper11turn2 then
+	order targettrooper11 goto targettrooper11turn1
+
+if padon targettrooper12turn1 then
+	order targettrooper12 goto targettrooper12turn2
+
+if padon targettrooper12turn2 then
+	order targettrooper12 goto targettrooper12turn1
+
+//--Ammo creation/regen macro--//
+
+macro ammoregen 4
+// @1 = item name, @2 = item type, @3 = x coord, @4 = y coord //
+{
+if makepowerups then
+        createpowerup @1 @2 (@3,@4) 99
+
+if pickedup @1 then
+        triggerdelay 30000 regen@1
+
+if regen@1 then
+        createpowerup @1 @2 (@3,@4) 99
+
+}
+expand ammoregen (flam flamer 216 3774)
+expand ammoregen (min mine 221 3704)
+expand ammoregen (snipe sniper 1035 2222)
+expand ammoregen (mort mortar 994 2254)
+expand ammoregen (gren grenade 529 1295)
+expand ammoregen (baz bazooka 480 1330)
+
+//--Unit practice area--//
+
+if unitpractice then
+	createunit "Crispy" flamerman (245,475) green flamer 1 1,
+	setfacing Crispy 96,
+	setaimode Crispy ignore,
+//      setaipose Crispy kneel,
+	setnpc Crispy 1,
+	createunit "Lobby" grenadier (340,440) green grenade 1 1,
+	setfacing Lobby 96,
+	setaimode Lobby ignore,
+//      setaipose Lobby kneel,
+	setnpc Lobby 1,
+	createunit "Bangy" rifleman (430,405) green rifle 1 1,
+	setfacing Bangy 96,
+	setaimode Bangy ignore,
+//      setaipose Bangy kneel,
+	setnpc Bangy 1,
+	createunit "Smokey" bazookaman (525,370) green bazooka 1 1,
+	setfacing Smokey 96,
+	setaimode Smokey ignore,
+//      setaipose Smokey kneel,
+	setnpc Smokey 1,
+	createunit "Boomy" mortarman (620,335) green mortar 1 1,
+	setfacing Boomy 96,
+	setaimode Boomy ignore,
+//      setaipose Boomy kneel,
+	setnpc Boomy 1,
+	createunit "Alpha" rifleman (3060,1070) green rifle 1 2,
+	setfacing alpha 96,
+	setaimode alpha ignore,
+	setnpc alpha 1,
+	createunit "Baker" rifleman (3160,1020) green rifle 1 3,
+	setfacing baker 160,
+	setaimode baker ignore,
+	setnpc baker 1,
+	createunit "Charlie" rifleman (3060,970) green rifle 1 4,
+	setfacing charlie 0,
+	setaimode charlie ignore,
+	setnpc charlie 1,
+	createunit "Delta" rifleman (3320,800) green rifle 1 2,
+	setfacing delta 160,
+	setaimode delta ignore,
+	setnpc delta 1,
+	createunit "Echo" rifleman (3430,900) green rifle 1 3,
+	setfacing echo 32,
+	setaimode echo ignore,
+	setnpc echo 1,
+	createunit "Foxtrot" rifleman (3320,900) green rifle 1 6,
+	setfacing foxtrot 224,
+	setaimode foxtrot ignore,
+	setnpc foxtrot 1,
+	createunit "X-ray" rifleman (3370,700) green rifle 1 3,
+	setfacing x-ray 208,
+	setaimode x-ray ignore,
+	setnpc x-ray 1,
+	createunit "Yankee" rifleman (3460,650) green rifle 1 3,
+	setfacing yankee 128,
+	setaimode yankee ignore,
+	setnpc yankee 1,
+	createunit "Zulu" rifleman (3550,700) green rifle 1 3,
+	setfacing zulu 48,
+	setaimode zulu ignore,
+	setnpc zulu 1,
+
+
+//--Tan units--//
+
+	createunit "enemygren1" grenadier (1060,1200) tan grenade 1 1,
+	setfacing enemygren1 32,
+	setaimode enemygren1 ignore,
+	createunit "enemygren2" grenadier (1220,1330) tan grenade 1 1,
+	setfacing enemygren2 32,
+	setaimode enemygren2 ignore,
+	createunit "enemygren3" grenadier (1340,1340) tan grenade 1 1,
+	setfacing enemygren3 32,
+	setaimode enemygren3 ignore,
+	createunit "enemyflamer1" flamerman (1300,900) tan flamer 1 1,
+	setfacing enemyflamer1 160,
+	setaimode enemyflamer1 ignore,
+	createunit "enemyflamer2" flamerman (1270,800) tan flamer 1 1,
+	setfacing enemyflamer2 128,
+	setaimode enemyflamer2 ignore,
+	createunit "enemyflamer3" flamerman (1070,750) tan flamer 1 1,
+	setfacing enemyflamer3 160,
+	setaimode enemyflamer3 ignore,
+	createunit "enemyrifle1" rifleman (1680,870) tan rifle 1 1,
+	setfacing enemyrifle1 32,
+	setaimode enemyrifle1 ignore,
+	createunit "enemyrifle2" rifleman (1680,930) tan rifle 1 1,
+	setfacing enemyrifle2 32,
+	setaimode enemyrifle2 ignore,
+	createunit "enemyrifle3" rifleman (1740,870) tan rifle 1 1,
+	setfacing enemyrifle3 32,
+	setaimode enemyrifle3 ignore,
+	createunit "enemybaz1" bazookaman (1550,400) tan bazooka 1 1,
+	setfacing enemybaz1 160,
+	setaimode enemybaz1 ignore,
+	createunit "enemybaz2" bazookaman (1610,400) tan bazooka 1 1,
+	setfacing enemybaz2 160,
+	setaimode enemybaz2 ignore,
+	createunit "enemybaz3" bazookaman (1550,460) tan bazooka 1 1,
+	setfacing enemybaz3 160,
+	setaimode enemybaz3 ignore,
+	createunit "enemymortar1" mortarman (2080,160) tan mortar 1 1,
+	setfacing enemymortar1 80,
+	setaimode enemymortar1 ignore,
+	createunit "enemymortar2" mortarman (2220,400) tan mortar 1 1,
+	setfacing enemymortar2 64,
+	setaimode enemymortar2 ignore,
+	createunit "enemymortar3" mortarman (2690,160) tan mortar 1 1,
+	setfacing enemymortar3 80,
+	setaimode enemymortar3 ignore,
+	createunit "enemyjeep" jeep (2970,320) tan mediumMG 1 1,
+	setfacing enemyjeep 96,
+	setaimode enemyjeep ignore,
+	createunit "enemytank" tank (3220,430) tan largecannon 1 1,
+	setfacing enemytank 64,
+	setaimode enemytank ignore,
+
+//--small battle--//
+
+	createunit "sbflamer1" flamerman (2200,1620) tan flamer,
+        setfacing sbflamer1 32,
+        setaimode sbflamer1 ignore,
+	createunit "sbgren1" grenadier (2090,1110) tan grenade,
+        setfacing sbgren1 224,
+        setaimode sbgren1 ignore,
+	createunit "sbrifle1" rifleman (1920,1290) tan rifle,
+        setfacing sbrifle1 224,
+        setaimode sbrifle1 ignore,
+	createunit "sbrifle2" rifleman (2110,1410) tan rifle,
+        setfacing sbrifle2 0,
+        setaimode sbrifle2 ignore,
+	createunit "sbrifle3" rifleman (1550,1510) tan rifle,
+        setfacing sbrifle3 208,
+        setaimode sbrifle3 ignore,
+	createunit "sbmortar1" mortarman (2310,1840) tan mortar,
+        setfacing sbmortar1 16,
+        setaimode sbmortar1 ignore,
+	createunit "sbbaz1" bazookaman (2470,1430) tan bazooka,
+        setfacing sbbaz1 112,
+        setaimode sbbaz1 ignore
+
+if padon enterthedragon then
+        setaimode enemygren1 defend,
+        setaimode enemygren2 defend,
+        setaimode enemygren3 defend
+
+if padon enemyflamertest then
+        setaimode enemygren1 ignore,
+        setaimode enemygren2 ignore,
+        setaimode enemygren3 ignore,
+        setaimode enemyflamer1 defend,
+        setaimode enemyflamer2 defend,
+        setaimode enemyflamer3 defend
+
+if padon enemyrifletest then
+        setaimode enemyflamer1 ignore,
+        setaimode enemyflamer2 ignore,
+        setaimode enemyflamer3 ignore,
+        setaimode enemyrifle1 defend,
+        setaimode enemyrifle2 defend,
+        setaimode enemyrifle3 defend
+
+if padon enemybaztest then
+        setaimode enemyrifle1 ignore,
+        setaimode enemyrifle2 ignore,
+        setaimode enemyrifle3 ignore,
+        setaimode enemybaz1 defend,
+        setaimode enemybaz2 defend,
+        setaimode enemybaz3 defend
+
+if padon enemymortartest then
+        setaimode enemybaz1 ignore,
+        setaimode enemybaz2 ignore,
+        setaimode enemybaz3 ignore,
+        setaimode enemymortar1 defend,
+        setaimode enemymortar2 defend,
+        setaimode enemymortar3 defend,
+        setaimode enemyjeep attack,
+        setaimode enemytank attack
+
+if padon exitthedragon then
+        setaimode enemymortar1 ignore,
+        setaimode enemymortar2 ignore,
+        setaimode enemymortar3 ignore,
+        setaimode enemyjeep ignore,
+        setaimode enemytank ignore
+
+if padon startlittlebighorn then
+        setaimode sbflamer1 defend,
+        setaimode sbgren1 defend,
+        setaimode sbrifle1 defend,
+        setaimode sbrifle2 defend,
+        setaimode sbrifle3 defend,
+        setaimode sbmortar1 defend,
+        setaimode sbbaz1 defend
+
+if padon endlittlebighorn then
+        setaimode sbflamer1 ignore,
+        setaimode sbgren1 ignore,
+        setaimode sbrifle1 ignore,
+        setaimode sbrifle2 ignore,
+        setaimode sbrifle3 ignore,
+        setaimode sbmortar1 ignore,
+        setaimode sbbaz1 ignore
+
+
+//--Vehicle section--//
+
+if vehiclesection then
+        trigger makerides,
+        trigger slalom,
+        trigger gauntlet
+
+if makerides then
+        createunit "greentank1" tank (3610,1170) green largecannon,
+        setfacing greentank1 224,
+        createunit "greenjeep1" jeep (3910,1050) green mediumMG,
+        setfacing greenjeep1 96,
+        createunit "greentruck1" convoy (3630,1020) green,
+        setfacing greentruck1 160,
+        createunit "greenhtrack1" halftrack (3710,960) green heavyMG,
+        setfacing greenhtrack1 160
+
+
+macro gaunt 6
+// @1 = unit #, @2 = x coord, @3 = y coord, @4 = troop type, //
+// @5 = weapon, @6 = facing  //
+{
+
+if gauntlet then
+	createunit gauntlet@1 @4 (@2,@3) tan @5,
+	setfacing gauntlet@1 @6,
+	setaimode gauntlet@1 ignore
+
+if padon gauntletstart then
+	setaimode gauntlet@1 standfire
+
+if padon gauntletend then
+	setaimode gauntlet@1 ignore
+
+}
+
+expand gaunt (1 3340 2570 flamerman flamer 160)
+expand gaunt (2 3270 2830 grenadier grenade 224)
+expand gaunt (3 2870 2740 mortarman mortar 192)
+expand gaunt (4 3170 3000 bazookaman bazooka 0)
+expand gaunt (5 3300 2425 bazookaman bazooka 144)
+expand gaunt (6 3530 3060 rifleman rifle 32)
+expand gaunt (7 3440 3100 rifleman rifle 32)
+
+macro slal 3
+
+{
+
+if slalom then
+	createunit slalom@1 rifleman (@2,@3) tan rifle,
+        setaimode slalom@1 ignore
+
+}
+
+expand slal (1 3330 1910)
+expand slal (2 3340 2020)
+expand slal (3 3500 1890)
+expand slal (4 3650 1880)
+expand slal (5 3640 1770)
+expand slal (6 3710 1560)
+expand slal (7 3890 1830)
+expand slal (8 3790 1980)
+expand slal (9 3780 2110)
+expand slal (10 3770 2230)
+expand slal (11 3620 2250)
+
+//--Battle section--//
+
+if battlesection then
+        trigger makebattle1,
+        trigger makebattle2,
+        trigger makebattle3,
+        trigger makebattle3rides,
+        trigger makebattle4
+
+if makebattle3rides then
+	createunit "BattleTanx" tank (2539,3513) green largecannon,
+        setfacing BattleTanx 160,
+	createunit "Golf_Cart" jeep (2670,3690) green mediumMG,
+        setfacing Golf_Cart 224
+
+macro makebattle1units 6
+// @1 = unit name, @2 = unit type, @3 = x coord, @4 = y coord, //
+// @5 = weapon, @6 = facing //
+{
+if makebattle1 then
+	createunit @1 @2 (@3,@4) tan @5,
+        setfacing @1 @6,
+        setaimode @1 ignore
+
+if padon battle1start then
+        setaimode @1 defend
+
+if padon battle1end then
+        setaimode @1 ignore
+}
+expand makebattle1units (b1flamer1 flamerman 3020 3580 flamer 192)
+expand makebattle1units (b1gren1 grenadier 3090 3510 grenade 192)
+expand makebattle1units (b1baz1 bazookaman 3040 3760 bazooka 224)
+expand makebattle1units (b1rifle1 rifleman 3100 3810 rifle 224)
+
+macro makebattle2units 6
+// @1 = unit name, @2 = unit type, @3 = x coord, @4 = y coord, //
+// @5 = weapon, @6 = facing //
+{
+if makebattle2 then
+	createunit @1 @2 (@3,@4) tan @5,
+        setfacing @1 @6,
+        setaimode @1 ignore
+
+if padon battle2start then
+        setaimode @1 defend
+
+if padon battle2end then
+        setaimode @1 ignore
+}
+expand makebattle2units (b2flamer1 flamerman 2160 3630 flamer 160)
+expand makebattle2units (b2gren1 grenadier 2110 3910 grenade 192)
+expand makebattle2units (b2mortar1 mortarman 2250 3530 mortar 160)
+expand makebattle2units (b2rifle1 rifleman 1910 3620 rifle 160)
+expand makebattle2units (b2rifle2 rifleman 1900 3580 rifle 160)
+expand makebattle2units (b2rifle3 rifleman 1710 3920 rifle 208)
+expand makebattle2units (b2baz1 bazookaman 1790 3840 bazooka 224)
+
+macro makebattle3units 6
+// @1 = unit name, @2 = unit type, @3 = x coord, @4 = y coord, //
+// @5 = weapon, @6 = facing //
+{
+if makebattle3 then
+	createunit @1 @2 (@3,@4) tan @5,
+        setfacing @1 @6,
+        setaimode @1 ignore
+
+if padon battle3start then
+        setaimode @1 defend
+
+if padon battle3end then
+        setaimode @1 ignore
+}
+expand makebattle3units (b3flamer1 flamerman 2400 2980 flamer 208)
+expand makebattle3units (b3gren1 grenadier 2330 3040 grenade 176)
+expand makebattle3units (b3gren2 grenadier 1750 3110 grenade 208)
+expand makebattle3units (b3baz1 bazookaman 2790 3040 bazooka 144)
+expand makebattle3units (b3baz2 bazookaman 1336 3230 bazooka 160)
+expand makebattle3units (b3mortar1 moartarman 2100 2360 mortar 128)
+expand makebattle3units (b3rifle1 rifleman 2120 2840 rifle 160)
+expand makebattle3units (b3rifle2 rifleman 1700 2720 rifle 224)
+expand makebattle3units (b3rifle3 rifleman 1770 2780 rifle 224)
+expand makebattle3units (b3rifle4 rifleman 1080 3280 rifle 192)
+expand makebattle3units (b3rifle5 rifleman 1080 3370 rifle 192)
+expand makebattle3units (b3tank1 tank 2250 2600 largecannon 160)
+expand makebattle3units (b3jeep1 jeep 1870 3420 mediumMG 224)
+
+macro makebattle4units 6
+// @1 = unit name, @2 = unit type, @3 = x coord, @4 = y coord, //
+// @5 = weapon, @6 = facing //
+{
+if makebattle4 then
+	createunit @1 @2 (@3,@4) tan @5,
+        setfacing @1 @6,
+        setaimode @1 ignore
+
+if padon battle4start then
+        setaimode @1 defend
+
+if padon battle4end then
+        setaimode @1 ignore
+}
+expand makebattle4units (b4flamer1 flamerman 1170 3910 flamer 224)
+expand makebattle4units (b4gren1 grenadier 830 3920 grenade 224)
+expand makebattle4units (b4baz1 bazookaman 960 3880 bazooka 224)
+expand makebattle4units (b4rifle1 rifleman 1430 3880 rifle 32)
+expand makebattle4units (b4rifle2 rifleman 1390 3910 rifle 32)
+
+
+
+

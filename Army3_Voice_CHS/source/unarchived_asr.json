@@ -1,0 +1,634 @@
+[
+  {
+    "wav": "AirAttack.wav",
+    "duration_s": 0.99,
+    "asr_en": "an air attack.",
+    "avg_logprob": -0.592,
+    "no_speech_prob": 0.08,
+    "candidate": "voice"
+  },
+  {
+    "wav": "AirRaidSiren.wav",
+    "duration_s": 0.5,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.936,
+    "no_speech_prob": 0.818,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "AlarmKlaxon.wav",
+    "duration_s": 0.55,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.833,
+    "no_speech_prob": 0.792,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "AlienCowDie.wav",
+    "duration_s": 1.1,
+    "asr_en": "RRRRRRRRRRRRRRRRRRRRRRRR",
+    "avg_logprob": -0.785,
+    "no_speech_prob": 0.847,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "AlienCowMoo.wav",
+    "duration_s": 0.69,
+    "asr_en": "RRRRRRRRRRRRRRRRRR",
+    "avg_logprob": -0.773,
+    "no_speech_prob": 0.775,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "AlienDomeClose.wav",
+    "duration_s": 0.14,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.504,
+    "no_speech_prob": 0.898,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "AlienDomeOpen.wav",
+    "duration_s": 0.24,
+    "asr_en": "Bye.",
+    "avg_logprob": -0.902,
+    "no_speech_prob": 0.715,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "AlienGeneratorExplode.wav",
+    "duration_s": 3.52,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.796,
+    "no_speech_prob": 0.747,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "AlienGeneratorHum.wav",
+    "duration_s": 0.61,
+    "asr_en": "you",
+    "avg_logprob": -0.888,
+    "no_speech_prob": 0.756,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "AlienHive.wav",
+    "duration_s": 4.06,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.634,
+    "no_speech_prob": 0.718,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "AlienLaugh.wav",
+    "duration_s": 2.47,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.737,
+    "no_speech_prob": 0.532,
+    "candidate": "voice"
+  },
+  {
+    "wav": "AliensBeam.wav",
+    "duration_s": 1.73,
+    "asr_en": "DRAAAAARGH!",
+    "avg_logprob": -1.216,
+    "no_speech_prob": 0.571,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "AliensBeamingIn.wav",
+    "duration_s": 1.73,
+    "asr_en": "DRAAAAARGH!",
+    "avg_logprob": -1.216,
+    "no_speech_prob": 0.571,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "ArmyMenPortal.wav",
+    "duration_s": 1.56,
+    "asr_en": "This is my life.",
+    "avg_logprob": -0.768,
+    "no_speech_prob": 0.327,
+    "candidate": "voice"
+  },
+  {
+    "wav": "ChipDestroy.wav",
+    "duration_s": 0.22,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.584,
+    "no_speech_prob": 0.822,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "DryerActive.wav",
+    "duration_s": 2.23,
+    "asr_en": "Oh, my God.",
+    "avg_logprob": -0.957,
+    "no_speech_prob": 0.763,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "DryerOff.wav",
+    "duration_s": 1.57,
+    "asr_en": "Subtitles by Subtitle Workshop",
+    "avg_logprob": -0.717,
+    "no_speech_prob": 0.792,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "DryerOn.wav",
+    "duration_s": 0.86,
+    "asr_en": "Wow.",
+    "avg_logprob": -0.824,
+    "no_speech_prob": 0.755,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "EatenByAnts.wav",
+    "duration_s": 2.18,
+    "asr_en": "Ah! Ah! Ah!",
+    "avg_logprob": -0.881,
+    "no_speech_prob": 0.465,
+    "candidate": "voice"
+  },
+  {
+    "wav": "ElectricArc2.wav",
+    "duration_s": 1.22,
+    "asr_en": "Thank you for watching.",
+    "avg_logprob": -0.936,
+    "no_speech_prob": 0.749,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "ElectricArc3.wav",
+    "duration_s": 0.93,
+    "asr_en": "Bye.",
+    "avg_logprob": -0.961,
+    "no_speech_prob": 0.776,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "Grenades.wav",
+    "duration_s": 0.85,
+    "asr_en": "Grenades.",
+    "avg_logprob": -0.492,
+    "no_speech_prob": 0.42,
+    "candidate": "voice"
+  },
+  {
+    "wav": "HQambient.wav",
+    "duration_s": 2.94,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.461,
+    "no_speech_prob": 0.785,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "HQdoor.wav",
+    "duration_s": 0.58,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.608,
+    "no_speech_prob": 0.904,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "LaserTunnel.wav",
+    "duration_s": 11.15,
+    "asr_en": "Yeah",
+    "avg_logprob": -0.864,
+    "no_speech_prob": 0.838,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "MilitaryCadenceFiringLine.wav",
+    "duration_s": 4.13,
+    "asr_en": "BANG BANG BANG BANG BANG BANG BANG BANG",
+    "avg_logprob": -0.705,
+    "no_speech_prob": 0.744,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "PicnicBasketDestroy.wav",
+    "duration_s": 0.96,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.835,
+    "no_speech_prob": 0.82,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "PrisonersDying.wav",
+    "duration_s": 0.34,
+    "asr_en": "Ugh!",
+    "avg_logprob": -0.638,
+    "no_speech_prob": 0.244,
+    "candidate": "voice"
+  },
+  {
+    "wav": "RadioSquelch.wav",
+    "duration_s": 0.31,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "RubberDuckHdOff.wav",
+    "duration_s": 0.53,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "RubberDuckSqueak.wav",
+    "duration_s": 0.43,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.689,
+    "no_speech_prob": 0.773,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "SandBoxExplode.wav",
+    "duration_s": 1.63,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "SandBucketDestroy.wav",
+    "duration_s": 0.46,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.673,
+    "no_speech_prob": 0.773,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "SandwichShoot.wav",
+    "duration_s": 0.8,
+    "asr_en": "BANG!",
+    "avg_logprob": -0.803,
+    "no_speech_prob": 0.776,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "SpaceHQ10_04.wav",
+    "duration_s": 4.45,
+    "asr_en": "Commander, we're not picking up any more aliens. It looks like you got them all.",
+    "avg_logprob": -0.171,
+    "no_speech_prob": 0.03,
+    "candidate": "voice"
+  },
+  {
+    "wav": "SprinklerLong.wav",
+    "duration_s": 11.84,
+    "asr_en": "Thank you.",
+    "avg_logprob": -0.507,
+    "no_speech_prob": 0.484,
+    "candidate": "voice"
+  },
+  {
+    "wav": "TVSnow.wav",
+    "duration_s": 1.0,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.697,
+    "no_speech_prob": 0.665,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "TVSwitch.wav",
+    "duration_s": 0.11,
+    "asr_en": "Thank you.",
+    "avg_logprob": -0.409,
+    "no_speech_prob": 0.841,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "Tina08_01.wav",
+    "duration_s": 4.02,
+    "asr_en": "The portal to our homeworld is inside that black box. You need to get me there so I can open it.",
+    "avg_logprob": -0.157,
+    "no_speech_prob": 0.014,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Tina08_02.wav",
+    "duration_s": 3.04,
+    "asr_en": "We can probably expect some alien resistance on the other side of this portal.",
+    "avg_logprob": -0.155,
+    "no_speech_prob": 0.005,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Tina09_01.wav",
+    "duration_s": 3.54,
+    "asr_en": "We've just lost contact with an outpost in this sector. We should go there and investigate.",
+    "avg_logprob": -0.136,
+    "no_speech_prob": 0.012,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Tina09_02.wav",
+    "duration_s": 3.04,
+    "asr_en": "The main computer has the data map which contains the location of the alien hive.",
+    "avg_logprob": -0.177,
+    "no_speech_prob": 0.013,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Tina09_03.wav",
+    "duration_s": 1.71,
+    "asr_en": "We've got the data map. Let's go.",
+    "avg_logprob": -0.247,
+    "no_speech_prob": 0.007,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Tina09_04.wav",
+    "duration_s": 2.83,
+    "asr_en": "HQ, I'm sending the data map now. We're headed your way.",
+    "avg_logprob": -0.092,
+    "no_speech_prob": 0.011,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Tina10_01.wav",
+    "duration_s": 3.83,
+    "asr_en": "The aliens know we've got the data map. We can expect a full-scale assault.",
+    "avg_logprob": -0.23,
+    "no_speech_prob": 0.003,
+    "candidate": "voice"
+  },
+  {
+    "wav": "TrainTunnel_8Bit.wav",
+    "duration_s": 3.2,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.942,
+    "no_speech_prob": 0.771,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "UFOambient.wav",
+    "duration_s": 0.09,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.581,
+    "no_speech_prob": 0.839,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "Ungh.wav",
+    "duration_s": 0.23,
+    "asr_en": "Ow.",
+    "avg_logprob": -0.619,
+    "no_speech_prob": 0.527,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "Ungh2.wav",
+    "duration_s": 0.16,
+    "asr_en": "Oh",
+    "avg_logprob": -0.261,
+    "no_speech_prob": 0.467,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "VacuumOff.wav",
+    "duration_s": 1.58,
+    "asr_en": "Thank you.",
+    "avg_logprob": -0.941,
+    "no_speech_prob": 0.7,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "VacuumOn.wav",
+    "duration_s": 2.25,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "Vacuumrun.wav",
+    "duration_s": 1.18,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.751,
+    "no_speech_prob": 0.755,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "airplane_8Bit.wav",
+    "duration_s": 8.32,
+    "asr_en": "Transcription by ESO. Translation by —",
+    "avg_logprob": -0.553,
+    "no_speech_prob": 0.774,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "alienforcefield.wav",
+    "duration_s": 1.42,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.753,
+    "no_speech_prob": 0.742,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "birds.wav",
+    "duration_s": 4.78,
+    "asr_en": "Thank you.",
+    "avg_logprob": -0.597,
+    "no_speech_prob": 0.822,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "boiling.wav",
+    "duration_s": 0.76,
+    "asr_en": "Thank you.",
+    "avg_logprob": -0.448,
+    "no_speech_prob": 0.805,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "cdplayer.wav",
+    "duration_s": 2.02,
+    "asr_en": "Thank you for watching!",
+    "avg_logprob": -0.632,
+    "no_speech_prob": 0.868,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "communicator.wav",
+    "duration_s": 0.41,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.697,
+    "no_speech_prob": 0.803,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "computer.wav",
+    "duration_s": 2.15,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.701,
+    "no_speech_prob": 0.726,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "fruitgore.wav",
+    "duration_s": 0.68,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.587,
+    "no_speech_prob": 0.493,
+    "candidate": "voice"
+  },
+  {
+    "wav": "huey11.wav",
+    "duration_s": 2.79,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.556,
+    "no_speech_prob": 0.675,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_ctftobase.wav",
+    "duration_s": 0.92,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_death.wav",
+    "duration_s": 0.67,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.717,
+    "no_speech_prob": 0.77,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_endgame.wav",
+    "duration_s": 3.29,
+    "asr_en": "© transcript Emily Beynon",
+    "avg_logprob": -0.424,
+    "no_speech_prob": 0.631,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_ffire.wav",
+    "duration_s": 1.24,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_own.wav",
+    "duration_s": 0.93,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.704,
+    "no_speech_prob": 0.662,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_pop.wav",
+    "duration_s": 0.19,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.696,
+    "no_speech_prob": 0.711,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_rebaseflag.wav",
+    "duration_s": 1.79,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_tick.wav",
+    "duration_s": 0.1,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.619,
+    "no_speech_prob": 0.812,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_tickalert.wav",
+    "duration_s": 0.1,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.614,
+    "no_speech_prob": 0.875,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "portal1_8Bit.wav",
+    "duration_s": 3.44,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.556,
+    "no_speech_prob": 0.636,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "portal2_8Bit.wav",
+    "duration_s": 2.2,
+    "asr_en": "Subtitles by Subtitle Workshop",
+    "avg_logprob": -0.848,
+    "no_speech_prob": 0.809,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "sodacanexplode.wav",
+    "duration_s": 0.54,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.596,
+    "no_speech_prob": 0.834,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "suburbanAmbient.wav",
+    "duration_s": 11.05,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "toiletflush.wav",
+    "duration_s": 3.75,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "truckDestroy.wav",
+    "duration_s": 1.24,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "truckdeath.wav",
+    "duration_s": 3.0,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.728,
+    "no_speech_prob": 0.762,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "ufotrap.wav",
+    "duration_s": 1.47,
+    "asr_en": "That was too close.",
+    "avg_logprob": -0.284,
+    "no_speech_prob": 0.01,
+    "candidate": "voice"
+  },
+  {
+    "wav": "uooh.wav",
+    "duration_s": 0.32,
+    "asr_en": "UGH!",
+    "avg_logprob": -0.967,
+    "no_speech_prob": 0.38,
+    "candidate": "voice"
+  }
+]

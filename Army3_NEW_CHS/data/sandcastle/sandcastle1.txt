@@ -1,0 +1,1024 @@
+preloadsprite 43 10 0
+preloadsprite 43 10 1
+preloadsprite 43 10 2
+preloadsprite 43 10 3
+preloadsprite 43 10 4
+
+preloadsprite 43 20 0
+preloadsprite 43 20 1
+preloadsprite 43 20 2
+preloadsprite 43 20 3
+preloadsprite 43 20 4
+
+PAD spot1	10
+PAD spot2	11
+PAD spot3	12
+
+PAD tspot1	13
+PAD tspot2	14
+PAD tspot3	15
+
+PAD haunt1	20	Haunter > 0
+PAD haunt2	21	Haunter > 0
+PAD haunt3	22	Haunter > 0
+
+PAD whatpad1	51	green trooper > 0
+PAD whatpad2	52	green trooper > 0
+PAD whatpad3	53	green trooper > 0
+
+PAD whatarethose 210 	greensarge1 > 0
+
+PAD deadcow1 	221 	greensarge1 > 0
+PAD deadcow2 	222 	greensarge1 > 0
+PAD deadcow3 	223 	greensarge1 > 0
+PAD deadcow4 	224 	greensarge1 > 0
+PAD deadcow5 	225 	greensarge1 > 0
+PAD deadcow6 	226 	greensarge1 > 0
+
+PAD gottina 	230	greensarge1 > 0
+
+variable sargeisdead 0
+variable tinaisdead 0
+
+variable allgoodtina 0
+
+variable nohaunt 0
+
+variable hohoho1 0
+
+variable faceoff1x 0
+variable faceoff2x 0
+
+variable firewave1 0
+variable firewave2 0
+variable firewave3 0
+
+variable walkway1 0
+variable walkway2 0
+variable walkway3 0
+
+variable tfirewave 0
+variable twalkway1 0
+
+VARIABLE dancer1 0
+VARIABLE dancer2 0
+VARIABLE dancer3 0
+VARIABLE dancer4 0
+VARIABLE dancer5 0
+VARIABLE dancer6 0
+VARIABLE dancer7 0
+VARIABLE dancer8 0
+VARIABLE dancer9 0
+
+VARIABLE fdancer1 0
+VARIABLE fdancer2 0
+VARIABLE fdancer3 0
+VARIABLE fdancer4 0
+VARIABLE fdancer5 0
+VARIABLE fdancer6 0
+VARIABLE fdancer7 0
+VARIABLE fdancer8 0
+VARIABLE fdancer9 0
+VARIABLE fdancer10 0
+VARIABLE fdancer11 0
+VARIABLE fdancer12 0
+
+VARIABLE hancer1 0
+VARIABLE hancer2 0
+VARIABLE hancer3 0
+
+VARIABLE buffydance 0 
+
+if bdance testvar buffydance < 99999 then
+	addvar buffydance 1,
+	triggerdelay 200 bdance,
+	trigger bdance1x
+if bdance1x then
+RANDOM
+	order Buffy goto (910,2969),
+	order Buffy goto (935,3024),
+	order Buffy goto (957,3060),
+	order Buffy goto (968,3013),
+	order Buffy goto (931,2986),
+	order Buffy goto (876,2956)
+	
+macro fantdance 2
+
+{
+if fantdance@1 testvar fdancer@1 < 99999 then
+	addvar fdancer@1 1, 
+	triggerdelay @2 fantdance@1,
+	trigger fantdance@1x
+
+if fantdance@1x then
+RANDOM
+	order fant@1 goto (3438,621),
+	order fant@1 goto (3419,528), 
+	order fant@1 goto (3445,499), 
+	order fant@1 goto (3479,441), 
+	order fant@1 goto (3480,501), 
+	order fant@1 goto (3551,419),
+	order fant@1 goto (3619,426), 
+	order fant@1 goto (3678,450),
+	order fant@1 goto (3724,479)
+}
+
+expand fantdance (1 225)
+expand fantdance (2 225)
+expand fantdance (3 275)
+expand fantdance (4 250)
+expand fantdance (5 200)
+expand fantdance (6 200)
+expand fantdance (7 250)
+expand fantdance (8 200)
+expand fantdance (9 225)
+expand fantdance (10 275)
+expand fantdance (11 250)
+expand fantdance (12 275)
+
+macro pantdance 2
+
+{
+if pantdance@1 testvar dancer@1 < 99999 then
+	addvar dancer@1 1, 
+	triggerdelay @2 pantdance@1,
+	trigger pantdance@1x
+
+if pantdance@1x then
+RANDOM
+	order pant@1 goto (1196,1302),
+	order pant@1 goto (1165,1393),
+	order pant@1 goto (1202,1377),
+	order pant@1 goto (1273,1366)
+}
+
+expand pantdance (1 100)
+expand pantdance (2 175)
+expand pantdance (3 125)
+expand pantdance (4 100)
+
+macro pant2dance 2
+
+{
+if pantdance@1 testvar dancer@1 < 99999 then
+	addvar dancer@1 1, 
+	triggerdelay @2 pantdance@1,
+	trigger pantdance@1x
+
+if pantdance@1x then
+RANDOM
+	order pant@1 goto (1432,2366),
+	order pant@1 goto (1522,2400),	
+	order pant@1 goto (1409,2419),
+	order pant@1 goto (1485,2489),
+	order pant@1 goto (1499,2419)
+}
+
+expand pant2dance (5 200)
+expand pant2dance (6 75)
+expand pant2dance (7 150)
+expand pant2dance (8 200)
+expand pant2dance (9 150)
+
+macro hantmove 2
+
+{
+if hantmove@1 testvar hancer@1 < 99999 then
+	addvar hancer@1 1, 
+	triggerdelay @2 hantmove@1,
+	trigger hantmove@1x
+
+if hantmove@1x then
+RANDOM
+	order hant@1 goto (3713,2462),
+	order hant@1 goto (3692,2543),
+	order hant@1 goto (3637,2566)
+
+}
+
+expand hantmove (1 100)
+expand hantmove (2 75)
+expand hantmove (3 125)
+
+if startup1 then 
+	trigger cowmusic,
+	triggerdelay 15000 cowmusicX,
+	createunit "rot1" rifleman (2013,3199) green autorifle,
+	damage rot1 9999 crush,
+	createpowerup "X5" lightlaser (4,4055) -1,
+   	createunit "deadman3" spacemang (910,2969) blue lasergatling,
+   	createunit "deadman4" spacemang (935,3024) blue lasergatling,
+   	createunit "deadman1" spacewomanp (910,2969) blue lightlaser,
+   	createunit "deadman2" spacewomanp (935,3024) blue lightlaser,
+   	createunit "Buffy" spacewomanp (925,3076) green freezelaser,
+	setnpc Buffy 1,
+	setaimode Buffy ignore,
+	setmaxhealth Buffy 300,
+	heal Buffy 100,
+   	damage deadman3 1000 projectile,
+	damage deadman4 1000 crush,
+	setnpc deadman1 1,
+	setnpc deadman2 1,
+	setaimode deadman1 ignore,
+	setaimode deadman2 ignore,
+	trigger party,
+	trigger faceoff1,
+	trigger faceoff2,
+// these are the units guarding generator one
+   	createunit "gen1guard1" humanoid (2040,391) tan lightlaser,
+   	createunit "gen1guard2" humanoid (2184,580) tan lightlaser,
+	setfacing gen1guard2 110,
+   	createunit "gen1guard3" humanoid (2229,532) tan lightlaser,
+	setfacing gen1guard3 200,
+// these are the units guarding generator two
+   	createunit "gen2guard1" humanoid (3576,2255) tan lightlaser,
+	setfacing gen2guard1 220,
+   	createunit "gen2guard2" humanoid (3492,2298) tan lightlaser,
+	setfacing gen2guard2 100,
+   	createunit "gen2guard3" humanoid (3727,2281) tan lightlaser,
+	setfacing gen2guard3 20,
+// these are the units guarding generator three
+   	createunit "gen3guard1" humanoid (3289,511) tan lightlaser,
+	setfacing gen3guard1 110,
+   	createunit "gen3guard2" humanoid (3317,446) tan lightlaser,
+	setfacing gen3guard2 160,
+   	createunit "gen3guard3" humanoid (3403,729) tan lightlaser,
+	setaimode gen1guard1 defend,
+	setaimode gen1guard2 defend,
+	setaimode gen1guard3 defend,
+	setaimode gen2guard1 defend,
+	setaimode gen2guard2 defend,
+	setaimode gen2guard3 defend,
+	setaimode gen3guard1 defend,
+	setaimode gen3guard2 defend,
+	setaimode gen3guard3 defend,
+// tan guards for tiny area
+	createunit "tanman1" rifleman (1549,3082) tan autorifle,
+	setfacing tanman1 140,
+	createunit "tanman2" rifleman (1975,3570) tan autorifle,
+	setfacing tanman2 180,
+	setaipose tanman2 kneel,
+	setaimode tanman1 ignore,
+	setaimode tanman2 ignore,
+// tan guards for entry area
+	createunit "tandude1" rifleman (349,3189) tan autorifle,
+	setfacing tandude1 150,
+	setaimode tandude1 defend,
+	setaipose tandude1 kneel,
+	createunit "tandude2" rifleman (177,2999) tan autorifle,
+	setfacing tandude2 140,
+	setaimode tandude2 defend,
+	createunit "tandude3" rifleman (180,2472) tan autorifle,
+	setfacing tandude3 127,
+	setaimode tandude3 defend,
+	trigger gen1active,
+	trigger gen2active,
+	trigger gen3active,
+// tan guards for magn. area
+	createunit "mtanman1" rifleman (761,486) tan autorifle,
+	setfacing mtanman1 110,
+	createunit "mtanman2" rifleman (913,483) tan autorifle,
+	setfacing mtanman2 200,
+	createunit "mtanman3" grenadier (612,691) tan grenade,
+	setfacing mtanman3 100,
+	setaimode mtanman1 defend,
+	setaimode mtanman2 defend,
+	setaimode mtanman3 defend,
+// tan guards for generator1
+	createunit "g1tanman1" rifleman (2034,797) tan autorifle,
+	setfacing g1tanman1 70,
+	createunit "g1tanman2" rifleman (2237,970) tan autorifle,
+	setfacing g1tanman2 90,
+	createunit "g1tanman3" grenadier (2032,1190) tan grenade,
+	setfacing g1tanman3 80,
+	createunit "g1tanman4" rifleman (2187,1335) tan autorifle,
+	setfacing g1tanman4 110,
+	createunit "g1tanman5" rifleman (2462,1561) tan autorifle,
+	setfacing g1tanman5 110,
+	setaimode g1tanman1 defend,
+	setaimode g1tanman2 defend,
+	setaipose g1tanman2 kneel,
+	setaimode g1tanman3 defend,
+	setaimode g1tanman4 defend,
+	setaimode g1tanman5 defend,
+// tan tank for generator2
+	createvehicle "Haunter" tank (3274,2399) tan,
+	setfacing Haunter 70,
+	setaimode Haunter defend,
+	trigger HauntHauntHaunt,
+// tan guards for generator3
+	createunit "g3tanman1" rifleman (3794,271) tan vulcan,
+	setfacing g3tanman1 127,
+	createunit "g3tanman2" flamerman (3474,362) tan flamer,
+	setfacing g3tanman2 210,
+	setaimode g3tanman1 defend,
+	setaimode g3tanman2 defend,
+// ants!
+	createunit "pant1" ant (1196,1302) tan spiderbite,
+	createunit "pant2" ant (1165,1393) tan spiderbite,
+	createunit "pant3" ant (1202,1377) tan spiderbite,
+	createunit "pant4" ant (1273,1366) tan spiderbite,
+	createunit "pant5" ant (1432,2366) tan spiderbite,
+	createunit "pant6" ant (1409,2419) tan spiderbite,
+	createunit "pant7" ant (1485,2489) tan spiderbite,
+	createunit "pant8" ant (1499,2419) tan spiderbite,
+	createunit "pant9" ant (1522,2400) tan spiderbite,
+	setaimode pant1 ignore,
+	setaimode pant2 ignore,
+	setaimode pant3 ignore,
+	setaimode pant4 ignore,
+	setaimode pant5 ignore,
+	setaimode pant6 ignore,
+	setaimode pant7 ignore,
+	setaimode pant8 ignore,
+	setaimode pant9 ignore,
+	trigger pantdance1,
+	trigger pantdance2,
+	trigger pantdance3,
+	trigger pantdance4,
+	trigger pantdance5,
+	trigger pantdance6,
+	trigger pantdance7,
+	trigger pantdance8,
+	trigger pantdance9,
+// ants! food line by gen3
+	createunit "fant1" ant (3438,621) tan spiderbite,
+	createunit "fant2" ant (3459,555) tan spiderbite,
+	createunit "fant3" ant (3419,528) tan spiderbite,
+	createunit "fant4" ant (3480,501) tan spiderbite,
+	createunit "fant5" ant (3445,499) tan spiderbite,
+	createunit "fant6" ant (3479,441) tan spiderbite,
+	createunit "fant7" ant (3551,419) tan spiderbite,
+	createunit "fant8" ant (3619,426) tan spiderbite,
+	createunit "fant9" ant (3678,450) tan spiderbite,
+	createunit "fant10" ant (3724,479) tan spiderbite,
+	createunit "fant11" ant (3732,527) tan spiderbite,
+	createunit "fant12" ant (3757,584) tan spiderbite,
+	setaimode fant1 ignore,
+	setaimode fant2 ignore,
+	setaimode fant3 ignore,
+	setaimode fant4 ignore,
+	setaimode fant5 ignore,
+	setaimode fant6 ignore,
+	setaimode fant7 ignore,
+	setaimode fant8 ignore,
+	setaimode fant9 ignore,
+	setaimode fant10 ignore,
+	setaimode fant11 ignore,
+	setaimode fant12 ignore,
+	trigger fantdance1,
+	trigger fantdance2,
+	trigger fantdance3,
+	trigger fantdance4,
+	trigger fantdance5,
+	trigger fantdance6,
+	trigger fantdance7,
+	trigger fantdance8,
+	trigger fantdance9,
+	trigger fantdance10,
+	trigger fantdance11,
+	trigger fantdance12,
+// ants! for candy
+	createunit "hant1" ant (3713,2462) tan spiderbite,
+	createunit "hant2" ant (3692,2543) tan spiderbite,
+	createunit "hant3" ant (3637,2566) tan spiderbite,
+	setaimode hant1 ignore,
+	setaimode hant2 ignore,
+	setaimode hant3 ignore,
+	triggerdelay 1500 hantmove1,	
+	triggerdelay 1000 hantmove2,
+	triggerdelay 500 hantmove3,
+	trigger bdance
+
+if HauntHauntHaunt then
+	order Haunter goto (3010,2376)
+
+if padon haunt1 testvar nohaunt = 0 then
+	order Haunter goto (3368,2145)
+
+if padon haunt2 testvar nohaunt = 0 then
+	order Haunter goto (3460,2610)
+
+if padon haunt3 testvar nohaunt = 0 then
+	order Haunter goto (3010,2376)
+
+if hit Haunter then
+	addvar nohaunt 1,
+	setaimode Haunter attack
+
+if hit mtanman1 then
+	setaimode mtanman1 attack
+if hit mtanman2 then
+	setaimode mtanman2 attack
+if hit mtanman3 then
+	setaimode mtanman3 attack
+
+if hit g1tanman1 then
+	setaimode g1tanman1 attack
+if hit g1tanman2 then
+	setaimode g1tanman2 attack
+if hit g1tanman3 then
+	setaimode g1tanman3 attack
+if hit g1tanman4 then
+	setaimode g1tanman4 attack
+if hit g1tanman5 then
+	setaimode g1tanman5 attack
+if hit g3tanman1 then
+	setaimode g3tanman1 attack
+if hit g3tanman2 then
+	setaimode g3tanman2 attack
+
+if hit tanman1 then
+	setaimode tanman1 attack
+if hit tanman2 then
+	setaimode tanman2 attack
+if hit tandude1 then
+	setaimode tandude1 attack
+if hit tandude2 then
+	setaimode tandude2 attack
+if hit tandude3 then
+	setaimode tandude3 attack
+
+
+if hit deadman1 butnot nomoredeath1 then
+	heal deadman1 100
+
+if hit deadman2 butnot nomoredeath2 then
+	heal deadman2 100
+
+if hit pant1 then
+	addvar dancer1 99999,
+	setaimode pant1 attack
+if hit pant2 then
+	addvar dancer2 99999,
+	setaimode pant2 attack
+if hit pant3 then
+	addvar dancer3 99999,
+	setaimode pant3 attack
+if hit pant4 then
+	addvar dancer4 99999,
+	setaimode pant4 attack
+if hit pant5 then
+	addvar dancer5 99999,
+	setaimode pant5 attack
+if hit pant6 then
+	addvar dancer6 99999,
+	setaimode pant6 attack
+if hit pant7 then
+	addvar dancer7 99999,
+	setaimode pant7 attack
+if hit pant8 then
+	addvar dancer8 99999,
+	setaimode pant8 attack
+if hit pant9 then
+	addvar dancer9 99999,
+	setaimode pant9 attack
+
+if hit fant1 then
+	addvar fdancer1 99999,
+	setaimode fant1 attack
+if hit fant2 then
+	addvar fdancer2 99999,
+	setaimode fant2 attack
+if hit fant3 then
+	addvar fdancer3 99999,
+	setaimode fant3 attack
+if hit fant4 then
+	addvar fdancer4 99999,
+	setaimode fant4 attack
+if hit fant5 then
+	addvar fdancer5 99999,
+	setaimode fant5 attack
+if hit fant6 then
+	addvar fdancer6 99999,
+	setaimode fant6 attack
+if hit fant7 then
+	addvar fdancer7 99999,
+	setaimode fant7 attack
+if hit fant8 then
+	addvar fdancer8 99999,
+	setaimode fant8 attack
+if hit fant9 then
+	addvar fdancer9 99999,
+	setaimode fant9 attack
+if hit fant10 then
+	addvar fdancer10 99999,
+	setaimode fant10 attack
+if hit fant11 then
+	addvar fdancer11 99999,
+	setaimode fant11 attack
+if hit fant12 then
+	addvar fdancer12 99999,
+	setaimode fant12 attack
+
+if hit hant1 then	
+	addvar hancer1 99999,
+	setaimode hant1 attack
+if hit hant2 then
+	addvar hancer2 99999,
+	setaimode hant2 attack	
+if hit hant3 then
+	addvar hancer3 99999,
+	setaimode hant3 attack
+
+if faceoff1 testvar faceoff1x < 99999 then
+	addvar faceoff1x 1, 
+	triggerdelay 750 faceoff1,
+	trigger faceloop1
+
+if faceloop1 then
+RANDOM
+	order deadman1 goto (910,2969),
+	order deadman1 goto (935,3024),
+	order deadman1 goto (957,3060),
+	order deadman1 goto (968,3013),
+	order deadman1 goto (931,2986),
+	order deadman1 goto (876,2956)
+
+if faceoff2 testvar faceoff2x < 99999 then
+	addvar faceoff2x 1, 
+	triggerdelay 750 faceoff2,
+	trigger faceloop2
+
+if faceloop2 then
+RANDOM
+	order deadman2 goto (910,2969),
+	order deadman2 goto (935,3024),
+	order deadman2 goto (957,3060),
+	order deadman2 goto (968,3013),
+	order deadman2 goto (931,2986),
+	order deadman2 goto (876,2956)
+
+if party then
+   	createunit "pdrone1x" humanoid (731,2936) tan lightlaser,
+	setfacing pdrone1x 190,
+	createunit "pdrone2x" humanoid (809,3047) tan lightlaser,
+	setfacing pdrone2x 210,
+	createunit "pdrone3x" humanoid (964,2840) tan lightlaser,
+	setfacing pdrone3x 110,
+	createunit "pdrone4x" humanoid (1047,2927) tan lightlaser,
+	setfacing pdrone4x 80,
+	setaimode pdrone1x ignore,
+	setaimode pdrone2x ignore,
+	setaimode pdrone3x ignore,
+	setaimode pdrone4x ignore,
+	trigger gohoho
+
+if scream butnot scream2 then
+	trigger scream2
+if scream2 then
+	playsound "AlienLaugh.wav" 2 0,
+	playsound "Civilians_Ann_Civilian_Ahhhhhh3.wav" 3 0,
+	playsound "Civilians_Tanya_Civilian_Ahhhhhh3.wav" 4 1,
+	order Buffy goto (1176,3790),
+	triggerdelay 11000 makebuffydosomething
+
+if makebuffydosomething then
+	setaimode Buffy defend,
+	setfacing Buffy 225
+
+if hit pdrone1x by green butnot arggh1 then
+	trigger arggh1
+if arggh1 then
+	trigger scream,
+	trigger nomoredeath1,
+	trigger nomoredeath2,
+	fireweapon X5 pdrone1x deadman1,
+	fireweapon X5 pdrone1x deadman2,
+	damage deadman1 1000 projectile,
+	damage deadman2 1000 crush,
+	addvar hohoho1 99999,
+	addvar faceoff1x 99999,
+	addvar faceoff2x 99999,
+	addvar buffydance 99999,
+	triggerdelay 3000 gotinaevent,
+	setaimode pdrone1x attack,
+	setaimode pdrone2x attack,
+	setaimode pdrone3x defend,
+	setaimode pdrone4x defend
+
+if hit pdrone2x by green butnot arggh2 then
+	trigger arggh2
+if arggh2 then
+	trigger scream,
+	trigger nomoredeath1,
+	trigger nomoredeath2,
+	fireweapon X5 pdrone2x deadman1,
+	fireweapon X5 pdrone2x deadman2,
+	damage deadman1 1000 projectile,
+	damage deadman2 1000 crush,
+	addvar hohoho1 99999,
+	addvar faceoff1x 99999,
+	addvar faceoff2x 99999,
+	addvar buffydance 99999,
+	triggerdelay 3000 gotinaevent,
+	setaimode pdrone1x attack,
+	setaimode pdrone2x attack,
+	setaimode pdrone3x defend,
+	setaimode pdrone4x defend
+if hit pdrone3x by green butnot arggh3 then
+	trigger arggh3
+if arggh3 then
+	trigger scream,
+	trigger nomoredeath1,
+	trigger nomoredeath2,
+	fireweapon X5 pdrone3x deadman1,
+	fireweapon X5 pdrone3x deadman2,
+	damage deadman1 1000 projectile,
+	damage deadman2 1000 crush,
+	addvar hohoho1 99999,
+	addvar faceoff1x 99999,
+	addvar faceoff2x 99999,
+	addvar buffydance 99999,
+	triggerdelay 3000 gotinaevent,
+	setaimode pdrone1x attack,
+	setaimode pdrone2x attack,
+	setaimode pdrone3x defend,
+	setaimode pdrone4x defend
+if hit pdrone4x by green butnot arggh4 then
+	trigger arggh4
+if arggh4 then
+	trigger scream,
+	trigger nomoredeath1,
+	trigger nomoredeath2,
+	fireweapon X5 pdrone4x deadman1,
+	fireweapon X5 pdrone4x deadman2,
+	damage deadman1 1000 projectile,
+	damage deadman2 1000 crush,
+	addvar hohoho1 99999,
+	addvar faceoff1x 99999,
+	addvar faceoff2x 99999,
+	addvar buffydance 99999,
+	triggerdelay 3000 gotinaevent,
+	setaimode pdrone1x attack,
+	setaimode pdrone2x attack,
+	setaimode pdrone3x defend,
+	setaimode pdrone4x defend
+
+if gohoho testvar hohoho1 < 99999 then
+	addvar hohoho1 1, 
+	triggerdelay 1500 gohoho,
+	trigger hohoholoop1x
+
+if hohoholoop1x then
+RANDOM
+	fireweapon X5 pdrone1x deadman1,
+	fireweapon X5 pdrone2x deadman1,
+	fireweapon X5 pdrone3x deadman1,
+	fireweapon X5 pdrone4x deadman1,
+	fireweapon X5 pdrone1x deadman2,
+	fireweapon X5 pdrone2x deadman2,
+	fireweapon X5 pdrone3x deadman2,
+	fireweapon X5 pdrone4x deadman2
+
+if gotinaevent butnot tinaevent1x then
+	trigger tinaevent1x
+if tinaevent1x then
+	createunit "Tina_Tomorrow" spacewomanp (1300,3747) green freezelaser,
+	setnpc Tina_Tomorrow 1,
+	setaimode Tina_Tomorrow ignore,
+   	createunit "a5101" humanoid (1102,3243) tan lightlaser,
+	setfacing a5101 140,
+   	createunit "a5102" humanoid (1251,3336) tan lightlaser,
+	setfacing a5102 127,
+   	createunit "a5103" humanoid (1218,3492) tan lightlaser,
+	setfacing a5103 140,
+	createpowerup "X1" lightlaser (4,4055) -1,
+	createpowerup "X2" lightlaser (4,4055) -1,
+	createpowerup "X3" lightlaser (4,4055) -1,
+	createpowerup "X4" freezelaser (4,4055) -1,
+	setaimode a5101 ignore,
+	setaimode a5102 ignore,
+	setaimode a5103 ignore,
+	trigger fireloop1,
+	trigger fireloop2,
+	trigger fireloop3,
+	trigger tfireloop1,
+	playsound "Sarge_GoinDownThere2.wav" 16 0,
+	playsound "LaserTunnel.wav" 15 1
+
+if fireloop1 testvar firewave1 < 99999 then
+	addvar firewave1 1, 
+	triggerdelay 1500 fireloop1,
+	trigger fireloop1x,
+	trigger walkthisway1
+
+if fireloop2 testvar firewave2 < 99999 then
+	addvar firewave2 1, 
+	triggerdelay 1750 fireloop2,
+	trigger fireloop2x,
+	trigger walkthisway2
+
+if fireloop3 testvar firewave3 < 99999 then
+	addvar firewave3 1, 
+	triggerdelay 2000 fireloop3,
+	trigger fireloop3x,
+	trigger walkthisway3
+
+if fireloop1x then
+RANDOM
+	fireweapon X1 a5101 spot1,
+	fireweapon X1 a5101 spot2,
+	fireweapon X1 a5101 spot3
+
+if fireloop2x then
+RANDOM
+	fireweapon X2 a5102 spot1,
+	fireweapon X2 a5102 spot2,
+	fireweapon X2 a5102 spot3
+
+if fireloop3x then
+RANDOM
+	fireweapon X3 a5103 spot1,
+	fireweapon X3 a5103 spot2,
+	fireweapon X3 a5103 spot3
+
+if walkthisway1 testvar walkway1 < 99999 then
+	addvar walkway1 1, 
+	triggerdelay 4000 walkthisway1,
+	trigger walkloop1x
+
+if walkloop1x then
+RANDOM
+	order a5101 goto (1170,3450),
+	order a5101 goto (1296,3402),
+	order a5101 goto (1225,3570),
+	order a5101 goto (1368,3505)
+
+if walkthisway2 testvar walkway2 < 99999 then
+	addvar walkway2 1, 
+	triggerdelay 5000 walkthisway2,
+	trigger walkloop2x
+
+if walkloop2x then
+RANDOM
+	order a5102 goto (1170,3450),
+	order a5102 goto (1296,3402),
+	order a5102 goto (1225,3570),
+	order a5102 goto (1368,3505)
+	
+if walkthisway3 testvar walkway3 < 99999 then
+	addvar walkway3 1, 
+	triggerdelay 3000 walkthisway3,
+	trigger walkloop3x
+
+if walkloop3x then
+RANDOM
+	order a5103 goto (1170,3450),
+	order a5103 goto (1296,3402),
+	order a5103 goto (1225,3570),
+	order a5103 goto (1368,3505)
+
+if tfireloop1 testvar tfirewave < 99999 then
+	addvar tfirewave 1,
+	heal Tina_Tomorrow 100, 
+	triggerdelay 1000 tfireloop1,
+	trigger tfireloop1x,
+	trigger twalkthisway1
+	
+if tfireloop1x then
+RANDOM
+	fireweapon X4 Tina_Tomorrow tspot1,
+	fireweapon X4 Tina_Tomorrow tspot2,
+	fireweapon X4 Tina_Tomorrow tspot3,
+	fireweapon X4 Tina_Tomorrow a5101,
+	fireweapon X4 Tina_Tomorrow a5102,
+	fireweapon X4 Tina_Tomorrow a5103
+
+if twalkthisway1 testvar twalkway1 < 99999 then
+	addvar twalkway1 1, 
+	triggerdelay 3000 twalkthisway1,
+	trigger twalkloop1x
+
+if twalkloop1x then
+RANDOM
+	order Tina_Tomorrow goto (1241,3775),
+	order Tina_Tomorrow goto (1358,3725),
+	order Tina_Tomorrow goto (1496,3678)
+
+if killed a5101 then
+	addvar firewave1 99999
+if killed a5102 then
+	addvar firewave2 99999
+if killed a5103 then
+	addvar firewave3 99999
+
+if allof killed a5101 killed a5102 killed a5103 then
+	addvar tfirewave 99999,
+	addvar twalkway1 99999,
+	addvar allgoodtina 1
+
+if PADON gottina testvar allgoodtina = 1 then
+	trigger youwinbaby
+if youwinbaby butnot youwinbabyX then
+	trigger youwinbabyX
+if youwinbabyX then
+	playsound "Sarge_WhoAreYou1.wav" 16 0,
+	triggerdelay 1700 tinaspeaks
+if tinaspeaks then
+	playsound "Tina_ImTina.wav" 2 0,
+	triggerdelay 1250 tinaspeaks2
+if tinaspeaks2 then
+	showpda "你救下了蒂娜·托马！",
+	triggerdelay 2000 endmission1
+		
+if killed Tina_Tomorrow testvar sargeisdead = 0 then
+	addvar tfirewave 99999,
+	addvar twalkway1 99999,
+	setuilock 1,
+        setcamerafocus Tina_Tomorrow,
+	setvar tinaisdead 1,
+	triggerdelay 1500 gameoverman2
+
+if endmission1 butnot killed greensarge1 then	
+	triggerdelay 100 gotestgreenwins
+	
+if gotestgreenwins butnot killed greensarge1 then
+	trigger greenwins	
+
+if killed greensarge1 testvar tinaisdead = 0 then
+        setuilock 1,
+        setcamerafocus greensarge1,
+        setvar sargeisdead 1,
+	triggerdelay 1500 gameoverman1
+
+if gameoverman1 then
+	playsound "HQ_radio_crackling.wav" 0 1,
+	showfailure "中士？中士？中士！",
+	triggerdelay 1000 tanwins
+
+if gameoverman2 then
+	playsound "AlienLaugh.wav" 0 1,
+	showfailure "蒂娜倒下了！",
+	triggerdelay 1000 tanwins
+
+if padon whatpad1 butnot whatpad1x then
+	trigger whatpad1x
+if whatpad1x then
+	playsound "Sarge_WhatWithThis2.wav" 16 0
+if padon whatpad2 butnot whatpad2x then
+	trigger whatpad2x
+if whatpad2x then
+	playsound "Sarge_WhatisThat3.wav" 16 0
+if padon whatpad3 butnot whatpad3x then
+	trigger whatpad3x
+if whatpad3x then
+	playsound "Sarge_WhatWithThis2.wav" 16 0
+
+if gen1active butnot shutdown1 then
+	setobjstate gen1 gen1_go
+
+if gen2active butnot shutdown2 then
+	setobjstate gen2 gen3_go
+
+if gen3active butnot shutdown3 then
+	setobjstate gen3 gen3_go
+
+if padon whatarethose butnot what2x then 
+	trigger what2x
+if what2x then
+	playsound "Sarge_WhatAreThoseThings4.wav" 16 0
+
+if cowmusic then
+	playsound "AlienCowMoo.wav" 2 0,
+	triggerdelay 1200 cowmusic2
+if cowmusic2 then
+	playsound "AlienCowMoo.wav" 2 0,
+	triggerdelay 1200 cowmusic3
+if cowmusic3 then
+	playsound "AlienLaugh.wav" 3 0,
+	triggerdelay 1200 cowmusic4
+if cowmusic4 then
+	playsound "AlienCowDie.wav" 2 0
+
+if cowmusicX then
+	playsound "AlienCowMoo.wav" 2 0,
+	triggerdelay 1200 cowmusic1X
+if cowmusic1X then
+	playsound "AlienLaugh.wav" 2 0,
+	triggerdelay 1400 cowmusic2X
+if cowmusic2X then
+	playsound "AlienCowMoo.wav" 2 0,
+	triggerdelay 1200 cowmusic3X
+if cowmusic3X then
+	playsound "AlienLaugh.wav" 3 0,
+	triggerdelay 1400 cowmusic4X
+if cowmusic4X then
+	playsound "AlienCowDie.wav" 2 0
+
+if padon deadcow1 butnot deadcow1x then
+	trigger deadcow1x
+if deadcow1x then
+	playsound "Sarge_poorCow1.wav" 16 0
+
+if padon deadcow2 butnot deadcow2x then
+	trigger deadcow2x
+if deadcow2x then
+	playsound "Sarge_poorCow1.wav" 16 0
+
+if padon deadcow3 butnot deadcow3x then
+	trigger deadcow3x
+if deadcow3x then
+	playsound "Sarge_poorCow1.wav" 16 0
+
+if padon deadcow4 butnot deadcow4x then
+	trigger deadcow4x
+if deadcow4x then
+	playsound "Sarge_poorCow1.wav" 16 0
+
+if padon deadcow5 butnot deadcow5x then
+	trigger deadcow5x
+if deadcow5x then
+	playsound "Sarge_poorCow1.wav" 16 0
+
+if padon deadcow6 butnot deadcow6x then
+	trigger deadcow6x
+if deadcow6x then
+	playsound "Sarge_poorCow1.wav" 16 0
+
+// object animation sequences
+
+object gen1
+
+	state gen1_go
+		frame 150 0
+		frame 150 1
+		frame 150 2
+		frame 150 3
+			playsound "AlienGeneratorHum.wav" gen1 5 0 1 10,
+			playsound "ElectricArc2.wav" gen1 9 0 1 10,
+			setobjstate gen1 gen1_go
+	
+	state gen1_dead
+		frame 50 0
+		frame 50 1
+		frame 50 2
+		frame 50 3
+		frame 50 2
+		frame 50 3
+		frame 50 1
+		frame 50 2
+			playsound "AlienGeneratorExplode.wav" gen1 5 0 10,
+			playsound "" gen1 9 0 1 10,
+			setobjstate gen1 gen1_gone,
+			createexplosion gen1 130 
+	state gen1_gone
+		frame 10 4
+
+
+
+object gen2
+
+	state gen2_go
+		frame 150 0
+		frame 150 1
+		frame 150 2
+		frame 150 3
+			playsound "AlienGeneratorHum.wav" gen2 6 0 1 10,
+			playsound "ElectricArc2.wav" gen2 10 0 1 10,
+			setobjstate gen2 gen2_go
+	
+	state gen2_dead
+		frame 50 0
+		frame 50 1
+		frame 50 2
+		frame 50 3
+		frame 50 2
+		frame 50 3
+		frame 50 1
+		frame 50 2
+			playsound "AlienGeneratorExplode.wav" gen2 6 0 10,
+			playsound "" gen2 10 0 1 10,
+			setobjstate gen2 gen2_gone,
+			createexplosion gen2 130 
+	state gen2_gone
+		frame 10 4
+
+
+object gen3
+
+	state gen3_go
+		frame 150 0
+		frame 150 1
+		frame 150 2
+		frame 150 3
+			playsound "AlienGeneratorHum.wav" gen3 7 0 1 10,
+			playsound "ElectricArc2.wav" gen3 8 0 1 10,
+			setobjstate gen3 gen3_go
+	
+	state gen3_dead
+		frame 50 0
+		frame 50 1
+		frame 50 2
+		frame 50 3
+		frame 50 2
+		frame 50 3
+		frame 50 1
+		frame 50 2
+			playsound "AlienGeneratorExplode.wav" gen3 7 0 10,
+			playsound "" gen3 8 0 1 10,
+			setobjstate gen3 gen3_gone,
+			createexplosion gen3 130 
+	state gen3_gone
+		frame 10 4
+

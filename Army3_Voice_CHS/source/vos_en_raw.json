@@ -1,0 +1,620 @@
+{
+  "AllRight.wav": {
+    "en": "All right.",
+    "lang": "en",
+    "duration_s": 0.86,
+    "speaker": "UnknownVoice"
+  },
+  "Civilians_Ann_Civilian_Ahhhhhh3.wav": {
+    "en": "AAAAAAAAAAAAAAAA",
+    "lang": "en",
+    "duration_s": 1.35,
+    "speaker": "Civilian"
+  },
+  "Civilians_Ann_Civilian_PleasesaveUs.wav": {
+    "en": "Please save us!",
+    "lang": "en",
+    "duration_s": 1.17,
+    "speaker": "Civilian"
+  },
+  "Civilians_Tanya_Civilian_Ahhhhhh3.wav": {
+    "en": "",
+    "lang": "en",
+    "duration_s": 1.58,
+    "speaker": "Civilian"
+  },
+  "Civilians_Tanya_Civilian_PleaseSaveMe3.wav": {
+    "en": "Oh, you saved me!",
+    "lang": "en",
+    "duration_s": 1.31,
+    "speaker": "Civilian"
+  },
+  "Civilians_aahhh1.wav": {
+    "en": "AAAAAAAAH!",
+    "lang": "en",
+    "duration_s": 1.22,
+    "speaker": "Civilian"
+  },
+  "Civilians_ahhh1.wav": {
+    "en": "AHHHHH!",
+    "lang": "en",
+    "duration_s": 0.79,
+    "speaker": "Civilian"
+  },
+  "Civilians_ahhh4.wav": {
+    "en": "AHHHHH!",
+    "lang": "en",
+    "duration_s": 1.08,
+    "speaker": "Civilian"
+  },
+  "Civilians_helpMe1.wav": {
+    "en": "Help me! Help me!",
+    "lang": "en",
+    "duration_s": 1.33,
+    "speaker": "Civilian"
+  },
+  "Civilians_pleassaveus3.wav": {
+    "en": "Please save us!",
+    "lang": "en",
+    "duration_s": 1.54,
+    "speaker": "Civilian"
+  },
+  "Civilians_thoseThings1.wav": {
+    "en": "Those things are everywhere!",
+    "lang": "en",
+    "duration_s": 1.45,
+    "speaker": "Civilian"
+  },
+  "GreenUnits_KillItSarge.wav": {
+    "en": "Kill it, Sarge! Kill it!",
+    "lang": "en",
+    "duration_s": 1.1,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "GreenUnits_SargeIsDead1.wav": {
+    "en": "The search is dead. What are we going to do now?",
+    "lang": "en",
+    "duration_s": 2.28,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "GreenUnits_SargeisDead3.wav": {
+    "en": "Sarge is dead. What are we going to do now?",
+    "lang": "en",
+    "duration_s": 4.33,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "GreenUnits_WhenIGetOut1.wav": {
+    "en": "When I get out of here.",
+    "lang": "en",
+    "duration_s": 1.48,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "GreenUnits_ahgieie1.wav": {
+    "en": "HIGHER!",
+    "lang": "en",
+    "duration_s": 1.02,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "GreenUnits_ahgieie2.wav": {
+    "en": "OUCH!",
+    "lang": "en",
+    "duration_s": 0.99,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "GreenUnits_ahgieie3.wav": {
+    "en": "AHHHHH!",
+    "lang": "en",
+    "duration_s": 0.97,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "GreenUnits_ahhhh2.wav": {
+    "en": "ARRRRRRRRRRRRRRRRRRRRRRRR",
+    "lang": "en",
+    "duration_s": 1.11,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "GreenUnits_ahieee2.wav": {
+    "en": "AAAAAAAH!",
+    "lang": "en",
+    "duration_s": 1.16,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "GreenUnits_ahieee3.wav": {
+    "en": "Woo!",
+    "lang": "en",
+    "duration_s": 1.16,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "GreenUnits_arrrgh1.wav": {
+    "en": "Grrrrrrrrrrrrrrrrrrrr",
+    "lang": "en",
+    "duration_s": 0.75,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "GreenUnits_arrrgh2.wav": {
+    "en": "ARGH!",
+    "lang": "en",
+    "duration_s": 0.59,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "GreenUnits_arrrgh3.wav": {
+    "en": "ARGH!",
+    "lang": "en",
+    "duration_s": 0.48,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "GreenUnits_no1.wav": {
+    "en": "NOOOOOO!",
+    "lang": "en",
+    "duration_s": 1.08,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "GreenUnits_no3.wav": {
+    "en": "NOOOOOO!",
+    "lang": "en",
+    "duration_s": 1.75,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "GreenUnits_unit_ahieee1.wav": {
+    "en": "AAAAAAAAAAAAAAAAAAAAAAAA",
+    "lang": "en",
+    "duration_s": 1.52,
+    "speaker": "GreenArmy_Grunt"
+  },
+  "Guard_Intruders.wav": {
+    "en": "intruders",
+    "lang": "en",
+    "duration_s": 0.71,
+    "speaker": "Guard"
+  },
+  "Guard_Stop.wav": {
+    "en": "STOP!",
+    "lang": "en",
+    "duration_s": 0.37,
+    "speaker": "Guard"
+  },
+  "HQ_BigHead.wav": {
+    "en": "Sarge, we have reports that the aliens are being led by a larger alien with a big head. Your orders are to take this alien commander out of the picture so we can get the civilian convoy through. Good luck. HQ out.",
+    "lang": "en",
+    "duration_s": 13.02,
+    "speaker": "HQ_Command"
+  },
+  "HQ_BootCamp.wav": {
+    "en": "Welcome to Boot Camp, Sarge. Here you will learn the tools to help you defeat the Tan and stay in one piece. Make sure to follow the signs and do exactly what they tell you to do. Go for it. HQ out.",
+    "lang": "en",
+    "duration_s": 11.76,
+    "speaker": "HQ_Command"
+  },
+  "HQ_CivilianDestination.wav": {
+    "en": "Good job eliminating that alien commander. Now that the path is cleared, you can escort the civilian convoy to their final destination. HQ, out.",
+    "lang": "en",
+    "duration_s": 8.93,
+    "speaker": "HQ_Command"
+  },
+  "HQ_CivilianSafe.wav": {
+    "en": "The civilians are finally safe. Thanks to you, Sarge.",
+    "lang": "en",
+    "duration_s": 3.63,
+    "speaker": "HQ_Command"
+  },
+  "HQ_Civilian_Convoy.wav": {
+    "en": "Good work on saving those civilians, Sarge. Unfortunately, we don't have enough manpower to defend this area. You'll have to move the civilians to a safer location before more of those aliens attack. HQ out.",
+    "lang": "en",
+    "duration_s": 11.66,
+    "speaker": "HQ_Command"
+  },
+  "HQ_Congratulations.wav": {
+    "en": "Congratulations, Sarge. Report back to HQ for your first assignment.",
+    "lang": "en",
+    "duration_s": 4.34,
+    "speaker": "HQ_Command"
+  },
+  "HQ_FoxTrot.wav": {
+    "en": "Sarge, escort the civilian convoy to Sector Foxtrot Whiskey 1. Secure a safe position and report back to us when your mission is successful. HQ, out.",
+    "lang": "en",
+    "duration_s": 10.82,
+    "speaker": "HQ_Command"
+  },
+  "HQ_Goodwork.wav": {
+    "en": "Good work, Sarge. The area is secure.",
+    "lang": "en",
+    "duration_s": 2.64,
+    "speaker": "HQ_Command"
+  },
+  "HQ_INTO_UFO.wav": {
+    "en": "Sarge, this is the area where the UFO landed. We think Plastro has an alliance with something out of this world. We have suspicions that there is more to it than just that ship. Go investigate and try to sneak your way inside the UFO. HQ out.",
+    "lang": "en",
+    "duration_s": 15.51,
+    "speaker": "HQ_Command"
+  },
+  "HQ_Protectourpeople.wav": {
+    "en": "Sarge, those aliens found another way in. They're rumored to be moving in on the town in your area. You are the only hope for the civilians in this region. Go in, or have a unit go inside each house and order the people living there to run to the old vehicle depot on the south. Let's try and get as many civilians out as possible. Sarge, you're holding all the cards. Good luck. HQ out.",
+    "lang": "en",
+    "duration_s": 22.57,
+    "speaker": "HQ_Command"
+  },
+  "HQ_RescueHostages.wav": {
+    "en": "Sarge, we found out where your men are being held. Recon can't tell if your men are dead or alive, but they do know your guys are just east of you. There were a lot more TAN in the area than we thought, so I guess the helicopter drop wasn't the best planned out operation. In any case, we're glad you made it out okay. Your guys are tough, and I'm sure they're making TAN's life miserable. Now, go get those guys and clear out the area of any remaining TAN. HQ out.",
+    "lang": "en",
+    "duration_s": 23.54,
+    "speaker": "HQ_Command"
+  },
+  "HQ_SecretBase.wav": {
+    "en": "Sarge, we now know where all those tan are coming from. There seems to be a tan base somewhere in this area. Find and destroy that base. HQ out.",
+    "lang": "en",
+    "duration_s": 8.8,
+    "speaker": "HQ_Command"
+  },
+  "HQ_base_history.wav": {
+    "en": "Good work, Sarge. Tan's base is history.",
+    "lang": "en",
+    "duration_s": 2.64,
+    "speaker": "HQ_Command"
+  },
+  "HQ_distress_signal.wav": {
+    "en": "Sarge, we intercepted that message from the walkie-talkie, and it's from someone named Tina Tomorrow. She says she's trapped and needs assistance. She seems to think that unless someone helps her take out some force field generators, the aliens will be here shortly. Aliens? Find her, and help her deactivate the three force field generators so you can both get out of there. HQ out.",
+    "lang": "en",
+    "duration_s": 21.53,
+    "speaker": "HQ_Command"
+  },
+  "HQ_radio_crackling.wav": {
+    "en": "Sorry! Sorry! SORRY!",
+    "lang": "en",
+    "duration_s": 5.93,
+    "speaker": "HQ_Command"
+  },
+  "HQ_strategic.wav": {
+    "en": "Sarge, take these tanks and secure the three indicated strategic points. By doing so, Tina and her troopers will be able to beam in and reveal why this area seems so important. Make sure Tina succeeds in her mission. HQ, out.",
+    "lang": "en",
+    "duration_s": 14.42,
+    "speaker": "HQ_Command"
+  },
+  "HitsSpot.wav": {
+    "en": "Ah, that hit the spot.",
+    "lang": "en",
+    "duration_s": 1.67,
+    "speaker": "UnknownVoice"
+  },
+  "IneededThat.wav": {
+    "en": "Mmm, I needed that.",
+    "lang": "en",
+    "duration_s": 1.6,
+    "speaker": "UnknownVoice"
+  },
+  "Sarge_AwayInGo1.wav": {
+    "en": "It's a way in. Go, go, go!",
+    "lang": "en",
+    "duration_s": 1.86,
+    "speaker": "Sarge"
+  },
+  "Sarge_CommanderMe2.wav": {
+    "en": "There's only room for one commander in this battlefield today, and that's me.",
+    "lang": "en",
+    "duration_s": 4.27,
+    "speaker": "Sarge"
+  },
+  "Sarge_DoOrDie3.wav": {
+    "en": "All the chips are down, boys. Time to do or die.",
+    "lang": "en",
+    "duration_s": 3.39,
+    "speaker": "Sarge"
+  },
+  "Sarge_Eatplastic.wav": {
+    "en": "Eat plastic.",
+    "lang": "en",
+    "duration_s": 1.68,
+    "speaker": "Sarge"
+  },
+  "Sarge_FiringSquad1.wav": {
+    "en": "The firing squad is up to something.",
+    "lang": "en",
+    "duration_s": 1.86,
+    "speaker": "Sarge"
+  },
+  "Sarge_FoxTrot1.wav": {
+    "en": "We have to get to Foxtrot Whiskey One without losing any civilians. Let's roll out!",
+    "lang": "en",
+    "duration_s": 4.33,
+    "speaker": "Sarge"
+  },
+  "Sarge_GoinDownThere2.wav": {
+    "en": "Something's going on down there.",
+    "lang": "en",
+    "duration_s": 1.48,
+    "speaker": "Sarge"
+  },
+  "Sarge_HateAnts2.wav": {
+    "en": "Ants! I hate ants!",
+    "lang": "en",
+    "duration_s": 2.39,
+    "speaker": "Sarge"
+  },
+  "Sarge_HitSpot1.wav": {
+    "en": "Ah, that hit the spot.",
+    "lang": "en",
+    "duration_s": 1.67,
+    "speaker": "Sarge"
+  },
+  "Sarge_Hostage3.wav": {
+    "en": "No! They've killed a hostage!",
+    "lang": "en",
+    "duration_s": 1.9,
+    "speaker": "Sarge"
+  },
+  "Sarge_HowGetThere3.wav": {
+    "en": "How do we get over there?",
+    "lang": "en",
+    "duration_s": 1.28,
+    "speaker": "Sarge"
+  },
+  "Sarge_IHateAnts3.wav": {
+    "en": "I hate ants.",
+    "lang": "en",
+    "duration_s": 1.58,
+    "speaker": "Sarge"
+  },
+  "Sarge_TanLesson3.wav": {
+    "en": "Let's teach those 10 a lesson.",
+    "lang": "en",
+    "duration_s": 1.88,
+    "speaker": "Sarge"
+  },
+  "Sarge_TooClose3.wav": {
+    "en": "That was too close.",
+    "lang": "en",
+    "duration_s": 1.28,
+    "speaker": "Sarge"
+  },
+  "Sarge_WhatAreThoseThings4.wav": {
+    "en": "What are those things?",
+    "lang": "en",
+    "duration_s": 1.78,
+    "speaker": "Sarge"
+  },
+  "Sarge_WhatNow2.wav": {
+    "en": "What now?",
+    "lang": "en",
+    "duration_s": 0.76,
+    "speaker": "Sarge"
+  },
+  "Sarge_WhatWithThis2.wav": {
+    "en": "What are they going to do with this?",
+    "lang": "en",
+    "duration_s": 1.48,
+    "speaker": "Sarge"
+  },
+  "Sarge_WhatisThat3.wav": {
+    "en": "What is that?",
+    "lang": "en",
+    "duration_s": 0.81,
+    "speaker": "Sarge"
+  },
+  "Sarge_WhoAreYou1.wav": {
+    "en": "Who are you?",
+    "lang": "en",
+    "duration_s": 1.33,
+    "speaker": "Sarge"
+  },
+  "Sarge_YouAllright1.wav": {
+    "en": "Are you all right?",
+    "lang": "en",
+    "duration_s": 0.85,
+    "speaker": "Sarge"
+  },
+  "Sarge_YourFreeNow.wav": {
+    "en": "You're free now.",
+    "lang": "en",
+    "duration_s": 1.16,
+    "speaker": "Sarge"
+  },
+  "Sarge_bootcamp.wav": {
+    "en": "Reporting to boot camp as ordered, sir.",
+    "lang": "en",
+    "duration_s": 1.81,
+    "speaker": "Sarge"
+  },
+  "Sarge_deadOverlord.wav": {
+    "en": "That's one dead alien overlord who won't bother us again.",
+    "lang": "en",
+    "duration_s": 3.83,
+    "speaker": "Sarge"
+  },
+  "Sarge_picnicBasket5.wav": {
+    "en": "That's no ordinary picnic basket.",
+    "lang": "en",
+    "duration_s": 2.1,
+    "speaker": "Sarge"
+  },
+  "Sarge_poorCow1.wav": {
+    "en": "Poor cow.",
+    "lang": "en",
+    "duration_s": 0.61,
+    "speaker": "Sarge"
+  },
+  "SpaceHQ_LargeWaves_t.wav": {
+    "en": "Commander, our scanners indicate large waves of aliens approaching the base from all directions.",
+    "lang": "en",
+    "duration_s": 5.02,
+    "speaker": "SpaceHQ"
+  },
+  "SpaceHQ_ReadingsNorth_t.wav": {
+    "en": "Sarge, Tina, this is HQ. Our scanners are picking up some strange reading to the north of your current location. This could be the alien lab we've been looking for. Your mission is to infiltrate the alien lab and upload any useful information about the alien hive from the main computer. HQ out.",
+    "lang": "en",
+    "duration_s": 17.73,
+    "speaker": "SpaceHQ"
+  },
+  "SpaceHQ_ShowAliens_t.wav": {
+    "en": "Men, let's show these aliens what we're made of.",
+    "lang": "en",
+    "duration_s": 2.9,
+    "speaker": "SpaceHQ"
+  },
+  "SpaceHQ_chamber.wav": {
+    "en": "The aliens are supposed to be led by some sort of overlord. It is said to be in those chambers. Take it out, whatever it is. If this mission fails, all of our efforts will have been for nothing. Good luck, and HQ out.",
+    "lang": "en",
+    "duration_s": 14.59,
+    "speaker": "SpaceHQ"
+  },
+  "TakeCover.wav": {
+    "en": "Take cover.",
+    "lang": "en",
+    "duration_s": 0.54,
+    "speaker": "UnknownVoice"
+  },
+  "TanUnits_Fire1.wav": {
+    "en": "WOW!",
+    "lang": "en",
+    "duration_s": 0.42,
+    "speaker": "TanArmy"
+  },
+  "TanUnits_NotSarge1.wav": {
+    "en": "What? No! Not him! Not Sarge!",
+    "lang": "en",
+    "duration_s": 4.77,
+    "speaker": "TanArmy"
+  },
+  "TanUnits_aim3.wav": {
+    "en": "HEEEP",
+    "lang": "en",
+    "duration_s": 0.51,
+    "speaker": "TanArmy"
+  },
+  "TanUnits_arrrgh2.wav": {
+    "en": "AAAHHHHHHHHHHHHHHH",
+    "lang": "en",
+    "duration_s": 3.9,
+    "speaker": "TanArmy"
+  },
+  "TanUnits_attack.wav": {
+    "en": "ATTACK!",
+    "lang": "en",
+    "duration_s": 2.71,
+    "speaker": "TanArmy"
+  },
+  "TanUnits_bwahahaha3.wav": {
+    "en": "Ha ha ha ha ha ha!",
+    "lang": "en",
+    "duration_s": 2.04,
+    "speaker": "TanArmy"
+  },
+  "TanUnits_charge.wav": {
+    "en": "Charge!",
+    "lang": "en",
+    "duration_s": 1.75,
+    "speaker": "TanArmy"
+  },
+  "TanUnits_meetmaker3.wav": {
+    "en": "Prepare to meet your maker.",
+    "lang": "en",
+    "duration_s": 2.93,
+    "speaker": "TanArmy"
+  },
+  "TanUnits_noOnCanSaveU3.wav": {
+    "en": "No one can save you.",
+    "lang": "en",
+    "duration_s": 3.83,
+    "speaker": "TanArmy"
+  },
+  "TanUnits_ready4.wav": {
+    "en": "Buh-dip!",
+    "lang": "en",
+    "duration_s": 0.43,
+    "speaker": "TanArmy"
+  },
+  "ThePitch.wav": {
+    "en": "And the pitch.",
+    "lang": "en",
+    "duration_s": 1.31,
+    "speaker": "UnknownVoice"
+  },
+  "Tina_AlienOverLord.wav": {
+    "en": "The aliens are reeling from that last assault. Now is our chance to eliminate the alien overlord.",
+    "lang": "en",
+    "duration_s": 3.91,
+    "speaker": "Tina"
+  },
+  "Tina_AlmostThere.wav": {
+    "en": "Almost there.",
+    "lang": "en",
+    "duration_s": 1.02,
+    "speaker": "Tina"
+  },
+  "Tina_CouldUseHelp.wav": {
+    "en": "I could use some help here.",
+    "lang": "en",
+    "duration_s": 1.07,
+    "speaker": "Tina"
+  },
+  "Tina_ForceField.wav": {
+    "en": "I need to rewire their generators so that we can shut down the force field. Help me find those machines so we can get out of here.",
+    "lang": "en",
+    "duration_s": 4.77,
+    "speaker": "Tina"
+  },
+  "Tina_GalacticSoldiers.wav": {
+    "en": "Galactic soldiers, come in. I'm outnumbered and need assistance. I'm in the tunnels beneath their ship. Repeat. Galactic soldiers, come in. I'm outnumbered and need assistance. I'm in the tunnels beneath their ship. Anyone copy?",
+    "lang": "en",
+    "duration_s": 10.75,
+    "speaker": "Tina"
+  },
+  "Tina_GotIt.wav": {
+    "en": "Got it. Let's go.",
+    "lang": "en",
+    "duration_s": 1.17,
+    "speaker": "Tina"
+  },
+  "Tina_HoldOn.wav": {
+    "en": "Hold on, almost done.",
+    "lang": "en",
+    "duration_s": 1.31,
+    "speaker": "Tina"
+  },
+  "Tina_ImTina.wav": {
+    "en": "I'm Tina, Tina Tomorrow.",
+    "lang": "en",
+    "duration_s": 1.51,
+    "speaker": "Tina"
+  },
+  "Tina_KeepOff.wav": {
+    "en": "Keep those things away from me.",
+    "lang": "en",
+    "duration_s": 1.23,
+    "speaker": "Tina"
+  },
+  "Tina_WayOut.wav": {
+    "en": "There is a way out of here, but we have to take down the force field generators.",
+    "lang": "en",
+    "duration_s": 2.85,
+    "speaker": "Tina"
+  },
+  "Tina_WhatDoing.wav": {
+    "en": "What are you doing?",
+    "lang": "en",
+    "duration_s": 1.08,
+    "speaker": "Tina"
+  },
+  "Tina_WorkingOnIt.wav": {
+    "en": "I'm working on it.",
+    "lang": "en",
+    "duration_s": 0.95,
+    "speaker": "Tina"
+  },
+  "Tina_coverme.wav": {
+    "en": "Cover me.",
+    "lang": "en",
+    "duration_s": 0.49,
+    "speaker": "Tina"
+  },
+  "Tina_hello.wav": {
+    "en": "Hello?",
+    "lang": "en",
+    "duration_s": 1.13,
+    "speaker": "Tina"
+  },
+  "YoureOut.wav": {
+    "en": "You're out.",
+    "lang": "en",
+    "duration_s": 0.77,
+    "speaker": "UnknownVoice"
+  }
+}

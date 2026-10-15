@@ -1,0 +1,413 @@
+//--This is the bathtub map--//
+
+//--Pads--//
+pad laststand			100
+pad fm1				101     fieldmarshall
+pad fm2				102     fieldmarshall
+pad fm3				103     fieldmarshall
+pad fm4				104     fieldmarshall
+pad fm5				105     fieldmarshall
+pad ht1                         111     tanhtrack1
+pad ht2                         112     tanhtrack1
+pad ht3                         113     tanhtrack1
+pad ht4                         114     tanhtrack1
+pad trainer1                    151     trainer
+pad trainer2                    152     trainer
+pad trainer3                    153     trainer
+pad sponge                      200     trooper
+pad boatpoint1                  201     tanboat1
+pad boatpoint2                  202     tanboat1
+pad boatpoint3                  203     tanboat1
+pad boatpoint4                  204     tanboat1
+pad charge                      254     green trooper
+pad finishsarge                 255     green trooper
+
+pad sargevopad                  190     green
+
+//--Preloaded Sprites--//
+
+preloadsprite 43 500 0
+preloadsprite 43 500 1
+preloadsprite 43 500 2
+preloadsprite 43 500 3
+preloadsprite 43 500 4
+preloadsprite 43 500 5
+preloadsprite 43 500 6
+preloadsprite 43 500 7
+preloadsprite 43 500 8
+
+
+//--Variables--//
+variable civiliandeaths		0
+variable vehiclegoal		0
+variable spongecount            0
+
+
+if padon sargevopad butnot onesargevo then
+         playsound "Sarge_CommanderMe2.wav" 10 3,
+         trigger onesargevo
+
+
+//--Startup--//
+if startup1 then
+        triggerdelay 100 gstart
+
+//--Win Condition--//
+if killed fieldmarshall then
+        triggerdelay 4000 checkgreenwins
+
+if checkgreenwins butnot killed greensarge1 then
+        playsound "HQ_CivilianDestination.wav" 1 1,
+        showpda "干得好，中士。把卡车集结起来，等待进一步命令。",
+        triggerdelay 100 greenwins
+
+//--Lose Conditions--//
+if killed greensarge1 then
+        setuilock 1,
+        setcamerafocus greensarge1,
+        showpda "你让中士死了！",
+        triggerdelay 3000 tanwins
+
+//--Start--//
+if gstart then
+	trigger greensetup,
+        trigger tansetup,
+        trigger bigguys
+
+//--Green Setup--//
+
+if greensetup then
+	createunit Hotspot flamerman (1945,2380) green flamer 1 2,
+	createunit Pitt grenadier (1802,2380) green grenade 1 2,
+	createunit Scar rifleman (1730,2440) green rifle 1 3,
+	createunit Pierce rifleman (1874,2440) green rifle 1 3,
+	createunit Flack rifleman (2018,2440) green rifle 1 3,
+	createunit greenboat1 boat (2060,1310) green vulcan,
+        setfacing greenboat1 96
+
+//--Macro maketans--//
+macro maketans 9
+// @1 = unit name, @2 = unit type, @3 = x coord, @4 = y coord, //
+// @5 = weapon. @6 = strength, @7 = facing, @8 = ai mode @9 = numeric //
+{
+if tansetup then
+        createunit @1 @2 (@3,@4) tan @5 @6 1,
+	setfacing @1 @7,
+	setaimode @1 @8,
+        trigger that_unit_hit1
+
+if padon charge then
+        trigger finalfight,
+        order @1 follow greensarge1 inmode attack
+
+if hit @1 butnot that_unit_hit@9 then
+        order @1 follow greensarge1 inmode defend
+
+}
+expand maketans (tanrifle1 rifleman 2760 1730 autorifle 1 128 defend 1 )
+expand maketans (tanrifle2 rifleman 2550 1630 autorifle 1 96 defend2 1 )
+expand maketans (tanrifle3 rifleman 1390 440 autorifle 1 144 defend3 1 )
+expand maketans (tanhtflamer1 flamerman 1660 3085 FLAMER 1 144 defend4 1 )
+expand maketans (tanhtrifle1 rifleman 1660 3085 autorifle 1 144 defend5 2 )
+expand maketans (tanhtrifle2 rifleman 1660 3085 autorifle 1 144 defend 3)
+expand maketans (tangren1 grenadier 2291 1804 grenade 1 108 standfire 1)
+expand maketans (tangren2 grenadier 1285 422 grenade 1 148 standfire 1 )
+expand maketans (tangren3 grenadier 2789 1626 grenade 1 74 standfire 1 )
+expand maketans (tanrifle4 rifleman 1151 530 autorifle 1 74 defend 4 )
+expand maketans (tanrifle5 rifleman 1085 466 autorifle 1 74 defend 5 )
+expand maketans (humanoid1 humanoid 525 992 mediumlaser 2 74 defend 6 )
+expand maketans (humanoid2 humanoid 397 1187 lightlaser 2 74 defend 7 )
+expand maketans (humanoid3 humanoid 401 1282 lightlaser 2 74 defend 8 )
+expand maketans (humanoid4 humanoid 217 1195 lightlaser 2 74 defend 9 )
+expand maketans (humanoid6 humanoid 553 1342 mediumlaser 2 74 defend 10 )
+expand maketans (humanoid7 humanoid 544 3002 lightlaser 1 74 defend 11 )
+expand maketans (humanoid8 humanoid 504 3137 lightlaser 1 74 defend 12 )
+expand maketans (humanoid9 humanoid 416 2904 lightlaser 1 74 defend 13 )
+expand maketans (humanoid10 humanoid 321 2909 lightlaser 1 74 defend 14 )
+
+expand maketans (mort1 mortarman 772 2080 mortar 1 225 standfire 1 )
+expand maketans (baz1 bazookaman 967 1691 bazooka 1 225 defend 1 )
+expand maketans (baz2 bazookaman 1044 1776 bazooka 1 225 defend 1 )
+expand maketans (baz3 bazookaman 1298 1243 bazooka 1 225 defend 1 )
+expand maketans (baz4 bazookaman 1418 1166 bazooka 1 225 defend 1 )
+
+expand maketans (humanoid11 humanoid 2188 1077 lightlaser 1 210 standfire 1 )
+expand maketans (humanoid12 humanoid 2347 1205 lightlaser 1 188 standfire 1 )
+
+if killed baz2 then
+        createpowerup "" bazooka baz2 5
+
+if killed baz4 then
+        createpowerup "" bazooka baz4 3
+
+if hit humanoid11 butnot onhit then
+        order humanoid11 follow me inmode defend,
+        order humanoid12 follow me inmode defend,
+        trigger onhit
+
+if hit humanoid12 butnot onhit then
+        order humanoid11 follow me inmode defend,
+        order humanoid12 follow me inmode defend,
+        trigger onhit
+
+
+
+
+
+
+if bigguys then
+	createunit fieldmarshall fieldcommander (3020,3150) tan superlaser 2,
+        setfacing fieldmarshall 32,
+	setaimode fieldmarshall standfire,
+	createunit trainer humanoid (300,3130) tan heavylaser 3,
+        setfacing trainer 224,
+	setaimode trainer standfire,
+	createunit eliteg1 humanoid (2470,3200) tan heavylaser 3,
+        setfacing eliteg1 64,
+	setaimode eliteg1 standfire,
+	createunit eliteg2 humanoid (2470,3080) tan heavylaser 3,
+        setfacing eliteg2 64,
+	setaimode eliteg2 standfire,
+	createunit eliteg3 humanoid (2650,2800) tan heavylaser 3,
+        setfacing eliteg3 32,
+	setaimode eliteg3 standfire,
+	createunit eliteg4 humanoid (2730,2740) tan heavylaser 3,
+        setfacing eliteg4 32,
+	setaimode eliteg4 standfire,
+	createunit eliteg5 humanoid (3060,2750) tan heavylaser 3,
+        setfacing eliteg5 0,
+	setaimode eliteg5 standfire,
+	createunit eliteg6 humanoid (3180,2750) tan heavylaser 3,
+        setfacing eliteg6 0,
+	setaimode eliteg6 standfire,
+        createvehicle "tanhtrack1" halftrack (1700,3106) tan,
+        createvehicle "tank1" tank (287,2075) tan,
+        createvehicle "tanboat1" boat boatpoint2 tan,
+        setfacing tank1 225,
+        trigger bgmovement
+
+if bgmovement then
+        trigger ptpatrol,
+	trigger loadht,
+	order tanhtrack1 goto ht2,
+	trigger trainerwalks,
+	trigger walktofm1
+
+//--Tan Boat--//
+if ptpatrol then
+        order tanboat1 goto boatpoint1
+
+if padon boatpoint1 then
+	order tanboat1 goto boatpoint2
+
+if padon boatpoint2 then
+	order tanboat1 goto boatpoint3
+
+if padon boatpoint3 then
+	order tanboat1 goto boatpoint4
+
+if padon boatpoint4 then
+	order tanboat1 goto boatpoint1
+
+//--Halftrack--//
+if loadht then
+        entervehicle tanhtflamer1 tanhtrack1,
+        entervehicle tanhtrifle1 tanhtrack1,
+        entervehicle tanhtrifle2 tanhtrack1
+
+if padon ht1 butnot finalfight then
+        order tanhtrack1 goto ht2
+
+if padon ht2 butnot finalfight then
+        order tanhtrack1 goto ht3
+
+if padon ht3 butnot finalfight then
+        order tanhtrack1 goto ht4
+
+if padon ht4 butnot finalfight then
+        order tanhtrack1 goto ht1
+
+if killed tanhtrack1 then
+        createpowerup "trackpower" paratroopers tanhtrack1 1
+
+if killed tanhtrifle1 then
+        createpowerup "" medpack tanhtrifle1 3
+
+
+//--Trainer--//
+if padon trainer1 butnot finalfight then
+        order trainer goto trainer2
+
+if padon trainer2 butnot finalfight then
+        order trainer goto (366,3032),
+        triggerdelay 800 trainertalks
+
+if trainertalks then
+        setfacing trainer 224,
+        triggerdelay 4000 trainerwalks
+
+if trainerwalks then
+        order trainer goto trainer1
+
+if killed trainer then
+        createpowerup "trmine" mine trainer 20
+
+//--Fieldmarshall--//
+if padon fm1 butnot finalfight then
+        triggerdelay 250 fm1facing,
+        triggerdelay 2500 walktofm2
+
+if fm1facing then
+        setfacing fieldmarshall 64,
+        setfacing eliteg1 176,
+        setfacing eliteg2 208
+
+if padon fm2 butnot finalfight then
+        triggerdelay 350 fm2facing,
+        triggerdelay 2500 walktofm3
+
+if fm2facing then
+        setfacing fieldmarshall 32,
+        setfacing eliteg3 176,
+        setfacing eliteg4 144
+
+if padon fm3 butnot finalfight then
+        triggerdelay 250 fm3facing,
+        triggerdelay 2500 walktofm4
+
+if fm3facing then
+        setfacing fieldmarshall 0,
+        setfacing eliteg5 144,
+        setfacing eliteg6 112
+
+if padon fm4 butnot finalfight then
+        triggerdelay 250 fm4facing,
+        triggerdelay 8000 walktofm5
+
+if fm4facing then
+        setfacing fieldmarshall 32
+
+if padon fm5 butnot finalfight then
+        triggerdelay 250 fm5facing
+
+if fm5facing then
+        setfacing fieldmarshall 192,
+        triggerdelay 8000 walktofm1
+
+if walktofm1 then
+        order fieldmarshall goto fm1
+
+if walktofm2 then
+        setfacing eliteg1 64,
+        setfacing eliteg2 64,
+        order fieldmarshall goto fm2
+
+if walktofm3 then
+        setfacing eliteg3 32,
+        setfacing eliteg4 32,
+        order fieldmarshall goto fm3
+
+if walktofm4 then
+        setfacing eliteg5 0,
+        setfacing eliteg6 0,
+        order fieldmarshall goto fm4
+
+if walktofm5 then
+        order fieldmarshall goto fm5
+
+variable fieldmarshal 0
+
+if padon finishsarge then
+        order eliteg1 follow greensarge1 inmode attack,
+        setvar fieldmarshal 1,
+        triggerdelay 10000 orderbrother
+
+if orderbrother then
+	order eliteg2 follow greensarge1 inmode attack,
+        triggerdelay 15000 reforce
+
+if reforce then
+        order eliteg3 follow greensarge1 inmode attack,
+        order eliteg4 follow greensarge1 inmode attack
+
+
+variable elitehit 0
+
+if hit eliteg5 testvar elitehit = 0 then
+        setvar elitehit 1,
+        order eliteg5 follow greensarge1 inmode attack,
+	order eliteg6 follow greensarge1 inmode attack,
+        triggerdelay 25000 orderfield
+
+if hit eliteg6 testvar elitehit = 0 then
+        setvar elitehit 1,
+        order eliteg5 follow greensarge1 inmode attack,
+	order eliteg6 follow greensarge1 inmode attack,
+        triggerdelay 25000 orderfield
+
+if hit fieldmarshall testvar elitehit = 0 and fieldmarshal = 1 then
+        setvar elitehit 1,
+        order eliteg5 follow greensarge1 inmode attack,
+	order eliteg6 follow greensarge1 inmode attack,
+        triggerdelay 25000 orderfield
+
+if orderfield then
+        order fieldmarshall follow greensarge1 inmode attack
+
+//--Floating Sponge--//
+if padon sponge then
+        addvar spongecount 1,
+        trigger spongestart
+
+if spongestart testvar spongecount > 0 then
+        setobjstate blueisle blueisle_active
+
+if padoff sponge then
+        addvar spongecount -1,
+        trigger spongestop
+
+if spongestop testvar spongecount = 0 then
+        setobjstate blueisle blueisle_init
+
+object blueisle
+        state blueisle_init
+                frame 10 0
+
+        state blueisle_active
+                frame 100 1
+                frame 100 2
+                frame 100 3
+                frame 100 4
+                frame 100 5
+                frame 100 6
+                frame 100 7
+                frame 100 8
+                triggerdelay 100 sponge_reloop
+
+if sponge_reloop testvar spongecount > 0 then
+          setobjstate blueisle blueisle_active
+
+if hit rubberducky then
+        playsound "RubberDuckSqueak.wav" rubberducky 16 1 20
+
+if killed rubberducky then
+         playsound "RubberDuckHdOff.wav" rubberducky 14 1 20
+
+//**Tooth Goo**//
+
+if killed toothgoo then
+        setobjstate toothgoo oozgoo
+
+object toothgoo
+        state goo_init
+                frame 100 00
+
+        state oozgoo
+                frame 300 01
+                frame 300 02
+                frame 300 03
+                frame 300 04
+                setobjstate toothgoo oozgoo_finish
+
+        state oozgoo_finish
+                frame 300 05

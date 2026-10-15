@@ -1,0 +1,1592 @@
+
+//***Map layout and concept was designed by Jason Wildblood***//
+
+//** Pads **//
+//Left screen pads//
+
+pad leftposition_11                             11 	noone > 0
+pad leftposition_12                             12 	noone > 0
+pad leftposition_13                             13 	noone > 0
+pad leftposition_14                             14 	noone > 0
+pad leftposition_15                             15 	noone > 0
+
+pad leftposition_21                             21 	noone > 0
+pad leftposition_22                             22 	noone > 0
+pad leftposition_23                             23 	noone > 0
+pad leftposition_24                             24 	noone > 0
+pad leftposition_25                             25 	noone > 0
+
+pad leftposition_31                             31 	noone > 0
+pad leftposition_32                             32 	noone > 0
+pad leftposition_33                             33 	noone > 0
+pad leftposition_34                             34 	noone > 0
+pad leftposition_35                             35 	noone > 0
+
+pad leftposition_41                             41 	noone > 0
+pad leftposition_42                             42 	noone > 0
+pad leftposition_43                             43 	noone > 0
+pad leftposition_44                             44 	noone > 0
+pad leftposition_45                             45 	noone > 0
+
+//right screen pads//
+
+pad rightposition_51                             51 	noone > 0
+pad rightposition_52                             52 	noone > 0
+pad rightposition_53                             53 	noone > 0
+pad rightposition_54                             54 	noone > 0
+pad rightposition_55                             55 	noone > 0
+
+pad rightposition_61                             61 	noone > 0
+pad rightposition_62                             62 	noone > 0
+pad rightposition_63                             63 	noone > 0
+pad rightposition_64                             64 	noone > 0
+pad rightposition_65                             65 	noone > 0
+
+pad rightposition_81                             81     noone > 0
+pad rightposition_82                             82     noone > 0
+pad rightposition_83                             83     noone > 0
+pad rightposition_84                             84     noone > 0
+pad rightposition_85                             85     noone > 0
+
+pad botposition_205                         	205     noone > 0
+pad botposition_204                         	204     noone > 0
+pad botposition_203                         	203     noone > 0
+pad botposition_202                         	202     noone > 0
+pad botposition_201                         	201     noone > 0
+
+pad botposition_207                         	207     noone > 0
+pad botposition_208                         	208     noone > 0
+pad botposition_209                         	209     noone > 0
+
+pad botLEFTposition_160                        	160     noone > 0
+pad botLEFTposition_161                        	161     noone > 0
+pad botLEFTposition_162                        	162     noone > 0
+pad botLEFTposition_163                        	163     noone > 0
+pad botLEFTposition_164                        	164     noone > 0
+pad botLEFTposition_165                        	165     noone > 0
+
+//Pads for frontal attack//
+
+pad rightstop_140                               140     noone > 0
+pad rightstop_141                               141     noone > 0
+pad rightstop_142                               142     noone > 0
+pad rightstop_143                               143     noone > 0
+pad rightstop_144                               144     noone > 0
+pad rightstop_145                               145     noone > 0
+pad rightstop_146                               146     noone > 0
+pad rightstop_147                               147     noone > 0
+pad rightstop_148                               148     noone > 0
+pad rightstop_149                               149     noone > 0
+pad rightstop_100                               100     noone > 0
+pad rightstop_70                                 70     noone > 0
+pad rightstop_90                                 90     noone > 0
+
+pad leftstop_150                                150     noone > 0
+pad leftstop_151                                151     noone > 0
+pad leftstop_152                                152     noone > 0
+pad leftstop_153                                153     noone > 0
+pad leftstop_154                                154     noone > 0
+pad leftstop_155                                155     noone > 0
+pad leftstop_156                                156     noone > 0
+pad leftstop_157                                157     noone > 0
+pad leftstop_158                                158     noone > 0
+pad leftstop_159                                159     noone > 0
+pad leftstop_40                                  40     noone > 0
+pad leftstop_50                                  50     noone > 0
+pad leftstop_80                                  80     noone > 0
+pad leftstop_30                                  30     noone > 0
+pad leftstop_79                                  79     noone > 0
+
+pad botstop_71	                                 71 	noone > 0
+pad botstop_72                                   72 	noone > 0
+pad botstop_77                                   77 	noone > 0
+pad botstop_76                                   76 	noone > 0
+
+pad topstop_73	                                 73 	noone > 0
+pad topstop_74                                   74     noone > 0
+pad topstop_75                                   75     noone > 0
+pad topstop_78                                   78     noone > 0
+
+//final lords//
+
+//pad leftlord1                                    120    do_or_die1 > 0
+//pad leftlord2                                    120    do_or_die2 > 0
+
+//pad rightlord1                                    130   do_or_die3 > 0
+//pad rightlord2                                    130   do_or_die4 > 0
+
+
+//Demolition Crew pads//
+pad leftdemo1                                   120     tanleftman > 0
+pad leftdemo2                                   200     tanleftman > 0
+pad leftplacebomb                               200
+
+pad rightdemo1                                  130    	tanrightman > 0
+pad rightdemo2                                  199     tanrightman > 0
+pad rightplacebomb                              199
+
+//Extra attack pads//
+pad extraposition_101                           101     noone > 0
+pad extraposition_102                           102     noone > 0
+pad extraposition_103                           103     noone > 0
+pad extraposition_104                           104     noone > 0
+pad extraposition_105                           105     noone > 0
+
+
+//Robot trap//
+pad r2_boilpad                                  168     green > 0
+
+//South Door Activation//
+pad sdoor_activate                              199     green trooper > 0
+
+//North Door Activation//
+pad ndoor_activate                              200     green trooper > 0
+
+
+
+//Spacemen deployment//
+pad spacebabe                                   231     noone > 0
+pad spaceman1                                   232     noone > 0
+pad spaceman2                                   233     noone > 0
+pad spaceman3                                   234     noone > 0
+pad spaceman4                                   235     noone > 0
+pad spaceman5                                   236     noone > 0
+pad spaceman6                                   237     noone > 0
+pad spaceman7                                   238     noone > 0
+pad spaceman8                                   239     noone > 0
+pad spaceman9                                   240     noone > 0
+pad spaceman10                                  241     noone > 0
+pad spaceman11                                  242     noone > 0
+pad spaceman12                                  243     noone > 0
+
+//HQ healing//
+pad healthemen                                  230     green trooper
+
+//Variables//
+variable open_closen 0
+variable ndoorhealth 0
+
+variable open_closen02 0
+variable sdoorhealth 0
+
+variable onesmoke1 0
+variable onesmoke2 0
+variable onesmoke3 0
+variable onesmoke4 0
+variable onesmoke5 0
+
+//Pre-Loaded Sprites//
+preloadsprite 43 200 0
+preloadsprite 43 200 1
+preloadsprite 43 201 0
+preloadsprite 43 201 1
+preloadsprite 43 202 0
+preloadsprite 43 202 1
+preloadsprite 43 203 0
+preloadsprite 43 203 1
+
+
+
+//**Startup**//
+
+if startup1 then
+	triggerdelay 200 makespacemen,
+        triggerdelay 3000 playcosmowave01,
+        triggerdelay 500 ambientSFX,
+        triggerdelay 7000 playsargewave01,
+        triggerdelay 600 showsataliteview,
+        trigger tandemo,
+        trigger undeploymentofmen,
+        triggerdelay 15000 makemeat
+
+if ambientSFX then
+        playsound "HQambient.wav" spacehq 10 1 1 50
+
+
+
+if undeploymentofmen then
+        undeploy Chang,
+        undeploy Fairchild,
+        undeploy Cray,
+        undeploy Cash,
+        undeploy Lynch
+
+//@1 num @2 unitname @3 padname @4 weapontype @5 padnum @6 unittype @7 level @8 facing//
+macro rovermacro 8
+{
+pad @3                          @5
+
+if killrover@1 then
+        createunit "@2" @6 @3 tan @4 @7,
+        beam @2 1000,
+        setaimode @2 standfire,
+        setfacing @2 @8
+
+}
+expand rovermacro ( 1 roverkill1 killpad1 mediumlaser 221 Humanoid 3 172)
+expand rovermacro ( 1 roverkill2 killpad2 deathray 222 eyeball 2 192 )
+expand rovermacro ( 1 roverkill3 killpad3 mediumlaser 223 Humanoid 3 200 )
+
+expand rovermacro ( 2 roverkill4 killpad4 mediumlaser 224 Humanoid 3 172 )
+expand rovermacro ( 2 roverkill5 killpad5 deathray 225 eyeball 2 192 )
+expand rovermacro ( 2 roverkill6 killpad6 mediumlaser 226 Humanoid 3 200 )
+
+
+pad roverpad                                    210
+pad roverpad2                                   211
+
+if makespacemen then
+        createvehicle "rover" lightHover roverpad green,
+        setfacing rover 148,
+        setforcecolor rover blue,
+        createvehicle "rover2" HeavyHover roverpad2 green,
+        setfacing rover2 28,
+        setforcecolor rover2 blue,
+        createunit "Tina_Tomorrow" spacewomanp spacebabe green freezelaser,
+        setmaxhealth Tina_Tomorrow 400,
+        heal Tina_Tomorrow 100,
+        createunit "Laser_Light" spacemang spaceman8 green lasergatling,
+        createunit "Spank" spacemang (3175,1578) green lasergatling 1 6,
+        createunit "Vaverk" spacemang (1752,2310) green lasergatling,
+        createunit "Dominique" spacemang (1748,2375) green lasergatling,
+        createunit "Speck" spacemang (1857,2395) green lasergatling,
+        createunit "Net" spacemang (1859,2315) green lasergatling,
+        createunit ".Com" spacemang (2382,2498) green lasergatling,
+        createunit "Malogal" spacemang (2423,2373) green lasergatling,
+        createunit "Chaninator" spacemang (2256,2480) green lasergatling,
+        createunit "On_Ice" spacemang (2253,2395) green lasergatling,
+        createunit "BurningSun" spacemang spaceman7 green lasergatling,
+        createunit "Marksman" spacemang spaceman6 green lasergatling,
+        createunit "Tearen" spacemang spaceman5 green lasergatling,
+        createunit "Mikaela" spacewomanp spaceman4 green freezelaser,
+        createunit ".Org" spacemanm (1824,2335) green napalmmortar,
+        createunit "Firesrite" spacemanm (2312,2433) green napalmmortar,
+        createunit "Wildman" spacemang spaceman3 green lasergatling,
+        createunit "Doh" spacemang spaceman2 green lasergatling,
+        createunit "Star_Bright" spacemang spaceman1 green lasergatling,
+        createunit "Meridian_Star" spacemang spaceman9 green lasergatling,
+        createunit "Head_Space" spacemang (1263,2525) green lasergatling 1 6,
+        createunit "Faurloan" spacemang spaceman11 green lasergatling,
+        createunit "Shine" spacemang spaceman12 green lasergatling,
+        createunit "Peace" mortarman (2314,1794) green mortar,
+        createunit "Rock_N_Roll" bazookaman (2311,1767) green bazooka,
+        createunit "Magnum" rifleman (2482,1813) green heavymg,
+        createunit "Clip" rifleman (2482,1762) green heavymg,
+
+        createpowerup "" vulcan (2386,1620),
+        createpowerup flamer (2373,1854) 60,
+        createpowerup "" bazooka (2313,1677) 10,
+
+        createunit "predep1" humanoid (3030,473) tan lightlaser,
+        createunit "predep2" humanoid (3260,668) tan lightlaser,
+        createunit "predep3" humanoid (3495,773) tan lightlaser,
+        createunit "predep4" humanoid (3381,921) tan lightlaser,
+        createunit "predep5" humanoid (3268,815) tan lightlaser,
+        createunit "predep6" humanoid (3682,1339) tan lightlaser,
+        createunit "predep7" humanoid (3583,1500) tan lightlaser,
+        createunit "predep8" humanoid (3707,1728) tan lightlaser,
+        setfacing predep1 70,
+        setfacing predep2 74,
+        setfacing predep3 84,
+        setfacing predep4 80,
+        setfacing predep5 70,
+        setfacing predep6 14,
+        setfacing predep7 20,
+        setfacing predep8 26,
+
+        createunit "R2_3d0" robot (909,1375) green electricshock,
+        createunit "robotguard01" eyeball (788,1409) tan deathray 2,
+        createunit "robotguard02" eyeball (841,1453) tan deathray 2,
+        setfacing R2_3d0 80,
+        setnpc R2_3d0 1,
+        setaimode R2_3d0 ignore,
+        setaimode robotguard01 ignore,
+        setfacing robotguard01 74,
+        setaimode robotguard02 ignore,
+        setfacing robotguard02 78,
+
+        createunit "robotguard03" humanoid (323,2018) tan mediumlaser,
+        createunit "robotguard04" humanoid (444,2074) tan mediumlaser,
+        createunit "robotguard05" humanoid (547,2038) tan mediumlaser,
+        setaimode robotguard03 attack,
+        setfacing robotguard03 118,
+        setaimode robotguard04 attack,
+        setfacing robotguard04 128,
+        setaimode robotguard05 attack,
+        setfacing robotguard05 148,
+
+        setunitgroup Peace 1,
+        setunitgroup Rock_N_Roll 1,
+        setunitgroup Magnum 1,
+        setunitgroup Clip 1,
+
+        setsquadleader Tina_Tomorrow 2,
+        setunitgroup Head_Space 6,
+        setunitgroup Wildman 2,
+        setunitgroup Star_Bright 2,
+        setunitgroup Meridian_Star 2,
+        setunitgroup Laser_Light 2,
+        setunitgroup Doh 2,
+
+        setsquadleader Mikaela 4,
+        setunitgroup Marksman 4,
+        setunitgroup BurningSun 4,
+        setunitgroup Faurloan 4,
+        setunitgroup Shine 4,
+        setunitgroup Tearen 4,
+
+        setsquadleader .org 3,
+        setunitgroup Vaverk 3,
+        setunitgroup Dominique 3,
+        setunitgroup Speck 3,
+        setunitgroup Net 3,
+
+        setsquadleader Firesrite 5,
+        setunitgroup .Com 5,
+        setunitgroup Malogal 5,
+        setunitgroup On_Ice 5,
+        setunitgroup Chaninator 5,
+
+        setfacing Tina_Tomorrow 54,
+        setfacing Head_Space 88,
+        setfacing Star_Bright 54,
+        setfacing Meridian_Star 54,
+        setfacing Laser_Light 54,
+        setfacing Doh 54,
+        setfacing wildman 54,
+
+        setfacing Mikaela 182,
+        setfacing Marksman 182,
+	setfacing BurningSun 182,
+	setfacing Faurloan 182,
+	setfacing Shine 182,
+        setfacing Tearen 182,
+        setfacing spank 200,
+
+        triggerdelay 10000 killrover1
+
+if killed G_armor then
+        createpowerup "" mortar G_Armor 12
+if killed D_Fruin then
+        createpowerup "" bazooka D_Fruin 12
+
+if allof killed robotguard03 killed robotguard04 killed robotguard05 then
+        triggerdelay 10000 killrobot,
+        setaimode R2_3d0 standfire,
+        setnpc R2_3d0 0,
+        setunitgroup R2_3d0 6
+
+if killrobot then
+        setaimode robotguard01 attack,
+        setfacing robotguard01 200,
+        setaimode robotguard02 attack,
+        setfacing robotguard02 200
+
+if padon r2_boilpad butnot ontrigr2_pad then
+        damage boil28 1000,
+        damage boil29 1000
+
+
+
+//Healing//
+
+if padon healthemen butnot hqdestoryed then
+        heal me 10
+
+
+//**Win Condition**//
+
+variable sargevar 0
+variable spacehqvar 0
+variable tinavar 0
+
+
+If allof killed do_or_die1 killed do_or_die2 testvar sargevar = 0 and spacehqvar = 0 
+and tinavar = 0  then
+        playsound "SpaceHQ10_04.wav" 11 1,
+        triggerdelay 3000 finishwin
+
+if finishwin testvar sargevar = 0 and spacehqvar = 0 and tinavar = 0 then
+        playsound "Tina_AlienOverLord.wav" 12 3,
+        triggerdelay 4000 wincheck1
+
+if wincheck1 testvar sargevar = 0 and spacehqvar = 0 and tinavar = 0 then
+        playsound "Sarge10_01.wav" 13 2,
+        triggerdelay 2000 wincheck2
+
+if wincheck2 testvar sargevar = 0 and spacehqvar = 0 and tinavar = 0 and then
+        showpda "敌人未能摧毁银河总部。任务完成！",
+        triggerdelay 2000 greenwins
+
+//**Lose Condition**//
+
+if killed tina_tomorrow testvar sargevar = 0 and spacehqvar = 0 then
+        setvar tinavar 1,
+        setuilock 1,
+        setcamerafocus tina_tomorrow,
+        showpda "蒂娜·托马在行动中牺牲。任务失败。",
+        triggerdelay 2500 tanwinner
+
+
+if killed greensarge1 testvar spacehqvar = 0 and tinavar = 0 then
+        setvar sargevar 1,
+        setuilock 1,
+        setcamerafocus greensarge1,
+        triggerdelay 2500 TankilledSarge
+
+if TankilledSarge then
+        trigger showsargedeathpda,
+        trigger tanwinner
+
+if showsargedeathpda then
+        showfailure "你让中士死了！"
+
+if killed spacehq testvar sargevar = 0 and tinavar = 0 then
+        setvar spacehqvar 1,
+        setuilock 1,
+        setcamerafocus setcamfoc,
+        trigger hqtoast,
+        trigger makeexp
+
+if hqtoast then
+        trigger showendpda,
+        triggerdelay 2500 tanwinner
+
+if showendpda then
+        showpda "银河总部被摧毁！一切尽失。"
+
+if tanwinner then
+        triggerdelay 500 tanwins
+
+if makeexp then
+       createexplosion (2279,1896) 130 150 blue,
+       createexplosion (2259,2025) 130 150 blue,
+       triggerdelay 500 exp02
+
+if exp02 then
+        createexplosion (2235,1960) 130 150 blue,
+        createexplosion (2216,2081) 130 150 blue,
+        triggerdelay 500 exp_03
+
+if exp_03 then
+        createexplosion (2260,2000) 130 150 blue,
+        triggerdelay 500 exp_04
+
+if exp_04 then
+        createexplosion (2248,2049) 130 150 blue,
+        triggerdelay 500 exp_05
+
+if exp_05 then
+        createexplosion (2278,2079) 130 150 blue
+
+//**Sounds**//
+
+
+if playcosmowave01 then
+        playsound "Tina10_01.wav" 14 3
+
+if playsargewave01 then
+        playsound "Sarge10_02.wav" 15 3
+
+
+//**Game Action*First attack**//
+pad rocketpad1                          228     motarfup
+pad rocketpad2                          229     bottomfup
+
+if padon rocketpad1 butnot onRpad1 then
+        setfacing motarfup 148,
+        setaimode motarfup standfire,
+        trigger onRpad1
+
+if padon rocketpad2 butnot onRpad2 then
+        setfacing bottomfup 212,
+        setaimode bottomfup standfire,
+        trigger onRpad2
+
+if makemeat then
+        Createunit "meat1" humanoid leftposition_11 tan lightlaser,
+        Createunit "meat2" humanoid leftposition_21 tan lightlaser,
+        Createunit "meat3" humanoid leftposition_31 tan lightlaser,
+        Createunit "meat4" humanoid rightposition_81 tan lightlaser,
+        Createunit "meat5" humanoid rightposition_51 tan lightlaser,
+        Createunit "meat6" humanoid rightposition_61 tan lightlaser,
+        Createunit "meat7" humanoid leftposition_12 tan lightlaser,
+        Createunit "meat8" humanoid leftposition_22 tan lightlaser,
+        Createunit "meat9" humanoid leftposition_32 tan lightlaser,
+        Createunit "meat10" humanoid botLEFTposition_162 tan lightlaser,
+        Createunit "meat11" humanoid botLEFTposition_163 tan lightlaser,
+        Createunit "meat12" humanoid botLEFTposition_165 tan lightlaser,
+        Createunit "meat13" humanoid botLEFTposition_162 tan lightlaser,
+        Createunit "meat14" humanoid botLEFTposition_160 tan lightlaser,
+        Createunit "meat15" humanoid botLEFTposition_164 tan lightlaser,
+        Createunit "meat16" humanoid botLEFTposition_161 tan lightlaser,
+
+        Createunit "motarfup" mortarman leftposition_22 tan mortar,
+        Createunit "bottomfup" mortarman botposition_205 tan mortar,
+
+        setitemflag meat1 targetobjects 1,
+        setitemflag meat2 targetobjects 1,
+        setitemflag meat3 targetobjects 1,
+        setitemflag meat4 targetobjects 1,
+        setitemflag meat5 targetobjects 1,
+        setitemflag meat6 targetobjects 1,
+        setitemflag meat7 targetobjects 1,
+        setitemflag meat8 targetobjects 1,
+        setitemflag meat9 targetobjects 1,
+        setitemflag meat10 targetobjects 1,
+        setitemflag meat11 targetobjects 1,
+        setitemflag meat12 targetobjects 1,
+        setitemflag meat13 targetobjects 1,
+        setitemflag meat14 targetobjects 1,
+        setitemflag meat15 targetobjects 1,
+        setitemflag meat16 targetobjects 1,
+
+        setitemflag motarfup targetobjects 1,
+        setitemflag bottomfup targetobjects 1,
+
+        order meat1 goto (1212,751) inmode ignore,
+        order meat2 goto (1337,670) inmode ignore,
+        order meat3 goto (1431,597) inmode ignore,
+        order meat4 goto (3411,3103) inmode ignore,
+        order meat5 goto (3380,3251) inmode ignore,
+        order meat6 goto (3487,2920) inmode ignore,
+        order meat7 goto (1027,1806) inmode ignore,
+        order meat8 goto (1594,480) inmode ignore,
+        order meat9 goto (1734,382) inmode ignore,
+        order meat10 goto (507,2973) inmode ignore,
+        order meat11 goto (621,3092) inmode ignore,
+        order meat12 goto (631,3214) inmode ignore,
+        order meat13 goto (737,2962) inmode ignore,
+        order meat14 goto (703,3298) inmode ignore,
+        order meat15 goto (800,3407) inmode ignore,
+        order meat16 goto (788,3112) inmode ignore,
+
+        order motarfup goto rocketpad1 inmode ignore,
+        order bottomfup goto rocketpad2 inmode ignore,
+        triggerdelay 2000 setcond_meatgroup
+        //triggerdelay 30000 meatorders
+
+if setcond_meatgroup then
+        Createunit "meat21" humanoid botposition_201 tan lightlaser,
+        Createunit "meat22" humanoid botposition_202 tan lightlaser,
+        Createunit "meat23" humanoid botposition_203 tan lightlaser,
+        Createunit "meat24" humanoid botposition_204 tan lightlaser,
+        Createunit "meat25" humanoid botposition_205 tan lightlaser,
+        Createunit "meat26" humanoid botposition_207 tan lightlaser,
+        Createunit "meat27" humanoid botposition_208 tan lightlaser,
+        Createunit "meat28" humanoid botposition_209 tan lightlaser,
+
+        order meat21 goto (904,3598) inmode ignore,
+        order meat22 goto (1206,3606) inmode ignore,
+        order meat23 goto (1676,3614) inmode ignore,
+        order meat24 goto (1494,3554) inmode ignore,
+        order meat25 goto (1849,3694) inmode ignore,
+        order meat26 goto (2896,3276) inmode ignore,
+        order meat27 goto (3206,3214) inmode ignore,
+        order meat28 goto (2655,3276) inmode ignore,
+
+        setitemflag meat21 targetobjects 1,
+        setitemflag meat22 targetobjects 1,
+        setitemflag meat23 targetobjects 1,
+        setitemflag meat24 targetobjects 1,
+        setitemflag meat25 targetobjects 1,
+        setitemflag meat26 targetobjects 1,
+        setitemflag meat27 targetobjects 1,
+        setitemflag meat28 targetobjects 1,
+        triggerdelay 68800 assumeleftposition
+
+//**Second_Move!** Left side//
+
+if assumeleftposition then
+        order meat1 goto leftstop_156 inmode standfire,
+        order meat2 goto leftstop_157 inmode standfire,
+        order meat3 goto leftstop_158 inmode standfire,
+        order meat7 goto leftstop_155 inmode standfire,
+        order meat8 goto leftstop_80 inmode standfire,
+        order meat9 goto leftstop_50 inmode standfire,
+        order meat10 goto leftstop_152 inmode standfire,
+        order meat11 goto leftstop_151 inmode standfire,
+        order meat12 goto leftstop_40 inmode standfire,
+        order meat13 goto leftstop_153 inmode standfire,
+        order meat14 goto leftstop_150 inmode standfire,
+        order meat15 goto leftstop_30 inmode standfire,
+        order meat16 goto leftstop_154 inmode standfire,
+        triggerdelay 50000 orderleft01,
+        triggerdelay 30000 assumerightposition
+
+if orderleft01 then
+        order meat1 goto spacehq inmode attack,
+        order meat2 goto spacehq inmode attack,
+        order meat3 goto spacehq inmode attack,
+        order meat7 goto spacehq inmode attack,
+        order meat8 goto spacehq inmode attack,
+        order meat9 goto spacehq inmode attack,
+        trigger killrover2,
+        triggerdelay 10000 alleftattack01
+
+if alleftattack01 then
+        order meat10 goto spacehq inmode attack,
+        order meat11 goto spacehq inmode attack,
+        order meat12 goto spacehq inmode attack,
+        order meat13 goto spacehq inmode attack,
+        order meat14 goto spacehq inmode attack,
+        order meat15 goto spacehq inmode attack,
+        order meat16 goto spacehq inmode attack,
+        triggerdelay 10000 leftmap_secondwave
+
+//**Second_Move!** right side//
+
+if assumerightposition then
+        order meat4 goto rightstop_149 inmode defend,
+        order meat5 goto rightstop_145 inmode defend,
+        order meat6 goto rightstop_148 inmode defend,
+        order predep1 goto rightstop_142 inmode defend,
+        order predep2 goto rightstop_144 inmode defend,
+        order predep3 goto rightstop_141 inmode defend,
+        order predep4 goto rightstop_140 inmode defend,
+        order predep5 goto rightstop_146 inmode defend,
+        order predep6 goto rightstop_100 inmode defend,
+        order predep7 goto rightstop_90 inmode defend,
+        order predep8 goto rightstop_70 inmode defend,
+        triggerdelay 60000 rightsideorders01
+
+if rightsideorders01 then
+        order meat4 goto spacehq inmode attack,
+        order meat5 goto spacehq inmode attack,
+        order meat6 goto spacehq inmode attack,
+        order predep1 goto spacehq inmode attack,
+        triggerdelay 10000 Allattack01
+
+if Allattack01 then
+        order predep2 goto spacehq inmode attack,
+        order predep3 goto spacehq inmode attack,
+        order predep4 goto spacehq inmode attack,
+        order predep5 goto spacehq inmode attack,
+        order predep6 goto spacehq inmode attack,
+        order predep7 goto spacehq inmode attack,
+        order predep8 goto spacehq inmode attack
+
+if tandemo then
+        createpowerup "disammo" disguisegreen demoammo 2,
+        createpowerup "para" paratroopers demoammo 4,
+        createunit "tanspy" rifleman demoammo tan,
+        createunit "tanleftman" rifleman leftposition_21 tan,
+        createunit "tanrightman" rifleman rightposition_51 tan,
+        setaimode tanspy ignore,
+        triggerdelay 1000 makegrenades,
+        triggerdelay 800 makeflamethrower,
+        triggerdelay 500 makebazooka,
+        triggerdelay 500 orders
+
+if orders then
+        order tanleftman goto leftdemo1 inmode ignore,
+        order tanrightman goto rightdemo1 inmode ignore
+
+if padon leftdemo1 butnot onlyonetime01 then
+        order tanleftman goto leftplacebomb inmode ignore,
+        fireweapon disammo tanleftman tanleftman,
+        trigger onlyonetime01
+
+if padon rightdemo1 butnot onlyonetime02 then
+        order tanrightman goto rightplacebomb inmode ignore,
+        fireweapon disammo tanrightman tanrightman,
+        trigger onlyonetime02
+
+if padon leftdemo2 butnot placeonebomb1 then
+        fireweapon demoammo tanleftman leftdemo2,
+        triggerdelay 800 moveleftman,
+        //triggerdelay 10000 damagesndoor,
+        trigger placeonebomb1
+
+if moveleftman then
+        order tanleftman goto leftdemo1 inmode defend
+
+if padon rightdemo2 butnot placeonebomb2 then
+        fireweapon demoammo tanrightman rightdemo2,
+        triggerdelay 800 moverightman,
+        triggerdelay 10000 damagessdoor,
+        trigger placeonebomb2
+
+if moverightman then
+        order tanrightman goto rightdemo1 inmode defend
+
+//**Meat Men Macro**//
+
+macro meat 1
+{
+if hit meat@1 butnot onehitmeat@1 then
+        order meat@1 follow green inmode attack,
+        trigger onehitmeat@1
+}
+
+expand meat ( 1 )
+expand meat ( 2 )
+expand meat ( 3 )
+expand meat ( 4 )
+expand meat ( 5 )
+expand meat ( 6 )
+expand meat ( 7 )
+expand meat ( 8 )
+expand meat ( 9 )
+expand meat ( 10 )
+expand meat ( 11 )
+expand meat ( 12 )
+expand meat ( 13 )
+expand meat ( 14 )
+expand meat ( 15 )
+expand meat ( 16 )
+expand meat ( 17 )
+expand meat ( 18 )
+expand meat ( 19 )
+expand meat ( 20 )
+expand meat ( 21 )
+expand meat ( 22 )
+expand meat ( 23 )
+expand meat ( 24 )
+expand meat ( 25 )
+expand meat ( 26 )
+expand meat ( 27 )
+expand meat ( 28 )
+
+//**pre deployment macro**//
+
+macro predep 1
+{
+if hit predep@1 butnot onehitpredep@1 then
+        order predep@1 follow me inmode attack,
+        trigger onehitpredep@1
+}
+
+expand predep ( 1 )
+expand predep ( 1 )
+expand predep ( 1 )
+expand predep ( 1 )
+expand predep ( 1 )
+expand predep ( 1 )
+
+
+//************* kill Doors ***********//
+if damagessdoor then
+        damage sdoor 200
+
+if damagesndoor then
+        damage ndoor 200
+
+//**Rockets**//
+if showsataliteview then
+        setglobalflag revealunitsonmap 1
+
+if allof killed rocket01 killed rocket02 then
+        setglobalflag revealunitsonmap 0
+
+if killed rocket01 then
+        createexplosion (2745,836) 139 15 blue,
+        triggerdelay 500 exprocket1_01
+
+if exprocket1_01 then
+        createexplosion (2742,887) 139 15 blue,
+        triggerdelay 500 exprocket1_02
+
+if exprocket1_02 then
+        createexplosion (2742,887) 138 150 blue,
+        makesmoke (2742,887) 10000,
+        makesmoke (2752,887) 8000,
+        makesmoke (2742,857) 1000
+
+if killed rocket02 then
+        createexplosion (1708,2878) 139 15 blue,
+        triggerdelay 500 exprocket2_01
+
+if exprocket2_01 then
+        createexplosion (1706,2917) 139 15 blue,
+        triggerdelay 500 exprocket2_02
+
+if exprocket2_02 then
+        createexplosion (1708,2907) 138 150 blue,
+        makesmoke (1708,2907) 10000,
+        makesmoke (2752,848) 8000,
+        makesmoke (1704,2957) 1000
+
+
+
+//**Second attack**//
+
+if leftmap_secondwave then
+        Createunit "seconds1" humanoid leftposition_11 tan lightlaser,
+        Createunit "seconds2" humanoid leftposition_12 tan lightlaser,
+        Createunit "seconds3" humanoid leftposition_13 tan lightlaser,
+        Createunit "seconds4" humanoid leftposition_14 tan lightlaser,
+        Createunit "seconds5" humanoid leftposition_15 tan lightlaser,
+        Createunit "secondsfc1" fieldcommander leftposition_25 tan mediumlaser,
+
+        order seconds1 goto (1337,670) inmode ignore,
+        order seconds2 goto (1431,597) inmode ignore,
+        order seconds3 goto (3177,3232) inmode ignore,
+        order seconds4 goto (1027,1806) inmode ignore,
+        order seconds5 goto (1594,480) inmode ignore,
+        order secondsfc1 goto (1734,382) inmode ignore,
+        setitemflag seconds1 targetobjects 1,
+        setitemflag seconds2 targetobjects 1,
+        setitemflag seconds3 targetobjects 1,
+        setitemflag seconds4 targetobjects 1,
+        setitemflag seconds5 targetobjects 1,
+        setitemflag secondsfc1 targetobjects 1,
+        triggerdelay 15000 second_wave02
+
+
+if second_waveorders then
+        order seconds1 goto leftstop_157 inmode defend,
+        order seconds2 goto leftstop_158 inmode defend,
+        order seconds3 goto leftstop_159 inmode defend,
+        order seconds4 goto leftstop_156 inmode defend,
+        order seconds5 goto leftstop_50 inmode defend,
+        order secondsfc1 goto leftstop_30 inmode attack,
+        order seconds6 goto leftstop_151 inmode ignore,
+        order seconds7 goto leftstop_153 inmode ignore,
+        order seconds8 goto leftstop_150 inmode ignore,
+        order seconds9 goto leftstop_155 inmode ignore,
+        order seconds10 goto leftstop_80 inmode ignore,
+        order secondsfc2 goto leftstop_30 inmode ignore,
+        order meat25 goto botstop_72 inmode defend,
+        order meat24 goto botstop_71 inmode defend,
+        order meat23 goto botstop_76 inmode standfire
+
+
+if second_wave02 then
+        Createunit "seconds6" humanoid botLEFTposition_161 tan lightlaser,
+        Createunit "seconds7" humanoid botLEFTposition_160 tan lightlaser,
+        Createunit "seconds8" humanoid botLEFTposition_162 tan lightlaser,
+        Createunit "seconds9" humanoid botLEFTposition_165 tan lightlaser,
+        Createunit "seconds10" humanoid botLEFTposition_164 tan lightlaser,
+        Createunit "secondsfc2" Fieldcommander botLEFTposition_163 tan mediumlaser,
+
+        order seconds6 goto (621,3092) inmode ignore,
+        order seconds7 goto (631,3214) inmode ignore,
+        order seconds8 goto (800,3407) inmode ignore,
+        order seconds9 goto (703,3298) inmode ignore,
+        order seconds10 goto (788,3112) inmode ignore,
+        order secondsfc2 goto (737,2962) inmode ignore,
+        setitemflag seconds6 targetobjects 1,
+        setitemflag seconds8 targetobjects 1,
+        setitemflag seconds9 targetobjects 1,
+        setitemflag seconds10 targetobjects 1,
+        setitemflag secondsfc2 targetobjects 1,
+        triggerdelay 20000 second_wave03
+
+if second_wave03 then
+        Createunit "seconds11" humanoid rightposition_51 tan lightlaser,
+        Createunit "seconds12" humanoid rightposition_52 tan lightlaser,
+        Createunit "seconds13" humanoid rightposition_55 tan lightlaser,
+        Createunit "seconds14" humanoid rightposition_208 tan lightlaser,
+        Createunit "seconds15" humanoid rightposition_54 tan lightlaser,
+        Createunit "secondsfc3" fieldcommander rightposition_53 tan mediumlaser,
+
+        order seconds11 goto (3206,3214) inmode ignore,
+        order seconds12 goto (3356,3124) inmode ignore,
+        order seconds13 goto (3413,2999) inmode ignore,
+        order seconds14 goto (3262,3051) inmode ignore,
+        order seconds15 goto (3051,3189) inmode ignore,
+        order secondsfc3 goto (3348,3332) inmode ignore,
+        setitemflag seconds11 targetobjects 1,
+        setitemflag seconds13 targetobjects 1,
+        setitemflag seconds15 targetobjects 1,
+        triggerdelay 2000 second_waveorders,
+        triggerdelay 20000 second_wave04
+
+if second_wave04 then
+        Createunit "seconds16" humanoid rightposition_61 tan lightlaser,
+        Createunit "seconds17" humanoid rightposition_62 tan lightlaser,
+        Createunit "seconds18" humanoid rightposition_63 tan lightlaser,
+        Createunit "seconds19" humanoid rightposition_64 tan lightlaser,
+        Createunit "seconds20" humanoid rightposition_65 tan lightlaser,
+        order seconds16 goto (3206,3214) inmode ignore,
+        order seconds17 goto (2655,3276) inmode ignore,
+        order seconds18 goto (2896,3276) inmode ignore,
+        order seconds19 goto (2655,3276) inmode ignore,
+        order seconds20 goto (2074,3634) inmode ignore,
+        setitemflag seconds16 targetobjects 1,
+        setitemflag seconds17 targetobjects 1,
+        setitemflag seconds18 targetobjects 1,
+        setitemflag seconds19 targetobjects 1,
+        setitemflag seconds20 targetobjects 1,
+        triggerdelay 20000 secondwave_finalorders
+
+
+if secondwave_finalorders then
+        order seconds11 goto rightstop_147 inmode ignore,
+        order seconds12 goto rightstop_148 inmode ignore,
+        order seconds13 goto rightstop_146 inmode ignore,
+        order seconds14 goto rightstop_140 inmode ignore,
+        order seconds15 goto rightstop_141 inmode ignore,
+        order secondsfc3 goto rightstop_145 inmode ignore,
+
+        order seconds16 goto rightstop_100 inmode ignore,
+        order seconds17 goto rightstop_90 inmode ignore,
+        order seconds18 goto rightstop_149 inmode ignore,
+        order seconds19 goto rightstop_143 inmode ignore,
+        order seconds20 goto rightstop_144 inmode ignore,
+        Createunit "seconds21" eyeball rightstop_70 tan deathray,
+        beam seconds21 1000,
+        Createunit "seconds22" eyeball rightstop_142 tan deathray,
+        beam seconds22 1000,
+        triggerdelay 30000 ordersecondright,
+        triggerdelay 10000 change_aimode
+
+
+if change_aimode then
+        setaimode seconds11 defend,
+        setaimode seconds12 defend,
+        setaimode seconds13 defend,
+        setaimode seconds14 defend,
+        setaimode seconds15 defend,
+        setaimode seconds16 defend,
+        setaimode seconds17 defend,
+        setaimode seconds18 defend,
+        setaimode seconds19 defend,
+        setaimode seconds20 defend,
+        setaimode seconds21 defend,
+        setaimode seconds22 defend,
+        setaimode secondsfc3 attack
+
+if ordersecondright then
+        order seconds11 goto spacehq inmode attack,
+        order seconds12 goto spacehq inmode attack,
+        order seconds13 goto spacehq inmode attack,
+        order seconds14 goto spacehq inmode attack,
+        order seconds15 goto spacehq inmode attack,
+        order seconds16 goto spacehq inmode attack,
+        order seconds17 goto spacehq inmode attack,
+        order seconds18 goto spacehq inmode attack,
+        order seconds19 goto spacehq inmode attack,
+        order seconds20 goto spacehq inmode attack,
+        order seconds21 goto spacehq inmode attack,
+        order seconds22 goto spacehq inmode attack,
+        order secondsfc3 goto spacehq inmode attack,
+        triggerdelay 10000 sendsecondleft,
+        triggerdelay 30000 third_wave1,
+        triggerdelay 31000 orderthrdwave1,
+        triggerdelay 70000 third_wave2,
+        triggerdelay 75000 orderthrdwave2,
+        triggerdelay 100000 third_wave3,
+        triggerdelay 110000 orderthrdwave3,
+        triggerdelay 120000 third_wave4,
+        triggerdelay 139000 orderthrdwave4,
+        triggerdelay 199000 fourth_wave1,
+        triggerdelay 209000 orderfthwave1,
+        triggerdelay 210000 fourth_wave2,
+        triggerdelay 219000 orderfthwave2,
+        triggerdelay 255000 launchpara,
+        triggerdelay 300000 fourth_wave3,
+        triggerdelay 309000 orderfthwave3,
+        triggerdelay 310000 fifth_wave1,
+        triggerdelay 319000 order5wave1,
+        triggerdelay 320000 fifth_wave2,
+        triggerdelay 329000 order5wave2,
+        triggerdelay 410000 endit,
+        triggerdelay 490000 doordie1,
+        triggerdelay 500000 doordie2,
+        triggerdelay 555000 doordie3,
+        triggerdelay 565000 doordie4
+
+
+
+
+
+
+
+
+if  sendsecondleft then
+        order seconds1 goto spacehq inmode attack,
+        order seconds2 goto spacehq inmode attack,
+        order seconds3 goto spacehq inmode attack,
+        order seconds4 goto spacehq inmode attack,
+        order seconds5 goto spacehq inmode attack,
+        order seconds6 goto spacehq inmode attack,
+        order seconds7 goto spacehq inmode attack,
+        order seconds8 goto spacehq inmode attack,
+        order seconds9 goto spacehq inmode attack,
+        order seconds10 goto spacehq inmode attack,
+        order secondsfc1 goto spacehq inmode attack,
+        order secondsfc2 goto spacehq inmode attack
+
+
+//**Third attack**//
+//@1 = wave @2 = unitname @3 = unittype @4 = unitloaction @5 = weapon @6 = lvl @7 = facing
+//@8 = AI mode @9 = itemflag @10 butnot nums
+
+macro thirdmac 9
+{
+if fourth_wave@1 then
+        createunit "@2" @3 @4 tan @5 @6,
+        beam @2 1000,
+        setfacing @2 @7,
+        setaimode @2 @8,
+        setitemflag @2 targetobjects @9
+
+if orderfthwave@1 then
+        order @2 goto spacehq inmode attack
+
+if hit @2 butnot hitthird@1 then
+        setaimode @2 defend
+}
+
+expand thirdmac ( 1 third1 eyeball rightstop_100 deathray 2 64 ignore 0 )
+expand thirdmac ( 1 third2 eyeball leftstop_156 deathray 2 192 ignore 1 )
+expand thirdmac ( 1 third3 eyeball rightstop_70 deathray 2 64 ignore 0 )
+expand thirdmac ( 1 third4 eyeball leftstop_80 deathray 2 192 ignore 1 )
+expand thirdmac ( 1 third5 eyeball leftstop_154 deathray 2 192 ignore 0 )
+expand thirdmac ( 1 thirdchief1 humanoid leftstop_151 mediumlaser 3 192 ignore 0 )
+expand thirdmac ( 1 thirdchief2 humanoid leftstop_152 mediumlaser 3 192 ignore 1 )
+
+expand thirdmac ( 2 third6 humanoid leftstop_159 mediumlaser 2 192 ignore 0 )
+expand thirdmac ( 2 third7 humanoid leftstop_155 mediumlaser 2 192 ignore 1 )
+expand thirdmac ( 2 third8 humanoid leftstop_152 mediumlaser 2 192 ignore 0 )
+expand thirdmac ( 2 third9 humanoid rightstop_142 mediumlaser 2 64 ignore 0 )
+expand thirdmac ( 2 third10 humanoid rightstop_143 mediumlaser 2 64 ignore 0 )
+expand thirdmac ( 2 thirdchief3 humanoid rightstop_141 mediumlaser 3 64 ignore 0 )
+expand thirdmac ( 2 thirdchief4 humanoid leftstop_40 mediumlaser 3 192 ignore 0 )
+
+expand thirdmac ( 3 third11 eyeball rightstop_140 deathray 2 64 ignore 0 )
+expand thirdmac ( 3 third12 eyeball rightstop_143 deathray 2 64 ignore 0 )
+expand thirdmac ( 3 third13 eyeball rightstop_144 deathray 2 64 ignore 0 )
+expand thirdmac ( 3 third14 humanoid rightstop_145 mediumlaser 3 64 ignore 1 )
+expand thirdmac ( 3 third15 humanoid rightstop_146 mediumlaser 3 64 ignore 1 )
+
+expand thirdmac ( 4 third16 eyeball rightstop_140 deathray 3 192 ignore 0 )
+expand thirdmac ( 4 third17 eyeball rightstop_143 deathray 3 192 ignore 0 )
+expand thirdmac ( 4 third18 eyeball rightstop_144 deathray 3 192 ignore 0 )
+expand thirdmac ( 4 third19 humanoid rightstop_145 mediumlaser 3 192 ignore 1 )
+expand thirdmac ( 4 third20 humanoid rightstop_146 mediumlaser 3 192 ignore 1 )
+
+//triggerdelay 55000 allthirdorders,
+  //      triggerdelay 30000 third_wave03
+
+
+//**Fourth Attack**//
+
+//@1 = wave @2 = unitname @3 = unittype @4 = unitloaction @5 = weapon @6 = lvl @7 = facing
+//@8 = AI mode @9 = itemflag @10 butnot nums
+
+macro fourthmac 9
+{
+if fourth_wave@1 then
+        createunit "@2" @3 @4 tan @5 @6,
+        beam @2 1000,
+        setfacing @2 @7,
+        setaimode @2 @8,
+        setitemflag @2 targetobjects @9
+
+if orderfthwave@1 then
+        order @2 goto spacehq inmode attack
+
+if hit @2 butnot hitfourth@1 then
+        setaimode @2 defend
+
+
+}
+
+expand fourthmac ( 1 fourth1 eyeball leftstop_156 deathray 2 192 ignore 0 )
+expand fourthmac ( 1 fourth2 eyeball leftstop_157 deathray 2 192 ignore 1 )
+expand fourthmac ( 1 fourth3 eyeball leftstop_158 deathray 2 192 ignore 1 )
+expand fourthmac ( 1 fourth4 eyeball leftstop_79 deathray 2 192 ignore 1 )
+expand fourthmac ( 1 fourth5 eyeball leftstop_150 deathray 2 192 ignore 0 )
+expand fourthmac ( 1 fourth11 humanoid leftstop_151 mediumlaser 2 192 ignore 0 )
+expand fourthmac ( 1 fourth12 humanoid leftstop_152 mediumlaser 2 192 ignore 1 )
+expand fourthmac ( 1 fourth13 humanoid leftstop_153 mediumlaser 2 192 ignore 1 )
+expand fourthmac ( 1 fourth14 humanoid leftstop_150 mediumlaser 2 192 ignore 1 )
+expand fourthmac ( 1 fourth15 humanoid leftstop_154 mediumlaser 2 192 ignore 0 )
+
+expand fourthmac ( 2 fourth31 eyeball leftstop_40 plasmacannon 3 192 ignore 1 )
+expand fourthmac ( 2 fourth32 eyeball leftstop_30 plasmacannon 3 192 ignore 1 )
+expand fourthmac ( 2 fourth33 eyeball leftstop_80 plasmacannon 3 192 ignore 1 )
+expand fourthmac ( 2 fourth34 eyeball leftstop_50 deathray 2 192 ignore 1 )
+expand fourthmac ( 2 fourth35 eyeball leftstop_153 deathray 2 192 ignore 0 )
+
+expand fourthmac ( 3 fourth41 eyeball rightstop_140 plasmacannon 3 192 ignore 1 )
+expand fourthmac ( 3 fourth42 eyeball rightstop_141 plasmacannon 3 192 ignore 1 )
+expand fourthmac ( 3 fourth43 eyeball rightstop_142 plasmacannon 3 192 ignore 1 )
+expand fourthmac ( 3 fourth44 eyeball rightstop_143 deathray 2 192 ignore 0 )
+expand fourthmac ( 3 fourth45 eyeball rightstop_144 deathray 2 192 ignore 0 )
+expand fourthmac ( 3 fourth51 humanoid rightstop_145 mediumlaser 2 192 ignore 0 )
+expand fourthmac ( 3 fourth52 humanoid rightstop_146 mediumlaser 2 192 ignore 0 )
+expand fourthmac ( 3 fourth53 humanoid rightstop_147 mediumlaser 2 192 ignore 0 )
+expand fourthmac ( 3 fourth54 humanoid rightstop_148 mediumlaser 2 192 ignore 0 )
+expand fourthmac ( 3 fourth55 humanoid rightstop_149 mediumlaser 2 192 ignore 0 )
+
+
+
+
+//        triggerdelay 6000 sendleftsidefourth,
+ //       triggerdelay 50000 launchpara
+
+
+if launchpara then
+        fireweapon para tanspy (2074,2310),
+        fireweapon para tanspy (1931,1931),
+        fireweapon para tanspy (2074,1817),
+        triggerdelay 20000 Final_wave01
+
+//**Final Attack**//
+//@1 = wave @2 = unitname @3 = unittype @4 = unitloaction @5 = weapon @6 = lvl @7 = facing
+//@8 = AI mode @9 = itemflag @10 butnot nums
+
+macro fifthmac 9
+{
+if fifth_wave@1 then
+        createunit "@2" @3 @4 tan @5 @6,
+        beam @2 1000,
+        setfacing @2 @7,
+        setaimode @2 @8,
+        setitemflag @2 targetobjects @9
+
+if order5wave@1 then
+        order @2 goto spacehq inmode attack
+
+if hit @2 butnot hitfourth@1 then
+        setaimode @2 defend
+
+
+}
+
+expand fifthmac ( 1 final1 humanoid rightstop_140 heavylaser 3 64 ignore 0 )
+expand fifthmac ( 1 final2 humanoid rightstop_141 mediumlaser 2 64 ignore 1 )
+expand fifthmac ( 1 final3 humanoid rightstop_142 mediumlaser 2 64 ignore 1 )
+expand fifthmac ( 1 final4 humanoid rightstop_143 mediumlaser 2 64 ignore 1 )
+expand fifthmac ( 1 final5 humanoid rightstop_144 mediumlaser 2 64 ignore 1 )
+expand fifthmac ( 1 final6 humanoid rightstop_145 mediumlaser 2 64 ignore 1 )
+expand fifthmac ( 1 final7 humanoid rightstop_146 mediumlaser 2 64 ignore 1 )
+expand fifthmac ( 1 final8 humanoid rightstop_147 mediumlaser 2 64 ignore 1 )
+expand fifthmac ( 1 final9 humanoid rightstop_148 mediumlaser 2 64 ignore 1 )
+expand fifthmac ( 1 final10 humanoid rightstop_149 mediumlaser 2 64 ignore 1 )
+expand fifthmac ( 1 exp11 humanoid rightstop_100 mediumlaser 2 64 ignore 1 )
+expand fifthmac ( 1 exp12 humanoid rightstop_90 mediumlaser 2 64 ignore 1 )
+expand fifthmac ( 1 exp13 humanoid rightstop_70 heavylaser 3 64 ignore 1 )
+
+expand fifthmac ( 2 final11 eyeball leftstop_151 plasmacannon 3 192 ignore 1 )
+expand fifthmac ( 2 final12 eyeball leftstop_152 deathray 2 192 ignore 1 )
+expand fifthmac ( 2 final13 eyeball leftstop_153 deathray 2 192 ignore 1 )
+expand fifthmac ( 2 final14 eyeball leftstop_154 deathray 2 192 ignore 1 )
+expand fifthmac ( 2 final15 eyeball leftstop_155 deathray 2 192 ignore 1 )
+expand fifthmac ( 2 final16 eyeball leftstop_156 deathray 2 192 ignore 1 )
+expand fifthmac ( 2 final17 eyeball leftstop_157 deathray 2 192 ignore 1 )
+expand fifthmac ( 2 final18 eyeball leftstop_158 deathray 2 192 ignore 1 )
+expand fifthmac ( 2 final19 eyeball leftstop_159 deathray 2 192 ignore 1 )
+expand fifthmac ( 2 final20 eyeball leftstop_40 deathray 2 192 ignore 1 )
+expand fifthmac ( 2 final21 eyeball leftstop_30 deathray 2 192 ignore 1 )
+expand fifthmac ( 2 final22 eyeball leftstop_80 deathray 2 192 ignore 1 )
+expand fifthmac ( 2 final23 eyeball leftstop_50 plasmacannon 3 192 ignore 1 )
+
+//**Ending**//
+
+//@1 = unitname @2 = unittype @3 = X  @4 = Y @5 = weapon @6 = lvl @7 = facing
+//@8 = AI mode @9 = itemflag
+
+macro endmac 9
+{
+if endit then
+        createunit "@1" @2 (@3,@4) tan @5 @6,
+        setaimode @1 @8,
+        setitemflag @1 targetobjects @9,
+        order @1 goto spacehq inmode @8
+
+
+}
+
+expand endmac ( end1 eyeball 2120 1464 plasmacannon 3 128 attack 1 )
+expand endmac ( end2 eyeball 2771 1706 plasmacannon 3 128 attack 1 )
+expand endmac ( end3 eyeball 2317 2561 plasmacannon 3 128 attack 1 )
+expand endmac ( end4 eyeball 1701 2370 plasmacannon 3 128 attack 1 )
+
+// @1 = unitname @2 = unittype @3 = unit location @4 = weapon @5 = lvl @6 = itemflag @7 = sec Num
+
+macro doordieMac 7
+{
+
+if doordie@7 then
+        createunit "@1" @2 @3 tan @4 @5,
+        setitemflag @1 targetobjects @6,
+        order @1 goto spacehq inmode attack
+
+}
+
+expand doordieMac ( do_or_die1 fieldcommander leftposition_43 superlaser 3 1 2 )
+
+expand doordieMac ( crony1fc1 humanoid leftposition_42 heavylaser 3 0 1 )
+expand doordieMac ( crony1fc2 humanoid leftposition_44 heavylaser 3 0 1 )
+
+expand doordieMac ( do_or_die2 fieldcommander extraposition_103 superlaser 3 1 4 )
+
+expand doordieMac ( crony2fc1 humanoid extraposition_102 heavylaser 3 0 3 )
+expand doordieMac ( crony2fc2 humanoid extraposition_104 heavylaser 3 0 3 )
+
+//**Object Setup**//
+
+//Space HQ//
+
+if hit spacehq testvar gethealth spacehq <= 1000 and onesmoke1 = 0 then
+        makesmoke (2786,2017),
+        makesmoke (2432,2173),
+        setvar onesmoke1 1
+
+if hit spacehq testvar gethealth spacehq <= 800 and onesmoke2 = 0 then
+        makesmoke (2194,1994),
+        makesmoke (2165,2060),
+        makesmoke (2273,1843),
+        setvar onesmoke2 1
+
+if hit spacehq testvar gethealth spacehq <= 450 and onesmoke3 = 0 then
+        createexplosion (2786,2017) 130 1 blue,
+        makesmoke (2786,2017),
+        makesmoke (2165,2060),
+        makesmoke (2273,1843),
+        makesmoke (2161,1973),
+        setvar onesmoke3 1
+
+if hit spacehq testvar gethealth spacehq <= 350 and onesmoke4 = 0 then
+        showmessage "银河总部受损严重！",
+        createexplosion (2432,2173) 130 1 blue,
+        makesmoke (2432,2173),
+        createexplosion (2786,2017) 130 1 blue,
+        makesmoke (2786,2017),
+        setvar onesmoke4 1
+
+if hit spacehq testvar gethealth spacehq <= 150 and onesmoke5 = 0 then
+        createexplosion (2235,1820) 130 1 blue,
+        makesmoke (2235,1820),
+        createexplosion (2127,2024) 130 1 blue,
+        makesmoke (2127,2024),
+        setvar onesmoke5 1
+
+//**Plant life**//
+
+macro plants 2
+{
+
+variable f@1 0
+
+pad f@1pad					@2     everything > 0
+
+object plantlife@1
+	state plant_initial@1
+		frame 100 0
+
+	state plant_alerted@1
+		frame 200 2
+		frame 500 3
+		triggerdelay 800 reinitplant@1
+
+        state plant_death@1
+                frame 200 3
+                frame 400 2
+                frame 200 1
+
+if padon f@1pad testvar f@1 = 0 then
+        setobjstate plantlife@1 plant_alerted@1,
+        setvar f@1 2
+
+if reinitplant@1 then
+        setobjstate plantlife@1 plant_initial@1,
+        setvar f@1 0
+
+if killed plantlife@1 testvar f@1 = 0 then
+        setobjstate plantlife@1 plant_death@1,
+        setvar f@1 10
+}
+expand plants ( 1 110 )
+expand plants ( 2 111 )
+expand plants ( 3 113 )
+expand plants ( 4 112 )
+
+
+//**Singular Lights**//
+
+if walllights01 then
+        setobjstate wall_light01 start_light01
+
+if walllights02 then
+        setobjstate wall_light02 start_light02
+
+if walllights03 then
+        setobjstate wall_light03 start_light03
+
+if walllights04 then
+        setobjstate wall_light04 start_light04
+
+
+object wall_light01
+        state start_light01
+                frame 500 1
+                frame 500 0
+                triggerdelay 500 walllights01
+
+object wall_light02
+        state start_light02
+                frame 500 1
+                frame 500 0
+                triggerdelay 500 walllights02
+
+object wall_light03
+        state start_light03
+                frame 500 1
+                frame 500 0
+                triggerdelay 500 walllights03
+
+object wall_light04
+        state start_light04
+                frame 500 1
+                frame 500 0
+                triggerdelay 500 walllights04
+
+//**Sdoor Scripting**//
+if padon sdoor_activate testvar open_closen02 = 0 then
+        playsound "HQdoor.wav" sdoor 7 2 20,
+        setobjstate sdoor sdoor_open,
+        setvar open_closen02 1
+
+if padoff sdoor_activate testvar open_closen02 = 1 then
+        playsound "HQdoor.wav" sdoor 8 2 20,
+        setobjstate sdoor sdoor_close,
+        setvar open_closen02 0
+
+//**Ndoor Scripting**//
+
+if padon ndoor_activate testvar open_closen = 0 then
+        playsound "HQdoor.wav" ndoor 5 2 20,
+        setobjstate ndoor ndoor_open,
+        setvar open_closen 1
+
+if padoff ndoor_activate testvar open_closen = 1 then
+        playsound "HQdoor.wav" ndoor 6 2 20,
+        setobjstate ndoor ndoor_close,
+        setvar open_closen 0
+ //**South Door Setup**//
+object sdoor
+        state sdoor_initial
+                frame 100 0
+
+        state sdoor_open
+        	frame 300 5
+                frame 300 6
+                triggerdelay 200 initndooropen02
+
+        state sdoor_openend
+		frame 100 7
+
+
+        state sdoor_close
+                frame 300 6
+                frame 300 5
+                triggerdelay 200 initndoorclose02
+
+        //state sdoor_cool
+                //frame 2000 10
+                //frame 5000 11
+                //frame 8000 12
+
+        //state sdoor_dam_01
+                //frame 100 01
+
+        //state sdoor_dam_02
+                //frame 100 02
+
+        //state sdoor_dam_03
+                //frame 100 03
+
+if initndooropen02 then
+        setobjstate sdoor sdoor_openend
+
+if initndoorclose02 then
+        setobjstate sdoor sdoor_initial
+
+if killed sdoor then
+        setvar open_closen02 10
+
+
+//if hit sdoor butnot killed sdoor testvar gethealth sdoor > 3000 and sdoorhealth = 0 then
+       //damage sdoor 4100,
+       //triggerdelay 5000 damageSDagain2
+
+
+
+//if hit sdoor butnot killed sdoor testvar getdmglvl sdoor 3 and sdoorhealth = 0 then
+        //setobjstate sdoor sdoor_dam_01,
+       //triggerdelay 100 setsdoorhealth1
+
+//if damageSDagain2 then
+        //damage sdoor 4100
+
+//if hit sdoor butnot killed sdoor testvar gethealth sdoor <= 75 and sdoorhealth = 1 then
+        //setobjstate sdoor sdoor_dam_02,
+        //triggerdelay 100 setsdoorhealth2
+
+//if hit sdoor butnot killed sdoor testvar gethealth sdoor <= 50 and sdoorhealth = 2 then
+        //setobjstate sdoor sdoor_dam_03,
+        //triggerdelay 100 setsdoorhealth3
+
+//if setsdoorhealth1 then
+       // setvar sdoorhealth 1
+
+//if setsdoorhealth2 then
+       // setvar sdoorhealth 2
+
+//if setsdoorhealth3 then
+        //setvar sdoorhealth 3
+
+//**Boil Setup**//
+macro boil 2
+{
+
+variable boilvar@1 0
+
+pad Boilpad@1                                  @2 green
+
+if padon Boilpad@1 testvar boilvar@1 = 0 then
+        setvar boilvar@1 1,
+        trigger animate@1_boil,
+        setdamagepad boilpad@1 1 100 fire tan,
+        trigger create@1spiders
+
+
+if killed boil@1 testvar boilvar@1 = 0 then
+        setvar boilvar@1 1,
+        trigger animate@1_boil,
+        setdamagepad boilpad@1 1 fire tan,
+        trigger create@1spiders
+
+
+if create@1spiders butnot onlyoncreation@1 then
+        createunit "boil@1spider1" alienworm boil@1 tan wormspit,
+        createunit "boil@1spider2" alienworm boil@1 tan wormspit,
+        createunit "boil@1spider3" alienworm boil@1 tan wormspit,
+        trigger onlyoncreation@1
+
+if animate@1_boil butnot onlyonceanim@1boil then
+        setobjstate boil@1 boil@1_explode,
+        trigger boilsound@1,
+        trigger onlyonceanim@1boil
+
+ if boilsound@1 then
+        playsound "fruitgore.wav" boil@1,
+        addsoundorigin "fruitgore.wav" boil@1 2 20
+
+
+object boil@1
+        state boil@1_initial
+                frame 100 0
+
+        state boil@1_explode
+                frame 100 2
+                frame 100 3
+                frame 100 4
+                frame 100 5
+                frame 100 1
+                setobjstate boil@1 boil@1_finished
+
+        state boil@1_finished
+                frame 10 1
+}
+
+expand boil ( 1 180 )
+expand boil ( 2 181 )
+expand boil ( 3 182 )
+expand boil ( 4 183 )
+expand boil ( 5 184 )
+expand boil ( 6 185 )
+expand boil ( 7 186 )
+expand boil ( 8 187 )
+expand boil ( 9 188 )
+expand boil ( 10 189 )
+expand boil ( 11 190 )
+expand boil ( 12 191 )
+expand boil ( 13 192 )
+expand boil ( 14 193 )
+expand boil ( 15 194 )
+expand boil ( 16 195 )
+expand boil ( 17 196 )
+expand boil ( 18 197 )
+expand boil ( 19 198 )
+expand boil ( 20 170 )
+expand boil ( 21 171 )
+expand boil ( 22 172 )
+expand boil ( 23 173 )
+expand boil ( 24 174 )
+expand boil ( 25 175 )
+expand boil ( 26 176 )
+expand boil ( 27 177 )
+expand boil ( 28 166 )
+expand boil ( 29 167 )
+
+
+ //**North Door Setup**//
+
+object ndoor
+        state ndoor_initial
+                frame 100 0
+
+        state ndoor_open
+        	frame 300 5
+                frame 300 6
+                triggerdelay 200 initndooropen
+
+        state ndoor_openend
+		frame 100 7
+
+
+        state ndoor_close
+                frame 300 6
+                frame 300 5
+                triggerdelay 200 initndoorclose
+
+        //state ndoor_cool
+                //frame 2000 11
+                //frame 5000 12
+                //frame 8000 13
+
+        //state ndoor_dam_01
+                //frame 100 01
+
+       // state ndoor_dam_02
+                //frame 100 02
+
+        //state ndoor_dam_03
+                //frame 100 03
+
+
+if initndooropen then
+        setobjstate ndoor ndoor_openend
+
+if initndoorclose then
+        setobjstate ndoor ndoor_initial
+
+if killed ndoor then
+        setvar open_closen 10
+
+//if hit ndoor butnot killed ndoor testvar gethealth ndoor <= 100 and ndoorhealth = 0 then
+        //setobjstate ndoor ndoor_dam_01,
+        	//triggerdelay 100 setndoorhealth
+
+//if hit ndoor butnot killed ndoor testvar gethealth ndoor <= 75 and ndoorhealth = 1 then
+        //setobjstate ndoor ndoor_dam_02,
+		//triggerdelay 100 setndoorhealth2
+
+//if hit ndoor butnot killed ndoor testvar gethealth ndoor <= 50 and ndoorhealth = 2 then
+        //setobjstate ndoor ndoor_dam_03,
+		//triggerdelay 100 setndoorhealth3
+
+if setndoorhealth1 then
+        setvar ndoorhealth 1
+
+if setndoorhealth2 then
+        setvar ndoorhealth 2
+
+if setndoorhealth3 then
+        setvar ndoorhealth 3
+
+
+
+
+
+
+
+
+

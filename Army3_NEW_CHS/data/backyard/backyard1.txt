@@ -1,0 +1,613 @@
+preloadsprite 43 400 0
+preloadsprite 43 400 1
+preloadsprite 43 400 2
+preloadsprite 43 400 3
+preloadsprite 43 400 4
+preloadsprite 43 400 5
+
+pad basket		50      green trooper > 0
+pad deathpad		200	trooper > 0
+
+variable randomdeploy 0 
+variable sargeisdead 0
+
+VARIABLE dancer1 0
+VARIABLE dancer2 0
+VARIABLE dancer3 0
+VARIABLE dancer4 0
+VARIABLE dancer5 0
+VARIABLE dancer6 0
+VARIABLE dancer7 0
+VARIABLE dancer8 0
+VARIABLE dancer9 0
+
+VARIABLE fdancer1 0
+VARIABLE fdancer2 0 
+VARIABLE fdancer3 0
+VARIABLE fdancer4 0
+VARIABLE fdancer5 0
+VARIABLE fdancer6 0
+VARIABLE fdancer7 0
+VARIABLE fdancer8 0
+VARIABLE fdancer9 0
+VARIABLE fdancer10 0
+VARIABLE fdancer11 0
+VARIABLE fdancer12 0
+
+VARIABLE hancer1 0
+VARIABLE hancer2 0
+VARIABLE hancer3 0
+
+macro pantdance 2
+
+{
+if pantdance@1 testvar dancer@1 < 99999 then
+	addvar dancer@1 1, 
+	triggerdelay @2 pantdance@1,
+	trigger pantdance@1x
+
+if pantdance@1x then
+RANDOM
+	order pant@1 goto (585,1514),
+	order pant@1 goto (684,1535),
+	order pant@1 goto (747,1465),
+	order pant@1 goto (802,1410)
+
+}
+
+expand pantdance (1 100)
+expand pantdance (2 175)
+expand pantdance (3 125)
+expand pantdance (4 100)
+
+macro pant2dance 2
+
+{
+if pantdance@1 testvar dancer@1 < 99999 then
+	addvar dancer@1 1, 
+	triggerdelay @2 pantdance@1,
+	trigger pantdance@1x
+
+if pantdance@1x then
+RANDOM
+	order pant@1 goto (687,977),
+	order pant@1 goto (740,900),
+	order pant@1 goto (852,947),
+	order pant@1 goto (941,1020)
+}
+
+expand pant2dance (5 200)
+expand pant2dance (6 75)
+expand pant2dance (7 150)
+expand pant2dance (8 200)
+expand pant2dance (9 150)
+
+macro fantdance 2
+
+{
+if fantdance@1 testvar fdancer@1 < 99999 then
+	addvar fdancer@1 1, 
+	triggerdelay @2 fantdance@1,
+	trigger fantdance@1x
+
+if fantdance@1x then
+RANDOM
+	order fant@1 goto (1495,862),
+	order fant@1 goto (1656,895), 
+	order fant@1 goto (1840,992), 
+	order fant@1 goto (1839,1109), 
+	order fant@1 goto (1598,773) 
+
+}
+
+expand fantdance (1 225)
+expand fantdance (2 225)
+expand fantdance (3 275)
+expand fantdance (4 250)
+expand fantdance (5 200)
+expand fantdance (6 200)
+expand fantdance (7 250)
+expand fantdance (8 200)
+expand fantdance (9 225)
+expand fantdance (10 275)
+expand fantdance (11 250)
+expand fantdance (12 275)
+
+macro hantmove 2
+
+{
+if hantmove@1 testvar hancer@1 < 99999 then
+	addvar hancer@1 1, 
+	triggerdelay @2 hantmove@1,
+	trigger hantmove@1x
+
+if hantmove@1x then
+RANDOM
+	order hant@1 goto (1904,705),
+	order hant@1 goto (1896,754),
+	order hant@1 goto (1853,792)
+
+}
+
+expand hantmove (1 100)
+expand hantmove (2 75)
+expand hantmove (3 125)
+
+if startup1 then
+	createpowerup "FSB1" flyswatter (386,1101) 3,
+	createpowerup "DDTB1" raid (678,1804) 3,
+	createpowerup "MGB1" magnifying (1056,1246) 50,
+	createpowerup "PTB1" paratroopers (1264,286) 1,
+	createpowerup "AAB1" airattack (335,263) 1,
+	playsound "suburbanAmbient.wav" 6 1 1,
+	deploy greensarge1,
+	createpowerup "X" paratroopers (2042,31) 1,
+	createunit "striker" rifleman (1,1) green rifle,
+	moveitem "striker" (1,1),
+	fireweapon X striker (323,1806),
+	undeploy striker,
+	SETDAMAGEPAD deathpad 0,
+	createunit "pb1" rifleman (1705,724) tan autorifle,
+	setaimode pb1 defend,
+	createunit "pb2" rifleman (1814,736) tan autorifle,
+	setaimode pb2 defend,
+	createunit "as1" rifleman (257,409) tan rifle,
+	setfacing as1 127,
+	setaimode as1 defend,
+	createunit "as2" bazookaman (315,238) tan bazooka,
+	setfacing as2 127,
+	setaimode as2 defend,
+	createunit "as3" rifleman (597,230) tan rifle,
+	setfacing as3 150,
+//	setaipose as3 kneel,
+//	setaimode as3 defend,
+	trigger randomness,
+// plate 1
+	createunit "pant1" ant (785,1568) tan spiderbite,
+	createunit "pant2" ant (889,1597) tan spiderbite,
+	createunit "pant3" ant (992,1547) tan spiderbite,
+	createunit "pant4" ant (1084,1537) tan spiderbite,
+// plate 2
+	createunit "pant5" ant (670,429) tan spiderbite,
+	createunit "pant6" ant (687,537) tan spiderbite,
+	createunit "pant7" ant (630,645) tan spiderbite,
+	createunit "pant8" ant (647,765) tan spiderbite,
+	createunit "pant9" ant (809,806) tan spiderbite,
+	setaimode pant1 ignore,
+	setaimode pant2 ignore,
+	setaimode pant3 ignore,
+	setaimode pant4 ignore,
+	setaimode pant5 ignore,
+	setaimode pant6 ignore,
+	setaimode pant7 ignore,
+	setaimode pant8 ignore,
+	setaimode pant9 ignore,
+	trigger pantdance1,
+	trigger pantdance2,
+	trigger pantdance3,
+	trigger pantdance4,
+	trigger pantdance5,
+	trigger pantdance6,
+	trigger pantdance7,
+	trigger pantdance8,
+	trigger pantdance9,
+// basket ants
+	createunit "fant1" ant (1495,862) tan spiderbite,
+	createunit "fant2" ant (1565,857) tan spiderbite,
+	createunit "fant3" ant (1638,843) tan spiderbite,
+	createunit "fant4" ant (1656,895) tan spiderbite,
+	createunit "fant5" ant (1742,966) tan spiderbite,
+	createunit "fant6" ant (1840,992) tan spiderbite,
+	createunit "fant7" ant (1904,1065) tan spiderbite,
+	createunit "fant8" ant (1839,1109) tan spiderbite,
+	createunit "fant9" ant (1886,1191) tan spiderbite,
+	createunit "fant10" ant (1809,1251) tan spiderbite,
+	createunit "fant11" ant (1765,903) tan spiderbite,
+	createunit "fant12" ant (1599,934) tan spiderbite,
+	setaimode fant1 ignore,
+	setaimode fant2 ignore,
+	setaimode fant3 ignore,
+	setaimode fant4 ignore,
+	setaimode fant5 ignore,
+	setaimode fant6 ignore,
+	setaimode fant7 ignore,
+	setaimode fant8 ignore,
+	setaimode fant9 ignore,
+	setaimode fant10 ignore,
+	setaimode fant11 ignore,
+	setaimode fant12 ignore,
+	trigger fantdance1,
+	trigger fantdance2,
+	trigger fantdance3,
+	trigger fantdance4,
+	trigger fantdance5,
+	trigger fantdance6,
+	trigger fantdance7,
+	trigger fantdance8,
+	trigger fantdance9,
+	trigger fantdance10,
+	trigger fantdance11,
+	trigger fantdance12,
+	createunit "hant1" ant (1904,705) tan spiderbite,
+	createunit "hant2" ant (1896,754) tan spiderbite,
+	createunit "hant3" ant (1853,792) tan spiderbite,
+	setaimode hant1 ignore,
+	setaimode hant2 ignore,
+	setaimode hant3 ignore,
+	triggerdelay 1500 hantmove1,	
+	triggerdelay 1000 hantmove2,
+	triggerdelay 500 hantmove3
+
+if hit pant1 then
+	addvar dancer1 99999,
+	setaimode pant1 attack
+if hit pant2 then
+	addvar dancer2 99999,
+	setaimode pant2 attack
+if hit pant3 then
+	addvar dancer3 99999,
+	setaimode pant3 attack
+if hit pant4 then
+	addvar dancer4 99999,
+	setaimode pant4 attack
+if hit pant5 then
+	addvar dancer5 99999,
+	setaimode pant5 attack
+if hit pant6 then
+	addvar dancer6 99999,
+	setaimode pant6 attack
+if hit pant7 then
+	addvar dancer7 99999,
+	setaimode pant7 attack
+if hit pant8 then
+	addvar dancer8 99999,
+	setaimode pant8 attack
+if hit pant9 then
+	addvar dancer9 99999,
+	setaimode pant9 attack
+
+if hit fant1 then
+	addvar fdancer1 99999,
+	setaimode fant1 attack
+if hit fant2 then
+	addvar fdancer2 99999,
+	setaimode fant2 attack
+if hit fant3 then
+	addvar fdancer3 99999,
+	setaimode fant3 attack
+if hit fant4 then
+	addvar fdancer4 99999,
+	setaimode fant4 attack
+if hit fant5 then
+	addvar fdancer5 99999,
+	setaimode fant5 attack
+if hit fant6 then
+	addvar fdancer6 99999,
+	setaimode fant6 attack
+if hit fant7 then
+	addvar fdancer7 99999,
+	setaimode fant7 attack
+if hit fant8 then
+	addvar fdancer8 99999,
+	setaimode fant8 attack
+if hit fant9 then
+	addvar fdancer9 99999,
+	setaimode fant9 attack
+if hit fant10 then
+	addvar fdancer10 99999,
+	setaimode fant10 attack
+if hit fant11 then
+	addvar fdancer11 99999,
+	setaimode fant11 attack
+if hit fant12 then
+	addvar fdancer12 99999,
+	setaimode fant12 attack
+
+if hit hant1 then	
+	addvar hancer1 99999,
+	setaimode hant1 attack
+if hit hant2 then
+	addvar hancer2 99999,
+	setaimode hant2 attack	
+if hit hant3 then
+	addvar hancer3 99999,
+	setaimode hant3 attack
+
+if randomness testvar randomdeploy < 1 then
+	addvar randomdeploy 1,
+ 	trigger grandom1,
+	trigger grandom2,
+	trigger grandom3,
+	trigger grandom4,
+	trigger grandom5,
+	setfacing cp1g1 90,
+	setfacing cp1g2 110,
+ 	setfacing cp1g3 100,
+//	setaipose cp1g3 prone,
+	setfacing pag1 127,
+	setfacing pag2 180,
+	setfacing pag3 90,
+	setfacing pb1 100,
+//	setaipose pb1 prone,
+	setfacing pb2 100,
+//	setaipose pb2 kneel,
+	setfacing pb3 127,
+//	setaipose pb3 kneel,
+	setfacing pb4 90,
+//	setaipose pb4 kneel,
+//	setaipose pb5 prone,
+	setfacing pb5 127,
+	setfacing pb6 127,
+	setfacing pb7 80,
+//	setaipose pb7 prone,
+	setfacing pb8 60,
+//	setaipose pb8 kneel,
+	setfacing tt1 160,
+	setfacing tt2 200,
+//	setaipose tt3 kneel,
+	setfacing tt3 127,
+	trigger mixedset,
+	trigger setaimodes
+
+if mixedset then
+RANDOM
+	trigger flameset1x,
+	trigger mortarset1x,
+	trigger bazookaset1x
+
+if killed as2 then
+    	createpowerup "" bazooka as2 10
+
+if killed cp1g1 then
+    	createpowerup "" medpack cp1g1 3
+if killed cp1g3 then
+    	createpowerup "" grenade cp1g3 10
+if killed tt3 then
+    	createpowerup "" grenade tt3 10
+
+// guards (can of potato chips)
+if grandom1 then
+random
+	createunit "cp1g1" rifleman (427,1118) tan rifle,
+	createunit "cp1g2" rifleman (497,1357) tan rifle,
+	createunit "cp1g3" grenadier (796,1311) tan grenade
+// guards (sandwiches)
+if grandom2 then
+random
+	createunit "pag1" rifleman (482,823) tan rifle, 
+	createunit "pag2" rifleman (1054,1041) tan rifle,
+	createunit "pag3" rifleman (1080,1272) tan rifle
+// picnic surprise
+if grandom3 then
+random
+	createunit "pb3" rifleman (849,602) tan rifle,
+	createunit "pb4" rifleman (2030,749) tan autorifle
+if grandom4 then
+random
+	createunit "pb5" rifleman (1283,739) tan rifle,
+	createunit "pb6" rifleman (1591,1361) tan autorifle,
+	createunit "pb7" rifleman (1709,398) tan rifle,
+	createunit "pb8" rifleman (1248,326) tan autorifle
+// guards (toy)
+if grandom5 then
+random
+	createunit "tt1" rifleman (1642,1092) tan rifle,
+	createunit "tt2" rifleman (1224,1573) tan rifle, 
+	createunit "tt3" grenadier (1086,1437) tan grenade
+
+if flameset1x then
+	createunit "fs1" rifleman (388,1125) tan rifle,
+	setfacing fs1 90,
+	setaimode fs1 attack,
+	trigger flamesetgo,
+	trigger flamesetorders
+if flamesetgo then
+random
+	createunit "fs2" rifleman (406,1095) tan autorifle,
+	createunit "fs3" grenadier (424,1120) tan grenade
+if flamesetorders then
+	setaimode fs2 attack,
+	setfacing fs2 90,
+	setaimode fs3 attack,
+	setfacing fs3 90
+
+if mortarset1x then
+	createunit "ms1" rifleman (1070,1257) tan rifle,
+	setaimode ms1 attack,
+	trigger mortarsetgo,
+	trigger mortarsetorders
+if mortarsetgo then
+random
+	createunit "ms2" rifleman (1051,1276) tan autorifle,
+	createunit "ms3" grenadier (1089,1274) tan grenade
+if mortarsetorders then
+	setaimode ms2 attack,
+	setaimode ms3 attack	
+	 
+if bazookaset1x then
+	playsound "TanUnits_attack.wav" 13 0,
+	setaimode as1 attack,
+	setaimode as2 attack,
+	setaimode as3 attack,
+	order as1 goto greensarge1,
+	order as2 goto greensarge1,
+	order as3 goto greensarge1
+
+if setaimodes then
+	setaimode pb1 defend,
+	setaimode pb2 defend,
+	setaimode as1 defend,
+	setaimode as2 defend,
+	setaimode as3 defend,
+	setaimode cp1g1 defend,
+	setaimode cp1g2 defend,
+	setaimode cp1g3 defend,
+	setaimode pag1 defend,
+	setaimode pag2 defend,
+	setaimode pag3 defend,
+	setaimode pb3 defend,
+	setaimode pb4 defend,
+	setaimode pb5 defend,
+	setaimode pb6 defend,
+	setaimode pb7 defend,
+	setaimode pb8 defend,
+	setaimode tt1 defend,
+	setaimode tt2 defend,
+	setaimode tt3 defend,
+	setaimode fs1 defend,
+	setaimode fs2 defend,
+	setaimode fs3 defend, 
+	setaimode ms1 defend,
+	setaimode ms2 defend,
+	setaimode ms3 defend
+
+if hit pbasket then
+	trigger basketalarm
+
+if basketalarm butnot basketalarm1x then
+	trigger basketalarm1x
+if basketalarm1x then
+	playsound "AlarmKlaxon.wav" pbasket 8 0 1 10,
+	playsound "AirRaidSiren.wav" pbasket 7 0 1 10,
+	triggerdelay 7500 stopalarm
+
+if stopalarm then
+	playsound "" pbasket 8 0 1 10,
+	playsound "" pbasket 7 0 1 10
+
+// picnic basket units
+if padon basket butnot basketx1 then
+	playsound "Sarge_picnicBasket5.wav" 16 0,
+	trigger basketalarm,
+	trigger basketx1,
+	triggerdelay 5000 morebasketx1
+if basketx1 then
+	createunit "bk1" rifleman (1925,687) tan rifle,
+	setfacing bk1 127,	
+	order bk1 goto (1701,829),
+	triggerdelay 1500 basket2
+if basket2 butnot basketx2 then
+	trigger basketx2
+if basketx2 then
+	setaimode bk1 attack,
+	createunit "bk2" rifleman (1925,687) tan rifle,
+	setfacing bk2 127,
+	order bk2 goto (1821,838),
+	triggerdelay 1500 basket3
+if basket3 butnot basketx3 then
+	trigger basketx3
+if basketx3 then
+	setaimode bk2 attack,
+	createunit "bk3" grenadier (1925,687) tan grenade,
+	setfacing bk3 127,
+	order bk3 goto (1893,950),
+	triggerdelay 1500 basket4
+if basket4 butnot basketx4 then
+	trigger basketx4
+if basketx4 then
+	setaimode bk3 attack
+
+if killed bk3 then
+    	createpowerup "" grenade bk3 10
+
+if morebasketx1 then
+	createunit "mbk1" rifleman (1925,687) tan autorifle,
+	setfacing mbk1 127,
+	order mbk1 goto (1701,829),
+	triggerdelay 1500 mbasket2
+if mbasket2 butnot mbasketx2 then
+	trigger mbasketx2
+if mbasketx2 then
+	setaimode mbk1 attack,
+	createunit "mbk2" rifleman (1925,687) tan autorifle,
+	setfacing mbk2 127,
+	order mbk2 goto (1821,838),
+	triggerdelay 1500 mbasket3
+if mbasket3 butnot mbasketx3 then
+	trigger mbasketx3
+if mbasketx3 then
+	setaimode mbk2 attack,
+	createunit "mbk3" bazookaman (1925,687) tan bazooka,
+	setfacing mbk3 127,
+	order mbk3 goto (1893,950),
+	triggerdelay 1500 mbasket4
+if mbasket4 butnot mbasketx4 then
+	trigger mbasketx4
+if mbasketx4 then
+	setaimode mbk3 attack
+
+if killed mbk3 then
+    	createpowerup "" bazooka mbk3 10
+
+if killed pbasket then
+	playsound "" pbasket 8 0 1 10,
+	playsound "" pbasket 7 0 1 10,
+	playsound "PicnicBasketDestroy.wav" 15 0,
+	playsound "Sarge_HitSpot1.wav" 16 1,
+	triggerdelay 3000 endmission1
+
+if endmission1 butnot killed greensarge1 then
+	playsound "" pbasket 8 0 1 10,
+	playsound "" pbasket 7 0 1 10,
+	playsound "" 6 1 1,
+	playsound "HQ_base_history.wav" 0 1, 
+	showpda "干得好，中士！棕军基地已经成为历史！",
+	dropitem greensarge1 AAB1 (3,6),
+	moveitem AAB1 (3,6),
+	triggerdelay 100 gotestgreenwins
+	
+if gotestgreenwins butnot killed greensarge1 then
+	trigger greenwins	
+
+if killed greensarge1 then
+        setuilock 1,
+        setcamerafocus greensarge1,
+        setvar sargeisdead 1,
+	triggerdelay 1500 gameoverman
+if gameoverman then
+	playsound "" 6 1 1,
+	playsound "HQ_radio_crackling.wav" 0 1,
+	showfailure "中士？中士？中士！",
+	triggerdelay 1000 tanwins
+
+if killed truck then
+	SETDAMAGEPAD deathpad 9999 120 crush,
+	setobjstate truck truck_boom,
+	triggerdelay 1500 nomoredeath
+
+if nomoredeath then
+	setdamagepad deathpad 0
+
+if killed soda1 killed soda2 killed soda3 killed soda4 killed soda5 killed soda6 killed soda7 then
+	playsound "sodacanexplode.wav" 3 0
+
+if killed chip1 then
+	playsound "ChipDestroy.wav" 3 0
+
+if killed bucket1 killed bucket2 then
+	playsound "SandBucketDestroy.wav" 3 0
+
+if hit wich1 hit wich2 hit wich3 hit wich4 then
+	playsound "SandwichShoot.wav" 3 0
+
+// object animation sequences
+
+object truck
+	state truck_initial
+		frame 100 0
+
+	state truck_boom
+		frame 110 0
+			playsound "truckDestroy.wav" belt 10 0 		
+		frame 110 1
+		frame 110 2
+		frame 110 3
+		frame 110 4
+		frame 110 5	
+			setobjstate truck truck_dead
+	
+	state truck_dead
+		frame 10 5
+			playsound "truckdeath.wav" belt 10 1
+
+	 

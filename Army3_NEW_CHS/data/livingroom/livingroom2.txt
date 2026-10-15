@@ -1,0 +1,383 @@
+
+
+//**Startup**//
+
+if startup2 then
+        //triggerdelay 500 showmiss2pda,
+        setvar mission1finished 1,
+        triggerdelay 30000 createnewunits,
+        triggerdelay 600 showTina
+
+
+//**Win Condition**//
+
+if padon cosmocontrol butnot onetinaSFX then
+        playsound "Tina08_02.wav" tina_tomorrow 16 1,
+        setnpc Tina_tomorrow 1,
+        trigger tomorrow_orders,
+        trigger onetinaSFX
+
+if tomorrow_orders then
+        order tina_tomorrow goto ejectaction
+
+if padon winout then
+       beam me 1000,
+       setnpc me 1,
+       playsound "AliensBeam.wav" me 1 2 10,
+       triggerdelay 1050 undployme
+
+if undployme then
+        undeploy me
+
+
+
+if padon winconpad butnot ontimewinconpad then
+        triggerdelay 8000 greenwincheck02,
+        trigger ontimewinconpad
+
+if greenwincheck02 testvar tinaisdead = 0 and sargeisdead = 0 then
+        trigger greenwins
+
+
+//**PDAs**//
+//if showmiss2pda then
+        //showpda "干得好，中士！增援部队正在赶来。"
+if padon Tinaattack04 butnot oneTattack then
+        trigger Tattacked1,
+        trigger oneTattack
+
+
+//**fresh units**//
+// @1 = unitname @2 = unittype @3 = X @4 = Y @5 = goto @6 = trigger
+macro Tinamacattack 6
+{
+
+if Tattacked1 then
+        createvehicle "@1" @2 (@3,@4) tan,
+        order @1 follow @5 inmode attack
+
+}
+
+expand Tinamacattack ( tantina1 jeep 245 2570 tina_tomorrow 1 )
+expand Tinamacattack ( tantina2 tank 338 2668 tina_tomorrow 1 )
+expand Tinamacattack ( tantina3 tnak 427 2741 tina_tomorrow 1 )
+
+
+if createnewunits then
+        showmessage "增援部队报到，中士。",
+        createunit "Tankmaster" rifleman (361,2321) green autorifle,
+        createvehicle "Wildmantank" tank tank1 green,
+        entervehicle Tankmaster Wildmantank,
+        order Wildmantank goto freshtank1 inmode defend,
+
+        createunit "Deadshot" rifleman tank2 green autorifle,
+        order Deadshot goto freshrifle1 inmode defend,
+
+        createunit "Bate" rifleman tank3 green autorifle,
+        order Bate goto freshrifle2 inmode defend,
+
+        createunit "Riffling" rifleman tank4 green autorifle,
+        order Riffling goto freshrifle3 inmode defend,
+
+        createunit "Dred" rifleman tank5 green autorifle,
+        order Dred goto freshrifle4 inmode defend,
+
+        createunit "Poss" rifleman tank6 green autorifle,
+        order Poss goto freshrifle5 inmode defend,
+        setsquadleader Tankmaster 5,
+        setunitgroup Deadshot 5,
+        setunitgroup Bate 5,
+        setunitgroup Riffling 5,
+        setunitgroup Dred 5,
+        setunitgroup Poss 5
+
+
+//**Init setup**//
+
+if showTina then
+        createunit "Tina_Tomorrow" spacewomanp cosmopad green freezelaser,
+        beam Tina_Tomorrow 2000,
+        setmaxhealth Tina_tomorrow 400,
+        heal Tina_Tomorrow 100,
+        createunit "Buz" spacemang gunner1 green lasergatling,
+        beam Buz 2000,
+        createunit "Tazer" spacemang gunner2 green lasergatling,
+        beam Tazer 2000,
+        createunit "Tearen" spacemang gunner3 green lasergatling,
+        beam Tearen 2000,
+        createunit "Spreay" spacemang gunner4 green lasergatling,
+        beam Spreay 2000,
+        setsquadleader Tina_Tomorrow 6,
+        setunitgroup Buz 6,
+        setunitgroup Tazer 6,
+	setunitgroup Tearen 6,
+	setunitgroup Spreay 6,
+        triggerdelay 2500 playvotext
+
+
+
+if playvotext then
+        playsound "Tina08_01.wav" 16 0,
+        triggerdelay 6000 startthegame
+
+if startthegame then
+        showpda "把蒂娜·托马带到游戏机的弹射按钮处。",
+        triggerdelay 25000 Makefinalenemies
+
+if Makefinalenemies then
+        createunit "temp1" humanoid (406,324) tan lightlaser,
+        beam temp1 1000,
+        order temp1 goto Tina_Tomorrow inmode attack,
+        createunit "temp2" humanoid (607,169) tan lightlaser,
+        beam temp2 1000,
+        order temp2 goto Tina_Tomorrow inmode attack,
+        createunit "temp3" humanoid (206,534) tan lightlaser,
+        beam temp3 1000,
+        order temp3 goto greensarge1 inmode attack,
+        //
+        createunit "temp4" humanoid (148,1681) tan lightlaser,
+        beam temp4 1000,
+        order temp4 goto Tina_Tomorrow inmode attack,
+        createunit "temp5" humanoid (173,1907) tan lightlaser,
+        beam temp5 1000,
+        order temp5 goto greensarge1 inmode attack,
+        createunit "temp6" humanoid (244,2017) tan lightlaser,
+        beam temp6 1000,
+        order temp6 goto Tina_Tomorrow inmode attack,
+        //
+        createunit "temp7" humanoid (2731,1573) tan lightlaser,
+        beam temp7 1000,
+        order temp7 goto greensarge1 inmode attack,
+        createunit "temp8" humanoid (2735,1723) tan lightlaser,
+        beam temp8 1000,
+        order temp8 goto greensarge1 inmode attack,
+        createunit "temp9" humanoid (2710,1857) tan lightlaser,
+        beam temp9 1000,
+        order temp9 goto greensarge1 inmode attack
+
+
+if padon Tinaattack01 butnot onetina01 then
+        triggerdelay 1000 maketinaenemy01,
+        trigger onetina01
+
+if maketinaenemy01 then
+        createunit "tinaunit01" humanoid (2305,2115) tan lightlaser,
+        beam tinaunit01 1000,
+
+        createunit "tinaunit02" humanoid (2437,2115) tan lightlaser,
+        beam tinaunit02 1000,
+
+        createunit "tinaunit03" humanoid (2589,2115) tan lightlaser,
+        beam tinaunit03 1000,
+
+        createunit "tinaunit04" humanoid (2731,2115) tan lightlaser,
+        beam tinaunit04 1000,
+
+        createunit "tinafc01" fieldcommander (2460,1983) tan mediumlaser,
+        beam tinafc01 1000,
+
+	//Leftside//
+        createunit "tinaunit05" humanoid (1375,2788) tan lightlaser,
+        beam tinaunit05 1000,
+
+        createunit "tinaunit06" humanoid (1416,2642) tan lightlaser,
+        beam tinaunit06 1000,
+
+        createunit "tinaunit07" humanoid (1521,2569) tan lightlaser,
+        beam tinaunit07 1000,
+
+        createunit "tinaunit08" humanoid (1412,2536) tan lightlaser,
+        beam tinaunit08 1000,
+
+        createunit "tinaunit09" humanoid (1265,2674) tan lightlaser,
+        beam tinaunit09 1000,
+
+        createunit "tinafc02" fieldcommander (1325,2561) tan mediumlaser,
+        beam tinafc02 1000,
+
+        createunit "tinaspider01" alienspider (2680,1213) tan spiderbite,
+        beam tinaspider01 1000,
+
+        createunit "tinaspider02" alienspider (2443,1170) tan spiderbite,
+        beam tinaspider02 1000,
+
+        createunit "tinaspider03" alienspider (2439,1353) tan spiderbite,
+        beam tinaspider03 1000,
+
+        createunit "tinaspider04" alienspider (2724,1363) tan spiderbite,
+        beam tinaspider04 1000,
+
+        createunit "tinaspider05" alienspider (2474,1336) tan spiderbite,
+        beam tinaspider05 1000,
+
+        //Left//
+        createunit "tinaspider06" alienspider (1480,2776) tan spiderbite,
+        beam tinaspider06 1000,
+
+        createunit "tinaspider07" alienspider (1508,2692) tan spiderbite,
+        beam tinaspider07 1000,
+
+        createunit "tinaspider08" alienspider (1555,2632) tan spiderbite,
+        beam tinaspider08 1000,
+
+        createunit "tinaspider09" alienspider (1605,2623) tan spiderbite,
+        beam tinaspider09 1000,
+
+        createunit "tinaspider10" alienspider (1530,2623) tan spiderbite,
+        beam tinaspider10 1000,
+
+        triggerdelay 1100 spiderorders01,
+
+        triggerdelay 1500 othersettings01
+
+if padon Tinaattack05 butnot onefolllow then
+        order tinaunit01 follow Tina_tomorrow inmode attack,
+        order tinaunit02 follow Tina_tomorrow inmode attack,
+        order tinaunit03 follow Tina_tomorrow inmode attack,
+        order tinaunit04 follow Tina_tomorrow inmode attack,
+        order tinaunit05 follow Tina_tomorrow inmode attack,
+        order tinaunit06 follow Tina_tomorrow inmode attack,
+        order tinaunit07 follow Tina_tomorrow inmode attack,
+        order tinaunit08 follow Tina_tomorrow inmode attack,
+        order tinaunit09 follow Tina_tomorrow inmode attack,
+        order tinafc02 follow Tina_tomorrow inmode attack,
+        order tinafc01 follow Tina_tomorrow inmode attack,
+        trigger onefolllow
+
+if othersettings01 then
+        setfacing tinaunit01 128,
+        setfacing tinaunit02 118,
+        setfacing tinaunit03 138,
+        setfacing tinaunit04 118,
+        setfacing tinaunit05 134,
+        setfacing tinaunit06 142,
+        setfacing tinaunit07 163,
+        setfacing tinaunit08 160,
+        setfacing tinaunit09 155,
+        setfacing tinafc01 128,
+        setfacing tinafc02 168,
+        setaimode tinaunit01 defend,
+        setaimode tinafc02 defend,
+        setaimode tinafc01 defend,
+	setaimode tinaunit08 defend,
+        setaimode tinaunit09 defend,
+        setaimode tinaunit07 defend,
+        setaimode tinaunit06 defend,
+        setaimode tinaunit05 defend,
+        setaimode tinaunit04 defend,
+        setaimode tinaunit03 defend,
+        setaimode tinaunit02 defend
+
+if killed tinafc01 butnot alreadydead_fc02 then
+        order tinafc02 follow tina_tomorrow inmode attack,
+        order tinaunit06 follow tina_tomorrow inmode attack,
+        order tinaunit07 follow tina_tomorrow inmode attack,
+        order tinaunit08 follow tina_tomorrow inmode attack,
+        order tinaunit09 follow tina_tomorrow inmode attack,
+        trigger alreadydead_fc01
+
+if killed tinafc02 butnot alreadydead_fc01 then
+        order tinafc01 follow tina_tomorrow inmode attack,
+        order tinaunit01 follow tina_tomorrow inmode attack,
+        order tinaunit02 follow tina_tomorrow inmode attack,
+        order tinaunit03 follow tina_tomorrow inmode attack,
+        order tinaunit04 follow tina_tomorrow inmode attack,
+        order tinaunit05 follow tina_tomorrow inmode attack,
+        trigger alreadydead_fc02
+
+
+if spiderorders01 then
+        order tinaspider10 follow tina_tomorrow inmode attack,
+        order tinaspider09 follow tina_tomorrow inmode attack,
+        order tinaspider08 follow tina_tomorrow inmode attack,
+        order tinaspider07 follow tina_tomorrow inmode attack,
+        order tinaspider06 follow tina_tomorrow inmode attack,
+        order tinaspider05 follow tina_tomorrow inmode attack,
+        order tinaspider04 follow tina_tomorrow inmode attack,
+        order tinaspider03 follow tina_tomorrow inmode attack,
+        order tinaspider02 follow tina_tomorrow inmode attack,
+        order tinaspider01 follow tina_tomorrow inmode attack,
+        triggerdelay 3000 secondunitwave
+
+if secondunitwave then
+        createunit "tinasmack01" humanoid (1508,2692) tan mediumlaser,
+        beam tinasmack01 1000,
+
+        createunit "tinasmack02" humanoid (1605,2623) tan mediumlaser,
+        beam tinasmack02 1000,
+
+        createunit "tinasmack03" humanoid (2439,1353) tan mediumlaser,
+        beam tinasmack03 1000,
+
+        createunit "tinasmack04" humanoid (2443,1170) tan mediumlaser,
+        beam tinasmack04 1000
+
+if padon Tinaattack02 butnot onetinaattack02 then
+        createunit "Tinatanenemy01" rifleman (196,2551) tan autorifle,
+        createunit "Tinatanenemy02" rifleman (256,2601) tan autorifle,
+        createunit "Tinatanenemy03" rifleman (327,2660) tan autorifle,
+        createunit "Tinatanenemy04" rifleman (401,2720) tan autorifle,
+        createunit "Tinatanenemy05" rifleman (491,2800) tan autorifle,
+        order Tinatanenemy01 follow tina_tomorrow inmode attack,
+        order Tinatanenemy02 follow tina_tomorrow inmode attack,
+        order Tinatanenemy03 follow tina_tomorrow inmode attack,
+        order Tinatanenemy04 follow tina_tomorrow inmode attack,
+        order Tinatanenemy05 follow tina_tomorrow inmode attack,
+        trigger onetinaattack02
+
+if allof killed Tinatanenemy01 killed Tinatanenemy02 killed Tinatanenemy03
+killed Tinatanenemy04 killed Tinatanenemy05 killed then
+        triggerdelay 4000 machineattack
+
+if machineattack then
+        createvehicle "deadlytank01" tank (196,2551) tan,
+        order deadlytank01 follow tina_tomorrow inmode attack,
+        triggerdelay 4000 comojeep
+
+if comojeep then
+        createvehicle "deadlyjeep01" jeep (256,2601) tan,
+        order deadlytank01 follow tina_tomorrow inmode attack,
+        createvehicle "deadlyjeep02" jeep mattacker5 tan,
+        order deadlytank02 follow tina_tomorrow inmode attack,
+        triggerdelay 8000 finalmugs
+
+
+if finalmugs then
+        createunit "Tinatanenemy06" bazookaman (196,2551) tan bazooka,
+        createunit "Tinatanenemy07" flamerman (256,2601) tan flamer,
+        createunit "Tinatanenemy08" flamerman (327,2660) tan flamer,
+        createunit "Tinatanenemy09" bazookaman (401,2720) tan bazooka,
+        createunit "Tinatanenemy10" rifleman (491,2800) tan vulcan,
+        order Tinatanenemy06 follow tina_tomorrow inmode attack,
+        order Tinatanenemy07 follow tina_tomorrow inmode attack,
+        order Tinatanenemy08 follow tina_tomorrow inmode attack,
+        order Tinatanenemy09 follow tina_tomorrow inmode attack,
+        order Tinatanenemy10 follow tina_tomorrow inmode attack
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

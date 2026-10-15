@@ -1,0 +1,86 @@
+[
+  {
+    "wav": "AirAttack.wav",
+    "duration_s": 0.99,
+    "asr_en": "an air attack.",
+    "avg_logprob": -9,
+    "duplicate_of": ""
+  },
+  {
+    "wav": "Grenades.wav",
+    "duration_s": 0.85,
+    "asr_en": "Grenades.",
+    "avg_logprob": -9,
+    "duplicate_of": ""
+  },
+  {
+    "wav": "SpaceHQ10_04.wav",
+    "duration_s": 4.45,
+    "asr_en": "Commander, we're not picking up any more aliens. It looks like you got them all.",
+    "avg_logprob": -9,
+    "duplicate_of": ""
+  },
+  {
+    "wav": "Tina08_01.wav",
+    "duration_s": 4.02,
+    "asr_en": "The portal to our homeworld is inside that black box. You need to get me there so I can open it.",
+    "avg_logprob": -9,
+    "duplicate_of": ""
+  },
+  {
+    "wav": "Tina08_02.wav",
+    "duration_s": 3.04,
+    "asr_en": "We can probably expect some alien resistance on the other side of this portal.",
+    "avg_logprob": -9,
+    "duplicate_of": ""
+  },
+  {
+    "wav": "Tina09_01.wav",
+    "duration_s": 3.54,
+    "asr_en": "We've just lost contact with an outpost in this sector. We should go there and investigate.",
+    "avg_logprob": -9,
+    "duplicate_of": ""
+  },
+  {
+    "wav": "Tina09_02.wav",
+    "duration_s": 3.04,
+    "asr_en": "The main computer has the data map which contains the location of the alien hive.",
+    "avg_logprob": -9,
+    "duplicate_of": ""
+  },
+  {
+    "wav": "Tina09_03.wav",
+    "duration_s": 1.71,
+    "asr_en": "We've got the data map. Let's go.",
+    "avg_logprob": -9,
+    "duplicate_of": ""
+  },
+  {
+    "wav": "Tina09_04.wav",
+    "duration_s": 2.83,
+    "asr_en": "HQ, I'm sending the data map now. We're headed your way.",
+    "avg_logprob": -9,
+    "duplicate_of": ""
+  },
+  {
+    "wav": "Tina10_01.wav",
+    "duration_s": 3.83,
+    "asr_en": "The aliens know we've got the data map. We can expect a full-scale assault.",
+    "avg_logprob": -9,
+    "duplicate_of": ""
+  },
+  {
+    "wav": "airplane_8Bit.wav",
+    "duration_s": 8.32,
+    "asr_en": "Transcription by ESO. Translation by —",
+    "avg_logprob": -9,
+    "duplicate_of": ""
+  },
+  {
+    "wav": "ufotrap.wav",
+    "duration_s": 1.47,
+    "asr_en": "That was too close.",
+    "avg_logprob": -9,
+    "duplicate_of": "Sarge_TooClose3.wav"
+  }
+]
