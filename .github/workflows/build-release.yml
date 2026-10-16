@@ -219,8 +219,9 @@ jobs:
       #   · objects.dat 能重新解析（key 集合与 Steam 一致）
       #   · 包根必备文件齐全 + LICENSE 无模板残留 + 必读说明带 BOM
       #   · S8 体积指纹（硬断言位置：verify_release.py 的 DLL_EXPECTED_SIZE）：
-      #     scripts/Army1_Extend_Dll.asi 必须精确为 259584 B
-      #     （= MSVC v141 14.16 + Win10 SDK 26100 的确定产物；回退 v142 会改变体积）
+      #     scripts/Army1_Extend_Dll.asi 必须精确为 260608 B
+      #     （= MSVC v141 14.16 + Win10 SDK 26100 + 当前源码的确定产物；
+      #      回退 v142、或改源码都会改变体积，两者都要同步该常量）
       - name: 校验产物完整性
         run: |
           set -euo pipefail
