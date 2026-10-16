@@ -1,134 +1,217 @@
-# Army Men 1 · 中文语音错引用追踪
+# Army Men 1 · 中文语音索引错引用：根因与重打包方案
 
-> 状态：**部分解决** — 索引错标已修，27 条语音内容缺失待定
+> 状态：**已解决** — 根因查清，中文 1.0 语音资产已重打包为英文 1.2 ID 体系
 > 最后更新：2026-10-17
-> 相关文件：`Army1_NEW_CHS/Audio/voices.asd`
+> 相关提交：`96ce1aa`（重打包）、`328b83b` / `7306188`（回滚两次错误修复）
+> 相关文件：`Army1_NEW_CHS/Audio/voices.asd`、`voices.ast`
+> 工具：`Tools/asd_tool/asd_tool.py`
 
-## 1. 现象
+## 0. 结论摘要
 
-玩家反馈：中文代理版存在语音错引用，典型表现为**任务失败时播出成功台词**。
+玩家反馈的"任务失败播出成功台词"等现象，根因**不是**素材损坏、**不是**
+索引写错、也**不是**越界读取，而是：
 
-## 2. 文件格式（源码确认）
+> **Steam 版是 1.2，中文代理版是 1.0。两个版本的 exe 各自内置一份
+> ID→名字 表，编号体系不同。把 1.0 编号的中文语音包直接放进 1.2 游戏，
+> 游戏按自己（英文）的 ID 表查表，必然大面积错位。**
 
-`ArmyMenSourceCode/src/SND.H:189-201`：
+修复方式：中文音频字节一字不动，只按符号名重建 `中文ID → 英文ID`
+映射并重写索引表，产出 1.2 体系的中文语音包。
 
-```c
-typedef struct {
-    char          version[4];              // "V0.0"
-    unsigned long numberOfSounds;          // 238
-    SND_ENTRY     sounds[ SND_MAX_SOUNDS ]; // 固定 256 槽，不是 count 个
-    SND_ENTRY     endOfTable;              // 实为 ASCII "THE  END"
-} SND_HEADER;                              // 恒为 2064 字节
-
-typedef struct {
-    unsigned long soundID;   // 音效逻辑 ID
-    unsigned long offset;    // 文件内偏移
-} SND_ENTRY;
-```
-
-未使用的槽位填 `0xFF`。音频正文从第 2064 字节开始，每条为裸 WAV。
-
-`voices.dat`（`ArmyMenSourceCode/src/`）是 ID 权威表，共 238 项，
-两段：4000–4198（199 条）、**5000–5038**（39 条），中间 4199–4999 有意留空。
-
-## 3. 错引用机制
-
-`ArmyMenSourceCode/src/Voice.cpp:3229 voiceGetOffset()`：
-
-```c
-while ( (VOICEsndHeader->sounds[index].soundID != nSndID) && (index < maxIndex) )
-    ++index;
-if ( VOICEsndHeader->sounds[index].soundID != nSndID )
-    TRACE("ERROR: snd ID (%d) not in .snd file");   // ← 注意
-id_ptr = VOICEsndHeader->sounds[index].offset;        // ← 仍在使用
-```
-
-**关键点**：第二个 `if` 判读发生在 `index` 已等于 `maxIndex` 时，
-即越界读 `sounds[238]`（落在 0xFF 填充区/邻接内存），
-返回的不是 `SND_NULL_SND_ID` 而是**无关偏移**。
-
-因此：请求一个表里不存在的 ID → 不静音、不报错 → **播出别的语音**。
-这就是"失败台词播成成功台词"的根因，也解释了为什么错的是语义相近的句子。
-
-## 4. 已修复
-
-提交 `05e0d35`（前序 `c1ac75a` 因误判被 `7306188` 回滚）。
-
-slot 237 的音频经 SHA256 逐字节比对，确认等于英文 `DESTROYED_SCRIPT`(5013)，
-但索引标成了 `SARGE_LOW_HEALTH`(5011)。已改回 5013。
-
-变更范围：仅 slot 237 的 `soundID` 一个 4 字节字段。
-其余 237 项 ID、全部 238 个 offset、9,722,104 字节正文均未动。
-校验：`sha256 c8bfb929...`，可字节判定的 12 项标签全部正确，无重复 ID。
-
-## 5. 待解决：27 条语音内容缺失
-
-中文包实际只有 211 个不同 ID，相对 `voices.dat` 缺失 27 个：
-
-```
-5011 SARGE_LOW_HEALTH     5012 HEAL_SARGE          5014 DS2M1B
-5015 DS3M1B               5016 DS3M2B              5017 AS4M1_1
-5018 AS4M1_2              5019 AS4M1_3             5020 BS3M1MID
-5021 D12MID               5022 D31BAD              5023 BAYOU1_1M
-5024 BAYOU3_1M            5025 BAYOU3_2M           5026 BAYOU4_1M
-5027 DESERT1_2M           5028 DESERT2_2M          5029 ALPINE1_1M
-5030 ALPINE2_1M           5031 ALPINE3_1SARGE      5032 ALPINE3_1M
-5033 ALPINE4_2SARGE       5034 ALPINE1_1M2         5035 ALPINE3_1M2
-5036 ALPINE3_1M3          5037 SARGE_GETTOMED      5038 SARGE_DONTLEAVE
-```
-
-**注意**：这不是本章第 4 节那种标签错标。这些 ID 在中文包里
-既找不到音频、也找不到对应内容，是**真正的素材缺失**。
-
-其中 `Sarge.cpp:1822` 与 `Sarge.cpp:2964` 会调用 `MsgBroadcast(HEAL_SARGE)`，
-即 5012 会在正常游戏流程中被触发，属于必现缺失。
-
-### 为什么不能靠重编号解决
-
-最初假设"中文把 5000 段重编号为 4199–4225"，试图整体改写 ID 表
-（提交 `c1ac75a`）。**该假设已被字节比对证伪**：
-
-- slot 226–236 的内容与英文 5000–5010 逐字节相同（未配音音效），ID 原本正确；
-  整体重编号反而把这 11 项改坏了（`c1ac75a` 已回滚 `7306188`）。
-- slot 199–225 的长度与英文候选完全不吻合
-  （中文 49792/14592/13280 vs 英文 32224/30688/18560），
-  无法用长度推断归属。
-
-剩 226 条重新配音的语音波形与英文不同，**没有字节或元数据可供自动对应**。
-
-## 6. 后续方案
-
-按优先级：
-
-1. **听音辨认（当前推荐）**
-   把 27 条中文候选解包成 WAV，对照 `voices.ast` 里的 27 条中文字幕
-   （GBK 可读，含"前进至Ａ５区"等带明确坐标的句子），人工确认归属后改 ID。
-2. **频谱指纹**
-   对疑似同源不同配音版本的条目做 chromaprint 相似度比对，或可自动匹配一部分。
-3. **重新补录**
-   若确认素材本身不在任何已知版本里，只能补录这 27 句，或接受其保持英文。
-
-### 为什么不做全量解包重打包
-
-尚无必要：现有 211 条已经能对上使用，只有 27 条缺失；
-而全量重打包会牵动所有 238 条，风险远大于收益。
-若后续方案 1/2 都走不通、且确认素材彻底不存在，再考虑。
-
-## 7. 复现 / 验证方法
-
-```python
-# 索引表：第 8 + i*8 字节为 soundID，+4 字节为 offset
-import struct
-d = open('voices.asd','rb').read()
-c = struct.unpack_from('<I', d, 4)[0]
-[(struct.unpack_from('<I', d, 8+8*i)[0],
-  struct.unpack_from('<I', d, 8+8*i+4)[0]) for i in range(c)]
-```
-
-对照 `Army1_Original/audio/voices.asd`（英文原版）做 SHA256 逐条比对，
-可找出所有"未配音、可直接确定 ID"的条目。
+本文件同时记录此前两次**错误修复**的经过——它们的错误前提值得留档。
 
 ---
 
-**下一步**：待杨浩钧决定如何处理这 27 条缺失素材——先试听音辨认 /
-频谱指纹，还是直接标记为"保持英文"。本文件持续更新直到问题关闭。
+## 1. 文件格式（源码 + 反编译双向确认）
+
+`ArmyMenSourceCode/src/SND.H`：
+
+```c
+typedef struct {
+    char          version[4];               // "V0.0"
+    unsigned long numberOfSounds;           // 238
+    SND_ENTRY     sounds[ SND_MAX_SOUNDS ]; // 固定 256 槽，不是 count 个
+    SND_ENTRY     endOfTable;               // 实为 ASCII "THE  END"
+} SND_HEADER;                               // 恒为 2064 (0x810) 字节
+
+typedef struct {
+    unsigned long soundID;
+    unsigned long offset;
+} SND_ENTRY;                                // 8 字节
+```
+
+- 头部固定 **2064 字节**；音频正文从 2064 起，每条为裸 IFF（`fmt ` + `data`），
+  8bit / 11025Hz / mono，**条目之间无填充字节** → 可字节级回包。
+- 未使用槽位填 `0xFF`。
+- 反编译中文 exe `sub_4673F0` 确认：`malloc(0x810u); fread(v3, 0x810u, 1u)`
+  → **中文 1.0 的结构与源码完全一致，没有变体。**
+
+### 曾踩的坑（都是我自己的错误假设，非文件缺陷）
+
+| 错误假设 | 实际 |
+|---|---|
+| 首个 offset 应等于表尾（1912） | 头部是固定 2064，非"表尾" |
+| `endOfTable` 是 `0xFFFFFFFF` | 是 ASCII `"THE  END"`（两个空格） |
+
+---
+
+## 2. 根因：1.0 与 1.2 的 ID 表不同
+
+两个 exe 都在 `.data` 段内嵌一份 `{u32 id; char name[68]}` 表，stride 72：
+
+| 版本 | exe | 大小 | 表 VA | 条目 | ID 范围 |
+|---|---|---|---|---|---|
+| 中文 1.0 | `玩具兵大战1/Armymen.exe` | 742912 B | `0x479DF0` | 238 | 4000–4225 + 5000–**5011** |
+| 英文 1.2 | `Army Men I STEAM/Armymen.exe` | 993280 B | `0x4BFBC0` | 238 | 4000–4198 + 5000–**5038** |
+
+查表函数 `voiceGetOffset`（源码 `Voice.cpp:3229`，中文 exe 中为
+`sub_4689C0`，调用方 `sub_4674B0`）**线性匹配 soundID**。
+
+关键反编译结论：调用方**检查了返回值**：
+
+```
+if ( v25 == -1 ) goto LABEL_22;      // 找不到 → 放弃播放（静音）
+```
+
+所以**请求不存在的 ID 只会静音，不会播出别的语音**。这一点推翻了
+"越界读导致错引用"的旧结论——错位的真正来源是编号体系不匹配：
+1.2 的 ID 在 1.0 包里存在，但指向的是**另一句话**。
+
+---
+
+## 3. 两版编号的差异结构
+
+以符号名为锚比较两版：
+
+| 类型 | 数量 |
+|---|---|
+| 两版都有、ID 相同 | 66 |
+| 两版都有、ID 不同 | 144 |
+| 仅中文有（28 个 `XXX2`） | 28 |
+| 仅英文有（28 个 `XXX`） | 28 |
+
+差异规律：
+
+1. **中文 1.0 在 4055 之前插入了 4 个条目** → 其后 111 个 ID 统一 `+4`。
+2. **28 条符号名带 `2` 后缀**（`ATTACKING_TANK2` 等）。经 `.ast` 台词逐条
+   比对，确认它们与英文的 `ATTACKING_TANK` **语义一一对应**，是同一句话，
+   只是 1.0 时期加了后缀。**不是新增条目。**
+3. **尾部 ID 体系完全不同**：中文 4203–4225 对应英文 5014–5038。
+4. 两处跨段移动：`SARGE_LOW_HEALTH` / `HEAL_SARGE`
+   英文 5011/5012 → 中文 4055/4056。
+
+**两版都是同一套 238 条内容**，没有任何一方真正多出或缺失素材。
+
+---
+
+## 4. 解决方案：按符号名重编号并重打包
+
+音频字节全部保留，只重写索引表的 `soundID`：
+
+1. 用 `asd_tool.py --exe-names --exe-va 0` 从两个 exe 各提取内置名字表
+   （自动搜索特征串 `(u32)4000 + "THERE_HE_IS"` 定位 VA）。
+2. 以符号名为锚建立 `中文ID → 英文ID` 映射：中文名带 `2` 后缀时去掉后缀
+   再匹配英文名。**不再用任何算术偏移猜测。**
+3. `remap` 子命令按映射重写索引，`pack` 重新打包 `.asd` 与 `.ast`。
+
+### 映射校验
+
+```
+中文 238 条 -> 英文 238 条：可映射 238/238，无法映射 0
+双射检查：映射值重复 0，英文 ID 未覆盖 0
+remap 统计：改 172 / 未变 66 / 失败 0
+```
+
+### 产物验证（全部通过）
+
+| 项 | 结果 |
+|---|---|
+| 音频正文 vs 中文原包（逐 slot SHA256） | 相同 **238/238** |
+| ID 被 1.2 exe 表识别 | **238/238** |
+| ID 集合 == 1.2 表集合 / 无重复 | ✅ |
+| 模拟 1.2 全部 238 个 ID 查找 | 失败 **0** |
+| 偏移单调递增 / 每条以 `fmt ` 开头 | ✅ |
+| `pack(unpack(x)) == x` 字节还原 | ✅ |
+| `.ast` 160 条中文字幕按映射搬运 | **160/160**，全部可对应 1.2 表 |
+
+字幕保留中文（游戏已移植 1.0 字库，GBK 渲染无问题）。
+
+---
+
+## 5. 错误修复留档（重要教训）
+
+两次基于**错误前提**的提交，均已回滚：
+
+### `c1ac75a`（已回滚 `7306188`）
+
+假设"中文把 5000 段整体重编号为 4199–4225"，按 `5000+(slot-199)` 改写
+slot 199–237。**错误原因**：该推断仅来自英文 `voices.dat` 的自洽性，
+未经音频内容验证。实际 slot 226–236（ID 5000–5010）与英文逐字节相同、
+ID 本来就对，改写反而改坏了 11 项。
+
+### `05e0d35`（已回滚 `328b83b`）
+
+把 slot 237 的 ID 从 5011 改为 5013，理由是"5011 应为 SARGE_LOW_HEALTH"。
+**错误原因**：中文 exe 定义 `SPLASH=5010`、`DESTROYED_SCRIPT=5011`、
+`HEAL_SARGE=4056`——**5011 在中文 ID 空间里是合法的**。用英文编号判断
+中文编号是否"越界"，前提就错了。
+
+### 教训
+
+> 拿**另一个版本**的 ID 表当权威去"校准"本版本，方向从根上就是错的。
+> 判断归属必须用**该版本自己的**符号表，且映射依据应是符号名，
+> 不是偏移量或编号算式的自洽性。
+
+---
+
+## 6. 复现 / 验证方法
+
+```python
+import struct
+d = open('voices.asd', 'rb').read()
+c = struct.unpack_from('<I', d, 4)[0]          # 238
+ids = [(struct.unpack_from('<I', d, 8+8*i)[0],
+        struct.unpack_from('<I', d, 8+8*i+4)[0]) for i in range(c)]
+assert d[:4] == b'V0.0'
+assert d[8+256*8:8+256*8+8] == b'THE  END'
+assert ids[0][1] == 2064
+```
+
+工具自带自检：
+
+```bash
+python Tools/asd_tool/asd_tool.py selftest
+```
+
+覆盖 `voices.asd` 与 `sounds.asd`，验证 `pack(unpack(x)) == x`。
+
+### 工具用法
+
+```bash
+# 解包（各版本用自己的 exe 取名字表；--exe-va 0 = 自动搜索）
+python asd_tool.py unpack voices.asd out/ --ast voices.ast \
+       --exe-names Armymen.exe --exe-va 0
+
+# 重编号（音频不动）
+python asd_tool.py remap out/ --map id_map_zh2en.json --exe-names Armymen.exe
+
+# 重新打包
+python asd_tool.py pack out/ new.asd --ast new.ast
+```
+
+---
+
+## 7. 遗留事项
+
+1. **`sounds.asd` 未处理**。它也有中英两份，可能同样存在 ID 体系差异，
+   需同样方式核查（本次只处理了 `voices.asd`/`.ast`）。
+2. **需进游戏实测**。建议优先确认此前必定播错的三条：
+   `HEAL_SARGE`（原 4056 → 现 5012）、`SARGE_GETTOMED`（原 4224 → 现 5037）、
+   `D31BAD`（原 4211 → 现 5022）。
+3. 备份位置：`Army1_Object_CHS/_bak_voice_zh_*`、
+   `_trash/audio_pre_zh12_*`，可回退。
+
+---
+
+**下一步**：进游戏实测中文配音是否已正确对应；确认后按同样方法处理
+`sounds.asd`。
