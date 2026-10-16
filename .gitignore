@@ -13,6 +13,10 @@ stage_am2/
 build_out_am3/
 stage_am3/
 
+# 4 代（世界大战）的对应产物
+build_out_am4/
+stage_am4/
+
 # BMP 对比核对材料（由 Tools/bmp_*_am2.py 生成，可随时重跑）
 _bmp_cmp/
 
@@ -29,6 +33,10 @@ Army3_Extend_Dll/Release/
 Army3_Extend_Dll/Debug/
 Army3_Extend_Dll/x64/
 Army3_Extend_Dll/build_tmp/
+Army4_Extend_Dll/Release/
+Army4_Extend_Dll/Debug/
+Army4_Extend_Dll/x64/
+Army4_Extend_Dll/build_tmp/
 Army1_Extend_Dll/*.obj
 Army1_Extend_Dll/*.pch
 Army1_Extend_Dll/*.ilk

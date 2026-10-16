@@ -1,0 +1,15 @@
+Control of as many of the nodes as
+possible. You take control of a node when
+your forces get within range of it and no
+other forces are in range. You keep
+control until another army takes control
+of the node.
+
+Score 4 pts every 10 seconds for 1 node,
+12 pts every 10 seconds for 2 nodes,
+24 pts every 10 seconds for 3 nodes,
+40 pts every 10 seconds for 4 nodes,
+60 pts every 10 seconds for 5 nodes.
+
+The first player/team to reach the point
+goal wins.

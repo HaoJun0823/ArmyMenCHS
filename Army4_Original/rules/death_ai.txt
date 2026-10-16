@@ -1,0 +1,178 @@
+// @1 = color to do AI for, @2 = color of enemy, @3 = color number of enemy
+macro death_ai_enemy 3
+{
+	// MASS ATTACK
+
+	// before attacking @2 make sure @2 is in the game and is not an ally
+	if @1SetMassAttack@2 testvar IsColorInGame @2 > 0 and IsAlly @1 @2 = 0 then
+		setvar @1Action @3,
+		trigger @1MassAttack@2,
+		trigger @1StartTimeOut
+
+	if @1MassAttack@2 testvar @1Action = @3 then				// if we are supposed to attack him, keep it up
+		setvar @1Group1Action @3,
+		setvar @1Group2Action @3,
+		setvar @1Group3Action @3,
+		setvar @1Group4Action @3,
+		trigger @1Group1Attack@2,
+		trigger @1Group2Attack@2,
+		trigger @1Group3Attack@2,
+		trigger @1Group4Attack@2,
+		order @1 group 5 follow ai@2 inmode attack,
+		triggerdelay 3000 @1MassAttack@2				// keep attack on closes every 3 seconds (resurrected guys need new orders)
+
+	// SPREAD ATTACK
+
+	// before attacking @2 make sure @2 is in the game and is not an ally
+	if @1SetGroup1Attack@2 testvar IsColorInGame @2 > 0 and IsAlly @1 @2 = 0 then
+		setvar @1Group1Action @3,
+		trigger @1Group1Attack@2,
+		order @1 group 5 follow ai@2 inmode attack
+
+	if @1SetGroup2Attack@2 testvar IsColorInGame @2 > 0 and IsAlly @1 @2 = 0 then
+		setvar @1Group2Action @3,
+		trigger @1Group2Attack@2
+
+	if @1SetGroup3Attack@2 testvar IsColorInGame @2 > 0 and IsAlly @1 @2 = 0 then
+		setvar @1Group3Action @3,
+		trigger @1Group3Attack@2
+
+	if @1SetGroup4Attack@2 testvar IsColorInGame @2 > 0 and IsAlly @1 @2 = 0 then
+		setvar @1Group4Action @3,
+		trigger @1Group4Attack@2
+
+
+	// BASE ATTACK
+
+	// before attacking @2 make sure @2 is in the game and is not an ally
+	if @1SetBaseAttack@2 testvar IsColorInGame @2 > 0 and IsAlly @1 @2 = 0 then
+		setvar @1Action @3,
+		trigger @1BaseAttack@2
+
+	if @1BaseAttack@2 testvar @1Action = @3 then				// if we are supposed to attack him, keep it up
+		setvar @1Group1Action @3,
+		setvar @1Group2Action @3,
+		setvar @1Group3Action @3,
+		setvar @1Group4Action @3,
+		order @1 group 1 goto @2base inmode attack,
+		order @1 group 2 goto @2base inmode attack,
+		order @1 group 3 goto @2base inmode attack,
+		order @1 group 4 goto @2base inmode attack,
+		order @1 group 5 goto @2base inmode attack,
+		triggerdelay 30000 @1ChooseNewAction	
+
+
+	// consider a new goal in 20 seconds after we kill anything (allows us time to attack nearby things)
+	if killed @2 trooper by @1 then
+		triggerdelay 20000 @1ChooseNewAction
+}
+
+// @1 = color of army to do AI for, @2-@4 = other colors 
+macro death_ai_macro 4
+{
+	// ACTION
+	// -1 means no action, 
+	// MASS ATTACK: 0 means attack green, 1 means attack tan, 2 means attack blue, 3 means attack grey,
+	// 4 means spread attack
+
+	// this variable is 
+	// this gets loaded on the host if the @1 army is AI controlled
+	if startup1 then
+		triggerdelay 1000 @1ChooseNewAction,
+		triggerdelay 2000 @1RegularOrders
+
+	if @1ChooseNewAction then
+		setvar @1Action -1,
+		trigger @1ChooseAction
+
+	// if @1 has no current action then pick a random action and keep doing this until an action is set
+	if @1ChooseAction testvar @1Action = -1 then
+		trigger @1PickAttack,
+		triggerdelay 1000 @1ChooseAction
+
+	if @1PickAttack then random	// go thru different kinds of attacks		
+		trigger @1BaseAttack,
+		trigger @1SpreadAttack,
+		trigger @1MassAttack
+
+	if @1MassAttack then random			// pick random target for a mass attack
+		trigger @1SetMassAttack@2,
+		trigger @1SetMassAttack@3,
+		trigger @1SetMassAttack@4
+
+	if @1BaseAttack then random			// pick random target for a base attack
+		trigger @1SetBaseAttack@2,
+		trigger @1SetBaseAttack@3,
+		trigger @1SetBaseAttack@4
+
+	if @1SpreadAttack then				// each group picks random target
+		setvar @1Action 4,
+		setvar @1Group1Action -1,
+		setvar @1Group2Action -1,
+		setvar @1Group3Action -1,
+		setvar @1Group4Action -1,
+		trigger @1Group1Spread,
+		trigger @1Group2Spread,
+		trigger @1Group3Spread,
+		trigger @1Group4Spread
+
+	// group action pickers
+	if @1Group1Spread testvar @1Group1Action = -1 then
+		trigger @1PickGroup1Attack,
+		triggerdelay 1000 @1Group1Spread
+
+	if @1Group2Spread testvar @1Group2Action = -1 then
+		trigger @1PickGroup2Attack,
+		triggerdelay 1000 @1Group2Spread
+
+	if @1Group3Spread testvar @1Group3Action = -1 then
+		trigger @1PickGroup3Attack,
+		triggerdelay 1000 @1Group3Spread
+
+	if @1Group4Spread testvar @1Group4Action = -1 then
+		trigger @1PickGroup4Attack,
+		triggerdelay 1000 @1Group4Spread
+
+	if @1PickGroup1Attack then random			// pick random target for a mass attack
+		trigger @1SetGroup1Attack@2,
+		trigger @1SetGroup1Attack@3,
+		trigger @1SetGroup1Attack@4
+
+	if @1PickGroup2Attack then random			// pick random target for a mass attack
+		trigger @1SetGroup2Attack@2,
+		trigger @1SetGroup2Attack@3,
+		trigger @1SetGroup2Attack@4
+
+	if @1PickGroup3Attack then random			// pick random target for a mass attack
+		trigger @1SetGroup3Attack@2,
+		trigger @1SetGroup3Attack@3,
+		trigger @1SetGroup3Attack@4
+
+	if @1PickGroup4Attack then random			// pick random target for a mass attack
+		trigger @1SetGroup4Attack@2,
+		trigger @1SetGroup4Attack@3,
+		trigger @1SetGroup4Attack@4
+
+
+	// these are the standing order regardless of what mode ai is in
+		
+	if @1RegularOrders then
+		order @1 group 7 goto @1base inmode defend,
+		triggerdelay 5000 @1RegularOrders
+
+	// timeout code - if mode has not changed for a while then change it
+
+	variable @1TimeOutVar 0
+	variable @1LastTimeOutVar 1
+
+	if @1StartTimeOut then
+		addvar @1TimeOutVar 1,
+		triggerdelay 120000 @1CheckTimeOut // 2 minutes, check 
+
+	if @1CheckTimeOut testvar @1TimeOutVar = @1LastTimeOutVar then
+		trigger @1ChooseNewAction
+
+	if @1CheckTimeOut testvar @1TimeOutVar <> @1LastTimeOutVar then
+		addvar @1LastTimeOutVar 1
+
+}

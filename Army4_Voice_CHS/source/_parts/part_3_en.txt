@@ -1,0 +1,42 @@
+03_01_bluecorp_06A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Okay, man. We need to sweep the area. Let's go.
+03_01_tansquadleader_07B.wav	TanArmy(棕军)	enemy sighted. Surrender in the name of Tan.
+03_01_tantrooper_05C.wav	TanArmy(棕军)	GREEN SPOTTED!
+03_02_HQ_B.wav	HQ_Command(总部/指挥官)	Those tanks will never see battle again. Excellent work, Commander.
+03_02_bluecorp_06A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Come in. Anyone? My squad is dead. I'm pinned in. Enemy side, they're closing in. Help! Anybody?
+03_02_tansquadleader_07B.wav	TanArmy(棕军)	Move out, troopers, and be on the watch for those green boys.
+03_02_tantrooper_02C.wav	TanArmy(棕军)	Green spotted! Tank crews, go to your tanks!
+03_03_bluecorp_06C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Boy, I'm glad to see you guys. I thought I was off to the great recycling bin in the sky. I'm an experienced sniper, so use my abilities while you can.
+03_06_Greenman_01F.wav	GreenArmy_Grunt(绿军)	It's a trap.
+03_bluecorp.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	We'll never surrender to Tan. Open fire! Open fire!
+04_01_HQ.wav	HQ_Command(总部/指挥官)	Commander, we need you to finish a job. Combat engineers were sent to destroy an armored TAN building that contained stolen top-secret documents regarding our next plan of attack. Unfortunately, the engineers were taken captive. Go rescue these men before the TAN move them to a more secure location, and then assist the demolition expert in taking out the TAN building. Good luck. HQ out.
+04_01_combatengineer_01B.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Thanks, sir. Cover me as I get my explosives.
+04_01_greentroop_03A.wav	GreenArmy_Grunt(绿军)	FREEDOM!
+04_01_greentroop_04A.wav	GreenArmy_Grunt(绿军)	FREEDOM!
+04_01_greentroop_06B.wav	GreenArmy_Grunt(绿军)	freedom
+04_02_HQ_B.wav	HQ_Command(总部/指挥官)	Outstanding, sir. Take some R&R before your next mission.
+04_02_combatengineer_01B.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	We'll need to hurry. TAN guards will soon arrive with supplies.
+04_02_greentroop_03C.wav	GreenArmy_Grunt(绿军)	Payback time.
+04_02_greentroop_07B.wav	GreenArmy_Grunt(绿军)	Payback time.
+04_03_HQ_E.wav	HQ_Command(总部/指挥官)	Great. Now escort the demolition engineer over to the TAM building so he can destroy it.
+04_03_combatengineer_01B.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Tangard should be arriving soon.
+04_03_greentroop_02B.wav	GreenArmy_Grunt(绿军)	I owe you my life.
+04_03_greentroop_07C.wav	GreenArmy_Grunt(绿军)	I owe you my life.
+04_04_HQ_B.wav	HQ_Command(总部/指挥官)	Well, with the engineer down, it looks like you're gonna have to finish the job.
+04_04_combatengineer_01B.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Charge one, plan it.
+04_04_greentroop_02B.wav	GreenArmy_Grunt(绿军)	Revenge is all I ask, sir. Next.
+04_04_greentroop_04C.wav	GreenArmy_Grunt(绿军)	Revenge is all I ask, sir.
+04_05_combatengineer_01B.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Charge to planet.
+04_06_combatengineer_01B.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Take cover!
+05_01_HQ.wav	HQ_Command(总部/指挥官)	Commander, the TAN are using this town as a staging point to disperse their troops. We have so far been unable to organize an adequate bombing run due to TAN AA guns spread throughout the city's front. Your mission is to get in there and take out those AA guns so our bombers can get a clear run on the city. TAN forces should be heavy, so be careful. HQ out.
+05_01_greentroop.wav	GreenArmy_Grunt(绿军)	Commander, the Tans have some of our vehicles in the vehicle yard up ahead.
+05_01_tantroop.wav	TanArmy(棕军)	Intruders! After them!
+05_02_HQ_B.wav	HQ_Command(总部/指挥官)	Great job, Commander. Now that the AA guns have been disposed of, Green Command can follow through with their plans. Continue to the northeast and deeper into the city, then wait for further orders. HQ out.
+05_02_greentroop.wav	GreenArmy_Grunt(绿军)	It's an ambush. Take cover.
+06_01_2nd.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Nice to see you guys. Now let's get out of here before the 10 have a chance to regroup.
+06_01_HQ.wav	HQ_Command(总部/指挥官)	Commander, the 2nd Armored Brigade should be arriving from the east. Find them, and continue on towards the northern end of this city. We have reports that Tan's Armored 9th Brigade is stationed in this section of the city, so we recommend finding as much firepower as possible before attacking the 9th. Green Command has initiated the bombing run, so you better get a move on. Good luck. HQ out.
+06_01_disguiseguy.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Good thing you guys came along. I thought I was going to lose a limb or two for sure. The ten have been stockpiling bazookas to the north. Take these disguises to mask a couple of your soldiers so that you can sneak in and get some for yourself.
+06_01_tantrooper.wav	TanArmy(棕军)	Enemy sighted! Get them!
+06_02_2nd_2B.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Looks like we've got company. We'd better get out of here.
+06_02_HQ_B.wav	HQ_Command(总部/指挥官)	Commander, the bombers are approaching the target destination. Make haste for the northern meeting point indicated on your strategic map. HQ out.
+06_03_HQ_B.wav	HQ_Command(总部/指挥官)	Good work, Commander. I don't know how you got through the 10 defenses in time, but good to hear you're still alive. New orders are on the way.
+07_01_HQ.wav	HQ_Command(总部/指挥官)	There is a TAN train station near the northwestern border of this area. The TAN forces are using this station to receive heavy artillery, weapons, tanks, and supplies they need for the war effort. Securing this station will prevent the TAN from bringing any more weaponry to the front lines. Your mission is to find a way to get into the station and take it over. Be careful. We have reason to think the TAN have planted mines throughout the area. Unfortunately, we have no idea where the mined areas are. But that's why we chose you for the job, Commander. Good hunting. HQ out.

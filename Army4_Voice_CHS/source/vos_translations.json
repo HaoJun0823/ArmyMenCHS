@@ -1,0 +1,1254 @@
+{
+  "00_103_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "列兵，我要跟你赛一场吉普车。爬上西边的吉普，准备挨揍吧。",
+    "value_en": "Private, I'm challenging you to a jeep race. Climb into the West Jeep and prepare for a drubbing."
+  },
+  "00_104_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "西边那辆吉普，小兵。",
+    "value_en": "The West Jeep, grunt."
+  },
+  "00_105_B.wav": {
+    "speaker": "Sarge",
+    "value_ch": "你算哪门子的废物，士兵？回到起点去。",
+    "value_en": "What kind of slime are you, soldier? Get back to the start."
+  },
+  "00_106_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "各就各位，三、二、一，出发！",
+    "value_en": "On your marks, three, two, one, go!"
+  },
+  "00_109_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "哈，哈！我好好教训了你一顿，士兵。",
+    "value_en": "Ha, ha! I tanned your hodge, soldier."
+  },
+  "00_110_B.wav": {
+    "speaker": "Sarge",
+    "value_ch": "这次算你赢，列兵。",
+    "value_en": "You win this time, Private."
+  },
+  "00_112_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "拿上那把扳手，把那辆半履带车检修一下，士兵。然后把那三名士兵装上车厢。他们得回营房了。",
+    "value_en": "Grab that wrench and tune up that half-track, soldier. Then load those three soldiers on board. They need a ride back to the barracks."
+  },
+  "00_117_F.wav": {
+    "speaker": "Sarge",
+    "value_ch": "这片地盘归我，士兵。把麦克舒特挪到那个路牌跟前，仔细检查一遍。",
+    "value_en": "This area is mine, soldier. Move McChute over to that sign and give it a once-over."
+  },
+  "00_118_B.wav": {
+    "speaker": "Sarge",
+    "value_ch": "记住，要把士兵从车里弄出来，先选中车辆，再点击已选单位栏里那个士兵的图标。",
+    "value_en": "Remember, to get a soldier out of a vehicle, select the vehicle and then click on the soldier's icon in the selected units display."
+  },
+  "00_120_A.wav": {
+    "speaker": "Sarge",
+    "value_ch": "用麦克楚在雷区里清出一条路来，列兵。",
+    "value_en": "Use McChu to clear a path through the minefield, Private."
+  },
+  "00_121_D.wav": {
+    "speaker": "Sarge",
+    "value_ch": "最后一项测试，士兵。从那道棕军路障里硬闯过去，把你的人带到撤离区。左键射击半履带车的火炮。",
+    "value_en": "Final test, soldier. Bust your way through that tan barricade and get your men over to the exit area. Left click to fire the half-track's cannon."
+  },
+  "00_122_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "风风光光抵达就别想了，把所有人带到撤离区，今天就收工。",
+    "value_en": "so much for arriving in style get all of your men to the exit area and we'll call it a day"
+  },
+  "00_124_A.wav": {
+    "speaker": "Sarge",
+    "value_ch": "你做到了。战事正酣，总部说必须给你授衔。祝你好运，指挥官。你用得上的。",
+    "value_en": "You made it. With the war raging, HQ says we have to give you your stripes. Good luck, Commander. You'll need it."
+  },
+  "00_125_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "干得不错，你已经做好战斗准备了，指挥官。",
+    "value_en": "not bad at all you're ready for battle commander"
+  },
+  "00_127_A.wav": {
+    "speaker": "Sarge",
+    "value_ch": "你还没完成那一关，列兵。",
+    "value_en": "You didn't finish that stage, Private."
+  },
+  "00_127_B.wav": {
+    "speaker": "Sarge",
+    "value_ch": "你还没完成那一关，列兵。",
+    "value_en": "You didn't finish that stage, Private."
+  },
+  "00_128_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "你这一关还没过完，列兵。要是想彻底通关，以后随时可以回新兵营来。",
+    "value_en": "You're not finished with that stage, Private. You can always come back to boot camp later if you want to complete the whole thing."
+  },
+  "00_129_A.wav": {
+    "speaker": "Sarge",
+    "value_ch": "你的塑料兵快耗光了，列兵。我给你派增援。",
+    "value_en": "You're losing plastic, Private. I'm sending reinforcements."
+  },
+  "00_130_B.wav": {
+    "speaker": "Sarge",
+    "value_ch": "幸好这只是训练演练。你的替补来了。",
+    "value_en": "Good thing this is just a training exercise. Here comes your replacement."
+  },
+  "00_131_A.wav": {
+    "speaker": "Sarge",
+    "value_ch": "快点，列兵。",
+    "value_en": "Hurry up, Private."
+  },
+  "00_131_B.wav": {
+    "speaker": "Sarge",
+    "value_ch": "快点，列兵。",
+    "value_en": "Hurry up, Private."
+  },
+  "00_131_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "快点，列兵！",
+    "value_en": "Hurry up, Private!"
+  },
+  "00_140_A.wav": {
+    "speaker": "Sarge",
+    "value_ch": "你刚刚折了霍利森，列兵。",
+    "value_en": "You just lost Hollison, Private."
+  },
+  "00_141_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "麦卡德阵亡了，列兵。",
+    "value_en": "McCude is dead, Private."
+  },
+  "00_16b.wav": {
+    "speaker": "Sarge",
+    "value_ch": "第一阶段已经完成。现在沿着斜坡爬上北边那座山头。",
+    "value_en": "You've finished stage one. Now head up the slope to that hill to the north."
+  },
+  "00_1C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "欢迎来到新兵营，列兵。我们和棕军正陷入一场生死搏杀，战场上塑料都在熔化。你本不必来，但这里正是你要学会怎样在这场战争中活下去的地方，而且你会学得很好。你将带领一些士兵，尝尝实战的滋味，还会轮流坐上装甲车的驾驶位。别担心在这里送命。这是你在真正要命之前学习的机会。",
+    "value_en": "Welcome to boot camp, Private. We're locked in a life and death struggle with the Tan Army and plastic is melting in the battlefields. You don't have to be here, but this is where you're going to learn how to survive this war, and you're going to learn it well. You'll lead some soldiers, get a taste of live combat, and take a turn at the wheel of some armored vehicles. Don't worry about dying here. This is a chance for you to learn before it really counts."
+  },
+  "00_21E.wav": {
+    "speaker": "Sarge",
+    "value_ch": "练几手闪避动作，列兵。准备开打时，走进那圈石头里。我会一直让你忙活，直到我觉得你学到了东西为止。",
+    "value_en": "Practice some evasive moves, Private. When you're ready to fight, walk into that circle of stones. I'll keep you busy until I think you've learned something."
+  },
+  "00_22H.wav": {
+    "speaker": "Sarge",
+    "value_ch": "别忘了，士兵移动时按住空格键，就能一边走一边打。",
+    "value_en": "Don't forget, you can attack and move at the same time by pressing the space bar while your soldier is in motion."
+  },
+  "00_24_A.wav": {
+    "speaker": "Sarge",
+    "value_ch": "叫你那注模的屁股别闲着，继续动。",
+    "value_en": "Keep your injection molded butt moving."
+  },
+  "00_25_A.wav": {
+    "speaker": "Sarge",
+    "value_ch": "哎哟，这一下要留疤了。",
+    "value_en": "Ouch, that'll leave a mark."
+  },
+  "00_27_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "下到谷地里，去上下一课。",
+    "value_en": "Head down into the valley for your next lesson."
+  },
+  "00_29_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "看路牌，列兵。",
+    "value_en": "Read the signs, Private."
+  },
+  "00_32_B.wav": {
+    "speaker": "Sarge",
+    "value_ch": "突击测验，列兵。把那个医疗包捡起来再放下。",
+    "value_en": "Pop quiz, Private. Pick up and drop that med pack."
+  },
+  "00_35_E.wav": {
+    "speaker": "Sarge",
+    "value_ch": "再把医疗包捡起来，在控制面板里右键点它选中，然后再右键点一次使用它。",
+    "value_en": "Pick up the MedPak again, right-click on it in the control panel to select it, then right-click it again to use it."
+  },
+  "00_37_D.wav": {
+    "speaker": "Sarge",
+    "value_ch": "东边有几个步兵靶子。打掉其中三个。要是子弹打光了，你捡枪的地方还有补给。",
+    "value_en": "You've got some infantry targets to the east. Knock down three of them. If you run out of ammo, there'll be more where you picked up the rifle."
+  },
+  "00_3C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "你目前手下只有一名士兵，列兵霍利森。我把他放到你视野中央。要接管或选中他，用鼠标左键点他。要让选中的士兵移动到某地，用鼠标右键点那个位置。这就叫右键点击。",
+    "value_en": "You currently have one soldier, Private Hollison, under your command. I'm centering him in your view. To take command of him, or to select him, click on him with the left mouse button. To order a selected soldier to a location, click on that location with the right button of your mouse. That's called a right click."
+  },
+  "00_41_J.wav": {
+    "speaker": "Sarge",
+    "value_ch": "太丢人了，小兵。可我们没一整天工夫耗。",
+    "value_en": "That was pathetic, grunt. But we don't have all day."
+  },
+  "00_42_A.wav": {
+    "speaker": "Sarge",
+    "value_ch": "爬上那道斜坡，进入下一关。",
+    "value_en": "Climb that slope to the next stage."
+  },
+  "00_48_A.wav": {
+    "speaker": "Sarge",
+    "value_ch": "移动到下一个路牌。",
+    "value_en": "Move to the next sign."
+  },
+  "00_4C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "南边有个路牌。右键点击路牌正前方的位置，把霍利森挪过去。",
+    "value_en": "There's a sign over to the south. Move Hollison to it by right-clicking on a spot right in front of the sign."
+  },
+  "00_51_D.wav": {
+    "speaker": "Sarge",
+    "value_ch": "既然我们缺真正的士兵，总部说这算及格。往东北走，下到谷地里。",
+    "value_en": "Since we're lacking real soldiers, HQ says that's a passing grade. Move northeast and down into the valley."
+  },
+  "00_56_F.wav": {
+    "speaker": "Sarge",
+    "value_ch": "你获得增援了。要学怎么指挥这些部队，把霍利森挪到下一个路牌。",
+    "value_en": "You've got reinforcements. To learn how to manage these troops, move Hollison over to the next sign."
+  },
+  "00_61_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "新兵，让霍利森过去看那些指示牌。",
+    "value_en": "Private, move Hollison over to read those signs."
+  },
+  "00_65_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "新兵，把你的兵分成两个三人小队。谁进哪个小队无所谓，只要每个小队有三个人就行。",
+    "value_en": "Private, make two squads of three men each. It doesn't matter who goes in which squad, as long as each one has three men."
+  },
+  "00_66_A.wav": {
+    "speaker": "Sarge",
+    "value_ch": "现在把你所有的人移到路灯杆附近那个区域。",
+    "value_en": "Now move all your men to that area near the lamppost."
+  },
+  "00_67_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "听我口令，立刻派一个小队往南去那棵树，另一个去那顶帐篷。点击小队按钮选中人员，然后右键点目标地点让他们移动。",
+    "value_en": "On my mark, quickly send one squad south to the tree and the other to that tent. Click your squad buttons to select the men, and then right-click on their destinations to move them."
+  },
+  "00_70_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "太慢了，新兵。",
+    "value_en": "too slow private"
+  },
+  "00_73_A.wav": {
+    "speaker": "Sarge",
+    "value_ch": "把你的士兵往南带上那个斜坡。",
+    "value_en": "Move your soldiers up that slope to the south."
+  },
+  "00_78_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "前方，那些棕军在空地上打盹，但那里有两个出口。把你的兵分成两个小队，从两个方向同时进攻。看能不能堵住棕军，别让他们逃出空地。",
+    "value_en": "Up ahead, those TAN are dozing in that clearing, but it has two exits. Split your men into two squads and attack from both directions at once. See if you can prevent the TAN from escaping the clearing."
+  },
+  "00_7A.wav": {
+    "speaker": "Sarge",
+    "value_ch": "看完之后，让霍利森去南边几英寸外的下一块指示牌。",
+    "value_en": "When you're done reading, move Hollison to the next sign. It's located a half dozen inches to the south."
+  },
+  "00_80_K.wav": {
+    "speaker": "Sarge",
+    "value_ch": "那就这么着吧。",
+    "value_en": "That'll have to do."
+  },
+  "00_83_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "这六个人已经完成任务了，新兵。他们不再听你指挥了。你试着选选他们就知道了。",
+    "value_en": "These six men have done their job, Private. They're no longer under your control. Try selecting them and you'll see."
+  },
+  "00_85_B.wav": {
+    "speaker": "Sarge",
+    "value_ch": "把视角移到东边的山谷。那里有新的补给道具和一个新兵在等你。",
+    "value_en": "Move your view to the valley to the east. New power-ups and a new soldier are waiting for you there."
+  },
+  "00_89_A.wav": {
+    "speaker": "Sarge",
+    "value_ch": "命令麦克丘德新兵去捡那个空袭道具，然后用来轰炸东北方向的雷达设施。",
+    "value_en": "Order Private McChude to pick up that airstrike, then use it to pound the radar installation to the northeast."
+  },
+  "00_95_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "地雷这东西不太政治正确，但能帮你拦住东边开来的那辆棕军卡车。埋一条雷线，让他们挡在你和卡车之间。",
+    "value_en": "They're not politically correct, but mines will help you stop the tan truck that's coming in from the east. Lay down a line of them and keep them between you and the truck."
+  },
+  "00_ambush1_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "伏击！快去拿那个补给道具！",
+    "value_en": "Ambush get that power up pronto"
+  },
+  "00_ambush2_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "那是个什么玩意儿？我从没见过这种东西。",
+    "value_en": "What is that thing? I've never seen anything like it."
+  },
+  "00_cmd1_D.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "现在注意听。洛斯塔勒姆新兵正前往你北边的山口。他会演示四种指挥模式。他不受你指挥，所以别费劲去调动他。",
+    "value_en": "Now pay attention. Private Lostalem is headed into that pass to your north. He will demonstrate the four command modes. He isn't under your command, so don't bother trying to move him."
+  },
+  "00_cmd2_E.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "首先，他会演示绿色单位在攻击指令模式下，遇到棕军威胁时会怎么反应。",
+    "value_en": "First, he'll act out how a green unit will respond to a tan threat when in attack command mode."
+  },
+  "00_cmd3_B.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "现在，洛斯蒂勒姆会演示防御指令模式。",
+    "value_en": "Now, Lostilum will demonstrate defend command mode."
+  },
+  "00_cmd4_C.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "这里，洛斯蒂勒姆会展示他在原地待命射击模式下的反应。",
+    "value_en": "Here, Lostillum will show you how he would respond when in stand-and-fire mode."
+  },
+  "00_cmd5_E.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "最后，这是一个停火模式行为的示例。",
+    "value_en": "Lastly, here is an example of hold fire mode behavior."
+  },
+  "00_cmd6_B.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "我现在把洛斯塔勒姆交由你指挥。看你的显示屏，注意他中弹时图标会闪红。",
+    "value_en": "I'm putting Lostalem under your command. If you look at your display, note how his icon flashes red as he takes fire."
+  },
+  "00_cmdx_A.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "我是不是把你讲困了，新兵？好吧，要是你改主意了，回头再来新兵训练营。",
+    "value_en": "am i boring you private well return to boot camp later if you change your mind"
+  },
+  "00_goodB.wav": {
+    "speaker": "Sarge",
+    "value_ch": "好。",
+    "value_en": "Good."
+  },
+  "00_goodC.wav": {
+    "speaker": "Sarge",
+    "value_ch": "好。",
+    "value_en": "Good."
+  },
+  "00_goodE.wav": {
+    "speaker": "Sarge",
+    "value_ch": "好。",
+    "value_en": "Good."
+  },
+  "00_goodenuf_D.wav": {
+    "speaker": "Sarge",
+    "value_ch": "这样就够好了。",
+    "value_en": "That's good enough."
+  },
+  "00_goodshtg_C.wav": {
+    "speaker": "Sarge",
+    "value_ch": "打得好。",
+    "value_en": "Good shooting."
+  },
+  "00_niceA.wav": {
+    "speaker": "Sarge",
+    "value_ch": "不错。",
+    "value_en": "Nice."
+  },
+  "00_niceB.wav": {
+    "speaker": "Sarge",
+    "value_ch": "不错。",
+    "value_en": "Nice."
+  },
+  "01_01_HQ.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "指挥官，我们需要你突袭海滩，摧毁北边的棕军雷达大楼，在敌方防线上撕开一个口子。预计阻力不大，但我相信越往内陆敌人威胁越强。祝好运。总部完毕。",
+    "value_en": "Commander, we need you to storm the beach and puncture a hole in the TAN's defense by destroying the TAN radar building to the north. You can expect minimal resistance, but I'm sure the enemy threat will increase further inland. Good luck. HQ out."
+  },
+  "01_01_greenattackers.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "进攻！",
+    "value_en": "ATTACK!"
+  },
+  "01_01_greentroop.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "好了弟兄们，我们一些人去干掉崖壁上的狙击手。等他们解决完，我们就开拔。",
+    "value_en": "Okay fellas, some of our men are going to take out those snipers on the ledge. Once they're done, we'll move out."
+  },
+  "01_01_tantroopers.wav": {
+    "speaker": "TanArmy",
+    "value_ch": "敌人逼近！找掩护！",
+    "value_en": "Enemy approaching! Take cover!"
+  },
+  "01_02_HQ.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "干得好。这片区域安全了。",
+    "value_en": "Good job. This area is secure."
+  },
+  "01_02_greentroop.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "狙击手清掉了，出发。",
+    "value_en": "The snipers are eliminated, move out."
+  },
+  "02_01_HQ.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "指挥官，棕军在这片区域的山丘上部署了火炮。这些火炮让我们部队无法安全通过，所以你的任务是摧毁这些火炮。留意格林曼中尉。他被这些火炮压制住了，正等着你的人打通道路好让他的部队继续推进。只要清掉一部分火炮，格林曼中尉就会下令部队穿过这片区域。",
+    "value_en": "Commander, the TAN have artillery cannons stationed on the hills in this area. These cannons make it impossible to get our troops through the area unharmed, so it is your job to destroy these cannons. Keep a lookout for Lieutenant Greenman. He is pinned in due to these cannons and waiting for your men to make it safe for his men to continue. As soon as some of the cannons are eliminated, Lieutenant Greenman will order his forces to move through the area."
+  },
+  "02_01_LGreenman.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "指挥官，那些火炮把我们逼进了死胡同。我得想个办法先摧毁那些火炮，才能带部队穿过这片区域。",
+    "value_en": "Commander, those cannons have us between a rock and a hard place. We need to find a way to destroy those cannons before I can move through the area."
+  },
+  "02_02_HQ.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "干得好。所有棕军火炮都被摧毁了。总部完毕。",
+    "value_en": "Good job. All the tan cannons are destroyed. HQ out."
+  },
+  "02_02_LGreenman.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "指挥官，我们现在正穿过峡谷。",
+    "value_en": "Commander, we are now moving through the canyon."
+  },
+  "02_03_LGreenman.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "我们遭到射击！",
+    "value_en": "We're taking fire!"
+  },
+  "02_04_LGreenman.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "谢了，指挥官。我们脱险了。这些补给给你，感谢你的付出，祝你在战场上好运。",
+    "value_en": "Thanks, Commander. We're home free. Take these supplies for your efforts, and I wish you good luck in the war."
+  },
+  "03_01_HQ.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "指挥官，我们需要你出击，摧毁正在维修补给的十辆坦克。留意我们早先派进去的一支小队，由友方的“蓝军”带队。祝你好运，指挥官。总部完毕。",
+    "value_en": "Commander, we need you to strike and eliminate 10 tanks that are in for repairs and refueling. Stay on the lookout for a squad we sent in earlier, led by a friendly Blue. Good luck, Commander. HQ out."
+  },
+  "03_01_bluecorp_06A.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "好的，兄弟。咱们得把这片区域搜一遍。走吧。",
+    "value_en": "Okay, man. We need to sweep the area. Let's go."
+  },
+  "03_01_tansquadleader_07B.wav": {
+    "speaker": "TanArmy",
+    "value_ch": "发现敌人。以棕军的名义投降吧。",
+    "value_en": "enemy sighted. Surrender in the name of Tan."
+  },
+  "03_01_tantrooper_05C.wav": {
+    "speaker": "TanArmy",
+    "value_ch": "发现绿军！",
+    "value_en": "GREEN SPOTTED!"
+  },
+  "03_02_HQ_B.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "那些坦克再也上不了战场了。干得漂亮，指挥官。",
+    "value_en": "Those tanks will never see battle again. Excellent work, Commander."
+  },
+  "03_02_bluecorp_06A.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "收到请回答。有人吗？我小队全没了。我被压制了。敌方正在逼近。救命！有人吗？",
+    "value_en": "Come in. Anyone? My squad is dead. I'm pinned in. Enemy side, they're closing in. Help! Anybody?"
+  },
+  "03_02_tansquadleader_07B.wav": {
+    "speaker": "TanArmy",
+    "value_ch": "出发，弟兄们，盯紧那些绿军小子。",
+    "value_en": "Move out, troopers, and be on the watch for those green boys."
+  },
+  "03_02_tantrooper_02C.wav": {
+    "speaker": "TanArmy",
+    "value_ch": "发现绿军！坦克兵，就位！",
+    "value_en": "Green spotted! Tank crews, go to your tanks!"
+  },
+  "03_03_bluecorp_06C.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "老天，见到你们真高兴。我还以为自己要上西天进大回收站了。我是个老练的狙击手，趁我还能用，尽管用我的本事。",
+    "value_en": "Boy, I'm glad to see you guys. I thought I was off to the great recycling bin in the sky. I'm an experienced sniper, so use my abilities while you can."
+  },
+  "03_06_Greenman_01F.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "这是个陷阱。",
+    "value_en": "It's a trap."
+  },
+  "03_bluecorp.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "我们绝不向棕军投降。开火！开火！",
+    "value_en": "We'll never surrender to Tan. Open fire! Open fire!"
+  },
+  "04_01_HQ.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "指挥官，有项任务需要你来完成。战斗工兵奉命去摧毁一座棕军的装甲大楼，里面藏着被窃的、关乎我军下一步进攻计划的绝密文件。不幸的是，工兵被俘了。在棕军把他们转移到更安全的地点前，去把这些人救出来，然后协助爆破专家炸掉那座棕军大楼。祝好运。总部完毕。",
+    "value_en": "Commander, we need you to finish a job. Combat engineers were sent to destroy an armored TAN building that contained stolen top-secret documents regarding our next plan of attack. Unfortunately, the engineers were taken captive. Go rescue these men before the TAN move them to a more secure location, and then assist the demolition expert in taking out the TAN building. Good luck. HQ out."
+  },
+  "04_01_combatengineer_01B.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "谢了，长官。我拿炸药时掩护我。",
+    "value_en": "Thanks, sir. Cover me as I get my explosives."
+  },
+  "04_01_greentroop_03A.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "自由！",
+    "value_en": "FREEDOM!"
+  },
+  "04_01_greentroop_04A.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "自由！",
+    "value_en": "FREEDOM!"
+  },
+  "04_01_greentroop_06B.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "自由",
+    "value_en": "freedom"
+  },
+  "04_02_HQ_B.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "出色，长官。下个任务前先休整一下吧。",
+    "value_en": "Outstanding, sir. Take some R&R before your next mission."
+  },
+  "04_02_combatengineer_01B.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "我们得抓紧。棕军守卫很快会带着补给到了。",
+    "value_en": "We'll need to hurry. TAN guards will soon arrive with supplies."
+  },
+  "04_02_greentroop_03C.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "该算总账了。",
+    "value_en": "Payback time."
+  },
+  "04_02_greentroop_07B.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "该算总账了。",
+    "value_en": "Payback time."
+  },
+  "04_03_HQ_E.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "很好。现在把爆破工兵护送到那座棕军大楼，让他把它炸掉。",
+    "value_en": "Great. Now escort the demolition engineer over to the TAM building so he can destroy it."
+  },
+  "04_03_combatengineer_01B.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "棕军守卫应该快到了。",
+    "value_en": "Tangard should be arriving soon."
+  },
+  "04_03_greentroop_02B.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "我的命是你给的。",
+    "value_en": "I owe you my life."
+  },
+  "04_03_greentroop_07C.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "我的命是你给的。",
+    "value_en": "I owe you my life."
+  },
+  "04_04_HQ_B.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "嗯，工兵倒下了，看来得由你来收尾了。",
+    "value_en": "Well, with the engineer down, it looks like you're gonna have to finish the job."
+  },
+  "04_04_combatengineer_01B.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "第一包炸药，按计划来。",
+    "value_en": "Charge one, plan it."
+  },
+  "04_04_greentroop_02B.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "我只求复仇，长官。下一个。",
+    "value_en": "Revenge is all I ask, sir. Next."
+  },
+  "04_04_greentroop_04C.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "我只求复仇，长官。",
+    "value_en": "Revenge is all I ask, sir."
+  },
+  "04_05_combatengineer_01B.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "炸药埋向基地。",
+    "value_en": "Charge to planet."
+  },
+  "04_06_combatengineer_01B.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "隐蔽！",
+    "value_en": "Take cover!"
+  },
+  "05_01_HQ.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "指挥官，棕军正把这个镇子当作集结地来分散部署部队。由于棕军高射炮遍布城前，我们至今无法组织有效的轰炸。你的任务是进去干掉那些高射炮，好让我们的轰炸机畅通无阻地轰炸城区。棕军兵力应该很雄厚，务必小心。总部完毕。",
+    "value_en": "Commander, the TAN are using this town as a staging point to disperse their troops. We have so far been unable to organize an adequate bombing run due to TAN AA guns spread throughout the city's front. Your mission is to get in there and take out those AA guns so our bombers can get a clear run on the city. TAN forces should be heavy, so be careful. HQ out."
+  },
+  "05_01_greentroop.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "指挥官，棕军在前方车场扣押了我们一些车辆。",
+    "value_en": "Commander, the Tans have some of our vehicles in the vehicle yard up ahead."
+  },
+  "05_01_tantroop.wav": {
+    "speaker": "TanArmy",
+    "value_ch": "有入侵者！追！",
+    "value_en": "Intruders! After them!"
+  },
+  "05_02_HQ_B.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "干得好，指挥官。高射炮已清除，绿军总部可以按计划行动了。继续向东北深入城区，然后待命。总部完毕。",
+    "value_en": "Great job, Commander. Now that the AA guns have been disposed of, Green Command can follow through with their plans. Continue to the northeast and deeper into the city, then wait for further orders. HQ out."
+  },
+  "05_02_greentroop.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "有埋伏。隐蔽。",
+    "value_en": "It's an ambush. Take cover."
+  },
+  "06_01_2nd.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "见到你们真好。趁棕军第十旅还没重新集结，咱们赶紧撤。",
+    "value_en": "Nice to see you guys. Now let's get out of here before the 10 have a chance to regroup."
+  },
+  "06_01_HQ.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "指挥官，第二装甲旅应该从东面赶到了。找到他们，继续向该城北端推进。据报棕军装甲第九旅驻防在城区这一带，建议进攻第九旅前尽量多搜集火力。绿军总部已启动轰炸，你最好抓紧行动。祝好运。总部完毕。",
+    "value_en": "Commander, the 2nd Armored Brigade should be arriving from the east. Find them, and continue on towards the northern end of this city. We have reports that Tan's Armored 9th Brigade is stationed in this section of the city, so we recommend finding as much firepower as possible before attacking the 9th. Green Command has initiated the bombing run, so you better get a move on. Good luck. HQ out."
+  },
+  "06_01_disguiseguy.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "还好你们来了。我还以为自己肯定要断胳膊少腿了。棕军第十旅在北方囤了不少火箭筒。拿上这些伪装服，遮住你们几个弟兄，好混进去自己搞几具。",
+    "value_en": "Good thing you guys came along. I thought I was going to lose a limb or two for sure. The ten have been stockpiling bazookas to the north. Take these disguises to mask a couple of your soldiers so that you can sneak in and get some for yourself."
+  },
+  "06_01_tantrooper.wav": {
+    "speaker": "TanArmy",
+    "value_ch": "发现敌人！抓住他们！",
+    "value_en": "Enemy sighted! Get them!"
+  },
+  "06_02_2nd_2B.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "看来有伴儿来了。咱们最好撤。",
+    "value_en": "Looks like we've got company. We'd better get out of here."
+  },
+  "06_02_HQ_B.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "指挥官，轰炸机正在逼近目标地点。速速赶往你战略地图上标注的北部集结点。总部完毕。",
+    "value_en": "Commander, the bombers are approaching the target destination. Make haste for the northern meeting point indicated on your strategic map. HQ out."
+  },
+  "06_03_HQ_B.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "干得好，指挥官。我不知道你怎么及时突破棕军第十旅防线的，不过听说你还活着就好。新命令马上就到。",
+    "value_en": "Good work, Commander. I don't know how you got through the 10 defenses in time, but good to hear you're still alive. New orders are on the way."
+  },
+  "07_01_HQ.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "本区西北边境附近有一座棕军火车站。棕军正利用该站接收重炮、武器、坦克和作战所需补给。拿下车站就能阻止棕军向前线输送更多军火。你的任务是设法进入车站并将其占领。小心些。我们有理由相信棕军已在这片区域埋设地雷。遗憾的是，我们不知道雷区在哪。但也正因如此我们才选了你，指挥官。祝狩猎顺利。总部完毕。",
+    "value_en": "There is a TAN train station near the northwestern border of this area. The TAN forces are using this station to receive heavy artillery, weapons, tanks, and supplies they need for the war effort. Securing this station will prevent the TAN from bringing any more weaponry to the front lines. Your mission is to find a way to get into the station and take it over. Be careful. We have reason to think the TAN have planted mines throughout the area. Unfortunately, we have no idea where the mined areas are. But that's why we chose you for the job, Commander. Good hunting. HQ out."
+  },
+  "07_01_greentroop.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "中尉，我们找到一辆扫雷车。这应该能帮咱们找到一条更安全的路去那个火车站。",
+    "value_en": "And commander, we found a minesweeper. This should help us find a safer path to that train station."
+  },
+  "07_02_HQ_B.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "干得好，指挥官。有了你，前线的弟兄们能少报废不少塑料。把你的部队往北调。下一个任务要协同作战了。总部完毕。",
+    "value_en": "Good work, Commander. Our boys on the front line will lose a lot less plastic thanks to you. Move your men to the north. This next mission will be a combined effort. HQ out."
+  },
+  "07_02_greentroop.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "中伏了！他们放火烧树，想把咱们困死在这儿！快逃命，保住你的塑料身！",
+    "value_en": "It's an ambush! They're letting all the trees on fire to trap us in here! Run for your plastic!"
+  },
+  "07_02_tantroop.wav": {
+    "speaker": "TanArmy",
+    "value_ch": "这下他们跑不掉了。",
+    "value_en": "We've got them now."
+  },
+  "08_01_HQ.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "指挥官，北边的河是通往棕军的咽喉要道。我们已命令第五硬塑旅从东西两翼包抄桥梁，但还需要你和你的部队担任正面突击。我们的最终目标是突破棕军隔着河的正面防线，清除驻扎在那里的重型火炮。总部完毕。",
+    "value_en": "Commander, the river to the north is a pinch point to the Tann. We ordered the 5th Hard Plastic Brigade to flank the bridges from the east and west, but we need you and your men to take on the frontal assault. Our ultimate goal is to breach the Tann's front line on the other side of the river, eliminating any heavy cannons stationed there. HQ out."
+  },
+  "08_01_HardPlastic_01C.wav": {
+    "speaker": "SpaceHQ",
+    "value_ch": "欢迎登艇，指挥官。能与您并肩执行这次任务，是我们的荣幸。我们马上就进入攻击位置。",
+    "value_en": "Welcome aboard, Commander. It's an honor to have you along on this mission. We'll be moving into attack positions momentarily."
+  },
+  "08_01_tantroop_04A.wav": {
+    "speaker": "TanArmy",
+    "value_ch": "底下打疯了！快派援军！",
+    "value_en": "It's heating up down here! Send reinforcement!"
+  },
+  "08_02_HQ_B.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "进攻将由第五旅的指挥官发起，所以你们要准备好随令推进。总部完毕。",
+    "value_en": "The attack will be initiated by the commanding officer for the 5th, so be ready to move in on their command. HQ out."
+  },
+  "08_02_HardPlastic_01C.wav": {
+    "speaker": "SpaceHQ",
+    "value_ch": "好了，进入攻击位置。听我口令，开始。",
+    "value_en": "Okay man, move into attack positions. Initiate on my mark."
+  },
+  "08_02_tantroop_05C.wav": {
+    "speaker": "TanArmy",
+    "value_ch": "援军正在赶来！",
+    "value_en": "Reinforcements are on the way!"
+  },
+  "08_03_HQ_B.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "干得漂亮。我们现在可以借这些桥，把大军开进棕军腹心地带了。指挥官，干得好。总部完毕。",
+    "value_en": "Great work. We can now use these bridges to move our armies into the heart of Tan Territory. Excellent job, Commander. HQ out."
+  },
+  "08_03_HardPlastic_01A.wav": {
+    "speaker": "SpaceHQ",
+    "value_ch": "西翼，上！东翼，上！",
+    "value_en": "West flank, go! East flank, go!"
+  },
+  "08_04_HardPlastic_01B.wav": {
+    "speaker": "SpaceHQ",
+    "value_ch": "指挥官，敌人太多了！这边得有人支援，不然我们就完蛋了！",
+    "value_en": "Commander, there are too many of them! We need some help over here, or else we're goners!"
+  },
+  "08_05_HardPlastic_01C.wav": {
+    "speaker": "SpaceHQ",
+    "value_ch": "既然已经把棕军前沿狠狠收拾了一顿，那就让这些棕军见识见识咱们家乡的作风！",
+    "value_en": "Now that we gave the Tans front line a good whooping, let's show these Tans how we like to do things back home!"
+  },
+  "09_01_HQ.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "指挥官，你的任务是守住饰品山谷，并清除该地区的棕军守军。棕军在山谷周边设了多处防御工事，当心从这些点位打来的猛烈火力。另外，绿军海军正在进攻玩具岛。支援他们或许对你的任务有帮助。总部完毕。",
+    "value_en": "Commander, your mission is to secure the Trinket Valley and eliminate the defending TAN units in the area. The TAN have set up various defensive positions around the valley, so keep an eye out for heavy fire from these locations. By the way, the Green Navy is conducting an attack on Toy Island. Assisting them may prove to help you in your mission. HQ out."
+  },
+  "09_01_boatpilot_01A.wav": {
+    "speaker": "SpaceHQ",
+    "value_ch": "指挥官，我们来进攻玩具岛。这次任务，我们正需要您的经验。",
+    "value_en": "Commander, we're here to attack Toy Island. We could use your experience on this mission."
+  },
+  "09_02_HQ__A.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "我们的侦察机发现，棕军正在集结兵力准备反扑。",
+    "value_en": "Our spy planes have noticed TAN forces are massing for a counterattack as we speak."
+  },
+  "09_02_boatpilot_01B.wav": {
+    "speaker": "SpaceHQ",
+    "value_ch": "我们可以在这儿等您一会儿，但指挥官，您若决定不支援，我们只能自行发起进攻了。",
+    "value_en": "We can wait here for you a bit, but we will need to attack without you if you choose not to assist, Commander."
+  },
+  "09_03_HQ_A.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "指挥官，现在该您去拿下大桥北端了。那里驻有棕军部队，您必须将其肃清。总部完毕。",
+    "value_en": "Commander, it's time for you to secure the northern end of the bridge. Some TAN units are stationed there, so you'll have to eliminate them. HQ out."
+  },
+  "09_03_boatpilot_01B.wav": {
+    "speaker": "SpaceHQ",
+    "value_ch": "不等您了，指挥官，玩具岛进攻现在开始！",
+    "value_en": "Commencing the attack on Toy Island without you, Commander!"
+  },
+  "09_04_HQ_A.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "很好。山谷已确保。总部完毕。",
+    "value_en": "Excellent. The valley is secured. HQ out."
+  },
+  "09_04_boatpilot_01C.wav": {
+    "speaker": "SpaceHQ",
+    "value_ch": "我们听您调遣，指挥官。呃，这话可能不太合适。我们听您指挥。",
+    "value_en": "We are at your disposal, Commander. Uh, well, maybe that was a bad choice of words. We are under your command."
+  },
+  "10_01_HQ.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "指挥官，前方有三座村庄必须拿下。棕军用龙牙障碍挡住我们的坦克，所以得由你徒步突入，在车队抵达前拿下全部三座村庄。棕军死守这片区域，预计会遭到猛烈抵抗。总部完毕。",
+    "value_en": "Commander, there are three villages up ahead that must be secured. The TAN are using Dragon Teeth to block our tanks, so we need you to go in on foot and secure all three villages before our convoy arrives. The TANs are desperate to hold on to this area, so expect heavy resistance. HQ out."
+  },
+  "10_02_HQ_A.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "干得好，指挥官。村庄一清空，绿军就能向前推进了。车队已就位，随时可以出发。总部完毕。",
+    "value_en": "Good job, Commander. With the villages cleared, the Green Army can now move forward. The convoys are here and ready to roll out. HQ out."
+  },
+  "11_01_HQ.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "指挥官，需要你清空前方的区域。这支车队载着进攻棕军首都所需的关键补给。我们接到报告，附近的棕军坦克可能试图拦截车队，要当心它们。一旦丢了车队，攻占棕军首都的希望也就破灭了。您还有侦察兵支援，指挥官。让他们去前方探路，找出可能的棕军威胁。总部完毕。",
+    "value_en": "We need you to clear out the area up ahead, Commander. This convoy carries crucial supplies we'll need to attack the TAM's capital city. We have received reports that nearby TAM tanks may try to intercept our convoy, so be on the lookout for them. If we lose the convoy, our hopes of conquering the TAM's capital will be lost. You also have recon support, Commander. Use them to scout the route ahead and to locate possible TAM threats. HQ out."
+  },
+  "11_02_HQ_A.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "车队卡车一辆都再损失不起了。必须不惜一切代价保护它们。总部完毕。",
+    "value_en": "We can't afford to lose any more convoy trucks. We must protect them at all costs. HQ out."
+  },
+  "11_03_HQ_A.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "敌军正在调入该区域，指挥官。总部完毕。",
+    "value_en": "Enemy troops are moving into the area, Commander. HQ out."
+  },
+  "11_04_HQ_A.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "保护车队干得不错。这下咱们就有更多塑料兵去砸棕军了。总部完毕。",
+    "value_en": "Good work protecting the convoy. Now we'll have more plastic to throw at the Tans. HQ out."
+  },
+  "12_01_HQ.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "指挥官，这是我们的最后一战。我们已经把棕军逼退回首都，正面主攻就靠你了。目标是棕军首都中心的宫殿。杀出一条血路打到那里，把它摧毁。预计会遭遇棕军极其猛烈的抵抗和可能的反扑。带上车队剩下的力量，助你一臂之力。祝好运，指挥官。总部完毕。",
+    "value_en": "Commander, this is our final battle. We have pushed the TAN back to their capital and it's up to you to spearhead the main assault. Your objective is the palace at the center of the TAN capital. Fight your way there and destroy it. You can expect very heavy TAN resistance and possible counter attacks. Take what's left of the convoy and use them to help your efforts. Good luck, Commander. HQ out."
+  },
+  "12_01_ptboat_01B.wav": {
+    "speaker": "SpaceHQ",
+    "value_ch": "指挥官，我们来为您的部队提供支援。我们刚清完这段河道，但上游有什么还不清楚。",
+    "value_en": "Commander, we're here to provide support for your forces. We've just cleared this section of the river, but we're not sure what waits upstream."
+  },
+  "12_02_HQ_B.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "守卫首都的火炮让我们损失了不少塑料兵。务必小心。总部完毕。",
+    "value_en": "We've lost a lot of plastic due to artillery cannons guarding the capital. Be careful. HQ out."
+  },
+  "12_03_HQ_A.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "您做到了，指挥官。棕军已被击败，他们的首都已落入我们掌控。没了首都，棕军必败无疑。祝贺任务圆满完成。总部，完毕。",
+    "value_en": "You did it, Commander. The Tann army has been defeated and their capital city is under our control. Without their capital, the Tann will lose the war for sure. Congratulations on a job well done. HQ, over and out."
+  },
+  "Aah.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "啊——————————",
+    "value_en": "AWWWWWWWWWWWWWWWWWWWW"
+  },
+  "Aah2.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "呃！",
+    "value_en": "AHHHHHHHHHH",
+    "note": "TTS 友好改写（拟声/读音）"
+  },
+  "Aah3.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "哦！",
+    "value_en": "UGH!",
+    "note": "TTS 友好改写（拟声/读音）"
+  },
+  "AckackReady1.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "嘿，想尝尝这个吗？",
+    "value_en": "Hey, you want some of this?"
+  },
+  "AckackReady2.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "你算哪根葱。",
+    "value_en": "You ain't nothing."
+  },
+  "Adrenaline.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "肾上腺素。",
+    "value_en": "Adrenaline."
+  },
+  "AirAttack.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "一次空袭。",
+    "value_en": "An air attack."
+  },
+  "AirStrike.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "一次空袭。天降死神。",
+    "value_en": "An airstrike. Death from above."
+  },
+  "AllRight.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "好了。",
+    "value_en": "All right."
+  },
+  "AutoRifle.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "一挺轻机枪。",
+    "value_en": "A light machine gun."
+  },
+  "Bazooka.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "火箭筒。",
+    "value_en": "A bazooka."
+  },
+  "BazookaReady1.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "致命。",
+    "value_en": "DEADLY"
+  },
+  "BazookaReady2.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "小心！",
+    "value_en": "Heads up!"
+  },
+  "BoatReady1.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "出发！",
+    "value_en": "Moving out!"
+  },
+  "BoatReady2.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "我看你这是在搞事情。",
+    "value_en": "I believe you're rocking the boat."
+  },
+  "Civilians_Ann_Civilian_Ahhhhhh3.wav": {
+    "speaker": "Civilian_Ann",
+    "value_ch": "啊啊啊啊——！",
+    "value_en": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+  },
+  "Civilians_Ann_Civilian_PleasesaveUs.wav": {
+    "speaker": "Civilian_Ann",
+    "value_ch": "请救救我们！",
+    "value_en": "Please save us!"
+  },
+  "Civilians_Tanya_Civilian_PleaseSaveMe3.wav": {
+    "speaker": "Civilian_Tanya",
+    "value_ch": "你为什么要这样对我？",
+    "value_en": "Why are you doing this to me?"
+  },
+  "Civilians_aahhh1.wav": {
+    "speaker": "Civilian",
+    "value_ch": "啊啊啊啊啊——！",
+    "value_en": "AAAAAAAAHHHHH!"
+  },
+  "Civilians_ahhh1.wav": {
+    "speaker": "Civilian",
+    "value_ch": "啊——！",
+    "value_en": "AHHHHH!"
+  },
+  "Civilians_ahhh4.wav": {
+    "speaker": "Civilian",
+    "value_ch": "啊——！",
+    "value_en": "AHHHHH!"
+  },
+  "Civilians_helpMe1.wav": {
+    "speaker": "Civilian",
+    "value_ch": "快救救我们！",
+    "value_en": "HELP ME! HELP ME!"
+  },
+  "Civilians_pleassaveus3.wav": {
+    "speaker": "Civilian",
+    "value_ch": "快救救我们！",
+    "value_en": "PLEASE SAVE US!"
+  },
+  "Civilians_thoseThings1.wav": {
+    "speaker": "Civilian",
+    "value_ch": "那些东西到处都是！",
+    "value_en": "Those things are everywhere!"
+  },
+  "ConvoyReady1.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "为什么总是轮到我干这活儿？",
+    "value_en": "Why do I always get this job?"
+  },
+  "ConvoyReady2.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "谁来把我弄出去！",
+    "value_en": "SOMEBODY GET ME OUT OF THIS THING!"
+  },
+  "Disguise.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "伪装。",
+    "value_en": "a disguise."
+  },
+  "Explosives.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "塑料炸药，毁灭倒计时。",
+    "value_en": "Plastic Explosives, the countdown to destruction."
+  },
+  "FlakJack.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "防弹衣，激烈交火时保我平安的好东西。",
+    "value_en": "A flak jacket, just the thing to keep me cool during hot firefights."
+  },
+  "FlameThrower.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "火焰喷射器。烧吧，宝贝，烧吧。",
+    "value_en": "A flamethrower. Burn, baby, burn."
+  },
+  "FlamerReady1.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "给我点能烧的东西。",
+    "value_en": "Give me something to burn."
+  },
+  "FlamerReady2.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "我就爱这烧焦塑料味儿！",
+    "value_en": "I love the smell of burnt plastic!"
+  },
+  "GreenUnits_no1.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "不——！",
+    "value_en": "NOOOOOO!"
+  },
+  "GreenUnits_no3.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "不——！",
+    "value_en": "NOOOOOO!"
+  },
+  "GreenUnits_unit_ahieee1.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "啊啊啊啊——！",
+    "value_en": "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+  },
+  "Grenades.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "手雷。",
+    "value_en": "Grenades."
+  },
+  "GrenadierReady1.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "来啦。",
+    "value_en": "Incoming."
+  },
+  "GrenadierReady2.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "要爆了，快躲开！",
+    "value_en": "Fire in the hole."
+  },
+  "Guard_Intruders.wav": {
+    "speaker": "Guard",
+    "value_ch": "有入侵者。",
+    "value_en": "intruders"
+  },
+  "Guard_Stop.wav": {
+    "speaker": "Guard",
+    "value_ch": "站住！",
+    "value_en": "STOP!"
+  },
+  "HQNapalmAirstrike.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "总部，我需要凝固汽油弹。",
+    "value_en": "HQ, I need some napalm."
+  },
+  "HQReinforcements.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "总部，派飞行队来。",
+    "value_en": "HQ, send in the Flyboys."
+  },
+  "HQreconn.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "总部，派支侦察兵给我。",
+    "value_en": "HQ, send me a recon."
+  },
+  "HalftrackReady1.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "该铺点塑料炸药了。",
+    "value_en": "Time to lay some plastic."
+  },
+  "HalftrackReady2.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "马上就到。",
+    "value_en": "Be there in a sec."
+  },
+  "HammerMine.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "锤式地雷。",
+    "value_en": "Hammer mine."
+  },
+  "HeavyMGReady1.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "尝尝这个。",
+    "value_en": "Get some."
+  },
+  "HeavyMGReady2.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "噢，天哪。",
+    "value_en": "Oh, man."
+  },
+  "HeavyMacGun.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "重机枪。好耶。",
+    "value_en": "A heavy machine gun. Oh yeah."
+  },
+  "HitsSpot.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "啊，瞬间回血。",
+    "value_en": "Ah, instant health."
+  },
+  "IneededThat.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "嗯，我正需要这个。",
+    "value_en": "Mmm, I needed that."
+  },
+  "JeepReady1.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "马上就到。",
+    "value_en": "Be there in a sec."
+  },
+  "JeepReady2.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "出发了。",
+    "value_en": "Moving out."
+  },
+  "MedKit.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "塑料修补包。",
+    "value_en": "plastic mending kit"
+  },
+  "MineSweeper.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "一辆扫雷车。谁想干这活？",
+    "value_en": "A minesweeper. Who wants the job?"
+  },
+  "Mortar.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "迫击炮，伸伸手就把人炸飞。",
+    "value_en": "Mortars, reach out and explode someone."
+  },
+  "MortarReady1.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "掩护我。",
+    "value_en": "Cover me."
+  },
+  "MortarReady2.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "在迫击炮落下之前，一切都好玩得很。",
+    "value_en": "It's all fun and games until the mortar hits."
+  },
+  "NapalmAirstrike.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "凝固汽油弹空袭，清晨里塑料烧焦的味道无可替代。",
+    "value_en": "napalm airstrike there's nothing like the smell a bird plastic in the morning"
+  },
+  "PrisonersDying.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "呃！",
+    "value_en": "Ugh!"
+  },
+  "Reconn.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "啊，侦察。",
+    "value_en": "Ah, recon."
+  },
+  "RifleReady1.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "出发了。",
+    "value_en": "Moving out."
+  },
+  "RifleReady2.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "你有命令下来吗？",
+    "value_en": "You got some orders?"
+  },
+  "RifleReady3.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "走吧。",
+    "value_en": "Let's go."
+  },
+  "RifleReady4.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "你们帮忙，你们帮忙，你们帮忙，对吧。",
+    "value_en": "Y'all help, y'all help, y'all help, right."
+  },
+  "Sarge_HitSpot1.wav": {
+    "speaker": "Sarge",
+    "value_ch": "啊，这下正合我意。",
+    "value_en": "Ah, that hit the spot."
+  },
+  "SniperRifle.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "一把狙击枪。他们根本察觉不到。",
+    "value_en": "A sniper rifle. They'll never see it coming."
+  },
+  "StingOut.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "这下不疼了。",
+    "value_en": "That takes the sting out of it."
+  },
+  "TakeCover.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "找掩护！",
+    "value_en": "Take cover."
+  },
+  "TanUnits_attack.wav": {
+    "speaker": "TanArmy",
+    "value_ch": "进攻！",
+    "value_en": "ATTACK!"
+  },
+  "TanUnits_charge.wav": {
+    "speaker": "TanArmy",
+    "value_ch": "冲啊！",
+    "value_en": "CHARGE!"
+  },
+  "TankReady1.wav": {
+    "speaker": "TanArmy",
+    "value_ch": "我这就来主持正义！",
+    "value_en": "I am about to deliver justice!"
+  },
+  "TankReady2.wav": {
+    "speaker": "TanArmy",
+    "value_ch": "铁锤来了！",
+    "value_en": "HERE COMES THE HAMMER!"
+  },
+  "ThePitch.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "然后是这一抛。",
+    "value_en": "And the pitch."
+  },
+  "VulcanGun.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "一门火神炮。",
+    "value_en": "A Vulcan."
+  },
+  "gamehq1_A.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "我们正在派增援给你。总部完毕。",
+    "value_en": "We're sending you reinforcements. HQ out."
+  },
+  "gamehq2_B.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "指挥官，增援正在路上。总部完毕。",
+    "value_en": "Commander, reinforcements are on the way. HQ out."
+  },
+  "gamehq3_C.wav": {
+    "speaker": "HQ_Command",
+    "value_ch": "又折了更多弟兄？我们会再空投一批给你，但尽量保住你的人。总部完毕。",
+    "value_en": "We've lost more soldiers? We're dropping you more, but try to keep your guys in one piece. HQ out."
+  },
+  "mines.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "当心暗藏的死亡。",
+    "value_en": "Minds the Hidden Death."
+  },
+  "moreAmmo.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "啊，更多弹药。",
+    "value_en": "Ah, more ammo."
+  },
+  "mp_gotblue.wav": {
+    "speaker": "Multiplayer",
+    "value_ch": "蓝队旗帜被夺！",
+    "value_en": "Blue flag captured!"
+  },
+  "mp_gotflag.wav": {
+    "speaker": "Multiplayer",
+    "value_ch": "旗帜被夺！",
+    "value_en": "Flag captured!"
+  },
+  "mp_gotgreen.wav": {
+    "speaker": "Multiplayer",
+    "value_ch": "绿队旗帜被夺！",
+    "value_en": "Green flag captured!"
+  },
+  "mp_gotgrey.wav": {
+    "speaker": "Multiplayer",
+    "value_ch": "灰队旗帜被夺。",
+    "value_en": "Gray flag captured."
+  },
+  "mp_gottan.wav": {
+    "speaker": "Multiplayer",
+    "value_ch": "棕队旗帜被夺！",
+    "value_en": "And flag captured!"
+  },
+  "mp_itblue.wav": {
+    "speaker": "Multiplayer",
+    "value_ch": "蓝队是鬼。",
+    "value_en": "Blue is it."
+  },
+  "mp_itgreen.wav": {
+    "speaker": "Multiplayer",
+    "value_ch": "绿队是鬼。",
+    "value_en": "Green is it."
+  },
+  "mp_itgrey.wav": {
+    "speaker": "Multiplayer",
+    "value_ch": "灰队是鬼。",
+    "value_en": "Gray is it."
+  },
+  "mp_ittan.wav": {
+    "speaker": "Multiplayer",
+    "value_ch": "棕队是鬼。",
+    "value_en": "Tan is it."
+  },
+  "paraTroopers.wav": {
+    "speaker": "GreenArmy_Grunt",
+    "value_ch": "空降兵，跳下来一起玩啊，兄弟们。",
+    "value_en": "Paratroopers, jump in and join the fun, boys."
+  },
+  "water_run.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "感谢观看！",
+    "value_en": "Thanks for watching!"
+  },
+  "wrench.wav": {
+    "speaker": "UnknownVoice",
+    "value_ch": "修车工具包。就叫我修理大王吧。",
+    "value_en": "vehicle repair kit. Just call me Mr. Fix-It."
+  }
+}

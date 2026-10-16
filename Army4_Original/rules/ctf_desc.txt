@@ -1,0 +1,8 @@
+Bringing an enemy flag to home base
+scores 250 pts.
+
+A flag returns to its base if unheld
+for 2 minutes.
+
+The first player/team to reach the point
+goal wins.

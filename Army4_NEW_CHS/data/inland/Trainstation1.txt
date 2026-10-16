@@ -1,0 +1,1128 @@
+// Map 7 "The Trainstation" //
+// Map Design and concept by Christopher "Chip" Gracia //
+
+// *** PADS *** //
+
+// AMBUSH //
+
+pad  safetypad1  127  flameboy1
+pad  safetypad2  128  flameboy2
+pad  safetypad3  129  flameboy3
+
+pad  ambush1   130  green
+pad  sparky1   131  
+pad  burn1     132  flameboy1
+pad  sparky2   133  
+pad  burn2     134  flameboy2
+pad  sparky3   135  
+pad  burn3     136  flameboy3
+
+//pad  firepow1  137  
+pad  firepow2  138
+pad  firepow3  139
+
+pad  ambguyp1  140  ambguy1
+pad  ambguyp2  141  ambguy2
+pad  ambguyp3  142  ambguy3
+pad  ambguyp4  143  ambguy4
+pad  ambguyp5  144  ambguy5
+		
+pad  surroundp1   145  surrounded1		
+pad  surroundp2   146  surrounded2		
+pad  surroundp3   147  surrounded3		
+pad  surroundp4   148  surrounded4		
+pad  surroundp5   149  surrounded5		
+
+
+// TRAINSTATION //
+pad  traing1	150	
+pad  traing2	151
+	
+pad  patrol1p	152	trainman1
+pad  patrol2p	153	trainman2
+
+pad subpad1	154
+pad subpad2	155
+	
+pad  traing33	156	
+pad  traing44	158	
+pad  traing55	159
+pad  traing66	160
+pad  traing77	161
+pad  traing88	162
+
+pad  gotyoback1	163
+pad  gotyoback2	164
+pad  gotyoback3	165
+pad  gotyoback4	166
+
+pad  time2go1	168	trainman1
+pad  time2go2	169	trainman2
+
+// TANCAMP //
+
+pad  tcguard1	 170	tguard1
+pad  tcguard2 	 171	tguard2
+pad  tcguard3	 172	tguard3
+pad  tcguard4	 173	tguard4
+pad  tcguard5	 174	tguard5
+pad  tcguard6	 175	tguard6
+pad  tcguard7	 176	tguard7
+
+pad  patrol1	 180	tguard1
+pad  patrol2	 181	tguard2
+pad  patrol3	 182	tguard3
+pad  patrol4	 183	tguard4
+pad  patrol5	 184	tguard5
+pad  patrol6	 185	tguard6
+pad  patrol7	 186	tguard7
+
+pad  campgoody	 187
+
+// ROADTANKS //
+
+pad  rt1 	 190	roadtank1
+pad  rt2 	 191	roadtank2
+pad  rt3 	 192	roadtank3
+pad  rt4 	 193	roadtank4
+pad  rt5 	 194	roadtank5
+
+// MINE WARNING //
+
+pad  minepart	 115	green
+
+pad  minedeath1	 116	mineguy1
+pad  minedeath2	 117	mineguy2
+
+pad  mineguyp1	 118
+pad  mineguyp2	 119
+
+// FORREST TROOPS //
+
+pad  forrestgp0	 200	forrestg0
+pad  forrestgp1  201	forrestg1
+pad  forrestgp2	 202	forrestg2
+pad  forrestgp3	 203	forrestg3
+pad  forrestgp4	 204	forrestg4
+pad  forrestgp5	 205	forrestg5
+pad  forrestgp6  206	forrestg6
+pad  forrestgp7  207	forrestg7
+pad  forrestgp8  208	forrestg8
+pad  forrestgp9  209	forrestg9
+pad  forrestgp10 210	forrestg10
+pad  forrestgp11 211	forrestg11
+
+
+// SPOTTER AND PARATROOPERS //
+
+pad  pspotp	 212	pspotter
+pad  ptrooppad   213     
+
+pad  landingp1   214	
+pad  landingp2   215
+pad  landingp3   216
+pad  landingp4   217
+pad  landingp5   218
+
+// FARM GUYS //
+
+pad  redetoboil1  221	broiled1
+pad  redetoboil2  222	broiled2
+pad  redetoboil3  223	broiled3
+pad  farmland	  224	green
+
+pad  patrolback1  230	tguard1
+pad  patrolback2  231	tguard2
+pad  patrolback3  232	tguard3
+pad  patrolback4  233	tguard4
+pad  patrolback5  234	tguard5
+pad  patrolback6  235	tguard6
+pad  patrolback7  236	tguard7
+
+pad  thankulordp1  31	
+pad  thankulordp2  32
+
+pad  tptrooper1p   33
+pad  tptrooper2p   34	
+pad  tptrooper3p   35
+pad  tptrooper4p   36
+pad  tptrooper5p   37
+
+pad  lastalarm	   39	green
+
+pad  safetypadflameboy1	   51   flameboy1
+pad  safetypadflameboy2	   52   flameboy2
+pad  safetypadflameboy3	   53   flameboy3
+
+// ARMOR 2ND //
+
+pad  certaindeath 50	green
+
+// *** VARIABLES *** //
+
+variable formationvar	0
+variable runningvar	0
+variable airmenvar	0
+variable reinforcevar	0
+variable beenherevar	0
+variable attackedvar	0
+variable paratroopvar 	0
+variable on5var 	0
+variable on10var 	0
+variable alarmvar 	0
+variable deadtanvar 	0
+variable losevar	0	
+variable trapvar 	0
+variable dumbvar 	0
+variable look1var	0
+variable look2var	0
+variable soundoffvar    0
+
+
+// *** STARTUP *** //
+
+if startup1 then
+	trigger cof,
+	triggerdelay 300 getiton,
+	playsound "inland7_nomusic.wav" 0 16 1
+
+if getiton then
+	triggerdelay 60 checkreinforcement,
+	triggerdelay 1000 missionobj, 
+	triggerdelay 1 stationtroops,
+	triggerdelay 10 tancamp,
+	triggerdelay 20 roadtanks,
+	triggerdelay 30 trailguys,
+	triggerdelay 50 torchup,
+	triggerdelay 5 keithspotter,
+	triggerdelay 70 makeeasy
+	//undeploy 2ndtank1,
+	//undeploy 2ndtank2,
+	//undeploy 2ndtank3,
+
+If makeeasy testvar difficulty = 0 then
+		createpowerup "airstrike1" airstrike (2031,3664) 1,
+		createpowerup "mortar" mortar (3626,3672) 10,
+		createpowerup "medpack" medpack (3304,3790) 9,	
+		createpowerup "medpack" medpack (2518,3686) 9,
+		createpowerup "medpack" medpack (3266,1254) 9,
+		createpowerup "bazooka" bazooka (3142,3105) 10,
+		createpowerup "hmg" heavymg (732,2440) 1,
+		createpowerup "hmg" heavymg (3893,1567) 1
+
+if missionobj then
+	//old...showpda "Commander, the Armor 2nd will continue on the main road from here. Gain control of the trainstation to the north. Intelligence tells us that the area could be mined so be on your guard and try to locate a sweeper!
+	//showpda "Commander, the 2nd Armor is to take control of the train station to the north. Support them as needed!"
+	setitemflag trainstation strategic 1
+
+// *** STATION GUARD ***//
+
+if stationtroops then 
+	createunit "trainman1" rifleman traing1 tan 3,
+	createunit "trainman2" rifleman traing2 tan 3,
+	createunit "trainman3" rifleman traing33 tan 3,
+	createunit "trainman4" rifleman traing44 tan 3,
+	createunit "trainman5" rifleman traing55 tan 3,
+	createunit "trainman6" rifleman traing66 tan 3,
+	createunit "trainman7" rifleman traing77 tan 3,
+	createunit "trainman8" rifleman traing88 tan 3,
+	setaimode trainman3 standfire,
+	setaimode trainman4 standfire,
+	setaimode trainman5 standfire,
+	setaimode trainman6 standfire,
+	setaimode trainman7 standfire,
+	setaimode trainman8 standfire,
+	setfacing trainman3 85,
+	setfacing trainman4 85,
+	setfacing trainman5 85,
+	setfacing trainman6 85,
+	setfacing trainman7 85,
+	setfacing trainman8 85,
+	setspeed trainman1 slow,
+	setspeed trainman2 slow,
+	setfacing trainman1 64,
+	setfacing trainman2 192,
+	setaimode trainman1 defend,
+	setaimode trainman2 defend,
+	triggerdelay 1000 guardwalk1,
+	triggerdelay 1000 guardwalk2,
+	setvar beenherevar 10
+
+
+// *** TRAINMAN 1 PATROL *** //
+
+if guardwalk1 then
+	order trainman1 goto patrol1p inmode defend
+	
+if padon patrol1p testvar attackedvar = 0 then
+	setfacing trainman1 128,
+	triggerdelay 2000 lookup1,
+	addvar look1var 1
+
+if lookup1 then
+	setfacing trainman1 0,
+	triggerdelay 2000 lookback1
+
+if lookback1 then 
+	setfacing trainman1 192,
+	triggerdelay 1000 paceback1
+
+if paceback1 then
+	order trainman1 goto traing1 inmode defend
+
+if padon traing1 testvar look1var < 8 then
+	triggerdelay 1000 pace1
+
+if pace1 then
+	order trainman1 goto patrol1p
+
+if padon traing1 testvar look1var > 7 and beenherevar = 10 then
+	trigger switchtime1,
+	setvar look1var -1000
+
+
+if switchtime1 then
+	createunit "subtrainman1" rifleman subpad1 tan 3,
+	setspeed subtrainman1 slow,
+	setspeed trainman1 slow,
+	order subtrainman1 goto traing1 inmode standfire,
+	order trainman1 goto subpad1 inmode standfire,
+	trigger donewithwatch1
+
+if padon subpad1 testvar look1var = -1000 then
+	order trainman1 goto time2go1
+
+if padon time2go1 then
+	undeploy trainman1,
+	addvar deadtanvar -1
+
+
+// *** TRAINMAN 2 PATROL *** //
+
+
+if guardwalk2 then
+	order trainman2 goto patrol2p inmode defend
+
+if padon patrol2p testvar attackedvar = 0 then
+	setfacing trainman2 128,
+	triggerdelay 2000 lookup2,
+	addvar look2var 1
+
+if lookup2 then
+	setfacing trainman2 0,
+	triggerdelay 2000 lookback2
+
+if lookback2 then 
+	setfacing trainman2 192,
+	triggerdelay 1000 paceback2
+
+if paceback2 then
+	order trainman2 goto traing2 inmode defend
+
+if padon traing2 testvar look1var < 8 then
+	triggerdelay 1000 pace2
+
+if pace2 then
+	order trainman2 goto patrol2p
+
+if padon traing2 testvar look2var > 7 and beenherevar = 10 then
+	trigger switchtime2,
+	setvar look1var -1000
+
+if switchtime2 then
+	createunit "subtrainman2" rifleman subpad2 tan 3,
+	setspeed subtrainman2 slow,
+	setspeed trainman2 slow,
+	order subtrainman2 goto traing2 inmode standfire,
+	order trainman2 goto subpad2 inmode standfire,
+	trigger donewithwatch2
+
+if padon subpad2 testvar look2var = -1000 then
+	order trainman2 goto time2go2
+
+if padon time2go2 then
+	undeploy trainman2,
+	addvar deadtanvar -1
+
+macro lastalarmmac 7
+
+{
+
+pad  tdefensep@2	@6	@1
+pad  dposition@2	@7 	@1
+
+
+if padon lastalarm testvar attackedvar = 0 then
+	setspeed @1 normal,
+	order @1 goto tdefensep@2,
+//	trigger checkreinforcers,
+	setvar attackedvar 10
+	
+//if padon tdefensep@2 testvar attackedvar = 10 then
+//	setaimode @1 standfire,
+//	setfacing @1 90,
+//	setspeed @1 slow,
+//	addvar formationvar 1,
+//	trigger fightpose
+
+//if fightpose testvar formationvar > 9 then
+//	order @1 goto dposition@2 inmode standfire
+
+//if padon dposition@2 then
+//	triggerdelay @3 @4line@2
+
+//if @4line@2 then 
+//	setaipose @1 @5,
+//	setaimode @1 standfire
+}
+
+expand lastalarmmac (trainman3 1 2000 1 prone 50 70)
+expand lastalarmmac (trainman4 2 2000 1 prone 51 71)
+expand lastalarmmac (trainman5 3 2000 1 prone 52 72)
+expand lastalarmmac (trainman6 4 2300 2 kneel 53 73)
+expand lastalarmmac (trainman7 5 2300 2 kneel 54 74)
+expand lastalarmmac (trainman8 6 2300 2 kneel 55 75)
+expand lastalarmmac (reinforcer1 8 2700 3 stand 57 77)
+expand lastalarmmac (reinforcer2 9 2700 3 stand 58 78)
+expand lastalarmmac (reinforcer3 10 2700 3 stand 59 79)
+expand lastalarmmac (reinforcer4 11 2700 3 stand 60 80)
+
+if checkreinforcers testvar reinforcevar = 0 then
+	createunit "reinforcer1" rifleman gotyobackp1 tan 3,
+	createunit "reinforcer2" rifleman gotyobackp2 tan 3,
+	createunit "reinforcer3" rifleman gotyobackp3 tan 3,
+	createunit "reinforcer4" rifleman gotyobackp4 tan 3,
+	order reinforcer1 goto tdefensep8 inmode attack,
+	order reinforcer2 goto tdefensep9 inmode attack,
+	order reinforcer3 goto tdefensep10 inmode attack,
+	order reinforcer4 goto tdefensep11 inmode attack,
+	setvar reinforcevar 10
+
+// *** TAN CAMP *** //
+
+macro tancguards 7
+
+{
+
+variable guardvar@7 0
+
+if campguards then 
+	createunit "@1" rifleman @2 tan 3,
+	setfacing @1 @3,
+	order @1 goto @4,
+	setspeed @1 slow
+
+if padon @4 testvar guardvar@7 = 0 then
+	setvar guardvar@7 10,
+	order @1 goto @5
+
+if padon @5 testvar guardvar@7 = 10 then
+	setvar guardvar@7 0,
+	triggerdelay 2000 turnround@7
+
+if turnround@7 then
+	setfacing @1 @6,
+	triggerdelay 1000 turnback@7
+
+if turnback@7 then
+	setfacing @1 @3,
+	order @1 goto @4 
+
+if killed @1 then random
+	createpowerup medicalpack medpack me 4,
+	createpowerup medicalpack medpack me 4,
+	createpowerup hgrenades grenade me 4	
+}
+
+expand tancguards (tguard1 tcguard1 50 patrol1 patrolback1 150 1 )
+expand tancguards (tguard2 tcguard2 50 patrol2 patrolback2 150 2 )
+expand tancguards (tguard3 tcguard3 50 patrol3 patrolback3 150 3 )
+expand tancguards (tguard4 tcguard4 50 patrol4 patrolback4 150 4 )
+expand tancguards (tguard5 tcguard5 50 patrol5 patrolback5 150 5 )
+expand tancguards (tguard6 tcguard6 50 patrol6 patrolback6 150 6 )
+expand tancguards (tguard7 tcguard7 50 patrol7 patrolback7 150 7 )
+
+if tancamp then
+	trigger campguards,
+	createpowerup sweeper1 sweeper campgoody 1
+
+// *** RUINED FARM *** //
+
+
+if padon farmland butnot farmlandonce then
+	playsound "07_02_tantrooper.wav" haystack2 8 3 1 400,
+	trigger losers,
+	triggerdelay 100 prevent2,
+	trigger farmlandonce
+
+if hit broiled1 testvar soundoffvar = 0 then
+	playsound " " 8 3 400,
+	setvar soundoffvar 10
+
+if hit broiled2 testvar soundoffvar = 0 then
+	playsound " " 8 3 400,
+	setvar soundoffvar 10
+
+if hit broiled3 testvar soundoffvar = 0 then
+	playsound " " 8 3 400,
+	setvar soundoffvar 10
+
+macro firebait 2
+
+{
+
+if losers then 
+	createunit "broiled@1" rifleman redetoboil@1 tan 3,
+	setfacing broiled@1 @2,
+	setaipose broiled@1 kneel,
+	setaimode broiled@1 ignore
+
+if hit broiled@1 then
+	setmaxhealth broiled@1 10,
+	createunit "surpattacker" rifleman surpattackp tan 3,
+//	selectinventoryitem
+	setmaxhealth surpattacker 20,
+	order surpattacker follow me inmode attack
+
+}
+
+expand firebait (1 230)
+expand firebait (2 17)
+expand firebait (3 79)
+
+// *** ROAD TANKS *** //
+
+//pad  trainspot5	219		runner1
+//pad  trainspot10	220     forrestg1
+
+// *$* MACRO 4 ROAD TANKS *$* //
+
+
+macro ttanks 8
+
+// @1= int  @2= facing  @3= gunf.  @4= 2nd gunf.  @5= pad# 4 tanks prox. @6= int #2 @7= pad # 4 runnerz
+
+{
+variable @1tankhitvar	0
+variable disturbtankvar@1 0
+variable turretturnvar@1 0
+variable busytankvar@1 0
+
+pad proximoftank@1	@5
+pad runnerp@1		@7
+
+pad  trainspot5@1	219		runner@1
+
+if roadtanks then 
+	createvehicle roadtank@1 tank rt@1 tan,
+	createunit rtdriver@1 rifleman rt@1 tan 0,
+	createunit runner@1 rifleman runnerp@1 tan 0,
+	setfacing roadtank@1 @2,
+	setaimode roadtank@1 ignore,
+	triggerdelay 500 turrets@1,
+	setvar disturbtankvar@1 10,
+	triggerdelay 10 getin@1
+
+If getin@1 THEN
+	entervehicle rtdriver@1 roadtank@1
+	
+if turrets@1 testvar turretturnvar@1 = 0 and disturbtankvar@1 = 0 then
+	setgunfacing roadtank@1 @3,
+	addvar turretturnvar@1 10,
+	triggerdelay 5000 switch@1
+	
+if switch@1 testvar turretturnvar@1 = 10  and disturbtankvar@1 = 0  then
+	setgunfacing roadtank@1 @4,
+	addvar turretturnvar@1 10,
+	triggerdelay 4000 switchback@6
+
+if switchback@6 testvar turretturnvar@1 = 20  and disturbtankvar@1 = 0 then	
+	setgunfacing roadtank@1 @3,
+	setvar turretturnvar@1 0,
+	triggerdelay 4000 turrets@1
+
+if hit roadtank@1 testvar @1tankhitvar < 3 and busytankvar@1 = 0 then
+	order roadtank@1 follow me inmode attack,
+	triggerdelay 3000 gobacktank@1,
+	triggerdelay 5000 runforalarm@1,
+	addvar @1tankhitvar 1,
+	setvar busytankvar@1 10
+
+if hit roadtank@1 testvar @1tankhitvar = 10 and busytankvar@1 = 0 then
+	order roadtank@1 follow me inmode attack,
+	setvar disturbtankvar@1 10,
+	setvar busytankvar@1 10
+
+if gobacktank@1 then
+	order roadtank@1 goto rt@1 inmode defend
+
+if runforalarm@1 butnot gonealready then
+	//createunit "runner@1" rifleman runnerp@1 tan 3,
+	trigger gonealready,
+	triggerdelay 1000 goforstation@1
+
+if goforstation@1 butnot on5 then									 
+	order runner@1 goto trainspot5@1 inmode ignore
+
+if hit runner@1 testvar runningvar = 0 then
+	setvar runningvar 10,									//first time shot strike back...then runaway somemore
+	order runner@1 follow me inmode attack,
+	triggerdelay 1500 goforstation@1
+
+if padon proximoftank@1 testvar disturbtankvar@1 = 0 then
+	setaimode roadtank@1 standfire,
+	setvar disturbtankvar@1 10,
+	triggerdelay 4000 backtonorm
+
+if backtonorm then
+	setaimode roadtank@1 ignore,
+	setvar diturbtankvar 0
+
+if padon rt@1 testvar disturbtankvar@1 = 0 then
+	setfacing roadtank@1 @3,
+	trigger turrets@1,
+	setaimode roadtank@1 ignore,
+	setvar busytankvar@1 0
+
+if padon trainspot5@1 then											 
+	triggerdelay 5000 spot5triggered,
+	setaimode me defend
+
+if count 1 of spot5triggered then
+	trigger on5,
+	trigger alarmsounded,
+	trigger unknown
+
+}
+
+expand ttanks (1 150 120 160 195 2 20 2)
+expand ttanks (2 140 110 150 196 3 21 4)
+expand ttanks (3 190 170 210 197 4 22 6)
+expand ttanks (4 10  240 30  198 5 23 8)
+expand ttanks (5 100 80  120 199 6 24 10)
+
+If count 2 of on5 on10 THEN
+	trigger located
+
+// *** TRAIL GUYS *** //
+
+if trailguys then
+	trigger traild
+
+macro traildmac 4
+// @1 = integer  @2 =integer #2(Partner trooper)  @3 = aipose  @4 = int #3   @5 = pad adjustment
+
+{
+pad  trainspot10@1	220     forrestg@1
+
+if traild then 
+	createunit forrestg@1 rifleman forrestgp@1 tan 3,
+	setspeed forrestg@1 slow,
+	setaimode forrestg@1 defend
+
+if Killed forrestg@1 then
+	order forrestg@2 follow me inmode attack,
+	setaipose forrestg@1 @3,
+	setaimode forrestg@1 standfire,
+	triggerdelay 1000 alarmedtroops@1,
+	trigger goodie
+
+if goodie then random
+	createpowerup medicalpack medpack me 4,
+	createpowerup hgrenade grenade me 4,
+	createpowerup hgrenade grenade me 4
+
+if alarmedtroops@1 then
+	setaipose forrestg@4 none,
+	setspeed forrestg@4 normal,
+	trigger goto10@1,
+	order forrestg@1 follow me inmode attack
+
+If goto10@1 butnot on10 THEN
+	order forrestg@4 goto trainspot10@1 inmode ignore
+	
+if padon trainspot10@1 then											
+	triggerdelay 5000 spot10triggered,
+	setaimode me attack
+
+If count 1 of spot10triggered then 	
+	trigger on10,
+	trigger alarmsounded,
+	trigger unknown
+}
+
+expand traildmac (0 11 kneel 11 )
+expand traildmac (1 3 prone  2  )
+expand traildmac (2 1 kneel  3  ) 
+expand traildmac (3 2 prone  4  )
+expand traildmac (4 5 kneel  5  )
+expand traildmac (5 6 prone  6  ) 
+expand traildmac (6 4 kneel  7  )
+expand traildmac (7 8 prone  8  )
+expand traildmac (8 9 kneel  9  )
+expand traildmac (9 7 kneel  10 )
+expand traildmac (10 0 prone 11 )
+expand traildmac (11 10 prone 10 )
+
+// Airdrop //
+
+if count 1 of alarmsounded then
+	playsound "AlarmKlaxon.wav" trainstation1 5 2 1 700, 
+	trigger troopdrop,
+	triggerdelay 2500 cutklaxon
+
+If cutklaxon then
+	playsound "" trainstation1 5 2
+
+If count 1 of on5 on10 THEN
+	//showmessage "Paraspotter created",
+	createunit pspotter rifleman pspotp tan 0 bazooka -1,		//pspotp
+    setnpc pspotter 1,
+    setaimode pspotter ignore,
+    createpowerup ptroop1 paratroopers ptrooppad -1,				//ptrooppad
+    moveitem pspotter pspotp,									//pspotp
+    moveitem ptroop1 pspotp,									//pspotp
+	trigger wheretodrop
+
+If count 2 of wheretodrop unknown THEN 
+	//showmessage "unknown airdrop",
+	triggerdelay 3000 reinforcements1,
+	triggerdelay 6000 reinforcements2,
+	triggerdelay 9000 reinforcements3,
+	triggerdelay 12000 reinforcements4,
+	triggerdelay 15000 reinforcements5
+	
+if reinforcements1 then
+	fireweapon ptroop1 pspotter landingp1
+
+if reinforcements2 then
+	fireweapon ptroop1 pspotter landingp2
+
+if reinforcements3 then
+	fireweapon ptroop1 pspotter landingp3
+
+if reinforcements4 then
+	fireweapon ptroop1 pspotter landingp4
+
+if reinforcements5 then
+	fireweapon ptroop1 pspotter landingp5
+	
+// IF ON BOTH PADS 5 AND 10 THEN TAN KNOW YOUR LOCATION //
+
+if count 2 of wheretodrop located then
+	//showmessage "Located air drop",
+	triggerdelay 2000 airtroops1,
+	triggerdelay 4000 airtroops2
+
+if airtroops1 then
+	fireweapon ptroop1 pspotter greensarge1 
+
+if airtroops2 then
+	fireweapon ptroop1 pspotter greensarge1
+
+// *** FORREST AMBUSH *** //
+
+if padon ambush1 then
+	trigger burnbabyburn
+
+Macro macroburnbaby 3
+
+{
+	If count 1 of burnbabyburn then
+		createunit @1 rifleman @2 tan 0 flamer,
+		selectinventoryitem @1 @1 2,
+		setvar trapvar 10,
+	//	createpowerup "@5" flamer @6 99,
+		playsound "07_02_greentrooper.wav" 6 1 500,
+		triggerdelay 20 flameon@1,
+		undeploy pup1,
+		undeploy pup2,
+		undeploy pup3,
+		undeploy pup4,
+		undeploy pup5,
+		undeploy pup6
+	
+	If flameon@1 then 							//testvar trapvar = 10 then
+		order @1 follow mineguy1 inmode attack
+
+	If killed mineguy1 then
+		order @1 follow mineguy2 inmode attack
+
+	IF count 2 of killed mineguy1 Killed mineguy2 THEN
+		order @1 goto @2 inmode attack
+		
+}
+
+expand macroburnbaby (flameboy1 sparky1 burn1 ) 
+expand macroburnbaby (flameboy2 sparky2 burn2 )
+expand macroburnbaby (flameboy3 sparky3 burn3 )
+
+// MINES IN THE MIDDLE //
+
+
+//macro minesmac 3
+
+//{
+
+//if minesdown then testvar trapvar = 10 then
+//	deploy hehemine@1 (@2,@3)
+
+//}
+
+//expand minesmac (1 955 3312)
+//expand minesmac (2 1026 3414)
+//expand minesmac (3 923 3358)
+//expand minesmac (4 1183 3287)
+//expand minesmac (5 955 3312)
+//expand minesmac (6 955 3312)
+//expand minesmac (7 955 3312)
+//expand minesmac (8 955 3312)
+//expand minesmac (9 955 3312)
+//expand minesmac (10 955 3312)
+//expand minesmac (11 955 3312)
+//expand minesmac (12 955 3312)
+//expand minesmac (13 955 3312)
+//expand minesmac (14 955 3312)
+//expand minesmac (15 955 3312)
+//expand minesmac (16 955 3312)
+//expand minesmac (17 955 3312)
+//expand minesmac (18 955 3312)
+//expand minesmac (19 955 3312)
+//expand minesmac (20 955 3312)
+//expand minesmac (21 955 3312)
+//expand minesmac (22 955 3312)
+//expand minesmac (23 955 3312)
+//expand minesmac (24 955 3312)
+//expand minesmac (25 955 3312)
+//expand minesmac (26 955 3312)
+//expand minesmac (27 955 3312)
+//expand minesmac (28 955 3312)
+//expand minesmac (29 955 3312)
+//expand minesmac (30 955 3312)
+//expand minesmac (31 955 3312)
+//expand minesmac (32 955 3312)
+//expand minesmac (33 955 3312)
+//expand minesmac (34 955 3312)
+//expand minesmac (35 955 3312)
+
+// *** MINE WARNING *** //
+
+if padon minepart deadboys then
+	trigger minewarning
+
+macro macromine 9
+
+{
+	if count 1 of minewarning then
+		createunit mineguy@1 rifleman mineguyp@1 green 0 @2,
+		setspeed mineguy@1 slow,
+		selectinventoryitem mineguy@1 mineguy@1 @3,
+		setnpc mineguy@1 1,
+		order mineguy@1 @5 @6 inmode @4
+
+	if padon minedeath@1 then
+		order me GOTO (1793,3105),
+		triggerdelay 35000 beserk
+
+If beserk then
+	order mineguy@1 follow flameboy2 inmode attack
+
+	if killed mineguy@1 then
+		createpowerup @7 @8 me @9
+}
+
+expand macromine ( 1 sweeper 2 ignore goto minedeath1 minesweeper sweeper 1)
+expand macromine ( 2 rifle 0 defend goto minedeath1 medicalpack medpack 9)					//recent change
+
+// *** VICTORY CONDITION *** //
+
+if allof killed trainman1 killed trainman2 killed trainman3 killed trainman4 killed trainman5 killed trainman6 killed trainman7 killed trainman8 then
+	triggerdelay 1 checkwin
+
+if checkwin testvar losevar = 0 then
+	triggerdelay 3000 greenwins,
+	triggerdelay 1 lose_message,
+	triggerdelay 2999 correcttroopercount
+
+if correcttroopercount then
+	setvar numgreen getdeployedtroopercount green
+
+if lose_message then
+	showpda "干得好。车站是我们的了！棕军再也挡不住我们。任务完成。"
+	
+// *** LOSE CONDITION *** //
+
+if killed green trooper testvar getnpcstatus me = 0 then
+	//showmessage "non-npc killed",
+	setvar numgreen getdeployedtroopercount green,
+	triggerdelay 1 numtroopers
+
+if numtroopers testvar getdeployedtroopercount green = 0 then
+	//showmessage "checking troopers!",
+    trigger checklose
+
+if checklose then
+	showpda "你已被淘汰出这场战争。棕军现在能给前线补给。任务失败……",
+    addvar losevar 10,
+    triggerdelay 3000 tanwins
+
+// *** Animated Objects *** //
+
+// ~ Campfire ~ //
+
+preloadsprite 43 820 0
+preloadsprite 43 820 1
+preloadsprite 43 820 2
+preloadsprite 43 820 3
+preloadsprite 43 820 4
+preloadsprite 43 820 5
+preloadsprite 43 820 6
+preloadsprite 43 820 7
+
+
+macro firemac 3
+//1 = integer 2 = pad num 3 = sound channel
+
+{
+
+pad firepad@1   @2 trooper
+
+variable firevar@1 0
+variable soundvar@1 0
+
+if reloopfire@1 testvar firevar@1 = 0 then
+        setvar firevar@1 10,
+        setobjstate fire@1 fire@1_active,
+        makesmoke fire@1 1000,
+        triggerdelay 1 fireSFX@1
+
+if fireSFX@1 testvar soundvar@1 = 0 then
+        setvar soundvar@1 10,
+        playsound "campfire.wav" fire@1 3 @3 1 40
+
+// Firepad@1 Trigger //
+
+if padon firepad@1 then
+        setdamagepad firepad@1 2 100 fire
+
+object fire@1
+        state fire@1_active
+                frame 100 00
+                frame 100 01
+                frame 100 02
+                frame 100 03
+                frame 100 04
+                frame 100 05
+                frame 100 06
+                frame 99 07
+                setvar firevar@1 0,
+                triggerdelay 1 reloopfire@1
+
+}
+
+expand firemac ( 1 12 5 )
+expand firemac ( 2 13 6 )
+expand firemac ( 3 14 7 )
+expand firemac ( 4 15 8 )
+
+//End Campfire//
+
+//Spotter...On my call drop all remaining ordance!!!
+
+pad padspotterstart 240
+
+If keithspotter THEN
+	createunit "artilleryspotter" rifleman padspotterstart tan 0,
+	setaipose artilleryspotter radio,
+	setaimode artilleryspotter ignore,
+	setfacing artilleryspotter 95
+
+variable varreact 0
+
+If hit artilleryspotter testvar varreact = 0 then
+	trigger choice,
+	setvar varreact 1
+
+If choice then random
+	trigger runaway,
+	trigger runaway,
+	trigger urah
+
+If runaway then
+	setaipose artilleryspotter none,
+	order artilleryspotter goto roadtank2 inmode ignore,
+	triggerdelay 7000 thinkagain
+
+If thinkagain then
+	setvar varreact 0
+
+if urah then
+	playsound "bombwhistle2.wav" padartillerystike1 6 1 1500, 
+	triggerdelay 7000 dropart
+
+If dropart butnot killed artilleryspotter then
+	createexplosion me 131 100,
+	triggerdelay 5000 choice,
+	setvar varreact 0
+
+// *** DEATH OF ARMORED 2ND *** //
+
+//Tank carry over
+pad pad2ndtank1 251	2ndtank1
+pad pad2ndtank2 252	2ndtank2
+pad pad2ndtank3 253	2ndtank3
+
+pad padhit1 243
+pad padhit2 244
+pad padhit3 245
+pad padhit4 246
+pad padhit5 247
+pad padhit6 248
+
+IF cof THEN
+	moveitem 2ndtank1 pad2ndtank1,
+	moveitem 2ndtank2 pad2ndtank2,
+	moveitem 2ndtank3 pad2ndtank3,
+	triggerdelay 3 checktanks,
+	triggerdelay 500 pdatank
+
+VARIABLE tankcof 0
+VARIABLE var2ndtank1killed 1				//assumues they are dead, but if they hit pad then makes them 0
+VARIABLE var2ndtank2killed 1
+VARIABLE var2ndtank3killed 1
+
+MACRO macrocof 3
+
+{
+pad padcertaindeath@1	242		@1
+pad padartillerystrike@1 241	@1
+
+	IF count 1 of padon pad@1 THEN
+		addvar numgreen -1,
+		addvar tankcof 1,
+		setnpc @1 1,
+		setfacing @1 20, 
+		setgunfacing @1 @2,
+		setunitgroup @1 0,
+		setvar var@1killed 0,
+		setspeed @1 slow,
+		triggerdelay 2000 moveout,
+		setnpc "@3" 1
+//		triggerdelay 5 enter@3
+
+//	If enter@3 THEN
+//		deploy "@3" (3620,3720),
+//		setnpc "@3" 1,
+//		entervehicle "@3" @1
+		
+	if padon padartillerystrike@1 then
+		triggerdelay 2500 cannonfire
+}
+
+EXPAND macrocof (2ndtank1 30 gcaptain)
+EXPAND macrocof (2ndtank2 60 gdriver2)
+EXPAND macrocof (2ndtank3 210 gdriver3)
+
+If count 1 of moveout THEN
+	order 2ndtank1 GOTO padcertaindeath2ndtank1 inmode defend,
+	triggerdelay 500 nexttank
+
+If nexttank then
+	order 2ndtank2 GOTO padcertaindeath2ndtank2 inmode defend,
+	triggerdelay 1500 nexttank2
+
+If nexttank2 then
+	order 2ndtank3 GOTO padcertaindeath2ndtank3 inmode defend
+		
+		
+
+
+//If count 1 of padon pad2ndtank1 THEN
+//	setnpc gcaptain 1
+
+If checktanks testvar tankcof = 1 THEN				//If tanks around then lg leaves
+	//showmessage "checking number of tanks",
+	trigger onetanksalive								
+
+IF checktanks testvar tankcof = 0 THEN
+	trigger tanksdead 
+
+If checktanks testvar tankcof > 1 THEN
+	trigger tanksalive
+
+If count 2 of pdatank tanksalive then
+	showpda "总部：指挥官，装甲第 2 军将夺取北方的火车站。按需要支援他们！"
+        
+If count 2 of pdatank tanksdead then
+	showpda "总部：指挥官，我们需要你拿下北方的火车站。小心地雷和炮火，还有棕军坦克部队。祝好运！"
+
+If count 2 of pdatank onetankalive THEN
+	showpda "总部：指挥官，我们需要你拿下北方的火车站。装甲第 2 军残部会协助。小心地雷和炮火，还有坦克部队。祝好运！"
+
+If count 1 of cannonfire then		                       
+  	playsound "bombwhistle2.wav" padartillerystike1 6 1 1500,
+	triggerdelay 500 warning,
+	triggerdelay 750 hit1
+	
+If warning THEN
+	showmessage "来了！！！",
+	playsound "GrenadierReady1" 0 16 0
+
+if hit1 then
+	createexplosion padhit1 131 1000 green,
+	triggerdelay 750 hit2
+
+if hit2 then
+	createexplosion 2ndtank1 131 1000 green,
+	triggerdelay 750 hit3
+
+if hit3 then
+	createexplosion padhit2 131 1000 green,
+	triggerdelay 750 hit4
+
+if hit4 then
+	createexplosion 2ndtank3 131 1000 green,
+	triggerdelay 750 hit5
+
+if hit5 then
+	createexplosion padhit5 131 1000 green,
+	triggerdelay 750 hit6
+
+if hit6 then
+	createexplosion padhit3 131 1000 green,
+	triggerdelay 750 hit7
+
+if hit7 then
+	createexplosion 2ndtank2 131 1000 green,
+	triggerdelay 750 hit8
+
+if hit8 then
+	createexplosion padhit6 131 1000 green,
+	triggerdelay 750 hit9
+
+if hit9 then
+	createexplosion padhit4 131 1000 green
+		
+
+//play balance
+
+pad  balancepad 137 balanceunit
+
+If checkreinforcement then
+	createunit "balanceunit" rifleman balancepad green 0 bazooka -1,
+    setnpc balanceunit 1,
+    setaimode balanceunit ignore,
+    createpowerup "balancepower" paratroopers balancepad -1,
+    moveitem balanceunit balancepad,
+    moveitem balancepower balancepad,
+	triggerdelay 5 checkbalance
+
+If Checkbalance testvar numgreen < 6 then
+    triggerdelay 1 balanceVOrandom,
+    fireweapon balancepower balanceunit green
+
+If balanceVOrandom then	random
+	playsound "gamehq1_A.wav" 3 3,
+    playsound "gamehq2_B.wav" 3 3,
+    playsound "gamehq3_C.wav" 3 3
+

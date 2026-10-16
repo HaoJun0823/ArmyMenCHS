@@ -1,0 +1,5 @@
+Killing an enemy unit scores one fourth
+its purchase price.
+
+The first player/team to reach the point
+goal wins.

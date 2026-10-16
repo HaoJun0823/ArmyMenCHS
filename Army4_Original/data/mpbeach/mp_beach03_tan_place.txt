@@ -1,0 +1,21 @@
+#cmd	type		x	y	facing	group	name
+
+place	rifleman    	937	686	144	1	-
+place	rifleman    	895	730	144	1	-
+place	rifleman    	939	760	144	1	-
+place	rifleman    	955	733	144	1	-
+place	rifleman    	1287	661	144	2	-
+place	rifleman    	1324	610	144	2	-
+place	tank        	1030	580	144	2	-
+place	rifleman    	1217	640	144	2	-
+place	rifleman    	1262	730	144	2	-
+place	rifleman    	1287	733	144	2	-
+place	tank        	782	766	144	3	-
+place	tank        	1247	898	144	3	-
+place	tank        	1440	551	144	3	-
+place	halftrack   	1159	505	144	3	-
+place	bazookapill 	902	556	144	3	-
+place	bazookapill 	641	750	144	3	-
+place	rifleman    	1198	795	144	4	-
+place	rifleman    	1235	810	144	4	-
+place	rifleman    	1233	783	144	4	-

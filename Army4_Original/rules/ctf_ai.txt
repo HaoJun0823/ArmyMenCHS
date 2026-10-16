@@ -1,0 +1,133 @@
+// this gets loaded on the host if the @1 army is AI controlled
+	
+// ACTIONS 0 means no action, 1 means goto @2 flag, 2 means goto @3 flag, 3 means goto @4 flag,
+
+// @1 = color to do AI for, @2 = color of enemy, @3 = value for @1Action variable
+
+// HERE ARE RULES FOR HOW WE GO ABOUT PICKING WHAT FLAG TO CAPTURE
+
+macro ctf_ai_enemy 3
+{
+	// MASS ATTACK
+
+	// before attacking @2 make sure @2 is in the game and is not an ally
+
+	if @1SetCapture@2 testvar IsColorInGame @2 > 0 and IsAlly @1 @2 = 0 then
+		setvar @1Action @3,
+		trigger @1redo
+
+	// the retry
+	if @1redo testvar @1Action = @3 then
+		trigger @1MassCapture@2
+
+	if @1MassCapture@2 testvar @2HasFlags = 0 then
+		order @1 group 1 follow @2flag1 inmode ignore,
+		order @1 group 2 follow @2flag1 inmode attack,
+		order @1 group 3 follow @2flag1 inmode attack,
+		order @1 group 4 follow @2flag1 inmode attack,
+		order @1 group 5 follow @2flag1 inmode attack
+
+	if @1MassCapture@2 testvar @2HasFlags <> 0 then
+		order @1 group 1 follow @2flag1 inmode attack,
+		order @1 group 2 follow @2flag1 inmode attack,
+		order @1 group 3 follow @2flag1 inmode attack,
+		order @1 group 4 follow @2flag1 inmode attack,
+		order @1 group 5 follow @2flag1 inmode attack
+
+}
+
+/// BELOW IS GENERIC BEHAVIOR FOR ALL CAPTURE_THE_FLAG GAMES
+
+
+// @1 = color of army to do AI for, @2-@4 = other colors 
+// @5 = letters to identify flagbase (e.g. "b" for blue, "gr" for grey)
+// @6-@8 the actual color values of foe colors
+macro ctf_ai_macro 8
+{
+	// maintain a variable which knows when we are on our base pad
+	// this is used if we accidentally pickup our own flag and we are already on our base
+	if startup1 then
+		triggerdelay 1000 @1ChooseNewAction,
+		triggerdelay 60000 @1StartTimeOut,
+		triggerdelay 10000 @1loop
+
+	if @1ChooseNewAction then
+		setvar @1Action -1,
+		trigger @1ChooseMassAction
+
+	// if @1 has no current action then pick a random action
+	// keep doing this until an action is set
+	if @1ChooseMassAction testvar @1Action = -1 then
+		trigger @1PickMassAction,
+		triggerdelay 100 @1ChooseMassAction
+
+	if @1PickMassAction then random
+		trigger @1SetCapture@2,
+		trigger @1SetCapture@3,
+		trigger @1SetCapture@4
+	
+
+	// THINGS TO DO WHEN WE HAVE A FLAG OF ANY KIND
+
+	
+	// start a monitoring loop to take flag home
+	if pickedup @1flag1 by @1 THEN
+		trigger  @1CheckIfHoldingFlags@1 whoby
+
+	if pickedup @2flag1 by @1 THEN
+		trigger  @1ChooseNewAction,
+		trigger  @1CheckIfHoldingFlags@2 whoby
+
+	if pickedup @3flag1 by @1 THEN
+		trigger  @1ChooseNewAction,
+		trigger  @1CheckIfHoldingFlags@3 whoby
+
+	if pickedup @4flag1 by @1 THEN
+		trigger  @1ChooseNewAction,
+		trigger  @1CheckIfHoldingFlags@4 whoby
+
+	if pickedup @BlackFlag1 by @1 THEN
+		trigger  @1ChooseNewAction,
+		trigger @1CheckIfHoldingFlagsBlack whoby	// putting checkifhold after new action, insures flag carrier keeps his order
+
+	// when our trooper has a flag, take it home to base (keep checking)
+	if @1CheckIfHoldingFlags@1 testvar hasitem me @1flag1 = 1	THEN	// we have our own flag
+		order me goto @5flagbase inmode defend,
+		triggerdelay 1000 @1CheckIfHoldingFlags@1
+		
+	if @1CheckIfHoldingFlags@2 testvar hasitem me @2flag1 = 1	THEN	// we have his flag
+		order me goto @5flagbase inmode ignore,
+		triggerdelay 1000 @1CheckIfHoldingFlags@2
+
+	if @1CheckIfHoldingFlags@3 testvar hasitem me @3flag1 = 1	THEN	// we have his flag
+		order me goto @5flagbase inmode ignore,
+		triggerdelay 1000 @1CheckIfHoldingFlags@3
+
+	if @1CheckIfHoldingFlags@4 testvar hasitem me @4flag1 = 1	THEN	// we have his flag
+		order me goto @5flagbase inmode ignore,
+		triggerdelay 1000 @1CheckIfHoldingFlags@4
+
+	// if i drop a foe flag, reset my actions
+	if dropped @2flag1 testvar IsInArmy whoby @1 = 1 then
+		trigger  @1ChooseNewAction
+
+	if dropped @3flag1 testvar IsInArmy whoby @1 = 1 then
+		trigger  @1ChooseNewAction
+
+	if dropped @4flag1 testvar IsInArmy whoby @1 = 1 then
+		trigger  @1ChooseNewAction
+
+	//  every 99 seconds, change the mode to catch strays
+
+	if @1StartTimeOut then
+		trigger @1ChooseNewAction,
+		triggerdelay 990000 @1StartTimeOut
+
+
+			// the retry of current goal every 20 seconds
+	if @1loop then
+		trigger @1redo,
+		triggerdelay 15000 @1loop
+
+}
+

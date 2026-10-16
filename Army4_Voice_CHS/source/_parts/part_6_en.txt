@@ -1,0 +1,40 @@
+JeepReady2.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Moving out.
+MedKit.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	plastic mending kit
+MineSweeper.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	A minesweeper. Who wants the job?
+Mortar.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Mortars, reach out and explode someone.
+MortarReady1.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Cover me.
+MortarReady2.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	It's all fun and games until the mortar hits.
+NapalmAirstrike.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	napalm airstrike there's nothing like the smell a bird plastic in the morning
+PrisonersDying.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Ugh!
+Reconn.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Ah, recon.
+RifleReady1.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Moving out.
+RifleReady2.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	You got some orders?
+RifleReady3.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Let's go.
+RifleReady4.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Y'all help, y'all help, y'all help, right.
+Sarge_HitSpot1.wav	Sarge(中士)	Ah, that hit the spot.
+SniperRifle.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	A sniper rifle. They'll never see it coming.
+StingOut.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	That takes the sting out of it.
+TakeCover.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Take cover.
+TanUnits_attack.wav	TanArmy(棕军)	ATTACK!
+TanUnits_charge.wav	TanArmy(棕军)	CHARGE!
+TankReady1.wav	TanArmy(棕军)	I am about to deliver justice!
+TankReady2.wav	TanArmy(棕军)	HERE COMES THE HAMMER!
+ThePitch.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	And the pitch.
+VulcanGun.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	A Vulcan.
+gamehq1_A.wav	HQ_Command(总部/指挥官)	We're sending you reinforcements. HQ out.
+gamehq2_B.wav	HQ_Command(总部/指挥官)	Commander, reinforcements are on the way. HQ out.
+gamehq3_C.wav	HQ_Command(总部/指挥官)	We've lost more soldiers? We're dropping you more, but try to keep your guys in one piece. HQ out.
+mines.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Minds the Hidden Death.
+moreAmmo.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Ah, more ammo.
+mp_gotblue.wav	Multiplayer(多人模式)	Blue flag captured!
+mp_gotflag.wav	Multiplayer(多人模式)	Flag captured!
+mp_gotgreen.wav	Multiplayer(多人模式)	Green flag captured!
+mp_gotgrey.wav	Multiplayer(多人模式)	Gray flag captured.
+mp_gottan.wav	Multiplayer(多人模式)	And flag captured!
+mp_itblue.wav	Multiplayer(多人模式)	Blue is it.
+mp_itgreen.wav	Multiplayer(多人模式)	Green is it.
+mp_itgrey.wav	Multiplayer(多人模式)	Gray is it.
+mp_ittan.wav	Multiplayer(多人模式)	Tan is it.
+paraTroopers.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Paratroopers, jump in and join the fun, boys.
+water_run.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Thanks for watching!
+wrench.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	vehicle repair kit. Just call me Mr. Fix-It.

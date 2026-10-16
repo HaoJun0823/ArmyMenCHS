@@ -1,0 +1,42 @@
+00_61_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Private, move Hollison over to read those signs.
+00_65_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Private, make two squads of three men each. It doesn't matter who goes in which squad, as long as each one has three men.
+00_66_A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Now move all your men to that area near the lamppost.
+00_67_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	On my mark, quickly send one squad south to the tree and the other to that tent. Click your squad buttons to select the men, and then right-click on their destinations to move them.
+00_70_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	too slow private
+00_73_A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Move your soldiers up that slope to the south.
+00_78_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Up ahead, those TAN are dozing in that clearing, but it has two exits. Split your men into two squads and attack from both directions at once. See if you can prevent the TAN from escaping the clearing.
+00_7A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	When you're done reading, move Hollison to the next sign. It's located a half dozen inches to the south.
+00_80_K.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	That'll have to do.
+00_83_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	These six men have done their job, Private. They're no longer under your control. Try selecting them and you'll see.
+00_85_B.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Move your view to the valley to the east. New power-ups and a new soldier are waiting for you there.
+00_89_A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Order Private McChude to pick up that airstrike, then use it to pound the radar installation to the northeast.
+00_95_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	They're not politically correct, but mines will help you stop the tan truck that's coming in from the east. Lay down a line of them and keep them between you and the truck.
+00_ambush1_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Ambush get that power up pronto
+00_ambush2_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	What is that thing? I've never seen anything like it.
+00_cmd1_D.wav	HQ_Command(总部/指挥官)	Now pay attention. Private Lostalem is headed into that pass to your north. He will demonstrate the four command modes. He isn't under your command, so don't bother trying to move him.
+00_cmd2_E.wav	HQ_Command(总部/指挥官)	First, he'll act out how a green unit will respond to a tan threat when in attack command mode.
+00_cmd3_B.wav	HQ_Command(总部/指挥官)	Now, Lostilum will demonstrate defend command mode.
+00_cmd4_C.wav	HQ_Command(总部/指挥官)	Here, Lostillum will show you how he would respond when in stand-and-fire mode.
+00_cmd5_E.wav	HQ_Command(总部/指挥官)	Lastly, here is an example of hold fire mode behavior.
+00_cmd6_B.wav	HQ_Command(总部/指挥官)	I'm putting Lostalem under your command. If you look at your display, note how his icon flashes red as he takes fire.
+00_cmdx_A.wav	HQ_Command(总部/指挥官)	am i boring you private well return to boot camp later if you change your mind
+00_goodB.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Good.
+00_goodC.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Good.
+00_goodE.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Good.
+00_goodenuf_D.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	That's good enough.
+00_goodshtg_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Good shooting.
+00_niceA.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Nice.
+00_niceB.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Nice.
+01_01_HQ.wav	HQ_Command(总部/指挥官)	Commander, we need you to storm the beach and puncture a hole in the TAN's defense by destroying the TAN radar building to the north. You can expect minimal resistance, but I'm sure the enemy threat will increase further inland. Good luck. HQ out.
+01_01_greenattackers.wav	GreenArmy_Grunt(绿军)	ATTACK!
+01_01_greentroop.wav	GreenArmy_Grunt(绿军)	Okay fellas, some of our men are going to take out those snipers on the ledge. Once they're done, we'll move out.
+01_01_tantroopers.wav	TanArmy(棕军)	Enemy approaching! Take cover!
+01_02_HQ.wav	HQ_Command(总部/指挥官)	Good job. This area is secure.
+01_02_greentroop.wav	GreenArmy_Grunt(绿军)	The snipers are eliminated, move out.
+02_01_HQ.wav	HQ_Command(总部/指挥官)	Commander, the TAN have artillery cannons stationed on the hills in this area. These cannons make it impossible to get our troops through the area unharmed, so it is your job to destroy these cannons. Keep a lookout for Lieutenant Greenman. He is pinned in due to these cannons and waiting for your men to make it safe for his men to continue. As soon as some of the cannons are eliminated, Lieutenant Greenman will order his forces to move through the area.
+02_01_LGreenman.wav	GreenArmy_Grunt(绿军)	Commander, those cannons have us between a rock and a hard place. We need to find a way to destroy those cannons before I can move through the area.
+02_02_HQ.wav	HQ_Command(总部/指挥官)	Good job. All the tan cannons are destroyed. HQ out.
+02_02_LGreenman.wav	GreenArmy_Grunt(绿军)	Commander, we are now moving through the canyon.
+02_03_LGreenman.wav	GreenArmy_Grunt(绿军)	We're taking fire!
+02_04_LGreenman.wav	GreenArmy_Grunt(绿军)	Thanks, Commander. We're home free. Take these supplies for your efforts, and I wish you good luck in the war.
+03_01_HQ.wav	HQ_Command(总部/指挥官)	Commander, we need you to strike and eliminate 10 tanks that are in for repairs and refueling. Stay on the lookout for a squad we sent in earlier, led by a friendly Blue. Good luck, Commander. HQ out.

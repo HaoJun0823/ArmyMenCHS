@@ -1,0 +1,145 @@
+
+//////////////////////////////////////////////////////////////////////////////
+// Section common to all game types
+//////////////////////////////////////////////////////////////////////////////
+include common.txt
+//include ffire.txt
+
+//////////////////////////////////////////////////////////////////////////////
+// Deathmatch specific section
+//////////////////////////////////////////////////////////////////////////////
+variable killEnemyTrooperBonus 1000
+variable resetready 4
+variable whodied 0
+variable resetlast 0
+
+// Common rules for death and ctf_death.txt
+
+if startup1 then 
+	setvar makeackack 0, // suppress artilery on hill
+	triggerdelay 1000 SupressCommonResurrection,
+	triggerdelay 1000 MarkAllTroopersStrategic  // show all trooper targets
+
+if SupressCommonResurrection then
+	setvar stdresurrect 0
+
+	if checkteamkill then sequential	// walk thru the teams crediting one of them
+		trigger teamgreen,
+		trigger teamtan,
+		trigger teamblue,
+		trigger teamgrey
+
+	if resurrect3 testvar resetready = 3 then
+		trigger arise2
+
+	if arise2 then
+		setvar resetready 2,
+		playsound "mp_tick.wav" (0,0) 2 3,
+		showmessage "3..",
+		triggerdelay 2000 resurrect2
+
+	if resurrect2 testvar resetready = 2 then
+		trigger arise1
+
+	if arise1 then 
+		setvar resetready 1,
+		playsound "mp_tick.wav" (0,0) 2 3,
+		showmessage "2..",
+		triggerdelay 2000 resurrect1
+
+	if resurrect1 testvar resetready = 1 then
+		trigger arise0
+
+	if arise0 then
+		setvar resetready 0,
+		playsound "mp_tick.wav" (0,0) 2 3,
+		showmessage "1..",
+		triggerdelay 2000 resurrect0
+
+	if resurrect0 testvar resetready = 0 then 
+		trigger arise
+
+	if arise then
+		setvar resetready 4,
+		playsound "mp_tick.wav" (0,0) 2 3,
+		showmessage "0..起来！",
+		resurrect aigreen (-2,-2),
+		resurrect aitan (-2,-2),
+		resurrect aiblue (-2,-2),
+		resurrect aigrey (-2,-2),
+		setvar resetlast 0
+
+// @1 = color, @2 = Capitalized color (e.g. "Green"), @3-5 are other colors 
+macro death_ruleslast 5
+{
+			
+	// now see if we are last standing and trigger global resurrection as needed
+
+	// not my trooper  died by MY hand
+	if killed any trooper testvar resetlast = 0 AND getcolor whoby = getcolor @1 AND getcolor me <> getcolor @1 then 
+		trigger @1checkstanding   // see if all troopers are gone from opponent sides
+
+	//  I killed a trooper (not mine), are all enemy now dead or allied?
+	if @1checkstanding testvar 
+		getdeployedtroopercount @3 ally @1 = 0 AND getdeployedtroopercount @4 ally @1 = 0 
+		AND getdeployedtroopercount @5 ally @1 = 0 then 
+		trigger @1winner
+
+	if @1winner then
+		setvar resetlast 1,							// block anyone else from winning until resurrect sequence
+		showmessage "@2 站到了最后！",
+		addvar @1score killEnemyTrooperBonus,
+		playsound "mp_death.wav" (0,0) 1 2,
+		trigger check@1wins,
+		showmessage "准备开始下一轮……",
+		setvar resetready 3,
+		triggerdelay 2000 resurrect3
+
+	// opponent troopers died by OWN hand
+	if killed any trooper testvar resetlast = 0 AND  getcolor whoby = getcolor me AND getcolor me <> getcolor @1 then 
+		trigger @1checksuicide   // see if all troopers are gone from opponent sides
+
+
+	// Somebody killed himself. May even be an ally. See if I am a winner or on winner team
+	if @1checksuicide testvar  getdeployedtroopercount @1 > 0 AND getdeployedtroopercount @3  = 0 
+		AND getdeployedtroopercount @4 ally @1 = 0 	AND getdeployedtroopercount @5 ally @1 = 0 then
+		trigger @1deadwin
+
+	if @1deadwin then
+		setvar resetlast 1,							// block anyone else from winning until resurrect sequence
+		trigger checkteamkill,						// our team is last standing
+		showmessage "准备开始下一轮……",
+		setvar resetready 3,
+		triggerdelay 2000 resurrect3
+
+	// do I get credit in points
+	if team@1 testvar getdeployedtroopercount @1 > 0 then	
+		trigger @1suiwin
+
+	if @1suiwin then
+		showmessage "随机一队因自杀得分！",
+		addvar @1score killEnemyTrooperBonus,
+		playsound "mp_death.wav" (0,0) 1 2,
+		trigger check@1wins
+
+	if team@1 testvar getdeployedtroopercount @1 = 0 then	
+		triggerdelay 1  checkteamkill					// try again
+
+
+	// TEST FOR WIN every 10 seconds just in case we miss up somehow
+	if startup1 then
+		triggerdelay 10000 @1doublecheck							
+
+	// only me and my allies are alive
+	if @1doublecheck testvar  resetlast = 0 AND getdeployedtroopercount @1 > 0 AND getdeployedtroopercount @3 ally @1  = 0 
+		AND getdeployedtroopercount @4 ally @1 = 0 	AND getdeployedtroopercount @5 ally @1 = 0 then
+		trigger @1deadwin,
+		triggerdelay 10000 @1doublecheck	
+
+
+}
+
+expand death_ruleslast (green 绿队 tan blue grey)
+expand death_ruleslast (tan 棕队 green blue grey)
+expand death_ruleslast (blue 蓝队 green tan grey)
+expand death_ruleslast (grey 灰队 green tan blue)

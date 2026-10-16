@@ -1,0 +1,21 @@
+#cmd	type		x	y	facing	group	name
+
+place	ptboat      	3420	1107	128	3	-
+place	rifleman    	3216	1023	128	1	-
+place	rifleman    	3251	1024	128	1	-
+place	rifleman    	3253	1006	128	1	-
+place	rifleman    	3204	1042	128	1	-
+place	rifleman    	3470	1034	128	2	-
+place	rifleman    	3430	1043	128	2	-
+place	rifleman    	3460	1065	128	2	-
+place	rifleman    	3404	1051	128	2	-
+place	bazookapill 	3474	943	128	2	-
+place	bazookapill 	3181	866	128	2	-
+place	tank        	3354	954	128	2	-
+place	tank        	3161	967	128	2	-
+place	tank        	3223	765	128	2	-
+place	tank        	3464	759	128	2	-
+place	halftrack   	3427	832	128	2	-
+place	jeep        	3491	839	128	2	-
+place	jeep        	3305	908	128	2	-
+place	ackackgun   	3321	778	128	2	-

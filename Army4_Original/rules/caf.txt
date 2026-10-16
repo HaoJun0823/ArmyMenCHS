@@ -1,0 +1,152 @@
+//////////////////////////////////////////////////////////////////////////////
+// Section common to all game types
+//////////////////////////////////////////////////////////////////////////////
+include common.txt
+//include ffire.txt
+
+//////////////////////////////////////////////////////////////////////////////
+// Capture All Flag rules
+//////////////////////////////////////////////////////////////////////////////
+if startup1 then triggerdelay 1000 MarkAllTroopersStrategic
+
+variable captureAllFlagsBonus 1000
+
+// @1 = color to possibly update flag for
+// @2 = color of player who captured flag
+// @3 = color of flag captured
+macro updateAllyVars 3
+{
+	if @2Captures@3Flag testvar isAlly @1 @2 = 1 then
+		setvar @1Captured@3Flag 1,
+		addscoresymbol @1 @3flag
+
+	if reset@2FlagVars testvar isAlly @1 @2 = 1 and isAlly @1 @3 = 0 then
+		setvar @1Captured@3Flag 0
+}
+
+// @1 = color, @2 = Capitalized color (e.g. "Green"),
+// @3 = other color, @4 = other color flagbase letter
+macro bringHomeEnemyFlag 4
+{
+	variable @1Captured@3Flag 0
+
+	if padon @1base testvar hasitem me @3flag1 = 1 and isAlly @1 @3 = 0 and @1Captured@3Flag = 0 then
+		trigger @1pon@3
+
+	if @1pon@3 then
+		showmessage "@2 gained @3 flag",
+		setvar @1Captured@3Flag 1,
+		addscoresymbol @1 @3flag,
+		trigger @1Captures@3Flag,
+		trigger @1CapturesFlag,
+		dropitem me @3flag1 @4flagbase,
+		createexplosion @1base 137 0 @1,
+		playsound "mp_ctftobase.wav" (0,0) 1 2
+
+	if reset@1FlagVars testvar isAlly @1 @3 = 1 then
+		trigger @1capx@3
+
+	if @1capx@3 then
+		setvar @1Captured@3Flag 1,	// pretend we captured allies flags
+		clearscoresymbols @3
+
+	if reset@1FlagVars testvar isAlly @1 @3 = 0 then
+		trigger @1capy@3
+
+	if @1capy@3 then
+		setvar @1Captured@3Flag 0
+
+	if reset@3FlagVars testvar isAlly @1 @3 = 1 then
+		trigger @1capz@3
+
+	if @1capz@3 then
+		setvar @1Captured@3Flag 1	// pretend ally captured my flag
+
+	if reset@1FlagVars testvar isColorInGame @3 = 0 then
+		trigger @1capa@3
+
+	if @1capa@3 then
+		setvar @1Captured@3Flag 1	// pretend we captured flags not in game
+}
+
+// playsounds if a flag is picked up by an enemy
+macro playPickupSound 2
+{
+	if pickedup @1flag1 by @2 testvar isAlly @1 @2 = 0 then
+		trigger @1psound@2
+
+	if @1psound@2 then
+		playsound "mp_got@1.wav" (0,0) 3 1
+}
+
+// @1 = color, @2 = Capitalized color (e.g. "Green"), @3 = flagbase letter (e.g. 'g')
+// @4-6 are other colors, @7-8 are other colors flagbase letters
+macro ctfevents 9
+{
+	// deploy flags for colors in game and set the flags to strategic
+	if startup1 testvar iscoloringame @1 > 0 then
+		triggerdelay 10 @1startup2
+
+	if @1startup2 then
+		deploy @3flagbase,
+		deploy @1flag1 @3flagbase,
+		setitemflag @1flag1 strategic 1,
+		setitemflag @1flag1 stratsquare 1,
+		trigger reset@1FlagVars
+
+	// check for a trooper bringing home an enemy flag
+	expand bringHomeEnemyFlag ( @1 "@2" @4 @7 )
+	expand bringHomeEnemyFlag ( @1 "@2" @5 @8 )
+	expand bringHomeEnemyFlag ( @1 "@2" @6 @9 )
+
+	// update flags for allies when an ally captures a flag
+	expand updateAllyVars ( @1 @4 @5 )
+	expand updateAllyVars ( @1 @4 @6 )
+	expand updateAllyVars ( @1 @5 @4 )
+	expand updateAllyVars ( @1 @5 @6 )
+	expand updateAllyVars ( @1 @6 @4 )
+	expand updateAllyVars ( @1 @6 @5 )
+
+	// update scores and show/play effects
+
+	if @1CapturesFlag testvar @1Captured@4Flag = 1 and @1Captured@5Flag = 1 and @1Captured@6Flag = 1 then
+		trigger reset@1FlagVars,
+		playsound "mp_ctftobase.wav" (0,0) 1 2,
+		addvar @1score captureAllFlagsBonus,
+		trigger check@1wins,
+		clearscoresymbols @1
+
+	// if flag is dropped and not picked up for 2 minutes then return it to it's base
+
+	variable @1FlagTimeOutVar 0
+	variable @1FlagLastTimeOutVar 1
+
+	if dropped @1flag1 then
+		triggerdelay 120000 @1FlagCheckTimeOut
+
+	if pickedup @1flag1 then
+		addvar @1FlagTimeOutVar 1
+
+	if @1FlagCheckTimeOut testvar @1FlagTimeOutVar = @1FlagLastTimeOutVar then
+		showmessage "@2 Flag was dropped and not picked up for 2 minutes - moved to base",
+		createexplosion @1flag1 128 0 @1,
+		playsound "mp_rebaseflag.wav" (0,0) 2 1,
+		moveitem @1flag1 @3flagbase,
+		triggerdelay 1000 @1FlagLastTimeOutIncr
+
+	if @1FlagCheckTimeOut testvar @1FlagTimeOutVar <> @1FlagLastTimeOutVar then
+		triggerdelay 1000 @1FlagLastTimeOutIncr
+
+	if @1FlagLastTimeOutIncr then
+		addvar @1FlagLastTimeOutVar 1
+
+	// playsounds if a flag is picked up by an enemy
+	expand playPickupSound ( @1 @4 )
+	expand playPickupSound ( @1 @5 )
+	expand playPickupSound ( @1 @6 )
+}
+
+expand ctfevents ( green "Green" g tan blue grey t b gr )
+expand ctfevents ( tan "Tan" t green blue grey g b gr )
+expand ctfevents ( blue "Blue" b green tan grey g t gr )
+expand ctfevents ( grey "Grey" gr green tan blue g t b )

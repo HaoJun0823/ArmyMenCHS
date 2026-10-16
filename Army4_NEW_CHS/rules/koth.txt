@@ -1,0 +1,145 @@
+//////////////////////////////////////////////////////////////////////////////
+// Section common to all game types
+//////////////////////////////////////////////////////////////////////////////
+include common.txt
+//include ffire.txt
+
+//////////////////////////////////////////////////////////////////////////////
+// King of the hill specific section
+//////////////////////////////////////////////////////////////////////////////
+
+variable ownHillBonus 10
+
+// 0 = no owner, 1 = green, 2 = tan, 3 = blue, 4 = grey
+variable hillowner 0
+
+
+if startup1 then 
+	triggerdelay 1000 MarkAllTroopersStrategic
+
+	
+
+// @1 = color, @2 = Capitalized color (e.g. "Green"), @3 is value for hillowner,
+// @4-6 are other colors
+macro koth_macro 6
+{
+	variable @1onhill 0
+
+	// these pairs of variables are used to prevent sarge leaving and returning to the hill within
+	// 1 second and scoring at a double rate
+	variable @1GainsHillCount 0
+	variable @1KeepsHillCheck 0
+
+	pad @1hill 20 @1 trooper > 0
+
+	// for colors in game set the markers to be squares on stratmap
+	if startup1  then
+		setitemflag @1mark1 strategic 1,
+		setitemflag @1mark2 strategic 1,
+		setitemflag @1mark3 strategic 1,
+		setitemflag @1mark4 strategic 1,
+		setitemflag @1mark5 strategic 1,
+		setitemflag @1mark6 strategic 1,
+		setitemflag @1mark7 strategic 1,
+		setitemflag @1mark8 strategic 1,
+		setitemflag @1mark1 stratsquare 1,
+		setitemflag @1mark2 stratsquare 1,
+		setitemflag @1mark3 stratsquare 1,
+		setitemflag @1mark4 stratsquare 1,
+		setitemflag @1mark5 stratsquare 1,
+		setitemflag @1mark6 stratsquare 1,
+		setitemflag @1mark7 stratsquare 1,
+		setitemflag @1mark8 stratsquare 1
+
+	// check for @1 sarge owning the hill
+
+	if padon @1hill then
+		setvar @1onhill 1,
+		trigger check@1ownshill
+
+	if padoff @1hill then
+		setvar @1onhill 0,
+		trigger @1offhill
+
+	if @1offhill testvar hillowner = @3 then
+		trigger @1remowner
+	if @1remowner then
+		removescoresymbol @1 king,
+		setvar hillowner 0,
+		trigger hillOwnerChanged,
+		trigger check@4ownshill,
+		trigger check@5ownshill,
+		trigger check@6ownshill
+
+	if check@1ownshill testvar @1onhill = 1 and hillowner = 0 then
+		trigger @1howner
+	if @1howner then
+		setvar hillowner @3,
+		trigger hillOwnerChanged,
+		showmessage "@2 成为了山丘之王",
+		addscoresymbol @1 king,
+		addvar @1GainsHillCount 1,
+		triggerdelay 3000 check@1scoresinitial
+
+	if check@1scoresinitial then
+		addvar @1KeepsHillCheck 1
+
+	if check@1scoresinitial testvar hillowner = @3 then
+		trigger check@1scores
+
+	if check@1scores testvar hillowner = @3 and @1KeepsHillCheck = @1GainsHillCount then
+		trigger @1scoreit
+	if @1scoreit then
+		addvar @1score ownHillBonus,
+		playsound "mp_tick.wav" (0,0) 2 3,
+		trigger check@1wins,
+		triggerdelay 3000 check@1scores
+
+
+	// update the flags to display the owner of the hill
+
+	if hillOwnerChanged then
+		undeploy @1mark1,
+		undeploy @1mark2,
+		undeploy @1mark3,
+		undeploy @1mark4,
+		undeploy @1mark5,
+		undeploy @1mark6,
+		undeploy @1mark7,
+		undeploy @1mark8
+
+	if hillOwnerChanged testvar hillowner = @3 then
+		triggerdelay 1 @1showNewHillOwner
+
+	if @1showNewHillOwner then
+		deploy @1mark1,
+		deploy @1mark2,
+		deploy @1mark3,
+		deploy @1mark4,
+		deploy @1mark5,
+		deploy @1mark6,
+		deploy @1mark7,
+		deploy @1mark8
+}
+
+expand koth_macro (green "绿队" 1 tan blue grey )
+expand koth_macro (tan "棕队" 2 blue grey green )
+expand koth_macro (blue "蓝队" 3 grey green tan )
+expand koth_macro (grey "灰队" 4 green tan blue )
+
+
+// whenever hillowner changes create explosions to make flags appear/dissapper in a
+// puf of smoke
+if hillOwnerChanged then
+	createexplosion greenmark1 128 0 green,	
+	createexplosion greenmark2 128 0 green,	
+	createexplosion greenmark3 128 0 green,	
+	createexplosion greenmark4 128 0 green,	
+	createexplosion greenmark5 128 0 green,	
+	createexplosion greenmark6 128 0 green,	
+	createexplosion greenmark7 128 0 green,	
+	createexplosion greenmark8 128 0 green
+
+// if there is a new hill owner then play one sound
+if showNewHillOwner testvar hillowner <> 0 then
+	playsound "mp_own.wav" (0,0) 1 2

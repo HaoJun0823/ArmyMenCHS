@@ -1,0 +1,5 @@
+Killing all enemy troopers scores 1000 
+points,after which all forces resurrect.
+
+The first player/team to reach the 
+point goal wins.

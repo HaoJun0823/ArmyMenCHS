@@ -1,0 +1,5 @@
+include death_ai.txt
+expand death_ai_enemy ( blue green 0 )
+expand death_ai_enemy ( blue tan 1 )
+expand death_ai_enemy ( blue grey 3 )
+expand death_ai_macro ( blue green tan grey )

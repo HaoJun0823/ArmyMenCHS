@@ -1,0 +1,680 @@
+//**AMWWpc Map #2 "Death_Walk".  Map concept and layout created by Jason Wildblood**//
+
+//**Player pads**//
+
+pad     balcheckpad     203 nonnpc
+pad     greenmanvo      250 nonnpc
+//pad     Randombombing1  205 lg
+//pad     Randombombing2  206 lg
+pad     balancepad       254
+variable LGdeathvar 0
+variable winvar 0
+variable losevar 0
+variable cannonmainvar 0
+variable defaulvar 0
+
+variable alt_endvar 0
+
+if startup1 then
+        undeploy greensarge1,
+        //createunit "Greensarge1" rifleman (3010,3039) green 3,
+	triggerdelay 100 Gstart,
+        triggerdelay 100 maketans,
+        triggerdelay 100 makegrenunits,
+        triggerdelay 90 makeNPCvehicle,
+        createpowerup grenade greensarge1 20,
+        triggerdelay 100 makedeadmen,
+        triggerdelay 130 get_in
+
+if Gstart then
+        undeploy greensarge1,
+        triggerdelay 500 init_messages,
+        createunit "balanceunit" rifleman balancepad green 0 autorifle,
+        setnpc balanceunit 1,
+        setaimode balanceunit ignore,
+        createpowerup "balancepower" paratroopers powtree -1,
+        moveitem balanceunit balancepad,
+        moveitem balancepower powtree,
+        triggerdelay 3000 Checkbalance
+
+if init_messages then
+	showpda "Destroy all enemy cannons so Lieutenant Greenman can move his squadron through the area. Greenman must reach his final destination before you can continue to the next mission.
+
+
+
+//**Win condition**//
+
+
+if winbydefault then
+        trigger thewin
+        //setvar winvar 1,
+        //triggerdelay 100 wincheck
+
+if allof killed tancannon1 killed tancannon2 killed tancannon3 killed tancannon4 then
+        triggerdelay 200000 winbydefault,
+        addvar winvar 1,
+        triggerdelay 100 wincheck
+
+if wincheck testvar winvar = 2 and losevar = 0 then
+        trigger thewin
+
+if thewin testvar defaulvar <> 20 then
+        setvar defaulvar 20,
+        triggerdelay 1 setLGmennonNPC,
+        triggerdelay 1 bycowards,
+        playsound "02_02_HQ.wav" 3 5,
+        showpda "All the enemy cannons are destroyed. Mission accomplished.",
+        triggerdelay 3000 greenwins
+
+
+
+//**Lose condition**//
+if killed green trooper testvar getnpcstatus me = 0 then
+        addvar numgreen -1,
+        triggerdelay 100 losecheck1
+
+if losecheck1 testvar numgreen = 0 and defaulvar <> 20 then
+        setvar losevar 10,
+        setvar defaulvar 20,
+        showpda "You have been eliminated from the war effort.  Mission failed...",
+        triggerdelay 3000 tanwins
+
+//**Unit Balance**//
+
+if padon balcheckpad butnot onecheckB then
+        triggerdelay 1 Checkbalance
+
+if Checkbalance testvar numgreen = 1 then
+        fireweapon balancepower balanceunit green
+
+//**Enemy Deployment**//
+
+pad Tpad1          10
+pad Tpad2          11
+pad Tpad3          12
+pad Tpad4          13
+pad Tpad5          14
+
+pad Tpad6          15
+pad Tpad7          16
+
+pad Tpad8          17
+pad Tpad9          18
+
+pad Tpad10          19
+pad Tpad11          20
+
+pad Tpad12          21
+pad Tpad13          22
+
+
+macro tandep1 9
+
+{
+//Units rush when the cannon guards are attacked not in the skeleton script//
+////@1 Name @2 Type @3 location @4 weapon @5 group @6 faceing @7 AI Mode @8 pose @9 powerup
+
+if maketans then
+        createunit @1 @2 @3 tan 1 @4 @5,
+        setaimode @1 @7,
+        setfacing @1 @6,
+        setaipose @1 @8
+
+if killed @1 then
+        createpowerup "" @9 @1 2
+
+}
+expand tandep1 ( T1 rifleman Tpad1 autorifle 1 222 standfire prone grenade )
+expand tandep1 ( T2 rifleman Tpad2 autorifle 1 92 standfire prone autorifle )
+expand tandep1 ( T3 rifleman Tpad3 autorifle 1 142 defend prone grenade )
+expand tandep1 ( T4 rifleman Tpad4 autorifle 1 222 defend stand autorifle )
+expand tandep1 ( T5 rifleman Tpad5 autorifle 1 92 defend stand autorifle )
+
+expand tandep1 ( T6 rifleman Tpad6 autorifle 1 148 standfire kneel grenade )
+expand tandep1 ( T7 rifleman Tpad7 autorifle 1 148 standdire kneel grenade )
+
+expand tandep1 ( T8 rifleman Tpad8 autorifle 1 222 standfire kneel grenade )
+expand tandep1 ( T9 rifleman Tpad9 autorifle 1 242 standdire kneel grenade )
+
+expand tandep1 ( T10 rifleman Tpad10 autorifle 1 44 standfire kneel grenade )
+expand tandep1 ( T11 rifleman Tpad11 autorifle 1 44 standdire kneel grenade )
+
+expand tandep1 ( T12 rifleman Tpad12 autorifle 1 92 standfire kneel grenade )
+expand tandep1 ( T13 rifleman Tpad13 autorifle 1 92 standdire kneel grenade )
+
+
+//**Greenmans Squadron**//
+
+pad     Gpad1   100
+pad     Gpad2   101
+pad     Gpad3   102
+pad     Gpad4   103
+pad     Gpad5   104
+pad     Gpad6   105
+pad     Gpad7   106
+
+
+pad     Gtopad1_1   110
+pad     Gtopad1_2   111
+pad     Gtopad1_3   112
+pad     Gtopad1_4   113         LG
+
+pad     Gtopad2_1   120
+pad     Gtopad2_2   121
+pad     Gtopad2_3   122
+pad     Gtopad2_4   123         LG
+
+pad     Gtopad3_1   130
+pad     Gtopad3_2   131
+pad     Gtopad3_3   132
+pad     Gtopad3_4   133         LG
+
+pad     Gtopad4_1   140
+pad     Gtopad4_2   141
+pad     Gtopad4_3   142
+pad     Gtopad4_4   143         LG
+pad        Poweruppad1 144
+pad        Poweruppad2 145
+pad        Poweruppad3 146
+
+
+macro greenNPCdep1 8
+
+{
+
+////@1 Name @2 Type @3 location @4 weapon @5 group @6 faceing @7 AI Mode @8 pose
+
+if setLGmennonNPC then
+        setnpc @1 0
+
+if makegrenunits then
+        createunit @1 @2 @3 green 3 @4 -1 @5,
+        selectinventoryitem @1 @1 2,
+        setaimode @1 @7,
+        setaipose @1 @8,
+        setfacing @1 @6,
+        setnpc @1 1
+if hit @1 butnot onehitvo then
+        playsound "02_03_LGreenman.wav" 2 11,
+        trigger onehitvo
+}
+expand greenNPCdep1 ( LG rifleman Gpad4 bazooka 1 222 standfire kneel )
+expand greenNPCdep1 ( TD1 rifleman Gpad3 heavymg 1 222 standfire kneel )
+expand greenNPCdep1 ( TD2 rifleman Gpad2 heavymg 1 222 standfire kneel )
+expand greenNPCdep1 ( TD3 rifleman Gpad1 heavymg 1 222 standfire kneel )
+expand greenNPCdep1 ( T._Hawk rifleman Gpad5 medpack 1 222 standfire prone )
+expand greenNPCdep1 ( R._Dire rifleman Gpad6 medpack 1 222 standfire prone )
+expand greenNPCdep1 ( B._Chunks rifleman Gpad7 medpack 1 222 standfire prone )
+
+if killed lg then
+        //addvar numgreen 1,
+        setvar LGdeathvar 10,
+        triggerdelay 1 wincheck1,
+        triggerdelay 2 Checkbalance,
+        triggerdelay 500 retreattrig
+
+if wincheck1 then
+        addvar winvar 1,
+        triggerdelay 1 wincheck
+
+if killed TD1 then
+        //addvar numgreen 1,
+        showmessage "We're taking fire!"
+if killed TD2 then
+        //addvar numgreen 1,
+        showmessage "We are under attack!"
+if killed TD3 then
+        //addvar numgreen 1,
+        showmessage "Casualties!"
+
+//if killed T._Hawk then
+        //addvar numgreen 1
+
+//if killed R._Dire then
+        //addvar numgreen 1
+
+//if killed B._Chunks then
+        //addvar numgreen 1
+
+//Greenman's vo//
+
+if padon greenmanvo butnot oneGMvo then
+        playsound "02_01_LGreenman.wav" 3 10,
+        trigger oneGMvo
+
+//**Bombing attacks**//
+
+//CANNON 3//
+
+//***Cannons***//
+macro cannonmac 7
+{
+// @1 integer @2 X @3 Y @4 pad num @5 mancannonpad num @6 unit AI @7 facing
+pad Randombombing@1  @4     green
+
+pad cmanpad@1        @5
+
+variable cannonvar@1 1
+
+if padon Randombombing@1 butnot oneRandombombing@1 then
+        triggerdelay 1 firecannon@1,
+        trigger oneRandombombing@1
+
+if firecannon@1 testvar cannonvar@1 = 1 then
+        playsound "artillery_back.wav" tancannon@1 3 4 1000,
+        setaipose mancannon@1 kneel,
+        createexplosion (@2,@3) 135 0 tan,
+        createexplosion (@2,@3) 126 0 tan,
+        setobjstate tancannon@1 cannon_fire@1,
+        setvar cannonvar@1 1
+
+if killed tancannon@1 then
+        setitemflag tancannon@1 strategic 0,
+        playsound "" tancannon@1 3 4 1000,
+        setaimode mancannon@1 @6,
+        setvar cannonvar@1 10
+
+if makecannonman@1 butnot oneman@1 then
+        setitemflag tancannon@1 strategic 1,
+        createunit mancannon@1 rifleman cmanpad@1 tan,
+        setaimode mancannon@1 standfire,
+        triggerdelay 1 oneman@1,
+        setfacing mancannon@1 @7
+
+object tancannon@1
+        state cannon_init@1
+                frame 50 00
+                triggerdelay 1 makecannonman@1
+
+        state cannon_fire@1
+                frame 100 03
+                frame 100 04
+                frame 100 05
+                triggerdelay 100 resetframe@1
+
+if resetframe@1 then
+                setaipose mancannon@1 stand,
+                setobjstate tancannon@1 cannon_init@1,
+                setvar cannonvar@1 0,
+                triggerdelay 100 makebomb@1
+}
+expand cannonmac ( 1 2823 1779 206 253 attack 210 )
+expand cannonmac ( 2 3083 242 205 251  attack 148 )
+
+expand cannonmac ( 3 2823 1779 206 200 attack 0 )
+expand cannonmac ( 4 3083 242 205 201  attack 85 )
+
+
+if makebomb3 testvar cannonvar3 = 0 then
+                	random
+                                triggerdelay 500 exp2_1,
+                                triggerdelay 500 exp2_2,
+                                triggerdelay 500 exp2_3,
+                                triggerdelay 500 exp2_4,
+                                triggerdelay 500 exp2_5,
+                                triggerdelay 500 exp2_6,
+                                triggerdelay 500 exp2_7
+if exp2_1 testvar cannonvar3 = 0 then
+        playsound "bombwhistle2.wav" (2521,844) 10 2 100,
+        addvar cannonvar3 2,
+        triggerdelay 1000 randomB2_1
+
+if randomB2_1 testvar cannonvar3 = 2 then
+        createexplosion (2521,844) 131 400 blue,
+        setvar cannonvar3 1,
+        triggerdelay 1000 firecannon3
+
+if exp2_2 testvar cannonvar3 = 0 then
+        createexplosion (2581,942) 131 400 blue,
+        playsound "bombwhistle2.wav" (2581,942) 10 2 100,
+        addvar cannonvar3 2,
+        triggerdelay 1000 randomB2_2
+
+if randomB2_2 testvar cannonvar3 = 2 then
+        createexplosion (2581,942) 131 400 blue,
+        setvar cannonvar3 1,
+        triggerdelay 1000 firecannon3
+
+if exp2_3 testvar cannonvar3 = 0 then
+        playsound "bombwhistle2.wav" (2725,876) 10 2 100,
+        addvar cannonvar3 2,
+        triggerdelay 1000 randomB2_3
+
+if randomB2_3 testvar cannonvar3 = 2 then
+        createexplosion (2725,876) 131 400 blue,
+        setvar cannonvar3 1,
+        triggerdelay 1000 firecannon3
+
+if exp2_4 testvar cannonvar3 = 0 then
+        playsound "bombwhistle2.wav" (2737,1067) 10 2 100,
+        addvar cannonvar3 2,
+        triggerdelay 1000 randomB2_4
+
+if randomB2_4 testvar cannonvar3 = 2 then
+	createexplosion (2737,1067) 131 400 blue,
+        setvar cannonvar3 1,
+        triggerdelay 1000 firecannon3
+
+if exp2_5 testvar cannonvar3 = 0 then
+        playsound "bombwhistle2.wav" (2837,1011) 10 2 100,
+        addvar cannonvar3 2,
+        triggerdelay 1000 randomB2_5
+
+if randomB2_5 testvar cannonvar3 = 2 then
+        createexplosion (2837,1011) 131 400 blue,
+        setvar cannonvar3 1,
+        triggerdelay 1000 firecannon3
+
+if exp2_6 testvar cannonvar3 = 0 then
+        playsound "bombwhistle2.wav" (2663,1080) 10 2 100,
+        addvar cannonvar3 2,
+        triggerdelay 1000 randomB2_6
+
+if randomB2_6 testvar cannonvar3 = 2 then
+        createexplosion (2663,1080) 131 400 blue,
+        setvar cannonvar3 1,
+        triggerdelay 1000 firecannon3
+
+if exp2_7 testvar cannonvar3 = 0 then
+	playsound "bombwhistle2.wav" (2551,993) 10 2 100,
+        addvar cannonvar3 2,
+        triggerdelay 1000 randomB2_7
+
+if randomB2_7 testvar cannonvar3 = 2 then
+        createexplosion (2551,993) 131 400 blue,
+        setvar cannonvar3 1,
+        triggerdelay 1000 firecannon3
+
+
+//CANNON 4//
+
+if makebomb4 then
+                	random
+                                triggerdelay 500 exp3_1,
+                                triggerdelay 500 exp3_2,
+                                triggerdelay 500 exp3_3,
+                                triggerdelay 500 exp3_4,
+                                triggerdelay 500 exp3_5,
+                                triggerdelay 500 exp3_6,
+                                triggerdelay 500 exp3_7
+if exp3_1 testvar cannonvar4 = 0 then
+	playsound "bombwhistle2.wav" (1904,718) 10 2 100,
+        addvar cannonvar4 2,
+        triggerdelay 1000 randomB3_1
+
+if randomB3_1 testvar cannonvar4 = 2 then
+        createexplosion (1904,718) 131 400 blue,
+        setvar cannonvar4 1,
+        triggerdelay 1000 firecannon4
+
+if exp3_2 testvar cannonvar4 = 0 then
+        playsound "bombwhistle2.wav" (1970,752) 10 2 100,
+        addvar cannonvar4 2,
+        triggerdelay 1000 randomB3_2
+
+if randomB3_2 testvar cannonvar4 = 2 then
+        createexplosion (1970,752) 131 400 blue,
+        setvar cannonvar4 1,
+        triggerdelay 1000 firecannon4
+
+if exp3_3 testvar cannonvar4 = 0 then
+        playsound "bombwhistle2.wav" (2110,727) 10 2 100,
+        addvar cannonvar4 2,
+        triggerdelay 1000 randomB3_3
+
+if randomB3_3 testvar cannonvar4 = 2 then
+        createexplosion (2110,727) 131 400 blue,
+        setvar cannonvar4 1,
+        triggerdelay 1000 firecannon4
+
+if exp3_4 testvar cannonvar4 = 0 then
+        playsound "bombwhistle2.wav" (2112,801) 10 2 100,
+        addvar cannonvar4 2,
+        triggerdelay 1000 randomB3_4
+
+if randomB3_4 testvar cannonvar4 = 2 then
+        createexplosion (2112,801) 131 400 blue,
+        setvar cannonvar4 1,
+        triggerdelay 1000 firecannon4
+
+if exp3_5 testvar cannonvar4 = 0 then
+        playsound "bombwhistle2.wav" (2284,714) 10 2 100,
+        addvar cannonvar4 2,
+        triggerdelay 1000 randomB3_5
+
+if randomB3_5 testvar cannonvar4 = 2 then
+        createexplosion (2284,714) 131 400 blue,
+        setvar cannonvar4 1,
+        triggerdelay 1000 firecannon4
+
+if exp3_6 testvar cannonvar4 = 0 then
+        playsound "bombwhistle2.wav" (2156,849) 10 2 100,
+        addvar cannonvar4 2,
+        triggerdelay 1000 randomB3_6
+
+if randomB3_6 testvar cannonvar4 = 2 then
+        createexplosion (2156,849) 131 400 blue,
+        setvar cannonvar4 1,
+        triggerdelay 1000 firecannon4
+
+if exp3_7 testvar cannonvar4 = 0 then
+	playsound "bombwhistle2.wav" (2051,788) 10 2 100,
+        addvar cannonvar4 2,
+        triggerdelay 1000 randomB3_7
+
+if randomB3_7 testvar cannonvar4 = 2 then
+        createexplosion (2051,788) 131 400 blue,
+        setvar cannonvar4 1,
+        triggerdelay 1000 firecannon4
+        //****End of Cannons 3 - 4****//
+
+macro greenNPCveh1 4
+
+{
+
+////@1 Name @2 Type @3 location @4 faceing
+
+if setLGmennonNPC then
+        setnpc @1 0
+
+if makeNPCvehicle then
+        createvehicle @1 @2 @3 green,
+        setfacing @1 @4,
+        setnpc @1 1,
+        setspeed @1 slow
+}
+expand greenNPCveh1 ( GT1 tank Gpad1 222 )
+expand greenNPCveh1 ( GT2 tank Gpad2 222 )
+expand greenNPCveh1 ( GT3 tank Gpad3 222 )
+
+//if killed GT1 then
+        //addvar numgreen 1
+//if killed GT2 then
+        //addvar numgreen 1
+//if killed GT3 then
+        //addvar numgreen 1
+
+
+if get_in then
+        entervehicle TD1 GT1,
+        entervehicle TD2 GT2,
+        entervehicle TD3 GT3
+
+//**Cannon Destruction/greenman movement**//
+
+if allof killed tancannon1 killed tancannon2 then
+        triggerdelay 2000 Checkbalance,
+        setaipose LG stand,
+        playsound "02_02_LGreenman.wav" 3 10,
+        order T._Hawk follow LG,
+        order R._Dire follow LG,
+	order B._Chunks follow LG,
+
+        order LG goto Gtopad1_4,
+        order GT1 goto Gtopad1_1,
+        order GT2 goto Gtopad1_2,
+        order GT3 goto Gtopad1_3,
+        triggerdelay 40000 Gorders2,
+        triggerdelay 1000 alt_end
+        ///triggerdelay 200000 winbydefault
+
+if allof killed tancannon3 killed tancannon4 then
+        setvar alt_endvar 10
+
+
+if padon Gtopad1_4 then
+        order T._Hawk follow LG,
+        order R._Dire follow LG,
+	order B._Chunks follow LG,
+        triggerdelay 1000 setgmenpose,
+        triggerdelay 1001 alt_endemy1,
+        setaipose LG kneel
+
+if Gorders2 then
+        order T._Hawk follow LG,
+        order R._Dire follow LG,
+	order B._Chunks follow LG,
+
+        order LG goto Gtopad2_4,
+        order GT1 goto Gtopad2_1,
+        order GT2 goto Gtopad2_2,
+        order GT3 goto Gtopad2_3,
+        triggerdelay 40000 Gorders3
+if padon Gtopad2_4 then
+        order T._Hawk follow LG,
+        order R._Dire follow LG,
+	order B._Chunks follow LG,
+        
+        triggerdelay 1001 alt_endemy2,
+        triggerdelay 1000 setgmenpose,
+        setaipose LG kneel
+
+//***Alt_end system***//
+
+if alt_end testvar alt_endvar = 10 then
+        setvar alt_endvar 20
+
+macro altmac 6
+// @1 integer @2 dep loc @3 ammo amount @4 weapon type @5 goto pad @6 alternate integer
+{
+
+if alt_endemy@6 testvar alt_endvar = 20 then
+        createunit Gtanman@1 rifleman @2 tan 5 @4 @3,
+        triggerdelay 1000 Gtanorders@6
+
+if Gtanorders@6 then
+        //setweapon Gtanman@1 Gtanman@1 2,
+        order Gtanman@1 goto @5 inmode attack
+
+}
+
+expand altmac (1 Gtopad4_1 4 autorifle lg 1 )
+expand altmac (2 Gtopad4_2 4 autorifle lg 1 )
+expand altmac (3 Gtopad4_3 4 autorifle Gpad7 1 )
+expand altmac (4 Gtopad4_4 4 autorifle Gpad7 1 )
+
+expand altmac (5 Gtopad4_1 4 autorifle lg 2 )
+expand altmac (6 Gtopad4_2 4 autorifle Gpad7 2 )
+expand altmac (7 Gtopad4_3 4 autorifle lg 2 )
+expand altmac (8 Gtopad4_4 4 autorifle Gpad7 2 )
+
+expand altmac (9 Gtopad4_1 4 autorifle lg 3 )
+expand altmac (10 Gtopad4_2 4 autorifle Gpad7 3 )
+expand altmac (11 Gtopad4_3 4 autorifle lg 3 )
+expand altmac (12 Gtopad4_4 4 autorifle Gpad7 3 )
+
+expand altmac (13 Gtopad4_1 4 autorifle Gpad7 4 )
+expand altmac (14 Gtopad4_2 4 autorifle lg 4 )
+expand altmac (15 Gtopad4_3 4 autorifle Gpad7 4 )
+expand altmac (16 Gtopad4_4 4 autorifle lg 4 )
+
+
+//Cannon3 attacks canyon//
+
+//**Final Attacks**//
+
+if Gorders3 then
+        order T._Hawk follow LG,
+        order R._Dire follow LG,
+	order B._Chunks follow LG,
+
+        order LG goto Gtopad3_4,
+        order GT1 goto Gtopad3_1,
+        order GT2 goto Gtopad3_2,
+        order GT3 goto Gtopad3_3,
+        triggerdelay 20000 Gorders4
+if padon Gtopad3_4 then
+        order T._Hawk follow LG,
+        order R._Dire follow LG,
+	order B._Chunks follow LG,
+        triggerdelay 1001 alt_endemy3,
+        triggerdelay 1000 setgmenpose,
+        setaipose LG kneel
+
+if Gorders4 then
+        order T._Hawk follow LG,
+        order R._Dire follow LG,
+	order B._Chunks follow LG,
+
+        order LG goto Gtopad4_4,
+        order GT1 goto Gtopad4_1,
+        order GT2 goto Gtopad4_2,
+        order GT3 goto Gtopad4_3
+if padon Gtopad4_4 then
+        order T._Hawk follow LG,
+        order R._Dire follow LG,
+	order B._Chunks follow LG,
+
+        triggerdelay 1001 alt_endemy4,
+        triggerdelay 1000 setgmenpose,
+        setaipose LG kneel,
+        playsound "02_04_LGreenman.wav" 2 11,
+        setnpc T._Hawk 0,
+        setnpc R._Dire 0,
+	setnpc B._Chunks 0,
+        addvar numgreen 3,
+        triggerdelay 2000 wincheck,
+        addvar winvar 1
+
+if setgmenpose then
+        setaipose T._Hawk kneel,
+        setaipose R._Dire kneel,
+        setaipose B._Chunks kneel
+
+//***Retreating units***//
+
+if retreattrig then
+        order T._Hawk goto Gpad5 inmode attack,
+        order R._Dire goto Gpad6 inmode attack,
+	order B._Chunks goto Gpad7 inmode attack,
+        order GT1 goto Gpad1 inmode attack,
+        order GT2 goto Gpad3 inmode attack,
+        order GT3 goto Gpad2 inmode attack
+
+if bycowards testvar LGdeathvar = 10 then
+        undeploy T._Hawk,
+        undeploy R._Dire,
+        undeploy B._Chunks,
+        undeploy GT1,
+        undeploy GT2,
+        undeploy GT3
+
+macro deadmen 7
+{
+
+if makedeadmen then
+        createunit "deadman@1" rifleman (@2,@3) blue,
+        setforcecolor deadman@1 @4,
+        setfacing deadman@1 @5,
+        triggerdelay 100 damageall@1
+
+if damageall@1 then
+        damage deadman@1 @6 @7
+}
+expand deadmen ( 1 2199 2634 green 128 40000 explosion )
+expand deadmen ( 2 2093 2651 green 128 40000 explosion )
+expand deadmen ( 3 2005 2618 green 128 40000 explosion )
+
+expand deadmen ( 4 1347 1844 green 128 410 projectile )
+expand deadmen ( 5 1384 1794 green 158 410 projectile )
+expand deadmen ( 6 1468 1872 tan 244  410 projectile )

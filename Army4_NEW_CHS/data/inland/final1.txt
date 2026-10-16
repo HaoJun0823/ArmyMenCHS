@@ -1,0 +1,736 @@
+
+//Script for Map 12//
+
+preloadsprite 37 300 0
+preloadsprite 37 300 3
+preloadsprite 37 300 4
+preloadsprite 37 300 5
+preloadsprite 37 300 6
+preloadsprite 37 300 7
+preloadsprite 37 300 8
+preloadsprite 37 300 9
+
+
+//Preloaded Sprites//
+
+//~water well sprites~//
+preloadsprite 43 381 0
+preloadsprite 43 381 3
+preloadsprite 43 381 4
+preloadsprite 43 381 5
+preloadsprite 43 381 6
+preloadsprite 43 381 7
+preloadsprite 43 381 8
+preloadsprite 43 381 9
+
+//~fountain sprites~//
+preloadsprite 43 400 0
+preloadsprite 43 400 3
+preloadsprite 43 400 4
+preloadsprite 43 400 5
+preloadsprite 43 400 6
+preloadsprite 43 400 7
+preloadsprite 43 400 8
+preloadsprite 43 400 9
+preloadsprite 43 401 0
+preloadsprite 43 401 1
+preloadsprite 43 401 2
+preloadsprite 43 401 3
+preloadsprite 43 401 4
+preloadsprite 43 401 5
+preloadsprite 43 401 6
+preloadsprite 43 401 7
+
+
+
+
+// pad Setup//
+
+pad trig1	20		green	//trigger event//
+pad trig2	30		green	//trigger event//
+pad trig3	31		green	
+pad trig4	40		green
+pad trig5	50		green
+pad t1		60				//tan spawn point//
+pad t2		65				//tan spawn point//
+pad t3		70				//tan spawn point//
+pad t4		75				//tan spawn point//
+pad t5		80				//tan spawn point//
+pad t6		85				//tan spawn point//
+pad t7		90				//tan spawn point//
+pad atk1	101				//tan waypoint//
+pad atk2	102				//tan waypoint//
+pad atk2a	100
+pad atk3	103				//tan waypoint//
+pad atk4	104	
+pad atk5	105
+pad ptboat	106				//green navy spawn//
+pad boatgo	110
+pad rally	150
+pad defd	160				//tan palace spawn//
+pad balancepad	200
+pad 29_0	41
+pad 29_1	42
+pad 29_2	43
+pad 29_3	44
+pad 29_4	45
+pad 29_5	46
+pad cvy1x	51
+pad cvy2x	52
+pad cvy3x	53
+pad cvy4x	54
+pad cvy5x	55
+pad cvy6x	56			
+
+
+// End pad setup//
+
+
+//variable setup//
+
+variable boom		0
+variable deadradar	0
+variable test1		0
+variable test2		0
+variable test3		0
+variable test4		0
+variable test5		0
+variable losevar	0
+variable millvar 	0
+variable pal1		0
+variable defend1	0
+
+//end variable setup//
+
+
+
+//startup//
+
+if startup1 then
+
+	playsound "inland12_nomusic.wav" 0 16 1,
+	triggerdelay 200 gstart
+
+
+
+//win conditions//
+
+if killed palace1 testvar losevar = 0 then
+	
+	showmessage "棕军总部被摧毁！",
+	playsound "12_03_hq_a.wav" 3 3, 
+	triggerdelay 3000 checkwin
+	
+if checkwin then
+
+	showpda "你赢了！",
+	trigger greenwins
+
+
+//end win conditions//
+
+
+if gstart then
+
+   	createunit "balanceunit" rifleman balancepad green 0 bazooka -1,
+	setnpc balanceunit 1,
+	setaimode balanceunit ignore,
+	createpowerup "balancepower" paratroopers balancepad -1,
+	moveitem balanceunit balancepad,
+	moveitem balancepower balancepad,
+	trigger greensetup,
+	trigger tansetup,
+	trigger powerups,
+	trigger objectives,
+	trigger loopfountain,
+	trigger startmsg,
+	trigger checkbalance,
+	triggerdelay 5000 artmsg,
+	moveitem 29tank0 29_0,
+	moveitem 29tank1 29_1,
+	moveitem 29tank2 29_2,
+	moveitem 29tank3 29_3,
+	moveitem 29tank4 29_4,
+	moveitem 29tank5 29_5,
+	moveitem cvy1 cvy1x,
+	moveitem cvy2 cvy2x,
+	moveitem cvy3 cvy3x,
+	moveitem cvy4 cvy4x,
+	moveitem cvy5 cvy5x,
+	moveitem cvy6 cvy6x,
+	triggerdelay 20000 greennavy
+	
+
+if gstart testvar difficulty = 0 then
+
+
+	createvehicle easy3 tank (1718,3600) green,
+	createpowerup epu1 medpack (1646,3770) 3,
+	createpowerup epu2 mortar (1754,3730) 20,
+	createpowerup epu3 wrench (1424,3755) 2,
+	createpowerup epu4 wrench (1212,3755) 2,
+	createpowerup epu5 medpack (3761,1628) 2,
+	createpowerup epu6 wrench (3746,1708) 2
+
+
+
+//Tan Setup//
+
+
+macro maketans 8
+
+//@1=name, @2=type, @3=x, @4=y, @5=wpn, @6=ammo, @7=facing @8=mode//
+
+
+{
+
+if tansetup	then
+
+	createunit @1 @2 (@3,@4) tan 5 @5 @6,
+	setfacing @1 @7,
+	setaimode @1 @8,
+	entervehicle tan3p tan3,
+	entervehicle tan4p tan4,
+	entervehicle tan5p tan5,
+	entervehicle tan7p tan7,
+	selectinventoryitem @1 @1 2,
+	entervehicle tan10p tan10,
+	entervehicle tan11p tan11,
+	entervehicle tan15p tan15,
+	entervehicle tan21p tan21,
+	entervehicle tan22p tan22,
+	entervehicle tan23p tan23
+	
+}
+
+expand maketans (tan1 rifleman 2923 3318 autorifle -1 128 attack)
+expand maketans (tan2 rifleman 2457 3052 autorifle -1 128 defend)
+expand maketans (tan3 jeep 3149 3000 mediummg 100 128 defend)
+expand maketans (tan3p rifleman 3149 3000 autorifle -1 128 defend)
+expand maketans (tan4 halftrack 3820 2816 heavymg 100 128 attack)
+expand maketans (tan4p rifleman 3820 2816 autorifle -1 128 defend)
+expand maketans (tan5 tank 3434 1825 largecannon 15 64 defend)
+expand maketans (tan5p rifleman 3434 1825 autorifle -1 128 defend)
+expand maketans (tan6 rifleman 3293 1796 autorifle -1 100 defend)
+expand maketans (tan7 tank 2395 2162 largecannon 20 80 attack)
+expand maketans (tan7p rifleman 2395 2162 autorifle -1 128 defend)
+expand maketans (tan8 rifleman 2167 2118 autorifle -1 128 defend)
+expand maketans (tan9 rifleman 1228 1395 autorifle -1 128 attack)
+expand maketans (tan10 halftrack 2063 1501 mediummg 100 70 defend)
+expand maketans (tan10p rifleman 2063 1501 autorifle -1 128 defend)
+expand maketans (tan11 tank 3112 1703 largecannon 20 128 defend)
+expand maketans (tan11p rifleman 3112 1703 autorifle -1 128 defend)
+expand maketans (tan12 rifleman 2961 1173 autorifle -1 128 defend)
+expand maketans (tan13 rifleman 2692 358 autorifle -1 128 defend)
+expand maketans (tan14 rifleman 2778 299 autorifle -1 128 attack)
+expand maketans (tan15 tank 1767 907 largecannon 20 130 defend)
+expand maketans (tan15p rifleman 1767 907 autorifle -1 128 defend)
+expand maketans (tan16 rifleman 319 467 autorifle -1 128 defend)
+expand maketans (tan17 rifleman 227 535 autorifle -1 135 defend)
+expand maketans (tan18 rifleman 273 674 autorifle -1 130 attack)
+expand maketans (tan19 rifleman 212 880 autorifle -1 135 defend)
+expand maketans (tan20 rifleman 294 965 autorifle -1 128 attack)
+expand maketans (tan21 boat 804 1119 heavymg 100 128 defend)
+expand maketans (tan21p rifleman 804 1119 autorifle -1 128 defend)
+expand maketans (tan22 boat 947 1058 heavymg 100 128 defend)
+expand maketans (tan22p rifleman 947 1058 autorifle -1 128 attack)
+expand maketans (tan23 boat 2180 3150 heavymg 100 64 defend)
+expand maketans (tan23p rifleman 2180 3150 autorifle -1 128 defend)
+expand maketans (tan24 rifleman 3085 2578 autorifle -1 130 attack)
+
+
+
+//end tan setup//
+
+
+//Objective Flag setup//
+
+
+if objectives then
+
+
+ setitemflag palace1 strategic 1
+ 
+ 
+ 
+ //**Mill**//
+ 
+
+if killed millbuilding then
+        setvar millvar 10,
+		setobjstate millwheel mill_toast
+
+if loopwheel testvar millvar = 0 then
+        setobjstate millwheel wheel_roll
+
+
+object millwheel
+        state wheel_roll
+                frame 40 09
+                frame 50 08
+                frame 50 07
+                frame 50 06
+                frame 50 05
+                frame 50 04
+                frame 50 03
+                frame 50 00
+                triggerdelay 10 loopwheel
+
+        state mill_toast
+                frame 10 01
+                setvar millvar 10
+				
+ //end of mill animation//
+
+ 
+
+// Water Fountain setup //
+
+  //***Fountain Macro***//
+macro fountainmac 2
+// @1 integer @2 sound channel
+{
+
+variable fountainvar@1 0
+
+if loopfountain testvar fountainvar@1 = 0 then
+		
+		playsound "fountain.wav" (2382,836) 2 15 1500,
+        setvar fountainvar@1 1,
+        playsound "water_run.wav" fountain@1 1 @2 800 1,
+        setobjstate fountain@1 ftactive@1,
+        setobjstate ftwater@1 fwactive@1
+
+object fountain@1
+        state ftinit@1
+                frame 7 00
+
+        state ftactive@1
+                frame 69 00
+                frame 70 03
+                frame 70 04
+                frame 70 05
+                frame 70 06
+                frame 70 07
+                frame 70 08
+                frame 70 09
+
+        state ftdamaged@1
+                frame 1 01
+
+object ftwater@1
+        state fwinit@1
+                frame 7 00
+
+        state fwactive@1
+                frame 69 00
+                frame 70 01
+                frame 70 02
+                frame 70 03
+                frame 70 04
+                frame 70 05
+                frame 70 06
+                frame 70 07
+                setvar fountainvar@1 0,
+                triggerdelay 1 loopfountain
+
+        state fwdamaged@1
+                frame 7 10
+
+if killed fountain@1 then
+        setvar fountainvar@1 100,
+        setobjstate ftwater@1 fwdamaged@1,
+        setobjstate fountain@1 ftdamaged@1
+}
+expand fountainmac ( 1 10 )
+//***End of Fountain Macro***//
+
+
+//Powerup setup//
+
+
+if powerups then
+
+	createpowerup pu1 recon (899,3533) 2,
+	createpowerup pu2 bazooka (3788,3551) 6,
+	createpowerup pu3 medkit (3833,3632) 1,
+	createpowerup pu4 grenade (3338,2502) 10,
+	createpowerup pu5 mortar (1349,1494) 10,
+	createpowerup pu6 medkit (3306,710)2,
+	createpowerup pu7 grenade (429,343) 10,
+	createpowerup pu8 vulcan (704,425) 100,
+	createpowerup pu9 grenade (371,308) 10,
+	createpowerup pu10 mortar (3707,3520) 6,
+	createpowerup pu11 bazooka (3400,2558) 10,
+	createpowerup pu12 medkit (2963,1929) 1,
+	createpowerup pu13 wrench (2109,2224) 1,
+	createpowerup pu14 wrench (3192,3465) 1,
+	createpowerup pu15 sniper (1508,1427) 25,
+	createpowerup pu16 medkit (508,464) 1,
+	createpowerup pu17 mortar (434,1005) 10,
+	createpowerup pu18 medkit (1476,2642) 1,
+	createpowerup pu19 bazooka (2499,2770) 10,
+	createpowerup pu20 mortar (1626,3831) 20,
+	createpowerup pu21 grenade (1517,2649) 10
+	
+	
+
+
+
+// Lose conditions //
+
+if killed green trooper testvar getnpcstatus me = 0 then
+
+	addvar numgreen -1,
+	trigger checklose
+
+if checklose testvar numgreen = 0 then
+
+	setvar losevar 10,
+	trigger lose
+		
+
+if lose then
+
+	showpda "你输了",
+	triggerdelay 3000 tanwins
+	
+
+//End Lose conditions//
+
+
+//Unit Balance//
+
+if checkbalance testvar numgreen = 1 then
+
+	triggerdelay 1000 balancevorandom,
+	fireweapon balancepower balanceunit green
+
+	
+if balancevorandom then
+
+random
+		
+		playsound "gamehq1_a.wav" 2 3,
+		playsound "gamehq2_b.wav" 2 3,
+		playsound "gamehq3_c.wav" 2 3
+		
+
+//Start Message //
+
+
+if startmsg then
+
+	showpda "拿下棕军国会大厦！"
+
+
+if artmsg then
+
+	playsound "12_02_HQ_B.wav" 3 3
+	
+
+
+//Events setup //
+
+
+if allof killed radiotower then
+	
+	showmessage "无线电塔被摧毁！",
+	setvar deadradar 1		 
+
+			
+
+if greennavy then
+
+	showmessage "鱼雷艇到了！",
+	createunit boatp1 rifleman ptboat green 3 autorifle -1,
+	createvehicle gboat1 boat ptboat green,
+	addvar numgreen 1,
+	entervehicle boatp1 gboat1,
+	playsound "12_01_ptboat01b.wav" 3 3,
+	order gboat1 goto boatgo
+
+
+if padon trig1 testvar test1 = 0 then
+
+	setvar test1 1,
+	createvehicle tantk1 tank t1 tan,
+	createunit tantk1p rifleman t1 tan 3 autorifle -1,
+	entervehicle tantk1p tantk1,
+	setaimode tantk1 attack,
+	order tantk1 goto  atk1
+
+if padon trig2 testvar test2 = 0 then
+
+	setvar test2 1,
+	createvehicle tantk2 tank t2 tan,
+	createunit tantk2p rifleman t2 tan 3 autorifle -1,
+	setaimode tantk2 attack,
+	entervehicle tantk2p tantk2,
+	order tantk2 goto atk2a
+
+
+if padon trig3 testvar test3 = 0 and deadradar = 0 then
+
+	setvar test3 1,
+	createvehicle tantk3 tank t2 tan,
+	createunit tantk3p rifleman t2 tan 3 autorifle -1,
+	setaimode tantk3 attack,
+	entervehicle tantk3p tantk3,
+	order tantk3 goto atk2
+
+	
+if padon trig4 testvar test4 = 0 and deadradar = 0 then
+
+	setvar test4 1,
+	createvehicle tantk4 tank t7 tan,
+	createunit tantk4p rifleman t7 tan 3 autorifle -1,
+	createunit tantk6p rifleman t4 tan 3 autorifle -1,
+	createvehicle tantk6 tank t4 tan,
+	setaimode tantk6 attack,
+	setaimode tantk4 attack,
+	entervehicle tantk4p tantk4,
+	entervehicle tantk6p tantk6,
+	order tantk6 goto atk5,
+	order tantk4 goto atk3
+	
+
+
+if padon trig5 testvar test5 = 0 then
+
+	setvar test5 1,
+	createvehicle tantk5 jeep t5 tan,
+	createvehicle tantk7 tank t5 tan,
+	createunit tantk5p rifleman t5 tan 3 autorifle -1,
+	createunit tantk7p rifleman t5 tan 3 autorifle -1,
+	setaimode tantk5 attack,
+	setaimode tantk7 attack,
+	entervehicle tantk5p tantk5,
+	entervehicle tantk7p tantk7,
+	order tantk5 goto atk4,
+	order tantk7 goto atk4
+
+if hit palace1 testvar getdmglvl palace1 = 1 then
+
+		trigger palace_guard
+	
+
+
+if palace_guard testvar pal1 = 0 then
+	
+	createunit tangd1 rifleman (2232,592) tan 5 autorifle -1,
+	createunit tangd2 rifleman (2343,553) tan 5 autorifle -1,
+	createunit tangd3 rifleman (2479,391) tan 5 autorifle -1,
+	createunit tangd4 rifleman (1921,608) tan 5 autorifle -1,
+	createunit tangd5p rifleman (2594,189) tan 5 autorifle -1,
+	createunit tangd6p rifleman (1592,407) tan 5 autorifle -1,
+	createvehicle tangd5 tank (2594,189) tan,
+	createvehicle tangd6 jeep (1592,407) tan,
+	setaimode tangd1 attack,
+	setaimode tangd2 attack,
+	setaimode tangd3 attack,
+	setaimode tangd4 attack,
+	setaimode tangd5 attack,
+	setaimode tangd6 attack,
+	entervehicle tangd5p tangd5,
+	entervehicle tangd6p tangd6,
+	order tangd1 goto rally,
+	order tangd2 goto rally,
+	order tangd3 goto rally,
+	order tangd4 goto rally,
+	order tangd5 goto rally,
+	order tangd6 goto rally,
+	setvar pal1 10
+
+
+
+if padon defd testvar defend1 = 0 then
+
+
+	createunit tangd20 rifleman (2611,719) tan 5 autorifle -1,
+	createunit tangd21 rifleman (2082,868) tan 5 autorifle -1,
+	createunit tangd22 rifleman (2556,1209) tan 5 autorifle -1,
+	setaimode tangd20 attack,
+	setaimode tangd21 attack,
+	setaimode tangd23 attack,
+	setvar defend1 10
+
+	
+	
+// Cannon fire event //
+
+macro cannonmac 5
+
+
+//@1= obj @2= interger @3=padnumber @4=x @5=y  	
+
+{
+
+pad cannonpad@2 @3
+
+
+variable cannonvar@2 0
+variable cannonoff@2 0
+variable startboom@2 0
+
+if padon cannonpad@2 testvar cannonvar@2 = 0 and cannonoff@2 = 0 then
+
+	setobjstate @1 cannon_fire@2,
+	setvar cannonvar@2 10,
+	setvar cannonoff@2 10,
+	setvar startboom@2 1,
+	trigger muzzle@2, 
+	trigger boom@2
+
+
+if killed @1 then 
+
+	setvar cannonvar@2 20,
+	setobjstate @1 destroyed@2
+
+
+if cannonloop@2 testvar cannonvar@2 = 0  and startboom@2 = 1 then
+
+	playsound "artillery_back.wav" (3698,3579) 2 15 1000,
+	setobjstate @1 cannon_fire@2,
+	trigger boom@2,
+	trigger muzzle@2,
+	setvar cannonvar@2 10
+
+if muzzle@2 then
+
+	createexplosion (@4,@5) 135 0 tan,
+	createexplosion (@4,@5) 126 0 tan	
+
+object @1
+
+	state cannon_init@2
+		frame 50 00
+		
+			
+	state cannon_fire@2
+	
+		frame 50 03
+		frame 50 04
+		frame 50 05
+		setobjstate @1 cannon_init@2,
+		setvar cannonvar@2 0,
+		triggerdelay 3000 cannonloop@2
+		
+	state destroyed@2
+	
+		frame 10 01		
+
+}
+
+
+expand cannonmac (cannon1 1 120 3709 3536)
+expand cannonmac (cannon2 2 120 3719 3705)
+
+
+
+
+
+if boom1 then
+ 
+ 	random
+	
+		triggerdelay 500 exp1,
+		triggerdelay 500 exp2,
+		triggerdelay 500 exp3,
+		triggerdelay 500 exp3a
+
+
+if exp1 then
+
+	playsound "bombwhistle2.wav" (2120,3484) 2 15 1500,
+	triggerdelay 1000 bm1
+
+if bm1 then
+
+	createexplosion (2120,3484) 131 100 blue
+	
+if exp2 then
+
+	playsound "bombwhistle2.wav" (2447,3422) 2 15 1500,
+	triggerdelay 1000 bm2
+
+if bm2 then
+
+	createexplosion (2447,3422) 131 100 blue
+	
+	
+if exp3 then
+
+	playsound "bombwhistle2.wav" (2811,3435) 2 15 1500,
+	triggerdelay 1000 bm3
+
+if bm3 then
+
+	createexplosion (2811,3435) 131 100 blue
+
+
+if exp3a then
+
+	playsound "bombwhistle2.wav" (2501,3341) 2 15 1500,
+	triggerdelay 1000 bm3a
+
+if bm3a then
+
+	createexplosion (2501,3341) 131 100 blue
+
+
+
+ 
+ if boom2 then
+ 
+ 	random
+	
+		triggerdelay 500 exp4,
+		triggerdelay 500 exp5,
+		triggerdelay 500 exp6,
+		triggerdelay 500 exp6a
+
+
+if exp4 then
+
+	playsound "bombwhistle2.wav" (2668,3292) 2 15 1500,
+	triggerdelay 1000 bm4
+
+if bm4 then
+
+	createexplosion (2668,3292) 131 100 blue
+	
+if exp5 then
+
+	playsound "bombwhistle2.wav" (2351,3370) 2 15 1500,
+	triggerdelay 1000 bm5
+
+if bm5 then
+
+	createexplosion (2351,3370) 131 100 blue
+	
+	
+if exp6 then
+
+	playsound "bombwhistle2.wav" (2217,3432) 2 15 1500,
+	triggerdelay 1000 bm6
+
+if bm6 then
+
+	createexplosion (2217,3432) 131 100 blue
+
+
+if exp6a then
+
+	playsound "bombwhistle2.wav" (2282,3667) 2 15 1500,
+	triggerdelay 1000 bm6
+
+if bm6a then
+
+	createexplosion (2282,3667) 131 100 blue
+
+
+
+ 
+ 

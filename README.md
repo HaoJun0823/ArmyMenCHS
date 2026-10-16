@@ -14,22 +14,25 @@
 | **1 代** | Army Men (1998) | ✅ 已发布 | 164.65 MB | 233 文件 / 215.5 MB |
 | **2 代** | Army Men II (1999) | ✅ 已发布 | 151.38 MB | 350 文件 / 184.3 MB |
 | **3 代** | Toys in Space (1999) | ✅ 已发布 | 14.79 MB | 280 文件 / 36.7 MB |
-| **4 代** | Army Men: World War (2000) | ⬜ 待开工 | — | — |
+| **4 代** | Army Men: World War (2000) | 🔧 CI 已就绪 | — | — |
 
 > 体积取自 Release `汉化补丁-2026-10-16-00-26-32` 的实际产物。
 > 4 代与 2/3 代**同引擎**，可复用资产见
 > [`docs/11-am4-reuse-plan.md`](docs/11-am4-reuse-plan.md)。
+> 4 代的 CI 三段式已接好（`ci_build_am4` / `make_patch_am4` /
+> `verify_release_am4`，校验器 82 项），**唯一缺口是中文配音**：
+> `Army4_Voice_CHS/audio` 尚为空，构建会在该步按预期失败。
 
-三代的实现路径差异很大，**不是同一套代码改三次**：
+四代的实现路径差异很大，**不是同一套代码改四次**：
 
-| | 1 代 | 2 代 | 3 代 |
-|---|---|---|---|
-| 官方中文母盘 | ✅ 1998 上育版 | ✅ 1999 上育版 | ❌ 从未有 |
-| 可参考源码 | ✅ 全套 | ❌ | ❌ |
-| UI 文本 | exe `.rdata` 内存补丁 | exe `.rdata` 内存补丁 | 外置 `strings\strings.txt` |
-| 中文来源 | 差异移植母盘 | 差异移植母盘 | **从零翻译 + AI 配音** |
-| 注入代理 | `dsound.dll` | `dinput.dll` | `dinput.dll` |
-| 渲染改造 | 换 GDI 字体 | hook 4 个文字函数 | hook 4 个文字函数 |
+| | 1 代 | 2 代 | 3 代 | 4 代 |
+|---|---|---|---|---|
+| 官方中文母盘 | ✅ 1998 上育版 | ✅ 1999 上育版 | ❌ 从未有 | ❌ 从未有 |
+| 可参考源码 | ✅ 全套 | ❌ | ❌ | ❌ |
+| UI 文本 | exe `.rdata` 内存补丁 | exe `.rdata` 内存补丁 | 外置 `strings\strings.txt` | 外置 `strings\strings.txt` |
+| 中文来源 | 差异移植母盘 | 差异移植母盘 | **从零翻译 + AI 配音** | **从零翻译**（配音待做） |
+| 注入代理 | `dsound.dll` | `dinput.dll` | `dinput.dll` | `dinput.dll` |
+| 渲染改造 | 换 GDI 字体 | hook 4 个文字函数 | hook 5 个文字函数 | hook 5 个文字函数 |
 
 ---
 
@@ -44,16 +47,17 @@
 | 1 代 | `ArmyMen-CHS-Patch-*.zip` |
 | 2 代 | `ArmyMen2-CHS-Patch-*.zip` |
 | 3 代 | `ArmyMen3-CHS-Patch-*.zip` |
+| 4 代 | `ArmyMen4-CHS-Patch-*.zip` |
 
-细节见包内 `必读说明.txt`。三代共同的注意事项：
+细节见包内 `必读说明.txt`。四代共同的注意事项：
 
-- **不要**用兼容模式启动（补丁已集成 cnc-ddraw，自带窗口化与渲染修正）
+- **不要**用兼容模式启动（2/3/4 代补丁已集成 cnc-ddraw，自带窗口化与渲染修正）
 - **要**以管理员身份运行（写 `update\` 与注册表需要）
 - 设置请在**主菜单**里改，不要进游戏内改
 
 ### 开发者：构建
 
-三代都是同构的三段式（编译 → 组装 → 打包 → 独立校验）：
+四代都是同构的三段式（编译 → 组装 → 打包 → 独立校验）：
 
 ```powershell
 cd G:\Projects\ArmyMenCHS
@@ -74,22 +78,30 @@ python Tools\ci\verify_release_am2.py stage_am2
 python Tools\ci\ci_build_am3.py    --out build_out_am3 --verify
 python Tools\ci\make_patch_am3.py  --out stage_am3
 python Tools\ci\verify_release_am3.py stage_am3
+
+# 4 代（--audio 会把 Army4_Voice_CHS/audio 的配音拷进 update\；
+#        ★ 配音尚未生成，此步目前预期失败，见 docs/11 §2.2）
+python Tools\ci\compile_dll_wine.py --proj Army4_Extend_Dll
+python Tools\ci\ci_build_am4.py    --out build_out_am4 --verify
+python Tools\ci\make_patch_am4.py  --out stage_am4
+python Tools\ci\verify_release_am4.py stage_am4
 ```
 
 **任一步失败立即停止，不做静默容错。** 产物在各自的 `stage*/`。
 
 CI 在 `ubuntu-latest` 上用 `msvc-wine` 编译 MSVC v141 x86，每次 push
-构建三代产物并合并发布到同一个 Release。
+构建四代产物并合并发布到同一个 Release。
 
 ---
 
 ## 文档
 
-### 📖 想给 4 代做汉化 —— 先读这两份
+### 📖 想给 4 代做汉化 —— 先读这三份
 
 | 文档 | 内容 |
 |---|---|
 | **[`docs/11-am4-reuse-plan.md`](docs/11-am4-reuse-plan.md)** | **4 代复用方案**：dat 拆包回包、qwen3-tts 配音、bmp/png AI 汉化三条管线怎么接着用 |
+| **[`docs/13-am4-build-and-release.md`](docs/13-am4-build-and-release.md)** | **4 代构建与发布**：三段式命令、dat 权威值、82 项校验、14 项对抗验证、配音缺口 |
 | **[`docs/00-porting-map.md`](docs/00-porting-map.md)** | **移植地图**：当前状态、开工前四项核查、可复用工具清单、开工顺序 |
 
 ### 技术资料（1 代 / 通用）
@@ -154,18 +166,18 @@ Army3_Voice_CHS/         3 代中文配音（171 wav）+ 音色基线 + ASR/译�
 Army3_Object_CHS/        title.dat / shared.dat 解包贴图与回包产物
 Army3_Image_Data_CHS/    3 代位图资产
 ArmyMenSourceCode/       1998 官方源码（git submodule）
-cnc-ddraw/               ddraw.dll + 调优过的 ddraw.ini（MIT，2/3 代共用）
+cnc-ddraw/               ddraw.dll + 调优过的 ddraw.ini（MIT，2/3/4 代共用）
 compat/                  2 代 Windows 兼容性 shim 的导入/还原 .reg
 asi/dsound.dll           Ultimate ASI Loader v6.4（MIT）
 LICENSES/                三方许可全文（ASILoader / cnc-ddraw / qwen3-tts / GPLv3）
 Documents/               包内必读说明的源文件（各代一份）
 Tools/
-  ├─ ci/                 构建、打包、校验、对账（三代同构）
+  ├─ ci/                 构建、打包、校验、对账（四代同构）
   ├─ unpack_objects/     objects.dat 拆包/打包/可视化
-  ├─ am3_dat.py          3 代 dat 拆包（含 manifest 权威快照）
-  ├─ am3_dat_pack.py     3 代 dat 无损回包
-  ├─ tts/                qwen3-tts 配音生成管线（4 代可复用）
-  ├─ title/              dat 打包贴图烧字汉化（4 代可复用）
+  ├─ am3_dat.py          3 代 dat 拆包（含 manifest 权威快照；4 代魔数相同可复用）
+  ├─ am3_dat_pack.py     3 代 dat 无损回包（4 代同样走这个）
+  ├─ tts/                qwen3-tts 配音生成管线（4 代待复用）
+  ├─ title/              dat 打包贴图烧字汉化（4 代已复用，另有 am4_* 专用脚本）
   ├─ bmp_png_tool.py     8-bit 调色板 BMP ↔ PNG 可逆转换
   └─ exe_scan/           IDA 辅助的 exe 字符串表测绘
 docs/                    文档（见上）

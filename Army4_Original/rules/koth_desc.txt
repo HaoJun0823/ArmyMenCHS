@@ -1,0 +1,10 @@
+An army becomes king of the hill when its 
+troopers are the only ones on the hill. 
+The army scores 10 pts every 3 seconds it 
+remains king the hill.
+
+The current king of the hill is indicated
+by colored flags.
+
+The first player/team to reach the point
+goal wins.

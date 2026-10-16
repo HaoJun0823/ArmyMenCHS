@@ -1,0 +1,1547 @@
+{
+ "targets": 123,
+ "reuse": 118,
+ "rebuild": 5,
+ "items": [
+  {
+   "file": "obj_0001_k00080080.png",
+   "mode": "reuse-a3",
+   "src": "obj_0001_k00080080.png",
+   "sha256": "bd02779830487345f3196521351ba6a916d6a23bf9187cb2868c757fec27a86a"
+  },
+  {
+   "file": "obj_0005_k00100080.png",
+   "mode": "reuse-a3",
+   "src": "obj_0008_k00100080.png",
+   "sha256": "b9b45055f6b1be92b3cb8089962a4191182b71db5d1822389002e3c861f96d0e"
+  },
+  {
+   "file": "obj_0006_k00100100.png",
+   "mode": "reuse-a3",
+   "src": "obj_0009_k00100100.png",
+   "sha256": "509359917944fb17babbce362926f2f65290adc2780c5df75e0f7ea60c6c3195"
+  },
+  {
+   "file": "obj_0007_k00100180.png",
+   "mode": "reuse-a3",
+   "src": "obj_0010_k00100180.png",
+   "sha256": "ea6e0f965acbd7e065f456ab6ea0d63032787b2c26d783017194948a19ed4f41"
+  },
+  {
+   "file": "obj_0008_k00100200.png",
+   "mode": "reuse-a3",
+   "src": "obj_0011_k00100200.png",
+   "sha256": "abe3f869400795f22b53cb30ec364d1d461afa817b8b50f60fc717609c20b7fc"
+  },
+  {
+   "file": "obj_0009_k00100280.png",
+   "mode": "reuse-a3",
+   "src": "obj_0012_k00100280.png",
+   "sha256": "cd17f721c9794da769db3ebfebe632a01737248381a493835f17a5bc7f3755fe"
+  },
+  {
+   "file": "obj_0010_k00100300.png",
+   "mode": "reuse-a3",
+   "src": "obj_0013_k00100300.png",
+   "sha256": "3213b4373f7ed1d0a6fb88dbf2c7d44adb48d29b1569fd117f043e4ee055b4cd"
+  },
+  {
+   "file": "obj_0011_k00100380.png",
+   "mode": "reuse-a3",
+   "src": "obj_0014_k00100380.png",
+   "sha256": "6ce45b55ca9beace74221102e5915f864e7d65ea4e62604c2fe172ba012186b0"
+  },
+  {
+   "file": "obj_0013_k00100480.png",
+   "mode": "reuse-a3",
+   "src": "obj_0016_k00100480.png",
+   "sha256": "4926adff8e3d688d7fd6a6b9b44ceb7a57d7199c0f9161a2ca39b8e8e5fdf485"
+  },
+  {
+   "file": "obj_0014_k00100500.png",
+   "mode": "reuse-a3",
+   "src": "obj_0017_k00100500.png",
+   "sha256": "f5100a9f7d238f76748fb18727cfab6e161e9b992858408eba79af7f87361d9b"
+  },
+  {
+   "file": "obj_0015_k00100580.png",
+   "mode": "reuse-a3",
+   "src": "obj_0018_k00100580.png",
+   "sha256": "299cf411b8cba99bcac8981b823c7f0da9b6c053389c16a09254241f3ff54ccc"
+  },
+  {
+   "file": "obj_0017_k00100680.png",
+   "mode": "reuse-a3",
+   "src": "obj_0020_k00100680.png",
+   "sha256": "b9bd16b103d6ae42ce35e355b0df042bab64892d7e23da0c698fc3de64feb533"
+  },
+  {
+   "file": "obj_0018_k00100700.png",
+   "mode": "reuse-a3",
+   "src": "obj_0021_k00100700.png",
+   "sha256": "18f3cab2e1686c39547339dda6b94bedbe3d5ca038ed9d40785540f118e6c800"
+  },
+  {
+   "file": "obj_0019_k00100780.png",
+   "mode": "reuse-a3",
+   "src": "obj_0022_k00100780.png",
+   "sha256": "abca74addadd3c70dfd4b62e74cf26c4894e8d622de9a21eface760af9534037"
+  },
+  {
+   "file": "obj_0020_k00100800.png",
+   "mode": "reuse-a3",
+   "src": "obj_0023_k00100800.png",
+   "sha256": "d41579997fcf0ca162011b6d206ca50674a34b2a4c533b0f38b2e4f95b5e3a79"
+  },
+  {
+   "file": "obj_0021_k00100880.png",
+   "mode": "reuse-a3",
+   "src": "obj_0024_k00100880.png",
+   "sha256": "0ca98cf3f2cbe4607fe60bcc4cbdcfed3bcd33d1fb10d5dfdf23cb43f32b7b28"
+  },
+  {
+   "file": "obj_0022_k00100900.png",
+   "mode": "reuse-a3",
+   "src": "obj_0025_k00100900.png",
+   "sha256": "79e5afeeb1ecedbbf65f54c3c370fa5449f0acc9824fb7d9b12bce7756c824b9"
+  },
+  {
+   "file": "obj_0023_k00180100.png",
+   "mode": "reuse-a3",
+   "src": "obj_0026_k00180100.png",
+   "sha256": "af43d3768b8bb184394fc51f8e114e769a99e4e7102e7cac3f5c84f6e372cef8"
+  },
+  {
+   "file": "obj_0024_k00180101.png",
+   "mode": "reuse-a3",
+   "src": "obj_0027_k00180101.png",
+   "sha256": "cfb3158ba81a84efb391ecbaf3b0814d22248812fedb25e6ba802322d0d5fddc"
+  },
+  {
+   "file": "obj_0025_k00180102.png",
+   "mode": "reuse-a3",
+   "src": "obj_0028_k00180102.png",
+   "sha256": "e785bc2156cb6afa9c41eed73f1e7924ebeb9d8e1223c0cdc72ff0233a0fc81e"
+  },
+  {
+   "file": "obj_0026_k00180180.png",
+   "mode": "reuse-a3",
+   "src": "obj_0029_k00180180.png",
+   "sha256": "1c5e0952418ae77f4f96caa06a09bfac8f8afeb3d3c7b1575249e813f238a44b"
+  },
+  {
+   "file": "obj_0027_k00180181.png",
+   "mode": "reuse-a3",
+   "src": "obj_0030_k00180181.png",
+   "sha256": "45484874f34f44197f0300c1b4de4f094f1c67b1a5517050bea82ec8c2ff4369"
+  },
+  {
+   "file": "obj_0028_k00180182.png",
+   "mode": "reuse-a3",
+   "src": "obj_0031_k00180182.png",
+   "sha256": "5f7527f691ad8e922281847489733cd1bc5d91c05040312bd3df1e659cb61c01"
+  },
+  {
+   "file": "obj_0029_k00180200.png",
+   "mode": "reuse-a3",
+   "src": "obj_0032_k00180200.png",
+   "sha256": "084a509f46f06d804fe15679e439fb8eed2930f69cec797d6f780d939ada84f1"
+  },
+  {
+   "file": "obj_0030_k00180201.png",
+   "mode": "reuse-a3",
+   "src": "obj_0033_k00180201.png",
+   "sha256": "d6b7ab4a39a8a12d7a769d867ecdef528993bfa75c5b3d6e0d030bc66317fb36"
+  },
+  {
+   "file": "obj_0031_k00180202.png",
+   "mode": "reuse-a3",
+   "src": "obj_0034_k00180202.png",
+   "sha256": "52035ef4309aaf3f55fff92fc26d9e9994474a6148c016d92284e632f705343d"
+  },
+  {
+   "file": "obj_0032_k00180280.png",
+   "mode": "reuse-a3",
+   "src": "obj_0035_k00180280.png",
+   "sha256": "fc5433eb61e954dddfc62ff54d2096641f9eabb4a5ad46ec5c426dd20f40a33b"
+  },
+  {
+   "file": "obj_0033_k00180281.png",
+   "mode": "reuse-a3",
+   "src": "obj_0036_k00180281.png",
+   "sha256": "9a63a1afe6fed352a1f938d584e811b277bac891c5d1e35421bf9e938dbcfebb"
+  },
+  {
+   "file": "obj_0034_k00180282.png",
+   "mode": "reuse-a3",
+   "src": "obj_0037_k00180282.png",
+   "sha256": "6f920b1cda0e6f8ccf44a3f8e9c193e4d6011c2c8a3ef2f2a494c6459dc26ce1"
+  },
+  {
+   "file": "obj_0035_k00180380.png",
+   "mode": "reuse-a3",
+   "src": "obj_0038_k00180380.png",
+   "sha256": "7e782ed57f7e508f6d9c8f6070ef1c6b787044779dead372041bea40abf93fae"
+  },
+  {
+   "file": "obj_0036_k00180381.png",
+   "mode": "reuse-a3",
+   "src": "obj_0039_k00180381.png",
+   "sha256": "e551d877455498724a19797111e35d9b0eb46a02e0bdd116c2e7c7509ad0f400"
+  },
+  {
+   "file": "obj_0037_k00180382.png",
+   "mode": "reuse-a3",
+   "src": "obj_0040_k00180382.png",
+   "sha256": "be7c7ea87d0c3f4ab1e7f69f23e24e77497bd79ce7dcca35068554fe46c05711"
+  },
+  {
+   "file": "obj_0046_k00180580.png",
+   "mode": "reuse-a3",
+   "src": "obj_0049_k00180580.png",
+   "sha256": "a69eb3e97952b78a87252c081b42fc51f1c1b5aaab09e8d9b1b389c3f61b6dbe"
+  },
+  {
+   "file": "obj_0047_k00180581.png",
+   "mode": "reuse-a3",
+   "src": "obj_0050_k00180581.png",
+   "sha256": "95b997f2c46e57ee882874cd6033c208e2123a4cb2cadd790edde6021c8dcc7e"
+  },
+  {
+   "file": "obj_0048_k00180582.png",
+   "mode": "reuse-a3",
+   "src": "obj_0051_k00180582.png",
+   "sha256": "91d4f3d9aa070683eaf8937b336d2ebec14ef5dfb18e23ba9b4a6df69674ed4f"
+  },
+  {
+   "file": "obj_0049_k00180600.png",
+   "mode": "reuse-a3",
+   "src": "obj_0052_k00180600.png",
+   "sha256": "bfc7e7aab60773909598616ef0c468da94b8c0cfa5cd94364b01e347af9f74c7"
+  },
+  {
+   "file": "obj_0050_k00180601.png",
+   "mode": "reuse-a3",
+   "src": "obj_0053_k00180601.png",
+   "sha256": "cb07451fad46078aca0ed31908938c3edc09f73381fa0539ac86f0b4b9d90801"
+  },
+  {
+   "file": "obj_0051_k00180602.png",
+   "mode": "reuse-a3",
+   "src": "obj_0054_k00180602.png",
+   "sha256": "314a13b65cef4406da5365a0f892e09328b807adb017ef6728aeca2c89609186"
+  },
+  {
+   "file": "obj_0061_k00180780.png",
+   "mode": "reuse-a3",
+   "src": "obj_0064_k00180780.png",
+   "sha256": "54ef181291e8e4672cb7293608b5df9de254e2856177b2b807f65647d914d0fc"
+  },
+  {
+   "file": "obj_0062_k00180781.png",
+   "mode": "reuse-a3",
+   "src": "obj_0065_k00180781.png",
+   "sha256": "1270b7f5a3ab0319ffba3765e278a599b1ede8d371de12d3bb456140e836e662"
+  },
+  {
+   "file": "obj_0063_k00180782.png",
+   "mode": "reuse-a3",
+   "src": "obj_0066_k00180782.png",
+   "sha256": "47619e8f073cdb4f255c795a1847863464c488b477c7ad9bb23620ad0f6ea7ce"
+  },
+  {
+   "file": "obj_0064_k00180800.png",
+   "mode": "reuse-a3",
+   "src": "obj_0067_k00180800.png",
+   "sha256": "5a9b7cda23135c47db741b21e15a58a5fbceee18c9526a84b8d49d540530887f"
+  },
+  {
+   "file": "obj_0065_k00180801.png",
+   "mode": "reuse-a3",
+   "src": "obj_0068_k00180801.png",
+   "sha256": "80b4dfe79c221630e0433fcccde3ed6fa94a78dd143d1b8dc2120215a104abd6"
+  },
+  {
+   "file": "obj_0066_k00180802.png",
+   "mode": "reuse-a3",
+   "src": "obj_0069_k00180802.png",
+   "sha256": "fb29ee270565b700d6ae1f61b8b61054949fcdf2ffd0368277f7237e90078230"
+  },
+  {
+   "file": "obj_0071_k00180900.png",
+   "mode": "reuse-a3",
+   "src": "obj_0074_k00180900.png",
+   "sha256": "aba5b0c585aa75b76a80617431ad90e47f3e6c5dce97e9e31e1117daf8829fbb"
+  },
+  {
+   "file": "obj_0072_k00180901.png",
+   "mode": "reuse-a3",
+   "src": "obj_0075_k00180901.png",
+   "sha256": "2d3ce09a9304204ae46049efcbb2e6d5b8cd67fe875a79a27e796258b3ce13e5"
+  },
+  {
+   "file": "obj_0073_k00180902.png",
+   "mode": "reuse-a3",
+   "src": "obj_0076_k00180902.png",
+   "sha256": "fd18fd1082b99171e31cf96e9e5894f070a4234ebe6dbdc5f0fd48b5fc32def8"
+  },
+  {
+   "file": "obj_0074_k00180980.png",
+   "mode": "reuse-a3",
+   "src": "obj_0077_k00180980.png",
+   "sha256": "15b8482bff3d49ecdf7374636cb646bd3079416e008d22007baf3342c8407f8a"
+  },
+  {
+   "file": "obj_0075_k00180981.png",
+   "mode": "reuse-a3",
+   "src": "obj_0078_k00180981.png",
+   "sha256": "80ee85e9cdeb5d6c5e61ee0bf0280531eb0f29a995ce6bbf40eb9d02007de400"
+  },
+  {
+   "file": "obj_0076_k00180982.png",
+   "mode": "reuse-a3",
+   "src": "obj_0079_k00180982.png",
+   "sha256": "cfc999d8298ddeea3f072dedf264e3c26bb6dfeff7294595aa7df5be078ee582"
+  },
+  {
+   "file": "obj_0109_k00180F00.png",
+   "mode": "reuse-a3",
+   "src": "obj_0111_k00180F00.png",
+   "sha256": "3d012927d75b1da82d5bf883fceb040e9a630602c9a8eb7873addef54420b535"
+  },
+  {
+   "file": "obj_0110_k00180F01.png",
+   "mode": "reuse-a3",
+   "src": "obj_0112_k00180F01.png",
+   "sha256": "fd830163f6a0ebb5d3db02ae8e2819004bb74d8938fc02e7b0e51e557c9717ab"
+  },
+  {
+   "file": "obj_0111_k00180F02.png",
+   "mode": "reuse-a3",
+   "src": "obj_0113_k00180F02.png",
+   "sha256": "d305aa53579577b2d778caf4a74bedf455bedf147e59574030879f508e75bed0"
+  },
+  {
+   "file": "obj_0119_k00181080.png",
+   "mode": "reuse-a3",
+   "src": "obj_0121_k00181080.png",
+   "sha256": "4a6517dcdfd6c14675d0349de07395159d926c70b5c4dbbb9f4894298b30d3c1"
+  },
+  {
+   "file": "obj_0120_k00181081.png",
+   "mode": "reuse-a3",
+   "src": "obj_0122_k00181081.png",
+   "sha256": "5055958cde2bbf3cbdf28fc19de9240069d50ff1c0bcbac1e68c625905d3028f"
+  },
+  {
+   "file": "obj_0122_k00183200.png",
+   "mode": "reuse-a3",
+   "src": "obj_0124_k00183200.png",
+   "sha256": "bd8b295c26b260382a149843a7f0e65e1f3b4634f36bd1821691c0d72fb45587"
+  },
+  {
+   "file": "obj_0123_k00183201.png",
+   "mode": "reuse-a3",
+   "src": "obj_0125_k00183201.png",
+   "sha256": "154ee31a6f38ab89c177a6d42e4a14ff65144cd4e4dded6bdb1432cd1531f8e6"
+  },
+  {
+   "file": "obj_0124_k00183202.png",
+   "mode": "reuse-a3",
+   "src": "obj_0126_k00183202.png",
+   "sha256": "f60f128db44790664b73a485dc1a477ec45d2055d77cb6eed95aba6afa22700a"
+  },
+  {
+   "file": "obj_0125_k00183280.png",
+   "mode": "reuse-a3",
+   "src": "obj_0127_k00183280.png",
+   "sha256": "d77c270574559d7fe0e0035c7212aebaa965bd10f5726750ee3c4b20e7d875ec"
+  },
+  {
+   "file": "obj_0126_k00183281.png",
+   "mode": "reuse-a3",
+   "src": "obj_0128_k00183281.png",
+   "sha256": "cdfbf4867451a9b6817acbc178513f9ca96cfd8447e10478fcad6724d7872a3c"
+  },
+  {
+   "file": "obj_0127_k00183282.png",
+   "mode": "reuse-a3",
+   "src": "obj_0129_k00183282.png",
+   "sha256": "7893ab8ef10fe0b0b86cc04cd7f3e62542657c1f5f6178e95be2b6c12d7207bb"
+  },
+  {
+   "file": "obj_0128_k00183300.png",
+   "mode": "reuse-a3",
+   "src": "obj_0130_k00183300.png",
+   "sha256": "977a51464e8ee73e778f64047fd12fcd58b37e19fa1c66b30bcd138d68cc2c4c"
+  },
+  {
+   "file": "obj_0129_k00183301.png",
+   "mode": "reuse-a3",
+   "src": "obj_0131_k00183301.png",
+   "sha256": "ec9e1cef6ab89d9dd8358a8f2b190a9aba234195acc47eb1a6b7f101387b01e6"
+  },
+  {
+   "file": "obj_0130_k00183302.png",
+   "mode": "reuse-a3",
+   "src": "obj_0132_k00183302.png",
+   "sha256": "bac1c874c1978a67caa29c532b1c3c04bf8b2463e802e0f38fc4844b6cdd4b54"
+  },
+  {
+   "file": "obj_0131_k00183380.png",
+   "mode": "reuse-a3",
+   "src": "obj_0133_k00183380.png",
+   "sha256": "68e46a69206f9b07ddfe1ee0e06cf9d42b399450b06a7304136f525d2930f861"
+  },
+  {
+   "file": "obj_0132_k00183381.png",
+   "mode": "reuse-a3",
+   "src": "obj_0134_k00183381.png",
+   "sha256": "25a7daf4a34ba1c240656da0d9ff778463ef244190905008d200af0ce1c312e5"
+  },
+  {
+   "file": "obj_0133_k00183382.png",
+   "mode": "reuse-a3",
+   "src": "obj_0135_k00183382.png",
+   "sha256": "7cae2aa686b96693afc108561458d72ecb71ca2a2f51c9a19e78e86716de2d1f"
+  },
+  {
+   "file": "obj_0134_k00183400.png",
+   "mode": "reuse-a3",
+   "src": "obj_0136_k00183400.png",
+   "sha256": "357876b246fbbcbed4b749421d96e177a7cf17b571ab7f02ae270cb65ceb290e"
+  },
+  {
+   "file": "obj_0135_k00183401.png",
+   "mode": "reuse-a3",
+   "src": "obj_0137_k00183401.png",
+   "sha256": "c439bc3c8f195c0ee2ef296551454f1f62c4dfbb9f3ed1969bb787b0f6378894"
+  },
+  {
+   "file": "obj_0136_k00183402.png",
+   "mode": "reuse-a3",
+   "src": "obj_0138_k00183402.png",
+   "sha256": "d5dcd77146a2bbce75e92f2b3a90c6d58391eb4a2c875feb5e7b9d76f1ef3f6c"
+  },
+  {
+   "file": "obj_0137_k00183480.png",
+   "mode": "reuse-a3",
+   "src": "obj_0139_k00183480.png",
+   "sha256": "1dde40a6db1b8c39ea31aed0c3c1d67a32519cc9257fd812c38105f726352af9"
+  },
+  {
+   "file": "obj_0138_k00183481.png",
+   "mode": "reuse-a3",
+   "src": "obj_0140_k00183481.png",
+   "sha256": "4c0f4e0d2b9da8467ead596f6176e09fbcf5cde2063e35b8c9ac28b7191a936a"
+  },
+  {
+   "file": "obj_0139_k00183482.png",
+   "mode": "reuse-a3",
+   "src": "obj_0141_k00183482.png",
+   "sha256": "83c56de4c459b9cb596051df53ced0d76cc8e7a885ea584af4efce334f03f2b3"
+  },
+  {
+   "file": "obj_0140_k00183500.png",
+   "mode": "reuse-a3",
+   "src": "obj_0142_k00183500.png",
+   "sha256": "4cdd98e2f22bf98aa751929d8bc478e165f53bdf7596473cff65a299109f45b0"
+  },
+  {
+   "file": "obj_0141_k00183501.png",
+   "mode": "reuse-a3",
+   "src": "obj_0143_k00183501.png",
+   "sha256": "c4d2ccd3d98c2cd57209b70662146a2cef27958eb0d1f5f659ff01f9305fcf80"
+  },
+  {
+   "file": "obj_0142_k00183502.png",
+   "mode": "reuse-a3",
+   "src": "obj_0144_k00183502.png",
+   "sha256": "fa0c0bfc2d436e9cbba596e5ab9e97f9d154761b0ce8a9ca4df46e8c0af083c2"
+  },
+  {
+   "file": "obj_0143_k00183580.png",
+   "mode": "reuse-a3",
+   "src": "obj_0145_k00183580.png",
+   "sha256": "6c42c1f8a6eb5d7a05feaf64189088280868f584af9df56cccefd31461926eaa"
+  },
+  {
+   "file": "obj_0144_k00183581.png",
+   "mode": "reuse-a3",
+   "src": "obj_0146_k00183581.png",
+   "sha256": "e303ac07affee7b11d0367eff25024c6c01e2180a4dfeea52a525b54dc262132"
+  },
+  {
+   "file": "obj_0145_k00183582.png",
+   "mode": "reuse-a3",
+   "src": "obj_0147_k00183582.png",
+   "sha256": "70e63a8ec4c41f8ebf11dc317aecfc1c47b7493a50917e8d2b5d99c090d49f2c"
+  },
+  {
+   "file": "obj_0146_k00183600.png",
+   "mode": "reuse-a3",
+   "src": "obj_0148_k00183600.png",
+   "sha256": "dcd58b92994b129db5942d2bc2f368bcbe66b4f850f94291a014834d8b8738c0"
+  },
+  {
+   "file": "obj_0147_k00183601.png",
+   "mode": "reuse-a3",
+   "src": "obj_0149_k00183601.png",
+   "sha256": "81a30822d09ec41c5397cd0147207ee4edf22408ec35131991d9dfc2d3b73aac"
+  },
+  {
+   "file": "obj_0148_k00183602.png",
+   "mode": "reuse-a3",
+   "src": "obj_0150_k00183602.png",
+   "sha256": "f046a3a7004ff0a197451b44829d3e098af548d3ccf613c15ac389d49d48b85f"
+  },
+  {
+   "file": "obj_0149_k00183700.png",
+   "mode": "reuse-a3",
+   "src": "obj_0151_k00183700.png",
+   "sha256": "4f1cf24b9de00d468bdad66cd98441e19515441aa30d0f1cf0aa82e1a336b2c6"
+  },
+  {
+   "file": "obj_0150_k00183701.png",
+   "mode": "reuse-a3",
+   "src": "obj_0152_k00183701.png",
+   "sha256": "813754fa449231ee51739b05077dbe823952037d027d1ae999710ff6e132e389"
+  },
+  {
+   "file": "obj_0151_k00183702.png",
+   "mode": "reuse-a3",
+   "src": "obj_0153_k00183702.png",
+   "sha256": "7aa0d53dcb1cb25bd21a8036ad352da06557ba58856c12fe8760cd5011567667"
+  },
+  {
+   "file": "obj_0152_k00183780.png",
+   "mode": "reuse-a3",
+   "src": "obj_0154_k00183780.png",
+   "sha256": "8212e5db1399e96e3b557e67a3b66d073dc154c189ec8a142b81fb53d45c62be"
+  },
+  {
+   "file": "obj_0153_k00183781.png",
+   "mode": "reuse-a3",
+   "src": "obj_0155_k00183781.png",
+   "sha256": "4d44bc01d88a63d875bfdfe1903d0e480403f17b7cbffc9546746ef3e21e8ea6"
+  },
+  {
+   "file": "obj_0154_k00183782.png",
+   "mode": "reuse-a3",
+   "src": "obj_0156_k00183782.png",
+   "sha256": "6772c06ab86437e57ec1b3c9ed5ff1fb6adcc89c039d4f1d868457baecd6aeb3"
+  },
+  {
+   "file": "obj_0155_k00183C00.png",
+   "mode": "reuse-a3",
+   "src": "obj_0157_k00183C00.png",
+   "sha256": "f74beaf5837b88b51ace731bf7ff45b3056a2d72d5c2ee69a7e1ffbfbfd183e3"
+  },
+  {
+   "file": "obj_0156_k00183C01.png",
+   "mode": "reuse-a3",
+   "src": "obj_0158_k00183C01.png",
+   "sha256": "648352371ef0ac8f0d547386778142230c985469413a03b18d9abc6c7f97d029"
+  },
+  {
+   "file": "obj_0157_k00183C02.png",
+   "mode": "reuse-a3",
+   "src": "obj_0159_k00183C02.png",
+   "sha256": "bc245f540a1d3a0f1119bf0e27d2459ec668168b7370857666ca7efe25e6f553"
+  },
+  {
+   "file": "obj_0158_k00183C80.png",
+   "mode": "reuse-a3",
+   "src": "obj_0160_k00183C80.png",
+   "sha256": "5bc942ac6d1731b468aba39de9bd4752b61ddce3e9a9b9bbd02bcfb00fe04941"
+  },
+  {
+   "file": "obj_0159_k00183C81.png",
+   "mode": "reuse-a3",
+   "src": "obj_0161_k00183C81.png",
+   "sha256": "011707d7f7f7ae532bebf0dba536ef3708b6e019cf60c643714d33f348d280f9"
+  },
+  {
+   "file": "obj_0160_k00183C82.png",
+   "mode": "reuse-a3",
+   "src": "obj_0162_k00183C82.png",
+   "sha256": "0a3f68ba6e8057160a169f9af85ce37d7ec780f5508a15a07d862ac5162f7c62"
+  },
+  {
+   "file": "obj_0161_k00183D00.png",
+   "mode": "reuse-a3",
+   "src": "obj_0163_k00183D00.png",
+   "sha256": "11cfee2e273203c12f14a761d9e7acf6f585fd2de50bfe49219455a550539af4"
+  },
+  {
+   "file": "obj_0162_k00183D01.png",
+   "mode": "reuse-a3",
+   "src": "obj_0164_k00183D01.png",
+   "sha256": "2978afbd9260a140010bb095937f429fe20b8102eb4721f2db49c38d2d9fbdf1"
+  },
+  {
+   "file": "obj_0163_k00183D02.png",
+   "mode": "reuse-a3",
+   "src": "obj_0165_k00183D02.png",
+   "sha256": "93e70b1622a88ebb486918b96b2b8ee0c77ea6da0bcbd80bf1fe6847c78b42cb"
+  },
+  {
+   "file": "obj_0164_k00183D80.png",
+   "mode": "reuse-a3",
+   "src": "obj_0166_k00183D80.png",
+   "sha256": "b33b0110b64a60c17d5f096081341bd3fba4b785c1ae845d2273b98a4aa7e327"
+  },
+  {
+   "file": "obj_0165_k00183D81.png",
+   "mode": "reuse-a3",
+   "src": "obj_0167_k00183D81.png",
+   "sha256": "762ba1abbb66657dc6dcfdafa5cbcb47d88b047ff6cd35f047b712be463480eb"
+  },
+  {
+   "file": "obj_0166_k00183D82.png",
+   "mode": "reuse-a3",
+   "src": "obj_0168_k00183D82.png",
+   "sha256": "736a14b077f20131df106995f825490c6b336b7402736c4d3fe326ad6e92ad78"
+  },
+  {
+   "file": "obj_0167_k00183E00.png",
+   "mode": "reuse-a3",
+   "src": "obj_0169_k00183E00.png",
+   "sha256": "7d3e6d5b10d7885cb20f2c7efd99deca728df429abe8d84d70a64e712e70ac8e"
+  },
+  {
+   "file": "obj_0168_k00183E01.png",
+   "mode": "reuse-a3",
+   "src": "obj_0170_k00183E01.png",
+   "sha256": "4a27c3609f33c0636dfdf163ca4cd27932c67c6e209fd726c9fe4d2da65abac9"
+  },
+  {
+   "file": "obj_0169_k00183E02.png",
+   "mode": "reuse-a3",
+   "src": "obj_0171_k00183E02.png",
+   "sha256": "d0a960774555cd93721902f4dc11919bb47717442845ab90e3c1ccb81e85a4bb"
+  },
+  {
+   "file": "obj_0170_k00183E80.png",
+   "mode": "reuse-a3",
+   "src": "obj_0172_k00183E80.png",
+   "sha256": "10bfc96a901dad94c966040a05100ca82bbb9ca895816d4b493b7c67adab6558"
+  },
+  {
+   "file": "obj_0171_k00183E81.png",
+   "mode": "reuse-a3",
+   "src": "obj_0173_k00183E81.png",
+   "sha256": "51b018db2c78054a6c180ad77ee8077357a5a83696d244363b3f4247877ebc78"
+  },
+  {
+   "file": "obj_0172_k00183E82.png",
+   "mode": "reuse-a3",
+   "src": "obj_0174_k00183E82.png",
+   "sha256": "dc4ddbfd128b7cec3d30f8f304584699e3bc9fb680a64abcb4ef200c89be2f4c"
+  },
+  {
+   "file": "obj_0173_k00183F00.png",
+   "mode": "reuse-a3",
+   "src": "obj_0175_k00183F00.png",
+   "sha256": "aae0d31f75c4cebe42c263af089d49d7d977fabd84dd26588a70604dffad6fda"
+  },
+  {
+   "file": "obj_0174_k00183F01.png",
+   "mode": "reuse-a3",
+   "src": "obj_0176_k00183F01.png",
+   "sha256": "de9d7402c4cc3e4d87f4a9d8a3c259da159761b752143a921f7345a9725cf695"
+  },
+  {
+   "file": "obj_0175_k00183F02.png",
+   "mode": "reuse-a3",
+   "src": "obj_0177_k00183F02.png",
+   "sha256": "be0eed95ec2eb83c1201b7ff34f1dcc5ca7a5eb032a3af4db838d7910635b64a"
+  },
+  {
+   "file": "obj_0176_k00183F80.png",
+   "mode": "reuse-a3",
+   "src": "obj_0178_k00183F80.png",
+   "sha256": "c35c5b87908266239727afec9f507ce7087965ad9717d25e8b299283fc1dbe58"
+  },
+  {
+   "file": "obj_0177_k00183F81.png",
+   "mode": "reuse-a3",
+   "src": "obj_0179_k00183F81.png",
+   "sha256": "1f150f071a31c01a8870b39b671d7ae8da144f4caee4cebcc21a58bdde9924c6"
+  },
+  {
+   "file": "obj_0178_k00183F82.png",
+   "mode": "reuse-a3",
+   "src": "obj_0180_k00183F82.png",
+   "sha256": "ac65e2b1a5f42404ccaac4435c0e6028f29a76d9a7084388bb14b656a0c072bd"
+  },
+  {
+   "file": "obj_0179_k00184000.png",
+   "mode": "reuse-a3",
+   "src": "obj_0181_k00184000.png",
+   "sha256": "513b8f6158c7449d02990b9fdee58dfc1173ac226b53ee35088209762b590e50"
+  },
+  {
+   "file": "obj_0180_k00184001.png",
+   "mode": "reuse-a3",
+   "src": "obj_0182_k00184001.png",
+   "sha256": "b18c8d25612856b423243b9a9ae3bb75a7ee99e901594868d05964b5ac525ea5"
+  },
+  {
+   "file": "obj_0181_k00184002.png",
+   "mode": "reuse-a3",
+   "src": "obj_0183_k00184002.png",
+   "sha256": "c8693dbaa4bf3abe2a479559d1f7b4eecb7b039f91941341d62b0c485f35470b"
+  },
+  {
+   "file": "obj_0182_k00184080.png",
+   "mode": "reuse-a3",
+   "src": "obj_0184_k00184080.png",
+   "sha256": "3ab1952d34d255a6a63b51cd05a29a0176efb088d0322506423ca47d401afc2e"
+  },
+  {
+   "file": "obj_0183_k00184081.png",
+   "mode": "reuse-a3",
+   "src": "obj_0185_k00184081.png",
+   "sha256": "c79d54e0163cf07baa0dcdc4ec13462d91bcff88c6983f6a832f0c529a0174b6"
+  },
+  {
+   "file": "obj_0184_k00184082.png",
+   "mode": "reuse-a3",
+   "src": "obj_0186_k00184082.png",
+   "sha256": "33dd319997d5af00eeeae64620e4d93b0ac7a63ebbd232e53ead5d2c78a085e9"
+  },
+  {
+   "file": "obj_0002_k00080180.png",
+   "mode": "rebuild-a4",
+   "sha256": "374c84a182de8b1026ab5deaeb16df8fac52169994ead36d07d85a7b9d90fb19",
+   "items": [
+    {
+     "idx": 1,
+     "text": "自定义按键",
+     "box": [
+      206,
+      18,
+      69,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      175,
+      20,
+      306,
+      27
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 2
+    },
+    {
+     "idx": 2,
+     "text": "直接控制",
+     "box": [
+      78,
+      58,
+      55,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      52,
+      60,
+      158,
+      67
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 2
+    },
+    {
+     "idx": 3,
+     "text": "小队控制",
+     "box": [
+      296,
+      58,
+      55,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      270,
+      60,
+      376,
+      67
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 2
+    },
+    {
+     "idx": 4,
+     "text": "前进",
+     "box": [
+      139,
+      80,
+      27,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      126,
+      83,
+      178,
+      89
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 5,
+     "text": "攻击",
+     "box": [
+      349,
+      80,
+      27,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      343,
+      83,
+      381,
+      89
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 6,
+     "text": "后退",
+     "box": [
+      142,
+      104,
+      27,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      126,
+      107,
+      183,
+      113
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 7,
+     "text": "防御",
+     "box": [
+      348,
+      104,
+      27,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      343,
+      107,
+      379,
+      113
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 8,
+     "text": "左转",
+     "box": [
+      138,
+      128,
+      27,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      126,
+      131,
+      177,
+      137
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 9,
+     "text": "待命射击",
+     "box": [
+      344,
+      128,
+      55,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      343,
+      131,
+      400,
+      137
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 10,
+     "text": "右转",
+     "box": [
+      144,
+      152,
+      27,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      126,
+      155,
+      187,
+      161
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 11,
+     "text": "停止射击",
+     "box": [
+      341,
+      152,
+      55,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      343,
+      155,
+      393,
+      161
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 2,
+     "top_over": 3
+    },
+    {
+     "idx": 12,
+     "text": "左翻滚",
+     "box": [
+      131,
+      176,
+      41,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      126,
+      179,
+      176,
+      185
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 13,
+     "text": "右翻滚",
+     "box": [
+      136,
+      200,
+      41,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      126,
+      203,
+      185,
+      209
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 14,
+     "text": "杂项控制",
+     "box": [
+      290,
+      204,
+      55,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      270,
+      206,
+      365,
+      213
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 2
+    },
+    {
+     "idx": 15,
+     "text": "跪卧",
+     "box": [
+      152,
+      224,
+      27,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      126,
+      227,
+      203,
+      233
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 16,
+     "text": "聊天",
+     "box": [
+      342,
+      224,
+      27,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      343,
+      227,
+      368,
+      233
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 17,
+     "text": "卧倒",
+     "box": [
+      124,
+      248,
+      27,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      126,
+      251,
+      147,
+      257
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 3,
+     "top_over": 3
+    },
+    {
+     "idx": 18,
+     "text": "地图／目标",
+     "box": [
+      353,
+      248,
+      69,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      343,
+      251,
+      431,
+      257
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 20,
+     "text": "行走",
+     "box": [
+      127,
+      272,
+      27,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      126,
+      275,
+      154,
+      281
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 21,
+     "text": "全选",
+     "box": [
+      358,
+      272,
+      27,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      343,
+      275,
+      399,
+      281
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 22,
+     "text": "开火",
+     "box": [
+      122,
+      296,
+      27,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      126,
+      299,
+      144,
+      305
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 4,
+     "top_over": 3
+    },
+    {
+     "idx": 23,
+     "text": "切换武器",
+     "box": [
+      136,
+      320,
+      55,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      126,
+      323,
+      201,
+      329
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 24,
+     "text": "丢弃物品",
+     "box": [
+      126,
+      344,
+      55,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      126,
+      347,
+      179,
+      353
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 1,
+     "top_over": 3
+    },
+    {
+     "idx": 25,
+     "text": "轻松发射迫击炮",
+     "box": [
+      304,
+      367,
+      97,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      296,
+      370,
+      408,
+      376
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    },
+    {
+     "idx": 26,
+     "text": "离开载具",
+     "box": [
+      132,
+      368,
+      55,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      126,
+      371,
+      191,
+      377
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    }
+   ],
+   "new_colors": []
+  },
+  {
+   "file": "obj_0003_k00080200.png",
+   "mode": "rebuild-a4",
+   "sha256": "ab948be0b53fa15bb5c5b2c903407364caf3378db8939becc758fa6ecda696cf",
+   "items": [
+    {
+     "idx": 1,
+     "text": "多人选项",
+     "box": [
+      291,
+      18,
+      55,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      252,
+      20,
+      384,
+      27
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 2
+    },
+    {
+     "idx": 2,
+     "text": "伤亡补充延迟（秒）",
+     "box": [
+      96,
+      370,
+      125,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      24,
+      372,
+      293,
+      379
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 2
+    },
+    {
+     "idx": 3,
+     "text": "道具补充延迟（秒）",
+     "box": [
+      100,
+      396,
+      125,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      24,
+      399,
+      301,
+      406
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    }
+   ],
+   "new_colors": []
+  },
+  {
+   "file": "obj_0012_k00100400.png",
+   "mode": "rebuild-a4",
+   "sha256": "cd3bb66c925c576a1e707c06c109ac7fb27d6654f3cdfa5545c09601262c2719",
+   "items": [
+    {
+     "idx": 1,
+     "text": "另存为…",
+     "box": [
+      144,
+      18,
+      55,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      148,
+      20,
+      195,
+      27
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 3,
+     "top_over": 2
+    },
+    {
+     "idx": 2,
+     "text": "存档列表",
+     "box": [
+      150,
+      86,
+      55,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      137,
+      88,
+      218,
+      95
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 2
+    }
+   ],
+   "new_colors": []
+  },
+  {
+   "file": "obj_0016_k00100600.png",
+   "mode": "rebuild-a4",
+   "sha256": "e57eaa7b50a0c63a12bf5ddeb4a5b494323cef251b629339ca6e0c92304d1642",
+   "items": [
+    {
+     "idx": 1,
+     "text": "影片库",
+     "box": [
+      208,
+      18,
+      41,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      185,
+      20,
+      272,
+      27
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 2
+    },
+    {
+     "idx": 2,
+     "text": "选择要观看的影片",
+     "box": [
+      174,
+      52,
+      111,
+      13
+     ],
+     "gh": 13,
+     "src_box": [
+      155,
+      55,
+      303,
+      62
+     ],
+     "color": [
+      255,
+      251,
+      240
+     ],
+     "overflow": 0,
+     "top_over": 3
+    }
+   ],
+   "new_colors": []
+  },
+  {
+   "file": "obj_0121_k00181082.png",
+   "mode": "rebuild-a4",
+   "sha256": "70abf19fe12f74184dcd7cdaa7ebd21d95d80600f59fff393095c551b96a4304",
+   "items": [
+    {
+     "idx": 1,
+     "text": "开始",
+     "box": [
+      16,
+      5,
+      23,
+      11
+     ],
+     "gh": 11,
+     "src_box": [
+      11,
+      7,
+      42,
+      13
+     ],
+     "color": [
+      41,
+      223,
+      41
+     ],
+     "overflow": 0,
+     "top_over": 2
+    }
+   ],
+   "new_colors": []
+  }
+ ]
+}

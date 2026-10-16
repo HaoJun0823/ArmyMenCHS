@@ -1,0 +1,831 @@
+//**AMWWpc Map #2 "Death_walk".  Map concept and layout created by Jason Wildblood**//
+
+//***Preloaded Sprited***//
+//~windmill~//
+preloadsprite   37 403 00
+preloadsprite   37 403 01
+preloadsprite   37 403 02
+preloadsprite   37 403 03
+preloadsprite   37 403 04
+preloadsprite   37 403 05
+
+
+//*Pad Definitions*/
+/Startpads/
+pad Unit1                                      10
+pad Unit2                                      11
+pad Unit3                                      12
+pad Unit4                                      13
+pad Unit5                                      14
+
+/for start movie/
+pad tanattacker1                               100
+pad tanattacker2                               101
+pad tanattacker3                               102
+pad tanattacker4                               103
+
+//**Units going to radar**//
+
+pad     radarundeppad255                        255     npc
+
+if startup1 then
+        trigger makegreens,
+		setcamerafocus J._Wildman,
+        playsound "beach1_nomusic.wav" 3 0 1,
+        trigger maketanss,
+        playsound "ocean_ambience.wav" HigDoor1 4 3 300 1,
+	triggerdelay 1000 D_DayStart1
+
+variable numgreennnn 5
+
+//****Startup go codes****//
+
+pad balancepad  210
+
+if D_DayStart1 then
+	showpda "摧毁北方的棕军雷达站。",
+        triggerdelay 500 initbombem1,
+        triggerdelay 2500 initbombem2,
+        triggerdelay 1000 Openhig_random,
+        triggerdelay 1500 startinitmovie01,
+        triggerdelay 2000 startinitmovie_02,
+        triggerdelay 1500 startinitmovieT03,
+        triggerdelay 1000 startinitmovie1,
+        triggerdelay 1200 MovewinnersA3,
+        triggerdelay 1000 finishmovie,
+        triggerdelay 10000 bombem,
+        createunit "balanceunit" rifleman balancepad green 0 bazooka -1,
+	createvehicle "tanackgun1" ackackgun (672,2694) tan,
+	setgunfacing tanackgun1 190,
+	createunit "tanackgunman" rifleman tanackackgun tan 0,
+      	entervehicle tanackgunman tanackgun1,
+	createvehicle "tanackgun2" ackackgun (1939,941) tan,
+	setgunfacing tanackgun2 160,
+	createunit "tanackgunman2" rifleman (1436,1108) tan 0,
+        triggerdelay 1000 ordergunman2,
+        //triggerdelay 3000 tanackackrotate,
+        setitemflag flagman strategic 1,
+        setnpc balanceunit 1,
+        setaimode balanceunit ignore,
+        damage aaguntan 10000,
+        createpowerup "balancepower" paratroopers balancepad -1,
+        moveitem balanceunit balancepad,
+        moveitem balancepower balancepad
+
+//***ackackgun gun facing***
+
+//pad tanckgunpad1                                230 green
+//pad ackgunattackers1                            131 noone
+
+//pad tanckgunpad2                                240 green
+//pad ackgunattackers2                            130 noone
+pad tanckguntanpad2                              240 tanackgunman2
+
+Pad tanunitmangun                               242  tanackgunman2
+
+
+variable ackgunfacingvar 0
+variable _2ackgunfacingvar 20
+variable unit2var 0
+
+if hit green trooper by tanackgun1 butnot onehittanackgun then
+        triggerdelay 1 Checkbalance,
+        clearfog tanackgun1,
+        trigger onehittanackgun
+
+if hit green trooper by tanackgun2 butnot onehittanackgun2 then
+        triggerdelay 1 Checkbalance,
+        clearfog tanackgun2,
+        trigger onehittanackgun2
+
+//*** Init bombing***/
+if initbombem1 butnot onceinitbomem1 then
+        playsound "bombwhistle2.wav" 14 1,
+        triggerdelay 1000 initbmdef1,
+        trigger onceinitbomem1
+
+if initbmdef1 then
+        createexplosion (2719,2758) 131 1 blue
+
+if initbombem2 butnot onceinitbomem2 then
+        playsound "bombwhistle2.wav" 14 1,
+        triggerdelay 1000 initbmdef2,
+        trigger onceinitbomem2
+
+if initbmdef2 then
+        createexplosion (2737,2601) 131 1 blue
+
+
+//**ackgun
+
+
+
+if hit tanackgunman2 then
+        order tanackgunman2 goto tanckguntanpad2 inmode ignore,
+        setvar unit2var 20
+if ordergunman2 testvar unit2var = 0 then
+        setspeed tanackgunman2 slow,
+        order tanackgunman2 goto (1870,1211) inmode defend,
+        triggerdelay 6000 ord2
+if ord2 testvar unit2var = 0 then
+        order tanackgunman2 goto (1499,749) inmode defend,
+        triggerdelay 10000 ord3
+if ord3 testvar unit2var = 0 then
+        order tanackgunman2 goto (1416,1086) inmode defend,
+        triggerdelay 4000 ordergunman2
+
+if padon tanunitmangun butnot onetanunitmangun then
+         entervehicle tanackgunman2 tanackgun2
+
+
+if padon tanckguntanpad2 butnot tanckguntanpad2trig then
+        triggerdelay 1 Checkbalance,
+        setvar _2ackgunfacingvar 0,
+        setvar unit2var 20
+       	//triggerdelay 1000 _2tanackackrotate
+
+if hit tanackgun1 butnot onehittanackgun1 then
+        setvar ackgunfacingvar 21,
+        triggerdelay 1 onehittanackgun1
+
+if hit tanackgun2 butnot onehittanackgun2 then
+        setvar _2ackgunfacingvar 21,
+        triggerdelay 1 onehittanackgun2
+
+
+//**Tanack gun spin1**//
+if tanackackrotate testvar ackgunfacingvar = 0 then
+	setgunfacing tanackgun1 60,
+ 	addvar ackgunfacingvar 1,
+	triggerdelay 3000 tanackackrotate1
+
+
+if tanackackrotate1 testvar ackgunfacingvar = 1 then
+	setgunfacing tanackgun1 90,
+ 	addvar ackgunfacingvar 1,
+	triggerdelay 3000 tanackackrotate2
+
+if tanackackrotate2 testvar ackgunfacingvar = 2 then
+	setgunfacing tanackgun1 120,
+ 	addvar ackgunfacingvar 1,
+	triggerdelay 3000 tanackackrotate3
+
+if tanackackrotate3 testvar ackgunfacingvar = 3 then
+	setgunfacing tanackgun1 150,
+ 	addvar ackgunfacingvar 1,
+	triggerdelay 3000 tanackackrotate4
+
+if tanackackrotate4 testvar ackgunfacingvar = 4 then
+	setgunfacing tanackgun1 180,
+ 	addvar ackgunfacingvar 1,
+	triggerdelay 3000 tanackackrotate5
+
+if tanackackrotate5 testvar ackgunfacingvar = 5 then
+	setgunfacing tanackgun1 210,
+ 	addvar ackgunfacingvar 1,
+	triggerdelay 3000 tanackackrotate6
+
+if tanackackrotate6 testvar ackgunfacingvar = 6 then
+	setgunfacing tanackgun1 240,
+ 	addvar ackgunfacingvar 1,
+	triggerdelay 3000 tanackackrotate7
+
+if tanackackrotate7 testvar ackgunfacingvar = 7 then
+	setgunfacing tanackgun1 0,
+ 	setvar ackgunfacingvar 0,
+	triggerdelay 3000 tanackackrotate
+
+//**ackgun spin 2
+if _2tanackackrotate testvar _2ackgunfacingvar = 0 then
+	setgunfacing tanackgun2 60,
+ 	addvar _2ackgunfacingvar 1,
+	triggerdelay 3000 _2tanackackrotate1
+
+
+if _2tanackackrotate1 testvar _2ackgunfacingvar = 1 then
+	setgunfacing tanackgun2 90,
+ 	addvar _2ackgunfacingvar 1,
+	triggerdelay 3000 _2tanackackrotate2
+
+if _2tanackackrotate2 testvar _2ackgunfacingvar = 2 then
+	setgunfacing tanackgun2 120,
+ 	addvar _2ackgunfacingvar 1,
+	triggerdelay 3000 _2tanackackrotate3
+
+if _2tanackackrotate3 testvar _2ackgunfacingvar = 3 then
+	setgunfacing tanackgun2 150,
+ 	addvar _2ackgunfacingvar 1,
+	triggerdelay 3000 _2tanackackrotate4
+
+if _2tanackackrotate4 testvar _2ackgunfacingvar = 4 then
+	setgunfacing tanackgun2 180,
+ 	addvar _2ackgunfacingvar 1,
+	triggerdelay 3000 _2tanackackrotate5
+
+if _2tanackackrotate5 testvar _2ackgunfacingvar = 5 then
+	setgunfacing tanackgun2 210,
+ 	addvar _2ackgunfacingvar 1,
+	triggerdelay 3000 _2tanackackrotate6
+
+if _2tanackackrotate6 testvar _2ackgunfacingvar = 6 then
+	setgunfacing tanackgun2 240,
+ 	addvar _2ackgunfacingvar 1,
+	triggerdelay 3000 _2tanackackrotate7
+
+if _2tanackackrotate7 testvar _2ackgunfacingvar = 7 then
+	setgunfacing tanackgun2 0,
+ 	setvar _2ackgunfacingvar 0,
+	triggerdelay 3000 _2tanackackrotate
+
+macro Gunattackmac 4
+// @1 integer @2 padnum 1  @3 padnum 2 @4 ackgunnum
+{
+pad tanckgunpad@1                                @2 green
+pad ackgunattackers@1                            @3 noone
+
+
+if padon tanckgunpad@1 butnot oncetanck@4 then
+        triggerdelay 1 Checkbalance,
+        triggerdelay 1 makgunattacker@4,
+        trigger oncetanck@4
+
+if makgunattacker@4 then
+        createunit gunattacker@1 rifleman ackgunattackers@1 tan 1,
+        order gunattacker@1 goto tanackgun@4 inmode attack
+
+
+}
+expand Gunattackmac ( 1 240 132 2 )
+expand Gunattackmac ( 2 240 132 2 )
+expand Gunattackmac ( 3 240 132 2 )
+expand Gunattackmac ( 4 240 132 2 )
+expand Gunattackmac ( 5 240 131 2 )
+expand Gunattackmac ( 6 240 131 2 )
+expand Gunattackmac ( 7 240 132 2 )
+
+expand Gunattackmac ( _1 230 131 1 )
+expand Gunattackmac ( _2 230 131 1 )
+expand Gunattackmac ( _3 230 132 1 )
+expand Gunattackmac ( _4 230 132 1 )
+expand Gunattackmac ( _5 230 132 1 )
+expand Gunattackmac ( _6 230 132 1 )
+expand Gunattackmac ( _7 230 132 1 )
+//***End ack gun set***//
+//**Unit undep**//
+
+if padon radarundeppad255 then
+        triggerdelay 1000 secondorders2,
+        undeploy me
+
+//***Balance**//
+if Checkbalance testvar numgreennnn <= 2 then
+        triggerdelay 1 balanceVOrandom,
+        fireweapon balancepower balanceunit green,
+        addvar numgreennnn 3
+ if balanceVOrandom then
+	random
+		playsound "gamehq1_A.wav" 3 3,
+        	playsound "gamehq2_B.wav" 3 3,
+        	playsound "gamehq3_C.wav" 3 3
+
+
+//**Lose Conditions**//
+variable losevar 0
+variable winvar 0
+
+if winforTan testvar numgreennnn = 0 then
+        setvar losevar 1,
+        showpda "你已被淘汰出这场战争！",
+        triggerdelay 3000 tanwins
+
+//**Win condition**//
+
+if killed tanradarB testvar losevar = 0 then
+        setitemflag flagman strategic 0,
+        setvar winvar 1,
+        playsound "01_02_HQ.wav" 4 3,
+        triggerdelay 2000 playerwins
+
+if playerwins testvar losevar = 0 then
+        showpda "滩头阵地已安全。任务完成！",
+        triggerdelay 1000 greenwins
+
+pad starmov2pad         200     nonnpc
+
+if padon starmov2pad butnot onestarmove then
+        triggerdelay 8000 playsoundunits,
+        triggerdelay 1000 startinitmovie2,
+        triggerdelay 5000 approachT03,
+        trigger onestarmove
+
+if playsoundunits then
+        playsound "01_01_greenattackers.wav" 7 3,
+        triggerdelay 2000 tanunitsound
+
+if tanunitsound then
+        playsound "01_01_tantroopers.wav" tanatt_5 6 3 500
+
+//**Initial Movie**//
+macro startmovie 7
+{
+pad tanpad@1          @3
+pad tanatacker@1      @4
+
+
+if startinitmovie@5 then
+	createunit "tenatt@1" rifleman tanpad@1 tan 0,
+        setnpc tenatt@1 1,
+        setaimode tenatt@1 @2,
+        setfacing tenatt@1 @6,
+        setaipose tenatt@1 @7,
+        trigger moveem@5
+
+if moveem@5 then
+        order tenatt@1 goto tanatacker@1 inmode @2
+
+if approach@5 then
+        order tenatt@1 goto tanatacker@1 inmode @2
+
+if hit tenatt@1 then
+        order tenatt@1 follow me
+
+}
+expand startmovie ( 1 attack 100 104 01 0 none )
+expand startmovie ( 2 attack 101 105 01 0 none )
+expand startmovie ( 3 attack 102 106 01 0 none )
+expand startmovie ( 4 attack 103 107 01 0 none )
+
+expand startmovie ( _1 standfire 231 254 _02 134 kneel )
+expand startmovie ( _2 standfire 232 241 _02 132 kneel )
+expand startmovie ( _3 standfire 233 255 _02 134 kneel )
+expand startmovie ( _4 standfire 234 237 T03 138 none )
+expand startmovie ( _5 standfire 235 236 T03 138 none )
+
+expand startmovie ( _6 standfire 251 253 _02 134 none )
+expand startmovie ( _7 standfire 252 253 _02 134 none )
+
+if allof killed tenatt1 killed tenatt2 killed tenatt3 killed tenatt4 then
+        trigger orderdefs1
+
+if allof killed tenatt_4 killed tenatt_5 then
+        order tenatt_1 goto (1763,2478) inmode attack,
+        order tenatt_2 goto (1763,2478) inmode attack,
+        order tenatt_3 goto (1763,2478) inmode attack
+
+if allof killed tenatt_1 killed tenatt_2 killed tenatt_3 then
+        triggerdelay 2000 secondorders2
+
+pad 	finaldefpad1 			120
+
+macro greensaviors 7
+{
+pad greenpad@1          @3
+pad greendefpad@1       @4 greendef@1
+
+
+// @1 integer @2 AI mode @3 st padnum @4 goto padnum @5 star num @6 pose
+
+if startinitmovie@5 then
+	createunit "greendef@1" rifleman greenpad@1 green,
+        order greendef@1 goto greendefpad@1 inmode @2,
+        setnpc greendef@1 1
+
+if orderdefs@5 then
+        setspeed greendef@1 @7,
+        order greendef@1 goto finaldefpad@5 inmode defend
+
+if bombem@1 butnot oncebomem@1 then
+        playitemsound "bombwhistle2.wav" greendef@1 14 1 1500,
+        triggerdelay 1000 bmdef@1,
+        trigger oncebomem@1
+
+if bmdef@1 then
+        createexplosion greendef@1 131 4000 blue
+
+if hit greendef@1 then
+        order greendef@1 follow me
+
+if killed greendef@1 then
+        trigger oncebomem@1
+
+if secondorders@5 then
+        order greendef@1 goto gotopow inmode attack
+
+//second//
+if padon greendefpad@1 butnot onedefpad@1 then
+        setaipose greendef@1 @6,
+        setaimode greendef@1 defend,
+        trigger onedefpad@1
+
+}
+expand greensaviors ( 1 attack 110 114 1 none slow )
+expand greensaviors ( 2 attack 111 115 1 none slow )
+expand greensaviors ( 3 attack 112 116 1 none slow )
+expand greensaviors ( 4 attack 113 117 1 none slow )
+expand greensaviors ( 5 attack 110 114 1 none slow )
+expand greensaviors ( 6 attack 111 115 1 none slow )
+expand greensaviors ( 7 attack 112 116 1 none slow )
+expand greensaviors ( 8 attack 113 117 1 none slow )
+
+expand greensaviors ( _1 ignore 211 201 2 none normal )
+expand greensaviors ( _2 ignore 212 202 2 none normal )
+expand greensaviors ( _3 ignore 213 203 2 dive normal )
+expand greensaviors ( _4 ignore 214 204 2 dive normal )
+expand greensaviors ( _5 ignore 215 205 2 dive normal )
+expand greensaviors ( _6 ignore 216 206 2 dive normal )
+
+pad playerpad                   195 nonnpc
+
+if padon playerpad butnot oneplayerpad then
+        triggerdelay 1000 makithappen,
+        triggerdelay 1 oneplayerpad
+
+if makithappen then
+        triggerdelay 1 Checkbalance,
+        setaipose greenwin_02 kneel,
+        playsound "01_01_greentroop.wav" greenwin_02 8 0 4000,
+        triggerdelay 10 MovewinnersB4,
+        triggerdelay 500 orderwinners4
+
+
+macro greenwinners 8
+{
+pad winnerpad@1          	@3
+pad greenwinpad@1       	@4 greenwin@1
+
+// @1 integer @2 AI mode @3 st padnum @4 goto padnum @5 star num @6 pose @7 speed @8 Facing
+
+if Movewinners@5 then
+	createunit "greenwin@1" rifleman winnerpad@1 green 3 autorifle,
+        setfacing greenwin@1 @8,
+        setnpc greenwin@1 1,
+        setaipose greenwin@1 @6
+
+if finalorders@5 then
+        order greenwin@1 goto greenwinpad@1 inmode attack
+
+
+}
+expand greenwinners ( _01 ignore 191 190 A3 kneel normal 222  )
+expand greenwinners ( _02 ignore 192 190 A3 radio normal 128 )
+expand greenwinners ( _03 ignore 193 190 A3 kneel normal 44 )
+expand greenwinners ( _04 ignore 194 190 A3 kneel normal 0 )
+
+expand greenwinners ( _05 attack 181 180 B4 none normal 128 )
+expand greenwinners ( _06 attack 182 180 B4 none normal 128 )
+expand greenwinners ( _07 attack 183 180 B4 none normal 128 )
+
+//Green winners/
+if orderwinners4 then
+        order greenwin_05 goto (2756,496),
+        order greenwin_06 goto (2856,596),
+        order greenwin_07 goto (2815,550)
+
+if padon greenwinpad_01 then
+        order greenwin_01 goto gotopow inmode attack
+
+if padon greenwinpad_02 then
+        order greenwin_02 goto gotopow inmode attack
+
+ if padon greenwinpad_03 then
+        order greenwin_03 goto gotopow inmode attack
+
+ if padon greenwinpad_04 then
+        order greenwin_04 goto gotopow inmode attack
+
+ if padon greenwinpad_05 then
+        undeploy greenwin_05
+
+ if padon greenwinpad_06 then
+        undeploy greenwin_06
+
+ if padon greenwinpad_07 then
+        undeploy greenwin_07
+
+//end
+
+if hit greenwin_05 butnot onehit_05 then
+        setaipose greenwin_05 dive,
+        triggerdelay 1 onehit_05
+
+if hit greenwin_06 butnot onehit_06 then
+        setaipose greenwin_06 dive,
+        triggerdelay 1 onehit_06
+
+if hit greenwin_07 butnot onehit_07 then
+        setaipose greenwin_07 dive,
+        triggerdelay 1 onehit_07
+
+//after the fact//
+if padon greendefpad_1 then
+        order tenatt_3 goto tanatacker_3
+
+if padon greendefpad_6 then
+        order tenatt_4 goto tanatacker_4
+//End
+
+//**Bombing**//
+variable bombvar 0
+variable stopbombvar 0
+
+if bombem then
+        triggerdelay 5000 bombemrand2,
+        triggerdelay 9000 bombem1,
+        triggerdelay 10000 bombem2,
+        triggerdelay 11000 bombem3,
+        triggerdelay 12000 bombem4,
+        triggerdelay 13000 bombem5,
+        triggerdelay 14000 bombem6,
+        triggerdelay 15000 bombem7,
+        setvar bombvar 1,
+        triggerdelay 240000 stopem
+
+
+if stopem then
+        setvar stopbombvar 10
+
+if bombemrand2 testvar bombvar = 1 and stopbombvar = 0 then
+                	random
+                                triggerdelay 500 exp1,
+                                triggerdelay 500 exp2,
+                                triggerdelay 500 exp3,
+                                triggerdelay 500 exp4,
+                                triggerdelay 500 exp5,
+                                triggerdelay 500 exp6,
+                                triggerdelay 500 exp7
+if exp1 then
+        playsound "bombwhistle2.wav" (1338,2474) 2 15 1500,
+        triggerdelay 1000 bm1,
+        setvar bombvar 0,
+        triggerdelay 1100 bombem
+
+if bm1 then
+        createexplosion (1338,2474) 131 2000 blue
+
+if exp2 then
+        playsound "bombwhistle2.wav" (1391,2698) 2 15 1500,
+        triggerdelay 1000 bm2,
+        setvar bombvar 0,
+        triggerdelay 1100 bombem
+
+if bm2 then
+        createexplosion (1391,2698) 131 2000 blue
+
+if exp3 then
+        playsound "bombwhistle2.wav" (1480,2563) 2 15 1500,
+        triggerdelay 1000 bm3,
+        setvar bombvar 0,
+        triggerdelay 1100 bombem
+
+if bm3 then
+        createexplosion (1480,2563) 131 2000 blue
+
+if exp4 then
+        playsound "bombwhistle2.wav" (1073,2838) 2 15 1500,
+        triggerdelay 1000 bm4,
+        setvar bombvar 0,
+        triggerdelay 1100 bombem
+
+if bm4 then
+        createexplosion (1073,2838) 131 2000 blue
+
+if exp5 then
+        playsound "bombwhistle2.wav" (1189,2430) 2 15 1500,
+        triggerdelay 1000 bm5,
+        setvar bombvar 0,
+        triggerdelay 1100 bombem
+
+if bm5 then
+        createexplosion (1189,2430) 131 2000 blue
+
+if exp6 then
+        playsound "bombwhistle2.wav" (1140,2548) 2 15 1500,
+        triggerdelay 1000 bm6,
+        setvar bombvar 0,
+        triggerdelay 1100 bombem
+
+if bm6 then
+        createexplosion (1140,2548) 131 2000 blue
+
+if exp7 then
+        playsound "bombwhistle2.wav" (1140,2548) 2 15 1500,
+        triggerdelay 1000 bm7,
+        setvar bombvar 0,
+        triggerdelay 1100 bombem
+
+if bm7 then
+        createexplosion (1473,2696) 131 2000 blue
+
+//**Unit creation**//
+
+macro initunits 7
+{
+
+//@1 Name @2 Type @3 location @4 faceing @5 AI Mode @6 pose @7 group
+
+if makegreens then
+        setuilock 1,
+        createunit "@1" @2 @3 green 3,
+        setaipose @1 @6,
+        setsquadleader @1 @7,
+        setfacing @1 @4,
+        setaimode @1 @5
+
+
+if setnewgreenpose then
+       setaipose @1 none,
+       setaimode @1 attack,
+       setuilock 0
+
+
+
+}
+expand initunits ( C._Chunks rifleman unit1 34 standfire kneel 5)
+expand initunits ( J._Wildman rifleman unit2 39 standfire kneel 4 )
+expand initunits ( D._Plastico rifleman unit3 39 standfire kneel 3 )
+expand initunits  ( J._Doe rifleman unit4 39 standfire kneel 2 )
+expand initunits ( I._Lostalim rifleman unit5 39 standfire kneel 1 )
+
+if killed green trooper testvar getnpcstatus me = 0 then
+        addvar numgreennnn -1,
+        triggerdelay 1 winforTan
+
+
+macro tanaction 9
+
+{
+
+variable tanenemy@1var 0
+
+pad enemypad@1  @6
+
+//@1 integer for pad, unit, and other @2 weapon type @3 faceing @4 AI Mode @5 pose @6 padnum @7 secpose @8 powerup @9 P ammo
+
+
+if maketanss then
+        createunit "tanenemy@1" rifleman enemypad@1 tan 5,
+        setfacing tanenemy@1 @3,
+        setaimode tanenemy@1 @4,
+        setaipose tanenemy@1 @7,
+        triggerdelay 1 setinv@1
+
+if hit tanenemy@1 testvar tanenemy@1var = 0 then
+        addvar tanenemy@1var 1,
+        setspeed tanenemy@1 normal,
+        order tanenemy@1 goto me inmode attack,
+        triggerdelay 2500 takecover@1
+
+if takecover@1 testvar tanenemy@1var = 1 then
+        addvar tanenemy@1var 1,
+        setaipose tanenemy@1 @5,
+        triggerdelay 10000 reset@1var
+
+if reset@1var testvar tanenemy@1var = 2 then
+        setaipose tanenemy@1 none,
+        setspeed tanenemy@1 slow,
+        order tanenemy@1 goto enemypad@1,
+        setvar tanenemy@1var 0
+
+if killed tanenemy@1 then
+        createpowerup "A@1" @8 tanenemy@1 @9,
+        trigger removepower@1
+
+}
+expand tanaction ( 1 grenade 100 standfire dive 20 kneel  grenade 2 )
+expand tanaction ( 2 grenade 100 standfire dive 21 none medpack 1 )
+expand tanaction ( 3 grenade 162 standfire dive 22 kneel medpack 1 )
+expand tanaction ( 4 grenade 162 standfire dive 23 kneel medpack 1 )
+expand tanaction ( 5 grenade 162 standfire dive 24 none grenade 2 )
+expand tanaction ( 6 grenade 162 standfire dive 25 kneel grenade 2 )
+expand tanaction ( 7 grenade 235 standfire dive 26 kneel medpack 2 )
+expand tanaction ( 8 grenade 235 standfire dive 27 none medpack 2 )
+expand tanaction ( 9 grenade 138 standfire dive 28 kneel medpack 2 )
+expand tanaction ( 10 grenade 138 standfire dive 29 kneel medpack 2 )
+expand tanaction ( 11 sniper 100 standfire dive 30 none medpack 2 )
+expand tanaction ( 12 sniper 100 standfire dive 31 none medpack 1 )
+expand tanaction ( 13 grenade 138 defend dive 32 none grenade 1 )
+expand tanaction ( 14 grenade 148 defend dive 33 none grenade 2 )
+expand tanaction ( 15 grenade 158 defend dive 34 none grenade 2 )
+
+expand tanaction ( 16 grenade 182 standfire dive 35 none medpack 1 )
+expand tanaction ( 17 grenade 182 defend dive 36 kneel grenade 1 )
+expand tanaction ( 18 grenade 182 defend dive 37 kneel grenade 1 )
+expand tanaction ( 19 grenade 182 defend dive 38 none grenade 1 )
+
+expand tanaction ( 20 grenade 172 standfire dive 39 kneel medpack 1 )
+expand tanaction ( 21 grenade 168 standfire dive 40 none grenade 1 )
+
+if removepower11 then
+        undeploy A11
+
+if removepower12 then
+        undeploy A12
+
+if setinv11 butnot onetimeinv11 then
+        selectinventoryitem tanenemy11 tanenemy11 2,
+        trigger onetimeinv11
+
+if setinv12 butnot onetimeinv12 then
+        selectinventoryitem tanenemy12 tanenemy12 2,
+        trigger onetimeinv12
+
+
+//For greenwinners//
+if allof killed tanenemy11 killed tanenemy12 then
+        playsound "01_02_greentroop.wav" greenwin_02 8 0 2000,
+        triggerdelay 3000 finalordersA3,
+        triggerdelay 1000 finalordersB4
+
+if allof killed tanenemy8 killed tanenemy9 then
+        triggerdelay 1 Checkbalance
+
+
+if allof killed tanenemy16 killed tanenemy17 then
+        triggerdelay 1 Checkbalance
+
+//Note: Make sure too put units for the winners to cut through.///
+//***Boat doors***//
+
+if Openhig_random then
+	triggerdelay 1000 btdoor1
+
+macro higgendoors 1
+{
+if btdoor@1 butnot higonce@1 then
+        setobjstate HigDoor@1 higdooropen@1,
+        trigger HigdoorSFX@1
+if HigdoorSFX@1 then
+        playitemsound "doors_drop.wav" HigDoor@1 9 3 5000
+
+
+ object HigDoor@1
+                state  higdoorinit@1
+                        frame 50 00
+
+                state  higdooropen@1
+                        frame 50 05
+                        frame 50 06
+                        frame 50 07
+                        frame 50 08
+                        frame 50 09
+			frame 50 10
+                               setobjstate Higdoor@1 higdoorfinal@1,
+                               triggerdelay 10 setnewgreenpose
+
+                state	higdoorfinal@1
+                        frame 100 10
+}
+
+expand higgendoors ( 1 )
+
+//***Wind Mill***//
+
+macro windmac 1
+ //@1 integer
+
+{
+variable fanvar@1 0
+
+variable safefan@1var 1
+
+if reloopfan@1 testvar fanvar@1 = 0 then
+        setvar fanvar@1 10,
+        triggerdelay 1 makewindsfx@1,
+        setobjstate fan@1 fan@1_active
+
+if makewindsfx@1 butnot onewindsfx@1 then
+        playsound "windmill.wav" fan@1 2 12 1 500,
+        triggerdelay 1 onewindsfx@1
+
+if hit windmill@1 testvar getdmglvl windmill@1 = 1 and safefan@1var = 1 then
+        setvar fanvar@1 20,
+        setvar safefan@1var 20,
+        triggerdelay 1 state01fan@1
+
+if state01fan@1 testvar fanvar@1 = 20 then
+        setobjstate fan@1 fan@1_stop
+
+if killed windmill@1 then
+        playsound "" fan@1 3 12 1 500,
+        undeploy fan@1
+
+
+object fan@1
+
+        state fan@1_active
+                frame 80 00
+                frame 80 01
+                frame 80 02
+                frame 80 03
+                frame 80 04
+                frame 80 05
+                triggerdelay 1 reloopfan@1,
+                setvar fanvar@1 0
+
+        state fan@1_stop
+                frame 1 10
+
+
+}
+expand windmac ( 1 )
+

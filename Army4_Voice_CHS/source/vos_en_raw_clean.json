@@ -1,0 +1,2386 @@
+[
+  {
+    "wav": "00_103_C.wav",
+    "duration_s": 5.09,
+    "asr_en": "Private, I'm challenging you to a jeep race. Climb into the West Jeep and prepare for a drubbing.",
+    "avg_logprob": -0.139,
+    "no_speech_prob": 0.066,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_104_C.wav",
+    "duration_s": 1.54,
+    "asr_en": "The West Jeep, grunt.",
+    "avg_logprob": -0.313,
+    "no_speech_prob": 0.025,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_105_B.wav",
+    "duration_s": 3.82,
+    "asr_en": "What kind of slime are you, soldier? Get back to the start.",
+    "avg_logprob": -0.207,
+    "no_speech_prob": 0.011,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_106_C.wav",
+    "duration_s": 4.62,
+    "asr_en": "On your marks, three, two, one, go!",
+    "avg_logprob": -0.215,
+    "no_speech_prob": 0.009,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_109_C.wav",
+    "duration_s": 3.49,
+    "asr_en": "Ha, ha! I tanned your hodge, soldier.",
+    "avg_logprob": -0.551,
+    "no_speech_prob": 0.008,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_110_B.wav",
+    "duration_s": 1.85,
+    "asr_en": "You win this time, Private.",
+    "avg_logprob": -0.165,
+    "no_speech_prob": 0.021,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_112_C.wav",
+    "duration_s": 6.37,
+    "asr_en": "Grab that wrench and tune up that half-track, soldier. Then load those three soldiers on board. They need a ride back to the barracks.",
+    "avg_logprob": -0.147,
+    "no_speech_prob": 0.01,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_117_F.wav",
+    "duration_s": 4.34,
+    "asr_en": "This area is mine, soldier. Move McChute over to that sign and give it a once-over.",
+    "avg_logprob": -0.198,
+    "no_speech_prob": 0.022,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_118_B.wav",
+    "duration_s": 7.37,
+    "asr_en": "Remember, to get a soldier out of a vehicle, select the vehicle and then click on the soldier's icon in the selected units display.",
+    "avg_logprob": -0.185,
+    "no_speech_prob": 0.004,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_120_A.wav",
+    "duration_s": 2.76,
+    "asr_en": "Use McChu to clear a path through the minefield, Private.",
+    "avg_logprob": -0.172,
+    "no_speech_prob": 0.006,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_121_D.wav",
+    "duration_s": 7.53,
+    "asr_en": "Final test, soldier. Bust your way through that tan barricade and get your men over to the exit area. Left click to fire the half-track's cannon.",
+    "avg_logprob": -0.145,
+    "no_speech_prob": 0.034,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_122_C.wav",
+    "duration_s": 4.84,
+    "asr_en": "so much for arriving in style get all of your men to the exit area and we'll call it a day",
+    "avg_logprob": -0.177,
+    "no_speech_prob": 0.039,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_124_A.wav",
+    "duration_s": 6.84,
+    "asr_en": "You made it. With the war raging, HQ says we have to give you your stripes. Good luck, Commander. You'll need it.",
+    "avg_logprob": -0.211,
+    "no_speech_prob": 0.011,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_125_C.wav",
+    "duration_s": 3.49,
+    "asr_en": "not bad at all you're ready for battle commander",
+    "avg_logprob": -0.188,
+    "no_speech_prob": 0.006,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_127_A.wav",
+    "duration_s": 1.7,
+    "asr_en": "You didn't finish that stage, Private.",
+    "avg_logprob": -0.211,
+    "no_speech_prob": 0.026,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_127_B.wav",
+    "duration_s": 1.73,
+    "asr_en": "You didn't finish that stage, Private.",
+    "avg_logprob": -0.246,
+    "no_speech_prob": 0.019,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_128_C.wav",
+    "duration_s": 5.69,
+    "asr_en": "You're not finished with that stage, Private. You can always come back to boot camp later if you want to complete the whole thing.",
+    "avg_logprob": -0.152,
+    "no_speech_prob": 0.027,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_129_A.wav",
+    "duration_s": 3.05,
+    "asr_en": "You're losing plastic, Private. I'm sending reinforcements.",
+    "avg_logprob": -0.233,
+    "no_speech_prob": 0.029,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_130_B.wav",
+    "duration_s": 3.72,
+    "asr_en": "Good thing this is just a training exercise. Here comes your replacement.",
+    "avg_logprob": -0.326,
+    "no_speech_prob": 0.009,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_131_A.wav",
+    "duration_s": 0.84,
+    "asr_en": "Hurry up, Private.",
+    "avg_logprob": -0.331,
+    "no_speech_prob": 0.018,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_131_B.wav",
+    "duration_s": 1.0,
+    "asr_en": "Hurry up, Private.",
+    "avg_logprob": -0.345,
+    "no_speech_prob": 0.007,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_131_C.wav",
+    "duration_s": 1.19,
+    "asr_en": "Hurry up, Private!",
+    "avg_logprob": -0.506,
+    "no_speech_prob": 0.014,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_140_A.wav",
+    "duration_s": 1.55,
+    "asr_en": "You just lost Hollison, Private.",
+    "avg_logprob": -0.282,
+    "no_speech_prob": 0.038,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_141_C.wav",
+    "duration_s": 1.39,
+    "asr_en": "McCude is dead, Private.",
+    "avg_logprob": -0.484,
+    "no_speech_prob": 0.016,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_16b.wav",
+    "duration_s": 3.36,
+    "asr_en": "You've finished stage one. Now head up the slope to that hill to the north.",
+    "avg_logprob": -0.208,
+    "no_speech_prob": 0.019,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_1C.wav",
+    "duration_s": 22.8,
+    "asr_en": "Welcome to boot camp, Private. We're locked in a life and death struggle with the Tan Army and plastic is melting in the battlefields. You don't have to be here, but this is where you're going to learn how to survive this war, and you're going to learn it well. You'll lead some soldiers, get a taste of live combat, and take a turn at the wheel of some armored vehicles. Don't worry about dying here. This is a chance for you to learn before it really counts.",
+    "avg_logprob": -0.144,
+    "no_speech_prob": 0.05,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_21E.wav",
+    "duration_s": 7.21,
+    "asr_en": "Practice some evasive moves, Private. When you're ready to fight, walk into that circle of stones. I'll keep you busy until I think you've learned something.",
+    "avg_logprob": -0.16,
+    "no_speech_prob": 0.013,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_22H.wav",
+    "duration_s": 4.93,
+    "asr_en": "Don't forget, you can attack and move at the same time by pressing the space bar while your soldier is in motion.",
+    "avg_logprob": -0.125,
+    "no_speech_prob": 0.008,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_24_A.wav",
+    "duration_s": 1.88,
+    "asr_en": "Keep your injection molded butt moving.",
+    "avg_logprob": -0.247,
+    "no_speech_prob": 0.007,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_25_A.wav",
+    "duration_s": 1.39,
+    "asr_en": "Ouch, that'll leave a mark.",
+    "avg_logprob": -0.152,
+    "no_speech_prob": 0.012,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_27_C.wav",
+    "duration_s": 1.91,
+    "asr_en": "Head down into the valley for your next lesson.",
+    "avg_logprob": -0.096,
+    "no_speech_prob": 0.004,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_29_C.wav",
+    "duration_s": 1.05,
+    "asr_en": "Read the signs, Private.",
+    "avg_logprob": -0.144,
+    "no_speech_prob": 0.037,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_32_B.wav",
+    "duration_s": 2.43,
+    "asr_en": "Pop quiz, Private. Pick up and drop that med pack.",
+    "avg_logprob": -0.113,
+    "no_speech_prob": 0.018,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_35_E.wav",
+    "duration_s": 6.11,
+    "asr_en": "Pick up the MedPak again, right-click on it in the control panel to select it, then right-click it again to use it.",
+    "avg_logprob": -0.241,
+    "no_speech_prob": 0.021,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_37_D.wav",
+    "duration_s": 6.18,
+    "asr_en": "You've got some infantry targets to the east. Knock down three of them. If you run out of ammo, there'll be more where you picked up the rifle.",
+    "avg_logprob": -0.164,
+    "no_speech_prob": 0.018,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_3C.wav",
+    "duration_s": 15.66,
+    "asr_en": "You currently have one soldier, Private Hollison, under your command. I'm centering him in your view. To take command of him, or to select him, click on him with the left mouse button. To order a selected soldier to a location, click on that location with the right button of your mouse. That's called a right click.",
+    "avg_logprob": -0.141,
+    "no_speech_prob": 0.013,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_41_J.wav",
+    "duration_s": 3.54,
+    "asr_en": "That was pathetic, grunt. But we don't have all day.",
+    "avg_logprob": -0.306,
+    "no_speech_prob": 0.009,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_42_A.wav",
+    "duration_s": 1.59,
+    "asr_en": "Climb that slope to the next stage.",
+    "avg_logprob": -0.17,
+    "no_speech_prob": 0.036,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_48_A.wav",
+    "duration_s": 1.03,
+    "asr_en": "Move to the next sign.",
+    "avg_logprob": -0.153,
+    "no_speech_prob": 0.072,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_4C.wav",
+    "duration_s": 4.77,
+    "asr_en": "There's a sign over to the south. Move Hollison to it by right-clicking on a spot right in front of the sign.",
+    "avg_logprob": -0.139,
+    "no_speech_prob": 0.021,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_51_D.wav",
+    "duration_s": 6.35,
+    "asr_en": "Since we're lacking real soldiers, HQ says that's a passing grade. Move northeast and down into the valley.",
+    "avg_logprob": -0.13,
+    "no_speech_prob": 0.005,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_56_F.wav",
+    "duration_s": 5.0,
+    "asr_en": "You've got reinforcements. To learn how to manage these troops, move Hollison over to the next sign.",
+    "avg_logprob": -0.189,
+    "no_speech_prob": 0.02,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_61_C.wav",
+    "duration_s": 2.81,
+    "asr_en": "Private, move Hollison over to read those signs.",
+    "avg_logprob": -0.219,
+    "no_speech_prob": 0.071,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_65_C.wav",
+    "duration_s": 6.58,
+    "asr_en": "Private, make two squads of three men each. It doesn't matter who goes in which squad, as long as each one has three men.",
+    "avg_logprob": -0.133,
+    "no_speech_prob": 0.078,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_66_A.wav",
+    "duration_s": 2.37,
+    "asr_en": "Now move all your men to that area near the lamppost.",
+    "avg_logprob": -0.176,
+    "no_speech_prob": 0.015,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_67_C.wav",
+    "duration_s": 9.08,
+    "asr_en": "On my mark, quickly send one squad south to the tree and the other to that tent. Click your squad buttons to select the men, and then right-click on their destinations to move them.",
+    "avg_logprob": -0.089,
+    "no_speech_prob": 0.012,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_70_C.wav",
+    "duration_s": 1.18,
+    "asr_en": "too slow private",
+    "avg_logprob": -0.533,
+    "no_speech_prob": 0.016,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_73_A.wav",
+    "duration_s": 2.03,
+    "asr_en": "Move your soldiers up that slope to the south.",
+    "avg_logprob": -0.09,
+    "no_speech_prob": 0.009,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_78_C.wav",
+    "duration_s": 10.39,
+    "asr_en": "Up ahead, those TAN are dozing in that clearing, but it has two exits. Split your men into two squads and attack from both directions at once. See if you can prevent the TAN from escaping the clearing.",
+    "avg_logprob": -0.126,
+    "no_speech_prob": 0.004,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_7A.wav",
+    "duration_s": 4.12,
+    "asr_en": "When you're done reading, move Hollison to the next sign. It's located a half dozen inches to the south.",
+    "avg_logprob": -0.112,
+    "no_speech_prob": 0.023,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_80_K.wav",
+    "duration_s": 1.02,
+    "asr_en": "That'll have to do.",
+    "avg_logprob": -0.131,
+    "no_speech_prob": 0.008,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_83_C.wav",
+    "duration_s": 5.55,
+    "asr_en": "These six men have done their job, Private. They're no longer under your control. Try selecting them and you'll see.",
+    "avg_logprob": -0.169,
+    "no_speech_prob": 0.014,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_85_B.wav",
+    "duration_s": 4.37,
+    "asr_en": "Move your view to the valley to the east. New power-ups and a new soldier are waiting for you there.",
+    "avg_logprob": -0.109,
+    "no_speech_prob": 0.032,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_89_A.wav",
+    "duration_s": 5.27,
+    "asr_en": "Order Private McChude to pick up that airstrike, then use it to pound the radar installation to the northeast.",
+    "avg_logprob": -0.175,
+    "no_speech_prob": 0.006,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_95_C.wav",
+    "duration_s": 7.74,
+    "asr_en": "They're not politically correct, but mines will help you stop the tan truck that's coming in from the east. Lay down a line of them and keep them between you and the truck.",
+    "avg_logprob": -0.106,
+    "no_speech_prob": 0.018,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_ambush1_C.wav",
+    "duration_s": 2.64,
+    "asr_en": "Ambush get that power up pronto",
+    "avg_logprob": -0.361,
+    "no_speech_prob": 0.008,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_ambush2_C.wav",
+    "duration_s": 2.94,
+    "asr_en": "What is that thing? I've never seen anything like it.",
+    "avg_logprob": -0.343,
+    "no_speech_prob": 0.047,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_cmd1_D.wav",
+    "duration_s": 9.15,
+    "asr_en": "Now pay attention. Private Lostalem is headed into that pass to your north. He will demonstrate the four command modes. He isn't under your command, so don't bother trying to move him.",
+    "avg_logprob": -0.178,
+    "no_speech_prob": 0.009,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_cmd2_E.wav",
+    "duration_s": 4.59,
+    "asr_en": "First, he'll act out how a green unit will respond to a tan threat when in attack command mode.",
+    "avg_logprob": -0.183,
+    "no_speech_prob": 0.037,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_cmd3_B.wav",
+    "duration_s": 2.65,
+    "asr_en": "Now, Lostilum will demonstrate defend command mode.",
+    "avg_logprob": -0.539,
+    "no_speech_prob": 0.007,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_cmd4_C.wav",
+    "duration_s": 4.01,
+    "asr_en": "Here, Lostillum will show you how he would respond when in stand-and-fire mode.",
+    "avg_logprob": -0.288,
+    "no_speech_prob": 0.019,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_cmd5_E.wav",
+    "duration_s": 3.34,
+    "asr_en": "Lastly, here is an example of hold fire mode behavior.",
+    "avg_logprob": -0.221,
+    "no_speech_prob": 0.001,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_cmd6_B.wav",
+    "duration_s": 6.35,
+    "asr_en": "I'm putting Lostalem under your command. If you look at your display, note how his icon flashes red as he takes fire.",
+    "avg_logprob": -0.236,
+    "no_speech_prob": 0.008,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_cmdx_A.wav",
+    "duration_s": 4.79,
+    "asr_en": "am i boring you private well return to boot camp later if you change your mind",
+    "avg_logprob": -0.273,
+    "no_speech_prob": 0.01,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_goodB.wav",
+    "duration_s": 0.27,
+    "asr_en": "Good.",
+    "avg_logprob": -0.609,
+    "no_speech_prob": 0.571,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_goodC.wav",
+    "duration_s": 0.3,
+    "asr_en": "Good.",
+    "avg_logprob": -0.48,
+    "no_speech_prob": 0.33,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_goodE.wav",
+    "duration_s": 0.39,
+    "asr_en": "Good.",
+    "avg_logprob": -0.428,
+    "no_speech_prob": 0.086,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_goodenuf_D.wav",
+    "duration_s": 1.19,
+    "asr_en": "That's good enough.",
+    "avg_logprob": -0.253,
+    "no_speech_prob": 0.014,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_goodshtg_C.wav",
+    "duration_s": 0.74,
+    "asr_en": "Good shooting.",
+    "avg_logprob": -0.606,
+    "no_speech_prob": 0.028,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_niceA.wav",
+    "duration_s": 0.53,
+    "asr_en": "Nice.",
+    "avg_logprob": -0.535,
+    "no_speech_prob": 0.057,
+    "candidate": "voice"
+  },
+  {
+    "wav": "00_niceB.wav",
+    "duration_s": 0.62,
+    "asr_en": "Nice.",
+    "avg_logprob": -0.511,
+    "no_speech_prob": 0.128,
+    "candidate": "voice"
+  },
+  {
+    "wav": "01_01_HQ.wav",
+    "duration_s": 14.48,
+    "asr_en": "Commander, we need you to storm the beach and puncture a hole in the TAN's defense by destroying the TAN radar building to the north. You can expect minimal resistance, but I'm sure the enemy threat will increase further inland. Good luck. HQ out.",
+    "avg_logprob": -0.125,
+    "no_speech_prob": 0.124,
+    "candidate": "voice"
+  },
+  {
+    "wav": "01_01_greenattackers.wav",
+    "duration_s": 0.53,
+    "asr_en": "ATTACK!",
+    "avg_logprob": -0.29,
+    "no_speech_prob": 0.035,
+    "candidate": "voice"
+  },
+  {
+    "wav": "01_01_greentroop.wav",
+    "duration_s": 5.9,
+    "asr_en": "Okay fellas, some of our men are going to take out those snipers on the ledge. Once they're done, we'll move out.",
+    "avg_logprob": -0.148,
+    "no_speech_prob": 0.005,
+    "candidate": "voice"
+  },
+  {
+    "wav": "01_01_tantroopers.wav",
+    "duration_s": 1.78,
+    "asr_en": "Enemy approaching! Take cover!",
+    "avg_logprob": -0.288,
+    "no_speech_prob": 0.024,
+    "candidate": "voice"
+  },
+  {
+    "wav": "01_02_HQ.wav",
+    "duration_s": 2.76,
+    "asr_en": "Good job. This area is secure.",
+    "avg_logprob": -0.217,
+    "no_speech_prob": 0.052,
+    "candidate": "voice"
+  },
+  {
+    "wav": "01_02_greentroop.wav",
+    "duration_s": 1.93,
+    "asr_en": "The snipers are eliminated, move out.",
+    "avg_logprob": -0.26,
+    "no_speech_prob": 0.013,
+    "candidate": "voice"
+  },
+  {
+    "wav": "02_01_HQ.wav",
+    "duration_s": 24.19,
+    "asr_en": "Commander, the TAN have artillery cannons stationed on the hills in this area. These cannons make it impossible to get our troops through the area unharmed, so it is your job to destroy these cannons. Keep a lookout for Lieutenant Greenman. He is pinned in due to these cannons and waiting for your men to make it safe for his men to continue. As soon as some of the cannons are eliminated, Lieutenant Greenman will order his forces to move through the area.",
+    "avg_logprob": -0.118,
+    "no_speech_prob": 0.069,
+    "candidate": "voice"
+  },
+  {
+    "wav": "02_01_LGreenman.wav",
+    "duration_s": 7.75,
+    "asr_en": "Commander, those cannons have us between a rock and a hard place. We need to find a way to destroy those cannons before I can move through the area.",
+    "avg_logprob": -0.171,
+    "no_speech_prob": 0.219,
+    "candidate": "voice"
+  },
+  {
+    "wav": "02_02_HQ.wav",
+    "duration_s": 4.89,
+    "asr_en": "Good job. All the tan cannons are destroyed. HQ out.",
+    "avg_logprob": -0.246,
+    "no_speech_prob": 0.023,
+    "candidate": "voice"
+  },
+  {
+    "wav": "02_02_LGreenman.wav",
+    "duration_s": 3.18,
+    "asr_en": "Commander, we are now moving through the canyon.",
+    "avg_logprob": -0.394,
+    "no_speech_prob": 0.036,
+    "candidate": "voice"
+  },
+  {
+    "wav": "02_03_LGreenman.wav",
+    "duration_s": 1.94,
+    "asr_en": "We're taking fire!",
+    "avg_logprob": -0.312,
+    "no_speech_prob": 0.067,
+    "candidate": "voice"
+  },
+  {
+    "wav": "02_04_LGreenman.wav",
+    "duration_s": 7.46,
+    "asr_en": "Thanks, Commander. We're home free. Take these supplies for your efforts, and I wish you good luck in the war.",
+    "avg_logprob": -0.249,
+    "no_speech_prob": 0.101,
+    "candidate": "voice"
+  },
+  {
+    "wav": "03_01_HQ.wav",
+    "duration_s": 11.62,
+    "asr_en": "Commander, we need you to strike and eliminate 10 tanks that are in for repairs and refueling. Stay on the lookout for a squad we sent in earlier, led by a friendly Blue. Good luck, Commander. HQ out.",
+    "avg_logprob": -0.164,
+    "no_speech_prob": 0.037,
+    "candidate": "voice"
+  },
+  {
+    "wav": "03_01_bluecorp_06A.wav",
+    "duration_s": 3.21,
+    "asr_en": "Okay, man. We need to sweep the area. Let's go.",
+    "avg_logprob": -0.256,
+    "no_speech_prob": 0.005,
+    "candidate": "voice"
+  },
+  {
+    "wav": "03_01_tansquadleader_07B.wav",
+    "duration_s": 2.54,
+    "asr_en": "enemy sighted. Surrender in the name of Tan.",
+    "avg_logprob": -0.222,
+    "no_speech_prob": 0.149,
+    "candidate": "voice"
+  },
+  {
+    "wav": "03_01_tantrooper_05C.wav",
+    "duration_s": 0.78,
+    "asr_en": "GREEN SPOTTED!",
+    "avg_logprob": -0.592,
+    "no_speech_prob": 0.107,
+    "candidate": "voice"
+  },
+  {
+    "wav": "03_02_HQ_B.wav",
+    "duration_s": 4.31,
+    "asr_en": "Those tanks will never see battle again. Excellent work, Commander.",
+    "avg_logprob": -0.269,
+    "no_speech_prob": 0.032,
+    "candidate": "voice"
+  },
+  {
+    "wav": "03_02_bluecorp_06A.wav",
+    "duration_s": 12.44,
+    "asr_en": "Come in. Anyone? My squad is dead. I'm pinned in. Enemy side, they're closing in. Help! Anybody?",
+    "avg_logprob": -0.226,
+    "no_speech_prob": 0.025,
+    "candidate": "voice"
+  },
+  {
+    "wav": "03_02_tansquadleader_07B.wav",
+    "duration_s": 2.6,
+    "asr_en": "Move out, troopers, and be on the watch for those green boys.",
+    "avg_logprob": -0.073,
+    "no_speech_prob": 0.006,
+    "candidate": "voice"
+  },
+  {
+    "wav": "03_02_tantrooper_02C.wav",
+    "duration_s": 2.57,
+    "asr_en": "Green spotted! Tank crews, go to your tanks!",
+    "avg_logprob": -0.345,
+    "no_speech_prob": 0.014,
+    "candidate": "voice"
+  },
+  {
+    "wav": "03_03_bluecorp_06C.wav",
+    "duration_s": 9.11,
+    "asr_en": "Boy, I'm glad to see you guys. I thought I was off to the great recycling bin in the sky. I'm an experienced sniper, so use my abilities while you can.",
+    "avg_logprob": -0.184,
+    "no_speech_prob": 0.006,
+    "candidate": "voice"
+  },
+  {
+    "wav": "03_06_Greenman_01F.wav",
+    "duration_s": 0.98,
+    "asr_en": "It's a trap.",
+    "avg_logprob": -0.184,
+    "no_speech_prob": 0.025,
+    "candidate": "voice"
+  },
+  {
+    "wav": "03_bluecorp.wav",
+    "duration_s": 4.6,
+    "asr_en": "We'll never surrender to Tan. Open fire! Open fire!",
+    "avg_logprob": -0.348,
+    "no_speech_prob": 0.007,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_01_HQ.wav",
+    "duration_s": 22.33,
+    "asr_en": "Commander, we need you to finish a job. Combat engineers were sent to destroy an armored TAN building that contained stolen top-secret documents regarding our next plan of attack. Unfortunately, the engineers were taken captive. Go rescue these men before the TAN move them to a more secure location, and then assist the demolition expert in taking out the TAN building. Good luck. HQ out.",
+    "avg_logprob": -0.126,
+    "no_speech_prob": 0.093,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_01_combatengineer_01B.wav",
+    "duration_s": 2.47,
+    "asr_en": "Thanks, sir. Cover me as I get my explosives.",
+    "avg_logprob": -0.135,
+    "no_speech_prob": 0.02,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_01_greentroop_03A.wav",
+    "duration_s": 0.61,
+    "asr_en": "FREEDOM!",
+    "avg_logprob": -0.571,
+    "no_speech_prob": 0.144,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_01_greentroop_04A.wav",
+    "duration_s": 0.65,
+    "asr_en": "FREEDOM!",
+    "avg_logprob": -0.514,
+    "no_speech_prob": 0.034,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_01_greentroop_06B.wav",
+    "duration_s": 0.93,
+    "asr_en": "freedom",
+    "avg_logprob": -0.444,
+    "no_speech_prob": 0.033,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_02_HQ_B.wav",
+    "duration_s": 3.36,
+    "asr_en": "Outstanding, sir. Take some R&R before your next mission.",
+    "avg_logprob": -0.238,
+    "no_speech_prob": 0.069,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_02_combatengineer_01B.wav",
+    "duration_s": 3.37,
+    "asr_en": "We'll need to hurry. TAN guards will soon arrive with supplies.",
+    "avg_logprob": -0.269,
+    "no_speech_prob": 0.02,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_02_greentroop_03C.wav",
+    "duration_s": 1.21,
+    "asr_en": "Payback time.",
+    "avg_logprob": -0.325,
+    "no_speech_prob": 0.055,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_02_greentroop_07B.wav",
+    "duration_s": 1.03,
+    "asr_en": "Payback time.",
+    "avg_logprob": -0.325,
+    "no_speech_prob": 0.072,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_03_HQ_E.wav",
+    "duration_s": 5.27,
+    "asr_en": "Great. Now escort the demolition engineer over to the TAM building so he can destroy it.",
+    "avg_logprob": -0.177,
+    "no_speech_prob": 0.072,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_03_combatengineer_01B.wav",
+    "duration_s": 1.62,
+    "asr_en": "Tangard should be arriving soon.",
+    "avg_logprob": -0.318,
+    "no_speech_prob": 0.046,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_03_greentroop_02B.wav",
+    "duration_s": 1.34,
+    "asr_en": "I owe you my life.",
+    "avg_logprob": -0.352,
+    "no_speech_prob": 0.039,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_03_greentroop_07C.wav",
+    "duration_s": 1.05,
+    "asr_en": "I owe you my life.",
+    "avg_logprob": -0.228,
+    "no_speech_prob": 0.028,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_04_HQ_B.wav",
+    "duration_s": 3.8,
+    "asr_en": "Well, with the engineer down, it looks like you're gonna have to finish the job.",
+    "avg_logprob": -0.113,
+    "no_speech_prob": 0.027,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_04_combatengineer_01B.wav",
+    "duration_s": 1.35,
+    "asr_en": "Charge one, plan it.",
+    "avg_logprob": -0.586,
+    "no_speech_prob": 0.033,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_04_greentroop_02B.wav",
+    "duration_s": 5.94,
+    "asr_en": "Revenge is all I ask, sir. Next.",
+    "avg_logprob": -0.304,
+    "no_speech_prob": 0.006,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_04_greentroop_04C.wav",
+    "duration_s": 2.88,
+    "asr_en": "Revenge is all I ask, sir.",
+    "avg_logprob": -0.347,
+    "no_speech_prob": 0.018,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_05_combatengineer_01B.wav",
+    "duration_s": 1.14,
+    "asr_en": "Charge to planet.",
+    "avg_logprob": -0.476,
+    "no_speech_prob": 0.043,
+    "candidate": "voice"
+  },
+  {
+    "wav": "04_06_combatengineer_01B.wav",
+    "duration_s": 0.74,
+    "asr_en": "Take cover!",
+    "avg_logprob": -0.494,
+    "no_speech_prob": 0.011,
+    "candidate": "voice"
+  },
+  {
+    "wav": "05_01_HQ.wav",
+    "duration_s": 22.07,
+    "asr_en": "Commander, the TAN are using this town as a staging point to disperse their troops. We have so far been unable to organize an adequate bombing run due to TAN AA guns spread throughout the city's front. Your mission is to get in there and take out those AA guns so our bombers can get a clear run on the city. TAN forces should be heavy, so be careful. HQ out.",
+    "avg_logprob": -0.066,
+    "no_speech_prob": 0.106,
+    "candidate": "voice"
+  },
+  {
+    "wav": "05_01_greentroop.wav",
+    "duration_s": 3.31,
+    "asr_en": "Commander, the Tans have some of our vehicles in the vehicle yard up ahead.",
+    "avg_logprob": -0.029,
+    "no_speech_prob": 0.007,
+    "candidate": "voice"
+  },
+  {
+    "wav": "05_01_tantroop.wav",
+    "duration_s": 1.33,
+    "asr_en": "Intruders! After them!",
+    "avg_logprob": -0.24,
+    "no_speech_prob": 0.032,
+    "candidate": "voice"
+  },
+  {
+    "wav": "05_02_HQ_B.wav",
+    "duration_s": 11.93,
+    "asr_en": "Great job, Commander. Now that the AA guns have been disposed of, Green Command can follow through with their plans. Continue to the northeast and deeper into the city, then wait for further orders. HQ out.",
+    "avg_logprob": -0.108,
+    "no_speech_prob": 0.077,
+    "candidate": "voice"
+  },
+  {
+    "wav": "05_02_greentroop.wav",
+    "duration_s": 1.38,
+    "asr_en": "It's an ambush. Take cover.",
+    "avg_logprob": -0.273,
+    "no_speech_prob": 0.024,
+    "candidate": "voice"
+  },
+  {
+    "wav": "06_01_2nd.wav",
+    "duration_s": 3.86,
+    "asr_en": "Nice to see you guys. Now let's get out of here before the 10 have a chance to regroup.",
+    "avg_logprob": -0.199,
+    "no_speech_prob": 0.036,
+    "candidate": "voice"
+  },
+  {
+    "wav": "06_01_HQ.wav",
+    "duration_s": 24.16,
+    "asr_en": "Commander, the 2nd Armored Brigade should be arriving from the east. Find them, and continue on towards the northern end of this city. We have reports that Tan's Armored 9th Brigade is stationed in this section of the city, so we recommend finding as much firepower as possible before attacking the 9th. Green Command has initiated the bombing run, so you better get a move on. Good luck. HQ out.",
+    "avg_logprob": -0.115,
+    "no_speech_prob": 0.064,
+    "candidate": "voice"
+  },
+  {
+    "wav": "06_01_disguiseguy.wav",
+    "duration_s": 11.38,
+    "asr_en": "Good thing you guys came along. I thought I was going to lose a limb or two for sure. The ten have been stockpiling bazookas to the north. Take these disguises to mask a couple of your soldiers so that you can sneak in and get some for yourself.",
+    "avg_logprob": -0.131,
+    "no_speech_prob": 0.021,
+    "candidate": "voice"
+  },
+  {
+    "wav": "06_01_tantrooper.wav",
+    "duration_s": 1.27,
+    "asr_en": "Enemy sighted! Get them!",
+    "avg_logprob": -0.333,
+    "no_speech_prob": 0.031,
+    "candidate": "voice"
+  },
+  {
+    "wav": "06_02_2nd_2B.wav",
+    "duration_s": 2.73,
+    "asr_en": "Looks like we've got company. We'd better get out of here.",
+    "avg_logprob": -0.283,
+    "no_speech_prob": 0.014,
+    "candidate": "voice"
+  },
+  {
+    "wav": "06_02_HQ_B.wav",
+    "duration_s": 9.24,
+    "asr_en": "Commander, the bombers are approaching the target destination. Make haste for the northern meeting point indicated on your strategic map. HQ out.",
+    "avg_logprob": -0.167,
+    "no_speech_prob": 0.079,
+    "candidate": "voice"
+  },
+  {
+    "wav": "06_03_HQ_B.wav",
+    "duration_s": 8.73,
+    "asr_en": "Good work, Commander. I don't know how you got through the 10 defenses in time, but good to hear you're still alive. New orders are on the way.",
+    "avg_logprob": -0.157,
+    "no_speech_prob": 0.046,
+    "candidate": "voice"
+  },
+  {
+    "wav": "07_01_HQ.wav",
+    "duration_s": 33.54,
+    "asr_en": "There is a TAN train station near the northwestern border of this area. The TAN forces are using this station to receive heavy artillery, weapons, tanks, and supplies they need for the war effort. Securing this station will prevent the TAN from bringing any more weaponry to the front lines. Your mission is to find a way to get into the station and take it over. Be careful. We have reason to think the TAN have planted mines throughout the area. Unfortunately, we have no idea where the mined areas are. But that's why we chose you for the job, Commander. Good hunting. HQ out.",
+    "avg_logprob": -0.136,
+    "no_speech_prob": 0.244,
+    "candidate": "voice"
+  },
+  {
+    "wav": "07_01_greentroop.wav",
+    "duration_s": 5.17,
+    "asr_en": "And commander, we found a minesweeper. This should help us find a safer path to that train station.",
+    "avg_logprob": -0.27,
+    "no_speech_prob": 0.008,
+    "candidate": "voice"
+  },
+  {
+    "wav": "07_02_HQ_B.wav",
+    "duration_s": 11.5,
+    "asr_en": "Good work, Commander. Our boys on the front line will lose a lot less plastic thanks to you. Move your men to the north. This next mission will be a combined effort. HQ out.",
+    "avg_logprob": -0.135,
+    "no_speech_prob": 0.039,
+    "candidate": "voice"
+  },
+  {
+    "wav": "07_02_greentroop.wav",
+    "duration_s": 5.3,
+    "asr_en": "It's an ambush! They're letting all the trees on fire to trap us in here! Run for your plastic!",
+    "avg_logprob": -0.21,
+    "no_speech_prob": 0.011,
+    "candidate": "voice"
+  },
+  {
+    "wav": "07_02_tantroop.wav",
+    "duration_s": 1.07,
+    "asr_en": "We've got them now.",
+    "avg_logprob": -0.199,
+    "no_speech_prob": 0.031,
+    "candidate": "voice"
+  },
+  {
+    "wav": "08_01_HQ.wav",
+    "duration_s": 19.02,
+    "asr_en": "Commander, the river to the north is a pinch point to the Tann. We ordered the 5th Hard Plastic Brigade to flank the bridges from the east and west, but we need you and your men to take on the frontal assault. Our ultimate goal is to breach the Tann's front line on the other side of the river, eliminating any heavy cannons stationed there. HQ out.",
+    "avg_logprob": -0.13,
+    "no_speech_prob": 0.101,
+    "candidate": "voice"
+  },
+  {
+    "wav": "08_01_HardPlastic_01C.wav",
+    "duration_s": 6.66,
+    "asr_en": "Welcome aboard, Commander. It's an honor to have you along on this mission. We'll be moving into attack positions momentarily.",
+    "avg_logprob": -0.183,
+    "no_speech_prob": 0.053,
+    "candidate": "voice"
+  },
+  {
+    "wav": "08_01_tantroop_04A.wav",
+    "duration_s": 2.88,
+    "asr_en": "It's heating up down here! Send reinforcement!",
+    "avg_logprob": -0.36,
+    "no_speech_prob": 0.049,
+    "candidate": "voice"
+  },
+  {
+    "wav": "08_02_HQ_B.wav",
+    "duration_s": 7.69,
+    "asr_en": "The attack will be initiated by the commanding officer for the 5th, so be ready to move in on their command. HQ out.",
+    "avg_logprob": -0.142,
+    "no_speech_prob": 0.049,
+    "candidate": "voice"
+  },
+  {
+    "wav": "08_02_HardPlastic_01C.wav",
+    "duration_s": 4.14,
+    "asr_en": "Okay man, move into attack positions. Initiate on my mark.",
+    "avg_logprob": -0.357,
+    "no_speech_prob": 0.09,
+    "candidate": "voice"
+  },
+  {
+    "wav": "08_02_tantroop_05C.wav",
+    "duration_s": 2.35,
+    "asr_en": "Reinforcements are on the way!",
+    "avg_logprob": -0.44,
+    "no_speech_prob": 0.129,
+    "candidate": "voice"
+  },
+  {
+    "wav": "08_03_HQ_B.wav",
+    "duration_s": 8.56,
+    "asr_en": "Great work. We can now use these bridges to move our armies into the heart of Tan Territory. Excellent job, Commander. HQ out.",
+    "avg_logprob": -0.227,
+    "no_speech_prob": 0.07,
+    "candidate": "voice"
+  },
+  {
+    "wav": "08_03_HardPlastic_01A.wav",
+    "duration_s": 3.03,
+    "asr_en": "West flank, go! East flank, go!",
+    "avg_logprob": -0.33,
+    "no_speech_prob": 0.114,
+    "candidate": "voice"
+  },
+  {
+    "wav": "08_04_HardPlastic_01B.wav",
+    "duration_s": 4.19,
+    "asr_en": "Commander, there are too many of them! We need some help over here, or else we're goners!",
+    "avg_logprob": -0.202,
+    "no_speech_prob": 0.088,
+    "candidate": "voice"
+  },
+  {
+    "wav": "08_05_HardPlastic_01C.wav",
+    "duration_s": 5.29,
+    "asr_en": "Now that we gave the Tans front line a good whooping, let's show these Tans how we like to do things back home!",
+    "avg_logprob": -0.218,
+    "no_speech_prob": 0.04,
+    "candidate": "voice"
+  },
+  {
+    "wav": "09_01_HQ.wav",
+    "duration_s": 21.25,
+    "asr_en": "Commander, your mission is to secure the Trinket Valley and eliminate the defending TAN units in the area. The TAN have set up various defensive positions around the valley, so keep an eye out for heavy fire from these locations. By the way, the Green Navy is conducting an attack on Toy Island. Assisting them may prove to help you in your mission. HQ out.",
+    "avg_logprob": -0.093,
+    "no_speech_prob": 0.273,
+    "candidate": "voice"
+  },
+  {
+    "wav": "09_01_boatpilot_01A.wav",
+    "duration_s": 4.3,
+    "asr_en": "Commander, we're here to attack Toy Island. We could use your experience on this mission.",
+    "avg_logprob": -0.149,
+    "no_speech_prob": 0.011,
+    "candidate": "voice"
+  },
+  {
+    "wav": "09_02_HQ__A.wav",
+    "duration_s": 4.81,
+    "asr_en": "Our spy planes have noticed TAN forces are massing for a counterattack as we speak.",
+    "avg_logprob": -0.21,
+    "no_speech_prob": 0.081,
+    "candidate": "voice"
+  },
+  {
+    "wav": "09_02_boatpilot_01B.wav",
+    "duration_s": 5.26,
+    "asr_en": "We can wait here for you a bit, but we will need to attack without you if you choose not to assist, Commander.",
+    "avg_logprob": -0.169,
+    "no_speech_prob": 0.151,
+    "candidate": "voice"
+  },
+  {
+    "wav": "09_03_HQ_A.wav",
+    "duration_s": 8.71,
+    "asr_en": "Commander, it's time for you to secure the northern end of the bridge. Some TAN units are stationed there, so you'll have to eliminate them. HQ out.",
+    "avg_logprob": -0.144,
+    "no_speech_prob": 0.069,
+    "candidate": "voice"
+  },
+  {
+    "wav": "09_03_boatpilot_01B.wav",
+    "duration_s": 3.19,
+    "asr_en": "Commencing the attack on Toy Island without you, Commander!",
+    "avg_logprob": -0.246,
+    "no_speech_prob": 0.042,
+    "candidate": "voice"
+  },
+  {
+    "wav": "09_04_HQ_A.wav",
+    "duration_s": 3.86,
+    "asr_en": "Excellent. The valley is secured. HQ out.",
+    "avg_logprob": -0.363,
+    "no_speech_prob": 0.042,
+    "candidate": "voice"
+  },
+  {
+    "wav": "09_04_boatpilot_01C.wav",
+    "duration_s": 6.85,
+    "asr_en": "We are at your disposal, Commander. Uh, well, maybe that was a bad choice of words. We are under your command.",
+    "avg_logprob": -0.26,
+    "no_speech_prob": 0.048,
+    "candidate": "voice"
+  },
+  {
+    "wav": "10_01_HQ.wav",
+    "duration_s": 18.52,
+    "asr_en": "Commander, there are three villages up ahead that must be secured. The TAN are using Dragon Teeth to block our tanks, so we need you to go in on foot and secure all three villages before our convoy arrives. The TANs are desperate to hold on to this area, so expect heavy resistance. HQ out.",
+    "avg_logprob": -0.128,
+    "no_speech_prob": 0.106,
+    "candidate": "voice"
+  },
+  {
+    "wav": "10_02_HQ_A.wav",
+    "duration_s": 10.11,
+    "asr_en": "Good job, Commander. With the villages cleared, the Green Army can now move forward. The convoys are here and ready to roll out. HQ out.",
+    "avg_logprob": -0.169,
+    "no_speech_prob": 0.161,
+    "candidate": "voice"
+  },
+  {
+    "wav": "11_01_HQ.wav",
+    "duration_s": 28.48,
+    "asr_en": "We need you to clear out the area up ahead, Commander. This convoy carries crucial supplies we'll need to attack the TAM's capital city. We have received reports that nearby TAM tanks may try to intercept our convoy, so be on the lookout for them. If we lose the convoy, our hopes of conquering the TAM's capital will be lost. You also have recon support, Commander. Use them to scout the route ahead and to locate possible TAM threats. HQ out.",
+    "avg_logprob": -0.069,
+    "no_speech_prob": 0.208,
+    "candidate": "voice"
+  },
+  {
+    "wav": "11_02_HQ_A.wav",
+    "duration_s": 6.41,
+    "asr_en": "We can't afford to lose any more convoy trucks. We must protect them at all costs. HQ out.",
+    "avg_logprob": -0.195,
+    "no_speech_prob": 0.065,
+    "candidate": "voice"
+  },
+  {
+    "wav": "11_03_HQ_A.wav",
+    "duration_s": 4.13,
+    "asr_en": "Enemy troops are moving into the area, Commander. HQ out.",
+    "avg_logprob": -0.256,
+    "no_speech_prob": 0.099,
+    "candidate": "voice"
+  },
+  {
+    "wav": "11_04_HQ_A.wav",
+    "duration_s": 6.81,
+    "asr_en": "Good work protecting the convoy. Now we'll have more plastic to throw at the Tans. HQ out.",
+    "avg_logprob": -0.224,
+    "no_speech_prob": 0.071,
+    "candidate": "voice"
+  },
+  {
+    "wav": "12_01_HQ.wav",
+    "duration_s": 23.63,
+    "asr_en": "Commander, this is our final battle. We have pushed the TAN back to their capital and it's up to you to spearhead the main assault. Your objective is the palace at the center of the TAN capital. Fight your way there and destroy it. You can expect very heavy TAN resistance and possible counter attacks. Take what's left of the convoy and use them to help your efforts. Good luck, Commander. HQ out.",
+    "avg_logprob": -0.104,
+    "no_speech_prob": 0.173,
+    "candidate": "voice"
+  },
+  {
+    "wav": "12_01_ptboat_01B.wav",
+    "duration_s": 6.92,
+    "asr_en": "Commander, we're here to provide support for your forces. We've just cleared this section of the river, but we're not sure what waits upstream.",
+    "avg_logprob": -0.21,
+    "no_speech_prob": 0.162,
+    "candidate": "voice"
+  },
+  {
+    "wav": "12_02_HQ_B.wav",
+    "duration_s": 6.19,
+    "asr_en": "We've lost a lot of plastic due to artillery cannons guarding the capital. Be careful. HQ out.",
+    "avg_logprob": -0.236,
+    "no_speech_prob": 0.072,
+    "candidate": "voice"
+  },
+  {
+    "wav": "12_03_HQ_A.wav",
+    "duration_s": 14.62,
+    "asr_en": "You did it, Commander. The Tann army has been defeated and their capital city is under our control. Without their capital, the Tann will lose the war for sure. Congratulations on a job well done. HQ, over and out.",
+    "avg_logprob": -0.171,
+    "no_speech_prob": 0.128,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Aah.wav",
+    "duration_s": 1.19,
+    "asr_en": "AWWWWWWWWWWWWWWWWWWWW",
+    "avg_logprob": -1.152,
+    "no_speech_prob": 0.185,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Aah2.wav",
+    "duration_s": 1.16,
+    "asr_en": "AHHHHHHHHHH",
+    "avg_logprob": -0.986,
+    "no_speech_prob": 0.359,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Aah3.wav",
+    "duration_s": 0.42,
+    "asr_en": "UGH!",
+    "avg_logprob": -0.588,
+    "no_speech_prob": 0.439,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Aah4.wav",
+    "duration_s": 0.63,
+    "asr_en": "OW!",
+    "avg_logprob": -0.507,
+    "no_speech_prob": 0.043,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "AckackReady1.wav",
+    "duration_s": 1.3,
+    "asr_en": "Hey, you want some of this?",
+    "avg_logprob": -0.336,
+    "no_speech_prob": 0.06,
+    "candidate": "voice"
+  },
+  {
+    "wav": "AckackReady2.wav",
+    "duration_s": 0.82,
+    "asr_en": "You ain't nothing.",
+    "avg_logprob": -0.468,
+    "no_speech_prob": 0.015,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Adrenaline.wav",
+    "duration_s": 0.62,
+    "asr_en": "Adrenaline.",
+    "avg_logprob": -0.432,
+    "no_speech_prob": 0.11,
+    "candidate": "voice"
+  },
+  {
+    "wav": "AirAttack.wav",
+    "duration_s": 1.49,
+    "asr_en": "An air attack.",
+    "avg_logprob": -0.173,
+    "no_speech_prob": 0.023,
+    "candidate": "voice"
+  },
+  {
+    "wav": "AirRaidSiren.wav",
+    "duration_s": 0.5,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.936,
+    "no_speech_prob": 0.818,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "AirStrike.wav",
+    "duration_s": 3.58,
+    "asr_en": "An airstrike. Death from above.",
+    "avg_logprob": -0.243,
+    "no_speech_prob": 0.024,
+    "candidate": "voice"
+  },
+  {
+    "wav": "AlarmKlaxon.wav",
+    "duration_s": 0.55,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.833,
+    "no_speech_prob": 0.792,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "AllRight.wav",
+    "duration_s": 0.86,
+    "asr_en": "All right.",
+    "avg_logprob": -0.558,
+    "no_speech_prob": 0.007,
+    "candidate": "voice"
+  },
+  {
+    "wav": "AutoRifle.wav",
+    "duration_s": 1.35,
+    "asr_en": "A light machine gun.",
+    "avg_logprob": -0.289,
+    "no_speech_prob": 0.025,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Bazooka.wav",
+    "duration_s": 2.36,
+    "asr_en": "A bazooka.",
+    "avg_logprob": -0.345,
+    "no_speech_prob": 0.07,
+    "candidate": "voice"
+  },
+  {
+    "wav": "BazookaReady1.wav",
+    "duration_s": 0.54,
+    "asr_en": "DEADLY",
+    "avg_logprob": -0.463,
+    "no_speech_prob": 0.038,
+    "candidate": "voice"
+  },
+  {
+    "wav": "BazookaReady2.wav",
+    "duration_s": 1.07,
+    "asr_en": "Heads up!",
+    "avg_logprob": -0.371,
+    "no_speech_prob": 0.02,
+    "candidate": "voice"
+  },
+  {
+    "wav": "BoatReady1.wav",
+    "duration_s": 0.44,
+    "asr_en": "Moving out!",
+    "avg_logprob": -0.446,
+    "no_speech_prob": 0.066,
+    "candidate": "voice"
+  },
+  {
+    "wav": "BoatReady2.wav",
+    "duration_s": 1.96,
+    "asr_en": "I believe you're rocking the boat.",
+    "avg_logprob": -0.207,
+    "no_speech_prob": 0.031,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Campfire.WAV",
+    "duration_s": 2.64,
+    "asr_en": "Thank you.",
+    "avg_logprob": -0.259,
+    "no_speech_prob": 0.708,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "Civilians_Ann_Civilian_Ahhhhhh3.wav",
+    "duration_s": 1.35,
+    "asr_en": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "avg_logprob": -0.251,
+    "no_speech_prob": 0.598,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Civilians_Ann_Civilian_PleasesaveUs.wav",
+    "duration_s": 1.17,
+    "asr_en": "Please save us!",
+    "avg_logprob": -0.514,
+    "no_speech_prob": 0.088,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Civilians_Tanya_Civilian_Ahhhhhh3.wav",
+    "duration_s": 1.58,
+    "asr_en": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "avg_logprob": -0.284,
+    "no_speech_prob": 0.687,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "Civilians_Tanya_Civilian_PleaseSaveMe3.wav",
+    "duration_s": 1.31,
+    "asr_en": "Why are you doing this to me?",
+    "avg_logprob": -0.868,
+    "no_speech_prob": 0.113,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Civilians_aahhh1.wav",
+    "duration_s": 1.22,
+    "asr_en": "AAAAAAAAHHHHH!",
+    "avg_logprob": -1.148,
+    "no_speech_prob": 0.27,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Civilians_ahhh1.wav",
+    "duration_s": 0.79,
+    "asr_en": "AHHHHH!",
+    "avg_logprob": -0.846,
+    "no_speech_prob": 0.206,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Civilians_ahhh4.wav",
+    "duration_s": 1.08,
+    "asr_en": "AHHHHH!",
+    "avg_logprob": -0.831,
+    "no_speech_prob": 0.237,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Civilians_helpMe1.wav",
+    "duration_s": 1.33,
+    "asr_en": "HELP ME! HELP ME!",
+    "avg_logprob": -0.384,
+    "no_speech_prob": 0.055,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Civilians_pleassaveus3.wav",
+    "duration_s": 1.54,
+    "asr_en": "PLEASE SAVE US!",
+    "avg_logprob": -0.4,
+    "no_speech_prob": 0.011,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Civilians_thoseThings1.wav",
+    "duration_s": 1.45,
+    "asr_en": "Those things are everywhere!",
+    "avg_logprob": -0.433,
+    "no_speech_prob": 0.015,
+    "candidate": "voice"
+  },
+  {
+    "wav": "ConvoyReady1.wav",
+    "duration_s": 1.94,
+    "asr_en": "Why do I always get this job?",
+    "avg_logprob": -0.186,
+    "no_speech_prob": 0.019,
+    "candidate": "voice"
+  },
+  {
+    "wav": "ConvoyReady2.wav",
+    "duration_s": 1.36,
+    "asr_en": "SOMEBODY GET ME OUT OF THIS THING!",
+    "avg_logprob": -0.229,
+    "no_speech_prob": 0.015,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Disguise.wav",
+    "duration_s": 0.78,
+    "asr_en": "a disguise.",
+    "avg_logprob": -0.826,
+    "no_speech_prob": 0.073,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Explosives.wav",
+    "duration_s": 4.39,
+    "asr_en": "Plastic Explosives, the countdown to destruction.",
+    "avg_logprob": -0.418,
+    "no_speech_prob": 0.037,
+    "candidate": "voice"
+  },
+  {
+    "wav": "FlakJack.wav",
+    "duration_s": 3.82,
+    "asr_en": "A flak jacket, just the thing to keep me cool during hot firefights.",
+    "avg_logprob": -0.145,
+    "no_speech_prob": 0.011,
+    "candidate": "voice"
+  },
+  {
+    "wav": "FlameThrower.wav",
+    "duration_s": 3.04,
+    "asr_en": "A flamethrower. Burn, baby, burn.",
+    "avg_logprob": -0.28,
+    "no_speech_prob": 0.012,
+    "candidate": "voice"
+  },
+  {
+    "wav": "FlamerReady1.wav",
+    "duration_s": 1.62,
+    "asr_en": "Give me something to burn.",
+    "avg_logprob": -0.382,
+    "no_speech_prob": 0.01,
+    "candidate": "voice"
+  },
+  {
+    "wav": "FlamerReady2.wav",
+    "duration_s": 1.8,
+    "asr_en": "I love the smell of burnt plastic!",
+    "avg_logprob": -0.355,
+    "no_speech_prob": 0.009,
+    "candidate": "voice"
+  },
+  {
+    "wav": "GreenUnits_no1.wav",
+    "duration_s": 1.08,
+    "asr_en": "NOOOOOO!",
+    "avg_logprob": -0.84,
+    "no_speech_prob": 0.07,
+    "candidate": "voice"
+  },
+  {
+    "wav": "GreenUnits_no3.wav",
+    "duration_s": 1.75,
+    "asr_en": "NOOOOOO!",
+    "avg_logprob": -0.747,
+    "no_speech_prob": 0.024,
+    "candidate": "voice"
+  },
+  {
+    "wav": "GreenUnits_unit_ahieee1.wav",
+    "duration_s": 1.52,
+    "asr_en": "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
+    "avg_logprob": -1.083,
+    "no_speech_prob": 0.29,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Grenades.wav",
+    "duration_s": 0.91,
+    "asr_en": "Grenades.",
+    "avg_logprob": -0.507,
+    "no_speech_prob": 0.166,
+    "candidate": "voice"
+  },
+  {
+    "wav": "GrenadierReady1.wav",
+    "duration_s": 0.94,
+    "asr_en": "Incoming.",
+    "avg_logprob": -0.68,
+    "no_speech_prob": 0.108,
+    "candidate": "voice"
+  },
+  {
+    "wav": "GrenadierReady2.wav",
+    "duration_s": 0.81,
+    "asr_en": "Fire in the hole.",
+    "avg_logprob": -0.293,
+    "no_speech_prob": 0.181,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Guard_Intruders.wav",
+    "duration_s": 0.71,
+    "asr_en": "intruders",
+    "avg_logprob": -0.275,
+    "no_speech_prob": 0.061,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Guard_Stop.wav",
+    "duration_s": 0.37,
+    "asr_en": "STOP!",
+    "avg_logprob": -0.286,
+    "no_speech_prob": 0.047,
+    "candidate": "voice"
+  },
+  {
+    "wav": "HQNapalmAirstrike.wav",
+    "duration_s": 1.84,
+    "asr_en": "HQ, I need some napalm.",
+    "avg_logprob": -0.134,
+    "no_speech_prob": 0.006,
+    "candidate": "voice"
+  },
+  {
+    "wav": "HQReinforcements.wav",
+    "duration_s": 2.41,
+    "asr_en": "HQ, send in the Flyboys.",
+    "avg_logprob": -0.216,
+    "no_speech_prob": 0.065,
+    "candidate": "voice"
+  },
+  {
+    "wav": "HQreconn.wav",
+    "duration_s": 1.73,
+    "asr_en": "HQ, send me a recon.",
+    "avg_logprob": -0.185,
+    "no_speech_prob": 0.01,
+    "candidate": "voice"
+  },
+  {
+    "wav": "HalftrackReady1.wav",
+    "duration_s": 1.54,
+    "asr_en": "Time to lay some plastic.",
+    "avg_logprob": -0.393,
+    "no_speech_prob": 0.036,
+    "candidate": "voice"
+  },
+  {
+    "wav": "HalftrackReady2.wav",
+    "duration_s": 0.72,
+    "asr_en": "Be there in a sec.",
+    "avg_logprob": -0.279,
+    "no_speech_prob": 0.015,
+    "candidate": "voice"
+  },
+  {
+    "wav": "HammerMine.wav",
+    "duration_s": 0.74,
+    "asr_en": "Hammer mine.",
+    "avg_logprob": -0.466,
+    "no_speech_prob": 0.04,
+    "candidate": "voice"
+  },
+  {
+    "wav": "HeavyMGReady1.wav",
+    "duration_s": 0.75,
+    "asr_en": "Get some.",
+    "avg_logprob": -0.512,
+    "no_speech_prob": 0.262,
+    "candidate": "voice"
+  },
+  {
+    "wav": "HeavyMGReady2.wav",
+    "duration_s": 0.88,
+    "asr_en": "Oh, man.",
+    "avg_logprob": -0.493,
+    "no_speech_prob": 0.011,
+    "candidate": "voice"
+  },
+  {
+    "wav": "HeavyMacGun.wav",
+    "duration_s": 2.96,
+    "asr_en": "A heavy machine gun. Oh yeah.",
+    "avg_logprob": -0.404,
+    "no_speech_prob": 0.019,
+    "candidate": "voice"
+  },
+  {
+    "wav": "HitsSpot.wav",
+    "duration_s": 2.07,
+    "asr_en": "Ah, instant health.",
+    "avg_logprob": -0.232,
+    "no_speech_prob": 0.005,
+    "candidate": "voice"
+  },
+  {
+    "wav": "IneededThat.wav",
+    "duration_s": 1.6,
+    "asr_en": "Mmm, I needed that.",
+    "avg_logprob": -0.365,
+    "no_speech_prob": 0.012,
+    "candidate": "voice"
+  },
+  {
+    "wav": "JeepReady1.wav",
+    "duration_s": 0.86,
+    "asr_en": "Be there in a sec.",
+    "avg_logprob": -0.257,
+    "no_speech_prob": 0.015,
+    "candidate": "voice"
+  },
+  {
+    "wav": "JeepReady2.wav",
+    "duration_s": 0.67,
+    "asr_en": "Moving out.",
+    "avg_logprob": -0.368,
+    "no_speech_prob": 0.016,
+    "candidate": "voice"
+  },
+  {
+    "wav": "MedKit.wav",
+    "duration_s": 1.25,
+    "asr_en": "plastic mending kit",
+    "avg_logprob": -0.263,
+    "no_speech_prob": 0.085,
+    "candidate": "voice"
+  },
+  {
+    "wav": "MilitaryCadenceFiringLine.wav",
+    "duration_s": 4.13,
+    "asr_en": "BANG BANG BANG BANG BANG BANG BANG BANG",
+    "avg_logprob": -0.705,
+    "no_speech_prob": 0.744,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "MineSweeper.wav",
+    "duration_s": 2.91,
+    "asr_en": "A minesweeper. Who wants the job?",
+    "avg_logprob": -0.29,
+    "no_speech_prob": 0.02,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Mortar.wav",
+    "duration_s": 2.74,
+    "asr_en": "Mortars, reach out and explode someone.",
+    "avg_logprob": -0.194,
+    "no_speech_prob": 0.027,
+    "candidate": "voice"
+  },
+  {
+    "wav": "MortarReady1.wav",
+    "duration_s": 0.41,
+    "asr_en": "Cover me.",
+    "avg_logprob": -0.181,
+    "no_speech_prob": 0.045,
+    "candidate": "voice"
+  },
+  {
+    "wav": "MortarReady2.wav",
+    "duration_s": 2.42,
+    "asr_en": "It's all fun and games until the mortar hits.",
+    "avg_logprob": -0.149,
+    "no_speech_prob": 0.015,
+    "candidate": "voice"
+  },
+  {
+    "wav": "NapalmAirstrike.wav",
+    "duration_s": 6.59,
+    "asr_en": "napalm airstrike there's nothing like the smell a bird plastic in the morning",
+    "avg_logprob": -0.299,
+    "no_speech_prob": 0.017,
+    "candidate": "voice"
+  },
+  {
+    "wav": "POW_ALARM.wav",
+    "duration_s": 3.44,
+    "asr_en": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "avg_logprob": -0.111,
+    "no_speech_prob": 0.789,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "PicnicBasketDestroy.wav",
+    "duration_s": 0.96,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.835,
+    "no_speech_prob": 0.82,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "PrisonersDying.wav",
+    "duration_s": 0.34,
+    "asr_en": "Ugh!",
+    "avg_logprob": -0.638,
+    "no_speech_prob": 0.244,
+    "candidate": "voice"
+  },
+  {
+    "wav": "RadioSquelch.wav",
+    "duration_s": 0.31,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "Reconn.wav",
+    "duration_s": 1.06,
+    "asr_en": "Ah, recon.",
+    "avg_logprob": -0.483,
+    "no_speech_prob": 0.055,
+    "candidate": "voice"
+  },
+  {
+    "wav": "RifleReady1.wav",
+    "duration_s": 0.62,
+    "asr_en": "Moving out.",
+    "avg_logprob": -0.213,
+    "no_speech_prob": 0.017,
+    "candidate": "voice"
+  },
+  {
+    "wav": "RifleReady2.wav",
+    "duration_s": 0.97,
+    "asr_en": "You got some orders?",
+    "avg_logprob": -0.175,
+    "no_speech_prob": 0.03,
+    "candidate": "voice"
+  },
+  {
+    "wav": "RifleReady3.wav",
+    "duration_s": 0.83,
+    "asr_en": "Let's go.",
+    "avg_logprob": -0.378,
+    "no_speech_prob": 0.027,
+    "candidate": "voice"
+  },
+  {
+    "wav": "RifleReady4.wav",
+    "duration_s": 3.24,
+    "asr_en": "Y'all help, y'all help, y'all help, right.",
+    "avg_logprob": -0.277,
+    "no_speech_prob": 0.01,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Sarge_HitSpot1.wav",
+    "duration_s": 1.67,
+    "asr_en": "Ah, that hit the spot.",
+    "avg_logprob": -0.257,
+    "no_speech_prob": 0.007,
+    "candidate": "voice"
+  },
+  {
+    "wav": "SniperRifle.wav",
+    "duration_s": 3.29,
+    "asr_en": "A sniper rifle. They'll never see it coming.",
+    "avg_logprob": -0.114,
+    "no_speech_prob": 0.01,
+    "candidate": "voice"
+  },
+  {
+    "wav": "StingOut.wav",
+    "duration_s": 1.16,
+    "asr_en": "That takes the sting out of it.",
+    "avg_logprob": -0.235,
+    "no_speech_prob": 0.013,
+    "candidate": "voice"
+  },
+  {
+    "wav": "TakeCover.wav",
+    "duration_s": 0.54,
+    "asr_en": "Take cover.",
+    "avg_logprob": -0.251,
+    "no_speech_prob": 0.026,
+    "candidate": "voice"
+  },
+  {
+    "wav": "TanUnits_attack.wav",
+    "duration_s": 2.71,
+    "asr_en": "ATTACK!",
+    "avg_logprob": -0.599,
+    "no_speech_prob": 0.109,
+    "candidate": "voice"
+  },
+  {
+    "wav": "TanUnits_charge.wav",
+    "duration_s": 1.75,
+    "asr_en": "CHARGE!",
+    "avg_logprob": -0.587,
+    "no_speech_prob": 0.048,
+    "candidate": "voice"
+  },
+  {
+    "wav": "TankReady1.wav",
+    "duration_s": 2.5,
+    "asr_en": "I am about to deliver justice!",
+    "avg_logprob": -0.337,
+    "no_speech_prob": 0.016,
+    "candidate": "voice"
+  },
+  {
+    "wav": "TankReady2.wav",
+    "duration_s": 1.29,
+    "asr_en": "HERE COMES THE HAMMER!",
+    "avg_logprob": -0.351,
+    "no_speech_prob": 0.027,
+    "candidate": "voice"
+  },
+  {
+    "wav": "ThePitch.wav",
+    "duration_s": 1.31,
+    "asr_en": "And the pitch.",
+    "avg_logprob": -0.211,
+    "no_speech_prob": 0.008,
+    "candidate": "voice"
+  },
+  {
+    "wav": "TrainTunnel_8Bit.wav",
+    "duration_s": 3.2,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.942,
+    "no_speech_prob": 0.771,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "VulcanGun.wav",
+    "duration_s": 1.97,
+    "asr_en": "A Vulcan.",
+    "avg_logprob": -0.49,
+    "no_speech_prob": 0.056,
+    "candidate": "voice"
+  },
+  {
+    "wav": "aircraft.wav",
+    "duration_s": 7.7,
+    "asr_en": "Transcription by ESO. Translation by —",
+    "avg_logprob": -0.444,
+    "no_speech_prob": 0.765,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "airplane_8Bit.wav",
+    "duration_s": 8.32,
+    "asr_en": "Transcription by ESO. Translation by —",
+    "avg_logprob": -0.553,
+    "no_speech_prob": 0.774,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "artillery_back.wav",
+    "duration_s": 2.15,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.571,
+    "no_speech_prob": 0.754,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "beach1_nomusic.wav",
+    "duration_s": 128.21,
+    "asr_en": "I don't know. I don't know. Let's go. I don't know. I don't know.",
+    "avg_logprob": -0.795,
+    "no_speech_prob": 0.871,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "beach2_nomusic.wav",
+    "duration_s": 120.63,
+    "asr_en": "Thank you. Thank you. I don't know. I don't know. Thanks for watching!",
+    "avg_logprob": -0.594,
+    "no_speech_prob": 0.901,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "beach3_nomusic.wav",
+    "duration_s": 100.56,
+    "asr_en": "I don't know. All right. I don't know. Thank you for watching.",
+    "avg_logprob": -0.714,
+    "no_speech_prob": 0.814,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "beach4_nomusic.wav",
+    "duration_s": 122.0,
+    "asr_en": "We are now at the end of our walk. We hope you enjoyed this walk. We hope you enjoyed this walk. We hope you enjoyed this walk. Thank you for watching. Thank you. Thanks for watching!",
+    "avg_logprob": -0.756,
+    "no_speech_prob": 0.796,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "birds.wav",
+    "duration_s": 4.78,
+    "asr_en": "Thank you.",
+    "avg_logprob": -0.597,
+    "no_speech_prob": 0.822,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "bombwhistle2.wav",
+    "duration_s": 1.09,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "cage_door.wav",
+    "duration_s": 1.16,
+    "asr_en": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "avg_logprob": -0.256,
+    "no_speech_prob": 0.808,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "doors_drop.wav",
+    "duration_s": 1.11,
+    "asr_en": "FUUUUUUUUUUUUUUUUUUUUUUU",
+    "avg_logprob": -0.883,
+    "no_speech_prob": 0.757,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "fountain.wav",
+    "duration_s": 3.55,
+    "asr_en": "Thank you.",
+    "avg_logprob": -0.272,
+    "no_speech_prob": 0.732,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "gamehq1_A.wav",
+    "duration_s": 2.99,
+    "asr_en": "We're sending you reinforcements. HQ out.",
+    "avg_logprob": -0.235,
+    "no_speech_prob": 0.043,
+    "candidate": "voice"
+  },
+  {
+    "wav": "gamehq2_B.wav",
+    "duration_s": 4.28,
+    "asr_en": "Commander, reinforcements are on the way. HQ out.",
+    "avg_logprob": -0.237,
+    "no_speech_prob": 0.036,
+    "candidate": "voice"
+  },
+  {
+    "wav": "gamehq3_C.wav",
+    "duration_s": 7.5,
+    "asr_en": "We've lost more soldiers? We're dropping you more, but try to keep your guys in one piece. HQ out.",
+    "avg_logprob": -0.155,
+    "no_speech_prob": 0.036,
+    "candidate": "voice"
+  },
+  {
+    "wav": "huey11.wav",
+    "duration_s": 2.79,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.556,
+    "no_speech_prob": 0.675,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "inland10_nomusic.wav",
+    "duration_s": 115.7,
+    "asr_en": "I don't know. So, let's go. Thanks for watching!",
+    "avg_logprob": -0.761,
+    "no_speech_prob": 0.783,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "inland11_nomusic.wav",
+    "duration_s": 121.5,
+    "asr_en": "I don't know. I don't know. I don't know. I don't know. Thanks for watching!",
+    "avg_logprob": -0.816,
+    "no_speech_prob": 0.857,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "inland12_nomusic.wav",
+    "duration_s": 121.02,
+    "asr_en": "We'll be right back. Oh, my God. Thanks for watching!",
+    "avg_logprob": -0.733,
+    "no_speech_prob": 0.873,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "inland5_nomusic.wav",
+    "duration_s": 117.64,
+    "asr_en": "Let's go. There we go. There we go. Thank you for watching!",
+    "avg_logprob": -0.774,
+    "no_speech_prob": 0.908,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "inland6_nomusic.wav",
+    "duration_s": 132.46,
+    "asr_en": "We'll be right back. I don't know. There we go. There we go. Thanks for watching!",
+    "avg_logprob": -0.779,
+    "no_speech_prob": 0.801,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "inland7_nomusic.wav",
+    "duration_s": 112.57,
+    "asr_en": "I don't know what I'm doing here. I don't know. I don't know. Thanks for watching!",
+    "avg_logprob": -0.8,
+    "no_speech_prob": 0.808,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "inland8_nomusic.wav",
+    "duration_s": 117.14,
+    "asr_en": "So, let's go. So, let's go. Let's go.",
+    "avg_logprob": -0.786,
+    "no_speech_prob": 0.617,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "inland9_nomusic.wav",
+    "duration_s": 115.5,
+    "asr_en": "I don't know. There we go. Let's go. Let's go.",
+    "avg_logprob": -0.724,
+    "no_speech_prob": 0.694,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mines.wav",
+    "duration_s": 1.82,
+    "asr_en": "Minds the Hidden Death.",
+    "avg_logprob": -0.267,
+    "no_speech_prob": 0.086,
+    "candidate": "voice"
+  },
+  {
+    "wav": "moreAmmo.wav",
+    "duration_s": 1.68,
+    "asr_en": "Ah, more ammo.",
+    "avg_logprob": -0.269,
+    "no_speech_prob": 0.008,
+    "candidate": "voice"
+  },
+  {
+    "wav": "mp_ctftobase.wav",
+    "duration_s": 0.92,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_death.wav",
+    "duration_s": 0.67,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.717,
+    "no_speech_prob": 0.77,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_endgame.wav",
+    "duration_s": 3.29,
+    "asr_en": "© transcript Emily Beynon",
+    "avg_logprob": -0.424,
+    "no_speech_prob": 0.631,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_ffire.wav",
+    "duration_s": 1.24,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_gotblue.wav",
+    "duration_s": 1.3,
+    "asr_en": "Blue flag captured!",
+    "avg_logprob": -0.339,
+    "no_speech_prob": 0.014,
+    "candidate": "voice"
+  },
+  {
+    "wav": "mp_gotflag.wav",
+    "duration_s": 0.86,
+    "asr_en": "Flag captured!",
+    "avg_logprob": -0.45,
+    "no_speech_prob": 0.013,
+    "candidate": "voice"
+  },
+  {
+    "wav": "mp_gotgreen.wav",
+    "duration_s": 1.21,
+    "asr_en": "Green flag captured!",
+    "avg_logprob": -0.489,
+    "no_speech_prob": 0.01,
+    "candidate": "voice"
+  },
+  {
+    "wav": "mp_gotgrey.wav",
+    "duration_s": 1.14,
+    "asr_en": "Gray flag captured.",
+    "avg_logprob": -0.343,
+    "no_speech_prob": 0.077,
+    "candidate": "voice"
+  },
+  {
+    "wav": "mp_gottan.wav",
+    "duration_s": 1.4,
+    "asr_en": "And flag captured!",
+    "avg_logprob": -0.402,
+    "no_speech_prob": 0.003,
+    "candidate": "voice"
+  },
+  {
+    "wav": "mp_itblue.wav",
+    "duration_s": 1.75,
+    "asr_en": "Blue is it.",
+    "avg_logprob": -0.181,
+    "no_speech_prob": 0.007,
+    "candidate": "voice"
+  },
+  {
+    "wav": "mp_itgreen.wav",
+    "duration_s": 1.62,
+    "asr_en": "Green is it.",
+    "avg_logprob": -0.093,
+    "no_speech_prob": 0.018,
+    "candidate": "voice"
+  },
+  {
+    "wav": "mp_itgrey.wav",
+    "duration_s": 1.63,
+    "asr_en": "Gray is it.",
+    "avg_logprob": -0.172,
+    "no_speech_prob": 0.003,
+    "candidate": "voice"
+  },
+  {
+    "wav": "mp_ittan.wav",
+    "duration_s": 1.82,
+    "asr_en": "Tan is it.",
+    "avg_logprob": -0.2,
+    "no_speech_prob": 0.01,
+    "candidate": "voice"
+  },
+  {
+    "wav": "mp_own.wav",
+    "duration_s": 0.93,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.704,
+    "no_speech_prob": 0.662,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_pop.wav",
+    "duration_s": 0.19,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.696,
+    "no_speech_prob": 0.711,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_rebaseflag.wav",
+    "duration_s": 1.79,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_tick.wav",
+    "duration_s": 0.1,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.619,
+    "no_speech_prob": 0.812,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "mp_tickalert.wav",
+    "duration_s": 0.1,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.614,
+    "no_speech_prob": 0.875,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "ocean_ambience.wav",
+    "duration_s": 94.35,
+    "asr_en": "Thank you. Thank you. Thank you. Thank you.",
+    "avg_logprob": -0.358,
+    "no_speech_prob": 0.862,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "paraTroopers.wav",
+    "duration_s": 2.85,
+    "asr_en": "Paratroopers, jump in and join the fun, boys.",
+    "avg_logprob": -0.259,
+    "no_speech_prob": 0.026,
+    "candidate": "voice"
+  },
+  {
+    "wav": "sargeauto.wav",
+    "duration_s": 0.61,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.673,
+    "no_speech_prob": 0.828,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "sargeheavymg.wav",
+    "duration_s": 0.6,
+    "asr_en": "BOOM!",
+    "avg_logprob": -0.832,
+    "no_speech_prob": 0.887,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "sargerifle.wav",
+    "duration_s": 0.6,
+    "asr_en": "BOOM!",
+    "avg_logprob": -0.895,
+    "no_speech_prob": 0.78,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "truckDestroy.wav",
+    "duration_s": 1.24,
+    "asr_en": "",
+    "avg_logprob": -9.0,
+    "no_speech_prob": 1.0,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "truckdeath.wav",
+    "duration_s": 3.0,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.728,
+    "no_speech_prob": 0.762,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "water_run.wav",
+    "duration_s": 0.68,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.587,
+    "no_speech_prob": 0.493,
+    "candidate": "voice"
+  },
+  {
+    "wav": "waterwheel.wav",
+    "duration_s": 4.0,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.747,
+    "no_speech_prob": 0.76,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "windmill.wav",
+    "duration_s": 4.0,
+    "asr_en": "Thanks for watching!",
+    "avg_logprob": -0.677,
+    "no_speech_prob": 0.639,
+    "candidate": "sfx"
+  },
+  {
+    "wav": "wrench.wav",
+    "duration_s": 2.63,
+    "asr_en": "vehicle repair kit. Just call me Mr. Fix-It.",
+    "avg_logprob": -0.193,
+    "no_speech_prob": 0.307,
+    "candidate": "voice"
+  }
+]

@@ -1,0 +1,29 @@
+// this gets loaded on the host if the @1 army is AI controlled
+
+	
+macro caf_ai_enemy 3
+{
+	// MASS ATTACK
+
+	// before attacking @2 make sure @2 is in the game and is not an ally
+
+	if @1SetCapture@2 testvar IsColorInGame @2 > 0 and IsAlly @1 @2 = 0 and @1Captured@2Flag = 0 then
+		setvar @1Action @3,
+		trigger @1MassCapture@2
+
+	if @1redo testvar @1Action = @3 then
+		trigger @1MassCapture@2
+
+	if @1MassCapture@2 testvar @2HasFlags = 0 then
+		order @1 group 1 follow @2flag1 inmode ignore,
+		order @1 group 2 follow @2flag1 inmode attack,
+		order @1 group 3 follow @2flag1 inmode attack,
+		order @1 group 4 follow @2flag1 inmode attack
+
+	if @1MassCapture@2 testvar @2HasFlags <> 0 then
+		order @1 group 1 follow @2flag1 inmode attack,
+		order @1 group 2 follow @2flag1 inmode attack,
+		order @1 group 3 follow @2flag1 inmode attack,
+		order @1 group 4 follow @2flag1 inmode attack
+
+}

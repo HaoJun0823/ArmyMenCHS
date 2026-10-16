@@ -1,0 +1,21 @@
+#cmd	type		x	y	facing	group	name
+
+place	rifleman    	1853	3247	0	1	-
+place	rifleman    	1877	3202	0	1	-
+place	rifleman    	1909	3181	0	1	-
+place	rifleman    	1869	3171	0	1	-
+place	rifleman    	2194	3258	0	2	-
+place	rifleman    	2155	3228	0	2	-
+place	rifleman    	2088	3220	0	2	-
+place	rifleman    	2113	3226	0	2	-
+place	mgpill      	1961	3247	0	2	-
+place	tank        	2177	3324	0	2	-
+place	tank        	1886	3355	0	2	-
+place	tank        	2052	3218	0	2	-
+place	halftrack   	1872	3466	0	2	-
+place	ackackgun   	2084	3432	0	2	-
+place	jeep        	1886	3271	0	2	-
+place	rifleman    	1949	3386	0	3	-
+place	rifleman    	1971	3426	0	3	-
+place	rifleman    	1923	3433	0	3	-
+place	rifleman    	1927	3340	0	3	-

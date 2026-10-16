@@ -1,0 +1,86 @@
+//////////////////////////////////////////////////////////////////////////////
+// Hold the Black Flag rules common to holdflag and fusion
+//////////////////////////////////////////////////////////////////////////////
+variable holdsBlackFlag 0
+
+// in holdflag the black flag is a strategic item
+if startup1 then
+	triggerdelay 1000 MarkAllTroopersStrategic,
+	triggerdelay 10 xxstartup2
+
+if xxstartup2 then
+	deploy bkflagbase,
+	deploy blackflag1,
+	setitemflag blackflag1 strategic 1,
+	setitemflag blackflag1 stratsquare 1
+
+// @1 = color, @2 = Capitalized color (e.g. "Green") @3 = color number
+macro holdflag_rules 3
+{
+	// these pairs of variables are used to prevent sarge dropping and picking up the flag
+	// within 1 second and scoring at a double rate
+	variable @1PickupFlagCount 0
+	variable @1KeepsFlagCheck 0
+
+	// check for @1 sarge holding the flag
+
+	if pickedup blackflag1 by @1 trooper then
+		setvar holdsBlackFlag @3,
+		showmessage "@2 夺得了黑旗",
+		playsound "mp_gotflag.wav" (0,0) 3 1,
+		addvar @1PickupFlagCount 1,
+		triggerdelay 3000 check@1holdsflag,
+		addscoresymbol @1 flag
+
+	if dropped blackflag1 by @1 trooper then
+		setvar holdsBlackFlag 0,
+		removescoresymbol @1 flag
+
+	if check@1holdsflag then
+		addvar @1KeepsFlagCheck 1
+
+	if check@1holdsflag testvar holdsBlackFlag = @3 then
+		trigger check@1scores
+
+	if check@1scores testvar holdsBlackFlag = @3 and @1KeepsFlagCheck = @1PickupFlagCount then
+		trigger @1scorex
+	if @1scorex then
+		addvar @1score holdFlagBonus,
+		playsound "mp_tick.wav" (0,0) 2 3,
+		trigger check@1wins,
+		triggerdelay 3000 check@1scores
+}
+
+expand holdflag_rules (green "绿队" 1)
+expand holdflag_rules (tan "棕队" 2)
+expand holdflag_rules (blue "蓝队" 3)
+expand holdflag_rules (grey "灰队" 4)
+
+// if flag is dropped and not picked up for 2 minutes then return it to it's base
+
+variable flagTimeOutVar 0
+variable flagLastTimeOutVar 1
+
+if dropped blackflag1 then
+	setitemflag whoby flashing 0,
+	triggerdelay 120000 flagCheckTimeOut
+
+if pickedup blackflag1 then
+	setitemflag whoby flashing 1,
+    addvar flagTimeOutVar 1
+
+if flagCheckTimeOut testvar flagTimeOutVar = flagLastTimeOutVar then
+	trigger checkxout
+
+if checkxout then
+	showmessage "黑旗已掉落且 2 分钟内无人拾取 —— 已移回基地",
+	createexplosion blackflag1 128 0 green,
+	playsound "mp_rebaseflag.wav" (0,0) 2 1,
+    moveitem blackflag1 bkflagbase,
+	triggerdelay 1000 flagLastTimeOutIncr
+
+if flagCheckTimeOut testvar flagTimeOutVar <> flagLastTimeOutVar then
+	triggerdelay 1000 flagLastTimeOutIncr
+
+if flagLastTimeOutIncr then
+	addvar flagLastTimeOutVar 1

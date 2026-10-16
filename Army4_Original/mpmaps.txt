@@ -1,0 +1,215 @@
+# this lists defines all of the maps that can be used for multi-play
+
+#command map_name  	map_text  		folder   tileset	loadcof		victorycin 	loadscreen     		loadmusic 	briefing briefsfx stratmap 	cycle?		losemovie1	losemovie2	losemovie3
+
+MAP	 mp_beach01 	Islands_of_War     	mpbeach mp_beach    	FALSE		none	   	mp_islands_of_war.bmp		none      	none     none     none   	FALSE          	none            none		none
+MAP	 mp_invasion 	Invasion    		mpbeach	mp_invasion   	FALSE		none	   	mp_invasion.bmp   	none      	none     none     none   	FALSE          	none            none		none
+MAP	 mp_pointblank 	Pointblank  		mpbeach	mp_pointblank	FALSE		none	   	mp_pointblank.bmp   	none      	none     none     none   	FALSE          	none            none		none
+MAP	 mp_beach02 	Tan_Sand	     	mpbeach mp_beach    	FALSE		none	   	mp_tan_sand.bmp		none      	none     none     none   	FALSE          	none            none		none
+MAP	 mp_beach03 	Plastic_Kin		mpbeach mp_beach    	FALSE		none	   	mp_plastic_kin.bmp	none      	none     none     none   	FALSE          	none            none		none
+MAP	 mp_beach04 	Land_of_the_Lost   	mpbeach mp_beach04    	FALSE		none	   	mp_land_of_the_lost.bmp	none      	none     none     none   	FALSE          	none            none		none
+MAP	 mp_beach05 	Homeless	     	mpbeach mp_beach05    	FALSE		none	   	mp_homeless.bmp		none      	none     none     none   	FALSE          	none            none		none
+MAP	 mp_spiral	The_Pinwheel     	mpbeach mp_spiral	FALSE		none	   	mp_pinwheel.bmp		none      	none     none     none   	FALSE          	none            none		none
+MAP	 mp_derby	Beach_Derby     	mpbeach mp_derby	FALSE		none	   	mp_beach_derby.bmp	none      	none     none     none   	FALSE          	none            none		none
+
+MAP	 mp_inland01 	City_Mayhem	     	mpinland inland1    	FALSE		none	   	mp_city_mayhem.bmp	none      	none     none     none   	FALSE          	none            none		none
+MAP	 mp_inland02 	Dirty_Deeds	     	mpinland inland2    	FALSE		none	   	mp_dirty_deeds.bmp	none      	none     none     none   	FALSE          	none            none		none
+MAP	 mp_inland03 	The_Pits	     	mpinland inland2    	FALSE		none	   	mp_the_pits.bmp		none      	none     none     none   	FALSE          	none            none		none
+MAP	 mp_inland04 	Focal_Point		mpinland inland2    	FALSE		none	   	mp_focal_point.bmp	none      	none     none     none   	FALSE          	none            none		none
+MAP	 mp_battlepit01 Battle_Pit 	   	inland   inland         FALSE		none	  	mp_battlepit.bmp    	none      	none     none     none   	FALSE          none            none		none
+MAP	 mp_battlelake01 Watery_Grave    	inland   inland         FALSE		none	  	mp_watery_grave.bmp    	none      	none     none     none   	FALSE          none            none		none
+MAP	 mp_Plastic_Battles Plastic_Battles	inland	 inland		FALSE		none	   	mp_plastic_battles.bmp	none      	none     none     none   	FALSE          	none            none		none
+
+
+# this list defines all available multi-player rules files
+
+#command rules_file   rules_description_file   game_name
+RULES    death        death_desc               Death_Match
+RULES    last         last_desc 		Last_Man_Standing
+RULES    ctf          ctf_desc                 Capture_the_Flag
+RULES    caf          caf_desc                 Capture_All_Flags
+RULES    koth         koth_desc                King_of_the_Hill
+RULES    holdflag     holdflag_desc            Hold_the_Black_Flag
+RULES    node         node_desc                Node_Control
+RULES    ctf_death    ctf_death_desc           Death_or_Capture_the_Flag
+RULES    fusion       fusion_desc              Meltdown_Fusion
+RULES    killer       killer_desc              Black_Flag_Killer
+
+# this list specifies which maps can be used with each of the rules files
+# this list must come after the RULES commands
+
+RULEMAP  death	      mp_beach01
+RULEMAP  ctf	      mp_beach01
+RULEMAP  koth	      mp_beach01
+RULEMAP  ctf_death    mp_beach01
+RULEMAP  holdflag     mp_beach01
+RULEMAP  node	      mp_beach01
+RULEMAP  caf	      mp_beach01
+RULEMAP  fusion	      mp_beach01
+RULEMAP  killer       mp_beach01
+RULEMAP  last	      mp_beach01
+
+RULEMAP  death	      mp_invasion
+RULEMAP  ctf	      mp_invasion
+RULEMAP  koth	      mp_invasion
+RULEMAP  ctf_death    mp_invasion
+RULEMAP  holdflag     mp_invasion
+RULEMAP  node	      mp_invasion
+RULEMAP  caf	      mp_invasion
+RULEMAP  fusion	      mp_invasion
+RULEMAP  killer       mp_invasion
+RULEMAP  last	      mp_invasion
+
+RULEMAP  death	      mp_pointblank
+RULEMAP  ctf	      mp_pointblank
+RULEMAP  koth	      mp_pointblank
+RULEMAP  ctf_death    mp_pointblank
+RULEMAP  holdflag     mp_pointblank
+RULEMAP  node	      mp_pointblank
+RULEMAP  caf	      mp_pointblank
+RULEMAP  fusion	      mp_pointblank
+RULEMAP  killer       mp_pointblank
+RULEMAP  last	      mp_pointblank
+
+RULEMAP  death	      mp_beach02
+RULEMAP  ctf	      mp_beach02
+RULEMAP  koth	      mp_beach02
+RULEMAP  ctf_death    mp_beach02
+RULEMAP  holdflag     mp_beach02
+RULEMAP  node	      mp_beach02
+RULEMAP  caf	      mp_beach02
+RULEMAP  fusion	      mp_beach02
+RULEMAP  killer       mp_beach02
+RULEMAP  last	      mp_beach02
+
+RULEMAP  death	      mp_beach03
+RULEMAP  ctf	      mp_beach03
+RULEMAP  koth	      mp_beach03
+RULEMAP  ctf_death    mp_beach03
+RULEMAP  holdflag     mp_beach03
+RULEMAP  node	      mp_beach03
+RULEMAP  caf	      mp_beach03
+RULEMAP  fusion	      mp_beach03
+RULEMAP  killer       mp_beach03
+RULEMAP  last	      mp_beach03
+
+RULEMAP  death	      mp_beach04
+RULEMAP  ctf	      mp_beach04
+RULEMAP  koth	      mp_beach04
+RULEMAP  ctf_death    mp_beach04
+RULEMAP  holdflag     mp_beach04
+RULEMAP  node	      mp_beach04
+RULEMAP  caf	      mp_beach04
+RULEMAP  fusion	      mp_beach04
+RULEMAP  killer       mp_beach04
+RULEMAP  last	      mp_beach04
+
+RULEMAP  death	      mp_beach05
+RULEMAP  ctf	      mp_beach05
+RULEMAP  koth	      mp_beach05
+RULEMAP  ctf_death    mp_beach05
+RULEMAP  holdflag     mp_beach05
+RULEMAP  node	      mp_beach05
+RULEMAP  caf	      mp_beach05
+RULEMAP  fusion	      mp_beach05
+RULEMAP  killer       mp_beach05
+RULEMAP  last	      mp_beach05
+
+RULEMAP  death        mp_inland01
+RULEMAP  ctf          mp_inland01
+RULEMAP  koth         mp_inland01
+RULEMAP  ctf_death    mp_inland01
+RULEMAP  holdflag     mp_inland01
+RULEMAP  node	      mp_inland01
+RULEMAP  caf          mp_inland01
+RULEMAP  fusion       mp_inland01
+RULEMAP  killer       mp_inland01
+RULEMAP  last         mp_inland01
+
+RULEMAP  death        mp_inland02
+RULEMAP  ctf          mp_inland02
+RULEMAP  koth         mp_inland02
+RULEMAP  ctf_death    mp_inland02
+RULEMAP  holdflag     mp_inland02
+RULEMAP  node	      mp_inland02
+RULEMAP  caf          mp_inland02
+RULEMAP  fusion       mp_inland02
+RULEMAP  killer       mp_inland02
+RULEMAP  last         mp_inland02
+
+RULEMAP  death        mp_inland03
+RULEMAP  ctf          mp_inland03
+RULEMAP  koth         mp_inland03
+RULEMAP  ctf_death    mp_inland03
+RULEMAP  holdflag     mp_inland03
+RULEMAP  node	      mp_inland03
+RULEMAP  caf          mp_inland03
+RULEMAP  fusion       mp_inland03
+RULEMAP  killer       mp_inland03
+RULEMAP  last         mp_inland03
+
+RULEMAP  death        mp_inland04
+RULEMAP  ctf          mp_inland04
+RULEMAP  koth         mp_inland04
+RULEMAP  ctf_death    mp_inland04
+RULEMAP  holdflag     mp_inland04
+RULEMAP  node	      mp_inland04
+RULEMAP  caf          mp_inland04
+RULEMAP  fusion       mp_inland04
+RULEMAP  killer       mp_inland04
+RULEMAP  last         mp_inland04
+
+RULEMAP  death	      mp_spiral
+RULEMAP  ctf	      mp_spiral
+RULEMAP  koth	      mp_spiral
+RULEMAP  ctf_death    mp_spiral
+RULEMAP  holdflag     mp_spiral
+RULEMAP  node	      mp_spiral
+RULEMAP  caf	      mp_spiral
+RULEMAP  fusion	      mp_spiral
+RULEMAP  killer       mp_spiral
+RULEMAP  last	      mp_spiral
+
+RULEMAP  death	      mp_derby
+RULEMAP  ctf	      mp_derby
+RULEMAP  koth	      mp_derby
+RULEMAP  ctf_death    mp_derby
+RULEMAP  holdflag     mp_derby
+RULEMAP  node	      mp_derby
+RULEMAP  caf	      mp_derby
+RULEMAP  fusion	      mp_derby
+RULEMAP  killer       mp_derby
+RULEMAP  last	      mp_derby
+
+RULEMAP  death	      mp_battlepit01
+RULEMAP  ctf	      mp_battlepit01
+RULEMAP  koth	      mp_battlepit01
+RULEMAP  ctf_death    mp_battlepit01
+RULEMAP  holdflag     mp_battlepit01
+RULEMAP  node	      mp_battlepit01
+RULEMAP  caf	      mp_battlepit01
+RULEMAP  fusion	      mp_battlepit01
+RULEMAP  killer       mp_battlepit01
+RULEMAP  last	      mp_battlepit01
+
+RULEMAP  death	      mp_battlelake01
+RULEMAP  ctf	      mp_battlelake01
+RULEMAP  koth	      mp_battlelake01
+RULEMAP  ctf_death    mp_battlelake01
+RULEMAP  holdflag     mp_battlelake01
+RULEMAP  node	      mp_battlelake01
+RULEMAP  caf	      mp_battlelake01
+RULEMAP  fusion	      mp_battlelake01
+RULEMAP  killer       mp_battlelake01
+RULEMAP  last	      mp_battlelake01
+
+RULEMAP  death        mp_Plastic_Battles
+RULEMAP  ctf          mp_Plastic_Battles
+RULEMAP  koth         mp_Plastic_Battles
+RULEMAP  ctf_death    mp_Plastic_Battles
+RULEMAP  holdflag     mp_Plastic_Battles
+RULEMAP  node	      mp_Plastic_Battles
+RULEMAP  caf          mp_Plastic_Battles
+RULEMAP  fusion       mp_Plastic_Battles
+RULEMAP  killer       mp_Plastic_Battles
+RULEMAP  last         mp_Plastic_Battles

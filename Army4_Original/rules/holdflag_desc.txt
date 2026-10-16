@@ -1,0 +1,9 @@
+A Player scores 10 pts for every 3 seconds
+the player's trooper holds the black flag.
+
+The flag returns to its base if unheld
+for 2 minutes.
+
+The first player/team to reach the point
+goal wins.
+

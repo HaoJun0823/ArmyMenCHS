@@ -1,0 +1,42 @@
+07_01_greentroop.wav	GreenArmy_Grunt(绿军)	And commander, we found a minesweeper. This should help us find a safer path to that train station.
+07_02_HQ_B.wav	HQ_Command(总部/指挥官)	Good work, Commander. Our boys on the front line will lose a lot less plastic thanks to you. Move your men to the north. This next mission will be a combined effort. HQ out.
+07_02_greentroop.wav	GreenArmy_Grunt(绿军)	It's an ambush! They're letting all the trees on fire to trap us in here! Run for your plastic!
+07_02_tantroop.wav	TanArmy(棕军)	We've got them now.
+08_01_HQ.wav	HQ_Command(总部/指挥官)	Commander, the river to the north is a pinch point to the Tann. We ordered the 5th Hard Plastic Brigade to flank the bridges from the east and west, but we need you and your men to take on the frontal assault. Our ultimate goal is to breach the Tann's front line on the other side of the river, eliminating any heavy cannons stationed there. HQ out.
+08_01_HardPlastic_01C.wav	SpaceHQ(盟友单位/太空总部)	Welcome aboard, Commander. It's an honor to have you along on this mission. We'll be moving into attack positions momentarily.
+08_01_tantroop_04A.wav	TanArmy(棕军)	It's heating up down here! Send reinforcement!
+08_02_HQ_B.wav	HQ_Command(总部/指挥官)	The attack will be initiated by the commanding officer for the 5th, so be ready to move in on their command. HQ out.
+08_02_HardPlastic_01C.wav	SpaceHQ(盟友单位/太空总部)	Okay man, move into attack positions. Initiate on my mark.
+08_02_tantroop_05C.wav	TanArmy(棕军)	Reinforcements are on the way!
+08_03_HQ_B.wav	HQ_Command(总部/指挥官)	Great work. We can now use these bridges to move our armies into the heart of Tan Territory. Excellent job, Commander. HQ out.
+08_03_HardPlastic_01A.wav	SpaceHQ(盟友单位/太空总部)	West flank, go! East flank, go!
+08_04_HardPlastic_01B.wav	SpaceHQ(盟友单位/太空总部)	Commander, there are too many of them! We need some help over here, or else we're goners!
+08_05_HardPlastic_01C.wav	SpaceHQ(盟友单位/太空总部)	Now that we gave the Tans front line a good whooping, let's show these Tans how we like to do things back home!
+09_01_HQ.wav	HQ_Command(总部/指挥官)	Commander, your mission is to secure the Trinket Valley and eliminate the defending TAN units in the area. The TAN have set up various defensive positions around the valley, so keep an eye out for heavy fire from these locations. By the way, the Green Navy is conducting an attack on Toy Island. Assisting them may prove to help you in your mission. HQ out.
+09_01_boatpilot_01A.wav	SpaceHQ(盟友单位/太空总部)	Commander, we're here to attack Toy Island. We could use your experience on this mission.
+09_02_HQ__A.wav	HQ_Command(总部/指挥官)	Our spy planes have noticed TAN forces are massing for a counterattack as we speak.
+09_02_boatpilot_01B.wav	SpaceHQ(盟友单位/太空总部)	We can wait here for you a bit, but we will need to attack without you if you choose not to assist, Commander.
+09_03_HQ_A.wav	HQ_Command(总部/指挥官)	Commander, it's time for you to secure the northern end of the bridge. Some TAN units are stationed there, so you'll have to eliminate them. HQ out.
+09_03_boatpilot_01B.wav	SpaceHQ(盟友单位/太空总部)	Commencing the attack on Toy Island without you, Commander!
+09_04_HQ_A.wav	HQ_Command(总部/指挥官)	Excellent. The valley is secured. HQ out.
+09_04_boatpilot_01C.wav	SpaceHQ(盟友单位/太空总部)	We are at your disposal, Commander. Uh, well, maybe that was a bad choice of words. We are under your command.
+10_01_HQ.wav	HQ_Command(总部/指挥官)	Commander, there are three villages up ahead that must be secured. The TAN are using Dragon Teeth to block our tanks, so we need you to go in on foot and secure all three villages before our convoy arrives. The TANs are desperate to hold on to this area, so expect heavy resistance. HQ out.
+10_02_HQ_A.wav	HQ_Command(总部/指挥官)	Good job, Commander. With the villages cleared, the Green Army can now move forward. The convoys are here and ready to roll out. HQ out.
+11_01_HQ.wav	HQ_Command(总部/指挥官)	We need you to clear out the area up ahead, Commander. This convoy carries crucial supplies we'll need to attack the TAM's capital city. We have received reports that nearby TAM tanks may try to intercept our convoy, so be on the lookout for them. If we lose the convoy, our hopes of conquering the TAM's capital will be lost. You also have recon support, Commander. Use them to scout the route ahead and to locate possible TAM threats. HQ out.
+11_02_HQ_A.wav	HQ_Command(总部/指挥官)	We can't afford to lose any more convoy trucks. We must protect them at all costs. HQ out.
+11_03_HQ_A.wav	HQ_Command(总部/指挥官)	Enemy troops are moving into the area, Commander. HQ out.
+11_04_HQ_A.wav	HQ_Command(总部/指挥官)	Good work protecting the convoy. Now we'll have more plastic to throw at the Tans. HQ out.
+12_01_HQ.wav	HQ_Command(总部/指挥官)	Commander, this is our final battle. We have pushed the TAN back to their capital and it's up to you to spearhead the main assault. Your objective is the palace at the center of the TAN capital. Fight your way there and destroy it. You can expect very heavy TAN resistance and possible counter attacks. Take what's left of the convoy and use them to help your efforts. Good luck, Commander. HQ out.
+12_01_ptboat_01B.wav	SpaceHQ(盟友单位/太空总部)	Commander, we're here to provide support for your forces. We've just cleared this section of the river, but we're not sure what waits upstream.
+12_02_HQ_B.wav	HQ_Command(总部/指挥官)	We've lost a lot of plastic due to artillery cannons guarding the capital. Be careful. HQ out.
+12_03_HQ_A.wav	HQ_Command(总部/指挥官)	You did it, Commander. The Tann army has been defeated and their capital city is under our control. Without their capital, the Tann will lose the war for sure. Congratulations on a job well done. HQ, over and out.
+Aah.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	AWWWWWWWWWWWWWWWWWWWW
+Aah2.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	AHHHHHHHHHH
+Aah3.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	UGH!
+AckackReady1.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Hey, you want some of this?
+AckackReady2.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	You ain't nothing.
+Adrenaline.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Adrenaline.
+AirAttack.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	An air attack.
+AirStrike.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	An airstrike. Death from above.
+AllRight.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	All right.
+AutoRifle.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	A light machine gun.

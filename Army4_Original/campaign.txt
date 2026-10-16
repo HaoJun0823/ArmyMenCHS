@@ -1,0 +1,15 @@
+#command map_name	map_text		folder		tileset		loadcof	victorycin	loadscreen		loadmusic			briefing	briefsfx			stratmap		cycling?	losemovie1	losemovie2	losemovie3	movienum
+MAP	D_Day		The_Landing		beach		beach		FALSE	none		MAP_01.bmp		beach01.wav		none		01_01_HQ.wav			hostage			TRUE		lose1		lose1		lose1
+MAP	death_walk	Death_Walk		beach		beach		TRUE	none		MAP_02.bmp		beach02.wav		none		02_01_HQ.wav			hostage			TRUE		lose2		lose1		lose1
+MAP	tanthie_basin	Tanthie_Basin		beach		beach		TRUE	none		MAP_03.bmp		beach03.wav		none		03_01_HQ.wav			hostage			TRUE		lose2		lose1		lose1
+MAP	caged		Caged			beach		beach		TRUE	none		MAP_04.bmp		beach04.wav		none		04_01_HQ.wav			hostage			TRUE		lose2		lose1		lose2
+MAP 	Toypiquet	New_Territory		inland		inland		TRUE	none		MAP_05.bmp		inland01.wave		none		05_01_HQ.wav			hostage			TRUE		lose3		lose2		lose1
+MAP Escape_from_Toypiquet The_Capture		inland		inland		TRUE	none		MAP_06.bmp		inland02.wave		none		06_01_HQ.wav			hostage			TRUE		lose3		lose2		lose1
+MAP 	Trainstation	Critical_Loss		inland		inland		TRUE	none		MAP_07.bmp		inland03.wave		none		07_01_HQ.wav			hostage			TRUE		lose3		lose2		lose2
+MAP 	River_Feud  	Narrow_Crossings	inland		inland		TRUE	none		MAP_08.bmp		inland04.wave		none		08_01_HQ.wav			hostage			TRUE		lose3		lose2		lose3
+MAP 	tanrevenge	Tan_Revenge		inland		inland		TRUE	none		MAP_09.bmp		inland05.wave		none		09_01_HQ.wav			hostage			TRUE		lose3		lose3		lose2
+MAP 	3cities		Village_Downfall	inland		inland		TRUE	none		MAP_10.bmp		inland06.wave		none		10_01_HQ.wav			hostage			TRUE		lose3		lose3		lose4
+MAP 	convoy		Concealed_Dangers 	inland		inland		TRUE	none		MAP_11.bmp		inland07.wave		none		11_01_HQ.wav			hostage			TRUE		lose3		lose4		lose4
+MAP 	final		Fallen_City		inland		inland		TRUE	act2		MAP_12.bmp		inland08.wave		none		12_01_HQ.wav			hostage			TRUE		lose4		lose3		lose4		1
+#MAP 	testmap		Test_Map		inland		inland		TRUE	none		MAP_01.bmp		inland01.wave				none		none				hostage			TRUE		lose1		lose1		lose1
+

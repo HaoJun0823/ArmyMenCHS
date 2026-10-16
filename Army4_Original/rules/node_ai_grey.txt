@@ -1,0 +1,2 @@
+include node_ai.txt
+expand node_ai_macro ( grey green tan blue 4 1 2 3 )

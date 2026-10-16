@@ -1,0 +1,49 @@
+
+//////////////////////////////////////////////////////////////////////////////
+// Fairly common section - score a penalty if kill an allied trooper
+//////////////////////////////////////////////////////////////////////////////
+
+variable killedSelfPenalty -100
+variable killedAllyPenalty -100
+variable killedByAllyPenalty -100
+
+macro killedBySelf 2
+{
+	if killed @1 trooper by @1 then
+		showmessage "@2 trooper killed by @1 friendly fire",
+		trigger friendlyFireDeath,
+		addvar @1score killedSelfPenalty
+}
+
+// @1 = killed color, @2 = Capitalized killed color, @3 = by color
+macro killedByAlly 3
+{
+	if killed @1 trooper by @3 testvar isAlly @3 @1 = 1 then
+		showmessage "@2 trooper killed by @3 friendly fire",
+		trigger friendlyFireDeath,
+		addvar @3score killedAllyPenalty,
+		addvar @1score killedByAllyPenalty
+}
+
+// @1 = color, @2 = Capitalized color (e.g. "Green"), @3-5 are other colors
+macro checkForFriendlyFire 5
+{
+	expand killedBySelf ( @1 "@2" )
+	expand killedByAlly ( @1 "@2" @3 )
+	expand killedByAlly ( @1 "@2" @4 )
+	expand killedByAlly ( @1 "@2" @5 )
+}
+
+expand checkForFriendlyFire ( green Green tan blue grey )
+expand checkForFriendlyFire ( tan Tan green blue grey )
+expand checkForFriendlyFire ( blue Blue green tan grey )
+expand checkForFriendlyFire ( grey Grey green tan blue )
+
+// sound effects
+
+if friendlyFireDeath then
+	triggerdelay 500 friendlyFireDeathSound
+
+if friendlyFireDeathSound then
+	playsound "mp_ffire.wav" (0,0) 2 2
+

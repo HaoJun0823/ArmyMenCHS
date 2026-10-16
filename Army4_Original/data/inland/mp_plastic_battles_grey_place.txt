@@ -1,0 +1,7 @@
+#cmd	type		x	y	facing	group	name
+
+place	tank        	2920	2471	64	2	-
+place	jeep        	2968	2548	64	2	-
+place	rifleman    	2912	2474	64	2	-
+place	rifleman    	2644	2565	24	4	-
+place	rifleman    	2676	2820	64	4	-

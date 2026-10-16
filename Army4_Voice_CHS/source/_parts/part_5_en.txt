@@ -1,0 +1,42 @@
+Bazooka.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	A bazooka.
+BazookaReady1.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	DEADLY
+BazookaReady2.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Heads up!
+BoatReady1.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Moving out!
+BoatReady2.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	I believe you're rocking the boat.
+Civilians_Ann_Civilian_Ahhhhhh3.wav	Civilian(平民; *_Ann_*=Civilian_Ann, *_Tanya_*=Civilian_Tanya)	AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+Civilians_Ann_Civilian_PleasesaveUs.wav	Civilian(平民; *_Ann_*=Civilian_Ann, *_Tanya_*=Civilian_Tanya)	Please save us!
+Civilians_Tanya_Civilian_PleaseSaveMe3.wav	Civilian(平民; *_Ann_*=Civilian_Ann, *_Tanya_*=Civilian_Tanya)	Why are you doing this to me?
+Civilians_aahhh1.wav	Civilian(平民; *_Ann_*=Civilian_Ann, *_Tanya_*=Civilian_Tanya)	AAAAAAAAHHHHH!
+Civilians_ahhh1.wav	Civilian(平民; *_Ann_*=Civilian_Ann, *_Tanya_*=Civilian_Tanya)	AHHHHH!
+Civilians_ahhh4.wav	Civilian(平民; *_Ann_*=Civilian_Ann, *_Tanya_*=Civilian_Tanya)	AHHHHH!
+Civilians_helpMe1.wav	Civilian(平民; *_Ann_*=Civilian_Ann, *_Tanya_*=Civilian_Tanya)	HELP ME! HELP ME!
+Civilians_pleassaveus3.wav	Civilian(平民; *_Ann_*=Civilian_Ann, *_Tanya_*=Civilian_Tanya)	PLEASE SAVE US!
+Civilians_thoseThings1.wav	Civilian(平民; *_Ann_*=Civilian_Ann, *_Tanya_*=Civilian_Tanya)	Those things are everywhere!
+ConvoyReady1.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Why do I always get this job?
+ConvoyReady2.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	SOMEBODY GET ME OUT OF THIS THING!
+Disguise.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	a disguise.
+Explosives.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Plastic Explosives, the countdown to destruction.
+FlakJack.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	A flak jacket, just the thing to keep me cool during hot firefights.
+FlameThrower.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	A flamethrower. Burn, baby, burn.
+FlamerReady1.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Give me something to burn.
+FlamerReady2.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	I love the smell of burnt plastic!
+GreenUnits_no1.wav	GreenArmy_Grunt(绿军)	NOOOOOO!
+GreenUnits_no3.wav	GreenArmy_Grunt(绿军)	NOOOOOO!
+GreenUnits_unit_ahieee1.wav	GreenArmy_Grunt(绿军)	AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
+Grenades.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Grenades.
+GrenadierReady1.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Incoming.
+GrenadierReady2.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Fire in the hole.
+Guard_Intruders.wav	Guard(守卫)	intruders
+Guard_Stop.wav	Guard(守卫)	STOP!
+HQNapalmAirstrike.wav	HQ_Command(总部/指挥官)	HQ, I need some napalm.
+HQReinforcements.wav	HQ_Command(总部/指挥官)	HQ, send in the Flyboys.
+HQreconn.wav	HQ_Command(总部/指挥官)	HQ, send me a recon.
+HalftrackReady1.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Time to lay some plastic.
+HalftrackReady2.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Be there in a sec.
+HammerMine.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Hammer mine.
+HeavyMGReady1.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Get some.
+HeavyMGReady2.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Oh, man.
+HeavyMacGun.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	A heavy machine gun. Oh yeah.
+HitsSpot.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Ah, instant health.
+IneededThat.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Mmm, I needed that.
+JeepReady1.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Be there in a sec.

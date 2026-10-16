@@ -1,0 +1,152 @@
+《玩具兵大战：世界大战》(Army Men: World War) 简体中文补丁  安装说明
+============================================================================
+
+版本
+----
+本补丁适用于《玩具兵大战：世界大战》GOG 版（amww.exe，2000 年原作的
+GOG.com 再发行版本）。
+
+本作**没有**官方简体中文版。本补丁的界面文本与任务脚本为从零翻译，
+中文配音为 TTS 合成（见下文「关于中文配音」）。
+
+
+安装步骤
+--------
+1. 关闭游戏。若游戏正在运行，请先退出（任务管理器中确认没有 amww.exe）。
+
+2. 将本压缩包解压到**游戏根目录**（即 amww.exe 所在的文件夹）。
+   解压后应当得到这样的结构：
+
+       <游戏目录>\
+       ├─ dinput.dll                  <- 新增（ASI Loader）
+       ├─ ddraw.dll                   <- 新增（cnc-ddraw，已整合）
+       ├─ ddraw.ini                   <- 新增（cnc-ddraw 配置，已调好）
+       ├─ 必读说明.txt
+       ├─ 如果不会安装，请把该文件发给AI，让AI教你.txt
+       ├─ 将此文件交给AI，让AI协助完善本项目.txt
+       ├─ LICENSE
+       ├─ License.txt
+       ├─ scripts\
+       │   ├─ Army4_Extend_Dll.asi    <- 新增（汉化运行库）
+       │   └─ Hzk16                   <- 新增（中文字库）
+       └─ update\
+           ├─ 01-title\  bitmaps\  data\  rules\  strings\
+           ├─ audio\vos\*.wav         <- 中文配音
+           └─ title.dat  shared.dat
+
+   选择"替换"（覆盖）所有同名文件。
+
+3. 启动游戏。
+
+4. 启动后，游戏目录下会生成 scripts\ArmyMenWWCHS.log，记录汉化加载情况，
+   可用于排查问题。
+
+
+三条必读提醒
+------------
+【1】修改键位、音量请在**主界面**改，不要在游戏内改。
+      在游戏对局中进入设置界面修改，可能会出现卡顿。原因不在本补丁：
+      游戏在枚举系统字体/资源时缺乏约束，会去加载 system32 目录下的
+      *_zh-cn.mui 等本地化资源文件，逐个尝试很慢。主界面下改则没有这个问题。
+
+【2】中文配音由 qwen3-tts 独立生成，不是真人录音，也不是声音克隆。
+      本作在游戏里**没有**对应的语音字幕，玩家听不出台词内容，
+      因此本项目补做了中文语音，用 TTS 尽可能拟合原角色的语气。
+      已知不足：
+        · 非克隆合成，音色与原版角色有差距；
+        · 同一角色的不同台词之间，音色也会有波动。
+      如果不喜欢中文配音、或想听回原版英文语音，**直接删除 update\audio
+      文件夹**即可（游戏会回落到自带的英文原声），其余汉化不受影响。
+
+【3】游戏已经整合 cnc-ddraw，**不需要**再做兼容模式调整。
+      包内已提供 ddraw.dll 与调好的 ddraw.ini，请不要单独删除或替换它们。
+
+
+关于 dinput.dll
+---------------
+这是 Ultimate ASI Loader（by ThirteenAG，MIT 许可）。
+它本身不是汉化组件，作用是自动加载 scripts\ 目录下的 .asi 插件。
+
+游戏必须通过它才能加载汉化。如果你的游戏目录里没有这个文件，汉化不会生效。
+
+为什么用 dinput.dll 而不是 dsound.dll：
+本作按**名字**导入 dinput.dll!DirectInputCreateA，用该名字作代理可可靠命中；
+换成别的名字，游戏拿不到输入函数，表现是"补丁装了但完全没有效果且不报错"。
+
+
+关于 ddraw.dll（cnc-ddraw）
+--------------------------
+本作是 2000 年的 DirectDraw 程序，在新系统上直接运行会出现黑屏、无图像、
+鼠标错位等问题。包内的 cnc-ddraw（https://github.com/FunkyFr3sh/cnc-ddraw，
+MIT 许可）负责把 DirectDraw 调用转到现代渲染后端。
+
+ddraw.ini 已按本作调好，一般不需要改。其中有用的一项：
+默认窗口化运行（windowed=true），按 Alt+Enter 可在窗口/无边框全屏之间切换。
+窗口大小、是否全屏、缩放方式等都在 ddraw.ini 里，注释为英文，可按需修改。
+
+注意：本补丁的 dinput.dll（ASI Loader）与 ddraw.dll 是两个不同的代理，
+互不冲突，但都需要放在游戏根目录。
+
+
+本补丁做了什么
+--------------
+* 界面文本汉化：菜单、按钮、设置项、武器/单位名称、按键名称、多人消息、
+  难度与确认框等，共 323 行，覆盖在 update\strings\strings.txt。
+
+* 任务与联机脚本文本汉化：update\data\（关卡脚本的任务 PDA、
+  失败提示、阶段性播报）与 update\rules\（联机模式说明 + 模式机制文件的
+  播报文本）。
+
+* 中文字体：游戏引擎自带点阵字体渲染，本补丁接管其文字渲染调用，
+  使用官方中文版（2 代）的 13x13 字库 scripts\Hzk16。
+
+* 界面贴图汉化：update\title.dat 与 update\shared.dat 由解包工作区
+  **无损回包**（每个对象的偏移与长度与原版逐一相同，产物与原版等长），
+  并叠加中文控件贴图；update\01-title\、update\bitmaps\ 为对应位图。
+
+* 中文配音：update\audio\vos\ 下的 wav 由 qwen3-tts 生成
+  （详见上文「三条必读提醒」第 2 条）。
+
+* 多人联机菜单解锁：GOG 版在主菜单移除了 Multiplayer 按钮，
+  本补丁在内存中恢复它，无需另装补丁。
+
+
+本补丁不做什么
+--------------
+* **不修改 amww.exe**。exe 文件保持原样，一个字节都不会变。
+  所有行为由 scripts\Army4_Extend_Dll.asi 在游戏运行时于内存中完成，
+  卸载后不留任何痕迹。
+
+* 不附带、不分发任何游戏原始素材。update\ 下的内容是可覆盖的翻译产物，
+  请配合你自己合法获取的游戏使用。
+
+
+已知限制
+--------
+* title.dat 里的英文（对话框面板标题、标题画面的版权声明等）是**位图烧字**，
+  改文本无效，未覆盖的部分仍是英文。
+
+* 中文配音为 TTS 合成，音色与语气有已知差距（见上文提醒第 2 条）。
+
+* 若出现异常，请把 scripts\ArmyMenWWCHS.log 一并反馈。
+
+
+卸载
+----
+删除 scripts\ 与 update\ 目录，以及根目录下的 dinput.dll、ddraw.dll、
+ddraw.ini、LICENSE、License.txt、必读说明.txt 与两份 AI 辅助文件即可。
+
+如果 ddraw.dll 在安装本补丁之前就存在于你的游戏目录（即你自己装的 cnc-ddraw），
+请先确认来源，再决定是否删除。
+
+
+许可与致谢
+----------
+本汉化补丁：GPL-3.0-or-later（见 LICENSE 与 License.txt）
+Ultimate ASI Loader：MIT License, Copyright (c) 2023 ThirteenAG
+cnc-ddraw：MIT License, Copyright (c) 2025 github.com/FunkyFr3sh
+Qwen3-TTS（中文配音合成）：Apache License 2.0
+
+《玩具兵大战：世界大战》(Army Men: World War)
+(c) 2000 The 3DO Company. All rights reserved.
+本项目为非官方粉丝汉化，与游戏版权方无任何关联。

@@ -1,0 +1,42 @@
+00_103_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Private, I'm challenging you to a jeep race. Climb into the West Jeep and prepare for a drubbing.
+00_104_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	The West Jeep, grunt.
+00_105_B.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	What kind of slime are you, soldier? Get back to the start.
+00_106_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	On your marks, three, two, one, go!
+00_109_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Ha, ha! I tanned your hodge, soldier.
+00_110_B.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	You win this time, Private.
+00_112_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Grab that wrench and tune up that half-track, soldier. Then load those three soldiers on board. They need a ride back to the barracks.
+00_117_F.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	This area is mine, soldier. Move McChute over to that sign and give it a once-over.
+00_118_B.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Remember, to get a soldier out of a vehicle, select the vehicle and then click on the soldier's icon in the selected units display.
+00_120_A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Use McChu to clear a path through the minefield, Private.
+00_121_D.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Final test, soldier. Bust your way through that tan barricade and get your men over to the exit area. Left click to fire the half-track's cannon.
+00_122_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	so much for arriving in style get all of your men to the exit area and we'll call it a day
+00_124_A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	You made it. With the war raging, HQ says we have to give you your stripes. Good luck, Commander. You'll need it.
+00_125_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	not bad at all you're ready for battle commander
+00_127_A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	You didn't finish that stage, Private.
+00_127_B.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	You didn't finish that stage, Private.
+00_128_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	You're not finished with that stage, Private. You can always come back to boot camp later if you want to complete the whole thing.
+00_129_A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	You're losing plastic, Private. I'm sending reinforcements.
+00_130_B.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Good thing this is just a training exercise. Here comes your replacement.
+00_131_A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Hurry up, Private.
+00_131_B.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Hurry up, Private.
+00_131_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Hurry up, Private!
+00_140_A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	You just lost Hollison, Private.
+00_141_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	McCude is dead, Private.
+00_16b.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	You've finished stage one. Now head up the slope to that hill to the north.
+00_1C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Welcome to boot camp, Private. We're locked in a life and death struggle with the Tan Army and plastic is melting in the battlefields. You don't have to be here, but this is where you're going to learn how to survive this war, and you're going to learn it well. You'll lead some soldiers, get a taste of live combat, and take a turn at the wheel of some armored vehicles. Don't worry about dying here. This is a chance for you to learn before it really counts.
+00_21E.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Practice some evasive moves, Private. When you're ready to fight, walk into that circle of stones. I'll keep you busy until I think you've learned something.
+00_22H.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Don't forget, you can attack and move at the same time by pressing the space bar while your soldier is in motion.
+00_24_A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Keep your injection molded butt moving.
+00_25_A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Ouch, that'll leave a mark.
+00_27_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Head down into the valley for your next lesson.
+00_29_C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Read the signs, Private.
+00_32_B.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Pop quiz, Private. Pick up and drop that med pack.
+00_35_E.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Pick up the MedPak again, right-click on it in the control panel to select it, then right-click it again to use it.
+00_37_D.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	You've got some infantry targets to the east. Knock down three of them. If you run out of ammo, there'll be more where you picked up the rifle.
+00_3C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	You currently have one soldier, Private Hollison, under your command. I'm centering him in your view. To take command of him, or to select him, click on him with the left mouse button. To order a selected soldier to a location, click on that location with the right button of your mouse. That's called a right click.
+00_41_J.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	That was pathetic, grunt. But we don't have all day.
+00_42_A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Climb that slope to the next stage.
+00_48_A.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Move to the next sign.
+00_4C.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	There's a sign over to the south. Move Hollison to it by right-clicking on a spot right in front of the sign.
+00_51_D.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	Since we're lacking real soldiers, HQ says that's a passing grade. Move northeast and down into the valley.
+00_56_F.wav	按文本语境判断: Sarge/GreenArmy_Grunt/Civilian/UnknownVoice	You've got reinforcements. To learn how to manage these troops, move Hollison over to the next sign.

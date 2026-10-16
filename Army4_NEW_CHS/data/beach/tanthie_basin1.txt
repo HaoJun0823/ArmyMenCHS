@@ -1,0 +1,1042 @@
+//**AMWWpc Map #3 "Tanthie_Basin".  Map concept and layout created by Jason Wildblood**//
+//Execution and correction attempted by Keith Meyer.//
+
+pad POWpad      10
+
+//**Game Startup**//
+
+if Startup1 then
+        triggerdelay 100 Gstart,
+		playsound "beach3_nomusic.wav" 0 16 1
+		
+if Gstart then
+        createpowerup "sniperPOW" sniper POWpad 6,
+        triggerdelay 10 makeset,
+        //triggerdelay 100 TKTenemies,
+        //triggerdelay 600 TKPenemies,
+        //triggerdelay 700 makeTKsetup
+        triggerdelay 100 SetMoviecam,
+		triggerdelay 50 makeeasy,
+		setfog 0
+
+If makeeasy testvar difficulty = 0 then
+		createpowerup "medpack" medpack (569,2499) 9,
+		createpowerup "airstrike1" airstrike (2363,707) 1,
+		createpowerup "grenades" grenade (291,2597) 10,
+		createpowerup "mortar" mortar (264,2921) 3,	
+		createpowerup "medpack" medpack (1562,2766) 9,
+		createpowerup "medpack" medpack (1306,2252) 9,
+		createpowerup "grenades" grenade (299,1520) 10
+		
+variable losevar 0
+variable tankvar 0
+//**In Game Movie**//
+
+variable ingamemovie 0
+
+if SetMoviecam then
+        setuilock 1,
+		setvar ingamemovie 1,
+        setcamerafocus TBstarz1,
+		showmessage  "棕军队长：出发吧弟兄们，盯紧那些绿军小子！",
+		PLAYSOUND "03_02_tansquadleader_07B.wav" (0,0) 6 1 100,
+        triggerdelay 5500 ingame_movie
+
+if inputbypass all testvar ingamemovie = 1 THEN
+	trigger startgame
+	//showmessage "by pass has occured"
+
+if ingame_movie then
+		trigger powercam,
+		PLAYSOUND "03_01_bluecorp_06A.wav" (0,0) 6 1 100,
+		showmessage "蓝军下士：好了弟兄们，我们需要扫清这一带。走！",
+        triggerdelay 2500 moveagentmen,
+        triggerdelay 6000 setcamalert
+
+If powercam BUTNOT startgame then
+       	setcamerafocus agent_powers
+
+if setcamalert then
+		trigger gotosandcam,
+        triggerdelay 2000 alerttans
+
+IF gotosandcam BUTNOT startgame THEN
+        setcamerafocus sandcam
+
+if makeset then
+        trigger Agentmen,
+        trigger tanmoviestars
+
+//**Lose Condition**//
+
+if killed green trooper testvar getnpcstatus me = 0 then
+        addvar numgreen -1,
+        trigger checklose
+
+if checklose testvar numgreen = 0 then
+        setvar losevar 10,
+        showpda "若绿国得以幸存，我们不会忘记你的牺牲。任务失败……",
+        triggerdelay 3000 tanwins
+
+//**All tan react to their tanks being blown up**//
+pad padpatrol2   	157		tttandef6					
+pad padpatrol3  	158		tttandef0
+
+if checkwin testvar tankvar = 2 THEN
+	//showmessage "charge activated",
+	order tandef1 GOTO padpatrol3 inmode attack,
+	order tandef2 GOTO padpatrol3 inmode attack,
+	order tandef3 GOTO padpatrol3 inmode attack,
+	order tandef4 GOTO padpatrol2 inmode attack,
+	order tandef5 GOTO padpatrol2 inmode attack,
+	order tandef6 GOTO padpatrol3 inmode attack,
+	order tandef7 GOTO padpatrol2 inmode attack,
+	order tandef8 GOTO padpatrol2 inmode attack,
+	order tandef9 GOTO padpatrol2 inmode attack,
+	order tandef10 GOTO padpatrol3 inmode attack,
+	order tandef11 GOTO padpatrol3 inmode attack,
+	order tandef12 GOTO padpatrol3 inmode attack,
+	order tandef13 GOTO padpatrol3 inmode attack,
+	order tandef14 GOTO padpatrol2 inmode attack,
+	order tandef15 GOTO padpatrol2 inmode attack,
+	order trstarz1 GOTO padpatrol2 inmode attack,
+	order trstarz2 GOTO padpatrol2 inmode attack,
+	order trstarz3 GOTO padpatrol2 inmode attack,
+	order trstarz4 GOTO padpatrol2 inmode attack,
+	order trstarz5 GOTO padpatrol2 inmode attack,
+	order trstarz6 GOTO padpatrol2 inmode attack,
+	order trstarz7 GOTO padpatrol2 inmode attack,
+	order trstarz8 GOTO padpatrol2 inmode attack,
+	order trstarz9 GOTO padpatrol2 inmode attack
+
+//**Win Condition**//
+
+if checkwin testvar losevar = 0 and tankvar = 7 then
+		playsound "03_02_HQ_B.wav" (0,0) 6 1 100,
+        showpda "那些坦克再也上不了战场了。干得漂亮，指挥官。",
+        triggerdelay 3000 greenwins
+
+//**Ending**
+if setcampad then
+        trigger finalsandcam,
+        triggerdelay 500 attackFgreen,
+        triggerdelay 100 ftan,
+        trigger powers_Run
+
+If finalsandcam BUTNOT startgame THEN
+	setcamerafocus sandcam
+
+//**Movie Starz**//
+
+pad agentpad1   70
+pad agentpad2   71
+pad agentpad3   72
+pad agentpad4   73
+pad agentpad5   74
+pad agentpad6   75
+pad agentpad7   76
+pad agentpad8   77
+pad agentpad9   78
+pad Agent_Drakepad   79
+
+pad attackpos1  50
+pad attackpos2  51
+pad attackpos3  52
+pad attackpos4  53
+pad attackpos5  54
+pad attackpos6  55
+pad attackpos7  56
+pad attackpos8  57
+pad attackpos9  58
+
+pad powerpad1    60 agent_powers
+pad powerpad2    59 agent_powers
+
+pad powerpad3    59 	green trooper > 1
+pad padrecoverpower		61	green trooper > 0
+
+macro blueface 9
+
+////@1 Name @2 Type @3 location @4 weapon @5 faceing @6 AI Mode @7 pose @8 gotopad @9 secondAI
+{
+if Agentmen then
+        createunit @1 @2 @3 green 3 @4 20,
+        setaimode @1 @6,
+        setfacing @1 @5,
+        setaipose @1 @7,
+        setnpc @1 1,
+        setspeed @1 slow,
+        trigger changePcolor
+
+if attackFgreen then
+        setaimode @1 @9
+
+if moveagentmen then
+        order @1 goto @8,
+        triggerdelay 6000 aboutface
+
+//if killed @1 testvar getnpcstatus @1 = 0 then
+  //      addvar numgreen -1
+
+
+}
+expand blueface ( agentman1 rifleman agentpad1 rifle 14 ignore kneel attackpos1 attack )
+expand blueface ( agentman2 rifleman agentpad2 rifle 14 ignore kneel attackpos2 attack )
+expand blueface ( agentman3 rifleman agentpad3 rifle 14 ignore kneel attackpos3 attack )
+expand blueface ( agentman4 rifleman agentpad4 rifle 14 ignore kneel attackpos4 attack )
+expand blueface ( agentman5 rifleman agentpad5 rifle 14 ignore kneel attackpos5 attack )
+expand blueface ( agentman6 rifleman agentpad6 rifle 14 ignore kneel attackpos6 attack )
+//expand blueface ( agentman7 rifleman agentpad7 rifle 14 ignore kneel attackpos7 attack )
+//expand blueface ( agentman8 rifleman agentpad8 rifle 14 ignore kneel attackpos8 attack )
+expand blueface ( Agent_Powers rifleman Agent_Drakepad sniper 142 ignore stand powerpad1 ignore )
+
+if changePcolor then
+        setforcecolor Agent_Powers blue,
+		triggerdelay 2000 rungreen
+
+If rungreen then
+	setspeed agentman3 normal,
+	setspeed agentman4 normal,
+	setspeed agentman5 normal
+
+if aboutface then
+        setfacing agentman1 240,
+        setfacing agentman2 240,
+        setfacing agentman3 240,
+        setfacing agentman4 240,
+        setfacing agentman5 240,
+        setfacing agentman6 240,
+        setfacing agentman7 240,
+        setfacing agentman8 240
+
+if setnewaimodeGRN then
+        setaimode agentman1 attack,
+        setaimode agentman2 attack,
+        setaimode agentman3 attack,
+        setaimode agentman4 attack,
+        setaimode agentman5 attack,
+        setaimode agentman6 attack,
+        setaimode agentman7 attack,
+        setaimode agentman8 attack,
+        setaimode agent_powers attack
+
+if padon powerpad1 then
+        triggerdelay 2000 POF
+
+if POF then
+        setfacing agent_powers 230
+
+
+//**Tan movie stars**//
+
+pad Tanstarzpad1        80
+pad Tanstarzpad2        81
+pad Tanstarzpad3        82
+pad Tanstarzpad4        83
+pad Tanstarzpad5        84
+pad Tanstarzpad6        85
+pad Tanstarzpad7        86
+pad Tanstarzpad8        87
+pad Tanstarzpad9        88
+pad Tanstarzpad10       89
+pad Tanstarzpad11       90
+
+pad Mortarpad1          91 TMstarz1
+pad Mortarpad2          92 TMstarz2
+
+pad Twalkers1           30 TBstarz1
+pad Twalkers2           31
+pad Twalkers3           32
+pad Twalkers4           33
+pad Twalkers5           34
+pad Twalkers6           35
+pad Twalkers7           36
+pad Twalkers8           37
+pad Twalkers9           38
+pad Twalkers10           39
+pad Twalkers11           40
+
+////@1 Name @2 Type @3 location @4 weapon @5 faceing @6 AI Mode @7 pose @8 goto pads
+
+macro tanstarz 7
+{
+if tanmoviestars then
+        createunit @1 rifleman @2 tan 2 @3,				// 3 and 20
+        setaimode @1 ignore,
+        setfacing @1 @4,
+        setaipose @1 @5
+
+if tanmoveorders then
+        order @1 goto @6,
+        setspeed @1 slow,
+		trigger powersspotted
+
+if tanassumepos then
+        order @1 goto @2 inmode defend,
+        setaipose @1 none
+
+if ftan then
+		setspeed @1 normal,
+        setaimode @1 attack,
+		selectinventoryitem @1 @1 @7
+
+}
+expand tanstarz ( TBstarz1 Tanstarzpad1 bazooka 24 stand Twalkers1 2 )
+expand tanstarz ( TFstarz1 Tanstarzpad2 flamer 224 stand Twalkers2 2 )
+expand tanstarz ( Trstarz1 Tanstarzpad3 rifle 94 kneel Twalkers3 0 )
+expand tanstarz ( Trstarz2 Tanstarzpad4 rifle 94 kneel Twalkers4 0 )
+expand tanstarz ( TRstarz3 Tanstarzpad5 rifle 94 stand Twalkers5 1 )
+expand tanstarz ( TRstarz4 Tanstarzpad6 rifle 94 stand Twalkers6 0 )
+expand tanstarz ( TRstarz5 Tanstarzpad7 rifle 94 stand Twalkers7 1 )
+expand tanstarz ( TRstarz6 Tanstarzpad8 rifle 94 stand Twalkers8 0)
+expand tanstarz ( TRstarz7 Tanstarzpad9 rifle 94 stand Twalkers9 1 )
+expand tanstarz ( TRstarz8 Tanstarzpad10 rifle 94 stand Twalkers10 0 )
+expand tanstarz ( TRstarz9 Tanstarzpad11 rifle 94 stand Twalkers11 0 )
+
+IF count 1 of powersspotted THEN
+	    showmessage "棕军队长：发现敌人！以棕军之名，投降吧！",
+		playsound "03_01_tansquadleader_07B.wav" (0,0) 6 1 100
+
+if padon Twalkers1 then
+        setaipose TBstarz1 kneel,
+        //showmessage "Tan Leader: Drop your weapons and surrender!",
+        triggerdelay 3000 setcamfocGRN,
+		trigger gpickfacing1,
+		triggerdelay 1500 gpickfacing2,
+		triggerdelay 2000 gpickfacing3,
+		trigger tpickfacing1,
+		triggerdelay 3000 tpickfacing2,
+		triggerdelay 3500 tpickfacing3
+
+macro macrogpickfacing 4
+{
+	If gpickfacing1 then
+		setfacing @1 @2
+
+	If gpickfacing2 then
+		setfacing @1 @3
+	
+	If gpickfacing3 then
+		setfacing @1 @4
+}
+
+expand macrogpickfacing (agentman1 230 185 250)
+expand macrogpickfacing (agentman2 220 175 160)
+expand macrogpickfacing (agentman3 220 200 240)
+expand macrogpickfacing (agentman4 220 190 220)
+expand macrogpickfacing (agentman5 250 220 190)
+expand macrogpickfacing (agentman6 240 250 200)
+
+macro macrotpickfacing 4
+{
+	If tpickfacing1 then
+		setfacing @1 @2
+
+	If tpickfacing2 then
+		setfacing @1 @3
+	
+	If tpickfacing3 then
+		setfacing @1 @4
+}
+
+expand macrotpickfacing (trstarz1 60 80 60)
+expand macrotpickfacing (trstarz2 70 90 70)
+expand macrotpickfacing (trstarz3 80 90 60)
+expand macrotpickfacing (trstarz4 80 90 60)
+expand macrotpickfacing (trstarz5 60 80 60)
+expand macrotpickfacing (trstarz6 100 60 100)
+expand macrotpickfacing (trstarz7 60 80 60)
+expand macrotpickfacing (trstarz8 70 90 70)
+expand macrotpickfacing (trstarz9 80 90 60)
+expand macrotpickfacing (tfstarz9 80 90 60)
+ 	
+if alerttans then
+       triggerdelay 2000 tanmoveorders,
+        setfacing TBstarz1 94,
+        setfacing TFstarz1 9
+
+if setcamfocGRN then
+        //setcamerafocus agent_powers,
+        showmessage "蓝军下士：我们绝不会向棕军投降。开火！开火！",
+		playsound "03_bluecorp.wav" (0,0) 6 1 100,
+        setaipose agent_powers kneel,
+        triggerdelay 4000 powersattacks,
+        triggerdelay 4300 setdeathcam
+
+if setdeathcam then
+        //setcamerafocus TBstarz1,
+        damage tbstarz1 4000,
+        triggerdelay 1000 setcampad
+
+if powersattacks then
+        fireweapon sniperPOW agent_powers TBstarz1,
+		TRIGGERDELAY 7500 killgreen
+
+IF killgreen THEN						//after 7.5 seconds all green will be dead
+	damage agentman1 600,
+	damage agentman2 600,
+	damage agentman3 600,
+	damage agentman4 600,
+	damage agentman5 600,
+	damage agentman6 600
+
+
+if allof killed agentman1 killed agentman2 killed agentman3 killed agentman4 killed agentman5
+killed agentman6 then							//killed agentman7 killed agentman8 then
+        trigger tanassumepos,
+        triggerdelay 3000 startgame			
+
+if powers_Run then
+	    setspeed agent_powers normal,
+        order agent_powers goto (1284,2407) inmode ignore
+
+if padon powerpad2 then
+        triggerdelay 2000 FaceAstin
+
+if FaceAstin then
+        setaimode agent_powers defend,
+        setfacing agent_powers 230,
+        setaipose agent_powers prone
+		
+IF padon padrecoverpower testvar getnpcstatus me = 0 THEN
+	trigger ispowersdead
+
+If ispowersdead BUTNOT killed agent_powers THEN
+	TRIGGER powercryhelp
+
+IF count 1 of powercryhelp THEN				 
+	showmessage "蓝军下士：有人吗？我的人全死了，我被压在这里动不了！", 
+	playsound "03_02_bluecorp_06A.wav" (0,0) 6 1 100
+
+IF padon powerpad3 BUTNOT killed agent_powers THEN
+	TRIGGER foundpowers
+
+IF count 1 of foundpowers THEN				 
+	showmessage "蓝军下士：见到你们我真是太高兴了！",
+	playsound "03_03_bluecorp_06C.wav" (0,0) 6 1 100,
+	setaipose agent_powers none,
+	addvar numgreen 1,
+	setnpc agent_powers 0
+
+//**End of Movie**//
+
+if startgame testvar ingamemovie = 1 then
+        Setcamerafocus greensarge1,
+		setfog 1,
+		setvar ingamemovie 0,
+        setuilock 0,
+		//showpda "HQ: Commander, we need you to strike and eliminate Tan tanks that are in for repairs. Stay on the look out for a squad we sent in earlier led by a friendly Blue.",
+        //playsound "03_01_HQ_B.wav" (0,0) 6 1 100,
+		triggerdelay 40 checkreinforcement,
+		triggerdelay 50 makeenemies,
+        triggerdelay 100 TKTenemies,
+        triggerdelay 600 TKPenemies,
+        triggerdelay 700 makeTKsetup,
+		triggerdelay 800 ltgreenmanincident,
+		TRIGGER cof										
+
+pad  balancepad 254 balanceunit
+
+If checkreinforcement then
+	createunit "balanceunit" rifleman balancepad green 0 bazooka -1,
+    setnpc balanceunit 1,
+    setaimode balanceunit ignore,
+    createpowerup "balancepower" paratroopers balancepad -1,
+    moveitem balanceunit balancepad,
+    moveitem balancepower balancepad,
+	triggerdelay 5 checkbalance
+
+If Checkbalance testvar numgreen < 4 then
+    triggerdelay 1 balanceVOrandom,
+    fireweapon balancepower balanceunit green
+
+If balanceVOrandom then	random
+	playsound "gamehq1_A.wav" 3 3,
+    playsound "gamehq2_B.wav" 3 3,
+    playsound "gamehq3_C.wav" 3 3
+
+pad padgt1 101	gt1
+pad padgt2 108	gt2
+pad padgt3 107 	gt3
+pad padlg 106	lg > 0
+PAD padgreenmove3b	183	lg
+
+IF cof THEN
+//	createvehicle gt1 tank padgt1 green,
+//	createvehicle gt2 tank padgt2 green,
+//	createvehicle gt3 tank padgt3 green,
+//	createunit dr0 rifleman padlt green 0 rifle,
+//	createunit dr1 rifleman padlt green 0 rifle,
+//	createunit dr2 rifleman padlt green 0 rifle,
+//	entervehicle dr0 gt1,
+//	entervehicle dr1 gt2,
+//	entervehicle dr2 gt3,
+//	createunit lt rifleman padlt green 2 rifle,
+	moveitem gt1 padgt1,
+	moveitem gt2 padgt2,
+	moveitem gt3 padgt3,
+	moveitem lg padlg,
+	triggerdelay 5 checkpda
+
+VARIABLE tankcof 0
+VARIABLE lgcof 0
+VARIABLE vargt1killed 1				//assumues they are dead, but if they hit pad then makes them 0
+VARIABLE vargt2killed 1
+VARIABLE vargt3killed 1
+
+MACRO macrocof 2
+
+{
+	IF count 1 of padon pad@1 THEN
+		addvar numgreen -1,
+		addvar tankcof 1,
+		setnpc @1 1,
+		setnpc @2 1,
+		setfacing @1 220,
+		setunitgroup @1 0,
+		setvar var@1killed 0
+		//trigger maketankdriver@1
+
+//	If maketankdriver@1 THEN
+		//createunit @2 rifleman padlt green 0 rifle,
+//		deploy @2 (410,300),
+//		setnpc @2 1,
+//		entervehicle @2 @1
+}
+
+EXPAND macrocof (gt1 td1)
+EXPAND macrocof (gt2 td2)
+EXPAND macrocof (gt3 td3)
+
+If checkpda testvar getpadstatus padlg = 0 Then
+	//showmessage "lg dead",
+	trigger ltdead,
+	triggerdelay 5 checktanks,
+	triggerdelay 10 pdatank
+
+If checkpda testvar getpadstatus padlg = 1 then
+	showpda "总部：指挥官，我们需要你打击并消灭正在维修的棕军坦克。格林曼中尉另有命令，不随你同行，但请留意我们先前派入、由友军蓝军带领的一支小队。",
+	setnpc lg 1,
+	addvar lgcof 1,
+	addvar numgreen -1,
+	//showmessage "lg alive",
+	triggerdelay 5 checktanks
+	
+If checktanks testvar tankcof > 0 THEN				//If tanks around then lg leaves
+	//showmessage "checking number of tanks",
+	trigger tanksalive,
+	undeploy lg										
+
+IF checktanks testvar tankcof = 0 THEN
+	ORDER lg GOTO padgreenmove3b inmode attack,
+	trigger tanksdead 
+
+If count 2 of pdatank tanksalive then
+	showpda "总部：指挥官，我们需要你打击并消灭正在维修的棕军坦克。我绿军装甲兵另有任务，但请留意我们先前派入、由友军蓝军带领的一支小队。"
+        
+If count 2 of pdatank tanksdead then
+	showpda "总部：指挥官，我们需要你打击并消灭正在维修的棕军坦克。请留意我们先前派入、由友军蓝军带领的一支小队。"
+
+//**Enemy guards**//
+pad enemydep1   200
+pad enemydep2   201
+pad enemydep3   202
+pad enemydep4   203
+pad enemydep5   204
+pad enemydep6   205
+pad enemydep7   206
+pad enemydep8   207
+pad enemydep9   208
+pad enemydep10   209
+pad enemydep11   210
+pad enemydep12   211
+pad enemydep13   212
+pad enemydep14   213
+pad enemydep15   214
+
+
+
+////@1 Name @2 Type @3 location @4 weapon @5 faceing @6 AI Mode @7 pose
+
+macro enemies 8
+{
+
+if makeenemies then
+        createunit @1 @2 @3 tan 2 @4,
+		setfacing @1 @5,
+        setaimode @1 @6,
+        setaipose @1 @7,
+		selectinventoryitem @1 @1 @8
+
+if killed @1 then Random
+        createpowerup "" medpack @1 3,
+        createpowerup "" grenade @1 2
+
+}
+
+//selectinventoryitem trooper_name item_name slot_number
+//the slot numbers are 0 (primary weapon)  1 (grenades) 2 (special item)
+
+//Bottom group
+expand enemies ( tandef1 rifleman enemydep1 rifle 0 defend none 1 )
+expand enemies ( tandef2 rifleman enemydep2 rifle 20 defend none 1 )
+expand enemies ( tandef3 rifleman enemydep3 rifle 30 defend none 1 )
+//near Sandbags
+expand enemies ( tandef6 rifleman enemydep6 rifle 40 defend stand 1 )
+
+//Top Left Group
+expand enemies ( tandef4 rifleman enemydep4 rifle 148 defend stand 0 )
+expand enemies ( tandef5 rifleman enemydep5 rifle 64 defend kneel 1 )
+
+//Guard Entrance to Maint. Yard
+expand enemies ( tandef7 rifleman enemydep7 rifle 148 defend kneel 0 )
+expand enemies ( tandef8 rifleman enemydep8 rifle 128 defend kneel 0 )
+expand enemies ( tandef9 rifleman enemydep9 rifle 46 defend kneel 0 )
+
+//Bottom Right
+expand enemies ( tandef10 rifleman enemydep10 rifle 56 defend kneel 0 )
+expand enemies ( tandef11 rifleman enemydep11 rifle 56 defend stand 0 )
+expand enemies ( tandef12 rifleman enemydep12 rifle 216 defend stand 1 )
+expand enemies ( tandef13 rifleman enemydep13 rifle 72 defend stand 0 )
+
+//Top Right
+expand enemies ( tandef14 rifleman enemydep14 rifle 74 defend kneel 0 )
+expand enemies ( tandef15 rifleman enemydep15 rifle 74 defend kneel 0 )
+
+pad padtandef1 169 tandef1
+pad padtandef2 170 tandef2
+pad padtandef3 171 tandef3
+
+MACRO macrominiambush 2
+
+{
+	If ambush2 then
+		order @1 goto padtandef@2 inmode defend
+
+	If padon padtandef@2 then
+		setaipose @1 kneel 
+}
+
+expand macrominiambush (tandef1 1)
+expand macrominiambush (tandef2 2)
+expand macrominiambush (tandef3 3)
+
+//**Tank Depo**//
+
+pad TKenemydep1   140
+pad TKenemydep2   141
+pad TKenemydep3   142
+pad TKenemydep4   143
+pad TKenemydep5   144
+pad TKenemydep6   145
+pad TKenemydep7   146
+
+pad enterVH1      131		tan		
+pad enterVH2      132		tan
+pad enterVH3      133		tan
+pad enterVH4      134		tan
+pad enterVH5      135		tan
+pad enterVH6      136		tan
+pad enterVH7      137		tan
+
+pad TTenemydep0   150		tttandef0
+pad TTenemydep1   151
+pad TTenemydep2   152
+pad TTenemydep3   153
+pad TTenemydep4   154		tttandef4
+pad TTenemydep6   156		tttandef6
+
+//*patrollers*//
+//Patrols//			
+pad padpatrol1   	155		tttandef4
+//pad padpatrol2   	157		tttandef6					Pads moved up
+//pad padpatrol3  	158		tttandef0
+
+macro TKsetup 5
+{
+
+if makeTKsetup then
+	createvehicle @1 @2 @3 tan,
+        setfacing @1 @4,
+        setaimode @1 @5,
+		setmaxhealth @1 240,
+		Setitemflag @1 strategic 1, 
+		heal @1 100
+
+if killed @1 testvar losevar = 0 then
+        addvar tankvar 1,
+		Setitemflag @1 strategic 0, 
+        triggerdelay 100 checkwin
+
+}
+
+expand TKsetup ( TKtandef1 tank TKenemydep1 38 ignore )
+expand TKsetup ( TKtandef2 tank TKenemydep2 38 ignore )
+expand TKsetup ( TKtandef3 tank TKenemydep3 38 ignore )
+expand TKsetup ( TKtandef4 tank TKenemydep4 38 ignore )
+expand TKsetup ( TKtandef5 tank TKenemydep5 82 ignore )
+expand TKsetup ( TKtandef6 tank TKenemydep6 82 ignore )
+expand TKsetup ( TKtandef7 tank TKenemydep7 82 ignore )
+
+if makeTKsetup then
+	createvehicle supplytruck convoy (1335,239) tan,
+	setfacing supplytruck 112,
+	createunit supd rifleman (1350,250) tan 0 rifle,
+	entervehicle supd supplytruck,
+	setaimode supplytruck ignore
+	
+
+////@1 Name @2 Type @3 location @4 weapon @5 faceing @6 pose @6 
+
+macro TKenemies 7
+
+{
+	if TKTenemies then
+        createunit @1 @2 @3 tan 0 @4,
+        setaimode @1 defend,
+        setfacing @1 @5,
+		setaipose @1 @6,
+		setspeed @1 slow,
+		selectinventoryitem @1 @1 @7
+
+	IF hit @1 BUTNOT KILLED @1 THEN
+		TRIGGER guardalerted
+
+	IF count 1 of guardalerted THEN
+		TRIGGER intruderalert
+}
+
+expand TKenemies ( TTtandef0 rifleman TTenemydep0 rifle 74 none 0 )				//patroler
+expand TKenemies ( TTtandef1 rifleman TTenemydep1 heavymg 72 kneel 2 )			//HMG sentry
+expand TKenemies ( TTtandef2 rifleman TTenemydep2 heavymg 34 kneel 2 )			//HMG sentry
+expand TKenemies ( TTtandef3 rifleman TTenemydep3 rifle 34 none 0 )				//sentry
+expand TKenemies ( TTtandef4 rifleman TTenemydep4 rifle 34 none 0 )				//patroler
+expand TKenemies ( TTtandef6 rifleman TTenemydep6 rifle 34 none 0 )				//patroler
+
+MACRO macropatrol 2						//tank area patrol
+{
+	IF padon @1 BUTNOT intruderalert THEN					//intruderalert...signal for patrol to stop and attack enemy and for tankers to come to tanks
+		order me GOTO @2
+}
+
+EXPAND macropatrol ( TTenemydep0 padpatrol3 )
+EXPAND macropatrol ( padpatrol3 TTenemydep0 )
+EXPAND macropatrol ( TTenemydep4 padpatrol1 )
+EXPAND macropatrol ( padpatrol1 TTenemydep4 )
+EXPAND macropatrol ( TTenemydep6 padpatrol2 )
+EXPAND macropatrol ( padpatrol2 TTenemydep6 )
+
+PAD padtankercreate 167		tan
+PAD padtankermove0a	168		tanker1
+PAD padtankermove0b	168		tanker2
+PAD padtankermove0c	168		tanker3
+PAD padtankermove1a	156		tanker1
+PAD padtankermove1b	156		tanker2
+PAD padtankermove1c	156		tanker3
+
+IF count 1 of intruderalert THEN										//intruder alert sets guards to attack and trigger tankers to go to tank
+	showmessage "棕军：发现绿军！坦克乘员各就各位！",
+	playsound "03_02_tantrooper_02C.wav" (0,0) 6 1 100,
+	ORDER tttandef0 follow me INMODE attack,
+	ORDER tttandef4 follow me INMODE attack,
+	ORDER tttandef6 follow me INMODE attack,
+	SETSPEED tttandef0 normal,
+	SETSPEED tttandef4 normal,
+	SETSPEED tttandef6 normal,
+	TRIGGERDELAY 5000 deploytankers
+	
+IF deploytankers BUTNOT KILLED house2 THEN
+	createunit tanker1 rifleman padtankercreate tan 0 rifle,
+	TRIGGERDELAY 5000 tankercreate1
+
+IF tankercreate1 BUTNOT KILLED house2 THEN
+	createunit tanker2 rifleman padtankercreate tan 0 rifle,
+	TRIGGERDELAY 5000 tankercreate2
+
+IF tankercreate2 BUTNOT KILLED house2 THEN
+	createunit tanker3 rifleman padtankercreate tan 0 rifle
+	
+MACRO macrotankermove 2
+{
+	IF padon padtankercreate THEN
+		order me GOTO padtankermove@1 INMODE ignore
+
+	IF padon padtankermove@1 THEN
+		order me GOTO padtankermove@2 INMODE ignore
+
+	IF padon padtankermove@2 THEN
+		TRIGGER pickatank 
+}
+
+EXPAND macrotankermove ( 0a 1a )
+EXPAND macrotankermove ( 0b 1b )
+EXPAND macrotankermove ( 0c 1c )
+
+IF pickatank THEN random
+	ORDER me GOTO entervh1 inmode ignore,
+	ORDER me GOTO entervh2 inmode ignore,
+	ORDER me GOTO entervh3 inmode ignore,
+	ORDER me GOTO entervh4 inmode ignore,
+	ORDER me GOTO entervh5 inmode ignore,
+	ORDER me GOTO entervh6 inmode ignore,
+	ORDER me GOTO entervh7 inmode ignore
+
+MACRO macroentertank 2
+{
+	IF PADON entervh@1 THEN
+		entervehicle me @2,
+		SETAIMODE @2 defend
+}
+
+EXPAND macroentertank ( 1 tktandef1 )
+EXPAND macroentertank ( 2 tktandef2 )
+EXPAND macroentertank ( 3 tktandef3 )
+EXPAND macroentertank ( 4 tktandef4 )
+EXPAND macroentertank ( 5 tktandef5 )
+EXPAND macroentertank ( 6 tktandef6 )
+EXPAND macroentertank ( 7 tktandef7 )
+
+//Special Stuff
+IF KILLED tttandef1 KILLED tttandef2 THEN
+	createpowerup "autorifle" autorifle me 1
+	
+IF KILLED gt1 KILLED gt2 KILLED gt3 THEN
+	createpowerup "grenade" grenade me 3
+
+IF KILLED supplytruck THEN
+	createpowerup "grenade" grenade me 5
+	
+// Bottom team reaction
+
+pad padtanreact0 160 	tan
+pad padtanreact1 161 	tan
+pad padtanreact2 162 	tan
+pad padtanreact3 163 	tan
+pad padtanreact4 164 	tan
+ 
+MACRO macrohitai 4
+{
+VARIABLE vargotorder@4 0
+
+	IF HIT @1 TESTVAR vargotorder@4 = 0 THEN
+		ORDER @2 GOTO @3,
+		setvar vargotorder@4 1,
+		TRIGGER randomorder
+}
+
+IF randomorder THEN Random
+	SETAIMODE me attack,
+	SETAIMODE me defend
+
+EXPAND macrohitai (tandef10 tandef12 padtanreact0 1)
+EXPAND macrohitai (tandef10 tandef13 padtanreact2 2)
+EXPAND macrohitai (tandef11 tandef12 padtanreact0 3)
+EXPAND macrohitai (tandef11 tandef13 padtanreact2 4)				
+EXPAND macrohitai (tandef12 tandef10 padtanreact4 5)				
+EXPAND macrohitai (tandef12 tandef11 padtanreact4 6)				
+EXPAND macrohitai (tandef13 tandef10 padtanreact4 7)				
+EXPAND macrohitai (tandef13 tandef11 padtanreact4 8)				
+
+IF padon padtanreact0 THEN
+	order me goto padtanreact1
+
+IF padon padtanreact2 THEN
+	order me goto padtanreact3
+
+IF padon padtanreact4 THEN Random
+	order me goto padtanreact0,
+	order me goto padtanreact2
+
+//Waking up the House
+PAD padhousedeploy 165 Tan > 0
+PAD padhousemove 166 	Tan
+
+VARIABLE varhousedeployed 0
+
+IF hit tandef14 BUTNOT KILLED tandef14 THEN
+	TRIGGER housedeploy
+
+IF hit tandef15 BUTNOT KILLED tandef15 THEN
+	TRIGGER housedeploy
+
+IF count 1 of housedeploy  THEN
+	showmessage "棕军：发现绿军！",
+	playsound "03_01_tantrooper_05C.wav" (0,0) 6 1 100,
+	TRIGGERDELAY 5500 housecreation
+
+IF housecreation TESTVAR varhousedeployed < 3 THEN
+	TRIGGER checkhouse
+
+IF checkhouse BUTNOT KILLED house1 THEN
+	createunit tanhouse rifleman padhousedeploy tan 0 rifle,
+	ADDVAR varhousedeployed 1,
+	TRIGGERDELAY 4500 housecreation
+
+IF padon padhousedeploy THEN
+	ORDER me goto padhousemove INMODE ignore
+
+IF padon padhousemove THEN
+	SETAIMODE me attack
+
+//Lt. Greenman Incident
+
+IF ltgreenmanincident THEN
+	TRIGGERDELAY 3500 startconvoy,
+	TRIGGERDELAY 3750 tanambush,
+	trigger ltmessage
+
+if ltmessage butnot ltdead then
+	setfacing lg 60
+	//showmessage "Lt. Greenman: Thanks for the escort Commander, but I got my own mission. Good luck!"
+
+VARIABLE vartempx 0
+VARIABLE vartempy 0
+
+PAD padgreenmove0 180 	green tank
+PAD padgreenmove1 181 	green tank
+PAD padgreenmove2 182 	green tank
+PAD padgreenmove3 183 	green tank
+
+PAD padtandeploy0 183	tan
+PAD padtandeploy1 184	tan
+PAD padtanmove0	185		tan
+PAD padtanmove1	186 	tan
+PAD padtanmove2 187		tan
+
+IF KILLED gt1 THEN
+	ADDVAR vargt1killed 1,
+	TRIGGER moveout									//This way if killed while going to a location it forces the next in line to keep moving to last x,y
+
+IF KILLED gt2 THEN
+	ADDVAR vargt2killed 1,
+	TRIGGER moveout
+
+IF KILLED gt3 THEN
+	ADDVAR vargt3killed 1
+
+IF startconvoy THEN
+	SETVAR vartempx 1063,
+	SETVAR vartempy 2687,
+	//showmessage "Lt. Greenman: Move it out boys!",
+	TRIGGER moveout
+
+IF PADON padgreenmove0 THEN
+	TRIGGER firstmove
+
+IF count 1 of firstmove THEN
+	SETVAR vartempx 623,
+	SETVAR vartempy 2032,
+	TRIGGER moveout
+
+IF PADON padgreenmove1 THEN
+	TRIGGER secondmove
+
+IF count 1 of secondmove THEN	
+	SETVAR vartempx 576,
+	SETVAR vartempy 1426,	
+	TRIGGER moveout
+
+IF PADON padgreenmove2 THEN
+	TRIGGER thirdmove
+
+IF count 1 of thirdmove THEN
+	SETVAR vartempx 142,
+	SETVAR vartempy 960,
+	TRIGGER moveout
+
+IF padon padgreenmove3 THEN
+	UNDEPLOY me,
+	TRIGGER finalorder
+
+IF padon padgreenmove3 THEN
+	UNDEPLOY me
+
+IF finalorder THEN
+	order gt1 goto padgreenmove3 INMODE defend,
+	order gt2 goto padgreenmove3 INMODE defend,
+	order gt3 goto padgreenmove3 INMODE defend
+	//order lt goto padgreenmove3 INMODE defend
+
+IF moveout TESTVAR vargt1killed = 0 THEN
+	ORDER gt1 GOTO (refvar vartempx,refvar vartempy) INMODE defend,
+	TRIGGERDELAY 4000 gt2move
+
+IF moveout TESTVAR vargt1killed = 1 THEN
+	TRIGGERDELAY 1000 gt2move
+
+IF gt2move TESTVAR vargt1killed = 0 THEN				//gt2 follows gt1
+	ORDER gt2 FOLLOW gt1 INMODE defend,
+	TRIGGERDELAY 4000 gt3move
+
+IF gt2move TESTVAR vargt1killed = 1 THEN				//unless gt1 dead
+	ORDER gt2 GOTO (refvar vartempx,refvar vartempy),
+	TRIGGERDELAY 3000 gt3move 
+
+IF gt3move TESTVAR vargt2killed = 0 THEN					//gt3 follows gt2 
+	ORDER gt3 FOLLOW gt2
+
+IF gt3move TESTVAR vargt2killed = 1 THEN					//unless gt2 dead, then check gt1
+	TRIGGER checkgt1
+
+IF checkgt1 TESTVAR vargt1killed = 0 THEN				//follow gt1
+	ORDER gt3 FOLLOW gt1
+
+IF checkgt1 TESTVAR vargt1killed = 1 THEN					//but if both dead...
+	ORDER gt3 GOTO (refvar vartempx,refvar vartempy) INMODE attack
+
+If tanambush THEN
+	createunit tanambush0 rifleman padtandeploy0 tan 0 bazooka, 
+	createunit tanambush1 rifleman padtandeploy0 tan 0 bazooka,
+	createunit tanambush2 rifleman padtandeploy1 tan 0 bazooka,
+	createunit tanambush3 rifleman padtandeploy1 tan 0 bazooka,
+	createunit tadriver rifleman padtandeploy1 tan 0 rifle,
+	selectinventoryitem tanambush0 tanambush0 2,
+	selectinventoryitem tanambush1 tanambush1 2,
+	selectinventoryitem tanambush2 tanambush2 2,
+	selectinventoryitem tanambush3 tanambush3 2,
+	createvehicle tanambush4 jeep padtandeploy0 tan,
+	entervehicle tanambush0 tanambush4,
+	entervehicle tanambush1 tanambush4,
+	entervehicle tadriver tanambush4,
+	order tanambush4 goto padtanmove2 inmode attack,
+	order tanambush2 goto padtanmove0 inmode attack,
+	order tanambush3 goto padtanmove1 inmode attack,
+	triggerdelay 5000 ambush2
+
+MACRO macroambushorders 1
+{
+	IF padon padtanmove@1 THEN
+		SETAIMODE me attack,
+		SETAIPOSE me kneel
+}		 
+
+EXPAND macroambushorders ( 0 )
+EXPAND macroambushorders ( 1 )
+
+IF padon padtanmove2 THEN
+	TRIGGERDELAY 2500 hopout
+
+IF count 1 of hopout THEN
+	exitvehicle tanambush0 tanambush4,
+	setaipose tanambush0 none,
+	TRIGGERDELAY 1500 hopout2
+
+IF hopout2 THEN
+	exitvehicle tanambush1 tanambush4,
+	setaipose tanambush1 none,
+	TRIGGERDELAY 100 orderambush
+
+IF orderambush THEN
+	ORDER tanambush0 goto (502,1275) INMODE ignore,
+	ORDER tanambush1 goto (370,1311) INMODE ignore,
+	SETAIMODE tanambush4 defend,
+	TRIGGERDELAY 10000 goprone
+
+IF goprone THEN
+	setfacing tanambush0 145,
+	setfacing tanambush1 145,
+	SETAIMODE tanambush0 attack,
+	SETAIMODE tanambush1 attack,
+	SETAIPOSE tanambush0 prone,
+	SETAIPOSE tanambush1 prone
+	

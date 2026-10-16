@@ -1,0 +1,323 @@
+Rifleman
+Grenadier
+Mortarman
+Flamethrower
+Bazookaman
+Stunner
+Paralyzer
+Gunner
+Incinerator
+Robot
+Larva
+Spider
+Drone
+Commander
+Oculon
+Tank
+Half-Track
+Jeep
+Truck
+PT-Boat
+Speeder
+Rover
+Pillbox-Rifle
+Pillbox-Bazooka
+Pillbox-MG
+Medical Tent
+Auto Repair
+Radar
+AA-Gun
+Gun Turret
+Mine
+Player %s has left the game.
+Player %s has left the game - now AI controlled.
+Player %s is now the host.
+%s has a different version of the game.
+%s is ready.
+Host is ready - waiting for players to press ready.
+Game type changed by host.
+Map changed by host.
+Options changed by host.
+Not everybody has the same version/map/rules.
+%s does not have rules.
+%s does not have map.
+%s has a damaged map.
+%s has a damaged rules file.
+%s has a damaged installation.
+  --  In Progress
+Free Internet Play on mplayer.com
+Fast Free Online Gaming on heat.net
+Play it Free on zone.com
+The Army Men World War(TM) CD must be in the drive to play.
+Copy Protection
+The Army Men World War(TM+A20) CD must be in the drive to play multi-player with a compact installation.
+Data Missing
+Stratmap
+Squad %d (shortcut F%d)
+Sarge
+Attack
+Defend
+Stand fire
+Hold fire
+Sarge
+HP:
+%3d/%3d
+AR:
+%d mm
+CR:
+Flak:
+JEEP
+TANK
+H/T
+CONV
+BOAT
+TURRET
+ROVR
+???
+GREN
+FLAM
+BAZ
+MORT
+RIFLE
+LTMG
+MINE
+EXPL
+FLAG
+MSWP
+MEDI
+AIRS
+PARA
+RECO
+NOTE
+FLAK
+HVMG
+VULC
+SNIP
+DISG
+MAG
+AERO
+WREN
+M80
+HEVL
+GLUE
+BALL
+FLYS
+BEAM
+NAPL
+DDT
+HAMM
+AIRA
+INCD
+???
+ARMOR
+HP
+Not responding%s
+Computer%d
+"Game type: %s, Goal: %d"
+-- Computer --
+-- Open --
+POWER-UPS
+Random Power-up
+Air Strike
+Paratroopers
+Reconnaissance
+Mines
+Minesweeper
+Disguise
+Wrench
+Sniper Rifle
+Heavy MG
+Mortar
+Aerosol
+Magnifying Glass
+M80
+Bazooka
+Vulcan
+Med Kit
+Med Pack
+Flak Jacket
+Explosive
+Laser
+Incendiary Mortar
+Glue
+Baseball
+Fly Swatter
+DDT
+Adrenaline
+Force Field
+Hammer Mine
+Air Attack
+Beam Down
+Napalm Air Strike
+MISCELLANEOUS
+Fog of War
+Casualties Replaced
+Power-ups Replenished
+Corpses Spawn Zombies
+UNITS
+Bazookamen
+FlameThrowers
+Grenades
+Riflemen
+Mortarmen
+AutoRifle
+Paralyzers
+Gunners
+Incinerators
+Robots
+Larvae
+Spiders
+Drones
+Commanders
+Oculons
+VEHICLES
+Jeeps
+Half-tracks
+Tanks
+Trucks
+PT Boats
+Speeders
+Rovers
+ASSETS
+Medical Tent
+Repair Facility
+Radar Building
+Anti-Aircraft Gun
+Gun Turret
+Rifle Pillbox
+Bazooka Pillbox
+Heavy MG Pillbox
+Sarge
+
+Rifleman
+Grenades
+Flamethrower
+Bazookaman
+Mortarman
+Machine Gunner
+Miner
+Demolitions
+None
+Bannerman
+Minesweeper
+Medic
+Spy
+Flak Jacket
+Heavy Weapons
+Sniper
+Mechanic
+Zombie
+Drone
+Oculon
+Paralyzer
+Stunner
+Incinerator
+Gunner
+Larva
+Spider
+Robot
+Easy
+Medium
+Hard
+Are you sure you want to quit?
+Do you wish to reattempt your failed mission?
+Are you sure you want to delete this game?
+Are you sure you want to overwrite savefile '%s'?
+Caution: All saved games for this player will also be deleted!
+Are you sure you want to restart this mission?
+Jeep
+Tank
+Half Track
+Convoy Truck
+PT Boat
+Speeder
+Rover
+None
+Rifle
+Grenades
+Flamethrower
+Bazooka
+Mortar
+Cannon
+Medium MG
+Heavy MG
+Light MG
+Mines
+Explosives
+Flag
+Green Flag
+Tan Flag
+Blue Flag
+Grey Flag
+Minesweeper
+Medpack
+Medkit
+Airstrike
+Glue
+Baseball
+Flyswatter
+Space Beamers
+Napalm Airstrike
+Paratroopers
+Recon
+Note
+Flak Jacket
+Vulcan
+Sniper Rifle
+Nitro
+Camouflage
+Green Uniform
+Tan Uniform
+Blue Uniform
+Grey Uniform
+Magnifying Glass
+Aerosol
+Wrench
+M80
+Zombie
+Light Laser
+Medium Laser
+Heavy Laser
+Plasma Cannon
+Death Ray
+Roach Bite
+Freeze Mortar
+Freeze Laser
+Incendiary Mortar
+Gatling Gun
+Acid Spit
+Bite
+Super Laser
+Boss Mortar
+Napalm Grenade
+Long-range Freeze Mortar
+Electric Shock
+Adrenaline
+DDT
+Force Field
+Hammer Mine
+Air Attack
+Cannot open tileset file %s
+Error in tileset file %s
+Cannot open map file %s
+Press space to continue
+Green
+Tan
+Blue
+Grey
+None
+Multi-player game completed at %s
+"Game type: %s, map: %s, playing time: %d:%d:%d"
+"Player:%s, left the game or was disconnected"
+"Player: %s(%s), score: %d, teamscore: %d, rank: %d, teamrank: %d"
+You have reached
+the unit limit
+of %d units.
+Army Men World War
+Army Men World War(TM)
+" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-_+={[}]|\\:;\""',<.>?/\t"
+ abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!'&+-_
+Skirmish
+Player
+tina_tomorrow
+Sir! My CO ordered me to stay in the vehicle.

@@ -1,0 +1,11 @@
+Bringing an enemy flag to home base
+scores 200 pts.
+
+Killing an enemy unit scores one fourth
+its purchase price.
+
+A flag returns to its base if unheld
+for 2 minutes.
+
+The first player/team to reach the point
+goal wins.

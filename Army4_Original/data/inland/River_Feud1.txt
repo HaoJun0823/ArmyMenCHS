@@ -1,0 +1,959 @@
+// Map 8 "River Feud" //
+// Map Design and concept by Christopher "Chip" Gracia //
+//~campfire~//
+preloadsprite 43 820 0
+preloadsprite 43 820 1
+preloadsprite 43 820 2
+preloadsprite 43 820 3
+preloadsprite 43 820 4
+preloadsprite 43 820 5
+preloadsprite 43 820 6
+preloadsprite 43 820 7
+
+preloadsprite 43 381 0
+preloadsprite 43 381 3
+preloadsprite 43 381 4
+preloadsprite 43 381 5
+preloadsprite 43 381 6
+preloadsprite 43 381 7
+preloadsprite 43 381 8
+preloadsprite 43 381 9
+// *** Variables *** //
+variable vartankilled 0
+variable losevar 0
+variable ownedvar 0
+variable gavethemtomevar 0
+
+
+// Pads //////////////
+pad thgunner1  154
+pad thgunner2  155 
+pad thgunner3  156 
+pad thgunner4  157 
+pad bazspotter 158
+pad start29	254  green
+
+pad 29go4it1	212
+pad 29go4it2	213
+
+pad 29go4it3    214
+pad 29go4it4	215
+
+pad tancounter1 216
+pad tancounter2 217
+pad tancounter3 218
+pad tancounter4 219
+
+pad  ptstart1	160
+pad  ptstart2	161
+
+pad  wd1	162	pt1
+pad  wd2	163	pt2
+
+//**Additional HQ waves**//
+
+pad HQ02        250     nonNPC
+
+if padon HQ02 butnot oneHQ02 then
+        playsound "08_02_HQ_B.wav" 1 3,
+        triggerdelay 1 oneHQ02
+
+variable fogvar 0
+
+pad     balancepad      251
+// *** Startup *** //
+
+if startup1 then
+        setuilock 1,
+        createpowerup wrench (2340,2980) 1,
+        createunit "balanceunit" rifleman balancepad green 0 autorifle,
+        setnpc balanceunit 1,
+        createpowerup "balancepower" paratroopers balancepowspot -1,
+        moveitem balanceunit balancepad,
+        setaimode balanceunit ignore,
+        triggerdelay 1 checklevel,
+        triggerdelay 900 moviestart,
+        triggerdelay 1000 movietrigGU_1,
+        triggerdelay 1000 Cam_on_green,
+        triggerdelay 10 setthefog,
+        triggerdelay 1 checktroopcount,
+        playsound "inland8_nomusic.wav" 10 1 1
+        //triggerdelay 1 well_active1
+
+if checktroopcount then
+        setvar numgreen getdeployedtroopercount green
+
+if hit balanceunit by tan then
+        heal balanceunit 100
+
+
+if setthefog testvar fogvar = 0 then
+        setfog 0,
+        triggerdelay 1000 setthefog
+
+if moviestart then
+        //setuilock 1,
+        triggerdelay 1 movietrigTU_1
+
+
+if checklevel testvar difficulty = 0 then
+        createpowerup "" medpack (3053,2280) 12,
+        createpowerup "" medpack (1235,1636) 12,
+        createpowerup "" medpack (3053,1325) 12,
+        createpowerup "" wrench (2410,2957) 5,
+        triggerdelay 1 Checkbalance
+
+
+
+        //For end movie//
+	//triggerdelay 300 needtodo
+
+variable movievar 0
+
+if inputbypass all testvar movievar = 0 THEN
+        setvar movievar 10,
+        triggerdelay 1 needtodo
+
+
+if needtodo then
+        setvar fogvar 20,
+        triggerdelay 10 makeRbrattack,
+        triggerdelay 11 makeLbrattack,
+        trigger makeboats,
+	triggerdelay 500 hqorders,
+	trigger bridged,
+	trigger bridgereinforce,
+	trigger greenarmyl,
+	trigger greenarmy2,
+	trigger holdpostion,
+        setitemflag tancannon1 strategic 1,
+        setuilock 0,
+        setfog 1,
+        setcamerafocus green
+
+if hqorders then
+	showpda "Commander, provide support for the 5th brigade to assure the bridges are captured!"
+
+//**balance**//
+if Checkbalance testvar numgreen = 1 then
+        fireweapon balancepower balanceunit green
+
+
+//***start movie***//
+
+macro actionmac 9
+
+//@1 unit interger @2 weapon @3 color @4 integer @5 pad @6 faceing @7 pose @8 AImode @9 inventory
+{
+
+pad moviedeppad@1     @5
+
+pad bazpad@1    23@1    tanstar@1
+
+
+if movietrig@4 then
+        createunit tanstar@1 rifleman moviedeppad@1 @3 3 @2 100,
+        setfacing tanstar@1 @6,
+        setnpc tanstar@1 1,
+        selectinventoryitem tanstar@1 tanstar@1 @9,
+        setaimode tanstar@1 @8,
+        setaipose tanstar@1 @7
+
+if bazorders@4 then
+        order tanstar@1 goto bazpad@1 inmode ignore,
+        triggerdelay 1000 change_AImode
+
+if change_AImode then
+        setaimode tanstar@1 defend
+
+if padon bazpad@1 butnot onebazpad@1 then
+        setfacing tanstar@1 209,
+        setaipose tanstar@1 kneel,
+        setaimode tanstar@1 defend
+
+if callbackup@1 then
+        setaipose tanstar@1 Radio,
+        playitemsound "08_01_tantroop_04A.wav" tanstar@1 5 3,
+        setaimode tanstar@1 ignore,
+        triggerdelay 1 movietrigTU_2,
+        triggerdelay 4000 time_for_backup
+
+if tanstargotoTU_2 then
+        order tanstar@1 goto bazpad@1 inmode defend
+
+if padon bazpad@1 then
+        setaipose tanstar@1 @7,
+        setfacing tanstar@1 219
+
+
+}
+
+expand actionmac ( 0 bazooka tan TU_2 190 24 kneel attack 2 )
+expand actionmac ( 1 bazooka tan TU_2 191 200 kneel attack 2 )
+expand actionmac ( 2 bazooka tan TU_2 192 196 kneel standfire 2 )
+
+expand actionmac ( 3 bazooka tan TU_2 193 178 kneel standfire 2 )
+
+expand actionmac ( MG7radio bazooka tan TU_1 60 130 radio standfire 2 )
+expand actionmac ( MG5 heavymg tan TU_1 40 84 kneel standfire 2 )
+expand actionmac ( MG6 heavymg tan TU_1 50 188 kneel standfire 2 )
+expand actionmac ( MG9 heavymg tan TU_1 90 184 kneel attack 2 )
+expand actionmac ( MG8 heavymg tan TU_1 91 188 kneel attack 2 )
+
+
+if killed tanstarMG7radio then
+        createpowerup "" mine tanstarMG7radio 20
+
+if hit tanstarMG6 butnot onehittanstarMG6 then
+        triggerdelay 2000 callbackupMG7radio,
+        trigger onehittanstarMG6
+
+if time_for_backup then
+        triggerdelay 22 movietrigTV_1,
+        triggerdelay 100 action1
+
+if killed tanstar0 then
+        createpowerup "" bazooka tanstar0 6
+
+if killed tanstar1 then
+        createpowerup "" bazooka tanstar0 5
+
+if killed tanstar2 then
+        createpowerup "" bazooka tanstar0 3
+
+if killed tanstar3 then
+        createpowerup "" bazooka tanstar0 7
+
+
+
+
+
+pad GgotopadG1         239
+pad GgotopadGT2         240
+pad GgotopadGT3         241
+pad GgotopadGT4         242
+
+
+macro greenactionmac 9
+//@1 unit interger @2 weapon @3 color @4 integer @5 pad @6 faceing @7 pose @8 AImode @9 inventory
+{
+pad ressspad@1          234 	npc
+
+pad Gmoviedeppad@1     @5
+
+
+if movietrig@4 then
+        createunit greenstar@1 rifleman Gmoviedeppad@1 @3 3 @2 100,
+        order greenstar@1 goto Ggotopad@1 inmode @8,
+        selectinventoryitem greenstar@1 greenstar@1 2,
+        setnpc greenstar@1 1
+
+if orderresunits@4 then
+        order greenstar@1 goto ressspad@1 inmode attack
+
+if padon ressspad@1 then
+        undeploy me
+
+
+}
+expand greenactionmac ( G1 sweeper green GU_1 195 192 stand ignore 2 )
+expand greenactionmac ( GT1 autorifle green GU_V2 195 192 none attack 0 )
+expand greenactionmac ( GT2 autorifle green GU_V2 195 192 none attack 0 )
+expand greenactionmac ( GT3 autorifle green GU_V2 195 192 none attack 0 )
+//**Resurrecting**//
+
+
+
+if killed greenstarGT1 butnot moveiover then
+        triggerdelay 1000 resunitGT1
+
+if resunitGT1 then
+        setnpc greenstarGT1 1,
+        resurrect greenstarGT1 GmoviedeppadGT1,
+        order greenstarGT1 goto GgotopadGT1 inmode attack
+
+if killed greenstarGT2 butnot moveiover then
+        triggerdelay 1000 resunitGT2
+
+if resunitGT2 then
+        setnpc greenstarGT2 1,
+        resurrect greenstarGT2 GmoviedeppadGT2,
+        order greenstarGT2 goto GgotopadGT2 inmode attack
+
+if killed greenstarGT3 butnot moveiover then
+        triggerdelay 1000 resunitGT3
+
+if resunitGT3 then
+        setnpc greenstarGT3 1,
+        resurrect greenstarGT3 GmoviedeppadGT3,
+        order greenstarGT3 goto GgotopadGT3 inmode attack
+
+if allof killed tanstar3 killed tanstar2 killed tanstar1 killed tanstar0 then
+        triggerdelay 1000 orderresunitsGU_V2,
+        triggerdelay 2000 orderresunitsGU_V2,
+        triggerdelay 1 moveiover
+
+
+//camera//
+
+if Cam_on_green testvar movievar = 0 then
+        setcamerafocus greenstarG1
+
+if hit greenstarG1 butnot onehitgreenstarG1 then
+        selectinventoryitem greenstarG1 greenstarG1 1,
+        triggerdelay 1 onehitgreenstarG1
+
+if killed greenstarG1 then
+        createpowerup "" sweeper greenstarG1,
+        triggerdelay 600 camonMG7,
+        triggerdelay 1 movietrigGU_V2
+
+if camonMG7 testvar movievar = 0 then
+        setcamerafocus tanstarMG7radio
+
+
+if hit tanstarMG7radio butnot onehitG1 then
+        order tanstarMG7radio goto me inmode attack,
+        triggerdelay 1 onehitG1
+
+if Action1 butnot onetimemove1 then
+        playitemsound "08_02_tantroop_05C.wav" dopeTV_1 4 2,
+        triggerdelay 1000 packupenterTU_2,
+        trigger onetimemove1
+
+//if killed tanstarG1 then
+       // triggerdelay 500 bazstarorders0,
+        //triggerdelay 700 bazstarorders1,
+        //triggerdelay 900 bazstarorders2,
+        //triggerdelay 1000 bazstarorders3
+
+//Green Tank attack for the movie//
+
+//if allof padon bazpad0 padon bazpad1 padon bazpad2 padon bazpad3 then
+        //setcamerafocus camitem,
+	//triggerdelay 1000 movietrigGU_V2,
+        //triggerdelay 3000 movietrigGU_V3,
+        //triggerdelay 4000 movietrigGU_V4,
+        //triggerdelay 50000 movietrigGU_V5
+
+macro tanvehmac1 6
+{
+
+pad starvehiclepad@1  @6
+pad gotovehiclepad@1  @2 dope@1
+
+if movietrig@1 then
+        createvehicle dope@1 @5 starvehiclepad@1 @4,
+        setfacing dope@1 @3,
+        //triggerdelay 1000 enter@1,
+        setnpc dope@1 1
+if padon gotovehiclepad@1 butnot onepadon@1 then
+        triggerdelay 1000 exitandgo,
+        trigger onepadon@1
+
+}
+expand tanvehmac1 ( TV_1 194 148 tan halftrack 189 )
+
+if camonTV_1 testvar movievar = 0 then
+        setcamerafocus dopeTV_1
+
+if packupenterTU_2 then
+        triggerdelay 100 camonTV_1,
+        order tanstar0 goto dopeTV_1,
+        order tanstar1 goto dopeTV_1,
+        order tanstar2 goto dopeTV_1,
+        order tanstar3 goto dopeTV_1,
+        triggerdelay 800 enterTV_1
+
+
+if enterTV_1 then
+        entervehicle tanstar0 dopeTV_1,
+        entervehicle tanstar1 dopeTV_1,
+	entervehicle tanstar2 dopeTV_1,
+        entervehicle tanstar3 dopeTV_1,
+        order dopeTV_1 goto gotovehiclepadTV_1 inmode ignore
+
+if exitandgo then
+        exitvehicle tanstar0 dopeTV_1,
+        setmaxhealth tanstar0 350,
+        heal tanstar0 100,
+        exitvehicle tanstar1 dopeTV_1,
+        setmaxhealth tanstar1 350,
+        heal tanstar1 100,
+        exitvehicle tanstar2 dopeTV_1,
+        setmaxhealth tanstar2 350,
+        heal tanstar2 100,
+        exitvehicle tanstar3 dopeTV_1,
+        setmaxhealth tanstar3 350,
+        heal tanstar3 100,
+        triggerdelay 100 bazordersTU_2,
+        triggerdelay 1000 setaddcam,
+        trigger saftytodo
+
+if saftytodo testvar movievar = 0 then
+        setvar movievar 10,
+        triggerdelay 8000 needtodo
+
+
+if setaddcam testvar movievar = 0 then
+        setcamerafocus fire1
+
+if enterGV_1 then
+        entervehicle tanstarGT1 dopeGV_1,
+        order dopeGV_1 goto bazpad1 inmode attack
+if enterGV_2 then
+        entervehicle tanstarGT3 dopeGV_2,
+        order dopeGV_2 goto bazpad1 inmode attack
+if enterGV_3 then
+        entervehicle tanstarGT4 dopeGV_3,
+        order dopeGV_3 goto bazpad1 inmode attack
+if enterGV_4 then
+        entervehicle tanstarGT5 dopeGV_4,
+        order dopeGV_4 goto bazpad1 inmode attack
+
+
+// *** Bridge Defences *** //
+// Create 4 Tan tanks that guard the 2 bridges, create the heavy machinegunners that guard the bridges,
+// create heavygunners (2) to guard from opposite side of bridge
+
+
+
+macro 1sttanks 8
+{
+//@1 name integer @2 facing @3 pad num @4 AI mode @5 weapon @6 integer @7 X @8 Y
+
+pad tdefence@1  @3
+
+if tankd@6 then
+	createvehicle ttank@1 tank tdefence@1 tan,
+        createunit 1stunit@1 rifleman tdefence@1 tan 3 @5 200,
+        selectinventoryitem 1stunit@1 1stunit@1 2,
+        entervehicle 1stunit@1 ttank@1,
+        setaimode 1stunit@1 @4,
+	setfacing ttank@1 @2
+
+if makeflamer@6 then
+        createunit flamerunit@1 rifleman tdefence@1 tan 3 @5 200,
+        setaimode flamerunit@1 @4,
+        selectinventoryitem flamerunit@1 flamerunit@1 2
+
+if hit ttank@1 butnot onehit@1 then
+        trigger flamerorders_1,
+        triggerdelay 1 onehit@1
+
+if flamerorders@6 then
+        order flamerunit@1 goto (@7,@8) inmode attack
+
+}
+expand 1sttanks (1 155 150 standfire autorifle 1 1289 1721 )
+expand 1sttanks (2 135 151 standfire autorifle 1 1289 1721 )
+expand 1sttanks (3 100 152 standfire autorifle 1 1289 1721 )
+expand 1sttanks (4 120 153 standfire autorifle 1 1289 1721 )
+
+expand 1sttanks (_1 120 165 defend flamer _1 1289 1721 )
+expand 1sttanks (_2 120 166 defend flamer _1 1485 1843 )
+expand 1sttanks (_3 120 167 defend flamer _1 2924 1504 )
+expand 1sttanks (_4 120 168 defend flamer _1 3242 1485 )
+
+expand 1sttanks (_5 120 169 standfire flamer _1 1160 1879 )
+expand 1sttanks (_6 120 170 standfire flamer _1 3051 1367 )
+
+expand 1sttanks (_7 120 170 standfire lightmg _1 1926 2043 )
+expand 1sttanks (_8 120 170 standfire lightmg _1 2043 3784 )
+
+if allof killed ttank1 killed ttank2 killed ttank3 killed ttank4 then
+                setvar gavethemtomevar 1,
+                triggerdelay 1000 givemtome,
+                triggerdelay 1000 flamerorders_1,
+        	setvar ownedvar 10
+
+
+if bridged then
+	createunit bazman rifleman bazspotter tan 0 mortar 100,
+	setfacing bazman 137,
+        selectinventoryitem bazman bazman 2,
+	trigger tankd1,
+        trigger makeflamer_1,
+	trigger hvymgund
+
+if killed flamerunit_1 then
+        createpowerup "" flamer flamerunit_1 20,
+        triggerdelay 1 Checkbalance
+
+if killed flamerunit_4 then
+        createpowerup "" flamer flamerunit_1 30,
+        triggerdelay 1 Checkbalance
+
+
+macro tangunners 6
+{
+if hvymgund then
+        createunit "@1" @2 @3 tan 3 @4,
+	setfacing @1 @5,
+        selectinventoryitem @1 @1 2,
+	setaipose @1 @6
+
+if hit @1 then
+	setaipose @1 none
+
+}
+expand tangunners (hvymgunner1 rifleman thgunner1 heavymg 170 kneel)
+expand tangunners (hvymgunner2 rifleman thgunner2 heavymg 180 kneel)
+expand tangunners (hvymgunner3 rifleman thgunner3 heavymg 175 kneel)
+expand tangunners (hvymgunner4 rifleman thgunner4 heavymg 160 kneel)
+
+
+// *** Bridge Reinforcements *** //
+// Create the tan infantry units that will come in to reinforce the battles on both sides //
+
+//macro treforce 6
+//{
+//if padon @1 testvar boolBridgeCross = 0 then
+//	createunit "@2" @3 @4 tan 0 @5,
+//	setspeed @2 @6,
+//      setvar boolBridgeCross 1
+//      trigger march1
+	
+
+//if march1 then
+//	order @2 goto @1 inmode attack
+//}
+//expand treforce (bridge1 rreforce1 rifleman tbackup1 autorifle slow)
+//expand treforce (bridge1 rreforce2 rifleman tbackup2 autorifle slow)
+//expand treforce (bridge1 rreforce3 rifleman tbackup3 grenadier slow)
+//expand treforce (bridge1 rreforce4 rifleman tbackup4 autorifle slow)
+//expand treforce (bridge1 rreforce5 rifleman tbackup5 grenadier slow)
+//expand treforce (bridge2 lreforce1 rifleman tbackup8 autorifle slow)
+//expand treforce (bridge2 lreforce2 rifleman tbackup9 grenadier slow)
+//expand treforce (bridge2 lreforce3 rifleman tbackup10 autorifle slow)
+//expand treforce (bridge2 lreforce4 rifleman tbackup11 autorifle slow)
+//expand treforce (bridge2 lreforce5 rifleman tbackup12 grenadier slow)
+
+
+// *** Initial Attack *** //
+// Have vo play to initialize attack, make l and r side move towards the bridges, have tan forces begin to defend,
+// play vo asking for help from l and r side //
+
+if greenarmyl then
+	triggerdelay 10 29artil0,
+        playsound "08_01_HardPlastic_01C.wav" 16 3,
+        triggerdelay 6000 29VO
+
+if 29VO then
+        playsound "08_02_HardPlastic_01C.wav" 16 3,
+        triggerdelay 4000 29artil1,
+        triggerdelay 5000 29artil2,
+        triggerdelay 4000 29artil3,
+        triggerdelay 6000 29artil4,
+        triggerdelay 7000 29artil5
+
+
+macro 29artillery 3
+// 1 = integer 2 goto pad num @3 troopername
+{
+pad 29veh@1	20@1
+pad batpos@1    @2
+
+
+if 29artil@1 then
+	createvehicle 29tank@1 tank 29veh@1 green,
+        createunit "@3" rifleman 29veh@1 green,
+        setnpc 29tank@1 1,
+        setnpc @3 1,
+        entervehicle @3 29tank@1,
+	setaimode 29tank@1 ignore,
+	triggerdelay 500 time2move@1
+
+if killed @3 testvar ownedvar = 10 then
+        setvar numgreen getdeployedtroopercount green
+
+if givemtome testvar gavethemtomevar = 1 then
+	triggerdelay 1 ownerdet
+
+
+if ownerdet then
+        triggerdelay 1 play05VO,
+        setvar ownedvar 10,
+        setnpc 29tank@1 0,
+        setnpc 29unit@1 0,
+        setnpc @3 0,
+        trigger gavethemtome
+
+
+if killed 29tank@1 butnot oneplay29 then
+        playsound "08_04_HardPlastic_01B.wav" 16 3,
+        trigger oneplay29
+
+if time2move@1 then
+	order 29tank@1 goto batpos@1 inmode ignore,
+	triggerdelay 500000 givemtomeother
+
+if givemtomeother testvar gavethemtomevar = 0 then
+        triggerdelay 1 ownerdet
+
+}
+expand 29artillery (0 206 Srg.A_Mow )
+expand 29artillery (1 207 G._Goo )
+expand 29artillery (2 208 B._Strong )
+
+expand 29artillery (3 210 C._Me )
+expand 29artillery (4 209 A._Man )
+expand 29artillery (5 211 F._Toggle )
+
+if play05VO butnot oneplay05VO then
+        playsound "08_05_HardPlastic_01C.wav" 16 3,
+        trigger oneplay05VO
+
+macro alltanks 3
+{
+if evtStartTanks butnot onestarteav then
+        playsound "08_03_HardPlastic_01A.wav" 16 3,
+	order 29tank@1 goto (@2,@3) inmode attack,
+        triggerdelay 1 onestarteav
+
+}
+expand alltanks (0 1514 1844)
+expand alltanks (1 1258 1912)
+expand alltanks (2 989 1998)
+expand alltanks (3 2838 1625)
+expand alltanks (4 3092 1573)
+expand alltanks (5 3323 1549)
+
+
+if padon start29 butnot evtstart29 then
+        triggerdelay 500 starttancannon,
+	triggerdelay 8000 evtstart29
+
+if evtstart29 then
+        trigger evtStarttanks
+
+// *** Pt Boats *** //
+
+macro tanboats 4
+{
+if makeboats then
+        createunit unit@1 rifleman @1 tan 3,
+	createvehicle @1 @2 @4 tan,
+        entervehicle unit@1 @1,
+        setfacing @1 @3,
+        setaimode unit@1 standfire
+
+}
+expand tanboats (pt1 boat 148 wd1)
+expand tanboats (pt2 boat 82 wd2)
+
+
+// *** Victory Condition *** //////////////////////////////////////////////////////////////////////////////////////
+
+// Green has to secure the opposite shore by killing off the tan forces on that side
+
+//**Bridge Attackers**//
+
+//*Right Attack*//
+
+pad     RightBR_AT      21      green
+pad     LeftBR_AT       31      green
+
+if padon RightBR_AT butnot oneRightBR_AT then
+        triggerdelay 100 orderBRR,
+        triggerdelay 1 oneRightBR_AT
+
+macro brattackR 3
+//@1 Integer @2 weapon type @3 weapon ammo
+{
+pad     padlocR@1	3@1
+pad     padgotoR@1	5@1	tanbrR@1
+
+if makeRbrattack then
+        createunit "tanbrR@1" rifleman padlocR@1 tan 3 @2 @3,
+        setaimode tanbrR@1 attack,
+	setfacing tanbrR@1 128
+
+if orderBRR then
+        order tanbrR@1 goto padgotoR@1 inmode attack
+
+// For beta these units should hit the padgotoR@1 pad and begin to patrol to pads on the south end of the river.
+//These units need to be killed before the player can win the mission.
+// Also, enemies need to attack from the south when RightBR_AT pad is triggered.
+
+if padon padgotoR@1 butnot oneRgoto@1 then
+        setaimode tanbrR@1 defend,
+        //Order to partol between this pad and a additional pad.//
+        trigger oneRgoto@1
+}
+
+expand brattackR ( 1 heavyMG 100 )
+expand brattackR ( 2 heavyMG 100 )
+expand brattackR ( 3 heavyMG 100 )
+expand brattackR ( 4 heavyMG 100 )
+expand brattackR ( 5 heavyMG 100 )
+expand brattackR ( 6 heavyMG 100 )
+expand brattackR ( 7 heavyMG 100 )
+expand brattackR ( 8 heavyMG 100 )
+expand brattackR ( 9 heavyMG 100 )
+
+//*Left Attack*//
+
+
+if padon LeftBR_AT butnot oneleftBR_AT then
+        triggerdelay 1 Checkbalance,
+        triggerdelay 100 orderBRL,
+        triggerdelay 1 oneleftBR_AT
+
+macro brattackL 3
+//@1 Integer @2 weapon type @3 weapon ammo
+{
+pad     padlocL@1	4@1
+pad     padgotoL@1	6@1	tanbrL@1
+
+if makeLbrattack then
+        createunit "tanbrL@1" rifleman padlocL@1 tan 3 @2 @3,
+        setaimode tanbrL@1 attack,
+	setfacing tanbrL@1 128
+
+if orderBRL then
+        order tanbrL@1 goto padgotoL@1 inmode attack
+
+// For beta these units should hit the padgotoL@1 pad and begin to patrol to pads on the south end of the river.
+//These units need to be killed before the player can win the mission.
+// Also, enemies need to attack from the south when leftBR_AT pad is triggered.
+
+if padon padgotoL@1 butnot oneLgoto@1 then
+        setaimode tanbrL@1 defend,
+        //Order to partol between this pad and an additional pad.//
+        trigger oneLgoto@1
+}
+
+expand brattackL ( 1 heavyMG 100 )
+expand brattackL ( 2 heavyMG 100 )
+expand brattackL ( 3 heavyMG 100 )
+expand brattackL ( 4 heavyMG 100 )
+expand brattackL ( 5 heavyMG 100 )
+expand brattackL ( 6 heavyMG 100 )
+expand brattackL ( 7 heavyMG 100 )
+expand brattackL ( 8 heavyMG 100 )
+expand brattackL ( 9 heavyMG 100 )
+
+//*** Win Condition ***//
+
+if killed tancannon1 testvar losevar = 0 then
+        trigger cannonkilled,
+        playsound "08_03_HQ_B.wav" 11 3
+
+if cannonkilled then
+        showpda "The area is secured. Mission accomplished!",
+        triggerdelay 3000 greenwins
+
+
+// *** Lose Condition *** //
+
+// if all of your forces die before you secure the other shore
+
+if killed green trooper testvar getnpcstatus me = 0 then
+	setvar numgreen getdeployedtroopercount green,
+	trigger checklose
+
+if checklose testvar numgreen = 0 then
+        triggerdelay 1 loseit,
+        showpda "Mission Failed.",
+	triggerdelay 3000 tanwins
+
+if loseit then
+        setvar losevar 10
+
+//*********Impliment Barn sequence here.  We should have units rush the player from inside the barn when the green units
+//are approaching the cannon.//
+
+//**Cannon animation**//
+  //***Cannons***//
+macro cannonmac 6
+{
+// @1 integer @2 X @3 Y @4 pad num @5 mancannonpad num @6 unit AI @7 facing
+
+pad cmanpad@1        @4
+
+variable cannonvar@1 1
+
+if starttancannon butnot oneRandombombing@1 then
+        triggerdelay 1 firecannon@1,
+        trigger oneRandombombing@1,
+        clearfog tancannon@1
+
+if firecannon@1 testvar cannonvar@1 = 1 then
+        playitemsound "artillery_back.wav" tancannon@1 4 3 1000,
+        setaipose mancannon@1 kneel,
+        createexplosion (@2,@3) 135 0 tan,
+        createexplosion (@2,@3) 126 0 tan,
+        setobjstate tancannon@1 cannon_fire@1,
+        setvar cannonvar@1 1
+
+if killed tancannon@1 then
+        setitemflag tancannon@1 strategic 0,
+        playsound "" tancannon@1 3 0 1000,
+        setaimode mancannon@1 @5,
+        setvar cannonvar@1 10
+
+if makecannonman@1 butnot oneman@1 then
+        setitemflag tancannon@1 strategic 1,
+        createunit mancannon@1 rifleman cmanpad@1 tan,
+        setaimode mancannon@1 standfire,
+        triggerdelay 1 oneman@1,
+        setfacing mancannon@1 @6
+
+object tancannon@1
+        state cannon_init@1
+                frame 50 00
+                triggerdelay 1 makecannonman@1
+
+        state cannon_fire@1
+                frame 100 03
+                frame 100 04
+                frame 100 05
+                triggerdelay 100 resetframe@1
+
+if resetframe@1 then
+                setaipose mancannon@1 stand,
+                setobjstate tancannon@1 cannon_init@1,
+                setvar cannonvar@1 0,
+                triggerdelay 100 makebomb@1
+
+
+}
+expand cannonmac ( 1 1580 574 73 attack 132 )
+
+if makebomb1 testvar cannonvar1 = 0 then
+                random
+                        triggerdelay 500 exp1,
+                        triggerdelay 500 exp2,
+                        triggerdelay 500 exp3,
+                        triggerdelay 500 exp4,
+                        triggerdelay 500 exp5,
+                        triggerdelay 500 exp6
+
+if exp1 testvar cannonvar1 = 0 then
+        playsound "bombwhistle2.wav" (1928,2118) 4 3 100,
+        setvar cannonvar1 2,
+        triggerdelay 1000 randomB_1
+if randomB_1 testvar cannonvar1 = 2 then
+        createexplosion (1928,2118) 131 400 blue,
+        setvar cannonvar1 1,
+        triggerdelay 1000 firecannon1
+
+if exp2 testvar cannonvar1 = 0 then
+        playsound "bombwhistle2.wav" (2041,2387) 4 3 100,
+        setvar cannonvar1 2,
+        triggerdelay 1000 randomB_2
+if randomB_2 testvar cannonvar1 = 2 then
+        createexplosion (2041,2387) 131 400 blue,
+        setvar cannonvar1 1,
+        triggerdelay 1000 firecannon1
+
+if exp3 testvar cannonvar1 = 0 then
+        playsound "bombwhistle2.wav" (2449,2401) 4 3 100,
+        setvar cannonvar1 2,
+        triggerdelay 1000 randomB_3
+if randomB_3 testvar cannonvar1 = 2 then
+        createexplosion (2449,2401) 131 400 blue,
+        setvar cannonvar1 1,
+        triggerdelay 1000 firecannon1
+
+if exp4 testvar cannonvar1 = 0 then
+        playsound "bombwhistle2.wav" (2759,2241) 4 3 100,
+        setvar cannonvar1 2,
+        triggerdelay 1000 randomB_4
+if randomB_4 testvar cannonvar1 = 2 then
+        createexplosion (2759,2241) 131 400 blue,
+        setvar cannonvar1 1,
+        triggerdelay 1000 firecannon1
+
+if exp5 testvar cannonvar1 = 0 then
+        playsound "bombwhistle2.wav" (2767,2109) 4 3 100,
+        setvar cannonvar1 2,
+        triggerdelay 1000 randomB_5
+if randomB_5 testvar cannonvar1 = 2 then
+        createexplosion (2767,2109) 131 400 blue,
+        setvar cannonvar1 1,
+        triggerdelay 1000 firecannon1
+
+if exp6 testvar cannonvar1 = 0 then
+        playsound "bombwhistle2.wav" (2997,1213) 4 3 100,
+        setvar cannonvar1 2,
+        triggerdelay 1000 randomB_6
+if randomB_6 testvar cannonvar1 = 2 then
+        createexplosion (2997,1213) 131 400 blue,
+        setvar cannonvar1 1,
+        triggerdelay 1000 firecannon1
+
+//**end cannon
+
+//***Camp Fire***//
+macro firemac 3
+//1 = integer 2 = pad num 3 = sound channel
+{
+
+pad firepad@1   @2 trooper
+
+variable firevar@1 0
+variable soundvar@1 0
+if reloopfire@1 testvar firevar@1 = 0 then
+        setvar firevar@1 10,
+        setobjstate fire@1 fire@1_active,
+        makesmoke fire@1 1000,
+        triggerdelay 1 fireSFX@1
+
+if fireSFX@1 testvar soundvar@1 = 0 then
+        setvar soundvar@1 10,
+        playsound "campfire.wav" fire@1 3 @3 1 40
+
+//Firepad@1 trigger//
+
+if padon firepad@1 then
+        setdamagepad firepad@1 2 100 fire
+
+object fire@1
+        state fire@1_active
+                frame 100 00
+                frame 100 01
+                frame 100 02
+                frame 100 03
+                frame 100 04
+                frame 100 05
+                frame 100 06
+                frame 99 07
+                setvar firevar@1 0,
+                triggerdelay 1 reloopfire@1
+
+}
+expand firemac ( 1 12 5 )
+
+macro wellmac 1
+//@1 integer
+{
+
+variable wellvar@1 0
+
+if loopwell@1 testvar wellvar@1 = 0 then
+        setobjstate well@1 well_active@1,
+        setvar wellvar@1 1
+object well@1
+
+        state well_active@1
+                frame 99 00
+                frame 100 03
+                frame 100 04
+                frame 100 05
+                frame 100 06
+                frame 100 07
+                frame 100 08
+                frame 100 09
+                setvar wellvar@1 0,
+                triggerdelay 1 loopwell@1
+
+        state well_damaged@1
+                frame 7 02
+
+if killed well@1 then
+        setvar wellvar@1 100,
+        setobjstate well@1 well_damaged@1
+}
+expand wellmac ( 1 )

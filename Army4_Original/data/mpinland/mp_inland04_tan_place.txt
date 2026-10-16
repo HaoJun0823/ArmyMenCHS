@@ -1,0 +1,26 @@
+#cmd	type		x	y	facing	group	name
+
+place	rifleman    	239	544	128	1	-
+place	rifleman    	182	501	128	1	-
+place	rifleman    	140	531	128	1	-
+place	tank        	152	724	128	2	-
+place	tank        	215	722	128	2	-
+place	rifleman    	210	712	128	2	-
+place	rifleman    	147	716	128	2	-
+place	bazookapill 	211	362	128	0	-
+place	mgpill      	541	507	96	0	-
+place	bazookapill 	847	651	160	0	-
+place	rifleman    	868	468	160	3	-
+place	rifleman    	764	462	160	3	-
+place	rifleman    	690	517	160	3	-
+place	rifleman    	633	587	160	3	-
+place	rifleman    	630	681	160	3	-
+place	rifleman    	751	550	160	3	-
+place	rifleman    	694	607	160	3	-
+place	rifleman    	829	503	160	3	-
+place	medtent     	790	327	160	0	-
+place	jeep        	470	665	160	5	-
+place	rifleman    	472	671	160	5	-
+place	jeep        	708	357	160	5	-
+place	rifleman    	704	364	160	5	-
+place	rifleman    	431	535	160	2	-

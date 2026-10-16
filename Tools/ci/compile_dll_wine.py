@@ -84,6 +84,23 @@ PROJECTS = {
         #   这里加 "." 是为了 pch.h / framework.h 在工程根也能被找到。
         "includes": ["."],
     },
+    "Army4_Extend_Dll": {
+        # 4 代（World War / 世界大战）源码树与 3 代**逐文件对应**
+        # （dllmain + hooks/mpunlock/hzk16/log/renderer/target），
+        # 但签名、patchLen、全局表地址全部重测过（见 docs/12）——
+        # 故**不能**复用 Army3 的清单，必须独立一项。
+        # 源码清单必须与 Army4_Extend_Dll.vcxproj 的 <ClCompile> 完全一致。
+        "sources": [
+            "dllmain.cpp",
+            r"src\hooks.cpp",
+            r"src\mpunlock.cpp",
+            r"src\hzk16.cpp",
+            r"src\log.cpp",
+            r"src\renderer.cpp",
+            r"src\target.cpp",
+        ],
+        "includes": ["."],
+    },
 }
 
 PROJ = "Army1_Extend_Dll"

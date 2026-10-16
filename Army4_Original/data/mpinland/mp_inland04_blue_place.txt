@@ -1,0 +1,24 @@
+#cmd	type		x	y	facing	group	name
+
+place	medtent     	896	2572	160	0	-
+place	bazookapill 	1181	2418	232	0	-
+place	bazookapill 	949	2317	24	0	-
+place	aagun       	857	2662	24	0	-
+place	tank        	833	2416	24	0	-
+place	rifleman    	831	2408	24	4	-
+place	rifleman    	493	2539	24	4	-
+place	rifleman    	506	2464	24	1	-
+place	rifleman    	564	2434	24	1	-
+place	rifleman    	640	2454	24	1	-
+place	rifleman    	677	2524	24	1	-
+place	rifleman    	654	2581	24	1	-
+place	rifleman    	583	2592	24	1	-
+place	rifleman    	529	2568	24	1	-
+place	rifleman    	586	2502	24	1	-
+place	rifleman    	1218	2532	24	2	-
+place	rifleman    	1193	2576	24	2	-
+place	rifleman    	1140	2585	24	2	-
+place	rifleman    	1110	2543	24	2	-
+place	rifleman    	1113	2506	24	2	-
+place	rifleman    	1145	2486	24	2	-
+place	rifleman    	1185	2501	24	2	-

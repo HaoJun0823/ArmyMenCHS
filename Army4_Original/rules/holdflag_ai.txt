@@ -1,0 +1,48 @@
+// this gets loaded on the host if the @1 army is AI controlled
+
+
+// @1 = color of army to do AI for, @2-@4 = other colors @5 = color number
+macro holdflag_ai_macro 5
+{
+	// This variable holds the current action for @1
+	// 0 means no action, 1 means follow black flag, 2 means get powerups, 3 means hold the flag
+
+	if startup1 then
+		triggerdelay 1000 @1loopaction
+
+	if @1loopaction then
+		trigger @1ChooseAction,
+		triggerdelay 5000 @1loopaction
+
+
+	
+	// WE OWN THE FLAG
+	if @1ChooseAction testvar holdsBlackFlag <> 0 AND IsInArmy carriesBlackFlag @1 = 1 then
+		order @1 group 1 follow blackflag1 inmode defend,
+		order @1 group 2 follow blackflag1 inmode attack,
+		order @1 group 3 follow blackflag1 inmode defend,
+		order @1 group 4 follow blackflag1 inmode attack,
+		order carriesBlackFlag goto @1base inmode ignore
+
+	// FLAG IS UNOWNED
+	if @1ChooseAction testvar holdsBlackFlag = 0  then
+		order @1 group 1 goto blackflag1 inmode ignore,
+		order @1 group 2 goto blackflag1 inmode attack,
+		order @1 group 3 goto blackflag1 inmode attack,
+		order @1 group 4 goto blackflag1 inmode attack
+
+	// HE OWNS THE FLAG
+	if @1ChooseAction testvar holdsBlackFlag <> 0 AND IsInArmy carriesBlackFlag @1 = 0 then
+		order @1 group 1 follow blackflag1 inmode attack,
+		order @1 group 2 follow blackflag1 inmode attack,
+		order @1 group 3 follow blackflag1 inmode attack,
+		order @1 group 4 follow blackflag1 inmode attack
+
+
+	// if flag ownership changes, revise what we do
+	if pickedup blackflag1  then
+		triggerdelay 1 @1ChooseAction			// give flag time to register into carriesBlackFlag
+	if dropped blackflag1 then
+		triggerdelay 1 @1ChooseAction			// give flag time to register into carriesBlackFlag
+
+}

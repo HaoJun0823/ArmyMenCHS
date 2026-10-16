@@ -1,0 +1,2 @@
+#command map_name	map_text	folder		tileset		loadcof	victorycin	load screen		loadmusic		briefing	briefsfx		stratmap		cycle?		losemovie1 	losemovie2 	losemovie3
+MAP	bootcamp	bootcamp	bootcamp	bootcamp	FALSE	none		BOOTCAMP.bmp		bootcamp.wav		none		Sarge_bootcamp.wav	bootcamp_strat.bmp	FALSE		none		none		none

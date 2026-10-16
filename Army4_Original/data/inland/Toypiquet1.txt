@@ -1,0 +1,1187 @@
+// Map 5 "Toypiquet Part 1: The Assault" //
+// Map Design and concept by Christopher "Chip" Gracia //
+
+//  *** PADS ***  //
+
+pad finalguysp1 93	finalguy1
+pad finalguysp2 94	finalguy2
+pad finalguysp3 95	finalguy3
+pad finalguysp4 96	finalguy4
+pad finalguysp5 97	finalguy5
+
+pad AAguardp15	98	AAguard15
+pad AAguardp16	99	AAguard16
+pad AAguardp1	101	AAguard1
+pad AAguardp2	102	AAguard2
+pad AAguardp3	103	AAguard3
+pad AAguardp4	104	AAguard4
+pad AAguardp5	105	AAguard5
+pad AAguardp6	106	AAguard6
+pad AAguardp7	107	AAguard7
+pad AAguardp8	108	AAguard8
+pad AAguardp9	109	AAguard9
+pad AAguardp10	110	AAguard10
+pad AAguardp11	111	AAguard11
+pad AAguardp12	112	AAguard12
+pad AAguardp13	113	AAguard13
+pad AAguardp14	114	AAguard14
+	
+pad aap1	181
+pad aap2	182
+pad aap3	183
+pad aap4	184
+pad aap5	185
+pad aap6	186
+pad aap7	187
+pad aap8	188
+
+
+pad tanwatchgrdp2	100
+pad tanwatchgrdp1	115 	
+pad yardguard1		116	
+pad yardguard2		117	
+pad yardguard3		118	
+pad yardguard4		119
+pad yardguard5		120	
+pad yardguard6		121	
+pad yardguard7		122	
+pad yardguard8		123	
+pad htrackinyard	124	yardhtrack
+pad leaderstart		125	
+pad leaderpace1		126	tanleader
+pad leaderpace2		127	tanleader
+pad jeepinyardp		128	yardjeep
+
+		
+pad frontguard1		137
+pad frontguard2		138
+pad vehyardp		139	green
+pad tyardjeepp1		140	tanyguard3
+pad tyardjeepp2		141	tanyguard4
+pad tfixerguyp		142
+pad fixitp1		143	tfixerguy
+pad fixitp2		144	tfixerguy
+pad fixitp3		145	tfixerguy
+
+pad alarmpadvy		160	tanleader
+pad vybackup1p		161
+pad vybackup2p		162
+pad t1positionp		163	tanyguard1
+pad t2positionp		164	tanyguard2
+pad t5positionp		165	tanyguard5
+pad t6positionp		166	tanyguard6
+pad t7positionp		167	tanyguard7
+pad t8positionp		168	tanyguard8
+pad advance1p		169	tanyguard1
+pad advance2p		170	tanyguard2
+pad advance5p		171	tanyguard5
+pad advance6p		172	tanyguard6
+pad advance7p		173	tanyguard7
+pad advance8p		174	tanyguard8
+pad 2ndline1p		175	outdahousguy1
+pad 2ndline2p		176	outdahousguy2
+pad 2ndline3p		177	outdahousguy3
+pad 2ndline4p		178	outdahousguy4
+pad 2ndline5p		179	outdahousguy5
+pad 2ndline6p		180	outdahousguy6
+
+pad gspot1		201	tanleader	
+
+//  PATROL JEEPS  //
+
+pad jeeppatrolp1	130	tjeep1
+pad jeeppatrolp2	131	tjeep2
+pad jeeppatrolp3	132	tjeep3
+
+pad jeeprp11		31	tjeep1
+pad jeeprp12		32	tjeep1
+pad jeeprp13		33	tjeep1	
+pad jeeprp14		34	tjeep1	
+pad jeeprp15		35	tjeep1	
+pad jeeprp16		36	tjeep1
+pad jeeprp17 		37	tjeep1
+pad jeeprp18		38	tjeep1
+pad jeeprp19		39	tjeep1
+pad jeeprp10		40	tjeep1
+pad jeeprp111		41	tjeep1
+pad jeeprp112		42	tjeep1
+pad jeeprp113		43	tjeep1
+pad jeeprp114		44	tjeep1
+pad jeeprp115		45	tjeep1
+pad jeeprp116		46	tjeep1
+
+pad jeeprp31		47	tjeep3
+pad jeeprp32		48	tjeep3
+pad jeeprp33		49	tjeep3
+pad jeeprp34		50	tjeep3
+
+pad jeeprp21		133	tjeep2
+pad jeeprp22		134	tjeep2
+pad jeeprp23		135	tjeep2
+pad jeeprp24		136	tjeep2
+
+
+// SQUIRMISH IN THE NORTHWEST //
+
+pad tbadboy1p		64
+pad tbadboy2p		65
+pad tbadboy3p		66
+pad tbadboy4p		67
+pad tbadboy5p		68
+pad tbadboy6p		69
+pad tbadboy7p		70
+
+pad gbackup1p		71
+pad gbackup2p		72
+pad gbackup3p		73
+pad gbackup4p		74
+pad gbackup5p		75
+pad gbackup6p		76
+
+pad gb1ambushp		77      I._Mug
+pad gb2ambushp		78      U._Theman
+pad gb3ambushp		79      B._Good
+pad gb4ambushp		80      Q._Me
+pad gb5ambushp		81      C._Target
+pad gb6ambushp		82      A._Greenman
+
+pad helpg2p		83      A._Greenman
+pad helpg4p		84      B._Good
+
+pad p_up1		190
+pad p_up2		191
+pad p_up3		192
+
+
+// MISSION OBJECTIVE BASED PADS //
+
+pad victory1		254	green
+pad squirmish		253	green
+pad aaguardnwp		252	green
+pad alarm1		251     green
+pad vyardinsight	250	green
+
+// *** VARIABLES *** //
+
+variable 2ndlinevar 0
+variable 1wavevar 0
+variable inposevar 0
+variable 3hitvar 0
+variable 4hitvar 0
+variable 4gothitvar 0
+variable 2gothitvar 0
+variable ambushsoundvar 0
+variable ongroundvar 0
+variable deadaas 0
+variable losevar 0
+variable turretvar 0
+variable repairvar 0
+variable ambushvar 0
+variable alarmedvar 0
+variable trapguysvar 0
+variable formationvar 0
+variable gotcontrolvar 0
+variable alarmfiredvar 0
+variable jeep1hitvar 0
+variable jeep1deadvar 0
+variable jeep2deadvar 0
+variable tanfrontg1hitvar 0
+variable tanfrontg2hitvar 0
+
+// *** ANIMATED OBJECTS *** //
+
+// ~ CAMPFIRE ~ //
+preloadsprite 43 820 0
+preloadsprite 43 820 1
+preloadsprite 43 820 2
+preloadsprite 43 820 3
+preloadsprite 43 820 4
+preloadsprite 43 820 5
+preloadsprite 43 820 6
+preloadsprite 43 820 7
+
+// ~ Mill ~ //
+preloadsprite 37 300 0
+preloadsprite 37 300 3
+preloadsprite 37 300 4
+preloadsprite 37 300 5
+preloadsprite 37 300 6
+preloadsprite 37 300 7
+preloadsprite 37 300 8
+preloadsprite 37 300 9
+
+// FINAL GUYS //
+
+
+macro finalguysmac 5
+
+{
+
+if finalguys then
+	createunit "finalguy@1" rifleman finalguyp@1 tan 3,
+	setaipose finalguy@1 @2,
+	setfacing finalguy@1 @3,
+	setspeed finalguy@1 @4,
+	setaimode finalguy@1 @5
+
+}
+
+expand finalguysmac (1 kneel 195 normal standfire)
+expand finalguysmac (2 stand 155 normal defend)
+expand finalguysmac (3 stand 85 slow defend)
+expand finalguysmac (4 kneel 225 normal standfire)
+expand finalguysmac (5 stand 150 slow defend)
+
+// *** STARTUP *** //
+
+if startup1 then 
+	triggerdelay 100 letfunbegin
+
+if letfunbegin then
+	trigger makeguards,
+	triggerdelay 10 vehiclestart,
+	triggerdelay 11 tandefense,
+	triggerdelay 12 tanyardtroops,
+	triggerdelay 13 thetrap,
+	triggerdelay 1000 thegoal,
+	triggerdelay 2000 aahighlite,
+	playsound "inland5_nomusic.wav" 15 2 1
+
+if thegoal then 
+	showpda "Destroy the Tan AA-guns to secure a safe route for our bombers!"
+
+// *** VICTORY CONDITIONS *** //
+
+if allof killed aa1 killed aa2 killed aa3 killed aa4 killed aa5 killed aa6 killed aa7 killed aa8 then
+	playsound "05_02_HQ_B.wav" 10 1,
+	setvar deadaas 8,
+	trigger proceednorth,
+	triggerdelay 500 showthend
+
+if padon victory1 testvar deadaas = 8 then
+	trigger checkwin,
+	setvar deadaas 10
+
+if checkwin testvar losevar = 0 then
+	showpda "Mission Accomplished.",
+	triggerdelay 2000 greenwins
+
+if proceednorth then
+	showpda "Good job, Continue northeast to the location shown on your stratmap, and Commander, the tan are aware of your presence now so try not to attract any unwanted attention."
+	
+if showthend then
+	setitemflag endspot strategic 1
+
+// *** LOSE CONDITIONS *** //
+
+if killed green trooper testvar getnpcstatus me = 0 then
+	setvar numgreen getdeployedtroopercount green,
+	trigger checklose
+
+if checklose testvar numgreen = 0 then
+        setvar losevar 10,
+        showpda "You have been eliminated from the war. Mission Failed...",
+        triggerdelay 2000 tanwins
+
+// ***ALARM FOR CAMP*** //
+
+if padon alarm1 testvar alarmedvar < 11 and alarmfiredvar = 0 then
+	triggerdelay 10 alarmtest,
+	setvar alarmedvar 1000
+
+if alarmvyard testvar alarmedvar > 900 and alarmfiredvar = 0 then
+	playsound "05_01_tantroop.wav" tanleaderstart 13 1 500,
+	order tanleader goto alarmpadvy inmode ignore,
+	order tanyguard1 goto t1positionp inmode standfire,
+	order tanyguard2 goto t2positionp inmode standfire,
+	order tanyguard3 goto tyardjeepp1 inmode ignore,
+	order tanyguard4 goto tyardjeepp2 inmode ignore,
+	order tanyguard5 goto t5positionp inmode ignore,
+	order tanyguard6 goto t6positionp inmode standfire,
+	order tanyguard7 goto t7positionp inmode standfire,
+	order tanyguard8 goto t8positionp inmode standfire,
+	order tanwatchgrd1 goto (2869 , 3222) inmode standfire,
+	order tanwatchgrd2 goto (2436 , 3110) inmode standfire,
+	order tfixerguy follow me inmode attack,
+	triggerdelay 2000 watchgrdposes,
+	setvar frontg1hitvar 100,
+	setvar frontghit2var 100
+
+if hit tfixerguy testvar alarmedvar > 9 then
+	setaipose tfixerguy dive
+
+if hit tfixerguy testvar alarmedvar < 10 then
+	addvar alarmedvar 5,
+	trigger alarmtest
+
+
+if alarmtest testvar alarmedvar < 90 and alarmedvar > 9 then
+	trigger alarmvyard,
+	setvar alarmedvar 1000
+
+
+if padon t1positionp then
+	addvar inposevar 1,
+	setspeed tanyguard1 slow
+
+if padon t2positionp then
+	addvar inposevar 1,
+	setspeed tanyguard2 slow
+
+if padon t5positionp then
+	addvar inposevar 1,
+	setspeed tanyguard5 slow
+
+if padon t6positionp then
+	addvar inposevar 1,
+	setspeed tanyguard6 slow
+
+if padon t7positionp then
+	addvar inposevar 1,
+	setspeed tanyguard7 slow
+
+if padon t8positionp testvar inposevar > 4 then
+	addvar inposevar 1,
+	trigger advancing
+
+if advancing testvar inposevar > 5 then
+	order tanyguard1 goto advance1p inmode standfire,
+	order tanyguard2 goto advance2p inmode standfire,
+	order tanyguard5 goto advance5p inmode standfire,
+	order tanyguard6 goto advance6p inmode standfire,
+	order tanyguard7 goto advance7p inmode standfire,
+	order tanyguard8 goto advance8p inmode standfire,
+	setvar 1wavevar 10
+
+if padon advance2p testvar 1wavevar = 10 then
+	setaipose tanyguard1 kneel,
+	setaipose tanyguard2 kneel,
+	setaipose tanyguard5 stand,
+	setaipose tanyguard6 stand,
+	setaipose tanyguard7 stand,
+	setaipose tanyguard8 stand
+
+if padon alarmpadvy testvar alarmfiredvar = 0 then
+	setfacing tanyguard5 30,
+	playsound "POW_ALARM.wav" alarmpadvy 14 1 1 500,
+	playsound "POW_ALARM.wav" alarmpad2 15 2 1 500,
+	triggerdelay 1500 getinandfight,
+	triggerdelay 9000 turndatshtoff,
+	triggerdelay 3000 firstwave1,
+	triggerdelay 4000 firstwave2,
+	triggerdelay 5000 firstwave3,
+	triggerdelay 2500 2ndwave1,
+	triggerdelay 3500 2ndwave2,
+	triggerdelay 4500 2ndwave3,
+	setvar alarmfiredvar 1000	
+
+if firstwave1 then
+	createunit "outdahousguy1" rifleman vybackup1p tan 3,
+	order outdahousguy1 goto 2ndline1p inmode standfire
+
+if firstwave2 then
+	createunit "outdahousguy2" rifleman vybackup1p tan 3,
+	order outdahousguy2 goto 2ndline2p inmode standfire
+
+if firstwave3 then
+	createunit "outdahousguy3" rifleman vybackup1p tan 3,
+	order outdahousguy3 goto 2ndline3p inmode standfire
+
+if 2ndwave1 then
+	createunit "outdahousguy4" rifleman vybackup2p tan 3,
+	order outdahousguy4 goto 2ndline4p inmode standfire
+
+if 2ndwave2 then
+	createunit "outdahousguy5" rifleman vybackup2p tan 3,
+	order outdahousguy5 goto 2ndline5p inmode standfire
+
+if 2ndwave3 then
+	createunit "outdahousguy6" rifleman vybackup2p tan 3,
+	order outdahousguy6 goto 2ndline6p inmode standfire
+
+if padon 2ndline1p then
+	addvar 2ndlinevar 1
+
+if padon 2ndline2p then
+	addvar 2ndlinevar 1
+
+if padon 2ndline3p then
+	addvar 2ndlinevar 1
+
+if padon 2ndline4p then
+	addvar 2ndlinevar 1
+
+if padon 2ndline5p then
+	addvar 2ndlinevar 1
+
+if padon 2ndline6p testvar 2ndlinevar < 6 then
+	addvar 2ndlinevar 1
+
+if padon 2ndline6p testvar 2ndlinevar > 5 then
+	setspeed outdahousguy1 slow,
+	setspeed outdahousguy2 slow,
+	setspeed outdahousguy3 slow,
+	setspeed outdahousguy4 slow,
+	setspeed outdahousguy5 slow,
+	setspeed outdahousguy6 slow,
+	order outdahousguy1 goto advancep1 inmode standfire,
+	order outdahousguy2 goto advancep2 inmode standfire,
+	order outdahousguy3 goto advancep5 inmode standfire,
+	order outdahousguy4 goto advancep6 inmode standfire,
+	order outdahousguy5 goto advancep7 inmode standfire,
+	order outdahousguy6 goto advancep8 inmode standfire
+
+if getinandfight then
+	order tanleader goto gspot1 inmode ignore,
+	selectinventoryitem tanleader tanleader 1
+
+if turndatshtoff then
+	playsound " " 14 1 1 500, 
+	playsound " " 15 2 1 500
+
+if watchguardposes then
+	setaipose tanwatchgrd1 kneel,
+	setfacing tanwatchgrd1 50,
+	setaipose tanwatchgrd1 prone,
+	setfacing tanwatchgrd1 128
+
+if hit tanyguard3 testvar 3hitvar = 0 then
+	setaipose tanyguard3 dive,
+	addvar 3hitvar 1,
+	triggerdelay 1000 getgoing3
+
+if hit tanyguard4 testvar 4hitvar = 0 then
+	setaipose tanyguard4 dive,
+	addvar 4hitvar 1,
+	triggerdelay 1000 getgoing4
+
+if getgoing3 then
+	order tanyguard3 goto tyardjeepp1 inmode ignore
+
+if getgoing4 then
+	order tanyguard4 goto tyardjeepp2 inmode ignore
+
+if padon tyardjeepp1 testvar jeep1deadvar = 0 then
+	entervehicle tanyguard3 tyardjeep1,
+	setaimode tyardjeep1 standfire,
+	triggerdelay 1 injeep1
+
+if padon tyardjeepp2 testvar jeep2deadvar = 0 then
+	entervehicle tanyguard4 tyardjeep2,
+	setaimode tyardjeep2 standfire,
+	triggerdelay 1 injeep2
+
+if injeep1 then
+	setaimode tanyguard3 standfire	
+
+if injeep2 then
+	setaimode tanyguard4 standfire
+
+
+// YARD JEEPS BLOWING UP //
+
+if hit tyardjeep1 then
+	addvar jeep1hitvar 1
+
+if hit tyardjeep1 testvar jeep1hitvar > 2 then
+	setmaxhealth tyardjeep1 10,
+	heal tyardjeep1 -150
+
+if killed tyardjeep1 then
+	createexplosion tyardjeepp1 130 300,
+	playsound "truckdeath.wav" tyardjeepp1 10 2 300,
+	triggerdelay 200 smokeysmkoke,
+	setvar jeep1deadvar 10
+
+if smokeysmoke testvar jeep1deadvar = 10 then
+	makesmoke tyardjeepp1 7000,
+	triggerdelay 500 jeep2blowup
+
+if jeep2blowup testvar jeep1deadvar = 10 then
+	createexplosion tyardjeepp2 130 300,
+	damage tyardjeep2 1000,
+	playsound "truckdeath.wav" tyardjeepp2 11 2 300,
+	triggerdelay 200 smokeysmkoke2,
+	setvar jeep2deadvar 10
+
+if smokeysmoke2 testvar jeep2deadvar = 10 then
+	makesmoke tyardjeepp2 7000
+
+
+// ***AA-GUNS*** //
+
+if aahighlite then
+	Setitemflag aa1 strategic 1, 
+	Setitemflag aa2 strategic 1, 
+	Setitemflag aa3 strategic 1, 
+	Setitemflag aa4 strategic 1, 
+	Setitemflag aa5 strategic 1, 
+	Setitemflag aa6 strategic 1, 
+	Setitemflag aa7 strategic 1, 
+	Setitemflag aa8 strategic 1 
+
+if killed aa1 then
+	setitemflag aa1 strategic 0,
+	createpowerup grenade aap1 3
+
+if killed aa2 then
+	setitemflag aa2 strategic 0,
+	createpowerup grenade aap2 3
+
+if killed aa3 then
+	setitemflag aa3 strategic 0,
+	createpowerup grenade aap3 3
+
+if killed aa4 then
+	setitemflag aa4 strategic 0,
+	createpowerup grenade aap4 3
+
+if killed aa5 then
+	setitemflag aa5 strategic 0,
+	createpowerup grenade aap5 3
+
+if killed aa6 then
+	setitemflag aa6 strategic 0,
+	createpowerup grenade aap6 3
+
+if killed aa7 then
+	setitemflag aa7 strategic 0,
+	createpowerup grenade aap7 3
+
+if killed aa8 then
+	setitemflag aa8 strategic 0,
+	createpowerup grenade aap8 3
+
+
+
+// ***TAN AA GUARD MACRO*** //
+
+
+macro tanguards 6
+
+{
+
+variable aagrdhitvar@1 0
+
+if makeguards then
+	createunit "aaguard@1" rifleman aaguardp@1 tan 3,
+	selectinventoryitem aaguard@1 aaguard@1 0,
+	setaimode aaguard@1 defend,
+	setaipose aaguard@1 @6
+
+if hit aaguard@1 testvar aagrdhitvar@1 = 0 then
+	setaipose aaguard@1 @4,
+	setaimode aaguard@1 @5,
+	setvar aagrdhitvar@1 10
+
+if hit aaguard@1 testvar aagrdhitvar@1 = 10 then
+	order aaguard@2 follow me inmode attack,
+	triggerdelay 1500 turnbacknfight,
+	setvar aagrdhitvar@1 100
+
+if turnbacknfight then
+	setaimode aaguard@2 standfire,
+	setaipose aaguard@2 dive,
+	order aaguard@1 goto aaguardp@1,
+	triggerdelay 1000 turnbacknfight2
+
+if turnbacknfight2 then
+	setaimode aaguard@1 standfire,
+	setaipose aaguard@1 stand,
+	selectinventoryitem aaguard@1 aaguard@1 @3
+}
+
+expand tanguards (1 2 0 kneel attack stand)
+expand tanguards (2 1 0 kneel standfire kneel)
+expand tanguards (3 4 1 prone attack stand)
+expand tanguards (4 3 0 kneel attack kneel)
+expand tanguards (5 6 0 prone attack stand)
+expand tanguards (6 5 1 kneel standfire kneel)
+expand tanguards (7 8 0 kneel attack stand) 
+expand tanguards (8 7 0 kneel standfire stand)
+expand tanguards (9 10 1 kneel attack kneel)
+expand tanguards (10 9 0 prone defend kneel)
+expand tanguards (11 12 1 kneel standfire stand)
+expand tanguards (12 11 0 prone defend kneel)
+expand tanguards (13 14 0 kneel attack stand)
+expand tanguards (14 13 0 prone attack kneel)
+expand tanguards (15 16 0 kneel attack stand)
+expand tanguards (16 15 1 prone attack kneel)
+
+if padon aaguardnwp butnot chargedb4 then
+	order tanguard11 follow me inmode attack,
+	order tanguard12 follow me inmode attack
+
+
+// ***TANTROOPS AND LEADER*** //
+
+if tanyardtroops then
+	trigger makeleader,
+	trigger tanyguards,
+	trigger tanwatchdog,
+	triggerdelay 200 frontwatch
+
+if makeleader then 
+	createunit "tanleader" rifleman leaderstart tan 3 autorifle,
+	setspeed tanleader slow,
+	setfacing tanleader 10,
+	triggerdelay 3000 strut
+
+if strut then
+	order tanleader goto leaderpace1
+
+if padon leaderpace1 then
+	setfacing tanleader 210,
+	triggerdelay 3000 strutback
+
+if strutback then
+	order tanleader goto leaderpace2
+
+if padon leaderpace2 then
+	setfacing tanleader 10,
+	triggerdelay 5000 strut
+
+
+// ***TAN VEHICLE YARD TROOPS MACRO*** //
+//** @1 = unit name, @2 = type, @3 = local, @4 = weapon @5 = level **//
+
+macro vyardefense 3
+
+{
+
+if tanyguards then
+	createunit "@1" rifleman @2 tan 3 autorifle 1,
+	setaipose @1 stand,
+	setfacing @1 99,
+	setaimode @1 @3
+}
+
+expand vyardefense (tanyguard1 yardguard1 standfire)
+expand vyardefense (tanyguard2 yardguard2 standfire)
+expand vyardefense (tanyguard3 yardguard3 standfire)
+expand vyardefense (tanyguard4 yardguard4 standfire)
+expand vyardefense (tanyguard5 yardguard5 standfire)
+expand vyardefense (tanyguard6 yardguard6 standfire)
+expand vyardefense (tanyguard7 yardguard7 standfire)
+expand vyardefense (tanyguard8 yardguard8 standfire)
+expand vyardefense (tanfrontg1 frontguard1 ignore)
+expand vyardefense (tanfrontg2 frontguard2 ignore)
+
+if tanwatchdog then
+	createunit "tanwatchgrd1" rifleman tanwatchgrdp1 tan 3 autorifle 1,
+	setfacing tanwatchgrd1 70,
+	setaimode tanwatchgrd1 standfire,
+	createunit "tanwatchgrd2" rifleman tanwatchgrdp2 tan 3 autorifle 1,
+	setfacing tanwatchgrd2 150,
+	setaimode tanwatchgrd2 standfire,
+	trigger repairman
+
+if repairman then
+	createunit "tfixerguy" rifleman tfixerguyp tan 3 autorifle 1,
+	makesmoke tyardjeepp1 69000,
+	makesmoke tyardjeepp2 40000,
+	setaipose tfixerguy kneel,
+	setfacing tfixerguy 128,
+	triggerdelay 20000 fixit1
+
+if fixit1 testvar alarmfiredvar = 0 then
+	order tfixerguy goto fixitp1
+
+if padon fixitp1 testvar repairvar = 0 and alarmfiredvar = 0 then
+	setaipose tfixerguy kneel,
+	setvar repairvar 10,
+	setfacing tfixerguy 15,
+	triggerdelay 25000 fixit2
+
+if fixit2 testvar alarmfiredvar = 0 then
+	order tfixerguy goto fixitp2
+	 
+if padon fixitp2 testvar repairvar = 10 and alarmfiredvar = 0 then	
+	setaipose tfixerguy kneel,
+	setvar repairvar 20,
+	setfacing tfixerguy 0,
+	triggerdelay 15000 fixit3
+
+if fixit3 testvar alarmfiredvar = 0 then
+	order tfixerguy goto fixitp3
+	 
+if padon fixitp3 testvar repairvar = 20 and alarmfiredvar = 0 then
+	setaipose tfixerguy kneel,
+	setvar repairvar 0,
+	setfacing tfixerguy 192,
+	triggerdelay 20000 repeatfix
+	 
+if repeatfix testvar repairvar = 0 and alarmfiredvar = 0 then
+	order tfixerguy goto fixitp1
+
+if hit tanfrontg1 testvar tanfrontg1hitvar = 1 then
+	setaipose tanfrontg1 kneel,
+	setfacing tanfrontg1 192,
+	addvar alarmedvar 5
+
+if hit tanfrontg2 testvar tanfrontg2hitvar = 1 then
+	setaipose tanfrontg2 kneel,
+	setfacing tanfrontg2 64,
+	addvar alarmedvar 5
+
+if hit tanfrontg1 testvar tanfrontg1hitvar < 10 then
+	addvar tanfrontg1hitvar 1
+
+if hit tanfrontg2 testvar tanfrontg2hitvar < 10 then
+	addvar tanfrontg2hitvar 1 
+
+if hit tanfrontg1 testvar tanfrontg1hitvar > 2 then
+	setaimode tanfrontg1 standfire,
+	order tanfrontg2 goto alarm1 inmode attack,
+	trigger alarmtest
+
+if hit tanfrontg2 testvar tanfrontg2hitvar > 2 then
+	setaimode tanfrontg2 standfire,
+	order tanfrontg1 goto alarm1 inmode defend,
+	trigger alarmtest
+
+if vehiclestart then
+	trigger layemout,
+	trigger yardvehicles,
+	triggerdelay 1000 startpatrol
+
+if yardvehicles then
+	createvehicle yardhtrack halftrack htrackinyard tan,
+	createvehicle yardjeep jeep jeepinyardp tan,
+	createvehicle tyardjeep1 jeep tyardjeepp1 tan,
+	createvehicle tyardjeep2 jeep tyardjeepp2 tan,
+	setforcecolor yardhtrack green,
+	setforcecolor yardjeep green,
+	setfacing tyardjeep1 100,
+	setfacing tyardjeep2 100,
+	setaimode tyardjeep1 ignore,
+	setaimode tyardjeep2 ignore,
+	setfacing yardjeep 145,
+	setfacing yardhtrack 145,
+	setaimode yardjeep ignore,
+	setaimode yardhtrack ignore 
+		
+if padon vyardinsight butnot vyardseen then
+	playsound "05_01_greentroop.wav" 12 2 300,
+	trigger vyardseen
+
+	
+// *** JEEP PATROL MACRO *** //
+
+macro jeepsmac 5
+
+{
+
+if layemout then
+	createvehicle tjeep@1 jeep jeeppatrolp@1 tan,
+	setnpc tjeep@1 1,
+	setfacing tjeep@1 @4,
+	createunit "tdriveguy@1" rifleman jeeppatrolp@1 tan 3 autorifle 1,
+	entervehicle tdriveguy@1 tjeep@1,
+	triggerdelay 100 getinjeep@1
+
+If getinjeep@1 then
+	stayinvehicle tdriveguy@1 1,
+	triggerdelay @5 startpatrol@1
+
+}
+
+expand jeepsmac (1 2015 3880 192 500)
+expand jeepsmac (2 3656 1581 80 700) 
+expand jeepsmac (3 3067 182 22 900)
+
+if startpatrol1 then
+	order tjeep1 goto jeeprp11 inmode attack
+
+if startpatrol2 then
+	order tjeep2 goto jeeprp21 inmode attack
+
+if startpatrol3 then
+	order tjeep3 goto jeeprp31 inmode attack
+
+
+// *** TJEEP1 MACRO *** //
+
+
+if padon jeeprp11 testvar then
+	order tjeep1 goto jeeprp12 inmode defend
+
+if padon jeeprp12 then
+	order tjeep1 goto jeeprp13 inmode defend
+
+if padon jeeprp13 then
+	order tjeep1 goto jeeprp14 inmode defend
+
+if padon jeeprp14 then
+	order tjeep1 goto jeeprp15 inmode defend
+
+if padon jeeprp15 then
+	order tjeep1 goto jeeprp16 inmode defend
+
+if padon jeeprp16 then
+	order tjeep1 goto jeeprp17 inmode defend
+
+if padon jeeprp17 then
+	order tjeep1 goto jeeprp18 inmode defend
+
+if padon jeeprp18 then
+	order tjeep1 goto jeeprp19 inmode defend
+
+if padon jeeprp19 then
+	order tjeep1 goto jeeprp10 inmode defend
+
+if padon jeeprp10 then
+	order tjeep1 goto jeeprp111 inmode defend
+
+if padon jeeprp111 then
+	order tjeep1 goto jeeprp112 inmode defend
+
+if padon jeeprp112 then
+	order tjeep1 goto jeeprp113 inmode defend
+
+if padon jeeprp113 then
+	order tjeep1 goto jeeprp114 inmode defend
+
+if padon jeeprp114 then
+	order tjeep1 goto jeeprp115 inmode defend
+
+if padon jeeprp115 then
+	order tjeep1 goto jeeprp116 inmode defend
+
+if padon jeeprp116 then
+	order tjeep1 goto jeeprp11 inmode defend
+
+
+// *** TJEEP3 MACRO *** //
+
+
+if padon jeeprp31 then
+	order tjeep3 goto jeeprp32 inmode attack
+
+if padon jeeprp32 then
+	order tjeep3 goto jeeprp33 inmode attack
+
+if padon jeeprp33 then
+	order tjeep3 goto jeeprp34 inmode attack
+
+
+// *** TJEEP2 MACRO *** //
+
+
+if padon jeeprp21 then
+	order tjeep2 goto jeeprp22 inmode attack
+
+if padon jeeprp22 then
+	order tjeep2 goto jeeprp23 inmode attack
+
+if padon jeeprp23 then
+	order tjeep2 goto jeeprp24 inmode attack
+
+if padon jeeprp24 then
+	order tjeep2 goto jeeprp21 inmode attack
+
+
+
+// *** SIDE MISSION : THE AMBUSH *** //
+
+if thetrap then
+	createunit "tbadboy1" rifleman tbadboy1p tan 3,
+	createunit "tbadboy2" rifleman tbadboy2p tan 3,
+	createunit "tbadboy3" rifleman tbadboy3p tan 3,
+	createunit "tbadboy4" rifleman tbadboy4p tan 3,
+	createunit "tbadboy5" rifleman tbadboy5p tan 3,
+	createunit "tbadboy6" rifleman tbadboy6p tan 3,
+	createunit "tbadboy7" rifleman tbadboy7p tan 3,
+	setmaxhealth tbadboy1 350,
+	setmaxhealth tbadboy2 350,
+	setmaxhealth tbadboy3 350,
+	setmaxhealth tbadboy4 350,
+	setmaxhealth tbadboy5 350,
+	setmaxhealth tbadboy6 350,
+	setmaxhealth tbadboy7 350,
+	heal tbadboy1 150,
+	heal tbadboy2 150,
+	heal tbadboy3 150,
+	heal tbadboy4 150,
+	heal tbadboy5 150,
+	heal tbadboy6 150,
+	heal tbadboy7 150,
+	setaimode tbadboy1 ignore,
+	setaimode tbadboy2 ignore,
+	setaimode tbadboy3 ignore,
+	setaimode tbadboy4 ignore,
+	setaimode tbadboy5 ignore,
+	setaimode tbadboy6 ignore,
+	setaimode tbadboy7 ignore,
+	setaipose tbadboy1 kneel,
+	setaipose tbadboy2 kneel,
+	setaipose tbadboy3 kneel,
+	setaipose tbadboy4 kneel,
+	setaipose tbadboy5 kneel,
+	setaipose tbadboy6 kneel,
+	setaipose tbadboy7 kneel
+
+if padon squirmish testvar trapguysvar = 0 then
+	createunit "I._Mug" rifleman gbackup1p green 3,
+	createunit "U._Theman" rifleman gbackup2p green 3,
+	createunit "B._Good" rifleman gbackup3p green 3,
+	createunit "Q._Me" rifleman gbackup4p green 3,
+	createunit "C._Target" rifleman gbackup5p green 3,
+	createunit "A._Greenman" rifleman gbackup6p green 3,
+	setmaxhealth I._Mug 400,
+	setmaxhealth U._Theman 400,
+	setmaxhealth B._Good 400,
+	setmaxhealth Q._Me 400,
+	setmaxhealth C._Target 400,
+	setmaxhealth A._Greenman 400,
+	heal I._Mug 200,
+	heal U._Theman 200,
+	heal B._Good 200,
+	heal Q._Me 200,
+	heal C._Target 200,
+	heal A._Greenman 200,
+	selectinventoryitem U._Theman U._Theman 1,
+	selectinventoryitem Q._Me Q._Me 1,
+	addvar numgreen 6,
+	setnpc I._Mug 1,
+	setnpc U._Theman 1,
+	setnpc B._Good 1,
+	setnpc Q._Me 1,
+	setnpc C._Target 1,
+	setnpc A._Greenman 1,
+	setspeed I._Mug slow,
+	setspeed U._Theman slow,
+	setspeed B._Good slow,
+	setspeed Q._Me slow,
+	setspeed C._Target slow,
+	setspeed A._Greenman slow,
+	setvar trapguysvar 10,
+	triggerdelay 500 fighttime
+
+if fighttime then
+	order I._Mug goto gb1ambushp inmode ignore,
+	order U._Theman goto gb2ambushp inmode ignore,
+	order B._Good goto gb3ambushp inmode ignore,
+	order Q._Me goto gb4ambushp inmode ignore,
+	order C._Target goto gb5ambushp inmode ignore,
+	order A._Greenman goto gb6ambushp inmode ignore
+
+if padon gb1ambushp then
+	triggerdelay 1000 facedown,
+	setvar ambushvar 10
+
+if facedown then
+	setfacing I._Mug 128,
+	triggerdelay 1000 faceup
+
+if faceup then
+	setfacing I._Mug 0,
+	triggerdelay 500 confusion
+
+if confusion then
+	setfacing I._Mug 180,
+	setfacing U._Theman 85,
+	setfacing B._Good 210,
+	setfacing Q._Me 157,
+	setfacing C._Target 36,
+	setfacing A._Greenman 120,
+	triggerdelay 2000 look1,
+	triggerdelay 3000 look2,
+	triggerdelay 4000 look3
+
+if look1 then
+	setfacing I._Mug 15,
+	setfacing B._Good 130,
+	setfacing C._Target 125,
+	setfacing A._Greenman 12
+
+if look2 then
+	setfacing U._Theman 115,
+	setfacing Q._Me 110,
+	setfacing C._Target 202
+
+if look3 then
+	setfacing I._Mug 192,
+	setfacing U._Theman 235,
+	setfacing B._Good 205,
+	setfacing A._Greenman 124,
+	triggerdelay 500 d_attack
+
+if d_attack testvar ambushsoundvar = 0 and ambushvar = 10 then
+	playsound "05_02_greentroop.wav" gb5ambushp 7 1 500,
+	triggerdelay 10 boo,
+	setvar ambushsoundvar 10
+
+// AMBUSH MACRO //
+
+macro tanrushmac 7
+
+{
+
+pad gdefensep@1 	@6    gbackup@1
+pad tattackpos@1	@7    tbadboy@1
+
+variable gdefendvar@1 0
+
+if boo testvar ambushsoundvar = 10 then
+	order tbadboy@1 goto tattackpos@1 inmode attack
+
+if padon tattackpos@1 testvar gdefendvar@1 = 0 then
+	setaipose tbadboy@1 @2,
+	selectinventoryitem tbadboy@3 tbadoy@3 0,
+	trigger circlein
+
+if circlein testvar formationvar = 0 then
+	order gbackup@1 goto gdefensep@1,
+	setvar gdefendvar@1 10,
+	setvar formationvar 10
+
+if padon gdefensep@1 testvar gdefendvar@1 = 10 then
+	setaimode gbackup@1 defend,
+	setaipose gbackup@3 kneel,
+	selectinventoryitem gbackup@3 gbackup@3 0
+
+if hit tbadboy@1 testvar formationvar = 10 then
+	setaipose tbadboy@1 @4,
+	setaimode tbadboy@1 @5,
+	setvar formationvar 100
+
+}
+
+expand tanrushmac ( 1 kneel 5 prone standfire 85 193)
+expand tanrushmac ( 2 dive 5 prone defend 86 194)
+expand tanrushmac ( 3 kneel 5 prone attack 87 195)
+expand tanrushmac ( 4 dive 6 kneel standfire 88 196)
+expand tanrushmac ( 5 stand 6 kneel standfire 89 197)
+expand tanrushmac ( 6 stand 7 dive attack 90 198)
+expand tanrushmac ( 7 kneel 7 dive defend 91 199)
+
+if killed tbadboy3 then
+	createpowerup grenade p_up1 9
+
+if killed tbadboy7 then
+	createpowerup medkit p_up1 1
+
+if killed tbadboy5 then
+	createpowerup mine p_up1 10
+
+if killed I._Mug testvar gotcontrolvar = 0 then
+	order B._Good goto gdefensep1 inmode defend
+	
+if hit U._Theman testvar gotcontrolvar = 0 and 2gothitvar = 0 then
+	order A._Greenman goto helpg2p inmode defend,
+	setaipose U._Theman dive
+
+if padon helpg2p then
+	setaipose A._Greenman kneel,
+	setaimode A._Greenman standfire
+
+if hit Q._Me testvar gotcontrolvar = 0 and 4gothitvar = 0 then
+	order C._Target goto helpg4p inmode defend,
+	setaipose Q._Me prone
+
+if padon helpg4p then
+	setaipose C._Target kneel,
+	setaimode C._Target standfire
+
+if allof killed tbadboy1 killed tbadboy2 killed tbadboy3 killed tbadboy4 killed tbadboy5 killed tbadboy6 killed tbadboy7 then
+	setmaxhealth I._Mug 200,
+	setmaxhealth U._Theman 200,
+	setmaxhealth B._Good 200,
+	setmaxhealth Q._Me 200,
+	setmaxhealth C._Target 200,
+	setmaxhealth A._Greenman 200,
+	setnpc I._Mug  0,
+	setnpc U._Theman  0,
+	setnpc B._Good  0,
+	setnpc Q._Me  0,
+	setnpc C._Target  0,
+	setnpc A._Greenman  0,
+	setspeed I._Mug normal,
+	setspeed U._Theman normal,
+	setspeed B._Good normal,
+	setspeed Q._Me normal,
+	setspeed C._Target normal,
+	setspeed A._Greenman normal,
+        setvar numgreen getdeployedtroopercount green,
+	createpowerup bonushealth medkit mkit1 5,
+	setvar gotcontrolvar 100
+
+// *** CAMPFIRE *** //
+//1 = integer 2 = pad num 3 = sound channel
+
+macro firemac 3
+
+{
+
+pad firepad@1   @2 trooper
+
+variable firevar@1 0
+variable soundvar@1 0
+if reloopfire@1 testvar firevar@1 = 0 then
+        setvar firevar@1 10,
+        setobjstate fire@1 fire@1_active,
+        makesmoke fire@1 1000,
+        triggerdelay 1 fireSFX@1
+
+if fireSFX@1 testvar soundvar@1 = 0 then
+        setvar soundvar@1 10,
+        playsound "campfire.wav" fire@1 3 @3 1 40
+
+
+// **FIREPAD@1 TRIGGER** //
+
+if padon firepad@1 then
+        setdamagepad firepad@1 2 100 fire
+
+object fire@1
+        state fire@1_active
+                frame 100 00
+                frame 100 01
+                frame 100 02
+                frame 100 03
+                frame 100 04
+                frame 100 05
+                frame 100 06
+                frame 99 07
+                setvar firevar@1 0,
+                triggerdelay 1 reloopfire@1
+
+}
+expand firemac ( 1 12 5 )
+expand firemac ( 2 13 6 )
+expand firemac ( 3 14 7 )
+expand firemac ( 4 15 8 )
+expand firemac ( 5 16 9 )
+
+ //**Mill**//
+
+variable millvar 0 
+
+if killed millbuilding then
+        setvar millvar 10,
+		setobjstate millwheel mill_toast
+
+if loopwheel testvar millvar = 0 then
+        setobjstate millwheel wheel_roll
+
+
+object millwheel
+        state wheel_roll
+                frame 40 09
+                frame 50 08
+                frame 50 07
+                frame 50 06
+                frame 50 05
+                frame 50 04
+                frame 50 03
+                frame 50 00
+                triggerdelay 10 loopwheel
+
+        state mill_toast
+                frame 10 01
+		trigger resetvar
+if resetvar then
+        setvar millvar 10
+				
+ //end of mill animation//

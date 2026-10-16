@@ -1,0 +1,23 @@
+#cmd	type		x	y	facing	group	name
+
+place	rifleman    	3579	3458	40	1	-
+place	rifleman    	3468	3447	40	1	-
+place	rifleman    	3429	3540	40	1	-
+place	rifleman    	3506	3613	40	1	-
+place	rifleman    	3605	3560	40	1	-
+place	rifleman    	3848	3292	40	2	-
+place	rifleman    	3722	3304	40	2	-
+place	rifleman    	3722	3407	40	2	-
+place	rifleman    	3854	3404	40	2	-
+place	rifleman    	3785	3338	40	2	-
+place	bazookapill 	3540	3179	40	0	-
+place	bazookapill 	3371	3287	16	0	-
+place	bazookapill 	3002	3363	112	0	-
+place	bazookapill 	3179	3540	72	0	-
+place	tank        	3356	3676	24	4	-
+place	tank        	3771	3472	40	4	-
+place	rifleman    	3757	3462	40	4	-
+place	rifleman    	3356	3671	40	4	-
+place	rifleman    	3189	3406	40	5	-
+place	rifleman    	3250	3350	40	5	-
+place	rifleman    	3308	3402	40	5	-

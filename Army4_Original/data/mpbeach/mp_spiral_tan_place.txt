@@ -1,0 +1,25 @@
+#cmd	type		x	y	facing	group	name
+
+place	bazookapill 	2747	2780	48	6	-
+place	bazookapill 	2643	3006	16	6	-
+place	rifleman    	2946	2714	16	1	-
+place	rifleman    	2951	2804	16	1	-
+place	rifleman    	2893	2807	16	1	-
+place	rifleman    	2879	2726	16	1	-
+place	rifleman    	2520	3050	16	1	-
+place	rifleman    	2515	2973	16	1	-
+place	ackackgun   	2573	2795	16	6	-
+place	tank        	2670	2894	16	4	-
+place	rifleman    	2661	2891	16	4	-
+place	tank        	2836	3031	16	4	-
+place	rifleman    	2827	3036	16	4	-
+place	mine        	2959	3004	16	6	-
+place	mine        	2984	2994	16	6	-
+place	mine        	2977	3019	16	6	-
+place	mine        	2962	2983	16	6	-
+place	rifleman    	2748	3067	16	2	-
+place	rifleman    	2750	3002	16	2	-
+place	rifleman    	2778	2934	16	2	-
+place	rifleman    	2784	3101	16	2	-
+place	rifleman    	2696	3115	16	2	-
+place	rifleman    	2716	3057	16	2	-

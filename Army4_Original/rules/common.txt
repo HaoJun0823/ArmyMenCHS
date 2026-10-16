@@ -1,0 +1,298 @@
+//////////////////////////////////////////////////////////////////////////////
+// Common section
+//////////////////////////////////////////////////////////////////////////////
+
+// define the pads around the flag bases (used by CTF and AI in many games)
+
+pad greenbase 11  trooper
+pad tanbase 12  trooper
+pad bluebase 13  trooper
+pad greybase 14  trooper
+
+pad neargreenbase 15 green trooper
+pad neartanbase 16 tan trooper
+pad nearbluebase 17 blue trooper
+pad neargreybase 18 grey trooper
+
+pad ack1 30 
+pad ack2 31
+pad ack3 32
+pad ack4 33
+pad ack5 34
+pad ack6 35
+pad ack7 36
+pad ack8 37
+pad ack9 38
+pad ack10 39
+
+pad hill 20 
+
+
+// where dead troopers resurrect (NOT ANYMORE- they use their base area)
+
+pad GreenRes1 50	
+pad GreenRes2 51	
+pad GreenRes3 52
+pad GreenRes4 53	
+pad GreenRes5 54	
+pad GreenRes6 55
+	
+pad TanRes1 60
+pad TanRes2 61
+pad TanRes3 62
+pad TanRes4 63
+pad TanRes5 64
+pad TanRes6 65
+
+pad BlueRes1 70
+pad BlueRes2 71
+pad BlueRes3 72
+pad BlueRes4 73
+pad BlueRes5 74
+pad BlueRes6 75
+
+pad GreyRes1 80
+pad GreyRes2 81
+pad GreyRes3 82
+pad GreyRes4 83
+pad GreyRes5 84
+pad GreyRes6 85
+
+
+variable ldelay 0
+variable stdresurrect 1
+
+// all units who die resurrect via respawn delay (except last unit)
+macro checkdeath 1
+{
+
+	// when one dies or resurrects (if stdresurrect has not been suppressed)
+
+	variable @1lastlife 0
+
+	if killed @1 trooper testvar stdresurrect = 1 then
+		setvar @1lastlife getdeployedtroopercount @1,
+		trigger  @1checklastlife
+
+// try to resurrect a vehicle before a trooper so trooper will enter it if he is at it
+	if killed @1 vehicle testvar stdresurrect = 1  then
+		setvar ldelay unitrespawndelay,
+		mulvar ldelay 1000,
+		addvar ldelay -500,
+		triggerdelay refvar ldelay @1resurrectit
+
+	// when all troopers on a side are dead, resurrect most recent dead now
+	// otherwise resurrect trooper per user request
+
+	if @1checklastlife testvar getdeployedtroopercount @1 = 0  then
+		triggerdelay 10000 @1resurrectit
+
+	if @1checklastlife testvar getdeployedtroopercount @1 > 0 then
+		setvar ldelay unitrespawndelay,
+		mulvar ldelay 1000,
+		triggerdelay refvar ldelay @1resurrectit
+
+	if @1resurrectit then
+		resurrect me (-2,-2) // bring back to life at orignal deploy point
+}
+
+expand checkdeath ( green )
+expand checkdeath ( tan )
+expand checkdeath ( blue )
+expand checkdeath ( grey )
+
+
+// if asked, mark ALL troopers of every color but yours as strategic
+if MarkAllTroopersStrategic then
+	SetItemFlag aigreen strategic 1,
+	SetItemFlag aitan strategic 1,
+	SetItemFlag aiblue strategic 1,
+	SetItemFlag aigrey strategic 1
+
+variable carriesBlackFlag 0		// who has black flag
+if pickedup BlackFlag1 then
+	setvar carriesBlackFlag GetUID whoby		
+if dropped BlackFlag1 then
+	setvar carriesBlackFlag 0
+
+	// create default ackack guns unless blocked
+variable makeackack 1
+if startup1 then triggerdelay 1000 makeack
+if makeack testvar makeackack = 1 then
+	createvehicle ack1 ackackgun ack1 green,
+	createvehicle ack2 ackackgun ack2 green,
+	createvehicle ack3 ackackgun ack3 tan,
+	createvehicle ack4 ackackgun ack4 tan,
+	createvehicle ack5 ackackgun ack5 blue,
+	createvehicle ack6 ackackgun ack6 blue,
+	createvehicle ack7 ackackgun ack7 grey,
+	createvehicle ack8 ackackgun ack8 grey,
+	createvehicle ack9 ackackgun ack9 blue,
+	createvehicle ack10 ackackgun ack10 grey
+
+// track enemy flag count owned by @1 and create control variables
+macro checkflags 4
+{
+	// ai variables per side
+	variable @1Strategy 0			// what our metastrategy is
+	variable @1Action -1			// what we are doing
+	variable @1Target -1			// who we are doing it against
+	variable @1HasFlags 0			// count of how many flags we carry
+	variable carries@1Flag  -1		// who has this color flag
+	variable @1Group1Action	-1		// this groups target
+	variable @1Group2Action -1
+	variable @1Group3Action -1
+	variable @1Group4Action -1
+
+	if pickedup @1flag1 then
+		setvar carries@1flag GetUID whoby	
+	if dropped @1flag1 then	
+		setvar carries@1flag -1
+
+	if pickedup @2flag1 by @1 then
+		setitemflag me stratsquare 1,
+		addvar @1HasFlags 1
+	if dropped @2flag1 by @1 then
+		setitemflag me stratsquare 0,
+		addvar @1HasFlags -1
+	if pickedup @3flag1 by @1 then
+		setitemflag me stratsquare 1,
+		addvar @1HasFlags 1
+	if dropped @3flag1 by @1 then
+		setitemflag me stratsquare 0,
+		addvar @1HasFlags -1
+	if pickedup @4flag1 by @1 then
+		setitemflag me stratsquare 1,
+		addvar @1HasFlags 1
+	if dropped @4flag1 by @1 then
+		setitemflag me stratsquare 0,
+		addvar @1HasFlags -1
+}
+expand checkflags ( green tan blue grey )
+expand checkflags ( tan green blue grey )
+expand checkflags ( blue green tan grey )
+expand checkflags ( grey green tan blue )
+
+// 1 = army of AI  2 = army of foe 3 = aiarmy of foe 4 = colorindex of foe
+// Group can press home an attack on an enemy color
+macro group_ai 4
+{
+	// control individual group targets
+	if @1Group1Attack@2 testvar @1Group1Action = @4 then	// if we are supposed to attack him, keep it up
+		order @1 group 1 follow @3 inmode attack,
+		triggerdelay 10000 @1Group1Attack@2		// keep attack on closes every 3 seconds (resurrected guys need new orders)
+	if @1Group2Attack@2 testvar @1Group2Action = @4 then		// if we are supposed to attack him, keep it up
+		order @1 group 2 follow @3 inmode attack,
+		triggerdelay 10000 @1Group2Attack@2		// keep attack on closes every 3 seconds (resurrected guys need new orders)
+	if @1Group3Attack@2 testvar @1Group3Action = @4 then		// if we are supposed to attack him, keep it up
+		order @1 group 3 follow @3 inmode attack,
+		triggerdelay 10000 @1Group3Attack@2		// keep attack on closes every 3 seconds (resurrected guys need new orders)
+	if @1Group4Attack@2 testvar @1Group4Action = @4 then		// if we are supposed to attack him, keep it up
+		order @1 group 4 follow @3 inmode attack,
+		triggerdelay 10000 @1Group4Attack@2		// keep attack on closes every 3 seconds (resurrected guys need new orders)
+}
+expand group_ai (green tan aitan 1)
+expand group_ai (green blue aiblue 2)
+expand group_ai (green grey aigrey 3)
+expand group_ai (tan green aigreen 0)
+expand group_ai (tan blue aiblue 2)
+expand group_ai (tan grey aigrey 3)
+expand group_ai (blue green aigreen 0)
+expand group_ai (blue tan aitan 1)
+expand group_ai (blue grey aigrey 3)
+expand group_ai (grey green aigreen 0)
+expand group_ai (grey tan aitan 1)
+expand group_ai (grey blue aiblue 2)
+
+
+
+
+
+
+// remove all optional objects - game specific code will deploy them if required
+
+macro undeploy_color 2
+{
+	if startup1 then
+		triggerdelay 4 start@1
+	if start@1 then
+		undeploy @1flag1,
+		undeploy @2flagbase,
+		undeploy @1mark1,
+		undeploy @1mark2,
+		undeploy @1mark3,
+		undeploy @1mark4,
+		undeploy @1mark5,
+		undeploy @1mark6,
+		undeploy @1mark7,
+		undeploy @1mark8,
+		undeploy @1node1,
+		undeploy @1node2,
+		undeploy @1node3,
+		undeploy @1node4,
+		undeploy @1node5
+}
+
+expand undeploy_color ( green g )
+expand undeploy_color ( tan t )
+expand undeploy_color ( blue b )
+expand undeploy_color ( grey gr )
+
+if startup1 then
+	undeploy blackflag1,
+	undeploy bkflagbase,
+	undeploy blacknode1,
+	undeploy blacknode2,
+	undeploy blacknode3,
+	undeploy blacknode4,
+	undeploy blacknode5,
+	// create the minimal trooper for each player
+	CREATEUNIT greensarge1 rifleman neargreenbase green -1 Rifle,
+	SETUNITGROUP greensarge1 1,
+ 	CREATEUNIT tansarge1 rifleman neartanbase tan -1 Rifle,
+	SETUNITGROUP tansarge1 1,
+	CREATEUNIT bluesarge1 rifleman nearbluebase blue -1 Rifle,
+	SETUNITGROUP bluesarge1 1,
+	CREATEUNIT greysarge1 rifleman neargreybase grey -1 Rifle,
+	SETUNITGROUP greysarge1 1,
+	triggerdelay 1000 music
+
+// music to entertain us in MP
+if music then random
+	playmusic BEACH01.wav 1,
+	playmusic BEACH02.wav 1,
+	playmusic BEACH03.wav 1,
+	playmusic BEACH04.wav 1,
+	playmusic BOOTCAMP.wav 1,
+	playmusic INLAND01.wav 1,
+	playmusic INLAND02.wav 1,
+	playmusic INLAND03.wav 1,
+	playmusic INLAND04.wav 1,
+	playmusic INLAND05.wav 1,
+	playmusic INLAND06.wav 1,
+	playmusic INLAND07.wav 1,
+	playmusic INLAND08.wav 1,
+	playmusic TITLE.wav 1,
+	playmusic FINALE_MASTERED.wav 1
+
+
+
+// check for a team reaching score limit
+
+macro checkcolorwins 1
+{
+	if check@1wins testvar teamscore @1 >= gamescorelimit then
+		trigger endOfGame,
+		trigger @1teamwins
+}
+
+expand checkcolorwins ( green )
+expand checkcolorwins ( tan )
+expand checkcolorwins ( blue )
+expand checkcolorwins ( grey )
+
+// sound effects
+
+if endOfGame then
+	playsound "mp_endgame.wav" (0,0) 1 1
+

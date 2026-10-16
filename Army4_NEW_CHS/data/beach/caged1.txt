@@ -1,0 +1,944 @@
+//**AMWWpc Map #4 "Caged".  Map concept and layout created by Jason Wildblood**//
+//Ball handed off to Keith Meyer...who hopes not to fumble."
+
+variable losevar 0
+variable winvar 0
+
+variable doorvar1 0
+variable doorvar2 0
+variable doorvar3 0
+variable doorvar4 0
+variable doorvar5 0
+variable doorvar6 0
+variable doorvar7 0
+
+pad demopowerdep 18
+
+//**Game Start**//
+if startup1 then
+        triggerdelay 100 Gstart,
+		playsound "beach4_nomusic.wav" 0 16 1
+
+if Gstart then
+        //showmessage "Caged map4 skeleton script v1.0",
+        triggerdelay 1000 showpdames,
+        triggerdelay 100 etroopdep,
+        triggerdelay 150 evehicledep,
+        triggerdelay 160 makedemo,
+        triggerdelay 200 makepris,
+        triggerdelay 250 makeDpris,
+        triggerdelay 300 deployenemies,
+		triggerdelay 275 mineman,
+		triggerdelay 50 checkreinforcement,
+		triggerdelay 30 makeeasy
+
+If makeeasy testvar difficulty = 0 then
+		createpowerup "medpack" medpack (2648,2514) 9,
+		createpowerup "autorifle" autorifle (2315,2672) 1,
+		createpowerup "grenades" grenade (2793,2539) 10,
+		createpowerup "mortar" mortar (303,1352) 5,	
+		createpowerup "medpack" medpack (1349,1814) 9,
+		createpowerup "medpack" medpack (1479,1757) 9,
+		createpowerup "sniper" sniper (1648,1059) 15,
+		createpowerup "paratrooper" paratroopers (360,2257) 2
+
+//**Enemy Deployment**//
+
+pad  balancepad 254 balanceunit
+
+If checkreinforcement then
+	createunit "balanceunit" rifleman balancepad green 0 bazooka -1,
+    setnpc balanceunit 1,
+    setaimode balanceunit ignore,
+    createpowerup "balancepower" paratroopers balancepad -1,
+    moveitem balanceunit balancepad,
+    moveitem balancepower balancepad,
+	triggerdelay 5 checkbalance
+
+If Checkbalance testvar numgreen < 4 then
+    triggerdelay 1 balanceVOrandom,
+    fireweapon balancepower balanceunit green
+
+If balanceVOrandom then	random
+	playsound "gamehq1_A.wav" 3 3,
+    playsound "gamehq2_B.wav" 3 3,
+    playsound "gamehq3_C.wav" 3 3
+
+
+//**Lose Condition**//
+Variable vardemoused 0
+
+If IGNITED Dempow testvar getnpcstatus whoby = 0 THEN
+	addvar vardemoused 1,
+	trigger usetoomany
+
+If usetoomany testvar vardemoused = 8 then 
+	setvar losevar 10,
+	showpda "你浪费了太多炸药，那栋建筑无法被摧毁。任务失败……",
+	triggerdelay 3000 tanwins
+
+if killed Demolition_expert then
+        setvar losevar 10,
+        showpda "爆破专家「疯斯坦」在行动中阵亡。任务失败……",
+        triggerdelay 3000 tanwins
+
+if killed green trooper testvar getnpcstatus me = 0 then
+	//showmessage "non-npc killed",
+	setvar numgreen getdeployedtroopercount green,
+	triggerdelay 1 numtroopers
+
+if numtroopers testvar getdeployedtroopercount green = 0 then
+	//showmessage "checking troopers!",
+    trigger checklose
+
+if checklose then
+	showpda "浪费了上好的塑料。任务失败……",
+	addvar losevar 1,
+    triggerdelay 3000 tanwins
+
+//**Win Condition**//
+variable movievar 0
+variable demvar 0
+
+pad startmoviepad       200     green //Demolition_expert
+pad bombdep1            205     green //Demolition_expert
+pad bombdep2            206     green //Demolition_expert
+pad bombdep3            207     green //Demolition_expert
+
+pad bombset1            201
+pad bombset2            202
+pad bombset3            203
+
+//pad bombrest            210
+
+pad bombdone            211
+
+if padon startmoviepad TESTVAR HASITEM me dempow = 1 then
+        triggerdelay 600 changespeed
+
+if count 1 of changespeed then
+        addvar movievar 1,
+        setnpc me 1,				//demolition_expert 1,
+        trigger startit
+        //setspeed Demolition_expert slow
+
+if startit testvar demvar = 0 and movievar = 1 then
+        addvar movievar 1,
+        addvar demvar 1,
+        order me goto bombdep1 inmode ignore					//Demolition_expert
+
+if padon bombdep1 testvar demvar = 1 and movievar = 2 then
+        addvar movievar 1,
+        addvar demvar 1,
+        setfacing me 240,										//Demolition_expert
+        setaipose me kneel,										//Demolition_expert
+        fireweapon dempow me 240 bombset1,						//Demolition_expert
+		playsound "04_04_combatengineer_01B.wav" (0,0) 6 1 100,
+		showmessage "疯斯坦：一号炸药已装好。",
+        triggerdelay 1000 demorder1
+
+if demorder1 then
+        order me goto bombdep2 inmode ignore
+
+if padon bombdep2 testvar demvar = 2 and movievar = 3 then
+        addvar movievar 1,
+        addvar demvar 1,
+        setfacing me 0,
+        setaipose me kneel,
+        fireweapon dempow me 0 bombset2,
+		showmessage "疯斯坦：二号炸药已装好。",
+		playsound "04_05_combatengineer_01B.wav" (0,0) 6 1 100,		
+        triggerdelay 1000 demorder2
+
+if demorder2 then
+        order me goto bombdep3 inmode ignore
+
+if padon bombdep3 testvar demvar = 3 and movievar = 4 then
+        addvar movievar 1,
+        addvar demvar 1,
+        setfacing me 20,
+        setaipose me kneel,
+        fireweapon dempow me 20 bombset3,
+        showmessage "疯斯坦：找掩护！",
+		playsound "04_06_combatengineer_01B.wav" (0,0) 6 1 100,
+        triggerdelay 1000 demorder3
+
+if demorder3 then
+        setspeed me normal,
+        order me goto bombdone inmode ignore,
+       	triggerdelay 10000 bigboom
+
+Variable boomnumber 0
+
+If bigboom then
+	createexplosion (634,480) 140 100,
+	createexplosion (490,485) 140 100,
+	triggerdelay 500 nextboom1
+
+If nextboom1 testvar boomnumber < 3 then
+	createexplosion (501,337) 140 100,
+	createexplosion (610,309) 140 100,
+	createexplosion (634,480) 137 100,
+	createexplosion (490,485) 137 100,
+	triggerdelay 1000 nextboom2
+
+If nextboom2 then
+	createexplosion (501,337) 137 100,
+	createexplosion (610,309) 137 100,
+	createexplosion (634,500) 140 100,
+	createexplosion (490,388) 140 100,
+	addvar boomnumber 1,
+	triggerdelay 1000 nextboom1
+
+if padon bombdone testvar demvar = 4 and movievar = 5 then
+        setfacing me 64,
+        setaipose me prone,
+        setaimode me standfire,
+		setnpc me 0
+        //triggerdelay 3000 checkwin
+
+IF KILLED securityb testvar losevar = 0 THEN
+	setitemflag securityb strategic 0,
+	TRIGGERDELAY 6000 showwin,
+	triggerdelay 5000 cleanup
+
+If showwin then
+	showPDA "The Tan security building and top secret documents are destroyed! Good job Commander.",
+	playsound "04_02_HQ_B.wav" (0,0) 6 1 100,
+	triggerdelay 3000 greenwins,
+	triggerdelay 2999 correcttroopercount
+
+if correcttroopercount then
+	setvar numgreen getdeployedtroopercount green
+
+If cleanup then
+	exitvehicleall aagun,
+	exitvehicleall mpct,
+	triggerdelay 10 remove
+
+If remove then
+	setnpc aagun 1,
+	setnpc mpct 1
+
+//if checkwin testvar losevar = 0 then
+  //      showPDA "The Tan security building and top secret documents are destroyed! Good job Commander.",
+    //    triggerdelay 3000 greenwins
+
+//**PDA message**//
+
+if showpdames then
+        showpda "指挥官，我们需要你完成一项任务。工兵被派去摧毁一栋棕军建筑，结果反而被俘。救出爆破专家「疯斯坦」，并协助他完成工作。",
+		playsound "04_02_HQ_A.wav" (0,0) 6 1 100,
+		//Combat engineers were sent to destroy an 
+		//armored Tan building that contains stolen top secret documents regarding our next plan of attack.
+		//Unfortunately, they were taken captive. Go rescue the demolition expert before the Tan move him to 
+		//a more secure location and then assist him in getting to the target."
+	    createpowerup "Dempow" explosive demopowerdep 10,
+        //createpowerup "grenades" grenade bombrest 3,	
+		createpowerup "medpack" medpack (2753,336) 5,
+		createpowerup "mines" mine (2653,2133) 10,
+		createpowerup "sniper" sniper (2625,2196) 15,
+		createpowerup "autorifle" autorifle (2674,2089) 1,
+		createpowerup "grenades" grenade (2815,460) 3,
+		createpowerup "grenades" grenade (591,2647) 3,
+        createpowerup "grenades" grenade (1677,1515) 3,	
+		createpowerup "medpack" medpack (1491,838) 5,
+		createpowerup "medpack" medpack (950,2000) 5,
+		createpowerup "medpack" medpack (325,2380) 5,
+		createpowerup "paratrooper" paratroopers (1044,1838) 1
+
+//**Enemy Deployment**//
+
+if deployenemies then
+        triggerdelay 100 gatemen,
+        triggerdelay 200 cellmen,
+        triggerdelay 300 patrolmen,
+        triggerdelay 300 secrmen,
+		triggerdelay 50 blownupguy
+
+If blownupguy then	
+        createunit "ahhhh" rifleman (2480,1980) green 0 rifle,
+        createunit "ahhhh2" rifleman (2480,1980) green 0 rifle,
+		createunit "ahhhh3" rifleman (2480,1980) green 0 rifle,
+		setnpc ahhhh 1,
+		setnpc ahhhh2 1,
+		setnpc ahhhh3 1,
+		damage ahhhh 1000 explosion,
+		damage ahhhh2 1000 explosion,
+		damage ahhhh3 1000 
+
+pad enemygate1      120
+pad enemygate2      121
+
+macro gate 6
+//@1 name @2 type @3 deployment @4 weapon @5 aimode @6 facing
+{
+if gatemen then
+        createunit "@1" @2 @3 tan 0 @4 10,
+        setaimode @1 @5,
+        setfacing @1 @6
+
+if hit @1 butnot onehitthemen then
+        order @1 follow me inmode attack,
+        trigger onehitthemen
+
+}
+
+expand gate ( gateguard1 rifleman enemygate1 rifle attack 110 )
+expand gate ( gateguard2 rifleman enemygate2 rifle attack 110 )
+
+pad     g_patpad1        122 	patrolgate
+pad     g_patpad2        123    patrolgate
+
+pad     c_patpad1        125    patrolcell
+pad     c_patpad2        126    patrolcell
+
+pad     s_patpad1        141    patrolbase1
+pad     s_patpad2        142    patrolbase1
+
+pad     s_patpad2_1      143    patrolbase2
+pad     s_patpad2_2      144    patrolbase2
+
+pad     s_patpad3_1      145    patrolbase3
+pad     s_patpad3_2      146    patrolbase3
+
+pad     ignorance1       127
+pad     ignorance2       128
+
+macro patr 9
+//@1 name @2 type @3 pad1 @4 weapon @5 aimode @6 pad2 @7 integer @8 group @9 facing//
+{
+
+variable patrolvar@7 0
+
+if patrolmen then
+        createunit "@1" @2 @6 tan 1 @4 @8,
+        setaimode @1 @5,
+        setspeed @1 slow,
+        order @1 goto @3,
+        setfacing @1 @9
+
+if padon @3 testvar patrolvar@7 = 0 then
+        setvar patrolvar@7 10,
+        order @1 goto @6
+
+if padon @6 testvar patrolvar@7 = 10 then
+        setvar patrolvar@7 0,
+        order @1 goto @3
+
+if hit @1 then
+        order @1 goto me inmode attack
+
+}
+
+expand patr ( patrolgate rifleman g_patpad1 rifle defend g_patpad2 1 1 0 )
+expand patr ( patrolcell rifleman c_patpad1 rifle ignore c_patpad2 2 2 0 )
+expand patr ( patrolbase1 rifleman s_patpad1 rifle defend s_patpad2 3 3 0 )
+expand patr ( patrolbase2 rifleman s_patpad2_1 rifle defend s_patpad2_2 4 4 0 )
+expand patr ( patrolbase3 rifleman s_patpad3_1 rifle defend s_patpad3_2 5 5 0 )
+expand patr ( celguard1 rifleman ignorance1 rifle ignore ignorance1 6 2 148 )
+expand patr ( celguard2 rifleman ignorance2 rifle ignore ignorance2 7 2 100 )
+
+pad secdep1      148
+pad secdep2      147
+pad secdep3      149
+pad secdep4      150
+pad secdep5      151
+pad secdep6      152
+
+macro secmenmac 9
+// @1 name @2 type @3 location @4 weapon @5 aipose @6 ai mode @7 facing @8 secondpose @9 grenade ammo //
+{
+if secrmen then
+        createunit @1 @2 @3 tan @9 @4 1,
+        setaimode @1 @6,
+        setaipose @1 @5
+
+if hit @1 butnot one@3 then
+        setaipose @1 @8,
+        trigger one@3
+}
+
+IF secrmen then
+		createvehicle "aagun" ackackgun (915,850) tan
+
+IF hit secunit4 THEN
+	order secunit4 goto aagun inmode ignore,
+	triggerdelay 5000 mountaa
+
+if mountaa BUTNOT KILLED secunit4 then
+	entervehicle secunit4 aagun,
+	setaimode secunit4 attack,
+	setaimode aagun attack
+
+expand secmenmac ( secunit1 rifleman secdep1 rifle kneel defend 152 none 3 )
+expand secmenmac ( secunit2 rifleman secdep2 rifle kneel defend 152 none 3 )
+expand secmenmac ( secunit3 rifleman secdep3 rifle none defend 152 kneel 1 )
+expand secmenmac ( secunit4 rifleman secdep4 rifle none defend 152 kneel 1 )
+expand secmenmac ( secunit5 rifleman secdep5 rifle none defend 152 kneel 1 )
+expand secmenmac ( secunit6 rifleman secdep6 rifle none defend 152 kneel 1 )
+
+//*vehicles*//
+
+pad 1tankpat1    101	tkpatrol1	
+pad 1tankpat2    102	tkpatrol1
+
+pad 2tankpat1    111	tkpatrol2
+pad 2tankpat2    112	tkpatrol2
+
+////@1 Name @2 Type @3 location @4 weapon @5 patrol pad1 @6 patrol pad 2 @7 aimode
+
+macro TKpat 7
+{
+if evehicledep then
+        createvehicle "@1" @2 @3 tan,
+		createunit @7 rifleman @3 tan 0 rifle,					//@7 = driver
+        order @1 goto @5 inmode @6,
+		entervehicle @7 @1
+
+if padon @4 then
+        order @1 goto @5
+
+if padon @5 then
+        order @1 goto @4
+
+If killed @1 THEN
+	createpowerup "sweeper" sweeper me 1
+
+}
+
+expand TKpat ( TKpatrol1 halftrack 1tankpat1 1tankpat1 1tankpat2 standfire driver0 )				//used to be tanks
+//expand TKpat ( TKpatrol2 jeep 2tankpat1 2tankpat1 2tankpat2 standfire )
+
+
+//**Demomen**//
+
+pad 	dempad1    231      	Demolition_expert
+pad 	dempad2    232			Demolition_expert
+pad 	dempad3    233      	Demolition_expert
+pad 	dempad4    234      	Demolition_expert
+pad 	dempad5    235      	Demolition_expert
+
+pad doorpad1    11 	green
+pad doorpad2    12 	green
+pad doorpad3    13 	green
+pad doorpad4    14 	green
+pad doorpad5    15 	green
+pad doorpad6    16 	green
+pad doorpad7    17      		Demolition_expert
+
+pad demo1       21
+pad demo2       22
+
+pad pris1       23
+pad pris2       24
+pad deadpris1   25
+pad deadpris2   26
+pad deadpris3   27
+pad deadpris4   28
+pad deadpris5   29
+pad deadpris6   10
+
+//@1 unitname @2 type @3 location  @4 weapon @5 aimode @6 facing @7 pose @8numgreen integer
+
+macro demomac 8
+{
+//goto pads//
+
+
+if makedemo then
+        createunit "@1" @2 @3 green 0 rifle,
+		setmaxhealth @1 300,
+		damage @1 50,
+        //setitemflag @1 invincible 1,
+		setitemflag @1 strategic 1,
+        setaimode @1 @4,
+        setnpc @1 1,
+        setaipose @1 @7,
+        setfacing @1 @6
+
+if padon @8 butnot onedoorpad2 then
+        addvar numgreen 1,
+        //setitemflag @1 invincible 0,
+        trigger movedemoman1,
+		playsound "04_01_combatengineer_01B.wav" (0,0) 6 0 100,
+		showmessage "疯斯坦：谢谢长官！我去拿炸药，请掩护我。",
+        setitemflag @1 strategic 0,
+		trigger onedoorpad2
+
+}
+expand demomac ( Demolition_expert rifleman demo1 ignore defend 80 kneel doorpad2 )
+
+macro prismac 9
+{
+
+variable doorsafty@9 0
+
+if makepris then
+        createunit "@1" @2 @3 green 0 rifle,
+        setaimode @1 @4,
+        setnpc @1 1,
+		damage @1 50,
+        //setitemflag @1 invincible 1,
+        setaipose @1 @8,
+        setfacing @1 @7
+
+if padon @6 testvar doorsafty@9 = 0 then
+        addvar numgreen 1,
+        //setitemflag @1 invincible 0,
+        //showmessage "Added 1 to numgreen",
+        setnpc @1 0,
+        setaipose @1 none,
+        order @1 goto @6 inmode defend,
+        addvar doorsafty@9 10,
+		trigger freesound@9
+
+IF freesound@9 THEN RANDOM
+	//showmessage "Freeedom!!!",
+	playsound "04_01_greentroop_03A.wav" (0,0) 6 1,
+	playsound "04_01_greentroop_04A.wav" (0,0) 6 1,
+	playsound "04_01_greentroop_06B.wav" (0,0) 6 1,
+	//showmessage "Thanks. Reporting for duty.",
+	//showmessage "Payback time",
+	playsound "04_02_greentroop_07B.wav" (0,0) 6 1,
+	playsound "04_02_greentroop_03C.wav" (0,0) 6 1,
+	//showmessage "Revenge is all I ask sir.",
+	playsound "04_04_greentroop_02B.wav" (0,0) 6 1,
+	playsound "04_04_greentroop_04C.wav" (0,0) 6 1,
+	//showmessage "Tan will pay.",
+	//showmessage "I have a watch for you sir",
+	//showmessage "I owe you my life!"
+	playsound "04_03_greentroop_02B.wav" (0,0) 6 1,
+	playsound "04_03_greentroop_07C.wav" (0,0) 6 1
+}
+expand prismac ( J._Mojo rifleman pris1 ignore defend doorpad1 88 prone 1 )
+expand prismac ( M._Goatlouve rifleman pris2 ignore defend doorpad5 74 prone 2 )
+
+macro deadprismac 8
+{
+if makeDpris then
+        createunit "@1" @2 @3 blue 0,
+        setaimode @1 @4,
+        setnpc @1 1,
+        setaipose @1 @8,
+        setfacing @1 @7,
+        setforcecolor @1 green,
+        trigger killdeadmen
+
+}
+expand deadprismac ( deadman1 rifleman deadpris1 ignore defend doorpad1 74 prone )
+expand deadprismac ( deadman2 rifleman deadpris2 ignore defend doorpad1 74 stand )
+//expand deadprismac ( deadman3 rifleman deadpris3 ignore defend doorpad1 74 stand )
+expand deadprismac ( deadman4 rifleman deadpris4 ignore defend doorpad1 128 prone )
+expand deadprismac ( deadman5 rifleman deadpris5 ignore defend doorpad1 255 stand )
+expand deadprismac ( deadman6 rifleman deadpris6 ignore defend doorpad1 30 stand )
+
+if killdeadmen butnot onekillem then
+        triggerdelay 500 killallmen,
+        trigger onekillem
+
+if killallmen butnot onekillallmen then
+        damage deadman1 1000,
+        damage deadman2 4000 crush,
+        //damage deadman3 1000 fire,
+        damage deadman4 1000 crush,
+		damage deadman5 1000 explosion,
+        damage deadman6 1000 fire,
+        triggerdelay 500 onekillallmen
+
+//Demoman get your weapons Note: Unit name for pad not working
+
+variable demoaivar 0
+
+if movedemoman1 testvar demoaivar = 0 then
+        setaipose Demolition_expert none,
+        order Demolition_expert goto demo2,
+        setvar demoaivar 10
+
+if padon dempad1 testvar demoaivar = 10 then
+        //showmessage "Dempad1 triggered!",
+        addvar demoaivar 1,
+        triggerdelay 100 testtrig
+
+if testtrig then
+        order Demolition_expert goto dempad2 inmode defend
+if padon dempad2 testvar demoaivar = 11 then
+        addvar demoaivar 1,
+        order Demolition_expert goto dempad3 inmode defend
+if padon dempad3 testvar demoaivar = 12 then
+        addvar demoaivar 1,
+        order Demolition_expert goto dempad4 inmode defend
+if padon dempad4 testvar demoaivar = 13 then
+        addvar demoaivar 1,
+        order Demolition_expert goto dempad5 inmode defend
+if padon dempad5 testvar demoaivar = 14 then
+        setvar demoaivar 20,
+        trigger demofinal
+
+//MPs drive onscreen and find out that the demomen have been rescued. Get back in their jeep and drive offscreen.  
+//Moment later.. enemies reinforce the security building.
+
+//**MPs**//
+pad mpCTdep     	48
+
+pad mpCTgoto1   	49 mpct > 0
+pad mpCTgoto2   	50 mpCT > 0
+
+pad MPpadgoto10  	51 MP0 > 0
+pad MPpadgoto11  	51 MP1 > 0
+pad MPpadgoto12  	51 MP2 > 0
+//pad MPpadgoto13  	51 MP3 > 0
+												
+pad MPpadenterVH0    52 MP0 > 0
+pad MPpadenterVH1    52 MP1 > 0
+pad MPpadenterVH2    52 MP2 > 0
+//pad MPpadenterVH3    52 MP3 > 0
+
+pad mpCTrunpad1     53 mpCT
+
+pad padconvoymove0	54	mpct
+pad padconvoymove1	146	mpct
+pad padconvoymove2	145	mpct
+
+variable mpsafevar 0
+
+pad secgoto4	173     buildunit4
+pad secgoto5	174     new0        
+pad secgoto6	175     new1        
+pad secgoto7	176     new2        
+pad secgoto8	177     new3        
+pad secgoto9	178     new4       
+
+macro MPdiff 6
+//@1 name @2 type @3 location @4 weapon @5 goto pad 1 @6 goto pad 2
+{
+
+pad padfinishsearch@1   17 @1 > 0
+
+	if makemps then
+        createunit "@1" @2 @3 tan 3 @4,
+        setaimode @1 defend,
+        setspeed @1 slow,
+        entervehicle @1 mpCT
+
+	if reachedPOW then
+        triggerdelay 500 out@1,
+        triggerdelay 1000 out@1,
+		triggerdelay 1500 out@1,
+		triggerdelay 2000 out@1,
+        triggerdelay 3000 mporders
+
+	if mporders then
+        order @1 goto @5
+
+	IF padon @5 testvar mpsafevar = 0 THEN
+		order @1 goto padfinishsearch@1
+
+	If padon padfinishsearch@1 THEN
+		order @1 goto @5 inmode attack,
+		setvar mpsafevar 10,
+		setspeed @1 normal
+
+	if padon @5 testvar mpsafevar = 10 then							//if safe gohome
+    	order @1 goto @6 inmode ignore
+
+	if padon @6 testvar mpsafevar = 10 then							//marked safe, leave this assumes the area is safe
+        triggerdelay 1000 mpgetin@1
+
+	if mpgetin@1 BUTNOT onempgetin@1 then
+		trigger entercheck@1
+
+	IF entercheck@1 testvar GETPADSTATUS mpctgoto2 = 1 THEN			// get in only if mpct is at pad
+        entervehicle @1 mpCT,
+        trigger onempgetin@1,
+		triggerdelay 8000 CTorders								//ct orders = runaway truck
+        
+	IF HIT @1 butnot switched@1 THEN
+		setaimode @1 attack,
+		setspeed @1 normal,
+		trigger switched@1
+}
+
+expand MPdiff ( mp0 rifleman mpCTdep rifle MPpadgoto10 MPpadenterVH0 )
+expand MPdiff ( mp1 rifleman mpCTdep rifle MPpadgoto11 MPpadenterVH1 )
+expand MPdiff ( mp2 rifleman mpCTdep rifle MPpadgoto12 MPpadenterVH2 )
+//expand MPdiff ( mp3 rifleman mpCTdep rifle MPpadgoto13 MPpadenterVH3 )
+
+If outmp0 butnot oneoutmp0 then
+        exitvehicle mp0 mpCT,
+        trigger oneoutmp0
+If outmp1 butnot oneoutmp1 then
+        exitvehicle mp1 mpCT,
+        trigger oneoutmp1
+If outmp2 butnot oneoutmp2 then
+        exitvehicle mp2 mpCT,
+        trigger oneoutmp2
+If outmp3 butnot oneoutmp3 then
+        exitvehicle mp3 mpCT,
+        trigger oneoutmp3
+
+IF count 3 of KILLED mp0 KILLED mp1 KILLED mp2 KILLED mp3 THEN
+	triggerdelay 8000 ctorders						//this sends truck away
+ 	//showmessage "runaway"
+
+//Trucksetup//
+
+macro truckmac 7
+// @1 name @2 vehicle type @3 deployment pad @4 goto pad 1 @5 goto pad 2 @6 runpad//
+{
+
+if count 1 of startmpdiff then															//create truck
+        showmessage "疯斯坦：棕军守卫应该快到了。",
+        playsound "04_03_combatengineer_01B.wav" (0,0) 6 1 100,
+		//setitemflag @1 strategic 1,
+        createvehicle @1 @2 @3 tan,
+		createunit @7 rifleman @3 tan 0 rifle,
+		entervehicle @7 @1,
+        setfacing @1 240,
+        trigger makemps,
+        triggerdelay 3000 mptcorders
+
+if mptcorders then															//first move to pad 49
+        order @1 goto @4
+
+if padon @4 butnot oneCTtrig then											//2nd move go to pad 50
+        order @1 goto @5,
+        trigger oneCTtrig
+
+if padon @5 butnot oneCTtrig2 then											//arrived pad 50, trigger exits units
+        triggerdelay 2000 reachedPOW,
+        trigger oneCTtrig2
+
+if count 1 of CTorders then											//leave map pad
+        order @1 goto @6
+
+if padon @6 then															//undeploy truck...left map
+        //showmessage "Truck leaving map...bringing more guys back later",
+        //setitemflag @1 strategic 0,
+        undeploy @1,
+        //triggerdelay 50000 SecBdefence								//behavior, new is to bring in troops, building sec get deployed by other even
+		triggerdelay 35000 returntruck									//should be 35000 or so
+}
+
+expand truckmac ( mpCT convoy mpCTdep mpCTgoto1 mpCTgoto2 mpCTrunpad1 driver1)
+
+IF returntruck THEN
+	createunit new0 rifleman mpctdep tan 2 rifle,
+	createunit new1 rifleman mpctdep tan 2 rifle,
+	createunit new2 rifleman mpctdep tan 2 rifle,
+	//createunit new3 rifleman mpctdep tan 2 rifle,
+	//createunit new4 rifleman mpctdep tan 2 rifle,
+	deploy mpct mpctdep,
+	trigger hopin
+
+If hopin THEN
+	entervehicle new0 mpct,
+	entervehicle new1 mpct,
+	entervehicle new2 mpct,
+	//entervehicle new3 mpct,
+	//entervehicle new4 mpct,
+	triggerdelay 3000 moveout
+
+If moveout THEN
+	order mpct goto padconvoymove0
+
+If padon padconvoymove0 THEN
+	order mpct goto padconvoymove1 
+
+If padon padconvoymove1 THEN
+	order mpct goto padconvoymove2
+
+If padon padconvoymove2 THEN
+	exitvehicleall mpct,
+	triggerdelay 2000 trooporders
+
+If trooporders then
+	order new0 goto secgoto5 inmode attack,
+	order new1 goto secgoto6 inmode attack,
+	order new2 goto secgoto7 inmode attack,
+	order mp0 goto secgoto8 inmode attack,
+	order mp1 goto secgoto9 inmode attack,
+	order mp2 goto secgoto4 inmode attack,
+	//order new3 goto secgoto8 inmode attack,
+	//order new4 goto secgoto9 inmode attack,
+	setfacing mpct 110
+
+IF padon secgoto5 THEN
+	setfacing me 90
+IF padon secgoto6 THEN
+	setfacing me 120
+IF padon secgoto7 THEN
+	setfacing me 130
+//IF padon secgoto8 THEN
+//	setfacing me 160
+//IF padon secgoto9 THEN
+//	setfacing me 180
+
+//special
+IF killed mpct KILLED secunit1 KILLED secunit3 THEN RANDOM
+	createpowerup "grenades" grenade me 5,
+	createpowerup "medpack" medpack me 4
+
+//**reinforcements for the security B**//
+
+//pad	rendep1 	160
+//pad	rendep2 	161
+//pad	rendep3 	162
+//pad	rendep4 	163
+//pad	rendep5 	164
+//pad	rendep6 	165
+//pad	rendep7 	166
+//pad	rendep8 	167
+
+pad	secgoto1	170             buildunit1
+pad secgoto2	171             buildunit2
+pad secgoto3	172             buildunit3
+//pad secgoto4	173             buildunit4
+//pad secgoto5	174             buildunit5
+//pad secgoto6	175             buildunit6
+//pad secgoto7	176             buildunit7
+//pad secgoto8	177             buildunit8
+//pad secgoto9	178             buildunit9
+
+IF KILLED secunit3 then
+	TRIGGER secBdefence
+
+MACRO secBinforce 5
+
+//@1 name @2 type @3 dep location @4 weapon @5 goto pad @6 facing @7 integer
+
+{
+if SecBdefence then
+        createunit "@1" @2 bombdep1 tan 1 rifle,
+        //setspeed @1 slow,
+        order @1 goto @3 inmode defend
+
+if padon @3 butnot one@3 then
+       setfacing @1 @4
+
+if hit @1 butnot onehit@5 then
+        setspeed @1 normal,
+		order @1 follow me inmode attack,
+        trigger onehit@5
+}
+
+expand secBinforce ( buildunit1 rifleman bombset2 128 1 )
+expand secBinforce ( buildunit2 rifleman bombset3 128 2 )
+expand secBinforce ( buildunit3 rifleman secgoto1 128 3 )
+expand secBinforce ( buildunit4 rifleman secgoto2 128 4 )
+expand secBinforce ( buildunit5 rifleman secgoto3 128 5 )
+
+//expand secBinforce ( secunit6 rifleman rendep6 rifle secgoto6 128 6 )
+//expand secBinforce ( secunit7 rifleman rendep7 rifle secgoto7 128 7 )
+//expand secBinforce ( secunit8 rifleman rendep8 rifle secgoto8 128 8 )
+
+//**Cage Door macro**//
+
+
+//@1 cagedoor num @2 tigger pad
+
+if demofinal then
+        order Demolition_expert goto doorpad7
+
+if padon doorpad7 testvar demoaivar = 20 then
+        triggerdelay 60000 startmpdiff,							//probably make 90000
+        triggerdelay 1500 givedemoweapon,
+        order demolition_expert goto dempow,
+        setnpc demolition_expert 0
+
+if count 1 of givedemoweapon then
+        moveitem Dempow demolition_expert,
+		triggerdelay 2500 gotbomb,
+		setitemflag securityb strategic 1
+
+If gotbomb then
+		showmessage "疯斯坦：棕军守卫应该快到了。",
+		playsound "04_03_combatengineer_01B.wav" (0,0) 6 0 100
+
+macro CGDoor 2
+
+{
+if padon @2 testvar doorvar@1 = 0 then
+        setvar doorvar@1 1,
+        triggerdelay 100 opendoor@1
+
+if opendoor@1 then
+        setobjstate door@1 door@1_go,
+		playsound "cage_door.wav" (0,0) 6 0
+
+object door@1
+        state door@1_initial
+                frame 50 0
+
+        state door@1_stop
+                frame 900 6
+
+        state door@1_go
+                frame 100 0
+                frame 100 1
+                frame 100 2
+                frame 100 3
+                frame 100 4
+		frame 100 5
+		frame 100 6
+                        setobjstate door@1 door@1_stop
+
+}
+
+expand CGDoor ( 1 doorpad1 )
+expand CGDoor ( 2 doorpad2 )
+expand CGDoor ( 3 doorpad3 )
+expand CGDoor ( 4 doorpad4 )
+expand CGDoor ( 5 doorpad5 )
+expand CGDoor ( 6 doorpad6 )
+expand CGDoor ( 7 doorpad7 )
+
+
+//human wave attack
+
+Pad padingun 253 	green trooper
+Pad padtanwave 205	tan trooper > 0
+
+If padon padingun BUTNOT KILLED securityb THEN 
+	triggerdelay 2500 startwave
+
+If count 1 of startwave THEN
+	trigger createwaveguy,
+	triggerdelay 2000 createwaveguy,
+	triggerdelay 4000 createwaveguy,
+	triggerdelay 6000 createwaveguy,
+	triggerdelay 8000 createwaveguy,
+	triggerdelay 10000 createwaveguy
+
+If createwaveguy THEN
+	createunit "wave" rifleman padtanwave tan 2 rifle
+
+If padon padtanwave then
+	order me goto aagun inmode attack 
+
+// minefield guard
+
+pad padmineguard		112			mineguard
+
+If mineman then
+	createunit "mineguard" rifleman padmineguard tan 0 rifle,
+	//createpowerup "tmines" mine padmineguard 10,
+	//moveitem tmines padmineguard,
+	//moveitem mineguard padmineguard
+	setspeed mineguard slow,
+	order mineguard goto (2381,2030) inmode defend,
+	triggerdelay 15000 wanderoff
+
+If wanderoff then
+	setspeed mineguard normal,
+	order mineguard goto (275,2600) inmode ignore,
+	triggerdelay 50000 hangout
+
+If hangout then
+	setfacing mineguard 200,
+	setaimode mineguard defend,
+	setaipose mineguard prone
+
+If killed mineguard THEN
+	createpowerup "sweeper2" sweeper me 1
+

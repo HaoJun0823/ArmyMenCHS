@@ -1,0 +1,2228 @@
+// BOOT CAMP! Scrub those turds, private!
+// design & script David Chang
+// map structure Jason Wildblood
+
+// ch 0 for vo?
+// vo lockout due to death.
+
+// (VO: arm your men; use the explosives to blast fence; I'm taking your powerups)
+
+// MAP: replace barbedwire rolls with sandbags?
+
+// tileset reduce at 5
+
+//--Pads--//
+
+pad padMineArea 0 McChewed
+pad pad11 11 green trooper
+pad pad12 12 Hollowson
+pad pad13 13 green trooper > 0
+pad pad14 14 green trooper > 0
+pad pad15 15 green trooper > 0
+pad pad16 16 Hollowson
+pad pad17 17 green trooper > 0
+pad pad20 20 Hollowson
+pad pad21 21 green trooper > 0
+pad pad22 22 green trooper > 0
+pad pad22b 150 green trooper > 0 // new pad added for direct control sign
+pad pad23 23 Hollowson
+pad pad30 30 Hollowson
+pad pad31 31 green trooper > 0
+pad pad32 32 green trooper > 0
+pad pad33 33 Hollowson
+pad pad34 34 green trooper > 0
+PAD padsniper 35 weapon>0
+
+pad pad40 40 Hollowson
+pad pad41 41 green trooper > 0
+pad pad42 42 Hollowson
+pad pad43 43 green trooper > 0
+pad pad44 44 Hollowson
+PAD padgrenades 45 weapon > 0
+
+pad pad50 50 Hollowson
+pad pad51 51 Hollowson
+pad pad52 52 Hollowson
+pad pad53 53 green trooper > 0
+pad pad54 54 Hollowson
+pad pad55 55 green trooper > 0
+pad pad56 56 green trooper > 0
+pad padLostalimExit 57 green trooper
+pad pad58 58 Hollowson
+pad pad59 59 green trooper > 0
+pad pad60 60 green trooper > 0
+pad pad61 61 green trooper > 0
+pad pad62 62 Hollowson
+pad pad63 63 Hollowson
+pad pad64 64 green trooper = 6
+pad pad65 65 green trooper = 3
+pad pad66 66 green trooper = 3
+
+pad pad70 70 Hollowson
+pad pad71 71 green trooper > 0
+pad pad72 72 Hollowson
+
+pad pad73 73 tan trooper
+
+pad padmcmanusexit 73 mcmanus
+pad padleachexit 73 leach
+pad padcampbellexit 73 campbell
+pad padorlandoexit 73 orlando
+pad padboyceexit 73 boyce
+
+pad pad74 74 green trooper > 0
+pad pad75 75 green trooper > 0
+
+pad pad80 80 green trooper
+
+pad pad81 81 green trooper > 0
+pad pad82 82 McChewed
+pad pad83 83 green trooper > 0
+pad pad84 84 green trooper > 0
+
+PAD padMines 85 weapon>0
+
+pad pad90 90 green trooper > 0
+
+pad pad91 91 McChewed
+pad pad92 92 McChewed
+pad pad93 93 McChewed
+pad pad94 94 ejeep
+pad padbump 94 wjeep
+pad pad95 95 McChewed
+
+pad padEjeep 96 ejeep
+pad padWjeep 96 wjeep
+
+pad pad100 100 green trooper > 0
+pad pad110 110 green unit // either McChewed or wjeep
+pad pad111 111 green trooper > 0
+pad pad112 112 McChewed
+pad pad113 113 green unit
+pad pad4atexit 115 green trooper
+
+pad padAmbush 130 green unit
+
+// lists
+
+list listEndTan {blocker end1 end2 end3}
+
+//--variables--//
+
+variable signlock 0
+variable boolvolockout 0
+variable boolS1done 0
+variable boolS2done 0
+variable boolS3done 0
+variable boolS4done 0
+variable boolS5done 0
+variable boolS6done 0
+variable boolS7done 0
+variable boolS8done 0
+variable varStagesDone 0
+variable varCurStage 1
+variable varRacePhase 0
+
+VARIABLE COUNTALLVAR 0
+
+//**Added due to bug fix**//
+
+if hit ejeep by green trooper then
+        heal ejeep 100
+
+
+if hit wjeep by green trooper then
+        heal wjeep 100
+
+
+//--Start--//
+//if startup1 then
+//	setfog 0,
+//	triggerdelay 1 gstart
+
+//////////////////////////////////////////////////////////////////////////STAGE 1
+/// movement and firing
+
+if startup1 then
+	setfog 0,
+	createunit Hollowson rifleman (1340,2110) green 0 rifle,
+	createpowerup baz bazooka (205,1305) 12,
+	setfacing Hollowson 127,
+	selectinventoryitem Hollowson Hollowson 0,
+	createunit McChewed rifleman (2450,570) green 0 autorifle,
+	setnpc McChewed 1,
+	setfacing McChewed 50,
+	setcamerafocus Hollowson,
+	playsound "" (0,0) 0 3, playsound "00_1c.wav" (0,0) 0 3,
+	showmessage "Welcome. You don't have to be here, but this is where you'll learn to survive.",
+//	triggerdelay 1000 evtTestPuppy, //&&
+	triggerdelay 13500 evtWelcome2,
+	triggerdelay 1000 evtSetupTan,
+	triggerdelay 200 evtSetLevel,
+	triggerdelay 300 evtSetLevel2
+
+//if evtTestPuppy then playsound "good.wav" (0,0) 0 3
+
+UNTIL 5 REPEAT 1 BY 1
+{
+if evtSetLevel then
+	undeploy objblk$a,
+	undeploy objblk$b,
+	undeploy objblk$c
+}
+
+if evtSetLevel then
+	undeploy objblk7a,
+	undeploy objblk7b,
+	undeploy objblk7c,
+	undeploy objblk4d
+
+if evtsetlevel2 then
+	createvehicle wjeep jeep (2390,1210) green,
+//	setitemflag wjeep invincible 1,
+	createunit ejeep jeep (2490,1190) green,
+	createunit Drill_Sargeant rifleman (2490,1190) green 0 autorifle,
+	entervehicle Drill_Sargeant ejeep,
+	setaimode Drill_Sargeant ignore,
+	setnpc Drill_Sargeant 1,
+	createunit passeng1 rifleman (2490,1190) green 0 autorifle,
+	entervehicle passeng1 ejeep,
+	setaimode passeng1 ignore,
+	setnpc passeng1 1,
+	createunit passeng2 rifleman (2490,1190) green 0 autorifle,
+	entervehicle passeng2 ejeep,
+	setaimode passeng2 ignore,
+	setnpc passeng2 1,
+	createunit passeng3 rifleman (2490,1190) green 0 autorifle,
+	entervehicle passeng3 ejeep,
+	setaimode passeng3 ignore,
+	setnpc passeng3 1,
+	setnpc ejeep 1,
+	setfacing ejeep 140,
+	setfacing wjeep 135,
+	setaimode ejeep ignore,
+	createpowerup medkit objmedkit2 3,
+	undeploy baz, undeploy snipe, undeploy objmedkit, undeploy objmedkit2,
+	triggerdelay 100 setlevel3
+//Added by jason, fixed bug not damaging tanks and unit with airtrike
+
+if hit radartank by green trooper then
+        damage radartank 400
+
+if hit radarscum by green trooper then
+        damage radarscum 200
+
+if setlevel3 then
+	createvehicle radartank tank (2835,170) tan,
+	createunit radarscum rifleman (2750,270) tan 5 autorifle,
+	setfacing radarscum 230,
+	setfacing radartank 110,
+	createvehicle prankster halftrack (2690,2900) green,
+	setfacing prankster 50,
+	damage prankster 490,
+	createpowerup wrench (2915,2830) 2,
+	createpowerup autorifle (820,2010) 1
+
+if evtSetupTan then
+	createunit t1 rifleman (840,1300) tan 0 autorifle,
+	createunit t2 rifleman (830,1310) tan 0 autorifle,
+	createunit t3 rifleman (845,1310) tan 0 autorifle,
+	createunit t4 rifleman (710,1410) tan 0 autorifle,
+//	createunit t5 rifleman (835,1350) tan 0 autorifle,
+	triggerdelay 100 evtTan2
+
+if evtTan2 then
+	createunit ttruck1 convoy (480,1290) tan,
+	createunit tdriver rifleman (480,1290) tan 0 autorifle,
+	entervehicle tdriver ttruck1,
+	setaimode tdriver ignore,
+	setaimode t1 ignore,
+	setaimode t2 ignore,
+	setaimode t3 ignore,
+	setaimode t4 ignore,
+	setaimode t5 ignore,
+	setaipose t1 stand,
+	setaipose t2 stand,
+	setaipose t3 stand,
+	setaipose t4 stand,
+	setaipose t5 stand,
+	setaimode ttruck1 ignore,
+	setfacing t1 130,
+	setfacing t2 140,
+	setfacing t3 105,
+	setfacing t4 170,
+	setfacing t5 15,
+	setfacing ttruck1 15,
+	triggerdelay 100 evtTan3
+
+if evtTan3 then
+	setfacing ttruck1 115,
+	createunit h1 halftrack (1200,1470) tan,
+	setfacing h1 20,
+	createunit hdriver rifleman h1 tan 10 autorifle,
+	entervehicle hdriver h1,
+	createunit jp1 jeep (1020,1370) tan,
+	setfacing jp1 40,
+	createunit jdriver rifleman jp1 tan 0 autorifle,
+	entervehicle jdriver jp1,
+	triggerdelay 100 evtTan4
+
+if evtTan4 then
+//	createunit pincer1 rifleman (1850,300) tan 0 autorifle,
+	createunit pincer2 rifleman (1990,360) tan 2 autorifle,
+//	createunit pincer4 rifleman (1960,290) tan 0 autorifle,
+	createunit pincer5 rifleman (1870,340) tan 0 autorifle,
+	setaipose jdriver kneel,
+	setaipose hdriver kneel,
+	setaimode hdriver ignore,
+	setaimode jdriver ignore,
+	setaimode h1 ignore,
+	setaimode jp1 ignore,
+	triggerdelay 100 evtTan5
+
+if evtTan5 then
+	setaimode pincer1 ignore,
+	setaimode pincer2 ignore,
+	setaimode pincer3 ignore,
+	setaimode pincer4 ignore,
+	setaimode pincer5 ignore,
+	setaipose pincer1 stand,
+	setaipose pincer2 stand,
+	setaipose pincer3 stand,
+	setaipose pincer4 stand,
+	setaipose pincer5 stand,
+	selectinventoryitem pincer1 objmedkit 0,
+	selectinventoryitem pincer2 objmedkit 0,
+	selectinventoryitem pincer3 objmedkit 1,
+	selectinventoryitem pincer4 objmedkit 0,
+	selectinventoryitem pincer5 objmedkit 0,
+	setfacing pincer1 15,
+	setfacing pincer2 25,
+	setfacing pincer3 240,
+	setfacing pincer4 200,
+	setfacing pincer5 45,
+	triggerdelay 100 evtTan6
+
+if evtTan6 then
+	createunit woods1 rifleman (2154,918) tan 0 autorifle,
+//	createunit woods2 rifleman (1975,1160) tan 2 autorifle,
+//	createunit woods3 rifleman (1906,1340) tan 1 autorifle,
+	createunit woods4 rifleman (1995,1260) tan 0 autorifle,
+	selectinventoryitem woods1 objmedkit 0,
+	selectinventoryitem woods2 objmedkit 1,
+	selectinventoryitem woods3 objmedkit 0,
+	selectinventoryitem woods4 objmedkit 0,
+	setaipose woods1 stand,
+	setaipose woods2 stand,
+	setaipose woods3 stand,
+	setaipose woods4 stand,
+	setaimode woods1 ignore,
+	setaimode woods2 ignore,
+	setaimode woods3 ignore,
+	setaimode woods4 ignore,
+	triggerdelay 100 evttan7
+
+if evttan7 then
+	createvehicle blocker jeep (2160,2720) tan,
+	setfacing blocker 245,
+	Setaimode blocker standfire,
+//	createunit bdriver rifleman (2160,2718) tan 0 autorifle,
+//	entervehicle bdriver blocker,
+//	setaipose bdriver kneel,
+	createunit end1 rifleman (2000,2640) tan 0 flamer,
+	createunit end2 rifleman (2012,2830) tan 3 autorifle,
+	createunit end3 rifleman (2012,2830) tan 8 autorifle
+
+if evtWelcome2 butnot padon pad11
+//	testvar itemtoitemdistance Hollowson objsign15 < 700
+	testvar varcurstage = 1 then
+//	playsound "" (0,0) 0 3, playsound "2.wav" (0,0) 0 3,
+	showmessage "Don't worry about dying here; this is a chance for you to learn.",
+	triggerdelay 10000 evtWelc3
+
+if evtWelc3 butnot padon pad11
+//	testvar itemtoitemdistance Hollowson objsign15 < 700
+	testvar varcurstage = 1 then
+	playsound "" (0,0) 0 3, playsound "00_3c.wav" (0,0) 0 3,
+	setcamerafocus hollowson,
+	showmessage "To 'select' your soldier, click on him with the left mouse button.",
+	triggerdelay 15000 evtWelc3txt2,
+	triggerdelay 19000 evtWelc4
+
+if evtWelc3txt2 then
+	showmessage "To order a soldier somewhere, click with the right button of your mouse."
+
+if evtWelc4 butnot padon pad11
+//	testvar itemtoitemdistance Hollowson objsign15 < 700
+	testvar varcurstage = 1 then
+	playsound "" (0,0) 0 3, playsound "00_4c.wav" (0,0) 0 3,
+	showmessage "There's a sign to the south. Move to it by right-clicking in front of the sign."
+
+// && can get two vo's playing simult if you tread pad before 4.wav finishes?
+
+if padon pad11
+	testvar signlock = 0 then
+	showbitmap bcs01.bmp, // Boot Camp basics
+	triggerdelay 3 evtLockSigns
+
+if count 1 of padon pad11 then
+	playsound "" (0,0) 0 3, playsound "00_goodc.wav" (0,0) 0 3,
+	showmessage "Good. Move Hollowson to the next sign to the south.",
+	triggerdelay 1500 evtPad11VO2
+
+	if evtPad11VO2 then
+		playsound "" (0,0) 0 3, playsound "00_7a.wav" (0,0) 0 3
+
+////////////////////
+
+if padon pad13
+	testvar signlock = 0 then
+	showbitmap bcs02.bmp, // ASWD
+	triggerdelay 3 evtLockSigns
+
+if padon pad14 
+	testvar signlock = 0 then
+	showbitmap bcs03.bmp, // notice he's selected
+	triggerdelay 3 evtLockSigns
+
+if padon pad15
+	testvar signlock = 0 then
+	showbitmap bcs04.bmp, // Every soldier has a rifle with unlimited ammo
+	triggerdelay 3 evtLockSigns
+
+if count 1 of padon pad15 then
+	setitemflag objSJeepFlat strategic 1
+
+if count 1 of hit objSJeepFlat then
+	setitemflag objSJeepFlat strategic 0,
+	triggerdelay 2000 evtBlurt
+
+	if evtBlurt then
+	playsound "" (0,0) 0 3, playsound "00_goodb.wav" (0,0) 0 3,
+	showmessage "Good."
+
+if padon pad17 
+	testvar signlock = 0 then
+	showbitmap bcs05.bmp, // can move and shoot w/ spc
+	triggerdelay 3 evtLockSigns
+
+if count 1 of padon pad17 then
+	setitemflag objTankFlat strategic 1,
+	setitemflag objSJeepFlat strategic 0
+
+if killed objTankFlat then
+	setitemflag objTankFlat strategic 0,
+ 	playsound "" (0,0) 0 3, playsound "00_niceA.wav" (0,0) 0 3,
+	showmessage "Nice. You've finished stage 1. Now head up the slope to that hill to the north.",
+	setvar bools1done 1,
+	triggerdelay 1700 evtKilledTgtVO
+
+if evtKilledTgtVO then
+	playsound "" (0,0) 0 3, playsound "00_16b.wav" (0,0) 0 3
+
+///////////////////////////////////////////////////////////////////////////// STAGE 2
+// solo combat
+
+if count 1 of padon pad20 then
+	trigger evtStartS2
+
+if evtStartS2 then
+	deploy objblk1a,
+	deploy objblk1b,
+	deploy objblk1c,
+	inactivateregion 250,
+	setvar varCurStage 2,
+	addvar varStagesDone bools1done
+
+if evtStarts2
+	testvar bools1done = 0 then
+	setitemflag objtankflat strategic 0,
+	playsound "" (0,0) 0 3, playsound "00_128_c.wav" (0,0) 0 3,
+	showmessage "You're not finished with that stage. You can come back to Boot Camp later."
+
+///////////
+
+if padon pad21 
+	testvar signlock = 0 then
+	showbitmap bcs06.bmp, // solo combat
+	triggerdelay 3 evtLockSigns
+
+if padon pad22 
+	testvar signlock = 0 then
+	showbitmap bcs07.bmp, // evasion
+	triggerdelay 3 evtLockSigns
+
+if padon pad22b 
+	testvar signlock = 0 then
+	showbitmap bcs50.bmp, // evasion
+	triggerdelay 3 evtLockSigns
+
+if count 1 of padoff pad22b then
+	playsound "" (0,0) 0 3, playsound "00_21e.wav" (0,0) 0 3,
+	showmessage "Practice some evasive moves. When you're ready to fight, walk west.",
+	triggerdelay 13500 evtPad22VO
+
+if evtPad22VO then
+	playsound "" (0,0) 0 3, playsound "00_22h.wav" (0,0) 0 3,
+	showmessage "You can attack and move at the same time by pressing Space while moving."
+
+/////////////
+
+variable varSoloKills 0
+variable varHollowsonHits 0
+
+if count 1 of padon pad23 then
+	createunit scrub rifleman (33,2440) tan 0 rifle,
+	setitemflag scrub strategic 1,
+	selectinventoryitem scrub objmedkit 0,
+	damage scrub 80,
+	order scrub follow Hollowson inmode attack
+
+if inorder padon pad23 hit Hollowson
+	testvar varcurstage = 2 then
+	addvar varHollowsonhits 1,
+	triggerdelay 100 evtMotiv
+
+	if evtMotiv
+	testvar varHollowsonhits > 4
+	and varcurstage = 2 then
+	playsound "" (0,0) 0 3, playsound "00_24_a.wav" (0,0) 0 3,
+	showmessage "Keep your injection-molded butt moving!"
+
+if killed scrub
+	testvar varcurstage = 2 then
+	addvar varsolokills 1,
+	setitemflag scrub strategic 0,
+	triggerdelay 500 evtScrubKilled
+
+if evtScrubKilled
+	testvar varsolokills = 1 
+	AND varcurstage = 2 then
+	playsound "" (0,0) 0 3, playsound "00_25_a.wav" (0,0) 0 3,
+	showmessage "Ouch - that'll leave a mark.",
+	resurrect scrub (33,2540),
+	setitemflag scrub strategic 1,
+	damage scrub 50,
+	selectinventoryitem scrub objmedkit 0,
+	order scrub follow Hollowson inmode attack
+
+if evtScrubKilled butnot hit Hollowson
+	testvar varcurstage = 2 and
+	varsolokills > 1 then
+	playsound "" (0,0) 0 3, playsound "00_goodshtg_c.wav" (0,0) 0 3,
+	showmessage "Good shooting.",
+	resurrect scrub (33,2400),
+	setitemflag scrub strategic 1,
+	damage scrub 50,
+	selectinventoryitem scrub objmedkit 0,
+	order scrub follow Hollowson inmode attack
+
+if allof evtScrubKilled hit Hollowson
+	testvar varcurstage = 2 AND
+	varsolokills > 1 then
+	playsound "" (0,0) 0 3, playsound "00_niceB.wav" (0,0) 0 3,
+	showmessage "Well done. Head northwest for your next lesson.",
+	setvar bools2done 1,
+	triggerdelay 1500 evtS2Done
+
+if evtS2Done then
+	setvar bools2done 1,
+	playsound "" (0,0) 0 3, playsound "00_27_c.wav" (0,0) 0 3
+
+////////////////////////////////////////////////////////////////////////////// STAGE 3
+//// powerups, sniper rifle, bazooka (weapons range)
+
+variable boolLeftS3 0
+variable vartruckhitcount 0
+variable boolTooslow 0
+variable boolquizlock 0
+
+if count 1 of padon pad30 then
+	trigger evtStartS3
+
+if evtStartS3 then
+	deploy objblk2a,
+	deploy objblk2b,
+	deploy objblk2c,
+	inactivateregion 251,
+	setaimode scrub ignore,
+	triggerdelay 8000 evtStartS3VO,
+	setvar varCurStage 3,
+	addvar varStagesDone bools2done
+
+if evtStartS3
+	testvar bools2done = 0 then
+	setitemflag scrub strategic 0,
+	playsound "" (0,0) 0 3, playsound "00_127_a.wav" (0,0) 0 3,
+	showmessage "You didn't finish that stage, private."
+
+////
+
+if evtStartS3VO butnot padon pad31 then
+	trigger evtTestGoad
+
+	if evtTestGoad butnot padon pad32 then
+	playsound "" (0,0) 0 3, playsound "00_29_c.wav" (0,0) 0 3,
+	showmessage "Read the signs, private."
+
+if padon pad31
+	testvar signlock = 0 then
+	showbitmap bcs08.bmp, // powerups To switch between inventory items, just left-click on the item you want your soldier to use. Pressing the Tab key also toggles the current item. Right-clicking on an item drops it. &&!!"
+	triggerdelay 3 evtLockSigns
+
+if count 1 of padoff pad31 then
+	trigger evtQuiz
+
+	if evtQuiz then
+	createexplosion medpak 145,
+	setitemflag medpak strategic 1,
+	createpowerup medpak medpack (250,1710) 2,
+	playsound "" (0,0) 0 3, playsound "00_32_b.wav" (0,0) 0 3,
+	setvar boolquizlock 1,
+	showmessage "Pop quiz, private! Pick up and drop that med pack." 
+
+if inorder evtQuiz dropped medpak
+	testvar boolLeftS3 = 0 then
+	triggerdelay 100 evtGiveQuizPts
+
+	if count 1 of evtGiveQuizPts then
+	addvar bools3done 1 // will require several points to finish this stage
+
+if inorder evtQuiz dropped medpak
+	testvar boolLeftS3 = 0 and
+	difficulty = 1 and
+	gethealth Hollowson < 200 then
+	triggerdelay 200 evtUsePak
+
+if inorder evtQuiz dropped medpak
+	testvar boolLeftS3 = 0 and
+	difficulty = 0 and
+	gethealth Hollowson < 150 then
+	triggerdelay 200 evtUsePak
+
+if inorder evtQuiz dropped medpak
+	testvar boolLeftS3 = 0 and
+	difficulty = 2 and
+	gethealth Hollowson < 250 then
+	triggerdelay 200 evtUsePak
+
+	if count 1 of evtUsePak then
+	playsound "" (0,0) 0 3, playsound "00_35_e.wav" (0,0) 0 3,
+	showmessage "Pick up the med pack again. Select it. Then right-click it again to use it."
+
+	if inorder evtUsePak pickedup medpak then
+	setitemflag medpak strategic 0
+
+	if inorder evtUsePak healed Hollowson
+	testvar boollefts3 = 0
+	then triggerdelay 100 evtHealthKudo
+
+	if count 1 of evthealthkudo then
+	playsound "" (0,0) 0 3, playsound "00_goode.wav" (0,0) 0 3,
+	showmessage "Good.",
+	setvar boolquizlock 0
+
+////
+
+if padon pad32 
+	testvar signlock = 0 then
+	showbitmap bcs09.bmp, //The sniper rifle is a powerful long-distance weapon with limited ammo. To use it, move the mouse cursor to your target and HOLD DOWN the left mouse button.",
+	triggerdelay 3 evtLockSigns,
+	trigger evtTestQuizLk
+
+if evtTestQuizLk
+	testvar boolquizlock = 0 then
+	trigger evtNoQLk
+
+if evtTestQuizLk
+	testvar boolquizlock = 1 then
+	triggerdelay 20000 evtNoQLk
+
+if count 1 of evtNoQLk then
+	triggerdelay 500 evtMakeSniper,
+	setaipose t1 none,
+	setaipose t2 none,
+	setaipose t3 none,
+	setaipose t4 none,
+	setaipose t5 none,
+	triggerdelay 100 orders t1,
+//	triggerdelay 400 orders t2,
+	triggerdelay 600 orders t3,
+	triggerdelay 800 ordersAlt t4,
+	triggerdelay 1000 orders t5
+
+if orders butnot evts3move then
+	order me goto (1110,1865) inmode ignore,
+	triggerdelay 8000 orders2
+
+if orders2 butnot evts3move then
+	order me goto (840,1300) inmode ignore,
+	triggerdelay 8000 orders
+
+if ordersAlt butnot evts3move then
+	order me goto (805,1800) inmode ignore,
+	triggerdelay 9000 ordersAlt2
+
+if ordersAlt2 butnot evts3move then
+	order me goto (670,1410) inmode ignore,
+	triggerdelay 9000 ordersAlt
+
+if evtMakeSniper butnot evts3move then
+	createexplosion (170,1625) 145,
+	createpowerup snipe sniper (170,1625) 15
+
+if count 1 of pickedup snipe then
+	triggerdelay 13000 evtMakeSniper
+
+if count 1 of pickedup snipe_1 then
+	triggerdelay 13000 evtMakeSniper
+
+if count 1 of pickedup snipe then
+	triggerdelay 4000 evtSniperVO
+
+	if evtSniperVO then
+	playsound "" (0,0) 0 3, playsound "00_37_d.wav" (0,0) 0 3,
+	showmessage "You've got some infantry targets to the east. Knock down three of them.",
+	setitemflag t1 strategic 1,
+	setitemflag t2 strategic 1,
+	setitemflag t3 strategic 1,
+	setitemflag t4 strategic 1
+
+if count 3 of killed t1 killed t2 killed t3 killed t4 killed t5
+	then trigger evtSnipeTargetsDone
+
+	if evtSnipeTargetsDone
+	testvar boollefts3 = 0
+	and varcurstage = 3
+	then
+	addvar boolS3done 1,
+	setaipose t1 stand,
+	setaipose t2 stand,
+	setaipose t3 stand,
+	setaipose t4 stand,
+	setitemflag t1 strategic 0,
+	setitemflag t2 strategic 0,
+	setitemflag t3 strategic 0,
+	setitemflag t4 strategic 0,
+	playsound "" (0,0) 0 3, playsound "00_niceB.wav" (0,0) 0 3,
+	showmessage "Nice. Move to the next sign.",
+	triggerdelay 1500 evtS3Move
+
+	if evtS3Move then
+	playsound "" (0,0) 0 3, playsound "00_48_a.wav" (0,0) 0 3
+
+///
+
+if hit ttruck1 then
+	addvar vartruckhitcount 1
+
+if padon pad34 
+	testvar signlock = 0 then
+	showbitmap bcs10.bmp, // "The bazooka shreds up vehicles but is too slow to be effective against infantry. Try it out on the Tan vehicle to the east. There are no bazooka reloads in Boot Camp, though. We're saving it for the war effort."
+	triggerdelay 3 evtLockSigns
+
+if count 1 of padon pad34 then
+	setitemflag ttruck1 strategic 1,
+	trigger tkmotion,
+	createexplosion (205,1305) 145,
+//	createpowerup baz bazooka (205,1305) 12,
+	deploy baz,
+	triggerdelay 20000 evtSlow,
+	triggerdelay 70000 evtTooslow
+
+if tkmotion butnot killed ttruck1 then 
+	order ttruck1 goto (490,1700) inmode ignore,
+	triggerdelay 10000 tkmotion1
+
+if tkmotion1 butnot killed ttruck1 then 
+	order ttruck1 goto (490,1340) inmode ignore,
+	triggerdelay 10000 tkmotion
+
+if killed ttruck1 butnot evtSlow
+	testvar varcurstage = 3
+	AND vartruckhitcount < 35
+	then
+	damage tdriver 500,
+	playsound "" (0,0) 0 3, playsound "00_goodE.wav" (0,0) 0 3,
+	showmessage "Good.",
+	triggerdelay 3000 evtS3End	
+
+if killed ttruck1 butnot evtPathetic
+	testvar vartruckhitcount > 34
+	then trigger evtPathetic,
+	setvar bools3done 0
+
+if killed ttruck1
+	then setaimode tdriver attack,
+	setitemflag ttruck1 strategic 0
+
+if evtslow butnot killed ttruck1 then
+	playsound "" (0,0) 0 3, playsound "00_131_a.wav" (0,0) 0 3,
+	showmessage "Hurry up, private.",
+	triggerdelay 12000 evtOn2x
+
+if evtOn2x butnot killed ttruck1 then
+	playsound "" (0,0) 0 3, playsound "00_131_c.wav" (0,0) 0 3,
+	showmessage "Hurry up, private!"
+
+if inorder evtSlow killed ttruck1 // && test kill w/sniper rifle
+	testvar booltooslow = 0 and
+	varcurstage = 3
+	AND vartruckhitcount < 35
+	AND boolleftS3 = 0 then
+	playsound "" (0,0) 0 3, playsound "00_goodenuf_d.wav" (0,0) 0 3,
+	showmessage "That's good enough.",
+	triggerdelay 4000 evtS3End
+
+if evtTooslow then
+	setvar booltooslow 1
+
+if evtTooslow butnot killed ttruck1 
+	testvar boolleftS3 = 0 then
+	trigger evtPathetic
+
+if evtPathetic then
+	playsound "" (0,0) 0 3, playsound "00_41_j.wav" (0,0) 0 3,
+	showmessage "That was pathetic, grunt! But we don't have all day.",
+	triggerdelay 8000 evtS3End
+
+if evtS3End then
+	playsound "" (0,0) 0 3, playsound "00_42_a.wav" (0,0) 0 3,
+	showmessage "Climb that slope to the next stage.",
+	setitemflag t1 strategic 0,
+	setitemflag t2 strategic 0,
+	setitemflag t3 strategic 0,
+	setitemflag t4 strategic 0,
+	setitemflag ttruck1 strategic 0
+
+if evtS3End	// tally up
+	testvar bools3done = 2 then
+	triggerdelay 10 evtS3pass
+
+	if evtS3pass then
+	setvar bools3done 1
+
+if evtS3End
+	testvar bools3done < 2 then
+	triggerdelay 10 evtS3fail
+
+	if evts3fail then
+	setvar bools3done 0
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////// STAGE 4
+//// grenade, mortar (long-d range)
+
+variable jphits 0
+variable hthits 0
+variable jeepdead 0
+
+if count 1 of padon pad40 then
+	setvar boolLeftS3 1,
+	deploy objblk3a,
+	deploy objblk3b,
+	deploy objblk3c,
+	inactivateregion 252,
+	setitemflag t1 strategic 0,
+	setitemflag t2 strategic 0,
+	setitemflag t3 strategic 0,
+	setitemflag t4 strategic 0,
+	setaipose t1 stand,
+	setaipose t2 stand,
+	setaipose t3 stand,
+	setaipose t4 stand,
+	setitemflag ttruck1 strategic 0,
+	dropitem Hollowson baz (0,0),
+	undeploy baz,
+	dropitem Hollowson snipe (0,0),
+	undeploy snipe,
+	trigger evtStartS4
+
+if evtStartS4 then
+	deploy objblk3a,
+	deploy objblk3b,
+	deploy objblk3c,
+	triggerdelay 8000 evtStartS4VO,
+	setvar varCurStage 4,
+	addvar varStagesDone bools3done,
+	setaipose jdriver none,
+	triggerdelay 3000 jpmotion
+
+if evtStartS4
+	testvar bools3done = 0 then
+	playsound "" (0,0) 0 3, playsound "00_128_c.wav" (0,0) 0 3,
+	showmessage "You didn't finish that stage. You can come back to Boot Camp later."
+
+////
+
+if evtStartS4VO butnot padon pad41 then
+	playsound "" (0,0) 0 3, playsound "00_29_c.wav" (0,0) 0 3,
+	showmessage "Read the signs, private."
+
+if padon pad41 
+	testvar signlock = 0 then
+	showbitmap bcs11.bmp, // Make the grenades your primary weapon by clicking on them in the Inventory display. There's a Tan jeep on the plateau to the southeast. Move closer to it, but not too close."
+	triggerdelay 3 evtLockSigns
+
+if count 1 of padon pad41 then
+	setitemflag jp1 strategic 1,
+	triggerdelay 500 evtMakeGrenades
+
+if evtMakeGrenades then
+	createexplosion padGrenades 145,
+	createpowerup gren Grenade padGrenades 15
+
+if pickedup gren then
+	triggerdelay 13000 evtMakeGrenades
+
+if pickedup gren_1 then
+	triggerdelay 13000 evtMakeGrenades
+
+//if pickedup gren_1 then
+//	triggerdelay 8000 evtMakeGrenades
+
+if hit jp1 then
+	addvar jphits 1
+
+if hit h1 then
+	addvar hthits 1
+
+if killed jp1
+	testvar varcurstage = 4
+	AND jphits < 15
+	then
+	setitemflag jp1 strategic 0,
+	addvar bools4done 1,
+	setvar jeepdead 1,
+	playsound "" (0,0) 0 3, playsound "00_goodb.wav" (0,0) 0 3,
+	showmessage "Good. Move to the next sign.",
+	triggerdelay 2000 evtMoveOn
+
+if evtMoveOn then
+	playsound "" (0,0) 0 3, playsound "00_48_a.wav" (0,0) 0 3
+
+if killed jp1
+	testvar varcurstage = 4
+	AND jphits > 14
+	then
+	setitemflag jp1 strategic 0,
+	setvar jeepdead 1,
+	playsound "" (0,0) 0 3, playsound "00_goodenuf_d.wav" (0,0) 0 3,
+	showmessage "That's good enough. Move to the next sign.",
+	triggerdelay 3000 evtMoveOn
+
+if padon pad43
+	testvar signlock = 0 then
+	showbitmap bcs12.bmp, // Mortars are long-range explosives fired in a high arc. To use, HOLD DOWN the left mouse button on your target. Unless you have turned on the easy mortar targeting option
+	triggerdelay 3 evtLockSigns
+
+if inorder killed jp1 padon pad43 then
+	trigger evtMortarize
+
+if count 1 of evtMortarize then
+	setitemflag h1 strategic 1,
+	setaipose hdriver none,
+	order h1 goto (870,1270) inmode ignore,
+	triggerdelay 15000 htmotion,
+	createpowerup mort mortar (850,850) 15,
+	triggerdelay 80000 evtTooSlowMortar
+
+if jpmotion then 
+	order jp1 goto (980,1500) inmode ignore,
+	triggerdelay 10000 jpmotion1
+
+if jpmotion1 then 
+	order jp1 goto (870,1270) inmode ignore,
+	triggerdelay 10000 jpmotion
+
+if htmotion then 
+	order h1 goto (980,1500) inmode ignore,
+	triggerdelay 3000 htmotion1
+
+if htmotion1 then 
+	order h1 goto (870,1270) inmode ignore,
+	triggerdelay 3000 htmotion
+
+if evtTooSlowMortar butnot killed h1
+	testvar varcurstage = 4 then
+	playsound "" (0,0) 0 3, playsound "00_51_d.wav" (0,0) 0 3,
+	showmessage "Since we're lacking real soldiers, that's a passing grade. Move northeast."
+
+if evtTooSlowMortar
+	testvar varcurstage > 4 then
+	setvar boolS4done 0
+
+if killed h1 butnot evtTooSlowMortar
+	testvar varcurstage = 4
+	AND jeepdead = 1
+	AND hthits < 15
+	AND hasitem hollowson baz = 0
+	then
+	playsound "" (0,0) 0 3, playsound "00_goodshtg_c.wav" (0,0) 0 3,
+	showmessage "Good shooting. Head down into the valley for your next lesson.",
+	triggerdelay 2000 evtGoNE
+
+if killed h1
+	testvar varcurstage = 4
+	AND jeepdead = 0
+	then
+	playsound "" (0,0) 0 3, playsound "00_cmdx_a.wav" (0,0) 0 3,
+	showmessage "Am I boring you!? Well, return to Boot Camp later if you change your mind."
+
+if killed h1 butnot evtTooSlowMortar
+	testvar varcurstage = 4
+	AND jeepdead = 1
+	AND hthits > 14
+	then
+	playsound "" (0,0) 0 3, playsound "00_51_d.wav" (0,0) 0 3,
+	showmessage "Since we're lacking real soldiers, that's a passing grade. Move northeast."
+
+if killed h1 butnot evtTooSlowMortar
+	testvar varcurstage = 4
+	AND jeepdead = 1
+	AND hasitem hollowson baz = 1
+	then
+	playsound "" (0,0) 0 3, playsound "00_51_d.wav" (0,0) 0 3,
+	showmessage "Since we're lacking real soldiers, that's a passing grade. Move northeast."
+
+if killed h1 then
+	setitemflag ht1 strategic 0,
+	setaimode hdriver attack,
+	selectinventoryitem hdriver hdriver 1
+
+if evtGoNE then
+	playsound "" (0,0) 0 3, playsound "00_27_c.wav" (0,0) 0 3
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////// STAGE 5
+// cmd m0dez, troop mgmt
+
+variable reinfsignlock 1
+
+if count 1 of padon pad50 then
+	setvar boolLeftS3 1,
+//	dropitem Hollowson mort,
+//	undeploy mort, &&
+	trigger evtStartS5
+
+if evtStartS5 then
+	deploy objblk4a,
+	deploy objblk4b,
+	deploy objblk4c,
+	deploy objblk4d,
+	inactivateregion 253,
+	setitemflag h1 strategic 0,
+	setitemflag jp1 strategic 0,
+	triggerdelay 1000 evtSpawnSquad1,
+	setvar varCurStage 5,
+	addvar varStagesDone bools4done
+
+macro sqd1 2
+{
+pad pad70@2 70 @1 // paddef for each
+
+if evtSpawnSquad1 then
+	createunit @1 rifleman (1590,660) green 0 rifle,
+	createexplosion @1 145,
+	selectinventoryitem @1 objmedkit 0,
+	setnpc @1 1,
+	order @1 goto (1105,615) inmode ignore,
+	triggerdelay 7000 evtNoNPC @1
+
+if killed @1
+	then triggerdelay 4000 evtresurrectme @1
+
+if killed @1
+	testvar boolvolockout = 0
+	then
+	playsound "" (0,0) 0 3, playsound "00_129_a.wav" (0,0) 0 2, // note priority
+	showmessage "You're losing plastic, private! I'm sending reinforcements.",
+	triggerdelay 3 evtVOlock,
+	triggerdelay 50000 evtVOunlock
+
+if evtTeachersExit then
+	setnpc @1 1,
+	order @1 goto (1600,300) inmode ignore // to trigger pad 73
+
+if inorder evtTeachersExit padon pad@1Exit then
+	order @1 goto (1650,34) inmode ignore,
+	triggerdelay 10000 evtUndeployMe @1
+
+if hit @1 then
+        heal @1 100
+
+}
+expand sqd1 (mcmanus a)
+expand sqd1 (leach b)
+expand sqd1 (campbell c)
+expand sqd1 (orlando d)
+expand sqd1 (boyce e)
+
+if evtresurrectme then resurrect me,
+	setitemflag me invincible 1,
+	createexplosion me 145,
+	triggerdelay 4000 evtMakeVuln
+
+if evtVOlock then setvar boolvolockout 1
+
+if evtVOunlock then setvar boolvolockout 0
+
+if evtNoNPC then
+	setnpc me 0
+
+if evtStartS5
+	testvar bools4done = 0 then
+	playsound "" (0,0) 0 3, playsound "00_127_b.wav" (0,0) 0 3,
+	showmessage "You didn't finish that stage, private.",
+	triggerdelay 4500 evtStartS5Vo
+
+if evtStartS5
+	testvar bools4done = 1 then
+	triggerdelay 2000 evtStartS5VO
+
+
+////
+
+if evtStartS5VO then
+	playsound "" (0,0) 0 3, playsound "00_56_f.wav" (0,0) 0 3,
+	showmessage "Reinforcements! Move Hollowson over to the next sign.",
+	triggerdelay 4000 removereinfsignlock
+
+	if removereinfsignlock then // prevents the new grunts from triggering signs
+		setvar reinfsignlock 0
+
+if padon pad53
+	testvar signlock = 0
+	then
+	showbitmap bcs13.bmp, // So far, you've only controlled one soldier. Now you have many. Each of them can use powerups, fight, and move like the others. Simply left-click on a different soldier to take control of him."
+	triggerdelay 3 evtLockSigns
+
+if evtLockSigns then
+	setvar signlock 1,
+	triggerdelay 1500 evtUnlockSigns
+
+if evtUnlockSigns then
+	setvar signlock 0
+
+if padon pad55
+	testvar signlock = 0
+	and reinfsignlock = 0 then
+	showbitmap bcs14.bmp, // What do soldiers do when they AREN'T selected? They follow the current command mode. ?? You set the command mode by clicking the A, D, S, or H button at the bottom right of your screen."
+	triggerdelay 3 evtLockSigns
+
+if padon pad56 
+	testvar signlock = 0 
+	and reinfsignlock = 0 then
+	showbitmap bcs15.bmp, // The command mode strongly affects movement. For example, when Hold Fire is on, troops will get to their destination without delay, but they won't defend themselves when they get there.",
+	triggerdelay 3 evtLockSigns
+
+if padoff pad56
+	testvar reinfsignlock = 0 then
+	trigger evtTestPadoffPad56
+
+if count 1 of evtTestPadoffPad56 then
+	trigger evtBruce
+
+	if evtBruce then
+	playsound "" (0,0) 0 3, playsound "00_cmd1_d.wav" (0,0) 0 3,
+	createunit Lostalim rifleman (1284,522) green 0 flamer,
+	order lostalim goto (1305,500),
+	createexplosion lostalim 145,
+	selectinventoryitem Lostalim lostalim 2,
+	setitemflag Lostalim invincible 1,
+	setnpc Lostalim 1,
+	showmessage "Lostalim will now demonstrate the four command modes in the pass to your north.",
+	triggerdelay 10000 evtLostalim1
+
+if evtResetLostalim then
+//	showmessage "reset",
+	createexplosion lostalim 145,
+	undeploy lostalim,
+	triggerdelay 500 replacelim
+
+if replacelim then
+	deploy lostalim (1284,522),
+	order lostalim goto (1300,500),
+	createexplosion lostalim 145,
+	setaimode lostalim ignore,
+	setfacing lostalim 250
+
+if hit Lostalim by green
+	then trigger evtLeftLostalim
+
+if evtResetTeaser then
+	order teaser goto (1505,240) inmode ignore,
+	triggerdelay 3500 evtResetTeaser2
+	
+	if evtResetTeaser2 then
+//	showmessage "resume", 
+	order teaser goto (1505,33) inmode ignore
+
+if evtFaceItBastard then
+	setfacing lostalim teaser
+
+if evtSendTeaser then
+	setfacing lostalim teaser,
+	order teaser goto (1355,385) inmode ignore
+
+//if inorder padoff pad60 padon padLostalimExit then // padLostalimexit is actually n of 60
+//	trigger evtleftLostalim
+
+if count 1 of evtLeftLostalim then
+	playsound "" (0,0) 0 3, playsound "00_cmdx_a.wav" (0,0) 0 3,
+	showmessage "Am I boring you!? Well, return to Boot Camp later if you change your mind.",
+	triggerdelay 1000 evtDemoExit teaser,
+	triggerdelay 1000 evtDemoExit Lostalim,
+	triggerdelay 10000 evtUndeployEm,
+	triggerdelay 7000 evtSquadVO
+
+if evtLostalim1 butnot evtleftLostalim then
+	playsound "" (0,0) 0 3, playsound "00_cmd2_e.wav" (0,0) 0 3,
+	setaimode Lostalim attack,
+	setfacing Lostalim 15,
+	showmessage "First he will show how a Green unit responds in Attack command mode.",
+	createunit teaser rifleman (1370,33) tan 10 autorifle,
+	setitemflag teaser invincible 1,
+	selectinventoryitem teaser objmedkit 0,
+	trigger evtSendTeaser,
+	triggerdelay 4500 evtResetTeaser,
+	triggerdelay 4500 evtAttackTeaser,
+	triggerdelay 12000 evtResetLostalim,
+	triggerdelay 13000 evtLostalim2VO,
+	triggerdelay 13000 evtLostalim2
+
+if evtAttackteaser then
+	order lostalim goto teaser inmode attack
+
+if evtLostalim2VO butnot evtleftlostalim then
+	playsound "" (0,0) 0 3, playsound "00_cmd3_b.wav" (0,0) 0 3,
+	showmessage "Now Lostalim will demonstrate Defend command mode."
+
+if evtLostalim2 butnot evtleftLostalim then
+	setaimode Lostalim ignore,
+	setfacing Lostalim 240,
+	trigger evtSendTeaser,
+	triggerdelay 2000 evtFaceItBastard,
+	triggerdelay 3500 evtSetDefend,
+	triggerdelay 3550 evtFaceItBastard,
+	triggerdelay 5000 evtFaceItBastard,
+	triggerdelay 5500 evtResetTeaser,
+//	triggerdelay 7000 evtFauxRetreat,
+	triggerdelay 14000 evtResetLostalim,
+	triggerdelay 15000 evtLostalim3VO,
+	triggerdelay 15000 evtLostalim3
+
+if evtSetDefend then
+	setaimode lostalim defend,
+	order lostalim goto (1315,480) inmode defend
+
+if evtFauxRetreat then
+	order lostalim goto (1300,500) inmode ignore
+
+if evtLostalim3VO butnot evtleftLostalim then
+	showmessage "Here Lostalim will show you how he would respond when in Stand and Fire mode.",
+	playsound "" (0,0) 0 3, playsound "00_cmd4_c.wav" (0,0) 0 3
+
+if evtLostalim3 butnot evtleftLostalim then
+	setaimode Lostalim standfire,
+	trigger evtSendTeaser,
+	setfacing Lostalim 240,
+	triggerdelay 1000 evtFaceItBastard,
+	triggerdelay 8000 evtResetTeaser2,
+	triggerdelay 9000 evtLostalim4vo,
+	triggerdelay 10000 evtLostalim4
+
+if evtLostalim4VO butnot evtLeftLostalim then
+	playsound "" (0,0) 0 3, playsound "00_cmd5_e.wav" (0,0) 0 3,
+	showmessage "Lastly, here is an example of Hold Fire mode behavior."
+
+if evtLostalim4 butnot evtLeftLostalim then
+	setaimode Lostalim ignore,
+	setfacing Lostalim 240,
+	trigger evtSendTeaser,
+	triggerdelay 7000 evtResetTeaser2,
+	triggerdelay 11000 evtLostalim5
+
+if evtLostalim5 butnot evtLeftLostalim then
+	playsound "" (0,0) 0 3, playsound "00_cmd6_b.wav" (0,0) 0 3,
+	setaimode Lostalim ignore,
+	setnpc Lostalim 0,
+	setitemflag Lostalim invincible 0,
+	showmessage "Lostalim is now under your control. His icon flashes red as he takes fire.",
+	triggerdelay 4000 evtShowRed
+
+if evtShowRed then
+	order teaser goto (1355,385) inmode attack,
+	triggerdelay 8000 evtGracefulEnd,
+	triggerdelay 5000 evtDemoExit teaser,
+	triggerdelay 10000 evtDemoExit Lostalim,
+	triggerdelay 20000 evtUndeployMe teaser,
+	triggerdelay 20000 evtUndeployMe Lostalim
+
+if evtDemoExit then
+	setnpc me 1,
+	order me goto (1370,35) inmode ignore
+
+if evtUndeployMe then
+	createexplosion me 145,
+	undeploy me
+
+if evtGracefulEnd then
+//	playsound "" (0,0) 0 3, playsound "00_goodb.wav" (0,0) 0 3,
+//	showmessage "Good.",
+	triggerdelay 1500 evtSquadVO
+
+if evtSquadVO then
+	playsound "" (0,0) 0 3, playsound "00_61_c.wav" (0,0) 0 3,
+	showmessage "Private, move Hollowson over to read those signs."
+
+if padon pad59 
+	testvar signlock = 0 then
+	showbitmap bcs16.bmp, // with mult units, sqd buttons critical
+	triggerdelay 3 evtLockSigns
+
+if padon pad60 
+	testvar signlock = 0 then
+	showbitmap bcs17a.bmp, //When you click on the button for a squad, all of those units are instantly selected and ready for action. Also, notice that icons for all the men in the squad immediately",
+	triggerdelay 3 evtLockSigns
+
+if padon pad61
+	testvar signlock = 0 then
+	showbitmap bcs17b.bmp, //multiple units and directctrl
+	triggerdelay 3 evtLockSigns
+
+if count 1 of padoff pad61 then
+	playsound "" (0,0) 0 3, playsound "00_65_c.wav" (0,0) 0 3,
+	showmessage "Make two squads of three men each. It doesn't matter who goes in which squad.",
+	triggerdelay 25000 evtPrepTest
+
+if evtPrepTest
+	testvar varcurstage = 5 then
+	playsound "" (0,0) 0 3, playsound "00_66_a.wav" (0,0) 0 3,
+	showmessage "Now move all of your men to that lamppost.",
+//	setitemflag pad64 strategic 1,
+	setvar varRacePhase 1,
+	triggerdelay 20000 evtTestSlow,
+	triggerdelay 70000 evtTestOn2x
+
+if evtTestSlow butnot padon pad64
+	testvar varcurstage = 5 then
+	trigger evtSlow // hurry up
+
+if evtTestSlow
+	testvar getpadstatus pad64 = 1
+	and varRacePhase = 1
+	then trigger evtStartSqdrace
+
+if evtTestOn2x butnot padon pad64
+	testvar varcurstage = 5 then
+	trigger evtOn2x // hurry up
+
+if evtTestOn2x
+	testvar getpadstatus pad64 = 1
+	and varRacePhase = 1
+	then trigger evtStartSqdrace
+
+if padon pad64
+	testvar varRacePhase = 1 then // phase 1 = get to start, ph2 = waiting for gun, ph3 = racing
+//	setitemflag pad64 strategic 0,
+	triggerdelay 1000 evtStartSqdRace
+
+if evtStartSqdrace
+	testvar getpadstatus pad64 = 1
+	and varRacePhase = 1 then
+	playsound "" (0,0) 0 3, playsound "00_goodc.wav" (0,0) 0 1,
+	showmessage "On my mark, send one squad to the tree and the other to the tent.",
+	triggerdelay 100 evtRacePhase2,
+	triggerdelay 1000 evtRaceVO2,
+	triggerdelay 17000 evtRaceVO3
+
+if evtRacePhase2 then
+	setvar varRacePhase 2
+
+if evtRacePhase3 then
+	setvar varRacePhase 3
+
+if evtRacePhase0 then
+	setvar varRacePhase 0
+
+if evtRaceVO2 then
+	playsound "" (0,0) 0 3, playsound "00_67_c.wav" (0,0) 0 3
+
+if evtRaceVO3 then
+	playsound "" (0,0) 0 3, playsound "00_106_c.wav" (0,0) 0 1,
+	showmessage "On your marks... three, two, one, go!",
+	triggerdelay 3150 evtRacePhase3,
+	triggerdelay 3150 evtMarkFinishes,
+	triggerdelay 16000 evtFinish //&&
+
+if evtMarkFinishes then
+	setitemflag objtent strategic 1,
+	setitemflag objtree strategic 1
+
+if padoff pad64
+	testvar varRacePhase = 2 then
+	playsound "" (0,0) 0 3, playsound "00_105_b.wav" (0,0) 0 3,
+	showmessage "What kind of slime are you, soldier!? Get back to the start.",
+//	setitemflag pad64 strategic 1,
+	triggerdelay 1000 evtResetRace
+
+if evtResetRace then
+	setvar varracephase 1
+
+if evtFinish
+	testvar getpadstatus pad66 = 0
+	AND varcurstage = 5
+	AND varracephase = 3
+	then
+	playsound "" (0,0) 0 3, playsound "00_70_c.wav" (0,0) 0 3,
+	showmessage "Too slow, private!",
+	triggerdelay 10 evtResetRace,
+	triggerdelay 4000 evtStartSqdrace
+
+if evtFinish
+	testvar getpadstatus pad65 = 0
+	AND varcurstage = 5
+	AND varracephase = 3
+	then
+	playsound "" (0,0) 0 3, playsound "00_70_c.wav" (0,0) 0 3,
+	showmessage "Too slow, private!",
+	triggerdelay 10 evtResetRace,
+	triggerdelay 4000 evtStartSqdrace
+
+if padon pad65 butnot evtSqdRaceWon
+	testvar getpadstatus pad66 = 1
+	AND varracephase = 3
+	then triggerdelay 10 evtSqdRaceWon
+
+if padon pad66 butnot evtSqdRaceWon
+	testvar getpadstatus pad65 = 1
+	AND varracephase = 3
+	then triggerdelay 10 evtSqdRaceWon
+
+if evtSqdRaceWon then
+	playsound "" (0,0) 0 3, playsound "00_niceB.wav" (0,0) 0 3,
+	showmessage "Nice. Move your soldiers up that slope to the south.",
+        SETVAR COUNTALLVAR 10,
+	setitemflag objtent strategic 0,
+	setitemflag objtree strategic 0,
+	setvar boolS5done 1,
+	triggerdelay 2500 evtEndS5
+
+if evtEndS5 then
+	playsound "" (0,0) 0 3, playsound "00_73_a.wav" (0,0) 0 3 // Move your soldiers up that slope to the south.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// STAGE 6
+// flamethrower, squad tactics, view
+
+if padon pad70 testvar COUNTALLVAR = 0 then
+        triggerdelay 1 evtStartS6
+
+if count 6 of padon pad70 padon pad70a padon pad70b padon pad70c padon pad70d padon pad70e then // && count may be off if player's lost units
+//	dropitem Hollowson mort,
+	trigger evtStartS6
+
+if evtStartS6
+	testvar bools5done = 0 then
+	playsound "" (0,0) 0 3, playsound "00_127_a.wav" (0,0) 0 3,
+	showmessage "You didn't finish that stage, private.",
+//	setitemflag pad64 strategic 0,
+//	setitemflag pad65 strategic 0,
+//	setitemflag pad66 strategic 0,
+	addvar varStagesDone bools5done
+
+if evtStartS6 then
+	deploy objblk5a,
+	deploy objblk5b,
+	deploy objblk5c,
+	inactivateregion 254,
+	setvar varCurStage 6,
+	setaipose woods1 none,
+	setaipose woods2 none,
+	setaipose woods3 none,
+	setaipose woods4 none,
+	setaimode woods1 defend,
+	setaimode woods2 defend,
+	setaimode woods3 defend,
+	setaimode woods4 defend
+
+if padon pad71
+	testvar signlock = 0 then
+	showbitmap bcs18.bmp, // Flamethrowers are some of the best short-range anti-personnel weapons in our arsenal. Tan plastic burns very well, but of course, so does Green."
+	triggerdelay 3 evtLockSigns
+
+if count 1 of padon pad71 then
+	createpowerup flamer (1710,1830) 30, 
+	createpowerup grenade (1800,1900) 10,
+	createpowerup flamer (1870,1800) 30,
+	createpowerup grenade (1760,1870) 5,
+	playsound "" (0,0) 0 3, playsound "00_78_c.wav" (0,0) 0 3,
+	setitemflag pincer1 strategic 1,
+	setitemflag pincer2 strategic 1,
+	setitemflag pincer3 strategic 1,
+	setitemflag pincer4 strategic 1,
+	setitemflag pincer5 strategic 1,
+	showmessage "Up ahead, those Tan are dozing in that clearing, but it has two exits.",
+	triggerdelay 4000 evtPad71b
+
+if evtPad71b then
+	showmessage "Make two squads and attack from both directions. Prevent the Tan from escaping."
+//	showmessage "Arm your men, private, and move them north. Be careful; there are Tan troops in these woods."
+
+if count 1 of padon pad72 then
+//	playsound "" (0,0) 0 3, playsound "78.wav" (0,0) 0 3,
+//	showmessage "Up ahead is a challenge. T
+	setaipose pincer1 stand,
+	setaipose pincer2 none,
+	setaipose pincer3 stand,
+	setaipose pincer4 none,
+	setaipose pincer5 none,
+	setaimode pincer1 attack,
+	setaimode pincer2 defend,
+	setaimode pincer3 attack,
+	setaimode pincer4 attack,
+	setaimode pincer5 attack
+
+if count 1 of hit pincer2 hit pincer5 by green then 
+	order me goto (2210,230) inmode ignore,
+	order me goto (1680,180) inmode defend
+
+if padon pad73 then setaimode me attack
+
+if allof killed pincer2 killed pincer5 //&&
+	then trigger evtTestKudo,
+	setitemflag pincer1 strategic 0,
+	setitemflag pincer2 strategic 0,
+	setitemflag pincer3 strategic 0,
+	setitemflag pincer4 strategic 0,
+	setitemflag pincer5 strategic 0,
+	setvar bools6done 1
+
+if evtTestKudo butnot padon pad73 then
+	playsound "" (0,0) 0 3, playsound "00_goodE.wav" (0,0) 0 3,
+	showmessage "Good!",
+	setvar bools6done 1
+
+if inorder padon pad73 evtTestKudo then
+	playsound "" (0,0) 0 3, playsound "00_80_k.wav" (0,0) 0 3,
+	showmessage "That'll have to do."
+
+if padon pad74 
+	testvar signlock = 0 then
+	showbitmap bcs19.bmp, //Sometimes you will encounter friendly units that are not under your command. Left-clicking them will not give you control.",
+	triggerdelay 3 evtLockSigns
+
+if padon pad75 
+	testvar signlock = 0 then
+	showbitmap bcs20.bmp, //You can move your view all around the map. Just use your keyboard's arrow keys to move the view, or move your mouse cursor against the edge of the screen.",
+	triggerdelay 3 evtLockSigns
+
+if allof evtTestKudo padoff pad74 padoff pad75 then
+	triggerdelay 1000 evtTestEndS6
+
+if inorder evtTestKudo padon pad80 then trigger evtTestEndS6
+
+if evtTestEndS6 butnot evtEnds6 then
+	trigger evtEndS6
+
+if hit McChewed butnot evtEnds6 then
+	heal McChewed 100
+
+if evtEndS6 then
+	setnpc McChewed 0,
+	playsound "" (0,0) 0 3, playsound "00_83_c.wav" (0,0) 0 3,
+	showmessage "These men have done their job. They are no longer under your control.",
+	trigger evtTeachersExit,
+	setnpc Hollowson 1,
+	order Hollowson goto (2260,34) inmode ignore,
+	triggerdelay 10000 evtUndeployMe Hollowson,
+	triggerdelay 100 evtStartS7,
+	triggerdelay 8000 evtEndS6b
+
+if evtEndS6b then
+	setitemflag mcchewed strategic 1,
+	showmessage "Move your view to the east; a new soldier is waiting for you there.",
+	playsound "" (0,0) 0 3, playsound "00_85_b.wav" (0,0) 0 3
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////// STAGE 7
+// airstrike mines explosives vehicles
+
+variable boolwjeepdead 0
+variable boolejeepdead 0
+variable varradarhits 0
+variable varcarriehits 0
+
+if evtStartS7 then
+	setvar varCurStage 7,
+//	setitemflag ejeep invincible 1,
+	addvar varStagesDone bools6done
+
+if padon pad81 
+	testvar signlock = 0 then
+	setitemflag mcchewed strategic 0,
+	showbitmap bcs21.bmp, //An airstrike is one of the most devastating attacks in the game. When your soldier has it equipped in the Inventory panel, you can scroll anywhere in the map and click to express-mail a fiery greeting."
+	triggerdelay 3 evtLockSigns
+
+if count 1 of padon pad81 then
+	playsound "" (0,0) 0 3, playsound "00_89_a.wav" (0,0) 0 3,
+	showmessage "Pick up that airstrike. Use it to pound that radar to the northeast.",
+	setitemflag objradar strategic 1,
+	createexplosion (2550,700) 145,
+	createpowerup airstr airstrike (2550,700) 1
+
+if pickedup airst then
+	triggerdelay 40000 evtSlowStrike
+
+if killed objradar butnot evtSlowStrike
+	testvar varradarhits < 3
+	then
+	playsound "" (0,0) 0 3, playsound "00_goodB.wav" (0,0) 0 3,
+	showmessage "Good.",
+	setitemflag objradar strategic 0,
+//	dropitem McChewed airstr, &&
+//	undeploy airstr,
+	triggerdelay 2000 evtGo2Mines
+
+if killed objradar butnot evtSlowStrike
+	testvar varradarhits > 2
+	then
+	playsound "" (0,0) 0 3, playsound "00_80_k.wav" (0,0) 0 3,
+	showmessage "That'll have to do.",
+	setitemflag objradar strategic 0,
+//	dropitem McChewed airstr, &&
+//	undeploy airstr,
+	triggerdelay 4000 evtGo2Mines
+
+if hit objradar then
+	addvar varradarhits 1
+
+if evtSlowStrike butnot killed objradar
+	testvar varcurstage = 7
+	then trigger evtTestRebel
+
+	if evtTestRebel butnot evtFenceGone then
+	playsound "" (0,0) 0 3, playsound "00_80_k.wav" (0,0) 0 3,
+	showmessage "That'll have to do.",
+	setitemflag objradar strategic 0,
+//	dropitem McChewed airstr, &&
+//	undeploy airstr,
+	triggerdelay 4000 evtGo2Mines,
+	setvar bools7done 0
+
+if evtGO2mines then
+	playsound "" (0,0) 0 3, playsound "00_48_a.wav" (0,0) 0 3,
+	showmessage "Move to the next sign."
+
+///////
+
+if padon pad83
+	testvar signlock = 0 then
+	showbitmap bcs22.bmp, // Mines are explosive charges that are placed underground and provide an excellent deterrent to pursuers. A few seconds after they are planted, anything that comes too close will cause them to explode. That includes you."
+	triggerdelay 3 evtLockSigns
+
+if count 1 of padon pad83 then
+	setitemflag mcchewed strategic 0,
+	playsound "" (0,0) 0 3, playsound "00_95_c.wav" (0,0) 0 3,
+	createexplosion (2725,745) 145,
+	createpowerup myne mine (2725,745) 16,
+	showmessage "Mines will stop the Tan truck that's coming from the east.",
+	triggerdelay 7000 minevo2,
+	triggerdelay 30000 evtHurri,
+	triggerdelay 40000 evtSendCarrie
+
+if evtHurri butnot evtFencegone then
+	playsound "" (0,0) 0 3, playsound "00_131_a.wav" (0,0) 0 3,
+	showmessage "Hurry up, private."
+
+if minevo2 then
+	showmessage "Lay down a line of them and keep them between you and the truck."
+
+if count 1 of pickedup myne then
+	triggerdelay 15000 evtNewMines
+
+if count 1 of pickedup myne_1 then
+	triggerdelay 20000 evtNewMines
+
+//if count 1 of pickedup myne_2 then
+//	triggerdelay 8000 evtNewMines
+
+if evtNewMines then
+	createexplosion (2725,745) 145,
+	createpowerup myne mine (2725,745) 16
+
+if evtSendCarrie butnot evtFencegone then
+//	createexplosion (2900,745) 145,
+//	createexplosion (2880,735) 145,
+//	createexplosion (2910,750) 145,
+//	createexplosion (2920,745) 145,
+//	createunit carrie convoy (2900,745) tan,
+	createunit carrie convoy (3165,745) tan,
+	setitemflag carrie strategic 1,
+	createunit cdriver rifleman carrie tan 0 autorifle,
+	entervehicle cdriver carrie,
+	setfacing carrie 64,
+	order carrie goto (2960,745),
+//	order carrie goto (2850,745),
+	triggerdelay 3000 evtChewHim
+
+if evtChewHim butnot killed carrie
+	testvar varcurstage = 7
+	then trigger evtChewHim2
+
+	if evtChewhim2 butnot evtFencegone then
+	setspeed carrie slow,
+	order carrie goto McChewed inmode attack,
+	triggerdelay 8000 evtChewHim
+
+if hit carrie then
+	addvar varcarriehits 1
+
+if killed carrie
+	testvar varcarriehits < 26
+	then
+	setitemflag carrie strategic 0,
+	setaimode cdriver defend,
+	damage cdriver 500,
+	playsound "" (0,0) 0 3, playsound "00_niceB.wav" (0,0) 0 3,
+	showmessage "Nice.",
+	triggerdelay 2000 evtGo2Mines // go next sign
+
+if killed carrie
+	testvar varcarriehits > 25
+	then
+	setitemflag carrie strategic 0,
+	setaimode cdriver defend,
+	damage cdriver 125,
+	playsound "" (0,0) 0 3, playsound "00_goodenuf_d.wav" (0,0) 0 3,
+	showmessage "That's good enough.",
+	triggerdelay 4000 evtGo2Mines // go next sign
+
+///////////
+
+if padon pad84 
+	testvar signlock = 0 then
+	showbitmap bcs23.bmp, //Explosives are timed charges with plenty of oomph. When equipped in your soldier's Inventory panel, just click anywhere. The explosives will be planted at your soldier's location and the timer will start. Then run away!"
+	triggerdelay 3 evtLockSigns
+
+if count 1 of padon pad84 then
+//	playsound "" (0,0) 0 3, playsound "99.wav" (0,0) 0 3,
+//	showmessage "I love plastic explosives. Use them to blast a hole in that fence, private.",
+	setitemflag objfence strategic 1,
+	setitemflag objfence2 strategic 1,
+	setitemflag mcchewed strategic 0,
+	createexplosion (2560,930) 145,
+	createpowerup explo explosive (2620,1020) 10
+
+if killed objfence then
+	trigger evtFenceGone
+
+if killed objfence2 then
+	trigger evtFenceGone
+
+	if count 1 of evtFenceGone then
+	playsound "" (0,0) 0 3, playsound "00_goodC.wav" (0,0) 0 3,
+	showmessage "Good.",
+	setitemflag objfence strategic 0,
+	setitemflag objfence2 strategic 0,
+	setitemflag objradar strategic 0,
+	triggerdelay 2000 evtGo2Mines // go next sign
+
+if padon pad90 
+	testvar signlock = 0 then
+	showbitmap bcs24.bmp, //Your soldiers can enter and control Green vehicles that HQ has assigned to you. All the currently selected soldiers will try to enter a vehicle when you right-click on it.",
+	triggerdelay 3 evtLockSigns
+
+if killed ejeep butnot killed wjeep
+	testvar varcurstage = 7
+	then
+	playsound "" (0,0) 0 3, playsound "00_41_j.wav" (0,0) 0 3, // pathetic, grunt!
+	showmessage "That was pathetic, grunt! But we don't have all day.",
+	setvar boolejeepdead 1,
+	triggerdelay 5000 evtJeepKilledVO
+
+if killed ejeep then
+	createexplosion drill_sargeant 145,
+	resurrect drill_sargeant,
+	setaipose drill_sargeant prone,
+	setitemflag drill_sargeant invincible 1,
+	triggerdelay 2000 evtEJeepDead2
+
+if evtEJeepDead2 then
+	order drill_sargeant goto mcchewed inmode ignore,
+	triggerdelay 1000 evtEJeepDead3
+
+if evtEJeepDead3 then
+	setaipose drill_sargeant stand,
+	triggerdelay 2000 evtEJeepDead4
+
+if evtEJeepDead4 then
+	order drill_sargeant goto (2370,40) inmode ignore,
+	triggerdelay 20000 evtUndeployMe drill_sargeant
+
+if killed wjeep butnot killed ejeep 
+	testvar varcurstage = 7 then
+	playsound "" (0,0) 0 3, playsound "00_41_j.wav" (0,0) 0 3, // pathetic, grunt!
+	showmessage "That was pathetic, grunt! But we don't have all day.",
+	setvar boolwjeepdead 1,
+	triggerdelay 5000 evtJeepKilledVO
+
+if evtJeepKilledVO
+	testvar varcurstage = 7 then
+	showmessage "Move to the next sign.",
+	playsound "" (0,0) 0 3, playsound "00_48_a.wav" (0,0) 0 3 // move to next sign
+
+if count 1 of padoff pad91
+	testvar boolwjeepdead = 0
+	AND boolejeepdead = 0
+	then
+	playsound "" (0,0) 0 3, playsound "00_103_c.wav" (0,0) 0 3,
+	showmessage "I'm challenging you to a jeep race. Climb into the west jeep and get ready.",
+	setitemflag wjeep strategic 1,
+	triggerdelay 20000 evtYell,
+//	triggerdelay 1000 evtTestForReady,
+	setvar varracephase 1
+
+if pickedup McChewed by wjeep
+	testvar boolwjeepdead = 0
+	AND boolejeepdead = 0
+	AND varcurstage = 7
+	then
+	trigger evtStartJRace
+
+if pickedup mcchewed by wjeep then
+	setitemflag wjeep strategic 0
+
+if evtYell butnot pickedup McChewed by wjeep
+	testvar varcurstage = 7
+	AND boolwjeepdead = 0
+	AND boolejeepdead = 0
+	then
+	playsound "" (0,0) 0 3, playsound "00_104_c.wav" (0,0) 0 3,
+	showmessage "The west jeep, grunt!"
+
+if padoff pad93
+	testvar varracephase = 2
+	AND boolwjeepdead = 0
+	AND boolejeepdead = 0
+	then
+	playsound "" (0,0) 0 3, playsound "00_105_b.wav" (0,0) 0 3,
+	showmessage "What kind of slime are you, soldier?! Get back to the start.",
+	triggerdelay 100 evtResetRace, // reused
+	triggerdelay 4000 evtStartJRace
+
+//if evtTestForReady
+//	testvar hasitem wjeep McChewed = 0
+//	AND varcurstage = 7
+//	then triggerdelay 500 evtTestforReady
+
+//if evtTestForReady
+//	testvar hasitem wjeep McChewed = 1
+//	then trigger evtStartJRace
+
+//if pickedup wjeep McChewed then
+//	trigger evtStartJRace //&&
+
+if evtStartJRace
+	testvar getpadstatus pad93 = 1
+	AND boolwjeepdead = 0
+	AND boolejeepdead = 0
+	AND varcurstage = 7
+	then
+	playsound "" (0,0) 0 3, playsound "00_106_c.wav" (0,0) 0 3,
+	setvar varracephase 2,
+	showmessage "On your marks... three... two... one... go!",
+	triggerdelay 3150 evtRacePhase3,
+	triggerdelay 3150 evtMarkJFinish,
+	triggerdelay 3200 evtSendSgt
+
+//if evtMarkJFinish then
+//	setitemflag padwjeep strategic 1
+
+if evtSendSgt
+	testvar boolwjeepdead = 0
+	AND boolejeepdead = 0
+	then
+	order ejeep goto pad94 inmode ignore // was pad94 &&
+
+if padon padbump then
+	setspeed wjeep slow,
+	triggerdelay 2000 restorespeed
+	
+	if restorespeed then setspeed wjeep normal
+
+if count 1 of padon pad94 then
+	playsound "" (0,0) 0 3, playsound "..\tankcollide.wav" (0,0) 0 3,
+	triggerdelay 300 evtSendSgt2
+
+if evtSendSgt2 then order ejeep goto (2930,2110) inmode ignore
+
+if padon padEjeep butnot padon padwjeep
+	testvar varracephase = 3
+	AND boolwjeepdead = 0
+	AND boolejeepdead = 0
+	AND varcurstage = 7
+	then
+//	setitemflag padwjeep strategic 0,
+	playsound "" (0,0) 0 3, playsound "00_109_c.wav" (0,0) 0 3,
+	showmessage "Heh heh! I tanned your hide, soldier.",
+	triggerdelay 3 evtRacePhase0,
+	triggerdelay 5000 evtMoveToS8
+
+VARIABLE RACEWINNERVAR 0
+
+if padon padwjeep butnot padon padejeep
+	testvar varracephase = 3
+	AND boolwjeepdead = 0
+	AND boolejeepdead = 0
+	AND varcurstage = 7
+	then
+//	setitemflag padwjeep strategic 0,
+	playsound "" (0,0) 0 3, playsound "00_110_b.wav" (0,0) 0 3,
+	showmessage "You win this time, private.",
+	triggerdelay 3 evtRacePhase0,
+        SETVAR RACEWINNERVAR 10,
+	triggerdelay 5000 evtMoveToS8
+
+if evtMoveToS8 
+	testvar varcurstage = 7 then
+	playsound "" (0,0) 0 3, playsound "00_42_a.wav" (0,0) 0 3,
+	showmessage "Climb that slope to the next stage."
+
+if allof evtMovetoS8
+	testvar boolwjeepdead = 0
+	AND boolejeepdead = 0
+	AND varradarhits < 3
+	AND varcarriehits < 10
+	then
+	setvar bools7done 1
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////// STAGE 8
+// wrench minefields final test
+
+if count 1 of padon pad110 then
+//	dropitem Hollowson mort,
+	trigger evtStartS8,
+	triggerdelay 3000 evtHtrkSmoke
+
+if evtStartS8 then
+//	setitemflag padwjeep strategic 0,
+//	setitemflag carrie strategic 0,
+	inactivateregion 255,
+	deploy objblk7a,
+	deploy objblk7b,
+	deploy objblk7c,
+	setvar varCurStage 8,
+	addvar varStagesDone bools7done
+
+if evtStarts8 TESTVAR RACEWINNERVAR = 0 AND
+	bools7done = 0 then
+	playsound "" (0,0) 0 3, playsound "00_128_c.wav" (0,0) 0 3,
+	showmessage "You didn't finish that stage. You can come back to Boot Camp later.",
+	triggerdelay 8000 evtMinewarn
+
+if evtStarts8
+	testvar bools7done = 1 then
+	trigger evtMinewarn
+
+	if evtMineWarn then
+	playsound "" (0,0) 0 3, playsound "00_117_f.wav" (0,0) 0 3,
+	showmessage "This area is mined, soldier...! Move McChewed over to that sign.",
+	triggerdelay 12000 evtRemindVeh
+
+	if evtRemindVeh butnot padon pad111 then
+	playsound "" (0,0) 0 3, playsound "00_118_b.wav" (0,0) 0 3,
+	showmessage "To get a soldier out of a vehicle, select it and click on the soldier's icon."
+
+////////
+
+if padon pad111 
+	testvar signlock = 0 then
+	showbitmap bcs25.bmp, //When your soldier is equipped with a minesweeper, he can see mines and walk over them without causing them to explode. To get him to remove visible mines, just left-click on them."
+	triggerdelay 3 evtLockSigns
+
+//if padon pad112 then
+//	showpda "DANGER! MINEFIELD"
+
+if count 1 of padon pad111 then
+	createpowerup sweeper (2420,2065) 1,
+	createpowerup grenade (2655,2670) 10
+
+if count 1 of padoff pad111 then
+	playsound "" (0,0) 0 3, playsound "00_120_a.wav" (0,0) 0 3,
+	showmessage "Use McChewed to clear a path through the minefield, private."
+
+//////
+
+variable varHtrkdead 0
+variable pkx 0
+variable pky 0
+
+if padon pad100 
+	testvar signlock = 0 then
+	showbitmap bcs26.bmp, //Use the wrench powerup to fix damaged vehicles and equipment."
+	triggerdelay 3 evtLockSigns
+
+if count 1 of padon pad100 then
+	playsound "" (0,0) 0 3, playsound "00_112_c.wav" (0,0) 0 3,
+	showmessage "Tune up that halftrack, soldier. Those grunts need a ride back to the barracks.",
+	createunit Thaut rifleman (3025,2888) green 2 BAZOOKA, //&&
+	createunit Twich rifleman (3025,2800) green 3 FLAMER, //&&
+	createunit Bentson rifleman (3025,2850) green 0 mortar,
+	order thaut goto (2840,2900),
+	order twich goto (2870,2810),
+	order Bentson goto (2850,2850),
+	setitemflag prankster strategic 1
+
+if evtHtrkSmoke butnot healed prankster
+	testvar varHtrkDead = 0
+	then 
+	setvar pkx getx prankster,
+	setvar pky gety prankster,
+	makesmoke (refvar pkx, refvar pky, 500) 1000,
+	triggerdelay 5000 evthtrksmoke
+
+if killed prankster then setvar varhtrkdead 1,
+	setitemflag prankster strategic 0,
+	playsound "" (0,0) 0 3, playsound "00_122_c.wav" (0,0) 0 3,
+	showmessage "Not good. Get all of your men over to the exit area and we'll call it a day."
+
+if healed prankster then
+	setitemflag prankster strategic 0
+
+////////////////////////////////////////////
+
+variable varExitDeaths 0
+
+if killed thaut then // set bool to -1 if failed; 0 if undecided. if 0 at exit, then htrk wasn't healed
+	addvar varexitdeaths 1,
+	setvar bools8done -1,
+	triggerdelay 4000 evtresurrectme @1
+if killed twich then
+	addvar varexitdeaths 1,
+	setvar bools8done -1,
+	triggerdelay 4000 evtresurrectme @1
+if killed Bentson then
+	addvar varexitdeaths 1,
+	setvar bools8done -1,
+	triggerdelay 4000 evtresurrectme @1
+
+if count 1 of killed listEndTan 
+	testvar varcurstage < 8 then
+	playsound "" (0,0) 0 3, playsound "00_cmdx_a.wav" (0,0) 0 3,
+	showmessage "Am I boring you!? Well, return to Boot Camp later if you change your mind.",
+	setvar bools8done -1
+
+if padon pad113 then
+	playsound "" (0,0) 0 3, playsound "00_121_d.wav" (0,0) 0 3,
+	setitemflag prankster strategic 0,
+	setitemflag blocker strategic 1,
+//	setitemflag pad2atexit strategic 1,
+	showmessage "Bust your way through the barricade and get your men over to the exit area."
+
+if killed blocker then
+	setitemflag blocker strategic 0
+
+if padon pad4atexit
+	then
+	trigger evtTally
+
+if healed prankster
+	testvar varexitdeaths = 0
+	AND bools8done > -1
+	then triggerdelay 10 s8Passed
+
+if s8Passed then
+	setvar bools8done 1
+
+if evtTally then
+	addvar varStagesDone bools8done,
+	triggerdelay 100 evtTally2,
+	triggerdelay 1000 evtCongrats
+
+if evtTally
+	testvar varstagesdone < 0 then
+	setvar varstagesdone 0
+
+macro tallyho 2
+{
+if evtTally2
+	testvar varstagesdone = @1
+	AND varstagesdone > 6
+	then
+	showpda "BOOT CAMP EVALUATION: @1 Stages Completed. @2 Stages Failed. Candidate Unconditionally Promoted to Commander.",
+	triggerdelay 10000 greenwins
+
+if evtTally2
+	testvar varstagesdone = @1
+	AND varstagesdone < 7
+	then
+	showpda "BOOT CAMP EVALUATION: @1 Stages Completed. @2 Stages Failed. Candidate Conditionally Promoted to Commander Due to National Emergency.",
+	triggerdelay 5000 greenwins
+}
+expand tallyho (0 8)
+expand tallyho (1 7)
+expand tallyho (2 6)
+expand tallyho (3 5)
+expand tallyho (4 4)
+expand tallyho (5 3)
+expand tallyho (6 2)
+expand tallyho (7 1)
+expand tallyho (8 0)
+
+if evtCongrats
+	testvar varStagesdone > 6
+	then
+	playsound "" (0,0) 0 3, playsound "00_125_c.wav" (0,0) 0 3,
+	showmessage "You're ready for battle, commander."
+
+if evtCongrats
+	testvar varstagesdone < 7 then
+	playsound "" (0,0) 0 3, playsound "00_124_c.wav" (0,0) 0 3,
+	showmessage "You made it, commander. Good luck; you'll need it!"
+
+//////////////////////////////////////////////////////////////////////////////////////////////////// ambush
+
+if count 1 of padon padambush then
+	playsound "" (0,0) 0 3, playsound "00_ambush1_c.wav" (0,0) 0 3,
+	showmessage "Ambush! Get that powerup, pronto!",
+	createpowerup flamer (230,450) 45,
+	createexplosion (230,450) 145,
+	createunit killer1 rifleman (33,33) tan 3 autorifle,
+	setmaxhealth killer1 100,
+	selectinventoryitem killer1 objmedkit 0,
+	order killer1 goto Hollowson inmode attack
+//	triggerdelay 25000 evtAmbush2
+
+if evtAmbush2 then
+	createunit killer2 rifleman (33,33) tan 3 autorifle,
+	setmaxhealth killer2 100,
+	selectinventoryitem killer2 objmedkit 0,
+	order killer2 goto Hollowson inmode attack
+
+//if pickedup newAmbPup then
+//	playsound "" (0,0) 0 3, playsound "00_ambush2_c.wav" (0,0) 0 3,
+//	showmessage "I've never seen that weapon before."
+
+/////////////////////=================================================================================================
+// pretty bangs
+
+if dmglvlchanged objhouse then
+	trigger evtbang,
+	triggerdelay 300 evt2ndbang,
+	triggerdelay 3000 evthsmoke
+
+if evtbang then
+	createexplosion (1800,2410) 145, //148,
+	createexplosion (1840,2305) 145, //140,
+	createexplosion (1950,2390) 148,
+	createexplosion (1946,2520) 149,
+	createexplosion (2045,2390) 145,
+
+	createexplosion (1960,2250) 145, //148,
+	createexplosion (2050,2225) 149
+
+if evt2ndbang then
+	createexplosion (2030,2495) 145,
+	createexplosion (1765,2320) 148,
+	createexplosion (1825,2440) 145, //140,
+
+	createexplosion (1920,2430) 145, //148,
+	createexplosion (1950,2260) 145, // 140,
+	createexplosion (2040,2300) 148
+
+if evthsmoke then
+	createexplosion (1925,2360,100) 145,
+	createexplosion (1830,2410,100) 141
+
+//	makesmoke (1925,2360,100) 20000,
+//	makesmoke (1830,2410,100) 30000
+
+if killed objSJeepFlat then
+	createexplosion (675,2690) 141
+
+if killed objnjeepFlat then
+	createexplosion (375,235) 141
+
+if killed objTankFlat then
+	createexplosion (425,2515) 141
+
+if killed objradar then
+	createexplosion (2890,230) 149,
+	createexplosion (2900,165) 138
+
+/////////////////////=================================================================================================
+//--Resurrection--//
+
+variable boolPlayedLongDeathVO 0
+
+if killed Hollowson butnot evtDeathVO2 then
+	setcamerafocus Hollowson,
+    setuilock 1,
+//    triggerdelay 10 deathpda,
+	triggerdelay 2000 evtDeathVOHollowson,
+//	triggerdelay 2800 freelock,
+//    triggerdelay 3000 raisegreensarge1
+	triggerdelay 5500 evtDeathVO2,
+	triggerdelay 10000 evtResurrectLeader
+
+if killed Hollowson 
+	testvar boolPlayedLongDeathVO = 1 then
+	setcamerafocus Hollowson,
+    setuilock 1,
+//    triggerdelay 10 deathpda,
+	triggerdelay 2000 evtDeathVOHollowson,
+//	triggerdelay 2800 freelock,
+//    triggerdelay 3000 raisegreensarge1
+	triggerdelay 5000 evtResurrectLeader
+
+if killed McChewed butnot evtDeathVO2 then
+	setcamerafocus McChewed,
+    setuilock 1,
+ //   triggerdelay 10 deathpda,
+	triggerdelay 2000 evtDeathVOMcC,
+	triggerdelay 5500 evtDeathVO2,
+//	triggerdelay 2800 freelock,
+//    triggerdelay 3000 raisegreensarge1
+	triggerdelay 10000 evtResurrectLeader
+
+if killed McChewed
+	testvar boolPlayedLongDeathVO = 1 then
+	setcamerafocus McChewed,
+    setuilock 1,
+ //   triggerdelay 10 deathpda,
+	triggerdelay 2000 evtDeathVOMcc,
+//	triggerdelay 2800 freelock,
+//    triggerdelay 3000 raisegreensarge1
+	triggerdelay 5000 evtResurrectLeader
+
+if evtDeathVOHollowson then
+	playsound "" (0,0) 0 3, playsound "00_140_a.wav" (0,0) 0 1,
+	showmessage "You just lost Hollowson, private."
+
+if evtDeathVOMcC then
+	playsound "" (0,0) 0 3, playsound "00_141_c.wav" (0,0) 0 1,
+	showmessage "McChewed is dead, private."
+
+if evtDeathVO2 then
+	playsound "" (0,0) 0 3, playsound "00_130_b.wav" (0,0) 0 3,
+	setvar boolPlayedLongDeathVO 1,
+	showmessage "Good thing this is just a training exercise. Here comes your replacement."
+
+if evtResurrectLeader then // can walk in the replacement, w/curstage var &&
+	createexplosion me 150,
+	triggerdelay 100 evtResLdr2
+
+	if evtResLdr2 then
+	createexplosion me 132,
+	createexplosion me 145,
+	resurrect me,
+	setitemflag me invincible 1,
+	triggerdelay 5 evtResLdr3
+
+	if evtResLdr3 then
+	heal me 100,
+	setnpc me 0,
+	setuilock 0,
+	triggerdelay 4000 evtMakeVuln
+
+if evtMakeVuln then
+	setitemflag me invincible 0
+

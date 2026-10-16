@@ -1,0 +1,1337 @@
+
+// MAP 6 : ESCAPE FROM TOYPIQUET //
+// Map Design and concept by Christopher "Chip" Gracia //
+
+// *** PADS *** //
+
+
+pad 	tcaptainp	20  	tcaptain
+pad 	tanplatoonps1	21  	tanplatoon1
+pad 	tanplatoonps2	22  	tanplatoon2
+pad 	tanplatoonps3	23  	tanplatoon3
+pad 	tanplatoonps4	24  	tanplatoon4
+pad 	tanplatoonps5	25  	tanplatoon5
+pad 	tanplatoonps6	26  	tanplatoon6
+pad 	tanplatoonps7	27  	tanplatoon7
+pad 	tanplatoonps8	28  	tanplatoon8
+pad 	tanplatoonps9	29  	tanplatoon9
+
+pad 	tcaptainp1	30  	tcaptain
+pad 	tanplatoonp1	31  	tanplatoon1
+pad 	tanplatoonp2	32  	tanplatoon2
+pad 	tanplatoonp3	33  	tanplatoon3
+pad 	tanplatoonp4	34  	tanplatoon4
+pad 	tanplatoonp5	35  	tanplatoon5
+pad 	tanplatoonp6	36  	tanplatoon6
+pad 	tanplatoonp7	37  	tanplatoon7
+pad 	tanplatoonp8	38  	tanplatoon8
+pad 	tanplatoonp9	39  	tanplatoon9
+
+pad 	tcaptainp2	40  	tcaptain
+pad 	tanplatoonp11	41  	tanplatoon1
+pad 	tanplatoonp12	42  	tanplatoon2
+pad 	tanplatoonp13	43  	tanplatoon3
+pad 	tanplatoonp14	44  	tanplatoon4
+pad 	tanplatoonp15	45  	tanplatoon5
+pad 	tanplatoonp16	46  	tanplatoon6
+pad 	tanplatoonp17	47  	tanplatoon7
+pad 	tanplatoonp18	48  	tanplatoon8
+pad 	tanplatoonp19	49  	tanplatoon9
+
+pad	r1stop1		50  	rfollower1
+pad	r1stop2		51  	rfollower1
+pad	r1stop3		52  	rfollower1
+pad	r1stop4		53  	rfollower1
+pad	r2stop1		54  	rfollower2
+pad 	r2stop2		55  	rfollower2
+pad	r2stop3		56  	rfollower2
+pad	r2stop4		57  	rfollower2
+pad 	l1stop1		58  	lfollower1
+pad 	l1stop2		59  	lfollower1
+pad 	l1stop3		60  	lfollower1
+
+pad  dguytrig		61
+
+pad  disguyp1		62
+pad  dgreenguyp1	63
+pad  dgreenguyp2	64
+
+pad  disguyp2		65  	C.Thrue
+pad  disguisedrp1	68
+pad  disguisedrp2	69
+
+pad  thefollower1	70
+pad  thefollower2	71
+pad  thefollower3	72
+
+pad  dbackup1 		73	tf1
+pad  dbackup2 		74	tf2
+pad  dbackup3 		75	tf3
+
+
+pad  tquestionerp	80
+pad  bazookguardp1	81  
+pad  bazookguardp2	82 
+pad  bazookguardp3	83 
+pad  bazookguardp4	84 
+pad  bazookguardp5	85 
+pad  bazookguardp6	86 
+
+pad  sneakbytan		87
+pad  questionp1		88
+
+pad  streetguardp1	90
+pad  streetguardp2	91
+pad  streetguardp3	92
+pad  streetguardp4	93
+
+pad  streetguardp5	94
+pad  streetguardp6	95
+pad  streetguardp7	96
+pad  streetguardp8	97
+
+pad tandefense1		101	tanguard1
+pad tandefense2		102	tanguard2
+pad tandefense3		103	tanguard3
+pad tandefense4		104	tanguard4
+pad tandefense5		105	tanguard5
+pad tandefense6		106	tanguard6
+pad tandefense7		107	tanguard7
+pad tandefense8		108	tanguard8
+pad tandefense9		109	tanguard9
+pad tandefense10	110	tanguard10
+pad tandefense11	111	tanguard11
+pad tandefense12	112	tanguard12
+pad tandefense13	113	tanguard13
+pad tandefense14	114	tanguard14
+pad tandefense15	115	tanguard15
+
+
+pad outpostp1		120	tdefender1
+pad outpostp2		121	tdefender2
+pad outpostp3		122	tdefender3
+pad outpostp4		123	tdefender4
+pad outpostp5		124	tdefender5
+pad outpostp6		125	tdefender6
+pad outpostp7		126	tdefender7
+pad outpostp8		127	tdefender8
+
+pad spotterp		128
+pad as1p  		129
+
+pad 9thtankp1		130
+pad 9thtankp2		131
+pad 9thtankp3		132
+pad 9thtankp4		133
+
+pad 9thdefensepos1	146	9thtank1
+pad 9thdefensepos2	147	9thtank2
+pad 9thdefensepos3	148	9thtank3
+pad 9thdefensepos4	149	9thtank4
+
+pad  chillinp1		150	tdriver1
+pad  chillinp2		151	tdriver2
+pad  chillinp3		152	tdriver3
+pad  chillinp4		153	tdriver4
+
+pad enter9tank1 	154	9driver1
+pad enter9tank2 	155	9driver2
+pad enter9tank3 	156	9driver3
+pad enter9tank4 	157	9driver4
+
+
+pad rfollowerp1		203 	 rfollower1
+pad rfollowerp2		204 	 rfollower2
+pad lfollowerp1		205 	 lfollower1
+
+
+pad tcaptainp3		240  	tcaptain
+pad tanplatoonp21	241 	tanplatoon1
+pad tanplatoonp22	242 	tanplatoon2
+pad tanplatoonp23	243 	tanplatoon3
+pad tanplatoonp24	244 	tanplatoon4
+pad tanplatoonp25	245 	tanplatoon5
+pad tanplatoonp26	246 	tanplatoon6
+pad tanplatoonp27	247 	tanplatoon7
+pad tanplatoonp28	248 	tanplatoon8
+pad tanplatoonp29	249 	tanplatoon9
+
+pad 2ndmeeting		250	
+pad 2ndtankp1		251		
+pad 2ndtankp2		252	
+pad 2ndtankp3		253	
+pad 2ndwaypoint 	254	green
+
+pad victory691		255	green
+
+
+// *** VARIABLES *** //
+
+variable splittroopvar 0
+variable shuterhitvar 0
+variable bernhitvar 0
+variable losevar 0
+variable 2ndalivevar 3
+variable 2ndmvar 0
+variable foundgreenvar 0
+variable entered9var1 0
+variable entered9var2 0
+variable entered9var3 0
+variable entered9var4 0
+variable 9inposvar1 0
+variable 9inposvar2 0
+variable 9inposvar3 0
+variable 9inposvar4 0
+
+
+// *** PRELOADED SPRITES *** //	
+
+// ~ WATER WELL SPRITES ~ //
+preloadsprite 43 381 0
+preloadsprite 43 381 3
+preloadsprite 43 381 4
+preloadsprite 43 381 5
+preloadsprite 43 381 6
+preloadsprite 43 381 7
+preloadsprite 43 381 8
+preloadsprite 43 381 9
+
+// ~ CAMPFIRE ~ //
+preloadsprite 43 820 0
+preloadsprite 43 820 1
+preloadsprite 43 820 2
+preloadsprite 43 820 3
+preloadsprite 43 820 4
+preloadsprite 43 820 5
+preloadsprite 43 820 6
+preloadsprite 43 820 7
+
+
+// *** VICTORY CONDITION *** //
+
+if padon victory691 testvar 2ndmvar = 10 then
+	playsound "06_03_HQ.wav" victory691 7 1 500,
+	triggerdelay 2000 checkwin,
+	setvar 2ndmvar 11
+
+if checkwin testvar losevar = 0 then
+	triggerdelay 2000 greenwins,
+	showpda "You made it out of the city in time! Mission Accomplished."
+
+
+// *** LOSE CONDITION *** //
+
+if killed green trooper testvar getnpcstatus me = 0 then
+	addvar numgreen -1,
+	trigger checklose
+	
+if checklose testvar numgreen = 0 then
+	setvar losevar 10,
+	trigger losemess,
+	triggerdelay 3000 tanwins
+
+if losemess then
+	showpda "You were unable to escape the city, and have become another victim of this war... Mission Failed."
+
+
+// *** STARTUP *** //
+
+if startup1 then 
+	triggerdelay 300 timetobegin
+
+if timetobegin then
+	trigger yourtask,
+	trigger tandefences,
+	trigger outpostguys,
+	trigger confront,
+	trigger outpostguard,
+	triggerdelay 1000 armor2nd,
+	trigger streetguards,
+	trigger loopwell,
+	playsound "inland6_nomusic.wav" 15 2 1
+
+
+if balanceVOrandom then
+	random 
+		playsound "gamehq1_A.wav" 3 3,
+		playsound "gamehq2_B.wav" 3 3,
+		playsound "gamehq3_C.wav" 3 3
+
+if yourtask then
+	showpda "Commander, the Armor 2nd should be coming from the east, meet up with them and get out of the city as quickly as possible! The Tan have located your position and deployed the Armor 9th, so be careful!
+
+
+// *** MIDDLE OUTPOST *** //
+
+if outpostguys then
+	trigger outpostg
+
+macro tanoutpost 2
+
+{
+if outpostg then
+	createunit "tdefender@1" rifleman outpostp@1 tan 3 autorifle,
+	setfacing tdefender@1 @2,
+	setaimode tdefender@1 defend
+
+}
+
+expand tanoutpost (5 12 )
+expand tanoutpost (6 29 )
+expand tanoutpost (7 43 )
+expand tanoutpost (8 69 )
+expand tanoutpost (1 212 )
+expand tanoutpost (2 147 )
+expand tanoutpost (3 188 )
+expand tanoutpost (4 122 )
+
+
+// STREET GUARDS //
+
+macro streetgmac 4
+
+{
+
+variable streetguardhitvar@1 	0
+
+if streetguards then
+	createunit "streetguard@1" rifleman streetguardp@1 tan 3 autorifle,
+	setaipose streetguard@1 @2,
+	setaimode  streetguard@1 @3
+
+if hit streetguard@1 testvar streetguardhitvar@1 = 0 then
+	order streetguard@4 follow me inmode attack,
+	triggerdelay 3000 sgshoot,
+	setvar streetguardhitvar@1 10
+
+if sgshoot then
+	setaipose streetguard@4 dive,
+	setaimode streetguard@4 defend
+}
+
+expand streetgmac (1 kneel defend 7)
+expand streetgmac (2 stand defend 7)
+expand streetgmac (3 kneel defend 8)
+expand streetgmac (4 stand defend 8)
+expand streetgmac (5 stand standfire 7)
+expand streetgmac (6 kneel standfire 8)
+expand streetgmac (7 stand attack 7)
+expand streetgmac (8 stand attack 8)
+
+
+// *** ARMOR 9TH TANKS *** //
+
+if outpostguard then
+	trigger 9thtanks	
+
+macro armor9thmac 4
+
+{
+
+if 9thtanks then
+	createvehicle 9thtank@1 tank 9thtankp@1 tan,
+	setaimode tank@1 ignore,
+	setfacing 9thtank@1 @2,
+	trigger 9thdrivers@1
+
+if 9thdrivers@1 then
+	createunit "9driver@1" rifleman chillinp@1 tan 3,
+	setaipose 9driver@1 @3,
+	setfacing 9driver@1 @4
+}
+	
+expand armor9thmac ( 1 35 kneel 145)
+expand armor9thmac ( 2 35 kneel 245) 
+expand armor9thmac ( 3 215 kneel 80)
+expand armor9thmac ( 4 215 stand 135)
+
+
+// *** ALARM SECTION *** //
+
+if alarm testvar 2ndmvar = 10 then
+	trigger talarmed
+
+if talarmed then
+	playsound "AlarmKlaxon.wav" alarmbuilding 6 1 1200,
+	triggerdelay 2000 9thmountup,
+	triggerdelay 20000 alarmoff
+
+if alarmoff then
+	playsound "" 6 1 1200
+
+if 9thmountup then
+	order 9driver1 goto enter9tank1 inmode ignore,
+	order 9driver2 goto enter9tank2 inmode ignore,
+	order 9driver3 goto enter9tank3 inmode ignore,
+	order 9driver4 goto enter9tank4 inmode ignore
+
+if padon enter9tank1 testvar entered9var1 = 0 then
+	entervehicle 9driver1 9thtank1,
+	stayinvehicle 9driver1 1
+
+if padon enter9tank2 testvar entered9var2 = 0 then
+	entervehicle 9driver2 9thtank2,
+	stayinvehicle 9driver2 1
+
+if padon enter9tank3 testvar entered9var3 = 0 then
+	entervehicle 9driver3 9thtank3,
+	stayinvehicle 9driver3 1
+
+if padon enter9tank4 testvar entered9var4 = 0 then
+	entervehicle 9driver4 9thtank4,
+	stayinvehicle 9driver4 1,
+	triggerdelay 2000 9thmoveout
+
+if 9thmoveout butnot bazalarmed then
+	order 9thtank1 goto 9thdefensepos1 inmode standfire,
+	order 9thtank2 goto 9thdefensepos2 inmode standfire,
+	order 9thtank3 goto 9thdefensepos3 inmode standfire,
+	order 9thtank4 goto 9thdefensepos4 inmode standfire
+
+if padon 9thdefensepos1 testvar 9inposvar1 = 0 then
+	setfacing 9thtank1 130
+
+if padon 9thdefensepos2 testvar 9inposvar2 = 0 then
+	setfacing 9thtank2 130
+
+if padon 9thdefensepos3 testvar 9inposvar3 = 0 then
+	setfacing 9thtank3 130
+
+if padon 9thdefensepos4 testvar 9inposvar4 = 0 then
+	setfacing 9thtank4 130
+
+
+// *** BAZOOKA DEPOT *** //
+
+if confront then
+	createunit "tquestioner" rifleman tquestionerp tan 3 autorifle,
+	setfacing tquestioner 128,
+	trigger bazdepotguys 
+
+macro bazmac 3
+
+{
+if bazdepotguys then
+	createunit "bazookguard@1" rifleman bazookguardp@1 tan 3 autorifle,
+	createpowerup bazookapup@1 bazooka bazookaguardp@1 5,
+	selectinventoryitem bazookaguard@1 bazookapup@1 2,
+	setaipose bazookguard@1 @2,
+	setfacing bazookguard@1 @3,
+	selectinventoryitem bazookaguard3 bazookaguard3 0,
+	selectinventoryitem bazookaguard4 bazookaguard4 0
+}
+
+expand bazmac (1 stand 82)
+expand bazmac (2 stand 82)
+expand bazmac (3 kneel 170)
+expand bazmac (4 kneel 0)
+expand bazmac (5 kneel 115)
+expand bazmac (6 stand 140)
+
+if padon sneakbytan testvar getdisguise green = 0 then
+	playsound "06_01_tantrooper.wav" tquestionerp 10 2 500,
+	order bazookguard3 follow me inmode attack,
+	order bazookguard4 follow me inmode attack,
+	order bazookguard5 goto sneakbytan inmode defend,
+	order bazookguard6 goto sneakbytan inmode defend
+
+if hit bazookguard1 butnot bghitalready then
+	order bazookguard3 follow me inmode attack,
+	order bazookguard4 follow me inmode attack,
+	order bazookguard5 goto sneakbytan inmode defend,
+	order bazookguard6 goto sneakbytan inmode defend,
+	trigger bg1hitalready
+
+if hit bazookguard2 butnot bghitalready then
+	order bazookguard3 follow me inmode attack,
+	order bazookguard4 follow me inmode attack,
+	order bazookguard5 goto sneakbytan inmode defend,
+	order bazookguard6 goto sneakbytan inmode defend,
+	trigger bghitalready
+
+if hit tquestioner butnot bghitalready then
+	order bazookguard3 follow me inmode attack,
+	order bazookguard4 follow me inmode attack,
+	order bazookguard5 goto sneakbytan inmode defend,
+	order bazookguard6 goto sneakbytan inmode defend,
+	trigger bghitalready
+	
+// *** Disguise Guy *** //
+
+if padon dguytrig butnot descape then
+	createunit "D.Shuter" rifleman dgreenguyp1 green 3,
+	createunit "U.Bern" rifleman dgreenguyp2 green 3,	
+	createunit "C.Thrue" rifleman disguyp1 green 3,
+	setaimode U.bern ignore,
+	setaimode d.shuter ignore,
+	setaimode C.Thrue ignore,
+	setnpc D.Shuter 1,
+	setnpc U.Bern 1,
+	setnpc C.Thrue 1,
+ 	setforcecolor C.Thrue tan,
+	trigger escapesoldiers,
+	trigger descape,
+	triggerdelay 1000 tanfollowers
+
+if tanfollowers then
+	createunit "tf1" rifleman thefollower1 tan 3,
+	createunit "tf2" rifleman thefollower2 tan 3,	
+	createunit "tf3" rifleman thefollower3 tan 3,
+	order tf1 follow D.Shuter inmode attack,
+	order tf2 follow C.Thrue inmode attack,
+	order tf3 follow U.Bern inmode attack
+
+if escapesoldiers then
+	order C.Thrue goto disguyp2,
+	order D.Shuter goto dbackup1,
+	order U.Bern goto dbackup2
+
+if padon disguyp2 then
+	trigger dguyturn,	
+	trigger turnandfight1,
+	triggerdelay 200 turnandfight2
+
+if turnandfight1 then
+	trigger fightback1,
+	setvar shuterhitvar 10
+
+if fightback1 then
+	setaimode D.shuter defend,
+	setaipose D.Shuter kneel,
+	triggerdelay 2000 tanfiringline,
+	triggerdelay 1000 dlife
+
+if tanfiringline then
+	setaimode tf1 standfire,
+	setaimode tf2 standfire,
+	setaimode tf3 standfire,
+	setaipose tf1 stand,
+	setaipose tf2 kneel,
+	setaipose tf3 stand
+
+if dlife then
+	setmaxhealth d.shuter 1
+
+if turnandfight2 then
+	trigger fightback2
+
+if fightback2 then
+	setaimode U.bern defend,
+	setaipose U.bern kneel,
+	triggerdelay 1100 ylife,
+	triggerdelay 2000 tfight
+
+if ylife then
+	setmaxhealth U.bern 1
+
+if dguyturn then
+	setfacing C.Thrue 15,
+	triggerdelay 100 fightback3
+
+if fightback3 then
+	setaimode C.Thrue defend,
+	setaipose C.Thrue prone
+
+if tfight then
+	setmaxhealth tf1 10,
+	setmaxhealth tf2 10,	
+	setmaxhealth tf3 10,
+	triggerdelay 1000 tguydie1,
+	triggerdelay 1000 tguydie2,
+	triggerdelay 1000 tguydie3
+
+if tguydie1 then
+	heal tf1 -300
+
+if tguydie2 then
+	heal tf2 -300
+
+if tguydie3 then
+	heal tf3 -300
+
+if allof killed tf1 killed tf2 killed tf3 then
+	setaipose c.thrue stand,
+	order C.Thrue follow me,
+	triggerdelay 500 disvo
+
+if disvo then
+	setaipose c.thrue stand,
+	setfacing c.thrue 128,
+	playsound "06_01_disguiseguy.wav" 7 1 300,
+	triggerdelay 2000 dropdisguises
+
+if dropdisguises then
+	createpowerup disguisetan disguisedrp1 1,
+	createpowerup disguisetan disguisedrp2 1,
+	playsound "disguise.wav" 9 2 400,
+	triggerdelay 500 colorchng
+
+if colorchng then
+	setnpc C.Thrue 0,
+	setnpc U.Bern 0,
+	setnpc D.Shuter 0,
+        setvar numgreen getdeployedtroopercount green,
+	setforcecolor c.thrue green,
+	heal C.Thrue 200,
+	heal U.Bern 200,
+	heal D.Shuter 200
+
+// *** TAN REINFORCEMENTS *** //
+
+if tanreinforce testvar 2ndmvar = 10 then
+	triggerdelay 50000 coming4u,
+	triggerdelay 33000 onyertail,
+	triggerdelay 55000 stilcoming
+
+
+// R SIDE BACKUP TANKS //
+
+if coming4u then
+	createvehicle rfollower1 tank rfollowerp1 tan,
+	createunit "rfollowdriver" rifleman rfollowerp1 tan 3,
+	triggerdelay 10 getin,
+	setitemflag rfollower1 strategic 1,
+	order rfollower1 goto r1stop1,
+	trigger coming4u2
+
+if getin then
+	entervehicle rfollowdriver rfollower1,
+	stayinvehicle rfollowdriver 1
+
+if padon r1stop1 then
+	setgunfacing badtank1 95,
+	triggerdelay 4000 movinon
+
+if movinon then
+	setgunfacing rfollower1 0,
+	triggerdelay 4000 keepmovinon
+
+if keepmovinon then
+	order rfollower1 goto r1stop2
+
+if padon r1stop2 then
+	setgunfacing rfollower1 95,
+	triggerdelay 4000 keepmovinon2
+
+if keepmovinon2 then
+	setgunfacing rfollower1 0,
+	triggerdelay 4000 keepmovinon3
+
+if keepmovinon3 then
+	order rfollower1 goto r1stop3
+
+if padon r1stop3 then
+	setgunfacing rfollower1 95,
+	triggerdelay 4000 keepmovinon4
+
+if keepmovinon4 then
+	setgunfacing rfollower1 0,
+	triggerdelay 4000 keepmovinon5
+
+if keepmovinon5 then
+	order rfollower1 goto r1stop4
+
+
+if coming4u2 then
+	createvehicle rfollower2 tank rfollowerp2 tan,
+	createunit "rfollowdriver2" rifleman rfollowerp2 tan 3,
+	triggerdelay 10 getin2,
+	order rfollower2 goto r2stop1 inmode attack,
+	setitemflag rfollower2 strategic 1
+
+if padon r2stop1 then
+	setgunfacing rfollower2 165,
+	triggerdelay 3000 movinon2
+
+if movinon2 then
+	setgunfacing rfollower2 0,
+	triggerdelay 3000 keepmovinon2
+
+if keepmovinon2 then
+	order rfollower2 goto r2stop2 inmode standfire
+
+if padon r2stop3 then
+	setgunfacing rfollower2 165,
+	triggerdelay 5000 stillookin2
+
+if stillookin2 then
+	order rfollower2 goto r2stop3 inmode standfire
+
+if getin then
+	entervehicle rfollowdriver2 rfollower2,
+	stayinvehicle rfollowdriver2 1
+
+// L SIDE BACKUP TANK //
+
+if onyertail then
+	createvehicle lfollower1 tank lfollowerp1 tan,
+	createunit "lfollowdriver" rifleman lfollowerp1 tan 3,
+	triggerdelay 10 lgetin,
+	order lfollower1 goto 2stop1 inmode attack
+
+if lgetin then
+	entervehicle lfollowdriver lfollower1,
+	stayinvehicle lfollowdriver 1
+
+if padon l1stop1 then
+	setgunfacing lfollower1 85,
+	triggerdelay 6000 lookbothways
+
+if lookbothways then
+	setgunfacing lfollower1 170,
+	order backuptank1 goto l1stop2 inmode attack
+
+if padon l1stop2 then
+	order lfollower1 goto l1stop3 inmode attack,
+	triggerdelay 2000 getbombed
+
+if getbombed then
+	fireweapon as1 spotter lfollower1,
+	fireweapon as1 spotter c.thrue,
+	fireweapon as1 spotter endspot,
+	triggerdelay 5000 laggerraids
+
+if laggerraids then
+	triggerdelay 3000 mb1,
+	triggerdelay 5000 mb2,
+	triggerdelay 7000 mb3,
+	triggerdelay 9000 mb4,
+	triggerdelay 11000 mb5, 
+	triggerdelay 13000 mb6,
+	triggerdelay 15000 mb7,
+	triggerdelay 17000 mb8,
+	triggerdelay 19000 mb9,
+	triggerdelay 21000 mb10,
+	triggerdelay 23000 mb11,
+	triggerdelay 25000 mb12,
+	triggerdelay 27000 mb13, 
+	triggerdelay 29000 mb14, 
+	triggerdelay 31000 mb15, 
+	triggerdelay 33000 mb16, 
+	triggerdelay 35000 mb17, 
+	triggerdelay 37000 mb18, 
+	triggerdelay 39000 mb19,
+	triggerdelay 41000 mb20,
+	triggerdelay 43000 mb21,
+	triggerdelay 45000 mb22,
+	triggerdelay 47000 mb23,
+	triggerdelay 49000 mb24,
+	triggerdelay 51000 mb25,
+	triggerdelay 53000 mb26,
+	triggerdelay 55000 mb27,
+	triggerdelay 57000 mb28,
+	triggerdelay 59000 mb29,
+	triggerdelay 61000 mb30, 
+	triggerdelay 63000 mb31,
+	triggerdelay 65000 mb32,
+	triggerdelay 67000 mb33,
+	triggerdelay 69000 mb34,
+	triggerdelay 71000 mb35,
+	triggerdelay 73000 mb36,
+	triggerdelay 75000 mb37
+
+if mb1 then
+	fireweapon as1 spotter madbomber1
+
+if mb2 then
+	fireweapon as1 spotter madbomber2 
+
+if mb3 then
+	fireweapon as1 spotter madbomber3
+
+if mb4 then
+	fireweapon as1 spotter madbomber4
+
+if mb5 then
+	fireweapon as1 spotter madbomber5
+
+if mb6 then
+	fireweapon as1 spotter madbomber6
+
+if mb7 then
+	fireweapon as1 spotter madbomber7
+
+if mb8 then
+	fireweapon as1 spotter madbomber8
+
+if mb9 then
+	fireweapon as1 spotter madbomber9 
+
+if mb10 then
+	fireweapon as1 spotter madbomber10 
+
+if mb11 then
+	fireweapon as1 spotter madbomber11
+
+if mb12 then
+	fireweapon as1 spotter madbomber12 
+
+if mb13 then
+	fireweapon as1 spotter madbomber13 
+
+if mb14 then
+	fireweapon as1 spotter madbomber14 
+
+if mb15 then
+	fireweapon as1 spotter madbomber15
+
+if mb16 then
+	fireweapon as1 spotter madbomber16
+ 
+if mb17 then
+	fireweapon as1 spotter madbomber17
+  
+if mb18 then
+	fireweapon as1 spotter madbomber18 
+
+if mb19 then
+	fireweapon as1 spotter madbomber19 
+
+if mb20 then
+	fireweapon as1 spotter madbomber20
+ 
+if mb21 then
+	fireweapon as1 spotter madbomber21 
+
+if mb22 then
+	fireweapon as1 spotter madbomber22 
+
+if mb23 then
+	fireweapon as1 spotter madbomber23 
+
+if mb24 then
+	fireweapon as1 spotter madbomber24
+ 
+if mb25 then
+	fireweapon as1 spotter madbomber25
+ 
+if mb26 then
+	fireweapon as1 spotter madbomber26
+ 
+if mb27 then
+	fireweapon as1 spotter madbomber27  
+
+if mb28 then
+	fireweapon as1 spotter madbomber28 
+
+if mb29 then
+	fireweapon as1 spotter madbomber29 
+
+if mb30 then
+	fireweapon as1 spotter madbomber30 
+
+if mb31 then
+	fireweapon as1 spotter madbomber31
+
+if mb32 then
+	fireweapon as1 spotter madbomber32 
+
+if mb33 then
+	fireweapon as1 spotter madbomber33 
+
+if mb34 then
+	fireweapon as1 spotter madbomber34
+
+if mb35 then
+	fireweapon as1 spotter madbomber35 
+
+if mb36 then
+	fireweapon as1 spotter madbomber36
+
+if mb37 then
+	fireweapon as1 spotter madbomber37 
+
+
+// *** TAN ARMY FROM THE SOUTH *** //
+
+macro tanplatoonmac 9
+
+{
+variable hityetvar@1 0
+
+if stilcoming then
+	createunit "tanplatoon@1" rifleman tanplatoonps@1 tan 3 autorifle,
+	createunit "tcaptain" rifleman tcaptainp1 tan 3 autorifle,
+	setspeed tanplatoon@1 slow,
+	setspeed tcaptain slow,
+	triggerdelay 1000 tmarchin
+
+if tmarchin testvar hityetvar@1 = 0 then 
+	order tcaptain goto tcaptainp1 inmode ignore,
+	order tanplatoon@1 goto tanplatoonp@1 inmode ignore
+
+if padon tcaptainp1 testvar hityetvar@1 = 0 then
+	setfacing tcaptain 135,
+	triggerdelay 1500 marchon
+
+if marchon testvar hityetvar@1 = 0 then
+	setfacing tcaptain 15,
+	order tanplatoon@1 goto tanplatoonp@2,
+	order tcaptain goto tcaptainp2
+
+if padon tcaptainp2 testvar hityetvar@1 = 0 then
+	order tcaptain goto tcaptainp3,
+	order tanplatoon@1 goto tanplatoonp@3,
+	setvar splittroopvar 10	
+
+if padon tcaptainp3 then
+	triggerdelay 1000 gotoend
+	
+if gotoend then
+	order tcaptain goto victory691 inmode attack,
+	order tanplatoon@1 goto @9 inmode attack
+
+if hit tanplatoon@1 testvar hityetvar@1 = 0 then
+	setaipose tanplatoon@1 @4,
+	order tanplatoon@5 follow me,
+	triggerdelay 1500 stoprun,
+	trigger hitonce,
+	addvar hityetvar@1 10,
+	setvar foundgreenvar 10
+
+if hitonce testvar foundgreenvar = 10 then 
+	setaimode tanplatoon2 standfire,
+	setaimode tanplatoon3 standfire,
+	setaimode tanplatoon4 standfire,
+	setaimode tanplatoon6 standfire,
+	setaimode tanplatoon8 standfire,
+	setaimode tanplatoon9 standfire,
+	setspeed tanplatoon1 normal,
+	setspeed tanplatoon2 normal,
+	setspeed tanplatoon3 normal,
+	order tanplatoon@1 follow me inmode attack
+	
+if stoprun then 
+	setaipose tanplatoon@5 @4,
+	setaipose tanplatoon@7 @4,
+	setaimode tanplatoon@5 standfire,
+	setaimode tanplatoon@7 standfire
+
+
+if killed tanleader testvar splittroopvar < 10 then
+	trigger hitonce@6,
+	setspeed tanplatoon@8 normal,
+	order tanplatoon@1 goto victory691 inmode attack
+}
+
+expand tanplatoonmac (1 11 21 prone 4 1 7 1 splitlp1)
+expand tanplatoonmac (2 12 22 kneel 5 2 8 1 splitlp2)
+expand tanplatoonmac (3 13 23 prone 6 3 9 1 victory691)
+expand tanplatoonmac (4 14 24 kneel 1 1 7 5 splitlp3)
+expand tanplatoonmac (5 15 25 prone 2 2 8 5 splitlp4)
+expand tanplatoonmac (6 16 26 kneel 3 3 9 5 victory691)
+expand tanplatoonmac (7 17 27 kneel 1 1 4 7 splitlp5)
+expand tanplatoonmac (8 18 28 stand 2 2 5 7 victory691)
+expand tanplatoonmac (9 19 29 kneel 3 3 6 7 victory691)
+
+
+// *** RENDEVOUS WITH THE 2nd *** //
+		
+if armor2nd then
+	trigger 2ndplacement,
+	trigger 2ndlead,
+	triggerdelay 500 dadrivers
+		
+macro 2ndbrigv 1
+
+{
+if 2ndplacement then
+	createvehicle 2ndtank@1 tank 2ndtankp@1 green,
+	setfacing 2ndtank@1 90,
+	setnpc 2ndtank@1 1
+}
+
+expand 2ndbrigv (1)	
+expand 2ndbrigv (2)
+expand 2ndbrigv (3)
+
+
+macro dadriversmac 1
+{
+
+variable 2nddriverinvar@1 0
+
+if dadrivers then
+	createunit "gdriver@1" rifleman 2ndtankp@1 green 3 autorifle,
+	entervehicle gdriver@1 2ndtank@1,
+	addvar 2nddriverinvar@1 1,
+	stayinvehicle gdriver@1 1,
+	setnpc gdriver@1 1,
+	setnpc 2ndtank1 1,
+	setnpc 2ndtank@1 1,
+        setvar numgreen getdeployedtroopercount green
+}
+
+expand dadriversmac (2)
+expand dadriversmac (3)
+
+if 2ndlead then
+	createunit "gcaptain" rifleman 2ndmeeting green 3 autorifle,
+	setfacing gcaptain 128,
+	setnpc gcaptain 1,
+        setvar numgreen getdeployedtroopercount green
+
+if padon 2ndwaypoint testvar 2ndmvar = 0 then
+	setvar 2ndmvar 10,
+	stayinvehicle gcaptain 1,
+	trigger 2ndvoice,
+	order gcaptain goto (2259,3204),
+	triggerdelay 1000 have2nd,
+	triggerdelay 3000 tanreinforce,
+	triggerdelay 4000 2ndmessage,
+	trigger airraids,
+	triggerdelay 7000 alarm
+
+if have2nd then
+	setnpc 2ndtank1 0,
+	setnpc 2ndtank2 0,
+	setnpc 2ndtank3 0,
+	setnpc gcaptain 0,
+	setnpc gdriver2 0,
+	setnpc gdriver3 0,
+        setvar numgreen getdeployedtroopercount green,
+	entervehicle gcaptain 2ndtank1	
+
+if 2ndmessage then
+	showpda "Good Job commander. Now get out of the city as quick as possible. Our bombers are on there way."
+
+if 2ndvoice then
+	playsound "06_02_2nd_2B.wav" 2ndtankp1 8 1 500
+
+
+
+// *** AIRRAIDS *** //
+
+if airraids testvar 2ndmvar = 10 then
+	triggerdelay 52000 bombrun1,	
+	triggerdelay 54000 bombrun2,
+	triggerdelay 56000 bombrun3,	
+	triggerdelay 60000 bombrun4,	
+	triggerdelay 62000 bombrun5,
+	triggerdelay 65000 bombrun6,
+	triggerdelay 68000 bombrun7,	
+	triggerdelay 72000 bombrun8,
+	triggerdelay 74000 bombrun9,	
+	triggerdelay 77000 bombrun10,
+	triggerdelay 80000 bombrun11,	
+	triggerdelay 83000 bombrun12,	
+	triggerdelay 860000 bombrun13,
+	triggerdelay 90000 bombrun14,
+	triggerdelay 94000 bombrun15,	
+	triggerdelay 98000 bombrun16,
+	triggerdelay 102000 bombrun17,	
+	triggerdelay 104000 bombrun18,
+	triggerdelay 106000 bombrun19,	
+	triggerdelay 107000 bombrun20,	
+	triggerdelay 111000 bombrun21,
+	triggerdelay 114000 bombrun22,
+	triggerdelay 118000 bombrun23,	
+	triggerdelay 122000 bombrun24,
+	triggerdelay 123000 bombrun25,	
+	triggerdelay 124000 bombrun26,
+	triggerdelay 126000 bombrun27,	
+	triggerdelay 127000 bombrun28,
+	triggerdelay 128000 bombrun29,	
+	triggerdelay 130000 bombrun30
+
+if bombrun1 then
+	createunit "spotter" rifleman spotterp tan 3 autorifle,
+	createpowerup as1 airstrike as1p 70,
+	fireweapon as1 spotter airdrop1,
+	triggerdelay 200 raidsound1,
+	triggerdelay 400 raidsound2,
+	triggerdelay 800 raidsound3  
+
+if raidsound1 then
+	playsound "bombwhistle2.wav" airdrop30 15 2 500
+
+if raidsound2 then
+	playsound "bombwhistle2.wav" airdrop29 14 2 500
+
+if raidsound3 then
+	playsound "bombwhistle2.wav" airdrop28 13 2 500
+
+if bombrun2 then
+	fireweapon as1 spotter airdrop2
+
+if bombrun3 then
+	fireweapon as1 spotter airdrop3
+
+if bombrun4 then
+	fireweapon as1 spotter airdrop4
+
+if bombrun5 then
+	fireweapon as1 spotter airdrop5,
+	triggerdelay 200 raidsound4,
+	triggerdelay 400 raidsound5,
+	triggerdelay 800 raidsound6  
+
+if raidsound4 then
+	playsound "bombwhistle2.wav" airdrop25 12 2 500
+
+if raidsound5 then
+	playsound "bombwhistle2.wav" airdrop24 11 2 500
+
+if raidsound6 then
+	playsound "bombwhistle2.wav" airdrop23 10 2 500
+
+
+if bombrun6 then
+	fireweapon as1 spotter airdrop6
+
+if bombrun7 then
+	fireweapon as1 spotter airdrop7
+
+if bombrun8 then
+	fireweapon as1 spotter airdrop8
+
+if bombrun9 then
+	fireweapon as1 spotter airdrop9
+
+if bombrun10 then
+	fireweapon as1 spotter airdrop10,
+	triggerdelay 200 raidsound7,
+	triggerdelay 400 raidsound8,
+	triggerdelay 800 raidsound9  
+
+if raidsound7 then
+	playsound "bombwhistle2.wav" airdrop22 9 2 500
+
+if raidsound8 then
+	playsound "bombwhistle2.wav" airdrop21 8 2 500
+
+if raidsound9 then
+	playsound "bombwhistle2.wav" airdrop20 7 2 500
+
+if bombrun11 then
+	fireweapon as1 spotter airdrop11
+
+if bombrun12 then
+	fireweapon as1 spotter airdrop12
+
+if bombrun13 then
+	fireweapon as1 spotter airdrop13
+
+if bombrun14 then
+	fireweapon as1 spotter airdrop14,
+	triggerdelay 200 raidsound10,
+	triggerdelay 400 raidsound11,
+	triggerdelay 800 raidsound12  
+
+if raidsound10 then
+	playsound "bombwhistle2.wav" airdrop19 6 2 500
+
+if raidsound11 then
+	playsound "bombwhistle2.wav" airdrop18 15 2 500
+
+if raidsound12 then
+	playsound "bombwhistle2.wav" airdrop17 14 2 500
+
+if bombrun15 then
+	fireweapon as1 spotter airdrop15
+
+if bombrun16 then
+	fireweapon as1 spotter airdrop16
+
+if bombrun17 then
+	fireweapon as1 spotter airdrop17
+
+if bombrun18 then
+	fireweapon as1 spotter airdrop18,
+	triggerdelay 200 raidsound13 ,
+	triggerdelay 400 raidsound14,
+	triggerdelay 800 raidsound15
+
+if raidsound13 then
+	playsound "bombwhistle2.wav" airdrop3 12 2 500
+
+if raidsound14 then
+	playsound "bombwhistle2.wav" airdrop5 11 2 500
+
+if raidsound15 then
+	playsound "bombwhistle2.wav" airdrop7 10 2 500
+
+if bombrun19 then
+	fireweapon as1 spotter airdrop19
+
+if bombrun20 then
+	fireweapon as1 spotter airdrop20 
+
+if bombrun21 then
+	fireweapon as1 spotter airdrop21,
+	triggerdelay 200 raidsound16,
+	triggerdelay 400 raidsound17,
+	triggerdelay 800 raidsound18  
+
+if raidsound16 then
+	playsound "bombwhistle2.wav" airdrop9 9 2 500
+
+if raidsound17 then
+	playsound "bombwhistle2.wav" airdrop11 8 2 500
+
+if raidsound18 then
+	playsound "bombwhistle2.wav" airdrop13 7 2 500
+
+
+if bombrun22 then
+	fireweapon as1 spotter airdrop22
+
+if bombrun23 then
+	fireweapon as1 spotter airdrop23
+
+if bombrun24 then
+	fireweapon as1 spotter airdrop24
+
+if bombrun25 then
+	fireweapon as1 spotter airdrop25
+
+if bombrun26 then
+	fireweapon as1 spotter airdrop26,
+	triggerdelay 200 raidsound19,
+	triggerdelay 400 raidsound20,
+	triggerdelay 800 raidsound21  
+
+if raidsound19 then
+	playsound "bombwhistle2.wav" airdrop15 6 2 500
+
+if raidsound20 then
+	playsound "bombwhistle2.wav" airdrop17 15 2 500
+
+if raidsound21 then
+	playsound "bombwhistle2.wav" airdrop19 14 2 500
+
+
+if bombrun27 then
+	fireweapon as1 spotter airdrop27
+
+if bombrun28 then
+	fireweapon as1 spotter airdrop28
+
+if bombrun29 then
+	fireweapon as1 spotter airdrop29
+
+if bombrun30 then
+	fireweapon as1 spotter airdrop30,
+	triggerdelay 200 raidsound22,
+	triggerdelay 400 raidsound23,
+	triggerdelay 800 raidsound24  
+
+if raidsound22 then
+	playsound "bombwhistle2.wav" airdrop21 13 2 500
+
+if raidsound23 then
+	playsound "bombwhistle2.wav" airdrop23 12 2 500
+
+if raidsound24 then
+	playsound "bombwhistle2.wav" airdrop25 11 2 500
+
+//  *** TAN DEFENCES *** //
+
+if tandefences then 
+	trigger makeguards
+
+macro tansoldiers 2
+
+{
+
+if makeguards then
+	createunit "@1" rifleman @2 tan 3 autorifle,
+	setaimode @1 defend
+}
+
+expand tansoldiers (tanguard1 tandefense1 )
+expand tansoldiers (tanguard2 tandefense2 )
+expand tansoldiers (tanguard3 tandefense3 )
+expand tansoldiers (tanguard4 tandefense4 )
+expand tansoldiers (tanguard5 tandefense5 )
+expand tansoldiers (tanguard6 tandefense6 )
+expand tansoldiers (tanguard7 tandefense7 )
+expand tansoldiers (tanguard8 tandefense8 )
+expand tansoldiers (tanguard9 tandefense9 )
+expand tansoldiers (tanguard10 tandefense10 )
+expand tansoldiers (tanguard11 tandefense11 )
+expand tansoldiers (tanguard12 tandefense12 )
+expand tansoldiers (tanguard13 tandefense13 )
+expand tansoldiers (tanguard14 tandefense14 )
+expand tansoldiers (tanguard15 tandefense15 )
+
+// *** CAMPFIRE *** //
+
+macro firemac 3
+
+{
+pad firepad@1   @2 trooper
+
+variable firevar@1 0
+variable soundvar@1 0
+if reloopfire@1 testvar firevar@1 = 0 then
+        setvar firevar@1 10,
+        setobjstate fire@1 fire@1_active,
+        makesmoke fire@1 1000,
+        triggerdelay 1 fireSFX@1
+
+if fireSFX@1 testvar soundvar@1 = 0 then
+        setvar soundvar@1 10,
+        playsound "campfire.wav" fire@1 3 @3 1 40
+
+
+// ** FIREPAD@1 TRIGGER ** //
+
+if padon firepad@1 then
+        setdamagepad firepad@1 2 100 fire
+
+object fire@1
+        state fire@1_active
+                frame 100 00
+                frame 100 01
+                frame 100 02
+                frame 100 03
+                frame 100 04
+                frame 100 05
+                frame 100 06
+                frame 99 07
+                setvar firevar@1 0,
+                triggerdelay 1 reloopfire@1
+
+}
+expand firemac ( 1 12 5 )
+expand firemac ( 2 13 5 )
+expand firemac ( 3 14 5 )
+
+// *** WATER WELL *** //
+
+macro wellmac 1
+
+{
+variable wellvar@1 0
+
+if loopwell testvar wellvar@1 = 0 then
+        setvar wellvar@1 1,
+        setobjstate well@1 well_active@1
+
+object well@1
+
+        state well_active@1
+                frame 99 00
+                frame 100 03
+                frame 100 04
+                frame 100 05
+                frame 100 06
+                frame 100 07
+                frame 100 08
+                frame 100 09
+                setvar wellvar@1 0,
+                triggerdelay 1 loopwell
+
+        state well_damaged@1
+                frame 7 02
+
+if killed well@1 then
+        setvar wellvar@1 100,
+        setobjstate well@1 well_damaged@1
+}
+
+expand wellmac ( 1 )
+expand wellmac ( 2 )
+expand wellmac ( 3 )
+

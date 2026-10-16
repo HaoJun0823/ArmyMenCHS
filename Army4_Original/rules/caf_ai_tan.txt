@@ -1,0 +1,8 @@
+include ctf_ai.txt
+include caf_ai.txt
+
+expand caf_ai_enemy ( tan blue 2 )
+expand caf_ai_enemy ( tan green 0 )
+expand caf_ai_enemy ( tan grey 3 )
+
+expand ctf_ai_macro ( tan green blue grey t 0 2 3)

@@ -1,0 +1,497 @@
+// Script for Map 11//
+
+
+//Pad Setup //
+
+pad V1		28 		cvy1	//Final objective//	  //For convoy vehicles//
+pad V2		36		cvy2	//Final Objective//
+pad V3		37		cvy5	//Final objective//
+pad trig1	15		green	//trigger tan attack//
+pad trig2	16		green	//trigger tan attack//
+pad trig3	17		green	//trigger tan attack//
+pad trig4	20		green	// Spawn tans//
+pad cvy1_w1 	30		cvy1	// convoy waypoint//
+pad cvy1_w2	31		cvy1
+pad cvy1_w3	32		cvy1
+pad cvy1_w4	33		cvy1
+pad cvy1_w5 	34		cvy1
+pad cvy2_w1 	40		cvy2	// convoy waypoint//
+pad cvy2_w2	41		cvy2
+pad cvy2_w3	42		cvy2
+pad cvy2_w4	43		cvy2
+pad cvy2_w5 	44		cvy2
+pad cvy5_w1 	50		cvy5	// convoy waypoint//
+pad cvy5_w2	51		cvy5
+pad cvy5_w3	52		cvy5
+pad cvy5_w4	53		cvy5
+pad cvy5_w5 	54		cvy5
+pad tanA	80			//tan spawn//
+pad tanB	90			//tan spawn//
+pad tanC	100			//tan spawn//
+pad atk1	81			//tan way point//
+pad atk2	91			//tan way point//
+pad atk3	101			//tan way point//
+pad balancepad 	200			//balance pad//
+pad 29_0	21
+pad 29_1	22
+pad 29_2	23
+pad 29_3	24
+pad 29_4	25
+pad 29_5	26
+
+
+//End Pad Setup//
+
+//Variable Setup //
+
+variable win1		0
+variable test1		0
+variable test2		0
+variable test3		0
+variable test1a		0
+variable test2a		0
+variable test3a		0
+variable test4		0
+variable test5		0
+variable test6		0
+variable losevar	0
+variable campgds	0
+variable warnmsg	0
+variable deadcvy	0
+variable killed1	0
+variable killed2	0
+variable killed3	0
+
+//End Variable Setup//
+
+
+//Startup//
+
+if startup1 then
+
+	playsound "inland11_nomusic.wav" 0 16 1,
+	triggerdelay 200 gstart
+	
+	
+//Win Conditions//
+
+if padon v1 testvar test1a = 0 then
+
+	setvar test1a 1,
+	addvar win1	1,
+	showmessage "车队 1 号车安全抵达",
+	triggerdelay 1000 checkwin
+	
+	
+if padon v2 testvar test2a = 0 then
+
+	setvar test2a 1,
+	addvar win1 1,
+	showmessage "车队 2 号车安全抵达",
+	triggerdelay 1000 checkwin
+
+
+if padon v3 testvar test3a = 0 then
+
+	setvar test3a 1,
+	addvar win1 1,
+	showmessage "车队 3 号车安全抵达",
+	triggerdelay 1000 checkwin
+
+	
+	
+if checkwin testvar win1 = 2 and losevar = 0 then
+
+	showpda "车队保护得好！现在我们手头有更多塑料可扔向棕军了。总部通话完毕！",
+	playsound "11_04_HQ_A.wav" 3 3,
+   	triggerdelay 5000 victory
+	
+if victory then
+
+	trigger greenwins
+
+
+// End Win Condiditons //
+
+//Startup//
+
+if gstart then
+
+	createunit "balanceunit" rifleman balancepad green 0 bazooka -1,
+	setnpc balanceunit 1,
+	setaimode balanceuni ignore,
+	createpowerup "balancepower" paratroopers balancepad -1,
+	moveitem balanceunit balancepad,
+	moveitem balancepower balancepad,
+	trigger greensetup,
+	trigger tansetup,
+	trigger createcvy,
+	trigger objectives,
+	trigger startmsg,
+	moveitem 29tank0 29_0,
+	moveitem 29tank1 29_1,
+	moveitem 29tank2 29_2,
+	moveitem 29tank3 29_3,
+	moveitem 29tank4 29_4,
+	moveitem 29tank5 29_5,
+	trigger powerups
+	
+ if gstart testvar difficulty = 0 then
+
+
+	createvehicle easy2 tank (1261,3549) green,
+	createpowerup epu1 mortar (1730,3626) 15,
+	createpowerup epu2 bazooka (1717,3686) 20,
+	createpowerup epu3 medkit (1631,3556) 2,
+	createpowerup epu4 vulcan (1386,3481) 200
+
+
+//Tan Setup//
+
+macro maketans 8
+
+// @1=name, @2=type, @3=x @4=y, @5=wpn, @6=ammo, @7=facing @8=mode //
+
+{
+
+if tansetup then
+
+	createunit @1 @2 (@3,@4) tan 5 @5 @6,
+	setfacing @1 @7,
+	setaimode @1 @8,
+	selectinventoryitem @1 @1 2,
+	entervehicle tan1p tan1,
+	entervehicle tan2p tan2,
+	entervehicle tan4p tan4,
+	entervehicle tan5p tan5,
+	entervehicle tan9p tan9,
+	entervehicle tan15p tan15
+	
+
+}
+
+expand maketans (tan1 jeep 1021 3328 heavymg 100 140 attack)
+expand maketans (tan1p rifleman 1021 3328 autorifle -1 128 attack)
+expand maketans (tan2 halftrack 1344 2878 heavymg 100 128 attack)
+expand maketans (tan2p rifleman 1344 2878 autorifle -1 128 attack)
+expand maketans (tan3 rifleman 2432 2433 autorifle -1 128 attack)
+expand maketans (tan4 halftrack 2507 2507 heavymg 100 90 attack)
+expand maketans (tan4p rifleman 2507 2507 autorifle -1 128 attack)
+expand maketans (tan5 tank 2114 1355 largecannon 20 128 attack)
+expand maketans (tan5p rifleman 2114 1355 autorifle -1 128 attack)
+expand maketans (tan9 jeep 753 3049 mediummg 100 180 attack)
+expand maketans (tan9p rifleman 753 3049 autorifle -1 128 attack)
+expand maketans (tan11 rifleman 887 1447 autorifle -1 128 attack)
+expand maketans (tan14 rifleman 3319 2888 autorifle -1 64 defend)
+expand maketans (tan15 jeep 3395 2801 mediummg 100 64 defend)
+expand maketans (tan15p rifleman 3395 2801 autorifle -1 128 attack)
+expand maketans (tan17 rifleman 3346 2632 autorifle -1 100 defend)
+expand maketans (tan19 rifleman 899 2195 autorifle -1 140 attack)
+expand maketans (tan21 rifleman 1189 2420 autorifle -1 140 attack)
+
+
+macro maketans2 8
+
+// @1=name, @2=type, @3=x @4=y, @5=wpn, @6=ammo, @7=facing @8=mode //
+
+{
+
+if tansetup then
+
+	createunit @1 @2 (@3,@4) tan 3 @5 @6,
+	setfacing @1 @7,
+	setaimode @1 @8,
+	selectinventoryitem @1 @1 2
+		
+
+}
+
+
+expand maketans (tan6 rifleman 2591 3676 mortar 10 110 attack)
+expand maketans (tan7 rifleman 2562 3635 mediummg 100 130 attack)
+expand maketans (tan8 rifleman 706 3207 mortar 10 128 attack)
+expand maketans (tan10 rifleman 878 1372 mortar 10 129 attack)
+expand maketans (tan12 rifleman 1894 1588 bazooka 10 64 attack)
+expand maketans (tan13 rifleman 2810 1401 mortar 10 64 attack)
+expand maketans (tan16 rifleman 3439 2703 bazooka 10 64 defend)
+expand maketans (tan18 rifleman 895 2095 bazooka 10 128 attack)
+expand maketans (tan20 rifleman 1228 2479 bazooka 10 128 attack)
+
+
+// End Tan Setup //
+
+
+// Green Setup//
+
+
+ 
+
+if createcvy then
+
+   	createvehicle cvy1 convoy (1479,3654) green, 
+ 	createvehicle cvy2 convoy (1524,3723) green,
+ 	createvehicle cvy3 tank (1485,3486) green,
+	createvehicle cvy4 tank (1370,3624) green,
+	createvehicle cvy5 convoy (1509,3825) green,
+	createvehicle cvy6 jeep (1423,3748) green,
+	createunit Young rifleman (1524,3645) green 3 autorifle -1,
+	createunit Garcia rifleman (1471,3725) green 3 autorifle -1,
+	createunit Fruin rifleman (1484,3485) green 3 autorifle -1,
+	createunit Bojo rifleman (1363,3626) green 3 autorifle -1,
+	createunit Akira rifleman (1509,3825) green 3 autorifle -1,
+	createunit Chang rifleman (1423,3748) green 3 autorifle -1,
+	entervehicle Young cvy1,	  
+	entervehicle Garcia cvy2,
+	entervehicle Fruin cvy3,
+	entervehicle Bojo cvy4,
+	entervehicle Akira cvy5,
+	entervehicle Chang cvy6,
+	addvar numgreen 6
+	 
+ 
+
+// End Green Setup //
+
+
+
+
+
+// Unit behavior setup//
+
+
+variable b1 0
+variable b2 0
+variable b3	0
+variable b4	0
+variable b5 0
+variable b6	0
+variable b7	0
+variable b8	0
+
+
+if hit tan16 testvar b1 = 0 then
+
+	setaipose tan16 prone,
+	setaimode tan16 attack,
+	setvar b1 1
+
+
+if hit tan17 testvar b2 = 0 then
+
+	setaipose tan17 kneel,
+	setaimode tan17 attack,
+	setvar b2 1
+
+
+if hit tan14 testvar b3 = 0 then
+
+	setaipose tan14 dive,
+	setaimode tan14 attack,
+	setvar b3 1
+	
+
+if hit tan19 testvar b4 = 0 then
+
+	setaipose tan19 kneel,
+	setaimode tan19 attack,
+	setvar b4 1
+
+if hit tan20 testvar b5 = 0 then
+
+	setaipose tan20 dive,
+	setaimode tan20 attack,
+	setvar b5 1
+
+
+// Start Message //
+
+
+if startmsg then
+
+	showpda "护送车队安全过河，并留意附近的棕军部队。"
+
+
+//Objectives//
+
+if objectives then
+
+	setitemflag victory1 strategic 1
+
+
+//Powerups setup//
+
+
+if powerups then
+
+	createpowerup pu1 bazooka (3555,2745) 5,
+	createpowerup pu2 napalmairstrike (3405,2556) 2,
+	createpowerup pu3 medpack (3481,2787) 1,
+	createpowerup pu4 grenade (517,3318) 5,
+	createpowerup pu5 medpack (430,3348) 1,
+	createpowerup pu6 mortar (2690,3569) 10,
+	createpowerup pu7 bazooka (3015,1450)5,
+	createpowerup pu8 medkit (2973,1490) 1,
+	createpowerup pu9 napalmairstrike (1672,3719) 2,
+	createpowerup pu10 recon (1777,3669) 2,
+	createpowerup pu11 medkit (920,2138) 1,
+	createpowerup pu12 wrench (3431,2837) 1,
+	createpowerup pu13 wrench (1908,3643) 1,
+	createpowerup pu14 wrench (972,2148) 1
+	
+	
+
+
+// Lose conditions //
+
+if killed green trooper testvar getnpcstatus me  = 0 then
+
+	addvar numgreen -1,
+	trigger checklose
+	
+
+
+if checklose testvar numgreen = 0 then
+
+	setvar losevar 10,
+	trigger lose
+
+
+
+if killed cvy1  testvar killed1 = 0 then
+
+	setvar killed1 1,
+	addvar deadcvy 1,
+	trigger cvycheck
+
+if killed cvy2  testvar killed2 = 0 then
+
+	setvar killed2 1,
+	addvar deadcvy 1,
+	trigger cvycheck
+
+if killed cvy5  testvar killed3 = 0 then
+
+	setvar killed3 1,
+	addvar deadcvy 1,
+	trigger cvycheck
+
+if cvycheck testvar deadcvy = 2 then
+
+	trigger lose
+
+
+
+if lose then
+
+	showpda "You Lose!",
+	triggerdelay 3000 tanwins
+	
+// End Lose setup//
+
+
+// Unit Balance //
+
+if checkbalance testvar numgreen = 1 then
+
+	triggerdelay 1000 balancevorandom,
+	fireweapon balancepower balanceunit green
+
+
+if balancevorandom then
+
+	random
+		playsound "gamehq1_a.wav" 2 3,
+		playsound "gamehq2_b.wav" 2 3,
+		playsound "gamehq3_c.wav" 2 3
+	
+
+
+// Event Setup//
+
+  if padon trig2 testvar test1 = 0 then
+  
+  	showmessage "敌军正开进这一区域，指挥官！总部通话完毕！",
+	playsound "11_03_HQ_A.wav" 3 3,
+  	createvehicle tantk1 tank tanb tan,
+	createvehicle tanjp1 jeep tanb tan,
+	createunit tantk1p rifleman tanb tan 3 autorifle 0,
+	createunit tanjp1p rifleman tanb tan 3 autorifle 0,
+	setaimode tanjp1 attack,
+	setaimode tantk1 attack,
+	entervehicle tantk1p tantk1,
+	entervehicle tanjp1p tanjp1,
+	setvar test1 1,
+	order tantk1 goto atk2,
+	order tanjp1 goto atk2
+	
+	
+if padon trig1 testvar test2 = 0 then
+  
+  	createvehicle tanht2 halftrack tana tan,
+	createunit tanht2p rifleman tana tan 3 autorifle 0,
+	createunit tanr1 rifleman tana tan 3 autorifle -1,
+	setaimode tanr1 attack,
+	setaimode tanht2 attack,
+	setfacing tanht2 64,
+	entervehicle tanht2p tanht2,
+	setvar test2 1,
+	order tanht2 goto atk1,
+	order tanr1 goto atk1
+	
+
+if padon trig3 testvar test3 = 0 then
+
+	createunit tanr4 rifleman (3916,645) tan 3 autorifle 0,
+	createvehicle tanjp2 jeep (3798,476) tan,
+	createunit tanjp2p rifleman (3798,476) tan 3 autorifle 0,
+	createunit tanr2 rifleman tanc tan 3 autorifle -1,
+	createunit tanr3 rifleman tanc tan 3 autorifle -1,
+	entervehicle  tanktk2p tanktk2,
+	entervehicle tanjp2p tanjp2,
+	setaimode tantk2 attack,
+	setaimode tanjp2 attack,
+	setaimode tanr2 attack,
+	setaimode tanr3 attack,
+	setaimode tanr4 attack,
+	setvar test3 1,
+	order tantk2 goto atk3,
+	order tanjp2 goto atk3,
+	order tanr2 goto atk3,
+	order tanr3 goto atk3,
+	order tanr4 goto atk3,
+	trigger checkbalance
+	
+
+if padon trig4 testvar campgds = 0 then
+
+
+	createunit campgd1 rifleman (2614,2676) tan 5 mortar 10,
+	createunit campgd2 rifleman (2648,2675) tan 5 autorifle -1,
+	createunit campgd3 rifleman (2607,3099) tan 5 bazooka 10,
+	createunit campgd4 tank (2884,2990) tan,
+	createunit campgd4p rifleman (2884,2990) tan 5 autorifle 0,
+	setaimode campgd1 attack,
+	setaimode campgd2 attack,
+	setaimode campgd3 attack,
+	setaimode campgd4 attack,
+	entervehicle campgd4p campgd4,
+	setvar campgds 1
+
+
+if killed cvy1 testvar warnmsg = 0 then
+
+	playsound "11_02_HQ_A.wav" 3 3
+	
+	
+ 
+
+
+
+
+
+	
+
+
+
+
+

@@ -1,0 +1,693 @@
+//Script for map 10 3_cities //
+
+//Pad Setup //
+
+pad v1		20	green	//Objective 1//
+pad v2		21	green	//objective 2//
+pad obj3	25	green	//objective 3//
+pad t1		30			//tan waypoint//
+pad t2		31			//tan waypoint//
+pad t3		32			//tan waypoint//
+pad t1a		35
+pad t1b		36
+pad trip1	50	green	//activate tan attack//
+pad trip2	51	green	//activate tan attack//
+pad trip3	52  green	//activate tan attack//
+pad conpop	60			//spawn point for green convoy//
+pad r1		70			//tan spawn//
+pad r2		71			//tan spawn//
+pad r3		72			//tan spawn//
+pad r4		73			//tan spawn//
+pad pat1a	80	tan		//tan patrol point//
+pad pat1b	81	tan		//tan patrol point//
+pad pat2a	82	tan		//tan patrol point//
+pad pat2b	83	tan		//tan patrol point//
+pad cvyspw1	195 		//convoy spawn//
+pad cvyspw2	196 		//convoy spawn//
+pad cvyspw3	197 		//convoy spawn//
+pad cvyspw4	198 		//convoy spawn//
+pad cvyspw5	199 		//convoy spawn//
+pad cvygo	200			//convoy waypoint//
+pad balancepad 100		//Balancepad//
+pad 29_0		41
+pad 29_1		42
+pad 29_2		43
+pad 29_3		44
+pad 29_4		45
+pad 29_5		46
+
+
+//end pad setup//
+
+// Variables //
+
+variable win1		0
+variable test1		0
+variable test2		0
+variable test3		0
+variable test4		0
+variable test5		0
+variable test6		0
+variable dead1		0
+variable dead2		0
+variable dead3		0
+variable deadradar 	0
+variable boom		0
+variable losevar	0
+variable smoke1		0
+variable smoke2		0
+variable smoke3		0
+
+
+
+// End variables//
+
+
+// Startup //
+
+if startup1 then
+
+	playsound "inland10_nomusic.wav" 0 16 1,
+	triggerdelay 200 gstart
+
+
+// Win conditions //
+
+if padon v1 testvar test1 = 0 then
+
+	setvar test1 1,
+	addvar win1 1,
+	showmessage "village 1 captured",
+	trigger checkbalance,
+	triggerdelay 1000 checkwin,
+	setitemflag victory1 strategic 0
+
+if padon v2 testvar test2 = 0 then
+
+	setvar test2 1,
+	addvar win1 1,
+	trigger checkbalance,
+	showmessage "village 2 captured",
+	setitemflag victory2 strategic 0,
+	triggerdelay 1000 checkwin
+
+
+if padon obj3 testvar test3 = 0 then
+
+	setvar test3 1,
+	addvar win1 1,
+	showmessage "village 3 captured",
+	setitemflag victory3 strategic 0,
+	triggerdelay 1000 checkwin
+
+
+if checkwin testvar win1 = 3  and losevar = 0 then
+
+	playsound "10_02_hq_a.wav" 3 3,
+	createvehicle cvy1x tank cvyspw1 green,
+	createvehicle cvy2x tank cvyspw2 green,
+	createvehicle cvy3x halftrack cvyspw3 green,
+	createvehicle cvy4x convoy cvyspw4 green,
+	createvehicle cvy5x convoy cvyspw5 green,
+	createunit cp1 rifleman cvyspw1 green 1 autorifle,
+	createunit cp2 rifleman cvyspw2 green 1 autorifle,
+	createunit cp3 rifleman cvyspw3 green 1 autorifle,
+	createunit cp4 rifleman cvyspw4 green 1 autorifle,
+	createunit cp5 rifleman cvyspw5 green 1 autorifle,
+	entervehicle cp1 cvy1x,
+	entervehicle cp2 cvy2x,
+	entervehicle cp3 cvy3x,
+	entervehicle cp4 cvy4x,
+	entervehicle cp5 cvy5x,
+	setnpc cvy1x 1,
+	setnpc cvy2x 1,
+	setnpc cvy3x 1,
+	setnpc cvy4x 1,
+	setnpc cvy5x 1,
+	setnpc cp1 1,
+	setnpc cp1 2,
+	setnpc cp1 3,
+	setnpc cp1 4,
+	setnpc cp1 5,
+	order cvy1x goto cvygo,
+	order cvy2x goto cvygo,
+	order cvy3x goto cvygo,
+	order cvy4x goto cvygo,
+	order cvy5x goto cvygo,
+	triggerdelay 8000 victory
+
+
+if victory then
+
+	undeploy cvy1x,
+	undeploy cvy2x,
+	undeploy cvy3x,
+	undeploy cvy4x,
+	undeploy cvy5x,
+	undeploy cp1,
+	undeploy cp2,
+	undeploy cp3,
+	undeploy cp4,
+	undeploy cp5,
+	triggerdelay 2000 victoryfinal
+	
+	
+if victoryfinal then
+
+	trigger greenwins
+
+// End Win Conditions//
+
+
+// Start Setup //
+
+if gstart then
+
+   
+	createunit "balanceunit" rifleman balancepad green 0 bazooka -1,
+	setnpc balanceunit 1,
+	setaimode balanceunit ignore,
+	createpowerup "balancepower" paratroopers balancepad -1,
+	moveitem balanceunit balancepad,
+	moveitem balancepower balancepad,
+	trigger greensetup,
+	trigger tansetup,
+	trigger patrols,
+	trigger powerups,
+	trigger objective,
+	trigger start_msg,
+	trigger house1,
+	trigger house2,
+	trigger house3,
+	moveitem 29tank0 29_0,
+	moveitem 29tank1 29_1,
+	moveitem 29tank2 29_2,
+	moveitem 29tank3 29_3,
+	moveitem 29tank4 29_4,
+	moveitem 29tank5 29_5,
+	triggerdelay 200 enter1
+	
+	
+
+if gstart testvar difficulty = 0 then
+
+
+	createpowerup epu1 napalmairstrike (2884,3600) 5,
+	createpowerup epu2 recon (3016,3728) 2,
+	createpowerup epu3 grenade (2424,3789) 12,
+	createpowerup epu4 wrench (2499,3787) 2,
+	createpowerup epu5 sniper (2376,3645) 30
+	
+	
+	
+	
+	
+// End start setup //
+
+
+// Objective flag setup //
+
+if objective then
+
+	setitemflag victory1 strategic 1,
+	setitemflag victory2 strategic 1,
+	setitemflag victory3 strategic 1
+	
+	
+	
+
+//Set up the rest of the flags//
+
+ 
+//Start Message//
+
+if start_msg then
+
+	showpda "Clear the way for our convoy. You will need to secure all 3 objectives!" 
+ 
+ 
+
+// Tan setup //
+
+
+macro maketans 8
+
+// @1=name, @2=type, @3=x, @4=y, @5=wpn, @6=ammo, @7=facing @8=mode //
+
+    
+{
+
+if tansetup then
+
+	createunit @1 @2 (@3,@4) tan 3 @5 @6,
+	setfacing @1 @7,
+	setaimode @1 @8,
+	selectinventoryitem @1 @1 2
+
+if killed @1 testvar dead1 = 0 and deadradar = 0 then
+			
+		setvar dead1 1,
+		trigger reinforce1
+	
+}
+
+expand maketans (tan1 rifleman 2922 1829 autorifle -1 128 defend)
+expand maketans (tan2 tank 2974 1935 heavycannon 20 150 defend)
+expand maketans (tan2p rifleman 2974 1935 autorifle -1 128 defend)
+expand maketans (tan2a jeep 3117 1877 mediummg 100 150 defend)
+expand maketans (tan2ap rifleman 3117 1877 autorifle -1 128 defend)
+expand maketans (tan2b rifleman 2856 2104 bazooka 10 128 defend)
+expand maketans (tan2c rifleman 2991 2084 autorifle -1 150 defend)
+
+
+
+  
+macro maketans2 8
+
+// @1=name, @2=type, @3=x, @4=y, @5=wpn, @6=ammo, @7=facing @8=mode //
+
+    
+{
+
+if tansetup then
+
+	createunit @1 @2 (@3,@4) tan 4 @5 @6,
+	setfacing @1 @7,
+	setaimode @1 @8,
+	selectinventoryitem @1 @1 2
+ 
+	
+if killed @1 testvar dead2 = 0 and deadradar = 0 then
+			
+		setvar dead2 1,
+		trigger reinforce2
+	
+}
+
+
+expand maketans2 (tan3 rifleman 461 2030 autorifle -1 128 defend)
+expand maketans2 (tan4 halftrack 557 2250 heavymg 100 128 defend)
+expand maketans2 (tan4p rifleman 557 2250 autorifle -1 128 defend)
+expand maketans2 (tan3a tank 648 2048 largecannon 20 128 defend)
+expand maketans2 (tan3ap rifleman 648 2048 autorifle -1 128 defend)
+expand maketans2 (tan3b rifleman 678 2177 autorifle -1 128 defend)
+expand maketans2 (tan3c rifleman 860 2096 autorifle -1 128 defend)
+expand maketans2 (tan3d rifleman 723 2270 autorifle -1 128 defend)
+
+
+
+
+macro maketans3 8
+
+// @1=name, @2=type, @3=x, @4=y, @5=wpn, @6=ammo, @7=facing @8=mode //
+
+    
+{
+
+if tansetup then
+
+	createunit @1 @2 (@3,@4) tan 4 @5 @6,
+	setfacing @1 @7,
+	setaimode @1 @8,
+	selectinventoryitem @1 @1 2
+		
+	if killed @1 testvar dead3 = 0 and deadradar = 0 then
+			
+		setvar dead3 1,
+		trigger reinforce3
+	
+}
+
+expand maketans3 (tan5 rifleman 1344 687 autorifle -1 128 defend)
+expand maketans3 (tan6 tank 1518 669 heavycannon 20 100 defend)
+expand maketans3 (tan6p rifleman 1518 669 autorifle -1 128 defend)
+expand maketans3 (tan6a jeep 1338 812 mediummg 100 130 defend)
+expand maketans3 (tan6ap rifleman 1338 812 autorifle -1 128 defend)
+expand maketans3 (tan6b rifleman 1578 805 autorifle -1 120 defend)
+expand maketans3 (tan6c tank 1407 861 heavycannon 20 100 defend)
+expand maketans3 (tan6cp rifleman 1407 861 autorifle -1 120 defend)
+
+
+
+
+//These are non-village tan units //
+
+macro maketans4 8
+ 
+// @1=name, @2=type, @3=x, @4=y, @5=wpn, @6=ammo, @7=facing @8=mode //
+
+    
+{
+
+if tansetup then
+
+	createunit @1 @2 (@3,@4) tan 4 @5 @6,
+	setfacing @1 @7,
+	setaimode @1 @8,
+	selectinventoryitem @1 @1 2
+	
+	
+	
+
+}
+
+expand maketans4 (tan7 jeep 1428 2219 heavymg 100 128 attack)
+expand maketans4 (tan7p rifleman 1428 2219 autorifle -1 128 attack)
+expand maketans4 (tan8 rifleman 1592 2166 autorifle -1 128 attack)
+expand maketans4 (tan9 rifleman 809 3282 autorifle -1 140 defend)
+expand maketans4 (tan10 rifleman 921 3368 autorifle -1 110 defend)
+expand maketans4 (tan12 tank 1521 3527 largecannon 20 145 attack)
+expand maketans4 (tan12p rifleman 1521 3527 autorifle -1 128 attack)
+expand maketans4 (tan13 jeep 2672 2731 mediummg 100 150 attack)
+expand maketans4 (tan13p rifleman 2672 2731 autorifle -1 128 attack)
+expand maketans4 (tan14 rifleman 2552 2733 autorifle -1 128 defend)
+expand maketans4 (tanp1 rifleman 3748 2817 autorifle -1 128 attack)
+expand maketans4 (tanp2 rifleman 3301 214 autorifle -1 128 attack)
+expand maketans4 (tan16p rifleman 895 1317 autorifle -1 128 attack)
+expand maketans4 (tan16 jeep 895 1317 mediummg 100 128 attack)
+expand maketans4 (tan15 rifleman 795 1406 autorifle -1 128 attack)
+
+
+
+macro maketans5 8
+ 
+// @1=name, @2=type, @3=x, @4=y, @5=wpn, @6=ammo, @7=facing @8=mode //
+
+    
+{
+
+if tansetup then
+
+	createunit @1 @2 (@3,@4) tan 4 @5 @6,
+	setfacing @1 @7,
+	setaimode @1 @8,
+	selectinventoryitem @1 @1 2
+	
+	
+	
+
+}
+
+expand maketans4 (tan11 rifleman 1595 3446 mortar 10 128 attack)
+expand maketans4 (tan15 rifleman 2777 2759 bazooka 10 160 attack)
+expand maketans4 (tanmtr1 rifleman 2416 2279 mortar 10 160 attack)
+
+
+
+
+//End Tan setup//
+
+
+// Order Tan's to enter vehicles //
+
+if enter1 then
+
+	entervehicle tan2p tan2,
+	entervehicle tan2ap tan2a,
+	entervehicle tan4p tan4,
+	entervehicle tan3ap tan3a,
+	entervehicle tan6p tan6,
+	entervehicle tan6ap tan6a,
+	entervehicle tan6cp tan6c,
+	entervehicle tan7p tan7,
+	entervehicle tan12p tan12,
+	entervehicle tan13p tan13,
+	entervehicle tan16p tan16
+	
+
+
+//unit behavior//
+
+
+variable b1 0
+variable b2 0
+variable b3	0
+variable b4	0
+variable b5 0
+variable b6	0
+variable b7	0
+variable b8	0
+
+
+if hit tan1 testvar b1 = 0 then
+
+	setaipose tan1 kneel,
+	setaimode tan1 attack,
+	setvar b1 1
+
+
+if hit tan2b testvar b2 = 0 then
+
+	setaipose tan2b kneel,
+	setaimode tan2b attack,
+	setvar b2 1
+
+if hit tan3 testvar b3 = 0 then
+
+	setaipose tan3 kneel,
+	setaimode tan3 attack,
+	setvar b3 1
+	
+
+if hit tan3b testvar b4 = 0 then
+
+	setaipose tan3b kneel,
+	setaimode tan3b attack,
+	setvar b4 1
+
+
+if hit tan5 testvar b5 = 0 then
+
+	setaipose tan5 kneel,
+	setaimode tan5 attack,
+	setvar b5 1
+	
+if hit tan8 testvar b6 = 0 then
+
+	setaipose tan8 kneel,
+	setaimode tan8 attack,
+	setvar b6 1
+
+
+if hit tan9 testvar b7 = 0 then
+
+	setaipose tan9 kneel,
+	setaimode tan9 attack,
+	setvar b7 1
+	
+
+if hit tan15 testvar b8 = 0 then
+
+	setaipose tan15 kneel,
+	setaimode tan15 attack,
+	setvar b8 1
+	
+
+
+// End unit behavior stuff //
+
+
+// Unit Balance //
+
+if checkbalance testvar numgreen = 1 then
+
+	triggerdelay 1000 balancevorandom,
+	fireweapon balancepower balanceunit green
+	
+
+if balancevorandom then
+
+	random
+		playsound "gamehq1_a.wav" 2 3,
+		playsound "gamehq2_b.wav" 2 3,
+		playsound "gamehq3_c.wav" 2 3
+
+
+// End Unit Balance //
+
+
+
+
+//Patrol setup//
+
+if patrols then
+
+	order tanp1 goto pat1a,
+	order tanp2 goto pat2a
+	
+	
+if padon pat1a then
+
+	order tanp1 goto pat1b
+	
+
+if padon pat2a then 
+
+	order tanp2 goto pat2b
+
+
+if padon pat1b then
+
+	order tanp1 goto pat1a
+	
+if padon pat2b then
+
+	order tanp2 goto pat2a
+
+
+//Powerup setup//
+
+if powerups then
+
+
+	createpowerup pu1 bazooka (1370,3493) 15,
+	createpowerup pu2 medpack (1445,3520) 1,
+	createpowerup pu3 sniper (3819,3821) 40,
+	createpowerup pu4 recon (3874,3838) 1,
+	createpowerup pu5 medpack (2840,2683) 1,
+	createpowerup pu5 grenade (770,3273) 10,
+	createpowerup pu6 medkit (843,3324) 1,
+	createpowerup pu7 mortar (2430,2051) 15,
+	createpowerup pu8 grenade (2826,392) 10,
+	createpowerup pu9 flamer (520,2094) 60,
+	createpowerup pu10 medkit (497,2132) 1,
+	createpowerup pu11 bazooka (3009,1894) 15,
+	createpowerup pu12 airstrike (2926,1870) 3,
+	createpowerup pu13 medkit (1406,762) 1,
+	createpowerup pu14 napalmairstrike (2784,2664) 3,
+	createpowerup pu15 mortar (3056,3571) 15,
+	createpowerup pu16 wrench (2900,1941) 1,
+	createpowerup pu17 wrench (567,2143) 1,
+	createpowerup pu18 grenade (475,741) 10
+
+
+
+
+// House Smoke Stuff//
+
+
+if killed hut1 then
+
+	setvar smoke1 1
+
+	
+if killed hut2 then
+
+	setvar smoke2 1	
+
+if killed hut3 then
+
+	setvar smoke3 1
+	
+
+if house1 testvar smoke1 = 0 then
+
+	triggerdelay 1500 house1,
+	makesmoke (2900,2678) 1000
+		
+	
+ if house2 testvar smoke2 = 0 then
+
+	triggerdelay 1500 house2,
+	makesmoke (2906,1186) 1000
+	
+if house3 testvar smoke3 = 0 then
+
+	triggerdelay 1500 house3,
+	makesmoke (540,1760) 1000
+
+//End Smoke Stuff//
+
+
+
+
+// Lose condidtions //
+
+if killed green trooper testvar getnpcstatus me = 0 then
+
+	addvar numgreen -1,
+	trigger checklose
+
+if checklose testvar numgreen = 0 then
+
+	setvar losevar 10,
+	trigger lose
+	
+	
+if lose then 
+
+	showpda "You Lose!",
+	triggerdelay 3000 tanwins
+	
+	
+// Game events//
+
+
+	if killed radar1 then
+	
+		trigger killedradar
+
+
+	if killedradar testvar boom = 0 then
+	
+		setvar boom 1,
+		showmessage "Radar destroyed!",
+		setvar deadradar 1
+
+
+	if reinforce1 testvar test4 = 0 then
+	
+		setvar test4 1,
+		setaimode tan4 attack,
+		setaimode tan3a attack,
+		setaimode tan6 attack,
+		setaimode tan6a attack,
+		order tan4 goto t1,
+		order tan3a goto t1b,
+		order tan6 goto t1a,
+		order tan6a goto t1 
+
+
+
+
+	if reinforce2 testvar test5 = 0 then
+	
+		setvar test5 1,
+		setaimode tan2 attack,
+		setaimode tan2a attack,
+		setaimode tan6 attack,
+		setaimode tan6a attack,
+		order tan2 goto t2,
+		order tan2a goto t2,
+		order tan6 goto t2,
+		order tan6a goto t2
+		
+	 
+	if reinforce3 testvar test6 = 0 then
+	
+		setvar test6 1,
+		setaimode tan2 attack,
+		setaimode tan2a attack,
+		setaimode tan4 attack,
+		setaimode tan3a attack,
+		order tan3a goto t3,
+		order tan2 goto t3,
+		order tan2a goto t3,
+		order tan4 goto t3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

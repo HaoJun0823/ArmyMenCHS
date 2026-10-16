@@ -1,0 +1,93 @@
+//////////////////////////////////////////////////////////////////////////////
+// Section common to all game types
+//////////////////////////////////////////////////////////////////////////////
+include common.txt
+//include ffire.txt
+
+//////////////////////////////////////////////////////////////////////////////
+// Killer specific section
+//////////////////////////////////////////////////////////////////////////////
+if startup1 then triggerdelay 1000 MarkAllTroopersStrategic
+
+variable killEnemyTrooperBonus 250
+variable hasBlackFlag 0
+
+// in killer the black flag is an additional strategic item
+if startup1 then 
+	triggerdelay 10 xxstart2
+
+if xxstart2 then
+	deploy bkflagbase,
+	deploy blackflag1,
+	setitemflag blackflag1 strategic 1,
+	setitemflag blackflag1 stratsquare 1
+
+// @1 = killer color,  @2 = killed color @3 = color number of killer
+macro killer_trooper 3
+{
+	if killed @2 trooper by @1 testvar isAlly @2 @1 = 0 and hasBlackFlag =  @3 then
+		trigger @1kx@2
+	if @1kx@2 then
+		showmessage "@2 的士兵被杀手 @1 击毁",
+		trigger @1KilledEnemyTrooper
+}
+
+// @1 = color, @2 = Capitalized color (e.g. "Green"), @3-5 are other colors 6 =  color number
+macro killer_macro 6
+{
+
+	// check for the @1 trooper being killed and who killed them
+	expand killer_trooper ( @1  @3 @6) // if 1 kills 3
+	expand killer_trooper ( @1  @4 @6) // if 1 kills 4
+	expand killer_trooper ( @1  @5 @6) // if 1 kills 5
+
+	// killer scoring events
+
+	if @1KilledEnemyTrooper then
+		addvar @1score killEnemyTrooperBonus,
+		playsound "mp_death.wav" (0,0) 1 2,
+		trigger check@1wins
+
+	// check the flag being picked up so we can show a message and make a sound
+
+	if pickedup blackflag1 by @1 trooper then
+		setvar hasBlackFlag @6,					// we own it
+		showmessage "@2 成为了杀手",
+		playsound "mp_gotflag.wav" (0,0) 3 1,
+		addscoresymbol @1 flag
+
+	if dropped blackflag1 by @1 trooper then
+		setvar hasBlackFlag 0,					// we dont own it
+		removescoresymbol @1 flag
+}
+
+expand killer_macro (green "绿队" tan blue grey 1)
+expand killer_macro (tan "棕队" green blue grey 2)
+expand killer_macro (blue "蓝队" green tan grey 3)
+expand killer_macro (grey "灰队" green tan blue 4)
+
+// if flag is dropped and not picked up for 2 minutes then return it to it's base
+
+variable flagTimeOutVar 0
+variable flagLastTimeOutVar 1
+
+if dropped blackflag1 then
+	triggerdelay 120000 flagCheckTimeOut
+
+if pickedup blackflag1 then
+    addvar flagTimeOutVar 1
+
+if flagCheckTimeOut testvar flagTimeOutVar = flagLastTimeOutVar then
+	trigger bfdrop
+if bfdrop then
+	showmessage "黑旗已掉落且 2 分钟内无人拾取 —— 已移回基地",
+	createexplosion blackflag1 128 0 green,
+	playsound "mp_rebaseflag.wav" 0 1,
+    moveitem blackflag1 bkflagbase,
+	triggerdelay 1000 flagLastTimeOutIncr
+
+if flagCheckTimeOut testvar flagTimeOutVar <> flagLastTimeOutVar then
+	triggerdelay 1000 flagLastTimeOutIncr
+
+if flagLastTimeOutIncr then
+	addvar flagLastTimeOutVar 1

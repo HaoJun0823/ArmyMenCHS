@@ -486,6 +486,159 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+      # ══════════════════════════════════════════════════════════════════
+      #  《玩具兵大战：世界大战》（4 代）汉化补丁
+      # ══════════════════════════════════════════════════════════════════
+      #  与 1/2/3 代同构的三段式（compile_dll_wine -> ci_build_am4 ->
+      #  make_patch_am4 -> verify_release_am4），实质差异有五处：
+      #
+      #  ① 权威值全部按 4 代重测（**不能**沿用 3 代）：
+      #       title.dat   4298896 / 203  ->  3502576 / 197
+      #       shared.dat  2936433 / 1113 ->  2729541 / 969
+      #     FILEID 魔数相同（0x81920667 / 0x81920668），故 am3_dat_pack.py
+      #     可直接用；但大小与对象数的断言必须改。
+      #
+      #  ② shared.dat **也有**中文覆盖层（3 代是 None）。
+      #     4 代 shared/png_control_chs/ 有 16 张控件。
+      #
+      #  ③ ASI 导出名是 ArmyMenWW_Install / ArmyMenWW_Uninstall
+      #     （3 代是 ArmyMenTIS_*）。复制 3 代工程忘了改导出名，
+      #     会让校验器 G 节直接拦下。
+      #
+      #  ④ strings.txt 出厂 323 行（3 代 320）、bitmaps 65 个（3 代 61）。
+      #
+      #  ⑤ 中文配音：4 代英文原声 298 个（3 代 239）。
+      #     ★★ TODO(配音)：Army4_Voice_CHS/audio 目前**为空** ——
+      #     台词表（ASR + 中译）与 TTS 生成尚未做，流程见
+      #     docs/11-am4-reuse-plan.md §2.2。三处 AUDIO_EXPECT_FILES
+      #     （ci_build_am4 / make_patch_am4 / verify_release_am4）
+      #     现取英文原声总数 298，配音定稿后必须同步改。
+      #     在此之前 4 代步骤**预期失败在配音那一步**，这是刻意的：
+      #     宁可直接红，也不要发一个"装了没声音"的静默失效包。
+      #
+      #  ★ 仓库里同样不含 amww.exe（版权 + 体积），
+      #    需要 exe 的实机验证项在 CI 上跑不了。
+      #  ★ Assets 树自检（Tools/verify_army4_assets.py）**不在 CI 里跑**：
+      #    它要逐字节比对作者本机的 GOG 安装目录（I:\），CI 上没有该目录。
+      #    与 3 代同一口径（verify_army3_assets.py 也不在 CI 里）。
+      #    4 代 dat 的权威值不依赖它 —— 那两条来自 Army4_Object_CHS/*/manifest.json
+      #    （带 source_sha256，已用原盘反查确认）。
+      - name: 编译 Army4_Extend_Dll.dll（32 位）
+        if: ${{ github.event.inputs.skip_dll != 'true' }}
+        run: |
+          set -euo pipefail
+          python3 Tools/ci/compile_dll_wine.py --msvc-prefix "${MSVC_WINE_PREFIX}" \
+            --proj Army4_Extend_Dll
+
+      - name: 组装《世界大战》发布包（含 dat 无损回包 + 中文配音）
+        run: |
+          set -euo pipefail
+          # ① 载荷 + 回包 title.dat/shared.dat + ASI + 字库 + cnc-ddraw
+          #    + 中文配音 -> build_out_am4
+          #    （--verify 断言载荷无可执行文件、dat 大小符合预期、
+          #      配音文件名与英文原声一一对应、数量/体积达标）
+          python3 Tools/ci/ci_build_am4.py --out build_out_am4 --verify
+
+          # ② 打补丁包 -> stage_am4（scripts\ + update\ + 包根 + 许可 + 说明）
+          python3 Tools/ci/make_patch_am4.py --out stage_am4
+
+          # ③ 独立校验产物（结构 / 代理导出 / PE 位数 / dat 尾部完整性 /
+          #    配音数量 / 三方许可声明）
+          python3 Tools/ci/verify_release_am4.py stage_am4
+
+          echo "── 断言产物 ──"
+          ls -l stage_am4/*.zip
+
+          # ASI 必须是 32 位且导出齐全（4 代导出名与 3 代不同）
+          python3 - <<'PY'
+          import struct, glob
+          dll = sorted(glob.glob("build_out_am4/Army4_Extend_Dll.dll"))
+          assert dll, "缺 build_out_am4/Army4_Extend_Dll.dll"
+          b = open(dll[0], "rb").read()
+          pe = struct.unpack_from("<I", b, 0x3C)[0]
+          machine = struct.unpack_from("<H", b, pe + 4)[0]
+          assert machine == 0x14C, f"不是 32 位 PE: 0x{machine:X}"
+          for want in (b"ArmyMenWW_Install", b"ArmyMenWW_Uninstall"):
+              assert want in b, "缺少导出 " + want.decode()
+          assert b"ArmyMenTIS_Install" not in b, "残留 3 代导出名"
+          print(f"✓ ASI 32 位 (0x{machine:X})，导出 ArmyMenWW_* 齐全，{len(b)} bytes")
+          PY
+
+          # 两条 dat 必须与原版**等长**（等长 => 对象偏移不变）
+          python3 - <<'PY'
+          import os
+          for name, want in (("title.dat", 3502576), ("shared.dat", 2729541)):
+              p = os.path.join("stage_am4", "update", name)
+              assert os.path.isfile(p), "缺 " + p
+              got = os.path.getsize(p)
+              assert got == want, f"{name} 大小 {got} != 原版 {want}（回包丢数据？）"
+              print(f"✓ {name} {got} B（与原版等长）")
+          PY
+
+          # 代理 DLL 必须在**包根**且含具名导出 DirectInputCreateA：
+          #   amww.exe 按名字导入它，代理名不对则补丁完全不加载。
+          python3 - <<'PY'
+          import os
+          proxy = "stage_am4/dinput.dll"
+          assert os.path.isfile(proxy), "缺包根代理 dll"
+          pb = open(proxy, "rb").read()
+          assert b"DirectInputCreateA" in pb, "代理缺少 DirectInputCreateA 导出"
+          print(f"✓ 代理 {proxy} 含 DirectInputCreateA，{len(pb)} bytes")
+          PY
+
+          # 包内不得含 exe/dll/asi 落在 update\（不改游戏文件）
+          python3 - <<'PY'
+          import zipfile, glob
+          z = zipfile.ZipFile(sorted(glob.glob("stage_am4/*.zip"))[0])
+          names = z.namelist()
+          bad = [n for n in names
+                 if n.startswith("update/")
+                 and n.lower().endswith((".exe", ".dll", ".asi"))]
+          assert not bad, "update/ 里混入了可执行文件: %s" % bad
+          for want in ("dinput.dll", "ddraw.dll", "ddraw.ini",
+                       "LICENSE", "License.txt", "必读说明.txt",
+                       "如果不会安装，请把该文件发给AI，让AI教你.txt",
+                       "将此文件交给AI，让AI协助完善本项目.txt",
+                       "scripts/Army4_Extend_Dll.asi", "scripts/Hzk16",
+                       "update/title.dat", "update/shared.dat",
+                       "update/strings/strings.txt"):
+              assert want in names, "包内缺 %s" % want
+          # ★ 中文配音：只查"目录存在"挡不住"只拷了几个文件"。
+          #   配音丢失的表现是游戏照常跑但语音全英文，不报错、不崩。
+          wav = [n for n in names
+                 if n.startswith("update/audio/vos/") and n.lower().endswith(".wav")]
+          assert len(wav) >= 298, "update/audio/vos/ 只有 %d 个 wav（期望 298）" % len(wav)
+          for probe in ("update/audio/vos/Aah.wav",
+                        "update/audio/vos/Guard_Stop.wav"):
+              assert probe in names, "缺配音 %s（这些名字必须在 4 代英文原声里存在）" % probe
+          audio_mb = sum(z.getinfo(n).file_size for n in wav) / 1048576
+          assert audio_mb > 10, "配音总体积异常: %.2f MB" % audio_mb
+          # ★ 三方许可声明必须真的合进 License.txt（cnc-ddraw 是 MIT，
+          #   qwen3-tts 是 Apache-2.0，随产物分发须附声明）
+          lt = z.read("License.txt").decode("utf-8", errors="replace")
+          for mark in ("MIT License", "github.com/FunkyFr3sh",
+                       "Apache License", "== ASILoader.txt"):
+              assert mark in lt, "License.txt 缺 %s（第三方声明不全）" % mark
+          rb = z.read("必读说明.txt")
+          assert rb[:3] == b"\xef\xbb\xbf", "必读说明.txt 缺 UTF-8 BOM（记事本乱码）"
+          assert b"\r\n" in rb, "必读说明.txt 不是 CRLF"
+          # ★ 4 代专属：说明不得残留 3 代《太空玩具》字样
+          t4 = rb.decode("utf-8-sig", errors="replace")
+          assert "世界大战" in t4, "必读说明.txt 未写明 4 代标题"
+          assert "太空玩具" not in t4, "必读说明.txt 残留 3 代字样"
+          print("✓ update/ 不含可执行文件；配音 %d 个 wav / %.2f MB；"
+                "License.txt 含三方声明；必读说明带 BOM，共 %d 条目"
+                % (len(wav), audio_mb, len(names)))
+          PY
+
+      - name: 上传《世界大战》发布包
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: armymen4-chs
+          path: stage_am4/*.zip
+          if-no-files-found: error
+          retention-days: 30
+
       # 文档内链有效性。原在 build-am2.yml 的 gate job 里，
       # 合并进本 workflow 后保留 —— 改了文档文件名没人发现就会留死链。
       - name: 校验文档相对链接
@@ -528,6 +681,13 @@ jobs:
         with:
           name: armymen3-chs
           path: dist3
+
+      # ★ 4 代的包同样下到独立目录，避免四个 zip 混在同一层
+      - name: 下载《世界大战》发布包
+        uses: actions/download-artifact@v8.0.2
+        with:
+          name: armymen4-chs
+          path: dist4
 
       - name: 计算日期-时间 tag
         id: tag
@@ -602,7 +762,11 @@ jobs:
             echo "  title.dat / shared.dat 由解包工作区**无损回包**（对象头与尾部逐字节保留，产物与原版等长）；"
             echo "  中文字形由 Army3_Extend_Dll.asi 直接喂 Hzk16 点阵，不经过 GDI；"
             echo "  中文配音 171 段由 qwen3-tts 合成（非克隆，音色与语气有已知差距，删除 update/audio 可退回英文原声）"
-            echo "- **cnc-ddraw**：2 代与 3 代均**已整合**（包根 ddraw.dll / ddraw.ini，MIT），无需自行安装或调兼容模式"
+            echo "- **cnc-ddraw**：2/3/4 代均**已整合**（包根 ddraw.dll / ddraw.ini，MIT），无需自行安装或调兼容模式"
+            echo "- **《世界大战》（4 代）**：无官方中文母盘，为从零翻译（与 3 代同路线）。界面文本走游戏自己的 strings.txt；"
+            echo "  title.dat / shared.dat 由解包工作区**无损回包**（对象头与尾部逐字节保留，产物与原版等长）；"
+            echo "  中文字形由 Army4_Extend_Dll.asi 直接喂 Hzk16 点阵，不经过 GDI；"
+            echo "  多人联机菜单按钮在内存中恢复（GOG 版默认移除）"
           } >> release_notes.md
 
           # ── 下载表（附件名是上传时由 curl ?name= 赋的 ASCII 名）─────────────
@@ -615,14 +779,15 @@ jobs:
             echo "| \`ArmyMen-CHS-Patch-${{ steps.tag.outputs.stamp }}.zip\` | 《玩具兵大战》简体中文汉化补丁（解压到游戏根目录） |"
             echo "| \`ArmyMen2-CHS-Patch-${{ steps.tag.outputs.stamp }}.zip\` | 《玩具兵大战 II》简体中文汉化补丁（解压到游戏根目录） |"
             echo "| \`ArmyMen3-CHS-Patch-${{ steps.tag.outputs.stamp }}.zip\` | 《玩具兵大战：太空玩具》简体中文汉化补丁（解压到游戏根目录） |"
+            echo "| \`ArmyMen4-CHS-Patch-${{ steps.tag.outputs.stamp }}.zip\` | 《玩具兵大战：世界大战》简体中文汉化补丁（解压到游戏根目录） |"
             echo
             echo "### 📖 必读说明（安装 / 卸载 / 已知问题）"
             echo
             echo "> 每代补丁的 zip **包根都带 必读说明.txt**（解压后在游戏目录里）。"
-            echo "> 下面是从三个 zip 内**原样取出**的全文，与玩家拿到手的逐字一致。"
-            echo "> 安装方式三代相同：把包内全部内容解压到游戏安装目录"
-            echo "> （Armymen.exe / ArmyMen2.exe / ARMYMENTIS.exe 所在处）。"
-            echo "> 2 代与 3 代的包根都新增了 cnc-ddraw 的 \`ddraw.dll\` / \`ddraw.ini\`，"
+            echo "> 下面是从四个 zip 内**原样取出**的全文，与玩家拿到手的逐字一致。"
+            echo "> 安装方式四代相同：把包内全部内容解压到游戏安装目录"
+            echo "> （Armymen.exe / ArmyMen2.exe / ARMYMENTIS.exe / amww.exe 所在处）。"
+            echo "> 2/3/4 代的包根都新增了 cnc-ddraw 的 \`ddraw.dll\` / \`ddraw.ini\`，"
             echo "> 请勿单独删除；3 代需以**管理员模式**运行（详见包内说明）。"
           } >> release_notes.md
 
@@ -630,7 +795,7 @@ jobs:
             echo
             # ★ 说明在 zip 内部（artifact 只上传 zip，不含独立的说明文件），
             #   故从 zip 里取 —— 保证 Release 正文与玩家实际拿到的包内说明
-            #   逐字一致。三代各取一份，合并进同一个 details。
+            #   逐字一致。四代各取一份，合并进同一个 details。
             #   unzip 对中文条目名在部分 locale 下会匹配失败，故用 Python
             #   读 zip（与 build 阶段同一套 zip 解析，不引额外依赖）。
           python3 - <<'PY' > readme_embed.txt
@@ -648,6 +813,7 @@ jobs:
               ("dist", "必读说明.txt", "《玩具兵大战》(1 代)"),
               ("dist2", "必读说明.txt", "《玩具兵大战 II》(2 代)"),
               ("dist3", "必读说明.txt", "《玩具兵大战：太空玩具》(3 代)"),
+              ("dist4", "必读说明.txt", "《玩具兵大战：世界大战》(4 代)"),
           ]
           out = io.StringIO()
           got = 0
@@ -667,19 +833,19 @@ jobs:
               out.write(txt.strip() + "\n")
               got += 1
           if got == 0:
-              raise SystemExit("!! 三个 zip 里一个 必读说明.txt 都没取到")
+              raise SystemExit("!! 四个 zip 里一个 必读说明.txt 都没取到")
           print(out.getvalue(), end="")
           PY
-            # ★ 断言三份都取到了：少一份就说明某个包没带说明（或改了文件名），
+            # ★ 断言四份都取到了：少一份就说明某个包没带说明（或改了文件名），
             #   那种情况必须在发版前拦下 —— 玩家拿到没有说明的包等于没头绪。
             n_doc="$(grep -c '^== 《玩具兵大战' readme_embed.txt || true)"
-            if [ "$n_doc" -lt 3 ]; then
-              echo "!! 只取到 $n_doc 份必读说明（期望 3）" >&2
+            if [ "$n_doc" -lt 4 ]; then
+              echo "!! 只取到 $n_doc 份必读说明（期望 4）" >&2
               sed -n '1,40p' readme_embed.txt >&2
               exit 1
             fi
             if [ -s readme_embed.txt ]; then
-              echo "<details><summary>展开三代完整必读说明（与包内 必读说明.txt 逐字一致）</summary>"
+              echo "<details><summary>展开四代完整必读说明（与包内 必读说明.txt 逐字一致）</summary>"
               echo
               echo "<pre>"
               cat readme_embed.txt
@@ -759,13 +925,24 @@ jobs:
             --data-binary "@$src3" \
             "${BASE}?name=${ascii3}" | jq -r '.name'
 
-          # 断言三个附件都在（防"只传了一部分却报成功"）
+          # ── 上传 4 代（世界大战）───────────────────────────────────────
+          src4="$(ls dist4/*.zip | head -1)"
+          ascii4="ArmyMen4-CHS-Patch-${stamp}.zip"
+          echo "上传 $ascii4"
+          curl -fsSL -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Content-Type: application/zip" \
+            -H "Accept: application/vnd.github+json" \
+            --data-binary "@$src4" \
+            "${BASE}?name=${ascii4}" | jq -r '.name'
+
+          # 断言四个附件都在（防"只传了一部分却报成功"）
           names="$(gh api "repos/$slug/releases/tags/$tag" --jq '.assets[].name')"
-          for want in "$ascii" "$ascii2" "$ascii3"; do
+          for want in "$ascii" "$ascii2" "$ascii3" "$ascii4"; do
             echo "$names" | grep -qxF "$want" \
               || { echo "!! Release 缺少附件 $want（实有：$names）" >&2; exit 1; }
           done
-          echo "✓ 三个附件均已上传"
+          echo "✓ 四个附件均已上传"
 
           # body 自检：非空、非占位符、首行符合预期
           body="$(gh api "repos/$slug/releases/tags/$tag" --jq .body)"

@@ -1,0 +1,8 @@
+#cmd	type		x	y	facing	group	name
+
+place	riflepill   	562	568	128	1	-
+place	riflepill   	222	609	128	1	-
+place	tank        	403	434	128	2	-
+place	rifleman    	402	433	128	2	-
+place	rifleman    	680	598	160	2	-
+place	rifleman    	542	480	104	1	-

@@ -1,0 +1,14 @@
+Bringing all of the enemy flags to home
+base scores 1000 pts. They may be
+brought to home base one at a time but no
+points are scored until all enemy flags
+have been captured and returned to home
+base.
+
+A flag returns to its base if unheld for 2
+minutes.
+
+The first player/team to reach the point
+goal wins. So when playing to the default
+goal of 1000 pts capturing all enemy flags
+wins the game.

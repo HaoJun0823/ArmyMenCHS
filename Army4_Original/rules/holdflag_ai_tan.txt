@@ -1,0 +1,2 @@
+include holdflag_ai.txt
+expand holdflag_ai_macro ( tan green blue grey 2)
