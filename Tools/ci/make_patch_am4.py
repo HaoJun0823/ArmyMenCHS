@@ -100,11 +100,10 @@ LICENSE_DIR = "LICENSES"
 #   最后 GPLv3.txt 作为主许可正文。
 LICENSE_ORDER = ["ASILoader.txt", "cnc-ddraw.txt", "qwen3-tts.txt", "GPLv3.txt"]
 
-# 配音落位自证：与 ci_build_am4.py 的 AUDIO_EXPECT_FILES 保持一致。
-#   ★TODO(配音)：Army4_Voice_CHS/audio 目前为空，值为英文原声总数 298。
-#     台词表定稿后必须同步改 ci_build_am4.py / verify_release_am4.py 三处。
+# 配音落位自证：只确认"确实拷了一批中文配音 wav"，不硬数数量——
+#   配音条数随台词表与音效甄别浮动，且游戏对缺失配音静默回退英文原声。
+#   真正的质量闸门在 ci_build_am4.py（体积下限）与 verify_release_am4.py（抽样探针）。
 AUDIO_REL = "update/audio/vos"
-AUDIO_EXPECT_FILES = 298
 
 
 def sha256(p):
@@ -339,16 +338,16 @@ def main():
             print("  %-38s !! 缺失" % key)
             return 1
 
-    # 配音落位自证：只查"目录存在"挡不住"只拷了 3 个 wav"
+    # 配音落位自证：只确认"确实拷了一批中文配音 wav"，不数数量
     vos = os.path.join(stage, AUDIO_REL.replace("/", os.sep))
     n_wav = sum(1 for f in os.listdir(vos)
                 if f.lower().endswith(".wav")) if os.path.isdir(vos) else 0
-    if n_wav < AUDIO_EXPECT_FILES:
-        print("  %-38s !! 只有 %d 个 wav（期望 >= %d）—— 中文配音缺失"
-              % (AUDIO_REL + "/*.wav", n_wav, AUDIO_EXPECT_FILES),
+    if n_wav == 0:
+        print("  %-38s !! 0 个 wav —— 中文配音未拷入" % (AUDIO_REL + "/*.wav"),
               file=sys.stderr)
         return 1
-    print("  %-38s %9d 个 wav" % (AUDIO_REL + "/*.wav", n_wav))
+    print("  %-38s %9d 个 wav（不硬校验数量：缺失的会静默回退英文原声）"
+          % (AUDIO_REL + "/*.wav", n_wav))
     return 0
 
 

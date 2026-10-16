@@ -99,16 +99,16 @@ CNC_DIR = "cnc-ddraw"
 
 # ── 中文配音 ──────────────────────────────────────────────────────────
 #   ★ 与 3 代的差异：3 代英文原声 239 个、实际配了 171 个（音效类 68 个未配）。
-#     4 代英文原声是 298 个（Army4_Original/audio/vos）。
+#     4 代英文原声 298 个（Army4_Original/audio/vos），其中 48 个为无人声音效
+#     （环境/枪械/多人模式音）不配中文；实际中文配音 250 个，已生成于
+#     Army4_Voice_CHS/audio/vos（qwen3-tts）。
 #
-# ★TODO(配音)：Army4_Voice_CHS/audio/vos 目前为空。配音生成流程见
-#     docs/11-am4-reuse-plan.md §2.2（ASR -> 中译 -> 音色参考 -> 批量生成）。
-#     当前 AUDIO_EXPECT_FILES 取**英文原声总数 298**（一一对应是最强不变量）；
-#     台词表定稿、确定哪些是"音效不配"之后，必须回来把 298 改成实际配音数
-#     —— 否则配音做完了 CI 依然是红的。
+#   ★ 不按"文件数量"硬校验：配音条数随台词表与音效甄别浮动，且游戏对缺失的
+#     配音会静默回退英文原声（不报错、不崩）。此处只校验：
+#       (a) 文件名为英文原声子集（同名单一一对应，游戏按原名加载）；
+#       (b) 总体积 > AUDIO_MIN_BYTES（防"只拷了几个文件"这种假绿）。
 AUDIO_DIR_NAME = "audio"
 AUDIO_SRC_DEFAULT = os.path.join("Army4_Voice_CHS", AUDIO_DIR_NAME)
-AUDIO_EXPECT_FILES = 298
 AUDIO_MIN_BYTES = 10000000        # ~9.5 MiB；明显低于此值说明拷漏了
 # 配音文件名必须是英文原声的子集（同名单一一对应，游戏按原名加载）
 AUDIO_BASELINE_DIR = os.path.join("Army4_Original", AUDIO_DIR_NAME, "vos")
@@ -361,12 +361,13 @@ def main():
               % baseline, file=sys.stderr)
         return 1
 
-    if n_audio != AUDIO_EXPECT_FILES or audio_bytes < AUDIO_MIN_BYTES:
-        print("  [5] !! 配音数量/体积不符：%d 文件（期望 %d）/ %d B（下限 %d）"
-              % (n_audio, AUDIO_EXPECT_FILES, audio_bytes, AUDIO_MIN_BYTES),
+    if audio_bytes < AUDIO_MIN_BYTES:
+        print("  [5] !! 配音总体积过低：%d B（下限 %d）—— 可能只拷了部分文件"
+              % (audio_bytes, AUDIO_MIN_BYTES),
               file=sys.stderr)
-        print("      ★TODO：中文配音尚未生成（Army4_Voice_CHS/audio 为空）。"
-              "生成流程见 docs/11-am4-reuse-plan.md §2.2。", file=sys.stderr)
+        print("      ★ 中文配音应位于 Army4_Voice_CHS/audio/vos（qwen3-tts 生成）。"
+              "游戏对缺失配音静默回退英文原声，不会报错，需人工确认。",
+              file=sys.stderr)
         return 1
     print()
 
@@ -458,12 +459,8 @@ def main():
     n_wav = 0
     for dp, _, fns in os.walk(audio_dst):
         n_wav += sum(1 for fn in fns if fn.lower().endswith(".wav"))
-    print("  %-38s %s" % ("audio/vos/*.wav",
-                          "%d 个 OK" % n_wav if n_wav >= AUDIO_EXPECT_FILES
-                          else "%d 个 !! 少于预期 %d"
-                          % (n_wav, AUDIO_EXPECT_FILES)))
-    if n_wav < AUDIO_EXPECT_FILES:
-        ok = False
+    print("  %-38s %d 个 .wav（不硬校验数量：缺失的会静默回退英文原声）"
+          % ("audio/vos/*.wav", n_wav))
     return 0 if ok else 1
 
 

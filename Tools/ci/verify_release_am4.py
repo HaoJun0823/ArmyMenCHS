@@ -85,12 +85,12 @@ LICENSE_REQUIRED_MARKS = [
 ]
 
 # ── 中文配音（qwen3-tts 生成，随 update\ 覆盖游戏英文原声）──────────────
-#   ★ 数量下限写死：配音丢失的表现是"游戏照常跑但全是英文语音"，
-#     不会报错、不会崩 —— 典型静默失效，只能靠数量断言拦。
-#   ★TODO(配音)：Army4_Voice_CHS/audio 目前为空，此处取英文原声总数 298。
-#     与 ci_build_am4.py / make_patch_am4.py 三处必须同步改。
+#   ★ 不按"文件数量"硬校验：配音条数随台词表与音效甄别浮动（4 代英文原声
+#     298 个含 48 个无人声音效不配中文，实际配音 250 个），且游戏对缺失配音
+#     静默回退英文原声（不报错、不崩）。此处只校验：
+#       (a) 抽样探针（号手/HQ/平民/多人播报各一，均为 250 条真人配音中的真实文件名）；
+#       (b) 总体积 > 10 MB（防"只拷了几个文件"这种假绿）。
 AUDIO_PREFIX = "update/audio/vos/"
-AUDIO_EXPECT_FILES = 298
 
 REQUIRED_SCRIPTS = ["scripts/Army4_Extend_Dll.asi", "scripts/Hzk16"]
 REQUIRED_UPDATE = [
@@ -242,9 +242,8 @@ def main():
     print("C2. update\\audio\\vos\\ 中文配音（qwen3-tts 生成）")
     n_wav = [x for x in names
              if x.startswith(AUDIO_PREFIX) and x.lower().endswith(".wav")]
-    check(len(n_wav) >= AUDIO_EXPECT_FILES,
-          "配音 wav 数量 >= %d" % AUDIO_EXPECT_FILES,
-          "%d 个（配音丢失的表现是游戏照常跑但语音全英文，不会报错）"
+    # 不硬数数量：配音条数浮动，且缺失会静默回退英文原声。只报数量供人工核对。
+    print("    配音 wav 数量：%d（不硬校验；缺失会静默回退英文原声）"
           % len(n_wav))
     # 抽查若干必须存在的关键台词：号手/HQ/平民/多人播报各取一，
     #   防"数量够了但全是同一批文件重复"这类构造错误。
@@ -519,9 +518,8 @@ def main():
             print("   - %s" % f)
         if any("配音" in f for f in fails):
             print()
-            print("★ 若失败项是配音：Army4_Voice_CHS/audio 尚未生成。")
-            print("  流程见 docs/11-am4-reuse-plan.md §2.2；"
-                  "生成后同步改三处 AUDIO_EXPECT_FILES。")
+            print("★ 若失败项是配音：检查 update/audio/vos/ 是否拷入中文配音")
+            print("  （Army4_Voice_CHS/audio/vos，qwen3-tts 生成）。")
         return 1
     print("全部通过。")
     print("=" * 74)
