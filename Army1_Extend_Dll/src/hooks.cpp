@@ -619,6 +619,56 @@ bool InstallHooks() {
     return ok;
 }
 
+// ── 字体表重建（修复绿点/方块：中文显示成绿点）────────────────────────
+// 根因：Army Men 通过延迟加载 dsound.dll 注入 ASI，InitializeASI 触发时，
+// 零售 TextInit(sub_4558F0) 早已把字体表 dword_658728[7] 建成
+// ArialNarrow/Times（无中文字形）。CreateFont* Hook 只拦"未来"的创建，
+// 拦不到那次早先的一锤子建表，因此 Hook 形同虚设（日志可证：Hook 装上
+// 但全程零拦截）。这里直接改写已建好的字体表，把每槽强制换成 GB2312 宋体
+// （尺寸沿用零售），使 TextWrite 用到的每个字体都能画中文。
+static void RebuildFontTable() {
+    if (!g_fontEnable) return;
+    if (g_faceName.empty()) { Log("RebuildFontTable: 无中文字体名，跳过"); return; }
+
+    HMODULE hGame = GetModuleHandleA(nullptr);
+    if (!hGame) { Log("RebuildFontTable: 取不到主模块"); return; }
+
+    // 零售 sub_4558F0 建表的 height（RVA 0x258728，7 槽）
+    //   0 Times 14  1 Times 18  2 Times 20
+    //   3 Arial -10 4 Arial 14  5 Arial 20  6 Arial 36
+    static const int kHeights[7] = {14, 18, 20, -10, 14, 20, 36};
+
+    BYTE* pTable = (BYTE*)hGame + 0x258728;   // VA 0x658728
+    ModRange mr;
+    if (!GetModRange(hGame, mr) || !ValidPtr(mr, pTable, sizeof(DWORD) * 7)) {
+        Log("RebuildFontTable: 字体表地址越界，跳过");
+        return;
+    }
+
+    DWORD oldProt = 0;
+    if (!VirtualProtect(pTable, sizeof(DWORD) * 7, PAGE_READWRITE, &oldProt)) {
+        Log("RebuildFontTable: VirtualProtect 失败 (0x%lX)", GetLastError());
+        return;
+    }
+
+    int ok = 0;
+    for (int i = 0; i < 7; i++) {
+        // 直接调 Win32 CreateFontA：DLL 自身 IAT 指向真实 gdi32，不经 exe 的 Hook。
+        HFONT hNew = CreateFontA(kHeights[i], 0, 0, 0, 400, 0, 0, 0,
+                                 (DWORD)g_charSet, 0, 0, 1, 2,
+                                 g_faceName.c_str());
+        if (!hNew) { Log("RebuildFontTable: 槽 %d 建宋体失败", i); continue; }
+        // 覆盖该槽为新 HFONT。旧 HFONT 不 DeleteObject：可能被 DDraw 表面仍选中，
+        // 删之会失败；且每进程仅重建一次，泄漏 7 个对象可接受。
+        *(DWORD*)(pTable + (size_t)i * 4) = (DWORD)hNew;
+        ok++;
+    }
+
+    DWORD tmp = 0;
+    VirtualProtect(pTable, sizeof(DWORD) * 7, oldProt, &tmp);
+    Log("RebuildFontTable: 重建 %d/7 槽为 %s(GB2312=%u)", ok, g_faceName.c_str(), (unsigned)g_charSet);
+}
+
 void RemoveHooks() {
     HMODULE hGame = GetModuleHandleA(nullptr);
     if (!hGame) return;
@@ -647,6 +697,8 @@ extern "C" __declspec(dllexport) void InitializeASI() {
     bool patchOk = false;
     if (dataOk) patchOk = ApplyStringPatches();
 
+    RebuildFontTable();   // 直接改写已建好的字体表（Hook 拦不到早先那次建表）
+
     Log("InitializeASI -> data=%d hook=%d patch=%d",
         (int)dataOk, (int)hookOk, (int)patchOk);
 }
@@ -661,6 +713,8 @@ extern "C" __declspec(dllexport) bool ArmyMenCHS_Install() {
 
     bool patchOk = false;
     if (dataOk) patchOk = ApplyStringPatches();
+
+    RebuildFontTable();   // 直接改写已建好的字体表（Hook 拦不到早先那次建表）
 
     Log("Install -> data=%d hook=%d patch=%d",
         (int)dataOk, (int)hookOk, (int)patchOk);
