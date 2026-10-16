@@ -1,0 +1,2262 @@
+{
+  "source": "voices.asd",
+  "source_sha256": "161a302b5b43010a1fab9d5293ee33e1fc3dc83990cd2d9a649883a41ef35fee",
+  "version": "V0.0",
+  "count": 238,
+  "max_sounds": 256,
+  "header_size": 2064,
+  "ast_source": "voices.ast",
+  "ast_text_count": 160,
+  "entries": [
+    {
+      "slot": 0,
+      "voiceID": 4000,
+      "length": 9984,
+      "file": "0000_4000_THERE_HE_IS.wav",
+      "sha256": "422275062168244de3f63322f5b75e698ebd1587237add9fa54a1ffc18d07781",
+      "text": "他在那儿！",
+      "old_voiceID": 4000
+    },
+    {
+      "slot": 1,
+      "voiceID": 4001,
+      "length": 10848,
+      "file": "0001_4001_GET_HIM.wav",
+      "sha256": "98f7ad20711faeda1f3a711a920b7c9101ed4a004cba124826da1751c7b91b8d",
+      "text": "抓住他！",
+      "old_voiceID": 4001
+    },
+    {
+      "slot": 2,
+      "voiceID": 4002,
+      "length": 16640,
+      "file": "0002_4002_HES_OURS.wav",
+      "sha256": "8128cff9c19497cd451f3fe6bd0e302e9f7a7bcd089eadf95277ab11b8e04701",
+      "text": "他是自己人。",
+      "old_voiceID": 4002
+    },
+    {
+      "slot": 3,
+      "voiceID": 4003,
+      "length": 16128,
+      "file": "0003_4003_YOURE_TOAST.wav",
+      "sha256": "d4557d39cd8c9c829d324d419f2b38d7d7708a17df552742c4d0b2513bdaf2d6",
+      "text": "你完了。",
+      "old_voiceID": 4003
+    },
+    {
+      "slot": 4,
+      "voiceID": 4004,
+      "length": 22176,
+      "file": "0004_4004_TAN_SCUM.wav",
+      "sha256": "17a2da420a0d3320a92bee709940d668661e4bcc86faedc34021bab59085ab3f",
+      "text": "瞧这个，黄军垃圾！",
+      "old_voiceID": 4004
+    },
+    {
+      "slot": 5,
+      "voiceID": 4005,
+      "length": 22976,
+      "file": "0005_4005_GREY_SCUM.wav",
+      "sha256": "94e71953709dd8fd4431b2ac90c92e8f1ae307be4766e3cfd2c64f514569aedd",
+      "text": "瞧这个，灰军垃圾！",
+      "old_voiceID": 4005
+    },
+    {
+      "slot": 6,
+      "voiceID": 4006,
+      "length": 35040,
+      "file": "0006_4006_REQUEST_PARATROOPERS.wav",
+      "sha256": "be85fc47ecb453a982aa2cbad4d2e8f3016c4c84aa7bd66a93328cccc0dc19eb",
+      "text": "我是中士，请求空投伞兵。完毕。",
+      "old_voiceID": 4006
+    },
+    {
+      "slot": 7,
+      "voiceID": 4007,
+      "length": 38560,
+      "file": "0007_4007_SEND_PARATROOPERS.wav",
+      "sha256": "898822b0d7fff5b74150919464b00eedb206dd546f226d4ce670384d887cc1ae",
+      "text": "我是中士，请派遣伞兵。完毕。",
+      "old_voiceID": 4007
+    },
+    {
+      "slot": 8,
+      "voiceID": 4008,
+      "length": 36960,
+      "file": "0008_4008_REQUEST_RECON.wav",
+      "sha256": "b7e9edcc4a4ddc18463581e43aaeff49f0331ab6711a182f94841e9666bd11b1",
+      "text": "我是中士，请求空中侦察。完毕。",
+      "old_voiceID": 4008
+    },
+    {
+      "slot": 9,
+      "voiceID": 4009,
+      "length": 41568,
+      "file": "0009_4009_SEND_RECON.wav",
+      "sha256": "34abca6da9c080c25cf676d15742bd359ecb9bb86769217cab24850bb2ddba37",
+      "text": "我是中士，请派一架侦察机来。完毕。",
+      "old_voiceID": 4009
+    },
+    {
+      "slot": 10,
+      "voiceID": 4010,
+      "length": 32704,
+      "file": "0010_4010_REQUEST_AIR_STRIKE.wav",
+      "sha256": "0fb4a044b42c1aa26a7077598e26cbd3455e6e93da6ee30dea6afe08cf5de90f",
+      "text": "我是中士，请求空中打击。完毕。",
+      "old_voiceID": 4010
+    },
+    {
+      "slot": 11,
+      "voiceID": 4011,
+      "length": 34304,
+      "file": "0011_4011_NEED_AIR_STRIKE.wav",
+      "sha256": "b49ce9e0a7e66c700505566672b4fe1ab1e408036986519cd7ea09d7d0d9c25d",
+      "text": "我是中士，这儿需要空中打击。完毕。",
+      "old_voiceID": 4011
+    },
+    {
+      "slot": 12,
+      "voiceID": 4012,
+      "length": 18048,
+      "file": "0012_4012_GREEN_SQUAD_ATTACK.wav",
+      "sha256": "c71059f917a2e871a4c5eaa02e3c3854a932ed7029a74476339cb9f00b4f4b9d",
+      "text": "绿军小队进攻。",
+      "old_voiceID": 4012
+    },
+    {
+      "slot": 13,
+      "voiceID": 4013,
+      "length": 15552,
+      "file": "0013_4013_GREEN_ATTACK.wav",
+      "sha256": "cc67f08e57d30760273568a120446c37c2986d37855b8de4a1e6d95fa80c1d33",
+      "text": "绿军进攻。",
+      "old_voiceID": 4013
+    },
+    {
+      "slot": 14,
+      "voiceID": 4014,
+      "length": 18304,
+      "file": "0014_4014_TAN_SQUAD_ATTACK.wav",
+      "sha256": "bc5998a1323edeab49fab64abba3a1722f3be66c15a69bb43a568cbefb5838b3",
+      "text": "黄军小队进攻。",
+      "old_voiceID": 4014
+    },
+    {
+      "slot": 15,
+      "voiceID": 4015,
+      "length": 14912,
+      "file": "0015_4015_TAN_ATTACK.wav",
+      "sha256": "4215b4ea0fb51ab0b16a6323331d7c297149e2828551a54d0458802979a6bcc8",
+      "text": "黄军进攻。",
+      "old_voiceID": 4015
+    },
+    {
+      "slot": 16,
+      "voiceID": 4016,
+      "length": 18048,
+      "file": "0016_4016_BLUE_SQUAD_ATTACK.wav",
+      "sha256": "316ba33d09cd2adb4831aea92cb32863e45ea0595198c382c5649acbeb0e1b76",
+      "text": "蓝军小队进攻。",
+      "old_voiceID": 4016
+    },
+    {
+      "slot": 17,
+      "voiceID": 4017,
+      "length": 16224,
+      "file": "0017_4017_BLUE_ATTACK.wav",
+      "sha256": "d963ed42911ce60b55f2df22811e78a67c57681b2ad97c5a9d87e187eeb33336",
+      "text": "蓝军进攻。",
+      "old_voiceID": 4017
+    },
+    {
+      "slot": 18,
+      "voiceID": 4018,
+      "length": 19776,
+      "file": "0018_4018_GREY_SQUAD_ATTACK.wav",
+      "sha256": "97c449f785fd784544d86981d8c73fbaf7498b7ae9d8a4b64f082a23b3af49e4",
+      "text": "灰军小队进攻。",
+      "old_voiceID": 4018
+    },
+    {
+      "slot": 19,
+      "voiceID": 4019,
+      "length": 18112,
+      "file": "0019_4019_GREY_ATTACK.wav",
+      "sha256": "f1783ff10af0193bc203bb88c4377bcbd76daf5ac39643cbb22921bb5c981c43",
+      "text": "灰军进攻。",
+      "old_voiceID": 4019
+    },
+    {
+      "slot": 20,
+      "voiceID": 4020,
+      "length": 18080,
+      "file": "0020_4020_GREEN_SQUAD_DEFEND.wav",
+      "sha256": "bc5b0fbeb67c67bbccd8febb7c4218ae52ee4231a2aa72637c888f7e19fcc9ee",
+      "text": "绿军小队防御。",
+      "old_voiceID": 4020
+    },
+    {
+      "slot": 21,
+      "voiceID": 4021,
+      "length": 17504,
+      "file": "0021_4021_GREEN_DEFEND.wav",
+      "sha256": "6be70ff0127f9b469abb5b6d8215a795b60b67dff3a387d97ac2014cd329035e",
+      "text": "绿军防御。",
+      "old_voiceID": 4021
+    },
+    {
+      "slot": 22,
+      "voiceID": 4022,
+      "length": 17888,
+      "file": "0022_4022_TAN_SQUAD_DEFEND.wav",
+      "sha256": "46ba6f9dcef89b44c9775c9bb978537a2eddf6ed796a0381b9b8304b339dd32d",
+      "text": "黄军小队防御。",
+      "old_voiceID": 4022
+    },
+    {
+      "slot": 23,
+      "voiceID": 4023,
+      "length": 16800,
+      "file": "0023_4023_TAN_DEFEND.wav",
+      "sha256": "5dbdb9430449f328b227fc22b9849a933f19c7418b96c16b4f7be1acc22cf4f7",
+      "text": "黄军防御。",
+      "old_voiceID": 4023
+    },
+    {
+      "slot": 24,
+      "voiceID": 4024,
+      "length": 17312,
+      "file": "0024_4024_BLUE_SQUAD_DEFEND.wav",
+      "sha256": "e84021cec81241509967856abe8f75ec157ff1440b1060ee21283fa440ad259f",
+      "text": "蓝军小队防御。",
+      "old_voiceID": 4024
+    },
+    {
+      "slot": 25,
+      "voiceID": 4025,
+      "length": 16736,
+      "file": "0025_4025_BLUE_DEFEND.wav",
+      "sha256": "2f68ce238067355bfcc9bdf0634504f7995ea8e7a89fb0d5dbc70b72aa859bac",
+      "text": "蓝军防御。",
+      "old_voiceID": 4025
+    },
+    {
+      "slot": 26,
+      "voiceID": 4026,
+      "length": 19264,
+      "file": "0026_4026_GREY_SQUAD_DEFEND.wav",
+      "sha256": "0a41d53ba0f912652ee347176dca5da65b5183e4f3fa4fd1f3d2568f1eca7ce6",
+      "text": "灰军小队防御。",
+      "old_voiceID": 4026
+    },
+    {
+      "slot": 27,
+      "voiceID": 4027,
+      "length": 17280,
+      "file": "0027_4027_GREY_DEFEND.wav",
+      "sha256": "1a4ebaa99596738956433a08606ed7574417dbf81e827d24bcc83a7969415a7b",
+      "text": "灰军防御。",
+      "old_voiceID": 4027
+    },
+    {
+      "slot": 28,
+      "voiceID": 4028,
+      "length": 11264,
+      "file": "0028_4028_GET_OVER_HERE.wav",
+      "sha256": "ba91ece83c0fd4e1a6ae9942a14a625f6e9d36e73d14a56ad8c0717972e3f459",
+      "text": "到这儿来。",
+      "old_voiceID": 4028
+    },
+    {
+      "slot": 29,
+      "voiceID": 4029,
+      "length": 11168,
+      "file": "0029_4029_FOLLOW_ME.wav",
+      "sha256": "49ca886573dbcf14a303a391bcd182faedd3845e91ef712b80a4e191008e0bf7",
+      "text": "跟着我。",
+      "old_voiceID": 4029
+    },
+    {
+      "slot": 30,
+      "voiceID": 4030,
+      "length": 33024,
+      "file": "0030_4030_SARGE_FOUND_AUTO_RIFLE.wav",
+      "sha256": "dd14be6d443cbd0f65b8d4a2475ef9dc317e6402208d631b7c664721d458a6b2",
+      "text": "发现自动来复枪。",
+      "old_voiceID": 4030
+    },
+    {
+      "slot": 31,
+      "voiceID": 4031,
+      "length": 13632,
+      "file": "0031_4031_SARGE_FOUND_FIRST_AID.wav",
+      "sha256": "c170b3658dbd1697354cee8ab493da08e1b50b89a6fbd4f26f84e40a58b69c8c",
+      "text": "发现医药箱。",
+      "old_voiceID": 4031
+    },
+    {
+      "slot": 32,
+      "voiceID": 4032,
+      "length": 22144,
+      "file": "0032_4032_SARGE_FOUND_BAZOOKA.wav",
+      "sha256": "9a8fe9d3c732e070a4750003e9f6aa53bb70fc1a2e42b15c2714420624dfb286",
+      "text": "发现火箭筒。",
+      "old_voiceID": 4032
+    },
+    {
+      "slot": 33,
+      "voiceID": 4033,
+      "length": 11328,
+      "file": "0033_4033_SARGE_FOUND_MINES.wav",
+      "sha256": "c8ea2dffe0039b86b94ff844ca4caa26e9c9cac99fb8c4d89a168b8a4aa99a82",
+      "text": "发现地雷。",
+      "old_voiceID": 4033
+    },
+    {
+      "slot": 34,
+      "voiceID": 4034,
+      "length": 33184,
+      "file": "0034_4034_SARGE_FOUND_GRENADES.wav",
+      "sha256": "c8ab1584dcde9a1ec22988360e3eb383abff25bf1cbe8fa997b892f030d4d09c",
+      "text": "发现手榴弹。",
+      "old_voiceID": 4034
+    },
+    {
+      "slot": 35,
+      "voiceID": 4035,
+      "length": 42368,
+      "file": "0035_4035_SARGE_FOUND_MINESWEEPER.wav",
+      "sha256": "b8e187412d373280b453ee2969f796634ca67b129211ad0da66b018c3e05ea3e",
+      "text": "发现扫雷器。",
+      "old_voiceID": 4035
+    },
+    {
+      "slot": 36,
+      "voiceID": 4036,
+      "length": 27456,
+      "file": "0036_4036_SARGE_FOUND_MORTARS.wav",
+      "sha256": "06fdc0ac030d2f81587fde0b5ab666a652ff78e1a056d178f4d0e0f91c956722",
+      "text": "发现迫击炮。",
+      "old_voiceID": 4036
+    },
+    {
+      "slot": 37,
+      "voiceID": 4037,
+      "length": 26112,
+      "file": "0037_4037_SARGE_FOUND_NOTE.wav",
+      "sha256": "835a4532be80af296f8cdac6dbff83772f82de1a5ca80bcb636b2ee7ee4adcf1",
+      "text": "发现便条。",
+      "old_voiceID": 4037
+    },
+    {
+      "slot": 38,
+      "voiceID": 4038,
+      "length": 19072,
+      "file": "0038_4038_SARGE_FOUND_FLAMER.wav",
+      "sha256": "a418abfcdadee9d91be8e21ee5ab6db843fba6d336183b98517aecfaa4ca323d",
+      "text": "发现火焰喷射器。",
+      "old_voiceID": 4038
+    },
+    {
+      "slot": 39,
+      "voiceID": 4039,
+      "length": 19200,
+      "file": "0039_4039_SARGE_FOUND_FLAG.wav",
+      "sha256": "97aa48ed9aa44f5757e1ecf3bc149f71d501707b5f240ad58e76a411a6b55c2d",
+      "text": "找到一面旗子。",
+      "old_voiceID": 4039
+    },
+    {
+      "slot": 40,
+      "voiceID": 4040,
+      "length": 23648,
+      "file": "0040_4040_SARGE_FOUND_EXPLOSIVES.wav",
+      "sha256": "b93bd4dbda2f088cd8f1104971ae452c7330ab2521651d5b8aac92151ffbba53",
+      "text": "发现炸药。",
+      "old_voiceID": 4040
+    },
+    {
+      "slot": 41,
+      "voiceID": 4041,
+      "length": 18848,
+      "file": "0041_4041_SARGE_FOUND_GREEN_FLAG.wav",
+      "sha256": "9f2a64cf1885e24dafebaff8b666985dc00759fe707d51ff0b6034c6af8c7872",
+      "text": "发现一面绿军旗子。",
+      "old_voiceID": 4041
+    },
+    {
+      "slot": 42,
+      "voiceID": 4042,
+      "length": 19840,
+      "file": "0042_4042_SARGE_FOUND_TAN_FLAG.wav",
+      "sha256": "f43f8a19f2edfd5822ca52db00b33accafe7e8fe8ed8ca981828fa3241803622",
+      "text": "发现一面黄军旗子。",
+      "old_voiceID": 4042
+    },
+    {
+      "slot": 43,
+      "voiceID": 4043,
+      "length": 20256,
+      "file": "0043_4043_SARGE_FOUND_BLUE_FLAG.wav",
+      "sha256": "465ead27cb6d434fc349b75b1008f7fc431f0ca309df0ba2ea8f52624870266d",
+      "text": "发现一面蓝军旗子。",
+      "old_voiceID": 4043
+    },
+    {
+      "slot": 44,
+      "voiceID": 4044,
+      "length": 19520,
+      "file": "0044_4044_SARGE_FOUND_GREY_FLAG.wav",
+      "sha256": "d1d9a7154acf119b819a1b68af6334f914846fa92fe98933fc545ea3b17b3172",
+      "text": "发现一面灰军旗子。",
+      "old_voiceID": 4044
+    },
+    {
+      "slot": 45,
+      "voiceID": 4045,
+      "length": 23680,
+      "file": "0045_4045_SARGE_FOUND_KEY1.wav",
+      "sha256": "16bd6aa725bd4936939e333c17f392a927297f099861b701153071a06bdbf5cc",
+      "text": "找到第一把钥匙。",
+      "old_voiceID": 4045
+    },
+    {
+      "slot": 46,
+      "voiceID": 4046,
+      "length": 17600,
+      "file": "0046_4046_SARGE_FOUND_KEY2.wav",
+      "sha256": "e2b61c3d3657973f84fefafe80b623e5dae3bde8444ad6803060bdf99b7db566",
+      "text": "找到第二把钥匙。",
+      "old_voiceID": 4046
+    },
+    {
+      "slot": 47,
+      "voiceID": 4047,
+      "length": 22816,
+      "file": "0047_4047_SARGE_FOUND_KEY3.wav",
+      "sha256": "a282c6e0feafebea978ee890d98e126facc745736221c0ff7aa0321cd3bd5465",
+      "text": "找到第三把钥匙。",
+      "old_voiceID": 4047
+    },
+    {
+      "slot": 48,
+      "voiceID": 4048,
+      "length": 28416,
+      "file": "0048_4048_SARGE_FOUND_AIRSTRIKE.wav",
+      "sha256": "fa130c411c86d780791771a10ee14c9dae7c64305231f0645ac04be3198c645f",
+      "text": "空中打击！",
+      "old_voiceID": 4048
+    },
+    {
+      "slot": 49,
+      "voiceID": 4049,
+      "length": 25024,
+      "file": "0049_4049_SARGE_FOUND_PARATROOPERS.wav",
+      "sha256": "d2754ef52bfb03df0ec1a40da36a803a97798cb0892250ec0b587f1adbd551a8",
+      "text": "伞兵！",
+      "old_voiceID": 4049
+    },
+    {
+      "slot": 50,
+      "voiceID": 4050,
+      "length": 18176,
+      "file": "0050_4050_SARGE_FOUND_RECON.wav",
+      "sha256": "a565d266fa9caeaf7674c24401d6ecaf478370fabac0842bbf4b0ee83a2be0aa",
+      "text": "侦察机！",
+      "old_voiceID": 4050
+    },
+    {
+      "slot": 51,
+      "voiceID": 4051,
+      "length": 22880,
+      "file": "0051_4051_LOAD_TRUCKS_QUICK.wav",
+      "sha256": "960c0d8b2e5ab5521406a31d5a437204ddce976ba7c4ce7682d0d6068cc00edf",
+      "text": "装满卡车，动作要快！",
+      "old_voiceID": 4051
+    },
+    {
+      "slot": 52,
+      "voiceID": 4052,
+      "length": 14368,
+      "file": "0052_4052_GET_OUT_OF_HERE.wav",
+      "sha256": "76f3cb946a5970f2cf23228a45fae7c5843244e1701ca8fe25c5d0e72ef80607",
+      "text": "我们快离开这儿！",
+      "old_voiceID": 4052
+    },
+    {
+      "slot": 53,
+      "voiceID": 4053,
+      "length": 15744,
+      "file": "0053_4053_GET_OUT_OF_TOWN.wav",
+      "sha256": "0dfff0e9e2cd82b8ab60fd717234396625fe564fdf1fb79becc751e3e949c8e4",
+      "text": "我们快离开小镇！",
+      "old_voiceID": 4053
+    },
+    {
+      "slot": 54,
+      "voiceID": 4054,
+      "length": 34272,
+      "file": "0054_4054_PLASTIC_FOR_INFO.wav",
+      "sha256": "439db0f47faea39a7471ffea33bb1f7f1f01ab5aede287727bc79d18accdca67",
+      "text": "这是你们要的塑料，把情报给我。",
+      "old_voiceID": 4054
+    },
+    {
+      "slot": 55,
+      "voiceID": 5011,
+      "length": 31776,
+      "file": "0055_5011_SARGE_LOW_HEALTH.wav",
+      "sha256": "cceb076d7612074e5425ed590412db0f9155318dda80319d2fd1c85a70f2ff85",
+      "text_missing": true,
+      "ext_name_ref": "SARGE_LOW_HEALTH",
+      "old_voiceID": 4055
+    },
+    {
+      "slot": 56,
+      "voiceID": 5012,
+      "length": 24864,
+      "file": "0056_5012_HEAL_SARGE.wav",
+      "sha256": "485913a9c58011878427484adad90aa04ceb2dbd31f4fc709621b99674059724",
+      "text_missing": true,
+      "ext_name_ref": "HEAL_SARGE",
+      "old_voiceID": 4056
+    },
+    {
+      "slot": 57,
+      "voiceID": 5031,
+      "length": 29440,
+      "file": "0057_5031_ALPINE3_1SARGE.wav",
+      "sha256": "9b04e8c74283f61fb4d16dc46b4771b5e25bef27ee0777826536d4ecd92aa2c2",
+      "text": "真奇怪，他们是怎么去那里的？",
+      "old_voiceID": 4057
+    },
+    {
+      "slot": 58,
+      "voiceID": 5033,
+      "length": 26400,
+      "file": "0058_5033_ALPINE4_2SARGE.wav",
+      "sha256": "da8c33b02917c96030a4d79712e7a6ece53a84b0f0711cd7215f8e9d20e6db9c",
+      "text": "救我们出去！",
+      "old_voiceID": 4058
+    },
+    {
+      "slot": 59,
+      "voiceID": 4055,
+      "length": 26800,
+      "file": "0059_4055_PURSUING_RIFLE_SQUAD.wav",
+      "sha256": "569f5c47c2d150fe7068319a4e76df68367a851edf4854ff13e6179007498ace",
+      "text": "我们正在追踪敌人的来复枪小队。",
+      "old_voiceID": 4059
+    },
+    {
+      "slot": 60,
+      "voiceID": 4056,
+      "length": 24992,
+      "file": "0060_4056_SPOTTED_BY_RIFLE_SQUAD.wav",
+      "sha256": "f4a39f6c0687d6b605262a1f81666c68e7e73d0736b96434a7297617e758733c",
+      "text": "我们被敌人的来复枪小队发现了。",
+      "old_voiceID": 4060
+    },
+    {
+      "slot": 61,
+      "voiceID": 4057,
+      "length": 26624,
+      "file": "0061_4057_PURSUING_BAZOOKA_SQUAD.wav",
+      "sha256": "a34efacf0d1b199454fcac122d1e88f00217c5f10e38b0a000d4fdacf552825d",
+      "text": "我们正在追踪敌人的火箭筒小队。",
+      "old_voiceID": 4061
+    },
+    {
+      "slot": 62,
+      "voiceID": 4058,
+      "length": 24704,
+      "file": "0062_4058_SPOTTED_BY_BAZOOKA_SQUAD.wav",
+      "sha256": "30b0efc305804ea91543619f1819015566f4f04e7f1c156de0f9ea63ee3a99c2",
+      "text": "我们被敌人的火箭筒小队发现了。",
+      "old_voiceID": 4062
+    },
+    {
+      "slot": 63,
+      "voiceID": 4059,
+      "length": 29344,
+      "file": "0063_4059_PURSUING_FLAMER_SQUAD.wav",
+      "sha256": "860b270b9777a1d687a4035630776a6dec56f739f14b18966a0e181f579ce41c",
+      "text": "我们正在追踪敌人的火焰喷射器小队。",
+      "old_voiceID": 4063
+    },
+    {
+      "slot": 64,
+      "voiceID": 4060,
+      "length": 27296,
+      "file": "0064_4060_SPOTTED_BY_FLAMER_SQUAD.wav",
+      "sha256": "173ff076ff729cae58964256bd585b6ddc802e89f1737bd3f9b918e8d504f819",
+      "text": "我们被敌人的火焰喷射器小队发现了。",
+      "old_voiceID": 4064
+    },
+    {
+      "slot": 65,
+      "voiceID": 4061,
+      "length": 25280,
+      "file": "0065_4061_PURSUING_MORTAR_SQUAD.wav",
+      "sha256": "7ca901c4fa8ffe1807ce99cc4dce3ce2f4897d53d70719d1c9821f3e3d37b096",
+      "text": "我们正在追踪敌人的迫击炮小队。",
+      "old_voiceID": 4065
+    },
+    {
+      "slot": 66,
+      "voiceID": 4062,
+      "length": 23392,
+      "file": "0066_4062_SPOTTED_BY_MORTAR_SQUAD.wav",
+      "sha256": "20187d946a6befed5b3bd0186eaa13b61d1b1307546254c2bbd7b2924b5724b1",
+      "text": "我们被敌人的迫击炮小队发现了。",
+      "old_voiceID": 4066
+    },
+    {
+      "slot": 67,
+      "voiceID": 4063,
+      "length": 25376,
+      "file": "0067_4063_PURSUING_SPY.wav",
+      "sha256": "9937fdd35b9b93e4ec66078aee7bd2349504823def8dec402dd6b2b93fea1ce4",
+      "text": "我们正在追踪一名敌军间谍。",
+      "old_voiceID": 4067
+    },
+    {
+      "slot": 68,
+      "voiceID": 4064,
+      "length": 20288,
+      "file": "0068_4064_SPOTTED_BY_SPY.wav",
+      "sha256": "3582354cc942930960fbd4321e0c8034fe90f5d8a89e69df0804be5d52933023",
+      "text": "我们被敌军间谍发现了。",
+      "old_voiceID": 4068
+    },
+    {
+      "slot": 69,
+      "voiceID": 4065,
+      "length": 22464,
+      "file": "0069_4065_ATTACKING_TANK.wav",
+      "sha256": "593804a9f0b1e62a755b9e0c553610c56391954350e04105e4f43654f092c0e3",
+      "text": "我们正在攻击一辆敌军坦克。",
+      "old_voiceID": 4069
+    },
+    {
+      "slot": 70,
+      "voiceID": 4066,
+      "length": 24896,
+      "file": "0070_4066_TANK_ATTACKING.wav",
+      "sha256": "fac92e77329b205ae4036ea047e11cc5168e51113de2bc3a483f0d2fa2462343",
+      "text": "我们正遭到一辆敌军坦克的攻击。",
+      "old_voiceID": 4070
+    },
+    {
+      "slot": 71,
+      "voiceID": 4067,
+      "length": 23360,
+      "file": "0071_4067_ATTACKING_JEEP.wav",
+      "sha256": "f92f8f4679b30e1af6d7505fc1e140fe66f5b6dde4ac94888f816f2250ccc695",
+      "text": "我们正在攻击一辆敌军吉普车。",
+      "old_voiceID": 4071
+    },
+    {
+      "slot": 72,
+      "voiceID": 4068,
+      "length": 28192,
+      "file": "0072_4068_JEEP_ATTACKING.wav",
+      "sha256": "b88b97a9d5d05ff2c98074222400b62e57337b64a738a92ad76d1c692100ef8c",
+      "text": "我们正遭到一辆敌军吉普车的攻击。",
+      "old_voiceID": 4072
+    },
+    {
+      "slot": 73,
+      "voiceID": 4069,
+      "length": 20128,
+      "file": "0073_4069_ATTACKING_PARATROOPERS.wav",
+      "sha256": "5d8fc5b023cef114f39e4ab7d00103fee72e1bdae6cc05336089b287a96101d4",
+      "text": "我们正在攻击敌军伞兵。",
+      "old_voiceID": 4073
+    },
+    {
+      "slot": 74,
+      "voiceID": 4070,
+      "length": 23232,
+      "file": "0074_4070_PARATROOPERS_ATTACKING.wav",
+      "sha256": "cf0fbc737ca785c9d1ac55904271323d5f92c34202964101fad334d9d0c0ee79",
+      "text": "我们正遭到敌军伞兵的攻击。",
+      "old_voiceID": 4074
+    },
+    {
+      "slot": 75,
+      "voiceID": 4071,
+      "length": 18240,
+      "file": "0075_4071_GETTING_SHELLED.wav",
+      "sha256": "67e23b54f5cee3e7302bc27fd764880c845a108fb323d67bc165354af1ec7f44",
+      "text": "我们正遭到炮击。",
+      "old_voiceID": 4075
+    },
+    {
+      "slot": 76,
+      "voiceID": 4072,
+      "length": 18816,
+      "file": "0076_4072_BEEN_BOMBED.wav",
+      "sha256": "3e7e63b577616dacbe88fa4792bdd49a5118a09c63f2441f1193baeaf5745416",
+      "text": "我们遭到敌人轰炸。",
+      "old_voiceID": 4076
+    },
+    {
+      "slot": 77,
+      "voiceID": 4073,
+      "length": 25952,
+      "file": "0077_4073_ATTACKING_RIFLE_SQUAD.wav",
+      "sha256": "ddf68c7e6f078dab760c9d8f2cb4b36606e5ad256b4b0332b73ebf53c7be56b4",
+      "text": "我们正在攻击敌人的来复枪小队。",
+      "old_voiceID": 4077
+    },
+    {
+      "slot": 78,
+      "voiceID": 4074,
+      "length": 25216,
+      "file": "0078_4074_RIFLE_SQUAD_ATTACKING.wav",
+      "sha256": "331f7e937a6baef4fbaec94b9f18086945d77d6d50512661b2e9c6586340067e",
+      "text": "我们正遭到敌军来复枪的攻击。",
+      "old_voiceID": 4078
+    },
+    {
+      "slot": 79,
+      "voiceID": 4075,
+      "length": 25152,
+      "file": "0079_4075_ATTACKING_BAZOOKA_SQUAD.wav",
+      "sha256": "cab4421530a089893d0c2eeda27b10a393f5c50dcf03d44b8a3227b45cb49607",
+      "text": "我们正在攻击敌人的火箭筒小队。",
+      "old_voiceID": 4079
+    },
+    {
+      "slot": 80,
+      "voiceID": 4076,
+      "length": 27168,
+      "file": "0080_4076_BAZOOKA_SQUAD_ATTACKING.wav",
+      "sha256": "2c522832f1929ae4d385b4784c45a389f81452fe7f2889035502a5ed6a76630d",
+      "text": "我们正遭到敌军火箭筒的攻击。",
+      "old_voiceID": 4080
+    },
+    {
+      "slot": 81,
+      "voiceID": 4077,
+      "length": 29472,
+      "file": "0081_4077_ATTACKING_FLAMER_SQUAD.wav",
+      "sha256": "25b5d9578358abb3b87e257398531ad1704463411446c29e373f49f6b1da1f93",
+      "text": "我们正在攻击敌人的火焰喷射器小队。",
+      "old_voiceID": 4081
+    },
+    {
+      "slot": 82,
+      "voiceID": 4078,
+      "length": 28832,
+      "file": "0082_4078_FLAMER_SQUAD_ATTACKING.wav",
+      "sha256": "3096a693f2abc23260a6fb92bfc637a0ead07308d4eae06dd8d5b967b9755997",
+      "text": "我们正遭到敌军火焰喷射器的攻击。",
+      "old_voiceID": 4082
+    },
+    {
+      "slot": 83,
+      "voiceID": 4079,
+      "length": 24864,
+      "file": "0083_4079_ATTACKING_MORTAR_SQUAD.wav",
+      "sha256": "924ece9e9b73d3a8c6047f62db11713e26bf8f24c277c83a3bcffa8c05f50b05",
+      "text": "我们正在攻击敌人的迫击炮小队。",
+      "old_voiceID": 4083
+    },
+    {
+      "slot": 84,
+      "voiceID": 4080,
+      "length": 25280,
+      "file": "0084_4080_MORTAR_SQUAD_ATTACKING.wav",
+      "sha256": "b6f223decded7b2c8d9c05cc9b5cfccc450a729c2ae03f802c4d6a6e3581f58f",
+      "text": "我们正遭到敌军迫击炮的攻击。",
+      "old_voiceID": 4084
+    },
+    {
+      "slot": 85,
+      "voiceID": 4081,
+      "length": 23008,
+      "file": "0085_4081_ATTACKING_SPY.wav",
+      "sha256": "246557de768d2112dd24666b2a53730b454d886d81550ff2435627cf36ff5efb",
+      "text": "我们正在攻击一名敌军间谍。",
+      "old_voiceID": 4085
+    },
+    {
+      "slot": 86,
+      "voiceID": 4082,
+      "length": 25440,
+      "file": "0086_4082_SPY_ATTACKING.wav",
+      "sha256": "2096610d7d95376dae3e4e8ab02222adb52ab6a6c4144713e76b49f28be858a5",
+      "text": "我们正遭到敌军间谍的攻击。",
+      "old_voiceID": 4086
+    },
+    {
+      "slot": 87,
+      "voiceID": 4083,
+      "length": 13824,
+      "file": "0087_4083_MENDOWN.wav",
+      "sha256": "014073a60f1216a7b76f02029f70cacd2d140d483cfa4b3d001d4d51b278128c",
+      "text": "有人倒下了。",
+      "old_voiceID": 4087
+    },
+    {
+      "slot": 88,
+      "voiceID": 4084,
+      "length": 16512,
+      "file": "0088_4084_MENDOWN_2.wav",
+      "sha256": "9bf48ae7306137da5f84f25779380ea82a26ecf5d75e9718b4673955cb021b22",
+      "text": "有人倒下了。",
+      "old_voiceID": 4088
+    },
+    {
+      "slot": 89,
+      "voiceID": 4085,
+      "length": 29024,
+      "file": "0089_4085_TAKING_HEAVY_CASUALTIES.wav",
+      "sha256": "be48ca592141cb1c047f19332f04ff87364e3444c0d5266a3f6d4ce4ac45b9da",
+      "text": "中士，我军伤亡惨重！",
+      "old_voiceID": 4089
+    },
+    {
+      "slot": 90,
+      "voiceID": 4086,
+      "length": 17216,
+      "file": "0090_4086_NO_ONE_HERE.wav",
+      "sha256": "b79eefc215825060244a386bcc8fea89e616313b849038c63c6a7b0b96e88903",
+      "text": "这儿没人，中士。",
+      "old_voiceID": 4090
+    },
+    {
+      "slot": 91,
+      "voiceID": 4087,
+      "length": 17920,
+      "file": "0091_4087_ALL_CLEAR_SARGE.wav",
+      "sha256": "89153c367336767e254c7d6237f0d10afc81c958866d41018c2c9de3821a2663",
+      "text": "没有敌人了，中士。",
+      "old_voiceID": 4091
+    },
+    {
+      "slot": 92,
+      "voiceID": 4088,
+      "length": 13824,
+      "file": "0092_4088_WAITING_FOR_ORDERS.wav",
+      "sha256": "a7e21f8cb2633cfcfc88b9dd6e9e6b8c035c22776148ab3f14b5cf86cc30a4d4",
+      "text": "等候命令。",
+      "old_voiceID": 4092
+    },
+    {
+      "slot": 93,
+      "voiceID": 4089,
+      "length": 33056,
+      "file": "0093_4089_READY_AIM_FIRE.wav",
+      "sha256": "30ea7d936ca644559ff6cbc45116f28868d3a37d0034c5419be6bd4371530f8d",
+      "text": "准备！瞄准！开火！",
+      "old_voiceID": 4093
+    },
+    {
+      "slot": 94,
+      "voiceID": 4090,
+      "length": 36352,
+      "file": "0094_4090_PINNED_DOWN.wav",
+      "sha256": "128a6074f9d44bf6bdb0fe9be403db8366f265b4edb45fb068d09f86eb670abc",
+      "text": "我们被困住了，没地方可逃，救救我们吧！",
+      "old_voiceID": 4094
+    },
+    {
+      "slot": 95,
+      "voiceID": 4091,
+      "length": 19712,
+      "file": "0095_4091_WHERE_FROM.wav",
+      "sha256": "c572a0230375d72658b2e1de51d678781216ceb0f05b85f38a6845f302952b87",
+      "text": "他们是从哪儿冒出来的？",
+      "old_voiceID": 4095
+    },
+    {
+      "slot": 96,
+      "voiceID": 4092,
+      "length": 16384,
+      "file": "0096_4092_DONE_LOADING.wav",
+      "sha256": "f4bd0fdf4c497934b18c508ce57652d7d64fe59506ff214429b5a4c3162bb972",
+      "text": "已经装完了，中士。",
+      "old_voiceID": 4096
+    },
+    {
+      "slot": 97,
+      "voiceID": 4093,
+      "length": 27744,
+      "file": "0097_4093_IM_HIT.wav",
+      "sha256": "6874f899fab9361b805bd014997e73f843b693bd52dbdbf2b324980c84159f19",
+      "text": "我中弹了！我中弹了！",
+      "old_voiceID": 4097
+    },
+    {
+      "slot": 98,
+      "voiceID": 4094,
+      "length": 11296,
+      "file": "0098_4094_SQUAD_READY.wav",
+      "sha256": "88e584e13ac57aa4107f4980d173ce600b05e30b22eee97998f4c40b37bace20",
+      "text": "准备。",
+      "old_voiceID": 4098
+    },
+    {
+      "slot": 99,
+      "voiceID": 4095,
+      "length": 10944,
+      "file": "0099_4095_SQUAD_AIM.wav",
+      "sha256": "ee50740301aa105fa40d2eb38a1c495968185f121f41c0b2ac54779b8406e74c",
+      "text": "瞄准。",
+      "old_voiceID": 4099
+    },
+    {
+      "slot": 100,
+      "voiceID": 4096,
+      "length": 10304,
+      "file": "0100_4096_SQUAD_FIRE.wav",
+      "sha256": "3f5d8a99bc5d0402d3c0505553f88b029aa09a475ff20f55367c9f62ecba43ca",
+      "text": "开火。",
+      "old_voiceID": 4100
+    },
+    {
+      "slot": 101,
+      "voiceID": 4097,
+      "length": 12192,
+      "file": "0101_4097_YESSIR.wav",
+      "sha256": "fe36096e10c7359951f2fd5175e3b39f163d3b34d5840b3b5778b484ade31207",
+      "text": "是，长官！",
+      "old_voiceID": 4101
+    },
+    {
+      "slot": 102,
+      "voiceID": 4098,
+      "length": 11680,
+      "file": "0102_4098_AFFIRMATIVE.wav",
+      "sha256": "781101a90499e7eb57d1f8a32765244c8bdd739c4810275ce7e2ec6969d15cd3",
+      "text": "明白。",
+      "old_voiceID": 4102
+    },
+    {
+      "slot": 103,
+      "voiceID": 4099,
+      "length": 14464,
+      "file": "0103_4099_ONWAY.wav",
+      "sha256": "557eda247bd63c5fca8071d5b676ac1473c153308ed1d495fd4a94de7d148dcc",
+      "text": "我们正在路上，长官。",
+      "old_voiceID": 4103
+    },
+    {
+      "slot": 104,
+      "voiceID": 4100,
+      "length": 17408,
+      "file": "0104_4100_APPROACHING.wav",
+      "sha256": "34b9661bff4a42ffc5cb3f0b9c5f5b08b5f0c71460ca50347a3ed5b270b91e46",
+      "text": "敌军正在逼近。",
+      "old_voiceID": 4104
+    },
+    {
+      "slot": 105,
+      "voiceID": 4101,
+      "length": 16480,
+      "file": "0105_4101_DESTINATION.wav",
+      "sha256": "e8ec35a42c643267004ebc49d5f13dc3dca8d3cd78692176474aa606e1760bf9",
+      "text": "到达目的地。",
+      "old_voiceID": 4105
+    },
+    {
+      "slot": 106,
+      "voiceID": 4105,
+      "length": 16544,
+      "file": "0106_4105_HALT_INTRUDER.wav",
+      "sha256": "cf96ed6bd6377efaa6004b0cc6c8ee897b7a615128378e5b0611f0633418ce6d",
+      "text": "站住，入侵者！",
+      "old_voiceID": 4106
+    },
+    {
+      "slot": 107,
+      "voiceID": 4106,
+      "length": 9184,
+      "file": "0107_4106_HALT.wav",
+      "sha256": "b057c4139876dc5becf3e45f10051f5cdda6a0c62514bf878934b8a0bb1a64ba",
+      "text": "站住！",
+      "old_voiceID": 4107
+    },
+    {
+      "slot": 108,
+      "voiceID": 4102,
+      "length": 36464,
+      "file": "0108_4102_NOPARAS.wav",
+      "sha256": "55589caf23572f2b0896d13e8b4589f8c2824eba1fc8565afffc17d488fbdf3c",
+      "text": "对不起，中士，我们找不到安全的地点投放伞兵。",
+      "old_voiceID": 4108
+    },
+    {
+      "slot": 109,
+      "voiceID": 4103,
+      "length": 49384,
+      "file": "0109_4103_AAGUNS.wav",
+      "sha256": "916dce81631c5f1067680708bbbda8bf3424857deb1665bd157aebc9078454c6",
+      "text": "对不起，中士，你在呼叫空中支援前，必须先摧毁敌军的ＡＡ炮。",
+      "old_voiceID": 4109
+    },
+    {
+      "slot": 110,
+      "voiceID": 4104,
+      "length": 20640,
+      "file": "0110_4104_NOAIR.wav",
+      "sha256": "bbd3570dcba36703fd2188446fffa452868dcf20ccefcefd75a385f037e61851",
+      "text": "无法提供空中支援。",
+      "old_voiceID": 4110
+    },
+    {
+      "slot": 111,
+      "voiceID": 4107,
+      "length": 87846,
+      "file": "0111_4107_DS1M1.wav",
+      "sha256": "4ece2150ccd616886bde6580f5b168cce3434272239e7887f61c806cd9e07f28",
+      "text": "越过桥进入小镇。前进至Ｂ２区的黄军弹药库。",
+      "old_voiceID": 4111
+    },
+    {
+      "slot": 112,
+      "voiceID": 4108,
+      "length": 144448,
+      "file": "0112_4108_DS1M2.wav",
+      "sha256": "20b97b607faea376ea21968c51f4a3c30367f0ff8e1f8baa9ec6e648f10b0418",
+      "text": "一名蓝军间谍正被护送前往黄军位于Ａ２区的堡垒。",
+      "old_voiceID": 4112
+    },
+    {
+      "slot": 113,
+      "voiceID": 4109,
+      "length": 121024,
+      "file": "0113_4109_DS1M3.wav",
+      "sha256": "4f17d5e594986b226e7d480a71f5b9e05ebe00ff031e1391f6e201ead32be88f",
+      "text": "越过布吉斯桥，前往Ｆ３区，黄军夺取了Ａ５区的一辆坦克。",
+      "old_voiceID": 4113
+    },
+    {
+      "slot": 114,
+      "voiceID": 4110,
+      "length": 111072,
+      "file": "0114_4110_DS2M1.wav",
+      "sha256": "bad9b88eb337a0a30b7f9b65f024105560f79e6e9fad223be117d718c0403690",
+      "text": "和小队在Ａ１区汇合，带领他们前往我军在Ｆ１区的营地。",
+      "old_voiceID": 4114
+    },
+    {
+      "slot": 115,
+      "voiceID": 4111,
+      "length": 117728,
+      "file": "0115_4111_DS2M2.wav",
+      "sha256": "7c53ec169cd6020f69594353a6348ea7fce85be735d1a86508ea6592565bf122",
+      "text": "钥匙在Ｅ５区的黄军要塞里。",
+      "old_voiceID": 4115
+    },
+    {
+      "slot": 116,
+      "voiceID": 4112,
+      "length": 101911,
+      "file": "0116_4112_DS3M1.wav",
+      "sha256": "d84782a589fa28bd391ec9fd93ace606cdeffc1440004fea7ca268f50f627de0",
+      "text": "到Ａ６区与小队和半履带车会合。",
+      "old_voiceID": 4116
+    },
+    {
+      "slot": 117,
+      "voiceID": 4113,
+      "length": 105376,
+      "file": "0117_4113_DS3M2.wav",
+      "sha256": "f279fb15e9c0e0b5c4b39c27711814f9fb1ab47d0f1ec2690072c8f183e2583b",
+      "text": "在银行的入口处炸个洞，装完车后护送卡车返回西南面的入口处。",
+      "old_voiceID": 4117
+    },
+    {
+      "slot": 118,
+      "voiceID": 4114,
+      "length": 57344,
+      "file": "0118_4114_DS4M1.wav",
+      "sha256": "e28cb87648531f2380d03b6e1533e49eed7d3628e8dfd06d6b59122ef8f2dcc5",
+      "text": "和蓝军部队在谷底会合，用塑料交换他们的情报。",
+      "old_voiceID": 4118
+    },
+    {
+      "slot": 119,
+      "voiceID": 4115,
+      "length": 112128,
+      "file": "0119_4115_DS4M2.wav",
+      "sha256": "34c377850cf43870b7159223252d34d7e9cf4c90d48e591b6c79d5b4da1069b1",
+      "text": "和Ｂ６区的直升机取得联系，撤离该地区。",
+      "old_voiceID": 4119
+    },
+    {
+      "slot": 120,
+      "voiceID": 4116,
+      "length": 92960,
+      "file": "0120_4116_AS1M1.wav",
+      "sha256": "303f276b8c595618eb4d7cae8b8e4a13e5a32c78d2fae210fa9c1948f88d3f1a",
+      "text": "有士兵被困在Ｂ１区，援救并护送他们到医疗营。",
+      "old_voiceID": 4120
+    },
+    {
+      "slot": 121,
+      "voiceID": 4117,
+      "length": 173728,
+      "file": "0121_4117_AS1M2.wav",
+      "sha256": "094fae872fbecc37ddd01268911791ed89a8b00e4758bb0bde0942510ffcc459",
+      "text": "摧毁Ｄ４区黄军基地附近的卡车。",
+      "old_voiceID": 4121
+    },
+    {
+      "slot": 122,
+      "voiceID": 4118,
+      "length": 119168,
+      "file": "0122_4118_AS2M1.wav",
+      "sha256": "887b74e2d49da0acae41b5d5f21779b0960baa8cf8396b3398a88fea70933c23",
+      "text": "黄军把钥匙放在Ｅ５区的地雷区附近。消灭送钥匙的蓝军信使。",
+      "old_voiceID": 4122
+    },
+    {
+      "slot": 123,
+      "voiceID": 4119,
+      "length": 45984,
+      "file": "0123_4119_AS2M2.wav",
+      "sha256": "ccaade9d20eb547428642a8bab6ec19a61891d986d71dddec628939613ded300",
+      "text": "前往Ｃ１区，阻止钥匙被装上火车。",
+      "old_voiceID": 4123
+    },
+    {
+      "slot": 124,
+      "voiceID": 4120,
+      "length": 103648,
+      "file": "0124_4120_AS3M1.wav",
+      "sha256": "97a7f703702ba6c1b2df06ef1aa042c3fa16bbb92324bf28fe4f3154813844f7",
+      "text": "营救被困在Ｆ５区的伤员。",
+      "old_voiceID": 4124
+    },
+    {
+      "slot": 125,
+      "voiceID": 4121,
+      "length": 46944,
+      "file": "0125_4121_AS3M2.wav",
+      "sha256": "c3d39c974f93f0aeb2bce88d3f4114342a73bb9f29f3df0a419319117cca6c9f",
+      "text": "把那些伤员送到Ｂ１区的医疗营。",
+      "old_voiceID": 4125
+    },
+    {
+      "slot": 126,
+      "voiceID": 4122,
+      "length": 94400,
+      "file": "0126_4122_AS3M3.wav",
+      "sha256": "ef45ea6439b9204c868e89b47d613bf7c56a0648f25639b71cb3b512d18460b2",
+      "text": "摧毁Ａ６区的通讯设施。",
+      "old_voiceID": 4126
+    },
+    {
+      "slot": 127,
+      "voiceID": 4123,
+      "length": 121886,
+      "file": "0127_4123_AS4M1.wav",
+      "sha256": "381b8d5e3aab8fac3b76ef97363b7688ca5a29d35bc537841f34bf0d38c9b1e9",
+      "text": "营救Ｂ３区战俘营里的士兵。",
+      "old_voiceID": 4127
+    },
+    {
+      "slot": 128,
+      "voiceID": 4124,
+      "length": 64992,
+      "file": "0128_4124_AS4M2.wav",
+      "sha256": "d24058d42eacde7f477ba0c03211c248aa271c45d892e9b024352b31551d0a70",
+      "text": "赶到Ｆ１区的机场，用无线电呼叫接应人员。",
+      "old_voiceID": 4128
+    },
+    {
+      "slot": 129,
+      "voiceID": 4125,
+      "length": 99689,
+      "file": "0129_4125_BS1M1.wav",
+      "sha256": "acf9967df167617105e60639c3f61bdd3e094923246c0f362593769235350d2f",
+      "text": "从藏在Ｃ１区黄军基地里的蓝军间谍身上找到文件。",
+      "old_voiceID": 4129
+    },
+    {
+      "slot": 130,
+      "voiceID": 4126,
+      "length": 88096,
+      "file": "0130_4126_BS1M2.wav",
+      "sha256": "408ab0da5a11b373b2adcae3938102905413f6a4386d27b708ec67fc6eace55f",
+      "text": "摧毁Ｆ６区的灰军基地。",
+      "old_voiceID": 4130
+    },
+    {
+      "slot": 131,
+      "voiceID": 4127,
+      "length": 155680,
+      "file": "0131_4127_BS2M1.wav",
+      "sha256": "b4965aaf9c86f0a0a1e97f05556cf3a039026822edbdff3fa03eafc3da060d5b",
+      "text": "钥匙在Ｆ６区的灰军战俘营。逐个杀死巡逻兵，直到有人肯说出来。",
+      "old_voiceID": 4131
+    },
+    {
+      "slot": 132,
+      "voiceID": 4128,
+      "length": 57888,
+      "file": "0132_4128_BS2M2.wav",
+      "sha256": "90232d8d90a670f6822f5c08891431b64ab4295ad135dd8fef8ed605eb32fbe4",
+      "text": "钥匙就在战俘营里。找个扫雷器，帮你夺取钥匙。",
+      "old_voiceID": 4132
+    },
+    {
+      "slot": 133,
+      "voiceID": 4129,
+      "length": 174848,
+      "file": "0133_4129_BS3M1.wav",
+      "sha256": "30f600e67ce9e92572854d7d725b29677b2f6f11264c043a2d4cf2112e3853d3",
+      "text": "营救Ｃ４区的小队，然后保护Ｂ２区的ＡＡ炮直到运输队抵达。",
+      "old_voiceID": 4133
+    },
+    {
+      "slot": 134,
+      "voiceID": 4130,
+      "length": 126464,
+      "file": "0134_4130_BS3M2.wav",
+      "sha256": "355a292e96adca19959644499d0e9611c7924be6a72c4420069da7bef8d374f4",
+      "text": "摧毁黄军坦克，到Ｆ１区与大楼门口的灰军上校会合。",
+      "old_voiceID": 4134
+    },
+    {
+      "slot": 135,
+      "voiceID": 4131,
+      "length": 59104,
+      "file": "0135_4131_BS3M3.wav",
+      "sha256": "76575902c0c3f05c6a5ca365595e30972daf3af177cd33828336eea993ffc272",
+      "text": "从出口在Ｆ６区的那条主干道离开。",
+      "old_voiceID": 4135
+    },
+    {
+      "slot": 136,
+      "voiceID": 4132,
+      "length": 104704,
+      "file": "0136_4132_BS4M1.wav",
+      "sha256": "2af89a6ed40639a71b4f74cb2ca547868db4235942b752037c40c734f895c5da",
+      "text": "把上校送到Ｅ２区的一座安全建筑中。摧毁Ｃ１区的ＡＡ炮，为空中支援做准备。",
+      "old_voiceID": 4136
+    },
+    {
+      "slot": 137,
+      "voiceID": 4133,
+      "length": 94544,
+      "file": "0137_4133_BS4M2.wav",
+      "sha256": "474a651da23b5155583c66b49a8281673a0da121ca8ae1d9cb5a295d2b6f13b1",
+      "text": "穿过小镇，到Ｅ４区的墓地入口。",
+      "old_voiceID": 4137
+    },
+    {
+      "slot": 138,
+      "voiceID": 4134,
+      "length": 127648,
+      "file": "0138_4134_BS4M3.wav",
+      "sha256": "f93e4a936de3ec2c274234080abaaa12d564b11fd82b2253dff889dd8995f663",
+      "text": "一看到传送门就能认出来。用钥匙打开它并汇报。",
+      "old_voiceID": 4138
+    },
+    {
+      "slot": 139,
+      "voiceID": 4135,
+      "length": 23360,
+      "file": "0139_4135_DESERT1_1LOSE.wav",
+      "sha256": "ed2fca0b36b6f5c042384793d86b04582a00e904f53d7569e855e9bceeb5df90",
+      "text_missing": true,
+      "ext_name_ref": "DESERT1_1LOSE",
+      "old_voiceID": 4139
+    },
+    {
+      "slot": 140,
+      "voiceID": 4136,
+      "length": 44768,
+      "file": "0140_4136_DESERT1_1WIN.wav",
+      "sha256": "9712e93e0a36565426b8c0eb8ccbc65331905729e16c3cfcb003a5259672a6d8",
+      "text_missing": true,
+      "ext_name_ref": "DESERT1_1WIN",
+      "old_voiceID": 4140
+    },
+    {
+      "slot": 141,
+      "voiceID": 4137,
+      "length": 32912,
+      "file": "0141_4137_DESERT1_2LOSE.wav",
+      "sha256": "fbddecd456f3eaba585cbf27bae37e2eda044c32a6692b944e2ff0860f6e68ac",
+      "text_missing": true,
+      "ext_name_ref": "DESERT1_2LOSE",
+      "old_voiceID": 4141
+    },
+    {
+      "slot": 142,
+      "voiceID": 4138,
+      "length": 49120,
+      "file": "0142_4138_DESERT2_1LOSE.wav",
+      "sha256": "2de4732cff7c09509e62dc2a96035db6b9c03e7945e73937ea002e41e3001e9d",
+      "text_missing": true,
+      "ext_name_ref": "DESERT2_1LOSE",
+      "old_voiceID": 4142
+    },
+    {
+      "slot": 143,
+      "voiceID": 4139,
+      "length": 52832,
+      "file": "0143_4139_DESERT2_2LOSE.wav",
+      "sha256": "30d03f5880b62d5e3577177a243939129c40ca65d2ffd9e0db7d9ad126d89361",
+      "text_missing": true,
+      "ext_name_ref": "DESERT2_2LOSE",
+      "old_voiceID": 4143
+    },
+    {
+      "slot": 144,
+      "voiceID": 4140,
+      "length": 69376,
+      "file": "0144_4140_DESERT2_2WIN.wav",
+      "sha256": "7a962e47151fc25c09d041783570b7aa3a6f85029d69383d61736dd6a4879a31",
+      "text_missing": true,
+      "ext_name_ref": "DESERT2_2WIN",
+      "old_voiceID": 4144
+    },
+    {
+      "slot": 145,
+      "voiceID": 4141,
+      "length": 27584,
+      "file": "0145_4141_DESERT3_1LOSE.wav",
+      "sha256": "3d2322eb6ae5f6b238510fa76b9b4507270bec601fc0c6806da5396208c05875",
+      "text_missing": true,
+      "ext_name_ref": "DESERT3_1LOSE",
+      "old_voiceID": 4145
+    },
+    {
+      "slot": 146,
+      "voiceID": 4142,
+      "length": 70432,
+      "file": "0146_4142_DESERT3_2LOSE.wav",
+      "sha256": "dc9f2315c58141878854be51c54de21a6c2b1d717665a59b7e529aaea3b5b59d",
+      "text_missing": true,
+      "ext_name_ref": "DESERT3_2LOSE",
+      "old_voiceID": 4146
+    },
+    {
+      "slot": 147,
+      "voiceID": 4143,
+      "length": 47392,
+      "file": "0147_4143_DESERT4_1LOSE.wav",
+      "sha256": "341941cb030d87128728eb15a11e5de2dc875cec35a3fdcdefd3104b89908307",
+      "text_missing": true,
+      "ext_name_ref": "DESERT4_1LOSE",
+      "old_voiceID": 4147
+    },
+    {
+      "slot": 148,
+      "voiceID": 4144,
+      "length": 14112,
+      "file": "0148_4144_DESERT_DIE.wav",
+      "sha256": "7fd663fb87a86bd537a5e1cfc353b37c47781b2b31572b12524b6978205fabd8",
+      "text_missing": true,
+      "ext_name_ref": "DESERT_DIE",
+      "old_voiceID": 4148
+    },
+    {
+      "slot": 149,
+      "voiceID": 4145,
+      "length": 23392,
+      "file": "0149_4145_DESERT_LOSE.wav",
+      "sha256": "861a68e2019b2800c0a87e1b09affe179bf6c65bb604300ed8214dddd16412fa",
+      "text_missing": true,
+      "ext_name_ref": "DESERT_LOSE",
+      "old_voiceID": 4149
+    },
+    {
+      "slot": 150,
+      "voiceID": 4146,
+      "length": 40435,
+      "file": "0150_4146_DESERT_WIN.wav",
+      "sha256": "14ec19ffe59d241fd6c161a9179bf905bf33bcaabf9106e4a6b88fc8550a0ff6",
+      "text_missing": true,
+      "ext_name_ref": "DESERT_WIN",
+      "old_voiceID": 4150
+    },
+    {
+      "slot": 151,
+      "voiceID": 4147,
+      "length": 14880,
+      "file": "0151_4147_DESERT_MP_DIE.wav",
+      "sha256": "53004cb7f0fdf17386dda15f0cd3732cec906ee527239d9e1308b3ce3309efeb",
+      "text_missing": true,
+      "ext_name_ref": "DESERT_MP_DIE",
+      "old_voiceID": 4151
+    },
+    {
+      "slot": 152,
+      "voiceID": 4148,
+      "length": 25216,
+      "file": "0152_4148_DESERT_MP_LOSE.wav",
+      "sha256": "e4b5ebbf01179fc701ef4a08b882f06baa71a73084773986b1403ffc5b5db0d9",
+      "text_missing": true,
+      "ext_name_ref": "DESERT_MP_LOSE",
+      "old_voiceID": 4152
+    },
+    {
+      "slot": 153,
+      "voiceID": 4149,
+      "length": 35168,
+      "file": "0153_4149_DESERT_MP_WIN.wav",
+      "sha256": "37aacc3a141eacc9dd05fce346dbdf605020412a8ae4c2ffd5dd2498a1b6db15",
+      "text_missing": true,
+      "ext_name_ref": "DESERT_MP_WIN",
+      "old_voiceID": 4153
+    },
+    {
+      "slot": 154,
+      "voiceID": 4150,
+      "length": 39200,
+      "file": "0154_4150_ALPINE1_1LOSE.wav",
+      "sha256": "60564c8745c4ed1be39b9805f8bb7446f1df87eacfc0cfc0324c782e2611d045",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE1_1LOSE",
+      "old_voiceID": 4154
+    },
+    {
+      "slot": 155,
+      "voiceID": 4151,
+      "length": 55628,
+      "file": "0155_4151_ALPINE1_1WIN.wav",
+      "sha256": "6dc87b530c3bd033ae1fc81ed2d61c1ebd5230bcf5e6e9f0af5f7d5e0471d128",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE1_1WIN",
+      "old_voiceID": 4155
+    },
+    {
+      "slot": 156,
+      "voiceID": 4152,
+      "length": 75816,
+      "file": "0156_4152_ALPINE1_2LOSE.wav",
+      "sha256": "d32104ccd68402e41926a3909dfccb7aba969ff005d86821c3dffceced3f2cfd",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE1_2LOSE",
+      "old_voiceID": 4156
+    },
+    {
+      "slot": 157,
+      "voiceID": 4153,
+      "length": 64453,
+      "file": "0157_4153_ALPINE1_2WIN.wav",
+      "sha256": "bfa4ce99e1f3effb3c5496aafb015f20050db31504fb28b901885b3b0470844e",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE1_2WIN",
+      "old_voiceID": 4157
+    },
+    {
+      "slot": 158,
+      "voiceID": 4154,
+      "length": 69808,
+      "file": "0158_4154_ALPINE2_1LOSE.wav",
+      "sha256": "6119af9c502117782929d2c7ed6f9aa42c0e8962d70ff002655f7f6ae33472a7",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE2_1LOSE",
+      "old_voiceID": 4158
+    },
+    {
+      "slot": 159,
+      "voiceID": 4155,
+      "length": 46112,
+      "file": "0159_4155_ALPINE2_1WIN.wav",
+      "sha256": "12bec6a510fd143501de6d0c819382ac5cc0698de55f03850252132d3a2ea750",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE2_1WIN",
+      "old_voiceID": 4159
+    },
+    {
+      "slot": 160,
+      "voiceID": 4156,
+      "length": 26272,
+      "file": "0160_4156_ALPINE2_2LOSE.wav",
+      "sha256": "96855090aa18fbeecd8f1e31ca9968eead2085fd2dca13e4f0fcb16b49aa1362",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE2_2LOSE",
+      "old_voiceID": 4160
+    },
+    {
+      "slot": 161,
+      "voiceID": 4157,
+      "length": 33770,
+      "file": "0161_4157_ALPINE2_2WIN.wav",
+      "sha256": "b7cbbb3cde0315da4ab055426a78697d14905db494db688b8fbf3a5d5ad772a5",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE2_2WIN",
+      "old_voiceID": 4161
+    },
+    {
+      "slot": 162,
+      "voiceID": 4158,
+      "length": 80663,
+      "file": "0162_4158_ALPINE3_1LOSE.wav",
+      "sha256": "3001acd318481f13166943e2276ed51db8c66e9261fd0e7abd24646b7654091e",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE3_1LOSE",
+      "old_voiceID": 4162
+    },
+    {
+      "slot": 163,
+      "voiceID": 4159,
+      "length": 35648,
+      "file": "0163_4159_ALPINE3_1WIN.wav",
+      "sha256": "4c3a46876addfedff1cb576ae109b9f950391136e649cf81085de969e025cc0e",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE3_1WIN",
+      "old_voiceID": 4163
+    },
+    {
+      "slot": 164,
+      "voiceID": 4160,
+      "length": 38560,
+      "file": "0164_4160_ALPINE3_2LOSE.wav",
+      "sha256": "eee2316dd01fbec83f1535cb65080ba72ce4b53f52112a6106559cb6ef45c258",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE3_2LOSE",
+      "old_voiceID": 4164
+    },
+    {
+      "slot": 165,
+      "voiceID": 4161,
+      "length": 148576,
+      "file": "0165_4161_ALPINE3_2WIN.wav",
+      "sha256": "b3e343f3c6e1335812e626b2d950ecc79e73fcab81f25a569a9acc1fa0c37c84",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE3_2WIN",
+      "old_voiceID": 4165
+    },
+    {
+      "slot": 166,
+      "voiceID": 4162,
+      "length": 42112,
+      "file": "0166_4162_ALPINE3_3LOSE.wav",
+      "sha256": "a2c30b1ddee9537870f4b8bad02185f08ffa1fb941f14244ecf84c5cea643344",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE3_3LOSE",
+      "old_voiceID": 4166
+    },
+    {
+      "slot": 167,
+      "voiceID": 4163,
+      "length": 43776,
+      "file": "0167_4163_ALPINE3_3WIN.wav",
+      "sha256": "1faceca184416b31fed42079ee6f304063554164b8aff49570209e55fbef3b29",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE3_3WIN",
+      "old_voiceID": 4167
+    },
+    {
+      "slot": 168,
+      "voiceID": 4164,
+      "length": 45584,
+      "file": "0168_4164_ALPINE4_1LOSE.wav",
+      "sha256": "bf7bae1cdb0ac3b87efcd68cdbc3ad31f1ce0a1b3f5e9aeb90c7108d036ce0c3",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE4_1LOSE",
+      "old_voiceID": 4168
+    },
+    {
+      "slot": 169,
+      "voiceID": 4165,
+      "length": 41120,
+      "file": "0169_4165_ALPINE4_1WIN.wav",
+      "sha256": "6361a1d7496f993496f3021b121b295eb27a64f20998bd3c5cf8de1e76d0a9d6",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE4_1WIN",
+      "old_voiceID": 4169
+    },
+    {
+      "slot": 170,
+      "voiceID": 4166,
+      "length": 61472,
+      "file": "0170_4166_ALPINE4_2LOSE.wav",
+      "sha256": "96630ced17ffc28ced8252819ec86cc3c7e1a40101ee3a8e9887d5ea6356c817",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE4_2LOSE",
+      "old_voiceID": 4170
+    },
+    {
+      "slot": 171,
+      "voiceID": 4167,
+      "length": 98496,
+      "file": "0171_4167_ALPINE4_2WIN.wav",
+      "sha256": "8a4925eb72a2e9d21ced532b5e52fee2a47ad4e41c3f8eb1703261f79d209f7f",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE4_2WIN",
+      "old_voiceID": 4171
+    },
+    {
+      "slot": 172,
+      "voiceID": 4168,
+      "length": 14048,
+      "file": "0172_4168_ALPINE_DIE.wav",
+      "sha256": "cce3c7a5f001439d8c469e2b82c079c4382f587dc396b955100648a53809a9b5",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE_DIE",
+      "old_voiceID": 4172
+    },
+    {
+      "slot": 173,
+      "voiceID": 4169,
+      "length": 22131,
+      "file": "0173_4169_ALPINE_LOSE.wav",
+      "sha256": "1ae337065689c05488bfe813f687d6d5780f4d4886ebe9c58d7137ae04b3d8bb",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE_LOSE",
+      "old_voiceID": 4173
+    },
+    {
+      "slot": 174,
+      "voiceID": 4170,
+      "length": 46304,
+      "file": "0174_4170_ALPINE_WIN.wav",
+      "sha256": "b4ce43d39bae62ea75cb0802abe45b4f0ea654c5adce0385a8c48e653c4cb613",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE_WIN",
+      "old_voiceID": 4174
+    },
+    {
+      "slot": 175,
+      "voiceID": 4171,
+      "length": 14304,
+      "file": "0175_4171_ALPINE_MP_DIE.wav",
+      "sha256": "eacee65999257df538df43139901b4c51b492a27aa25ceb777673f7c666e9109",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE_MP_DIE",
+      "old_voiceID": 4175
+    },
+    {
+      "slot": 176,
+      "voiceID": 4172,
+      "length": 28608,
+      "file": "0176_4172_ALPINE_MP_LOSE.wav",
+      "sha256": "a3a92c7685fe122ed5314759f7d65dfed6a7c1db80aeb4cdd2286ced152aae89",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE_MP_LOSE",
+      "old_voiceID": 4176
+    },
+    {
+      "slot": 177,
+      "voiceID": 4173,
+      "length": 17472,
+      "file": "0177_4173_ALPINE_MP_WIN.wav",
+      "sha256": "18ed0277d64de4226a803085141ec62f46513576f5e1bdaac2fdfa3c8be261cc",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE_MP_WIN",
+      "old_voiceID": 4177
+    },
+    {
+      "slot": 178,
+      "voiceID": 4174,
+      "length": 49024,
+      "file": "0178_4174_BAYOU1_1LOSE.wav",
+      "sha256": "a31ddbbcf562336ec3ac8e1660f1dc38ef0f4bcae26a67e8d29bc34e679c8ea0",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU1_1LOSE",
+      "old_voiceID": 4178
+    },
+    {
+      "slot": 179,
+      "voiceID": 4175,
+      "length": 44000,
+      "file": "0179_4175_BAYOU1_1WIN.wav",
+      "sha256": "8a6f4dd41652ffaf79686a532a35b3b618230bf9e36d711a7e031352af690a29",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU1_1WIN",
+      "old_voiceID": 4179
+    },
+    {
+      "slot": 180,
+      "voiceID": 4176,
+      "length": 52704,
+      "file": "0180_4176_BAYOU1_2LOSE.wav",
+      "sha256": "2bc3a3e0fdb6a8488acdc0a78c38cebed0a08cc7ba082cebde4015707b998429",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU1_2LOSE",
+      "old_voiceID": 4180
+    },
+    {
+      "slot": 181,
+      "voiceID": 4177,
+      "length": 52480,
+      "file": "0181_4177_BAYOU1_2WIN.wav",
+      "sha256": "e7ab277b799455bb30046ede8f9bceace82d4d90eef78d7590f5fb475365b585",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU1_2WIN",
+      "old_voiceID": 4181
+    },
+    {
+      "slot": 182,
+      "voiceID": 4178,
+      "length": 55648,
+      "file": "0182_4178_BAYOU2_1LOSE.wav",
+      "sha256": "afa0d5b34ed0e389e954bd7211ff9b868f6d9aece203c9d3681b0e25ff201400",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU2_1LOSE",
+      "old_voiceID": 4182
+    },
+    {
+      "slot": 183,
+      "voiceID": 4179,
+      "length": 96772,
+      "file": "0183_4179_BAYOU2_1WIN.wav",
+      "sha256": "579ab8d160d2c0476cf493447b98e0f19c895dd36c40199574330aff1fd5c5b9",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU2_1WIN",
+      "old_voiceID": 4183
+    },
+    {
+      "slot": 184,
+      "voiceID": 4180,
+      "length": 56160,
+      "file": "0184_4180_BAYOU2_2LOSE.wav",
+      "sha256": "10617b4118c362c935726ce62888b24e8caca3cdc4048f255030395e82d0ec0f",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU2_2LOSE",
+      "old_voiceID": 4184
+    },
+    {
+      "slot": 185,
+      "voiceID": 4181,
+      "length": 158176,
+      "file": "0185_4181_BAYOU2_2WIN.wav",
+      "sha256": "b3fb9ce12aacbfca7019147b9d600004bb2d48ecc02cfccbed7746a250906553",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU2_2WIN",
+      "old_voiceID": 4185
+    },
+    {
+      "slot": 186,
+      "voiceID": 4182,
+      "length": 54720,
+      "file": "0186_4182_BAYOU3_1LOSE.wav",
+      "sha256": "07999a038acb597923362343ca5137f57cd2476a13f0a2db7f289b3339084343",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU3_1LOSE",
+      "old_voiceID": 4186
+    },
+    {
+      "slot": 187,
+      "voiceID": 4183,
+      "length": 79648,
+      "file": "0187_4183_BAYOU3_1WIN.wav",
+      "sha256": "5776d176105c9db0684495336e45d8f6c036cac8ab5f8b6534eb0fa072277202",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU3_1WIN",
+      "old_voiceID": 4187
+    },
+    {
+      "slot": 188,
+      "voiceID": 4184,
+      "length": 48288,
+      "file": "0188_4184_BAYOU3_2LOSE.wav",
+      "sha256": "39cadfcf21ad9848455852d3b36c6a956fd898ad60fb9d3eef5b85a440b6dccc",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU3_2LOSE",
+      "old_voiceID": 4188
+    },
+    {
+      "slot": 189,
+      "voiceID": 4185,
+      "length": 57664,
+      "file": "0189_4185_BAYOU3_2WIN.wav",
+      "sha256": "f770b0c33281f57be3c26840b15fca3e02890a875aaaa0d23d0ae64178ebd5d9",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU3_2WIN",
+      "old_voiceID": 4189
+    },
+    {
+      "slot": 190,
+      "voiceID": 4186,
+      "length": 44736,
+      "file": "0190_4186_BAYOU3_3LOSE.wav",
+      "sha256": "a56006c379e05f1c686fefc0bc37298b331e0d397269e29697b68a750a1e5a86",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU3_3LOSE",
+      "old_voiceID": 4190
+    },
+    {
+      "slot": 191,
+      "voiceID": 4187,
+      "length": 54048,
+      "file": "0191_4187_BAYOU3_3WIN.wav",
+      "sha256": "acbb2ec51e4e41126e2087fad71bfb6667603301a04b8bd9525e2ce4a1cca311",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU3_3WIN",
+      "old_voiceID": 4191
+    },
+    {
+      "slot": 192,
+      "voiceID": 4188,
+      "length": 50144,
+      "file": "0192_4188_BAYOU4_1LOSE.wav",
+      "sha256": "c1ede774a4052299e5dc75f7897716ea679d881106754ceb8ccf01a208cbbf45",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU4_1LOSE",
+      "old_voiceID": 4192
+    },
+    {
+      "slot": 193,
+      "voiceID": 4189,
+      "length": 69472,
+      "file": "0193_4189_BAYOU4_1WIN.wav",
+      "sha256": "1f5f304134400032ec1574dc36ef6a1ce3397aa9a22c6beac9e50ed1e518465c",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU4_1WIN",
+      "old_voiceID": 4193
+    },
+    {
+      "slot": 194,
+      "voiceID": 4190,
+      "length": 69088,
+      "file": "0194_4190_BAYOU4_2LOSE.wav",
+      "sha256": "ac68139cb3f364ad3afa850b37bd95f35d4416ac36ffdd1a3f30d29287660b22",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU4_2LOSE",
+      "old_voiceID": 4194
+    },
+    {
+      "slot": 195,
+      "voiceID": 4191,
+      "length": 77267,
+      "file": "0195_4191_BAYOU4_2WIN.wav",
+      "sha256": "8e6943b0aa6242acb2cda47e49375e16f89bdd8bc1c431f00a943ec98c4dfd66",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU4_2WIN",
+      "old_voiceID": 4195
+    },
+    {
+      "slot": 196,
+      "voiceID": 4192,
+      "length": 87712,
+      "file": "0196_4192_BAYOU4_3LOSE.wav",
+      "sha256": "88edb9efc7aecd48517af4a75b758b28b43f102fa635731fd735537115aa302f",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU4_3LOSE",
+      "old_voiceID": 4196
+    },
+    {
+      "slot": 197,
+      "voiceID": 4193,
+      "length": 13440,
+      "file": "0197_4193_BAYOU_DIE.wav",
+      "sha256": "ee87fe3b467caf29f13e28125800e2a060fb4cf155edb86f53fc7f5ec37e423c",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU_DIE",
+      "old_voiceID": 4197
+    },
+    {
+      "slot": 198,
+      "voiceID": 4194,
+      "length": 24544,
+      "file": "0198_4194_BAYOU_LOSE.wav",
+      "sha256": "0971e45df5650274b2174d31583788b4e280ff2258ed8f33d2bf911295899ce7",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU_LOSE",
+      "old_voiceID": 4198
+    },
+    {
+      "slot": 199,
+      "voiceID": 4195,
+      "length": 49792,
+      "file": "0199_4195_BAYOU_WIN.wav",
+      "sha256": "bc28401aa39a0d73c9063cb95b309650993dab7623a60ca3317f81515413e5a7",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU_WIN",
+      "old_voiceID": 4199
+    },
+    {
+      "slot": 200,
+      "voiceID": 4196,
+      "length": 14592,
+      "file": "0200_4196_BAYOU_MP_DIE.wav",
+      "sha256": "ebaeb2c9fc0dabcbb971695b98f562d4e799127ddf44cd16a5047547a2ca8288",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU_MP_DIE",
+      "old_voiceID": 4200
+    },
+    {
+      "slot": 201,
+      "voiceID": 4197,
+      "length": 13280,
+      "file": "0201_4197_BAYOU_MP_LOSE.wav",
+      "sha256": "638713af9a7143a6b8dd1407e9025956cc012a5ea4132c1c2c8cbd22d1a367c8",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU_MP_LOSE",
+      "old_voiceID": 4201
+    },
+    {
+      "slot": 202,
+      "voiceID": 4198,
+      "length": 16032,
+      "file": "0202_4198_BAYOU_MP_WIN.wav",
+      "sha256": "e1455d1adfaae3e79c284f0064950e5b43f72de4fd0769f281f8f87d59173fa9",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU_MP_WIN",
+      "old_voiceID": 4202
+    },
+    {
+      "slot": 203,
+      "voiceID": 5014,
+      "length": 74944,
+      "file": "0203_5014_DS2M1B.wav",
+      "sha256": "8e855100a2c9b880fc1dbf014391629df07077287e99199267e674f0dc671f28",
+      "text": "前进至Ａ５区, 与小队会合并带他们回营地。",
+      "old_voiceID": 4203
+    },
+    {
+      "slot": 204,
+      "voiceID": 5015,
+      "length": 67520,
+      "file": "0204_5015_DS3M1B.wav",
+      "sha256": "929c27e8f025d49032bc317e1fe76a8a36383d900a283a69848333360eec5998",
+      "text": "确保这些士兵安全返回银行。",
+      "old_voiceID": 4204
+    },
+    {
+      "slot": 205,
+      "voiceID": 5016,
+      "length": 100096,
+      "file": "0205_5016_DS3M2B.wav",
+      "sha256": "6542ec6299b51e76a2bb66dc339a95606c9ec57207ec7fd9f87eecb50915175f",
+      "text": "从西南面的大门撤离小镇。",
+      "old_voiceID": 4205
+    },
+    {
+      "slot": 206,
+      "voiceID": 5017,
+      "length": 32256,
+      "file": "0206_5017_AS4M1_1.wav",
+      "sha256": "d2ec897d39778fa75d3e6bad113a5775519ea51911df1dc0a85c15b4f3896079",
+      "text": "已经有一名士兵被处决了！",
+      "old_voiceID": 4206
+    },
+    {
+      "slot": 207,
+      "voiceID": 5018,
+      "length": 29920,
+      "file": "0207_5018_AS4M1_2.wav",
+      "sha256": "bc1a7fbacbe8617512bdc72cb20d5056476e3e34f0d9b7c3feb435e3fc5a80d9",
+      "text": "他们又杀害了一名绿军士兵！",
+      "old_voiceID": 4207
+    },
+    {
+      "slot": 208,
+      "voiceID": 5019,
+      "length": 26112,
+      "file": "0208_5019_AS4M1_3.wav",
+      "sha256": "28d13edb39ac6bc05020ed799d3817eac5bf2337ba3f0fa11e2d5045ec610780",
+      "text": "只剩下一名战俘啦！",
+      "old_voiceID": 4208
+    },
+    {
+      "slot": 209,
+      "voiceID": 5020,
+      "length": 103808,
+      "file": "0209_5020_BS3M1MID.wav",
+      "sha256": "d6e35814d024a015cd40bf447d631f9083353ea1504652e5f3b3fceed24ef0c1",
+      "text": "营救我军被困在Ｃ４区的士兵，他们会协助守卫ＡＡ炮。",
+      "old_voiceID": 4209
+    },
+    {
+      "slot": 210,
+      "voiceID": 5021,
+      "length": 29216,
+      "file": "0210_5021_D12MID.wav",
+      "sha256": "38d803adf2cbb4f75ef337b7e44db3a8e0346e7b665c8fbd54bf3ffda0bdeab5",
+      "text": "蓝军信使正在靠近。",
+      "old_voiceID": 4210
+    },
+    {
+      "slot": 211,
+      "voiceID": 5022,
+      "length": 22112,
+      "file": "0211_5022_D31BAD.wav",
+      "sha256": "58c62315a5e6647b982df4ceec537854b4508e24c83095c89a228eceeaa1a3ba",
+      "text": "中士，路被堵住了。",
+      "old_voiceID": 4211
+    },
+    {
+      "slot": 212,
+      "voiceID": 5023,
+      "length": 35296,
+      "file": "0212_5023_BAYOU1_1M.wav",
+      "sha256": "2070abf1d9123e2fc18ff43bb9b71eda609a0c5fe06ca9a0faaafd4de54db0ca",
+      "text": "你没有找到他，中士。用你的侦察机跟着他。",
+      "old_voiceID": 4212
+    },
+    {
+      "slot": 213,
+      "voiceID": 5024,
+      "length": 83296,
+      "file": "0213_5024_BAYOU3_1M.wav",
+      "sha256": "fca286f5f52f104e27d64eb232faabfe7ad7182beeb44f7ed37d58ed17808c5f",
+      "text": "情报人员报告说，你的区域有３支黄军部队。快保护ＡＡ炮！",
+      "old_voiceID": 4213
+    },
+    {
+      "slot": 214,
+      "voiceID": 5025,
+      "length": 43328,
+      "file": "0214_5025_BAYOU3_2M.wav",
+      "sha256": "0163af4cd5b57b026b076578c49989d19a0ac7ed06dd34c1c61b6dd0466d681e",
+      "text": "现在到大楼门口，等候运输队。",
+      "old_voiceID": 4214
+    },
+    {
+      "slot": 215,
+      "voiceID": 5026,
+      "length": 39232,
+      "file": "0215_5026_BAYOU4_1M.wav",
+      "sha256": "fbc9252fea5f384cd3f74a1ccc4d3fd37f1d9b9159a711c33be340c188e91cf1",
+      "text": "现在我们能帮你干掉他们。",
+      "old_voiceID": 4215
+    },
+    {
+      "slot": 216,
+      "voiceID": 5027,
+      "length": 14272,
+      "file": "0216_5027_DESERT1_2M.wav",
+      "sha256": "0c41169834ffe6e1be0cafdf24e63516cbb02ecfd2ee4f0857ab7cff79b96991",
+      "text": "返回弹药库！",
+      "old_voiceID": 4216
+    },
+    {
+      "slot": 217,
+      "voiceID": 5028,
+      "length": 29344,
+      "file": "0217_5028_DESERT2_2M.wav",
+      "sha256": "76da92b0c1baf2c3e929ddff0fa038da6c3c39090dcbb5014ab23b32896954e2",
+      "text": "找到钥匙，带回营地。",
+      "old_voiceID": 4217
+    },
+    {
+      "slot": 218,
+      "voiceID": 5029,
+      "length": 24032,
+      "file": "0218_5029_ALPINE1_1M.wav",
+      "sha256": "281e904a1fee87815748eb816584e2a7aa84a8f18fc6ee29a5d0f22c100a5a47",
+      "text": "现在，把这些士兵带回医疗营！",
+      "old_voiceID": 4218
+    },
+    {
+      "slot": 219,
+      "voiceID": 5030,
+      "length": 20896,
+      "file": "0219_5030_ALPINE2_1M.wav",
+      "sha256": "fc81f658d14bb273dd5f899bf1d85a8dd5ed32826b835a7ea622dcc7a4c383a2",
+      "text": "他要逃走啦！",
+      "old_voiceID": 4219
+    },
+    {
+      "slot": 220,
+      "voiceID": 5032,
+      "length": 25344,
+      "file": "0220_5032_ALPINE3_1M.wav",
+      "sha256": "1fc837611fd2aed64f4c79c9d66bab99e47e80070ae03491f5ce26232ac55b67",
+      "text": "确保士兵全部上车！",
+      "old_voiceID": 4220
+    },
+    {
+      "slot": 221,
+      "voiceID": 5034,
+      "length": 32448,
+      "file": "0221_5034_ALPINE1_1M2.wav",
+      "sha256": "920175e35155ab321e524738c536e09863778e70e1b7d69dc55ce016129c3cbc",
+      "text": "你找不到这些士兵，怎么能把他们救出来呢？",
+      "old_voiceID": 4221
+    },
+    {
+      "slot": 222,
+      "voiceID": 5035,
+      "length": 24960,
+      "file": "0222_5035_ALPINE3_1M2.wav",
+      "sha256": "80beefa60df13d269f8937d9ca54ddd010fa1294d0354060ca0ff29d60c22687",
+      "text": "你必须利用桥来救这些士兵！",
+      "old_voiceID": 4222
+    },
+    {
+      "slot": 223,
+      "voiceID": 5036,
+      "length": 27808,
+      "file": "0223_5036_ALPINE3_1M3.wav",
+      "sha256": "5637ac5a546acd44218a4fb4ebc62ef29061d288473968c3c55d37a64c2b4edc",
+      "text": "你得用半履带车把这些士兵带回来！",
+      "old_voiceID": 4223
+    },
+    {
+      "slot": 224,
+      "voiceID": 5037,
+      "length": 24800,
+      "file": "0224_5037_SARGE_GETTOMED.wav",
+      "sha256": "7c8dd296e80c9bbeac76b6f9f967773960375162f77554e23e7b2e45e57fe491",
+      "text": "把士兵带到医疗营进行救治。",
+      "old_voiceID": 4224
+    },
+    {
+      "slot": 225,
+      "voiceID": 5038,
+      "length": 23744,
+      "file": "0225_5038_SARGE_DONTLEAVE.wav",
+      "sha256": "f4608207d4010145c14e0305aff63b75642a63888b4072f08be2b8699fb0b40e",
+      "text": "你不能撇下士兵自己离开！",
+      "old_voiceID": 4225
+    },
+    {
+      "slot": 226,
+      "voiceID": 5000,
+      "length": 9488,
+      "file": "0226_5000_CRATE_LOAD.wav",
+      "sha256": "c6d152e077febcbcb09cd473299b98b27dbb6d8cf0be18160d57a3eec90d0a44",
+      "text_missing": true,
+      "ext_name_ref": "CRATE_LOAD",
+      "old_voiceID": 5000
+    },
+    {
+      "slot": 227,
+      "voiceID": 5001,
+      "length": 17249,
+      "file": "0227_5001_TRAIN_HORN.wav",
+      "sha256": "15f347e7a875f779a904ddaec7bc55b7a203f85b36afe11e12cf374b2612d74c",
+      "text_missing": true,
+      "ext_name_ref": "TRAIN_HORN",
+      "old_voiceID": 5001
+    },
+    {
+      "slot": 228,
+      "voiceID": 5002,
+      "length": 11072,
+      "file": "0228_5002_GATE_CLOSE.wav",
+      "sha256": "9b18893b3cf6502ea9697a7b27a199c35bcdaf6d7a278ef536b16dbb04b04442",
+      "text_missing": true,
+      "ext_name_ref": "GATE_CLOSE",
+      "old_voiceID": 5002
+    },
+    {
+      "slot": 229,
+      "voiceID": 5003,
+      "length": 20049,
+      "file": "0229_5003_CHOPPER_SPIN_DOWN.wav",
+      "sha256": "95ee4d88c34f740aa7b4e9da40fc10230543c6997b030be4213839c77ea62eb6",
+      "text_missing": true,
+      "ext_name_ref": "CHOPPER_SPIN_DOWN",
+      "old_voiceID": 5003
+    },
+    {
+      "slot": 230,
+      "voiceID": 5004,
+      "length": 20939,
+      "file": "0230_5004_CHOPPER_SPIN_UP.wav",
+      "sha256": "829b87cb6e90761b3a49498ee2b8799f221dba4e1bd80c586ec883c027b42b07",
+      "text_missing": true,
+      "ext_name_ref": "CHOPPER_SPIN_UP",
+      "old_voiceID": 5004
+    },
+    {
+      "slot": 231,
+      "voiceID": 5005,
+      "length": 17824,
+      "file": "0231_5005_GATE_OPEN.wav",
+      "sha256": "c571bea6f9649986cf0dec785642c0f7c70d09f555a6226db62591618f2533ae",
+      "text_missing": true,
+      "ext_name_ref": "GATE_OPEN",
+      "old_voiceID": 5005
+    },
+    {
+      "slot": 232,
+      "voiceID": 5006,
+      "length": 24800,
+      "file": "0232_5006_TRAIN_SCREECH.wav",
+      "sha256": "0b851e279740989cf5fe0982de8c2dc54d42d36e61cb7c320b6d8cc2a621be53",
+      "text_missing": true,
+      "ext_name_ref": "TRAIN_SCREECH",
+      "old_voiceID": 5006
+    },
+    {
+      "slot": 233,
+      "voiceID": 5007,
+      "length": 44192,
+      "file": "0233_5007_TRAIN_WRECK.wav",
+      "sha256": "88f7028691ef56cf4096f91eb02b63fe8a5fcaeebd4aa96bc099d267449b1743",
+      "text_missing": true,
+      "ext_name_ref": "TRAIN_WRECK",
+      "old_voiceID": 5007
+    },
+    {
+      "slot": 234,
+      "voiceID": 5008,
+      "length": 18400,
+      "file": "0234_5008_CEMETARY_GATE_CLOSE.wav",
+      "sha256": "1f4f1b973b8e2a0d9c2a747aa9f182278b5346e0006f3d8be8b0dece8fd0590b",
+      "text_missing": true,
+      "ext_name_ref": "CEMETARY_GATE_CLOSE",
+      "old_voiceID": 5008
+    },
+    {
+      "slot": 235,
+      "voiceID": 5009,
+      "length": 23456,
+      "file": "0235_5009_CEMETARY_GATE_OPEN.wav",
+      "sha256": "cc97c339ea1632c5d59d1231f34b75241e38e763174cc9f09d8ef700def34aac",
+      "text_missing": true,
+      "ext_name_ref": "CEMETARY_GATE_OPEN",
+      "old_voiceID": 5009
+    },
+    {
+      "slot": 236,
+      "voiceID": 5010,
+      "length": 20320,
+      "file": "0236_5010_SPLASH.wav",
+      "sha256": "6cdefc7a24c2f74996e9c05595ee1e2662652133ac19bb4b2cee79f92360f254",
+      "text_missing": true,
+      "ext_name_ref": "SPLASH",
+      "old_voiceID": 5010
+    },
+    {
+      "slot": 237,
+      "voiceID": 5013,
+      "length": 20328,
+      "file": "0237_5013_DESTROYED_SCRIPT.wav",
+      "sha256": "03ced47f32fdd1aa691c74334254954e46f7181eaed23ebd084cfc5cc8ab88a3",
+      "text_missing": true,
+      "ext_name_ref": "DESTROYED_SCRIPT",
+      "old_voiceID": 5011
+    }
+  ],
+  "text_missing_count": 78,
+  "naming_conflicts": 160,
+  "unused_slots_b64": [
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca"
+  ],
+  "unused_all_ff": true,
+  "remapped": true,
+  "remap_stats": {
+    "changed": 172,
+    "unchanged": 66,
+    "unmapped": 0,
+    "renamed": 238
+  }
+}

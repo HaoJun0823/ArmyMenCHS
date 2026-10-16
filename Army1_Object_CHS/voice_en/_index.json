@@ -1,0 +1,2017 @@
+{
+  "source": "voices.asd",
+  "source_sha256": "87b565080f0e80930c164112b79ec6cf4b2795e2932c8ea445bbcd062ae6ab5a",
+  "version": "V0.0",
+  "count": 238,
+  "max_sounds": 256,
+  "header_size": 2064,
+  "ast_source": "voices.ast",
+  "ast_text_count": 160,
+  "entries": [
+    {
+      "slot": 0,
+      "voiceID": 4000,
+      "length": 11304,
+      "file": "0000_4000_THERE_HE_IS.wav",
+      "sha256": "aab70335ac9dc058d93bafa25faa2d88a5f327998face7b2f144ca6f5d5a16b2",
+      "text": "There he is!"
+    },
+    {
+      "slot": 1,
+      "voiceID": 4001,
+      "length": 6501,
+      "file": "0001_4001_GET_HIM.wav",
+      "sha256": "d11039a994f30e119cf92811d2c9e8f23fdb85043b1cfc28a8e1f19a9110d4b5",
+      "text": "Get him!"
+    },
+    {
+      "slot": 2,
+      "voiceID": 4002,
+      "length": 13673,
+      "file": "0002_4002_HES_OURS.wav",
+      "sha256": "b9454d47c8194326deab0d2cc8ac05d1564ff3f145b824d1831dc98a8edaaa34",
+      "text": "He's ours!"
+    },
+    {
+      "slot": 3,
+      "voiceID": 4003,
+      "length": 10895,
+      "file": "0003_4003_YOURE_TOAST.wav",
+      "sha256": "401cd5c2ba17bc1bf3713507b62b8874279d319e0a6c1705eb953594cbd09b63",
+      "text": "You're toast!"
+    },
+    {
+      "slot": 4,
+      "voiceID": 4004,
+      "length": 18553,
+      "file": "0004_4004_TAN_SCUM.wav",
+      "sha256": "e1e5f6b3a70b163cbca8313946a806816e1252d146b0c970e35b1315983886c5",
+      "text": "Take that, tan scum!"
+    },
+    {
+      "slot": 5,
+      "voiceID": 4005,
+      "length": 19690,
+      "file": "0005_4005_GREY_SCUM.wav",
+      "sha256": "450dcacc59f926e0f8260677b4bde9d83258dfc788c6f2f89740d62251e292b5",
+      "text": "Take that, gray scum!"
+    },
+    {
+      "slot": 6,
+      "voiceID": 4006,
+      "length": 37305,
+      "file": "0006_4006_REQUEST_PARATROOPERS.wav",
+      "sha256": "0065dfaf0a18d9ad81dabeb78aa660e428eb214ec9a9211d9ee6b2eaefb0e2e1",
+      "text": "This is Sarge. Requesting paratrooper drop. Over."
+    },
+    {
+      "slot": 7,
+      "voiceID": 4007,
+      "length": 35316,
+      "file": "0007_4007_SEND_PARATROOPERS.wav",
+      "sha256": "a999b1365e5fdd3c7ec11be330fb525cc9c17e37cb1b183a96d83d00ce9d8779",
+      "text": "This is Sarge. Send me a paratroop drop. Over."
+    },
+    {
+      "slot": 8,
+      "voiceID": 4008,
+      "length": 30744,
+      "file": "0008_4008_REQUEST_RECON.wav",
+      "sha256": "faa689a6603a9089b0c0c79883a5306c9ec813e84d48bca05be39b7b0555889b",
+      "text": "This is Sarge. Requesting recon. Over."
+    },
+    {
+      "slot": 9,
+      "voiceID": 4009,
+      "length": 34005,
+      "file": "0009_4009_SEND_RECON.wav",
+      "sha256": "987d2a4883797ffe6a554f73e2ac6726790c8ee88c5329ba99517f6d778fc2b1",
+      "text": "Send me a recon. Over."
+    },
+    {
+      "slot": 10,
+      "voiceID": 4010,
+      "length": 29908,
+      "file": "0010_4010_REQUEST_AIR_STRIKE.wav",
+      "sha256": "6f0aa95edac6c636aa1d28062baa0f67e0a95cd031cb596bf4acb6cfc5b36879",
+      "text": "This is Sarge. Requesting an air strike. Over."
+    },
+    {
+      "slot": 11,
+      "voiceID": 4011,
+      "length": 34422,
+      "file": "0011_4011_NEED_AIR_STRIKE.wav",
+      "sha256": "5f43b0d27f772656f44a6416d4b4cddb9adda25eb8f54824174e505fcf96ffb5",
+      "text": "This is Sarge. I need an air strike. Over."
+    },
+    {
+      "slot": 12,
+      "voiceID": 4012,
+      "length": 19744,
+      "file": "0012_4012_GREEN_SQUAD_ATTACK.wav",
+      "sha256": "ea26f844afd8aeb9f5f61cb783dba9e28adf23d496ed8c3e193181499b2a37fb",
+      "text": "Green squad attack."
+    },
+    {
+      "slot": 13,
+      "voiceID": 4013,
+      "length": 19488,
+      "file": "0013_4013_GREEN_ATTACK.wav",
+      "sha256": "6d1f8b48fe17868e39897bca912917b75aa7bfafab8572f6d2d32d5e4eb404ff",
+      "text": "Green attack."
+    },
+    {
+      "slot": 14,
+      "voiceID": 4014,
+      "length": 15968,
+      "file": "0014_4014_TAN_SQUAD_ATTACK.wav",
+      "sha256": "5106ebd7cec441c2beb18660cfd2b27a5bafc30fe5682423eaf8692b83f01d07",
+      "text": "Tan squad attack."
+    },
+    {
+      "slot": 15,
+      "voiceID": 4015,
+      "length": 17344,
+      "file": "0015_4015_TAN_ATTACK.wav",
+      "sha256": "5d824fb0c2dc2e3d96f324606eab6a98781109e25804632fb80d7fb90a249033",
+      "text": "Tan attack."
+    },
+    {
+      "slot": 16,
+      "voiceID": 4016,
+      "length": 14688,
+      "file": "0016_4016_BLUE_SQUAD_ATTACK.wav",
+      "sha256": "58638a9dc5acc68cf8a32d874fd28ac5fb36551c1db2463535c345e3369a2c1a",
+      "text": "Blue squad attack."
+    },
+    {
+      "slot": 17,
+      "voiceID": 4017,
+      "length": 13728,
+      "file": "0017_4017_BLUE_ATTACK.wav",
+      "sha256": "a17f89fa4462b41f18ee1a8704bbf5e318c6fea8ebec5fccf2df61651e521761",
+      "text": "Blue attack."
+    },
+    {
+      "slot": 18,
+      "voiceID": 4018,
+      "length": 18208,
+      "file": "0018_4018_GREY_SQUAD_ATTACK.wav",
+      "sha256": "2ff2a67acdf4583c931d18a57ab67dc614807dcf418f13c8d94ec146a0015237",
+      "text": "Gray squad attack."
+    },
+    {
+      "slot": 19,
+      "voiceID": 4019,
+      "length": 16992,
+      "file": "0019_4019_GREY_ATTACK.wav",
+      "sha256": "e149c2b02448b6bf266712f57cf1480d8edb845d02697a22669ec75cf565dd9f",
+      "text": "Gray attack."
+    },
+    {
+      "slot": 20,
+      "voiceID": 4020,
+      "length": 17184,
+      "file": "0020_4020_GREEN_SQUAD_DEFEND.wav",
+      "sha256": "b711b861a898b3a898cdb1ad32260035c993a498bdd2e1e3b2de673a98722101",
+      "text": "Green squad defend."
+    },
+    {
+      "slot": 21,
+      "voiceID": 4021,
+      "length": 22880,
+      "file": "0021_4021_GREEN_DEFEND.wav",
+      "sha256": "c4587df922a60df2316ffb5c032f507d609396b35734eb5f91910f815ab003ed",
+      "text": "Green defend."
+    },
+    {
+      "slot": 22,
+      "voiceID": 4022,
+      "length": 18400,
+      "file": "0022_4022_TAN_SQUAD_DEFEND.wav",
+      "sha256": "0c7841578ace8efb1aebfa3d11dbc0a74c1e5aaae2fea466e23a2a022a8aca7a",
+      "text": "Tan squad defend."
+    },
+    {
+      "slot": 23,
+      "voiceID": 4023,
+      "length": 17248,
+      "file": "0023_4023_TAN_DEFEND.wav",
+      "sha256": "57bf7f57d9532e88c7a97995336ade214bba523ebce7a794df8f1c503efaaaec",
+      "text": "Tan defend."
+    },
+    {
+      "slot": 24,
+      "voiceID": 4024,
+      "length": 18400,
+      "file": "0024_4024_BLUE_SQUAD_DEFEND.wav",
+      "sha256": "9fb35d403db8d744180b756fcbe642108316ce669254919fc520dfa293838be1",
+      "text": "Blue squad defend."
+    },
+    {
+      "slot": 25,
+      "voiceID": 4025,
+      "length": 15840,
+      "file": "0025_4025_BLUE_DEFEND.wav",
+      "sha256": "d11a206c32070863f3e687f794a5d79d9a92a93fdc78c49dbac97ba300b280c4",
+      "text": "Blue defend."
+    },
+    {
+      "slot": 26,
+      "voiceID": 4026,
+      "length": 17984,
+      "file": "0026_4026_GREY_SQUAD_DEFEND.wav",
+      "sha256": "11e6000caa4e9427bdbd5c23028eba8630c499cbef947bd99d945f75c0ed7298",
+      "text": "Gray squad defend."
+    },
+    {
+      "slot": 27,
+      "voiceID": 4027,
+      "length": 20256,
+      "file": "0027_4027_GREY_DEFEND.wav",
+      "sha256": "a328605e4f6da796790534b2e4ada8c158a473491427bacd6f980e365d3616c8",
+      "text": "Gray defend."
+    },
+    {
+      "slot": 28,
+      "voiceID": 4028,
+      "length": 12332,
+      "file": "0028_4028_GET_OVER_HERE.wav",
+      "sha256": "1c3c93224751fb4719153922dda64baaf7eb136ef9a0b91ca85290546936dc87",
+      "text": "Get over here."
+    },
+    {
+      "slot": 29,
+      "voiceID": 4029,
+      "length": 11415,
+      "file": "0029_4029_FOLLOW_ME.wav",
+      "sha256": "aff8c6d7b301c28b78279abf3111748e0f7881086af281aa20eea1dd530988be",
+      "text": "Follow me."
+    },
+    {
+      "slot": 30,
+      "voiceID": 4030,
+      "length": 28576,
+      "file": "0030_4030_SARGE_FOUND_AUTO_RIFLE.wav",
+      "sha256": "c0df7ffb141afd7d5284a9054ac9e4d66cc55f5465892a92356f6fd3e09e02c6",
+      "text": "Found auto rifle."
+    },
+    {
+      "slot": 31,
+      "voiceID": 4031,
+      "length": 13344,
+      "file": "0031_4031_SARGE_FOUND_FIRST_AID.wav",
+      "sha256": "59dc8cd3bd86b2af27ba4d41ea5206f7f19b3bdbc797a46502b8872aaa0fd7dc",
+      "text": "Found first aid kit."
+    },
+    {
+      "slot": 32,
+      "voiceID": 4032,
+      "length": 21472,
+      "file": "0032_4032_SARGE_FOUND_BAZOOKA.wav",
+      "sha256": "16b1fb7044cfb4aca9883b5f0dbceea6852d4b21658c60c6b96063afe6e74474",
+      "text": "Found bazooka."
+    },
+    {
+      "slot": 33,
+      "voiceID": 4033,
+      "length": 14688,
+      "file": "0033_4033_SARGE_FOUND_MINES.wav",
+      "sha256": "02ce97fe1fb4da3f9df402b18d98c865de3ffccf8caadba796963774665c3a38",
+      "text": "Found mines."
+    },
+    {
+      "slot": 34,
+      "voiceID": 4034,
+      "length": 39072,
+      "file": "0034_4034_SARGE_FOUND_GRENADES.wav",
+      "sha256": "a08bdf47b2b8b37d2741bada48b90896bd3ff692d34c5b981786e8959a7cce00",
+      "text": "Found grenades."
+    },
+    {
+      "slot": 35,
+      "voiceID": 4035,
+      "length": 44960,
+      "file": "0035_4035_SARGE_FOUND_MINESWEEPER.wav",
+      "sha256": "da20beb3efaa0b8814aae6ae668b77eefaffc0cc3599063ea8e5b17c86e21ca4",
+      "text": "Found minesweeper."
+    },
+    {
+      "slot": 36,
+      "voiceID": 4036,
+      "length": 26976,
+      "file": "0036_4036_SARGE_FOUND_MORTARS.wav",
+      "sha256": "f77ffb0e104be9fa94cbcf3474f691edb0edfaf586f64529e401374bcb23012a",
+      "text": "Found mortar."
+    },
+    {
+      "slot": 37,
+      "voiceID": 4037,
+      "length": 19936,
+      "file": "0037_4037_SARGE_FOUND_NOTE.wav",
+      "sha256": "c920d502f779dedfdaf112aeb99c0e207ed46e76d2a58cb0494c9d140f1376e7",
+      "text": "Found a note."
+    },
+    {
+      "slot": 38,
+      "voiceID": 4038,
+      "length": 19296,
+      "file": "0038_4038_SARGE_FOUND_FLAMER.wav",
+      "sha256": "2be548c76faded0dd6b18dd1b8e777cb63ed3d71257827f251b6f1d4a511c5ee",
+      "text": "Found flame thrower."
+    },
+    {
+      "slot": 39,
+      "voiceID": 4039,
+      "length": 15456,
+      "file": "0039_4039_SARGE_FOUND_FLAG.wav",
+      "sha256": "ae8a042a9b9ac01aa2e7e24bd41da55e81729bda11f49d62c2f35b286c9939d4",
+      "text": "Found a flag."
+    },
+    {
+      "slot": 40,
+      "voiceID": 4040,
+      "length": 23968,
+      "file": "0040_4040_SARGE_FOUND_EXPLOSIVES.wav",
+      "sha256": "07c4646ff27cd29e6c88f953f540f0661d301650d177c0bfae1cad51210d665d",
+      "text": "Found explosives."
+    },
+    {
+      "slot": 41,
+      "voiceID": 4041,
+      "length": 20320,
+      "file": "0041_4041_SARGE_FOUND_GREEN_FLAG.wav",
+      "sha256": "bdb03d05045849db1a046249a357f5f4c921275e984d7b70b56a6e157176fdac",
+      "text": "Found a green flag."
+    },
+    {
+      "slot": 42,
+      "voiceID": 4042,
+      "length": 17600,
+      "file": "0042_4042_SARGE_FOUND_TAN_FLAG.wav",
+      "sha256": "9ec0068fd77b836b36f7cb22abb1583fab196125a4d2ed93133b247ba792a2b0",
+      "text": "Found a tan flag."
+    },
+    {
+      "slot": 43,
+      "voiceID": 4043,
+      "length": 15648,
+      "file": "0043_4043_SARGE_FOUND_BLUE_FLAG.wav",
+      "sha256": "9a3fd7a1ab080c18a960a008d3f4297156d9404ea262a7eb12bd72b1d2ea57e8",
+      "text": "Found a blue flag."
+    },
+    {
+      "slot": 44,
+      "voiceID": 4044,
+      "length": 16544,
+      "file": "0044_4044_SARGE_FOUND_GREY_FLAG.wav",
+      "sha256": "393e9bd46417edc17880745a4c26148368f69c241e5670fcfaf3cea775aee56e",
+      "text": "Found a gray flag."
+    },
+    {
+      "slot": 45,
+      "voiceID": 4045,
+      "length": 22368,
+      "file": "0045_4045_SARGE_FOUND_KEY1.wav",
+      "sha256": "76cdb8c175a30c2488d25f870196b75d8e62ae09239d8ff3707a072ae809f374",
+      "text": "Found the first key."
+    },
+    {
+      "slot": 46,
+      "voiceID": 4046,
+      "length": 18432,
+      "file": "0046_4046_SARGE_FOUND_KEY2.wav",
+      "sha256": "96743fa30ce8d3e46a6b4de7ea27eebb79df9391b49b4deb0b50351aea579574",
+      "text": "Found the second key."
+    },
+    {
+      "slot": 47,
+      "voiceID": 4047,
+      "length": 25248,
+      "file": "0047_4047_SARGE_FOUND_KEY3.wav",
+      "sha256": "e618dfe22746ca2b948ed836c57887ff6ae1ea3883d672f9a9518310f481f02f",
+      "text": "Found the third key."
+    },
+    {
+      "slot": 48,
+      "voiceID": 4048,
+      "length": 38240,
+      "file": "0048_4048_SARGE_FOUND_AIRSTRIKE.wav",
+      "sha256": "960d680dff2898850c40acc2c7f363383437e38b14694f0c3550c2f27eaeff64",
+      "text": "Air strikes!"
+    },
+    {
+      "slot": 49,
+      "voiceID": 4049,
+      "length": 25248,
+      "file": "0049_4049_SARGE_FOUND_PARATROOPERS.wav",
+      "sha256": "296d502d8ad63d9eadd32990c0e199f9d50f0f05bf99dba9a8b10a064549d2b8",
+      "text": "Paratroopers!"
+    },
+    {
+      "slot": 50,
+      "voiceID": 4050,
+      "length": 11744,
+      "file": "0050_4050_SARGE_FOUND_RECON.wav",
+      "sha256": "bce1505efc23a9615b709008bfa588673292e0181702e4f66948be9f0a7da39f",
+      "text": "Recon!"
+    },
+    {
+      "slot": 51,
+      "voiceID": 4051,
+      "length": 22208,
+      "file": "0051_4051_LOAD_TRUCKS_QUICK.wav",
+      "sha256": "e16179ddd804824670af92fb341a2d4d035120c8bafad4178942e16c45693684",
+      "text": "Load up the trucks, and make it quick!"
+    },
+    {
+      "slot": 52,
+      "voiceID": 4052,
+      "length": 12542,
+      "file": "0052_4052_GET_OUT_OF_HERE.wav",
+      "sha256": "1dd00dc59cd8b48bc67c5bb1c70ab8126d55dabb9ea1f6cd4850b99b63f94b7e",
+      "text": "Let's get out of here!"
+    },
+    {
+      "slot": 53,
+      "voiceID": 4053,
+      "length": 17050,
+      "file": "0053_4053_GET_OUT_OF_TOWN.wav",
+      "sha256": "14ec83096dcaf74f4a3a596eeca0d4cd27e202c94be023268fbe5d650d10b0c8",
+      "text": "Let's get out of this town!"
+    },
+    {
+      "slot": 54,
+      "voiceID": 4054,
+      "length": 35282,
+      "file": "0054_4054_PLASTIC_FOR_INFO.wav",
+      "sha256": "74ce69eeb9ae239d1a14577fa88eb51ab51d6ae4e0109417989d802a9ba77720",
+      "text": "Here's your plastic. Give me the information."
+    },
+    {
+      "slot": 55,
+      "voiceID": 4055,
+      "length": 26017,
+      "file": "0055_4055_PURSUING_RIFLE_SQUAD.wav",
+      "sha256": "bdaf9c62177bd730a50cc6648330f36f97af23b7234f1f7079dd835fbbabbd5d",
+      "text": "We're pursuing an enemy rifle squad."
+    },
+    {
+      "slot": 56,
+      "voiceID": 4056,
+      "length": 24737,
+      "file": "0056_4056_SPOTTED_BY_RIFLE_SQUAD.wav",
+      "sha256": "e65e57b5d2a40020c5861c84353827bacf253ea182d932288a73ba7c170d5a15",
+      "text": "We've been spotted by an enemy rifle squad."
+    },
+    {
+      "slot": 57,
+      "voiceID": 4057,
+      "length": 25057,
+      "file": "0057_4057_PURSUING_BAZOOKA_SQUAD.wav",
+      "sha256": "47b570a7dcb7e2e26c9f90a64a76dc32356a456088f27bf442cdea49f0a5e51b",
+      "text": "We're pursuing an enemy bazooka squad."
+    },
+    {
+      "slot": 58,
+      "voiceID": 4058,
+      "length": 24929,
+      "file": "0058_4058_SPOTTED_BY_BAZOOKA_SQUAD.wav",
+      "sha256": "19ce6622a2578bb0353a7c655696fa8f4ca617c58fa5218b2328352aa723b216",
+      "text": "We've been spotted by an enemy bazooka squad."
+    },
+    {
+      "slot": 59,
+      "voiceID": 4059,
+      "length": 23457,
+      "file": "0059_4059_PURSUING_FLAMER_SQUAD.wav",
+      "sha256": "28a9a5f364790076722a1ced549ccea21688e866844814175b16ca0aa581a496",
+      "text": "We're pursuing an enemy flamer squad."
+    },
+    {
+      "slot": 60,
+      "voiceID": 4060,
+      "length": 26849,
+      "file": "0060_4060_SPOTTED_BY_FLAMER_SQUAD.wav",
+      "sha256": "45360823589a3a1be5b93d5e55fa49bfbdc8250b8d5d9913a73248ce0d9cb024",
+      "text": "We've been spotted by an enemy flamer squad."
+    },
+    {
+      "slot": 61,
+      "voiceID": 4061,
+      "length": 22048,
+      "file": "0061_4061_PURSUING_MORTAR_SQUAD.wav",
+      "sha256": "4fd1d617cf1cf6b695c97488629d7b6aba43f78fd8e441afde378faa947bb08c",
+      "text": "We're pursuing an enemy mortar squad."
+    },
+    {
+      "slot": 62,
+      "voiceID": 4062,
+      "length": 25185,
+      "file": "0062_4062_SPOTTED_BY_MORTAR_SQUAD.wav",
+      "sha256": "b07957ea57b586224188d05186bb07e23d788343fd0dbc398d26a3cf4b7e6afa",
+      "text": "We've been spotted by an enemy mortar squad."
+    },
+    {
+      "slot": 63,
+      "voiceID": 4063,
+      "length": 19361,
+      "file": "0063_4063_PURSUING_SPY.wav",
+      "sha256": "4e9afe138717b0e65207fee9cde6295b2f62db8b678b9ba71443e298020c6438",
+      "text": "We're pursuing an enemy spy."
+    },
+    {
+      "slot": 64,
+      "voiceID": 4064,
+      "length": 25441,
+      "file": "0064_4064_SPOTTED_BY_SPY.wav",
+      "sha256": "a4d43cf3dc2f03434f10a27d43a134424db0b2e29a324ad11ab3b75e0dd8cdfd",
+      "text": "We've been spotted by an enemy spy."
+    },
+    {
+      "slot": 65,
+      "voiceID": 4065,
+      "length": 19169,
+      "file": "0065_4065_ATTACKING_TANK.wav",
+      "sha256": "0de5ffec98f5067b76e85c242264b363553780d925be19810dfba727b29698dd",
+      "text": "We're attacking an enemy tank."
+    },
+    {
+      "slot": 66,
+      "voiceID": 4066,
+      "length": 23521,
+      "file": "0066_4066_TANK_ATTACKING.wav",
+      "sha256": "458751aae457415b9fe6ae051a076c92ed00de99f077aa5d5a767713814ab1e2",
+      "text": "We're being attacked by enemy tank."
+    },
+    {
+      "slot": 67,
+      "voiceID": 4067,
+      "length": 20705,
+      "file": "0067_4067_ATTACKING_JEEP.wav",
+      "sha256": "4e7f64fc016e816850993006b2bbe0259d4242e0e0fed89fca9204e6606c5f08",
+      "text": "We're attacking an enemy jeep."
+    },
+    {
+      "slot": 68,
+      "voiceID": 4068,
+      "length": 23649,
+      "file": "0068_4068_JEEP_ATTACKING.wav",
+      "sha256": "fbff3beb9a46bbbd86c4c4dc97be380b08aacd33b9c22c2e95c16c82c078489a",
+      "text": "We're being attacked by enemy jeep."
+    },
+    {
+      "slot": 69,
+      "voiceID": 4069,
+      "length": 23521,
+      "file": "0069_4069_ATTACKING_PARATROOPERS.wav",
+      "sha256": "f74b5a6e3da1d3cb09903f5fc8d3c2262189091bbdc961590c02cd4acf495feb",
+      "text": "We're attacking enemy paratroopers."
+    },
+    {
+      "slot": 70,
+      "voiceID": 4070,
+      "length": 23073,
+      "file": "0070_4070_PARATROOPERS_ATTACKING.wav",
+      "sha256": "6ebb74e710adebd4dca571b0be02913cd529263a97fec4feada28429d1adf1e0",
+      "text": "We're being attacked by paratroopers."
+    },
+    {
+      "slot": 71,
+      "voiceID": 4071,
+      "length": 14816,
+      "file": "0071_4071_GETTING_SHELLED.wav",
+      "sha256": "cc58afab78fd3184e6e54e15b3f458b210a7cae78c696b83061905305a5694c5",
+      "text": "We're getting shelled."
+    },
+    {
+      "slot": 72,
+      "voiceID": 4072,
+      "length": 18657,
+      "file": "0072_4072_BEEN_BOMBED.wav",
+      "sha256": "3fd3384843f92da34cfa5776e554ce450a26227c712b601084a130fc37b3cf1c",
+      "text": "We've just been bombed."
+    },
+    {
+      "slot": 73,
+      "voiceID": 4073,
+      "length": 23009,
+      "file": "0073_4073_ATTACKING_RIFLE_SQUAD.wav",
+      "sha256": "201413e5bca627a488b613dc295f54aaf500ec4522d04373b4b8a499fb90e87a",
+      "text": "We're attacking an enemy rifle squad."
+    },
+    {
+      "slot": 74,
+      "voiceID": 4074,
+      "length": 23905,
+      "file": "0074_4074_RIFLE_SQUAD_ATTACKING.wav",
+      "sha256": "241db389d0d0cfd3e6b1df8684e05845e564cac0df2937c3a2a73edc8f58e028",
+      "text": "We're being attacked by enemy rifle."
+    },
+    {
+      "slot": 75,
+      "voiceID": 4075,
+      "length": 24481,
+      "file": "0075_4075_ATTACKING_BAZOOKA_SQUAD.wav",
+      "sha256": "bbf2f387f59507c591d7938f8000c1677fccab7dd0e481e928e84cc4fdc50f71",
+      "text": "We're attacking an enemy bazooka squad."
+    },
+    {
+      "slot": 76,
+      "voiceID": 4076,
+      "length": 23521,
+      "file": "0076_4076_BAZOOKA_SQUAD_ATTACKING.wav",
+      "sha256": "bbfb67dadc548d244eea37a8cc68f9bc025f81f1c4a3b6283739e1d1e512de62",
+      "text": "We're being attacked by enemy bazookas."
+    },
+    {
+      "slot": 77,
+      "voiceID": 4077,
+      "length": 23393,
+      "file": "0077_4077_ATTACKING_FLAMER_SQUAD.wav",
+      "sha256": "0cafab9f242eec46178aa5154b6675b0d5ee3f0bde505322315f7eefa1964009",
+      "text": "We're attacking an enemy flamer squad."
+    },
+    {
+      "slot": 78,
+      "voiceID": 4078,
+      "length": 20384,
+      "file": "0078_4078_FLAMER_SQUAD_ATTACKING.wav",
+      "sha256": "f6b6700c5643ddb1e8a11688dac5235fdf77035c6f69e50e1971a9b038df68e4",
+      "text": "We're being attacked by flamers."
+    },
+    {
+      "slot": 79,
+      "voiceID": 4079,
+      "length": 22497,
+      "file": "0079_4079_ATTACKING_MORTAR_SQUAD.wav",
+      "sha256": "788781c7303ac38b045d781bb7967eeb383434149f77ae45e279e45eebb5812c",
+      "text": "We're attacking an enemy mortar squad."
+    },
+    {
+      "slot": 80,
+      "voiceID": 4080,
+      "length": 19937,
+      "file": "0080_4080_MORTAR_SQUAD_ATTACKING.wav",
+      "sha256": "d458cc54f9d993f27f75ad5bd3bbc22029701fbd4071df7d9895cf8b927d4f3a",
+      "text": "We're being attacked by mortar."
+    },
+    {
+      "slot": 81,
+      "voiceID": 4081,
+      "length": 19233,
+      "file": "0081_4081_ATTACKING_SPY.wav",
+      "sha256": "d276e0700354b5a35a0d4d963f60e74ee97ddf7a269aa12d15ef138b0be2bd9b",
+      "text": "We're attacking an enemy spy."
+    },
+    {
+      "slot": 82,
+      "voiceID": 4082,
+      "length": 20385,
+      "file": "0082_4082_SPY_ATTACKING.wav",
+      "sha256": "e3f9960958920944c1bca8817a94089227ad0dbc8271994e3a779a1a029c531f",
+      "text": "We're being attacked by a spy."
+    },
+    {
+      "slot": 83,
+      "voiceID": 4083,
+      "length": 20961,
+      "file": "0083_4083_MENDOWN.wav",
+      "sha256": "8e7d831243721ac38e4f0bec63bd580ef46cca124b7344eb9ef53726e8fb0b89",
+      "text": "We've got a man down."
+    },
+    {
+      "slot": 84,
+      "voiceID": 4084,
+      "length": 20897,
+      "file": "0084_4084_MENDOWN_2.wav",
+      "sha256": "833d2214cf9eb5fdfd46672a1e0b14b497603ea3e7edcae2159094b19854a525",
+      "text": "We've got men down!"
+    },
+    {
+      "slot": 85,
+      "voiceID": 4085,
+      "length": 34273,
+      "file": "0085_4085_TAKING_HEAVY_CASUALTIES.wav",
+      "sha256": "a955c057a2243a5dd9268836f2f0caa87795b1ca6af0f4e83e8c6ffa06ab66a6",
+      "text": "Sarge! We're taking heavy casualties."
+    },
+    {
+      "slot": 86,
+      "voiceID": 4086,
+      "length": 15713,
+      "file": "0086_4086_NO_ONE_HERE.wav",
+      "sha256": "ebe8eaa9af980db701b7e1942a7429e5b0884bf43b3a6ac2c6e250926bc47af0",
+      "text": "No one here, Sarge."
+    },
+    {
+      "slot": 87,
+      "voiceID": 4087,
+      "length": 15969,
+      "file": "0087_4087_ALL_CLEAR_SARGE.wav",
+      "sha256": "c36e58da66934494c72417a86c928bbf14edf3e66b87526af3cba0d3452123f3",
+      "text": "All clear, Sarge."
+    },
+    {
+      "slot": 88,
+      "voiceID": 4088,
+      "length": 9697,
+      "file": "0088_4088_WAITING_FOR_ORDERS.wav",
+      "sha256": "8c161e248bc77b99dca3949d3d49e1c518a61cf24abf89a3e3ccd32de46c4038",
+      "text": "Waiting for orders."
+    },
+    {
+      "slot": 89,
+      "voiceID": 4089,
+      "length": 28384,
+      "file": "0089_4089_READY_AIM_FIRE.wav",
+      "sha256": "e30ddf3bd90d16daa526204b9c546e74bdef59cf12b8e717d28519338f856eb7",
+      "text": "Ready! Aim! Fire!"
+    },
+    {
+      "slot": 90,
+      "voiceID": 4090,
+      "length": 33633,
+      "file": "0090_4090_PINNED_DOWN.wav",
+      "sha256": "8d65fd239a8709622e528b0c6db9afb7f51cac07e1028aa9fd6a1a79496e77ed",
+      "text": "We're pinned down. There's no escape. Send help!"
+    },
+    {
+      "slot": 91,
+      "voiceID": 4091,
+      "length": 15969,
+      "file": "0091_4091_WHERE_FROM.wav",
+      "sha256": "747b43b8e481dd7785ae8d45b2b6d03ccca66b32d7b4a1ace72a60a8a5b64e3f",
+      "text": "Where did they come from?"
+    },
+    {
+      "slot": 92,
+      "voiceID": 4092,
+      "length": 15329,
+      "file": "0092_4092_DONE_LOADING.wav",
+      "sha256": "b2881197b0eaf06b48f34224f6dca97ab42c24ae9dfd65927bd03367fc75f761",
+      "text": "We're done loading, Sarge."
+    },
+    {
+      "slot": 93,
+      "voiceID": 4093,
+      "length": 20703,
+      "file": "0093_4093_IM_HIT.wav",
+      "sha256": "1224546c00ea8d401057517d21228f6ee3acc252052dbf0fc5a43e3d4b5df3d3",
+      "text": "I'm hit, I'm hit!"
+    },
+    {
+      "slot": 94,
+      "voiceID": 4094,
+      "length": 8737,
+      "file": "0094_4094_SQUAD_READY.wav",
+      "sha256": "0bc64461cda2a58fb60d628b12ab4ae33faab2f94536845c4eab73685fd5a64a",
+      "text": "Ready."
+    },
+    {
+      "slot": 95,
+      "voiceID": 4095,
+      "length": 8753,
+      "file": "0095_4095_SQUAD_AIM.wav",
+      "sha256": "31a541e2466e1b3aba10e0589982002881c61e4fb7bf527a6b52143deb8be602",
+      "text": "Aim."
+    },
+    {
+      "slot": 96,
+      "voiceID": 4096,
+      "length": 10017,
+      "file": "0096_4096_SQUAD_FIRE.wav",
+      "sha256": "786b07a7e43c159cf3b0a51ac4a408646f96b04988e89022b9537159e524370a",
+      "text": "Fire."
+    },
+    {
+      "slot": 97,
+      "voiceID": 4097,
+      "length": 7072,
+      "file": "0097_4097_YESSIR.wav",
+      "sha256": "bf5bb3d859edaa25aedaba2dd72b7d5c221e7cddddf3e9cc7691366294af167e",
+      "text": "Yes, Sir!"
+    },
+    {
+      "slot": 98,
+      "voiceID": 4098,
+      "length": 8352,
+      "file": "0098_4098_AFFIRMATIVE.wav",
+      "sha256": "52823769bd27c8b4843eec51df7d37ba5935ec11368d9206e1d31d99f1cd7bfa",
+      "text": "Affirmative."
+    },
+    {
+      "slot": 99,
+      "voiceID": 4099,
+      "length": 10353,
+      "file": "0099_4099_ONWAY.wav",
+      "sha256": "c39f629484f9bf922d171899b29a68837b9061e8cf2ece0ee61d83e1b6befb32",
+      "text": "On our way, Sir."
+    },
+    {
+      "slot": 100,
+      "voiceID": 4100,
+      "length": 12096,
+      "file": "0100_4100_APPROACHING.wav",
+      "sha256": "b4770d397c180bc07a45faaeb50ed593d83165af3934bd25c475f51665033d46",
+      "text": "Enemy approaching."
+    },
+    {
+      "slot": 101,
+      "voiceID": 4101,
+      "length": 13120,
+      "file": "0101_4101_DESTINATION.wav",
+      "sha256": "e8df9b4541fd26b911df601dc0610c222f153f5dfd234a9c1c2804fbb26cc953",
+      "text": "Reached destination."
+    },
+    {
+      "slot": 102,
+      "voiceID": 4102,
+      "length": 36512,
+      "file": "0102_4102_NOPARAS.wav",
+      "sha256": "1912e3a20192d9939a9617f08676a26d4d538c40ddf9de7b26b4dd5c5e90a876",
+      "text": "I'm sorry, commander. We couldn't find a safe spot to drop the paratroopers."
+    },
+    {
+      "slot": 103,
+      "voiceID": 4103,
+      "length": 43936,
+      "file": "0103_4103_AAGUNS.wav",
+      "sha256": "a3af7c6531d7d0a6e4008820c76d258482e38ea4956a85492ffc5c7734597281",
+      "text": "I'm sorry, commander. You must clear out enemy AA guns before calling for air support."
+    },
+    {
+      "slot": 104,
+      "voiceID": 4104,
+      "length": 14848,
+      "file": "0104_4104_NOAIR.wav",
+      "sha256": "0422763e159b69cb07b401689cbc9ad3d36acd78fd1924cc39be0d931627cda2",
+      "text": "Air support not available."
+    },
+    {
+      "slot": 105,
+      "voiceID": 4105,
+      "length": 11264,
+      "file": "0105_4105_HALT_INTRUDER.wav",
+      "sha256": "2a4e03a0347dce7e3034e271cb0e8a59ff9dc3fb365187be7db97400d1dbb0f0",
+      "text": "Halt, intruder!"
+    },
+    {
+      "slot": 106,
+      "voiceID": 4106,
+      "length": 5624,
+      "file": "0106_4106_HALT.wav",
+      "sha256": "d3d81abd785831a3b16293ca53a7dad4e8da89408fe75e2dc493abbd31a4c7a7",
+      "text": "Halt!"
+    },
+    {
+      "slot": 107,
+      "voiceID": 4107,
+      "length": 97440,
+      "file": "0107_4107_DS1M1.wav",
+      "sha256": "3ae3846ecf1ba09358b1da51928744604a3774ee7e058b3b106cbbcf639fb098",
+      "text": "Cross the bridge into town. Proceed to the Tan munitions depot in sector B,2."
+    },
+    {
+      "slot": 108,
+      "voiceID": 4108,
+      "length": 157088,
+      "file": "0108_4108_DS1M2.wav",
+      "sha256": "d5233a6470d61efe03635b965e275624f0144d00710f6b1ad699b5cf08d93dcf",
+      "text": "A Blue spy is being escorted to the Tan stronghold at sector A,2."
+    },
+    {
+      "slot": 109,
+      "voiceID": 4109,
+      "length": 127776,
+      "file": "0109_4109_DS1M3.wav",
+      "sha256": "8551d44c0a3c7c2042b9b0cce92965069c3527a39af416efdc8012137516040f",
+      "text": "Proceed to the Sector F,3 across the Burgess Bridge. The Tan have captured a tank in sector A,5."
+    },
+    {
+      "slot": 110,
+      "voiceID": 4110,
+      "length": 116768,
+      "file": "0110_4110_DS2M1.wav",
+      "sha256": "ce68a93c3a25bc6650e1fd95d8a6f3600b0152cad1c1f3d31a693df69e56ffcd",
+      "text": "Rendezvous with a squad at sector A,1. March them to our camp at sector F,1."
+    },
+    {
+      "slot": 111,
+      "voiceID": 4111,
+      "length": 137760,
+      "file": "0111_4111_DS2M2.wav",
+      "sha256": "7ae7c30aa6f2c464e8db10868300c2fd41ade4f6119346585a0b31d0223dce98",
+      "text": "The key is being held at the Tan fortress in sector E,5."
+    },
+    {
+      "slot": 112,
+      "voiceID": 4112,
+      "length": 103712,
+      "file": "0112_4112_DS3M1.wav",
+      "sha256": "ca9034b916cfc3df799ed45a7f7c07e4209f50b0d22ceb127a59d2273f636613",
+      "text": "Rendezvous with a squad and a half track at sector A,6."
+    },
+    {
+      "slot": 113,
+      "voiceID": 4113,
+      "length": 114720,
+      "file": "0113_4113_DS3M2.wav",
+      "sha256": "878ede8498444de37078b93f77e8e629468e4778d7692a27384046a3e437e570",
+      "text": "Blow a hole in the bank. Escort the truck back to the southwest entrance after loading."
+    },
+    {
+      "slot": 114,
+      "voiceID": 4114,
+      "length": 69664,
+      "file": "0114_4114_DS4M1.wav",
+      "sha256": "a3baf53faa9d6cd302d0b62cec875ae0251b11ec50e96384a75155c2ff0541ac",
+      "text": "Rendezvous with Blue forces at the bottom of the canyon. Exchange plastic for their information."
+    },
+    {
+      "slot": 115,
+      "voiceID": 4115,
+      "length": 117152,
+      "file": "0115_4115_DS4M2.wav",
+      "sha256": "966c746a8f865d714aaded9bd47cdab75fa8fa2d38491af6d426a608ffb0c10f",
+      "text": "Link up with a helicopter at sector B,6 for extraction."
+    },
+    {
+      "slot": 116,
+      "voiceID": 4116,
+      "length": 101536,
+      "file": "0116_4116_AS1M1.wav",
+      "sha256": "0e73919b1d4d9939c8715a3beb766441abdea132f797f614f8141a53c7ed86de",
+      "text": "Soldiers are pinned down in sector B,1. Rescue and escort to the medical tent."
+    },
+    {
+      "slot": 117,
+      "voiceID": 4117,
+      "length": 161696,
+      "file": "0117_4117_AS1M2.wav",
+      "sha256": "1e3af229813229b7716f925f793d1f6f719f6fdee2a815034af69f699f20813e",
+      "text": "Dispose of the Tan truck near the Tan base at sector D,4."
+    },
+    {
+      "slot": 118,
+      "voiceID": 4118,
+      "length": 129824,
+      "file": "0118_4118_AS2M1.wav",
+      "sha256": "a2de0e793f0049c38d9f4574eddb00ef028c243fb62978d0755ba4ede15c7ce5",
+      "text": "Tan has the key near the mines in sector E,5. Eliminate any Blue courier."
+    },
+    {
+      "slot": 119,
+      "voiceID": 4119,
+      "length": 56864,
+      "file": "0119_4119_AS2M2.wav",
+      "sha256": "d1efe1ea6fe2597c11666234ca3f06cfe0378ca4f3110828b8d1b1ee4e48e599",
+      "text": "Proceed to sector C,1 and stop the key from being loaded onto the train."
+    },
+    {
+      "slot": 120,
+      "voiceID": 4120,
+      "length": 103968,
+      "file": "0120_4120_AS3M1.wav",
+      "sha256": "07dc29318bc4f7f0147334555464b21258adff7be47add6b9d0e45b1307b07b3",
+      "text": "Rescue injured men stranded in sector F,5."
+    },
+    {
+      "slot": 121,
+      "voiceID": 4121,
+      "length": 53920,
+      "file": "0121_4121_AS3M2.wav",
+      "sha256": "7f963da4a5565384c0bed39cacd0c4536fcb759f224a9ddbd661fd94a82a1cf7",
+      "text": "Get those men to the medical tent in sector B,1."
+    },
+    {
+      "slot": 122,
+      "voiceID": 4122,
+      "length": 107680,
+      "file": "0122_4122_AS3M3.wav",
+      "sha256": "aecaa06973cc1723a3b9d156d0c4795ab40a13dcc1092ceb2644d3577562cab8",
+      "text": "Take out the communications installation in sector A,6."
+    },
+    {
+      "slot": 123,
+      "voiceID": 4123,
+      "length": 113184,
+      "file": "0123_4123_AS4M1.wav",
+      "sha256": "2d8c6b07d31cb41d4c018f1db52658900e9117fdc774ee68d7856fdf010fa3ed",
+      "text": "Free our soldiers from the prison camp in sector B,3."
+    },
+    {
+      "slot": 124,
+      "voiceID": 4124,
+      "length": 60576,
+      "file": "0124_4124_AS4M2.wav",
+      "sha256": "f904408c2e31a77bcc53d4a34f1f304f380a34090ade701e13715012b911fed1",
+      "text": "Get to the airport in sector F,1. Radio for transportation."
+    },
+    {
+      "slot": 125,
+      "voiceID": 4125,
+      "length": 110112,
+      "file": "0125_4125_BS1M1.wav",
+      "sha256": "53e2b5b5e86ab37059aa2dc1f2cbc48377d99fdcf1c909609232e4f584a0ff5e",
+      "text": "Recover documents from Blue spy hiding out at the Tan base in sector A,1."
+    },
+    {
+      "slot": 126,
+      "voiceID": 4126,
+      "length": 90272,
+      "file": "0126_4126_BS1M2.wav",
+      "sha256": "bed6262922cc47243f50ef505600c275d118ceb49877f811259a361d0e2bd30d",
+      "text": "Take out the Gray base in sector F,6."
+    },
+    {
+      "slot": 127,
+      "voiceID": 4127,
+      "length": 164768,
+      "file": "0127_4127_BS2M1.wav",
+      "sha256": "fe1dcc1d14d2b4ccfb3e22137b1e8397126dea74d31010a763347baa7cb98e43",
+      "text": "The key is at a Gray prison camp in sector F,6. Eliminate patrols one at a time."
+    },
+    {
+      "slot": 128,
+      "voiceID": 4128,
+      "length": 53024,
+      "file": "0128_4128_BS2M2.wav",
+      "sha256": "3682e5370caed98b937218fb1a3c288db493da8f7eb74ecf58792a3c017b7842",
+      "text": "The key is in the prison camp. Find a mine sweeper and get that key."
+    },
+    {
+      "slot": 129,
+      "voiceID": 4129,
+      "length": 172064,
+      "file": "0129_4129_BS3M1.wav",
+      "sha256": "3aa2f3fecdf435533f460d3145ae3ab017405a96f97aefdc805974a0ff0d8af4",
+      "text": "Rescue troops at C,4, then protect AA gun at B,2 until transportation arrives."
+    },
+    {
+      "slot": 130,
+      "voiceID": 4130,
+      "length": 131808,
+      "file": "0130_4130_BS3M2.wav",
+      "sha256": "96fbcdf5ed09376bf708fbb1e3bfa87d1ced2d3d214b2fde932370218a6cf7e2",
+      "text": "Eliminate the Tan tank group moving towards your sector."
+    },
+    {
+      "slot": 131,
+      "voiceID": 4131,
+      "length": 60960,
+      "file": "0131_4131_BS3M3.wav",
+      "sha256": "1e3391f5f74e646afc0515758288612d9ebee307110d71007dcc9cfb5bcb4e3f",
+      "text": "Drive down the main road that exits at sector F,6."
+    },
+    {
+      "slot": 132,
+      "voiceID": 4132,
+      "length": 109472,
+      "file": "0132_4132_BS4M1.wav",
+      "sha256": "be7c57a109294c36c9c3b4d29d67d0dd316927470bf26f12913a0e63d7aa1983",
+      "text": "Clear a path for a transport to make it through to sector A,2. Eliminate the AA gun to enable air support."
+    },
+    {
+      "slot": 133,
+      "voiceID": 4133,
+      "length": 98208,
+      "file": "0133_4133_BS4M2.wav",
+      "sha256": "744e86790b17c483a04ddc579e54a943872e34537b97b7b2d32a6edd485eaa5b",
+      "text": "Make your way through the town to the gates of the cemetary at sector E,4."
+    },
+    {
+      "slot": 134,
+      "voiceID": 4134,
+      "length": 125728,
+      "file": "0134_4134_BS4M3.wav",
+      "sha256": "b8a07e0db8f4008cc02b06f31a39aa331d42817ac6e031df0a773363410d8c7b",
+      "text": "You will know the portal when you see it. Use the keys to unlock it."
+    },
+    {
+      "slot": 135,
+      "voiceID": 4135,
+      "length": 32544,
+      "file": "0135_4135_DESERT1_1LOSE.wav",
+      "sha256": "f1a7c6c6dbde853406e936afff07336a07cf69a7db516263236ced7b1e776975",
+      "text_missing": true,
+      "ext_name_ref": "DESERT1_1LOSE"
+    },
+    {
+      "slot": 136,
+      "voiceID": 4136,
+      "length": 39776,
+      "file": "0136_4136_DESERT1_1WIN.wav",
+      "sha256": "b743e63acd304e4b558e293eb3f82a7688d10e6ac403f7f3e4894de4e88845e4",
+      "text_missing": true,
+      "ext_name_ref": "DESERT1_1WIN"
+    },
+    {
+      "slot": 137,
+      "voiceID": 4137,
+      "length": 37472,
+      "file": "0137_4137_DESERT1_2LOSE.wav",
+      "sha256": "df79aad41fe2aea7a0cf21e018fa641d2183e40ab0aef9d28637dae94d6b9049",
+      "text_missing": true,
+      "ext_name_ref": "DESERT1_2LOSE"
+    },
+    {
+      "slot": 138,
+      "voiceID": 4138,
+      "length": 47328,
+      "file": "0138_4138_DESERT2_1LOSE.wav",
+      "sha256": "321364098741fc248768aa29cea6540874002cf3ca174b02b36b6bfb58d9454a",
+      "text_missing": true,
+      "ext_name_ref": "DESERT2_1LOSE"
+    },
+    {
+      "slot": 139,
+      "voiceID": 4139,
+      "length": 63776,
+      "file": "0139_4139_DESERT2_2LOSE.wav",
+      "sha256": "62b6a53e70faa7ef82992a113a53f9e4e5ecd37c1929ee37f811bb3be2148fd7",
+      "text_missing": true,
+      "ext_name_ref": "DESERT2_2LOSE"
+    },
+    {
+      "slot": 140,
+      "voiceID": 4140,
+      "length": 72736,
+      "file": "0140_4140_DESERT2_2WIN.wav",
+      "sha256": "7dec6e06c5a0efb4a316c5091aff0e71a0403d2401fbd4363664ce81a107ccec",
+      "text_missing": true,
+      "ext_name_ref": "DESERT2_2WIN"
+    },
+    {
+      "slot": 141,
+      "voiceID": 4141,
+      "length": 34336,
+      "file": "0141_4141_DESERT3_1LOSE.wav",
+      "sha256": "8ea26c53be9ba782f615f056df1b113902dd6610016350fd2065ee3e088a923d",
+      "text_missing": true,
+      "ext_name_ref": "DESERT3_1LOSE"
+    },
+    {
+      "slot": 142,
+      "voiceID": 4142,
+      "length": 76960,
+      "file": "0142_4142_DESERT3_2LOSE.wav",
+      "sha256": "52abb492ad6c4e313b9d744319884048f19c0823ffa44b841293495764f2811a",
+      "text_missing": true,
+      "ext_name_ref": "DESERT3_2LOSE"
+    },
+    {
+      "slot": 143,
+      "voiceID": 4143,
+      "length": 49696,
+      "file": "0143_4143_DESERT4_1LOSE.wav",
+      "sha256": "77b10aa088908f4aaa3a1f7f76cfd0e69c33f0900c453431eb44edd12c0577fa",
+      "text_missing": true,
+      "ext_name_ref": "DESERT4_1LOSE"
+    },
+    {
+      "slot": 144,
+      "voiceID": 4144,
+      "length": 11552,
+      "file": "0144_4144_DESERT_DIE.wav",
+      "sha256": "35e16d24692f145e6ac263655fdcaf8778762782596d4eb559c8ae9fd4e89ba7",
+      "text_missing": true,
+      "ext_name_ref": "DESERT_DIE"
+    },
+    {
+      "slot": 145,
+      "voiceID": 4145,
+      "length": 35232,
+      "file": "0145_4145_DESERT_LOSE.wav",
+      "sha256": "0236c3d9550e9f02dad2b625856f5d9a0314e95a32b32a936cfe4ac90572ae47",
+      "text_missing": true,
+      "ext_name_ref": "DESERT_LOSE"
+    },
+    {
+      "slot": 146,
+      "voiceID": 4146,
+      "length": 63136,
+      "file": "0146_4146_DESERT_WIN.wav",
+      "sha256": "f4ddb4edc5c44b0b8ed5089baefe2d38e5801f93b51775c6805df6a2628ab31a",
+      "text_missing": true,
+      "ext_name_ref": "DESERT_WIN"
+    },
+    {
+      "slot": 147,
+      "voiceID": 4147,
+      "length": 13120,
+      "file": "0147_4147_DESERT_MP_DIE.wav",
+      "sha256": "d5073f537e8183b344e67d5f9ceae18bb496297ebe99f43a0e710e1a9fb09105",
+      "text_missing": true,
+      "ext_name_ref": "DESERT_MP_DIE"
+    },
+    {
+      "slot": 148,
+      "voiceID": 4148,
+      "length": 27744,
+      "file": "0148_4148_DESERT_MP_LOSE.wav",
+      "sha256": "a7d307ab26e259a78eaeb4c1a9dff915224a7bc3d602f3df2522e93a7cb76aac",
+      "text_missing": true,
+      "ext_name_ref": "DESERT_MP_LOSE"
+    },
+    {
+      "slot": 149,
+      "voiceID": 4149,
+      "length": 30688,
+      "file": "0149_4149_DESERT_MP_WIN.wav",
+      "sha256": "9cc71a9a0279ab0e222c0bb7780ffbba33c34d819e1eaed1d775a4ad14b5fc20",
+      "text_missing": true,
+      "ext_name_ref": "DESERT_MP_WIN"
+    },
+    {
+      "slot": 150,
+      "voiceID": 4150,
+      "length": 48224,
+      "file": "0150_4150_ALPINE1_1LOSE.wav",
+      "sha256": "296f97293655cc0a616e78b211581e51a90ff9f6d19fed095b47b4f225cc15c0",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE1_1LOSE"
+    },
+    {
+      "slot": 151,
+      "voiceID": 4151,
+      "length": 57504,
+      "file": "0151_4151_ALPINE1_1WIN.wav",
+      "sha256": "3ac9464bff8268965418bfa8677189219e16993b6afb3976fc237016af906cb1",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE1_1WIN"
+    },
+    {
+      "slot": 152,
+      "voiceID": 4152,
+      "length": 86752,
+      "file": "0152_4152_ALPINE1_2LOSE.wav",
+      "sha256": "9ea4f3e045329e45aa8c8638c48cbcff31dbebab07c498206ffccaead5c56b72",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE1_2LOSE"
+    },
+    {
+      "slot": 153,
+      "voiceID": 4153,
+      "length": 53088,
+      "file": "0153_4153_ALPINE1_2WIN.wav",
+      "sha256": "98e8442f607613abffa7efe4f563bf7ac38517bae024b78fc62b269ba563efbd",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE1_2WIN"
+    },
+    {
+      "slot": 154,
+      "voiceID": 4154,
+      "length": 64672,
+      "file": "0154_4154_ALPINE2_1LOSE.wav",
+      "sha256": "f199200864c3eaf775adad89a2e23c35558525772796f1c797c849d43d1e8a09",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE2_1LOSE"
+    },
+    {
+      "slot": 155,
+      "voiceID": 4155,
+      "length": 51488,
+      "file": "0155_4155_ALPINE2_1WIN.wav",
+      "sha256": "4d9fe3b340a455762f485da0e69195dceda4a6c1ba4fdb4e1e60bbcfa4214e27",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE2_1WIN"
+    },
+    {
+      "slot": 156,
+      "voiceID": 4156,
+      "length": 27168,
+      "file": "0156_4156_ALPINE2_2LOSE.wav",
+      "sha256": "4e44b04e4d3d4d6ace73bf6f112ad0a263604888fb24f8dca330dbf2743b4767",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE2_2LOSE"
+    },
+    {
+      "slot": 157,
+      "voiceID": 4157,
+      "length": 33184,
+      "file": "0157_4157_ALPINE2_2WIN.wav",
+      "sha256": "778947ca95400da1b30d6bcaea0678bbd8d7b53ff4f89d860856d253e647bb85",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE2_2WIN"
+    },
+    {
+      "slot": 158,
+      "voiceID": 4158,
+      "length": 79648,
+      "file": "0158_4158_ALPINE3_1LOSE.wav",
+      "sha256": "91d38aa1de57a37a30fb3dc2fbb52b3c67f819a292d99e1d57242a0f98f2872f",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE3_1LOSE"
+    },
+    {
+      "slot": 159,
+      "voiceID": 4159,
+      "length": 39328,
+      "file": "0159_4159_ALPINE3_1WIN.wav",
+      "sha256": "091c13bf956dd149084b4c77763910e5014b10ba46a1f36cba9fce79ae35b455",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE3_1WIN"
+    },
+    {
+      "slot": 160,
+      "voiceID": 4160,
+      "length": 52896,
+      "file": "0160_4160_ALPINE3_2LOSE.wav",
+      "sha256": "86d208d407c5237f0efff25164945f5fa320e88d06c1681811901f698f32a5a8",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE3_2LOSE"
+    },
+    {
+      "slot": 161,
+      "voiceID": 4161,
+      "length": 142752,
+      "file": "0161_4161_ALPINE3_2WIN.wav",
+      "sha256": "c8aea5942d70918c922350aa4ecd8b99179491aac033538d5b55ec2cc4788e6b",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE3_2WIN"
+    },
+    {
+      "slot": 162,
+      "voiceID": 4162,
+      "length": 48224,
+      "file": "0162_4162_ALPINE3_3LOSE.wav",
+      "sha256": "f60a67fa18ddb7dee03a747df152c1437ff03f588e34d158166abebb1362dc52",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE3_3LOSE"
+    },
+    {
+      "slot": 163,
+      "voiceID": 4163,
+      "length": 45344,
+      "file": "0163_4163_ALPINE3_3WIN.wav",
+      "sha256": "f36f9daca92f6186b99926e1f14477109128dfbf634f760d25a314fc325afd8a",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE3_3WIN"
+    },
+    {
+      "slot": 164,
+      "voiceID": 4164,
+      "length": 59936,
+      "file": "0164_4164_ALPINE4_1LOSE.wav",
+      "sha256": "98c6a0ca94484ece523b326304280bbd9e66541c02922465d49c942164fb3c24",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE4_1LOSE"
+    },
+    {
+      "slot": 165,
+      "voiceID": 4165,
+      "length": 48160,
+      "file": "0165_4165_ALPINE4_1WIN.wav",
+      "sha256": "ea63dbc5540d6da55ebf4f90d4bc53887c33cce7e1743c4dbc0be992448a8a84",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE4_1WIN"
+    },
+    {
+      "slot": 166,
+      "voiceID": 4166,
+      "length": 65952,
+      "file": "0166_4166_ALPINE4_2LOSE.wav",
+      "sha256": "0d6fb50dc825efc6b8f87ca87caf553c0c3be07118320a193750038060b5a0c3",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE4_2LOSE"
+    },
+    {
+      "slot": 167,
+      "voiceID": 4167,
+      "length": 110496,
+      "file": "0167_4167_ALPINE4_2WIN.wav",
+      "sha256": "b310ce4ecb35a4104a18ebc9071fa08f3c43a5c4ebb6bbe8094f5cb72d35dc98",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE4_2WIN"
+    },
+    {
+      "slot": 168,
+      "voiceID": 4168,
+      "length": 11552,
+      "file": "0168_4168_ALPINE_DIE.wav",
+      "sha256": "35e16d24692f145e6ac263655fdcaf8778762782596d4eb559c8ae9fd4e89ba7",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE_DIE"
+    },
+    {
+      "slot": 169,
+      "voiceID": 4169,
+      "length": 33504,
+      "file": "0169_4169_ALPINE_LOSE.wav",
+      "sha256": "e98ffefb165665bc1e9f659119674a20524582779426066017fc68f3e33b8630",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE_LOSE"
+    },
+    {
+      "slot": 170,
+      "voiceID": 4170,
+      "length": 55072,
+      "file": "0170_4170_ALPINE_WIN.wav",
+      "sha256": "e5ed460de24722dd29fadec7035a090d74ec1ed96ab4607fe97955519bb63326",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE_WIN"
+    },
+    {
+      "slot": 171,
+      "voiceID": 4171,
+      "length": 13664,
+      "file": "0171_4171_ALPINE_MP_DIE.wav",
+      "sha256": "f09970d535f8d5699ee0c09d0455a3756f4f81987e07da770629989ae2b9aafe",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE_MP_DIE"
+    },
+    {
+      "slot": 172,
+      "voiceID": 4172,
+      "length": 26016,
+      "file": "0172_4172_ALPINE_MP_LOSE.wav",
+      "sha256": "3bc096f1e69d96726d97bbf76cc2a38d73f22b8a4e452ff5bcc227b05ff53d82",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE_MP_LOSE"
+    },
+    {
+      "slot": 173,
+      "voiceID": 4173,
+      "length": 13536,
+      "file": "0173_4173_ALPINE_MP_WIN.wav",
+      "sha256": "335a8990a61ca09dc2076c35911d60b2b359789eca5150ae5f962aa8e5bcf5b3",
+      "text_missing": true,
+      "ext_name_ref": "ALPINE_MP_WIN"
+    },
+    {
+      "slot": 174,
+      "voiceID": 4174,
+      "length": 52640,
+      "file": "0174_4174_BAYOU1_1LOSE.wav",
+      "sha256": "84feccf23cca579b5c398562572bddd93f058334846e2b144fad03c65597be61",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU1_1LOSE"
+    },
+    {
+      "slot": 175,
+      "voiceID": 4175,
+      "length": 48352,
+      "file": "0175_4175_BAYOU1_1WIN.wav",
+      "sha256": "a70e3d29f8acf9a0e34d54f88fe80a8eddd78fb570ba40adf75478d3c3b57a38",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU1_1WIN"
+    },
+    {
+      "slot": 176,
+      "voiceID": 4176,
+      "length": 54816,
+      "file": "0176_4176_BAYOU1_2LOSE.wav",
+      "sha256": "efc47a3a1d8dda3a9b5adebce35ce51f20cfa7b4312c5b52e85fbe1a0250803c",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU1_2LOSE"
+    },
+    {
+      "slot": 177,
+      "voiceID": 4177,
+      "length": 56480,
+      "file": "0177_4177_BAYOU1_2WIN.wav",
+      "sha256": "4126ecda1c233cca22648ee3c6d23f5a12d4ac2a832d2fbbf2b7594d0727e5f3",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU1_2WIN"
+    },
+    {
+      "slot": 178,
+      "voiceID": 4178,
+      "length": 64160,
+      "file": "0178_4178_BAYOU2_1LOSE.wav",
+      "sha256": "92910a2293cba2bbf15d18e68e9c99deed18891fcd54126b6ba45d7acc4bde16",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU2_1LOSE"
+    },
+    {
+      "slot": 179,
+      "voiceID": 4179,
+      "length": 119072,
+      "file": "0179_4179_BAYOU2_1WIN.wav",
+      "sha256": "6e0b9672ce4e566fef6dc08b4746d8e88f3a104bceec0d38262cd7ef8dfdeca0",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU2_1WIN"
+    },
+    {
+      "slot": 180,
+      "voiceID": 4180,
+      "length": 51104,
+      "file": "0180_4180_BAYOU2_2LOSE.wav",
+      "sha256": "aebe60171c29dca58fa30381ba68d15b09b48a5401ce4bcd2fb1368afcfc3fdc",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU2_2LOSE"
+    },
+    {
+      "slot": 181,
+      "voiceID": 4181,
+      "length": 161056,
+      "file": "0181_4181_BAYOU2_2WIN.wav",
+      "sha256": "ff9b26ea4d0ef53cccf2ace9c3648dc75847eb272920991437283c4056659f6c",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU2_2WIN"
+    },
+    {
+      "slot": 182,
+      "voiceID": 4182,
+      "length": 63776,
+      "file": "0182_4182_BAYOU3_1LOSE.wav",
+      "sha256": "62ac52aeaab4ced8b0a1110317a6a2044c732a4641d5aab17f2ac4a811818105",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU3_1LOSE"
+    },
+    {
+      "slot": 183,
+      "voiceID": 4183,
+      "length": 85664,
+      "file": "0183_4183_BAYOU3_1WIN.wav",
+      "sha256": "cdfd4b0c95740d8f65440abaa29d8c71d4e95846e672c4c2d957ccca0420d182",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU3_1WIN"
+    },
+    {
+      "slot": 184,
+      "voiceID": 4184,
+      "length": 47136,
+      "file": "0184_4184_BAYOU3_2LOSE.wav",
+      "sha256": "ea528d0ceff18d0e2e0fe057e99de7383a1da695165ada91c2e2183bf2f42909",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU3_2LOSE"
+    },
+    {
+      "slot": 185,
+      "voiceID": 4185,
+      "length": 54112,
+      "file": "0185_4185_BAYOU3_2WIN.wav",
+      "sha256": "370e75698870e87f539752b23aab91eeab3f0455994c00edd24493d030081288",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU3_2WIN"
+    },
+    {
+      "slot": 186,
+      "voiceID": 4186,
+      "length": 50208,
+      "file": "0186_4186_BAYOU3_3LOSE.wav",
+      "sha256": "e487407eb1a070952f0c0c40068b7b59f2ff69c0315a25cfb8b9ccfaaaf6992e",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU3_3LOSE"
+    },
+    {
+      "slot": 187,
+      "voiceID": 4187,
+      "length": 67488,
+      "file": "0187_4187_BAYOU3_3WIN.wav",
+      "sha256": "9b8e1508caa4a718d0f70dd15f29e05770a3024869d9325dcc875aa0f88af34b",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU3_3WIN"
+    },
+    {
+      "slot": 188,
+      "voiceID": 4188,
+      "length": 56032,
+      "file": "0188_4188_BAYOU4_1LOSE.wav",
+      "sha256": "ccb57bdff9d0cc53f3950907421ea0be3881b96f143a995c615db1b8054ef74f",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU4_1LOSE"
+    },
+    {
+      "slot": 189,
+      "voiceID": 4189,
+      "length": 85408,
+      "file": "0189_4189_BAYOU4_1WIN.wav",
+      "sha256": "85adc6c1b4055342a8724648832de3e64fbf6d5dd43697a3632f922d2eb999aa",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU4_1WIN"
+    },
+    {
+      "slot": 190,
+      "voiceID": 4190,
+      "length": 69664,
+      "file": "0190_4190_BAYOU4_2LOSE.wav",
+      "sha256": "669d4158305d4f20500dfa62f52bb736a86d39b70dc052ced2c641ebebf28449",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU4_2LOSE"
+    },
+    {
+      "slot": 191,
+      "voiceID": 4191,
+      "length": 86176,
+      "file": "0191_4191_BAYOU4_2WIN.wav",
+      "sha256": "73869431bc361169df088f4df1dc80a14a983f3cb75000cd04a3c1645d7eff6b",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU4_2WIN"
+    },
+    {
+      "slot": 192,
+      "voiceID": 4192,
+      "length": 89376,
+      "file": "0192_4192_BAYOU4_3LOSE.wav",
+      "sha256": "9cb1c23faead37d35e1798b5ad60cb925305a1cda7efb1f5f18a57d700464aac",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU4_3LOSE"
+    },
+    {
+      "slot": 193,
+      "voiceID": 4193,
+      "length": 11552,
+      "file": "0193_4193_BAYOU_DIE.wav",
+      "sha256": "35e16d24692f145e6ac263655fdcaf8778762782596d4eb559c8ae9fd4e89ba7",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU_DIE"
+    },
+    {
+      "slot": 194,
+      "voiceID": 4194,
+      "length": 32288,
+      "file": "0194_4194_BAYOU_LOSE.wav",
+      "sha256": "ab7d1c8be27ba6599a0a916e75555b332b369e8aa529151511f4e656c0b2a905",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU_LOSE"
+    },
+    {
+      "slot": 195,
+      "voiceID": 4195,
+      "length": 55072,
+      "file": "0195_4195_BAYOU_WIN.wav",
+      "sha256": "e5ed460de24722dd29fadec7035a090d74ec1ed96ab4607fe97955519bb63326",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU_WIN"
+    },
+    {
+      "slot": 196,
+      "voiceID": 4196,
+      "length": 11552,
+      "file": "0196_4196_BAYOU_MP_DIE.wav",
+      "sha256": "35e16d24692f145e6ac263655fdcaf8778762782596d4eb559c8ae9fd4e89ba7",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU_MP_DIE"
+    },
+    {
+      "slot": 197,
+      "voiceID": 4197,
+      "length": 11296,
+      "file": "0197_4197_BAYOU_MP_LOSE.wav",
+      "sha256": "e990393db64415c021dcd8c75485b311502a53f0ddf68325ebcba184bfb9278e",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU_MP_LOSE"
+    },
+    {
+      "slot": 198,
+      "voiceID": 4198,
+      "length": 8960,
+      "file": "0198_4198_BAYOU_MP_WIN.wav",
+      "sha256": "fd784d27273c413e168e6cff03d7377dffe4c4d7e5f5422413de19bb78f3c11a",
+      "text_missing": true,
+      "ext_name_ref": "BAYOU_MP_WIN"
+    },
+    {
+      "slot": 199,
+      "voiceID": 5000,
+      "length": 9488,
+      "file": "0199_5000_CRATE_LOAD.wav",
+      "sha256": "c6d152e077febcbcb09cd473299b98b27dbb6d8cf0be18160d57a3eec90d0a44",
+      "text_missing": true,
+      "ext_name_ref": "CRATE_LOAD"
+    },
+    {
+      "slot": 200,
+      "voiceID": 5001,
+      "length": 17249,
+      "file": "0200_5001_TRAIN_HORN.wav",
+      "sha256": "15f347e7a875f779a904ddaec7bc55b7a203f85b36afe11e12cf374b2612d74c",
+      "text_missing": true,
+      "ext_name_ref": "TRAIN_HORN"
+    },
+    {
+      "slot": 201,
+      "voiceID": 5002,
+      "length": 11072,
+      "file": "0201_5002_GATE_CLOSE.wav",
+      "sha256": "9b18893b3cf6502ea9697a7b27a199c35bcdaf6d7a278ef536b16dbb04b04442",
+      "text_missing": true,
+      "ext_name_ref": "GATE_CLOSE"
+    },
+    {
+      "slot": 202,
+      "voiceID": 5003,
+      "length": 20049,
+      "file": "0202_5003_CHOPPER_SPIN_DOWN.wav",
+      "sha256": "95ee4d88c34f740aa7b4e9da40fc10230543c6997b030be4213839c77ea62eb6",
+      "text_missing": true,
+      "ext_name_ref": "CHOPPER_SPIN_DOWN"
+    },
+    {
+      "slot": 203,
+      "voiceID": 5004,
+      "length": 20939,
+      "file": "0203_5004_CHOPPER_SPIN_UP.wav",
+      "sha256": "829b87cb6e90761b3a49498ee2b8799f221dba4e1bd80c586ec883c027b42b07",
+      "text_missing": true,
+      "ext_name_ref": "CHOPPER_SPIN_UP"
+    },
+    {
+      "slot": 204,
+      "voiceID": 5005,
+      "length": 17824,
+      "file": "0204_5005_GATE_OPEN.wav",
+      "sha256": "c571bea6f9649986cf0dec785642c0f7c70d09f555a6226db62591618f2533ae",
+      "text_missing": true,
+      "ext_name_ref": "GATE_OPEN"
+    },
+    {
+      "slot": 205,
+      "voiceID": 5006,
+      "length": 24800,
+      "file": "0205_5006_TRAIN_SCREECH.wav",
+      "sha256": "0b851e279740989cf5fe0982de8c2dc54d42d36e61cb7c320b6d8cc2a621be53",
+      "text_missing": true,
+      "ext_name_ref": "TRAIN_SCREECH"
+    },
+    {
+      "slot": 206,
+      "voiceID": 5007,
+      "length": 44192,
+      "file": "0206_5007_TRAIN_WRECK.wav",
+      "sha256": "88f7028691ef56cf4096f91eb02b63fe8a5fcaeebd4aa96bc099d267449b1743",
+      "text_missing": true,
+      "ext_name_ref": "TRAIN_WRECK"
+    },
+    {
+      "slot": 207,
+      "voiceID": 5008,
+      "length": 18400,
+      "file": "0207_5008_CEMETARY_GATE_CLOSE.wav",
+      "sha256": "1f4f1b973b8e2a0d9c2a747aa9f182278b5346e0006f3d8be8b0dece8fd0590b",
+      "text_missing": true,
+      "ext_name_ref": "CEMETARY_GATE_CLOSE"
+    },
+    {
+      "slot": 208,
+      "voiceID": 5009,
+      "length": 23456,
+      "file": "0208_5009_CEMETARY_GATE_OPEN.wav",
+      "sha256": "cc97c339ea1632c5d59d1231f34b75241e38e763174cc9f09d8ef700def34aac",
+      "text_missing": true,
+      "ext_name_ref": "CEMETARY_GATE_OPEN"
+    },
+    {
+      "slot": 209,
+      "voiceID": 5010,
+      "length": 20320,
+      "file": "0209_5010_SPLASH.wav",
+      "sha256": "6cdefc7a24c2f74996e9c05595ee1e2662652133ac19bb4b2cee79f92360f254",
+      "text_missing": true,
+      "ext_name_ref": "SPLASH"
+    },
+    {
+      "slot": 210,
+      "voiceID": 5011,
+      "length": 32224,
+      "file": "0210_5011_SARGE_LOW_HEALTH.wav",
+      "sha256": "e870516b9378728c3a298008ed681ebae9d93110def993143a2af71c961546f1",
+      "text_missing": true,
+      "ext_name_ref": "SARGE_LOW_HEALTH"
+    },
+    {
+      "slot": 211,
+      "voiceID": 5012,
+      "length": 30688,
+      "file": "0211_5012_HEAL_SARGE.wav",
+      "sha256": "c0ebab5fb024eb468cc4ea814ee01e47b33ed668af4279d0354dfad6cc6f53cb",
+      "text_missing": true,
+      "ext_name_ref": "HEAL_SARGE"
+    },
+    {
+      "slot": 212,
+      "voiceID": 5013,
+      "length": 20328,
+      "file": "0212_5013_DESTROYED_SCRIPT.wav",
+      "sha256": "03ced47f32fdd1aa691c74334254954e46f7181eaed23ebd084cfc5cc8ab88a3",
+      "text_missing": true,
+      "ext_name_ref": "DESTROYED_SCRIPT"
+    },
+    {
+      "slot": 213,
+      "voiceID": 5014,
+      "length": 75168,
+      "file": "0213_5014_DS2M1B.wav",
+      "sha256": "b997ccc3314766de9c52427c8033bb2ec962f6ef859c0a2dff88377fee501b35",
+      "text": "Rendevous with a squad at sector A,5, and march them back to this camp."
+    },
+    {
+      "slot": 214,
+      "voiceID": 5015,
+      "length": 71328,
+      "file": "0214_5015_DS3M1B.wav",
+      "sha256": "d7193acbd0ac58c54ff418fbbb9cb8b06564a14af1872afae7d30a60d91f486c",
+      "text": "Make sure these men arrive safely at the bank."
+    },
+    {
+      "slot": 215,
+      "voiceID": 5016,
+      "length": 91936,
+      "file": "0215_5016_DS3M2B.wav",
+      "sha256": "b3e71cb66a9312a6462375b38899a32446a6613201d46dbdbf863b648a61673a",
+      "text": "Exit from the town using the southwest gate."
+    },
+    {
+      "slot": 216,
+      "voiceID": 5017,
+      "length": 29408,
+      "file": "0216_5017_AS4M1_1.wav",
+      "sha256": "5844f8988e46ff5829e2336f43d129f0eae69d1b3331f91ae2afc1c265a29792",
+      "text": "One of our guys was just executed!"
+    },
+    {
+      "slot": 217,
+      "voiceID": 5018,
+      "length": 28192,
+      "file": "0217_5018_AS4M1_2.wav",
+      "sha256": "077581c3a0935dae7ff21f0c305abe0ed4295a8d2280f7e1be7d2992e0b7ed6a",
+      "text": "They just murdered another Green soldier!"
+    },
+    {
+      "slot": 218,
+      "voiceID": 5019,
+      "length": 25376,
+      "file": "0218_5019_AS4M1_3.wav",
+      "sha256": "7ec9f33f2cc39362ccb4e719264ed5f0cb146c3b72c44cab3ddb434874254262",
+      "text": "There is only one prisoner left!"
+    },
+    {
+      "slot": 219,
+      "voiceID": 5020,
+      "length": 116896,
+      "file": "0219_5020_BS3M1MID.wav",
+      "sha256": "02378f664133cd32f4cd597d87d5db242efa90ceb2f62ddfdbce2a95e2d74274",
+      "text": "Relieve our squad pinned down at C,4 to aid in the defense of the AA gun."
+    },
+    {
+      "slot": 220,
+      "voiceID": 5021,
+      "length": 24800,
+      "file": "0220_5021_D12MID.wav",
+      "sha256": "76de5071b5870b21231077c70fd5c218facca9a5b7546822bf2f472bb349a178",
+      "text": "The blue courier is approaching."
+    },
+    {
+      "slot": 221,
+      "voiceID": 5022,
+      "length": 23136,
+      "file": "0221_5022_D31BAD.wav",
+      "sha256": "e86f187c1cafe01f96127b54057dc2e010e68cdce7f2a258fcd8f99f2f48d885",
+      "text": "The halftrack is blocked!"
+    },
+    {
+      "slot": 222,
+      "voiceID": 5023,
+      "length": 34976,
+      "file": "0222_5023_BAYOU1_1M.wav",
+      "sha256": "37dc3518c452207dab759c7a5907c6e69ff95c579518053faa13e5a6aa29074a",
+      "text": "You just missed him, Sarge.  Use your recons to keep track of him."
+    },
+    {
+      "slot": 223,
+      "voiceID": 5024,
+      "length": 82080,
+      "file": "0223_5024_BAYOU3_1M.wav",
+      "sha256": "eb8b70c6d75b11bb9b236db89affd4a660ec19ba7f14890e8e3ab7ffcc3cfb01",
+      "text": "Intellegence reports 3 waves of Tan forces in your area. Protect that AA gun!"
+    },
+    {
+      "slot": 224,
+      "voiceID": 5025,
+      "length": 41568,
+      "file": "0224_5025_BAYOU3_2M.wav",
+      "sha256": "e29aef655909227ceef674638d35d1e1a407a03e4395103f1797a45eabf1a9ab",
+      "text": "Now get to the mansion porch and wait for the transport."
+    },
+    {
+      "slot": 225,
+      "voiceID": 5026,
+      "length": 34464,
+      "file": "0225_5026_BAYOU4_1M.wav",
+      "sha256": "d949292103ffa3db9bb743ebab7947eff65a419385ee1d5a8e64c01056bf5611",
+      "text": "Now we can soften them up a bit for you."
+    },
+    {
+      "slot": 226,
+      "voiceID": 5027,
+      "length": 26080,
+      "file": "0226_5027_DESERT1_2M.wav",
+      "sha256": "05d1507e571b02fe9a68cea39403846c4d77bb7634c83bcf7e92dde87e1a00ca",
+      "text": "Get back to the munitions depot!"
+    },
+    {
+      "slot": 227,
+      "voiceID": 5028,
+      "length": 25888,
+      "file": "0227_5028_DESERT2_2M.wav",
+      "sha256": "e3a6a768ca1438b8dcbfbf54be6da8be16da3c70485a1e54594622fc36fa0c67",
+      "text": "Take the key back to camp."
+    },
+    {
+      "slot": 228,
+      "voiceID": 5029,
+      "length": 23584,
+      "file": "0228_5029_ALPINE1_1M.wav",
+      "sha256": "29237e767ff0ead3703596a8035aaade9fb84b1d14f3802bd84d561f1bbed4e6",
+      "text": "Now, get these guys back to the med tent!"
+    },
+    {
+      "slot": 229,
+      "voiceID": 5030,
+      "length": 18048,
+      "file": "0229_5030_ALPINE2_1M.wav",
+      "sha256": "66f1ff0815d5e78056fa2e06250a449e9eb2ed514e6320fcc05d824f934541c6",
+      "text": "He抯 getting away!"
+    },
+    {
+      "slot": 230,
+      "voiceID": 5031,
+      "length": 18560,
+      "file": "0230_5031_ALPINE3_1SARGE.wav",
+      "sha256": "602dc96dfda32f17909195ccfea213e1b0ce18ddfa2dd598e190b6e0ba760188",
+      "text": "I wonder how they got over there."
+    },
+    {
+      "slot": 231,
+      "voiceID": 5032,
+      "length": 22368,
+      "file": "0231_5032_ALPINE3_1M.wav",
+      "sha256": "5f348077664bd9a07bec5d772a3c3a653600f7d1f5638d2432999a05f4294fdb",
+      "text": "Check on your men in the truck!"
+    },
+    {
+      "slot": 232,
+      "voiceID": 5033,
+      "length": 25568,
+      "file": "0232_5033_ALPINE4_2SARGE.wav",
+      "sha256": "1da523d4e5718342175609c3706a5d073ee5ced743cc2a8f5dfaf4b09a016df5",
+      "text": "Get us out of here!"
+    },
+    {
+      "slot": 233,
+      "voiceID": 5034,
+      "length": 23328,
+      "file": "0233_5034_ALPINE1_1M2.wav",
+      "sha256": "bdc817b2de38a87d8438939a9a7337581be62518846904a74ac0032bb1a95e76",
+      "text": "How can you rescue those men if you can't get to them?"
+    },
+    {
+      "slot": 234,
+      "voiceID": 5035,
+      "length": 22752,
+      "file": "0234_5035_ALPINE3_1M2.wav",
+      "sha256": "9178daea69d7c8223bb01fe288257b7e60ddd1b7021070cb3805ed2b01ed6f82",
+      "text": "You need to use the bridge to resuce those men!"
+    },
+    {
+      "slot": 235,
+      "voiceID": 5036,
+      "length": 20896,
+      "file": "0235_5036_ALPINE3_1M3.wav",
+      "sha256": "f20feef107463cda035f103b9044d777b8117a164e077db36becf482635ca3a2",
+      "text": "You need the halftrack to bring back those men!"
+    },
+    {
+      "slot": 236,
+      "voiceID": 5037,
+      "length": 21760,
+      "file": "0236_5037_SARGE_GETTOMED.wav",
+      "sha256": "97abbee12a2fd22c96b281ef55820cd3888a2c68a44dd6c6d65d6c899c195d97",
+      "text": "Go to the medical tent to heal your soldiers."
+    },
+    {
+      "slot": 237,
+      "voiceID": 5038,
+      "length": 18016,
+      "file": "0237_5038_SARGE_DONTLEAVE.wav",
+      "sha256": "c75a6537f8d365b0c3e415b7fb05f3925a4ec49577ebf3885d054c5ced4ab86c",
+      "text": "You can't leave without your troops"
+    }
+  ],
+  "text_missing_count": 78,
+  "naming_conflicts": 0,
+  "unused_slots_b64": [
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+    "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca"
+  ],
+  "unused_all_ff": true
+}
