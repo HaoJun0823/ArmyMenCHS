@@ -1,5 +1,12 @@
-# Army Men: World War (4 代) 构建与发布流程
+# Army Men: World War (系列第 5 代 / 施工第 4 批) 构建与发布流程
 
+> ★ 编号说明（全文通用）：本文大量出现的「4 代」指的是**汉化施工批次**
+> （目录号 `Army4_*`），不是游戏系列的发行序号。
+> 本作《世界大战 / World War》是系列**第 5 代**；系列第 4 代是
+> 《空中战术 / Air Tactics》，对应目录 `Army5_*`（见
+> [`15-am5-reverse-findings.md`](15-am5-reverse-findings.md)）。
+> 面向玩家的 `必读说明_*.txt` 一律按**系列序号**称呼，不按目录号。
+>
 > 4 代的构建、校验、打包、CI。与 1 代 [`03-build-and-release.md`](03-build-and-release.md)、
 > 2 代 [`07-am2-build-and-release.md`](07-am2-build-and-release.md)、
 > 3 代 [`10-am3-build-and-release.md`](10-am3-build-and-release.md) **同构**，
@@ -245,9 +252,19 @@ stage_am4/                      ~409 文件 / 112.8 MB（含 87.8 MB 临时配�
 > 602/602 文件一致、`strings.txt` 323 行、`audio/vos` 298 个。
 
 Workflow：**单一** `.github/workflows/build-release.yml`
-（1 代 → 2 代 → 3 代 → 4 代 build → 合并 publish）。
-四代产物挂在同一个 Release 下，附件名分别为
-`ArmyMen-CHS-Patch-*` / `ArmyMen2-` / `ArmyMen3-` / `ArmyMen4-`。
+（1 代 → 2 代 → 3 代 → 4 代 → 5 代 build → 合并 publish）。
+五代产物挂在同一个 Release 下，附件名分别为：
+
+| 系列序号 | 作品 | 附件名 |
+|---|---|---|
+| 1 代 | 玩具兵大战 | `ArmyMen-CHS-Patch-<stamp>.zip` |
+| 2 代 | 玩具兵大战 II | `ArmyMen2-CHS-Patch-<stamp>.zip` |
+| 3 代 | 太空玩具 | `armymen_TIS.zip` |
+| 4 代 | 空中战术 | `armymen_AT.zip` |
+| 5 代 | 世界大战 | `armymen_WW.zip` |
+
+> ★ 3/4/5 代改用**固定短名**（不再带 `_CHS_%DATETIME%` 一类时间戳），
+> 唯一性由 Release 的 tag 保证。
 
 ---
 

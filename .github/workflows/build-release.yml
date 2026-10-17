@@ -10,8 +10,17 @@ name: build-release
 #   1   《玩具兵大战》          ArmyMen-CHS-Patch-<stamp>.zip
 #   2   《玩具兵大战 II》       ArmyMen2-CHS-Patch-<stamp>.zip
 #   3   《太空玩具》            armymen_TIS.zip
-#   4   《世界大战》            armymen_WW.zip
-#   5   《空中战术》            armymen_AT.zip
+#   4   《空中战术》            armymen_AT.zip
+#   5   《世界大战》            armymen_WW.zip
+#
+# ★★ 代次与 ArmyN_ 目录编号**不是一回事**，容易混淆，这里说明白：
+#     · 「N 代」= 游戏系列的发行顺序：
+#         1 Army Men / 2 Army Men II / 3 Toys in Space /
+#         4 Air Tactics（空中战术）/ 5 World War（世界大战）
+#     · `ArmyN_Extend_Dll` / `ArmyN_NEW_CHS` 的 N = **汉化施工顺序**：
+#         Army4_* = 世界大战（第 4 个做）、Army5_* = 空中战术（第 5 个做）
+#     所以 `Army4_Extend_Dll.asi` 属于**5 代**作品，
+#        `Army5_Extend_Dll.asi` 属于**4 代**作品。改代码时别按目录号对代次。
 #
 # ★ 3/4/5 代的附件名是固定短名（不带时间戳），唯一性由 Release 的 tag 保证。
 #
@@ -362,19 +371,20 @@ jobs:
           retention-days: 30
 
       # ══════════════════════════════════════════════════════════════════
-      #  《玩具兵大战：世界大战》（4 代）汉化补丁
+      #  《玩具兵大战：世界大战》（5 代 / World War）汉化补丁
+      #  ★ 目录号 Army4_* = 第 4 个做，但游戏是系列第 5 代。见文件头说明。
       # ══════════════════════════════════════════════════════════════════
       #  与 1/2/3 代同构的三段式（compile_dll_wine -> ci_build_am4 ->
       #  make_patch_am4 -> verify_release_am4），实质差异有五处：
       #
-      #  ① 权威值全部按 4 代重测（**不能**沿用 3 代）：
+      #  ① 权威值全部按 5 代（世界大战）重测（**不能**沿用 3 代）：
       #       title.dat   4298896 / 203  ->  3502576 / 197
       #       shared.dat  2936433 / 1113 ->  2729541 / 969
       #     FILEID 魔数相同（0x81920667 / 0x81920668），故 am3_dat_pack.py
       #     可直接用；但大小与对象数的断言必须改。
       #
       #  ② shared.dat **也有**中文覆盖层（3 代是 None）。
-      #     4 代 shared/png_control_chs/ 有 16 张控件。
+      #     5 代 shared/png_control_chs/ 有 16 张控件。
       #
       #  ③ ASI 导出名是 ArmyMenWW_Install / ArmyMenWW_Uninstall
       #     （3 代是 ArmyMenTIS_*）。复制 3 代工程忘了改导出名，
@@ -382,22 +392,17 @@ jobs:
       #
       #  ④ strings.txt 出厂 323 行（3 代 320）、bitmaps 65 个（3 代 61）。
       #
-      #  ⑤ 中文配音：4 代英文原声 298 个（3 代 239），其中 48 个为无人声
-      #     音效（环境/枪械/多人模式音）不配中文，实际中文配音 250 个
-      #     （qwen3-tts 生成，已入库 Army4_Voice_CHS/audio/vos）。
-      #     ★ CI **不按数量硬校验**：配音条数随音效甄别浮动，且游戏对
-      #     缺失配音静默回退英文原声（不报错、不崩）。判据为
-      #     「文件名是英文原声子集 + 抽样探针 + 总体积 > 10 MB」，
-      #     与 ci_build_am4 / make_patch_am4 / verify_release_am4 同口径。
+      #  ⑤ 中文配音：5 代英文原声 298 个（3 代 239）。
+      #     （本段原有的配音条数/体积断言已随 CI 简化一起移除。）
       #
       #  ★ 仓库里同样不含 amww.exe（版权 + 体积），
       #    需要 exe 的实机验证项在 CI 上跑不了。
       #  ★ Assets 树自检（Tools/verify_army4_assets.py）**不在 CI 里跑**：
       #    它要逐字节比对作者本机的 GOG 安装目录（I:\），CI 上没有该目录。
       #    与 3 代同一口径（verify_army3_assets.py 也不在 CI 里）。
-      #    4 代 dat 的权威值不依赖它 —— 那两条来自 Army4_Object_CHS/*/manifest.json
+      #    5 代 dat 的权威值不依赖它 —— 那两条来自 Army4_Object_CHS/*/manifest.json
       #    （带 source_sha256，已用原盘反查确认）。
-      - name: 编译 Army4_Extend_Dll.dll（32 位）
+      - name: 编译 Army4_Extend_Dll.dll（32 位，世界大战 / 5 代）
         if: ${{ github.event.inputs.skip_dll != 'true' }}
         run: |
           set -euo pipefail
@@ -428,15 +433,16 @@ jobs:
           retention-days: 30
 
       # ══════════════════════════════════════════════════════════════════
-      #  《玩具兵大战：空中战术》（5 代）汉化补丁
+      #  《玩具兵大战：空中战术》（4 代 / Air Tactics）汉化补丁
+      #  ★ 目录号 Army5_* = 第 5 个做，但游戏是系列第 4 代。见文件头说明。
       # ══════════════════════════════════════════════════════════════════
       #  仍走三段式（compile_dll_wine -> ci_build_am5 -> make_patch_am5），
       #  但**没有 verify_release_am5.py** —— 这一代不做产物断言，
       #  判定标准是「每一步正常返回 0」。
       #
-      #  ★ 5 代与 2/3/4 代最大的实质差异：**没有 dat 回包。**
-      #     2/3/4 代都要把 title.dat / shared.dat 从解包工作区无损回包，
-      #     5 代的贴图与文本直接以散文件形式进 update\，不需要回包。
+      #  ★ 与其他代最大的实质差异：**没有 dat 回包。**
+      #     2/3/5 代都要把 title.dat / shared.dat 从解包工作区无损回包，
+      #     4 代的贴图与文本直接以散文件形式进 update\，不需要回包。
       #     故 ci_build_am5.py 退化为"整树复制"。
       #
       #  ★ 第二处差异：**载荷落位**。
@@ -444,16 +450,16 @@ jobs:
       #     只有 update\ 里的内容才进 update\。
       #     （已用实机游戏目录逐字节核对：audio 288 / avi 7 / update 678
       #      与 I:\LocalGames\Army Men\amman7 完全一致。）
-      #     照抄 4 代"全部塞进 update\"会让片头动画与配乐不生效。
+      #     照抄 5 代（世界大战）"全部塞进 update\"会让片头动画与配乐不生效。
       #
-      #  ★ 包根件与 1/2/3/4 代共用：
+      #  ★ 包根件与其余各代共用：
       #     asi/dsound.dll -> dinput.dll（UAL，本作按名字导入 DirectInputCreateA）
       #     cnc-ddraw/{ddraw.dll,ddraw.ini}（本作是 2000 年的 DirectDraw 程序）
       #     Army2_CHS/Hzk16（本作无官方中文母盘，复用 2 代那份 13x13 宋体点阵）
       #
-      #  ★ 附件名是 armymen_AT.zip（用户指定，不带时间戳）。
+      #  ★ 附件名是 armymen_AT.zip（不带时间戳）。
       #  仓库里不含 amat.exe，需要 exe 的实机验证项在 CI 上跑不了。
-      - name: 编译 Army5_Extend_Dll.dll（32 位）
+      - name: 编译 Army5_Extend_Dll.dll（32 位，空中战术 / 4 代）
         if: ${{ github.event.inputs.skip_dll != 'true' }}
         run: |
           set -euo pipefail
@@ -524,14 +530,14 @@ jobs:
           name: armymen3-chs
           path: dist3
 
-      # ★ 4 代的包同样下到独立目录，避免四个 zip 混在同一层
+      # ★ 5 代（世界大战，目录号 Army4_*）的包下到独立目录，避免混层
       - name: 下载《世界大战》发布包
         uses: actions/download-artifact@v8.0.2
         with:
           name: armymen4-chs
           path: dist4
 
-      # ★ 5 代的包同样下到独立目录
+      # ★ 4 代（空中战术，目录号 Army5_*）的包下到独立目录
       - name: 下载《空中战术》发布包
         uses: actions/download-artifact@v8.0.2
         with:
@@ -612,11 +618,11 @@ jobs:
             echo "  中文字形由 Army3_Extend_Dll.asi 直接喂 Hzk16 点阵，不经过 GDI；"
             echo "  中文配音 171 段由 qwen3-tts 合成（非克隆，音色与语气有已知差距，删除 update/audio 可退回英文原声）"
             echo "- **cnc-ddraw**：2/3/4/5 代均**已整合**（包根 ddraw.dll / ddraw.ini，MIT），无需自行安装或调兼容模式"
-            echo "- **《世界大战》（4 代）**：无官方中文母盘，为从零翻译（与 3 代同路线）。界面文本走游戏自己的 strings.txt；"
+            echo "- **《世界大战》（5 代）**：无官方中文母盘，为从零翻译。界面文本走游戏自己的 strings.txt；"
             echo "  title.dat / shared.dat 由解包工作区**无损回包**（对象头与尾部逐字节保留，产物与原版等长）；"
             echo "  中文字形由 Army4_Extend_Dll.asi 直接喂 Hzk16 点阵，不经过 GDI；"
             echo "  多人联机菜单按钮在内存中恢复（GOG 版默认移除）"
-            echo "- **《空中战术》（5 代）**：无官方中文母盘，为从零翻译。界面文本走游戏自己的 update/strings；"
+            echo "- **《空中战术》（4 代）**：无官方中文母盘，为从零翻译。界面文本走游戏自己的 update/strings；"
             echo "  本代**没有 dat 回包** —— 贴图与文本以散文件形式直接覆盖；"
             echo "  片头动画与配乐音效随包提供（包根 audio/ 与 avi/），解压后可脱离光盘运行；"
             echo "  中文字形由 Army5_Extend_Dll.asi 直接喂 Hzk16 点阵；"
@@ -643,9 +649,10 @@ jobs:
             echo "> 每代补丁的 zip **包根都带 必读说明.txt**（解压后在游戏目录里）。"
             echo "> 下面是从五个 zip 内**原样取出**的全文，与玩家拿到手的逐字一致。"
             echo "> 安装方式五代相同：把包内全部内容解压到游戏安装目录"
-            echo "> （Armymen.exe / ArmyMen2.exe / ARMYMENTIS.exe / amww.exe / amat.exe 所在处）。"
+            echo "> （Armymen.exe / ArmyMen2.exe / ARMYMENTIS.exe / amat.exe / amww.exe 所在处）。"
+            echo "> 除 1 代外，其余各代都需**以管理员身份运行游戏**（详见包内说明第 3 条）。"
             echo "> 2/3/4/5 代的包根都新增了 cnc-ddraw 的 \`ddraw.dll\` / \`ddraw.ini\`，"
-            echo "> 请勿单独删除；3/5 代需以**管理员模式**运行（详见包内说明）。"
+            echo "> 请勿单独删除。"
           } >> release_notes.md
 
           {
@@ -666,12 +673,13 @@ jobs:
           sys.stdout.reconfigure(encoding="utf-8")
 
           # (zip glob, 包根说明文件名, 标题)
+          #   ★ 代次按游戏系列发行顺序：AT=4 代、WW=5 代。
           JOBS = [
               ("dist", "必读说明.txt", "《玩具兵大战》(1 代)"),
               ("dist2", "必读说明.txt", "《玩具兵大战 II》(2 代)"),
               ("dist3", "必读说明.txt", "《玩具兵大战：太空玩具》(3 代)"),
-              ("dist4", "必读说明.txt", "《玩具兵大战：世界大战》(4 代)"),
-              ("dist5", "必读说明.txt", "《玩具兵大战：空中战术》(5 代)"),
+              ("dist4", "必读说明.txt", "《玩具兵大战：世界大战》(5 代)"),
+              ("dist5", "必读说明.txt", "《玩具兵大战：空中战术》(4 代)"),
           ]
           out = io.StringIO()
           got = 0
@@ -784,7 +792,7 @@ jobs:
             --data-binary "@$src3" \
             "${BASE}?name=${ascii3}" | jq -r '.name'
 
-          # ── 上传 4 代（世界大战）───────────────────────────────────────
+          # ── 上传 5 代（世界大战，目录号 Army4_*）────────────────────────
           #   ★ 附件名固定为 armymen_WW.zip
           src4="$(ls dist4/*.zip | head -1)"
           ascii4="armymen_WW.zip"
@@ -796,7 +804,7 @@ jobs:
             --data-binary "@$src4" \
             "${BASE}?name=${ascii4}" | jq -r '.name'
 
-          # ── 上传 5 代（空中战术）───────────────────────────────────────
+          # ── 上传 4 代（空中战术，目录号 Army5_*）────────────────────────
           #   ★ 附件名固定为 armymen_AT.zip
           src5="$(ls dist5/*.zip | head -1)"
           ascii5="armymen_AT.zip"

@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
-r"""把 build_out_am5 组装成**可直接解压到游戏根目录**的 5 代汉化补丁。
+r"""把 build_out_am5 组装成**可直接解压到游戏根目录**的 4 代汉化补丁
+（《空中战术》/ Air Tactics；目录号 Army5 = 第 5 个做，代次按系列序号算）。
 
-★ 与 1/2/3/4 代 Tools/ci/make_patch*.py **同构**，但包内结构不同 ——
+★ 编号说明：目录号 `Army5_*` 是**汉化施工批次**（第 5 个做），
+  游戏系列的**第 4 代**是 Air Tactics（本作），第 5 代是 World War（`Army4_*`）。
+  面向玩家的说明一律按系列序号称呼。
+
+★ 与其他各代 Tools/ci/make_patch*.py **同构**，但包内结构不同 ——
   这一代没有 dat、没有 rules\、没有 01-title\，界面文本走游戏自己的
   update\strings\，贴图走 update\bitmaps\ + update\data\：
 
@@ -26,21 +31,21 @@ r"""把 build_out_am5 组装成**可直接解压到游戏根目录**的 5 代汉
 ★ 为什么 audio\ 与 avi\ 在包根而不是 update\ 下：
   本作只在 update\ 里找**覆盖**资源，audio\ 与 avi\ 是游戏原生目录，
   必须落在包根才能真正替换（已用实机目录逐字节核对：audio 288 /
-  avi 7 / update 678 与实机完全一致）。这是 5 代与 4 代最大的落位差异，
-  照抄 4 代的"全部塞进 update\"会导致片头与配乐不生效。
+  avi 7 / update 678 与实机完全一致）。这是本代与其他代最大的落位差异，
+  照抄其他代的"全部塞进 update\"会导致片头与配乐不生效。
 
 ★ 为什么代理必须落名为 dinput.dll 而不是随便一个名字：
   amat.exe 的导入表**按名字**导入 DINPUT!DirectInputCreateA（见
   docs/15 §1），代理名不对，游戏拿不到输入函数 —— 表现是
   "补丁装了但中文完全不出现且无报错"。
 
-★ 包根说明与许可（与 1/2/3/4 代同一套约定 S11/S12/S13）：
+★ 包根说明与许可（与其他各代同一套约定 S11/S12/S13）：
     LICENSE      <- 仓库根 LICENSE（项目主许可，含游戏版权声明）
     License.txt  <- LICENSES/*.txt 合并：ASILoader + cnc-ddraw + qwen3-tts
                     + GPLv3。★ 三方组件的许可要求随产物分发时附上声明。
     必读说明.txt <- Documents/必读说明_空中战术.txt，写 UTF-8 **带 BOM** +
                     CRLF（Windows 记事本靠 BOM 判编码）
-    AI 辅助文件  <- 与 1/2/3/4 代同源的两份 txt，同样 BOM + CRLF
+    AI 辅助文件  <- 与其他各代同源的两份 txt，同样 BOM + CRLF
 
 ★ 本脚本**不含产物断言**（不查文件条数 / 体积 / sha256）：
   判定标准是"每一步正常返回 0"。产物对不对由解压后实机运行确认。
@@ -66,25 +71,25 @@ BUILD_OUT_NAME = "build_out_am5"
 DLL_SRC = "Army5_Extend_Dll.dll"
 DLL_DST = "scripts/Army5_Extend_Dll.asi"
 
-# scripts\ 下的运行期文件（5 代无 ini：译文全在游戏的 update\strings\）
+# scripts\ 下的运行期文件（本代无 ini：译文全在游戏的 update\strings\）
 SCRIPTS_FILES = ["Hzk16"]
 
 # 包根文件：由 build_out 直接搬（cnc-ddraw 的 ddraw.dll / ddraw.ini）
 ROOT_FROM_BUILD = ["ddraw.dll", "ddraw.ini"]
 
 # build_out 里除运行期/包根文件外的一切 -> 按原名落包根
-#   ★ 5 代的 audio\ avi\ update\ 各自保持顶层，不合并进 update\。
+#   ★ 本代的 audio\ avi\ update\ 各自保持顶层，不合并进 update\。
 RUNTIME_TOP = {DLL_SRC, "Hzk16"} | set(ROOT_FROM_BUILD)
 
 # ASI Loader 源。★ 必须是**仓库内已跟踪**的路径：
-#   asi/dsound.dll 是 Ultimate ASI Loader（MIT，已入库），与 1/2/3/4 代同一份。
+#   asi/dsound.dll 是 Ultimate ASI Loader（MIT，已入库），与其他各代同一份。
 ASI_LOADER_SRC = "asi/dsound.dll"
 PROXY_NAME = "dinput.dll"           # ★ 见文件头说明
 
 # 仓库根 LICENSE（项目主许可）-> 包根 LICENSE
 LICENSE_SRC = "LICENSE"
-# 包内说明：与 1/2/3/4 代同一套约定（统一标准 S11，名为「必读说明.txt」），
-# 5 代单独一份源文件，避免五代说明混在一起。
+# 包内说明：与其他各代同一套约定（统一标准 S11，名为「必读说明.txt」），
+# 本代单独一份源文件，避免各代说明混在一起。
 README_SRC = "Documents/必读说明_空中战术.txt"
 README_DST = "必读说明.txt"
 # 两份 AI 辅助文件（统一标准 S12/S13），与必读说明同源目录，随包分发到包根
@@ -93,16 +98,19 @@ AI_FILES = [
     "将此文件交给AI，让AI协助完善本项目.txt",
 ]
 LICENSE_DIR = "LICENSES"
-# ★ 显式清单，不是"目录里有什么就合什么"：LICENSES/ 是五代共用目录，
-#   1 代包不该混进 5 代才用到的 qwen3-tts 声明（反之亦然）。
+# ★ 显式清单，不是"目录里有什么就合什么"：LICENSES/ 是各代共用目录，
+#   1 代包不该混进只有本代才用到的 qwen3-tts 声明（反之亦然）。
 #   合并顺序：先随包分发的第三方（UAL / cnc-ddraw / qwen3-tts），
 #   最后 GPLv3.txt 作为主许可正文。
 LICENSE_ORDER = ["ASILoader.txt", "cnc-ddraw.txt", "qwen3-tts.txt", "GPLv3.txt"]
 
 # ── Release 附件名 ─────────────────────────────────────────────────────
-#   ★ 用户明确指定：3 代 → armymen_TIS、4 代 → armymen_WW、5 代 → armymen_AT，
-#     且**不带**日期时间戳（唯一性由 Release 的 tag 保证）。
-#     stage 里的 zip 直接叫这个名字，publish job 按同名上传。
+#   ★ 固定短名，**不带**日期时间戳（唯一性由 Release 的 tag 保证）。
+#     按**游戏系列序号**命名，不按目录号：
+#       3 代 太空玩具  -> armymen_TIS.zip   (make_patch_am3.py)
+#       4 代 空中战术  -> armymen_AT.zip    (本脚本)
+#       5 代 世界大战  -> armymen_WW.zip    (make_patch_am4.py)
+#     1/2 代仍是 ArmyMen-CHS-Patch-<stamp>.zip / ArmyMen2-...
 ZIP_STEM = "armymen_AT"
 
 
@@ -249,8 +257,8 @@ def main():
         total += os.path.getsize(ap)
 
     # License.txt：把随包分发的第三方声明 + 主许可合并成一份
-    #   ★ 用 LICENSE_ORDER 显式清单（LICENSES/ 是五代共用目录，
-    #     "目录里有什么就合什么"会让 1 代包混进 5 代的 TTS 声明）。
+    #   ★ 用 LICENSE_ORDER 显式清单（LICENSES/ 是各代共用目录，
+    #     "目录里有什么就合什么"会让 1 代包混进本代的 TTS 声明）。
     lic_dir = os.path.join(root, LICENSE_DIR)
     if not os.path.isdir(lic_dir):
         missing.append(LICENSE_DIR + "/")

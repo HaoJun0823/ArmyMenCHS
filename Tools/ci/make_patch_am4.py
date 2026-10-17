@@ -1,11 +1,17 @@
 # -*- coding: utf-8 -*-
-"""把 build_out_am4 组装成**可直接解压到游戏根目录**的 4 代汉化补丁。
+"""把 build_out_am4 组装成**可直接解压到游戏根目录**的汉化补丁
+（《世界大战》/ World War；目录号 Army4 = 第 4 个做，系列第 5 代）。
+
+★ 编号说明：目录号 `Army4_*` 是**汉化施工批次**，不是游戏系列序号。
+  系列：1 Army Men / 2 Army Men II / 3 Toys in Space /
+        4 Air Tactics（`Army5_*`）/ 5 World War（本作）。
+  面向玩家的说明与 Release 附件名按系列序号，代码目录按施工批次。
 
 ★ 与 1/2/3 代 Tools/ci/make_patch*.py **同构**：
 
     <游戏>\\
       ├─ dinput.dll               ASI Loader（asi/dsound.dll 改名；见下方 ★）
-      ├─ ddraw.dll                cnc-ddraw（4 代渲染所需，直接落包根）
+      ├─ ddraw.dll                cnc-ddraw（本作渲染所需，直接落包根）
       ├─ ddraw.ini                cnc-ddraw 配置
       ├─ LICENSE                  项目主许可（仓库根 LICENSE）
       ├─ License.txt              LICENSES/*.txt 合并，供随包分发
@@ -26,9 +32,9 @@
     dinput.dll!DirectInputCreateA（实测，见 docs/11 §1），故用该名作代理
     可可靠命中。与 2/3 代同一结论。
   · ASI 是 **Army4_Extend_Dll**，导出 `ArmyMenWW_Install` /
-    `ArmyMenWW_Uninstall`（3 代是 ArmyMenTIS_*）。校验器按 4 代名断言。
+    `ArmyMenWW_Uninstall`（3 代是 ArmyMenTIS_*）。校验器按本作名断言。
   · 必读说明取 `Documents/必读说明_世界大战.txt`（3 代是「_太空玩具」）。
-  · 4 代的 title.dat / shared.dat 进 **update\\**（与 2/3 代同位置）。
+  · 本作的 title.dat / shared.dat 进 **update\\**（与 2/3 代同位置）。
   · update\\audio\\vos\\ 是中文配音，由 ci_build_am4.py 第 5 步拷进
     build_out，这里随 update\\ 一起搬，不需要单独分支。
 
@@ -295,7 +301,8 @@ def main():
 
     # ── 4) 打 zip（ASCII 文件名，GitHub 附件不支持中文）────────────────
     #    CI 里 upload-artifact 取 stage_am4/*.zip，所以 zip 落在 stage 下。
-    #    ★ 附件名固定为 armymen_WW.zip（用户指定）：4 代 = World War。
+    #    ★ 附件名固定为 armymen_WW.zip：World War 是系列**第 5 代**
+    #      （目录号 Army4_* = 第 4 个做汉化，两者不同，见文件头编号说明）。
     #      不再带日期时间戳 —— 唯一性由 Release 的 tag 保证。
     zname = "armymen_WW.zip"
     zpath = os.path.join(stage, zname)

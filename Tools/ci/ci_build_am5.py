@@ -1,9 +1,14 @@
 # -*- coding: utf-8 -*-
 r"""CI 构建入口（《玩具兵大战：空中战术》/ Army Men: Air Tactics）：组装 build_out_am5。
 
-★ 本代（5 代）与 1/2/3/4 代的**根本差异：没有 dat 回包。**
-  2/3/4 代都要把 title.dat / shared.dat 从解包工作区**无损回包**，
-  5 代不需要 —— 本作的界面贴图与文本直接以散文件形式随 update\ 覆盖：
+★ 编号说明：本目录号是 `Army5_*` = **第 5 个做汉化**的作品；
+  它对应游戏系列的**第 4 代**（Air Tactics）。
+  系列第 5 代是《世界大战 / World War》，目录号 `Army4_*`。
+  下文提到「其他各代」时按施工批次说，不按系列序号。
+
+★ 本代与其他各代的**根本差异：没有 dat 回包。**
+  2/3/5 代都要把 title.dat / shared.dat 从解包工作区**无损回包**，
+  本代不需要 —— 本作的界面贴图与文本直接以散文件形式随 update\ 覆盖：
 
       Army5_NEW_CHS/
         audio/    codesfx music scriptsfx（+ codesfx.txt / voice.txt）
@@ -13,7 +18,7 @@ r"""CI 构建入口（《玩具兵大战：空中战术》/ Army Men: Air Tactic
 ★ 因此组装逻辑退化为**整树复制**，这也正是本代的正确做法：
   Army5_NEW_CHS 的三个顶层目录与「部署到游戏根目录后的样子」逐字节一致
   （已实测：audio 288 / avi 7 / update 678 文件与实机游戏目录完全相同）。
-  ★ 注意 audio\ 与 avi\ 落在**包根**，不像 1/2/3/4 代那样全部塞进 update\。
+  ★ 注意 audio\ 与 avi\ 落在**包根**，不像其他各代那样全部塞进 update\。
 
 ★ 载荷来源全部是仓库内已跟踪路径（CI 上没有 I:\ 盘）：
       Army5_NEW_CHS/                           <> 散文件载荷（973 文件）
@@ -21,7 +26,7 @@ r"""CI 构建入口（《玩具兵大战：空中战术》/ Army Men: Air Tactic
       Army2_CHS/Hzk16                          官方中文版 13x13 宋体点阵
       cnc-ddraw/{ddraw.dll,ddraw.ini}          MIT，包根直落
 
-★ 与 1/2/3/4 代的构建脚本相比，本脚本**刻意不含产物断言**
+★ 与其他各代的构建脚本相比，本脚本**刻意不含产物断言**
   （不查 dat 大小、不查配音条数、不查体积指纹）。判定标准是
   「每一步正常返回 0」，产物正确性由人眼与运行期日志确认。
 
@@ -50,8 +55,8 @@ ROOT_FILES = ["ddraw.dll", "ddraw.ini"]
 CNC_DIR = "cnc-ddraw"
 
 # 字库来源候选（仓库内路径优先：CI 上没有 I:\ 盘）
-#   ★ 5 代**没有**官方中文母盘（已全盘搜过 amat.exe，无 Hzk16 / RSE\x1a），
-#     故复用 2 代官方中文版那份 13x13 宋体点阵，与 2/3/4 代同一个文件。
+#   ★ 本作**没有**官方中文母盘（已全盘搜过 amat.exe，无 Hzk16 / RSE\x1a），
+#     故复用 2 代官方中文版那份 13x13 宋体点阵，与其他各代同一个文件。
 HZK_CANDIDATES = [os.path.join("Army2_CHS", HZK_NAME)]
 
 # 从 Army5_NEW_CHS 复制时要排除的文件（README 是仓库文档，不进包）
@@ -118,9 +123,9 @@ def main():
     print()
 
     # ── 1. 载荷：Army5_NEW_CHS 顶层逐项搬到 build_out_am5 根 ──────────
-    #     与 1/2/3/4 代一样是"整树覆盖"语义：目录名与游戏一致。
+    #     与其他各代一样是"整树覆盖"语义：目录名与游戏一致。
     #     ★ 本代的 audio\ 与 avi\ 落在包根（不是 update\ 的子目录），
-    #       这是实机布局决定的，不要为了"和 4 代一样"而挪进 update\。
+    #       这是实机布局决定的，不要为了"和其他代一样"而挪进 update\。
     for entry in sorted(os.listdir(new_chs)):
         if entry in PAYLOAD_EXCLUDE_NAMES:
             print("  [1] %-14s 跳过（仓库文档，不进包）" % entry)
@@ -172,11 +177,11 @@ def main():
 
     # ── 3. 包根文件：cnc-ddraw 的 ddraw.dll / ddraw.ini ────────────────
     #     ★ 本作是 2000 年的 DirectDraw 程序，新系统上不加 cnc-ddraw 会黑屏 /
-    #       无图像 / 鼠标错位。与 2/3/4 代同一结论。
+    #       无图像 / 鼠标错位。与其他各代同一结论。
     for f in ROOT_FILES:
         s = os.path.join(root, CNC_DIR, f)
         if not os.path.isfile(s):
-            print("  [3] !! 缺少 %s/%s（5 代渲染依赖 cnc-ddraw，不能少）"
+            print("  [3] !! 缺少 %s/%s（本作渲染依赖 cnc-ddraw，不能少）"
                   % (CNC_DIR, f), file=sys.stderr)
             return 1
         shutil.copyfile(s, os.path.join(out, f))

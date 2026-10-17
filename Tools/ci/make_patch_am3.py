@@ -296,7 +296,7 @@ def main():
 
     # ── 4) 打 zip（ASCII 文件名，GitHub 附件不支持中文）────────────────
     #    CI 里 upload-artifact 取 stage_am3/*.zip，所以 zip 落在 stage 下。
-    #    ★ 附件名固定为 armymen_TIS.zip（用户指定）：3 代 = Toys in Space。
+    #    ★ 附件名固定为 armymen_TIS.zip：Toys in Space 是系列**第 3 代**。
     #      不再带日期时间戳 —— 唯一性由 Release 的 tag 保证。
     zname = "armymen_TIS.zip"
     zpath = os.path.join(stage, zname)

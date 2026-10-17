@@ -1,4 +1,9 @@
-# AMAA(5 代 Army Men: Air Tactics) 中文显示与长文本换行 —— 逆向实测记录
+# AMAA(Army Men: Air Tactics / 系列第 4 代，目录号 Army5) 中文显示与长文本换行 —— 逆向实测记录
+
+> ★ 编号说明：「5 代」在本文指的是**汉化施工批次**（目录号 `Army5_*`）。
+> 本作是游戏系列的**第 4 代**；系列第 5 代是《世界大战 / World War》，
+> 对应目录 `Army4_*`（见 [`13-am4-build-and-release.md`](13-am4-build-and-release.md)）。
+> 面向玩家的说明按**系列序号**称呼，不按目录号。
 
 目标：`I:\LocalGames\Army Men\amman7\amat.exe`
 IDA database：`amat.exe.i64`（session 会过期，过期后重新 `idb_open`）
