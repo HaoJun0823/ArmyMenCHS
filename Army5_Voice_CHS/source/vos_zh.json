@@ -9,7 +9,7 @@
  "Blu002e.wav": {
   "speaker": "BlueSpy",
   "en": "Your president is at a secret diplomatic meeting at a mountain retreat. The Tan are already moving to capture him.",
-  "zh": "你们总统正在山间别墅开一场秘密外交会议。棕军已经出动去抓他了。",
+  "zh": "你们总统正在山间别墅开一场秘密外交会议。黄军已经出动去抓他了。",
   "duration_s": 10.998,
   "en_source": "com"
  },
@@ -51,7 +51,7 @@
  "Cap004c.wav": {
   "speaker": "Captain",
   "en": "My radar is going crazy, Sarge. This place is crawling with Tan!",
-  "zh": "中士，我的雷达快疯了。这地方到处都是棕军！",
+  "zh": "中士，我的雷达快疯了。这地方到处都是黄军！",
   "duration_s": 3.086,
   "en_source": "com"
  },
@@ -114,7 +114,7 @@
  "Cap013c.wav": {
   "speaker": "Captain",
   "en": "HQ, we have a situation. Tan guerillas are on the move to capture the president.",
-  "zh": "总部，出状况了。棕军游击队正在行动，要抓总统。",
+  "zh": "总部，出状况了。黄军游击队正在行动，要抓总统。",
   "duration_s": 4.14,
   "en_source": "com"
  },
@@ -128,7 +128,7 @@
  "Cap015c.wav": {
   "speaker": "Captain",
   "en": "Oh no! The Tan have those boys covered with explosives! They're gonna use our own guys to blow the bridge!",
-  "zh": "不好！棕军在那帮弟兄身上绑了炸药！他们要用我们自己人炸桥！",
+  "zh": "不好！黄军在那帮弟兄身上绑了炸药！他们要用我们自己人炸桥！",
   "duration_s": 5.529,
   "en_source": "com"
  },
@@ -219,14 +219,14 @@
  "Cap028b.wav": {
   "speaker": "Captain",
   "en": "Looks like I've found a secret Tan R & R facility.",
-  "zh": "看来我找到了棕军一处秘密休整基地。",
+  "zh": "看来我找到了黄军一处秘密休整基地。",
   "duration_s": 2.442,
   "en_source": "com"
  },
  "Cap029b.wav": {
   "speaker": "Captain",
   "en": "Ahhh, like Tan fish in a barrel.",
-  "zh": "啊哈，棕军跟桶里的鱼一样好打。",
+  "zh": "啊哈，黄军跟桶里的鱼一样好打。",
   "duration_s": 1.748,
   "en_source": "com"
  },
@@ -303,7 +303,7 @@
  "Cap039b.wav": {
   "speaker": "Captain",
   "en": "Oh... so the Tan fly boy thinks he can play.",
-  "zh": "哦……看来棕军那飞行员以为自己也行。",
+  "zh": "哦……看来黄军那飞行员以为自己也行。",
   "duration_s": 2.308,
   "en_source": "com"
  },
@@ -338,7 +338,7 @@
  "Cap044b.wav": {
   "speaker": "Captain",
   "en": "I'll play a game of hockey with this Tan rookie.",
-  "zh": "我就陪这个棕军新兵打一场冰球。",
+  "zh": "我就陪这个黄军新兵打一场冰球。",
   "duration_s": 2.285,
   "en_source": "com"
  },
@@ -646,7 +646,7 @@
  "Cap086c.wav": {
   "speaker": "Captain",
   "en": "This should slow the tan flyers down a bit.",
-  "zh": "这能让那些棕军飞行员慢下来一点。",
+  "zh": "这能让那些黄军飞行员慢下来一点。",
   "duration_s": 2.037,
   "en_source": "asr"
  },
@@ -660,7 +660,7 @@
  "Cap088c.wav": {
   "speaker": "Captain",
   "en": "Heh heh, this green paint should confuse the tan.",
-  "zh": "嘿嘿，这身绿漆该把棕军搞糊涂了。",
+  "zh": "嘿嘿，这身绿漆该把黄军搞糊涂了。",
   "duration_s": 2.982,
   "en_source": "asr"
  },
@@ -772,14 +772,14 @@
  "Col005a.wav": {
   "speaker": "Grimm",
   "en": "Our reinforcements have arrived, Captain. It's time to restore peace to this village... let no Tan survive!",
-  "zh": "上尉，我们的援军到了。是时候让这个村子重归安宁了……别让一个棕军活下来！",
+  "zh": "上尉，我们的援军到了。是时候让这个村子重归安宁了……别让一个黄军活下来！",
   "duration_s": 7.414,
   "en_source": "com"
  },
  "Col006c.wav": {
   "speaker": "Grimm",
   "en": "Excellent work, everyone. We were able to run off the Tan without any serious...",
-  "zh": "各位干得漂亮。我们没费什么大劲就把棕军赶跑了……",
+  "zh": "各位干得漂亮。我们没费什么大劲就把黄军赶跑了……",
   "duration_s": 4.625,
   "en_source": "com"
  },
@@ -800,7 +800,7 @@
  "Col009a.wav": {
   "speaker": "Grimm",
   "en": "And Captain, give the Tan some hell!",
-  "zh": "还有上尉，让棕军吃点苦头！",
+  "zh": "还有上尉，让黄军吃点苦头！",
   "duration_s": 3.184,
   "en_source": "com"
  },
@@ -842,7 +842,7 @@
  "Col015c.wav": {
   "speaker": "Grimm",
   "en": "We still have enough firepower to attack the real Tan headquarters, but first we have to locate that island.",
-  "zh": "我们的火力还够攻打真正的棕军总部，但首先得找到那座岛。",
+  "zh": "我们的火力还够攻打真正的黄军总部，但首先得找到那座岛。",
   "duration_s": 6.6,
   "en_source": "com"
  },
@@ -870,7 +870,7 @@
  "Col019a.wav": {
   "speaker": "Grimm",
   "en": "Nice work, Blade. Now we need to find the Tan base so we can put Plastro's diabolical bug factory out of commission.",
-  "zh": "干得好，布莱德。现在我们得找到棕军基地，把普拉斯特那个邪恶的虫子工厂给废了。",
+  "zh": "干得好，布莱德。现在我们得找到黄军基地，把普拉斯特那个邪恶的虫子工厂给废了。",
   "duration_s": 6.584,
   "en_source": "com"
  },
@@ -905,7 +905,7 @@
  "Col024a.wav": {
   "speaker": "Grimm",
   "en": "Step it up, Blade! A Tan chopper just spotted our ships. We're sitting ducks out here if they start firing torpedoes!",
-  "zh": "快点，布莱德！一架棕军直升机刚发现了我们的船。他们要是开始放鱼雷，我们在这儿就是活靶子！",
+  "zh": "快点，布莱德！一架黄军直升机刚发现了我们的船。他们要是开始放鱼雷，我们在这儿就是活靶子！",
   "duration_s": 7.562,
   "en_source": "com"
  },
@@ -1087,7 +1087,7 @@
  "Col052b.wav": {
   "speaker": "Grimm",
   "en": "We still have enough firepower to attack the real Tan headquarters, but first we need to get off this island.",
-  "zh": "我们的火力还够攻打真正的棕军总部，但首先得离开这座岛。",
+  "zh": "我们的火力还够攻打真正的黄军总部，但首先得离开这座岛。",
   "duration_s": 6.587,
   "en_source": "com"
  },
@@ -1122,7 +1122,7 @@
  "Col057a.wav": {
   "speaker": "Grimm",
   "en": "Excellent, Blade. You've discovered Blastro's secret volcano fortress. We need to land on the small southern island. Clear it of tan and mutant insects, but don't blow that bridge. We'll need to use it for our final sneak attack.",
-  "zh": "太棒了，布莱德。你发现了普拉斯特的秘密火山要塞。我们得在南边小岛登陆。把小岛上的棕军和变异昆虫清干净，但别炸那座桥。最后那次偷袭得靠它。",
+  "zh": "太棒了，布莱德。你发现了普拉斯特的秘密火山要塞。我们得在南边小岛登陆。把小岛上的黄军和变异昆虫清干净，但别炸那座桥。最后那次偷袭得靠它。",
   "duration_s": 14.596,
   "en_source": "asr"
  },
@@ -1290,7 +1290,7 @@
  "Sam001b.wav": {
   "speaker": "Sam",
   "en": "Captain, Sarge has been captured! He and two of his men were sent through the portal to investigate reports of heavy Tan activity. Locate those men and get them out of there.",
-  "zh": "上尉，中士被俘了！他和两名部下被派过传送门，去查证棕军大规模活动的报告。找到他们，把他们救出来。",
+  "zh": "上尉，中士被俘了！他和两名部下被派过传送门，去查证黄军大规模活动的报告。找到他们，把他们救出来。",
   "duration_s": 8.892,
   "en_source": "com"
  },
@@ -1346,7 +1346,7 @@
  "Sam009c.wav": {
   "speaker": "Sam",
   "en": "Captain, we have reports of a Blue Spy under Tan protection on the far side of the sink. He may have information on the Tan offensive. Take out the Tan guards and capture that spy.",
-  "zh": "上尉，我们接到报告，水槽另一边有一名受棕军保护的蓝军间谍。他可能掌握棕军攻势的情报。干掉棕军守卫，抓住那名间谍。",
+  "zh": "上尉，我们接到报告，水槽另一边有一名受黄军保护的蓝军间谍。他可能掌握黄军攻势的情报。干掉黄军守卫，抓住那名间谍。",
   "duration_s": 10.111,
   "en_source": "com"
  },
@@ -1367,14 +1367,14 @@
  "Sam012alt.wav": {
   "speaker": "Sam",
   "en": "Now we'll never know what the Tan are planning!",
-  "zh": "现在我们永远不知道棕军在谋划什么了！",
+  "zh": "现在我们永远不知道黄军在谋划什么了！",
   "duration_s": 2.605,
   "en_source": "com"
  },
  "Sam012b.wav": {
   "speaker": "Sam",
   "en": "The Blue Spy was killed. Now we'll never know what the Tan are planning!",
-  "zh": "蓝军间谍被打死了。现在我们永远不知道棕军在谋划什么了！",
+  "zh": "蓝军间谍被打死了。现在我们永远不知道黄军在谋划什么了！",
   "duration_s": 4.537,
   "en_source": "com"
  },
@@ -1402,7 +1402,7 @@
  "Sam016d.wav": {
   "speaker": "Sam",
   "en": "Captain Blade, tan gorillas have captured the President. Our strike team is carrying components of the latest helicopter technology. Lead them to the village, where you will be briefed on the President's rescue operation.",
-  "zh": "布莱德上尉，棕军大猩猩抓住了总统。我们的突击队正带着最新直升机技术的部件。带他们去村子，你会在那里接到营救总统行动的简报。",
+  "zh": "布莱德上尉，黄军大猩猩抓住了总统。我们的突击队正带着最新直升机技术的部件。带他们去村子，你会在那里接到营救总统行动的简报。",
   "duration_s": 11.972,
   "en_source": "asr"
  },
@@ -1444,7 +1444,7 @@
  "Sam022e.wav": {
   "speaker": "Sam",
   "en": "Bad news, Captain. Tan is reinforcing their troops.",
-  "zh": "坏消息，上尉。棕军正在增兵。",
+  "zh": "坏消息，上尉。黄军正在增兵。",
   "duration_s": 2.461,
   "en_source": "com"
  },
@@ -1465,7 +1465,7 @@
  "Sam025b.wav": {
   "speaker": "Sam",
   "en": "Sweet work, sir! That set Tan back AND we got the Blue Spy to squeal. Head to the Playroom and report in when you get there.",
-  "zh": "漂亮，长官！这下棕军吃了大亏，蓝军间谍也开口了。去游戏室，到了以后报到。",
+  "zh": "漂亮，长官！这下黄军吃了大亏，蓝军间谍也开口了。去游戏室，到了以后报到。",
   "duration_s": 7.906,
   "en_source": "com"
  },
@@ -1500,7 +1500,7 @@
  "Sam030a.wav": {
   "speaker": "Sam",
   "en": "All Tan vehicles have to be destoyed.",
-  "zh": "棕军的车辆必须全部摧毁。",
+  "zh": "黄军的车辆必须全部摧毁。",
   "duration_s": 2.405,
   "en_source": "com"
  },
@@ -1521,7 +1521,7 @@
  "Sam033b.wav": {
   "speaker": "Sam",
   "en": "The TAN are building a chemical weapon on the desk. Get it. We'll definitely have a use for it when we find the mutant bug factory. And get Sarge's squad to the desk to secure the area.",
-  "zh": "棕军正在桌上造化学武器。把它弄到手。等找到变异虫子工厂，肯定用得上。再让中士的小队上桌控制那片区域。",
+  "zh": "黄军正在桌上造化学武器。把它弄到手。等找到变异虫子工厂，肯定用得上。再让中士的小队上桌控制那片区域。",
   "duration_s": 10.894,
   "en_source": "asr"
  },
@@ -1577,7 +1577,7 @@
  "Sam041b.wav": {
   "speaker": "Sam",
   "en": "Tan units destroyed a critical mission objective at the tent!",
-  "zh": "棕军摧毁了帐篷处的关键任务目标！",
+  "zh": "黄军摧毁了帐篷处的关键任务目标！",
   "duration_s": 2.995,
   "en_source": "com"
  },
@@ -1591,7 +1591,7 @@
  "Sam043c.wav": {
   "speaker": "Sam",
   "en": "Tan units destroyed one of the chemical drums.",
-  "zh": "棕军毁掉了一个化学桶。",
+  "zh": "黄军毁掉了一个化学桶。",
   "duration_s": 3.184,
   "en_source": "com"
  },
@@ -1605,7 +1605,7 @@
  "Sam045a.wav": {
   "speaker": "Sam",
   "en": "Get all three drums to the mixing bowl. These chemicals should combine to make a potent volcano powder weapon that we can use in our attack on the tan.",
-  "zh": "把三个桶都送到搅拌碗里。这些化学品混起来应该能制成强力的火山粉武器，供我们攻打棕军时用。",
+  "zh": "把三个桶都送到搅拌碗里。这些化学品混起来应该能制成强力的火山粉武器，供我们攻打黄军时用。",
   "duration_s": 8.277,
   "en_source": "asr"
  },
@@ -1696,7 +1696,7 @@
  "Sam055a.wav": {
   "speaker": "Sam",
   "en": "Looks like an opportunity to play Go against the Tan. I've played this board game before; you have to surround empty intersections to win.",
-  "zh": "看来有机会跟棕军下盘围棋。这棋我以前下过；你得把空交叉点围起来才能赢。",
+  "zh": "看来有机会跟黄军下盘围棋。这棋我以前下过；你得把空交叉点围起来才能赢。",
   "duration_s": 8.78,
   "en_source": "com"
  },
@@ -1836,14 +1836,14 @@
  "Sam073b.wav": {
   "speaker": "Sam",
   "en": "Tan is on the run.",
-  "zh": "棕军在逃跑。",
+  "zh": "黄军在逃跑。",
   "duration_s": 1.357,
   "en_source": "com"
  },
  "Sam074a.wav": {
   "speaker": "Sam",
   "en": "Tan is retreating, Captain.",
-  "zh": "棕军在撤退，上尉。",
+  "zh": "黄军在撤退，上尉。",
   "duration_s": 1.755,
   "en_source": "com"
  },
@@ -2151,7 +2151,7 @@
  "Sam117c.wav": {
   "speaker": "Sam",
   "en": "Your next objective is target practice. To the west there are some Tan targets. Use your forward gun to destroy them.",
-  "zh": "下一个目标是打靶。西边有一些棕军靶子。用前射机炮摧毁它们。",
+  "zh": "下一个目标是打靶。西边有一些黄军靶子。用前射机炮摧毁它们。",
   "duration_s": 7.955,
   "en_source": "com"
  },
@@ -2186,7 +2186,7 @@
  "Sam122b.wav": {
   "speaker": "Sam",
   "en": "Tan units vehicles are arriving, Captain, and this time they are going to shoot back!",
-  "zh": "上尉，棕军车辆过来了，这回他们会还击！",
+  "zh": "上尉，黄军车辆过来了，这回他们会还击！",
   "duration_s": 4.934,
   "en_source": "com"
  },
@@ -2207,7 +2207,7 @@
  "Sam125a.wav": {
   "speaker": "Sam",
   "en": "Okay sir, you have all the skills you need to take on the Tan. Report for your first mission immediately.",
-  "zh": "好了长官，对付棕军该会的你都会了。立刻去报到执行第一个任务。",
+  "zh": "好了长官，对付黄军该会的你都会了。立刻去报到执行第一个任务。",
   "duration_s": 7.104,
   "en_source": "com"
  },
@@ -2298,7 +2298,7 @@
  "Sam138a.wav": {
   "speaker": "Sam",
   "en": "The Tan are building a chemical weapon on the desk. Get Sarge and his men up there so they can secure the area.",
-  "zh": "棕军正在桌上造化学武器。把中士和他的部下送上去，让他们控制那片区域。",
+  "zh": "黄军正在桌上造化学武器。把中士和他的部下送上去，让他们控制那片区域。",
   "duration_s": 6.214,
   "en_source": "com"
  },
@@ -2312,14 +2312,14 @@
  "Sam140b.wav": {
   "speaker": "Sam",
   "en": "Track those Tan down, Blade.",
-  "zh": "追上那些棕军，布莱德。",
+  "zh": "追上那些黄军，布莱德。",
   "duration_s": 1.98,
   "en_source": "com"
  },
  "Sam141a.wav": {
   "speaker": "Sam",
   "en": "Get all three chemicals and drop them in the container on the desk. These chemicals should combine to make a potent volcano powder weapon that we can use in our attack on the Tan.",
-  "zh": "把三份化学品都拿到，倒进桌上的容器里。这些化学品混起来应该能制成强力的火山粉武器，供我们攻打棕军时用。",
+  "zh": "把三份化学品都拿到，倒进桌上的容器里。这些化学品混起来应该能制成强力的火山粉武器，供我们攻打黄军时用。",
   "duration_s": 10.155,
   "en_source": "com"
  },
@@ -2473,7 +2473,7 @@
  "Sar010c.wav": {
   "speaker": "Sarge",
   "en": "HQ, this is Sarge. We've discovered a huge Tan base inside that house.",
-  "zh": "总部，我是中士。我们在那栋房子里发现了一处巨大的棕军基地。",
+  "zh": "总部，我是中士。我们在那栋房子里发现了一处巨大的黄军基地。",
   "duration_s": 4.772,
   "en_source": "com"
  },
@@ -2550,7 +2550,7 @@
  "Sar021c.wav": {
   "speaker": "Sarge",
   "en": "Now get us to the landing zone on the floor; we have Tan to kill.",
-  "zh": "现在把我们送到地面上的着陆区，还有棕军要收拾。",
+  "zh": "现在把我们送到地面上的着陆区，还有黄军要收拾。",
   "duration_s": 3.941,
   "en_source": "com"
  },
@@ -2571,7 +2571,7 @@
  "Sar024c.wav": {
   "speaker": "Sarge",
   "en": "Okay, Blade. HQ wants this area secured. We must find and destroy the source of those balloons, clear the sofa of artillery, and destroy all of Tan's armored vehicles. And intel reports the Blue spy is joyriding here somewhere. They want him pronto. Ready for some fun?",
-  "zh": "好了布莱德。总部要我们把这一片控制住。我们得找到并摧毁那些气球的来源，把沙发上的炮兵清干净，再干掉棕军所有装甲车辆。还有情报说那个蓝军间谍就在这儿兜风，他们急着要人。准备好热闹一下了吗？",
+  "zh": "好了布莱德。总部要我们把这一片控制住。我们得找到并摧毁那些气球的来源，把沙发上的炮兵清干净，再干掉黄军所有装甲车辆。还有情报说那个蓝军间谍就在这儿兜风，他们急着要人。准备好热闹一下了吗？",
   "duration_s": 18.25,
   "en_source": "com"
  },
@@ -2627,7 +2627,7 @@
  "Sar032a.wav": {
   "speaker": "Sarge",
   "en": "The boys just spotted a tan convoy. Let's give them hell.",
-  "zh": "弟兄们刚发现一支棕军车队。让他们尝尝厉害。",
+  "zh": "弟兄们刚发现一支黄军车队。让他们尝尝厉害。",
   "duration_s": 4.063,
   "en_source": "asr"
  },
@@ -2676,14 +2676,14 @@
  "Sar039c.wav": {
   "speaker": "Sarge",
   "en": "Thanks, Ca-- What...?!? The boys just spotted a Tan convoy!",
-  "zh": "谢了上—— 什么……？！弟兄们刚发现一支棕军车队！",
+  "zh": "谢了上—— 什么……？！弟兄们刚发现一支黄军车队！",
   "duration_s": 4.947,
   "en_source": "com"
  },
  "Sar040a.wav": {
   "speaker": "Sarge",
   "en": "A bogus piece of intel brought us to this damn island, and now the Tan have us pinned down here.",
-  "zh": "一份假情报把我们引到这座该死的岛上，现在棕军把我们钉在这儿了。",
+  "zh": "一份假情报把我们引到这座该死的岛上，现在黄军把我们钉在这儿了。",
   "duration_s": 5.224,
   "en_source": "com"
  },
@@ -3208,7 +3208,7 @@
  "blu002f.wav": {
   "speaker": "BlueSpy",
   "en": "Your president is attending a secret diplomatic meeting at a mountain retreat. The TAN are already moving to capture him.",
-  "zh": "你们总统正在山间别墅参加一场秘密外交会议。棕军已经出动去抓他了。",
+  "zh": "你们总统正在山间别墅参加一场秘密外交会议。黄军已经出动去抓他了。",
   "duration_s": 7.094,
   "en_source": "asr"
  },
@@ -3250,7 +3250,7 @@
  "capt108d.wav": {
   "speaker": "Captain",
   "en": "Those men won't have given their lives for nothing! We are going to complete this mission and make the Tan pay! But first, I've got to find a way to rebuild that bridge.",
-  "zh": "那些弟兄不能白白牺牲！我们要完成这次任务，让棕军付出代价！但首先，我得想办法把桥重建起来。",
+  "zh": "那些弟兄不能白白牺牲！我们要完成这次任务，让黄军付出代价！但首先，我得想办法把桥重建起来。",
   "duration_s": 8.559,
   "en_source": "com"
  },
