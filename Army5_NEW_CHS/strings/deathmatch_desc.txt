@@ -1,0 +1,1 @@
+Destroy your enemies and stay alive.  The game ends at a designated time or score limit.  Values of zero (0) indicate 'no limit'.

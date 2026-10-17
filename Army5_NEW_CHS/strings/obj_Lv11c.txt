@@ -1,0 +1,3 @@
+- Destroy the balloon generator.
+- Capture the Blue spy.
+- Destroy all Tan tanks.

@@ -1,0 +1,2 @@
+- Use a beacon to load the team and the President onboard and return to your starting location.
+- If the President is killed, all is lost.

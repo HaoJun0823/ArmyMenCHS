@@ -1,0 +1,2 @@
+If you are damaged, Partial Armor will return you a small amount of armor.
+

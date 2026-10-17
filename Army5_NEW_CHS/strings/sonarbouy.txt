@@ -1,0 +1,1 @@
+Sub-surface naval vessels will appear on your radar screen when they enter the radius of one of your Sonar Buoy's pings.

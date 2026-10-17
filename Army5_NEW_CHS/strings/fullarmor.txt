@@ -1,0 +1,1 @@
+If you are damaged, Full Armor will return you to your maximum armor capacity.

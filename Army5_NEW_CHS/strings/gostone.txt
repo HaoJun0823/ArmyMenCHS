@@ -1,0 +1,2 @@
+A marker for the classic strategy game of Go.  Find out more about Go
+in Bruce Wilcox's book EZGO: Oriental Strategy in a Nutshell.

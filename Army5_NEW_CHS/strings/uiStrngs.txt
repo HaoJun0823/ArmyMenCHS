@@ -1,0 +1,154 @@
+Select Communications Channel
+Host A Game
+Join A Game
+Back
+Enter your call sign.
+Name your Battle.
+OK
+Choose Rules
+none
+Select Map
+Limit Game:
+by Time
+by Score
+Abort
+TimeLimit:
+ScoreLimit:
+Players Waiting
+Pick your color.
+Green
+Tan
+Blue
+Gray
+Type messages below.
+Start
+Ready
+Choose Your Battle.
+Your Team Won!
+You Won!
+Your Team Lost! %s won.
+You Lost! %s won.
+Your pardon, but the host has retired.
+What, Your team tied? Try again!
+What, You tied? Try again!
+Flight School
+Single Player
+Multi-Player
+Options
+Quit
+(C) 2000 All Rights Reserved. The 3DO Company, 3DO, Arcomage, Air Tactics, Army Men, Crusaders of Might and Magic, Day of the Destroyer, GameUpdate, Might and Magic, Vegas Games, and their respective logos, are trademarks and/or service marks of the 3DO Company in the U.S. and other countries.  All other trademarks belong to their respective owners.
+Replay
+Load
+Delete
+Click on a poster to play the movie.
+Play
+SKILL LEVEL
+Recruit
+Veteran
+Special Forces
+Combat Assistance
+AutoCombat
+Rapid Fire
+HUD Buttons
+Unlimited Lives
+Confirm Abort
+Controls
+Audio
+Difficulty
+Combat Assist
+Movies
+Credits
+Do you want to remove this
+saved game permanently?
+Confirm overwrite of file: 
+Do you want to return this officer to civilian
+life? All of his saved games will be deleted!
+LClick
+RClick
+ScllDn
+ScllUp
+huh?
+Combat Controls
+Miscellaneous
+Weapons/Cargo Slots
+(+Shift=Sarge Only)
+Default
+Select your call sign!
+Select
+Enter your name, recruit!
+New
+Resume
+Save
+Abort Mission
+Mission Objectives
+Intelligence
+Weapon Specifications
+Enter name for saved game.
+Choose game to load.
+Choose game to replay.
+Director - David Fruin
+Executive Producer - Kelly Turner
+Lead Programmer - David M. Anderson
+Programmers
+- Bruce Wilcox
+- Keith Nemitz
+Lead Artist - Douglas Lee
+Artists
+- Phil Barrows
+- Geoff Ogle
+- Walter Cossico
+Lead Designer - Carson Herrick
+Designers
+- David Chang
+- Keith Meyer
+Production
+- Marc Sherrod
+- James Parker
+Audio - Barry Blum
+Music - Brian Min
+Voices
+- George Joyce
+- Dave Bolick
+- Peter Kepler
+- Ron Seawright
+- Robb Flynn
+Testers
+- Randy Smaha
+- Al Dutton
+- Noah Holmes
+- Matt Ranalli
+- Tony Lee
+- James Barron
+- Mark McCunney
+- Micke Parkhurst
+- Dave Fischer
+- Gretel Perez
+- Dan Kingdon
+- Tamsen Mitchell
+- Daniel Shinn
+- James Payne
+Special Thanks
+- Ann MacDonald
+- Rob Pavey
+- Daniel Dubois
+- Steven Hosey
+- Elizabeth Olsen
+Sounds included in this recording are from the Percussive Adventures Sound Library, produced by Christopher Page for East West Communications, Inc.
+Not responding%s
+Computer%d
+-- Computer --
+-- Open --
+Free Internet Play on mplayer.com
+Fast Free Online Gaming on heat.net
+Play it Free on zone.com
+The Army Men Air Tactics CD must be in the drive to play Army Men Air Tactics.
+Copy Protection
+The Army Men Air Tactics CD must be in the drive to play multi-player with a compact installation.
+Data Missing
+Game Type
+Map
+status
+player name
+ready
+waiting
+Confirm new game?

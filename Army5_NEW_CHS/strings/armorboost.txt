@@ -1,0 +1,2 @@
+Cumulative Armor Boosts will increase the amount of armor your helicopter can carry to up to 200% of its original capacity.
+

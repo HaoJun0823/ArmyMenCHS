@@ -1,0 +1,4 @@
+- Transport all the troops from the toybox to the desk.
+- Eliminate all Tan units on desk.
+- If too many of our men die, the mission will be a failure.
+

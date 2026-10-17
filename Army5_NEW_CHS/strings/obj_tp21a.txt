@@ -1,0 +1,3 @@
+- Clear small island of all Tan defenses.
+- Do not destroy the bridge.
+

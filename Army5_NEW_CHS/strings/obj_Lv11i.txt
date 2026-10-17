@@ -1,0 +1,2 @@
+- Destroy the balloon generator.
+- Destroy all matchbox artillery.

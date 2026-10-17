@@ -1,0 +1,2 @@
+- Get the last trooper on board.
+- When all three troops are on board, radio Head Quarters.

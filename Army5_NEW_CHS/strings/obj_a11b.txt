@@ -1,0 +1,2 @@
+- Rebuild the bridge.
+- Clear the enemy from around the bridge area.

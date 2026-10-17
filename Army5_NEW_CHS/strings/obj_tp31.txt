@@ -1,0 +1,2 @@
+- Track the submarines using sonar buoys.
+- Drop a depth charge in the area of the underwater portal to bring it to the surface.

@@ -1,0 +1,398 @@
+Rifleman
+Grenadier
+Mortarman
+Flamethrower
+Bazookaman
+Stunner
+Paralyzer
+Gunner
+Incinerator
+Robot
+Larva
+Spider
+Drone
+Commander
+Oculon
+Tank
+Half-Track
+Jeep
+Truck
+PT-Boat
+Speeder
+Rover
+Pillbox-Rifle
+Pillbox-Bazooka
+Pillbox-MG
+Medical Tent
+Auto Repair
+Radar
+AA-Gun
+Mine
+%s has left the game.
+%s has left the game - forces removed.
+is now the host.
+has a different version of the game.
+is ready.
+Host is ready - waiting for players to press ready.
+Game type changed by host.
+Map changed by host.
+Options changed by host.
+Not everyone is ready.
+does not have rules.
+does not have map.
+has a damaged map.
+has a damaged rules file.
+has a damaged installation.
+  --  In Progress
+"Game type: %s, Goal: %d"
+Stratmap
+Squad %d (shortcut F%d)
+Sarge
+Attack
+Defend
+Stand fire
+Hold fire
+Sarge
+HT:
+4.6 cm
+%3.1lf cm
+WT:
+2.4 g
+%3.1lf g
+MV:
+2 cm/s
+%d cm/s
+HP:
+%3d/%3d
+EXP:
+%4d/%4d
+AR:
+%d mm
+CR:
+JEEP
+TANK
+H/T
+CONV
+BOAT
+SPED
+ROVR
+???
+GREN
+FLAM
+BAZ
+MORT
+RIFLE
+AUTO
+MINE
+EXPL
+FLAG
+MSWP
+MEDI
+AIRS
+PARA
+RECO
+NOTE
+FLAK
+HVMG
+VULC
+SNIP
+DISG
+MAG
+AERO
+WREN
+M80
+HEVL
+GLUE
+BALL
+FLYS
+BEAM
+NAPL
+DDT
+HAMM
+AIRA
+???
+ARMOR
+SARGE
+POWER-UPS
+Random Power-up
+Air Strike
+Paratroopers
+Reconnaissance
+Mines
+Minesweeper
+Disguise
+Wrench
+Sniper Rifle
+Heavy MG
+Mortar
+Aerosol
+Magnifying Glass
+M80
+Bazooka
+Vulcan
+Med Kit
+Med Pack
+Flak Jacket
+Explosive
+Laser
+Napalm Mortar
+Glue
+Baseball
+Fly Swatter
+DDT
+Adrenaline
+Force Field
+Hammer Mine
+Air Attack
+Beam Down
+Napalm Air Strike
+MISCELLANEOUS
+Fog of War
+Casualties Replaced
+Power-ups Replenished
+Corpses Spawn Zombies
+TROOPERS
+Bazookamen
+Flame Throwers
+Grenadiers
+Riflemen
+Mortarmen
+Stunners
+Paralyzers
+Gunners
+Incinerators
+Robots
+Larvae
+Spiders
+Drones
+Commanders
+Oculons
+VEHICLES
+Jeeps
+Half-tracks
+Tanks
+Trucks
+PT Boats
+Speeders
+Rovers
+ASSETS
+Medical Tent
+Repair Facility
+Radar Building
+Anti-Aircraft Gun
+Rifle Pillbox
+Bazooka Pillbox
+Heavy MG Pillbox
+Sarge
+
+Rifleman
+Grenadier
+Flamethrower
+Bazookaman
+Mortarman
+Machine Gunner
+Miner
+Demolitions
+None
+Bannerman
+Minesweeper
+Medic
+Spy
+Flak Jacket
+Heavy Weapons
+Sniper
+Mechanic
+Zombie
+Drone
+Oculon
+Paralyzer
+Stunner
+Incinerator
+Gunner
+Larva
+Spider
+Robot
+Easy
+Medium
+Hard
+Are you sure you want to quit?
+Do you wish to reattempt your failed mission?
+Are you sure you want to delete savefile '%s'?
+Are you sure you want to overwrite savefile '%s'?
+Caution: All saved games for this player will also be deleted!
+Are you sure you want to restart this mission?
+Jeep
+Tank
+Half Track
+Convoy Truck
+PT Boat
+Speeder
+Rover
+None
+Rifle
+Grenades
+Flamethrower
+Bazooka
+Mortar
+Cannon
+Medium MG
+Heavy MG
+Autorifle
+Mines
+Explosives
+Flag
+Green Flag
+Tan Flag
+Blue Flag
+Grey Flag
+Minesweeper
+Medpack
+Medkit
+Airstrike
+Glue
+Baseball
+Flyswatter
+Space Beamers
+Napalm Airstrike
+Paratroopers
+Recon
+Note
+Flak Jacket
+Vulcan
+Sniper Rifle
+Nitro
+Camouflage
+Green Uniform
+Tan Uniform
+Blue Uniform
+Grey Uniform
+Magnifying Glass
+Aerosol
+Wrench
+M80
+ZombieHands
+Light Laser
+Medium Laser
+Heavy Laser
+Plasma Cannon
+Death Ray
+Roach Bite
+Freeze Mortar
+Freeze Laser
+Napalm Mortar
+Gatling Gun
+Worm Spit
+Spider Bite
+Super Laser
+Boss Mortar
+Napalm Grenade
+Long Freeze Mortar
+Electric Shock
+Adrenaline
+DDT
+Force Field
+Hammer Mine
+Air Attack
+Cannot open tileset file %s
+Error in tileset file %s
+Cannot open map file %s
+Press the space bar to begin.
+Loading...
+Loaded and ready!
+Green
+Tan
+Blue
+Grey
+None
+Multi-player game completed at %s
+"Game type: %s, map: %s, playing time: %d:%d:%d"
+"left the game or was disconnected"
+"Player: %s(%s), score: %d, teamscore: %d, rank: %d, teamrank: %d"
+Quit?
+Flea Bash
+Forward Gun
+Full Armor
+Partial Armor
+Armor Boost
+Side Gun
+Air Missile
+Rocket Cluster
+MIRV Missile
+Guided Missile
+Bomb
+Cluster Bomb
+Napalm
+ECM Chaff
+ECM Flare
+Firecracker
+Food
+Green Paint Blast
+Gum Wad
+Smoke Cloud
+Torpedo
+Depth Charge
+Sonar Buoy
+Wingmen
+Plastic Volcano Powder
+Insecticide
+Bottle Rocket
+Forward Gun Tracer
+Roach Coach
+Destroyer
+Submarine
+StingerGuy
+Air Blast Missile
+Weapon Upgrade
+Whisper Blades
+Ack Ack Platform
+Ack Ack Mount Small
+Ack Ack Mount Large
+Ack Ack Gun
+Destroyer Gun
+Destroyer Radar
+Destroyer Rocket
+SubMissile
+Bug Spit
+Black Go Stone
+White Go Stone
+Air Mine
+Heatwave
+Matchbox Arbalest
+Matches
+WExtra01
+WExtra02
+WExtra03
+Stinger Missile
+Weapon Jammed
+Special Weapons Offline
+Engine Fire
+Winch Failure
+Unable to Land
+Left Steering Fault
+Right Steering Fault
+Stabilizer Failure
+Thrust Loss
+Inventory Select Jammed
+Sergeant Hawk
+Radio Sam
+Colonel Grimm
+General Plastro
+Captain Blade
+Green Trooper
+Tan Trooper
+Blue Trooper
+Grey Trooper
+Whisper Blades
+Counter Measures
+The President
+Lower Winch
+Eject Cargo
+Drop Beacon
+Please insert the Army Men(TM) - Air Tactics(TM) CD.
+has different Map file.
+has different Rule file.
+has different Property files.
+has no such map.
+has no such rule.
+LowFrameRate- Slowing all copters.
+Pausing the game.

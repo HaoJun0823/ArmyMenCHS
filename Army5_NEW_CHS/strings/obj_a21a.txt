@@ -1,0 +1,5 @@
+- The strike team is already onboard your 'copter. Unload them at the insertion LZ.
+- If all goes well, the team will penetrate the village and rescue the President.
+- When they return, use a beacon to load the team and the President onboard and return to your starting location.
+- If the President is killed, all is lost.
+- Also, if all members of the strike team are killed, the mission will be aborted...and the President is doomed.

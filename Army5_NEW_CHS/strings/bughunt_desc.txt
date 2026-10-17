@@ -1,0 +1,6 @@
+Destroy bugs to score.  The game ends at a designated time or score limit.  Values of zero (0) indicate 'no limit'.
+Mosquito 1 point
+Mutant Flea 20 points
+Mutant Fly 50 points
+Mutant Wasp 75 points
+Mutant Roach 100 points

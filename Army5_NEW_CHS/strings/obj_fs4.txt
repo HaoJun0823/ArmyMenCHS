@@ -1,0 +1,1 @@
+- Collect three power-ups and return to the combat zone.

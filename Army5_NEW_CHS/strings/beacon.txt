@@ -1,0 +1,1 @@
+A beacon summons all available Green soldiers to its location.  Drop beacons by clicking the beacon button or pressing the beacon key on your keyboard.
