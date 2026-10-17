@@ -1,0 +1,130 @@
+// ============================================
+// BUG HUNT ===================================
+// ============================================
+VARIABLE BUGCOUNT 0
+
+UNTIL 211 REPEAT 200 BY 1
+{
+	PAD padBugLoc$		$
+}
+
+UNTIL 255 REPEAT 212 BY 1
+{
+	PAD padPupOpen$		$
+}
+
+
+// SETUP MP MISSION ===========================
+
+IF startup1 THEN
+	TRIGGER adjustpoints,
+	TRIGGER mpsetupplayers,
+	TRIGGER setupgoodies,
+	TRIGGER startupmap,
+	TRIGGERDELAY 10000 setupbugs
+
+IF adjustpoints THEN
+	SETVAR copterpoints 0,
+	SETVAR trooperpoints 0
+
+MACRO setupplayers 1
+{
+	IF mpsetupplayers THEN
+		CREATECOPTER scout captain_@1 pad@1LZ @1,
+		SETAIRMAP captain_@1 1,
+		SETAIRVARIANCE captain_@1 200,
+		SETSTEP captain_@1 500
+	
+//	UNTIL 5 REPEAT 1 BY 1
+//	{
+//		IF mpsetupplayers TESTVAR ISCOLORINGAME @1 = 1 THEN
+//			CREATEUNIT @1_basepatrol_$ stingerguy pad@1AA$ @1 stingermissile
+//	}
+}
+EXPAND setupplayers ( Green )
+EXPAND setupplayers ( Tan   )
+EXPAND setupplayers ( Grey  )
+EXPAND setupplayers ( Blue  )
+
+UNTIL 255 REPEAT 212 BY 1
+{
+	IF setupgoodies THEN
+		TRIGGER getopenpowerup$
+
+	IF getopenpowerup$ THEN RANDOM
+		CREATEPOWERUP partialarmor 		padPupOpen$,
+		CREATEPOWERUP partialarmor 		padPupOpen$,
+		CREATEPOWERUP partialarmor 		padPupOpen$,
+		CREATEPOWERUP radarmissile 		padPupOpen$,
+		CREATEPOWERUP swarmmissile		padPupOpen$,
+		CREATEPOWERUP clusterbomb 		padPupOpen$,
+		CREATEPOWERUP armorboost 		padPupOpen$,
+		CREATEPOWERUP insecticide		padPupOpen$,
+		CREATEPOWERUP airblastmissile 	padPupOpen$,
+		CREATEPOWERUP weaponupgrade 	padPupOpen$,
+		CREATEPOWERUP fullarmor 		padPupOpen$
+}
+
+	IF setupbugs THEN 
+		TRIGGERDELAY 120000 RECHECK,
+		CREATEINSECT mutantflea mflea padBugLoc200 none,
+		CREATEINSECT mutantfly mfly padBugLoc201 none,
+		CREATEINSECT mutantwasp mwasp padBugLoc202 none,
+		CREATEINSECT mutantroach mroach padBugLoc203 none,
+		CREATEINSECT mosquito mosq padBugLoc204 none,
+		CREATEINSECT mosquito mosq1 padBugLoc205 none,
+		CREATEINSECT mosquito mosq2 padBugLoc206 none,
+		CREATEINSECT mosquito mosq3 padBugLoc207 none,
+		CREATEINSECT mutantflea mflea1 padBugLoc208 none,
+		CREATEINSECT mutantfly mfly1 padBugLoc209 none,
+		CREATEINSECT mutantwasp mwasp1 padBugLoc210 none,
+		ADDMISSIONOBJECTIVE mflea,
+		ADDMISSIONOBJECTIVE mfly,
+		ADDMISSIONOBJECTIVE mwasp,
+		ADDMISSIONOBJECTIVE mroach,
+		ADDMISSIONOBJECTIVE mosq,
+		ADDMISSIONOBJECTIVE mosq1,
+		ADDMISSIONOBJECTIVE mosq2,
+		ADDMISSIONOBJECTIVE mosq3,
+		ADDMISSIONOBJECTIVE mflea1,
+		ADDMISSIONOBJECTIVE mfly1,
+		ADDMISSIONOBJECTIVE mwasp1,
+		SETVAR BUGCOUNT 8
+
+// BUG HANDLER ================================
+
+IF KILLED INSECT THEN 
+	ADDVAR BUGCOUNT -1,
+	TRIGGERDELAY 10000 DEADINSECT
+
+IF DEADINSECT THEN
+	ADDVAR BUGCOUNT 1
+
+IF DEADINSECT THEN RANDOM
+	RESURRECT me padBugLoc200,
+	RESURRECT me padBugLoc201,
+	RESURRECT me padBugLoc202,
+	RESURRECT me padBugLoc203,
+	RESURRECT me padBugLoc204,
+	RESURRECT me padBugLoc205,
+	RESURRECT me padBugLoc206,
+	RESURRECT me padBugLoc207,
+	RESURRECT me padBugLoc208,
+	RESURRECT me padBugLoc209,
+	RESURRECT me padBugLoc210,
+	RESURRECT me padBugLoc211
+
+IF RECHECK THEN // make sure they resurrect
+	RESURRECT mflea padBugLoc200,
+	RESURRECT mfly padBugLoc201,
+	RESURRECT mwasp padBugLoc211,
+	RESURRECT mroach padBugLoc210,
+	RESURRECT mosq padBugLoc202,
+	RESURRECT mosq1 padBugLoc203,
+	RESURRECT mosq2 padBugLoc204,
+	RESURRECT mosq3 padBugLoc205,
+	RESURRECT mflea1 padBugLoc206,
+	RESURRECT mfly1 padBugLoc207,
+	RESURRECT mwasp1 padBugLoc208,
+	TRIGGERDELAY 120000 RECHECK
+

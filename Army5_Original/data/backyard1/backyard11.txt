@@ -1,0 +1,431 @@
+// backyard1
+// Carson Herrick
+
+INCLUDE ..\scripts\common.txt
+INCLUDE ..\scripts\fernFX.txt
+INCLUDE ..\scripts\edgeFX.txt
+INCLUDE ..\scripts\backyard_mosq.txt
+
+PRELOADSPRITE 43 030 0
+PRELOADSPRITE 43 030 1
+PRELOADSPRITE 43 030 2
+PRELOADSPRITE 43 031 0
+PRELOADSPRITE 43 031 1
+PRELOADSPRITE 43 031 2
+PRELOADSPRITE 43 032 0
+PRELOADSPRITE 43 032 1
+PRELOADSPRITE 43 032 2
+PRELOADSPRITE 43 200 0
+PRELOADSPRITE 43 201 0
+PRELOADSPRITE 43 201 1
+PRELOADSPRITE 43 204 0
+
+PAD padHole20	20	trooper > 0
+PAD padHole21	21	trooper > 0
+PAD padHole22	22	trooper > 0
+PAD padHole23	23	trooper > 0
+PAD padHole24	24	trooper > 0
+PAD padHole25	25	trooper > 0
+PAD padHole26	26	trooper > 0
+PAD padHole27	27	trooper > 0
+PAD padHole28	28	trooper > 0
+PAD padHole29	29	trooper > 0
+PAD padHole30	30	trooper > 0
+
+PAD padTan0		65	
+PAD padTan1		66	
+PAD padTan2		67	
+PAD padTan3		62	
+PAD padTan4		64
+PAD padTan40	40	tan trooper > 0
+PAD padTan41	41	tan trooper > 0
+PAD padTan42	42	tan trooper > 0
+PAD padTan43	43	tan trooper > 0
+PAD padTan44	44	tan trooper > 0
+PAD padSarge45	45
+
+PAD padSlug1	61	
+PAD padSlug2	68	
+PAD padSlug3	63	
+PAD padSlug4	69
+
+PAD padStory101	101 captain > 0
+PAD padStory102 102 captain > 0
+
+LIST GopherGuy {tangopher_0 tangopher_1 tangopher_2 tangopher_3 tangopher_4 tangopher_5 tangopher_6}
+LIST BallBlock0 43 100
+LIST BallBlock2 43 102
+LIST BallBlock3 43 103
+
+VARIABLE MissileCount 0
+VARIABLE GopherOn 	1
+VARIABLE NumGophers	7
+VARIABLE SargeGreet 0
+VARIABLE gotSarge 0
+VARIABLE gotTrooper 0
+VARIABLE guardDir 0
+VARIABLE tempX 0
+VARIABLE tempY 0
+VARIABLE helpdropwinch 0
+
+
+OBJECT CupidHead
+	STATE osHeadRoll
+		FRAME 50 0
+		FRAME 80 1
+		FRAME 70 2
+		FRAME 60 3
+		FRAME 50 4
+		FRAME 70 5
+		FRAME 90 6
+			PLAYSOUND headfallinwater.wav (0,0) 1 1 0
+		FRAME 100 7
+		FRAME 10 8
+			SETOBJSTATE CupidHead osHeadStop
+	STATE osHeadStop
+		FRAME 10 8
+
+
+//***SETUP MISSION***//
+IF startup1 THEN
+	ALLY GREY TAN,
+	ALLY TAN GREY,
+	TRIGGER setupgreen,
+	TRIGGER setuptan,
+	TRIGGER setupmosquitos,
+//	TRIGGER setupslugs,
+	TRIGGER setupmisc,
+	TRIGGER setupsounds,
+	TRIGGERDELAY 100 showmissionobjective
+
+IF showmissionobjective THEN
+	SETMISSIONINFO by11,
+	PLAYTALKINGHEAD 100,
+	PLAYTALKINGHEAD 102
+
+IF talkingheaddone captain THEN
+	SETNPC captain 0
+
+IF setupgreen THEN
+	CREATECOPTER scout captain (579,440,200) green,
+	SETFACING captain 110,
+	SETAIRMAP captain 1,
+	SETSTEP captain 500,
+	SETNPC captain 1,
+	
+	CREATEUNIT "sarge" grenadier padSarge45 green grenade,
+	ADDMISSIONOBJECTIVE "sarge",
+	SETAIPOSE "sarge" STAND,
+	SETAIMODE "sarge" IGNORE,	
+	SETMAXHEALTH "sarge" 30000,
+	HEAL "sarge" 30000,
+	
+	CREATEUNIT "private herrick" grenadier (3087,2008) green grenade,
+	ADDMISSIONOBJECTIVE "private herrick",
+	SETAIPOSE "private herrick" NONE,
+	SETAIMODE "private herrick" DEFEND,
+	SETMAXHEALTH "private herrick" 30000,
+	HEAL "private herrick" 30000
+
+
+UNTIL 6 REPEAT 0 BY 1
+{
+	IF setuptan THEN
+		CREATEUNIT tangopher_$ rifleman padHole2$ tan rifle,			
+		SETAIPOSE tangopher_$ STAND,
+		SETAIMODE tangopher_$ DEFEND,
+		TRIGGER randomhidedelay tangopher_$
+}
+
+UNTIL 4 REPEAT 0 BY 1
+{
+	IF setuptan THEN
+		CREATEUNIT tansoldier rifleman padTan$ tan rifle,
+		SETAIMODE lastcreated ATTACK,
+		CREATEUNIT tanguard_$ rifleman padTan4$ tan rifle,
+		SETAIPOSE tanguard_$ STAND,
+		SETAIMODE tanguard_$ DEFEND
+}
+
+UNTIL 9 REPEAT 1 BY 1
+{
+	IF setupmosquitos THEN
+		CREATEINSECT mosquito mosq_$ padMosq51 grey,
+		SETAIMODE mosq_$ WANDER,
+		SETAIRMAP mosq_$ 0,
+		TRIGGER newmosqlocation mosq_$,
+		TRIGGER newmosqheight mosq_$
+
+	IF setupslugs THEN
+		CREATEINSECT slug slug_$ padSlug6$ grey		
+}
+
+IF setupmisc THEN
+	
+	UNDEPLOY CupidHead,
+
+	CREATEOBJECT BallBlock1 43 101 (660,3294) 0,
+	
+	CREATEPOWERUP groundmissile (316,942) 5,
+	CREATEPOWERUP partialarmor (379,1757) 0,
+	CREATEPOWERUP groundmissile (1254,1105) 5,
+	CREATEPOWERUP groundmissile (1527,2098) 5,
+	CREATEPOWERUP groundmissile (1872,3084) 5,
+	CREATEPOWERUP groundmissile (2747,2493) 5,
+	CREATEPOWERUP armorboost (3057,3384),
+	CREATEPOWERUP partialarmor (351,2807) 0,
+	CREATEPOWERUP partialarmor (1603,2561) 0
+
+UNTIL 9 REPEAT 1 BY 1
+{
+	IF setupmisc THEN
+		CREATEPOWERUP partialarmor padSlug6$ 0
+}
+
+IF setupsounds THEN
+	TRIGGER mowersound,
+	TRIGGER birdsound
+
+//***SETUP MISSION***//
+
+
+//***GOPHER GAME***//
+IF KILLED GopherGuy TESTVAR GopherOn = 1 THEN
+	SETVAR tempX GETX me, SETVAR tempY GETY me,
+	CREATEPOWERUP groundmissile (REFVAR tempX, REFVAR tempY) 5,
+	ADDVAR NumGophers -1,
+	TRIGGER gophertest
+
+IF gophertest TESTVAR NumGophers <= 0 THEN
+	SETVAR GopherOn 0,
+	TRIGGERDELAY 1 closegopherholes
+
+IF randomhidedelay TESTVAR GopherOn = 1 THEN RANDOM
+	TRIGGERDELAY 1000 hidegopher,
+	TRIGGERDELAY 1500 hidegopher,
+	TRIGGERDELAY 2000 hidegopher,
+	TRIGGERDELAY 2500 hidegopher,
+	TRIGGERDELAY 3000 hidegopher
+
+IF hidegopher TESTVAR GETHEALTH me > 0 THEN
+	CREATEEXPLOSION me 151,
+	UNDEPLOY me,
+	TRIGGER randomshowdelay
+
+IF randomshowdelay THEN RANDOM
+	TRIGGERDELAY 1000 randomhole,
+	TRIGGERDELAY 1500 randomhole,
+	TRIGGERDELAY 2000 randomhole,
+	TRIGGERDELAY 2500 randomhole,
+	TRIGGERDELAY 3000 randomhole
+
+IF randomhole THEN RANDOM 
+	TRIGGER showgopher20,
+	TRIGGER showgopher21,
+	TRIGGER showgopher22,
+	TRIGGER showgopher23,
+	TRIGGER showgopher24,
+	TRIGGER showgopher25,
+	TRIGGER showgopher26,
+	TRIGGER showgopher27,
+	TRIGGER showgopher28,
+	TRIGGER showgopher29,
+	TRIGGER showgopher30
+
+UNTIL 30 REPEAT 20 BY 1 
+{
+	IF showgopher$ TESTVAR GETPADSTATUS padHole$ = 0 THEN
+		TRIGGERDELAY 1 deploygoher$
+	IF showgopher$ TESTVAR GETPADSTATUS padHole$ = 1 THEN
+		TRIGGERDELAY 1 randomhole 
+	IF deploygoher$ THEN
+		CREATEEXPLOSION Hole$ 151,
+//		HEAL me 10,
+		DEPLOY me padHole$,
+		TRIGGER randomhidedelay
+	IF closegopherholes THEN
+		UNDEPLOY Hole$
+}
+//***GOPHER GAME***//
+
+
+//***SANDBOX***//
+MACRO TanGuard 2
+{
+	IF PADON padTan@1 THEN
+		SETFACING me @2
+}
+EXPAND TanGuard (40 144)
+EXPAND TanGuard (41 208)
+EXPAND TanGuard (42 240)
+EXPAND TanGuard (43 32)
+EXPAND TanGuard (44 88)
+
+IF PICKEDUP BallBlock1 TESTVAR gotSarge = 0 THEN
+	ADDVAR gotSarge 1,
+	TRIGGER waketanguards,
+	TRIGGER waketangopher1,
+	SETAIPOSE "sarge" NONE,
+	ORDER "sarge" GOTO (547,3349) INMODE IGNORE,
+	TRIGGERDELAY 2000 sargemessage,
+	TRIGGERDELAY 5000 sarge2pad1
+
+IF sarge2pad1 THEN
+	ORDER "sarge" GOTO (761,3419) INMODE IGNORE,
+	TRIGGERDELAY 1500 sarge2pad2
+
+IF sarge2pad2 THEN
+	ORDER "sarge" GOTO (1358,2914) INMODE DEFEND
+
+UNTIL 4 REPEAT 0 BY 1
+{
+	IF waketanguards THEN
+		IGNORETARGET tanguard_$ captain,
+		SETAIPOSE tanguard_$ NONE,
+		SETAIMODE tanguard_$ ATTACK,
+		ORDER tanguard_$ GOTO "sarge"
+}
+
+IF waketangopher1 THEN
+	SETVAR NumGophers -1,
+	TRIGGER gophertest,
+	TRIGGER waketangopher2
+
+UNTIL 6 REPEAT 0 BY 1
+{
+	IF waketangopher2 THEN
+		IGNORETARGET tangopher_$ captain,
+		SETAIPOSE tangopher_$ NONE,
+		SETAIMODE tangopher_$ ATTACK,
+		ORDER tangopher_$ GOTO "sarge"
+}
+
+//***SANDBOX***//
+
+
+//***GARDEN***//
+IF KILLED Cupid THEN
+//	CREATEEXPLOSION (3160,1463) 149,
+//	CREATEEXPLOSION (3160,1433) 149,
+	CREATEEXPLOSION (3160,1403) 129,
+	MAKESMOKE (3158,1440) 10000,
+	MAKESMOKE (3103,1383) 20000,
+
+	CREATEPOWERUP WUp0 weaponupgrade (3025,1840,500),
+
+	DEPLOY CupidHead (3233,1779),
+	SETOBJSTATE CupidHead osHeadRoll
+	
+IF KILLED SecretEdge THEN
+	TRIGGER edgeexplosion,				// ..\scripts\edgeFX.txt
+	TRIGGER edgepoof1 SecretEdge
+
+IF KILLED SecretEdge TESTVAR HASITEM captain "sarge" = 1 THEN
+	PLAYTALKINGHEAD 111
+
+IF KILLED FLYINGINSECT THEN RANDOM
+	TRIGGER nullfunction,
+	TRIGGER nullfunction,
+	TRIGGER mosquitoprize
+
+IF mosquitoprize THEN
+	CREATEPOWERUP groundmissile me 2
+
+IF PICKEDUP WUp0 BY captain THEN
+	PLAYTALKINGHEAD 113
+
+//***GARDEN***//
+
+
+//***NOTIFY***//
+IF PICKEDUP BallBlock0 THEN
+	TRIGGER playwinchhelp
+
+IF PICKEDUP BallBlock1 THEN
+	TRIGGERDELAY 20000 playwinchhelp
+
+IF PICKEDUP BallBlock2 THEN
+	TRIGGER playwinchhelp
+
+IF PICKEDUP BallBlock3 THEN
+	TRIGGER playwinchhelp
+
+IF DROPPED BallBlock1 THEN
+	SETVAR helpdropwinch 1
+
+IF playwinchhelp TESTVAR helpdropwinch = 0 THEN
+	SETVAR helpdropwinch 1,
+	PLAYTALKINGHEAD 110
+
+IF PICKEDUP "private herrick" TESTVAR HASITEM captain "sarge" = 0 THEN
+	SETMISSIONINFO by12,
+	ADDVAR gotTrooper 1,
+	TRIGGER troopermessage
+	
+IF PICKEDUP "private herrick" TESTVAR HASITEM captain "sarge" = 1 THEN
+	PLAYTALKINGHEAD 109,
+	TRIGGERDELAY 1000 GREENWINS
+
+IF PICKEDUP "sarge" TESTVAR HASITEM captain "private herrick" = 0 THEN
+	SETMISSIONINFO by13,
+	ADDVAR gotSarge 1,
+	TRIGGER sargemessage
+	
+IF PICKEDUP "sarge" TESTVAR HASITEM captain "private herrick" = 1 THEN
+	PLAYTALKINGHEAD 109,
+	TRIGGERDELAY 1000 GREENWINS
+
+IF troopermessage TESTVAR gotTrooper = 1 THEN
+	PLAYTALKINGHEAD 103,
+	PLAYTALKINGHEAD 101
+
+IF sargemessage BUTNOT KILLED sarge TESTVAR gotSarge = 1 THEN
+	PLAYTALKINGHEAD 29,
+	PLAYTALKINGHEAD 105
+
+IF sargemessage TESTVAR gotSarge = 2 THEN
+	PLAYTALKINGHEAD 104,
+	PLAYTALKINGHEAD 106,
+	TRIGGERDELAY 45000 hurryupmessage
+
+IF sargemessage TESTVAR gotSarge = 3 THEN
+	PLAYTALKINGHEAD 107,
+	PLAYTALKINGHEAD 108
+
+IF sargemessage TESTVAR gotSarge >= 4 THEN
+	PLAYTALKINGHEAD 107
+
+IF hurryupmessage THEN
+	PLAYTALKINGHEAD 112
+
+//***NOTIFY***//
+
+
+//***AMBIENT SOUNDS***//
+
+IF mowersound THEN
+	PLAYSOUND distantlawnmower.wav (1,1) 8 1 1 1000
+
+IF birdsound THEN
+	TRIGGER randombirdsound,
+	TRIGGER repeatbirdsound
+
+IF randombirdsound THEN RANDOM
+	PLAYSOUND birdsong1.wav (0,0) 7 1 0,
+	PLAYSOUND birdsong2.wav (0,0) 7 1 0
+
+IF repeatbirdsound THEN RANDOM
+	TRIGGERDELAY 10000 birdsound,
+	TRIGGERDELAY 30000 birdsound,
+	TRIGGERDELAY 60000 birdsound
+
+//***AMBIENT SOUNDS***//
+
+
+//*** DEAD DUDES ***//
+
+IF KILLED "private herrick" THEN
+	PLAYTALKINGHEAD 15,
+	TRIGGERDELAY 10000 TANWINS
+
+//*** DEAD DUDES ***//

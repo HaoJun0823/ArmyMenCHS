@@ -1,0 +1,139 @@
+LIST Fern1 43 30
+LIST Fern2 43 31
+LIST Fern3 43 32
+
+
+/// EXPLOSION SETUP ///
+
+IF DMGLVLCHANGED Fern1 THEN
+	TRIGGER fernexplosion,
+	TRIGGER fernpoof3,
+	TRIGGERDELAY 75 fernpoof2,
+	TRIGGERDELAY 150 fernpoof1
+
+IF DMGLVLCHANGED Fern2 THEN
+	TRIGGER fernexplosion,
+	TRIGGER fernpoof1,
+	TRIGGERDELAY 75 fernpoof3,
+	TRIGGERDELAY 150 fernpoof2
+
+IF DMGLVLCHANGED Fern3 THEN
+	TRIGGER fernexplosion,
+	TRIGGER fernpoof2,
+	TRIGGERDELAY 75 fernpoof1,
+	TRIGGERDELAY 150 fernpoof3
+
+MACRO fernMACRO 3
+{
+	IF fernexplosion TESTVAR GETDMGLVL me = @1 THEN
+		SETVAR explosionID_1 @2,
+		SETVAR explosionID_2 @3
+}
+EXPAND fernMACRO ( 1 702 703 )
+EXPAND fernMACRO ( 2 701 700 )
+
+IF selectFERNexplosion THEN RANDOM
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY) REFVAR explosionID_1,
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY) REFVAR explosionID_2
+
+/// EXPLOSION SETUP ///
+
+
+/// EXPLOSION CREATION ///
+
+IF fernpoof1 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -59, ADDVAR childY 12,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -68, ADDVAR childY -49,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -74, ADDVAR childY -104,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -28, ADDVAR childY -155,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 49, ADDVAR childY -107,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 69, ADDVAR childY 13,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -9, ADDVAR childY -15,
+	TRIGGER selectFERNexplosion
+
+
+IF fernpoof2 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -8, ADDVAR childY -30,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -57, ADDVAR childY 9,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -94, ADDVAR childY -103,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 13, ADDVAR childY -137,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 67, ADDVAR childY -102,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 99, ADDVAR childY -32,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 78, ADDVAR childY 17,
+	TRIGGER selectFERNexplosion
+
+
+IF fernpoof3 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -43, ADDVAR childY -44,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -43, ADDVAR childY -136,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 54, ADDVAR childY -144,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 54, ADDVAR childY -58,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 96, ADDVAR childY -45,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 29, ADDVAR childY 27,
+	TRIGGER selectFERNexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -31, ADDVAR childY 18,
+	TRIGGER selectFERNexplosion
+
+/// EXPLOSION CREATION ///

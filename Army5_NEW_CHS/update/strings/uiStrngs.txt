@@ -1,0 +1,154 @@
+选择通讯频道
+主持游戏
+加入游戏
+返回
+输入你的呼号。
+为你的战役命名。
+确定
+选择规则
+无
+选择地图
+限制游戏：
+按时间
+按分数
+中止
+时间限制：
+分数限制：
+等待中的玩家
+选择你的颜色。
+绿色
+棕色
+蓝色
+灰色
+在下方输入消息。
+开始
+准备
+选择你的战役。
+你的队伍获胜了！
+你赢了！
+你的队伍失败了！%s 获胜。
+你失败了！%s 获胜。
+抱歉，主机已退出。
+什么，你的队伍打平了？再试一次！
+什么，你打平了？再试一次！
+飞行学校
+单人游戏
+多人游戏
+选项
+退出
+(C) 2000 All Rights Reserved. The 3DO Company, 3DO, Arcomage, Air Tactics, Army Men, Crusaders of Might and Magic, Day of the Destroyer, GameUpdate, Might and Magic, Vegas Games, and their respective logos, are trademarks and/or service marks of the 3DO Company in the U.S. and other countries.  All other trademarks belong to their respective owners.
+回放
+载入
+删除
+点击海报播放影片。
+播放
+技能等级
+新兵
+老兵
+特种部队
+战斗辅助
+自动战斗
+快速射击
+HUD 按钮
+无限生命
+确认中止
+控制
+音频
+难度
+战斗辅助
+影片
+制作人员
+你想删除这个
+存档吗？删除后无法恢复。
+确认覆盖文件：
+你想让这名军官退役回归
+平民生活吗？他的所有存档都将被删除！
+左键
+右键
+滚轮下
+滚轮上
+啥？
+战斗控制
+杂项
+武器/货物栏位
+（+Shift=仅中士）
+默认
+选择你的呼号！
+选择
+输入你的名字，新兵！
+新游戏
+继续
+保存
+中止任务
+任务目标
+情报
+武器规格
+输入存档名称。
+选择要载入的游戏。
+选择要回放的游戏。
+导演 - David Fruin
+执行制作人 - Kelly Turner
+主程序 - David M. Anderson
+程序
+- Bruce Wilcox
+- Keith Nemitz
+主美术 - Douglas Lee
+美术
+- Phil Barrows
+- Geoff Ogle
+- Walter Cossico
+主策划 - Carson Herrick
+策划
+- David Chang
+- Keith Meyer
+制作
+- Marc Sherrod
+- James Parker
+音频 - Barry Blum
+音乐 - Brian Min
+配音
+- George Joyce
+- Dave Bolick
+- Peter Kepler
+- Ron Seawright
+- Robb Flynn
+测试
+- Randy Smaha
+- Al Dutton
+- Noah Holmes
+- Matt Ranalli
+- Tony Lee
+- James Barron
+- Mark McCunney
+- Micke Parkhurst
+- Dave Fischer
+- Gretel Perez
+- Dan Kingdon
+- Tamsen Mitchell
+- Daniel Shinn
+- James Payne
+特别鸣谢
+- Ann MacDonald
+- Rob Pavey
+- Daniel Dubois
+- Steven Hosey
+- Elizabeth Olsen
+本录音中包含的音效来自 Percussive Adventures Sound Library，由 Christopher Page 为 East West Communications, Inc. 制作。
+无响应%s
+电脑%d
+-- 电脑 --
+-- 开放 --
+在 mplayer.com 上免费联机对战
+在 heat.net 上快速免费在线游戏
+在 zone.com 上免费游玩
+必须将《玩具兵大战：空中战术》光盘放入光驱才能游戏。
+光盘保护
+以最小安装进行多人游戏时，必须将《玩具兵大战：空中战术》光盘放入光驱。
+数据缺失
+游戏类型
+地图
+状态
+玩家名称
+已就绪
+等待中
+确认开始新游戏？

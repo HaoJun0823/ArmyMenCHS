@@ -1,0 +1,205 @@
+#tropical 1 - object.aai
+
+ELEVATION_FACTOR	1
+FLIGHTHEIGHT_FACTOR	5
+
+#Item Flags
+# ITEMFLAG_MAP				0x00000001	(1)
+# ITEMFLAG_AIRMASK			0x00000002	(2)
+# ITEMFLAG_VISBLOCK			0x00000100	(256)
+# ITEMFLAG_HORIZONTAL	  	0x00000400	(1024)
+# ITEMFLAG_WOOD			  	0x00001000
+# ITEMFLAG_TARGETTOP		0x00002000
+# ITEMFLAG_SELFMASK			0x00020000
+# ITEMFLAG_LANDINGPAD		0x00040000	(262144)
+# ITEMFLAG_KEEPCOLLIDE		0x00080000
+# ITEMFLAG_FIRETHROUGH		0x00400000
+# ITEMFLAG_NOHIT			0x00800000
+# ITEMFLAG_WINCHABLE		0x01000000	(16777216)
+# ITEMFLAG_VARIABLEORDER	0x04000000	(67108864)
+
+
+#ObjType		SubType	Ste	Lnk	Fl				HP	Hgt	Mv	Ord		Slp		Arm	Vis	Crush ShootThru Explo
+
+#citadel walls
+Miscellaneous	106		0	0	1				-1	64	15	1000	0.15	0	1	0		0
+Miscellaneous	107		0	0	1				-1	64	15	1000	-4.40	0	1	0		0
+Miscellaneous	108		0	0	1				-1	64	15	1000	0.12	0	1	0		0
+Miscellaneous	109		0	0	1				-1	64	15	1000	-4.30	0	1	0		0
+Miscellaneous	111		0	0	1				-1	1	0	1		0.0		0	1	0		0
+
+#citadel fence
+Miscellaneous	200		0	0	1				-1	30	15	1000	0.49	0	1	0		0
+Miscellaneous	201		0	0	1				-1	30	15	1000	-14.0	0	1	0		0
+Miscellaneous	202		0	0	1				-1	30	15	1000	-6.57	0	1	0		0
+Miscellaneous	203		0	0	1				-1	30	15	1000	-2.07	0	1	0		0
+Miscellaneous	204		0	0	1				-1	30	15	1000	-0.65	0	1	0		0
+Miscellaneous	205		0	0	1				-1	30	15	1000	0.15	0	1	0		0
+Miscellaneous	206		0	0	1				-1	30	15	1000	0.85	0	1	0		0
+Miscellaneous	207		0	0	1				-1	30	15	1000	5.66	0	1	0		0
+	LINK	Miscellaneous	110		Miscellaneous	200		561		-391
+	LINK	Miscellaneous	110		Miscellaneous	201		730		-270
+	LINK	Miscellaneous	110		Miscellaneous	202		777		-147
+	LINK	Miscellaneous	110		Miscellaneous	203		692		191
+	LINK	Miscellaneous	110		Miscellaneous	204		579		265
+	LINK	Miscellaneous	110		Miscellaneous	205		160		266
+	LINK	Miscellaneous	110		Miscellaneous	206		41		168
+	LINK	Miscellaneous	110		Miscellaneous	207		-6		-5
+
+#citadel ziggurat
+Miscellaneous	120		0	0	1				-1	143	15	1000	0.18	0	1	0		0
+Miscellaneous	121		0	0	0x00020401		-1	1	-55	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	121		160
+Miscellaneous	122		0	0	1				-1	143	0	1000	0.18	0	1	0		0
+	LINK	Miscellaneous	101		Miscellaneous	120		0	0
+	LINK	Miscellaneous	101		Miscellaneous	121		0	0
+	LINK	Miscellaneous	101		Miscellaneous	122		0	135
+
+#citadel towers
+Miscellaneous	125		0	0	1				-1	79	15	1000	3.0		0	1	0		0
+Miscellaneous	126		0	0	0x00020401		-1	1	-55	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	126		96
+Miscellaneous	127		0	0	1				-1	16	0	4001	0.0		0	1	0		80
+	EXTRA	Miscellaneous	127		96
+	LINK	Miscellaneous	105		Miscellaneous	125		0	0
+	LINK	Miscellaneous	105		Miscellaneous	126		0	0
+	LINK	Miscellaneous	105		Miscellaneous	127		0	0
+
+Miscellaneous	128		0	0	1				-1	79	15	1000	-2.1	0	1	0		0
+Miscellaneous	129		0	0	0x00020401		-1	1	-55	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	129		96
+Miscellaneous	130		0	0	1				-1	16	0	4001	0.0		0	1	0		80
+	EXTRA	Miscellaneous	130		96
+	LINK	Miscellaneous	104		Miscellaneous	128		0	0
+	LINK	Miscellaneous	104		Miscellaneous	129		0	0
+	LINK	Miscellaneous	104		Miscellaneous	130		0	0
+
+Miscellaneous	131		0	0	1				-1	69	15	1000	0.1		0	1	0		0
+Miscellaneous	132		0	0	0x00020401		-1	1	-55	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	132		96
+Miscellaneous	133		0	0	1				-1	16	0	4001	0.0		0	1	0		80
+	EXTRA	Miscellaneous	133		96
+	LINK	Miscellaneous	103		Miscellaneous	131		0	0
+	LINK	Miscellaneous	103		Miscellaneous	132		0	0
+	LINK	Miscellaneous	103		Miscellaneous	133		0	0
+
+Miscellaneous	134		0	0	1				-1	69	15	1000	0.1		0	1	0		0
+Miscellaneous	135		0	0	0x00020401		-1	1	-55	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	135		96
+Miscellaneous	136		0	0	1				-1	16	0	4001	0.0		0	1	0		80
+	EXTRA	Miscellaneous	136		96
+	LINK	Miscellaneous	102		Miscellaneous	134		0	0
+	LINK	Miscellaneous	102		Miscellaneous	135		0	0
+	LINK	Miscellaneous	102		Miscellaneous	136		0	0
+
+
+#ObjType		SubType	Ste	Lnk	Fl				HP	Hgt	Mv	Ord		Slp		Arm	Vis	Crush ShootThru Explo
+
+#trees
+Miscellaneous	300		0	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	300		1	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	300		2	0	0x00001001		-1	50	0	1000	0.0		16	1	0		0
+
+Miscellaneous	301		0	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	301		1	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	301		2	0	0x00001001		-1	50	0	1000	0.0		16	1	0		0
+
+Miscellaneous	302		0	0	0x00083001		40	0	15	1000	0.0		16	1	50		0	703
+Miscellaneous	302		1	0	0x00083001		40	0	15	1000	0.0		16	1	100		0	703
+Miscellaneous	302		2	0	0x00001001		-1	50	15	1000	0.0		16	1	0		0
+
+Miscellaneous	303		0	0	0x00083001		40	0	15	1000	0.0		16	1	50		0	703
+Miscellaneous	303		1	0	0x00083001		40	0	15	1000	0.0		16	1	100		0	703
+Miscellaneous	303		2	0	0x00001001		-1	50	15	1000	0.0		16	1	0		0
+
+Miscellaneous	304		0	0	0x00083001		40	0	15	1000	0.0		16	1	50		0	703
+Miscellaneous	304		1	0	0x00083001		40	0	15	1000	0.0		16	1	100		0	703
+Miscellaneous	304		2	0	0x00001001		-1	50	15	1000	0.0		16	1	0		0
+
+Miscellaneous	305		0	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	305		1	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	305		2	0	0x00001001		-1	50	0	1000	0.0		16	1	0		0
+
+Miscellaneous	306		0	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	306		1	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	306		2	0	0x00001001		-1	50	0	1000	0.0		16	1	0		0
+
+Miscellaneous	307		0	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	307		1	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	307		2	0	0x00001001		-1	50	0	1000	0.0		16	1	0		0
+
+Miscellaneous	308		0	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	308		1	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	308		2	0	0x00001001		-1	50	0	1000	0.0		16	1	0		0
+
+Miscellaneous	309		0	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	309		1	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	309		2	0	0x00001001		-1	50	0	1000	0.0		16	1	0		0
+
+Miscellaneous	310		0	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	310		1	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	310		2	0	0x00001001		-1	50	0	1000	0.0		16	1	0		0
+
+Miscellaneous	311		0	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	311		1	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	311		2	0	0x00001001		-1	50	0	1000	0.0		16	1	0		0
+
+Miscellaneous	312		0	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	312		1	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	312		2	0	0x00001001		-1	50	0	1000	0.0		16	1	0		0
+
+Miscellaneous	313		0	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	313		1	0	0x00083001		40	0	15	1000	0.0		16	1	0		0	703
+Miscellaneous	313		2	0	0x00001001		-1	50	0	1000	0.0		16	1	0		0
+
+
+#ObjType		SubType	Ste	Lnk	Fl				HP	Hgt	Mv	Ord		Slp		Arm	Vis	Crush ShootThru Explo
+#destroyer south
+Miscellaneous	501		0	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		1	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		2	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		3	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		4	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		5	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		6	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		7	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		8	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		9	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		10	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+
+#destroyer east
+Miscellaneous	503		0	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		1	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		2	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		3	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		4	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		5	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		6	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		7	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		8	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		9	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		10	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+
+

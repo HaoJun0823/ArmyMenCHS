@@ -1,0 +1,379 @@
+// Tropical Mission 1
+// Carson Herrick
+
+INCLUDE ..\scripts\common.txt
+INCLUDE ..\scripts\treefxTp2.txt
+INCLUDE ..\scripts\T1destroyers.txt
+
+PRELOADSPRITE 43 501 0
+PRELOADSPRITE 43 501 1
+PRELOADSPRITE 43 501 2
+PRELOADSPRITE 43 501 3
+PRELOADSPRITE 43 501 4
+PRELOADSPRITE 43 501 5
+PRELOADSPRITE 43 501 6
+PRELOADSPRITE 43 501 7
+PRELOADSPRITE 43 501 8
+PRELOADSPRITE 43 501 9
+PRELOADSPRITE 43 501 10
+
+PAD padSub20	20	submarine > 0
+PAD padSub21	21	submarine > 0
+PAD padSub22	22	submarine > 0
+PAD padSub23	23	submarine > 0
+PAD padSub24	24	submarine > 0
+PAD padSub25	25	submarine > 0
+PAD padSub26	26	submarine > 0
+PAD padSub27	27	submarine > 0
+PAD padSub28	28	submarine > 0
+PAD padSub29	29	submarine > 0
+PAD padSub30	30	submarine > 0
+PAD padSub31	31	submarine > 0
+PAD padSub32	32	submarine > 0
+PAD padSub33	33	submarine > 0
+PAD padSub34	34	submarine > 0
+PAD padSub35	35	submarine > 0
+
+PAD subTouch20	20	submarine
+PAD subTouch21	21	submarine
+PAD subTouch22	22	submarine
+PAD subTouch23	23	submarine
+PAD subTouch24	24	submarine
+PAD subTouch25	25	submarine
+PAD subTouch26	26	submarine
+PAD subTouch27	27	submarine
+PAD subTouch28	28	submarine
+PAD subTouch29	29	submarine
+PAD subTouch30	30	submarine
+PAD subTouch31	31	submarine
+PAD subTouch32	32	submarine
+PAD subTouch33	33	submarine
+PAD subTouch34	34	submarine
+PAD subTouch35	35	submarine
+
+
+LIST GreyFleet { gsub gsub_0 gsub_1 gsub_2 gsub_3 gsub_4 gsub_5 gsub_6 gsub_7 gsub_8 gsub_9 gsub_10 gsub_11 gsub_12 }
+LIST GreenRunnerSquad { runner runner_0 runner_1 runner_2 runner_3 runner_4 runner_5 runner_6 runner_7 runner_8 runner_9 runner_10 runner_11 runner_12 runner_13 runner_14 runner_15 runner_16 runner_17 runner_18 runner_19 runner_20 runner_21 runner_22 runner_25 runner_26 runner_27 runner_28 runner_29 runner_30 }
+
+VARIABLE NumGreySubs 0 
+VARIABLE NumGreyFlies 0
+VARIABLE NumGreyWasps 0
+VARIABLE NumGreyFleas 0
+VARIABLE NumGreyAnts 0
+VARIABLE NumGreenGuys 0
+
+VARIABLE destroyerwarning 0
+VARIABLE afterintro 0
+
+
+//***SETUP MISSION***//
+IF startup1 THEN
+	TRIGGER setupgreen,
+	TRIGGER setupgoodies,
+//	TRIGGER setupflame,
+	TRIGGER setupsounds,
+	TRIGGERDELAY 100 showmissionobjective
+
+IF showmissionobjective THEN
+	SETMISSIONINFO tp11,
+	PLAYTALKINGHEAD 105,
+	PLAYTALKINGHEAD 100,
+	PLAYTALKINGHEAD 114,
+	PLAYTALKINGHEAD 101,
+	PLAYTALKINGHEAD 115,
+	PLAYTALKINGHEAD 102,
+	PLAYTALKINGHEAD 116,
+	PLAYTALKINGHEAD 117,
+	PLAYTALKINGHEAD 118,
+	PLAYTALKINGHEAD 119
+
+IF talkingheaddone captain TESTVAR afterintro = 0 THEN
+	SETVAR afterintro 1,
+	SETNPC captain 0,
+	TRIGGER setupgrey,
+	TRIGGER greenrunners
+
+IF setupgreen THEN
+	CREATECOPTER bigbertha captain (2170,2770,500) green,
+	SETNPC captain 1,
+	SETFACING captain 98,
+	SETAIRMAP captain 1,
+	TRIGGER setupgroundforces,
+	TRIGGER setupdestroyers
+
+IF setupgrey THEN
+	TRIGGER createsubs,
+	TRIGGER delayinsects
+	
+IF setupgoodies THEN
+	CREATEPOWERUP SB0 sonarbuoy captain 8, PICKUPITEM captain SB0,
+	CREATEPOWERUP DC0 depthcharge captain 999, PICKUPITEM captain DC0,
+	CREATEPOWERUP heatray (2267,3079) 999,
+	CREATEPOWERUP sidegun (2724,2476),
+	CREATEPOWERUP ecmchaff (2592,1648),
+	CREATEPOWERUP ecmchaff (1464,1207),
+	CREATEPOWERUP radarmissile (1696,1689) 999,
+	CREATEPOWERUP food (2249,1102) 1,
+	CREATEPOWERUP clusterbomb (2664,1184) 999,
+	CREATEPOWERUP clusterbomb (1989,1018) 3,
+	CREATEPOWERUP swarmmissile (2845,2077) 10,
+	CREATEPOWERUP depthcharge (1331,1494) 999,
+	CREATEPOWERUP insecticide (1898,2210) 4,
+	CREATEPOWERUP thrownfirecracker (2167,2135) 10,
+	CREATEPOWERUP napalmbomb (2160,2432) 12,
+	CREATEPOWERUP sonarbuoy (2500,2286) 20,
+	CREATEPOWERUP groundmissile (2227,2787) 999,
+	CREATEPOWERUP weaponupgrade (2548,1460),
+	CREATEPOWERUP partialarmor (1414,1912),
+	CREATEPOWERUP partialarmor (1814,1881),
+	CREATEPOWERUP partialarmor (1714,2261),
+	CREATEPOWERUP partialarmor (1844,2841),
+	CREATEPOWERUP partialarmor (1314,2111),
+	CREATEPOWERUP partialarmor (1814,2811),
+	CREATEPOWERUP armorboost (1750,1414),
+	CREATEPOWERUP fullarmor (1419,2330)
+
+IF setupflame THEN
+	MAKEFLAME (1974,2151) 20000,
+	MAKEFLAME (1943,2278) 20000,
+	MAKEFLAME (1974,2226) 20000,
+	MAKEFLAME (1993,2143) 20000,
+	MAKEFLAME (2094,2159) 20000,
+	MAKEFLAME (2124,2176) 20000,
+	MAKEFLAME (2074,2243) 20000,
+	MAKEFLAME (2094,2302) 20000,
+	TRIGGERDELAY 20000 setupflame
+
+IF setupsounds THEN
+	TRIGGER surfsound,
+	TRIGGER birdsound
+
+//***SETUP MISSION***//
+
+
+//***SUBMARINES***//
+
+MACRO createsubsMacro 2
+{
+	IF createsubs TESTVAR Difficulty = @1 AND NumGreySubs < @2 THEN
+		ADDVAR NumGreySubs 2,
+		CREATEUNIT gsub submarine padSub26 grey,
+		SELECTINVENTORYITEM lastcreated 2,
+		TRIGGER ordersub26 lastcreated,
+		CREATEUNIT gsub submarine padSub27 grey,
+		SELECTINVENTORYITEM lastcreated 2,
+		TRIGGER ordersub27 lastcreated,
+		TRIGGERDELAY 10000 createsubs
+
+	IF createsubs TESTVAR Difficulty = @1 AND NumGreySubs >= @2 THEN
+		TRIGGERDELAY 1000 createsubs
+}
+EXPAND createsubsMacro ( 0 5 )
+EXPAND createsubsMacro ( 1 7 )
+EXPAND createsubsMacro ( 2 9 )
+
+IF PADON subTouch21 THEN
+	TRIGGER selectsubweapon me,
+	ORDER me GOTO (954,433) INMODE ATTACK
+
+IF PADON subTouch33 THEN
+	TRIGGER selectsubweapon me,
+	ORDER me GOTO (167,1494) INMODE ATTACK
+
+IF selectsubweapon THEN RANDOM
+	SELECTINVENTORYITEM me 1,
+	SELECTINVENTORYITEM me 2
+
+MACRO ordersubMacro 2
+{
+	IF PADON subTouch@1 THEN
+		ORDER me GOTO @2 INMODE DEFEND		
+
+	IF ordersub@1 THEN
+		ORDER me GOTO @2 INMODE DEFEND
+}
+EXPAND ordersubMacro ( 26 padSub25 )
+EXPAND ordersubMacro ( 25 padSub24 )
+EXPAND ordersubMacro ( 24 padSub23 )
+EXPAND ordersubMacro ( 23 padSub22 )
+EXPAND ordersubMacro ( 22 padSub21 )
+
+EXPAND ordersubMacro ( 27 padSub28 )
+EXPAND ordersubMacro ( 28 padSub29 )
+EXPAND ordersubMacro ( 29 padSub30 )
+EXPAND ordersubMacro ( 30 padSub31 )
+EXPAND ordersubMacro ( 31 padSub32 )
+EXPAND ordersubMacro ( 32 padSub33 )
+
+IF KILLED GreyFleet THEN
+	ADDVAR NumGreySubs -1
+
+//***SUBMARINES***//
+
+
+//***RANDOM INSECTS***//
+
+IF delayinsects TESTVAR Difficulty = 0 THEN
+	TRIGGERDELAY 20000 orderinsects //was 20 BW
+
+IF delayinsects TESTVAR Difficulty = 1 THEN
+	TRIGGERDELAY 15000 orderinsects
+
+IF delayinsects TESTVAR Difficulty = 2 THEN
+	TRIGGERDELAY 10000 orderinsects
+
+IF orderinsects THEN
+	TRIGGER randominsect,
+	TRIGGER delayinsects
+
+IF randominsect THEN SEQUENTIAL
+	TRIGGER randomwaspcount,
+	TRIGGER randomflycount,
+    TRIGGER randomantcount,
+	TRIGGER randomfleacount,
+	TRIGGER randomantcount
+
+IF randomwaspcount TESTVAR NumGreyWasps < 10 THEN
+	ADDVAR NumGreyWasps 1,
+	CREATEINSECT mutantwasp mwasp (2048,4080,200) grey,
+	ORDER lastcreated GOTO (2083,2105) INMODE ATTACK
+
+IF randomflycount TESTVAR NumGreyFlies < 10 THEN
+	ADDVAR NumGreyFlies 1,
+	CREATEINSECT mutantfly mfly (2048,16,200) grey,
+	ORDER lastcreated GOTO (2083,2105) INMODE ATTACK
+
+IF randomantcount TESTVAR NumGreyAnts < 20 THEN
+	ADDVAR NumGreyAnts 2,
+	CREATEINSECT mutantfireant mfireant (1909,1600,0) grey,
+	ORDER lastcreated GOTO (2083,2105) INMODE ATTACK,
+	CREATEINSECT mutantfireant mfireant (2242,2778,0) grey,
+	ORDER lastcreated GOTO (2083,2105) INMODE ATTACK
+
+
+IF randomfleacount TESTVAR NumGreyFleas < 10 THEN
+	ADDVAR NumGreyFleas 1,
+	CREATEINSECT mutantflea mflea (2200,1075,0) grey,
+	ORDER lastcreated GOTO (2540,1249) INMODE ATTACK
+
+//***RANDOM INSECTS***//
+
+
+//*** GREEN TROOPS ***//
+
+IF setupgroundforces THEN
+	TRIGGER greenlookouts
+
+IF greenlookouts THEN
+	CREATEUNIT lookout1_1 bazookaman (1671,2400,106) green bazooka, SETAIMODE lastcreated defend,
+	CREATEUNIT lookout2_1 bazookaman (2249,2485,106) green bazooka, SETAIMODE lastcreated defend,
+	CREATEUNIT lookout3_1 bazookaman (2360,2020,106) green bazooka, SETAIMODE lastcreated defend,
+	CREATEUNIT lookout4_1 bazookaman (1773,1910,106) green bazooka, SETAIMODE lastcreated defend,
+	CREATEUNIT lookout1_2 rifleman (1676,2421,106) green heavyMG, SETAIMODE lastcreated defend,
+	CREATEUNIT lookout2_2 rifleman (2274,2531,106) green heavyMG, SETAIMODE lastcreated defend,
+	CREATEUNIT lookout3_2 rifleman (2375,1993,106) green heavyMG, SETAIMODE lastcreated defend,
+	CREATEUNIT lookout4_2 rifleman (1801,1939,106) green heavyMG, SETAIMODE lastcreated defend,
+	CREATEUNIT lookout1_3 stingerguy (1706,2393,106) green stingermissile, SETAIMODE lastcreated defend,
+	CREATEUNIT lookout2_3 stingerguy (2285,2488,106) green stingermissile, SETAIMODE lastcreated defend,
+	CREATEUNIT lookout3_3 stingerguy (2415,2016,106) green stingermissile, SETAIMODE lastcreated defend,
+	CREATEUNIT lookout4_3 stingerguy (1827,1904,106) green stingermissile, SETAIMODE lastcreated defend,
+	CREATEUNIT sting stingerguy (2036,2204,170) green stingermissile, SETAIMODE lastcreated defend
+
+IF sendgreensquad TESTVAR NumGreenGuys > 0 THEN
+	TRIGGER runneralert,
+	CREATEUNIT runner rifleman (2100,2300) green rifle, ORDER lastcreated GOTO (1800,1130) INMODE DEFEND,
+	CREATEUNIT runner rifleman (2100,2300) green rifle, ORDER lastcreated GOTO (1800,1130) INMODE DEFEND,
+	CREATEUNIT runner rifleman (2100,2300) green rifle, ORDER lastcreated GOTO (1800,1130) INMODE DEFEND,
+	TRIGGERDELAY 60000 sendgreensquad
+
+IF sendgreensquad TESTVAR NumGreenGuys <= 0 THEN
+	TRIGGERDELAY 1 sendsarge
+
+IF sendsarge THEN
+	PLAYTALKINGHEAD 123,
+	CREATEUNIT sarge rifleman (2100,2300) green rifle,
+	ORDER lastcreated GOTO (1800,1130) INMODE DEFEND
+
+IF runneralert THEN SEQUENTIAL
+	PLAYTALKINGHEAD 120,
+	PLAYTALKINGHEAD 122,
+	PLAYTALKINGHEAD 47
+
+MACRO greenrunnersMacro 2
+{
+	IF greenrunners TESTVAR Difficulty = @1 THEN
+		SETVAR NumGreenGuys @2,
+		TRIGGERDELAY 20000 sendgreensquad
+}
+EXPAND greenrunnersMacro ( 0  9 )
+EXPAND greenrunnersMacro ( 1 12 )
+EXPAND greenrunnersMacro ( 2 15 )
+
+UNTIL 2 REPEAT 1 BY 1
+{
+IF DROPPED GreenRunnerSquad TESTVAR GETPADSTATUS padDest$ = 1 THEN
+	UNDEPLOY me,
+	ADDVAR NumGreenGuys -1
+	
+IF DROPPED sarge TESTVAR GETPADSTATUS padDest$ = 1 THEN
+	PLAYTALKINGHEAD 29,
+	PLAYTALKINGHEAD 48,
+	UNDEPLOY sarge,
+	TRIGGERDELAY 10000 GREENWINS
+}
+//*** GREEN TROOPS ***//
+
+
+//***AMBIENT SOUNDS***//
+
+IF surfsound THEN
+	playsound wavesonbeach.wav (2048,2048) 8 1 1 1000
+
+IF birdsound THEN
+	playsound seagulls.wav (0,0) 7 1 0,
+	TRIGGER repeatbirdsound
+
+IF repeatbirdsound THEN RANDOM
+	TRIGGERDELAY 10000 birdsound,
+	TRIGGERDELAY 30000 birdsound,
+	TRIGGERDELAY 60000 birdsound
+
+//***AMBIENT SOUNDS***//
+
+
+//***NOTIFY***//
+
+//IF killallsubs TESTVAR NumGreySubs <= 0 THEN
+//	TRIGGER orderdestroyers,
+//	PLAYTALKINGHEAD 37
+
+//IF KILLED grimm THEN
+//	PLAYTALKINGHEAD 112,
+//	TRIGGERDELAY 10000 TANWINS
+
+IF HIT D1gunLIST TESTVAR destroyerwarning = 0 THEN
+	SETVAR destroyerwarning 1,
+	PLAYTALKINGHEAD 121
+
+IF HIT D2gunLIST TESTVAR destroyerwarning = 0 THEN
+	SETVAR destroyerwarning 1,
+	PLAYTALKINGHEAD 121
+
+IF KILLED D1gunLIST TESTVAR destroyerwarning = 1 THEN
+	SETVAR destroyerwarning 2,
+	PLAYTALKINGHEAD 124
+
+IF KILLED D2gunLIST TESTVAR destroyerwarning = 1 THEN
+	SETVAR destroyerwarning 2,
+	PLAYTALKINGHEAD 124
+
+IF checkforwin TESTVAR rescueofficers >= 2 THEN
+	PLAYTALKINGHEAD 51,
+	TRIGGERDELAY 5000 GREENWINS
+
+IF destroyerkilled THEN
+	SETOBJSTATE me osSink,
+	PLAYTALKINGHEAD 113,
+	TRIGGERDELAY 10000 TANWINS
+
+//***NOTIFY***//

@@ -1,0 +1,161 @@
+Sam|Sam061c.wav|You went AWOL before finishing the mission!
+Sam|Sam062c.wav|Captain, look at your radar.
+Sam|Sam063c.wav|Nice flying, Captain...!
+Sam|Sam064a.wav|Be on the lookout for air currents.
+Sam|Sam065b.wav|Wrong way, Captain!
+Sam|Sam066a.wav|That's it!
+Sam|Sam067c.wav|That wouldn't be wise, Captain.
+Sam|Sam068b.wav|Take cover.
+Sam|Sam069d.wav|Move it out, boys.
+Sam|Sam070b.wav|Fall back!
+Sam|Sam071b.wav|Stay focused, Captain.
+Sam|Sam072a.wav|Captain, remember your objective!
+Sam|Sam073b.wav|Tan is on the run.
+Sam|Sam074a.wav|Tan is retreating, Captain.
+Sam|Sam075a.wav|Track them down, Blade.
+Sam|Sam076b.wav|You can't do that, sir.
+Sam|Sam077b.wav|Now take that to Sarge. 
+Sam|Sam078b.wav|Hurry, Blade.
+Sam|Sam079a.wav|I believe that is not allowed, sir.
+Sam|Sam094b.wav|Rest in peace, Sergeant Hawk.
+Sam|Sam095b.wav|Sarge didn't make it back!
+Sam|Sam096c.wav|Sarge is dead, Captain!
+Sam|Sam097b.wav|Sorry, Captain - Sarge was killed in action.
+Sam|Sam098b.wav|Captain didn't make it.
+Sam|Sam099c.wav|Rest in peace, Captain.
+Sam|Sam100c.wav|Captain didn't make it back!
+Sam|Sam101b.wav|Captain was killed in action!
+Sam|Sam102b.wav|Captain, do you read me? Blade? Come in, Captain Blade...
+Sarge|Sar048c.wav|Thanks!
+Sarge|Sar049c.wav|Thank you, Captain.
+Sarge|Sar050b.wav|Hit the deck!
+Sarge|Sar051b.wav|What the...?
+Sarge|Sar052c.wav|I'm taking fire!
+Sarge|Sar053f.wav|Can't...take much more...
+Sarge|Sar054b.wav|Ahhh, that takes the sting out of it.
+Sarge|Sar055b.wav|Holy hand grenades! 
+Sarge|Sar056a.wav|Trooper down!
+Sarge|Sar057a.wav|I'm ready to leave this sector.
+Sarge|Sar058a.wav|Awaiting orders.
+Sarge|Sar059b.wav|Requesting air support.
+Sarge|Sar060b.wav|Not now, Captain!
+Sarge|Sar061c.wav|We're under fire here!
+Sarge|Sar062c.wav|Things are getting hot here.
+Sarge|Sar063c.wav|We need some cover here!
+Sarge|Sar064b.wav|Help us out here, Captain.
+Sarge|Sar065a.wav|They just keep coming!
+Sarge|Sar066b.wav|Blade, we need support fast! 
+Sarge|Sar067f.wav|Blade, we need evac now!
+Grimm|Col038a.wav|Well done, men!
+Grimm|Col040a.wav|Good work, men.
+Grimm|Col041c.wav|Victory is ours!
+Grimm|Col042a.wav|As I always say, the way to win the war is to never lose!
+Grimm|Col043a.wav|Don't give up man! You're never beaten until you admit it!
+Grimm|Col044a.wav|We've got to press them in the air and on the ground. It's time for each of us to look inside ourselves and see what kind of plastic we're made of.  Are we hollow men?  Or are we plastic soldiers?!
+Plastro|Pla008b.wav|This island is mine - all mine!
+Plastro|Pla009f.wav|I'll get you, Blade!
+Plastro|Pla010d.wav|Death can be more exciting than life. Want to try death, Captain?
+Plastro|Pla011a.wav|You'll never defeat us!
+Plastro|Pla012b.wav|Is that all you've got?
+Plastro|Pla013b.wav|You seem lost, Captain...confused...
+Captain|Cap036b.wav|Gotcha!
+Captain|Cap049c.wav|Damn! I've got to move faster.
+Captain|Cap056b.wav|Thanks, Sarge.
+Captain|Cap059a.wav|I don't like the looks of this!
+Captain|Cap061f.wav|Strange...!
+Captain|Cap062b.wav|Glad that's over!
+Captain|Cap064b.wav|Why do they insist on getting killed?
+Captain|Cap065c.wav|Eat my dust!
+Captain|Cap069c.wav|I'm on my way.
+Captain|Cap070c.wav|I'll be there when I get a chance.
+Captain|Cap075c.wav|Excellent!
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|THIS SHOULD BE LINE #99 (STARTING FROM ZERO)
+Sam|Sam138a.wav|The Tan are building a chemical weapon on the desk. Get Sarge and his men up there so they can secure the area.
+Sam|Sam038c.wav|Looks like they're guarding something down there. Don't tangle with it until we have more info...!
+Sarge|Sar029d.wav|They've taken almost all the chemical drums.
+Captain|Cap072c.wav|Something's wrong...!
+Sarge|Sar030b.wav|Look who I found. Where are the chemicals, Grey?
+Grey Spy|Gry001d.wav|(notused)The chemicals are on the floor. One is guarded by a combination device. The other is in a tent on the colored mat, but the red and yellow areas are tripwired. And the guards will blow it up if you try anything! 
+Sarge|Sar033c.wav|It's not easy being Green.
+Sarge|Sar034a.wav|Fellows, I've got an idea. Sorry, Grey; we're gonna need your clothes.
+Sarge|Sar035b.wav|What the--?!
+Sam|Sam039c.wav|Just one more, Captain.
+Sam|Sam035c.wav|Captain, that device apparently requires you to follow its lead.
+Sam|Sam036e.wav|Blade, I think that thing wants you to echo it.
+Sam|Sam066c.wav|That's it...!
+Sam|Sam140b.wav|Track those Tan down, Blade.
+Sarge|Sar057a.wav|I'm ready to leave this sector.
+Sarge|Sar015d.wav|Hurry it up, Captain! We've got to get to that landing zone.
+Sam|Sam034c.wav|Good job, Captain, but you've still got work to do!
+Sam|Sam141a.wav|Get all three chemicals and drop them in the container on the desk. These chemicals should combine to make a potent volcano powder weapon that we can use in our attack on the Tan.
+Sam|sam040c.wav|We can't win. Too many of our men have died in battle.
+Sam|sam041b.wav|Tan units destroyed a critical mission objective at the tent!
+Sam|sam043c.wav|Tan units destroyed one of the chemical drums.
+Sarge|Sar036e.wav|Kill the troops near that shoe and get me to that landing zone behind it. I'll sneak in and eliminate the guards.
+Sarge|Sar038b.wav|This doesn't look so good.
+Sarge|Sar037a.wav|The guards are down! Cover me while I make a run for the landing zone!
+Sam|sam037e.wav|Good work, Captain! Get that drum to the mixing bowl on the desk!
+Sam|sam144b.wav|New orders! After you destroy those cargo trucks, you need to eliminate all of the mutant insects as well. Good luck!
+Sam|sam053c.wav|The convoy is finished! Now go through the portal -- Colonel Grimm needs you pronto!
+Sam|sam014b.wav|Good flying, Captain!
+Sam|sam042c.wav|The convoy made it through, sir. I'm sorry.
+Sam|sam056c.wav|He's waiting for you to shoot a stone onto the board.
+Sam|sam055a.wav|Looks like an opportunity to play Go against the Tan. I've played this board game before; you have to surround empty intersections to win.
+Sam|sam059c.wav|Sorry, Captain.
+Sam|sam058b.wav|Tie game, Captain.
+Sam|sam057b.wav|Shoot into your bowl to pass, Captain.
+Sam|sam048c.wav|Excellent, Captain. Get Sarge on board and then winch that thing up.
+Sarge|Sar039c.wav|Thanks, Ca-- What...?!? The boys just spotted a Tan convoy!
+Sam|sam051b.wav|Sorry, Cap; you just pulled convoy duty. I guess you'll miss the big dance. Drop the troops on the desk; one of your buddies will fly them in for the final operation.
+Sam|sam046b.wav|Excellent. Sarge will deliver the Plastic Volcano Powder to Colonel Grimm. Now we have to take care of that convoy.
+Sam|sam054b.wav|Blade, it's true -- Colonel Grimm's trapped and needs your help. Stop the convoy and take the portal.
+Captain|Cap046i.wav|Hmm -- he just shot a stone onto the board.
+Plastro|pla006a.wav|Give it up, flyboy. I've already taken care of your pathetic colonel.
+Captain|Cap045c.wav|Plastro!
+Plastro|pla007d.wav|You can change your radio frequencies, but you can't change your fate!
+Sam|sam052a.wav|You're not going to make it!
+Sam|Sam044c.wav|Too late! Sarge's men never made it to their objective.
+Sam|sam063c.wav|Nice flying, Captain.
+Sam|sam049b.wav|Good job, Captain. Winch that thing up and give it to Sarge.
+Captain|cap018b.wav|A couple more like that should do the trick.
+Sarge|sar070x.wav|We're taking too many casualties!
+Sarge|sar014a.wav|Blade, we need to get to that LZ.
+Captain|cap110dc.wav|(spots something) Aha!
+Sarge|sar072c.wav|Captain, we have to get up to that desk.
+Sarge|sar073b.wav|(spots something) Hold on, Blade....
+Sarge|sar074c.wav|There has to be a way to get to that tent... we'll need to use stealth.
+Sam|sam142a.wav|Drop that chemical into the container, Captain.
+Sam|sam143c.wav|Captain, drop off your men at the LZ on the desk right now!
+Sam|sam012alt.wav|Now we'll never know what the Tan are planning!
+Sam|sam047b.wav|Destroy all of the convoy trucks, Captain.
+Sam|sam154dc.wav|You've still got work to do...! Shoot into your bowl, Captain.
+Sam|sam139a.wav|Check your F1 map for more information.
+Sam|Sam060b.wav|You need to hold on to that.

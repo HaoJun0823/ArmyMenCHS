@@ -1,0 +1,57 @@
+
+
+/// EXPLOSION SETUP ///
+
+MACRO edgeMACRO 3
+{
+	IF edgeexplosion THEN
+		SETVAR explosionID_1 @2,
+		SETVAR explosionID_2 @3
+}
+EXPAND edgeMACRO ( 1 700 701 )
+
+IF selectEDGEexplosion THEN RANDOM
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY) REFVAR explosionID_1,
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY) REFVAR explosionID_2
+
+/// EXPLOSION SETUP ///
+
+
+/// EXPLOSION CREATION ///
+
+IF edgepoof1 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 10, ADDVAR childY -30,
+	TRIGGER selectEDGEexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 34, ADDVAR childY 10,
+	TRIGGER selectEDGEexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 60, ADDVAR childY -104,
+	TRIGGER selectEDGEexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 73, ADDVAR childY -125,
+	TRIGGER selectEDGEexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 80, ADDVAR childY 47,
+	TRIGGER selectEDGEexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 89, ADDVAR childY 13,
+	TRIGGER selectEDGEexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 102, ADDVAR childY -15,
+	TRIGGER selectEDGEexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 115, ADDVAR childY -75,
+	TRIGGER selectEDGEexplosion
+
+/// EXPLOSION CREATION ///

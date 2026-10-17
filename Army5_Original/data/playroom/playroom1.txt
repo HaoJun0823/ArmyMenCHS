@@ -1,0 +1,2325 @@
+// AMAA Playroom 1
+// David Chang
+//
+// SOUND----
+// ch 1 pri 2 = planeoverhead.wav
+// ch1 pri 1 = sounds of pain for VDG/bunsen
+// ch 4 pri 1 = chemicals sd
+// ch 4 pri 2 = vdg zap sound
+// ch 3 p 2 = bunsen sound
+// ch 3 pri 1 = go game
+
+INCLUDE ..\scripts\common.txt
+INCLUDE ..\scripts\prCOM.txt
+INCLUDE ..\scripts\go.txt
+// ======= PADS =======
+PAD padStartPP 15 captain >0
+pad padGuyOnDesk 1 green trooper
+pad padSargeOnDesk 1 sarge >0
+pad pad3GuysOnDesk 1 green trooper = 3
+pad pad4GuysOnDesk 1 green trooper = 4	// must get 4 troops to desk
+pad pad5GuysOnDesk 1 green trooper = 5
+pad pad6GuysOnDesk 1 green trooper = 6
+pad pad7GuysOnDesk 1 green trooper = 7
+pad pad8GuysOnDesk 1 green trooper = 8
+pad padCapOnDesk 1 captain > 0
+pad padGreenReadyAtTbox 3 green trooper > 0
+pad padBunsenAccess 4 captain >0
+pad padBunsenRaised 5 captain >0
+pad padSlowTroops 25 trooper
+pad padGoGun 30 green trooper
+pad padGoBaton 65 green trooper
+pad padGoLZ 35 green trooper
+pad padSargeGoLZ 35 sarge
+pad padRedirect 55 green trooper // traffic control in toybox - away from gun handle
+pad padVDG 40 captain > 0		// vandegraaf generator shock zone
+pad padBunsen 45 captain > 0
+pad padboobied 50 ground unit
+pad padRedirect2 60 green trooper // toybox - away from edge of Pan the Gold
+pad padNearMatLeft 82 tan unit
+pad padNearMatRt 83 tan unit
+pad padCapNearMatLeft 82 captain>0
+pad padCapNearMatBotLeft 84 captain>0
+pad padNearMatBotLeft 84 tan unit
+pad padCapNearMatrt 83 captain>0
+pad padTanNearTentVial 81 tan unit
+pad padBlueSargeAtTent 81 sarge>0
+pad padCapAtTent 81 captain>0
+pad padSargeVisible 2 tan unit > 0
+pad padCapVisible 2 captain > 0
+pad padBehindShoe 80 sarge>0
+pad padDoorAvoid 91 trooper
+pad padTentGuardBorder 110 tan unit
+pad padbowl 115 captain	>0		// mxing bowl
+pad padSargenearspy 120 sarge>0
+pad padCapatCapPortal 125 captain>0
+pad padCapnearcapportal 130 captain >0
+pad padDeskPupLZ 10 weapon > 0 // pad 10 = desk lz
+pad padMatLZ 140 captain > 0 
+pad padMatPupLZ 140 weapon > 0
+pad padMatPup1 141 weapon > 0
+pad padMatPup2 142 weapon > 0
+pad padToyboxLZ 150 captain > 0 
+pad padToyboxPupLZ 150 weapon > 0
+pad padToyboxPup1 151 weapon > 0
+pad padToyboxPup2 152 weapon > 0
+pad padToyboxPup3 153 weapon > 0
+pad padCtrLZ 160 captain > 0 	
+pad padCtrPupLZ 160 weapon > 0
+pad padCtrPup1 161 weapon > 0
+pad padCtrPup2 162 weapon > 0
+pad padCtrPup3 163 weapon > 0
+pad padNearToybox 170 captain > 0
+pad padDeskPup1 171 weapon > 0
+pad padDeskPup2 172 weapon > 0
+pad padDeskPup3 173 weapon > 0
+pad padSargeSoapbox 182 sarge > 0
+pad padSpySoapbox 183 spy > 0
+
+// ======= VARS =======
+variable boolbunlit 0 //for bunsen burner
+variable varGreenInCop2 0
+variable varwaiting 0
+variable boolBunSwitchBuffer 0
+variable varexplox 0
+variable boolDeskclear 0
+variable varexploy 0
+variable boolZapOn 0
+VARIABLE varVDGamphitct 0
+variable varTroopsOnboard 0
+variable varDeskDead 0
+VARIABLE boolventdead 0
+//VARIABLE varVDGlhitct 0
+VARIABLE varGreenDead 0
+VARIABLE boolPPhittable 0
+VARIABLE varPPcombo1 0		// digit for Pattern Panic
+VARIABLE varPPcombo2 0	
+variable boolKillVial 0
+VARIABLE varPPcombo3 0
+VARIABLE varPPcombo4 0
+VARIABLE varPPcombo5 0	
+VARIABLE varPPcombo6 0
+VARIABLE boolPPAttract 0
+VARIABLE boolPPGameStarted 0
+variable boolramboed 0
+variable varPPlosses 0
+variable constPPspeed 1600	// speed of PPanic -- master. Change here to tune.
+VARIABLE varPPtemp 0		// used to calc values
+VARIABLE varPPspeed 0		// to calc speed of playback
+VARIABLE varPPdigit 0		// which digit user has solved up to
+VARIABLE varPPcount 0		// temp for ratcheting thru PP digits; also where user is in current guess seq
+VARIABLE vartempx 0
+VARIABLE vartempy 0
+// ======= LISTS ======
+list listConvoy {convoy1 convoy2 convoy3 convoy4 convoy5}
+LIST listBigDieObjs {objsneaker}
+list listdesktan {mbox1 desk1 desk2 desk3 desk4 desktank desk5 desk6 desk7}
+LIST listsmallDieObjs {objTesttubes objBooks objBookend}
+// spitfire should have custom explo
+LIST listgreentroops {"private cosico" "corporal barrows" "private goldman" "private lopez" "private mahlab" "private gupta" "private meyer"}
+LIST listMatTanLf {matlf1 matlf2 matlf3 matlf4 matlf5} // no resurrect on lf6 or PP guys
+LIST listMatTanRt {matrt1 matrt2 matrt3 matrt4 matrt5} // no resurrect on jeep
+LIST listtentguards {___tent1 ___tent2 ___tent3}
+//=========
+
+macro dudeorama 2
+{
+pad pad@2OnDesk 1 @1 > 0 // pads for every trooper, using #s 1-8 for padname
+
+if evtUnbeaconDeskGuys
+	testvar getpadstatus pad@2OnDesk = 1 then
+	setaipose @1 stand,
+	setaipose @1 none,
+	setvar vartempx getx @1,
+	setvar vartempy gety @1,
+	order @1 goto (refvar vartempx, refvar vartempy) inmode defend
+}
+expand dudeorama (Sarge 1)
+expand dudeorama ("private cosico" 2)
+expand dudeorama ("corporal barrows" 3)
+expand dudeorama ("private goldman" 4)
+expand dudeorama ("private lopez" 5)
+expand dudeorama ("private mahlab" 6)
+expand dudeorama ("private gupta" 7)
+expand dudeorama ("private meyer" 8)
+
+//===================
+
+OBJECT objzap // vdg zap
+    STATE oszapping
+		FRAME 100 0
+		FRAME 100 3
+		FRAME 100 2
+		FRAME 100 4
+		FRAME 100 1
+		FRAME 100 2
+		FRAME 100 4
+		FRAME 100 3
+		FRAME 100 0
+		FRAME 100 1
+		FRAME 10 1	// dummy
+			setobjstate objzap oszapping
+//============
+OBJECT objvial3 // to change draworder
+    STATE osstart
+		FRAME 5000 0
+    STATE osnormal
+		FRAME 5000 1
+//=========
+OBJECT objflame // bunsen
+    STATE oslo
+		FRAME 100 0
+		FRAME 100 3
+		FRAME 100 1
+		FRAME 100 2
+		FRAME 100 4
+		FRAME 100 5
+		FRAME 100 0
+		FRAME 100 1
+		FRAME 100 2
+		FRAME 100 3
+		FRAME 100 4
+		FRAME 100 5
+		FRAME 10 5	// dummy
+			setobjstate objflame oslo
+    STATE oshi
+		FRAME 100 6
+		FRAME 100 8
+		FRAME 100 10
+		FRAME 100 7
+		FRAME 100 9
+		FRAME 100 11
+		FRAME 100 6
+		FRAME 100 7
+		FRAME 100 11
+		FRAME 100 8
+		FRAME 100 9
+		FRAME 100 10
+		FRAME 10 10	// dummy
+			setobjstate objflame oshi
+// ====================
+OBJECT objbowl
+	STATE osEmpty
+	    FRAME 500 0
+	STATE osFirst
+	    FRAME 300 1
+    STATE osSecond
+		FRAME 300 2
+    STATE osThird
+		FRAME 200 3
+		FRAME 200 4
+		FRAME 200 5
+		FRAME 200 6
+		FRAME 200 7
+		FRAME 200 8
+		FRAME 10 8	// dummy
+			setobjstate objbowl osThird
+//------------
+// Pattern Panic buttons
+
+OBJECT objppyb___
+	STATE osPPYBon
+	    FRAME 300 1
+    STATE osPPYBoff
+		FRAME 300 0
+    STATE osPPYBflash
+		FRAME 500 0
+		FRAME 500 1
+		FRAME 500 1
+			setobjstate objppyb___ osppybflash
+
+OBJECT objppob___
+	STATE osPPOBon
+	    FRAME 300 1
+    STATE osPPOBoff
+		FRAME 300 0
+    STATE osPPoBflash
+		FRAME 500 0
+		FRAME 500 1
+		FRAME 500 1
+			setobjstate objppob___ osppobflash
+
+OBJECT objppbb___
+	STATE osPPBBon
+	    FRAME 300 1
+    STATE osPPBBoff
+		FRAME 300 0
+    STATE osPPBBflash
+		FRAME 500 0
+		FRAME 500 1
+		FRAME 500 1
+			setobjstate objppbb___ osppbbflash
+
+OBJECT objppgb___
+	STATE osPPGBon
+	    FRAME 300 1
+    STATE osPPGBoff
+		FRAME 300 0
+    STATE osPPGBflash
+		FRAME 500 0
+		FRAME 500 1
+		FRAME 500 1
+			setobjstate objppgb___ osppgbflash
+
+// ====================
+// Pattern Panic error state
+OBJECT objPPRF
+	STATE osPPRFlashing
+	    FRAME 300 0
+	    FRAME 300 1
+		FRAME 300 2
+	    FRAME 300 0	//dummy
+			SETOBJSTATE objPPRF osPPRFlashing
+	STATE osPPRFoff
+	    FRAME 1000 0
+//-----------------------
+// portal vent
+OBJECT objvent
+	STATE oslive
+	    FRAME 500 0
+	STATE osdead
+	    FRAME 1000 1
+
+// bunsen burner switch
+OBJECT objbunswitch
+	STATE osBunOff
+	    FRAME 500 0
+	STATE osBunLo
+	    FRAME 500 1
+	STATE osBunHi
+		frame 500 2
+// ------------ portal
+OBJECT objCapPortal
+    STATE osMoving
+		FRAME 100 0
+		FRAME 100 1
+		FRAME 100 2
+		FRAME 100 3
+		FRAME 100 4
+		FRAME 100 5
+		FRAME 100 6
+		FRAME 100 7
+		FRAME 100 8
+		FRAME 10 0 // cycling dummy
+			SETOBJSTATE objCapPortal osMoving 0
+// ---------
+object objVial1
+	state osVialDead
+		frame 1000 1
+	state osVialLive
+		frame 1000 0
+// ====================
+
+//*********** vent
+
+if killed objvent then
+	createexplosion objvent 140,
+	deploy objventframe,
+	playitemsound "Explosion1.wav" objvent 2 1,
+	setvar boolventdead 1,
+	triggerdelay 1500 evtventit
+
+	if evtventit then
+	createexplosion (1200,875) 149,
+	makesmoke (1280,950) 14000
+
+if killed objvent
+	testvar getpadstatus padCapatcapportal = 1
+	then trigger evtCapVanish
+
+// **** spitfire, house
+
+if killed objspitfire then
+	createexplosion objspitfire 131,
+	createexplosion (4000,3330) 130,
+	triggerdelay 100 evtspitit
+
+	if evtspitit then
+	createexplosion (3870,3270) 149,
+	makesmoke objspitfire 25000,
+	createpowerup medkit (3843,3305),
+	createpowerup partialarmor (3920,3350) // change to airmines &&
+
+if killed objplayhouse then
+	createexplosion (3370,2860) 131,
+	createexplosion (3560,2750) 149,
+	makesmoke (3659,2780) 24000
+
+// *************** bunsen burner 
+
+if hit objbunswitch
+	testvar boolBunSwitchBuffer = 0
+	THEN
+	triggerdelay 200 evtChangeBunsen,
+	setvar boolBunSwitchBuffer 1,
+	triggerdelay 1500 evtReviveBunSwitch
+//	setvar varBunHealth refvar gethealth objbunswitch,
+
+	if evtReviveBunSwitch
+		then setvar boolBunSwitchBuffer 0
+
+if evtChangeBunsen then
+	ONOBJSTATE objBunSwitch
+	osBunOff	TRIGGER evtTurnBunLo,
+	osBunLo		TRIGGER evtTurnBunHi,
+	osBunHi		TRIGGER evtTurnBunOff
+
+if evtTurnBunOff then
+	setvar boolbunlit 0,
+	undeploy objflame,
+	setobjstate objbunswitch osBunoff,
+	playitemsound "" objburnertip 3 2, 
+	playitemsound "mp_tick.wav" objburnertip 3 2, 
+	undeploy objburnertip,
+	setdamagepad padBunsen 0,
+	setforce captain none
+
+if evtTurnBunLo
+	testvar boolbunlit = 0
+	then setobjstate objbunswitch osBunLo,
+	deploy objburnertip,
+	playitemsound "" objburnertip 3 2,
+	playitemsound "mp_tick.wav" objburnertip 3 2, 
+	triggerdelay 500 evtGasLo
+
+	if evtGaslo then
+		playitemsound "co2hiss.wav" objburnertip 3 2 1,
+		setsoundvolume "co2hiss.wav" 3 -200
+
+if evtTurnBunHi
+	testvar boolbunlit = 0
+	then setobjstate objbunswitch osBunHi,
+	playitemsound "" objburnertip 3 2,
+	playitemsound "mp_tick.wav" objburnertip 3 2,
+	triggerdelay 500 evtGasHi
+
+	if evtGasHi then
+		playitemsound "co2hiss.wav" objburnertip 3 2 1,
+		setsoundvolume "co2hiss.wav" 3 500
+
+if evtTurnBunHi
+	testvar boolbunlit = 1
+	then setobjstate objbunswitch osBunHi,
+	setobjstate objflame oshi,
+	playitemsound "" objburnertip 3 2,
+	playitemsound "mp_tick.wav" objburnertip 3 2,
+	triggerdelay 500 evtBunOnHi
+
+if hit objburnertip by captain
+	testvar boolbunlit = 0 then
+	ONOBJSTATE objBunSwitch
+	osBunLo		TRIGGER evtFireLo,
+	osBunHi		TRIGGER evtFireHi
+
+if evtFirelo then
+	setvar boolbunlit 1,
+	deploy objflame,
+	setobjstate objflame oslo,
+	playitemsound "" objburnertip 3 2,
+	playitemsound "BunsenBurnerLight.wav" objburnertip 3 2,
+	triggerdelay 900 evtBunOnLo
+
+	if evtBunOnLo then
+		setforce captain zpush padBunsen 0 spin 0 -500 60 air 250 0 0,
+		playitemsound "" objburnertip 3 2,
+		playitemsound "BunsenBurnerLow.wav" objburnertip 3 2 1,
+		setsoundvolume "BunsenBurnerLow.wav" 3 600
+
+if evtFireHi then
+	setvar boolbunlit 1,
+	deploy objflame,
+	setobjstate objflame oshi,
+	playitemsound "" objburnertip 3 2,
+	playitemsound "BunsenBurnerLight.wav" objburnertip 3 2, 
+	triggerdelay 800 evtBunOnHi
+
+	if evtbunOnHi then
+	playitemsound "" objburnertip 3 2,
+	playitemsound "BunsenBurnerHigh.wav" objburnertip 3 2 1, 
+	setforce captain zpush padBunsen 0 spin 0 -600 60 air 250 0 0,
+	setsoundvolume "BunsenBurnerHigh.wav" 3 400,
+	trigger hurton
+
+	if hurton testvar boolvolockout = 0 then
+	setdamagepad padBunsen 170 100 fire // was 800 100
+
+	if evtbunonhi
+	testvar getpadstatus padbunsen = 1 then
+	playsound "..\codesfx\napalmblast.wav" (0,0) 1 1
+
+variable boolonbunsen 0
+
+if padon padbunsen then
+	setvar boolOnBunsen 1
+
+if padon padbunsen
+	testvar boolbunlit = 1 then
+	ONOBJSTATE objBunSwitch
+	osBunHi		playsound "..\codesfx\napalmblast.wav" (0,0) 1 1
+
+if padoff padbunsen 
+	testvar gethealth captain > 0 then
+	setvar boolOnBunsen 0
+//	showmessage "padoff"
+
+if infinitelife
+	testvar boolonbunsen = 1 then
+	setvar alreadyrespawned 1, // see common.txt
+	triggerdelay 3000 bunsenspawn
+
+	if bunsenspawn then
+		SETVAR SPrespawnX 1960, SETVAR SPrespawnY 1110,
+		createexplosion (REFVAR SPrespawnX, REFVAR SPrespawnY, 1000) 145, //smokepuff
+		DEPLOY captain (REFVAR SPrespawnX, REFVAR SPrespawnY, 1000),
+		setvar alreadyrespawned 0,
+		setvar boolonbunsen 0
+
+if padoff padcapondesk then
+	setforce captain none
+
+if padon padcapondesk
+	testvar boolbunlit = 1
+	then onobjstate objflame
+	oshi	setforce captain zpush padBunsen 0 spin 0 -600 60 air 250 0 0,
+	oslo	setforce captain zpush padBunsen 0 spin 0 -500 60 air 250 0 0
+
+//8888888888888888888888888888888888888888888888888888888888888888888888888
+
+IF startup1 THEN
+//	SETBRIEFING "map02_1.bmp",
+//	trace 7, // &&
+	undeploy objboardblock,
+	TRIGGER setupgreen,
+	TRIGGER setuptan,
+	trigger setupgo,
+	undeploy objPPRF,
+	moveitem objblock1 (2633,2112),
+	undeploy objventframe,
+	undeploy objportalframe,
+	undeploy objflame,
+	undeploy objampdmg,
+	undeploy objgreenvial1,
+	undeploy objppdamgfrt,
+	undeploy objvial1,
+	undeploy objvial3,
+	undeploy objburnertip,
+	undeploy objppdamg,
+	setmissioninfo pr11,
+	moveitem objcapportal (1161,871),
+	ally tan grey,
+	ally grey tan,
+	setobjstate objbunswitch osBunoff,
+	setobjstate objbowl osEmpty,
+	setobjstate objPPRF osPPRFoff,
+	SETOBJSTATE objCapPortal osMoving,
+	trigger evtResetPP,
+	triggerdelay 30000 evtToyboxRemind,
+	createpowerup thrownfirecracker (1475,3085),	// near trap LZ
+	createpowerup groundmissile (1370,2470),	// hockey stick
+	createpowerup airblastmissile (140,3250),	// bot left corner
+	createpowerup heatray (430,2640) 1,	// w of PP &&CHANGED FOR DEMO
+	createpowerup napalmbomb (905,1135) 4,	// near vent
+	createpowerup groundmissile (3498,1855) 20,	// in toybox
+	createpowerup heatray (2358,670) 2,	// on book on desk
+	createpowerup clusterbomb (3200,1925) 2,	// in toybox && too many!
+	createpowerup partialarmor (1660,1405),	// floor near vent
+	createpowerup fullarmor (2570,1070),	// on desk
+//	createpowerup fullarmor (2720,1140),	// on desk
+	createpowerup radarmissile (2567,3090) 5,
+	createpowerup fullarmor (2295,2300) 40, // at floor lz 
+	createpowerup armorboost (3545,2350) 25,
+	createpowerup medkit (3017,1317), // was (3060,1260). on desk
+	createpowerup superfly radarmissile (3700,2100) 5,
+	triggerdelay 3000 evtFireVDG1,
+	triggerdelay 50 evtshowmiss1
+
+IF evtshowmiss1 THEN
+	setnpc captain 1, 
+	setaimode captain ignore,
+	setmissioninfo pr11,
+	trigger evtAllTanIgnore,
+	playtalkinghead 100
+
+if talkingheaddone captain then
+	setnpc captain 0,
+	triggerdelay 500 evtAllTanNormal,
+	triggerdelay 505 evtMoveGuyOut
+
+	if evtMoveGuyOut butnot evtBogusEvent
+		then order matrt3 goto (3925,2725) inmode ignore,
+		triggerdelay 4000 evtBogusEvent		
+
+	if evtBogusEvent then setaimode matrt3 defend
+
+IF setupgreen THEN
+	CREATECOPTER attack "captain" (3832,2625,120) green, //was 3310,3150
+	SETFACING captain 100,
+	SETAIRMAP captain 1,
+//	SETAIRVARIANCE captain 50,
+	SETSTEP captain 40,
+	setnpc captain 1,
+	setaimode captain ignore,
+	setitemowner objbattery tan,
+	setvar vartempx getx captain,
+	setvar vartempy gety captain,
+	order captain goto (refvar vartempx, refvar vartempy) inmode ignore,
+	CREATEUNIT "Sarge" rifleman (3730,2250) green vulcan,
+	CREATEUNIT "private cosico" bazookaman (3670,2220) green bazooka,
+	CREATEUNIT "corporal Barrows" rifleman (3620,2290) green vulcan,
+	CREATEUNIT "private goldman" grenadier (3620,2290) green grenade,
+	CREATEUNIT "private lopez" rifleman (3730,2250) green vulcan,
+	CREATEUNIT "private mahlab" rifleman (3730,2250) green rifle, // &&FOR DEMO was flamer
+	CREATEUNIT "private gupta" rifleman (3670,2220) green vulcan,
+	CREATEUNIT "private Meyer" rifleman (3730,2250) green autorifle,
+	trigger evtMarkMenAsObjectives
+
+IF setuptan THEN
+// offscreen guy to fire paratroops
+//	createpowerup box paratroopers (100,100) 10,
+	createunit hiddentan rifleman (500,500) tan rifle, //&&
+	setaimode hiddentan defend,
+// tent guards
+	CREATEvehicle aaguy ackackbase (1430,2970) tan,  // was (1715,2870)
+
+	CREATEUNIT "___tent1" rifleman (1960,3160) tan vulcan, // left of entrance
+	CREATEUNIT "___tent2" rifleman (2105,3125) tan vulcan, // rt of tent
+	CREATEUNIT "___tent3" rifleman (1972,3160) tan autorifle, // left of entrance
+	setaimode ___tent1 defend,
+	setaimode ___tent2 defend,
+	setaimode ___tent3 standfire,
+	setfacing ___tent1 120,
+	setfacing ___tent2 159,
+	setfacing ___tent3 32,
+// middle of Gold gameboard
+//	CREATEUNIT "tan1" bazookaman (3378,1938) tan bazooka,
+//	CREATEUNIT "tan2" rifleman (3250,1800) tan autorifle,
+//	CREATEUNIT "tan4" rifleman (3378,1938) tan rifle, just removed
+// at the back of the box
+	CREATEUNIT "tan3" flamerman (3143,1686) tan flamer, 
+	CREATEUNIT "tan7" flamerman (3065,1720) tan flamer,
+	setfacing tan3 96,
+	setfacing tan7 150,
+// in donut
+	CREATEUNIT "tan5" rifleman (3136,1932) tan rifle,
+	setaimode tan5 standfire,
+// in toybox lz
+	CREATEUNIT "tan6" rifleman (3064,1835) tan vulcan,
+// near PP
+	CREATEUNIT "PP1" bazookaman (545,2865) tan bazooka, // w
+	CREATEUNIT "PP2" rifleman (850,2550) tan rifle, // n
+	CREATEUNIT "PP3" rifleman (930,3110) tan rifle, // s
+
+// ON DESK
+
+	CREATEvehicle "mbox1" arbalest (1980,725) tan, // on shelf
+	CREATEUNIT "desk1" bazookaman (2850,1333) tan bazooka, 
+//	CREATEUNIT "desk2" rifleman (2930,1335) tan rifle, 
+//	CREATEUNIT "desk3" grenadier (2300,1320) tan grenade,
+	CREATEUNIT "desk4" rifleman (2830,1387) tan vulcan,
+	CREATEvehicle desktank tank (2000,1151) tan, 
+	setaimode desktank defend,
+//	CREATEUNIT "desk5" rifleman (2170,1210) tan rifle, 
+	CREATEUNIT "desk6" rifleman padSargeNearSpy tan vulcan, 
+	CREATEUNIT "desk7" rifleman (2495,1335) tan rifle, 
+	triggerdelay 500 markdeskers,
+
+	setaimode desk3 defend,
+	setfacing mbox1 120,
+	setfacing desk1 155,
+	setfacing desk2 150,
+	setfacing desk3 135,
+	setfacing desk4 140,
+	setfacing desktank 150,
+	setfacing desk5 85,
+	setfacing desk6 140,
+	setfacing desk7 32,
+
+// ** maintain listMatTan and sendmatrt macro in pr2.txt, dave
+
+// near floor lz and playmat, matleft
+	CREATEUNIT matlf1 bazookaman (1965,2490) tan bazooka,
+	CREATEUNIT matlf2 rifleman (1225,2825) tan autorifle,
+	CREATEUNIT matlf6 grenadier (1245,2800) tan grenade,
+	CREATEUNIT matlf3 rifleman (1020,3300) tan autorifle, // bot left
+	CREATEUNIT matlf4 stingerguy (1615,2535) tan stingermissile, 
+	CREATEUNIT matlf5 rifleman (1560,2535) tan autorifle,
+	setaimode matlf1 defend,
+ 	setaimode matlf2 defend,
+// on rt side of playmat
+	CREATEUNIT matrt1 bazookaman padctrlz tan bazooka, 
+	CREATEUNIT matrt2 rifleman (2900,3200) tan autorifle, // near shoe lz, was (4056,2950) e of tbox
+	setaimode matrt2 defend,
+	CREATEUNIT matrt3 stingerguy (4062,3042) tan stingermissile, // se of toybox , was flamer
+	setaimode matrt3 standfire,
+	CREATEUNIT matrt4 rifleman (2900,2650) tan autorifle,
+	setfacing matrt2 180,
+	CREATEUNIT matrt5 bazookaman (2700,2300) tan bazooka, // btwn ctrlz and toybox
+	createvehicle jeepmatrt jeep padctrpup1 tan
+
+if markdeskers then
+	addmissionobjective "desk1", 
+	addmissionobjective "desk2",
+	addmissionobjective "desk3",
+	addmissionobjective "desk4" ,
+	addmissionobjective desktank,
+	addmissionobjective "desk5" ,
+	addmissionobjective "desk6",
+	addmissionobjective "desk7",
+	addmissionobjective mbox1
+
+if killed aaguy then random
+	trigger evtpuprwd,
+	trigger evtpuprwd,
+	trigger nuthin
+if killed desktank then
+	SETVAR varExploX GETX me,
+	SETVAR varExploY GETY me,
+	addvar varexploy 40,
+	createpowerup radarmissile (refvar varexplox, refvar varexploy) 3
+if killed jeepmatrt then random
+	trigger evtpuprwd,
+	trigger nuthin
+
+	if evtpuprwd then random
+	createpowerup partialarmor me,
+	createpowerup radarmissile me 2,
+	createpowerup heatray me 1,
+	createpowerup fullarmor me,
+	createpowerup medkit me
+
+macro alltan 1 // doesn't include deskers, who will be dead anyhow
+{
+if evtAllTanIgnore then
+	setaimode @1 ignore,
+	setaimode hiddentan ignore,
+	setaimode ___tent1 ignore,
+	setaimode ___tent2 ignore,
+	setaimode ___tent3 ignore,
+	setaimode matlf1 ignore,
+ 	setaimode matlf2 ignore,
+	setaimode matrt2 ignore,
+	setaimode tan5 ignore,
+	setaimode matrt3 ignore
+
+if evtAllTanNormal then
+	setaimode @1 attack,
+	setaimode hiddentan defend,
+	setaimode ___tent1 defend,
+	setaimode ___tent2 defend,
+	setaimode ___tent3 standfire,
+	setaimode matlf1 defend,
+ 	setaimode matlf2 defend,
+	setaimode matrt2 defend,
+	setaimode tan5 standfire,
+	setaimode matrt3 defend
+}
+expand alltan (tan1)
+expand alltan (tan2)
+expand alltan (aaguy)
+expand alltan (tan4)
+expand alltan (tan3)
+expand alltan (tan7)
+expand alltan (tan6)
+expand alltan (pp1)
+expand alltan (pp2)
+expand alltan (pp3)
+expand alltan (mbox1)
+expand alltan (matlf3)
+expand alltan (matlf4)
+expand alltan (matlf5)
+expand alltan (matlf6)
+expand alltan (matrt1)
+expand alltan (matrt3)
+expand alltan (matrt4)
+expand alltan (matrt5)
+expand alltan (jeepmatrt)
+
+// ************************* playmat ***************************
+
+variable boolcopterlanded 0
+
+IF PADON padmatlz THEN
+	TRIGGERDELAY 1000 matcopterlanding
+
+IF matcopterlanding TESTVAR GETPADSTATUS padmatlz = 1 AND boolcopterlanded = 0 THEN
+	LAND captain,
+	TRIGGERDELAY 1 matcopterlanding
+
+IF LANDED captain THEN
+	SETVAR boolcopterlanded 1
+
+IF TOOKOFF captain
+	THEN SETVAR boolcopterlanded 0
+
+IF padoff padmatlz
+	THEN SETVAR boolcopterlanded 0
+
+if padon padTentGuardBorder then
+	order me goto (2020,3146) inmode ignore,
+	triggerdelay 4000 evtRestoreAI
+
+if killed listMatTanLf then
+	trigger evtweakpuprwd,
+	triggerdelay 50000 evtRespawnLf
+
+	if evtweakpuprwd then random
+		trigger nuthin,
+		trigger nuthin,
+		trigger nuthin,
+		createpowerup partialarmor me,
+		trigger nuthin,
+		createpowerup groundmissile me 3,
+		trigger nuthin,
+		trigger nuthin,
+		trigger nuthin
+
+	if evtRespawnLF then
+	trigger evtRandomResurrectLf,
+	order me goto padNearMatLeft inmode defend
+
+if killed listMatTanRt then
+	trigger evtweakpuprwd,
+	triggerdelay 35000 evtRespawnRt
+
+	if evtRespawnRt 
+	testvar getpadstatus padCapVisible = 0
+	then
+	trigger evtRandomResurrectRt,
+	order me goto padNearMatRt inmode defend
+
+	if evtRespawnRt // if player's in SargeVisible area and Sarge hasn't headed to tent yet
+	testvar getpadstatus padCapVisible = 1
+	and boolramboed = 0
+	then
+	trigger evtRandomResurrectRt,
+	order me goto padctrlz inmode defend
+
+	if evtRespawnRt // the reverse case
+	testvar getpadstatus padCapVisible = 1
+	and boolramboed = 1
+	then
+	trigger evtRandomResurrectRt,
+	order me goto padNearMatRt inmode defend
+
+if evtRandomResurrectLf then random
+	resurrect me (20,3422), // bot edge
+	resurrect me (185,1780), // doorcrk - true behind is (290,1632)
+	resurrect me (700,3422), // bot edge
+	resurrect me (20,3422), // bot edge
+	resurrect me (700,3422), // bot edge
+	trigger nuthin
+
+if evtRandomResurrectRt then random
+	resurrect me (3697,2813), // bhind house, was (4020,2495) back corner near toybox
+	resurrect me (2910,2318), // behind block (bat)
+	resurrect me (3697,2813), // bhind house, was (4020,2495) back corner near toybox
+	resurrect me (3697,2813), // bhind house, was (4020,2495) back corner near toybox
+	resurrect me (3697,2813), // bhind house, was (4020,2495) back corner near toybox
+	resurrect me (2667,2082), // behind blk (chair)
+	trigger nuthin
+
+if padon padDooravoid then
+	order me goto (700,2300) inmode attack 
+
+if padon padNearMatLeft
+	then trigger evtAvoidMatLeft,
+	triggerdelay 3000 evtRestoreAI
+if padon padNearMatrt
+	then trigger evtAvoidMatRt,
+	triggerdelay 3000 evtRestoreAI
+if padon padNearMatBotLeft
+	then trigger evtAvoidMatBotLeft,
+	triggerdelay 3000 evtRestoreAI
+
+if evtAvoidMatLeft then random
+	order me goto (1225,2825) inmode defend,
+	order me goto (1615,2535) inmode defend,
+	order me goto (1225,2825) inmode defend,
+	setaimode me attack // occasionally will wander onto mat
+
+if evtAvoidMatRt then random
+	order me goto (2750,2600) inmode defend,
+	order me goto (3070,3005) inmode defend,
+	order me goto (2750,2600) inmode defend,
+	setaimode me attack // occasionally will wander onto mat
+
+if evtAvoidMatBotLeft then
+	order me goto (1020,3300) inmode defend
+
+	if evtRestoreAI then
+		setaimode me defend
+
+if padon padCapNearMatLeft butnot evtMission1Won
+	then trigger evtTestMatWarn
+if padon padCapNearMatRt butnot evtMission1Won
+	then trigger evtTestMatWarn
+if padon padCapNearMatBotLeft butnot evtMission1Won
+	then trigger evtTestMatWarn
+
+	if evtTestMatWarn butnot evtMatWarn 
+		testvar itemtoitemdistance ___objTent captain < 700
+		then
+		trigger evtMatWarn
+
+	if evtTestMatWarn butnot evtMatwarn
+		testvar itemtoitemdistance ___objTent captain > 699
+		AND itemtoitemdistance ___objTent captain < 1200
+		then triggerdelay 2500 evtTestMatWarn
+
+	if evtMatWarn butnot evtmissionlost 
+		testvar boolVOlockout = 0
+		then
+		stoptalkinghead,
+		triggerdelay 20 evtMatWarn2
+
+		if evtmatwarn2 then
+		playtalkinghead 101 // Looks like they're guarding something down there. Don't tangle with it until we have more info...!
+
+	if evtmatwarn butnot evtrecon2 then
+		setmissioninfo pr11b
+
+	if inorder evtrecon2 evtmatwarn
+		then trigger evtintelmat
+
+		if evtintelmat butnot evtmission1won then // adds matwarn info to intel
+		setmissioninfo pr11c
+
+if killed ___objTent butnot evtSargeAtTent
+	then trigger evtKillVial
+
+//if killed aaguy butnot evtSargeAtTent
+//	then trigger evtKillVial
+
+if killed ___objTent then // works w/blow vial
+	deploy objVial1,
+	moveitem objvial1 (2047,3133),
+	setobjstate objvial1 osViallive,
+	createexplosion ___objTent 148,
+	makesmoke ___objTent 1000,
+	removemissionobjective ___objTent,
+	createpowerup greenpaintbomb ___objTent 2,
+	triggerdelay 500 uttercrap
+
+	if uttercrap then
+	addmissionobjective objvial1
+
+if killed listTentGuards butnot evtSargeAtTent
+	then trigger evtKillVial
+
+if evtKillVial butnot evtBlowVial then
+	setvar boolKillVial 1,
+	order ___tent1 goto (2020,3136) inmode defend,
+	order ___tent2 goto (2020,3136) inmode defend,
+	order ___tent3 goto (2020,3136) inmode defend
+
+if padon padTanNearTentVial butnot evtBlowVial
+	testvar boolKillVial = 1
+	then trigger evtPreBlowVial
+
+	if evtPreBlowVial
+		testvar hasitem captain objvial1 = 0	// vial still on mat
+		then trigger evtBlowvial
+
+if evtKillvial butnot evtBlowVial
+	testvar getpadstatus padTanneartentvial = 1
+	then trigger evtPreBlowVial
+
+if evtBlowvial then
+	damage ___objTent 5000,
+	createexplosion objvial1 129,
+	damage objgreenvial1 500, // just in case we have pickup/putdown
+	makesmoke objvial1 500,
+	setaimode ___tent1 attack,
+	setaimode ___tent2 attack,
+	setaimode ___tent3 attack,
+	triggerdelay 3000 evtVialLost,	// see lose conditions
+	triggerdelay 100 evtBlowvial2
+
+if evtblowvial2 then
+	setobjstate objVial1 osVialDead
+
+//========================= round em up (toybox) =======================================
+
+if padon padtoyboxlz then
+	TRIGGERDELAY 1000 toycopterlanding
+
+IF toycopterlanding TESTVAR GETPADSTATUS padtoyboxlz = 1 AND boolcopterlanded = 0 THEN
+	LAND captain,
+	TRIGGERDELAY 1 toycopterlanding
+
+IF LANDED captain THEN
+	SETVAR boolcopterlanded 1
+
+if padon padCtrLZ then
+	TRIGGERDELAY 1000 ctrcopterlanding
+
+IF ctrcopterlanding TESTVAR GETPADSTATUS padCtrLZ = 1 AND boolcopterlanded = 0 THEN
+	LAND captain,
+	TRIGGERDELAY 1 ctrcopterlanding
+
+IF LANDED captain THEN
+	SETVAR boolcopterlanded 1
+
+if PADOFF padctrLZ then
+	setvar boolcopterlanded 0
+
+if PADOFF padtoyboxLZ then
+	setvar boolcopterlanded 0
+
+if padon padNearToybox 
+	then setstep captain 700
+
+if padoff padNearToybox 
+	then setstep captain 40
+
+IF PADON padNearToybox butnot evtGreentoboard then
+	trigger evtGreentoboard
+
+if evtToyboxRemind butnot evtGreentoboard then
+	trigger gnorf
+
+	if gnorf
+		testvar boolVOlockout = 0 then
+	playtalkinghead 44, // help us out here cap'n
+//	triggerdelay 12000 evtTrooperDrop, &&
+	triggerdelay 15000 evtLookRadar
+
+		if evtLookRadar butnot evtGreentoboard
+			testvar getelevation captain < 150 // && constant
+			then trigger gnorf2
+
+			if gnorf2
+			testvar boolvolockout = 0 then
+			playtalkinghead 1 // captain look at your radar
+
+macro Forgruntorama 1
+{
+if evtGuysclearout then 
+	order @1 goto (2220,1310) inmode ignore // (2250,800), paddeskpup3
+
+if evtGuysStop then
+	setfacing @1 sarge,
+	setaimode @1 defend
+
+if evtGreenToBatonX
+	then order @1 goto (3526,1931)	// CURRENTLY UNUSED
+
+if evtGoSlow then
+	setspeed @1 slow
+
+if pickedup @1
+	then addvar varTroopsOnboard 1
+if dropped @1
+	then addvar varTroopsOnboard -1
+
+if evtMarkMenAsObjectives then
+	addmissionobjective @1
+
+if evtUnmarkMenAsObjectives then
+	removemissionobjective @1
+
+if evtStartAttacking then setaimode @1 attack,
+	setspeed @1 normal
+}
+expand Forgruntorama ("private cosico")
+expand Forgruntorama ("corporal barrows")
+expand Forgruntorama ("private goldman")
+expand Forgruntorama ("private lopez")
+expand Forgruntorama ("private mahlab")
+expand Forgruntorama ("private gupta")
+expand Forgruntorama ("private meyer")
+
+if evtGreenToBoard
+	then trigger evtGoSlow,
+	order sarge goto (3270,1910) inmode ignore,	// was waypoint in topleft corner Gold board (3371,1940)
+	order "corporal barrows" goto (3270,1910) inmode ignore, // now is redirect pad.
+	order "private goldman" goto (3270,1910) inmode ignore,
+	order "private lopez" goto (3270,1910) inmode ignore,
+	order "private mahlab" goto (3270,1910) inmode ignore,
+	order "private gupta" goto (3270,1910) inmode ignore,
+	order "private meyer" goto (3270,1910) inmode ignore,
+	order "private cosico" goto (3270,1910) inmode ignore,
+	triggerdelay 4000 evtStartAttacking
+
+if evtGreenToBaton
+	then
+	order sarge goto (3526,1931) inmode defend,	// go to rt end of baton
+	order "private goldman" goto (3526,1931) inmode defend,
+	 order "private lopez" goto (3526,1931) inmode defend,
+	 order "private mahlab" goto (3526,1931) inmode defend,
+	 order "private gupta" goto (3526,1931) inmode defend,
+	 order "private meyer" goto (3526,1931) inmode defend,
+	 order "private cosico" goto (3526,1931) inmode defend,
+	 order "corporal barrows" goto (3526,1931) inmode defend
+
+//if padon padGoGun THEN
+//	trigger evtQueueAtGun
+
+//	if evtQueueAtGun then
+//	order me goto (3536,1936) inmode ignore	// go to rt end of baton
+	
+if padon padGoBaton then 
+	order me goto (3333,1792) inmode ignore
+
+//if padon padRedirect THEN 	// guy got stuck on gun handle
+//	order me goto (3375,1982) inmode defend,	// move to center of "pan the gold"
+//	triggerdelay 3000 evtQueueAtGun
+
+if padon padRedirect2 THEN 	// guy crowding left edge of Pan the Gold
+	order me goto (3410,1938) inmode defend,
+	triggerdelay 4000 evtRedirect2Pt2
+
+if evtRedirect2Pt2 then
+	order me goto padGobaton inmode defend	// move to rt end of baton
+
+//if evtHurryUp BUTNOT evtGuysArrive
+//	then
+//	setvar TextLineNumber 3,
+//	trigger playcomtext		// line 3: Sarge: They're on to us, Captain. Floor it!
+
+if padon padGoLZ THEN
+	setspeed me normal,
+	order me goto (3171,1858) inmode defend
+
+if padon padSargeGoLZ then
+	triggerdelay 6000 evtSargeSpeaks,
+	triggerdelay 24000 evtSargeWaiting
+
+	if evtSargeSpeaks butnot pickedup sarge then
+		trigger gnorf3
+
+		if gnorf3 butnot evtmissionlost
+			TESTVAR itemtoitemdistance sarge captain > 300
+			then trigger gnorfy
+
+			if gnorfy butnot gnorfy2
+				then trigger gnorfy2
+
+				if gnorfy2
+				testvar boolvolockout = 0 then
+				playtalkinghead 151 // Captain, we have to get up to that desk.
+
+		if evtSargeWaiting butnot pickedup sarge
+			TESTVAR itemtoitemdistance sarge captain > 200
+			then trigger bloopo
+
+			if bloopo butnot bloopy then trigger bloopy
+
+			if bloopy
+			testvar boolvolockout = 0 then
+			playtalkinghead 115 // Hurry it up, Captain! We've got to get to that landing zone.
+
+if padon padSlowTroops THEN
+	setspeed me slow
+if padoff padSlowTroops THEN
+	setspeed me normal
+
+if padon padCapOnDesk butnot evtRecon
+	testvar hasitem captain sarge > 0	// sarge comments when he arrives by air
+	then
+	trigger evtRecon
+
+	if evtRecon 
+	testvar boolvolockout = 0 then
+		playtalkinghead 103,		// Cap: Something's wrong. 
+		triggerdelay 100 evtRecon2
+
+	if evtRecon2
+	testvar boolvolockout = 0 then
+		// line 5: Sarge: They've taken almost all the chemical drums!
+		playtalkinghead 102,
+		triggerdelay 100 evtTestInfo
+
+		if evtTestInfo butnot evtMatwarn then
+		setmissioninfo pr11a
+
+// ***************************** desk trooper ai
+
+if beaconed captain // guys on desk unbeaconized when beacon dropped off desk
+	testvar boolNoBeacon = 0
+	AND getpadstatus padCapondesk = 0 
+	then triggerdelay 5 evtUnbeaconDeskGuys
+
+//********** paratroops***************************
+if evtTrooperDrop BUTNOT evtGuysOnDesk then
+//&&	showmessage "cowabunga!",
+	playsound "planeoverhead.wav" (0,0) 1 2,
+	trigger evtRandomDrop,
+//	triggerdelay 20000 evtRandomdrop
+//	triggerdelay 24000 evtTrooperDrop
+
+// consider doing this on desk after guysondesk
+
+if evtRandomDrop butnot pickedup sarge then random
+	fireweapon objParatroops hiddentan (3223,1606),
+	fireweapon objParatroops hiddentan (3270,1815),
+	fireweapon objParatroops hiddentan (3362,1935)
+
+//=========================================VDG===========================
+
+if evtFireVDG1 BUTNOT killed objBattery
+	then deploy objZap,
+	setobjstate objzap oszapping,
+	playitemsound "Electricity3.wav" objzap 4 2 1,
+	setvar boolZapOn 1,
+	trigger vdghurt,
+	triggerdelay 4000 evtStopVDG1
+
+	if vdghurt testvar boolvolockout = 0 then
+	setdamagepad padvdg 170 100 fire	// am2 kitchen: 5 250
+
+if evtFireVDG2 BUTNOT killed objBattery
+	then deploy objZap,
+	setobjstate objzap oszapping,
+	playitemsound "Electricity3.wav" objzap 4 2 1,
+	setvar boolZapOn 1,
+	setdamagepad padvdg 170 100 fire,	// am2 kitchen: 5 250
+	triggerdelay 1700 evtStopVDG2
+
+// sounds
+
+if padon padvdg
+	testvar boolzapon = 1 then
+	playsound "..\codesfx\napalmblast.wav" (0,0) 1 1
+
+if evtFireVDG1
+	testvar getpadstatus padvdg = 1 then
+	playsound "..\codesfx\napalmblast.wav" (0,0) 1 1
+
+if evtFireVDG2
+	testvar getpadstatus padvdg = 1 then
+	playsound "..\codesfx\napalmblast.wav" (0,0) 1 1
+
+/// infinitelife protection
+variable boolatzapper 0
+
+if padon padvdg then
+	setvar boolatzapper 1
+
+if padoff padvdg 
+	testvar gethealth captain > 0 then // guarantees no padoff when cap dies
+	setvar boolatzapper 0
+
+if infinitelife
+	testvar boolatzapper = 1
+	then
+	setvar alreadyrespawned 1, // see common.txt
+	triggerdelay 3000 vdgspawn
+
+	if vdgspawn then
+		SETVAR SPrespawnX 3065, SETVAR SPrespawnY 1630,
+		createexplosion (REFVAR SPrespawnX, REFVAR SPrespawnY, 1000) 145, //smokepuff
+		DEPLOY captain (REFVAR SPrespawnX, REFVAR SPrespawnY, 1000),
+		setvar alreadyrespawned 0,
+		setvar boolatzapper 0
+///
+
+//if dmglevelchanged objbattery butnot evtFries
+//	then trigger evtFries
+
+//	if evtFries then
+//	createexplosion (2571,855,400) 149,
+//	createexplosion (2589,845,400) 145
+
+if killed objBattery
+	then 
+	undeploy objZap,
+	playsound "" (0,0) 2 1,
+	setdamagepad padvdg 0,
+	createexplosion (2571,855,400) 138,
+	makesmoke (2600,850,400) 20000,
+	setvar boolZapOn 0,
+	triggerdelay 1000 evtMoreBang
+
+	if evtMoreBang then
+		createexplosion (2589,845,400) 140,
+		makesmoke (2560,868,400) 5000
+		
+if evtStopVDG1 then
+	undeploy objZap,
+	playsound "" (0,0) 4 2,
+	setvar boolZapOn 0,
+	setdamagepad padvdg 0,
+	triggerdelay 3000 evtFireVDG2
+
+if evtStopVDG2 then
+	undeploy objZap,
+	playsound "" 4 2,
+	setvar boolZapOn 0,
+	setdamagepad padvdg 0,
+	triggerdelay 1000 evtFireVDG1
+
+//========================================================================
+//------------------- cosmetic goodies -------------------
+variable buffer 0
+
+if hit objamp 
+	testvar buffer = 0
+	then
+	addvar varVDGamphitct 1,
+	trigger evtBlowamp,
+	triggerdelay 1 evtProtectAmp,
+	triggerdelay 1000 evtUnprotectAmp
+
+	if evtProtectAmp then
+		addvar buffer 1
+
+	if evtUnprotectAmp then 
+		setvar buffer 0
+
+if evtBlowamp
+	testvar varVDGamphitct =10
+	then deploy objampdmg,
+	createexplosion (2715,1005,41) 138,
+	makesmoke (2700,1015,41) 5000
+
+//**************************** Find Spy dialog *******************
+
+if evtGuysOnDesk butnot evtDisableCap
+	testvar boolDeskclear = 1
+	then
+	trigger beaconoff,
+	trigger evtguysondesk1
+
+	if evtguysondesk1 butnot evtmission1won then // for easier debug from Mission2; prevents sargerun if M2
+	trigger evtGuysClearout,
+	triggerdelay 6000 evtGuysStop,
+	SETVAR boolVOlockout 1, // block out all floor vo during cinematic
+	setaipose sarge stand,
+	setaipose sarge none, // unbeacon sarge if he was beaconed
+	trigger evtDisableCap,
+	trigger evtMoveCap,
+	triggerdelay 4000 evtSargeOff,
+	triggerdelay 10000 evtSargeToSpyLoop
+
+//	if inorder evtgreyvo talkingheaddone captain // allow player to skip out of this VO sequence
+//		then trigger evtTestWrapup
+
+//		if evtTestWrapup butnot evtmission1won 
+//			then trigger evtWrapup
+
+//			if evtWrapup butnot evtmissionlost
+//				then trigger evtmission1won,
+//				playsound "" (0,0) 0 1,
+//				trigger attaboy
+
+if evtSargeoff then
+	order sarge goto padSargeSoapbox inmode ignore, // was (2170,960)
+	triggerdelay 2000 evtfaceit
+
+if evtDisableCap butnot evtmissionlost
+	testvar getpadstatus padcapondesk = 1
+	then
+	setnpc captain 1,
+	setaimode captain ignore,
+	setaimode jeepmatrt ignore, //&&
+	setaimode matlf6 ignore,
+	setaimode matlf1 ignore,
+	setaimode matlf2 ignore,
+	setaimode matlf3 ignore,
+	setaimode matlf4 ignore,
+	setaimode matlf5 ignore,
+	setaimode matrt1 ignore,
+	setaimode matrt2 ignore,
+	setaimode matrt3 ignore,
+	setaimode matrt4 ignore,
+	setaimode matrt5 ignore
+
+if evtDisableCap butnot evtmissionlost
+	testvar getpadstatus padcapondesk = 0
+	then
+	setnpc captain 1,
+	setaimode captain ignore,
+	setaimode jeepmatrt ignore, //&&
+	setaimode matlf6 ignore,
+	setaimode matlf1 ignore,
+	setaimode matlf2 ignore,
+	setaimode matlf3 ignore,
+	setaimode matlf4 ignore,
+	setaimode matlf5 ignore,
+	setaimode matrt1 ignore,
+	setaimode matrt2 ignore,
+	setaimode matrt3 ignore,
+	setaimode matrt4 ignore,
+	setaimode matrt5 ignore,
+	setcamerafocus sarge
+
+if evtMoveCap butnot evtmissionlost then
+	playtalkinghead 152, //hold on blade
+	triggerdelay 1000 evtfaceit
+
+if evtMoveCap 
+	testvar getpadstatus padcapondesk = 1 then
+	order captain goto (2075,1040) inmode ignore //(2035,1125)
+
+	if evtfaceit
+		testvar getpadstatus padcapondesk = 1
+		then
+		setfacing captain sarge
+
+	if evtfaceit2
+		testvar getpadstatus padcapondesk = 1
+		then
+		setfacing captain spy
+
+if evtSargeToSpyLoop butnot evtSargeGotNearSpy		// force sarge to pad, no matter what beacons are dropped
+	then 
+	trigger evtShakeSargeLoose, 
+	trigger evtfaceit,
+	triggerdelay 4000 redirect,
+	triggerdelay 40000 evtSargeToSpyLoop
+
+	if evtShakesargeloose then random
+	order sarge goto (2090,1285) inmode ignore,
+	order sarge goto (2340,1300) inmode ignore,
+	order sarge goto (1980,1180) inmode ignore
+
+	IF redirect then order sarge goto padSargesoapbox inmode ignore,
+		trigger evtfaceit
+
+if padon padSargeSoapbox butnot evtSargeGotNearSpy
+	testvar boolDeskclear = 1 
+	then
+	trigger evtfaceit,
+	setfacing sarge 230,
+	triggerdelay 3 evtSargeGotNearSpy,	// token evt
+	trigger evtGuysOnDesk2a
+
+//if evtGuysOnDesk2 butnot evtmissionlost then
+//	order sarge goto (2100,910) inmode ignore, // send sarge left
+//	triggerdelay 4000 evtGuysondesk2a
+
+if evtGuysondesk2a butnot evtmissionlost then
+	setaipose sarge stand,
+	setfacing sarge 200,
+	ally grey green,
+	ally green grey,
+	createunit spy rifleman (2180,910) grey rifle,  // make spy behind bks
+	trigger evtfaceit2,
+	setspeed spy slow,
+	order spy goto padSpySoapbox inmode ignore, // was (2156,943)
+	trigger evtDisableCap,
+	triggerdelay 1 evtComeOoout
+
+	if evtComeooout butnot evtmissionlost then
+	playtalkinghead 104		// COme out Grey 4.85 secs
+//	triggerdelay 7300 evtGreyVO // now using TALKINGHEADDONE
+
+if padon padSpySoapbox butnot killed spy then
+	trigger evtfaceit,
+	setfacing sarge spy,
+	setaimode sarge ignore,
+	setaipose spy stand,
+	setaimode spy ignore,
+	setfacing spy sarge,
+	triggerdelay 600 GOD3
+
+	if GOD3 butnot evtmissionlost then
+	setfacing spy sarge, // was 55
+	trigger evtfaceit
+
+if inorder evtGuysondesk2a talkingheaddone captain then
+	trigger evtGreyvo,
+	trigger evtDisableCap
+
+	if evtGreyVO butnot evtmissionlost then
+	trigger evtfaceit2,
+	playsound "..\voice\gry001d.wav" (0,0) 0 1,		// GSpy: (no com window) 
+	setsoundvolume "..\voice\gry001d.wav" 0 400, // && test this
+	trigger evtPRtxt1, 	// "Grey Spy:  The chemicals are on the floor.... etc etc
+	triggerdelay 7800 evtPRtxt2, //The other is in a well-guarded Tan tent
+	triggerdelay 15000 evtGuysOnDesk3a
+
+if evtGuysOnDesk3a butnot killed spy then
+	trigger GOD3a
+
+	if GOD3a butnot evtmissionlost then
+	trigger evtDisableCap,
+	trigger evtfaceit2,
+	playtalkinghead 106,	//Sarge: It's not easy being Green.
+	trigger evtGuysOnDesk4
+	
+if evtGuysOnDesk4 butnot evtmissionlost then //Sarge: Fellows, I've got an idea. Sorry, Grey; we're going to need your clothes.
+	setfacing sarge 127,
+	setaipose sarge stand,
+	trigger evtDisableCap,
+	trigger evtfaceit2,
+	playtalkinghead 107,
+	trigger attaboy
+
+//if evtguysondesk4 
+//	testvar getpadstatus padcapondesk = 1 then
+//	setnpc captain 1,
+//	setaimode captain ignore
+
+if killed spy then
+	triggerdelay 300 evtmissionlost,
+	stoptalkinghead,
+	playsound "" (0,0) 0 1,
+	triggerdelay 1000 evtSpyDead // see lose
+
+if inorder evtGreyVO killed Sarge then
+	trigger testvokiller
+
+	if testvokiller butnot evtmission1won then
+	playsound "" (0,0) 0 1	
+
+if attaboy butnot evtmissionlost then
+	playtalkinghead 116,		// RS: Good job, Captain, but you've still got work to do! 3sec
+	setvar boolVOlockout 1, // block all other vos
+	trigger restartbunsen,
+	setaipose sarge none
+
+	if restartbunsen
+	testvar boolbunlit = 1
+	then onobjstate objflame
+	oshi	trigger hurton
+
+if inorder attaboy talkingheaddone captain then
+	triggerdelay 1000 evtTestM1Won
+
+	if evtTestM1Won butnot evtMission1won then trigger evtmission1won
+
+if evtMission1Won butnot evtmissionlost then
+	setcamerafocus captain,
+	trigger beaconon,
+	setaimode matlf6 attack, //&&
+	setaimode jeepmatrt attack, 
+	setaimode matlf1 attack,
+	setaimode matlf2 attack,
+	setaimode matlf3 attack,
+	setaimode matlf4 attack,
+	setaimode matlf5 attack,
+	setaimode matrt1 attack,
+	setaimode matrt2 attack,
+	setaimode matrt3 attack,
+	setaimode matrt4 attack,
+	setaimode matrt5 attack,
+	setnpc captain 0,
+	setvar boolVOlockout 0, // unblock all other vos
+	trigger greenwins
+
+//************************ mixing bowl ************************
+
+if pickedup objvial3 
+	then setobjstate objvial3 osnormal	// switch to ordinary draworder
+
+if dropped objVial2 
+	testvar getpadstatus padbowl =1
+	then triggerdelay 100 evtChgVial2
+
+if evtChgVial2
+	testvar hasitem captain objvial2 = 0 then
+	createexplosion (2362,1145) 132,
+	createexplosion (2362,1145) 128,
+	removemissionobjective objvial2,
+	undeploy objvial2,
+	trigger evtChangeBowlState
+
+if dropped objVial1
+	testvar getpadstatus padbowl =1
+	then triggerdelay 100 evtChgVial1
+
+if hit objgreenvial1		// can't let it be shot in air
+	testvar hasitem captain objgreenvial1 = 1
+	then heal objgreenvial1 100
+
+if dropped objgreenvial1
+	testvar getpadstatus padbowl =1
+	then triggerdelay 100 evtChgVial1
+
+if evtChgVial1 
+	testvar hasitem captain objvial1 = 0 then
+	createexplosion (2362,1145) 132,
+	createexplosion (2362,1145) 128,
+	removemissionobjective objvial1,
+	removemissionobjective objgreenvial1,
+	undeploy objvial1,
+	undeploy objgreenvial1, // in case we're dealing with the destructible vial
+	trigger evtChangeBowlState
+
+if dropped objVial3
+	testvar getpadstatus padbowl =1
+	then triggerdelay 100 evtChgVial3
+
+if evtChgVial3
+	testvar hasitem captain objvial3 = 0 then
+	createexplosion (2362,1145) 132,
+	createexplosion (2362,1145) 128,
+	removemissionobjective objvial3,
+	undeploy objvial3,
+	trigger evtChangeBowlState
+
+if evtChangeBowlState then
+	ONOBJSTATE objBowl
+	osEmpty		TRIGGER evtOneVialDone,
+	osFirst		TRIGGER evtTwoVialsDone,
+	osSecond	TRIGGER evtGotPVP // see script 2
+
+if evtOneVialDone
+	then setobjstate objbowl osFirst,
+	playitemsound "chemicals.wav" objbowl 4 1,
+	setsoundvolume "chemicals.wav" 4 800,
+	savegame PLAYRMgot1drum,
+	trigger evtOneVialVO
+
+	if evtOneVialVO butnot evtMission1won then
+		trigger gnorf4
+
+	if gnorf4 butnot evtmissionlost
+	testvar boolVOlockout = 0
+	then
+	playtalkinghead 11 // Captain, remember your objective!
+
+	if inorder evtMission1won evtOneVialVO then
+	trigger gnorf5
+
+	if gnorf5
+	testvar boolvolockout = 0 then
+	playtalkinghead 147 // a couple more like that should do the trick.
+
+if evtTwoVialsDone butnot evtmissionlost
+	then setobjstate objbowl osSecond,
+	playitemsound "chemicals.wav" objbowl 4 1,
+	setsoundvolume "chemicals.wav" 4 800,
+	savegame PLAYRMgot2drums
+//	playtalkinghead 109	//Just one more, Captain.
+
+//================ PATTERN PANIC PANIC PANIC ---------------------------------------------------------------==============
+
+if padon padStartPP BUTNOT evtPPWin
+	testvar boolPPGameStarted = 0	// make sure player hasn't shot any buttons yet
+	then trigger evtStartPPTest,
+	triggerdelay 10 evtPPLockout,
+	triggerdelay 14000 evtPPTestForBoggle
+
+if padoff padStartPP then
+	triggerdelay 20000 evtAllowContinue
+
+	if evtAllowContinue then
+		setvar boolPPGameStarted 0	// after 20 sec, playtones can happen again even if game was started
+
+if evtPPLockout		// boolPPAttract toggled on after Playtones
+					// to prevent multiple Playtones from being triggered by player wavering at padedge
+	then setvar boolPPAttract 1,
+	triggerdelay 15000 evtPPUnlockout
+
+if evtPPUnlockout
+	then setvar boolPPAttract 0
+
+if evtPPTestForBoggle butnot evtPPboggle
+	testvar getpadstatus padStartPP = 1	// player still lookin' at the game
+	AND boolPPGameStarted = 0
+	then trigger evtPPBoggle
+
+	if evtPPBoggle butnot evtMissionLost
+		testvar boolVOlockout = 0
+		then playtalkinghead 110	//  RS: Captain, that device apparently requires you to follow its lead...!
+
+if evtStartPPTest
+	testvar boolPPAttract = 0
+	then trigger evtPlayTones
+
+
+// -----------------
+// BEGIN MACRO Combo - randomly generate PP combo
+// Y = 1, O = 2, B = 3, G = 4
+MACRO Combo 7
+{
+IF evtPickCombo THEN RANDOM
+	trigger evtSeq1,
+	trigger evtSeq2,
+	trigger evtSeq3,
+	trigger evtSeq4,
+	trigger evtSeq5,
+	trigger evtSeq6,
+	trigger evtSeq7,
+	trigger evtSeq8,
+	trigger evtSeq9,
+	trigger evtSeq10
+
+IF evtSeq@1 THEN
+	setvar varPPcombo1 @2,
+	setvar varPPcombo2 @3,
+	setvar varPPcombo3 @4,
+	setvar varPPcombo4 @5,
+	setvar varPPcombo5 @6,
+	setvar varPPcombo6 @7
+}
+// @1 = which combo to use; @2-7 are combo contents.
+EXPAND Combo (1 4 1 2 3 2 1)
+EXPAND Combo (2 3 4 1 3 1 2)
+EXPAND Combo (3 1 3 2 4 3 2)
+EXPAND Combo (4 3 4 1 2 4 2)
+EXPAND Combo (5 4 2 4 1 2 3)
+EXPAND Combo (6 1 3 2 3 1 4)
+EXPAND Combo (7 3 4 1 4 3 2)
+EXPAND Combo (8 2 3 1 3 4 2)
+EXPAND Combo (9 2 1 4 1 3 2)
+EXPAND Combo (10 3 2 1 3 4 2)
+// ---------END MACRO
+
+// -----------------
+// BEGIN MACRO PPTests - see if player got it right
+
+MACRO PPTests 2
+{
+IF evtYtest					// assign the current digit's value to PPtemp
+	testvar varPPcount = @1 // match PPcount
+	then
+	setvar varPPtemp @2,
+	trigger evtYCompare
+
+IF evtGtest					// assign the current digit's value to PPtemp
+	testvar varPPcount = @1 // match PPcount
+	then
+	setvar varPPtemp @2,
+	trigger evtGCompare
+
+IF evtBtest					// assign the current digit's value to PPtemp
+	testvar varPPcount = @1 // match PPcount
+	then
+	setvar varPPtemp @2,
+	trigger evtBCompare
+
+IF evtOtest					// assign the current combodigit's value to PPtemp
+	testvar varPPcount = @1 // match PPcount
+	then
+	setvar varPPtemp @2,
+	trigger evtOCompare
+}
+EXPAND PPTests (1 varPPCombo1)
+EXPAND PPTests (2 varPPCombo2)
+EXPAND PPTests (3 varPPCombo3)
+EXPAND PPTests (4 varPPCombo4)
+EXPAND PPTests (5 varPPCombo5)
+EXPAND PPTests (6 varPPCombo6)
+
+// ---------END MACRO
+
+// -----------------
+// BEGIN MACRO Compares - see if player guessed right
+// 
+MACRO Compares 2
+{
+	IF @1			// if correct then test for win
+		testvar varPPtemp = @2	// match player's guess
+		THEN
+		trigger evtTestForEndRound
+
+	IF @1			// if wrong then stop
+		testvar varPPtemp <> @2
+		THEN
+//		tracevar varPPtemp,
+		triggerdelay 1000 evtPPWrong
+}
+EXPAND Compares (evtYCompare 1)
+EXPAND Compares (evtoCompare 2)
+EXPAND Compares (evtbCompare 3)
+EXPAND Compares (evtgCompare 4)
+
+// ---------END MACRO
+		
+IF evtTestForEndRound
+	testvar varPPdigit = varPPcount	 // player has finished a round
+	then
+	trigger evtTestPPWin			// test if whole game is won
+
+IF evtTestForEndRound
+	testvar varPPdigit <> varPPcount	 // player has NOT finished a round
+	then
+	triggerdelay refvar varPPspeed evtAddtoCounter,
+	triggerdelay refvar varPPspeed evtListen
+
+IF evtListen
+	then setvar boolPPhittable 1
+
+IF evtTestPPWin
+	testvar varPPdigit = 6			
+	then
+	triggerdelay 1000 evtPPWin
+
+IF evtTestPPWin
+	testvar varPPdigit <>6 			// game NOT won
+	then
+	triggerdelay refvar constPPspeed evtnewPPRound
+
+IF evtNewPPRound
+	then
+	addvar varPPdigit 1,			// advance to next digit (after TestPPWin has cleared)
+//	showmessage "NEWRD, dig=",
+//	tracevar varppdigit,
+	setvar varPPcount 1,			// reset counter
+	trigger evtPlayTones
+
+if evtPlayTones
+	testvar varPPcount < varPPdigit			// stop playing when we reach PPdigit
+	then
+	setvar varPPspeed constPPspeed,			// base time of tone playback period
+	divvar varPPspeed varPPdigit,	// gets faster as digit rises
+	triggerdelay refvar varPPspeed evtPlayTone,
+	setvar varPPtemp varPPspeed,
+	mulvar varPPtemp 21,		// x2 to allow for playback time
+	divvar varPPtemp 10,		// 10% pause between tones
+	triggerdelay refvar varPPtemp evtAddToCounter,
+	addvar varPPtemp 10,		// minidelay to update counter first
+	triggerdelay refvar varPPtemp evtPlayTones	//recurse
+
+if evtPlayTones
+	testvar varPPcount = varPPdigit
+	then
+	setvar varPPspeed constPPspeed,			// base time of tone playback period
+	divvar varPPspeed varPPdigit,	// gets faster as digit rises
+	triggerdelay refvar varPPspeed evtPlayTone,	// one last play (fencepost prob)
+	setvar varPPtemp varPPspeed,
+	mulvar varPPtemp 2,
+	addvar varPPtemp 5,	// minidelay before listen
+	triggerdelay refvar varPPtemp evtListen,
+	triggerdelay refvar varPPtemp evtResetCounter	// must be delayed so it doesn't screw w/last Playtone
+
+	if evtResetCounter
+		then
+		setvar varPPcount 1
+
+if evtAddToCounter THEN
+	addvar varppCount 1
+
+// -----------------
+// BEGIN MACRO PlayToneMacro
+
+MACRO PlayToneMacro 2
+{
+if evtPlayTone
+	testvar varPPcount = @1	// match value of count
+	then trigger @2
+}
+
+EXPAND PlayToneMacro (1 evtPlayTone1)
+EXPAND PlayToneMacro (2 evtPlayTone2)
+EXPAND PlayToneMacro (3 evtPlayTone3)
+EXPAND PlayToneMacro (4 evtPlayTone4)
+EXPAND PlayToneMacro (5 evtPlayTone5)
+EXPAND PlayToneMacro (6 evtPlayTone6)
+
+// ---------END MACRO
+// -----------------
+// BEGIN MACRO PP
+
+MACRO PlayToneMacro1 2
+{
+if evtPlayTone@1	
+	testvar @2 = 1		// match value of combo
+	then setobjstate objppyb___ osppybon,
+	playsound "" (0,0) 3 1,
+	playitemsound "simontone1.wav" objppyb___ 3 1,
+	triggerdelay refvar varPPspeed evtturnyellowOff
+
+if evtPlayTone@1
+	testvar @2 = 2		// match value of combo
+	then setobjstate objppob___ osppobon,
+	playsound "" (0,0) 3 1,
+	playitemsound "simontone2.wav" objppob___ 3 1,
+	triggerdelay refvar varPPspeed evtturnorangeOff
+
+if evtPlayTone@1	
+	testvar @2 = 3		// match value of combo
+	then setobjstate objppbb___ osppbbon,
+	playsound "" (0,0) 3 1,
+	playitemsound "simontone3.wav" objppbb___ 3 1,
+	triggerdelay refvar varPPspeed evtturnblueOff
+
+if evtPlayTone@1	
+	testvar @2 = 4		// match value of combo
+	then setobjstate objppgb___ osppbgon,
+	playsound "" (0,0) 3 1,
+	playitemsound "simontone4.wav" objppgb___ 3 1,
+	triggerdelay refvar varPPspeed evtturngreenOff
+}
+
+EXPAND PlayToneMacro1 (1 varPPcombo1)
+EXPAND PlayToneMacro1 (2 varPPCombo2)
+EXPAND PlayToneMacro1 (3 varPPCombo3)
+EXPAND PlayToneMacro1 (4 varPPCombo4)
+EXPAND PlayToneMacro1 (5 varPPCombo5)
+EXPAND PlayToneMacro1 (6 varPPCombo6)
+
+// ---------END MACRO
+
+macro pphitters 1
+{
+IF hit objppyb___ by @1
+	testvar boolPPhittable = 1
+	THEN
+	setvar boolPPhittable 0,
+	setvar boolPPGameStarted 1,
+	setobjstate objppyb___ osppybon,
+	playsound "" (0,0) 3 1,
+	playitemsound "simontone1.wav" me 3 1 1,
+	setvar varPPspeed constPPspeed,
+	divvar varPPspeed 4,
+	triggerdelay refvar varPPspeed evtYTest,
+	triggerdelay refvar varPPspeed evtturnyellowoff
+
+IF HIT objppob___ by @1
+	testvar boolPPhittable = 1
+	THEN
+	setvar boolPPhittable 0,
+	setvar boolPPGameStarted 1,
+	setobjstate objppob___ osppobon,
+	playsound "" (0,0) 3 1,
+	playitemsound "simontone2.wav" me 3 1 1,
+	setvar varPPspeed constPPspeed,
+	divvar varPPspeed 4,
+	triggerdelay refvar varPPspeed evtOTest,
+	triggerdelay refvar varPPspeed evtturnorangeoff
+
+IF HIT objppgb___ by @1
+	testvar boolPPhittable = 1
+	THEN
+	setvar boolPPGameStarted 1,
+	setvar boolPPhittable 0,
+	setobjstate objppgb___ osppybon,
+	playsound "" (0,0) 3 1,
+	playitemsound "simontone4.wav" me 3 1 1,
+	setvar varPPspeed constPPspeed,
+	divvar varPPspeed 4,
+	triggerdelay refvar varPPspeed evtGTest,
+	triggerdelay refvar varPPspeed evtturngreenoff
+
+IF HIT objppbb___ by @1
+	testvar boolPPhittable = 1
+	THEN
+	setvar boolPPhittable 0,
+	setvar boolPPGameStarted 1,
+	setobjstate objppbb___ osppbbon,
+	playsound "" (0,0) 3 1,
+	playitemsound "simontone3.wav" me 3 1 1,
+	setvar varPPspeed constPPspeed,
+	divvar varPPspeed 4,
+	triggerdelay refvar varPPspeed  evtBTest,
+	triggerdelay refvar varPPspeed  evtturnblueoff
+}
+expand pphitters (captain)
+expand pphitters (matlf1) // all the dudes toting bazookas and such &&
+
+IF evtturnyellowoff then
+	setobjstate objppyb___ osppyboff,
+	playitemsound "" me 3 1
+
+IF evtturnorangeoff then
+	setobjstate objppob___ osppoboff,
+	playitemsound "" me 3 1
+
+IF evtturnblueoff then
+	setobjstate objppbb___ osppbboff,
+	playitemsound "" me 3 1
+
+IF evtturngreenoff then
+	setobjstate objppgb___ osppgboff,
+	playitemsound "" me 3 1
+
+IF evtResetPP THEN
+	setvar varPPdigit 1,
+	setvar boolPPhittable 0,
+	trigger evtPickcombo,
+	setvar varPPcount 1,
+	setobjstate objppyb___ osppyboff,
+	setobjstate objppob___ osppyboff,
+	setobjstate objppbb___ osppyboff,
+	setobjstate objppgb___ osppyboff
+
+IF evtPPWrong THEN
+	playitemsound "" me 3 1,
+	playsound "..\codesfx\alarm.wav" (0,0) 3 0,
+	addvar varPPlosses 1,
+	trigger evtResetPP,
+	deploy objpprf,
+	setobjstate objppgb___ osppgbflash,
+	setobjstate objppob___ osppobflash,
+	setobjstate objppyb___ osppybflash,
+	setobjstate objppbb___ osppbbflash,
+	setobjstate objpprf ospprflashing,
+	triggerdelay 800 evtTestPPuzzled,
+//	setvar boolPPhittable 0,		not necc
+	triggerdelay 1250 evtPPflash1
+
+if evtTestPPuzzled butnot evtPPrompt // see attract mode
+	testvar varPPlosses =3
+	then trigger evtTestPPuzz2
+
+	if evtTestPPuzz2 butnot evtmissionlost 
+	testvar boolVOlockout = 0 then
+	playtalkinghead 111	//  RS: Blade, I think that thing wants you to echo it.
+
+	if evtPPflash1
+	then
+	setobjstate objpprf ospprfoff,
+	undeploy objpprf,
+	triggerdelay 750 evtPPflash2
+
+	if evtPPflash2
+	then
+	deploy objpprf,
+	setobjstate objpprf ospprflashing,
+	triggerdelay 1250 evtPPstopflash
+
+	IF evtPPstopflash then
+		setobjstate objPPRF osPPRFoff,
+		undeploy objPPRF,
+		trigger evtResetpp, // new, to clear the buttonflashes
+		triggerdelay 2000 evtPlayTones		// autostart new game
+
+variable varcount 0
+
+IF evtPPWin THEN
+	trigger evtWinSounds,
+	setobjstate objppgb___ osppgbflash,
+	triggerdelay 100 evtflashbb,
+	triggerdelay 250 evtflashyb,
+	triggerdelay 350 evtflashob,
+	triggerdelay 2200 evtPPBlow
+
+	if evtflashbb then
+	setobjstate objppbb___ osppbbflash
+
+	if evtflashyb then
+	setobjstate objppyb___ osppybflash
+
+	if evtflashob then
+	setobjstate objppob___ osppobflash
+
+	if evtWinSounds
+	testvar varcount < 2 then
+	playsound "SimonTone1.wav" (0,0) 5 1,
+	triggerdelay 250 evtWinSd2
+
+	if evtWinSd2 then
+	playsound "" 5 1,
+	playsound "SimonTone2.wav" (0,0) 5 1,
+	triggerdelay 250 evtWinSd3
+
+	if evtWinSd3 then
+	playsound "" 5 1,
+	playsound "SimonTone3.wav" (0,0) 5 1,
+	triggerdelay 250 evtWinSd4
+
+	if evtWinSd3 then
+	playsound "" 5 1,
+	playsound "SimonTone4.wav" (0,0) 5 1,
+	addvar varcount 1,
+	triggerdelay 250 evtWinSounds
+
+	if evtPPBlow then
+	trigger evtresetpp, // new, to clear flashing buttons
+	deploy objppdamgfrt,
+	deploy objvial3,
+	deploy objppdamg,
+	removemissionobjective objPapa,
+	addmissionobjective objvial3,
+	makesmoke objppdamgfrt 40000,
+	createexplosion (900,2808) 139,
+	playsound "Explosion2.wav" (0,0) 5 2,
+	createexplosion (890,2822) 149,
+	savegame PLAYRMwonPatPnic,
+	triggerdelay 2000 evtPPWin2			// see script 2
+
+//================================================================
+
+//************ random explosion generator for object death
+// to use, create a listBigDieObjs and/or listSmallDieObjs of the objects
+// you want this effect on. Pls do not change the explosion types without
+// telling me. The range of randomness: X is from -6 to 35. Big object
+// Y is -30 to -60; small object Y is -15 to -35. This assumes that the
+// object's hotspot is near the bottom center of a tall rectangular object,
+// like a shampoo bottle.
+
+if evtRandomX then random
+	addvar varExploX 7,
+	addvar varExploX -6,
+	addvar varExploX 27,
+	addvar varExploX 10,
+	addvar varExploX 35,
+	addvar varExploX 15,
+	addvar varExploX 8
+
+if evtRandomBigY then random
+	addvar varExploY -60,
+	addvar varExploY -45,
+	addvar varExploY -30,
+	addvar varExploY -55,
+	addvar varExploY -35,
+	addvar varExploY -50
+
+if evtRandomSmallY then random
+	addvar varExploY -30,
+	addvar varExploY -20,
+	addvar varExploY -15,
+	addvar varExploY -25,
+	addvar varExploY -28,
+	addvar varExploY -35
+
+if killed listBigDieObjs then
+	SETVAR varExploX GETX me,
+	SETVAR varExploY GETY me,
+	trigger evtRandomX,
+	trigger evtRandomBigY,
+	trigger evtRandomExplo,
+	SETVAR varExploX GETX me,
+	SETVAR varExploY GETY me,
+	trigger evtRandomX,
+	trigger evtRandomBigY,
+	triggerdelay 200 evtRandomExplo,
+	SETVAR varExploX GETX me,
+	SETVAR varExploY GETY me,
+	trigger evtRandomX,
+	trigger evtRandomBigY,
+	triggerdelay 500 evtRandomSmoke,
+	SETVAR varExploX GETX me,
+	SETVAR varExploY GETY me,
+	trigger evtRandomX,
+	trigger evtRandomBigY,
+	triggerdelay 800 evtRandomExplo
+
+if killed listSmallDieObjs then
+	SETVAR varExploX GETX me,
+	SETVAR varExploY GETY me,
+	trigger evtRandomX,
+	trigger evtRandomSmallY,
+	trigger evtRandomExplo,
+	SETVAR varExploX GETX me,
+	SETVAR varExploY GETY me,
+	trigger evtRandomX,
+	trigger evtRandomSmallY,
+	triggerdelay 500 evtRandomSmoke
+
+if evtRandomExplo then random
+	createexplosion (refvar varExploX, refvar varExploY) 148,
+	createexplosion (refvar varExploX, refvar varExploY) 149,
+	createexplosion (refvar varExploX, refvar varExploY) 149,
+	createexplosion (refvar varExploX, refvar varExploY) 138,
+	createexplosion (refvar varExploX, refvar varExploY) 140
+
+if evtRandomSmoke then random
+	makesmoke (refvar varExploX, refvar varExploY) 3700,
+	makesmoke (refvar varExploX, refvar varExploY) 2500,
+	makesmoke (refvar varExploX, refvar varExploY) 3000,
+	makesmoke (refvar varExploX, refvar varExploY) 3200,
+	makesmoke (refvar varExploX, refvar varExploY) 4000
+
+// ********* end random explosion generator *******
+// ********* playpad *********
+
+if padon padboobied then
+	createexplosion me 149,
+	damage me 5000 explosion,
+	makesmoke me 5000
+
+// ******** secret area **********
+
+if killed objBookend then
+	createpowerup thrownfirecracker (1860,740) 10,	
+	createpowerup armorboost (1908,638) 20,
+	createpowerup radarmissile (1869,698) 10,
+	createpowerup insecticide (1933,700) 20
+
+// ******************************** win conditions =====================================
+
+if killed listdesktan then
+	addvar vardeskdead 1,
+	trigger evtTestDeskClear
+
+if killed listdesktan by captain butnot evtmissionlost
+	testvar vardeskdead = 3 // was 5
+	AND boolvolockout = 0
+	then playtalkinghead 113 //	Track them down, Blade.
+
+	if evtTestdeskclear butnot evtmissionlost
+		testvar vardeskdead = 5
+		and boolvolockout = 0 then
+		playtalkinghead 109 //	one more
+
+	if evtTestdeskclear butnot evtmissionlost
+		testvar vardeskdead = 3
+		then trigger evtpuprwd
+
+	if evtTestdeskclear butnot evtmissionlost
+		testvar vardeskdead = 6 // was 8
+		then
+		trigger evtTestforWin,
+		setvar boolDeskClear 1,
+		trigger deskyVO
+
+		if deskyVO
+	testvar boolvolockout = 0 then
+		playtalkinghead 112 // That's it...!
+
+	if evtTestdeskclear
+		testvar vardeskdead = 6
+		then triggerdelay 2000 evtReminder
+
+		if evtReminder butnot evtGuysOnDesk
+			then trigger gnorf6
+
+			if gnorf6
+			testvar boolvolockout = 0 then
+			playtalkinghead 149 // Blade, we need to get to that LZ.
+
+if padon padGuyOnDesk butnot evtGuysOnDesk
+	testvar varDeskDead = 6 // was 8 &&
+	then
+	trigger evtTestforWin
+
+if killed listgreentroops butnot evtGuysOnDesk
+	testvar vargreendead < 6
+	AND varDeskDead = 6 // was 8 &&
+	then triggerdelay 200 evtTestforWin
+
+// can't leave any guys in the toybox.
+//******macro
+macro guycount 2
+{
+if evtTestForWin
+	testvar varGreenDead = @1
+	then triggerdelay 100 evtPollFor@2Guys
+
+if evtPollFor@2Guys butnot evtmissionlost
+	testvar getpadstatus pad@2GuysOnDesk = 1
+	then
+	trigger evtGuysOnDesk // starts win sequence, see Find Spy section
+}
+expand guycount (0 8)
+expand guycount (1 7)
+expand guycount (2 6)
+expand guycount (3 5)
+expand guycount (4 4)
+expand guycount (5 3)
+
+//=================================================================
+
+// ======= BEGIN Defeat Conditions =======
+
+IF padon padCapatcapportal	
+	testvar boolventdead = 1 then
+	trigger evtCapVanish
+
+if evtCapVanish then
+	deploy objportalframe,
+	setspeed captain slow,
+	createexplosion captain 137,
+	createexplosion captain 128,
+	undeploy captain
+
+if evtCapVanish butnot evtConvoyWiped then
+	trigger evtMissionLost,
+	stoptalkinghead,
+	triggerdelay 1500 evtMsgawol
+
+if evtMsgAwol then
+	playtalkinghead 0 // You went AWOL before finishing the mission!
+
+	if inorder evtmsgawol talkingheaddone captain then triggerdelay 1000 tanwins
+
+if evtSpydead butnot killed sarge then
+	playtalkinghead 108  //Sarge: what the--!?!
+
+if evtSpyDead then triggerdelay 100 evtSpanky
+
+	if evtSpanky butnot evtmissionlost then
+	playtalkinghead 156 // Sam: Now we'll never know what the tan are planning
+
+		if inorder evtSpanky talkingheaddone captain then
+			triggerdelay 2000 tanwins
+
+IF KILLED listGreenTroops butnot evtTroopsWiped
+	then addvar varGreenDead 1,
+	trigger evtTestGreenLose
+
+if evtTestGreenlose	butnot evtDudesDied // warning of deaths
+	testvar vargreendead < 5
+	then trigger evtDudesDied
+
+	if evtDudesDied butnot evtmissionlost
+	then playtalkinghead 148 // we're taking too many casualties
+
+if evtTestGreenlose
+	testvar varGreendead > 5
+	THEN trigger evtTestGreenLose2
+
+	if evtTestGreenLose2 butnot evtmissionlost
+		then trigger evtcheckcaptain
+
+	IF evtCheckCaptain BUTNOT killed Captain THEN
+		stoptalkinghead,
+//		showpda "Stop the head!",
+        TRIGGER evtMissionLost,                 // use this event to track that we have lost
+        TRIGGERDELAY 1 evtTroopsWiped        // allow time for death to register
+IF evtTroopsWiped THEN
+ // We can't win. Too many of our men have died in battle.
+		playtalkinghead 118
+
+		if inorder evtTroopswiped talkingheaddone captain then triggerdelay 1000 tanwins
+
+if evtVialLost butnot evtmissionlost
+	then trigger evtMissionLost,
+	stoptalkinghead,
+	triggerdelay 200 evtViallyVO
+
+	if evtViallyVO then
+	playtalkinghead 119 // tan units destroyed obj at tent
+
+		if inorder evtViallyVO talkingheaddone captain then triggerdelay 1000 tanwins
+
+// ======= END Defeat Conditions =======
+
+preloadsprite 43 570 0 // vent
+
+preloadsprite 43 560 0 // house
+preloadsprite 43 560 1
+
+preloadsprite 43 300 0
+
+preloadsprite 43 100 0
+preloadsprite 43 200 0
+
+preloadsprite 43 535 0
+
+preloadsprite 43 700 0
+preloadsprite 43 700 1
+
+preloadsprite 43 705 0
+preloadsprite 43 705 1
+
+preloadsprite 43 710 1
+preloadsprite 43 710 0
+preloadsprite 43 710 2
+preloadsprite 43 710 3
+preloadsprite 43 710 4
+
+preloadsprite 43 715 0
+
+preloadsprite 43 720 0
+preloadsprite 43 720 1
+preloadsprite 43 720 2
+
+preloadsprite 43 501 0
+
+preloadsprite 43 502 0
+preloadsprite 43 502 1
+
+preloadsprite 43 503 0
+preloadsprite 43 503 1
+
+preloadsprite 43 505 0
+preloadsprite 43 505 1
+
+preloadsprite 43 515 0
+
+preloadsprite 43 520 0
+preloadsprite 43 520 1
+
+preloadsprite 43 400 0
+
+preloadsprite 43 500 0
+preloadsprite 43 500 1
+preloadsprite 43 601 0
+

@@ -57,7 +57,6 @@ import os
 import shutil
 import sys
 import zipfile
-from datetime import datetime, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -296,8 +295,9 @@ def main():
 
     # ── 4) 打 zip（ASCII 文件名，GitHub 附件不支持中文）────────────────
     #    CI 里 upload-artifact 取 stage_am4/*.zip，所以 zip 落在 stage 下。
-    stamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
-    zname = "ArmyMen4-CHS-Patch-%s.zip" % stamp
+    #    ★ 附件名固定为 armymen_WW.zip（用户指定）：4 代 = World War。
+    #      不再带日期时间戳 —— 唯一性由 Release 的 tag 保证。
+    zname = "armymen_WW.zip"
     zpath = os.path.join(stage, zname)
 
     with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED,

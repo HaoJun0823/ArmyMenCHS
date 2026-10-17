@@ -1,0 +1,753 @@
+ // AMAA Playroom 2
+// David Chang
+//
+// ======= PADS =======
+pad padSargeWaypt0 92 sarge
+pad padCopOnFloor 92 cop2 > 0
+pad padCopWaypt 94 cop2 > 0
+PAD padSargeWaypt1 100 sarge
+PAD padSargeWaypt2 101 sarge
+PAD padSargeWaypt3 102 sarge
+PAD padSargeWaypt4 103 sarge
+PAD padSargeWaypt5 104 sarge
+PAD padSargeWaypt6 105 sarge
+pad padTentSArgeBorder 110 tan unit
+pad padCopToybox 65 cop2 > 0
+pad padCopVDG 40 cop2 > 0
+pad padCopOnDesk 1 cop2 > 0
+pad padCopAtPortal 125 cop2 > 0
+pad padCopLZ 175 cop2 > 0
+
+// ======= VARS =======
+variable varTanTentDead 0
+variable varVialx 0
+variable varVialy 0
+variable boolsargeseen 0
+variable boolCop2Lost 0
+variable boolSargeTentArriv 0
+
+// === objects ========
+//===============================================
+IF startup2 THEN
+//	SETBRIEFING "map02_1.bmp",
+//	trace 3, // &&
+	setmissioninfo pr12,
+	setnpc captain 1,
+	setaimode captain ignore,
+	setvar vartempx getx captain,
+	setvar vartempy gety captain,
+	order captain goto (refvar vartempx, refvar vartempy) inmode ignore,
+	undeploy spy,
+	unally blue green,
+	unally green blue,
+	undeploy objPPRF,
+	setaimode sarge defend,
+	trigger evtKillspud,
+	trigger evtFireVDG1,
+	triggerdelay 1500 evtshowmiss2,
+	removemissionobjective sarge,
+	removemissionobjective "private cosico",
+	removemissionobjective "corporal Barrows",
+	removemissionobjective "private goldman",
+	removemissionobjective "private lopez",
+	removemissionobjective "private mahlab",
+	removemissionobjective "private gupta",
+	removemissionobjective "private Meyer"
+
+IF evtshowmiss2 THEN
+	setnpc captain 1,
+	setvar vartempx getx captain,
+	setvar vartempy gety captain,
+	order captain goto (refvar vartempx, refvar vartempy) inmode ignore,
+	setaimode captain ignore,
+	trigger evtAllTanIgnore,
+	playtalkinghead 117, //Get all three chemicals and drop them in the container on the desk! These chemicals should combine to make a potent volcano powder weapon that we can use in our attack on the Tan.
+	setmissioninfo pr12,
+	addmissionobjective objbowl,
+	addmissionobjective objvial2,
+	addmissionobjective objpapa,
+	playtalkinghead 159, // check your f1 map for more info
+	addmissionobjective ___objTent
+
+if inorder evtshowmiss2 talkingheaddone captain then setnpc captain 0
+
+if talkingheaddone captain butnot evtSargehint then
+	triggerdelay 500 evtsargehint
+
+	if evtsargehint
+	testvar boolVOlockout =0 then
+		playtalkinghead 114 // I'm ready to leave this sector
+
+if padon padCapNearMatLeft butnot evtSargePlanIz
+	then trigger evtSargePlanIz
+if padon padCapNearMatRt butnot evtSargePlanIz
+	then trigger evtSargePlanIz
+if padon padCapNearMatBotLeft butnot evtSargePlanIz
+	then trigger evtSargePlanIz
+
+	if evtSargePlanIz
+	testvar boolVOlockout =0 then
+//  "Sarge: Kill the troops near that shoe and then drop me off behind it where the others can't see me. I'll sneak in and eliminate the guards.",
+		playtalkinghead 121,
+		setmissioninfo pr12a
+
+/////////////// objvial2 vo
+
+if pickedup objvial2 butnot evtv2vo then
+	trigger evtv2vo
+
+	if evtv2vo 
+	testvar boolVOlockout =0 then
+		playtalkinghead 154 // Drop that chemical into the container, Captain.
+
+//==================================== the tent vial ===============================
+
+if dropped sarge butnot evtDisguiseSarge
+	testvar getpadstatus padMatLZ = 1
+	then trigger evtStartSargeBlitz
+
+if evtStartSargeBlitz
+	testvar getpadstatus padSargeVisible = 0
+	then
+	ignoretarget ___tent1 sarge,
+	ignoretarget ___tent2 sarge,
+	ignoretarget ___tent3 sarge,
+	triggerdelay 500 evtDisguiseSarge
+
+if evtStartSargeBlitz
+	testvar getpadstatus padSargeVisible = 1 // Tan troops nearby
+	then trigger dontVO,
+	setvar boolSargeSeen 1,
+	ignoretarget ___tent1 hiddentan,	// kludge; won't take NONE
+	ignoretarget ___tent2 hiddentan,
+	ignoretarget ___tent3 hiddentan,
+	trigger evtSendMatRtAtSarge,
+	triggerdelay 500 evtDisguiseSarge	// no ignoretarget on sarge
+
+	if dontVO
+	testvar boolVOlockout =0 then
+	playtalkinghead 122 // "Sarge: I don't like the looks of this."
+
+if evtDisguiseSarge then
+	setforcecolor sarge grey,
+	setbeacon captain 3, // disable beaconing
+	setvar boolnobeacon 1,
+	playitemsound "disguise.wav" sarge 3 1,
+	order sarge goto (2607,3132) inmode ignore, //padSargeWaypt0
+	triggerdelay 3000 evtMovemen
+
+if padon padTentSargeBorder
+	testvar boolSargeTentArriv = 1 then
+	trigger evtSargeNeedsBrain
+
+	if evtSargeNeedsBrain butnot evtSargeRun
+	then order sarge goto (2020,3185) inmode defend // get back to tent, sarge
+
+if padon padSargeWaypt0 then
+	order sarge goto (2612,3139) inmode ignore // was (2605,3134)
+
+if padon padSargeWaypt1 then
+	order me goto (2446,3222) inmode ignore
+if padon padSargeWaypt2 then
+	order me goto (2158,3197) inmode ignore
+if padon padSargeWaypt3  
+	testvar boolsargeseen = 0
+	then order me goto (2020,3185) inmode ignore, // front of tent
+	triggerdelay 1500 evtInsistSargeTo___tent1
+if padon padSargeWaypt3 // sarge wasn't dropped cleanly
+	testvar boolsargeseen = 1
+	then order ___tent1 follow sarge inmode attack,
+	order ___tent2 follow sarge inmode attack,
+	order ___tent3 follow sarge inmode attack,
+	order me goto (2020,3185) inmode defend,
+	triggerdelay 1500 evtInsistSargeTo___tent2
+
+If evtInsistSargeTo___tent1 butnot evtSargeAtTent then
+	order me goto (2020,3185) inmode ignore,
+	triggerdelay 1000 evtInsistSargeTo___tent1a
+if evtInsistSargeTo___tent1a butnot evtSargeAtTent then
+	order me goto (2006,3131) inmode ignore,	// in tent
+	triggerdelay 1000 evtInsistSargeTo___tent1
+
+If evtInsistSargeTo___tent2 butnot evtSargeAtTent then
+	order me goto (2020,3185) inmode defend,
+	triggerdelay 1000 evtInsistSargeTo___tent2
+if evtInsistSargeTo___tent2a butnot evtSargeAtTent then
+	order me goto (2006,3131) inmode ignore,
+	triggerdelay 1000 evtInsistSargeTo___tent2
+
+macro sendmatrts 6
+{
+if evtSendMatRtAtSarge then
+	order @1 follow sarge inmode attack
+}
+expand sendmatrts (matrt1 matrt2 matrt3 matrt4 matrt5 jeepmatrt)
+
+if padon padBlueSargeAtTent butnot evtSargeAtTent then
+	trigger evtSargeAtTent,	// (this event is also used as condition in PR1.txt)
+	triggerdelay 500 evtSargeRambo,
+	setfacing sarge 96,
+	order ___tent1 goto sarge inmode ignore,	// get ___tent1 near sarge
+	triggerdelay 2000 evtMovemen2
+
+	if evtSargeRambo
+		testvar boolSargeSeen = 0
+		then
+		setaimode sarge attack,
+		unitfire sarge ___tent1,
+		setforcecolor sarge green,
+		damage ___tent1 5000,	
+		triggerdelay 10 evtHurtGuards,
+		ignoretarget ___tent1 captain,	// kludge; won't take NONE
+		ignoretarget ___tent2 captain,
+		ignoretarget ___tent3 captain,
+		setaimode ___tent1 attack,
+		order ___tent2 goto sarge inmode attack,
+		order ___tent3 goto sarge inmode attack,
+		setvar boolramboed 1 // used in m1 for respawn destinations
+
+		if evtHurtGuards //&& change if aai changes
+			testvar difficulty = 1 then
+			damage ___tent2 148,
+			damage ___tent3 148
+
+		if evtHurtGuards
+			testvar difficulty = 0 then
+			damage ___tent2 128,
+			damage ___tent3 128
+
+		if evtHurtGuards
+			testvar difficulty = 2 then
+			damage ___tent2 188,
+			damage ___tent3 188
+
+	if evtSargeAtTent	// if Sarge wasn't inserted cleanly; note no delay
+		testvar boolSargeSeen = 1
+		then
+		setaimode sarge defend,			// **the tent guards do not get weakened**
+		unitfire sarge ___tent1,
+		setforcecolor sarge green,
+		setaimode ___tent1 attack,
+		order ___tent2 goto sarge inmode attack,
+		order ___tent3 goto sarge inmode attack,
+		ignoretarget ___tent1 captain,	
+		ignoretarget ___tent2 captain,
+		ignoretarget ___tent3 captain,
+		setvar boolSargeTentArriv 1
+
+if pickedup objvial1 then
+	ignoretarget ___tent1 hiddentan,	
+	ignoretarget ___tent2 hiddentan,
+	ignoretarget ___tent3 hiddentan
+	
+if killed ___objTent 
+	testvar boolsargeseen = 1
+	then
+	trigger evtSeenSargeAttacks
+
+if killed listTentGuards 
+	testvar boolsargeseen = 1
+	then
+	trigger evtSeenSargeAttacks
+
+if evtSeenSargeAttacks butnot evtBlowVial then
+	setvar boolKillVial 1,
+	trigger evtTestGuardsAlreadyNear
+
+if evtTestGuardsAlreadyNear butnot evtBlowVial
+	testvar getpadstatus padTanNearTentVial = 1
+	then trigger evtPreBlowVial // see m1 txt
+
+if killed listTentGuards butnot evtBlowvial then
+	addvar varTanTentDead 1,
+	triggerdelay 500 evtTestTentClear
+
+if evtTestTentClear butnot evtTTC2
+	testvar varTanTentDead =3
+	then trigger evtTTC2
+
+	if evtTTC2 butnot evtmissionlost then
+	trigger TTCvo,
+	order sarge goto (1962,3136) inmode ignore,  // run left of tent 
+	addmissionobjective sarge,
+	triggerdelay 1500 evtSargeRun
+
+	if TTCvo
+	testvar boolVOlockout =0 then
+	playtalkinghead 123
+//  "Sarge: The guards are down! Cover me while I make a run for the landing pad!"
+
+if evtSargeRun then
+	order sarge goto (2063,3037) inmode ignore, // left of vial (2007,3099)
+	order jeepmatrt goto padSargeWaypt0 inmode attack, // get jeep away from the exit LZ
+	triggerdelay 4000 evtSargeRun2
+if evtSargeRun2 then
+	order sarge goto (2065,2989) inmode ignore 	// waypt 4	
+if padon padSargeWaypt4 then
+	order me goto (2097,2925) inmode ignore, // pt 5
+	trigger evtSendMatRtAtSarge,
+	order matlf1 follow sarge inmode attack,
+	order matlf3 follow sarge inmode attack,
+	triggerdelay 3000 evtSendMatRtAtSarge // in case any of 'em hit the rt matedge
+if padon padSargeWaypt5 then
+	setbeacon captain 0, // enable beaconing
+	setvar boolnobeacon 0,
+	order me goto (2543,2600) inmode ignore	// waypt 6
+if padon padSargeWaypt6 then
+	setaimode me defend,
+	trigger evtSendMatRtAtSarge,
+	triggerdelay 2500 evtHurryUp
+
+if evtKillSpud butnot killed objbattery then
+	trigger evtkillspud2,
+	triggerdelay 5000 evtKillSpud3
+
+macro allspuds 1
+{
+if evtkillspud2 butnot killed objbattery then
+	order @1 goto (2350,1370) inmode defend
+
+	if evtKillspud3 butnot killed objbattery then 
+	order @1 goto (2500,1190) inmode attack
+
+if allof killed objbattery evtKillspud then
+	order @1 goto (2300,1315) inmode defend
+
+if evtMovemen
+	testvar getelevation @1 < 5
+	then order @1 goto padSargeWaypt0 inmode defend
+
+if evtMovemen2
+	testvar getelevation @1 < 5 then
+	order @1 goto padsargewaypt6 inmode defend
+}
+expand allspuds ("private cosico")
+expand allspuds ("corporal barrows")
+expand allspuds ("private goldman")
+expand allspuds ("private lopez")
+expand allspuds ("private mahlab" )
+expand allspuds ("private gupta" )
+expand allspuds ("private meyer" )
+
+if inorder evtSargeRun2 pickedup Sarge
+	then trigger evtSargeSafe,	// token evt
+	removemissionobjective sarge,
+	savegame PLAYRMafterSargeRun
+
+if evtHurryup butnot evtSargesafe
+	then trigger evtHup2
+
+	if evtHUp2 butnot evthup3
+	then trigger evtHup3,
+	triggerdelay 4000 evtHup4
+
+	if inorder evtHUp3 hit sarge by tan
+	testvar boolVOlockout =0 then
+	playtalkinghead 42, // Things are getting hot here
+	trigger evtYowlped
+
+	if evtHup4 butnot evtYowlped 
+	testvar boolVOlockout =0 then
+		playtalkinghead 38 // awaiting orders
+
+if dropped objVial1 then	// if player puts vial down, swap it for damageable Green-owned one
+	setvar varVialx getx objvial1,
+	setvar varVialy gety objvial1,
+	undeploy objvial1,
+	deploy objgreenvial1 (refvar varvialx, refvar varvialy)
+
+if evtGotPVP butnot missionlost	// see script 1
+	then setobjstate objbowl osThird,
+	playitemsound "chemicals.wav" objbowl 4 1,
+	setsoundvolume "chemicals.wav" 4 800,
+	triggerdelay 3000 evtGotPVP2
+
+if evtGotPVP2  butnot evtmissionlost 
+	testvar hasitem captain sarge = 0 then
+	setobjstate objbowl osempty,
+	createexplosion (2362,1145) 132,
+	createexplosion (2362,1145) 128,
+	trigger GotPVP2VO,
+	addmissionobjective sarge,
+	createpowerup objPVP plasticexplosive objbowl, //&&
+	createexplosion objpvp 145,
+	savegame PLAYRMgotPVPowder,
+	removemissionobjective objbowl,
+	addmissionobjective objPVP,
+	setmissioninfo pr12b
+
+	if GotPVP2VO
+	testvar boolVOlockout =0 then
+	playtalkinghead 134 // 	"RS: Excellent, Captain! get Sarge then winch it up
+
+if evtGotPVP2 butnot evtmissionlost 
+	testvar hasitem captain sarge = 1 then
+	setobjstate objbowl osempty,
+	createexplosion (2362,1145) 132,
+	createexplosion (2362,1145) 128,
+	trigger GotPVP2VOalt,
+	addmissionobjective sarge,
+	createpowerup objpvp plasticexplosive (2397,1180),
+	addmissionobjective objPVP,
+	setmissioninfo pr12c
+
+	if GotPVP2VOalt
+	testvar boolVOlockout =0 then
+	playtalkinghead 146 // "RS: Excellent, Captain! winch it up & give it to sarge
+
+IF powdered captain butnot evtmissionlost
+	testvar boolvolockout = 0
+	and boolwaitout = 0
+	then playtalkinghead 18, // i believe that is not allowed
+	triggerdelay 3 lockout,
+	triggerdelay 20000 lockin
+
+	if lockout then setvar boolwaitout 1
+
+	if lockin then setvar boolwaitout 0
+
+if pickedup objPVP		// if sarge's onboard
+	testvar hasitem captain sarge = 1
+	then triggerdelay 1000 evtSargeGotPVP
+
+if pickedup sarge
+	testvar hasitem captain objPVP = 1
+	then triggerdelay 1000 evtSargeGotPVP
+
+if dropped objPVP
+	testvar itemtoitemdistance sarge objpvp < 300
+	then order sarge goto objpvp inmode defend,
+	triggerdelay 1000 evtTestForSargePickup
+
+	if evtTestForSargePickup
+		testvar itemtoitemdistance sarge objpvp > 30
+		then triggerdelay 2000 evtTestforSargePickup
+
+	if evtTestForSargePickup butnot evtSargeGotPVP
+		testvar itemtoitemdistance sarge objpvp < 31
+		then trigger evtSargeGotPVP
+
+	if evtSargeGotPVP
+	testvar boolVOlockout =0 then
+		dropitem captain objPVP,
+		undeploy objPVP,
+		setmissioninfo pr12exit,
+		removemissionobjective sarge,
+		removemissionobjective objbowl,
+		removemissionobjective objpvp,
+		playtalkinghead 135, 
+// "Sarge: Nice work, Ca-- What...?!? The boys just spotted a Tan convoy! 
+		triggerdelay 2000 evtSargeGotPVP2
+
+		if evtSargeGotpvp2
+	testvar boolVOlockout =0 then
+			playtalkinghead 136, // Sorry, Cap; you just pulled convoy duty. I guess you'll miss the big dance. Drop the troops on the desk; one of your buddies will fly them in for the final operation. 
+			CREATECOPTER attack "cop2" (3400,2150,120) green, // was (3490,2940,120) 3715,2100
+			SETAIRMAP cop2 1,
+			SETSTEP cop2 100, // was 65
+			setnpc cop2 1,
+			setvar varwaiting 1, // tracks count of reminders about Cop2 waiting
+			trigger evtMarkMenAsObjectives,
+			addmissionobjective cop2,
+			trigger evtCop2Move1
+
+			if evtCop2Move1 then
+			order cop2 goto (2940,1580) inmode ignore, // shy of desk edge
+			triggerdelay 8000 evtCop2Move2,
+			triggerdelay 80000 evtHurryItUp,
+			triggerdelay 20000 evtTestCop2Lost
+
+		if hit cop2 then
+			heal cop2 100
+
+		if evtCop2Move2
+			then order cop2 goto (2770,1260) inmode ignore // padcopvdg (was (2770,1270))
+
+		if padon padcopvdg 
+			then order cop2 goto (2730,1230) inmode ignore, // slight y adjust - may be unneeded
+			triggerdelay 1000 evtCop2Move3
+
+			if evtCop2Move3 butnot evtArrivedCopLZ
+				then
+				order cop2 goto padcopLZ inmode ignore, 
+				triggerdelay 5000 evtCop2Move3
+
+			if evtCop2Move3 butnot evtmissionlost
+				testvar getpadstatus padcopondesk = 0 // player knocked cop2 off desk
+				then triggerdelay 1 evtmissionlost,
+				stoptalkinghead,
+				playtalkinghead 15, // can't do that sir
+				triggerdelay 4000 tanwins
+
+///////////////////////// Cop2 got lost
+
+		if evtTestCop2Lost butnot evtCop2Exits
+			testvar getpadstatus padCopOnDesk = 0 
+			then order cop2 goto padCoponfloor inmode ignore,
+			addvar boolCop2Lost 1,
+			triggerdelay 25000 evtTestcop2lost 
+
+		if padon padcoponfloor then
+			order cop2 goto (3400,2150) inmode ignore,
+			triggerdelay 15000 evtCop2Move1 
+
+////////////////////////// Cop2 has landed
+
+if padon padCopLZ then
+	trigger evtArrivedCopLZ, //bogus, used as flag
+	triggerdelay 2000 evtLandCop2, // give copter a sec to fly to left side of LZ
+	triggerdelay 3000 evtTestCop2Landed
+
+	if evtLandCop2 then
+	setfacing cop2 0,
+	land cop2
+
+	if evtTestCop2Landed
+	testvar getelevation cop2 > 370 then //&& hard const
+	trigger evtlandcop2,
+	triggerdelay 1000 evttestcop2landed
+
+	if evtTestCop2Landed
+	testvar getelevation cop2 < 371 then //&& hard const
+	trigger evtLoadCop2
+
+variable boolCop2Full 0
+
+		if evtLoadCop2 
+			testvar boolcop2full = 0 then
+			trigger evtAllAboard,
+			triggerdelay 3000 evtTestForCop2Full,
+			triggerdelay 5000 evtLoadcop2
+
+		if evtLoadCop2		// disable beacon when cap is on desk during loadcop2 phase
+			testvar getpadstatus padcapondesk = 1
+			then trigger beaconoff
+
+		if padon padcapondesk
+			testvar varwaiting > 0 then
+			trigger beaconoff
+
+		if padoff padcapondesk
+			testvar varwaiting > 0 then
+			trigger beaconon
+
+		if padon padGuyondesk // player arrives with new trooper
+			testvar varwaiting > 0 // make sure we're in Cop2 waiting mode
+			then order me goto cop2 inmode ignore
+//			triggerdelay 3000 evtForceGuyIn // rely on AllAboard cycle to suck guys in! keeps the count accurate
+
+//		if evtForceGuyIn
+//			testvar ItemToItemDistance me cop2 < 100
+//			then pickupitem cop2 me,
+//			addvar varGreenInCop2 1,
+//			triggerdelay 2000 evtTestForCop2Full
+
+//		if evtForceGuyIn
+//			testvar ItemToItemDistance me cop2 > 99 then
+//			order me goto cop2 inmode ignore, //(2160,1170)
+//			triggerdelay 3000 evtForceGuyIn
+
+macro allgreentroops 2
+{
+if evtAllAboard
+	testvar ItemToItemDistance @1 cop2 < 100
+	then trigger evtSuck@2Up
+
+	if evtSuck@2Up 
+	testvar hasitem captain @1 < 1
+	AND hasitem cop2 @1 < 1 // neither captain nor cop2 has me
+		then pickupitem cop2 @1,
+		addvar varGreenInCop2 1,
+//		showmessage "已接到人", //&*&&
+		trigger evtTestForCop2Full
+
+if evtAllAboard
+	testvar ItemToItemDistance @1 cop2 > 99
+	AND getpadstatus pad@2OnDesk = 1  // don't move guys not on desk; these pads defined in m1 &&
+	then order @1 goto cop2 inmode ignore
+}
+expand AllGreenTroops (Sarge 1)
+expand AllGreenTroops ("private cosico" 2)
+expand AllGreenTroops ("corporal barrows" 3)
+expand AllGreenTroops ("private goldman" 4)
+expand AllGreenTroops ("private lopez" 5)
+expand AllGreenTroops ("private mahlab" 6)
+expand AllGreenTroops ("private gupta" 7)
+expand AllGreenTroops ("private meyer" 8)
+
+macro forGreen 2
+{
+		if evtTestForCop2Full
+			testvar varGreenDead = @1
+			then trigger evtTest@2Onboard
+
+		if evtTest@2Onboard
+			testvar varGreenInCop2 = @2
+			then 
+			setvar boolCop2Full 1,
+			triggerdelay 2500 evtCop2Exits
+}
+expand forgreen (5 3)
+expand forgreen (4 4)
+expand forgreen (3 5)
+expand forgreen (2 6)
+expand forgreen (1 7)
+expand forgreen (0 8)
+
+		if evtCop2Exits then //butnot padon padCopWaypt 
+			trigger evtunmarkmenasobjectives,
+			// take off
+			order cop2 goto padCopWaypt inmode ignore, // was y = 1400
+			triggerdelay 2000 evtWrapIt, 
+			trigger beaconon,
+			setvar varwaiting 0, // turns off the when-off-desk-disable-beacon
+	//		triggerdelay 3000 evtCop2Exits
+
+		if evtWrapit butnot evtWrapIt2
+			then trigger evtWrapit2
+
+			if evtWrapit2 butnot evtmissionlost then
+			trigger finalvo // now we end it here, see win cond
+
+		if padon padCopWaypt then
+			order cop2 goto (1200,1400) inmode ignore
+//			triggerdelay 3000 evtCop2Exits2
+
+			if evtCop2Exits2 then
+				order cop2 goto (1220,900) inmode ignore, // north of padCopAtPortal, to force facing
+				triggerdelay 1000 evtCop2Fires
+
+				if evtCop2Fires then
+				setfacing cop2 0,
+				unitfire cop2 objvent,
+				unitfire cop2 objvent,
+				unitfire cop2 objvent,
+				unitfire cop2 objvent,
+				damage objvent 5000,
+				triggerdelay 6000 evtNagCop2
+
+				if evtNagCop2 butnot padon padcopatportal then
+					order cop2 goto padcopatportal inmode ignore,
+					triggerdelay 4000 evtnagcop2
+
+				if padon padcopatportal then
+					undeploy cop2,
+					trigger evtmission2won
+
+		if evtHurryItUp butnot evtCop2Exits
+			then trigger evtHurryWarn
+
+			if evtHurryWarn  butnot evtmissionlost 
+			testvar varWaiting = 1
+			and boolVOlockout =0 then
+			playtalkinghead 17, // rs: hurry , blade,
+			triggerdelay 100 bogusincrement,
+			triggerdelay 25000 evtHurryItup
+		
+			if bogusincrement then addvar varwaiting 1
+
+			if evtHurryWarn butnot evtmissionlost 
+			testvar varWaiting = 2
+			AND boolVOlockout =0 then
+			playtalkinghead 155, // rs: Captain, drop off your men at the LZ on the desk right now!
+			triggerdelay 100 bogusincrement,
+			triggerdelay 25000 evtHurryItup
+
+			if evtHurryWarn butnot evtmissionlost 
+			testvar varWaiting = 3
+			AND boolVOlockout =0 then
+			playtalkinghead 143, // rs: not gonna make it
+			triggerdelay 100 bogusincrement,
+			triggerdelay 25000 evtHurryItup
+
+// see lose conditions for varWaiting = 4
+
+if evtPPwin2 butnot evtFirstVialFreed then	// for pattern panic
+	trigger evtFirstVialFreed
+
+//if allof pickedup objVial1 evtSargeSafe butnot evtFirstVialFreed //loophole: sargesafe loose, could have been pickt & immed ejectd
+//	testvar hasitem captain sarge// ^^ bad buttknot
+//	then triggerdelay 1000 evtFirstVialFreed
+
+if evtFirstVialFreed
+	testvar boolVOlockout =0 then
+	playtalkinghead 124
+//  "RS: Good work, Captain! Get that drum to the mixing bowl on the desk!"
+
+//==================== win/lose conditions================================
+
+if killed objgreenvial1 by tan
+	then
+	createexplosion objgreenvial1 129,
+	makesmoke objgreenvial1 500,
+	trigger evtGVialLost
+
+if killed objgreenvial1 by green
+	then
+	createexplosion objgreenvial1 129,
+	makesmoke objgreenvial1 500,
+	trigger evtCapKilledGvial
+
+if evtCapKilledGvial
+	then triggerdelay 10 evtMissionLost,  //"What the--?!?" 
+	stoptalkinghead,
+	triggerdelay 10 youeediot
+
+	if youeediot then
+    playtalkinghead 108
+
+	if inorder youeediot talkingheaddone
+	testvar boolVOlockout =0 then
+	 triggerdelay 1000 tanwins
+
+if evtGVialLost
+	testvar boolVOlockout =0 then
+	triggerdelay 10 evtMissionLost,  //"Tan units destroyed one of the chemical drums!" 3.2 sec
+	stoptalkinghead,
+    playtalkinghead 120
+
+	if inorder evtGViallost talkingheaddone
+	testvar boolVOlockout =0 then
+	triggerdelay 1000 tanwins
+
+	if finalvo
+	testvar boolVOlockout =0 then
+	stoptalkinghead,
+	triggerdelay 10 reallyfinalvo
+
+	if reallyfinalvo then
+	playtalkinghead 145
+//	 playtalkinghead 137 //&& Excellent. Sarge will deliver the Plastic Volcano Powder to Colonel Grimm. Now we have to take care of that convoy.
+
+	if inorder reallyfinalvo talkingheaddone
+	testvar boolVOlockout =0 then
+	triggerdelay 1000 evtMission2Won
+
+	if evtMission2Won
+	testvar boolVOlockout =0 then
+	undeploy cop2,
+	setobjstate objvent osdead,
+	deploy objventframe,
+	setvar boolventdead 1,
+	triggerdelay 1 evtMission2Won2
+
+	if evtMission2Won2
+	testvar boolVOlockout =0 then
+	trigger greenwins
+
+	if evtHurryWarn
+	testvar varWaiting = 4
+	AND boolVOlockout =0 then
+		 // rs: too late!
+			stoptalkinghead,
+			triggerdelay 10 fugazi, 
+			triggerdelay 5 evtMissionLost
+
+		if fugazi then playtalkinghead 144
+
+		if inorder fugazi talkingheaddone
+			testvar boolVOlockout =0 then
+			triggerdelay 1000 tanwins
+
+//==============================================================
+

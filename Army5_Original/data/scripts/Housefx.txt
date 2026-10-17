@@ -1,0 +1,69 @@
+LIST building1 43 500			
+LIST building2 43 501			
+LIST building3 43 502			
+LIST building4 43 503			
+LIST building5 43 504			
+LIST building6 43 505			
+LIST building7 43 506			
+LIST building8 43 507			
+LIST building9 43 508
+LIST building10 43 510
+
+/// EXPLOSION SETUP ///
+MACRO macrobuildingdamage 1
+{
+	IF DMGLVLCHANGED building@1 THEN
+		TRIGGER buildingexplosion,
+		TRIGGER buildingpoof1
+}
+
+EXPAND macrobuildingdamage (1)
+EXPAND macrobuildingdamage (2)
+EXPAND macrobuildingdamage (3)
+EXPAND macrobuildingdamage (4)
+EXPAND macrobuildingdamage (5)
+EXPAND macrobuildingdamage (6)
+EXPAND macrobuildingdamage (7)
+EXPAND macrobuildingdamage (8)
+EXPAND macrobuildingdamage (9)
+EXPAND macrobuildingdamage (10)
+
+MACRO buildingMACRO 3
+{
+	IF buildingexplosion TESTVAR GETDMGLVL me = @1 THEN
+		SETVAR explosionID_1 @2,
+		SETVAR explosionID_2 @3
+}
+
+EXPAND buildingMACRO ( 1 709 141 )
+EXPAND buildingMACRO ( 2 128 719 )
+
+IF selectbuildingexplosion THEN RANDOM
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY) REFVAR explosionID_1,
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY) REFVAR explosionID_2
+
+/// EXPLOSION SETUP ///
+
+
+/// EXPLOSION CREATION ///
+
+IF buildingpoof1 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -70, ADDVAR childY -10,
+	TRIGGER selectbuildingexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 50, ADDVAR childY 0,
+	TRIGGER selectbuildingexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 0, ADDVAR childY -50,
+	TRIGGER selectbuildingexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 15, ADDVAR childY 60,
+	TRIGGER selectbuildingexplosion
+
+/// EXPLOSION CREATION ///

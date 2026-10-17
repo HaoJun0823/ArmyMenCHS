@@ -1,0 +1,54 @@
+// AMAA Bathroom 2
+// David Chang
+//
+
+// ======= PADS =======
+
+//----------------------
+IF startup2 THEN
+//	SETBRIEFING "map02_1.bmp",
+	setmissioninfo br12,
+	triggerdelay 1000 evtTimer,	// bound to be a little inaccuracy. see script1
+	setnpc captain 1,
+	setaimode captain ignore,
+	setvar tempx getx captain,
+	setvar tempy gety captain,
+	order captain goto (refvar tempx, refvar tempy) inmode ignore,
+	trigger evtAllIgnore,
+	TRIGGERDELAY 100 evtWhichBriefing
+
+if evtWhichBriefing
+	testvar boolm1won = 0
+	then trigger evtshowmiss2alt
+
+if evtWhichBriefing
+	testvar boolm1won = 1 then
+	trigger evtshowmiss2
+
+IF evtshowmiss2 butnot evtmissionlost THEN
+	setnpc captain 1,
+	setaimode captain ignore,
+	trigger evtallignore,
+	playtalkinghead 126, // "Captain, we have reports of a Blue Spy is under Tan protection on the far side of the sink. He may have information on the Tan offensive. Take out the Tan guards and capture that spy.",
+	setmissioninfo br12,
+	addmissionobjective tan1,
+	addmissionobjective  tan2,
+	addmissionobjective  tan3,
+	addmissionobjective  tan6,
+	addmissionobjective  tan7,
+	addmissionobjective  tan8,
+	addmissionobjective  tan9,
+	addmissionobjective  tan11,
+	addmissionobjective  tan12,
+	addmissionobjective  tan13
+
+	if inorder evtshowmiss2 talkingheaddone captain then
+		triggerdelay 2000 evtallnormal,
+		setnpc captain 0
+
+if evtShowmiss2alt then // player will get timer messages anyhow
+//	showpda "Better get Sarge's group to the floor before they fail to make their mission!",
+	addmissionobjective objscale,
+	setmissioninfo br11b,
+	setnpc captain 0
+

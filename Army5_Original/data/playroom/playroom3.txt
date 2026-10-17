@@ -1,0 +1,373 @@
+// AMAA Playroom 3
+// David Chang
+//
+// ======= PADS =======
+PAD padConvoyExit 90  convoy
+pad padNearConvoyExit 91 convoy
+pad padJeepNearExit 91 convoyjeep > 0
+pad padTanTroopNearExit 91 tan trooper
+
+pad padConvoy1Waypt1 92  convoy1
+pad padConvoy1Waypt2 93  convoy1
+pad padConvoy1Waypt3 94  convoy1
+pad padConvoy1Waypt4 95  convoy1
+//pad padConvoy1Waypt5 96  convoy1
+
+pad padConvoy2Waypt1 92  convoy2
+pad padConvoy2Waypt2 93  convoy2
+pad padConvoy2Waypt3 94  convoy2
+pad padConvoy2Waypt4 95  convoy2
+//pad padConvoy2Waypt5 96  convoy2
+
+pad padConvoy3Waypt1 92  convoy3
+pad padConvoy3Waypt2 93  convoy3
+pad padConvoy3Waypt3 94  convoy3
+pad padConvoy3Waypt4 95  convoy3
+//pad padConvoy3Waypt5 96  convoy3
+
+pad padConvoy4Waypt1 92  convoy4
+pad padConvoy4Waypt2 93  convoy4
+pad padConvoy4Waypt3 94  convoy4
+pad padConvoy4Waypt4 95  convoy4
+//pad padConvoy4Waypt5 96  convoy4
+
+pad padConvoy5Waypt1 92  convoy5
+pad padConvoy5Waypt2 93  convoy5
+pad padConvoy5Waypt3 94  convoy5
+pad padConvoy5Waypt4 95  convoy5
+//pad padConvoy5Waypt5 96  convoy5
+
+pad padConvoy1NearConvoyExit 91 convoy1
+pad padConvoy2NearConvoyExit 91 convoy2
+pad padConvoy3NearConvoyExit 91 convoy3
+pad padConvoy4NearConvoyExit 91 convoy4
+pad padConvoy5NearConvoyExit 91 convoy5
+
+//======== lists ======
+//convoy1 convoy2 convoy3 convoy4 convoy5 convoyjeep
+// ======= VARS =======
+variable varConvoyDead 0
+variable varConvoyX 0
+variable varConvoyY 0
+//=====================
+
+IF startup3 THEN
+//	trace 7, //&&
+//	SETBRIEFING "map02_1.bmp",
+	setmissioninfo pr13,
+	setnpc captain 1,
+	setaimode captain ignore,
+	setvar vartempx getx captain,
+	setvar vartempy gety captain,
+	order captain goto (refvar vartempx, refvar vartempy) inmode ignore,
+	setobjstate objPPRF osPPRFoff,
+	undeploy objPPRF,
+	trigger evtFireVDG1,
+	trigger setuptan3,
+	triggerdelay 500 evtshowmiss3
+
+IF evtshowmiss3 THEN
+	setnpc captain 1,
+	setaimode captain ignore,
+	setvar vartempx getx captain,
+	setvar vartempy gety captain,
+	order captain goto (refvar vartempx, refvar vartempy) inmode ignore,
+	trigger evtAllTanIgnore,
+//DEMO	playtalkinghead 125, //New orders! After you destroy those cargo trucks, you need to eliminate all of the mutant insects as well.  Good Luck!
+	setmissioninfo pr13,
+	playtalkinghead 157, // destroy trux //DEMO
+	triggerdelay 6000 evtPlastro1
+
+	if evtPlastro1 
+	testvar boolVOlockout =0 then
+	playtalkinghead 140,	// give it up flyboy (plastro) 7 sec
+	triggerdelay 6500 evtPlastro2
+
+	if evtPlastro2
+	testvar boolVOlockout =0 then
+	playtalkinghead 141,	// plastro!
+	triggerdelay 1000 evtPlastro3
+
+	if evtPlastro3 
+	testvar boolVOlockout =0 then
+	playtalkinghead 142,	// u can change your freq (plastro) 9 sec
+	triggerdelay 8700 evtPlastro4
+
+	if evtPlastro4 
+	testvar boolVOlockout =0 then
+	playtalkinghead 138	// it's true 7sec
+
+IF setuptan3 THEN
+	CREATEvehicle convoy1 convoy (2975,3220) tan, 
+	CREATEvehicle convoy2 convoy (3120,3320) tan,
+	CREATEvehicle convoy3 convoy (3360,3325) tan,
+	CREATEvehicle convoy4 convoy (3525,3335) tan,
+	CREATEvehicle convoy5 convoy (3435,3255) tan,
+	CREATEvehicle convoyjeep jeep (2980,2625) tan,
+	setfacing convoy1 40,
+	setfacing convoy2 30,
+	setfacing convoy3 50,
+	setfacing convoy4 63,
+	setfacing convoy5 63,
+	setfacing convoyjeep 127,
+	setaimode convoyjeep ignore,
+	triggerdelay 500 crap
+
+	if crap then
+	addmissionobjective convoy1,
+	addmissionobjective convoy2,
+	addmissionobjective convoy3,
+	addmissionobjective convoy4,
+	addmissionobjective convoy5
+
+if talkingheaddone captain then setaimode convoyjeep defend
+
+if talkingheaddone captain butnot evtStartConvoy
+	then triggerdelay 1000 evtStartConvoy
+
+if padon padtantroopnearexit then
+	order me goto padNearMatLeft inmode defend
+
+//============================= keep on truckin' ====================
+
+if evtStartConvoy
+	then order convoy1 goto padConvoy1Waypt2 inmode defend,
+	triggerdelay 6000 evtRemindConvoy1W2,
+	triggerdelay 8000 evtStartConvoy2,
+	order convoyjeep follow convoy1 inmode defend
+
+if evtStartConvoy2
+	then order convoy2 goto  padConvoy1Waypt2 inmode defend,
+	triggerdelay 6000 evtRemindConvoy2W2,
+	triggerdelay 8000 evtStartConvoy3
+
+if evtStartConvoy3
+	then order convoy3 goto  padConvoy1Waypt2 inmode defend,
+	triggerdelay 6000 evtRemindConvoy3W2,
+	triggerdelay 8000 evtStartConvoy4
+
+if evtStartConvoy4
+	then order convoy4 goto  padConvoy1Waypt2 inmode defend,
+	triggerdelay 6000 evtRemindConvoy4W2,
+	triggerdelay 8000 evtStartConvoy5
+
+if evtStartConvoy5
+	then order convoy5 goto padConvoy1Waypt2 inmode defend,
+	triggerdelay 6000 evtRemindConvoy5W2
+
+if hit convoyjeep then setaimode me attack
+
+if padon padJeepNearExit then order me goto padconvoy5waypt1 inmode attack
+
+macro forconvoy 1
+{
+//if padon pad@1Waypt1 then
+//	order me goto (2090,1835) inmode ignore,
+//	trigger evtArrived@1W1, //token evt
+//	triggerdelay 2000 evtRemind@1W2				// && must synch portal w/delay and convoystop
+
+if evtRemind@1W2 butnot evtArrived@1W2 then
+	order @1 goto pad@1Waypt2 inmode ignore,
+	triggerdelay 2000 evtRemind@1W2
+
+if padon pad@1Waypt2 then
+	order me goto pad@1Waypt3 inmode ignore,
+	trigger evtArrived@1W2, //token evt
+	triggerdelay 2000 evtRemind@1W3
+
+if evtRemind@1W3 butnot evtArrived@1W3 then
+	order @1 goto pad@1Waypt3 inmode ignore,
+	triggerdelay 2000 evtRemind@1W3
+
+if padon pad@1Waypt3 then
+	order me goto (390,2240) inmode ignore, //(420,2350)
+	trigger evtArrived@1W3, //token evt
+	triggerdelay 2000 evtRemind@1W4
+
+if evtRemind@1W4 butnot evtArrived@1W4 then
+	order @1 goto (390,2240) inmode ignore,
+	triggerdelay 2000 evtRemind@1W4
+
+if padon pad@1Waypt4 then
+	order @1 goto padNearConvoyExit inmode ignore,
+	trigger evtArrived@1W4, //token evt
+	triggerdelay 2000 evtRemind@1GoNearExit
+
+if evtRemind@1GoNearExit butnot evtArrived@1NearExit then
+	order @1 goto (90,1940) inmode ignore, // better angle on the door
+	triggerdelay 2000 evtRemind@1GoNearExit
+
+if padon pad@1NearConvoyExit then
+	trigger evtArrived@1NearExit,
+	order me goto padConvoyExit inmode ignore
+
+//if evtRemind@1W5 butnot evtArrived@1W5 then
+//	order @1 goto (925,1315) inmode ignore,
+//	triggerdelay 2000 evtRemind@1W5
+
+//if padon pad@1Waypt5 then
+//	order me goto (1150,1071) inmode ignore,
+//	trigger evtArrived@1W5 //token evt
+
+}
+expand forconvoy (convoy1)
+expand forconvoy (convoy2)
+expand forconvoy (convoy3)
+expand forconvoy (convoy4)
+expand forconvoy (convoy5)
+
+if padon padConvoyExit then
+	undeploy me,
+	triggerdelay 2000 evtConvoyEscape
+
+macro fortrucks 2
+{
+if killed @1 then
+	addvar varConvoyDead 1,
+	setmissioninfo 13a,
+	setvar varconvoyx getx me,
+	setvar varconvoyy gety me,
+	createexplosion me 138,
+//	createexplosion me 132,
+	createinsect @2 @21 me tan,
+	setaimode lastcreated wander,
+	addvar varconvoyx 70,
+	createinsect @2 @22 (refvar varconvoyx, refvar varconvoyy,80) tan,
+	setaimode lastcreated wander,
+	addvar varconvoyy 80,
+	createinsect @2 @23 (refvar varconvoyx, refvar varconvoyy,80) tan,
+	setaimode lastcreated wander,
+	addvar varconvoyy -150,
+	addvar varconvoyx -170,
+	createexplosion (refvar varconvoyx, refvar varconvoyy,100) 128, // smoke
+	createinsect @2 @24 (refvar varconvoyx, refvar varconvoyy,80) tan,
+	setaimode lastcreated wander,
+	triggerdelay 500 evtExtra@1Bugs,		// no such events for trucks that don't req it
+	trigger evtTestConvoyWiped
+
+if killed @1
+	then trigger evtYipes
+
+if evtConvoyStop then				// stop the trucks at current coords
+	setvar varconvoyx getx @1,
+	setvar varconvoyy gety @1,
+	order @1 goto (refvar varconvoyx, refvar varconvoyy) inmode ignore
+}
+expand fortrucks (convoy1 mutantfly)
+expand fortrucks (convoy2 mutantwasp)
+expand fortrucks (convoy3 mutantflea)
+expand fortrucks (convoy4 mutantwasp)
+expand fortrucks (convoy5 mutantfly)
+
+	if evtYipes then //plays after 2 trucks dead
+		triggerdelay 1000 evtYipes2
+
+	if inorder evtYipes2 evtYipes then
+		trigger evtRealYipe
+
+	if evtRealYipe butnot evtRealYipe2
+	testvar boolVOlockout =0 then
+		trigger evtRealYipe2
+
+		if evtRealyipe2
+		testvar boolVOlockout =0 then
+		playtalkinghead 63 // I don't like the looks of this
+
+if evtExtraConvoy1Bugs
+	then 
+	addvar varconvoyy 40,
+	addvar varconvoyx 120,
+	createinsect mutantfly bug5 (refvar varconvoyx, refvar varconvoyy,80) tan,
+	createexplosion (refvar varconvoyx, refvar varconvoyy,100) 128, // smoke
+	addvar varconvoyy 80,
+	addvar varconvoyx -80,
+	createinsect mutantfly bug6 (refvar varconvoyx, refvar varconvoyy,80) tan,
+	createexplosion (refvar varconvoyx, refvar varconvoyy,100) 128 // smoke
+
+if evtExtraConvoy4Bugs
+	then 
+	addvar varconvoyy 40,
+	addvar varconvoyx 120,
+	createinsect mutantwasp bug5 (refvar varconvoyx, refvar varconvoyy,80) tan,
+	createexplosion (refvar varconvoyx, refvar varconvoyy,100) 128, // smoke
+	addvar varconvoyy 80,
+	addvar varconvoyx -80,
+	createinsect mutantwasp bug6 (refvar varconvoyx, refvar varconvoyy,80) tan,
+	createexplosion (refvar varconvoyx, refvar varconvoyy,100) 128 // smoke
+
+if evtTestConvoyWiped
+	testvar varConvoyDead = 2 	
+	then trigger evtpuprwd
+
+if evtTestConvoyWiped
+	testvar varConvoyDead = 5 	// total # of trucks &&
+	then trigger evtConvoyWiped
+
+if evtConvoyWiped butnot evtmissionlost then
+	savegame PLAYRMgotConvoy,
+	triggerdelay 1500 evtAttagirl
+
+	if evtattagirl
+	testvar boolVOlockout =0 then
+	stoptalkinghead,
+	playtalkinghead 126,
+//"RS: The convoy is finished! Now take the portal -- Colonel Grimm needs you pronto!",
+	addmissionobjective objvent,
+	setmissioninfo pr13exit,
+	triggerdelay 30000 evtPortalHint
+
+	if evtPortalHint butnot evtCapVanish
+		testvar itemtoitemdistance captain objvent > 1000 then
+		trigger gnorf8
+
+		if gnorf8
+	testvar boolVOlockout =0 then
+		playtalkinghead 1 // captain, look at your radar
+
+//if allof evtConvoyWiped padon padCapatcapportal butnot evtMissionlost
+//	testvar varTroopsOnboard > 0
+//	then
+// RS: Sarge's men are needed in the playroom, Captain! 
+//	triggerdelay 4000 evtPutCapBack
+
+//	if evtPutCapBack then
+//			deploy captain (1190,1040),
+//			setfacing captain 120, 
+//			setnpc captain 1,
+//			order captain goto (1300,1200),
+//			triggerdelay 1500 evtCapback2
+
+//			if evtCapback2
+//				then setnpc captain 0
+
+// ============= win and lose ===================================
+
+if inorder evtConvoyWiped evtCapVanish then
+	trigger evtCappedOut
+
+	if evtCappedOut
+	testvar boolVOlockout =0 then
+//	testvar varTroopsOnboard = 0 // see above for > 0
+	playtalkinghead 127
+// Good flying captain
+
+		if inorder evtCappedOut talkingheaddone
+			testvar boolVOlockout =0 then
+			triggerdelay 1000 greenwins
+
+if evtConvoyEscape butnot evtmissionlost
+	then triggerdelay 3 evtmissionlost,
+	triggerdelay 2000 evtEscapeMsg
+
+if evtEscapeMsg then
+	stoptalkinghead,
+	trigger whoopser
+
+	if whoopser then
+	playtalkinghead 128
+// You weren't able to stop the convoy!
+
+		if inorder whoopser talkingheaddone
+			then
+			triggerdelay 1000 tanwins
+

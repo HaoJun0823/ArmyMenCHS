@@ -17,6 +17,10 @@ stage_am3/
 build_out_am4/
 stage_am4/
 
+# 5 代（空中战术，Army Men: Air Tactics）的对应产物
+build_out_am5/
+stage_am5/
+
 # BMP 对比核对材料（由 Tools/bmp_*_am2.py 生成，可随时重跑）
 _bmp_cmp/
 
@@ -37,6 +41,10 @@ Army4_Extend_Dll/Release/
 Army4_Extend_Dll/Debug/
 Army4_Extend_Dll/x64/
 Army4_Extend_Dll/build_tmp/
+Army5_Extend_Dll/Release/
+Army5_Extend_Dll/Debug/
+Army5_Extend_Dll/x64/
+Army5_Extend_Dll/build_tmp/
 Army1_Extend_Dll/*.obj
 Army1_Extend_Dll/*.pch
 Army1_Extend_Dll/*.ilk

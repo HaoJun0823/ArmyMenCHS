@@ -1,0 +1,212 @@
+#bathroom object.aai
+
+# flightheight, elev, and objht scaling factor was 1, aka raw map editor values
+#ELEVATION_FACTOR 0
+
+#Item Flags
+# ITEMFLAG_MAP			0001	(1)
+# ITEMFLAG_AIRCOLLIDE	00xx	(2)
+# ITEMFLAG_VISBLOCK		0100	(256)
+# Altitute (EXTRA line) - distance above ground (floating). If object has any alt, then height affects copter shadow.
+# Height then becomes distance between alt (bottom) and top of object. Floaters cannot blk grd movemt
+# State - like damage state
+# Lnks - if you have several objects that always go together and you only want to put one in MapEdit, you can just 
+# place them together with set offset using a new line
+# Armor - reduces any hit by that amount of HP
+# Item flags: 1 (placed in map? need it); 256 (opaque); 257 (both); Defaults to all flags; see Architect doc
+# Hght - ht to collide with shots; affects if units can shoot over it? Changes elevation for region. Set to 0 unless
+#	object does not extend to top of image area at hotspot's x-coord.
+# Draw order - hi=top; units def to 1000
+# vis - ?
+# permeab - chance in 255 that a rifle-type projectile (no miss, bazoo) will pass through this object
+# crush - causes this damage to units in damage mask when placed or changes
+# states
+
+#Obj Type		SubT	Ste	Lnk Fl			HP	Hgt	Mv	Ord		Slp		Arm	Vis Crush	Perm Explo
+
+# portal -- nohit, no-visblock, 1 ht, should be no map
+Miscellaneous	980		0	0	0x00800000	-1	1	0	-1999	0		0	1
+Miscellaneous	980		1	0	0x00800000	-1	1	0	-1999	0		0	1
+Miscellaneous	980		2	0	0x00800000	-1	1	0	-1999	0		0	1
+Miscellaneous	980		3	0	0x00800000	-1	1	0	-1999	0		0	1
+Miscellaneous	980		4	0	0x00800000	-1	1	0	-1999	0		0	1
+Miscellaneous	980		5	0	0x00800000	-1	1	0	-1999	0		0	1
+Miscellaneous	980		6	0	0x00800000	-1	1	0	-1999	0		0	1
+Miscellaneous	980		7	0	0x00800000	-1	1	0	-1999	0		0	1
+Miscellaneous	980		8	0	0x00800000	-1	1	0	-1999	0		0	1
+
+#tub hole -- pseudo maptile. covers area, so 2nd state is no-visblock, firethru, and 1 height
+# hotspot is at damaged location. 1st state = novisblk, selfmask
+# 242 = bottom edge above water aka objtubholeframe2
+Miscellaneous	240		0	0	0x00022001	150	50	0	-1998		0		5	1	0	0	124
+Miscellaneous	240		1	0	0x00800001	-1	1	0	-1998		0		0	1	0	0	124
+# tubhole2 (objtubholeframe) no visblock, firethru, undeployed
+Miscellaneous	241		0	0	0x00800001	-1	1	0	7100		0		0	1
+# tubholeframe2 -- jagged bottom edge of tubhole that "rises" from water.
+Miscellaneous	242		0	0	0x00800001	-1	1	0	-1995		0		0	1
+
+#hairspray mist - igniteable, map, deployed, selfmask, firethru, no wood
+Miscellaneous	602		0	0	0x00430401	9999	40	0	1010	0	0	1
+Miscellaneous	602		1	0	0x00430401	9999	40	0	1010	0	0	1
+Miscellaneous	602		2	0	0x00430401	9999	40	0	1010	0	0	1
+Miscellaneous	602		3	0	0x00430401	9999	40	0	1010	0	0	1
+
+#bathtub water (101 = rt) targettop selfmask
+Fence			100		0	0	0x00022401	-1	1	0	-1995	0	0	1	0	0	147
+Fence			101		0	0	0x00022401	-1	1	0	-1995	0	0	1	0	0	147
+
+#cleansing cream
+Miscellaneous	290		0	0	257		150	90	15	1000	-.37	8	1	400
+Miscellaneous	290		1	0	257		-1	90	15	1000	-.37	8	1	400
+
+#hairspray TOP -- selfmask, targettop, map
+Miscellaneous	601		0	0	0x00022001	-1	70	0	1000	0		0	1
+
+#hairspray flames (nomap, no selfmask, deployed, visblock)
+Miscellaneous	605		0	0	0x00000500	-1	1	0	3000	0		0	1
+Miscellaneous	605		1	0	0x00000500	-1	1	0	3000	0		0	1
+Miscellaneous	605		2	0	0x00000500	-1	1	0	3000	0		0	1
+Miscellaneous	605		3	0	0x00000500	-1	1	0	3000	0		0	1
+
+#razor
+Miscellaneous	110		0	0	257		-1	20	15	1000	-.2		0	1
+#tbrush
+Miscellaneous	140		0	0	257		-1	10	15	1000	0		0	1
+#scrubber
+Miscellaneous	160		0	0	257		-1	10	15	1000	0.67	0	1
+
+#frogman - horiz
+Miscellaneous	170		0	0	0x00002501	120	30	15	1000	-0.5		0	1	400
+Miscellaneous	170		1	0	257			-1	30	15	1000	-0.5		0	1	400
+
+#tub fixtures: lever (selfmask, targettop, novisblk), l and rt taps (tgttop,selfmsk), 
+# spout (has no altitude, novisblk, nohit), left tap's white handle (alt)
+# lever state 1 = up
+Miscellaneous	200		0	0	0x00022001	150	100	0	1000		0		6	1	0	0	124
+Miscellaneous	200		1	0	0x00000001	-1	100	0	1000		0		0	1	0	0	124
+Miscellaneous	201		0	0	0x00022101	-1	65	15	1000		0		0	1	0	0	124
+Miscellaneous	202		0	0	0x00022101	-1	65	15	1000		0		0	1	0	0	124
+Miscellaneous	203		0	0	0x00800001	-1	1	0	1000		0		0	1	0	0	124
+Miscellaneous	204		0	0	0x00022101	-1	65	0	1000		0		0	1	0	0	124
+	EXTRA	Miscellaneous	204		40
+
+#ducky - 2nd state is nohit, no visblock
+Miscellaneous	210		0	0	0x00002501		120	50	15	1000	-.635		0	1	400
+Miscellaneous	210		1	0	0x00802401		-1	10	15	1		-.635		0	1	400
+
+#sink taps (invisible, targettop)
+Miscellaneous	215		0	0	0x00002201		-1	0	0	1		0		0	1	0	0	124
+Miscellaneous	216		0	0	0x00002201		-1	0	0	1		0		0	1	0	0	124
+
+#scale - no visblock, no hit, horiz
+Miscellaneous	230		0	0	0x00800401		-1	20	0	1	-1		0	1
+
+#hairdryer moveblock - MAP, INVIS, FIRETHRU, nonVISBLOCK
+Miscellaneous	252		0	0	0x00400201		-1	1	15	1000	0		0	1
+
+#vanity flightblock - , MAP, INVIS
+#Miscellaneous	251		0	0	0x00000201		-1	9000	0	1000	0		0	1
+
+#tub flightblock- , MAP, INVIS
+#Miscellaneous	250		0	0	0x00000201		-1	9000	0	1000	0		0	1
+
+#scale dial - SELFMASK and TARGETTOP
+Miscellaneous	270		0	0	0x00022101		-1	17	0	2	0		0	1
+Miscellaneous	270		1	0	0x00022101		-1	17	0	2	0		0	1
+Miscellaneous	270		2	0	0x00022101		-1	17	0	2	0		0	1
+Miscellaneous	270		3	0	0x00022101		-1	17	0	2	0		0	1
+
+# slughole target -- targettop, selfmask, map, order was 3200
+Miscellaneous	302		0	0	0x00022001	120	100	0	1000			0		0	1
+#slug hole -- pseudo maptile. covers entire area, so 2nd state is no-vis, nohit, and 1 height. was draworder 1, ht 300.
+Miscellaneous	300		0	0	257			-1	1	15		1000	0		0	1
+Miscellaneous	300		1	0	0x00800001	-1	1	0		1		0		0	1
+
+#slughole2 (slugholeFrame) -- inner edge -- no visblock, nohit, undeployed, was 6010 draworder
+Miscellaneous	301		0	0	0x00800001		-1	1	0	1000	0		0	1
+
+#body scrubbrush
+Miscellaneous	330		0	0	0x00000501	-1	20	15	1000	0		0	1
+
+#Obj Type		SubT	Ste	Lnk Fl		HP	Hgt	Mv	Ord		Slp		Arm	Vis
+
+#baseball
+Miscellaneous	340		0	0	257		-1	30	15	1000	0		0	1
+
+#houseslipper - right. selfmask. targettop
+Miscellaneous	350		0	0	0x00022501	40	20	15	1000	0		0	1
+Miscellaneous	350		1	0	0x00022501	30	20	15	1000	0		0	1
+Miscellaneous	350		2	0	0x00022501	-1	20	15	1000	0		0	1
+
+#houseslipper - left
+#Miscellaneous	351		0	0	0x00002401	60	30	15	1000	0		0	1
+#Miscellaneous	351		1	0	0x00002401	-1	30	15	1000	0		0	1
+
+#tent -- novisblock, horiz. damaged state = basically maptile
+Miscellaneous	410		0	0	0x00000401	60	40	15	1000	.417	0	1
+Miscellaneous	410		1	0	0x00000401	-1	1	0	9		.417	0	1
+
+#shampoo (variableorder)
+Miscellaneous	400		0	0	0x04000101		150	197	15	1000	0.1	0	1
+Miscellaneous	400		1	0	0x04000101		-1	197	15	1000	0.1	0	1
+
+#conditioner was ht 130 ( variableorder)
+Miscellaneous	700		0	0	0x04000101		150	200	15	1000	-0.31	0	1
+Miscellaneous	700		1	0	0x04000101		-1	200	15	1000	-0.31	0	1
+
+#bubble bath ( variableorder)
+Miscellaneous	450		0	0	0x04000101		150	200	15	1000	0.25	0	1
+Miscellaneous	450		1	0	0x04000101		-1	200	15	1000	0.25	0	1
+
+#cabinet door - was 450 tall - plus SELFMASK, no visblk, default pixelht, variorder
+Miscellaneous	500		0	0	0x04020001	-1	0	0	27000	0		0	1
+
+#sponge
+Miscellaneous	550		0	0	0x00000501		150	0	15	1000	-.25	0	1	400
+Miscellaneous	550		1	0	0x00000501		-1	0	15	1000	-.25	0	1	400
+
+#hairdryer SWITCH - novisblock plus SELFMASK and TARGETTOP
+Miscellaneous	630		0	0	0x00022001	-1	20	0	1001	0		0	1
+Miscellaneous	630		1	0	0x00022001	-1	20	0	1001	0		0	1
+Miscellaneous	630		2	0	0x00022001	-1	20	0	1001	0		0	1
+
+#hairdryer cord - no visblock
+Miscellaneous	610		0	0	1		-1	1	15	900	-.9		0	1
+
+#hairspray
+Miscellaneous	600		0	0	257		-1	50	15	1000	0.19	0	1
+Miscellaneous	600		1	0	257		-1	10	15	1000	.09		0	1
+
+#hairdryer body
+Miscellaneous	650		0	0	0x00000501	-1	5	15	1000	0.53	0	1
+
+#kleenex bunker
+Miscellaneous	750		0	0	0x00000501		2700	50	15	1000	-0.28	6	1	
+Miscellaneous	750		1	0	0x00000501		-1	50	15	1000	-0.28	0	1	
+#
+#Obj Type		SubT	Ste	Lnk Fl		HP	Hgt	Mv	Ord		Slp		Arm	Vis
+#
+#soapdish
+Miscellaneous	800		0	0	257		150	45	15	1000	0		0	1
+Miscellaneous	800		1	0	257		-1	45	15	1000	0		0	1
+
+#lotion
+Miscellaneous	850		0	0	257		150	80	15	1000	0		0	1
+Miscellaneous	850		1	0	257		-1	80	15	1000	0		0	1
+
+#tbrush holder - variable order
+Miscellaneous	900		0	0	0x04000101		150	100	15	1000	0		0	1
+Miscellaneous	900		1	0	0x04000101		-1	100	15	1000	0		0	1
+	
+#toothpaste
+#Miscellaneous	950		0	0	257		150	30	15	1000	0.56	0	1
+#Miscellaneous	950		1	0	257		-1	30	15	1000	0.56	0	1
+
+#tbrush cup
+Miscellaneous	990		0	0	257		150	0	15	1000	0.27	0	1	400
+Miscellaneous	990		1	0	257		-1	0	15	1000	0.27	0	1	400
+
+# flower - aircollide, keepcollidemask
+Miscellaneous	040		0	0	0x00080101		150	350	15	1000	0	0	1
+Miscellaneous	040		1	0	0x00080101		-1	350	15	1000	0	0	1
+

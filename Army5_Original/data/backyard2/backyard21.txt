@@ -1,0 +1,617 @@
+// backyard2
+// Carson Herrick
+
+INCLUDE ..\scripts\common.txt
+INCLUDE ..\scripts\fernFX.txt
+INCLUDE ..\scripts\flowerFX.txt
+INCLUDE ..\scripts\worksFX.txt
+INCLUDE ..\scripts\backyard_mosq.txt
+
+PRELOADSPRITE 43 030 0
+PRELOADSPRITE 43 030 1
+PRELOADSPRITE 43 030 2
+PRELOADSPRITE 43 031 0
+PRELOADSPRITE 43 031 1
+PRELOADSPRITE 43 031 2
+PRELOADSPRITE 43 032 0
+PRELOADSPRITE 43 032 1
+PRELOADSPRITE 43 032 2
+PRELOADSPRITE 43 040 0
+PRELOADSPRITE 43 040 1
+PRELOADSPRITE 43 041 0
+PRELOADSPRITE 43 041 1
+PRELOADSPRITE 43 042 0
+PRELOADSPRITE 43 042 1
+PRELOADSPRITE 43 042 2
+PRELOADSPRITE 43 042 3
+PRELOADSPRITE 43 043 0
+PRELOADSPRITE 43 043 1
+PRELOADSPRITE 43 043 2
+PRELOADSPRITE 43 043 3
+PRELOADSPRITE 43 101 0
+PRELOADSPRITE 43 102 0
+PRELOADSPRITE 43 103 0
+PRELOADSPRITE 43 103 1
+
+PAD padLowSpklr		20 captain > 0
+PAD padHighSpklr	21 captain > 0
+
+PAD Window25	25 	captain > 0
+
+PAD Copter30	30	captain > 0
+
+PAD padMosq40	40	flyinginsect
+
+PAD padSlug63	63	
+PAD padSlug64	64	
+PAD padSlug65	65
+
+PAD Trap111		111
+PAD Trap112		112
+PAD Trap113		113
+PAD Trap114		114
+PAD Trap115		115
+PAD Trap116		116
+PAD Trap117		117
+PAD Trap118		118
+PAD Trap119		119
+PAD Trap120		120
+PAD Trap121		121
+PAD Trap122		122
+PAD Trap123		123
+
+PAD Trap211		211
+PAD Trap212		212
+PAD Trap213		213
+PAD Trap214		214
+PAD Trap215		215
+PAD Trap216		216
+PAD Trap217		217
+PAD Trap218		218
+PAD Trap219		219
+PAD Trap220		220
+PAD Trap221		221
+PAD Trap222		222
+PAD Trap223		223
+
+
+LIST AnyMosq {mosq_1 mosq_2 mosq_3 mosq_4 mosq_5 mosq_6 mosq_7 mosq_8 mosq_9}
+LIST TruckPower {power power_1 power_2 power_3 power_4 power_5 power_6 power_7 power_8 power_9 power_10 power_11 power_12}
+
+VARIABLE gotTrooper 0
+VARIABLE gotWindow 0
+VARIABLE faucetX 0
+VARIABLE faucetY 0
+VARIABLE getTruck 0
+VARIABLE captainX 0
+VARIABLE captainY 0
+VARIABLE captainZ 0
+VARIABLE sprinklerhelp 0
+
+UNTIL 23 REPEAT 11 BY 1
+{
+	OBJECT FlyTrap$
+		STATE osSnap_1
+			FRAME 50 1
+			FRAME 1 0
+				SETOBJSTATE FlyTrap$ osSnap_2
+		STATE osSnap_2
+			FRAME 60 2
+			FRAME 1 0
+				SETOBJSTATE FlyTrap$ osSnap_3
+		STATE osSnap_3
+			FRAME 250 3
+				PLAYSOUND venusflytrap.wav FlyTrap$ 6 1 0
+			FRAME 100 4
+			FRAME 50 1
+			FRAME 1 0
+}
+
+OBJECT Faucet
+	STATE osTurnOn
+		FRAME 80 2
+			TRIGGER frise,
+			PLAYSOUND faucethandle.wav Faucet 6 1 0
+		FRAME 80 1
+		FRAME 80 0
+		FRAME 80 2
+		FRAME 80 1
+		FRAME 80 0
+		FRAME 80 2
+		FRAME 80 1
+		FRAME 1 0
+			SETOBJSTATE Faucet osFullOn
+	STATE osFullOn
+		FRAME 1 0
+			PLAYSOUND "" Faucet 6 1 0,
+			DEPLOY SprinklerGrow,
+			SETOBJSTATE SprinklerGrow osWaterGrow
+	STATE osTurnOff
+		FRAME 80 1
+			TRIGGER fdrop,
+			PLAYSOUND faucethandle.wav Faucet 6 1 0
+		FRAME 80 2
+		FRAME 80 0
+		FRAME 80 1
+		FRAME 80 2
+		FRAME 80 0
+		FRAME 80 1
+		FRAME 80 2
+		FRAME 1 0
+			SETOBJSTATE Faucet osFullOff
+	STATE osFullOff
+		FRAME 1 0
+			PLAYSOUND "" Faucet 6 1 0,
+			UNDEPLOY SprinklerWater,
+			UNDEPLOY SprinklerDie,
+			UNDEPLOY SprinklerGrow
+
+OBJECT SprinklerWater
+	STATE osWaterOn
+		FRAME 75 0
+		FRAME 75 1
+		FRAME 75 2
+		FRAME 75 3
+		FRAME 75 4
+		FRAME 0 0
+			SETOBJSTATE SprinklerWater osWaterOn
+
+OBJECT SprinklerDie
+	STATE osWaterDie
+		FRAME 50 0
+//			SETFORCE captain none,
+// If you canncel the force, then framerate effects may prevent captain from getting any higher
+// better to set the force to small down force so copter maintains height
+			SETFORCE captain zpush padLowSpklr 0 spin 0 50 50 air 550 0 0,
+			PLAYSOUND "" SprinklerWater 6 1 0,
+		FRAME 50 1
+		FRAME 50 2
+		FRAME 50 3
+		FRAME 50 4
+		FRAME 50 5
+		FRAME 50 6
+		FRAME 50 7
+		FRAME 50 8
+		FRAME 50 9
+		FRAME 0 0
+			UNDEPLOY me
+			DEPLOY SprinklerGrow,
+			SETOBJSTATE SprinklerGrow osWaterGrow,
+			
+OBJECT SprinklerGrow
+	STATE osWaterGrow
+		FRAME 50 0
+			TRIGGER firstfloor,
+			PLAYSOUND sprinkler.wav SprinklerWater 6 1 0
+		FRAME 50 1
+		FRAME 50 2
+		FRAME 50 3
+		FRAME 50 4
+		FRAME 50 5
+			TRIGGER secondfloor
+		FRAME 50 6
+		FRAME 50 7
+		FRAME 50 8
+		FRAME 50 9
+		FRAME 50 10
+			TRIGGER thirdfloor
+		FRAME 50 11
+		FRAME 0 0
+			UNDEPLOY me
+			DEPLOY SprinklerDie,
+			SETOBJSTATE SprinklerDie osWaterDie,
+			
+
+OBJECT TonkaTruck
+	STATE osTruckLift
+		FRAME 75 7
+			TRIGGER gettruckpower,	
+			SETVAR getTruck 1,
+			PLAYSOUND tonkatruck.wav TonkaTruck 6 1 0
+		FRAME 75 6
+		FRAME 75 5
+		FRAME 75 4
+		FRAME 75 3
+		FRAME 75 2
+		FRAME 75 1
+		FRAME 75 0
+		FRAME 0 0
+			SETOBJSTATE TonkaTruck osTruckUp
+	STATE osTruckUp
+		FRAME 0 0
+	STATE osTruckDrop
+		FRAME 75 0
+			PLAYSOUND tonkatruck.wav TonkaTruck 6 1 0
+		FRAME 75 1
+		FRAME 75 2
+		FRAME 75 3
+		FRAME 75 4
+		FRAME 75 5
+		FRAME 75 6
+		FRAME 75 7
+		FRAME 0 7
+			SETOBJSTATE TonkaTruck osTruckDown
+	STATE osTruckDown
+		FRAME 0 7
+
+
+OBJECT BugZapper
+	STATE osZapperOFF
+		FRAME 1 0
+	STATE osZapperON
+		FRAME 10 1
+			PLAYSOUND electricity1.wav BugZapper 6 1 0
+		FRAME 10 0
+		FRAME 10 1
+		FRAME 10 0
+		FRAME 10 1
+		FRAME 10 0
+		FRAME 50 1
+		FRAME 0 0
+			SETOBJSTATE BugZapper osZapperOFF
+
+//***SETUP MISSION***//
+IF startup1 THEN
+	ALLY GREY TAN,
+	ALLY TAN GREY,
+	TRIGGER setupgreen,
+	TRIGGER setuptan,
+	TRIGGER setupmosq1,
+	TRIGGER setupmosq2,
+//	TRIGGER setupslugs,
+	TRIGGER setupbuglight,
+	TRIGGER setupflytraps,
+	TRIGGER setupgoodies,
+	TRIGGER setupsounds,
+	TRIGGERDELAY 500 showmissionobjective
+
+IF showmissionobjective THEN
+	SETMISSIONINFO by21,
+	PLAYTALKINGHEAD 106,
+	PLAYTALKINGHEAD 107
+
+IF setupgreen THEN
+	CREATECOPTER scout captain (410,3807,200) green,
+	SETAIRMAP captain 1,
+	SETSTEP captain 100,
+
+	CREATEUNIT "sarge" grenadier captain green grenade,
+	ADDMISSIONOBJECTIVE "sarge",
+	PICKUPITEM captain "sarge",
+
+	CREATEUNIT "private herrick" grenadier captain green grenade,
+	ADDMISSIONOBJECTIVE "private herrick",
+	PICKUPITEM captain "private herrick",
+
+	CREATEUNIT "corporal wilcox" rifleman (3312,2791) green autorifle,
+	ADDMISSIONOBJECTIVE "corporal wilcox",
+	SETMAXHEALTH "corporal wilcox" 30000,
+	HEAL "corporal wilcox" 30000
+
+MACRO tandiff 2
+{
+	IF setuptan TESTVAR difficulty = @1 THEN
+		TRIGGER @1_randomsoldiers
+
+	UNTIL @2 REPEAT 1 BY 1
+	{
+		IF @1_randomsoldiers THEN
+			TRIGGER randomtanlocations		
+	}
+}
+EXPAND tandiff ( 0 10 )
+EXPAND tandiff ( 1 20 )
+EXPAND tandiff ( 2 30 )
+
+IF randomtanlocations THEN SEQUENTIAL
+	CREATEUNIT tansoldier rifleman (2446,1015) tan rifle,
+	CREATEUNIT tansoldier rifleman (2580,2175) tan rifle,
+	CREATEUNIT tansoldier rifleman (3165,3649) tan rifle,
+	CREATEUNIT tansoldier rifleman (482,2530) tan rifle,
+	CREATEUNIT tansoldier rifleman (2322,1236) tan rifle,
+	CREATEUNIT tansoldier rifleman (950,829) tan rifle,
+	CREATEUNIT tansoldier rifleman (3340,1829) tan rifle
+
+UNTIL 9 REPEAT 1 BY 1
+{
+	IF setupmosq1 THEN
+		CREATEINSECT mosquito mosq_$ padMosq51 grey,
+		SETAIMODE mosq_$ WANDER,
+		SETAIRMAP mosq_$ 0,
+		TRIGGER newmosqlocation mosq_$,
+		TRIGGER newmosqheight mosq_$
+	
+	IF setupbuglight THEN
+		SETFORCE mosq_$ omni padMosq40 0 natural 100 500 1000 air 0 0 0
+}
+
+MACRO setuplightmosq 3
+{
+	IF setupmosq2 THEN
+		CREATEINSECT mosquito @3 (@1,@2) grey,
+		SETAIMODE @3 defend,
+		SETAIRMAP @3 0,
+		SETAIRVARIANCE @3 32
+}
+EXPAND setuplightmosq (907 1733 lightmosq_1)
+EXPAND setuplightmosq (1058 1858 lightmosq_2)
+	
+
+UNTIL 5 REPEAT 3 BY 1
+{
+	IF setupslugs THEN
+		CREATEINSECT slug slug_$ padSlug6$ grey
+}
+
+UNTIL 23 REPEAT 11 BY 1
+{
+	IF setupflytraps THEN
+		SETOBJSTATE FlyTrap$ osSnap_3
+}
+	
+IF setupgoodies THEN
+	SETOBJSTATE Faucet osFullOff,
+	SETOBJSTATE TonkaTruck osTruckDown,
+	MOVEITEM SprinklerWater (3219,1379),
+	MOVEITEM SprinklerDie (3219,1379),
+	MOVEITEM SprinklerGrow (3219,1379),
+
+	CREATEPOWERUP groundmissile (2858,2415) 10,
+	CREATEPOWERUP SG0 sidegun (3064,2699) 0,
+	CREATEPOWERUP armorboost (3162,2481) 0,
+	CREATEPOWERUP partialarmor (1944,2345),
+	CREATEPOWERUP fullarmor (369,2583)
+
+IF setupsounds THEN
+	TRIGGER dogsound,
+	TRIGGER birdsound,
+	TRIGGER buglightsound
+
+//***SETUP MISSION***//
+
+
+//***BUGLIGHT***//
+IF PADON padMosq40 TESTVAR GETELEVATION me > 300 THEN
+	SETAIRVARIANCE me 20,
+	TRIGGERDELAY 250 zapbug
+
+IF zapbug THEN
+	SETOBJSTATE BugZapper osZapperON,
+	CREATEEXPLOSION me 125,
+	DAMAGE me 10000
+
+//***BUGLIGHT***//
+
+
+//***SPRINKLER***//
+
+IF firstfloor TESTVAR GETPADSTATUS padLowSpklr = 1 AND GETELEVATION captain < 500 THEN
+	SETFORCE captain zpush padLowSpklr 0 spin 0 -300 400 air 550 0 0
+
+IF secondfloor TESTVAR GETPADSTATUS padLowSpklr = 1 AND GETELEVATION captain < 850 THEN
+	SETFORCE captain zpush padLowSpklr 0 spin 0 -300 400 air 550 0 0
+
+//IF thirdfloor TESTVAR GETPADSTATUS padLowSpklr = 1 AND GETELEVATION captain < 1200 THEN
+//	SETFORCE captain zpush padLowSpklr 0 spin 0 -300 400 air 550 0 0
+
+IF PADOFF padLowSpklr THEN
+	SETFORCE captain none
+
+IF PADON padHighSpklr TESTVAR GETELEVATION captain >= 500 THEN
+	SETFORCE captain none
+
+IF HIT Faucet THEN
+	TRIGGER changefaucetstate,
+	SETVAR sprinklerhelp 1
+
+IF changefaucetstate THEN
+	ONOBJSTATE Faucet
+	osFullOn
+		SETOBJSTATE Faucet osTurnOff,
+	osFullOff
+		SETOBJSTATE Faucet osTurnOn
+
+//IF fdrop THEN
+//	SETVAR faucetX GETX me, SETVAR faucetY GETY me,
+//	ADDVAR faucetY 1,
+//	MOVEITEM me (REFVAR faucetX, REFVAR faucetY)
+
+//IF frise THEN
+//	SETVAR faucetX GETX me, SETVAR faucetY GETY me,
+//	ADDVAR faucetY -1,
+//	MOVEITEM me (REFVAR faucetX, REFVAR faucetY)
+
+//***SPRINKLER***//
+
+
+//***FENCE***//	
+
+IF KILLED Fireworks THEN
+	TRIGGERDELAY 100 setupfireworks,
+	DAMAGE FenceHole 901,
+	TRIGGER worksexplosion,
+	TRIGGER workspoof1 Fireworks,
+	TRIGGERDELAY 250 workspoof2 Fireworks,
+	TRIGGERDELAY 500 workspoof3 Fireworks
+
+IF setupfireworks THEN
+	CREATEPOWERUP groundmissile (2632,726) 5,
+	CREATEPOWERUP thrownfirecracker (2507,702) 5,
+	CREATEPOWERUP groundmissile (2415,763) 5,
+	CREATEPOWERUP thrownfirecracker (2386,853) 5,
+	CREATEPOWERUP groundmissile (2371,947) 5
+
+//***FENCE***//
+
+
+//***GARDEN***//
+UNTIL 23 REPEAT 11 BY 1
+{
+	IF PADON Trap1$ THEN
+		ONOBJSTATE FlyTrap$
+		osSnap_1
+			TRIGGERDELAY 100 trapkilled,
+		osSnap_2
+			TRIGGERDELAY 30 trapkilled
+
+	IF PADON Trap2$ THEN
+		SETOBJSTATE FlyTrap$ osSnap_1
+
+	IF HIT FlyTrap$ THEN
+		ONOBJSTATE FlyTrap$
+		osSnap_3
+			SETOBJSTATE FlyTrap$ osSnap_1
+}
+
+IF trapkilled THEN
+	SETVAR captainX GETX me, SETVAR captainY GETY me, SETVAR captainZ GETZ me,
+	ADDVAR captainZ -50,
+	MOVEITEM me (REFVAR captainX, REFVAR captainY, REFVAR captainZ),
+	DAMAGE me 500 crush
+
+IF PICKEDUP SG0 TESTVAR HASITEM captain "sarge" = 1 THEN
+	PLAYTALKINGHEAD 105,
+	PLAYTALKINGHEAD 112
+
+//***GARDEN***//
+
+
+//***TONKA TRUCK***//
+IF HIT TonkaTruck BY captain TESTVAR getTruck = 0 THEN
+	TRIGGER checktruckstate
+
+IF checktruckstate THEN
+	ONOBJSTATE TonkaTruck
+	osTruckDown
+		SETOBJSTATE TonkaTruck osTruckLift,
+	osTruckUp
+		SETOBJSTATE TonkaTruck osTruckDrop
+
+IF gettruckpower THEN RANDOM
+	CREATEPOWERUP power groundmissile (1175,3300) 2,
+	CREATEUNIT power bazookaman (1175,3300) grey bazooka,
+	CREATEPOWERUP power thrownfirecracker (1175,3300) 2,
+	CREATEUNIT power stingerguy (1175,3300) grey stingermissile
+
+IF KILLED TruckPower THEN
+	SETVAR getTruck 0
+
+IF PICKEDUP TruckPower THEN
+	SETVAR getTruck 0
+
+//***TONKA TRUCK***//
+
+
+//***WINDOW***//
+
+IF PADON Window25 TESTVAR GETELEVATION captain >= 805 AND
+	HASITEM captain "sarge" = 1 AND HASITEM captain "corporal wilcox" = 1 AND HASITEM captain "private herrick" = 1 THEN
+		SETVAR captainX GETX captain, SETVAR captainY GETY captain, SETVAR captainZ GETZ captain,
+		SETNPC captain 1, 
+		SETAIMODE captain IGNORE, 
+		SETFACING captain 224,
+		MOVEITEM captain (REFVAR captainX, REFVAR captainY, REFVAR captainZ),
+		PLAYTALKINGHEAD 103,
+		TRIGGERDELAY 10000 GREENWINS
+
+IF PADON Window25 TESTVAR GETELEVATION captain >= 805 AND
+	HASITEM captain "sarge" = 1 AND HASITEM captain "corporal wilcox" = 0 AND HASITEM captain "private herrick" = 1 THEN SEQUENTIAL
+		PLAYTALKINGHEAD 101,
+		PLAYTALKINGHEAD 108
+
+IF PADON Window25 TESTVAR GETELEVATION captain >= 805 AND 
+	HASITEM captain "sarge" = 1 AND HASITEM captain "corporal wilcox" = 1 AND HASITEM captain "private herrick" = 0 THEN SEQUENTIAL
+		PLAYTALKINGHEAD 101,
+		PLAYTALKINGHEAD 108
+
+IF PADON Window25 TESTVAR GETELEVATION captain >= 805 AND
+	HASITEM captain "sarge" = 1 AND HASITEM captain "corporal wilcox" = 0 AND HASITEM captain "private herrick" = 0 THEN SEQUENTIAL
+		PLAYTALKINGHEAD 101,
+		PLAYTALKINGHEAD 108
+
+IF PADON Window25 TESTVAR GETELEVATION captain >= 805 AND 
+	HASITEM captain "sarge" = 0 THEN
+		ADDVAR gotWindow 1,
+		TRIGGER windowmessage
+
+IF windowmessage TESTVAR gotWindow = 1 THEN
+	PLAYTALKINGHEAD 100
+
+IF windowmessage TESTVAR gotWindow > 2 THEN RANDOM
+	PLAYTALKINGHEAD 100,
+	PLAYTALKINGHEAD 109
+
+//***WINDOW***//
+
+
+//***NOTIFY***//
+IF PICKEDUP "corporal wilcox" TESTVAR HASITEM captain "sarge" = 1 AND HASITEM captain "private herrick" = 1 THEN
+	ADDVAR gotTrooper 1,
+	TRIGGER troopermessage
+
+IF PICKEDUP "private herrick" TESTVAR HASITEM captain "sarge" = 1 AND HASITEM captain "corporal wilcox" = 1 THEN
+	ADDVAR gotTrooper 1,
+	TRIGGER troopermessage
+
+IF PICKEDUP "sarge" TESTVAR HASITEM captain "private herrick" = 1 AND HASITEM captain "corporal wilcox" = 1 THEN
+	ADDVAR gotTrooper 1,
+	TRIGGER troopermessage
+
+IF PICKEDUP "sarge" TESTVAR HASITEM captain "private herrick" = 1 AND HASITEM captain "corporal wilcox" = 0 THEN
+	PLAYTALKINGHEAD 113
+
+IF PICKEDUP "sarge" TESTVAR HASITEM captain "private herrick" = 0 AND HASITEM captain "corporal wilcox" = 1 THEN
+	PLAYTALKINGHEAD 113
+
+IF PICKEDUP "sarge" TESTVAR HASITEM captain "private herrick" = 0 AND HASITEM captain "corporal wilcox" = 0 THEN
+	PLAYTALKINGHEAD 113
+
+IF troopermessage TESTVAR gotTrooper = 1 THEN
+	SETMISSIONINFO by22,
+	PLAYTALKINGHEAD 104,
+	PLAYTALKINGHEAD 110,
+	PLAYTALKINGHEAD 102,
+	TRIGGERDELAY 30000 needhelp1
+
+IF troopermessage TESTVAR gotTrooper = 2 THEN
+	PLAYTALKINGHEAD 111
+
+IF needhelp1 TESTVAR sprinklerhelp = 0 THEN
+	PLAYTALKINGHEAD 114,
+	TRIGGERDELAY 30000 needhelp2
+
+IF needhelp2 TESTVAR sprinklerhelp = 0 THEN
+	PLAYTALKINGHEAD 115
+
+//***NOTIFY***//
+
+
+//***AMBIENT SOUNDS***//
+//playsound file-name [location [channel [priority [flags [radius]]]]]
+
+IF dogsound THEN
+	PLAYSOUND dogbarking.wav (4096,4096) 8 1 0 1000,
+	TRIGGER repeatdogsound
+
+IF repeatdogsound THEN RANDOM
+	TRIGGERDELAY 10000 dogsound,
+	TRIGGERDELAY 30000 dogsound,
+	TRIGGERDELAY 60000 dogsound
+
+IF birdsound THEN
+	TRIGGER randombirdsound,
+	TRIGGER repeatbirdsound
+
+IF randombirdsound THEN RANDOM
+	PLAYSOUND birdsong1.wav (0,0) 7 1 0,
+	PLAYSOUND birdsong2.wav (0,0) 7 1 0
+
+IF repeatbirdsound THEN RANDOM
+	TRIGGERDELAY 10000 birdsound,
+	TRIGGERDELAY 30000 birdsound,
+	TRIGGERDELAY 60000 birdsound
+
+IF buglightsound THEN
+	PLAYSOUND buglight.wav padMosq40 5 1 1
+
+//***AMBIENT SOUNDS***//

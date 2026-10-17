@@ -1,0 +1,1561 @@
+// Tropical2 Mission2 - Volcano Fortress
+// D Chang
+
+// channel 2 p 1 = final lavadrop sound
+
+include ..\scripts\TropCOM.txt
+include ..\scripts\T2destroyers.txt
+
+// ======= PADS =======
+pad padLavadrop 1 captain > 0
+
+pad padCop11W2 15 copter11
+
+//pad padMate1NearBridge 45 mate1 >0
+
+pad padGreenHome 45 green ground unit 
+
+pad padCop11W3 50 copter11
+
+pad padMate1AtBridge 135 mate1 >0
+pad padMate2AtBridge 135 mate2>0
+pad padMate3AtBridge 135 mate3>0
+pad padMate4AtBridge 135 mate4>0
+
+pad padTrpAfterBridge 125 green trooper // was 50
+pad padVehAfterBridge 125 green vehicle // was 50
+
+pad padCop11W1 125 copter11
+
+// ======= VARS =======
+variable vardelay 4000 // && delay between troop and veh movemt
+variable boolhut1dead 0
+variable boolCapFiredPVP 0
+variable boolhut2dead 0
+variable boolhut3dead 0
+variable varJeepDoorTroops 0
+variable boolJDoorExplored 0
+VARIABLE boolsecondwave 0
+VARIABLE var10revivepending 0
+variable varAttackPhase 0 // 0 = on sisle, 1 = attack plastrodoor, 2-4= huts, 5 = jeepdoor, 6 = enterdoor, 7 = support
+VARIABLE varTeam1Qty 0
+VARIABLE varTeam2Qty 0
+VARIABLE varTeam5Qty 0
+variable varGreenAlive 0
+// ======= LISTS ======
+list listGreen {sarge d2 tk1 j1 "sweeney" "amakudzi" "willis" "korgas" "marquez" h1 j2 t2 "hauffe" "parque" "jones" "coleman" "robinson" "norris" j3 "vaughan" "thaut" "chan"}
+
+// ====================
+IF startup2 THEN
+	moveitem captain (1650,3725,130), //&& cap to s isle
+	setcamerafocus captain,
+	setnpc captain 1,
+	setmissioninfo tp22,
+	setaimode captain ignore,
+	moveitem objlava (3430,418),
+	setvar vartempx getx captain,
+	setvar vartempy gety captain,
+	order captain goto (refvar vartempx, refvar vartempy) inmode ignore,
+//	SETBRIEFING "map02_1.bmp",
+//	trace 15, //&&&&
+	TRIGGER setupgreen2,
+	deploy destroyer1, deploy destroyer2,
+	trigger evtSetObjectives,
+	setvar varCountdown 0,
+	triggerdelay 1 brief2,
+//	triggerdelay 45000 evtopendoor,
+	setvar varmaxbugs 6,
+	triggerdelay 5000 evtMakeTruck,
+	setobjstate objvent osventing,
+	setobjstate objfanl3 osblowing,
+	setobjstate objfanl2 osblowing,
+	setobjstate objfanl1 osblowing,
+	setobjstate objfanc1 osblowing,
+	setobjstate objfanc2 osblowing,
+	triggerdelay 30000 ambientsound,
+	playsound "WavesOnBeach.wav" (0,0) 1 3 1
+
+IF setupgreen2 THEN
+	createunit sarge rifleman (1740,3630) green vulcan,
+	createunit "pfcsellers" bazookaman (1640,3755) green bazooka,
+	createunit "willis" stingerguy (1640,3755) green stingermissile,
+	createunit "hauffe" rifleman (1640,3755) green vulcan,
+	createunit "sweeney" rifleman (1640,3755) green sniper,
+	createunit "korgas" bazookaman (1640,3755) green bazooka,
+	createunit "parque" grenadier (1640,3755) green grenade,
+	createunit "jones" grenadier (1640,3755) green grenade,
+	createunit "marquez" mortarman (1640,3755) green mortar,
+	createunit "coleman" mortarman (1640,3755) green mortar,
+	createunit "robinson" rifleman (1640,3755) green vulcan,
+	createunit "norris" mortarman (1640,3755) green mortar,
+	createunit "thaut" rifleman (1640,3755) green vulcan,
+	createunit "chan" rifleman (1640,3755) green sniper,
+	CREATEvehicle tk1 tank (2115,3470) green,
+	CREATEvehicle h1 halftrack (1895,3620) green,
+	CREATEvehicle j1 jeep (1895,3510) green,
+//	CREATEvehicle j2 jeep (2045,3680) green,
+	CREATEvehicle j3 jeep (1890,3720) green,
+	CREATEvehicle tk2 tank (2035,3590) green,
+	triggerdelay 1 bullshit
+
+if bullshit
+	testvar difficulty < 2 then // easy or norm
+	createunit "amakudzi" rifleman (1640,3755) green sniper,
+	createunit "vaughan" stingerguy (1640,3755) green stingermissile,
+	setmaxhealth sarge 600,
+	setvar varGreenAlive 22,
+	heal sarge 100,
+	setmaxhealth "pfcsellers" 500,
+	heal "pfcsellers" 100
+
+if bullshit
+	testvar difficulty = 2 then // hard
+	setvar MinGreenCrossed 10,
+	setvar underMinGreencrossed 9,
+	setvar varGreenAlive 20,
+	damage tk2 800,
+	damage h1 400,
+	damage j2 200,
+	damage j3 200
+
+if bullshit
+	testvar difficulty = 1 then // norm
+	setvar MinGreenCrossed 8,
+	setvar underMinGreencrossed 7,
+	damage tk2 800,
+	damage h1 400,
+	damage j2 200,
+	damage j3 200
+
+if bullshit then
+	setfacing tk1 245,
+	setfacing sarge 235,
+	setfacing marquez 15,
+	setfacing coleman 25,
+	setfacing thaut 10,
+	setfacing pfcsellers 220,
+	setfacing hauffe 210,
+	setfacing chan 50,
+	setfacing h1 230,
+	setfacing j1 233,
+	setfacing j2 250,
+	setfacing j3 215,
+	setfacing tk2 235,
+// in vehicles
+	entervehicle "vaughan" h1,
+	entervehicle "thaut" j1,
+//	entervehicle "chan" h1,
+	entervehicle "pfcsellers" tk2
+
+if setuptan2 then
+	trigger evtMakeTanCopters
+
+if evtSetObjectives then
+	removemissionobjective dude1,
+	removemissionobjective dude2,
+	removemissionobjective dude3,
+	removemissionobjective dude4,
+	removemissionobjective dude5,
+	removemissionobjective dude6,
+	addmissionobjective padhotlava
+
+if evtMakeTruck then
+	CREATEvehicle truck2 Roachcoach (2230,1200) tan,
+	setfacing truck2 240,
+	setaimode truck2 ignore
+
+if killed truck2 then
+	createexplosion truck2 128, // smoke
+	createexplosion truck2 148 // fire
+
+////////////////////////////////////////////////////// tan copters
+
+if evtMakeTanCopters
+	testvar getpadstatus padCapSouthSide = 1 then
+//	CREATEcopter scout copter10 (2630,1250,110) tan,
+//	order copter10 follow captain inmode attack,
+	CREATEcopter attack copter11 (2630,1000,110) tan,
+	createpowerup shooby radarmissile copter11 25,
+	pickupitem copter11 shooby,
+	selectinventoryitem copter11 shooby,
+	order copter11 goto padCop11W1 inmode attack,
+//	setairmap copter10 1,
+	SETAIRMAP copter11 0,
+	setairvariance copter11 120,
+	setstep copter11 160
+
+if evtMakeTanCopters
+	testvar getpadstatus padCapSouthSide = 0 then
+//	CREATEcopter scout copter10 (572,3345,110) tan,
+//	order copter10 follow captain inmode attack,
+	CREATEcopter attack copter11 (632,3300,110) tan,
+	order copter11 goto padCop11W1 inmode attack,
+//	setairmap copter10 1,
+	SETAIRMAP copter11 0,
+	setairvariance copter11 120,
+	setstep copter11 160
+
+if killed copter11 then
+	trigger evtpuprwd,
+	triggerdelay 30000 evtRevengeof10
+
+//if killed copter10
+//	testvar var10revivepending = 0
+//	then triggerdelay 1 sendum,
+//	trigger evtpuprwd
+
+	if sendum then
+	setvar var10revivepending 1, // only happens once &&
+	triggerdelay 45000 evtRevengeof10
+
+if evtRevengeof10
+	testvar getpadstatus padCapSouthSide = 1
+	then CREATEcopter scout copter10 (2630,1250,110) tan, // used to be a resurrect
+	createpowerup dooper groundmissile copter10,
+	pickupitem copter10 dooper,
+	selectinventoryitem copter10 dooper,
+	order copter10 goto captain inmode attack, //&&
+	setvar var10revivepending 0
+if evtRevengeof10
+	testvar getpadstatus padCapSouthSide = 0
+	then CREATEcopter scout copter10 (572,3345,110) tan, // used to be a resurrect
+	createpowerup dooper groundmissile copter10,
+	pickupitem copter10 dooper,
+	selectinventoryitem copter10 dooper,
+	order copter10 goto captain inmode attack,//&&
+	setvar var10revivepending 0
+
+/////////////////////////////////////////////////////////////////// BRIEFING STARRT
+
+if brief2 then
+	moveitem captain (1630,3725,130), //&& cap to s isle
+	setcamerafocus captain,
+	setfacing captain 215,
+	setnpc captain 1,
+	setaimode captain ignore,
+	setvar boolvolockout 1,
+	setmissioninfo tp22,
+	triggerdelay 3 testAltBrief,
+	trigger evtAllIgnore,
+	triggerdelay 10 evtSubIgnore,
+	triggerdelay 4 nudgesarge,
+	playtalkinghead 112, // alright men - blade cover us 14 secs
+//	triggerdelay 33000 brief2cEndsSoon
+//	triggerdelay 35500 brief3, moved these below to make this abortable
+//	triggerdelay 36300 brief4
+		triggerdelay 5 brief2a,
+		triggerdelay 10 brief2b,
+		triggerdelay 15 brief2c,
+		triggerdelay 17000 sendsarge,
+		triggerdelay 20000 birthpvp,
+		triggerdelay 25000 standsarge
+
+if nudgesarge then order sarge goto (1735,3571) inmode ignore, // nudge him to fix axr
+
+if testAltBrief
+	testvar boolDoorKnocked = 1
+	then
+	setmissioninfo tp22a // alt version for missioninfo
+
+	if brief2a butnot evtmissionlost then
+	setnpc captain 1,
+	setaimode captain ignore,
+	playtalkinghead 113 // take the PVP 6 secs
+//	triggerdelay 3500 birthpvp
+
+	if sendsarge then order sarge goto (1775,3530) inmode ignore
+
+	if birthpvp then
+	setvar vartempx getx sarge,
+	setvar vartempy gety sarge,
+	order sarge goto (refvar vartempx, refvar vartempy) inmode ignore,
+	setaipose sarge kneel,
+	setfacing sarge 222,
+	createexplosion (1775,3490,50) 145,
+	createpowerup objpvp plasticexplosive (1775,3490) // was (1770,3590)
+
+	if brief2b then
+	setnpc captain 1,
+	setaimode captain ignore,
+	setaipose sarge none,
+	playtalkinghead 114 // thanks sarge 1 sec
+
+	if brief2c then
+	setnpc captain 1,
+	setaimode captain ignore,
+	trigger standsarge,
+	playtalkinghead 53 // henry viii speech 14 secs
+
+	if standsarge then
+		setaipose sarge none,
+		order sarge goto (1760,3615) inmode ignore
+
+	if inorder brief2c talkingheaddone captain then
+	setnpc captain 1,
+	setaimode captain ignore,
+	triggerdelay 1500 tropcom1,
+	playsound "..\voice\tro026stub.wav" (0,0) 0 1, // &&&& yeah! (crowd)
+	setsoundvolume "..\voice\tro026stub.wav" 0 -600,
+	setfacing sarge 235,
+	setfacing marquez 250,
+	setfacing coleman 225,
+	setfacing thaut 240,
+	setfacing pfcsellers 240,
+	setfacing hauffe 245,
+	setfacing chan 240,
+	trigger evtTropCom1,
+	triggerdelay 3000 brief4
+
+	if brief4 then
+	setnpc captain 1,
+	setaimode captain ignore,
+	SETITEMOWNER destroyer1 green, SETITEMOWNER destroyer2 green,
+	playtalkinghead 116 // give 'em hell 2 sec
+
+	if inorder brief4 talkingheaddone captain then 
+		triggerdelay 2000 evtSendInClowns
+
+	if evtSendInClowns then
+		setnpc captain 0,
+		setvar boolvolockout 0,
+		trigger setuptan2,
+		setvar varGreencrossed 0,
+		triggerdelay 200 evtAllNormal2,
+		triggerdelay 400 setupdestroyers,
+		triggerdelay 600 evtM80wave,
+		triggerdelay 1000 evtAllNormal,
+		triggerdelay 3000 evtSubNormal,
+		triggerdelay 4000 evtNewBugs,
+		triggerdelay 5000 evtMoveout,
+		triggerdelay 6000 evtSubspawnM2,
+		triggerdelay 7000 evtHutsSpawn,
+		triggerdelay 8000 evtTestTanwave2,
+		triggerdelay 53000 evtM80wavealt
+
+if allof evtTestTanwave2 killed wave3 then
+	triggerdelay 13000 evtOpendoor,
+	setvar boolwaverhitbycap 0, // see m1
+	triggerdelay 15000 evtTanWave2, //&&
+	triggerdelay 17000 evtCloseDoor
+
+if evtTanwave2 then
+	resurrect wave1 (2525,663),
+	resurrect wave2 (2485,663),
+	resurrect wave3 (2513,686),
+	trigger wavesmoke,
+	triggerdelay 300 evtSendwave
+
+if allof evtWhoaVO evtSendInClowns then
+	addmissionobjective padVVent
+
+/////////////////////////////////////////////////////////////////// BRIEFING END
+
+/////////////////////////////////////////////////////////////////// START NASTYPADS and ALLIGNORES
+
+macro allgrn 1
+{
+pad pad@1Home 45 @1 > 0 delay 2000 0
+
+pad pad@1OnBridge 85 @1 > 0
+
+pad pad@1JDoorway 100 @1 > 0
+pad pad@1InsideJDoor 105 @1 > 0
+pad pad@1PdoorPorch 110 @1 delay 700 0
+
+variable var@1orders 0 // 0 = sisle, 1 = plastrodoor, 2-4= huts, 5 = jeepdoor, 6 = enterdoor, 7 =support, 8 beaconed
+variable var@1y 0
+}
+expand allgrn (sarge)
+expand allgrn (pfcsellers)
+expand allgrn (willis)
+expand allgrn (hauffe)
+expand allgrn (sweeney)
+expand allgrn (korgas)
+expand allgrn (parque)
+expand allgrn (jones)
+expand allgrn (marquez)
+expand allgrn (coleman)
+expand allgrn (robinson)
+expand allgrn (norris)
+expand allgrn (chan)
+expand allgrn (thaut)
+expand allgrn (vaughan)
+expand allgrn (amakudzi)
+expand allgrn (tk1)
+expand allgrn (h1)
+expand allgrn (j1)
+expand allgrn (j2)
+expand allgrn (tk2)
+expand allgrn (j3)
+
+macro alltan 1
+{
+if evtAllIgnore then
+	setaimode @1 ignore
+
+if evtAllNormal2 then
+	setaimode @1 attack
+
+if killed @1 then
+	trigger evtweakpuprwd
+}
+expand alltan (pt1)
+expand alltan (pt2)
+expand alltan (dude)
+expand alltan (dude_1)
+//expand alltan (tanko) too far away to worry
+expand alltan (feller)
+expand alltan (dude1)
+expand alltan (dude2)
+expand alltan (dude3)
+expand alltan (dude4)
+expand alltan (dude5)
+expand alltan (dude6)
+expand alltan (dude7)
+expand alltan (aavolcanonorth)
+expand alltan (aavolcanolf)
+expand alltan (aavolcanomid)
+expand alltan (aavolcanort)
+expand alltan (wave1)
+expand alltan (wave2)
+expand alltan (wave3)
+expand alltan (wave4)
+expand alltan (wave5)
+expand alltan (wave6)
+expand alltan (wavejeep)
+expand alltan (h1jabba)
+expand alltan (h2jabba)
+expand alltan (h3jabba)
+expand alltan (h1jabba_2)
+expand alltan (h2jabba_2)
+expand alltan (h3jabba_2)
+expand alltan (h1jabba_4)
+expand alltan (h2jabba_4)
+expand alltan (h3jabba_4)
+
+if evtAllNormal2
+	then setaimode tanko defend
+
+/////////////////////////////////////////////////////////////////////////////////// END Nastypads and allignores
+
+//////////////////////////////////////////////////////////// **** GREEN ARMY move out
+
+if evtMoveOut then
+	order tk1 goto (2720,2410) inmode attack,
+	triggerdelay 7000 evtMoveG2,
+	triggerdelay 20000 evtMoveG3,
+	triggerdelay 32000 evtMoveG4
+
+if evtMoveG2 then
+	order tk2 goto (2720,2410) inmode defend,
+	triggerdelay 4000 evtMoveG2a
+
+	if evtMoveG2a then order h1 goto (2720,2410) inmode defend
+
+macro g3 1 {
+if evtMoveG3 then
+	order @1 goto (2660,2375) inmode defend
+}
+expand g3 (j1)
+expand g3 (j2)
+expand g3 ("sweeney")
+expand g3 ("amakudzi")
+expand g3 ("willis")
+expand g3 ("korgas")
+expand g3 (sarge)
+expand g3 ("marquez")
+
+macro g4 1 {
+if evtMoveG4 then
+	order @1 goto (2660,2375) inmode attack
+}
+expand g4 ("coleman")
+expand g4 ("robinson")
+expand g4 ("norris")
+expand g4 (chan)
+expand g4 ("hauffe")
+expand g4 ("parque")
+expand g4 ("jones")
+expand g4 (j3)
+
+///////////////////// briefing update
+
+if evtDoorResponse
+	testvar varplastroknocks = 25
+	then trigger evtPlastroSez2,
+	setvar boolDoorKnocked 1,
+	setmissioninfo tp22a
+
+//////////////////////////////////////////////////////////////////////////// green ai and beacon behavior
+
+if evtEncour butnot evtEncour2 // see m1
+	testvar boolvolockout = 0
+	then trigger evtEncour2
+
+	if evtEncour2 butnot evtmissionlost then
+		playtalkinghead 141 // thaaat's it
+
+// bridge edge avoidance
+
+if padon padGBridgeLeft then //&&
+	setaipose me stand,
+	setaipose me none,
+	setvar vartempx getx me,
+	setvar vartempy gety me,
+	addvar vartempx 25,
+	addvar vartempy 25,
+	order me goto (refvar vartempx, refvar vartempy) inmode ignore,
+	triggerdelay 1500 evtGrelease
+
+	if evtGrelease
+//		testvar itemtoitemdistance me (refvar vartempx, refvar vartempy) < 11
+		then
+		order me goto padTrpAfterBridge inmode defend
+
+//	if evtGrelease
+//		testvar itemtoitemdistance me (refvar vartempx, refvar vartempy) > 10 then
+//		order me goto (refvar vartempx, refvar vartempy) inmode ignore,
+//		triggerdelay 1000 evtrelease
+
+if padon padGBridgeRight then
+	setaipose me stand,
+	setaipose me none,
+	setvar vartempx getx me,
+	setvar vartempy gety me,
+	addvar vartempx -25,
+	addvar vartempy -25,
+	order me goto (refvar vartempx, refvar vartempy) inmode ignore,
+	triggerdelay 1500 evtGrelease
+
+// green gets to padafterbridge
+
+if padon padTrpAfterBridge then
+	order me goto (2640,1885) inmode defend // greenhome
+
+if padon padVehAfterBridge then
+	order me goto (2285,1810) inmode defend
+
+if beaconed captain // guys on sisle unbeaconized when beacon dropped off desk
+	testvar boolNoBeacon = 0
+	and boolbridgedead = 1
+	AND getpadstatus padCapSouthSide = 0
+	then triggerdelay 5 evtUnbeaconSGuys
+
+variable varBeaconLock 0
+
+if beaconed captain
+	testvar boolnobeacon = 0
+	then trigger evtTroopsBeaconed,
+	addvar varbeaconlock 1,
+	triggerdelay 40000 evtTestUnbeaconTroops
+
+	if evtTestUnbeaconTroops
+		testvar varbeaconlock > 1 then
+		triggerdelay 1000 evtDecrement
+
+		if evtDecrement then addvar varbeaconlock -1
+
+	if evtTestUnbeaconTroops
+		testvar varbeaconlock < 2
+		then triggerdelay 5 resetbklok,
+		trigger evtUnbeaconTroops,
+//		showmessage "troops unbeaconed & getting new orders"
+
+		if resetbklok then setvar varbeaconlock 0
+
+/////////////////////////////////////////////////// HUTS spawn troops
+
+if evtHutsSpawn then random
+	trigger evtHut1Spawn,
+	trigger evtHut2Spawn,
+	trigger evtHut3Spawn
+
+if evtHut1Spawn butnot killed objhut1 then
+	createunit h1jabba rifleman (2062,1236) tan vulcan,
+	order lastspawned goto (2000,1350) inmode attack,
+	triggerdelay 30000 evtHutsspawn //&&
+
+if allof evtHut1Spawn killed objhut1 then
+	triggerdelay 2000 evtHut3Spawn,
+	triggerdelay 30000 evtHutsspawn //&&
+
+if evtHut2Spawn butnot killed objhut2 then
+	createunit h2jabba bazookaman (1867,1070) tan bazooka,
+	createexplosion lastspawned 146,
+	order lastspawned goto (1900,1270) inmode attack,
+	triggerdelay 30000 evtHutsspawn //&&
+
+if allof evtHut2Spawn killed objhut2 then
+	triggerdelay 8000 evtHut3Spawn,
+	triggerdelay 30000 evtHutsspawn //&&
+
+if evtHut3Spawn butnot killed objhut3 then
+	createunit h3jabba grenadier (1384,1055) tan grenade,
+	createexplosion lastspawned 145,
+	order lastspawned goto (1550,1200) inmode attack,
+	triggerdelay 30000 evtHutsspawn //&&
+
+if allof evtHut3Spawn killed objhut3
+	testvar boolhut1dead = 0
+	then
+	triggerdelay 30000 evtHut1spawn //&&
+
+if allof evtHut3Spawn killed objhut3
+	testvar boolhut2dead = 0
+	then
+	triggerdelay 30000 evtHutsspawn //&&
+
+/////////////////////////////////////////////////// GREEN ARMY ON NORTH ISLE
+
+if evtAttackHut1
+	testvar boolhut1dead = 0
+	then order me goto padLZnorth inmode defend,
+	triggerdelay 10000 evtAttackHut1,
+//	showmessage "attacking hut1"
+
+if killed objhut1 then
+	createexplosion objhut1 138,
+	setvar boolhut1dead 1
+
+if evtAttackhut2
+	testvar boolhut2dead = 0
+	then order me goto padLZnorth inmode defend,
+	triggerdelay 10000 evtAttackhut2
+
+if killed objhut2 then
+	createexplosion objhut2 149,
+	setvar boolhut2dead 1
+
+if evtAttackhut3
+	testvar boolhut3dead = 0
+	then 
+	order me goto (1480,1145) inmode defend, // veh (1440,1160) trp (1575,1090)
+	triggerdelay 10000 evtAttackhut3
+
+if killed objhut3 then
+	createexplosion objhut3 149,
+	setvar boolhut3dead 1,
+	createexplosion padlznorth 146,
+	createpowerup fullarmor padlznorth
+
+if evtTestwhatnext butnot evtWhatnext
+	testvar getpadstatus padSargeHome = 1
+	then trigger evtWhatnext
+
+	if evtWhatnext butnot evtmissionlost
+	testvar boolvolockout = 0 then
+		playtalkinghead 38 // awaiting orders
+
+if padon padGreenHome butnot evtHelpus
+	testvar varattackphase = 5 then
+	triggerdelay 100 evtHelpUs,
+	triggerdelay 30000 evthelpwe
+
+	if evtHelpUs butnot evtmissionlost then
+		trigger Helpus2,
+		savegame LastLevWinning
+
+		if helpus2 butnot evtmission2won 
+		testvar boolvolockout = 0 then
+		playtalkinghead 135 // We've killed most of the island guards, but we've got to crack that fortress!
+
+	if evtHelpWe butnot evtmissionlost then
+		trigger Helpwe2
+
+		if helpWe2 butnot evtmission2won
+		testvar boolvolockout = 0 then
+		playtalkinghead 138 // Captain! we really need your help
+
+/////////////////////////////////////////////////////  ATTACK COORDINATION
+
+variable boolblasting 0
+
+if evtAttackPDoor
+	testvar varteam1qty > 2
+	then order me goto aavolcanolf inmode defend,
+//	showmessage "attacking pdoor",
+	setvar varteam1qty 0,
+	trigger evtVAttackPDoor,
+	triggerdelay refvar vardelay evtTattackPdoor
+
+if evtAttackPDoor
+	testvar varteam1qty > 6
+	then
+//	showmessage "attacking pdoor",
+	setvar varteam1qty 0,
+	setvar varattackphase 2,
+	trigger evtVAttackPDoor,
+	triggerdelay refvar vardelay evtTattackPdoor
+
+//	if evtBlastPdoor
+//		testvar varplastroknocks < 25
+//		and boolblasting = 0
+//		then
+//		setgunfacing me objdoor,
+//		setfacing me objdoor,
+//		unitfire me objDoor,
+//		triggerdelay 3 blaston,
+//		triggerdelay 500 blastoff,
+//		triggerdelay 600 evtBlastPdoor
+//
+//	if evtBlastPdoor
+//		testvar varplastroknocks < 25
+//		and boolblasting = 1
+//		then
+//		triggerdelay 500 evtBlastPdoor
+//
+//		if blaston then setvar boolblasting 1, showmessage "blaston"
+//		if blastoff then setvar boolblasting 0, showmessage "blastoff"
+
+	if evtBlastPdoor then random
+		triggerdelay 2000 evtFireaway,
+		triggerdelay 1000 evtFireaway,
+		triggerdelay 200 evtFireaway,
+		triggerdelay 700 evtFireaway,
+		triggerdelay 2300 evtFireaway
+
+		if evtFireAway
+		testvar varplastroknocks < 25 then
+		setgunfacing me objdoor,
+		unitfire me (3000,1400), // (3000,1400),
+//		showmessage "firing at pdoor",
+		triggerdelay 1000 evtBlastPDoor
+
+////////////////////////////////////////////////////////////////////// GTROOPS ONLY MACRO
+//////////////////////////////////////////////////////////////////////
+
+macro allgtroops 1
+{
+if evtAllIgnore then
+	setaimode @1 ignore
+
+if evtAllNormal then
+	setaimode @1 defend
+
+if evtUnbeaconTroops then
+	setaipose @1 stand,
+	setaipose @1 none,
+	order @1 goto (2640,1885) inmode defend, // Greencrossroads
+	setvar var@1orders 1
+
+if evtTattackPdoor
+	testvar var@1orders = 1 then
+	setaimode @1 defend,
+	order @1 goto (2775,1590) inmode defend // pdoorporch
+
+if evtTrpAttackJDoor
+	testvar var@1Orders = 5 then
+	setaimode @1 defend,
+//	showmessage "trp to jdoor",
+	order @1 goto padNearTruckload inmode defend 
+
+///////////////////////////// REASSIGN TEAMS AFTER THEY FINISH TASK
+// 0 = sisle, 1 = plastrodoor, 2-4= huts, 5 = jeepdoor, 6 = enterdoor, 7 =support, 8 beaconed
+// && note: this ideally should send the vehicles before the troops
+
+if evtDoorResponse
+	testvar varplastroknocks = 25 
+	AND var@1Orders = 1 then
+	setvar var@1Orders 2,
+	trigger evtTrpGoHome,
+	triggerdelay refvar vardelay evtVehGoHome
+
+if padon pad@1Home butnot killed objhut1 
+	testvar varplastroknocks > 24 
+	AND var@1orders < 8
+	then
+	setvar varattackphase 2,
+	addvar varteam2qty 1,
+	setvar var@1orders varattackphase,
+	trigger evtAttackHut1
+
+if padon pad@1Home butnot killed objhut2
+	testvar varplastroknocks > 24
+	AND var@1orders < 8
+	AND boolhut1dead = 1 then
+	setvar varattackphase 3,
+	setvar var@1orders varattackphase,
+	trigger evtAttackHut2
+
+if padon pad@1Home butnot killed objhut3
+	testvar varplastroknocks > 24 
+	AND var@1orders < 8
+	AND boolhut1dead = 1 
+	AND boolhut2dead = 1 then
+	setvar varattackphase 4,
+	setvar var@1orders varattackphase,
+	trigger evtAttackHut3
+
+if evtTrpAttackHut1
+	testvar var@1orders >0 and
+	var@1orders < 5 then
+	setaimode @1 defend,
+	order @1 goto objhut1 inmode defend
+
+if evtTrpGoHome
+	testvar var@1orders < 7 
+	and var@1orders > 0 then
+//	showmessage "all dudes go home",
+	order @1 goto (2640,1885) inmode defend
+
+if evtHut1Killed then
+	setvar var@1Orders 3,
+	setaimode @1 defend,
+	order @1 goto objhut2 inmode defend
+
+if evtHut2killed then
+	setvar var@1Orders 4,
+	setaimode @1 defend,
+	order @1 goto objhut3 inmode defend
+
+if killed objhut1
+	testvar var@1Orders = 2
+	AND boolhut2dead = 1
+	AND boolhut3dead = 1 then
+	setvar var@1Orders 5,
+	order @1 goto pad@1Home inmode defend
+
+if killed objhut2
+	testvar var@1Orders = 3
+	AND boolhut3dead = 0 then
+	setvar var@1Orders 4,
+	setaimode @1 defend,
+	order @1 goto objhut3 inmode defend
+
+if killed objhut2
+	testvar var@1Orders = 3
+	AND boolhut3dead = 1 then
+	setvar var@1Orders 5,
+	order @1 goto pad@1Home inmode defend
+
+if evtDoorResponse
+	testvar varJeepknocks = 16 
+	AND var@1Orders = 5 then
+	setvar var@1Orders 7,
+	setaimode @1 defend,
+	order @1 goto padneartruckload inmode defend
+
+if evtDoorResponse
+	testvar varJeepknocks = 16 
+	AND boolhut2dead = 1
+	AND boolhut1dead = 1
+	AND boolhut3dead = 1
+	AND varPlastroknocks > 25
+	AND var@1Orders < 8 then
+	setvar var@1Orders 7,
+	setaimode @1 defend,
+	order @1 goto padneartruckload inmode defend,
+	triggerdelay refvar vardelay evtStumpied
+
+if killed @1
+	testvar varGreenalive > mingreencrossed
+	then trigger evtTestCrossWarn1 // see non-macro below
+}
+expand allgtroops (sarge)
+expand allgtroops (pfcsellers)
+expand allgtroops (willis)
+expand allgtroops (hauffe)
+expand allgtroops (sweeney)
+expand allgtroops (korgas)
+expand allgtroops (parque)
+expand allgtroops (jones)
+expand allgtroops (marquez)
+expand allgtroops (coleman)
+expand allgtroops (robinson)
+expand allgtroops (norris)
+expand allgtroops (chan)
+expand allgtroops (thaut)
+expand allgtroops (vaughan)
+expand allgtroops (amakudzi)	
+
+	if TestCrosswarn1 butnot evtCrosswarn1 then
+		trigger evtCrosswarn1
+
+	if evtCrosswarn1 butnot evtmissionlost 
+		testvar boolvolockout = 0 then
+		playtalkinghead 36 // trooper down!
+
+////////////////////////////////////////////////////////////////////// GVEHICLES ONLY MACRO
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+macro allgvehicles 1
+{
+if evtAllIgnore then
+	setaimode @1 ignore
+
+if evtAllNormal then
+	setaimode @1 standfire
+
+if evtVattackpdoor
+	testvar var@1orders = 1
+	then
+	setaimode @1 defend,
+	order @1 goto (2950,1500) inmode defend // pdoor porch
+
+if evtAttackJDoor
+	testvar var@1Orders = 5 then
+//	showmessage "attacking jdoor",
+	setaimode @1 defend,
+	order @1 goto (2395,785) inmode defend, // vehicles move to general area
+	triggerdelay refvar vardelay evtTrpAttackJDoor
+
+//////////////////////// REASSIGN TEAMS AFTER THEY FINISH TASK
+// 0 = sisle, 1 = plastrodoor, 2-4= huts, 5 = jeepdoor, 6 = enterdoor, 7 =support, 8 beaconed
+// && note: this ideally should send the vehicles before the troops
+
+if evtVehGoHome 
+	testvar var@1orders < 7
+	and var@1orders > 0 then
+//	setvar var@1Orders 2, Doesn't matter much, will get set at home crossroads
+//	showmessage "all vehs go home",
+	order @1 goto (2285,1810) inmode defend
+
+if padon pad@1Home butnot killed objhut1 
+	testvar varplastroknocks > 24 
+	AND var@1orders < 8
+	then
+	setvar varattackphase 2,
+	addvar varteam2qty 1,
+	setvar var@1orders varattackphase,
+	order @1 goto (2050,1925) inmode defend,
+	triggerdelay 13000 evtAttackHut1
+
+if padon pad@1Home butnot killed objhut2
+	testvar varplastroknocks > 24
+	AND var@1orders < 8
+	AND boolhut1dead = 1 then
+	setvar varattackphase 3,
+	setvar var@1orders varattackphase,
+	order @1 goto (2050,1925) inmode defend,
+	triggerdelay 13000 evtAttackHut2
+
+if padon pad@1Home butnot killed objhut3
+	testvar varplastroknocks > 24 
+	AND var@1orders < 8
+	AND boolhut1dead = 1 
+	AND boolhut2dead = 1 then
+	setvar varattackphase 4,
+	setvar var@1orders varattackphase,
+	order @1 goto (2050,1925) inmode defend,
+	triggerdelay 13000 evtAttackHut1
+
+if killed objhut1
+	testvar var@1Orders = 2
+	AND boolhut2dead = 0 then
+	setvar var@1Orders 3,
+//	showmessage "attack hut2",
+	setaimode @1 defend,
+	order @1 goto objhut2 inmode defend,
+	triggerdelay refvar varDelay evtHut1Killed
+
+if killed objhut1
+	testvar var@1Orders = 2
+	AND boolhut2dead = 1
+	AND boolhut3dead = 0 then
+	setvar var@1Orders 4,
+//	showmessage "attack hut3",
+	setaimode @1 defend,
+	order @1 goto objhut3 inmode defend,
+	triggerdelay refvar varDelay evtHut2Killed
+
+if killed objhut1
+	testvar var@1Orders = 2
+	AND boolhut2dead = 0
+	AND boolhut3dead = 1 then
+	setvar var@1Orders 4,
+//	showmessage "attack hut2",
+	setaimode @1 defend,
+	order @1 goto objhut2 inmode defend,
+	triggerdelay refvar varDelay evtHut1Killed
+
+if killed objhut1
+	testvar var@1orders < 5
+	and var@1orders > 0
+	AND boolhut2dead = 1
+	AND boolhut3dead = 1 then
+	setvar var@1Orders 5,
+	trigger evtTrpGoHome,
+	triggerdelay refvar varDelay evtVehGoHome
+
+if killed objhut2
+	testvar var@1orders < 5
+	and var@1orders > 0
+	AND boolhut3dead = 0 then
+	setvar var@1Orders 4,
+//	showmessage "attack hut3",
+	setaimode @1 defend,
+	order @1 goto objhut3 inmode defend,
+	triggerdelay refvar vardelay evtHut2Killed
+
+if killed objhut2
+	testvar var@1orders < 5
+	and var@1orders > 0
+	AND boolhut1dead = 0 then
+	setvar var@1Orders 2,
+	setaimode @1 defend,
+//	showmessage "attack hut1",
+	order @1 goto objhut1 inmode defend,
+	triggerdelay refvar vardelay evtTrpAttackHut1
+
+if killed objhut2
+	testvar var@1orders < 5
+	and var@1orders > 0
+	AND boolhut3dead = 1
+	AND boolhut1dead = 1 then
+	setvar var@1Orders 5,
+	trigger evtTrpGoHome,
+	triggerdelay refvar varDelay evtVehGoHome
+
+if killed objhut3
+	testvar var@1orders < 5
+	and var@1orders > 0
+	AND boolhut2dead = 1
+	AND boolhut1dead = 1
+	then setvar var@1orders 5,
+	trigger evtTrpGoHome,
+	triggerdelay refvar vardelay evtvehgohome
+
+if evtDoorResponse
+	testvar varJeepknocks = 16 
+	AND var@1Orders = 5 then
+	setvar var@1Orders 7,
+//	showmessage "attack jeepdoor",
+	setaimode @1 defend,
+	order @1 goto (2395,785) inmode defend // general jeepdoor area
+
+if evtStumpied then
+	setvar var@1Orders 7,
+	savegame LastLevStumped,
+//	showmessage "out of things to do",
+	setaimode @1 defend,
+	order @1 goto (2395,785) inmode defend // general jeepdoor area
+}
+expand allgvehicles (tk1)
+expand allgvehicles (h1)
+expand allgvehicles (j1)
+expand allgvehicles (j2)
+expand allgvehicles (tk2)
+expand allgvehicles (j3)
+
+
+macro allgrn2 1
+{
+/////////////////////////////////////////////// ISSUE ORDERS every time an unbeaconed unit gets to crossroads
+
+if padon pad@1Home // 0 = sisle, 1 = plastrodoor, 2-4= huts, 5 = jeepdoor, 6 = enterdoor, 7 = support, 8 beaconed
+	testvar var@1orders < 8
+	and varattackphase < 2
+	and varplastroknocks < 25 then
+	addvar varTeam1Qty 1,
+	setvar var@1orders 1, 
+	setaimode @1 standfire,
+	triggerdelay 3000 evtAttackPDoor
+
+// Hut attacks broken out by Trp/veh
+
+if padon pad@1Home 
+	testvar varplastroknocks > 24 
+	AND var@1orders < 8
+	AND boolhut1dead = 1 
+	AND boolhut2dead = 1
+	AND boolhut3dead = 1
+	AND varJeepKnocks < 16 then
+	setvar varattackphase 5,
+	addvar varteam5qty 1,
+	setvar var@1orders varattackphase,
+	setaimode @1 standfire,
+	trigger evtAttackJDoor
+
+if padon padGreenHome 
+	testvar varplastroknocks > 24 
+	AND var@1orders < 8
+	AND boolhut1dead = 1 
+	AND boolhut2dead = 1
+	AND boolhut3dead = 1
+	AND varJeepKnocks > 15 then
+	setvar varattackphase 7,
+	setvar var@1orders varattackphase,
+	trigger evtTestWhatnext
+
+/////////////// count guys crossing bridge
+
+if padoff pad@1OnBridge
+	testvar gethealth @1 > 0
+	then
+	setvar var@1y gety @1,
+	trigger evtTest@1OnNI
+
+if evtTest@1OnNI
+	testvar var@1y < 2738 then
+	addvar varGreenCrossed 1
+
+if padon pad@1OnBridge then
+	setvar var@1y gety @1,
+	trigger evtTest@1OffNI
+
+if killed @1 then // if killed on NIsle
+	setvar var@1y gety @1,
+	addvar vargreenalive -1,
+	trigger evtTest@1OffNI,
+	triggerdelay 30 evtTestGreenDead
+
+if evtTest@1OffNI
+	testvar var@1y < 2760 then
+	addvar varGreenCrossed -1
+
+/////////////// unbeacon guys on south island
+
+if evtUnbeaconSGuys 
+	testvar var@1Orders = 0 
+	and boolbridgedead = 1
+	then
+	setvar var@1y gety @1,
+	trigger evtUnbeacon@1
+
+	if evtUnbeacon@1 
+	testvar var@1y > 2800 then
+	setaipose @1 stand,
+	setaipose @1 none,
+	setvar vartempx getx @1,
+	setvar vartempy gety @1,
+	order @1 goto (refvar vartempx, refvar vartempy) inmode defend
+
+/////////////////////////////////////////// ISSUE ORDERS TO ATTACK TEAMS. 
+
+if padon pad@1Pdoorporch
+	testvar var@1orders = 1 then
+	trigger evtBlastPdoor // see non-macro area
+
+/////////////////////////////////////////// poor units die in jdoor
+
+if evtClosedoor
+	testvar booljdooropen = 1
+	AND getpadstatus pad@1InsideJDoor=1 then
+	setaimode @1 standfire,
+	unitfire @1 pad@1InsideJdoor,
+	triggerdelay 2000 evtCrush@1
+
+	if evtCrush@1 then
+		damage @1 10000 crush
+
+if evtClosedoor
+	testvar booljdooropen = 1
+	AND getpadstatus pad@1Jdoorway = 1 then
+	setaimode @1 standfire,
+	triggerdelay 200 evtCrush@1
+}
+expand allgrn2 (sarge)
+expand allgrn2 (pfcsellers)
+expand allgrn2 (willis)
+expand allgrn2 (hauffe)
+expand allgrn2 (sweeney)
+expand allgrn2 (korgas)
+expand allgrn2 (parque)
+expand allgrn2 (jones)
+expand allgrn2 (marquez)
+expand allgrn2 (coleman)
+expand allgrn2 (robinson)
+expand allgrn2 (norris)
+expand allgrn2 (chan)
+expand allgrn2 (thaut)
+expand allgrn2 (vaughan)
+expand allgrn2 (amakudzi)
+expand allgrn2 (tk1)
+expand allgrn2 (h1)
+expand allgrn2 (j1)
+expand allgrn2 (j2)
+expand allgrn2 (tk2)
+expand allgrn2 (j3)
+
+// ************ M80 Wave ***** (2565,630)(2609,600)(2648,575)(2685,582) ///////////////////////////////////
+
+variable varm80sdead 0
+
+if evtM80wave then
+	createunit prep1 rifleman (2525,666) tan vulcan, 
+	createunit prep2 bazookaman (2485,663) tan bazooka,
+	createunit prep3 stingerguy (2477,686) tan stingermissile,
+	createunit prep4 rifleman (2513,686) tan sniper,
+//	CREATEvehicle prepjeep jeep (2452,590) tan,
+	triggerdelay 50 wavesmoke,
+	order prep1 goto padtruckway2 inmode attack,
+	order prep2 goto padtruckway2 inmode attack,
+	order prep3 goto padtruckway2 inmode attack,
+	order prep4 goto padtruckway2 inmode attack,
+//	order prepjeep goto padtruckway2 inmode attack,
+	triggerdelay 3000 evtmakem80wave
+
+	if evtMakeM80Wave then
+	createunit mate1 stingerguy (2525,666) tan stingermissile,
+	createunit mate2 rifleman (2485,663) tan vulcan,
+	createunit mate3 rifleman (2477,686) tan vulcan,
+	createunit mate4 rifleman (2513,686) tan vulcan,
+	triggerdelay 20 evtM80convert,
+	triggerdelay 30 evtM80wave2,
+	triggerdelay 10 wavesmoke
+
+	if evtM80convert then
+	setm80 mate1 tan,
+	setm80 mate2 tan,
+	setm80 mate3 tan,
+	setm80 mate4 tan
+
+if evtM80wavealt butnot killed objbridge
+	then
+	resurrect prep1 (2525,666), 
+	resurrect prep2 (2485,663),
+	resurrect prep3 (2477,686),
+	resurrect prep4 (2513,686),
+	CREATEvehicle prepjeep jeep (2452,590) tan,
+	triggerdelay 50 wavesmoke,
+	order prep1 goto padtruckway2 inmode attack,
+	order prep2 goto padtruckway2 inmode attack,
+	order prep3 goto padtruckway2 inmode attack,
+	order prep4 goto padtruckway2 inmode attack,
+	order prepjeep goto padtruckway2 inmode attack,
+	triggerdelay 3000 evtrevivem80wave
+
+	if evtReviveM80wave then
+	resurrect mate1 (2525,666),
+	resurrect mate2 (2485,663),
+	resurrect mate3 (2477,686),
+	resurrect mate4 (2513,686),
+	trigger evtm80convert,
+	triggerdelay 10 wavesmoke,
+	triggerdelay 20 evtM80wave2
+
+if evtM80wave2 then
+	order mate1 goto padtruckway2 inmode ignore, // was (2400,725)
+	order mate2 goto padtruckway2 inmode ignore,
+	order mate3 goto padtruckway2 inmode ignore,
+	order mate4 goto padtruckway2 inmode ignore,
+	order tanko goto padtruckway2 inmode ignore,
+	triggerdelay 10000 evtM80wave2d,
+	triggerdelay 12500 evtM80wave2a,
+	triggerdelay 15000 evtM80wave2b,
+	triggerdelay 17500 evtM80wave2c,
+	triggerdelay 2000 evtCloseDoor,
+	triggerdelay 18000 evtM80Warn
+
+	if evtM80wave2d then
+	order mate1 goto padBridgeDeath inmode ignore
+
+	if evtM80wave2a then
+	order mate2 goto padBridgeDeath inmode ignore
+
+	if evtM80wave2b then
+	order mate3 goto padBridgeDeath inmode ignore
+
+	if evtM80wave2c then
+	order mate4 goto padBridgeDeath inmode ignore
+
+//if padon padMate1NearBridge then
+//	setm80 mate1 tan,
+//	setm80 mate2 tan,
+//	setm80 mate3 tan,
+//	setm80 mate4 tan,
+//	order mate1 goto padBridgeDeath inmode ignore,
+//	order mate2 goto padBridgeDeath inmode ignore,
+//	order mate3 goto padBridgeDeath inmode ignore,
+//	order mate4 goto padBridgeDeath inmode ignore
+// and similar for mat3 and 4
+
+if evtM80Warn butnot evtMissionlost
+	testvar boolsecondwave = 0 then
+	addmissionobjective mate1,
+	addmissionobjective mate2,
+	addmissionobjective mate3,
+	addmissionobjective mate4,
+	trigger M80vo1,
+	triggerdelay 100 superbogus
+
+		if M80vo1
+		testvar boolvolockout = 0 and
+		varm80sdead < 4 then
+		playtalkinghead 117 // m80s coming
+	
+	if superbogus then
+	setvar boolsecondwave 1,
+	setvar varm80sdead 0
+
+if evtM80Warn butnot evtMissionlost
+	testvar boolsecondwave = 1 then
+	addmissionobjective mate1,
+	addmissionobjective mate2,
+	addmissionobjective mate3,
+	addmissionobjective mate4,
+	trigger m80vo2,
+	setvar boolsecondwave 99 // outta here
+
+		if M80vo2
+		testvar boolvolockout = 0 
+		and varm80sdead < 4
+		then
+		playtalkinghead 118
+
+macro matey 1
+{
+if padon pad@1AtBridge then
+//	showmessage "m80 at bridge",
+	createexplosion @1 138,
+	damage @1 1000,
+	damage objbridge 10000,
+	triggerdelay 500 evtMate2,
+	triggerdelay 2000 evtKillBridge
+
+if killed @1 then
+	addvar varM80sdead 1
+}
+expand matey (mate1)
+expand matey (mate2)
+expand matey (mate3)
+expand matey (mate4)
+
+	if evtMate2 then
+		createexplosion mate1 130,
+		undeploy mate1,
+		createexplosion mate2 138,
+		undeploy mate2,
+		triggerdelay 500 evtMate3
+
+	if evtMate3 then
+		createexplosion mate3 130,
+		undeploy mate3,
+		createexplosion mate4 138,
+		undeploy mate4
+
+	if evtKillBridge then
+		damage objbridge 10000
+
+// ******************** copter patrol near volcano
+
+if padon padCop11W1 butnot hit captain by copter11 then
+	order copter11 goto padCop11W2 inmode attack,
+	setspeed copter11 slow
+
+if padon padCop11W2 butnot hit captain by copter11 then
+	order copter11 goto padCop11W3 inmode attack,
+	setspeed copter1 slow
+
+if padon padCop11W3 butnot hit captain by copter11 then
+	order copter11 goto padCop11W1 inmode attack,
+	setspeed copter11 slow
+
+if hit captain by copter11 then
+	order copter11 goto captain inmode attack //&&
+
+///////////////////////////////////////////////////////////////////////////// ****************** win lose
+
+if evtTestGreenDead butnot evtmissionlost
+	testvar boolbridgedead = 1
+	then // bridge down, unit killed
+	setvar vartempx MinGreencrossed,
+	addvar vartempx 4, // && warn when 4 left before the end
+	triggerdelay 50 evtCrosswarn2
+
+	if evtCrosswarn2 butnot evtCrosswarn2a
+	testvar vartempx = vargreencrossed
+	then trigger evtCrossWarn2a //delay will let crosswarn1 (trooper down) play first
+
+	if evtCrosswarn2a butnot evtmissionlost
+		testvar boolvolockout =0 then
+		playtalkinghead 133 // We're taking too many casualties
+
+if evtTestGreenDead butnot evtmissionlost
+	testvar varGreenCrossed < MinGreencrossed // too many of the crossers were killed
+	AND boolbridgedead = 1
+	then
+	trigger evtCrossDead
+
+if evtTestGreenDead butnot evtmissionlost
+	then 
+	setvar vartempx MinGreencrossed,
+	addvar vartempx 5, // && warn when 4 left before the end
+	triggerdelay 50 evtTestWipedOut
+
+	if evtTestWipedOut butnot evtCrosswarn2a
+	testvar vartempx > vargreenalive
+	then trigger evtCrossWarn2a
+
+	if evtTestWipedOut butnot evtBridgeVO
+	testvar varGreenAlive < MinGreencrossed //&& too many of the guys were killed
+	then trigger evtWipedOut
+
+	if evtWipedOut butnot evtmissionlost
+	then triggerdelay 2 evtmissionlost,
+	stoptalkinghead,
+	triggerdelay 10 evtCrossDead
+
+	if evtCrossdead butnot Cross2
+		then trigger Cross2
+
+		if cross2 then
+		playtalkinghead 120 // Col Grimm is dead! It's a massacre!
+
+	if inorder evtCrossdead talkingheaddone captain then triggerdelay 1000 tanwins
+
+if evtBridgeVO // triggered from M1 when bridge blown
+	testvar vargreencrossed > underMinGreencrossed
+	then 
+	triggerdelay 500 evtWailofPain2
+
+	if evtWailofPain2 butnot evtMissionlost
+		testvar boolvolockout = 0 then // bridge down, hard luck
+		playtalkinghead 119
+
+////////////////////////////////////////////////////////////// PVP
+
+IF dropped objpvp butnot evtmissionlost
+	testvar getpadstatus padHotlava = 0
+	then pickupitem captain objpvp
+
+IF dropped objpvp butnot evtmissionlost
+	testvar getpadstatus padHotlava = 0
+	and boolvolockout = 0
+	and boolwaitout =0
+	then
+	playtalkinghead 122, // you need to hold onto that
+	triggerdelay 3 lockout,
+	triggerdelay 16000 lockin
+
+IF powdered captain butnot evtmissionlost
+	testvar getpadstatus padHotlava = 0
+	then pickupitem captain objpvp
+
+IF powdered captain butnot evtmissionlost
+	testvar getpadstatus padHotlava = 0
+	and boolvolockout = 0
+	and boolwaitout = 0
+	then playtalkinghead 122, // you need to hold onto that
+	triggerdelay 3 lockout,
+	triggerdelay 16000 lockin
+
+	if lockout then setvar boolwaitout 1
+
+	if lockin then setvar boolwaitout 0
+
+IF dropped objpvp butnot evtmissionlost
+	testvar getpadstatus padHotLava = 1
+	then trigger evtStartWin
+
+IF powdered captain butnot evtmissionlost
+	testvar getpadstatus padHotLava = 1
+	then trigger evtStartWin
+
+	if evtStartWin then
+	setforce captain none, //&& cancel out hotlava movemt
+	dropitem captain objpvp, // &&
+	undeploy objpvp,
+	ally tan green,
+	ally green tan,
+	trigger evthidebugs,
+	triggerdelay 6000 evtremovebugs,
+	setnpc captain 1,
+	setaimode captain ignore,
+	setvar boolvolockout 1,
+	order captain goto (3322,500) inmode ignore, // near pad but not on it
+	triggerdelay 1500 evtGettoDrop
+	
+	if evtGetToDrop then
+	order captain goto (3422,535) inmode ignore, 
+	setvar boolCapFiredPVP 1
+
+	if hit captain
+		testvar boolCapFiredPVP = 1
+		then
+		heal captain 100 // && gah, can't make him invuln
+
+if padon padLavadrop butnot evtmissionlost
+	then 
+//	showmessage "on lavapad",
+	trigger evttestM2Won
+
+	if evttestm2won
+		testvar boolCapFiredPVP = 1
+		then
+		trigger evtnuthtest,
+		setvar boolvolockout 1
+
+		if evtnuthtest butnot evtnuth then
+		trigger evtnuth
+
+		if evtnuth then
+		playtalkinghead 121 // here goes nuthin
+
+	if inorder evtNuth talkingheaddone captain // make sure they can't get out of npc during anim
+		testvar getpadstatus padlavadrop = 1 
+		and boolCapFiredPVP = 1
+		then
+		setnpc captain 1,
+		setaimode captain ignore,
+		triggerdelay 500 evtPlayLava
+
+	if evtPlayLava then // FLOOOOOSH!
+	setfacing captain 64,
+	deploy objlava,
+	setobjstate objlava osflowing,
+	triggerdelay 100 evtsfx,
+	triggerdelay 1500 lavaexplo,
+	triggerdelay 1600 lavaexplo,
+	triggerdelay 1800 lavaexplo,
+	triggerdelay 2000 evtmission2won
+
+	if evtsfx then
+	playsound "explosion3.wav" (0,0) 2 1
+
+		if inorder evttestm2won talkingheaddone captain // they escaped during vo
+			testvar getpadstatus padlavadrop = 0 
+			AND boolCapFiredPVP = 1
+			then
+			setnpc captain 1,
+			setaimode captain ignore,
+			order captain goto (3422,535) inmode ignore
+			
+			if inorder evtnuth talkingheaddone captain padon padLavadrop then // case of them slipping off and being kicked back into npc
+				triggerdelay 500 evtPlaylava
+
+	if lavaexplo then random
+		createexplosion (3430,617) 149,
+		createexplosion (3461,584) 149,
+		createexplosion (3390,550) 149,
+		createexplosion (3430,617) 148,
+		createexplosion (3461,584) 148,
+		createexplosion (3390,550) 148
+
+if evtMission2Won butnot evtMissionlost then
+	playsound "explosion2.wav" (0,0) 2 1,
+	undeploy objlava,
+	triggerdelay 100 theEnd
+
+	if theEnd butnot evtMissionlost
+		then trigger greenwins
+
+
+preloadsprite 43 500 0 // jp door
+//preloadsprite 43 500 1
+//preloadsprite 43 500 2
+
+preloadsprite 43 575 0 // volcano maindoor 
+
+preloadsprite 43 550 0 // volc 
+preloadsprite 43 551 0
+preloadsprite 43 552 0
+preloadsprite 43 553 0
+preloadsprite 43 554 0
+preloadsprite 43 555 0
+preloadsprite 43 556 0
+preloadsprite 43 557 0
+preloadsprite 43 558 0
+preloadsprite 43 559 0
+preloadsprite 43 560 0
+preloadsprite 43 561 0
+preloadsprite 43 562 0
+preloadsprite 43 563 0
+preloadsprite 43 564 0
+preloadsprite 43 565 0
+preloadsprite 43 566 0
+preloadsprite 43 567 0
+preloadsprite 43 568 0
+preloadsprite 43 569 0
+
+

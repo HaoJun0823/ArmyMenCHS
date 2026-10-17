@@ -1,0 +1,178 @@
+// ============================================
+// SAVAGE SCAVENGE ============================
+// ============================================
+
+UNTIL 211 REPEAT 200 BY 1
+{
+	PAD padPupHidden$	$
+}
+
+UNTIL 229 REPEAT 212 BY 1
+{
+	PAD padPupOpen$		$
+}
+
+// SETUP MP MISSION ===========================
+
+IF startup1 THEN
+	TRIGGER adjustpoints,
+	TRIGGER mpsetupplayers,
+	TRIGGER setupgoodies,
+	TRIGGER setupwinchables,
+	TRIGGER startupmap
+
+IF adjustpoints THEN
+	SETVAR boolEWSActive 1,
+	SETVAR copterpoints 0,
+	SETVAR trooperpoints 0
+
+MACRO setupplayers 1
+{
+	IF mpsetupplayers THEN
+		CREATECOPTER scout captain_@1 pad@1LZ @1,
+		SETAIRMAP captain_@1 1,
+		SETAIRVARIANCE captain_@1 200,
+		SETSTEP captain_@1 500
+	
+	UNTIL 5 REPEAT 1 BY 1
+	{
+		IF mpsetupplayers TESTVAR ISCOLORINGAME @1 = 1 THEN
+			CREATEUNIT @1_basepatrol_$ stingerguy pad@1AA$ @1 stingermissile
+	}
+}
+EXPAND setupplayers ( Green )
+EXPAND setupplayers ( Tan   )
+EXPAND setupplayers ( Grey  )
+EXPAND setupplayers ( Blue  )
+
+UNTIL 211 REPEAT 200 BY 1
+{
+	IF setupgoodies THEN
+		TRIGGER gethiddenpowerup$
+
+	IF gethiddenpowerup$ THEN RANDOM
+		CREATEPOWERUP radarmissile		padPupHidden$ 10,
+		CREATEPOWERUP groundmissile		padPupHidden$ 10,
+		CREATEPOWERUP clusterbomb		padPupHidden$ 10,
+		CREATEPOWERUP swarmmissile		padPupHidden$ 10,
+		CREATEPOWERUP napalmbomb    	padPupHidden$ 10,
+		CREATEPOWERUP thrownfirecracker padPupHidden$ 10,
+		CREATEPOWERUP sidegun 			padPupHidden$ 10,
+		CREATEPOWERUP wingmen 			padPupHidden$ 10,
+		CREATEPOWERUP airblastmissile 	padPupHidden$ 10
+}
+
+UNTIL 229 REPEAT 212 BY 1
+{
+	IF setupgoodies THEN
+		TRIGGER getopenpowerup$
+
+	IF getopenpowerup$ THEN RANDOM
+		CREATEPOWERUP partialarmor 	padPupOpen$,
+		CREATEPOWERUP fullarmor 	padPupOpen$,
+		CREATEPOWERUP whisperblades padPupOpen$,
+		CREATEPOWERUP partialarmor 	padPupOpen$,
+		CREATEPOWERUP armorboost 	padPupOpen$,
+		CREATEPOWERUP medkit 		padPupOpen$
+}
+
+// SS WINCHABLES ==============================
+
+IF setupwinchables THEN
+	SETVAR gamescorelimit 3,
+	SETVAR gametimelimit 0,
+	TRIGGER mpscavangeplayers
+
+MACRO WinchableHandler 7
+{
+	UNTIL 3 REPEAT 1 BY 1
+	{
+		// Ex: captain_Green drops Greenobj1 on his landing pad.
+		IF DROPPED @1obj$ BY captain_@1 TESTVAR GETPADSTATUS pad@1LZ = 1 THEN
+			UNDEPLOY me,
+			DEPLOY me pad@1source$
+
+		IF relocate@1obj$ THEN
+			ADDVAR @1score 1,
+			REMOVEMISSIONOBJECTIVE @5obj$ @1,
+			REMOVEMISSIONOBJECTIVE @6obj$ @1,
+			REMOVEMISSIONOBJECTIVE @7obj$ @1,
+			TRIGGERDELAY 1 checkteamvictory
+
+		// Ex: captain_Green drops Tanobj1 on his landing pad and greentarget1 is vacant.
+		IF DROPPED @5obj$ BY captain_@1 TESTVAR quad@1Target$ = 0 AND GETPADSTATUS pad@1dropzone$ = 1 THEN
+			TRIGGER syncvarA_@1_$,
+			TRIGGERDELAY 1 relocate@1obj$
+
+			IF syncvarA_@1_$ THEN
+				SETVAR quad@1Target$ 5
+
+
+		// Ex: captain_Green drops Greyobj1 on his landing pad and greentarget1 is vacant.
+		IF DROPPED @6obj$ BY captain_@1 TESTVAR quad@1Target$ = 0 AND GETPADSTATUS pad@1dropzone$ = 1 THEN
+			TRIGGER syncvarB_@1_$,
+			TRIGGERDELAY 1 relocate@1obj$
+
+			IF syncvarB_@1_$ THEN
+				SETVAR quad@1Target$ 6
+
+
+		// Ex: captain_Green drops Blueobj1 on his landing pad and greentarget1 is vacant.
+		IF DROPPED @7obj$ BY captain_@1 TESTVAR quad@1Target$ = 0 AND GETPADSTATUS pad@1dropzone$ = 1 THEN
+			TRIGGER syncvarC_@1_$,
+			TRIGGERDELAY 1 relocate@1obj$
+		
+			IF syncvarC_@1_$ THEN
+				SETVAR quad@1Target$ 7
+
+		/////////////////////////////////////////
+
+		// Ex: captain_Tan owns Greenobj1, then Greenobj1 is picked up.
+		IF PICKEDUP @1obj$ TESTVAR quad@5Target$ = 7 THEN
+			TRIGGER syncclientA_@1_@5_@6_@7_$
+
+			IF syncclientA_@1_@5_@6_@7_$ THEN
+				ADDVAR @5score -1,
+				ADDMISSIONOBJECTIVE @1obj$ @5, ADDMISSIONOBJECTIVE @6obj$ @5, ADDMISSIONOBJECTIVE @7obj$ @5,
+				SETVAR quad@5Target$ 0
+
+
+		// Ex: captain_Grey owns Greenobj1, then Greenobj1 is picked up.
+		IF PICKEDUP @1obj$ TESTVAR quad@6Target$ = 6 THEN
+			TRIGGER syncclientB_@1_@5_@6_@7_$
+
+			IF syncclientB_@1_@5_@6_@7_$ THEN
+				ADDVAR @6score -1,
+				ADDMISSIONOBJECTIVE @1obj$ @6, ADDMISSIONOBJECTIVE @5obj$ @6, ADDMISSIONOBJECTIVE @7obj$ @6,
+				SETVAR quad@6Target$ 0
+
+
+		// Ex: captain_Blue owns Greenobj1, then Greenobj1 is picked up.
+		IF PICKEDUP @1obj$ TESTVAR quad@7Target$ = 5 THEN
+			TRIGGER syncclientC_@1_@5_@6_@7_$
+
+			IF syncclientC_@1_@5_@6_@7_$ THEN
+				ADDVAR @7score -1,
+				ADDMISSIONOBJECTIVE @1obj$ @7, ADDMISSIONOBJECTIVE @5obj$ @7, ADDMISSIONOBJECTIVE @6obj$ @7,
+				SETVAR quad@7Target$ 0
+	}
+}
+EXPAND WinchableHandler ( Green 940 941 942 Tan Grey Blue   )
+EXPAND WinchableHandler ( Tan   943 944 945 Grey Blue Green )
+EXPAND WinchableHandler ( Grey  946 947 948 Blue Green Tan  )
+EXPAND WinchableHandler ( Blue  949 950 951 Green Tan Grey  )
+
+MACRO ScavangeSetup 7
+{
+	IF mpscavangeplayers TESTVAR iscoloringame @1 = 1 THEN
+		CREATEOBJECT @1winchpad1 43 @2 pad@1target1 0,
+		CREATEOBJECT @1winchpad2 43 @3 pad@1target2 0,
+		CREATEOBJECT @1winchpad3 43 @4 pad@1target3 0,
+		CREATEOBJECT @1obj1 43 @5 pad@1source1 0, ADDMISSIONOBJECTIVE @1obj1, REMOVEMISSIONOBJECTIVE @1obj1 @1,
+		CREATEOBJECT @1obj2 43 @6 pad@1source2 0, ADDMISSIONOBJECTIVE @1obj2, REMOVEMISSIONOBJECTIVE @1obj2 @1,
+		CREATEOBJECT @1obj3 43 @7 pad@1source3 0, ADDMISSIONOBJECTIVE @1obj3, REMOVEMISSIONOBJECTIVE @1obj3 @1
+}
+EXPAND ScavangeSetup ( Green 955 956 957 940 941 942 )
+EXPAND ScavangeSetup ( Tan   958 959 960 943 944 945 )
+EXPAND ScavangeSetup ( Grey  961 962 963 946 947 948 )
+EXPAND ScavangeSetup ( Blue  964 965 966 949 950 951 )

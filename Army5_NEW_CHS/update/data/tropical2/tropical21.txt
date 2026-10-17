@@ -1,0 +1,1748 @@
+// Tropical2 Mission1 - Volcano Fortress
+// D Chang
+
+INCLUDE ..\scripts\common.txt
+INCLUDE ..\scripts\treefxTp2.txt
+// SOUND ============================
+// ch 1 pri 3 = ambient sounds
+// ----
+list listTrucks {truck1 truck2 truck3 truck4}
+list listsubs {sub1 sub2 sub3 sub4 sub5 sub6 sub7 sub8}
+//-----
+variable varGreenCrossed 0
+variable varcount 0
+variable facingstate 0
+VARIABLE varTrucksDead 0
+VARIABLE vartempx 0
+VARIABLE vartempy 0
+variable boolbridgedead 0
+VARIABLE varSubsSpawned 0
+VARIABLE boolTruck1Empty 0
+VARIABLE boolTruck2Empty 0
+VARIABLE boolTruck3Empty 0
+VARIABLE boolTruck4Empty 0
+VARIABLE varTan2Kill 0
+variable boolnoexports 0
+VARIABLE varSouthAADead 0
+VARIABLE varCountdown 0
+VARIABLE boolTikiwon 0
+VARIABLE varplastroknocks 0
+variable varbugsspawned 0
+VARIABLE boolDoorKnocked 0
+VARIABLE booljdooropen 0
+VARIABLE varmaxbugs 4
+variable varbugkilled 0
+VARIABLE vartruck1onbridge 0
+VARIABLE vartruck2onbridge 0
+VARIABLE vartruck3onbridge 0
+VARIABLE vartruck4onbridge 0
+VARIABLE varjeepknocks 0
+VARIABLE vartotalknocks 0
+variable MinGreenCrossed 5 // these are tweaked in next level setup
+variable underMinGreencrossed 4 
+//VARIABLE
+//VARIABLE
+
+UNTIL 7 REPEAT 1 BY 1
+{
+variable varbug_$killed 0
+}
+
+// ------ objets
+object objvent
+	STATE osventing
+		FRAME 500 0
+		FRAME 100 1
+		FRAME 300 2
+		FRAME 500 0
+		FRAME 100 3
+		FRAME 200 1
+		FRAME 500 2
+		FRAME 400 0
+		FRAME 200 3
+		FRAME 100 1
+		FRAME 700 0
+		FRAME 10 0 //dummy
+			setobjstate objvent osventing
+
+preloadsprite 43 595 0
+preloadsprite 43 595 1
+preloadsprite 43 595 2
+preloadsprite 43 595 3
+
+object objfanl1
+	STATE osblowing
+		FRAME 150 0
+		FRAME 150 1
+		FRAME 150 2
+		FRAME 150 3
+		FRAME 10 0 //dummy
+			setobjstate objfanl1 osblowing
+
+preloadsprite 43 591 0
+preloadsprite 43 591 1
+preloadsprite 43 591 2
+preloadsprite 43 591 3
+
+object objfanl2
+	STATE osblowing
+		FRAME 100 0
+		FRAME 100 1
+		FRAME 100 2
+		FRAME 100 3
+		FRAME 10 0 //dummy
+			setobjstate objfanl2 osblowing
+
+object objfanl3
+	STATE osblowing
+		FRAME 100 0
+		FRAME 100 1
+		FRAME 100 2
+		FRAME 100 3
+		FRAME 10 0 //dummy
+			setobjstate objfanl3 osblowing
+
+object objfanc1
+	STATE osblowing
+		FRAME 100 0
+		FRAME 100 1
+		FRAME 100 2
+		FRAME 100 3
+		FRAME 10 0 //dummy
+			setobjstate objfanc1 osblowing
+
+preloadsprite 43 590 0
+preloadsprite 43 590 1
+preloadsprite 43 590 2
+preloadsprite 43 590 3
+
+object objfanc2
+	STATE osblowing
+		FRAME 100 0
+		FRAME 100 1
+		FRAME 100 2
+		FRAME 100 3
+		FRAME 10 0 //dummy
+			setobjstate objfanc2 osblowing
+
+object objfanr1
+	STATE osblowing
+		FRAME 200 0
+		FRAME 200 1
+		FRAME 200 2
+		FRAME 200 3
+		FRAME 10 0 //dummy
+			setobjstate objfanr1 osblowing
+
+preloadsprite 43 592 0
+preloadsprite 43 592 1
+preloadsprite 43 592 2
+preloadsprite 43 592 3
+
+object objfanr3
+	STATE osblowing
+		FRAME 600 0
+		FRAME 600 1
+		FRAME 600 2
+		FRAME 600 3
+		FRAME 10 0 //dummy
+			setobjstate objfanr3 osblowing
+
+object objbridgerail
+	STATE osLive
+		FRAME 1000 0
+    STATE osDead
+		FRAME 1000 1
+
+object objJeepdoor
+	STATE osClosed
+		FRAME 300 1
+	    FRAME 500 0
+	    FRAME 1000 0
+    STATE osOpen
+		FRAME 300 1
+		FRAME 500 2
+		FRAME 1000 2
+
+object objsub
+	state osSurfacing
+		frame 200 18
+		frame 200 17
+		frame 200 16
+		frame 200 15
+		frame 200 14
+		frame 200 13
+		frame 200 12
+		frame 200 11
+		frame 200 10
+		frame 200 9
+		frame 200 8
+		frame 200 7
+		frame 200 6
+		frame 200 5
+		frame 200 4
+		frame 200 3
+		frame 200 2
+		frame 200 1
+		frame 200 0
+	state osDiving
+		frame 200 0
+		frame 200 1
+		frame 200 2
+		frame 200 3
+		frame 200 4
+		frame 200 5
+		frame 200 6
+		frame 200 7
+		frame 200 8
+		frame 200 9
+		frame 200 10
+		frame 200 11
+		frame 200 12
+		frame 200 13
+		frame 200 14
+		frame 200 15
+		frame 200 16
+		frame 200 17
+		frame 200 18
+
+object objlava
+	state osFlowing
+		frame 100 0
+		frame 100 1
+		frame 100 2
+		frame 100 3
+		frame 100 4
+		frame 100 5
+		frame 100 6
+		frame 100 7
+		frame 100 8
+		frame 100 9
+		frame 100 10
+		frame 100 11
+		frame 100 12
+		frame 100 13
+		frame 100 14
+		frame 100 15
+		frame 100 16
+		frame 100 17
+		frame 100 18
+		frame 100 19
+		frame 100 20
+		frame 100 21
+
+preloadsprite 27 405 0 // bridge
+preloadsprite 27 405 1
+preloadsprite 27 405 2
+
+preloadsprite 43 503 0 // destroyer 2
+preloadsprite 43 503 1
+preloadsprite 43 503 2
+preloadsprite 43 503 3
+preloadsprite 43 503 4
+preloadsprite 43 503 5
+preloadsprite 43 503 6
+preloadsprite 43 503 7
+preloadsprite 43 503 8
+preloadsprite 43 503 9
+preloadsprite 43 503 10
+
+preloadsprite 43 222 0  //hut
+//preloadsprite 43 222 1
+
+preloadsprite 43 223 0 
+//preloadsprite 43 223 1
+
+preloadsprite 43 224 0 
+//preloadsprite 43 224 1
+
+preloadsprite 43 400 0 // wharf
+//preloadsprite 43 400 1
+
+//----- Pads
+pad padCapSouthSide 0 captain > 0
+pad padTanCopterSouthSide 0 copter1 > 0
+
+// pad padObjtvOnSIsleLand 0 tan ground unit
+pad padObjtvOnSIsleSea 0 tan water unit 
+pad padObjtvOnSIsleAir 0 tan air unit 
+pad padTrooperOnSIsle 0 tan trooper 
+pad padJeepOnSIsle 0 wavejeep 
+
+pad padTruckonsisland 0 tan Roachcoach
+pad pad1TruckOnSIsland 0 tan Roachcoach >0
+pad pad2TrucksOnSIsland 0 tan Roachcoach >1
+pad pad3TrucksOnSIsland 0 tan Roachcoach > 2
+pad pad4TrucksOnSIsland 0 tan Roachcoach >3
+pad pad5PlusOnLand 0 tan ground unit > 4
+pad pad4PlusOnLand 0 tan ground unit > 3
+pad pad3PlusOnLand 0 tan ground unit > 2
+pad pad2PlusOnLand 0 tan ground unit > 1
+pad padNotNearClearLand 0 tan ground unit > 3
+pad padNotNearClearAir 0 tan air unit > 2
+pad padIsleLandOcc 0 tan ground unit > 0
+pad padIsleAirOcc 0 tan air unit > 0
+pad padIsleSeaOcc 0 tan water unit > 0
+
+PAD padBridgeLeft 2 tan trooper
+PAD padBridgeRight 3 tan trooper
+PAD padGBridgeLeft 2 green trooper
+PAD padGBridgeRight 3 green trooper
+PAD padLZsouth 14 captain >0
+PAD padLZnorth 13 captain >0
+
+pad padTruck1spawn 15 truck1>0
+pad padTruck2spawn 15 truck2>0
+pad padTruck3spawn 15 truck3>0
+pad padTruck4spawn 15 truck4>0
+
+pad padSubExit 20 grey submarine
+pad padSubSpawn 25 grey submarine
+
+pad padsubdock 30 grey submarine
+macro subbers 1
+{
+pad pad@1Dock 30 @1 > 0
+}
+expand subbers (sub8)
+expand subbers (sub1)
+expand subbers (sub2)
+expand subbers (sub3)
+expand subbers (sub4)
+expand subbers (sub5)
+expand subbers (sub6)
+expand subbers (sub7)
+
+pad padSubWay1 35 grey submarine 
+pad padSubWay2 40 grey submarine 
+
+pad padTruck1Way1 45 truck1>0
+pad padTruck2Way1 45 truck2>0
+pad padTruck3Way1 45 truck3>0
+pad padTruck4Way1 45 truck4>0
+
+pad padTruck1Way2 50 truck1>0
+pad padTruck2Way2 50 truck2>0
+pad padTruck3Way2 50 truck3>0
+pad padTruck4Way2 50 truck4>0
+pad padTruckWay2 50 tan Roachcoach>0
+
+macro waver2 1
+{
+pad pad@1b4Bridge 50 @1
+pad pad@1AfterBridge 55 @1
+}
+expand waver2 (wave1)
+expand waver2 (wave2)
+expand waver2 (wave3)
+expand waver2 (wave4)
+expand waver2 (wave5)
+expand waver2 (wave6)
+expand waver2 (wavejeep)
+
+pad padTruck1Way3 55 truck1>0
+pad padTruck2Way3 55 truck2>0
+pad padTruck3Way3 55 truck3>0
+pad padTruck4Way3 55 truck4>0
+pad padTruckWay3 55 tan Roachcoach>0
+pad padcopterway3 55 copter1
+
+pad padTruck1Way4 60 truck1>0
+pad padTruck2Way4 60 truck2>0
+pad padTruck3Way4 60 truck3>0
+pad padTruck4Way4 60 truck4>0
+pad padTruckWay4 60 tan Roachcoach>0
+pad padcopterway4 60 copter1
+
+pad padTruck1Load 65 truck1>0
+pad padTruck2Load 65 truck2>0
+pad padTruck3Load 65 truck3>0
+pad padTruck4Load 65 truck4>0
+pad padTruckLoad 65 tan Roachcoach>0
+pad padcopterdock 65 copter1
+
+pad padHotLava 70 captain > 0
+pad padTikizone 75 captain > 0
+
+pad padSpottedDock 80 captain >0
+
+pad padBridgeTrpdeath 85 trooper
+pad padBridgedeath 85 vehicle
+
+pad padVVent 90 captain > 0 delay 200 0
+
+pad padNearVolc 95 captain >0
+
+pad padNearTruckload 115 tan roachcoach > 0
+
+//***SETUP MISSION***//
+IF startup1 THEN
+	triggerdelay 6000 dc,
+//	trace 7, //&&
+	trigger setupgreen,
+	setmissioninfo tp21,
+	undeploy destroyer1,
+	undeploy destroyer2,
+	triggerdelay 40 setupgreenM1Pt2,
+	triggerdelay 60 setuptan,
+	triggerdelay 80 setuptanM1Pt2,
+	TRIGGERDELAY 500 latersetup,
+	trigger evtMakeVolcanoSmoke, // &&
+	triggerdelay 4000 evtCanoFire,
+	triggerdelay 1000 evtBrief,
+	triggerdelay 5000 evtclosedoor,
+	triggerdelay 28000 evtOpenDoor,
+	triggerdelay 30000 evtTruckSpawn,
+	trigger evtopendoor,
+	triggerdelay 118000 evtopendoor,
+	triggerdelay 120000 evtTanWave,
+	triggerdelay 10000 evtTestforWin,
+	triggerdelay 30000 ambientsound,
+	triggerdelay 8000 evtSendCopter
+
+if dc then
+	stopheatwave,
+	StartHeatWave "volcano4.bmp" (3260,100), 
+	triggerdelay 3000 dc2
+
+if dc2 then
+	stopheatwave,
+	StartHeatWave "volcano3.bmp" (3260,100), 
+	triggerdelay 2000 dc3
+
+if dc3 then
+	stopheatwave,
+	StartHeatWave "volcano2.bmp" (3260,100), 
+	triggerdelay 2500 dc4
+
+if dc4 then
+	stopheatwave,
+	StartHeatWave "volcano1.bmp" (3260,100), 
+	triggerdelay 3300 dc
+
+IF setupgreen THEN
+	CREATECOPTER bigbertha captain (3540,3930,110) green,
+	SETFACING captain 32,
+	SETAIRMAP captain 0,
+	setairvariance captain 150,
+	setstep captain 160,
+	setnpc captain 1,
+	setvar vartempx getx captain,
+	setvar vartempy gety captain,
+	order captain goto (refvar vartempx, refvar vartempy) inmode ignore,
+	setaimode captain ignore
+
+if setupgreenM1Pt2 then
+	createpowerup x wingmen (430,3400) 5,
+	createpowerup x fullarmor (435,3320),
+	createpowerup x groundmissile (675,3790) 15,
+	createpowerup x partialarmor (1215,3440) 12,
+	createpowerup x depthcharge (1400,3550) 20,
+	createpowerup x clusterbomb (1160,3860) 4,
+	createpowerup x sonarbuoy (1765,3830) 10,
+	createpowerup x partialarmor (2540,3400),
+	createpowerup x wingmen (1870,3420) 5,
+	createpowerup medkit (1515,1060),
+	createpowerup x food (2130,3700) 5
+
+if setupgreen
+	testvar difficulty < 2 then
+	createpowerup x armorboost (2230,3775) 12,
+	createpowerup x swarmmissile (2285,3630) 10
+
+if setuptan then
+	createunit tikiman stingerguy (1090, 575) tan stingermissile,
+	setaimode tikiman defend,
+	CREATEvehicle truck1 Roachcoach (2775,1490) tan,
+	setfacing truck1 96,
+	order truck1 goto (2405,1845) inmode ignore,
+	CREATEcopter scout copter1 (2630,1250,110) tan,
+	SETAIRMAP copter1 0,
+	setairvariance copter1 120,
+	setstep copter1 150,
+//	CREATEvehicle pt1 boat padSubway1 tan, && && boats out TEST
+	setfacing pt1 120,
+//	CREATEvehicle pt2 boat (3050,3050) tan,
+	CREATEvehicle aawest ackackbase (635,802) tan,
+	CREATEvehicle aavillage ackackbase (1285,1130) tan
+
+if setuptanM1Pt2 then
+	CREATEvehicle aabeachlf ackackbase (2175,1830) tan,
+//	CREATEvehicle aabeachmid ackackbase (2635,1770) tan,
+	CREATEvehicle aabeachrt ackackbase (3300,2240) tan,
+	CREATEvehicle aavolcanonorth ackackbase (2333,540) tan,
+	CREATEvehicle aavolcanolf ackackbase (2765,1290) tan, //(2232,1282) 2288,1370
+	CREATEvehicle aavolcanomid ackackbase (3070,1710) tan,
+	CREATEvehicle aavolcanort ackackbase (3760,2000) tan, //3935,1570
+	setgunfacing aavolcanort 96,
+	setgunfacing aavolcanolf 160,
+	setgunfacing aavolcanomid 70,
+	setgunfacing aavolcanonorth 80,
+//tikiville
+	createunit dude stingerguy (1500,1285) tan stingermissile,
+	createunit dude rifleman (1735,1110) tan sniper,
+//beachhead
+	createunit dude stingerguy (2635,1420) tan stingermissile,
+	createunit dude flamerman (2635,1420) tan flamer,
+//at fortress
+	CREATEvehicle tanko tank (2288,1370) tan,
+	setfacing tanko 110,
+	setaimode tanko defend,
+	createunit feller grenadier (3285,1670) tan grenade,
+	createunit stander stingerguy (3319,1373) tan airblastmissile,
+	setaipose stander stand,
+	setfacing stander 127,
+	createunit stander2 rifleman (3480,1382) tan rifle,
+	setaipose stander2 stand,
+	setfacing stander2 110,
+	createunit stander3 rifleman (3630,1610) tan rifle,
+	setaimode stander3 standfire,
+	setfacing stander3 140,
+	CREATEvehicle aaleft ackackgunsm (2893,213,100) tan,
+	CREATEvehicle aamain ackackgunsm (2967,832) tan,
+	CREATEvehicle aart ackackgunsm (3624,1012) tan,
+
+// on south isle
+	CREATEvehicle aasouth1 ackackbase (2015,3800) tan,
+	CREATEvehicle aasouth2 ackackbase (1000,3031) tan,
+	createunit dude1 rifleman (2614,3485) tan vulcan,
+	createunit dude2 flamerman (1985,3345) tan flamer,
+	createunit dude3 rifleman (2614,3485) tan rifle,
+	createunit dude4 stingerguy (730,3810) tan stingermissile,
+	createunit dude5 stingerguy (1295,3450) tan stingermissile,
+	createunit dude6 rifleman (2425,3725) tan rifle,
+	createunit dude7 rifleman (2425,3725) tan rifle,
+	triggerdelay 500 evtMarkUm
+
+if latersetup then
+//	undeploy objpvp,
+	undeploy objsub,
+	undeploy objhook,
+//	moveitem objhook (863,2562),
+	undeploy objfanr3,
+	undeploy objfanr2,
+	undeploy objfanr1,
+	undeploy objlava
+
+IF ambientsound
+	testvar getpadstatus padCapSouthside = 1 then
+	TRIGGER randomsouthsound,
+	TRIGGER repeatsound
+
+IF ambientsound
+	testvar getpadstatus padCapSouthside = 0
+	and getpadstatus padhotlava = 0
+	then
+	TRIGGER randomnorthsound,
+	TRIGGER repeatsound
+
+IF ambientsound
+	testvar getpadstatus padCapSouthside = 0
+	and getpadstatus padhotlava = 1
+	then
+	TRIGGER lavasound,
+	TRIGGER repeatsound
+
+IF randomnorthsound THEN RANDOM
+	PLAYSOUND elephant.wav (0,0) 1 3,
+	PLAYSOUND primate.wav (0,0) 1 3,
+	PLAYSOUND tikki2.wav (0,0) 1 3,
+	PLAYSOUND primate.wav (0,0) 1 3
+
+IF randomsouthsound THEN RANDOM
+	trigger evtwaves,
+//	PLAYSOUND primate.wav (0,0) 1 3,
+	playsound seagulls.wav (0,0) 1 3
+
+	if evtwaves then PLAYSOUND wavesonbeach.wav (0,0) 1 3,
+		setsoundvolume wavesonbeach.wav 1 -200
+
+IF lavasound then
+	playsound "bubblinglava.wav" (0,0) 1 3
+
+IF repeatsound THEN RANDOM
+	TRIGGERDELAY 20000 ambientsound,
+	TRIGGERDELAY 40000 ambientsound,
+	TRIGGERDELAY 60000 ambientsound
+
+if evtMarkum then
+	addmissionobjective aasouth1,
+	addmissionobjective aasouth2,
+	addmissionobjective dude1,
+	addmissionobjective dude2,
+	addmissionobjective dude3,
+	addmissionobjective dude4,
+	addmissionobjective dude5,
+	addmissionobjective dude6,
+	addmissionobjective dude7
+
+if evtBrief then
+	setnpc captain 1,
+	setaimode captain ignore,
+	setmissioninfo tp21,
+	setobjstate objvent osventing,
+	setobjstate objfanl3 osblowing,
+	setobjstate objfanl2 osblowing,
+	setobjstate objfanl1 osblowing,
+	setobjstate objfanc1 osblowing,
+	setobjstate objfanc2 osblowing,
+	playtalkinghead 100
+
+if talkingheaddone captain then
+	setnpc captain 0
+
+if talkingheaddone captain butnot evtNewBugs
+	then 
+	trigger evtopendoor,
+	triggerdelay 2000 evtNewBugs
+
+if talkingheaddone captain butnot evtSubSpawn
+	then triggerdelay 4000 evtSubSpawn
+
+if evtSendcopter butnot hit captain by copter1 then
+	order copter1 goto padcopterway3 inmode attack,
+	setspeed copter1 slow
+
+if padon padcopterway3 butnot hit captain by copter1 then
+	order copter1 goto padcopterdock inmode attack,
+	setspeed copter1 slow
+
+if padon padcopterdock butnot hit captain by copter1 then
+	order copter1 goto padcopterway4 inmode attack,
+	setspeed copter1 slow
+
+if padon padcopterway4 butnot hit captain by copter1 then
+	order copter1 goto padcopterway3 inmode attack,
+	setspeed copter1 slow
+
+if hit captain by copter1 then
+	order copter1 goto captain inmode attack //&&
+
+// *********** puprwds
+
+if killed copter1 then trigger evtpuprwd
+if killed aasouth1 then trigger evtpuprwd
+if killed aabeachlf then trigger evtpuprwd
+if killed tanko then trigger evtpuprwd
+
+	if evtpuprwd then random
+	createpowerup partialarmor me,
+	createpowerup radarmissile me 6,
+	createpowerup heatray me 3,
+	createpowerup fullarmor me,
+	createpowerup medkit me,
+	createpowerup napalmbomb me 3,
+	createpowerup greenpaintbomb me 3,
+	createpowerup food me 2,
+//	createpowerup insecticide me 1,
+	createpowerup depthcharge me 10
+
+	if evtweakpuprwd then random
+		createpowerup thrownfirecracker me 8,
+		trigger nuthin,
+		trigger nuthin,
+		createpowerup radarmissile me 3,
+		trigger nuthin,
+		trigger nuthin,
+		createpowerup partialarmor me,
+		trigger nuthin,
+		trigger nuthin,
+		createpowerup groundmissile me 9,
+		trigger nuthin,
+		createpowerup heatray me 2,
+		trigger nuthin
+
+// ********** landing pads
+
+variable boolcopterlanded 0
+
+IF PADON padLZsouth THEN
+	TRIGGERDELAY 1000 copterlanding
+
+IF PADON padLZnorth THEN
+	TRIGGERDELAY 1000 ncopterlanding
+
+IF copterlanding TESTVAR GETPADSTATUS padLZsouth = 1 AND boolcopterlanded = 0 THEN
+	LAND captain,
+	TRIGGERDELAY 1 copterlanding
+
+IF ncopterlanding TESTVAR GETPADSTATUS padLZnorth = 1 AND boolcopterlanded = 0 THEN
+	LAND captain,
+	TRIGGERDELAY 1 ncopterlanding
+
+IF TOOKOFF captain then
+	SETVAR boolcopterlanded 0
+
+IF LANDED captain THEN
+	SETVAR boolcopterlanded 1
+
+IF padoff padLZnorth then
+	SETVAR boolcopterlanded 0
+
+IF padoff padLZsouth then
+	SETVAR boolcopterlanded 0
+
+// ================== truckage
+
+if evtOpenDoor
+	testvar booljdooropen = 0
+	then
+	setobjstate objJeepdoor osOpen,
+	triggerdelay 1 openvar,
+//	showmessage "门已开",
+	triggerdelay 800 evtDoorPuff
+
+	if openvar then
+	setvar booljdooropen 1
+
+	if evtDoorPuff then
+		createexplosion (2522,662) 132
+
+if evtCloseDoor
+	testvar booljdooropen = 1
+	then
+//	showmessage "门已关",
+	setobjstate objjeepdoor osclosed,
+	triggerdelay 1 closevar
+
+	if closevar then
+	setvar booljdooropen 0
+
+if evtTruckSpawn	// truck1 is in setuptan
+	then
+	CREATEvehicle truck2 Roachcoach (2468,696) tan, // was (2775,1490)
+	setfacing truck2 90,
+	createexplosion (2468,696,100) 128,
+	order truck2 goto (2405,1845) inmode ignore,
+	triggerdelay 2000 evtCloseDoor,
+	triggerdelay 48000 evtOpenDoor,
+	triggerdelay 50000 evtTruckspawn2
+
+//if evtTruckSpawn // loop to force trucks only to spawn when cap is gone
+//	testvar getpadstatus padCapSouthSide = 0
+//	then triggerdelay 4000 evtTruckSpawn
+
+if evtTruckSpawn2 butnot evtmission1won
+	then
+	CREATEvehicle truck3 Roachcoach (2468,696) tan,
+	setfacing truck3 90,
+	createexplosion (2468,696,100) 128,
+	order truck3 goto (2405,1845) inmode ignore,
+	triggerdelay 2000 evtCloseDoor,
+	triggerdelay 28000 evtOpenDoor,
+	triggerdelay 30000 evtTruckspawn3
+
+if evtTruckSpawn3 butnot evtmission1won
+	then
+	CREATEvehicle truck4 Roachcoach (2468,696) tan,
+	setfacing truck4 90,
+	createexplosion (2468,696,100) 128,
+//	undeploy truck4,
+//	deploy truck4 (2638,604) 96,
+	triggerdelay 2000 evtCloseDoor,
+	order truck4 goto (2405,1845) inmode ignore
+
+if evtNewBugs
+	testvar varbugsspawned < varmaxbugs
+	then
+	trigger evtRandomBug,
+	createexplosion (2525,666,200) 128,
+	setaimode lastcreated wander,
+	triggerdelay 5000 evt2ndbug,
+	triggerdelay 53000 evtopendoor,
+	triggerdelay 55000 evtNewBugs		// new bugs every x secs &&
+
+	if evt2ndbug then
+		addvar varbugsspawned 2,
+		trigger evtRandomBug,
+		createexplosion (2525,666,200) 128,
+		setaimode lastcreated wander,
+		triggerdelay 2000 evtclosedoor
+
+if evtNewBugs
+	testvar varbugsspawned = varmaxbugs
+	then
+	resurrect bug (2525,666,50), // (2835,1335),
+	setaimode bug wander,
+	triggerdelay 50 evtTestReviveB2
+
+if evtNewBugs
+	testvar varbugsspawned = varmaxbugs 
+	AND varbugkilled = 1
+	then createexplosion (2525,666,50) 128
+
+macro revivemania 4
+{
+if evtTestRevive@1
+	testvar varbugsspawned = varmaxbugs
+	AND varbug_@3killed = 1 then
+	triggerdelay @4 evtRevive@1
+//	showmessage "正在复活 @1"
+
+if evtTestRevive@1 // skip the Revive if this bug was not killed since the last reviveset
+	testvar varbugsspawned = varmaxbugs
+	AND varbug_@3killed = 0 then
+	triggerdelay 50 evt@2
+//	showmessage "跳过虫子 @1 的复活"
+}
+// args: revive#beingTested, next event to trigger, bug to revive, triggerdelay value for that bug
+// 
+expand revivemania (B2 TestReviveB3 1 5500)
+expand revivemania (B3 TestReviveB4 2 4800)
+expand revivemania (B4 TestReviveB5 3 5800)
+expand revivemania (B5 TestReviveB6 4 5300)
+expand revivemania (B6 TestReviveB7 5 4900)
+expand revivemania (B7 Reviveb8 6 5700)
+
+	if evtReviveB2 then // Nomenclature note: B2 = the second bug spawned = Bug_1
+	resurrect bug_1 (2485,663,50), // (2857,1337), 
+	createexplosion (2485,663,200) 128,
+	setaimode lastcreated wander,
+	triggerdelay 50 evtTestReviveB3
+
+	if evtReviveB3 then
+	resurrect bug_2 (2525,666,50), // (2859,1369), 
+	createexplosion (2525,666,200) 128,
+	setaimode lastcreated wander,
+	triggerdelay 50 evtTestReviveB4
+
+	if evtReviveB4 then
+	resurrect bug_3 (2525,666,50), // (2859,1369), 
+	createexplosion (2525,666,200) 128,
+	setaimode lastcreated wander,
+	triggerdelay 50 evtTestReviveB5
+
+	if evtReviveB5 then
+	resurrect bug_4 (2525,666,50), // (2859,1369), 
+	createexplosion (2525,666,200) 128,
+	setaimode lastcreated wander,
+	triggerdelay 50 evtTestReviveB6
+
+	if evtReviveB6 then
+	resurrect bug_5 (2525,666,50), // (2859,1369), 
+	createexplosion (2525,666,200) 128,
+	setaimode lastcreated wander,
+	triggerdelay 50 evtTestReviveB7
+
+	if evtReviveB7 then
+	resurrect bug_6 (2525,666,50), // (2859,1369), 
+	createexplosion (2525,666,200) 128,
+	setaimode lastcreated wander,
+	triggerdelay 4000 evtReviveB8	// don't bother testing this guy
+
+	if evtReviveB8 then
+	resurrect bug_7 (2485,663,50), // (2832,1372),
+	createexplosion (2485,663,200) 128,
+	setaimode lastcreated wander,
+	setvar varbugkilled 0,
+	setvar varbug_1killed 0,
+	setvar varbug_2killed 0,
+	setvar varbug_3killed 0,
+	setvar varbug_4killed 0,
+	setvar varbug_5killed 0,
+	setvar varbug_6killed 0,
+	setvar varbug_7killed 0,
+	triggerdelay 2000 evtclosedoor,
+	triggerdelay 48000 evtopendoor,
+	triggerdelay 50000 evtNewBugs		// new bugs every x secs *&&*
+
+if evtRandomBug then random
+	createinsect mutantroach bug (2525,666,50) tan, //&& was (2800,1340)
+	createinsect mutantwasp bug (2525,666,50) tan, 
+//	createinsect mutantflea bug (2525,666,50) tan, 
+	createinsect mutantroach bug (2525,666,50) tan,
+	createinsect mutantfly bug (2525,666,50) tan
+
+if killed bug then
+	setvar varbugkilled 1
+
+UNTIL 7 REPEAT 1 BY 1
+{
+if killed bug_$ then
+	setvar varbug_$killed 1
+}
+
+if evtTanWave then
+	createunit wave1 rifleman (2525,666) tan rifle, 
+	createunit wave2 rifleman (2485,663) tan rifle,
+	createunit wave3 stingerguy (2477,686) tan airblastmissile,
+	createunit wave4 rifleman (2513,686) tan sniper,
+	createunit wave5 rifleman (2488,696) tan autorifle,
+	createunit wave6 rifleman (2425,690) tan rifle,
+	CREATEvehicle wavejeep jeep (2452,590) tan,
+	triggerdelay 700 evtSendWave,
+	triggerdelay 2000 evtclosedoor
+
+variable boolwaverhitbycap 0
+
+macro waver1 1
+{
+if evtSendWave then order @1 goto (2670,2500) inmode attack // pad for bridge threshhold
+
+if hit @1 by captain then
+	setvar boolwaverhitbycap 1
+
+if padon pad@1b4Bridge
+	testvar boolwaverhitbycap = 0
+	then order @1 goto padWave1AfterBridge inmode attack
+
+if padon pad@1AfterBridge
+	testvar boolwaverhitbycap = 0
+	then order @1 goto captain inmode attack
+}
+expand waver1 (wave1)
+expand waver1 (wave2)
+expand waver1 (wave3)
+expand waver1 (wave4)
+expand waver1 (wave5)
+expand waver1 (wave6)
+expand waver1 (wavejeep)
+
+if evttanwave then
+	createexplosion (2452,590,75) 128,
+	triggerdelay 100 wavesmoke
+
+	if wavesmoke then
+	createexplosion (2525,666,75) 132, 
+	createexplosion (2485,663,75) 146,
+	createexplosion (2477,686,75) 137,
+	triggerdelay 100 evtwavesmoke2
+
+	if wavesmoke2 then
+	createexplosion (2513,686,75) 146,
+	createexplosion (2488,696,75) 132,
+	createexplosion (2425,690,75) 146
+
+macro allbugs 1
+{
+if evtRemoveBugs
+	testvar gethealth @1 > 0 then
+	setvar vartempx getx @1,
+	setvar vartempy gety @1,
+	createexplosion (refvar vartempx, refvar vartempy,150) 145,
+	undeploy @1
+
+if evtAllNormal 
+	testvar gethealth @1 > 0 then
+	setvar vartempx getx @1,
+	setvar vartempy gety @1,
+	createexplosion (refvar vartempx, refvar vartempy,150) 145,
+	triggerdelay 120 evtRestoreMe @1
+
+if evtHideBugs
+	then
+	order @1 goto padSubDock inmode defend
+}
+expand allbugs (bug)
+expand allbugs (bug_1)
+expand allbugs (bug_2)
+expand allbugs (bug_3)
+expand allbugs (bug_4)
+expand allbugs (bug_5)
+expand allbugs (bug_6)
+expand allbugs (bug_7)
+expand allbugs (mutantfly1)
+expand allbugs (mutantfly2)
+expand allbugs (mutantfly3)
+expand allbugs (mutantfly4)
+expand allbugs (mutantflea1)
+expand allbugs (mutantflea2)
+expand allbugs (mutantflea3)
+expand allbugs (mutantflea4)
+expand allbugs (mutantwasp1)
+expand allbugs (mutantwasp2)
+expand allbugs (mutantwasp3)
+expand allbugs (mutantwasp4)
+expand allbugs (mutantroach1)
+expand allbugs (mutantroach2)
+expand allbugs (mutantroach3)
+expand allbugs (mutantroach4)
+
+if evtRestoreme then
+	deploy me,
+	setaimode me attack
+
+//=========== tiki secret area
+
+if padon padTikizone butnot evtTikiComment then
+	playsound "tikki1.wav" (0,0) 1 3,
+	triggerdelay 300 evtTikiComment
+
+	if evtTikiComment butnot evtMissionlost
+	testvar boolvolockout = 0 then
+	playtalkinghead 104 // makes spine tingo
+
+if killed tikiman by captain butnot evtTikiwin then
+	triggerdelay 2000 setuptiki,
+	triggerdelay 3500 evtTikiwin
+
+if evtTikiwin
+	then
+	trigger TikiWinComment
+
+	if evtTikiwinComment butnot evtMissionlost
+	testvar boolvolockout = 0 then
+	playtalkinghead 101 // Gods have smiled
+
+if setuptiki then
+	createexplosion (1136,435) 128,
+	createpowerup x wingmen (1136,435) 5,
+	createexplosion (1035,480) 137,
+	createpowerup x depthcharge (1035,487) 25,
+	createexplosion (1035,604) 120,
+	createpowerup x radarmissile (1035,604) 35,
+	createexplosion tikiman 120,
+	createpowerup armorboost tikiman,
+	triggerdelay 50000 evtResetTiki
+
+	if setuptiki2 then
+	createexplosion (1143,666) 132,
+	createpowerup x clusterbomb (1143,666) 10,
+	createexplosion (1255,593) 128,
+	createpowerup x heatray (1255,593) 15,
+	createexplosion (1245,484) 137,
+	createpowerup x swarmmissile (1245,484) 12,
+	createexplosion tikiman 120,
+	createpowerup armorboost tikiman
+
+if evtResetTiki then	// tikiman comes back in && secs
+	resurrect tikiman,
+	setaimode tikiman defend,
+	addvar boolTikiwon 1
+
+if killed tikiman by captain
+	testvar boolTikiwon = 1
+	then
+	triggerdelay 2000 setuptiki2,
+	createpowerup weaponupgrade tikiman
+
+// ========= volcano
+
+if padon padNearVolc butnot evtWhoaVO then
+	trigger evtWhoaVO,
+	triggerdelay 2000 evtTestChaser
+
+	if evtWhoaVO butnot evtmissionlost 
+	testvar boolvolockout = 0 then
+		playtalkinghead 136, // whoa!
+		playtalkinghead 140 // Be on the lookout for air currents.
+
+	if evtTestchaser butnot evtmission1won then //&& if copter1 was killed and player gets to volc, new copter
+		trigger evtChaser
+
+	if inorder killed copter1 evtChaser then
+	CREATEcopter scout chaser padbridgedeath tan,
+	SETAIRMAP chaser 0,
+	setairvariance chaser 120,
+	setstep chaser 150,
+	order chaser goto captain inmode attack //&&
+
+if killed chaser then trigger evtpuprwd
+
+if evtCanoFire then
+	trigger evtrandlongfire,
+	triggerdelay 10000 evtrandfire,
+	triggerdelay 25000 evtrandfire,
+	triggerdelay 75000 evtCanofire
+
+if evtrandfire then random
+	makeflame (3355,425) 4000,
+	makeflame (3505,490) 3500,
+	makeflame (3500,486) 4300,
+	makeflame (3440,572) 4700,
+	makeflame (3276,475) 2000,
+	makeflame (3385,430) 3000,
+	makeflame (3550,445) 1000,
+	makeflame (3225,460) 3800
+
+if evtrandlongfire then random
+	makeflame (3470,500) 8000,
+	makeflame (3360,420) 10000,
+	makeflame (3280,495) 12000,
+	makeflame (3435,595) 11000,
+	makeflame (3565,430) 6000
+
+if evtMakeVolcanoSmoke then
+	trigger evtrandpuff,
+	triggerdelay 3500 evtrandsmoke,
+
+	triggerdelay 6000 evtMakeVolcanoSmoke
+
+if evtrandsmoke then random
+	makesmoke (3355,425) 800,
+	makesmoke (3505,490) 1200,
+	makesmoke (3500,486) 1300,
+	makesmoke (3440,572) 1400,
+	makesmoke (3276,475) 700,
+	makesmoke (3385,430) 500,
+	makesmoke (3550,445) 1000,
+	makesmoke (3225,460) 1400
+if evtrandpuff then random
+	createexplosion (3505,425) 132,
+	createexplosion (3440,572) 137,
+	createexplosion (3276,475) 128,
+	createexplosion (3385,430) 135,
+	createexplosion (3355,470) 718,
+	createexplosion (3505,425) 720,
+	createexplosion (3500,486) 717,
+	createexplosion (3440,572) 719,
+	createexplosion (3276,475) 718,
+	createexplosion (3385,430) 719,
+	createexplosion (3225,460) 720,
+	createexplosion (3505,425) 720,
+	createexplosion (3500,486) 717,
+	createexplosion (3440,572) 719,
+	createexplosion (3276,475) 718,
+	createexplosion (3385,430) 719,
+	createexplosion (3225,460) 720
+
+if hit objjeepdoor by green butnot evtmissionlost then
+	addvar varjeepknocks 1,
+	addvar vartotalknocks 1,
+	triggerdelay 10 evtDoorResponse
+
+if hit objdoor by green butnot evtmissionlost then
+	addvar varplastroknocks 1,
+	addvar vartotalknocks 1,
+	triggerdelay 10 evtDoorResponse
+
+if evtDoorResponse
+	testvar vartotalknocks = 8
+	AND boolvolockout =0
+	then trigger evtPlastroSez1
+
+	if evtPlastrosez1 butnot evtmission1won
+	then
+	playtalkinghead 102 // is that all you've got?
+
+if evtDoorResponse butnot evtmission1won
+	testvar varplastroknocks = 25
+	AND boolvolockout =0
+	then trigger evtPlastroSez2,
+	setvar boolDoorKnocked 1,
+	setmissioninfo tp21a
+
+if evtDoorResponse
+	testvar varjeepknocks = 15
+	AND boolvolockout =0
+	then trigger evtPlastrosez2 // hahaha!
+
+if evtDoorResponse
+	testvar varjeepknocks = 70
+	AND boolvolockout =0
+	then trigger evtPlastroSez2
+
+	if evtPlastroSez2 butnot evtMissionlost
+		then playtalkinghead 103 // hahahaha
+
+if padon padHotlava then
+	setforce captain zpush padHotlava 127 spin 0 -50 250 air 250 0 0,
+//	setforce me zpush padHotlava 127 spin 0 -1700 250 air 250 0 0
+	trigger evtLava1
+
+	if evtLava1 butnot evtLava2 then
+		trigger evtLava2
+
+	if evtLava2 then
+	playsound "bubblinglava.wav" (0,0) 1 3
+
+if padoff padHotlava then
+	setforce me none
+
+if padon padVVent then
+	setforce captain zpush padVVent 127 spin 0 -150 70 air 250 0 0,
+	trigger evtEncour // in M2, gives a "That's it"
+//	setforce me zpush padVVent 127 spin 0 -1400 130 air 250 0 0
+
+if padoff padVVent then
+	setforce me none
+
+// ============= bridge edge behavior
+
+if padon padBridgeLeft then //&&
+	setvar vartempx getx me,
+	setvar vartempy gety me,
+	addvar vartempx 25,
+	addvar vartempy 25,
+	order me goto (refvar vartempx, refvar vartempy) inmode ignore,
+	triggerdelay 1500 evtrelease
+
+	if evtrelease
+		then
+		setaimode me attack
+
+if padon padBridgeRight then
+	setvar vartempx getx me,
+	setvar vartempy gety me,
+	addvar vartempx -25,
+	addvar vartempy -25,
+	order me goto (refvar vartempx, refvar vartempy) inmode ignore,
+	triggerdelay 1500 evtrelease
+
+/////////////// BRIDGEDEATH
+
+if killed objbridge then
+	setvar boolbridgedead 1,
+	createexplosion (2343,3160) 144,
+	createexplosion (2545,2790) 144,
+	playitemsound "Explosion3.wav" objbridge 3 2,
+	triggerdelay 200 evtSwitchrail,
+	triggerdelay 300 evtPrettiness,
+	triggerdelay 500 evtKillBridgers,
+	triggerdelay 2000 evtBridgeVO,
+	setvar vartruck1onbridge 1 // block it
+
+if evtSwitchrail then
+	setobjstate objBridgerail osDead,
+	createexplosion (2465,2810) 147,
+	createexplosion (2480,2900) 144,
+	createexplosion (2583,2874) 147,
+	createexplosion (2517,3054) 144
+
+if evtPrettiness then
+	createexplosion padBridgedeath 131,
+	createexplosion (2350,3060) 147,
+	createexplosion (2405,2940) 144,
+	createexplosion (2430,3025) 144,
+	createexplosion (2545,2790) 144
+
+if evtKillBridgers then
+	setdamagepad padbridgedeath 1000 500 explosion,
+	setdamagepad padBridgeTrpdeath 1000 500 explosion,
+	createexplosion padBridgedeath 146,
+	triggerdelay 2000 evtStopKillin
+
+	if evtStopKillin then
+	setdamagepad padBridgeTrpdeath 0,
+	setdamagepad padbridgedeath 0
+
+// ======================== trucks loading ==========================
+
+if killed objwharf then
+	createexplosion objwharf 149, 
+	makesmoke (740,2610) 20000,
+	playitemsound "explosion4.wav" objwharf 4 2,
+	triggerdelay 100 wharfexplo,
+	trigger evtStopExports
+
+if wharfexplo then
+	createexplosion (770,2554) 145,
+	createexplosion (919,2440) 132,
+	createexplosion (955,2372) 145,
+	triggerdelay 50 wharf2
+
+	if wharf2 then
+	createexplosion (825,2495) 145,
+	createexplosion (862,2535) 132,
+	createexplosion (740,2610) 145
+
+if padon padSpottedDock butnot evtDockComment then
+	trigger evtDockComment
+
+	if evtDockComment   // looks like an export operation
+	testvar boolvolockout = 0 then
+	playtalkinghead 105,
+	triggerdelay 2000 evtDockComment2
+
+	if evtDockComment2 butnot evtMission1Won  // Those insects could really wreak havoc on our landing...!
+	testvar boolvolockout = 0 then
+	playtalkinghead 106
+
+macro bugcycle 2
+{
+if killed @1 butnot evtmission1won
+	testvar bool@1empty = 0 then
+	addvar varTrucksDead 1,
+	setvar vartempx getx me,
+	setvar vartempy gety me,
+	createexplosion (refvar vartempx, refvar vartempy,140) 128, // smoke
+	createexplosion (refvar vartempx, refvar vartempy,100) 148, // fire
+	createinsect @2 @21 me tan,
+	addvar vartempx 70,
+	createexplosion (refvar vartempx, refvar vartempy,140) 132,
+	createinsect @2 @22 (refvar vartempx, refvar vartempy) tan,
+	setaimode lastcreated wander,
+	addvar vartempy 70,
+	createexplosion (refvar vartempx, refvar vartempy,140) 143,
+	createinsect @2 @23 (refvar vartempx, refvar vartempy) tan,
+	setaimode lastcreated wander,
+	addvar vartempy -70,
+	addvar vartempx -70,
+	createexplosion (refvar vartempx, refvar vartempy,140) 145,
+	createinsect @2 @24 (refvar vartempx, refvar vartempy) tan, // was always mutantroach &&
+	setaimode lastcreated wander,
+	trigger evtTestTrucksDead
+
+if killed @1 butnot evtmission1won // empty truck killed
+	testvar bool@1empty = 1 then
+	trigger evtEmptyTruckKilled
+
+if inorder evtmission1won killed @1 //  truck killed in m2
+	then
+	trigger evtEmptyTruckKilled
+
+if evtHideTrucks then
+	undeploy @1
+}
+expand bugcycle (truck1 mutantfly)
+expand bugcycle (truck2 mutantflea)
+expand bugcycle (truck3 mutantwasp)
+expand bugcycle (truck4 mutantroach)
+
+if evtEmptyTruckKilled then
+	addvar varTrucksDead 1,
+	setvar vartempx getx me,
+	setvar vartempy gety me,
+	createexplosion (refvar vartempx, refvar vartempy,140) 148, //fire
+	addvar vartempy -20,
+	addvar vartempx -30,
+	createexplosion (refvar vartempx, refvar vartempy,100) 135, //smoke+bang
+	createinsect roach r (refvar vartempx, refvar vartempy) tan
+
+if evtTestTrucksDead
+	testvar varTrucksDead = 4 //&&
+	then trigger evtStopExports
+
+macro subz 2
+{
+if evtSubSpawn butnot evtmission1won
+	testvar varSubsSpawned = @2 then
+	triggerdelay 500 evtMake@1,
+	triggerdelay 55000 evtSubSpawn			// new sub 20 sec, only 8 &&
+
+if evtSubSpawnM2
+	testvar varSubsSpawned = @2 then
+	triggerdelay 500 evtMake@1,
+	triggerdelay 40000 evtSubSpawnM2 //&&
+
+if evtMake@1
+	then
+	createvehicle @1 submarine (425,1625) grey, // was (4000,3070)
+	addvar varSubsSpawned 1,
+	selectinventoryitem @1 1, 
+	order @1 goto (1280,2335) inmode ignore, // was padSubway2, now is point off end of dock
+	triggerdelay 42000 evtGoSubDock @1
+}
+expand subz (sub1 0)
+expand subz (sub2 1)
+expand subz (sub3 2)
+expand subz (sub4 3)
+//expand subz (sub5 4)
+//expand subz (sub6 5)
+//expand subz (sub7 6)
+//expand subz (sub8 7)
+
+if evtGoSubDock butnot evtStopExports then
+	order me goto (946,2641) inmode ignore // subdock
+
+if evtGoSubDock 
+	testvar boolnoexports = 1
+	then
+	triggerdelay 5000 blitz
+
+macro forsubs 1
+{
+if evtStopExports then
+	selectinventoryitem @1 2,
+	setaimode @1 attack
+
+if hit @1
+	testvar getpadstatus pad@1Dock = 1
+	then triggerdelay 4000 evtSeeingRed // if sub is docked and is hit, delay the exit so subdive anim plays
+
+if hit @1
+	testvar getpadstatus pad@1Dock = 0
+	then trigger evtSeeingRed
+
+if evtSubExit2
+	testvar getpadstatus pad@1Dock = 1
+	then order @1 goto padsubway1 inmode attack, // was padsubexit
+	undeploy objsub
+//	selectinventoryitem @1 2 // keep subs silent when escaping with bugs
+
+if evtSubIgnore then
+	setaimode @1 ignore
+
+if evtSubNormal butnot evtStopExports then
+	selectinventoryitem @1 1,
+	triggerdelay 40 evtSubExit2,
+	order @1 goto padSubWay1 inmode ignore
+
+if inorder evtStopExports evtSubNormal then 
+	selectinventoryitem @1 2,
+	triggerdelay 40 evtSubExit2,
+	triggerdelay 200 blitz @1
+
+if evtStopExports then
+	setvar boolnoexports 1,
+	selectinventoryitem @1 2,
+	triggerdelay 2000 blitz @1
+}
+//expand forsubs (sub8)
+expand forsubs (sub1)
+expand forsubs (sub2)
+expand forsubs (sub3)
+expand forsubs (sub4)
+//expand forsubs (sub5)
+//expand forsubs (sub6)
+//expand forsubs (sub7)
+
+	if blitz then random
+	order me goto (1710,2410) inmode attack,
+	order me goto (2040,2830) inmode attack,
+	order me goto (3295,2925) inmode attack
+
+	if evtSeeingRed then
+	setaimode me attack,
+//	showmessage "潜艇被击中",
+	selectinventoryitem me 2
+
+if padon padsubway2
+	testvar boolnoexports = 0
+	then
+	order me goto (946,2641) inmode ignore // subdock
+
+if padon padsubway2
+	testvar boolnoexports = 1
+	then
+	selectinventoryitem me 2,
+	trigger blitz
+
+if padon padsubway1
+	testvar boolnoexports = 0
+	then 
+	selectinventoryitem me 2,
+	order me goto (400,1300) inmode defend,
+	triggerdelay 45000 evtSubUndeploy
+
+	if evtSubUndeploy then undeploy me
+
+if padon padSubDock butnot evtStopExports then
+	setaimode me standfire,
+	deploy objsub,
+	setobjstate objsub ossurfacing,
+	triggerdelay 20000 evtSubexit
+
+if hit objsub then // hide object if hit; actual sub won't move until docking finishes or it gets hit
+	triggerdelay 2000 evtSubexit
+
+if evtSubexit then
+	setobjstate objsub osdiving,
+	triggerdelay 4000 evtSubexit2 // see macro
+
+macro fortrucks 4
+{
+if padon pad@1Way1 butnot evtStopExports
+	testvar bool@1Empty = 0
+	then
+	order me goto (2735,2310) inmode ignore // waypt2
+
+if padon pad@1Way2 butnot evtStopExports // if full truck crossing, hold other trucks
+	then trigger evtFull@1Crossing
+
+	if evtFull@1Crossing butnot evtStopexports
+	testvar bool@1Empty = 0
+	AND var@2onbridge = 0
+	AND var@3onbridge = 0
+	AND var@4onbridge = 0
+	then
+	order me goto (2055,3600) inmode ignore, // waypt3
+	setvar var@1onbridge 1
+//	showmessage "@1 正在堵桥"
+
+if evtFull@1Crossing butnot evtStopExports	// if bridge occ, then hold & try again later
+	testvar bool@1Empty = 0
+	AND var@2onbridge = 1
+	then
+	triggerdelay 5000 evtFull@1Crossing
+
+if evtFull@1Crossing butnot evtStopExports
+	testvar bool@1Empty = 0
+	AND var@3onbridge = 1
+	then
+	triggerdelay 5000 evtFull@1Crossing
+
+if evtFull@1Crossing butnot evtStopExports
+	testvar bool@1Empty = 0
+	AND var@4onbridge = 1
+	then
+	triggerdelay 5000 evtFull@1Crossing
+
+if padon pad@1Way3					// if crossed then unset the bridge block flag
+	testvar bool@1Empty = 0
+	then setvar var@1onbridge 0
+
+if killed @1
+	testvar var@1onbridge = 1
+	then setvar var@1onbridge 0
+
+if padon pad@1way3 butnot evtStopExports
+	testvar bool@1Empty = 0
+	then order me goto (1740,3785) inmode ignore, // stay on the left side of things
+	triggerdelay 6000 sideorder
+
+	if sideorder then
+		order me goto (1120,3750) inmode ignore, // another midway pt
+		triggerdelay 10000 sideorder2
+
+	if sideorder2 then
+		order me goto (825,3445) inmode ignore //padTruckWay4 left
+
+if padon pad@1Way4 butnot evtStopExports
+	then order me goto (560,2800) inmode ignore	// pad truckload
+
+if padon pad@1Load butnot evtStopExports then
+	setaimode @1 standfire,
+	triggerdelay 10000 evt@1Exit
+
+if evt@1Exit butnot evtStopExports then
+	setvar bool@1Empty 1,
+	order @1 goto (490,3100) inmode ignore, // clear spot s of dock
+	triggerdelay 6000 evt@1Exit2
+
+	if evt@1Exit2 butnot evtStopExports then
+		order @1 goto pad@1Way4 inmode ignore
+
+if padon pad@1way4 butnot evtStopExports
+	testvar bool@1empty =1 then // make sure it's outbound
+	order @1 goto (1933,3510) inmode ignore // leftside of waypad 3
+
+if padon pad@1Way3 butnot evtStopExports // if empty truck crossing, hold other trucks
+	then trigger evtEmpty@1Crossing
+
+	if evtEmpty@1Crossing
+	testvar bool@1Empty = 1
+	AND var@2onbridge = 0
+	AND var@3onbridge = 0
+	AND var@4onbridge = 0
+	then
+	order me goto pad@1Way2 inmode ignore,
+	setvar var@1onbridge 1
+//	showmessage "@1 正在堵桥"
+
+if evtEmpty@1Crossing butnot evtStopExports	// if bridge occ, then hold & try again later
+	testvar bool@1Empty = 1
+	AND var@2onbridge = 1
+	then
+	triggerdelay 5000 evtEmpty@1Crossing
+
+if evtEmpty@1Crossing butnot evtStopExports
+	testvar bool@1Empty = 1
+	AND var@3onbridge = 1
+	then
+	triggerdelay 5000 evtEmpty@1Crossing
+
+if evtEmpty@1Crossing butnot evtStopExports
+	testvar bool@1Empty = 1
+	AND var@4onbridge = 1
+	then
+	triggerdelay 5000 evtEmpty@1Crossing
+
+if padon pad@1Way2					// if crossed then unset the bridge block flag
+	testvar bool@1Empty = 1
+	then setvar var@1onbridge 0
+//	showmessage "桥梁已疏通"
+
+if padon pad@1Way2 butnot evtStopExports
+	testvar bool@1Empty = 1
+	then
+	order me goto pad@1Spawn inmode ignore
+
+if padon pad@1spawn butnot evtStopExports 
+	testvar bool@1empty = 1 then
+	setaimode @1 ignore,
+	trigger evtSetFacing me, // && need lockout with bool
+	triggerdelay 2000 evtLoadSmoke,
+	triggerdelay 5000 evt@1GoDock
+
+	if evt@1GoDock butnot evtStopExports then
+		setvar bool@1empty 0,
+		setvar facingstate 0,
+		setvar varcount 0,
+		order @1 goto pad@1Way1
+}
+expand fortrucks (truck1 truck2 truck3 truck4)
+expand fortrucks (truck2 truck1 truck3 truck4)
+expand fortrucks (truck3 truck1 truck2 truck4)
+expand fortrucks (truck4 truck1 truck2 truck3)
+
+if evtLoadsmoke // smoke puffs to cover loading
+	testvar varcount < 4
+	then createexplosion (2525,666,100) 146,
+	triggerdelay 1 evtaddcount,
+	triggerdelay 700 evtloadsmoke
+
+if evtaddcount then addvar varcount 1
+
+macro facer 2
+{
+	if evtSetFacing
+		testvar facingstate = @1
+		then setfacing me @2,
+		triggerdelay 5 addfstate,
+		triggerdelay 200 evtSetFacing
+}
+expand facer (0 240)
+expand facer (1 0)
+expand facer (2 16)
+expand facer (3 32)
+expand facer (4 48)
+expand facer (5 64)
+expand facer (6 80)
+
+	if addfstate then addvar facingstate 1
+
+if padon padSubExit then
+	undeploy me
+//	showmessage "潜艇已离开"
+
+//=============================== count south island objectives
+
+if padon padTrooperOnSIsle butnot evtMission1Won then
+	addmissionobjective me
+
+if padoff padTrooperOnSIsle then
+	removemissionobjective me
+
+if padon padJeepOnSIsle butnot evtMission1Won then
+	addmissionobjective me
+
+if padoff padJeepOnSIsle then
+	removemissionobjective me
+
+if padon padObjtvOnSIsleSea butnot evtMission1Won then
+	addmissionobjective me
+
+if padon padObjtvOnSIsleAir butnot evtMission1Won then
+	addmissionobjective me
+
+if padoff padObjtvOnSIsleSea then
+	removemissionobjective me
+
+if padoff padObjtvOnSIsleAir then
+	removemissionobjective me
+
+if killed aasouth1 then
+	addvar varSouthAADead 1
+
+if killed aasouth2 then
+	addvar varSouthAADead 1
+
+// ============================== WIN/LOSE
+
+if evtBridgeVO 
+	testvar vargreencrossed < MinGreenCrossed  // see Mission2 
+	then
+	triggerdelay 10 evtWailofPain
+
+	if evtWailofPain butnot evtMissionlost then // bridge down, we lose!
+	stoptalkinghead,
+	trigger evtmissionlost,
+	playtalkinghead 107,
+	triggerdelay 1000 tanwins
+
+if evtTestforWin butnot evtMission1Won
+	then
+	triggerdelay 2500 evtTestForWin, //&& change this to alter timing radically
+	addvar varcountdown 1,
+	triggerdelay 500 evtTestNoWin
+
+	if evtTestNoWin butnot evtmission1won then
+		trigger evtNoWin
+	
+	if evtNoWin butnot evtMissionlost
+		testvar varCountdown = 48
+		AND boolvolockout = 0 
+		then 	// after 130 secs &&
+		playtalkinghead 108  //Hurry it up, Captain! They're marshalling their forces!
+
+	if evtNoWin butnot evtMissionlost
+		testvar varCountdown = 64
+		and boolvolockout = 0
+		then
+		playtalkinghead 17  //Sam: Hurry, Captain.
+
+	if evtNoWin butnot evtMissionlost
+		testvar varCountdown = 80 then
+		stoptalkinghead,
+		trigger evtmissionlost,
+		playtalkinghead 109, // It's too late! We're finished, Captain.
+		triggerdelay 1000 tanwins
+
+if evtTestforWin
+	testvar getpadstatus pad5PlusOnLand = 0 // 4 or less
+	AND getpadstatus pad4trucksonsisland = 1 then // only trucks left on island
+	trigger evtTestWin2
+//	showmessage "岛上有 4 辆卡车"
+
+if evtTestforWin
+	testvar getpadstatus padNotNearClearLand = 0 
+	AND getpadstatus padNotNearClearAir = 0 
+	then trigger evtTestForKudo,
+	trigger evtSubIgnore // to avoid problems with ICBMs during M2 briefing
+//	showmessage "空中与地面接近"
+
+	if evtTestForKudo  
+		testvar getpadstatus padIsleLandOcc = 1
+		then trigger evtTestForTruckWin
+//		showmessage "地面未清空"
+
+		if evtTestforTruckWin
+			testvar getpadstatus pad3TrucksOnSIsland = 1
+			and getpadstatus pad4PlusOnLand = 0
+			then trigger evtTestWin2, 			// may be win because it's only trucks left
+//			showmessage "3 辆卡车，3 个地面单位"
+
+		if evtTestforTruckWin
+			testvar getpadstatus pad2TrucksOnSIsland = 1
+			and getpadstatus pad3PlusOnLand = 0
+			then trigger evtTestWin2, 			// may be win because it's only trucks left
+//			showmessage "2 辆卡车，2 个地面单位"
+
+		if evtTestforTruckWin
+			testvar getpadstatus pad1TruckOnSIsland = 1
+			and getpadstatus pad2PlusOnLand = 0
+			then trigger evtTestWin2, 			// may be win because it's only truck left
+//			showmessage "1 辆卡车，1 个地面单位"
+
+		if evtTestforTruckWin butnot evtPlayKudo
+			testvar getpadstatus pad2TrucksOnSIsland = 0 // 0-1 trucks
+			and getpadstatus pad2plusonland = 1 // 2 or more grd units
+			then trigger evtPlayKudo,
+//			showmessage "0-1 辆卡车，2 个以上地面单位"
+
+			if evtPlayKudo butnot evtMissionlost	// otherwise, "getting close"
+			testvar boolvolockout = 0 then
+			playtalkinghead 110
+
+if evtTestForWin
+	testvar getpadstatus padIsleLandOcc = 0
+	then trigger evtTestWin2
+
+	if evtTestWin2 butnot evtTestWin3
+		testvar varSouthAADead =2
+		AND getpadstatus padIsleAirOcc = 0
+		AND getpadstatus padIsleSeaOcc = 0
+		then
+		trigger evtTestWin3
+
+		if evtTestWin3 butnot evtMissionlost
+			then
+			setvar boolvolockout 1,
+			trigger evtMission1WonVO
+
+			if evtMission1WonVO then
+			playtalkinghead 111 // smartly done, blade. we'll be there shortly
+
+			if inorder evtMission1WonVO talkingheaddone captain then
+				trigger evtMission1won
+
+				if evtmission1won butnot evtmissionlost then
+				trigger evtRemoveBugs,
+				setvar boolvolockout 0,
+				trigger evtHideTrucks,
+				triggerdelay 1 greenwins
+
+//---------------------------------------------------
+
+

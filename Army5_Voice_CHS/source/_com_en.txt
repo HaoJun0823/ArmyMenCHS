@@ -1,0 +1,366 @@
+0|blu001f.wav|BlueSpy|Don't shoot me! I'll give you information!
+1|blu002e.wav|BlueSpy|Your president is at a secret diplomatic meeting at a mountain retreat. The Tan are already moving to capture him.
+2|cap001c.wav|Captain|Roger, HQ. I'm on it.
+3|cap002b.wav|Captain|HQ, I have one of Sarge's men on board.
+4|cap003b.wav|Captain|Good to see you, Sarge. Where's the rest of your squad?
+5|cap004c.wav|Captain|My radar is going crazy, Sarge. This place is crawling with Tan!
+6|cap005b.wav|Captain|Come in, HQ. I've got Sarge and his boys on board.
+7|cap006a.wav|Captain|Found some ammo for that side-mounted gun, Sarge. Care to do the honors?
+8|cap007c.wav|Captain|Dang...! I'll take a serious beating flying over that bunker on the toilet.
+9|cap008c.wav|Captain|Hold on to your dogtags, big guy.
+10|cap009c.wav|Captain|Okay, boys, looks like the LZ is clear.
+11|cap010c.wav|Captain|Whoa - that spray can's gonna blow!
+12|cap011a.wav|Captain|HQ, there's too many of them to take head on.
+13|cap012c.wav|Captain|Don't move! You're coming with me.
+14|cap013c.wav|Captain|HQ, we have a situation. Tan guerillas are on the move to capture the president.
+15|cap014a.wav|Captain|HQ, I've just spotted several Green POWs.
+16|cap015c.wav|Captain|Oh no! The Tan have those boys covered with explosives! They're gonna use our own guys to blow the bridge!
+17|cap017a.wav|Captain|That won't work... or will it?
+18|cap018b.wav|Captain|A couple more like that should do the trick.
+19|cap019f.wav|Captain|Call me Blade... the Bridge Builder!
+20|cap020c.wav|Captain|Okay men, break out that cargo. Let's have a look at my new ride.
+21|cap021a.wav|Captain|You can count on me, sir.
+22|cap022a.wav|Captain|Silent... but deadly.
+23|cap023a.wav|Captain|HQ, the strike team is going in. Stand by.
+24|cap024b.wav|Captain|We've been spotted!
+25|cap025c.wav|Captain|Mornin', Mr. President. Buckle up; we're not out of the woods yet.
+26|cap026a.wav|Captain|What the-?!?
+27|cap027b.wav|Captain|That snake!
+28|cap028b.wav|Captain|Looks like I've found a secret Tan R & R facility.
+29|cap029b.wav|Captain|Ahhh, like Tan fish in a barrel.
+30|cap030a.wav|Captain|Where do they come from?
+31|cap031f.wav|Captain|GOAL!
+32|cap032b.wav|Captain|No sweat - the cavalry is here.
+33|cap033b.wav|Captain|Never a dull moment.
+34|cap034c.wav|Captain|This is no good. I'll need a more powerful weapon.
+35|cap035c.wav|Captain|Ah, this should do the trick.
+36|cap036b.wav|Captain|Gotcha!
+37|cap037c.wav|Captain|Take him away, boys.
+38|cap038e.wav|Captain|Outstanding. What do you think of that, Sarge?
+39|cap039b.wav|Captain|Oh... so the Tan fly boy thinks he can play.
+40|cap040b.wav|Captain|Scratch one...
+41|cap041c.wav|Captain|Artillery cleared.
+42|cap042a.wav|Captain|Blade shoots. He scores!
+43|cap043b.wav|Captain|Oh well, no hockey today.
+44|cap044b.wav|Captain|I'll play a game of hockey with this Tan rookie.
+45|cap045c.wav|Captain|Plastro!
+46|cap046i.wav|Captain|Hmm -- he just shot a stone onto the board.
+47|cap048c.wav|Captain|Bingo!
+48|cap049c.wav|Captain|Damn! I've got to move faster.
+49|cap050a.wav|Captain|HQ, come in... do you have a location on that portal?
+50|cap052d.wav|Captain|Looks like they've got quite a bug export operation here.
+51|cap053c.wav|Captain|Almost done, Colonel. Hang in there.
+52|cap054b.wav|Captain|Whoa!
+53|cap054e.wav|Captain|Whoa...!
+54|cap055c.wav|Captain|Here goes nothin'!
+55|cap056b.wav|Captain|Thanks, Sarge.
+56|cap057c.wav|Captain|Whoa! This area makes my spine tingle.
+57|cap058c.wav|Captain|The gods have smiled.
+58|cap059a.wav|Captain|I don't like the looks of this!
+59|cap061f.wav|Captain|Strange...!
+60|cap062b.wav|Captain|Glad that's over!
+61|cap064b.wav|Captain|Why do they insist on getting killed?
+62|cap065c.wav|Captain|Eat my dust!
+63|cap069c.wav|Captain|I'm on my way.
+64|cap070c.wav|Captain|I'll be there when I get a chance.
+65|cap072c.wav|Captain|Something's wrong...!
+66|cap075c.wav|Captain|Excellent!
+67|cap084c.wav|Captain|This'll add some punch to my main gun.
+68|cap110dc.wav|Captain|(spots something) Aha!
+69|capt108d.wav|Captain|Those men won't have given their lives for nothing! We are going to complete this mission and make the Tan pay! But first, I've got to find a way to rebuild that bridge.
+70|capt109e.wav|Captain|One more should do it.
+71|capt110b.wav|Captain|Ha! I win!
+72|capt111a.wav|Captain|We'll meet again!
+73|col001b.wav|Grimm|Captain, Grimm here. Good work so far, but now you're really gonna earn your wings. The president is heavily guarded. Take the strike team to recover him and hold the LZ until they bring him out. Then fly the president back to safety. Good luck.
+74|col002a.wav|Grimm|Blade, bad news. Abort your mission.
+75|col003a.wav|Grimm|The president is dead.
+76|col004c.wav|Grimm|Glad to have you back, Mr. President. Unfortunately, there's no time for celebration. We have to retake this village.
+77|col005a.wav|Grimm|Our reinforcements have arrived, Captain. It's time to restore peace to this village... let no Tan survive!
+78|col006c.wav|Grimm|Excellent work, everyone. We were able to run off the Tan without any serious...
+79|col007f.wav|Grimm|Blast!
+80|col008a.wav|Grimm|Okay, Captain. We will come up with a plan to locate and attack Plastro's headquarters. You need to get back to that house and give Sarge a hand. On the double, men!
+81|col009a.wav|Grimm|And Captain, give the Tan some hell!
+82|col010d.wav|Grimm|Careful with those weapons, Captain! Green citizens call this little village home, you know!
+83|col011d.wav|Grimm|Blade! I want to restore peace to the village, not leave the village in pieces! Get it?!
+84|col012b.wav|Grimm|You have caused too much damage to the civilian homes, Captain. You're grounded.
+85|col013a.wav|Grimm|Captain! Thank goodness you made it. We really need your help.
+86|col014b.wav|Grimm|The Gray Navy has developed some kind of sub-surface vessel. We are putting the finishing touches on a sonar detection system right now, but our destroyers are taking a serious pounding in the meantime.
+87|col015c.wav|Grimm|We still have enough firepower to attack the real Tan headquarters, but first we have to locate that island.
+88|col016b.wav|Grimm|We have a couple of destroyers heading in to pick us up.
+89|col017d.wav|Grimm|If you don't clear these waters of gray sub-surface ships in time, our destroyers will be shredded.
+90|col018d.wav|Grimm|Come in, Blade. Listen. Those boats are going to be here any minute! Take out those Grey subs, fast!
+91|col019a.wav|Grimm|Nice work, Blade. Now we need to find the Tan base so we can put Plastro's diabolical bug factory out of commission.
+92|col020c.wav|Grimm|And remember... conserve your missiles out there. You're not going to have many chances to rearm.
+93|col021a.wav|Grimm|Those Grey ships must be coming from somewhere! Use sonar buoys to track them down.
+94|col022a.wav|Grimm|Radio signal from HQ is down, Captain. Something is strange about this area of the ocean.
+95|col023a.wav|Grimm|You are going to have to find that portal!
+96|col024a.wav|Grimm|Step it up, Blade! A Tan chopper just spotted our ships. We're sitting ducks out here if they start firing torpedoes!
+97|col025c.wav|Grimm|Their submersibles are moving in, Captain... it's now or never!
+98|col026b.wav|Grimm|We've taken a direct hit, Captain! We're going down! It's all over!
+99|col027f.wav|Grimm|Excellent, Blade! You've discovered Plastro's volcano fortress. Clear the small island, but don't blast that bridge. With all their fortifications, it'll be impossible to establish a beachhead on the larger island.
+100|col029b.wav|Grimm|Those insects could really wreak havoc on our landing...!
+101|col030c.wav|Grimm|Hurry it up, Captain! They're marshalling their forces!
+102|col031a.wav|Grimm|It's too late! We're finished, Captain.
+103|col032c.wav|Grimm|The bridge is down! It's over!
+104|col033a.wav|Grimm|Smartly done, Blade. We'll be there shortly.
+105|col034c.wav|Grimm|Stop those suicide troopers with the firecrackers strapped to them! They're trying to blow the bridge!
+106|col035c.wav|Grimm|Watch out! More suicide soldiers at the bridge!
+107|col036c.wav|Grimm|Alright, men, this is it. We need to cross to the other island and storm Plastro's fortress. Blade, we need you to cover us when we're on the bridge. When the battle gets chaotic, help direct our forces from the air.
+108|col037c.wav|Grimm|All right! Give 'em hell, boys!
+109|col038a.wav|Grimm|Well done, men!
+110|col040a.wav|Grimm|Good work, men.
+111|col041c.wav|Grimm|Victory is ours!
+112|col042a.wav|Grimm|As I always say, the way to win the war is to never lose!
+113|col043a.wav|Grimm|Don't give up man! You're never beaten until you admit it!
+114|col044a.wav|Grimm|We've got to press them in the air and on the ground. It's time for each of us to look inside ourselves and see what kind of plastic we're made of.  Are we hollow men?  Or are we plastic soldiers?!
+115|col045c.wav|Grimm|Welcome to the Helicopter Flight and Combat Training Facility, Captain!
+116|col046c.wav|Grimm|You will use this area to hone your flight combat skills. Train for as long as you need, but remember, there is a war raging out there!
+117|col047c.wav|Grimm|I'll turn you over to our Radio Ops Specialist now. Good luck.
+118|col048a.wav|Grimm|Take care of your helicopter, Captain. Out in the field, you don't get second chances!
+119|col049c.wav|Grimm|The president has been killed inside the house!
+120|col050b.wav|Grimm|The strike team has been killed! The president is lost.
+121|col051a.wav|Grimm|The Gray Navy has developed some kind of sub-surface vessel. They're moving in to attack our destroyers. Use sonar buoys and depth charges to take those subs out!
+122|col052b.wav|Grimm|We still have enough firepower to attack the real Tan headquarters, but first we need to get off this island.
+123|col053c.wav|Grimm|Okay Captain. You need to transport our men off the island. Get them to the destroyers... and keep those damn subs from sinking our boats, will ya!
+124|col054b.wav|Grimm|Don't forget about those submarines, Captain. Our destroyers are vulnerable to their torpedoes.
+125|col055b.wav|Grimm|They're trying to take out our weapons, Captain!  If we lose all four guns on either boat, it's all over!
+126|col056b.wav|Grimm|High numbers of Grey subs in this area lead us to believe they are using a secret under-water portal. Perhaps a well-placed depth charge could bring it to the surface. Find that portal and lead us through it.
+127|col058a.wav|Grimm|We've killed most of the island guards, but we've got to crack that fortress!
+128|col059dc.wav|Grimm|Captain! We really need your help.
+129|gry001d.wav|GreySpy|(notused)The chemicals are on the floor. One is guarded by a combination device. The other is in a tent on the colored mat, but the red and yellow areas are tripwired. And the guards will blow it up if you try anything!
+130|pla001e.wav|Grimm|Soldiers! (you should never see this)
+131|pla002d.wav|Plastro|Captain William Blade... You seem so self-satisfied.
+132|pla003e.wav|Plastro|I suppose you and that old buffoon, Col. Grimm, actually thought it was that easy to defeat my forces? HA! That little exercise was a simple decoy!
+133|pla004g.wav|Plastro|While you were wasting all your energy trying to rescue your beloved president, my spy took the liberty of relieving you of your precious helicopter blueprints.
+134|pla005a.wav|Plastro|Soon we will mold a LEGION of air combat units! They, in addition to the esteemed Grey Doctor's new pets, will make my army UNSTOPPABLE! MUHAAHAAHAA...!
+135|pla006a.wav|Plastro|Give it up, flyboy. I've already taken care of your pathetic colonel.
+136|pla007d.wav|Plastro|You can change your radio frequencies, but you can't change your fate!
+137|pla008b.wav|Plastro|This island is mine - all mine!
+138|pla009f.wav|Plastro|I'll get you, Blade!
+139|pla010d.wav|Plastro|Death can be more exciting than life. Want to try death, Captain?
+140|pla011a.wav|Plastro|You'll never defeat us!
+141|pla011e.wav|Plastro|You'll never defeat me!
+142|pla012b.wav|Plastro|Is that all you've got?
+143|pla013b.wav|Plastro|You seem lost, Captain...confused...
+144|sam001b.wav|Sam|Captain, Sarge has been captured! He and two of his men were sent through the portal to investigate reports of heavy Tan activity. Locate those men and get them out of there.
+145|sam002c.wav|Sam|Captain, intel indicates Sergeant Hawk is in the vicinity of the sandbox.
+146|sam003c.wav|Sam|Captain, you need to pick up Sarge and his men before entering the house.
+147|sam004b.wav|Sam|Captain, you can't go into the house until you have the whole squad.
+148|sam005b.wav|Sam|Good work, sirs. Find a way through that window.
+149|sam007a.wav|Sam|Sarge and his men have an urgent rendezvous. Get them safely to the landing zone on the floor. Then report in for new orders.
+150|sam008a.wav|Sam|Mission complete. Good work, Captain.
+151|sam009c.wav|Sam|Captain, we have reports of a Blue Spy under Tan protection on the far side of the sink. He may have information on the Tan offensive. Take out the Tan guards and capture that spy.
+152|sam010c.wav|Sam|You'll just have to fight smarter, sir.
+153|sam011a.wav|Sam|Right, Captain. There is a portal that will take you close to the president's mountain retreat. Get through it! Then rendezvous with the strike team.
+154|sam012alt.wav|Sam|Now we'll never know what the Tan are planning!
+155|sam012b.wav|Sam|The Blue Spy was killed. Now we'll never know what the Tan are planning!
+156|sam014b.wav|Sam|Good flying, Captain.
+157|sam015b.wav|Sam|Captain, you might need something more powerful to move that lever.
+158|sam017e.wav|Sam|With the bridge blown you'll need to find another way to cross the river.
+159|sam018a.wav|Sam|Good job, Blade. Your team is across the river. Now lead them up to the village.
+160|sam019c.wav|Sam|Captain, our engineers have developed a new technology to keep your copter quiet and off enemy radar during flight. But these "whisper blades" only have a short duration, so work fast.
+161|sam020c.wav|Sam|Okay Blade, the rescue squad just radioed confirmation of pickup. Hold the LZ until they make it out.
+162|sam021a.wav|Sam|It gets worse, sirs. Sarge and his men are in serious trouble back across the portal. He just radioed for reinforcements.
+163|sam022e.wav|Sam|Bad news, Captain. Tan is reinforcing their troops.
+164|sam023c.wav|Sam|Good news, Blade. Green reinforcement have finally arrived.
+165|sam024c.wav|Sam|Nice work, Captain. We could hear that from here!
+166|sam025b.wav|Sam|Sweet work, sir! That set Tan back AND we got the Blue Spy to squeal. Head to the Playroom and report in when you get there.
+167|sam026b.wav|Sam|Captain, find the source of those balloons and take it out!
+168|sam027c.wav|Sam|Don't forget to destroy the balloon generator.
+169|sam028a.wav|Sam|Remember to capture that Blue Spy.
+170|sam029a.wav|Sam|Outstanding! Now see if you can waste that artillery on the sofa.
+171|sam030a.wav|Sam|All Tan vehicles have to be destoyed.
+172|sam034c.wav|Sam|Good job, Captain. But you've still got work to do!
+173|sam035c.wav|Sam|Captain, that device apparently requires you to follow its lead.
+174|sam036e.wav|Sam|Blade, I think that thing wants you to echo it.
+175|sam037e.wav|Sam|Good work, Captain! Get that drum to the mixing bowl on the desk!
+176|sam038c.wav|Sam|Looks like they're guarding something down there. Don't tangle with it until we have more info...!
+177|sam039c.wav|Sam|Just one more, Captain.
+178|sam040c.wav|Sam|We can't win! Too many of our men have died in battle!
+179|sam041b.wav|Sam|Tan units destroyed a critical mission objective at the tent!
+180|sam042c.wav|Sam|The convoy made it through, sir. I'm sorry.
+181|sam043c.wav|Sam|Tan units destroyed one of the chemical drums.
+182|sam044c.wav|Sam|Too late! Sarge's men never made it to their objective.
+183|sam046b.wav|Sam|Excellent. Sarge will deliver the Plastic Volcano Powder to Colonel Grimm. Now we have to take care of that convoy.
+184|sam047b.wav|Sam|Destroy all of the convoy trucks, Captain.
+185|sam048c.wav|Sam|Excellent, Captain. Get Sarge on board and then winch that thing up.
+186|sam049b.wav|Sam|Good job, Captain. Winch that thing up and give it to Sarge.
+187|sam051b.wav|Sam|Sorry, Cap; you just pulled convoy duty. I guess you'll miss the big dance. Drop the troops on the desk; one of your buddies will fly them in for the final operation.
+188|sam052a.wav|Sam|You're not going to make it!
+189|sam053c.wav|Sam|The convoy is finished! Now go through the portal -- Colonel Grimm needs you pronto!
+190|sam054b.wav|Sam|Blade, it's true -- Colonel Grimm's trapped and needs your help. Stop the convoy and take the portal.
+191|sam055a.wav|Sam|Looks like an opportunity to play Go against the Tan. I've played this board game before; you have to surround empty intersections to win.
+192|sam056c.wav|Sam|He's waiting for you to shoot a stone onto the board.
+193|sam057b.wav|Sam|Shoot into your bowl to pass, Captain.
+194|sam058b.wav|Sam|Tie game, Captain.
+195|sam059c.wav|Sam|Sorry, Captain.
+196|sam060b.wav|Sam|You need to hold on to that.
+197|sam061c.wav|Sam|You went AWOL before finishing the mission!
+198|sam062c.wav|Sam|Captain, look at your radar.
+199|sam063c.wav|Sam|Nice flying, Captain...!
+200|sam064a.wav|Sam|Be on the lookout for air currents.
+201|sam065b.wav|Sam|Wrong way, Captain!
+202|sam066a.wav|Sam|That's it!
+203|sam066b.wav|Sam|Thaaat's it...!
+204|sam066c.wav|Sam|That's it...!
+205|sam067c.wav|Sam|That wouldn't be wise, Captain.
+206|sam068b.wav|Sam|Take cover.
+207|sam069d.wav|Sam|Move it out, boys.
+208|sam070b.wav|Sam|Fall back!
+209|sam071b.wav|Sam|Stay focussed, Captain.
+210|sam072a.wav|Sam|Captain, remember your objective!
+211|sam073b.wav|Sam|Tan is on the run.
+212|sam074a.wav|Sam|Tan is retreating, Captain.
+213|sam075a.wav|Sam|Track them down, Blade.
+214|sam076b.wav|Sam|You can't do that, sir.
+215|sam077b.wav|Sam|Now take that to Sarge.
+216|sam078b.wav|Sam|Hurry, Blade.
+217|sam079a.wav|Sam|I believe that is not allowed, sir.
+218|sam080d.wav|Sam|Welcome, Captain Blade. Feel free to fly around the training area at your leisure. While you do, I will point out some important features of your helicopter and make a few other helpful suggestions.
+219|sam081c.wav|Sam|To take off, simply accelerate using your right mouse button.
+220|sam082c.wav|Sam|Once airborne, your directional heading is controlled by your mouse cursor.
+221|sam083c.wav|Sam|The instrument in the upper left corner of the on-screen display is your radar. It displays your mission objectives, landing zones and the locations of enemy troopers and vehicles. The light on the outer edge of your radar will give you the heading of your closest mission objective.
+222|sam084c.wav|Sam|Your armor meter is shown above your radar. If you run out of armor, it's all over!
+223|sam085d.wav|Sam|To fire your weapon, move your mouse cursor over your desired target and press the left mouse button.
+224|sam086c.wav|Sam|Drop a beacon to direct friendly ground troops. If you are landed when you drop a beacon, nearby troops will attempt to board your chopper.
+225|sam087c.wav|Sam|Captain Blade, you probably want to collect those power-ups.
+226|sam088b.wav|Sam|Excellent, Captain. The buttons at the bottom left of your screen represent those power-ups in your cargo bays. To use them, just select the one you want and press the left mouse button.
+227|sam089c.wav|Sam|Captain, just fly to position your shadow right over that landing zone and hover there for a second.
+228|sam090b.wav|Sam|Okay sir, you're on your own now.
+229|sam091b.wav|Sam|The longer you spend in the training area, the more challenging it will become.
+230|sam092b.wav|Sam|Have fun. HQ out.
+231|sam093c.wav|Sam|Go get 'em, Captain Blade!
+232|sam094b.wav|Sam|Rest in peace, Sergeant Hawk.
+233|sam095b.wav|Sam|Sarge didn't make it back!
+234|sam096c.wav|Sam|Sarge is dead, Captain!
+235|sam097b.wav|Sam|Sorry, Captain - Sarge was killed in action.
+236|sam098b.wav|Sam|Captain didn't make it.
+237|sam099c.wav|Sam|Rest in peace, Captain.
+238|sam100c.wav|Sam|Captain didn't make it back!
+239|sam101b.wav|Sam|Captain was killed in action!
+240|sam102b.wav|Sam|Captain, do you read me? Blade? Come in, Captain Blade...
+241|sam104a.wav|Sam|You have to save our men, Captain Blade...!
+242|sam107c.wav|Sam|We cannot lose more than one vehicle, Captain.
+243|sam108a.wav|Sam|We just lost a vehicle! Any more and we can't pull this off!
+244|sam109b.wav|Sam|Do not allowed the village to be destroyed, Captain.
+245|sam110a.wav|Sam|You must save the village, Captain.
+246|sam111b.wav|Sam|Too many buildings have been damaged.
+247|sam112a.wav|Sam|Your mission objective has not changed. Return to the landing zone and use the beacon to load ground troops on to your 'copter.
+248|sam113b.wav|Sam|I'm sorry, sir, following my instructions is the only way to learn. Come back when you're ready to try again.
+249|sam114a.wav|Sam|Excellent. The buttons at the bottom left of your screen represent those men in your 'copter.
+250|sam115c.wav|Sam|Now that the men are on board, you have a new mission objective. Fly those troops to the LZ indicated on radar, and drop them off.
+251|sam116b.wav|Sam|To unload your troops, select the one you want by clicking on his button with your mouse cursor. Then click on the 'Eject Cargo' button located in the lower right corner of the on-screen display.
+252|sam117c.wav|Sam|Your next objective is target practice. To the west there are some Tan targets. Use your forward gun to destroy them.
+253|sam118c.wav|Sam|To be most effective in combat, you will need to learn to collect and use power-ups.
+254|sam119b.wav|Sam|Once again, your radar will guide you to power-up locations. Return here when you have collected three new weapons.
+255|sam120a.wav|Sam|Excellent, Captain. The buttons at the bottom left of your screen represent those power-ups in your cargo bay. To select the one you want to use, click on the desired button with your mouse cursor.
+256|sam121a.wav|Sam|There are two power-up areas, Captain - one to the south of here and one to the east. Collect all three power-ups from each area.
+257|sam122b.wav|Sam|Tan units vehicles are arriving, Captain, and this time they are going to shoot back!
+258|sam123c.wav|Sam|For a coordinated ground and air strike, use the beacon to summon ground troops to your location.
+259|sam124b.wav|Sam|Remember to pick up armor power-ups if you are damaged.
+260|sam125a.wav|Sam|Okay sir, you have all the skills you need to take on the Tan. Report for your first mission immediately.
+261|sam126b.wav|Sam|To drop items that you have picked up, Captain, click on the 'Lower Winch' button. If your HUD buttons are on, this button will appear in the lower right corner of the on-screen display.
+262|sam127a.wav|Sam|That's bad news. The President is carrying our secret helicopter plans! We cannot let Plastro get his hands on them! There is a portal in the bathtub that will bring you close to the President's mountain retreat. Get through it! Our strike team will meet you when you get there.
+263|sam128a.wav|Sam|Do you think that sprinkler under the window could be useful?
+264|sam129a.wav|Sam|Try turning on the water faucet. A jet of water from that sprinkler might be able to get you up to that window ledge.
+265|sam130a.wav|Sam|Rendezvous with the Recon team and secure the bridge.
+266|sam131e.wav|Sam|It's an ambush! Fall back! Fall back!
+267|sam132b.wav|Sam|Those infantrymen are at your command, Captain. Drop them behind enemy lines for a tactical advantage.
+268|sam133c.wav|Sam|The convoy has arrived. They are carrying equipment vital to rescuing the president, so keep them safe and lead them north to the village.
+269|sam134a.wav|Sam|They took out one of our cargo trucks, Captain. If we lose the last one, the mission will be lost!
+270|sam135b.wav|Sam|Too much vital equipment was destroyed with our trucks, Captain. We've lost.
+271|sam136d.wav|Sam|The president at LZ, Captain. Where are you?
+272|sam137c.wav|Sam|That spy had vital information. Killing him was a bad idea.
+273|sam138a.wav|Sam|The Tan are building a chemical weapon on the desk. Get Sarge and his men up there so they can secure the area.
+274|sam139a.wav|Sam|Check your F1 map for more information.
+275|sam140b.wav|Sam|Track those Tan down, Blade.
+276|sam141a.wav|Sam|Get all three chemicals and drop them in the container on the desk. These chemicals should combine to make a potent volcano powder weapon that we can use in our attack on the Tan.
+277|sam142a.wav|Sam|Drop that chemical into the container, Captain.
+278|sam143c.wav|Sam|Captain, drop off your men at the LZ on the desk right now!
+279|sam144b.wav|Sam|New orders! After you destroy those cargo trucks, you need to eliminate all of the mutant insects as well. Good luck!
+280|sam146c.wav|Sam|Welcome, Captain Blade. I'm going to run you, step by step, through all of the skills you will need in your upcoming missions. Please pay close attention.
+281|sam147b.wav|Sam|During these exercises, please make sure you have your HUD buttons on. When active, these buttons will appear in the lower corners of the on-screen display.
+282|sam148c.wav|Sam|Press your keyboard's F1 key at any time to see your current objectives and other vital data.
+283|sam149c.wav|Sam|The instrument in the upper left corner of the on-screen display is your radar. It displays your mission objectives, landing zones, and the locations of troopers and vehicles.
+284|sam150a.wav|Sam|Mission objectives on your radar will flash yellow. If your objective is outside the range of your radar, a directional indicator light, on the outer edge, will give you that objective's heading.
+285|sam151b.wav|Sam|If you have more than one mission objective, the directional indicator will point to the closest one.
+286|sam152b.wav|Sam|Click on the 'Drop Beacon' button, located in lower right corner of the on-screen display, to direct friendly ground troops to your location.
+287|sam153d.wav|Sam|Your objective is to load all of those nearby troops on to your 'copter. To do so, simply drop a beacon while you are landed.
+288|sam154dc.wav|Sam|You've still got work to do...! Shoot into your bowl, Captain.
+289|sar001f.wav|Sarge|Yellow just isn't my color.
+290|sar002c.wav|Sarge|I sent my men on recon, toward the house. Let's get this bird airborne.
+291|sar003a.wav|Sarge|I need to stay on board, Blade.
+292|sar004a.wav|Sarge|Let's go get those soldiers!
+293|sar005a.wav|Sarge|Okay Captain, my last man must be closer to the house. Let's head over there.
+294|sar006b.wav|Sarge|Okay. Now, let's find that soldier!
+295|sar007c.wav|Sarge|He may have vital intel.
+296|sar008a.wav|Sarge|I'm gonna need both of my guys in there, Cap'n.
+297|sar009b.wav|Sarge|Captain... this is Sarge... where the heck are ya? Over.
+298|sar010c.wav|Sarge|HQ, this is Sarge. We've discovered a huge Tan base inside that house.
+299|sar011a.wav|Sarge|We've got orders to get inside that house. Think you could give us a lift?
+300|sar012b.wav|Sarge|Oh, yeah!
+301|sar013a.wav|Sarge|No problem. Just get us up there fast - we'll take it out.
+302|sar014a.wav|Sarge|Blade, we need to get to that LZ.
+303|sar015d.wav|Sarge|Hurry it up, Captain! We've got to get to that landing zone.
+304|sar017b.wav|Sarge|Three...
+305|sar018b.wav|Sarge|Two...
+306|sar019b.wav|Sarge|One...
+307|sar020b.wav|Sarge|Objective accomplished, Captain.
+308|sar021c.wav|Sarge|Now get us to the landing zone on the floor; we have Tan to kill.
+309|sar022b.wav|Sarge|Blade, get us up to the coffee table.
+310|sar024c.wav|Sarge|Okay, Blade. HQ wants this area secured. We must find and destroy the source of those balloons, clear the sofa of artillery, and destroy all of Tan's armored vehicles. And intel reports the Blue spy is joyriding here somewhere. They want him pronto. Ready for some fun?
+311|sar025c.wav|Sarge|We are taking too many casualties! Fall back, fall back!
+312|sar026a.wav|Sarge|They are all over us. Pull your weight, Captain, or we're done for!
+313|sar027a.wav|Sarge|We have them on the run. Track them down and take 'em out, Captain.
+314|sar028b.wav|Sarge|OOOOHHRAAA! Flying like that deserves the Plastic Cross.
+315|sar029d.wav|Sarge|They've taken almost all the chemical drums.
+316|sar030b.wav|Sarge|Look who I found. Where are the chemicals, Grey?
+317|sar033c.wav|Sarge|It's not easy being Green.
+318|sar034a.wav|Sarge|Fellows, I've got an idea. Sorry, Grey; we're gonna need your clothes.
+319|sar035b.wav|Sarge|What the--?!
+320|sar036e.wav|Sarge|Kill the troops near that shoe and get me to that landing zone behind it. I'll sneak in and eliminate the guards.
+321|sar037a.wav|Sarge|The guards are down! Cover me while I make a run for the landing zone!
+322|sar038b.wav|Sarge|This doesn't look so good.
+323|sar039c.wav|Sarge|Thanks, Ca-- What...?!? The boys just spotted a Tan convoy!
+324|sar040a.wav|Sarge|A bogus piece of intel brought us to this damn island, and now the Tan have us pinned down here.
+325|sar041c.wav|Sarge|And my guys seem to be fighting a new breed of giant mutant creepy-crawly every day!
+326|sar042d.wav|Sarge|My boys can't hold off these bugs much longer, Captain. We need to get to those boats!
+327|sar043b.wav|Sarge|Too... many... bugs...!
+328|sar044c.wav|Sarge|We could use some air support back here at the citadel, Captain.
+329|sar045c.wav|Sarge|Captain, here's that Plastic Volcano Powder. We're still not sure exactly what it does, but I'm sure you'll know when it's time.
+330|sar046b.wav|Sarge|The bridge is out! We'll just have to count on the guys who already made it over.
+331|sar047f.wav|Sarge|Colonel Grimm is dead, Captain! It's a massacre! We're doomed!
+332|sar048c.wav|Sarge|Thanks!
+333|sar049c.wav|Sarge|Thank you, Captain.
+334|sar050b.wav|Sarge|Hit the deck!
+335|sar051b.wav|Sarge|What the...?
+336|sar052c.wav|Sarge|I'm taking fire!
+337|sar053f.wav|Sarge|Can't...take much more...
+338|sar054b.wav|Sarge|Ahhh, that takes the sting out of it.
+339|sar055b.wav|Sarge|Holy hand grenades!
+340|sar056a.wav|Sarge|Trooper down!
+341|sar057a.wav|Sarge|I'm ready to leave this sector.
+342|sar058a.wav|Sarge|Awaiting orders.
+343|sar059b.wav|Sarge|Requesting air support.
+344|sar060b.wav|Sarge|Not now, Captain!
+345|sar061c.wav|Sarge|We're under fire here!
+346|sar062c.wav|Sarge|Things are getting hot here.
+347|sar063c.wav|Sarge|We need some cover here!
+348|sar064b.wav|Sarge|Help us out here, Captain.
+349|sar065a.wav|Sarge|They just keep coming!
+350|sar066b.wav|Sarge|Blade, we need support fast!
+351|sar067f.wav|Sarge|Blade, we need evac. now!
+352|sar068a.wav|Sarge|I see my trooper down there, Captain. Use your beacon to direct him out and back to the LZ.
+353|sar069a.wav|Sarge|Come on, Captain. Those boys are waiting for us to pick them up!
+354|sar070a.wav|Sarge|Captain, before you drop us off, maybe you should let us take care of that bunker on top of the toilet for ya.
+355|sar070x.wav|Sarge|We're taking too many casualties!
+356|sar071f.wav|Sarge|Holy...! Captain, we're gonna need support, fast!
+357|sar072c.wav|Sarge|Captain, we have to get up to that desk.
+358|sar073b.wav|Sarge|(spots something) Hold on, Blade....
+359|sar074c.wav|Sarge|There has to be a way to get to that tent... we'll need to use stealth.
+360|sar075c.wav|Sarge|I'll send one squad at a time from the citadel to the LZ. You need to pick them up and drop them off on the destroyers.
+361|sar076d.wav|Sarge|Those damn bugs will swarm as soon as we are exposed. Don't let my men become bug food, Captain!
+362|sar077b.wav|Sarge|When everyone else is safe, I'll run to the LZ last.
+363|sar078a.wav|Sarge|There they go! Protect that squad and get them to the boats.
+364|sar079a.wav|Sarge|Another team away, Captain!
+365|sar080c.wav|Sarge|Okay, Captain, I'm heading to the beach! Pick me up and let's get out of here!

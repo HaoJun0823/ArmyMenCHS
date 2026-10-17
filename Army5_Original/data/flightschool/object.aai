@@ -1,0 +1,136 @@
+#flightschool - object.aai
+
+ELEVATION_FACTOR	3
+FLIGHTHEIGHT_FACTOR	3
+
+#Item Flags
+# ITEMFLAG_MAP				0x00000001	(1)
+# ITEMFLAG_AIRMASK			0x00000002	(2)
+# ITEMFLAG_VISBLOCK			0x00000100	(256)
+# ITEMFLAG_ORDERHEIGHT  	0x00000400	(1024)
+# ITEMFLAG_TARGETTOP		0x00002000
+# ITEMFLAG_SELFMASK			0x00020000
+# ITEMFLAG_LANDINGPAD		0x00040000	(262144)
+# ITEMFLAG_KEEPCOLLIDE		0x00080000
+# ITEMFLAG_NOHIT			0x00800000
+# ITEMFLAG_WINCHABLE		0x01000000	(16777216)
+# ITEMFLAG_VARIABLEORDER	0x04000000	(67108864)
+
+
+#ObjType		SubType	Ste	Lnk	Fl				HP	Hgt	Mv	Ord		Slp		Arm	Vis	Crush	Perm	Explo	Sound
+#treeA1	Small Bush
+Miscellaneous	100		0	0	0x04001001     	1	0	15	1000	0.0		16	1	0	0	703	
+Miscellaneous	100		1	0	0x04001001    	40	0	15	1000	0.0		16	1	0	0	703
+Miscellaneous	100		2	0	0x04001001     	40	0	15	1000	0.0		16	1	0	0	703
+Miscellaneous	100		3	0	0x04001001     	40	0	15	1000	0.0		16	1	0	0	700	
+Miscellaneous	100		4	0	0x04001001     	-1	0	15	1000	0.0		16	1	0	0	700
+#treeA2 Medium Bush
+Miscellaneous	101		0	0	0x04001001     	1	0	15	1000	0.0		16	1	0	0	709
+Miscellaneous	101		1	0	0x04001001     	40	0	15	1000	0.0		16	1	0	0	703
+Miscellaneous	101		2	0	0x04001001     	40	0	15	1000	0.0		16	1	0	0	703
+Miscellaneous	101		3	0	0x04001001     	40	0	15	1000	0.0		16	1	0	0	700
+Miscellaneous	101		4	0	0x04001001     	-1	0	15	1000	0.0		16	1	0	0	700
+#treeB1	Small Green
+Miscellaneous	102		0	0	0x00001001     	1	70	15	1000	0.0		16	1	0	0	703	
+Miscellaneous	102		1	0	0x00001001     	40	70	15	1000	0.0		16	1	0	0	703
+Miscellaneous	102		2	0	0x00001001     	40	70	15	1000	0.0		16	1	0	0	703
+Miscellaneous	102		3	0	0x00001001     	40	30	15	1000	0.0		16	1	0	0	700	
+Miscellaneous	102		4	0	0x00001001     	-1	30	15	1000	0.0		16	1	0	0	700
+#treeB2 Big Green
+Miscellaneous	103		0	0	0x00001001     	1	100	15	1000	0.0		16	1	0	0	703
+Miscellaneous	103		1	0	0x00001001     	40	100	15	1000	0.0		16	1	0	0	703
+Miscellaneous	103		2	0	0x00001001     	40	100	15	1000	0.0		16	1	0	0	703
+Miscellaneous	103		3	0	0x00001001     	40	85	15	1000	0.0		16	1	0	0	700
+Miscellaneous	103		4	0	0x00001001     	-1	85	15	1000	0.0		16	1	0	0	700
+#treeC1 Droopy Pine
+Miscellaneous	104		0	0	0x00001001     	1	100	15	1000	0.0		16	1	0	0	709
+Miscellaneous	104		1	0	0x00001001     	40	100	15	1000	0.0		16	1	0	0	705
+Miscellaneous	104		2	0	0x00001001     	40	90	15	1000	0.0		16	1	0	0	706
+Miscellaneous	104		3	0	0x00001001     	40	85	15	1000	0.0		16	1	0	0	701
+Miscellaneous	104		4	0	0x00001001     	-1	85	15	1000	0.0		16	1	0	0	700	
+#treeD1 Mega Pine
+Miscellaneous	105		0	0	0x04001001     	1	150	15	1000	0.0		16	1	0	0	709	
+Miscellaneous	105		1	0	0x04001001     	40	150	15	1000	0.0		16	1	0	0	705
+Miscellaneous	105		2	0	0x04021001     	40	150	15	1000	0.0		16	1	0	0	705
+Miscellaneous	105		3	0	0x00021001     	40	100	15	1000	0.0		16	1	0	0	706
+Miscellaneous	105		4	0	0x04021001     	-1	95	15	1000	0.0		16	1	0	0 	700
+#treeE1	Small Red
+Miscellaneous	106		0	0	0x00001001     	1	100	15	1000	0.0		16	1	0	0	701
+Miscellaneous	106		1	0	0x00001001      40	100	15	1000	0.0		16	1	0	0 	701
+Miscellaneous	106		2	0	0x00001001      40	100	15	1000	0.0		16	1	0	0	701
+Miscellaneous	106		3	0	0x00001001     	40	85	15	1000	0.0		16	1	0	0	701
+Miscellaneous	106		4	0	0x00001001     	-1	85	15	1000	0.0		16	1	0	0	700
+#treeE2 Big Red
+Miscellaneous	107		0	0	0x00001001     	1	100	15	1000	0.0		16	1	0	0	701
+Miscellaneous	107		1	0	0x00001001     	40	100	15	1000	0.0		16	1	0	0	701
+Miscellaneous	107		2	0	0x00001001     	40	100	15	1000	0.0		16	1	0	0	701
+Miscellaneous	107		3	0	0x00001001     	40	85	15	1000	0.0		16	1	0	0	701
+Miscellaneous	107		4	0	0x00001001     	-1	85	15	1000	0.0		16	1	0	0	700
+#treeF1 Xmas Pine
+Miscellaneous	108		0	0	0x00001001     	1	100	15	1000	0.0		16	1	0	0	709
+Miscellaneous	108		1	0	0x00001001     	40	100	15	1000	0.0		16	1	0	0	705
+Miscellaneous	108		2	0	0x00001001     	40	100	15	1000	0.0		16	1	0	0	705
+Miscellaneous	108		3	0	0x00001001     	40	85	15	1000	0.0		16	1	0	0	701
+Miscellaneous	108		4	0	0x00001001     	-1	85	15	1000	0.0		16	1	0	0	700
+#treeG1 Big Pine1
+Miscellaneous	109		0	0	0x00001001     	1	100	15	1000	0.0		16	1	0	0	709
+Miscellaneous	109		1	0	0x00001001     	40	100	15	1000	0.0		16	1	0	0	705
+Miscellaneous	109		2	0	0x00001001     	40	100	15	1000	0.0		16	1	0	0	705
+Miscellaneous	109		3	0	0x00001001     	40	85	15	1000	0.0		16	1	0	0	701
+Miscellaneous	109		4	0	0x00001001     	-1	85	15	1000	0.0		16	1	0	0	700
+#treeG2	Big Pine2
+Miscellaneous	110		0	0	0x04001001     	1	0	15	1000	0.0		16	1	0	0	709
+Miscellaneous	110		1	0	0x04001001     	40	0	15	1000	0.0		16	1	0	0	705
+Miscellaneous	110		2	0	0x00001001     	40	120	15	1000	0.0		16	1	0	0	705
+Miscellaneous	110		3	0	0x00001001     	40	85	15	1000	0.0		16	1	0	0	701
+Miscellaneous	110		4	0	0x00001001     	-1	85	15	1000	0.0		16	1	0	0	700
+#treeH1 Small Yellow
+Miscellaneous	111		0	0	0x00001001     	1	60	15	1000	0.0		16	1	0	0	701
+Miscellaneous	111		1	0	0x00001001     	40	60	15	1000	0.0		16	1	0	0	701
+Miscellaneous	111		2	0	0x00001001     	40	60	15	1000	0.0		16	1	0	0	701
+Miscellaneous	111		3	0	0x00001001     	40	60	15	1000	0.0		16	1	0	0	701
+Miscellaneous	111		4	0	0x00001001     	40	60	15	1000	0.0		16	1	0	0	700
+#treeH2 Big Yellow
+Miscellaneous	112		0	0	0x00001001     	1	70	15	1000	0.0		16	1	0	0	701
+Miscellaneous	112		1	0	0x00001001     	40	70	15	1000	0.0		16	1	0	0	701
+Miscellaneous	112		2	0	0x00001001     	40	70	15	1000	0.0		16	1	0	0	701
+Miscellaneous	112		3	0	0x00001001     	40	70	15	1000	0.0		16	1	0	0	701
+Miscellaneous	112		4	0	0x00001001     	-1	70	15	1000	0.0		16	1	0	0	700
+#brown rocks
+Miscellaneous	300		0	0	0x00020001		-1	1	15	1000	0.0		16	1	0	0	700
+Miscellaneous	301		0	0	0x00020001		-1	1	15	1000	0.0		16	1	0	0	700
+Miscellaneous	302		0	0	0x00020001		-1	1	15	1000	0.0		16	1	0	0	701
+Miscellaneous	303		0	0	0x00020001		-1	1	15	1000	0.0		16	1	0	0	701
+Miscellaneous	304		0	0	0x00020001		-1	1	15	1000	0.0		16	1	0	0	701
+#gray rocks w/ snow
+Miscellaneous	305		0	0	0x00020001		-1	1	15	1000	0.0		16	1	0	0	709	
+Miscellaneous	306		0	0	0x00020001		-1	1	15	1000	0.0		16	1	0	0	710
+Miscellaneous	307		0	0	0x00020001		-1	1	15	1000	0.0		16	1	0	0	710
+Miscellaneous	308		0	0	0x00020001		-1	1	15	1000	0.0		16	1	0	0	710
+Miscellaneous	309		0	0	0x00020001		-1	1	15	1000	0.0		16	1	0	0	710	
+#gray rocks	
+Miscellaneous	310		0	0	0x00020001		-1	1	15	1000	0.0		16	1	0	0	146		
+Miscellaneous	311		0	0	0x00020001		-1	1	15	1000	0.0		16	1	0	0	146
+Miscellaneous	312		0	0	0x00020001		-1	1	15	1000	0.0		16	1	0	0	146
+Miscellaneous	313		0	0	0x00020001		-1	1	15	1000	0.0		16	1	0	0	146
+Miscellaneous	314		0	0	0x00020001		-1	1	15	1000	0.0		16	1	0	0	146
+
+#ObjType		SubType	Ste	Lnk	Fl				HP	Hgt	Mv	Ord		Slp		Arm	Vis	Crush	Perm	Explo	Sound
+#buildings
+Miscellaneous	506		0	0	0x00082001     	80	50	15	1000	0.0		16	1	0		0		121
+Miscellaneous	506		1	0	0x00082001     	200	50	15	1000	0.0		16	1	0		0		121
+Miscellaneous	506		2	0	0x00082001     -1	50	15	1000	0.0		16	1	0		200		121
+
+Miscellaneous	507		0	0	0x00082001     	80	50	15	1000	0.0		16	1	0		0		121
+Miscellaneous	507		1	0	0x00082001     	200	50	15	1000	0.0		16	1	0		0		121
+Miscellaneous	507		2	0	0x00082001     	-1	50	15	1000	0.0		16	1	0		200		121
+
+Miscellaneous	508		0	0	0x00082001     	80	50	15	1000	0.0		16	1	0		0		121
+Miscellaneous	508		1	0	0x00082001     	200	50	15	1000	0.0		16	1	0		0		121
+Miscellaneous	508		2	0	0x00082001     	-1	50	15	1000	0.0		16	1	0		200		121
+
+#tower
+Miscellaneous	510		0	0	1     			80	128	15	1000	0.0		16	1	0
+Miscellaneous	510		1	0	1     			200	128	15	1000	0.0		16	1	0
+Miscellaneous	510		2	0	1     			-1	128	15	1000	0.0		16	1	0
+

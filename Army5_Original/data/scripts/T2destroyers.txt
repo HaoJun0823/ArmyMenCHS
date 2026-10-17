@@ -1,0 +1,174 @@
+//T2destroyers.txt
+
+
+PAD padDest1	11	captain > 0
+PAD padDest2	12	captain > 0
+
+
+VARIABLE D1gunX 0
+VARIABLE D1gunY 0
+
+VARIABLE carrierhaslanded 0
+VARIABLE boolD1live 0
+VARIABLE boolD2live 0
+
+VARIABLE dest1gunsleft 5
+VARIABLE dest2gunsleft 5
+
+UNTIL 2 REPEAT 1 BY 1
+{
+	OBJECT Destroyer$
+		STATE osMove
+			FRAME 500 7
+			FRAME 300 8
+			FRAME 200 9
+			FRAME 1800 10
+			FRAME 300 8
+			FRAME 0 0
+				SETOBJSTATE me osMove
+		STATE osSink
+			FRAME 200 0
+				SETVAR D1gunX GETX me, SETVAR D1gunY GETY me,
+				ADDVAR D1gunX -37, ADDVAR D1gunY 175,
+				CREATEEXPLOSION (REFVAR D1gunX, REFVAR D1gunY) 140
+			FRAME 300 1
+				SETVAR D1gunX GETX me, SETVAR D1gunY GETY me,
+				ADDVAR D1gunX 26, ADDVAR D1gunY 123,
+				CREATEEXPLOSION (REFVAR D1gunX, REFVAR D1gunY) 148
+			FRAME 500 2
+				SETVAR D1gunX GETX me, SETVAR D1gunY GETY me,
+				ADDVAR D1gunX 14, ADDVAR D1gunY 44,
+				CREATEEXPLOSION (REFVAR D1gunX, REFVAR D1gunY) 149
+			FRAME 300 3
+				SETVAR D1gunX GETX me, SETVAR D1gunY GETY me,
+				ADDVAR D1gunX 3, ADDVAR D1gunY -9,
+				CREATEEXPLOSION (REFVAR D1gunX, REFVAR D1gunY) 148
+			FRAME 200 4
+				SETVAR D1gunX GETX me, SETVAR D1gunY GETY me,
+				ADDVAR D1gunX -11, ADDVAR D1gunY -62,
+				CREATEEXPLOSION (REFVAR D1gunX, REFVAR D1gunY) 149
+			FRAME 300 5
+				SETVAR D1gunX GETX me, SETVAR D1gunY GETY me,
+				ADDVAR D1gunX 11, ADDVAR D1gunY 59,
+				CREATEEXPLOSION (REFVAR D1gunX, REFVAR D1gunY) 140
+			FRAME 500 6
+				SETVAR D1gunX GETX me, SETVAR D1gunY GETY me,
+				ADDVAR D1gunX 3, ADDVAR D1gunY 34,
+				CREATEEXPLOSION (REFVAR D1gunX, REFVAR D1gunY) 140
+}
+
+LIST D1gunLIST { D1gun1 D1gun2 D1gun3 D1gun4 D1gun5 }
+LIST D2gunLIST { D2gun1 D2gun2 D2gun3 D2gun4 D2gun5 }
+
+//*** SETUP GUNS ***//
+
+IF setupdestroyerguns THEN
+	CREATEUNIT D1gun1 DESTROYERGUN (1,1) green, TRIGGER D1gun1spot,
+	CREATEUNIT D1gun2 DESTROYERROCKETS (1,1) green, TRIGGER D1gun2spot,
+	CREATEUNIT D1gun3 DESTROYERRADAR (1,1) green, TRIGGER D1gun3spot,
+	CREATEUNIT D1gun4 DESTROYERROCKETS (1,1) green, TRIGGER D1gun4spot,
+	CREATEUNIT D1gun5 DESTROYERGUN (1,1) green, TRIGGER D1gun5spot,
+	CREATEUNIT D2gun1 DESTROYERGUN (1,1) green, TRIGGER D2gun1spot,
+	CREATEUNIT D2gun2 DESTROYERROCKETS (1,1) green, TRIGGER D2gun2spot,
+	CREATEUNIT D2gun3 DESTROYERRADAR (1,1) green, TRIGGER D2gun3spot,
+	CREATEUNIT D2gun4 DESTROYERROCKETS (1,1) green, TRIGGER D2gun4spot,
+	CREATEUNIT D2gun5 DESTROYERGUN (1,1) green, TRIGGER D2gun5spot
+
+UNTIL 5 REPEAT 1 BY 1
+{
+	IF setupdestroyerradar THEN
+		RADARGUARDS D1gun3 D1gun$,
+		RADARGUARDS D2gun3 D2gun$
+}
+
+
+MACRO destroyergunlocations 6
+{
+	IF D1gun@2spot THEN
+		MOVEITEM D1gun@2 (@3, @4, @5),
+		SETFACING D@1gun@2 @6
+} 
+EXPAND destroyergunlocations ( 1 1  1945 2716 10  32 )
+EXPAND destroyergunlocations ( 1 2  1881 2720 10 16 )
+EXPAND destroyergunlocations ( 1 3  1807 2676 10 0 )
+EXPAND destroyergunlocations ( 1 4  1750 2697 10 254 )
+EXPAND destroyergunlocations ( 1 5  1675 2695 10 50 )
+
+MACRO destroyer2gunlocations 6
+{
+	IF D2gun@2spot THEN
+		SETVAR D1gunX GETX Destroyer2, SETVAR D1gunY GETY Destroyer2,
+		ADDVAR D1gunX @3, ADDVAR D1gunY @4,
+		MOVEITEM D2gun@2 (REFVAR D1gunX, REFVAR D1gunY, @5),
+		SETFACING D2gun@2 @6
+} 
+EXPAND destroyer2gunlocations ( 2 1  37  185 10  32 )
+EXPAND destroyer2gunlocations ( 2 2  26  133 10  16 )
+EXPAND destroyer2gunlocations ( 2 3  14   54 10   0 )
+EXPAND destroyer2gunlocations ( 2 4   3    1 10 240 )
+EXPAND destroyer2gunlocations ( 2 5 -11  -52 10 32 )
+
+//*** SETUP GUNS ***//
+
+
+//*** DESTROYER DAMAGE ***//
+
+UNTIL 5 REPEAT 1 BY 1
+{
+	IF removeD2guns THEN
+		UNDEPLOY D2gun$
+	IF removeD1guns THEN
+		UNDEPLOY D1gun$
+}
+
+UNTIL 2 REPEAT 1 BY 1
+{
+	IF KILLED D$gunLIST THEN
+		CREATEEXPLOSION me 143,
+		ADDVAR dest$gunsleft -1,
+		TRIGGER checkfordeadD$
+
+	IF checkfordeadD$ TESTVAR dest$gunsleft <= 0 THEN
+		TRIGGERDELAY 1000 destroyerkilled Destroyer$,
+		triggerdelay 990 removeD$guns,
+		undeploy objD$lz,
+		setvar boolD$live 0
+}
+
+IF destroyerkilled THEN
+	SETOBJSTATE me osSink
+
+//*** DESTROYER DAMAGE ***//
+
+
+//*** CARRIER LZ ***//
+
+UNTIL 2 REPEAT 1 BY 1
+{
+	IF PADON padDest$ TESTVAR boolD$live = 1 THEN
+		TRIGGERDELAY 500 copterlanding$
+
+	IF copterlanding$ TESTVAR GETPADSTATUS padDest$ = 1 AND carrierhaslanded = 0 THEN
+		LAND captain,
+		TRIGGERDELAY 1 copterlanding$
+
+	IF LANDED captain TESTVAR GETPADSTATUS padDest$ = 1 THEN
+		SETVAR carrierhaslanded 1
+
+	IF TOOKOFF captain THEN
+		SETVAR carrierhaslanded 0
+}
+
+//*** CARRIER LZ ***//
+
+
+//*** GREEN DESTROYERS ***//
+
+IF setupdestroyers THEN
+	SETVAR boolD1live 1,
+	SETVAR boolD2live 1,
+	SETOBJSTATE Destroyer1 osMove, SETOBJSTATE Destroyer2 osMove,
+	TRIGGERdelay 10 setupdestroyerguns,
+	TRIGGERdelay 20 setupdestroyerradar
+
+//*** GREEN DESTROYERS ***//

@@ -1,0 +1,4351 @@
+{
+ "meta": {
+  "task": "Army Men 5 (Air Tactics) 中文配音",
+  "model": "G:\\Projects\\ArmyMenCHS\\models\\Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+  "model_repo": "Qwen/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+  "license": "Apache-2.0",
+  "mode": "VoiceDesign",
+  "device": "cpu",
+  "dtype": "bfloat16",
+  "generated_at": "2026-10-17 16:09:37",
+  "tts_total": 481,
+  "copied_total": 6,
+  "success": 481,
+  "failed": 0,
+  "cap_note": "初版 cap=(源*2.0+0.5)*12 且下限36；拟声类另行重生成（cap 收紧或改写措辞）",
+  "seed_note": "API seed= 无效，用 torch.manual_seed(GLOBAL_SEED=19970823)",
+  "format_note": "输出对齐源 WAV（22050Hz/16bit 或 8bit，单声道）",
+  "python_env": "G:\\Projects\\ArmyMenCHS\\venv-qwen312"
+ },
+ "items": [
+  {
+   "wav": "Blu001f.wav",
+   "speaker": "BlueSpy",
+   "value_ch_used": "别开枪！我给你们情报！",
+   "value_en": "Don't shoot me! I'll give you information!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Blu002e.wav",
+   "speaker": "BlueSpy",
+   "value_ch_used": "你们总统正在山间别墅开一场秘密外交会议。棕军已经出动去抓他了。",
+   "value_en": "Your president is at a secret diplomatic meeting at a mountain retreat. The Tan are already moving to capture him.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Blu003a.wav",
+   "speaker": "BlueSpy",
+   "value_ch_used": "该死的，布莱德！",
+   "value_en": "Damn you, Blade!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Blu005d.wav",
+   "speaker": "BlueSpy",
+   "value_ch_used": "别开枪！",
+   "value_en": "Don't shoot!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap001c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "收到，总部。我这就去。",
+   "value_en": "Roger, HQ. I'm on it.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap002b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "总部，我机上有一位中士的部下。",
+   "value_en": "HQ, I have one of Sarge's men on board.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap003b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "很高兴见到你，中士。你其余的人呢？",
+   "value_en": "Good to see you, Sarge. Where's the rest of your squad?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap004c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "中士，我的雷达快疯了。这地方到处都是棕军！",
+   "value_en": "My radar is going crazy, Sarge. This place is crawling with Tan!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap005b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "总部请回答。中士和他的弟兄们都在我机上。",
+   "value_en": "Come in, HQ. I've got Sarge and his boys on board.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap006a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "中士，我给侧装机炮找到些弹药。想不想来试试？",
+   "value_en": "Found some ammo for that side-mounted gun, Sarge. Care to do the honors?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap007c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "见鬼……！飞过马桶上那座碉堡，我非得挨一顿狠揍不可。",
+   "value_en": "Dang...! I'll take a serious beating flying over that bunker on the toilet.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap008c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "抓稳你的狗牌，大块头。",
+   "value_en": "Hold on to your dogtags, big guy.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap009c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "好了弟兄们，着陆区看来是清干净了。",
+   "value_en": "Okay, boys, looks like the LZ is clear.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap010c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "小心——那罐喷漆要炸了！",
+   "value_en": "Whoa - that spray can's gonna blow!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap011a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "总部，他们人太多了，正面硬拼不行。",
+   "value_en": "HQ, there's too many of them to take head on.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap012c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "别动！你跟我走。",
+   "value_en": "Don't move! You're coming with me.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap013c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "总部，出状况了。棕军游击队正在行动，要抓总统。",
+   "value_en": "HQ, we have a situation. Tan guerillas are on the move to capture the president.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap014a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "总部，我刚发现几名绿军战俘。",
+   "value_en": "HQ, I've just spotted several Green POWs.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap015c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "不好！棕军在那帮弟兄身上绑了炸药！他们要用我们自己人炸桥！",
+   "value_en": "Oh no! The Tan have those boys covered with explosives! They're gonna use our own guys to blow the bridge!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap016c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "轻松的路没了。",
+   "value_en": "There goes the easy way.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap017a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "这招不行……也许行得通？",
+   "value_en": "That won't work... or will it?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap018b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "再来这么两下就差不多了。",
+   "value_en": "A couple more like that should do the trick.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap019f.wav",
+   "speaker": "Captain",
+   "value_ch_used": "叫我布莱德……桥梁建筑师！",
+   "value_en": "Call me Blade... the Bridge Builder!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap020c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "好了弟兄们，把那批货卸出来。看看我的新座驾。",
+   "value_en": "Okay men, break out that cargo. Let's have a look at my new ride.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap021a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "交给我吧，长官。",
+   "value_en": "You can count on me, sir.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap022a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "悄无声息……却要命。",
+   "value_en": "Silent... but deadly.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap023a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "总部，突击队开始行动了。待命。",
+   "value_en": "HQ, the strike team is going in. Stand by.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap024b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "我们被发现了！",
+   "value_en": "We've been spotted!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap025c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "早啊，总统先生。系好安全带，我们还没脱离险境。",
+   "value_en": "Mornin', Mr. President. Buckle up; we're not out of the woods yet.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap026a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "什么鬼——？！",
+   "value_en": "What the-?!?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap027b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "这条毒蛇！",
+   "value_en": "That snake!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap028b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "看来我找到了棕军一处秘密休整基地。",
+   "value_en": "Looks like I've found a secret Tan R & R facility.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap029b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "啊哈，棕军跟桶里的鱼一样好打。",
+   "value_en": "Ahhh, like Tan fish in a barrel.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap030a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "他们到底从哪儿冒出来的？",
+   "value_en": "Where do they come from?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap031f.wav",
+   "speaker": "Captain",
+   "value_ch_used": "进球！",
+   "value_en": "GOAL!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap031i.wav",
+   "speaker": "Captain",
+   "value_ch_used": "进球！",
+   "value_en": "Goal!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap032b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "不费事——援军到了。",
+   "value_en": "No sweat - the cavalry is here.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap033b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "从来没有无聊的时候。",
+   "value_en": "Never a dull moment.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap034c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "这样不行。我需要更强的武器。",
+   "value_en": "This is no good. I'll need a more powerful weapon.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap035c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "啊，这个应该管用。",
+   "value_en": "Ah, this should do the trick.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap036b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "逮到你了！",
+   "value_en": "Gotcha!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap037c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "把他带走，弟兄们。",
+   "value_en": "Take him away, boys.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap038e.wav",
+   "speaker": "Captain",
+   "value_ch_used": "干得漂亮。中士，你觉得怎么样？",
+   "value_en": "Outstanding. What do you think of that, Sarge?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap039b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "哦……看来棕军那飞行员以为自己也行。",
+   "value_en": "Oh... so the Tan fly boy thinks he can play.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap040b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "干掉一个……",
+   "value_en": "Scratch one...",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap041c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "炮兵阵地已清空。",
+   "value_en": "Artillery cleared.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap042a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "布莱德出手，得分！",
+   "value_en": "Blade shoots. He scores!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap043b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "算了，今天打不成冰球了。",
+   "value_en": "Oh well, no hockey today.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap044b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "我就陪这个棕军新兵打一场冰球。",
+   "value_en": "I'll play a game of hockey with this Tan rookie.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap045c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "普拉斯特！",
+   "value_en": "Plastro!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap046i.wav",
+   "speaker": "Captain",
+   "value_ch_used": "嗯——他刚把一颗石子射到棋盘上。",
+   "value_en": "Hmm -- he just shot a stone onto the board.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap047a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "耶！",
+   "value_en": "Yeah!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap047b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "耶！",
+   "value_en": "YEAH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap047c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "耶！",
+   "value_en": "YEAH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap048c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "中了！",
+   "value_en": "Bingo!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap049c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "该死！我得动快点。",
+   "value_en": "Damn! I've got to move faster.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap050a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "总部请回答……那道传送门的位置有吗？",
+   "value_en": "HQ, come in... do you have a location on that portal?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap051c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "没问题，长官。",
+   "value_en": "You got it, sir.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap052d.wav",
+   "speaker": "Captain",
+   "value_ch_used": "看来他们这儿有个不小的虫子出口生意。",
+   "value_en": "Looks like they've got quite a bug export operation here.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap053c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "快好了，上校。撑住。",
+   "value_en": "Almost done, Colonel. Hang in there.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap054b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "哇！",
+   "value_en": "Whoa!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap054e.wav",
+   "speaker": "Captain",
+   "value_ch_used": "哇……！",
+   "value_en": "Whoa...!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap055c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "拼一把！",
+   "value_en": "Here goes nothin'!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap056b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "谢了，中士。",
+   "value_en": "Thanks, Sarge.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap057c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "哇！这地方让我脊背发凉。",
+   "value_en": "Whoa! This area makes my spine tingle.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap058c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "老天爷开眼了。",
+   "value_en": "The gods have smiled.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap059a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "这情况我可不喜欢！",
+   "value_en": "I don't like the looks of this!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap060a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "我有种不妙的预感。",
+   "value_en": "I've got a bad feeling about this.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap061f.wav",
+   "speaker": "Captain",
+   "value_ch_used": "奇怪……！",
+   "value_en": "Strange...!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap062b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "好在总算结束了！",
+   "value_en": "Glad that's over!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap063f.wav",
+   "speaker": "Captain",
+   "value_ch_used": "呼！",
+   "value_en": "Phew!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap064b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "他们怎么非送死不可？",
+   "value_en": "Why do they insist on getting killed?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap065c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "吃我的尾气吧！",
+   "value_en": "Eat my dust!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap066c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "杀虫，一杀一个准。",
+   "value_en": "Kills bugs dead.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap067a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "死虫子！",
+   "value_en": "Dead bugs!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap068f.wav",
+   "speaker": "Captain",
+   "value_ch_used": "嘿！虫子！",
+   "value_en": "Hey! Bugs!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap069c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "我在路上了。",
+   "value_en": "I'm on my way.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap070c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "一有机会我就过去。",
+   "value_en": "I'll be there when I get a chance.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap071a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "又干掉一个。",
+   "value_en": "Scratch one.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap072c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "出问题了……！",
+   "value_en": "Something's wrong...!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap073b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "这情况看着不太妙。",
+   "value_en": "This doesn't look so good.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap075c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "太好了！",
+   "value_en": "Excellent!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap076b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "正合我需要。",
+   "value_en": "Just the thing I needed.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap077c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "这个能派上用场。",
+   "value_en": "This will come in handy.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap078b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "这下能补一补了。",
+   "value_en": "This should patch things up.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap079b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "啊——！掉下去了！",
+   "value_en": "AHHHHH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap080a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "这能给老伙计添点光彩。",
+   "value_en": "This will put a shine on the old bird.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap081c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "这个应该管用。",
+   "value_en": "This should do the trick.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap082b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "阿尔法狼，攻击阵形。",
+   "value_en": "Alpha Wolf, attack formation.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap083c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "僚机，这才像话。",
+   "value_en": "Wingman, now we're talking.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap084c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "这能给主炮加点劲。",
+   "value_en": "This'll add some punch to my main gun.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap085b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "嘿，侧装机炮的弹药！",
+   "value_en": "Hey, ammo for my side gun!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap086c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "这能让那些棕军飞行员慢下来一点。",
+   "value_en": "This should slow the tan flyers down a bit.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap087e.wav",
+   "speaker": "Captain",
+   "value_ch_used": "对抗措施！这能拦下来袭导弹！",
+   "value_en": "Countermeasures! This will stop incoming missiles!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap088c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "嘿嘿，这身绿漆该把棕军搞糊涂了。",
+   "value_en": "Heh heh, this green paint should confuse the tan.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap089a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "制导导弹。等不及要用上了。",
+   "value_en": "Guided missiles. Can't wait to put these to use.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap090b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "空中雷！",
+   "value_en": "AIR MINES!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap091c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "啊哈！谁靠太近，就得尝尝烫的滋味。",
+   "value_en": "Aha! This will make things hotter for anybody who gets too close.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap092b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "好耶，集束炸弹！",
+   "value_en": "YEAH CLUSTER BOMBS!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap093b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "太棒了，火箭集束！",
+   "value_en": "ALRIGHT ROCKET CLUSTERS!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap094b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "杀虫剂！",
+   "value_en": "INSECTICIDE",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap095a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "啊哈！鱼雷！",
+   "value_en": "Aha! Torpedoes!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap096b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "等不及要往那些讨厌的水下舰艇上扔了。",
+   "value_en": "Can't wait to drop these on those pesky undersea vessels.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap097c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "这能帮我看清那些水下的家伙。",
+   "value_en": "This should help me spot those underwater craft.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap098c.wav",
+   "speaker": "Captain",
+   "value_ch_used": "普拉斯特，你迟早有得受。",
+   "value_en": "You'll get yours, Plastro.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Cap110dc.wav",
+   "speaker": "Captain",
+   "value_ch_used": "啊哈！",
+   "value_en": "(spots something) Aha!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col001b.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "上尉，我是格里姆。目前干得不错，但接下来才真要考验你的翅膀。总统身边守卫森严。带突击队去把他救出来，守住着陆区直到他们把人带出来。然后把总统安全运回。祝你好运。",
+   "value_en": "Captain, Grimm here. Good work so far, but now you're really gonna earn your wings. The president is heavily guarded. Take the strike team to recover him and hold the LZ until they bring him out. Then fly the president back to safety. Good luck.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col002a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "布莱德，坏消息。中止任务。",
+   "value_en": "Blade, bad news. Abort your mission.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col003a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "总统死了。",
+   "value_en": "The president is dead.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col004c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "很高兴你回来了，总统先生。可惜没时间庆祝。我们得把这个村子夺回来。",
+   "value_en": "Glad to have you back, Mr. President. Unfortunately, there's no time for celebration. We have to retake this village.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col005a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "上尉，我们的援军到了。是时候让这个村子重归安宁了……别让一个棕军活下来！",
+   "value_en": "Our reinforcements have arrived, Captain. It's time to restore peace to this village... let no Tan survive!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col006c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "各位干得漂亮。我们没费什么大劲就把棕军赶跑了……",
+   "value_en": "Excellent work, everyone. We were able to run off the Tan without any serious...",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col007f.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "该死！",
+   "value_en": "Blast!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col008a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "好了，上尉。我们要制定一个计划，找到并攻打普拉斯特的总部。你得回到那栋房子里帮中士一把。动作快点，弟兄们！",
+   "value_en": "Okay, Captain. We will come up with a plan to locate and attack Plastro's headquarters. You need to get back to that house and give Sarge a hand. On the double, men!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col009a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "还有上尉，让棕军吃点苦头！",
+   "value_en": "And Captain, give the Tan some hell!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col010d.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "用那些武器小心点，上尉！绿军百姓把这小村子当家的！",
+   "value_en": "Careful with those weapons, Captain! Green citizens call this little village home, you know!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col011d.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "布莱德！我是要让村子重归安宁，不是把村子打成碎片！明白吗？！",
+   "value_en": "Blade! I want to restore peace to the village, not leave the village in pieces! Get it?!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col012b.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "上尉，你把平民的房屋破坏得太严重了。你被停飞了。",
+   "value_en": "You have caused too much damage to the civilian homes, Captain. You're grounded.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col013a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "上尉！谢天谢地你赶到了。我们真的很需要你帮忙。",
+   "value_en": "Captain! Thank goodness you made it. We really need your help.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col014b.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "灰军海军搞出了某种水下舰艇。我们正在给声呐探测系统做最后的调试，可这期间我们的驱逐舰正挨着狠揍。",
+   "value_en": "The Gray Navy has developed some kind of sub-surface vessel. We are putting the finishing touches on a sonar detection system right now, but our destroyers are taking a serious pounding in the meantime.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col015c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "我们的火力还够攻打真正的棕军总部，但首先得找到那座岛。",
+   "value_en": "We still have enough firepower to attack the real Tan headquarters, but first we have to locate that island.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col016b.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "我们有两艘驱逐舰正开过来接我们。",
+   "value_en": "We have a couple of destroyers heading in to pick us up.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col017d.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "要是你不能及时把这片水域的灰军水下舰艇清干净，我们的驱逐舰就要被撕碎了。",
+   "value_en": "If you don't clear these waters of gray sub-surface ships in time, our destroyers will be shredded.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col018d.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "布莱德请回答。听着，那些船随时都会到！快把那些灰军潜艇干掉！",
+   "value_en": "Come in, Blade. Listen. Those boats are going to be here any minute! Take out those Grey subs, fast!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col019a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "干得好，布莱德。现在我们得找到棕军基地，把普拉斯特那个邪恶的虫子工厂给废了。",
+   "value_en": "Nice work, Blade. Now we need to find the Tan base so we can put Plastro's diabolical bug factory out of commission.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col020c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "还有记住……在外头省着点用导弹。你能补弹的机会不多。",
+   "value_en": "And remember... conserve your missiles out there. You're not going to have many chances to rearm.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col021a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "那些灰军舰艇一定有个来处！用声呐浮标把它们找出来。",
+   "value_en": "Those Grey ships must be coming from somewhere! Use sonar buoys to track them down.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col022a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "上尉，总部的无线电信号断了。这片海域有点不对劲。",
+   "value_en": "Radio signal from HQ is down, Captain. Something is strange about this area of the ocean.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col023a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "你得找到那道传送门！",
+   "value_en": "You are going to have to find that portal!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col024a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "快点，布莱德！一架棕军直升机刚发现了我们的船。他们要是开始放鱼雷，我们在这儿就是活靶子！",
+   "value_en": "Step it up, Blade! A Tan chopper just spotted our ships. We're sitting ducks out here if they start firing torpedoes!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col025c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "上尉，他们的潜航器正在逼近……就是现在，不然就完了！",
+   "value_en": "Their submersibles are moving in, Captain... it's now or never!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col026b.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "上尉，我们被直接命中了！我们在下沉！全完了！",
+   "value_en": "We've taken a direct hit, Captain! We're going down! It's all over!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col027f.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "太棒了，布莱德！你发现了普拉斯特的火山要塞。把小岛清干净，但别炸那座桥。他们有那么多工事，大岛上根本没法建立登陆场。",
+   "value_en": "Excellent, Blade! You've discovered Plastro's volcano fortress. Clear the small island, but don't blast that bridge. With all their fortifications, it'll be impossible to establish a beachhead on the larger island.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col029b.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "那些虫子真能在我们登陆时闹翻天……！",
+   "value_en": "Those insects could really wreak havoc on our landing...!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col030c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "快点，上尉！他们在集结兵力！",
+   "value_en": "Hurry it up, Captain! They're marshalling their forces!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col031a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "太晚了！我们完了，上尉。",
+   "value_en": "It's too late! We're finished, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col032c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "桥塌了！结束了！",
+   "value_en": "The bridge is down! It's over!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col033a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "干得漂亮，布莱德。我们马上到。",
+   "value_en": "Smartly done, Blade. We'll be there shortly.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col034c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "拦住那些身上绑着爆竹的自杀兵！他们想炸桥！",
+   "value_en": "Stop those suicide troopers with the firecrackers strapped to them! They're trying to blow the bridge!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col035c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "小心！桥边又来了一批自杀兵！",
+   "value_en": "Watch out! More suicide soldiers at the bridge!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col036c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "好了弟兄们，就是这一仗。我们要渡过海峡，强攻普拉斯特的要塞。布莱德，我们上桥的时候需要你掩护。战况一乱，你就从空中帮我们指挥部队。",
+   "value_en": "Alright, men, this is it. We need to cross to the other island and storm Plastro's fortress. Blade, we need you to cover us when we're on the bridge. When the battle gets chaotic, help direct our forces from the air.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col037c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "好！让这帮家伙尝尝厉害，弟兄们！",
+   "value_en": "All right! Give 'em hell, boys!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col038a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "干得好，弟兄们！",
+   "value_en": "Well done, men!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col040a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "干得不错，弟兄们。",
+   "value_en": "Good work, men.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col041c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "胜利属于我们！",
+   "value_en": "Victory is ours!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col042a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "我常说，打赢战争的办法就是永远别输！",
+   "value_en": "As I always say, the way to win the war is to never lose!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col043a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "别放弃，弟兄！只要你不认输，就永远没被打败！",
+   "value_en": "Don't give up man! You're never beaten until you admit it!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col044a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "我们得在空中和地面上同时压住他们。现在是时候各自审视内心，看看我们是用什么塑料做的了。我们是空心人？还是塑料战士？！",
+   "value_en": "We've got to press them in the air and on the ground. It's time for each of us to look inside ourselves and see what kind of plastic we're made of.  Are we hollow men?  Or are we plastic soldiers?!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col045c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "欢迎来到直升机飞行与作战训练场，上尉！",
+   "value_en": "Welcome to the Helicopter Flight and Combat Training Facility, Captain!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col046c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "你可以在这里磨练空战技巧。想练多久就练多久，但记住，外头还有一场战争在打！",
+   "value_en": "You will use this area to hone your flight combat skills. Train for as long as you need, but remember, there is a war raging out there!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col047c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "我现在把你交给我们的无线电作战专员。祝你好运。",
+   "value_en": "I'll turn you over to our Radio Ops Specialist now. Good luck.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col048a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "照顾好你的直升机，上尉。到了战场上，可没有第二次机会！",
+   "value_en": "Take care of your helicopter, Captain. Out in the field, you don't get second chances!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col049c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "总统在房子里被杀了！",
+   "value_en": "The president has been killed inside the house!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col050b.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "突击队阵亡了！总统也丢了。",
+   "value_en": "The strike team has been killed! The president is lost.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col051a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "灰军海军搞出了某种水下舰艇，正逼近攻击我们的驱逐舰。用声呐浮标和深水炸弹把那些潜艇干掉！",
+   "value_en": "The Gray Navy has developed some kind of sub-surface vessel. They're moving in to attack our destroyers. Use sonar buoys and depth charges to take those subs out!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col052b.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "我们的火力还够攻打真正的棕军总部，但首先得离开这座岛。",
+   "value_en": "We still have enough firepower to attack the real Tan headquarters, but first we need to get off this island.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col053c.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "好了上尉。你得把我们的人运出这座岛。把他们送到驱逐舰上……还有，别让那些该死的潜艇把我们的船弄沉了，行吗！",
+   "value_en": "Okay Captain. You need to transport our men off the island. Get them to the destroyers... and keep those damn subs from sinking our boats, will ya!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col054b.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "别忘了那些潜艇，上尉。我们的驱逐舰挡不住他们的鱼雷。",
+   "value_en": "Don't forget about those submarines, Captain. Our destroyers are vulnerable to their torpedoes.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col055b.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "上尉，他们想打掉我们的武器！两艘船上任意一艘的四门炮全没了，就全完了！",
+   "value_en": "They're trying to take out our weapons, Captain!  If we lose all four guns on either boat, it's all over!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col056b.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "这一带灰军潜艇数量这么多，说明他们用了某种秘密水下传送门。也许一颗投得准的深水炸弹能把它逼出水面。找到那道传送门，带我们穿过去。",
+   "value_en": "High numbers of Grey subs in this area lead us to believe they are using a secret under-water portal. Perhaps a well-placed depth charge could bring it to the surface. Find that portal and lead us through it.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col057a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "太棒了，布莱德。你发现了普拉斯特的秘密火山要塞。我们得在南边小岛登陆。把小岛上的棕军和变异昆虫清干净，但别炸那座桥。最后那次偷袭得靠它。",
+   "value_en": "Excellent, Blade. You've discovered Blastro's secret volcano fortress. We need to land on the small southern island. Clear it of tan and mutant insects, but don't blow that bridge. We'll need to use it for our final sneak attack.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col058a.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "岛上守军我们干掉得差不多了，但还得把那座要塞打下来！",
+   "value_en": "We've killed most of the island guards, but we've got to crack that fortress!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Col059dc.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "上尉！我们真的需要你帮忙。",
+   "value_en": "Captain! We really need your help.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Death1.wav",
+   "speaker": "Screamer",
+   "value_ch_used": "啊——！",
+   "value_en": "",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Death2.wav",
+   "speaker": "Screamer",
+   "value_ch_used": "救命——！救命啊——！",
+   "value_en": "AAAAAAAAH! AAAAAAAAH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Death3.wav",
+   "speaker": "Screamer",
+   "value_ch_used": "啊——！别——！",
+   "value_en": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Gry001b.wav",
+   "speaker": "GreySpy",
+   "value_ch_used": "化学品就在地上。一份有密码装置看守。另一份在彩色垫子上的帐篷里。红色和黄色区域都布了绊线，你要敢乱动，守卫就会把它炸掉。",
+   "value_en": "The chemicals are on the floor. One is guarded by a combination device. The other is in a tent on the colored mat. The red and yellow fields are trip-wired, and the guards will blow it up if you try anything.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Gry002e.wav",
+   "speaker": "GreySpy",
+   "value_ch_used": "该死的你！",
+   "value_en": "Darn you!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla001e.wav",
+   "speaker": "Grimm",
+   "value_ch_used": "士兵们！（这句不该看到）",
+   "value_en": "Soldiers! (you should never see this)",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla002d.wav",
+   "speaker": "Plastro",
+   "value_ch_used": "威廉·布莱德上尉……你看起来挺得意啊。",
+   "value_en": "Captain William Blade... You seem so self-satisfied.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla003e.wav",
+   "speaker": "Plastro",
+   "value_ch_used": "我猜你和你那个老糊涂格里姆上校，真以为打败我的部队就这么容易？哈！那点小把戏不过是个幌子！",
+   "value_en": "I suppose you and that old buffoon, Col. Grimm, actually thought it was that easy to defeat my forces? HA! That little exercise was a simple decoy!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla004g.wav",
+   "speaker": "Plastro",
+   "value_ch_used": "你拼尽全力去救你心爱的总统的时候，我的间谍顺手就把你那宝贝直升机的图纸拿走了。",
+   "value_en": "While you were wasting all your energy trying to rescue your beloved president, my spy took the liberty of relieving you of your precious helicopter blueprints.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla005a.wav",
+   "speaker": "Plastro",
+   "value_ch_used": "很快我们就能造出一支空战部队的大军！再加上尊敬的灰军博士的新宠物，我的军队将势不可挡！哇哈哈哈……！",
+   "value_en": "Soon we will mold a LEGION of air combat units! They, in addition to the esteemed Grey Doctor's new pets, will make my army UNSTOPPABLE! MUHAAHAAHAA...!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla006a.wav",
+   "speaker": "Plastro",
+   "value_ch_used": "放弃吧，飞行员。你那可怜的上校我早就收拾了。",
+   "value_en": "Give it up, flyboy. I've already taken care of your pathetic colonel.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla007d.wav",
+   "speaker": "Plastro",
+   "value_ch_used": "你可以改无线电频率，但改不了你的命！",
+   "value_en": "You can change your radio frequencies, but you can't change your fate!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla008b.wav",
+   "speaker": "Plastro",
+   "value_ch_used": "这座岛是我的——全是我的！",
+   "value_en": "This island is mine - all mine!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla009f.wav",
+   "speaker": "Plastro",
+   "value_ch_used": "我会抓住你的，布莱德！",
+   "value_en": "I'll get you, Blade!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla010d.wav",
+   "speaker": "Plastro",
+   "value_ch_used": "死可以比活着更刺激。想试试死吗，上尉？",
+   "value_en": "Death can be more exciting than life. Want to try death, Captain?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla011a.wav",
+   "speaker": "Plastro",
+   "value_ch_used": "你们永远打不败我们！",
+   "value_en": "You'll never defeat us!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla011e.wav",
+   "speaker": "Plastro",
+   "value_ch_used": "你永远打不败我！",
+   "value_en": "You'll never defeat me!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla012b.wav",
+   "speaker": "Plastro",
+   "value_ch_used": "你就这点本事？",
+   "value_en": "Is that all you've got?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla012f.wav",
+   "speaker": "Plastro",
+   "value_ch_used": "你就这点本事？",
+   "value_en": "Is that all you've got?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla013b.wav",
+   "speaker": "Plastro",
+   "value_ch_used": "上尉，你好像迷路了……糊涂了……",
+   "value_en": "You seem lost, Captain...confused...",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Pla013i.wav",
+   "speaker": "Plastro",
+   "value_ch_used": "上尉，你好像迷路了……糊涂了……",
+   "value_en": "You seem lost, Captain. Confused?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam001b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，中士被俘了！他和两名部下被派过传送门，去查证棕军大规模活动的报告。找到他们，把他们救出来。",
+   "value_en": "Captain, Sarge has been captured! He and two of his men were sent through the portal to investigate reports of heavy Tan activity. Locate those men and get them out of there.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam002c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，情报显示霍克中士就在沙箱附近。",
+   "value_en": "Captain, intel indicates Sergeant Hawk is in the vicinity of the sandbox.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam003c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，进房子之前你得先接上中士和他的部下。",
+   "value_en": "Captain, you need to pick up Sarge and his men before entering the house.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam004b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，小队没凑齐，你不能进那栋房子。",
+   "value_en": "Captain, you can't go into the house until you have the whole squad.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam005b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "干得好，长官们。想办法从那扇窗户穿过去。",
+   "value_en": "Good work, sirs. Find a way through that window.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam006b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，集中精神盯着任务目标。",
+   "value_en": "Stay focused on the objective, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam007a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "中士和他的部下有紧急会合点。把他们安全送到地面上的着陆区，然后报到领新命令。",
+   "value_en": "Sarge and his men have an urgent rendezvous. Get them safely to the landing zone on the floor. Then report in for new orders.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam008a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "任务完成。干得好，上尉。",
+   "value_en": "Mission complete. Good work, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam009c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，我们接到报告，水槽另一边有一名受棕军保护的蓝军间谍。他可能掌握棕军攻势的情报。干掉棕军守卫，抓住那名间谍。",
+   "value_en": "Captain, we have reports of a Blue Spy under Tan protection on the far side of the sink. He may have information on the Tan offensive. Take out the Tan guards and capture that spy.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam010c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "那您就得打得更聪明些，长官。",
+   "value_en": "You'll just have to fight smarter, sir.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam011a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "好的，上尉。有一道传送门能把你送到总统山间别墅附近。穿过去！然后和突击队会合。",
+   "value_en": "Right, Captain. There is a portal that will take you close to the president's mountain retreat. Get through it! Then rendezvous with the strike team.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam012alt.wav",
+   "speaker": "Sam",
+   "value_ch_used": "现在我们永远不知道棕军在谋划什么了！",
+   "value_en": "Now we'll never know what the Tan are planning!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam012b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "蓝军间谍被打死了。现在我们永远不知道棕军在谋划什么了！",
+   "value_en": "The Blue Spy was killed. Now we'll never know what the Tan are planning!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam013b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "想办法从那儿出去！",
+   "value_en": "Find a way out of there!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam014b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "飞得漂亮，上尉。",
+   "value_en": "Good flying, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam015b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，要推动那个拉杆，你可能需要更厉害的家伙。",
+   "value_en": "Captain, you might need something more powerful to move that lever.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam016d.wav",
+   "speaker": "Sam",
+   "value_ch_used": "布莱德上尉，棕军大猩猩抓住了总统。我们的突击队正带着最新直升机技术的部件。带他们去村子，你会在那里接到营救总统行动的简报。",
+   "value_en": "Captain Blade, tan gorillas have captured the President. Our strike team is carrying components of the latest helicopter technology. Lead them to the village, where you will be briefed on the President's rescue operation.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam017e.wav",
+   "speaker": "Sam",
+   "value_ch_used": "桥被炸了，你得另找办法渡河。",
+   "value_en": "With the bridge blown you'll need to find another way to cross the river.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam018a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "干得好，布莱德。你的小队已经过河了。现在带他们上村子去。",
+   "value_en": "Good job, Blade. Your team is across the river. Now lead them up to the village.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam019c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，我们的工程师开发了新技术，能让你的直升机飞行时静音、不被敌方雷达发现。但这些“低语之刃”持续时间很短，动作要快。",
+   "value_en": "Captain, our engineers have developed a new technology to keep your copter quiet and off enemy radar during flight. But these \"whisper blades\" only have a short duration, so work fast.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam020c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "好了布莱德，救援小队刚来电确认接到了人。守住着陆区，直到他们撤出来。",
+   "value_en": "Okay Blade, the rescue squad just radioed confirmation of pickup. Hold the LZ until they make it out.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam021a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "长官们，还有更糟的。中士和他的部下在传送门那头遇上大麻烦。他刚来电请求增援。",
+   "value_en": "It gets worse, sirs. Sarge and his men are in serious trouble back across the portal. He just radioed for reinforcements.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam022e.wav",
+   "speaker": "Sam",
+   "value_ch_used": "坏消息，上尉。棕军正在增兵。",
+   "value_en": "Bad news, Captain. Tan is reinforcing their troops.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam023c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "好消息，布莱德。绿军援兵终于到了。",
+   "value_en": "Good news, Blade. Green reinforcement have finally arrived.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam024c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "干得漂亮，上尉。我们在这儿都听见了！",
+   "value_en": "Nice work, Captain. We could hear that from here!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam025b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "漂亮，长官！这下棕军吃了大亏，蓝军间谍也开口了。去游戏室，到了以后报到。",
+   "value_en": "Sweet work, sir! That set Tan back AND we got the Blue Spy to squeal. Head to the Playroom and report in when you get there.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam026b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，找到那些气球的来源，把它端掉！",
+   "value_en": "Captain, find the source of those balloons and take it out!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam027c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "别忘了炸掉气球发生器。",
+   "value_en": "Don't forget to destroy the balloon generator.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam028a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "记住要活捉那名蓝军间谍。",
+   "value_en": "Remember to capture that Blue Spy.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam029a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "太棒了！现在看看能不能把沙发上那批炮兵也干掉。",
+   "value_en": "Outstanding! Now see if you can waste that artillery on the sofa.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam030a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "棕军的车辆必须全部摧毁。",
+   "value_en": "All Tan vehicles have to be destoyed.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam031c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "现在把那东西交给中士。",
+   "value_en": "Now take that to Sarge.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam032b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "车队完了。现在带人穿传送门。",
+   "value_en": "The convoy is finished. Now take the men through the portal.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam033b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "棕军正在桌上造化学武器。把它弄到手。等找到变异虫子工厂，肯定用得上。再让中士的小队上桌控制那片区域。",
+   "value_en": "The TAN are building a chemical weapon on the desk. Get it. We'll definitely have a use for it when we find the mutant bug factory. And get Sarge's squad to the desk to secure the area.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam034c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "干得好，上尉。可你还有活儿没干完！",
+   "value_en": "Good job, Captain. But you've still got work to do!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam035c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，那装置看来是要你跟着它的节奏来。",
+   "value_en": "Captain, that device apparently requires you to follow its lead.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam036e.wav",
+   "speaker": "Sam",
+   "value_ch_used": "布莱德，我看那东西是要你跟着它重复。",
+   "value_en": "Blade, I think that thing wants you to echo it.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam037e.wav",
+   "speaker": "Sam",
+   "value_ch_used": "干得好，上尉！把那个桶送到桌上的搅拌碗里！",
+   "value_en": "Good work, Captain! Get that drum to the mixing bowl on the desk!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam038c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "看来他们在下面守着什么东西。情报不够之前别去招惹它……！",
+   "value_en": "Looks like they're guarding something down there. Don't tangle with it until we have more info...!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam039c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "就剩最后一个了，上尉。",
+   "value_en": "Just one more, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam040c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "我们赢不了了！我们死的弟兄太多了！",
+   "value_en": "We can't win! Too many of our men have died in battle!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam041b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "棕军摧毁了帐篷处的关键任务目标！",
+   "value_en": "Tan units destroyed a critical mission objective at the tent!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam042c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "车队冲过去了，长官。很抱歉。",
+   "value_en": "The convoy made it through, sir. I'm sorry.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam043c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "棕军毁掉了一个化学桶。",
+   "value_en": "Tan units destroyed one of the chemical drums.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam044c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "太迟了！中士的人没能到达目标。",
+   "value_en": "Too late! Sarge's men never made it to their objective.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam045a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "把三个桶都送到搅拌碗里。这些化学品混起来应该能制成强力的火山粉武器，供我们攻打棕军时用。",
+   "value_en": "Get all three drums to the mixing bowl. These chemicals should combine to make a potent volcano powder weapon that we can use in our attack on the tan.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam046b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "太好了。中士会把塑料火山粉交给格里姆上校。现在得解决那支车队。",
+   "value_en": "Excellent. Sarge will deliver the Plastic Volcano Powder to Colonel Grimm. Now we have to take care of that convoy.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam047b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "把所有车队卡车都摧毁，上尉。",
+   "value_en": "Destroy all of the convoy trucks, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam048c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "太好了，上尉。让中士上机，然后用绞盘把那东西吊起来。",
+   "value_en": "Excellent, Captain. Get Sarge on board and then winch that thing up.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam049b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "干得好，上尉。把那东西吊起来交给中士。",
+   "value_en": "Good job, Captain. Winch that thing up and give it to Sarge.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam050c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "很好。现在把那东西交给中士。",
+   "value_en": "Great. Now deliver that to Sarge.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam051b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "抱歉，上尉，你被派去护送车队了。看来你要错过那场大戏。把部队放在桌上，你的一位战友会把他们送进最后那一仗。",
+   "value_en": "Sorry, Cap; you just pulled convoy duty. I guess you'll miss the big dance. Drop the troops on the desk; one of your buddies will fly them in for the final operation.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam052a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "你赶不上了！",
+   "value_en": "You're not going to make it!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam052c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "你赶不上的。",
+   "value_en": "You're not gonna make it.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam053c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "车队完了！现在穿传送门——格里姆上校马上要你过去！",
+   "value_en": "The convoy is finished! Now go through the portal -- Colonel Grimm needs you pronto!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam054b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "布莱德，是真的——格里姆上校被困住了，需要你帮忙。拦下那支车队，然后走传送门。",
+   "value_en": "Blade, it's true -- Colonel Grimm's trapped and needs your help. Stop the convoy and take the portal.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam054c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "布莱德，是真的。格里姆上校被困住了，需要你帮忙。拦下那支车队，然后走传送门。",
+   "value_en": "Blade, it's true. Colonel Grimm's trapped and needs your help. Stop the convoy and take the portal.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam054d.wav",
+   "speaker": "Sam",
+   "value_ch_used": "布莱德，是真的。格里姆上校被困住了，需要你帮忙。拦下那支车队，然后走传送门。",
+   "value_en": "Blade, it's true. Colonel Grimm's trapped and needs your help. Stop the convoy and take the portal.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam055a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "看来有机会跟棕军下盘围棋。这棋我以前下过；你得把空交叉点围起来才能赢。",
+   "value_en": "Looks like an opportunity to play Go against the Tan. I've played this board game before; you have to surround empty intersections to win.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam056c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "他在等你把石子射到棋盘上。",
+   "value_en": "He's waiting for you to shoot a stone onto the board.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam057b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，往自己的碗里射子就能过关。",
+   "value_en": "Shoot into your bowl to pass, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam058b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "平局，上尉。",
+   "value_en": "Tie game, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam059c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "抱歉，上尉。",
+   "value_en": "Sorry, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam060b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "那个你得留着。",
+   "value_en": "You need to hold on to that.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam061c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "任务还没完你就擅离职守！",
+   "value_en": "You went AWOL before finishing the mission!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam062c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，看你的雷达。",
+   "value_en": "Captain, look at your radar.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam063c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "飞得不错，上尉……！",
+   "value_en": "Nice flying, Captain...!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam064a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "注意气流。",
+   "value_en": "Be on the lookout for air currents.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam065b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "走错方向了，上尉！",
+   "value_en": "Wrong way, Captain!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam066a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "就是这样！",
+   "value_en": "That's it!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam066b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "就——是——这样……！",
+   "value_en": "Thaaat's it...!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam066c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "就是这样……！",
+   "value_en": "That's it...!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam067c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "那样可不聪明，上尉。",
+   "value_en": "That wouldn't be wise, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam068b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "找掩护。",
+   "value_en": "Take cover.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam069d.wav",
+   "speaker": "Sam",
+   "value_ch_used": "动起来，弟兄们。",
+   "value_en": "Move it out, boys.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam070b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "撤退！",
+   "value_en": "Fall back!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam071b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "集中精神，上尉。",
+   "value_en": "Stay focussed, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam072a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，记住你的目标！",
+   "value_en": "Captain, remember your objective!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam073b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "棕军在逃跑。",
+   "value_en": "Tan is on the run.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam074a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "棕军在撤退，上尉。",
+   "value_en": "Tan is retreating, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam075a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "追上他们，布莱德。",
+   "value_en": "Track them down, Blade.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam076b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "这不行，长官。",
+   "value_en": "You can't do that, sir.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam077b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "现在把那东西交给中士。",
+   "value_en": "Now take that to Sarge.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam078b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "快点，布莱德。",
+   "value_en": "Hurry, Blade.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam079a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "我想这不合规矩，长官。",
+   "value_en": "I believe that is not allowed, sir.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam080d.wav",
+   "speaker": "Sam",
+   "value_ch_used": "欢迎，布莱德上尉。你可以随意在训练场里飞。飞行的时候，我会指出直升机的一些重要功能，还会给几条有用的建议。",
+   "value_en": "Welcome, Captain Blade. Feel free to fly around the training area at your leisure. While you do, I will point out some important features of your helicopter and make a few other helpful suggestions.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam081c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "起飞很简单，用鼠标右键加速就行。",
+   "value_en": "To take off, simply accelerate using your right mouse button.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam082c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "升空之后，方向由鼠标指针控制。",
+   "value_en": "Once airborne, your directional heading is controlled by your mouse cursor.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam083c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "屏幕左上角的仪表是雷达。它会显示你的任务目标、着陆区，以及敌军士兵和车辆的位置。雷达外缘的指示灯会给出最近任务目标的方位。",
+   "value_en": "The instrument in the upper left corner of the on-screen display is your radar. It displays your mission objectives, landing zones and the locations of enemy troopers and vehicles. The light on the outer edge of your radar will give you the heading of your closest mission objective.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam084c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "装甲值显示在雷达上方。装甲耗尽，就全完了！",
+   "value_en": "Your armor meter is shown above your radar. If you run out of armor, it's all over!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam085d.wav",
+   "speaker": "Sam",
+   "value_ch_used": "开火时，把鼠标指针移到要打的目标上，按左键。",
+   "value_en": "To fire your weapon, move your mouse cursor over your desired target and press the left mouse button.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam086c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "投下信标可以指挥友军地面部队。如果投信标时你是着陆状态，附近的部队会试图登上你的直升机。",
+   "value_en": "Drop a beacon to direct friendly ground troops. If you are landed when you drop a beacon, nearby troops will attempt to board your chopper.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam087c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "布莱德上尉，你大概想把这些强化道具收起来。",
+   "value_en": "Captain Blade, you probably want to collect those power-ups.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam088b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "很好，上尉。屏幕左下角的按钮代表货舱里的强化道具。要用的时候，选中想要的那个，按左键。",
+   "value_en": "Excellent, Captain. The buttons at the bottom left of your screen represent those power-ups in your cargo bays. To use them, just select the one you want and press the left mouse button.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam089c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，飞过去让你的影子正对着那个着陆区，然后悬停一秒钟。",
+   "value_en": "Captain, just fly to position your shadow right over that landing zone and hover there for a second.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam090b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "好了长官，接下来靠你自己了。",
+   "value_en": "Okay sir, you're on your own now.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam091b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "你在训练场待得越久，难度就越大。",
+   "value_en": "The longer you spend in the training area, the more challenging it will become.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam092b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "玩得开心。总部通话结束。",
+   "value_en": "Have fun. HQ out.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam093c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "去收拾他们，布莱德上尉！",
+   "value_en": "Go get 'em, Captain Blade!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam094b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "安息吧，霍克中士。",
+   "value_en": "Rest in peace, Sergeant Hawk.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam095b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "中士没能回来！",
+   "value_en": "Sarge didn't make it back!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam096c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，中士牺牲了！",
+   "value_en": "Sarge is dead, Captain!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam097b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "抱歉上尉——中士阵亡了。",
+   "value_en": "Sorry, Captain - Sarge was killed in action.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam098b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉没能回来。",
+   "value_en": "Captain didn't make it.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam099c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "安息吧，上尉。",
+   "value_en": "Rest in peace, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam100c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉没能回来！",
+   "value_en": "Captain didn't make it back!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam101b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉阵亡了！",
+   "value_en": "Captain was killed in action!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam102b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，能听到吗？布莱德？请回答，布莱德上尉……",
+   "value_en": "Captain, do you read me? Blade? Come in, Captain Blade...",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam102e.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，能听到吗？布莱德！请回答！布莱德上尉！",
+   "value_en": "Captain, do you read me? Blade! Come in! Captain Blade!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam103a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "长官，一切还好吗？我们得让你回聚合物村。",
+   "value_en": "Sir, is everything okay? We need you back in Polymer Village.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam104a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "你必须救出我们的人，布莱德上尉……！",
+   "value_en": "You have to save our men, Captain Blade...!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam105b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，我们的伤亡数字越来越高了。",
+   "value_en": "Our casualty count is getting high, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam106d.wav",
+   "speaker": "Sam",
+   "value_ch_used": "再这么损失部队，我们赢不了。",
+   "value_en": "We can't win this if we keep losing troops.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam107c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，我们最多只能损失一辆车。",
+   "value_en": "We cannot lose more than one vehicle, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam108a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "我们刚损失一辆车！再损失就没法打了！",
+   "value_en": "We just lost a vehicle! Any more and we can't pull this off!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam109b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "别让村子被毁掉，上尉。",
+   "value_en": "Do not allowed the village to be destroyed, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam110a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "你必须保住村子，上尉。",
+   "value_en": "You must save the village, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam111b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "被毁的房屋太多了。",
+   "value_en": "Too many buildings have been damaged.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam112a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "你的任务目标没变。回到着陆区，用信标把地面部队装上直升机。",
+   "value_en": "Your mission objective has not changed. Return to the landing zone and use the beacon to load ground troops on to your 'copter.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam113b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "抱歉长官，照我说的做是唯一的学法。等你准备好再来一次。",
+   "value_en": "I'm sorry, sir, following my instructions is the only way to learn. Come back when you're ready to try again.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam114a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "很好。屏幕左下角的按钮代表你直升机上的士兵。",
+   "value_en": "Excellent. The buttons at the bottom left of your screen represent those men in your 'copter.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam115c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "人已上机，你有新的任务目标。把这些部队运到雷达标示的着陆区，然后把他们放下。",
+   "value_en": "Now that the men are on board, you have a new mission objective. Fly those troops to the LZ indicated on radar, and drop them off.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam116b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "要放下部队，先用鼠标点选你要放的那名士兵的按钮，然后点屏幕右下角的“抛出货物”按钮。",
+   "value_en": "To unload your troops, select the one you want by clicking on his button with your mouse cursor. Then click on the 'Eject Cargo' button located in the lower right corner of the on-screen display.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam117c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "下一个目标是打靶。西边有一些棕军靶子。用前射机炮摧毁它们。",
+   "value_en": "Your next objective is target practice. To the west there are some Tan targets. Use your forward gun to destroy them.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam118c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "要在战斗中发挥最大威力，你得学会收集和使用强化道具。",
+   "value_en": "To be most effective in combat, you will need to learn to collect and use power-ups.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam119b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "雷达会再次把你引到强化道具的位置。集齐三件新武器就回来。",
+   "value_en": "Once again, your radar will guide you to power-up locations. Return here when you have collected three new weapons.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam120a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "很好，上尉。屏幕左下角的按钮代表货舱里的强化道具。要选用哪个，就用鼠标点那个按钮。",
+   "value_en": "Excellent, Captain. The buttons at the bottom left of your screen represent those power-ups in your cargo bay. To select the one you want to use, click on the desired button with your mouse cursor.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam121a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，有两个强化道具区——一个在南边，一个在东边。每个区各把三件都收齐。",
+   "value_en": "There are two power-up areas, Captain - one to the south of here and one to the east. Collect all three power-ups from each area.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam122b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，棕军车辆过来了，这回他们会还击！",
+   "value_en": "Tan units vehicles are arriving, Captain, and this time they are going to shoot back!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam123c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "要打地空协同，用信标把地面部队召到你所在的位置。",
+   "value_en": "For a coordinated ground and air strike, use the beacon to summon ground troops to your location.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam124b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "受伤了记得捡装甲强化道具。",
+   "value_en": "Remember to pick up armor power-ups if you are damaged.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam125a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "好了长官，对付棕军该会的你都会了。立刻去报到执行第一个任务。",
+   "value_en": "Okay sir, you have all the skills you need to take on the Tan. Report for your first mission immediately.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam126b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，要放下你吊起的东西，点“下放绞盘”按钮。如果开了 HUD 按钮，这个按钮会出现在屏幕右下角。",
+   "value_en": "To drop items that you have picked up, Captain, click on the 'Lower Winch' button. If your HUD buttons are on, this button will appear in the lower right corner of the on-screen display.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam127a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "这是坏消息。总统带着我们直升机的机密图纸！绝不能让普拉斯特拿到！浴缸里有一道传送门，能把你送到总统山间别墅附近。穿过去！到了之后突击队会跟你会合。",
+   "value_en": "That's bad news. The President is carrying our secret helicopter plans! We cannot let Plastro get his hands on them! There is a portal in the bathtub that will bring you close to the President's mountain retreat. Get through it! Our strike team will meet you when you get there.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam128a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "你觉得窗户下面那个喷头会不会有用？",
+   "value_en": "Do you think that sprinkler under the window could be useful?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam129a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "试着打开水龙头。那个喷头喷出的水柱也许能把你顶到窗台上。",
+   "value_en": "Try turning on the water faucet. A jet of water from that sprinkler might be able to get you up to that window ledge.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam130a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "和侦察队会合，拿下那座桥。",
+   "value_en": "Rendezvous with the Recon team and secure the bridge.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam131e.wav",
+   "speaker": "Sam",
+   "value_ch_used": "有埋伏！撤退！撤退！",
+   "value_en": "It's an ambush! Fall back! Fall back!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam132b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，那些步兵听你调遣。把他们投到敌后，取得战术优势。",
+   "value_en": "Those infantrymen are at your command, Captain. Drop them behind enemy lines for a tactical advantage.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam133c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "车队到了。他们运的是营救总统急需的装备，保护好他们，带他们往北去村子。",
+   "value_en": "The convoy has arrived. They are carrying equipment vital to rescuing the president, so keep them safe and lead them north to the village.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam134a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，他们打掉了我们一辆卡车。要是最后一辆也没了，任务就完了！",
+   "value_en": "They took out one of our cargo trucks, Captain. If we lose the last one, the mission will be lost!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam135b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，太多关键装备随卡车一起毁了。我们输了。",
+   "value_en": "Too much vital equipment was destroyed with our trucks, Captain. We've lost.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam136d.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，总统已到着陆区。你在哪儿？",
+   "value_en": "The president at LZ, Captain. Where are you?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam137c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "那名间谍有重要情报。杀了他是个坏主意。",
+   "value_en": "That spy had vital information. Killing him was a bad idea.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam138a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "棕军正在桌上造化学武器。把中士和他的部下送上去，让他们控制那片区域。",
+   "value_en": "The Tan are building a chemical weapon on the desk. Get Sarge and his men up there so they can secure the area.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam139a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "按 F1 看地图，了解详情。",
+   "value_en": "Check your F1 map for more information.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam140b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "追上那些棕军，布莱德。",
+   "value_en": "Track those Tan down, Blade.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam141a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "把三份化学品都拿到，倒进桌上的容器里。这些化学品混起来应该能制成强力的火山粉武器，供我们攻打棕军时用。",
+   "value_en": "Get all three chemicals and drop them in the container on the desk. These chemicals should combine to make a potent volcano powder weapon that we can use in our attack on the Tan.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam142a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，把那份化学品倒进容器。",
+   "value_en": "Drop that chemical into the container, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam143c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "上尉，马上把你的人放到了桌上的着陆区！",
+   "value_en": "Captain, drop off your men at the LZ on the desk right now!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam144b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "新命令！摧毁那些卡车之后，你还要把所有变异昆虫都清干净。祝你好运！",
+   "value_en": "New orders! After you destroy those cargo trucks, you need to eliminate all of the mutant insects as well. Good luck!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam145a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "你还没把虫子杀干净！",
+   "value_en": "YOU HAVEN'T DESTROYED ALL THE INSECTS!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam146c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "欢迎，布莱德上尉。我要一步步带你过一遍接下来任务里需要的所有技能。请仔细听。",
+   "value_en": "Welcome, Captain Blade. I'm going to run you, step by step, through all of the skills you will need in your upcoming missions. Please pay close attention.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam147b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "做这些练习时，请确保 HUD 按钮是开着的。开启后这些按钮会出现在屏幕下方两角。",
+   "value_en": "During these exercises, please make sure you have your HUD buttons on. When active, these buttons will appear in the lower corners of the on-screen display.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam148c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "随时按键盘上的 F1 键，可以查看当前目标和其他重要数据。",
+   "value_en": "Press your keyboard's F1 key at any time to see your current objectives and other vital data.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam149c.wav",
+   "speaker": "Sam",
+   "value_ch_used": "屏幕左上角的仪表是雷达。它显示你的任务目标、着陆区，以及士兵和车辆的位置。",
+   "value_en": "The instrument in the upper left corner of the on-screen display is your radar. It displays your mission objectives, landing zones, and the locations of troopers and vehicles.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam150a.wav",
+   "speaker": "Sam",
+   "value_ch_used": "雷达上的任务目标会闪黄光。如果目标超出雷达范围，外缘的方位指示灯会给出该目标的方位。",
+   "value_en": "Mission objectives on your radar will flash yellow. If your objective is outside the range of your radar, a directional indicator light, on the outer edge, will give you that objective's heading.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam151b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "如果有多个任务目标，方位指示灯会对准最近的那个。",
+   "value_en": "If you have more than one mission objective, the directional indicator will point to the closest one.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam152b.wav",
+   "speaker": "Sam",
+   "value_ch_used": "点屏幕右下角的“投放信标”按钮，把友军地面部队调到你所在的位置。",
+   "value_en": "Click on the 'Drop Beacon' button, located in lower right corner of the on-screen display, to direct friendly ground troops to your location.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sam153d.wav",
+   "speaker": "Sam",
+   "value_ch_used": "你的目标是把附近所有部队装上直升机。做法很简单：着陆时投一个信标。",
+   "value_en": "Your objective is to load all of those nearby troops on to your 'copter. To do so, simply drop a beacon while you are landed.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar001f.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "黄色真不是我的颜色。",
+   "value_en": "Yellow just isn't my color.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar002c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "我派弟兄们去房子那边侦察了。咱们把这铁鸟升空吧。",
+   "value_en": "I sent my men on recon, toward the house. Let's get this bird airborne.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar003a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "布莱德，我得留在机上。",
+   "value_en": "I need to stay on board, Blade.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar004a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "走，去把那帮兵接回来！",
+   "value_en": "Let's go get those soldiers!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar005a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "好了上尉，我最后一个兵一定离房子更近。往那边飞。",
+   "value_en": "Okay Captain, my last man must be closer to the house. Let's head over there.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar006b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "好，现在把那个兵找出来！",
+   "value_en": "Okay. Now, let's find that soldier!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar007c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "他可能带着重要情报。",
+   "value_en": "He may have vital intel.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar008a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "上尉，我那两个弟兄得一起进去。",
+   "value_en": "I'm gonna need both of my guys in there, Cap'n.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar009b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "上尉……我是中士……你到底在哪儿？完毕。",
+   "value_en": "Captain... this is Sarge... where the heck are ya? Over.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar010c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "总部，我是中士。我们在那栋房子里发现了一处巨大的棕军基地。",
+   "value_en": "HQ, this is Sarge. We've discovered a huge Tan base inside that house.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar011a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "我们奉命要进那栋房子。能捎我们一程吗？",
+   "value_en": "We've got orders to get inside that house. Think you could give us a lift?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar012b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "哦，好啊！",
+   "value_en": "Oh, yeah!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar013a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "没问题。快把我们送上去，我们把它端了。",
+   "value_en": "No problem. Just get us up there fast - we'll take it out.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar014a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "布莱德，我们得去那个着陆区。",
+   "value_en": "Blade, we need to get to that LZ.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar015d.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "快点，上尉！我们得赶到那个着陆区。",
+   "value_en": "Hurry it up, Captain! We've got to get to that landing zone.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar016d.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "我们要是不能尽快赶到那个着陆区，就全完了。",
+   "value_en": "If we don't get to that landing zone ASAP, it's all over.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar017b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "三……",
+   "value_en": "Three...",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar018b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "二……",
+   "value_en": "Two...",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar019b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "一……",
+   "value_en": "One...",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar020b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "目标达成，上尉。",
+   "value_en": "Objective accomplished, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar021c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "现在把我们送到地面上的着陆区，还有棕军要收拾。",
+   "value_en": "Now get us to the landing zone on the floor; we have Tan to kill.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar022b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "布莱德，把我们送到咖啡桌上。",
+   "value_en": "Blade, get us up to the coffee table.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar023h.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "撑住，上尉！我们急需支援！",
+   "value_en": "Hold it, Captain! We need support, fast!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar024c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "好了布莱德。总部要我们把这一片控制住。我们得找到并摧毁那些气球的来源，把沙发上的炮兵清干净，再干掉棕军所有装甲车辆。还有情报说那个蓝军间谍就在这儿兜风，他们急着要人。准备好热闹一下了吗？",
+   "value_en": "Okay, Blade. HQ wants this area secured. We must find and destroy the source of those balloons, clear the sofa of artillery, and destroy all of Tan's armored vehicles. And intel reports the Blue spy is joyriding here somewhere. They want him pronto. Ready for some fun?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar025c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "伤亡太大了！撤退，撤退！",
+   "value_en": "We are taking too many casualties! Fall back, fall back!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar026a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "他们把我们团团围住了。上尉，出把力，不然我们都完了！",
+   "value_en": "They are all over us. Pull your weight, Captain, or we're done for!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar027a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "他们跑了。上尉，追上去干掉他们。",
+   "value_en": "We have them on the run. Track them down and take 'em out, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar028b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "好哇——！飞成这样，该给你发塑料十字勋章。",
+   "value_en": "OOOOHHRAAA! Flying like that deserves the Plastic Cross.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar029d.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "化学桶几乎全被他们抢走了。",
+   "value_en": "They've taken almost all the chemical drums.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar030b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "看我找到谁了。灰军，化学品在哪儿？",
+   "value_en": "Look who I found. Where are the chemicals, Grey?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar031b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "干得好。",
+   "value_en": "Nice work.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar032a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "弟兄们刚发现一支棕军车队。让他们尝尝厉害。",
+   "value_en": "The boys just spotted a tan convoy. Let's give them hell.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar033c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "当绿军可不容易。",
+   "value_en": "It's not easy being Green.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar034a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "弟兄们，我有个主意。抱歉了灰军，我们得借你的衣服用用。",
+   "value_en": "Fellows, I've got an idea. Sorry, Grey; we're gonna need your clothes.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar035b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "什么鬼——？！",
+   "value_en": "What the--?!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar036e.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "把那只鞋附近的兵清掉，然后把我送到鞋后面那个着陆区。我偷偷摸进去把守卫解决掉。",
+   "value_en": "Kill the troops near that shoe and get me to that landing zone behind it. I'll sneak in and eliminate the guards.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar037a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "守卫都倒下了！我要冲去着陆区，掩护我！",
+   "value_en": "The guards are down! Cover me while I make a run for the landing zone!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar038b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "这情况看起来不太妙。",
+   "value_en": "This doesn't look so good.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar039c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "谢了上—— 什么……？！弟兄们刚发现一支棕军车队！",
+   "value_en": "Thanks, Ca-- What...?!? The boys just spotted a Tan convoy!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar040a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "一份假情报把我们引到这座该死的岛上，现在棕军把我们钉在这儿了。",
+   "value_en": "A bogus piece of intel brought us to this damn island, and now the Tan have us pinned down here.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar041c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "我这帮弟兄好像每天都在跟新出现的巨型变异爬虫打。",
+   "value_en": "And my guys seem to be fighting a new breed of giant mutant creepy-crawly every day!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar042d.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "上尉，我的人顶不住这些虫子多久了。我们得赶到那些船上去！",
+   "value_en": "My boys can't hold off these bugs much longer, Captain. We need to get to those boats!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar043b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "虫子……太……多了……！",
+   "value_en": "Too... many... bugs...!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar044c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "上尉，我们在要塞这边需要点空中支援。",
+   "value_en": "We could use some air support back here at the citadel, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar045c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "上尉，这就是那批塑料火山粉。我们还不确定它到底有什么用，但到时候你肯定知道该怎么用。",
+   "value_en": "Captain, here's that Plastic Volcano Powder. We're still not sure exactly what it does, but I'm sure you'll know when it's time.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar046b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "桥断了！只能指望已经过河的那帮弟兄了。",
+   "value_en": "The bridge is out! We'll just have to count on the guys who already made it over.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar047f.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "上尉，格里姆上校死了！这是一场屠杀！我们完了！",
+   "value_en": "Colonel Grimm is dead, Captain! It's a massacre! We're doomed!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar048c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "谢了！",
+   "value_en": "Thanks!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar049c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "谢谢你，上尉。",
+   "value_en": "Thank you, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar050b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "趴下！",
+   "value_en": "Hit the deck!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar051b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "什么……？",
+   "value_en": "What the...?",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar052c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "我中弹了！",
+   "value_en": "I'm taking fire!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar053f.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "撑不……住了……",
+   "value_en": "Can't...take much more...",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar054b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "啊，这下舒服多了。",
+   "value_en": "Ahhh, that takes the sting out of it.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar055b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "我的老天爷！",
+   "value_en": "Holy hand grenades!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar056a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "有弟兄倒下了！",
+   "value_en": "Trooper down!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar057a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "我准备撤离这片区域了。",
+   "value_en": "I'm ready to leave this sector.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar058a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "等候命令。",
+   "value_en": "Awaiting orders.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar059b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "请求空中支援。",
+   "value_en": "Requesting air support.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar060b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "现在不行，上尉！",
+   "value_en": "Not now, Captain!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar061c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "我们这儿在挨打！",
+   "value_en": "We're under fire here!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar062c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "这边越来越热了。",
+   "value_en": "Things are getting hot here.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar063c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "我们这儿需要掩护！",
+   "value_en": "We need some cover here!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar064b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "上尉，帮我们一把。",
+   "value_en": "Help us out here, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar065a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "他们一批接一批地来！",
+   "value_en": "They just keep coming!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar066b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "布莱德，我们急需支援！",
+   "value_en": "Blade, we need support fast!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar067f.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "布莱德，我们得马上撤离！",
+   "value_en": "Blade, we need evac. now!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar068a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "上尉，我看见我的兵在下面。用你的信标把他引出来，带回着陆区。",
+   "value_en": "I see my trooper down there, Captain. Use your beacon to direct him out and back to the LZ.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Sar070x.WAV",
+   "speaker": "Sarge",
+   "value_ch_used": "我们伤亡太大了！",
+   "value_en": "We're taking too many casualties!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro001c.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "啊，舒服多了。",
+   "value_en": "Ah, that's better.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro002a.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "谢了，我正需要。",
+   "value_en": "Thanks, I needed that.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro003c.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "太好了。",
+   "value_en": "Excellent.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro004a.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "行，好。",
+   "value_en": "Good deal.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro005c.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "太可怕了。",
+   "value_en": "The Horror",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro006b.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "哦，好啊。",
+   "value_en": "Oh, yeah.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro007f.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "上尉，帮帮我们！",
+   "value_en": "Help us, Captain!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro008a.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "耶！",
+   "value_en": "Yeah!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro009c.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "我们快顶不住了！",
+   "value_en": "We're being overrun.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro010f.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "他们人太多了！",
+   "value_en": "There are too many of them!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro011c.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "请求撤离。",
+   "value_en": "Requesting evac.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro012c.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "上尉，请求支援。",
+   "value_en": "Requesting assistance, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro013b.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "谢谢你，上尉。",
+   "value_en": "Thanks, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro014a.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "布莱德，你救了大家。",
+   "value_en": "You saved the day, Blade.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro015b.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "他们一批接一批地来。",
+   "value_en": "They just keep coming.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro016b.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "又来了更多。",
+   "value_en": "There are more coming.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro017a.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "糟了！",
+   "value_en": "Oh no!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro017b.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "糟了！",
+   "value_en": "Oh no!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro017c.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "不！",
+   "value_en": "No",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro018c.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "告诉我老婆我爱她。",
+   "value_en": "Tell my wife I love her.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro019b.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "上尉，别开枪。",
+   "value_en": "No shoots, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro020a.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "不！",
+   "value_en": "NO!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro021b.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "不——！别这样——！",
+   "value_en": "Nooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro022c.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "哎哟——！",
+   "value_en": "OOOOOOOH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro022f.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "哎哟！",
+   "value_en": "OOOH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro022g.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "哎哟！",
+   "value_en": "OOF",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro022m.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "哎哟，好疼！",
+   "value_en": "UGH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro022o.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "哎呀！",
+   "value_en": "Ah!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro023i.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "哎哟！",
+   "value_en": "OH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro023k.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "哎哟，疼！",
+   "value_en": "UGH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro023m.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "哎哟，好疼！",
+   "value_en": "UGH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro024d.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "啊——！救命——！",
+   "value_en": "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro024i.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "啊——！别！",
+   "value_en": "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro026a.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "耶！",
+   "value_en": "YEAH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro026b.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "好耶！",
+   "value_en": "ALRIGHT!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro026c.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "耶！",
+   "value_en": "YEAH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro026d.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "好，好耶！",
+   "value_en": "OKAY, ALRIGHT!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro026e.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "耶！",
+   "value_en": "YEAH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro026f.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "耶！",
+   "value_en": "YEAH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro026g.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "耶！",
+   "value_en": "YEAH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro026h.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "好耶——！",
+   "value_en": "ALRIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro026i.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "好耶——！",
+   "value_en": "ALRIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro026j.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "耶！",
+   "value_en": "YEAH!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "Tro026stub.wav",
+   "speaker": "GreenTrooper",
+   "value_ch_used": "弟兄们！",
+   "value_en": "Soldiers!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "blu001c.wav",
+   "speaker": "BlueSpy",
+   "value_ch_used": "别开枪！我给你们情报！",
+   "value_en": "Don't shoot me! I'll give you information!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "blu002f.wav",
+   "speaker": "BlueSpy",
+   "value_ch_used": "你们总统正在山间别墅参加一场秘密外交会议。棕军已经出动去抓他了。",
+   "value_en": "Your president is attending a secret diplomatic meeting at a mountain retreat. The TAN are already moving to capture him.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "capt108d.wav",
+   "speaker": "Captain",
+   "value_ch_used": "那些弟兄不能白白牺牲！我们要完成这次任务，让棕军付出代价！但首先，我得想办法把桥重建起来。",
+   "value_en": "Those men won't have given their lives for nothing! We are going to complete this mission and make the Tan pay! But first, I've got to find a way to rebuild that bridge.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "capt109e.wav",
+   "speaker": "Captain",
+   "value_ch_used": "再来一下就行。",
+   "value_en": "One more should do it.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "capt110b.wav",
+   "speaker": "Captain",
+   "value_ch_used": "哈！我赢了！",
+   "value_en": "Ha! I win!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "capt111a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "我们后会有期！",
+   "value_en": "We'll meet again!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "capt112a.wav",
+   "speaker": "Captain",
+   "value_ch_used": "得腾点地方。",
+   "value_en": "Need to make room.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "capt113h.wav",
+   "speaker": "Captain",
+   "value_ch_used": "快好了。",
+   "value_en": "Almost done.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "capt114d.wav",
+   "speaker": "Captain",
+   "value_ch_used": "好，好啊。",
+   "value_en": "Well, well.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "gry001d.wav",
+   "speaker": "GreySpy",
+   "value_ch_used": "化学品就放在地上。一份有密码装置看守。另一份在彩色垫子上的帐篷里，但红色和黄色区域都布了绊线。你要敢乱动，守卫就会把它炸掉！",
+   "value_en": "(notused)The chemicals are on the floor. One is guarded by a combination device. The other is in a tent on the colored mat, but the red and yellow areas are tripwired. And the guards will blow it up if you try anything!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "sam154dc.wav",
+   "speaker": "Sam",
+   "value_ch_used": "你还有活儿没干完……！上尉，往自己的碗里射子。",
+   "value_en": "You've still got work to do...! Shoot into your bowl, Captain.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "sar069a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "来吧上尉，那帮弟兄正等着我们去接。",
+   "value_en": "Come on, Captain. Those boys are waiting for us to pick them up!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "sar070a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "上尉，把我们放下之前，也许该让我们先帮你把马桶顶上那座碉堡解决掉。",
+   "value_en": "Captain, before you drop us off, maybe you should let us take care of that bunker on top of the toilet for ya.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "sar071f.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "我的天……！上尉，我们急需支援！",
+   "value_en": "Holy...! Captain, we're gonna need support, fast!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "sar072c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "上尉，我们得上那张桌子。",
+   "value_en": "Captain, we have to get up to that desk.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "sar073b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "等等，布莱德……",
+   "value_en": "(spots something) Hold on, Blade....",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "sar074c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "一定有办法到那个帐篷去……我们得用隐蔽手段。",
+   "value_en": "There has to be a way to get to that tent... we'll need to use stealth.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "sar075c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "我从要塞一批一批往着陆区送人。你得把他们接上，放到驱逐舰上。",
+   "value_en": "I'll send one squad at a time from the citadel to the LZ. You need to pick them up and drop them off on the destroyers.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "sar076d.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "我们一暴露，那些该死的虫子就会扑上来。上尉，别让我的人变成虫子的口粮！",
+   "value_en": "Those damn bugs will swarm as soon as we are exposed. Don't let my men become bug food, Captain!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "sar077b.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "等其他人都安全了，我最后一个跑去着陆区。",
+   "value_en": "When everyone else is safe, I'll run to the LZ last.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "sar078a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "他们出发了！保护那个小队，把他们送到船上。",
+   "value_en": "There they go! Protect that squad and get them to the boats.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "sar079a.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "上尉，又一支队伍出发了！",
+   "value_en": "Another team away, Captain!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "sar080c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "好了上尉，我正往海滩去！把我接上，咱们撤！",
+   "value_en": "Okay, Captain, I'm heading to the beach! Pick me up and let's get out of here!",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  },
+  {
+   "wav": "sar081c.wav",
+   "speaker": "Sarge",
+   "value_ch_used": "一定有办法到那个帐篷去。这事我们得动点脑子。",
+   "value_en": "There has to be a way to get to that tent. We'll need to be smart about this.",
+   "duration_s": null,
+   "gen_seconds": null,
+   "worker": null
+  }
+ ]
+}

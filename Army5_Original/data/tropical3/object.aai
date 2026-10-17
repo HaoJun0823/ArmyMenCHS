@@ -1,0 +1,89 @@
+#flightschool - object.aai
+
+ELEVATION_FACTOR	1
+FLIGHTHEIGHT_FACTOR	5
+
+#Item Flags
+# ITEMFLAG_MAP				0x00000001	(1)
+# ITEMFLAG_AIRMASK			0x00000002	(2)
+# ITEMFLAG_VISBLOCK			0x00000100	(256)
+# ITEMFLAG_ORDERHEIGHT  	0x00000400	(1024)
+# ITEMFLAG_TARGETTOP		0x00002000
+# ITEMFLAG_SELFMASK			0x00020000
+# ITEMFLAG_LANDINGPAD		0x00040000	(262144)
+# ITEMFLAG_KEEPCOLLIDE		0x00080000
+# ITEMFLAG_NOHIT			0x00800000
+# ITEMFLAG_WINCHABLE		0x01000000	(16777216)
+# ITEMFLAG_VARIABLEORDER	0x04000000	(67108864)
+
+
+#ObjType		SubType	Ste	Lnk	Fl				HP	Hgt	Mv	Ord		Slp		Arm	Vis	Crush
+Miscellaneous	180		0	0	0x00002001     	1	10	0	2		0.0		299	1	0
+
+Miscellaneous	179		0	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		1	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		2	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		3	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		4	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		5	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		6	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		7	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		8	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		9	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		10	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		11	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		12	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		13	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		14	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		15	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		16	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+Miscellaneous	179		17	0	0x00000001     	-1	1	15	1		0.0		0	1	0
+
+#ObjType		SubType	Ste	Lnk	Fl				HP	Hgt	Mv	Ord		Slp		Arm	Vis	Crush ShootThru Explo
+#destroyer south
+Miscellaneous	501		0	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		1	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		2	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		3	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		4	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		5	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		6	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		7	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		8	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		9	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+Miscellaneous	501		10	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	501		5
+
+#destroyer east
+Miscellaneous	503		0	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		1	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		2	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		3	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		4	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		5	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		6	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		7	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		8	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		9	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5
+Miscellaneous	503		10	0	0x00CA2001		-1	5	0	1000	0.0		0	1	0		0
+	EXTRA	Miscellaneous	503		5

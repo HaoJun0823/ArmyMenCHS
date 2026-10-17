@@ -1,0 +1,35 @@
+// bathroom3.txt
+// David Chang
+
+
+//***MISSION 3 SETUP***//
+
+IF startup3 THEN
+	setmissioninfo br13,
+	triggerdelay 100 evtshowmiss3,
+	setnpc captain 1,
+	setaimode captain ignore,
+	setvar tempx getx captain,
+	setvar tempy gety captain,
+	order captain goto (refvar tempx, refvar tempy) inmode ignore,
+	triggerdelay 1000 evtTimer	// bound to be a little inaccuracy. see script1
+	
+IF evtshowmiss3 butnot evtmissionlost THEN
+	setnpc captain 1,
+	setmissioninfo br13,
+	setaimode captain ignore,
+	playtalkinghead 127 // HQ, we have a situation. Tan guerillas are on the move to capture the president.
+
+	if inorder evtshowmiss3 talkingheaddone captain then
+		trigger evtmorechat
+
+	if evtMorechat butnot evtmissionlost then
+		setnpc captain 1,
+		setaimode captain ignore,
+		playtalkinghead 132 //That's bad news. The President is carrying our secret helicopter plans! We cannot let Plastro get his hands on them! etc
+// was 128: Right, Captain. There is a portal that will take you close to the president's mountain retreat. Get through it! Then rendezvous with the strike team.
+
+	if inorder evtMorechat talkingheaddone captain then
+		setnpc captain 0
+
+

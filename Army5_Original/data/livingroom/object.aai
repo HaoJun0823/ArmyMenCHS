@@ -1,0 +1,449 @@
+ELEVATION_FACTOR	2
+FLIGHTHEIGHT_FACTOR	2
+
+#Item Flags
+# ITEMFLAG_MAP				0x00000001	(1)
+# ITEMFLAG_AIRMASK			0x00000002	(2)
+# ITEMFLAG_VISBLOCK			0x00000100	(256)
+# ITEMFLAG_ORDERHEIGHT  Horizontal		0x00000400	(1024)
+# ITEMFLAG_TARGETTOP			0x00002000
+# ITEMFLAG_SELFMASK			0x00020000
+# ITEMFLAG_LANDINGPAD			0x00040000	(262144)
+# ITEMFLAG_KEEPCOLLIDE			0x00080000
+# ITEMFLAG_NOHIT			0x00800000
+# ITEMFLAG_WINCHABLE			0x01000000	(16777216)
+# ITEMFLAG_VARIABLEORDER		0x04000000	(67108864)
+
+#Obj Type		SubT		Ste	Lnk 		Fl	HP	Hgt	Mv	Ord	Slp	Arm	Vis
+	
+#blue car
+Fence			010		0	1	0x01020001	-1	30	0	1000	0.0	10	1
+Fence			010		1	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		2	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		3	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		4	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		5	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		6	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		7	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		8	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		9	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		10	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		11	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		12	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		13	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		14	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		15	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		16	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		17	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		18	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		19	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		20	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		21	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		22	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		23	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		24	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		25	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		26	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		27	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		28	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		29	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		30	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		31	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		32	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		33	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		34	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		35	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		36	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		37	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		38	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		39	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		40	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		41	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		42	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		43	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		44	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		45	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		46	1	0x01020001	-1	30	0	1000	0.0	0	1
+Fence			010		47	1	0x01020001	-1	30	0	1000	0.0	0	1
+
+#Obj Type		SubT		Ste	Lnk 	Fl		HP	Hgt	Mv	Ord	Slp	Arm	Vis
+
+#red car
+Fence			011		0	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		1	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		2	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		3	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		4	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		5	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		6	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		7	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		8	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		9	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		10	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		11	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		12	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		13	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		14	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		15	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		16	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		17	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		18	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		19	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		20	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		21	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		22	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		23	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		24	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		25	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		26	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		27	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		28	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		29	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		30	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		31	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		32	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		33	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		34	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		35	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		36	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		37	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		38	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		39	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		40	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		41	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		42	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		43	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		44	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		45	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		46	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		47	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		48	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		49	0	0x00000001	-1	30	0	1000	0.0	0	1
+Fence			011		50	0	0x00000001	-1	30	0	1000	0.0	0	1
+
+#Obj Type		SubT		Ste	Lnk 	Fl		HP	Hgt	Mv	Ord	Slp	Arm	Vis
+
+#taba
+Miscellaneous		100		0	0	0x00022401	-1	16	0	1000	0	0	1
+	EXTRA	Miscellaneous	100	170		
+
+#tabb
+Miscellaneous		110		0	0	0x00022401	-1	16	0	1000	0	0	1
+	EXTRA 	Miscellaneous	110	170
+
+#tableleg
+Miscellaneous		111		0	0	0x00020003	-1	90	15	1000	0.3	0	1
+
+#leftarm
+Miscellaneous		150		0	0	0x00022001	-1	105	0	1000	0	0	1
+	EXTRA 	Miscellaneous	150	1
+
+#rightarm
+Miscellaneous		151		0	0	0x00022001	-1	105	0	1000	0	0	1
+	EXTRA 	Miscellaneous	151	1
+
+#Right cushion
+Miscellaneous		152		0	0	0x00022001	-1	105	0	900	0	0	1
+	EXTRA 	Miscellaneous	152	1
+
+#Center cushion
+Miscellaneous		153		0	0	0x00022001	-1	105	0	900	0	0	1
+	EXTRA 	Miscellaneous	153	1
+
+#Left cushion
+Miscellaneous		154		0	0	0x00022001	-1	105	0	1000	0	0	1
+	EXTRA 	Miscellaneous	154	1
+
+#Right Back
+Miscellaneous		155		0	0	0x00022001	-1	105	0	1000	0	0	1
+	EXTRA 	Miscellaneous	155	1
+
+#Center Back
+Miscellaneous		156		0	0	0x00022001	-1	105	0	1000	0	0	1
+	EXTRA 	Miscellaneous	156	1
+
+#Left Back
+Miscellaneous		157		0	0	0x00022001	-1	105	0	1000	0	0	1
+	EXTRA 	Miscellaneous	157	1
+
+#stereo
+Miscellaneous		200		0	0	0x00020001	-1	10	15	1001	0	0	1
+
+#oscillating fan
+Miscellaneous		250		0	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		1	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		2	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		3	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		4	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		5	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		6	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		7	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		8	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		9	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		10	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		11	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		12	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		13	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		14	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		15	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		16	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		17	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		18	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		19	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		20	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		21	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		22	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		23	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		24	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		25	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		26	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		27	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		28	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		29	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		30	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		31	0	0x00020003	-1	100	0	1001	0	0	1
+Miscellaneous		250		32	0	0x00020003	-1	100	0	1001	0	0	1
+#fanbase
+Miscellaneous		251		0	0	0x00020101	-1	32	15	1000	0	0	1
+
+#fancord
+Miscellaneous		252		0	0	0x00000001	-1	1	0	999	0	0	1
+
+#Fan Buttondown
+Miscellaneous		253		0	0	0x00022601	-1	33	15	1000	0	0	1
+
+#Fan Buttondown Invisible
+Miscellaneous		254		0	0	0x00022401	-1	33	15	1000	0	0	1
+
+#yellowidle1
+Miscellaneous		260		0	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		260		1	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		260		2	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		260		3	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		260		4	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		260		5	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		260		6	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		260		7	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		260		8	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		260		9	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		260		10	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		260		11	0	1		-1	32	15	1000	0	0	1
+
+#redidle1
+Miscellaneous		261		0	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		261		1	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		261		2	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		261		3	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		261		4	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		261		5	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		261		6	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		261		7	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		261		8	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		261		9	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		261		10	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		261		11	0	1		-1	32	15	1000	0	0	1
+
+#blueidle1
+Miscellaneous		262		0	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		262		1	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		262		2	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		262		3	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		262		4	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		262		5	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		262		6	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		262		7	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		262		8	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		262		9	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		262		10	0	1		-1	32	15	1000	0	0	1
+Miscellaneous		262		11	0	1		-1	32	15	1000	0	0	1
+
+#vhs
+Miscellaneous		300		0	0	0x00000401	-1	10	15	-27000	0	0	1
+
+#cd
+Miscellaneous		350		0	0	0x00000401	-1	0	15	-14000	0	0	1
+
+#controller1
+Miscellaneous		400		0	0	0x00020001	20	14	15	1000	0	20	1
+Miscellaneous		400		1	0	0x00020001	20	14	15	1000	0	10	1
+Miscellaneous		400		2	0	0x00020001	-1	14	15	1000	0	0	1
+
+#controller2
+Miscellaneous		401		0	0	0x00020001	20	14	15	1000	0	20	1
+Miscellaneous		401		1	0	0x00020001	20	14	15	1000	0	10	1
+Miscellaneous		401		2	0	0x00020001	-1	14	15	1000	0	0	1
+
+#Slot car cord1
+Miscellaneous		402		0	0	0x00000001	-1	1	0	999	0	0	1
+
+#Slot car cord2
+Miscellaneous		405		0	0	0x00000001	-1	1	0	999	0	0	1
+
+#slottrackright
+Miscellaneous		410		0	0	0x00020001	-1	14	15	1001	0	20	1
+Miscellaneous		410		1	0	0x00020001	-1	14	15	1000	0	10	1
+
+#slottrackleft
+Miscellaneous		411		0	0	0x00020001	-1	14	15	1001	0	20	1
+Miscellaneous		411		1	0	0x00020001	-1	14	15	1000	0	10	1
+
+#bcup
+Miscellaneous		500		0	0	0x00002501	20	44	15	1000	7	10	1
+Miscellaneous		500		1	0	0x00002501	-1	44	15	1000	-12	0	1
+
+#Wholecupcake
+Miscellaneous		510		0	0	0x00000101	20	15	15	1000	0.5	10	1
+Miscellaneous		510		1	0	0x00000101	-1	15	15	1000	0.5	0	1
+
+#Eatencupcake
+Miscellaneous		520		0	0	0x00000101	20	15	15	1000	0.5	10	1
+Miscellaneous		520		1	0	0x00000101	-1	15	15	1000	0.5	0	1
+
+#PartyHat
+Miscellaneous		530		0	0	0x00001101	20	64	15	1000	0	10	1
+Miscellaneous		530		1	0	0x00001101	-1	40	15	1001	0	0	1
+
+#PartyHat2
+Miscellaneous		535		0	0	0x00001101	20	64	15	1000	0	10	1
+Miscellaneous		535		1	0	0x00001101	-1	64	15	1001	0	0	1
+
+#spoon1
+Miscellaneous		540		0	0	1		1	5	0	999	0	0	1
+Miscellaneous		540		1	0	1		-1	5	0	999	0	0	1
+
+#spoon2
+Miscellaneous		550		0	0	1		1	5	0	999	0	0	1
+Miscellaneous		550		1	0	1		-1	5	0	999	0	0	1
+
+#fork1
+Miscellaneous		560		0	0	1		1	5	0	999	0	0	1
+Miscellaneous		560		1	0	1		-1	5	0	999	0	0	1
+
+#fork2
+Miscellaneous		570		0	0	1		1	5	0	999	0	0	1
+Miscellaneous		570		1	0	1		-1	5	0	999	0	0	1
+
+#Hydrogentank
+Miscellaneous		600		0	0	0x00002501	10	64	15	1000	.55	40	1
+Miscellaneous		600		1	0	0x00002501	400 64	15	1000	.55	80	1
+Miscellaneous		600		2	0	0x00002401	-1	32	15	0000	0.4	0	1
+
+#hydro gauge1
+Miscellaneous		601		0	0	1		-1	5	0	1001	0	0	1
+
+#hydro gauge2
+Miscellaneous		602		0	0	1		-1	5	0	1001	0	0	1
+
+#hydro gauge3
+Miscellaneous		603		0	0	1		-1	5	0	1001	0	0	1
+
+#hydro gauge4
+Miscellaneous		604		0	0	1		-1	5	0	1001	0	0	1
+
+#hydro gauge5
+Miscellaneous		605		0	0	1		-1	5	0	1001	0	0	1
+
+#hydro gauge6
+Miscellaneous		606		0	0	1		-1	5	0	1001	0	0	1
+
+#hydro gauge7
+Miscellaneous		607		0	0	1		-1	5	0	1001	0	0	1
+
+#hydro gauge8
+Miscellaneous		608		0	0	1		-1	5	0	1001	0	0	1
+
+#top plug
+Miscellaneous		610		0	0	0x00022401	40	5	0	1000	0	15	1
+Miscellaneous		610		1	0	0x00022401	-1	5	0	1000	0	0	1
+
+#Bottom plug
+Miscellaneous		611		0	0	0x00022401	80	5	0	1000	0	15	1
+Miscellaneous		611		1	0	0x00022401	-1	5	0	1000	0	0	1
+
+#Hydrotank debris
+Miscellaneous		612		0	0	1		-1	1	0	999	0	0	0
+
+#can1
+Miscellaneous		700		0	0	0x00022501	40	30	15	1000	1	20	1
+Miscellaneous		700		1	0	0x00022501	-1	30	15	1000	1	0	1
+
+#can2
+Miscellaneous		710		0	0	0x00022501	40	30	15	1000	0	20	1
+Miscellaneous		710		1	0	0x00022501	-1	30	15	1000	0	0	1
+
+#can3
+Miscellaneous		720		0	0	0x00022501	40	64	15	1000	0	20	1
+Miscellaneous		720		1	0	0x00022501	-1	64	15	1000	0	0	1
+
+#paddle1
+Miscellaneous		800		0	0	0x00020001	80	20	15	1000	0	10	1
+Miscellaneous		800		1	0	0x00020001	-1	20	15	1000	0	0	1
+
+#paddle1 cord
+Miscellaneous		801		0	0	0x00000001	-1	1	0	999	0	0	1
+
+#paddle2
+Miscellaneous		810		0	0	0x00020001	80	20	15	1000	0	10	1
+Miscellaneous		810		1	0	0x00020001	-1	20	15	1000	0	0	1
+
+#paddle2cord
+Miscellaneous		811		0	0	0x00000001	-1	1	0	999	0	0	1
+
+#gameconsole
+Miscellaneous		820		0	0	0x00002401	-1	40	15	1000	.25	0	1
+
+#gameconsolecord
+Miscellaneous		821		0	0	0x00000001	-1	1	0	-26500	0	0	1
+
+#gamedisk
+Miscellaneous		825		0	0	0x00022401	-1	5	0	1000	0	0	1
+	EXTRA Miscellaneous 	825	35
+Miscellaneous		825		1	0	0x00022401	-1	5	0	1000	0	0	1
+	EXTRA Miscellaneous 	825	35
+Miscellaneous		825		2	0	0x00022401	-1	5	0	1000	0	0	1
+	EXTRA Miscellaneous 	825	35
+Miscellaneous		825		3	0	0x00022401	-1	5	0	1000	0	0	1
+	EXTRA Miscellaneous 	825	35
+Miscellaneous		825		4	0	0x00022401	-1	5	0	1000	0	0	1
+	EXTRA Miscellaneous 	825	35
+
+#gamelid
+Miscellaneous		830		0	0	0x00022403	-1	5	0	1002	0	0	1
+	EXTRA Miscellaneous 	830	40
+Miscellaneous		830		1	0	0x00022403	-1	5	15	1002	0	0	1
+	EXTRA Miscellaneous 	830	40
+Miscellaneous		830		2	0	0x00020003	-1	5	15	1002	0	0	1
+	EXTRA Miscellaneous 	830	40
+Miscellaneous		830		3	0	0x00020003	-1	5	15	1002	0	0	1
+	EXTRA Miscellaneous 	830	40
+Miscellaneous		830		4	0	0x00020003	-1	5	15	1002	0	0	1
+	EXTRA Miscellaneous 	830	40
+
+#ejectbutton
+Miscellaneous		835		0	0	0x00022401	-1	40	0	1001	0	0	1
+
+#ejectlight
+Miscellaneous		836		0	0	1		-1	40	0	1005	0	0	1
+
+#powerbutton
+Miscellaneous		837		0	0	0x00022401	-1	40	0	1001	0	0	1
+
+#powerlight
+Miscellaneous		838		0	0	1		-1	40	0	1005	0	0	1
+
+#largebox
+Miscellaneous		850		0	0	0x00020101	-1	40	15	1000	0	0	1
+
+#smallbox1
+Miscellaneous		851		0	0	0x00022101	-1	32	15	1000	0	0	1
+
+#smallbox2
+Miscellaneous		852		0	0	0x00020101	-1	32	15	-4000	0	0	1
+
+#smallbox3
+Miscellaneous		853		0	0	0x00020101	-1	99	15	1005	0	0	1
+	EXTRA	Miscellaneous	853	1
+
+#greentent
+Miscellaneous		900		0	0	0x00040001	-1	40	0	1000	0	0	1
+							

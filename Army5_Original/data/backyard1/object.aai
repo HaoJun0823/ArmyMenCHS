@@ -1,0 +1,154 @@
+#backyard 1 - object.aai
+
+ELEVATION_FACTOR	1
+FLIGHTHEIGHT_FACTOR	2	
+
+#Item Flags
+# ITEMFLAG_MAP				0x00000001	(1)
+# ITEMFLAG_AIRMASK			0x00000002	(2)
+# ITEMFLAG_VISBLOCK			0x00000100	(256)
+# ITEMFLAG_TARGETTOP		0x00002000
+# ITEMFLAG_SELFMASK			0x00020000
+# ITEMFLAG_LANDINGPAD		0x00040000	(262144)
+# ITEMFLAG_KEEPCOLLIDE		0x00080000
+# ITEMFLAG_NOHIT			0x00800000
+# ITEMFLAG_WINCHABLE		0x01000000	(16777216)
+# ITEMFLAG_VARIABLEORDER	0x04000000	(67108864)
+
+
+#Obj Type		SubT	Ste	Lnk Fl			HP	Hgt	Mv	Ord		Slp		Arm	Vis Crush ShootThru Explo Sound
+
+#sand
+Miscellaneous	001		0	0	0x00002001	-1	10	0	10		0.0		0	1	0		0		151
+Miscellaneous	002 	0	0	0x00002001	-1	10	0	10		0.0		0	1	0		0		151
+Miscellaneous	003 	0	0	0x00002001	-1	10	0	10		0.0		0	1	0		0		151
+
+#wickets
+Miscellaneous	004		0	0	0x04000001	-1	195 0	1000	0.0		0	1	0		0		125		164
+Miscellaneous	005		0	0	0x04000001	-1	195	0	1000	-0.5	0	1	0		0		125		164
+Miscellaneous	006		0	0	0x04000001	-1	195	0	1000	0.0		0	1	0		0		125		164
+Miscellaneous	007		0	0	0x04000001	-1	195	0	1000	0.0		0	1	0		0		125		164
+Miscellaneous	008		0	0	0x04000001	-1	195	0	1000	0.0		0	1	0		0		125		164
+Miscellaneous	009		0	0	0x04000001	-1	195	0	1000	0.0		0	1	0		0		125		164
+
+#sandtoys
+Miscellaneous	010		0	0	0x00000001	-1	200	15	4000	0.0		0	1	0		0		125		166
+Miscellaneous	011		0	0	0x00002101	-1	64	15	1000	-0.45	0	1	0		0		125		167
+Miscellaneous	012		0	0	0x00002101	-1	64	0	1000	-0.45	0	1	0		0		125		168
+
+#ferns
+Miscellaneous	030		0	0	0x00002001	10	40	15	1000	0.0		16	1	0		0		702		
+Miscellaneous	030		1	0	0x00002001	10	40	15	1000	0.0		16	1	0		0		700		
+Miscellaneous	030		2	0	0x00002001	-1	40	15	1000	0.0		16	1	0		0		701		
+Miscellaneous	031		0	0	0x00002001	10	40	15	1000	0.0		16	1	0		0		702		
+Miscellaneous	031		1	0	0x00002001	10	40	15	1000	0.0		16	1	0		0		700		
+Miscellaneous	031		2	0	0x00002001	-1	40	15	1000	0.0		16	1	0		0		701		
+Miscellaneous	032		0	0	0x00002001	10	40	15	1000	0.0		16	1	0		0		702		
+Miscellaneous	032		1	0	0x00002001	10	40	15	1000	0.0		16	1	0		0		700		
+Miscellaneous	032		2	0	0x00002001	-1	40	15	1000	0.0		16	1	0		0		701		
+
+#gopher holes
+Miscellaneous	051		0	0	0x00002001	-1	16	0	999		0.0		0	1	0		255		151
+Miscellaneous	052		0	0	0x00002001	-1	16	0	1001	0.0		0	1	0		255		151
+LINK	Miscellaneous	050		Miscellaneous	051		0 	0
+LINK	Miscellaneous	050		Miscellaneous	052		0	0
+Miscellaneous	061		0	0	0x00002001	-1	16	0	999		0.0		0	1	0		255		151
+Miscellaneous	062		0	0	0x00002001	-1	16	0	1001	0.0		0	1	0		255		151
+LINK	Miscellaneous	060		Miscellaneous	061		0	0
+LINK	Miscellaneous	060		Miscellaneous	062		0	0
+Miscellaneous	055		0	0	0x00002001	-1	1	0	20		0.0		0	1	0		255		151
+Miscellaneous	065		0	0	0x00002001	-1	1	0	20		0.0		0	1	0		255		151
+
+#daisies
+Miscellaneous	070		0	0	0x00022001	1	10	15	1000	0.0		0	1
+Miscellaneous	070		1	0	0x00022001	1	10	15	1000	0.0		0	1
+Miscellaneous	070		2	0	0x00022001	1	10	15	1000	0.0		0	1
+Miscellaneous	070		3	0	0x00022001	-1	1	15	1000	0.0		0	1
+Miscellaneous	071		0	0	0x00022001	1	10	15	1000	0.0		0	1
+Miscellaneous	071		1	0	0x00022001	1	10	15	1000	0.0		0	1
+Miscellaneous	071		2	0	0x00022001	1	10	15	1000	0.0		0	1
+Miscellaneous	071		3	0	0x00022001	-1	1	15	1000	0.0		0	1
+Miscellaneous	072		0	0	0x00022001	1	10	15	1000	0.0		0	1
+Miscellaneous	072		1	0	0x00022001	1	10	15	1000	0.0		0	1
+Miscellaneous	072		2	0	0x00022001	1	10	15	1000	0.0		0	1
+Miscellaneous	072		3	0	0x00022001	-1	1	15	1000	0.0		0	1
+
+#mushrooms
+Miscellaneous	075		0	0	0x00022001	1	10	15	1000	0.0		0	1
+Miscellaneous	075		1	0	0x00022001	-1	1	15	1000	0.0		0	1
+Miscellaneous	076		0	0	0x00022001	1	10	15	1000	0.0		0	1
+Miscellaneous	076		1	0	0x00022001	-1	1	15	1000	0.0		0	1
+Miscellaneous	077		0	0	0x00022001	1	10	15	1000	0.0		0	1
+Miscellaneous	077		1	0	0x00022001	-1	1	15	1000	0.0		0	1
+Miscellaneous	078		0	0	0x00022001	1	10	15	1000	0.0		0	1
+Miscellaneous	078		1	0	0x00022001	-1	1	15	1000	0.0		0	1
+
+#croquet
+Miscellaneous	100		0	0	0x01002101	-1	110	15	1000	-0.45	0	1    8000
+Miscellaneous	101		0	0	0x01002101	-1	110	15	1000	-0.45	0	1    8000
+Miscellaneous	102		0	0	0x01002101	-1	110	15	1000	-0.45	0	1    8000
+Miscellaneous	103		0	0	0x01002101	-1	110	15	1000	-0.45	0	1    8000
+
+Miscellaneous	105		0	0	0x04000001	-1	0	15	1000	0.0		0	1
+Miscellaneous	110		0	0	0x00002001	-1	20	15	1000	0.0		0	1
+Miscellaneous	111		0	0	0x00002001	-1	20	15	1000	0.0		0	1
+Miscellaneous	112		0	0	0x00002001	-1	20	15	1000	0.0		0	1
+Miscellaneous	113		0	0	0x00002001	-1	20	15	1000	0.0		0	1
+
+#fountain
+Miscellaneous	200		0	0	0x00022001	-1	10	15	1000	0.0		16	1	0		0		125		165
+	EXTRA	Miscellaneous	200		270
+Miscellaneous	201		0	0	0x00000001	200	0	15	3000	0.0		16	1	0		0		125		165
+	EXTRA	Miscellaneous	201		291
+Miscellaneous	201		1	0	0x00000001	-1	0	15	3000	0.0		16	1	0		0		125		165
+	EXTRA	Miscellaneous	201		291
+Miscellaneous	202		0	0	0x00000101	-1	200	15	1000	0.0		16	1	0		0		125		165
+Miscellaneous	204		0	0	0x00022001	-1	1	15	1000	0.0		16	1	0		0		147
+	EXTRA	Miscellaneous	204		280
+
+#cupid head
+Miscellaneous	203		0	0	0x00000001	-1	1	15	2999	0.0		0	1
+	EXTRA	Miscellaneous	203		291
+Miscellaneous	203		1	0	0x00000001	-1	1	15	2999	0.0		0	1
+	EXTRA	Miscellaneous	203		291
+Miscellaneous	203		2	0	0x00000001	-1	1	15	2999	0.0		0	1
+	EXTRA	Miscellaneous	203		291
+Miscellaneous	203		3	0	0x00000001	-1	1	15	2999	0.0		0	1
+	EXTRA	Miscellaneous	203		291
+Miscellaneous	203		4	0	0x00000001	-1	1	15	2999	0.0		0	1
+	EXTRA	Miscellaneous	203		291
+Miscellaneous	203		5	0	0x00000001	-1	1	15	2999	0.0		0	1
+	EXTRA	Miscellaneous	203		291
+Miscellaneous	203		6	0	0x00000001	-1	1	15	2999	0.0		0	1
+	EXTRA	Miscellaneous	203		291
+Miscellaneous	203		7	0	0x00000001	-1	1	15	2999	0.0		0	1
+	EXTRA	Miscellaneous	203		291
+Miscellaneous	203		8	0	0x00022001	-1	1	15	1000	0.0		0	1	0		0		147
+	EXTRA	Miscellaneous	203		291
+
+#weeds
+Miscellaneous	510		0	0	0x00000001	1	10	0	1		0.0		0	1
+Miscellaneous	510		1	0	0x00000001	1	10	0	1		0.0		0	1
+Miscellaneous	510		2	0	0x00000001	-1	1	0	1		0.0		0	1
+Miscellaneous	511		0	0	0x00000001	1	10	0	1		0.0		0	1
+Miscellaneous	511		1	0	0x00000001	1	10	0	1		0.0		0	1
+Miscellaneous	511		2	0	0x00000001	-1	1	0	1		0.0		0	1
+
+#landing pad
+Miscellaneous	900		0	0	0x00040001	-1	75	15	1000	0.0		0	1
+
+#Obj Type		SubT	Ste	Lnk Fl			HP	Hgt	Mv	Ord		Slp		Arm	Vis
+
+#wood edge
+Fence			015		0	0	0x00000101	-1	96	15	1000	-0.75	16	1	0		0		701
+Fence			016		0	0	0x00000101	-1	96	15	1000	0.84	16	1	0		0		701
+Fence			017		0	0	0x00000101	-1	96	15	1000	0.28	16	1	0		0		701
+Fence			018		0	0	0x00000101	200	96	15	1000	0.84	16	1	0		0		701
+Fence			018		1	0	0x00000101	-1	96	0	10		0.84	16	1	0		0		701
+
+#porch posts
+Fence			100		0	0	0x00000101	-1	368	15	1000	0.0		0	1
+
+
+
+

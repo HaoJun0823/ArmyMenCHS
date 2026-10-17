@@ -1,0 +1,24 @@
+源 wav 487
+加载 whisper large-v3 (cpu/int8)...
+就绪 9.0s
+
+[  1/487] Blu001f.wav             3.99s f0=183.8 lp=-0.45 voice  ETA2153s | "Don't shoot me. I'll give you information."
+[  2/487] Blu002e.wav            11.00s f0=193.4 lp=-0.26 voice  ETA2336s | 'Your president is attending a secret diplomatic meeting at a mountain '
+[  3/487] Blu003a.wav             1.72s f0= 90.9 lp=-0.50 voice  ETA2218s | 'Damn you, Blade!'
+[  4/487] Blu005d.wav             1.47s f0=319.6 lp=-0.49 voice  ETA2151s | "Don't shoot!"
+[  5/487] Cap001c.wav             1.55s f0=160.9 lp=-0.17 voice  ETA2118s | "Roger, HQ. I'm on it."
+[  6/487] Cap002b.wav             2.15s f0=155.3 lp=-0.13 voice  ETA2113s | "HQ, I have one of Sarge's men on board."
+[  7/487] Cap003b.wav             2.53s f0=144.1 lp=-0.16 voice  ETA2117s | "Good to see you, Sarge. Where's the rest of your squad?"
+[  8/487] Cap004c.wav             3.09s f0=191.8 lp=-0.23 voice  ETA2127s | "My radar's going crazy, Sarge. This place is crawling with tan."
+[  9/487] Cap005b.wav             2.54s f0=158.6 lp=-0.09 voice  ETA2148s | "Come in, HQ. I've got Sarge and his boys on board."
+[ 10/487] Cap006a.wav             3.31s f0=164.6 lp=-0.13 voice  ETA2159s | 'Found some ammo for that side-mounted gun, Sarge. Care to do the honor'
+[ 11/487] Cap007c.wav             3.40s f0=159.2 lp=-0.18 voice  ETA2160s | "Dang, I'll take a serious beating flying over that bunker on the toile"
+[ 12/487] Cap008c.wav             1.89s f0=140.9 lp=-0.14 voice  ETA2154s | 'Hold on to your dog tags, big guy.'
+[ 13/487] Cap009c.wav             2.43s f0=147.0 lp=-0.28 voice  ETA2152s | 'Okay, boys, looks like the LZ is clear.'
+[ 14/487] Cap010c.wav             1.72s f0=214.1 lp=-0.37 voice  ETA2139s | "Whoa, that spray can's gonna blow!"
+[ 15/487] Cap011a.wav             2.03s f0=190.1 lp=-0.18 voice  ETA2132s | "HQ, there's too many of them to take head on."
+[ 16/487] Cap012c.wav             1.63s f0=177.1 lp=-0.18 voice  ETA2125s | "Don't move. You're coming with me."
+[ 17/487] Cap013c.wav             4.14s f0=206.1 lp=-0.16 voice  ETA2130s | 'HQ, we have a situation. Tan Gorillas are on the move to capture the p'
+[ 18/487] Cap014a.wav             2.65s f0=170.9 lp=-0.08 voice  ETA2120s | "HQ, I've just spotted several green POWs."
+[ 19/487] Cap015c.wav             5.53s f0=182.2 lp=-0.23 voice  ETA2139s | "Oh no, the tan have those boys covered with explosives. They're going "
+[ 20/487] Cap016c.wav             1.40s f0=123.9 lp=-0.22 voice  ETA2125s | 'There goes the easy way.'

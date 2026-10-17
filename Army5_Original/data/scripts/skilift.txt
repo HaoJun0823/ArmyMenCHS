@@ -1,0 +1,169 @@
+// skilift.txt for Alpine2 map
+// Carson Herrick
+
+OBJECT 43 011
+	STATE osRock
+		FRAME 300 0
+		FRAME 100 1
+		FRAME 300 2
+		FRAME 150 1
+		FRAME 0 0
+			SETOBJSTATE me osRock
+	STATE osStop
+		FRAME 0 1
+
+OBJECT 43 012
+	STATE osRock
+		FRAME 300 2
+		FRAME 100 1
+		FRAME 300 0
+		FRAME 150 1
+		FRAME 0 0
+			SETOBJSTATE me osRock
+	STATE osStop
+		FRAME 0 1
+
+
+VARIABLE chairX 0
+VARIABLE chairY 0
+
+//*** SETUP CHAIRLIFT ***//
+
+IF startup1 THEN
+	TRIGGER trademapchairs
+
+UNTIL 7 REPEAT 1 BY 1
+{
+	IF trademapchairs THEN
+		UNDEPLOY chair_$,
+		SETVAR chairX GETX chair_$, SETVAR chairY GETY chair_$, ADDVAR chairY -128,
+		CREATEOBJECT liftchair_$ 43 011 (REFVAR chairX, REFVAR chairY, 328) 35,
+		SETFACING liftchair_$ 160,
+		SETOBJSTATE liftchair_$ osRock,
+		TRIGGERDELAY 3 entershack liftchair_$
+}
+
+UNTIL 15 REPEAT 9 BY 1
+{
+	IF trademapchairs THEN
+		UNDEPLOY chair_$,
+		SETVAR chairX GETX chair_$, SETVAR chairY GETY chair_$, ADDVAR chairY -128,
+		CREATEOBJECT liftchair_$ 43 012 (REFVAR chairX, REFVAR chairY, 328) 35,
+		SETFACING liftchair_$ 32,
+		SETOBJSTATE liftchair_$ osRock,
+		TRIGGERDELAY 3 enterchallet liftchair_$
+}
+
+IF trademapchairs THEN
+	UNDEPLOY chair_0,
+	UNDEPLOY chair_8
+
+//*** SETUP CHAIRLIFT ***//
+
+
+//*** SOUTHBOUND CHAIR LOCATIONS ***//
+
+IF entershack THEN
+	SETVAR chairX GETX me,
+	SETVAR chairY GETY me,
+	TRIGGER testdisttoshack
+
+IF testdisttoshack TESTVAR GETY me > GETY chair_1 AND GETY me < GETY chair_2 THEN
+	SETFACING me 161
+
+IF testdisttoshack TESTVAR GETY me > GETY chair_2 AND GETY me < GETY chair_3 THEN
+	SETFACING me 160
+
+IF testdisttoshack TESTVAR GETY me > GETY chair_3 AND GETY me < GETY chair_4 THEN
+	SETFACING me 161
+
+IF testdisttoshack TESTVAR GETY me > GETY chair_4 AND GETY me < GETY chair_5 THEN
+	SETFACING me 160
+
+IF testdisttoshack TESTVAR GETY me > GETY chair_5 AND GETY me < GETY chair_6 THEN
+	SETFACING me 161
+
+IF testdisttoshack TESTVAR GETY me > GETY chair_6 AND GETY me < GETY chair_7 THEN
+	SETFACING me 160
+
+IF testdisttoshack TESTVAR GETY me > GETY chair_7 THEN
+	SETVAR chairX GETX chair_0, SETVAR chairY GETY chair_0,
+	MOVEITEM me (REFVAR chairX, REFVAR chairY, 328)
+
+IF testdisttoshack THEN
+	TRIGGERDELAY 3 entershack
+
+//*** SOUTHBOUND CHAIR LOCATIONS ***//
+
+
+//*** NORTHBOUND CHAIR LOCATIONS ***//
+
+IF enterchallet THEN
+	SETVAR chairX GETX me,
+	SETVAR chairY GETY me,
+	TRIGGER testdisttochallet
+
+IF testdisttochallet TESTVAR GETY me < GETY chair_9 AND GETY me > GETY chair_10 THEN
+	SETFACING me 33
+
+IF testdisttochallet TESTVAR GETY me < GETY chair_10 AND GETY me > GETY chair_11 THEN
+	SETFACING me 32
+
+IF testdisttochallet TESTVAR GETY me < GETY chair_11 AND GETY me > GETY chair_12 THEN
+	SETFACING me 33
+
+IF testdisttochallet TESTVAR GETY me < GETY chair_12 AND GETY me > GETY chair_13 THEN
+	SETFACING me 32
+
+IF testdisttochallet TESTVAR GETY me < GETY chair_13 AND GETY me > GETY chair_14 THEN
+	SETFACING me 33
+
+IF testdisttochallet TESTVAR GETY me < GETY chair_14 AND GETY me > GETY chair_15 THEN
+	SETFACING me 32
+
+IF testdisttochallet TESTVAR GETY me < GETY chair_15 THEN
+	SETVAR chairX GETX chair_8, SETVAR chairY GETY chair_8,
+	MOVEITEM me (REFVAR chairX, REFVAR chairY, 328)
+
+IF testdisttochallet THEN
+	TRIGGERDELAY 3 enterchallet
+
+//*** NORTHBOUND CHAIR LOCATIONS ***//
+
+
+//*** STOP CHAIRS ***//
+
+UNTIL 7 REPEAT 1 BY 1
+{
+	IF KILLED basechalet THEN
+		SETVELOCITY liftchair_$ 0,
+		TRIGGERDELAY 5000 stoprocking liftchair_$
+
+	IF KILLED chalet THEN
+		SETVELOCITY liftchair_$ 0,
+		TRIGGERDELAY 5000 stoprocking liftchair_$
+
+	IF KILLED skihouse THEN
+		SETVELOCITY liftchair_$ 0,
+		TRIGGERDELAY 5000 stoprocking liftchair_$
+}
+
+UNTIL 15 REPEAT 9 BY 1
+{
+	IF KILLED basechalet THEN
+		SETVELOCITY liftchair_$ 0,
+		TRIGGERDELAY 5000 stoprocking liftchair_$
+
+	IF KILLED chalet THEN
+		SETVELOCITY liftchair_$ 0,
+		TRIGGERDELAY 5000 stoprocking liftchair_$
+
+	IF KILLED skihouse THEN
+		SETVELOCITY liftchair_$ 0,
+		TRIGGERDELAY 5000 stoprocking liftchair_$
+}
+
+IF stoprocking THEN
+	SETOBJSTATE me osStop
+
+//*** STOP CHAIRS ***//

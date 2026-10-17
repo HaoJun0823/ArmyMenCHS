@@ -1,0 +1,382 @@
+// GLOBAL MULTIPLAYER RULES (mpcommon.txt)
+// See globalrules_help.doc for help.
+//
+// GLOBAL VARIABLES
+//------------------
+// gamescorelimit
+// gametimelimit
+// bluescore
+// greenscore
+// greyscore
+// tanscore
+//------------------
+// sound: channel 8 priority 1 is stopwatch
+
+// LANDING LIGHTS =============================
+
+OBJECT 43 910
+	STATE ON
+		FRAME 750 0
+		FRAME 1 0
+			SETOBJSTATE ME OFF
+	STATE OFF
+		FRAME 1250 1
+		FRAME 1 0
+			SETOBJSTATE ME ON
+
+OBJECT 43 920
+	STATE ON
+		FRAME 750 0
+		FRAME 1 0
+			SETOBJSTATE ME OFF
+	STATE OFF
+		FRAME 1250 1
+		FRAME 1 0
+			SETOBJSTATE ME ON
+
+
+// VARIABLES ==================================
+
+VARIABLE RespawnTimer		5000
+VARIABLE EWSDelayTimer		4000
+VARIABLE boolEWSActive		0
+VARIABLE boolTanEWSDelay	0
+VARIABLE boolGreenEWSDelay	0
+VARIABLE boolGreyEWSDelay	0
+VARIABLE boolBlueEWSDelay	0
+VARIABLE minutestoticks		60000
+VARIABLE tickstoendgame		0
+VARIABLE tickstowarning		0
+VARIABLE elseifwannabe		0
+VARIABLE captainX			0
+VARIABLE captainY			0
+
+VARIABLE trooperpoints			25
+VARIABLE slugpoints				10
+VARIABLE mosquitopoints			1
+VARIABLE roachpoints			10
+VARIABLE mutantfireantpoints	15
+VARIABLE mutantflypoints		50
+VARIABLE mutantfleapoints		20
+VARIABLE mutantwasppoints		75
+VARIABLE mutantroachpoints	   100
+VARIABLE tankpoints				75	
+VARIABLE halftrackpoints		25
+VARIABLE boatpoints				25
+VARIABLE submarinepoints		75
+VARIABLE copterpoints		   300
+VARIABLE allycopterpoints	  -200
+
+VARIABLE quadGreenTarget1		0
+VARIABLE quadGreenTarget2		0
+VARIABLE quadGreenTarget3		0
+VARIABLE quadTanTarget1			0
+VARIABLE quadTanTarget2			0
+VARIABLE quadTanTarget3			0
+VARIABLE quadBlueTarget1		0
+VARIABLE quadBlueTarget2		0
+VARIABLE quadBlueTarget3		0
+VARIABLE quadGreyTarget1		0
+VARIABLE quadGreyTarget2		0
+VARIABLE quadGreyTarget3		0
+
+VARIABLE GreenEaglehaslanded	0
+VARIABLE TanEaglehaslanded		0
+VARIABLE BlueEaglehaslanded		0
+VARIABLE GreyEaglehaslanded		0
+
+VARIABLE newXloc 0
+VARIABLE newYloc 0
+
+VARIABLE explosionID_1 700
+VARIABLE explosionID_2 700
+VARIABLE parentX 0
+VARIABLE parentY 0
+VARIABLE childX 0
+VARIABLE childY 0
+
+// OBJECT DEFINITIONS =========================
+
+LIST BuildingType1 43 506
+LIST BuildingType2 43 507
+LIST BuildingType3 43 508
+
+
+// PAD DEFINITIONS ============================
+
+
+//Landing Zones
+PAD padTanLZ		 20	captain_tan > 0		DELAY 2000 0
+PAD padGreenLZ		 50	captain_green > 0	DELAY 2000 0
+PAD padBlueLZ		 80	captain_blue > 0	DELAY 2000 0
+PAD padGreyLZ		110	captain_grey > 0	DELAY 2000 0
+
+PAD padTanPupLZ		 20	weapon
+PAD padGreenPupLZ	 50 weapon
+PAD padBluePupLZ	 80	weapon
+PAD padGreyPupLZ	110	weapon
+
+//Winchables
+MACRO makehomepads 2
+{
+	PAD pad@1source1	@21
+	PAD pad@1source2	@22
+	PAD pad@1source3	@23
+
+	PAD pad@1target1	@24
+	PAD pad@1target2	@25
+	PAD pad@1target3	@26
+
+	PAD pad@1dropzone1	@24 captain_@1 > 0
+	PAD pad@1dropzone2	@25 captain_@1 > 0
+	PAD pad@1dropzone3	@26 captain_@1 > 0
+
+	PAD pad@1extra1		@27
+	PAD pad@1extra2		@28
+}
+EXPAND makehomepads ( Tan    2 )
+EXPAND makehomepads ( Green  5 )
+EXPAND makehomepads ( Blue   8 )
+EXPAND makehomepads ( Grey  11 )
+
+//Early Warning Boundries
+MACRO makeEWSpads 5
+{
+	PAD pad@2At@1EWS	@5	@2 unit
+	PAD pad@3At@1EWS	@5	@3 unit
+	PAD pad@4At@1EWS	@5	@4 unit
+}
+EXPAND makeEWSpads ( Tan Blue Green Grey  29 )
+EXPAND makeEWSpads ( Green Blue Tan Grey  59 )
+EXPAND makeEWSpads ( Blue Green Tan Grey  89 )
+EXPAND makeEWSpads ( Grey Blue Tan Green 119 )
+
+//Spawn Locations
+PAD padTanGroundSpawn	 30
+PAD padGreenGroundSpawn  60
+PAD padBlueGroundSpawn	 90
+PAD padGreyGroundSpawn  120
+
+//AA Guns
+UNTIL 5 REPEAT 1 BY 1
+{
+	PAD padTanAA$    3$
+	PAD padGreenAA$  6$
+	PAD padBlueAA$   9$
+	PAD padGreyAA$  12$
+}
+
+// STARTUP ====================================
+
+IF startup1 THEN
+	TRIGGER mpsetuptimer
+
+
+// PLAYER LZ and RESPAWN ======================
+
+MACRO playerrespawn 1
+{
+	IF PADON pad@1LZ THEN
+		TRIGGERDELAY 1000 @1_copterlanding
+
+	IF @1_copterlanding TESTVAR GETPADSTATUS pad@1LZ = 1 AND @1Eaglehaslanded = 0 THEN
+		LAND captain_@1,
+		TRIGGERDELAY 100 @1_copterlanding
+
+	IF LANDED captain_@1 THEN
+		SETVAR @1Eaglehaslanded 1
+
+	IF TOOKOFF captain_@1 THEN
+		SETVAR @1Eaglehaslanded 0
+
+	IF KILLED captain_@1 THEN
+		SETVAR @1Eaglehaslanded 0,
+		TRIGGERDELAY REFVAR RespawnTimer @1_bringoutyourdead
+	
+	IF @1_bringoutyourdead THEN
+		TRIGGER @1_respawn,
+		SETVAR captainX GETX captain_@1, SETVAR captainY GETY captain_@1,
+		MOVEITEM captain_@1 (REFVAR captainX, REFVAR captainY, 0)
+
+	IF @1_respawn THEN
+		DEPLOY captain_@1 pad@1LZ
+}
+EXPAND playerrespawn ( Green )
+EXPAND playerrespawn ( Tan )
+EXPAND playerrespawn ( Grey )
+EXPAND playerrespawn ( Blue )
+
+
+// SCORE LIMIT and GAME OVER ==================
+
+MACRO checkwhowins 1
+{
+	IF checkteamvictory TESTVAR teamscore @1 >= gamescorelimit AND gamescorelimit > 0 THEN
+		TRIGGER mpendofgame
+}
+EXPAND checkwhowins ( Tan )
+EXPAND checkwhowins ( Green )
+EXPAND checkwhowins ( Blue )
+EXPAND checkwhowins ( Grey )
+
+IF mpendofgame THEN
+	PLAYSOUND "" 1 1,
+	PLAYSOUND "" 8 1,
+	PLAYSOUND "mp_endgame.wav" (0,0) 1 1,
+	TRIGGER awardpowerupbonus,
+	TRIGGERDELAY 1 greenteamwins
+
+
+// GAME TIME LIMIT ============================
+
+IF mpsetuptimer TESTVAR gametimelimit > 0 THEN
+	SETVAR tickstoendgame gametimelimit,
+	MULVAR tickstoendgame minutestoticks,
+	TRIGGERDELAY REFVAR tickstoendgame mptimeup,
+
+	SETVAR tickstowarning gametimelimit,
+	ADDVAR tickstowarning -1,
+	MULVAR tickstowarning minutestoticks,
+	TRIGGERDELAY REFVAR tickstowarning warningmessage,
+
+	SETVAR tickstowarning gametimelimit,
+	MULVAR tickstowarning minutestoticks,
+	ADDVAR tickstowarning -2000,
+	TRIGGERDELAY REFVAR tickstowarning finalbuzzer
+
+IF mptimeup TESTVAR gametimelimit > 0 THEN
+	TRIGGER mpendofgame
+
+IF warningmessage TESTVAR gametimelimit > 0 THEN
+	SHOWMESSAGE "<<< ONE MINUTE WARNING >>>",
+	TRIGGER ticksounds
+
+IF ticksounds BUTNOT finalbuzzer THEN
+	PLAYSOUND "" 8 1,
+	PLAYSOUND stopwatch.wav (0,0) 8 1,
+	TRIGGERDELAY 500 ticksounds
+
+IF finalbuzzer TESTVAR gametimelimit > 0 THEN
+	PLAYSOUND "" 8 1,
+	PLAYSOUND "..\codesfx\error.wav" (0,0) 8 1
+
+
+// EARLY WARNING SYSTEM =======================
+
+MACRO EWSHandler 4
+{
+	IF PADON pad@2At@1EWS TESTVAR boolEWSActive = 1 AND bool@1EWSDelay = 0 THEN
+		SHOWMESSAGE "@2 unit detected near @1 landing zone.",
+		TRIGGERDELAY 5 @1_setEWSdelay
+
+	IF PADON pad@3At@1EWS TESTVAR boolEWSActive = 1 AND bool@1EWSDelay = 0 THEN
+		SHOWMESSAGE "@3 unit detected near @1 landing zone.",
+		TRIGGERDELAY 5  @1_setEWSdelay
+
+	IF PADON pad@4At@1EWS TESTVAR boolEWSActive = 1 AND bool@1EWSDelay = 0 THEN
+		SHOWMESSAGE "@4 unit detected near @1 landing zone.",
+		TRIGGERDELAY 5 @1_setEWSdelay
+
+	IF @1_setEWSdelay THEN
+		SETVAR bool@1EWSDelay 1,
+		TRIGGERDELAY REFVAR EWSDelayTimer @1_clearEWSbuffer
+
+	IF @1_clearEWSbuffer THEN
+		SETVAR bool@1EWSDelay 0
+}
+EXPAND EWSHandler ( "Tan" "Blue" "Green" "Grey" )
+EXPAND EWSHandler ( "Green" "Blue" "Tan" "Grey" )
+EXPAND EWSHandler ( "Blue" "Green" "Tan" "Grey" )
+EXPAND EWSHandler ( "Grey" "Blue" "Tan" "Green" )
+
+
+// SCORING SYSTEM =============================
+
+MACRO KillerFragDude 2
+{
+	IF KILLED @1 @2 BY @1 THEN
+		MULVAR @2points -2,
+		ADDVAR @1score @2points,
+		DIVVAR @2points -2
+
+	IF KILLED @2 BY @1 THEN
+		ADDVAR @1score @2points,
+		TRIGGERDELAY 1 checkteamvictory
+}
+
+MACRO KillerUnitList 1
+{
+	EXPAND KillerFragDude ( @1 trooper )
+
+	EXPAND KillerFragDude ( @1 slug )
+	EXPAND KillerFragDude ( @1 mosquito )
+	EXPAND KillerFragDude ( @1 roach )
+	EXPAND KillerFragDude ( @1 mutantfireant )
+	EXPAND KillerFragDude ( @1 mutantfly )
+	EXPAND KillerFragDude ( @1 mutantflea )
+	EXPAND KillerFragDude ( @1 mutantwasp )
+	EXPAND KillerFragDude ( @1 mutantroach )
+
+	EXPAND KillerFragDude ( @1 tank )
+	EXPAND KillerFragDude ( @1 halftrack )
+	EXPAND KillerFragDude ( @1 boat )
+	EXPAND KillerFragDude ( @1 submarine )
+}
+EXPAND KillerUnitList ( Green )
+EXPAND KillerUnitList ( Tan )
+EXPAND KillerUnitList ( Grey )
+EXPAND KillerUnitList ( Blue )
+
+MACRO CopterFrag 4
+{
+	IF KILLED captain_@1 BY captain_@1 THEN
+	    SHOWMESSAGE "took a self-inflicted fatality!" @1
+
+	IF KILLED captain_@1 BY @1 THEN 
+		MULVAR copterpoints -2,
+		ADDVAR @1score copterpoints,
+		DIVVAR copterpoints -2
+
+	IF KILLED captain_@2 BY captain_@1 TESTVAR ISALLY @1 @2 = 0 THEN
+	    SHOWMESSAGE "was downed by" @2 @1
+
+	IF KILLED captain_@2 BY @1 TESTVAR ISALLY @1 @2 = 0 THEN // reward player for kills made by his ground units
+		ADDVAR @1score copterpoints,
+		TRIGGERDELAY 1 checkteamvictory
+
+	IF KILLED captain_@2 BY captain_@1 TESTVAR ISALLY @1 @2 = 1 THEN
+	    SHOWMESSAGE "killed in friendly fire by" @2 @1
+
+	IF KILLED captain_@2 BY @1 TESTVAR ISALLY @1 @2 = 1 THEN
+		ADDVAR @1score allycopterpoints
+
+	IF KILLED captain_@3 BY captain_@1 TESTVAR ISALLY @1 @3 = 0 THEN
+	    SHOWMESSAGE "was downed by" @3 @1
+
+	IF KILLED captain_@3 BY @1 TESTVAR ISALLY @1 @3 = 0 THEN
+		ADDVAR @1score copterpoints,
+		TRIGGERDELAY 1 checkteamvictory
+
+	IF KILLED captain_@3 BY captain_@1 TESTVAR ISALLY @1 @3 = 1 THEN
+	    SHOWMESSAGE "killed in friendly fire by" @3 @1
+
+	IF KILLED captain_@3 BY @1 TESTVAR ISALLY @1 @3 = 1 THEN
+		ADDVAR @1score allycopterpoints
+
+	IF KILLED captain_@4 BY captain_@1 TESTVAR ISALLY @1 @4 = 0 THEN
+	    SHOWMESSAGE "was downed by" @4 @1
+
+	IF KILLED captain_@4 BY @1 TESTVAR ISALLY @1 @4 = 0 THEN
+		ADDVAR @1score copterpoints,
+		TRIGGERDELAY 1 checkteamvictory
+
+	IF KILLED captain_@4 BY captain_@1 TESTVAR ISALLY @1 @4 = 1 THEN
+	    SHOWMESSAGE "killed in friendly fire by" @4 @1
+
+	IF KILLED captain_@4 BY @1 TESTVAR ISALLY @1 @4 = 1 THEN
+		ADDVAR @1score allycopterpoints
+}
+EXPAND CopterFrag ( Green Tan Blue Grey )
+EXPAND CopterFrag ( Grey Green Tan Blue )
+EXPAND CopterFrag ( Blue Grey Green Tan )
+EXPAND CopterFrag ( Tan Blue Grey Green )

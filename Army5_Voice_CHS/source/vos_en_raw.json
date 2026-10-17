@@ -1,0 +1,222 @@
+[
+  {
+    "wav": "Blu001f.wav",
+    "duration_s": 3.994,
+    "peak": 0.679,
+    "rms": 0.1855,
+    "f0_median": 183.8,
+    "asr_en": "Don't shoot me. I'll give you information.",
+    "avg_logprob": -0.449,
+    "no_speech_prob": 0.08,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Blu002e.wav",
+    "duration_s": 10.998,
+    "peak": 0.679,
+    "rms": 0.2445,
+    "f0_median": 193.4,
+    "asr_en": "Your president is attending a secret diplomatic meeting at a mountain retreat. The ten are already moving to capture him.",
+    "avg_logprob": -0.258,
+    "no_speech_prob": 0.03,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Blu003a.wav",
+    "duration_s": 1.716,
+    "peak": 0.679,
+    "rms": 0.252,
+    "f0_median": 90.9,
+    "asr_en": "Damn you, Blade!",
+    "avg_logprob": -0.497,
+    "no_speech_prob": 0.027,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Blu005d.wav",
+    "duration_s": 1.474,
+    "peak": 0.679,
+    "rms": 0.2563,
+    "f0_median": 319.6,
+    "asr_en": "Don't shoot!",
+    "avg_logprob": -0.493,
+    "no_speech_prob": 0.067,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap001c.wav",
+    "duration_s": 1.549,
+    "peak": 0.955,
+    "rms": 0.2659,
+    "f0_median": 160.9,
+    "asr_en": "Roger, HQ. I'm on it.",
+    "avg_logprob": -0.168,
+    "no_speech_prob": 0.01,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap002b.wav",
+    "duration_s": 2.152,
+    "peak": 0.955,
+    "rms": 0.2751,
+    "f0_median": 155.3,
+    "asr_en": "HQ, I have one of Sarge's men on board.",
+    "avg_logprob": -0.125,
+    "no_speech_prob": 0.023,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap003b.wav",
+    "duration_s": 2.529,
+    "peak": 0.955,
+    "rms": 0.254,
+    "f0_median": 144.1,
+    "asr_en": "Good to see you, Sarge. Where's the rest of your squad?",
+    "avg_logprob": -0.155,
+    "no_speech_prob": 0.006,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap004c.wav",
+    "duration_s": 3.086,
+    "peak": 0.955,
+    "rms": 0.3136,
+    "f0_median": 191.8,
+    "asr_en": "My radar's going crazy, Sarge. This place is crawling with tan.",
+    "avg_logprob": -0.228,
+    "no_speech_prob": 0.019,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap005b.wav",
+    "duration_s": 2.539,
+    "peak": 0.955,
+    "rms": 0.293,
+    "f0_median": 158.6,
+    "asr_en": "Come in, HQ. I've got Sarge and his boys on board.",
+    "avg_logprob": -0.089,
+    "no_speech_prob": 0.005,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap006a.wav",
+    "duration_s": 3.311,
+    "peak": 0.955,
+    "rms": 0.274,
+    "f0_median": 164.6,
+    "asr_en": "Found some ammo for that side-mounted gun, Sarge. Care to do the honors?",
+    "avg_logprob": -0.126,
+    "no_speech_prob": 0.014,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap007c.wav",
+    "duration_s": 3.402,
+    "peak": 0.955,
+    "rms": 0.2369,
+    "f0_median": 159.2,
+    "asr_en": "Dang, I'll take a serious beating flying over that bunker on the toilet.",
+    "avg_logprob": -0.179,
+    "no_speech_prob": 0.018,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap008c.wav",
+    "duration_s": 1.895,
+    "peak": 0.955,
+    "rms": 0.2627,
+    "f0_median": 140.9,
+    "asr_en": "Hold on to your dog tags, big guy.",
+    "avg_logprob": -0.138,
+    "no_speech_prob": 0.006,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap009c.wav",
+    "duration_s": 2.429,
+    "peak": 0.955,
+    "rms": 0.2685,
+    "f0_median": 147.0,
+    "asr_en": "Okay, boys, looks like the LZ is clear.",
+    "avg_logprob": -0.279,
+    "no_speech_prob": 0.023,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap010c.wav",
+    "duration_s": 1.716,
+    "peak": 0.955,
+    "rms": 0.3015,
+    "f0_median": 214.1,
+    "asr_en": "Whoa, that spray can's gonna blow!",
+    "avg_logprob": -0.367,
+    "no_speech_prob": 0.006,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap011a.wav",
+    "duration_s": 2.029,
+    "peak": 0.955,
+    "rms": 0.303,
+    "f0_median": 190.1,
+    "asr_en": "HQ, there's too many of them to take head on.",
+    "avg_logprob": -0.185,
+    "no_speech_prob": 0.017,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap012c.wav",
+    "duration_s": 1.633,
+    "peak": 0.955,
+    "rms": 0.2827,
+    "f0_median": 177.1,
+    "asr_en": "Don't move. You're coming with me.",
+    "avg_logprob": -0.179,
+    "no_speech_prob": 0.022,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap013c.wav",
+    "duration_s": 4.14,
+    "peak": 0.955,
+    "rms": 0.2982,
+    "f0_median": 206.1,
+    "asr_en": "HQ, we have a situation. Tan Gorillas are on the move to capture the president.",
+    "avg_logprob": -0.156,
+    "no_speech_prob": 0.006,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap014a.wav",
+    "duration_s": 2.654,
+    "peak": 0.955,
+    "rms": 0.2743,
+    "f0_median": 170.9,
+    "asr_en": "HQ, I've just spotted several green POWs.",
+    "avg_logprob": -0.078,
+    "no_speech_prob": 0.015,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap015c.wav",
+    "duration_s": 5.529,
+    "peak": 0.955,
+    "rms": 0.2553,
+    "f0_median": 182.2,
+    "asr_en": "Oh no, the tan have those boys covered with explosives. They're going to use our own guys to blow the bridge.",
+    "avg_logprob": -0.226,
+    "no_speech_prob": 0.003,
+    "candidate": "voice"
+  },
+  {
+    "wav": "Cap016c.wav",
+    "duration_s": 1.405,
+    "peak": 0.955,
+    "rms": 0.2348,
+    "f0_median": 123.9,
+    "asr_en": "There goes the easy way.",
+    "avg_logprob": -0.217,
+    "no_speech_prob": 0.021,
+    "candidate": "voice"
+  }
+]

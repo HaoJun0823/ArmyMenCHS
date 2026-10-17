@@ -1,0 +1,188 @@
+LIST treefx1 43 100			// small bush snow
+LIST treefx2 43 101			//med bush snow
+LIST treefx3 43 102			// small green
+LIST treefx4 43 103			// big green
+LIST treefx5 43 106			// small red
+LIST treefx6 43 107			// big red
+LIST treefx7 43 111			//small yellow
+LIST treefx8 43 112			//big yellow
+LIST treefx9 43 104			// tall w/snow
+LIST treefx10 43 105		// very tall w/snow
+LIST treefx11 43 108		// med tall w/snow
+LIST treefx12 43 109		// tall w/ snow
+LIST treefx13 43 110		// tall w/snow
+
+/// EXPLOSION SETUP ///
+MACRO macrotreedamage 4
+{
+	IF DMGLVLCHANGED treefx@1 THEN
+		TRIGGER treefxexplosion@2,
+		TRIGGERdelay 2 treefxpoof@3,
+		TRIGGERDELAY 50 treefxpoof@4
+}
+
+EXPAND macrotreedamage (1 3 3 4)
+EXPAND macrotreedamage (2 3 3 4)
+EXPAND macrotreedamage (3 1 3 4)
+EXPAND macrotreedamage (4 1 3 3)
+EXPAND macrotreedamage (5 2 3 4)
+EXPAND macrotreedamage (6 2 3 2)
+EXPAND macrotreedamage (7 2 3 4)
+EXPAND macrotreedamage (8 2 3 2)
+EXPAND macrotreedamage (9 3 1 2)
+EXPAND macrotreedamage (10 3 1 3)
+EXPAND macrotreedamage (11 3 2 1)
+EXPAND macrotreedamage (12 3 2 3)
+EXPAND macrotreedamage (13 3 1 2)
+
+MACRO treefxMACRO 4
+{
+	IF treefxexplosion@1 TESTVAR GETDMGLVL me = @2 THEN
+		SETVAR explosionID_1 @3,
+		SETVAR explosionID_2 @4
+}
+
+EXPAND treefxMACRO ( 1 1 127 127 )
+EXPAND treefxMACRO ( 1 2 702 703 )
+EXPAND treefxMACRO ( 1 3 701 700 )
+EXPAND treefxMACRO ( 1 4 701 700 )
+
+EXPAND treefxMACRO ( 2 1 127 127 )
+EXPAND treefxMACRO ( 2 2 701 700 )
+EXPAND treefxMACRO ( 2 3 701 700 )
+EXPAND treefxMACRO ( 2 4 701 700 )
+
+EXPAND treefxMACRO ( 3 1 709 710 )
+EXPAND treefxMACRO ( 3 2 705 705 )
+EXPAND treefxMACRO ( 3 3 701 700 )
+EXPAND treefxMACRO ( 3 4 701 700 )
+
+IF selecttreefxexplosion THEN RANDOM
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY) REFVAR explosionID_1,
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY) REFVAR explosionID_2
+
+/// EXPLOSION SETUP ///
+
+
+/// EXPLOSION CREATION ///
+
+IF treefxpoof1 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+	triggerdelay 10 xpoof1a,
+	triggerdelay 50 xpoof1b,
+	triggerdelay 30 xpoof1c,
+	trigger xpoof1d,
+	triggerdelay 25 xpoof1e,
+	triggerdelay 15 xpoof1f
+
+	if xpoof1a then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -49, ADDVAR childY 10,
+	TRIGGER selecttreefxexplosion
+
+	if xpoof1b then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -58, ADDVAR childY -39,
+	TRIGGER selecttreefxexplosion
+
+	if xpoof1c then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -64, ADDVAR childY -94,
+	TRIGGER selecttreefxexplosion
+
+	if xpoof1d then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -28, ADDVAR childY -135,
+	TRIGGER selecttreefxexplosion
+
+	if xpoof1e then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 39, ADDVAR childY -97,
+	TRIGGER selecttreefxexplosion
+
+	if xpoof1f then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -9, ADDVAR childY -15,
+	TRIGGER selecttreefxexplosion
+
+
+IF treefxpoof2 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+	triggerdelay 20 xpoof2a,
+	triggerdelay 50 xpoof2b,
+	triggerdelay 30 xpoof2c,
+	trigger xpoof2d,
+	triggerdelay 25 xpoof2e,
+	triggerdelay 15 xpoof2f
+
+	if xpoof2a then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -8, ADDVAR childY -20,
+	TRIGGER selecttreefxexplosion
+
+	if xpoof2b then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -47, ADDVAR childY 9,
+	TRIGGER selecttreefxexplosion
+
+	if xpoof2c then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -74, ADDVAR childY -83,
+	TRIGGER selecttreefxexplosion
+
+	if xpoof2d then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 13, ADDVAR childY -107,
+	TRIGGER selecttreefxexplosion
+
+	if xpoof2e then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 57, ADDVAR childY -82,
+	TRIGGER selecttreefxexplosion
+
+	if xpoof2f then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 78, ADDVAR childY 17,
+	TRIGGER selecttreefxexplosion
+
+
+IF treefxpoof3 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+	triggerdelay 10 xpoof3a,
+	triggerdelay 50 xpoof3b,
+	triggerdelay 30 xpoof3c,
+	trigger xpoof3d,
+	triggerdelay 25 xpoof3e,
+	triggerdelay 15 xpoof3f
+
+	if xpoof3a then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -13, ADDVAR childY -14,
+	TRIGGER selecttreefxexplosion
+
+	if xpoof3b then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -23, ADDVAR childY -50,
+	TRIGGER selecttreefxexplosion
+
+	if xpoof3c then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 15, ADDVAR childY -30,
+	TRIGGER selecttreefxexplosion
+
+	if xpoof3d then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 24, ADDVAR childY -10,
+	TRIGGER selecttreefxexplosion
+
+	if xpoof3e then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 16, ADDVAR childY 5,
+	TRIGGER selecttreefxexplosion
+
+	if xpoof3f then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -21, ADDVAR childY 18,
+	TRIGGER selecttreefxexplosion
+
+/// EXPLOSION CREATION ///

@@ -1,0 +1,140 @@
+Sam|Sam061c.wav|You went AWOL before finishing the mission!
+Sam|Sam062c.wav|Captain, look at your radar.
+Sam|Sam063c.wav|Nice flying, Captain...!
+Sam|Sam064a.wav|Be on the lookout for air currents.
+Sam|Sam065b.wav|Wrong way, Captain!
+Sam|Sam066a.wav|That's it!
+Sam|Sam067c.wav|That wouldn't be wise, Captain.
+Sam|Sam068b.wav|Take cover.
+Sam|Sam069d.wav|Move it out, boys.
+Sam|Sam070b.wav|Fall back!
+Sam|Sam071b.wav|Stay focussed, Captain.
+Sam|Sam072a.wav|Captain, remember your objective!
+Sam|Sam073b.wav|Tan is on the run.
+Sam|Sam074a.wav|Tan is retreating, Captain.
+Sam|Sam075a.wav|Track them down, Blade.
+Sam|Sam076b.wav|You can't do that, sir.
+Sam|Sam077b.wav|Now take that to Sarge. 
+Sam|Sam078b.wav|Hurry, Blade.
+Sam|Sam079a.wav|I believe that is not allowed, sir.
+Sam|Sam094b.wav|Rest in peace, Sergeant Hawk.
+Sam|Sam095b.wav|Sarge didn't make it back!
+Sam|Sam096c.wav|Sarge is dead, Captain!
+Sam|Sam097b.wav|Sorry, Captain - Sarge was killed in action.
+Sam|Sam098b.wav|Captain didn't make it.
+Sam|Sam099c.wav|Rest in peace, Captain.
+Sam|Sam100c.wav|Captain didn't make it back!
+Sam|Sam101b.wav|Captain was killed in action!
+Sam|Sam102b.wav|Captain, do you read me? Blade? Come in, Captain Blade...
+Sarge|Sar048c.wav|Thanks!
+Sarge|Sar049c.wav|Thank you, Captain.
+Sarge|Sar050b.wav|Hit the deck!
+Sarge|Sar051b.wav|What the...?
+Sarge|Sar052c.wav|I'm taking fire!
+Sarge|Sar053f.wav|Can't...take much more...
+Sarge|Sar054b.wav|Ahhh, that takes the sting out of it.
+Sarge|Sar055b.wav|Holy hand grenades! 
+Sarge|Sar056a.wav|Trooper down!
+Sarge|Sar057a.wav|I'm ready to leave this sector.
+Sarge|Sar058a.wav|Awaiting orders.
+Sarge|Sar059b.wav|Requesting air support.
+Sarge|Sar060b.wav|Not now, Captain!
+Sarge|Sar061c.wav|We're under fire here!
+Sarge|Sar062c.wav|Things are getting hot here.
+Sarge|Sar063c.wav|We need some cover here!
+Sarge|Sar064b.wav|Help us out here, Captain.
+Sarge|Sar065a.wav|They just keep coming!
+Sarge|Sar066b.wav|Blade, we need support fast! 
+Sarge|Sar067f.wav|Blade, we need evac. now!
+Grimm|Col038a.wav|Well done, men!
+Grimm|Col040a.wav|Good work, men.
+Grimm|Col041c.wav|Victory is ours!
+Grimm|Col042a.wav|As I always say, the way to win the war is to never lose!
+Grimm|Col043a.wav|Don't give up man! You're never beaten until you admit it!
+Grimm|Col044a.wav|We've got to press them in the air and on the ground. It's time for each of us to look inside ourselves and see what kind of plastic we're made of.  Are we hollow men?  Or are we plastic soldiers?!
+Plastro|Pla008b.wav|This island is mine - all mine!
+Plastro|Pla009f.wav|I'll get you, Blade!
+Plastro|Pla010d.wav|Death can be more exciting than life. Want to try death, Captain?
+Plastro|Pla011a.wav|You'll never defeat us!
+Plastro|Pla012b.wav|Is that all you've got?
+Plastro|Pla013b.wav|You seem lost, Captain...confused...
+Captain|Cap036b.wav|Gotcha!
+Captain|Cap049c.wav|Damn! I've got to move faster.
+Captain|Cap056b.wav|Thanks, Sarge.
+Captain|Cap059a.wav|I don't like the looks of this!
+Captain|Cap061f.wav|Strange...!
+Captain|Cap062b.wav|Glad that's over!
+Captain|Cap064b.wav|Why do they insist on getting killed?
+Captain|Cap065c.wav|Eat my dust!
+Captain|Cap069c.wav|I'm on my way.
+Captain|Cap070c.wav|I'll be there when I get a chance.
+Captain|Cap075c.wav|Excellent!
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|THIS SHOULD BE LINE #99 (STARTING FROM ZERO)
+Sam|Sam080d.wav|Welcome, Captain Blade. Feel free to fly around the training area at your leisure. While you do, I will point out some important features of your helicopter and make a few other helpful suggestions.
+Sam|Sam081c.wav|To take off, simply accelerate using your right mouse button.
+Sam|Sam082c.wav|Once airborne, your directional heading is controlled by your mouse cursor.
+Sam|Sam083c.wav|The instrument in the upper left corner of the on-screen display is your radar. It displays your mission objectives, landing zones and the locations of enemy troopers and vehicles. The light on the outer edge of your radar will give you the heading of your closest mission objective.
+Sam|Sam084c.wav|Your armor meter is shown above your radar. If you run out of armor, it's all over!
+Sam|Sam085d.wav|To fire your weapon, move your mouse cursor over your desired target and press the left mouse button.
+Sam|Sam086c.wav|Drop a beacon to direct friendly ground troops. If you are landed when you drop a beacon, nearby troops will attempt to board your chopper.
+Sam|Sam087c.wav|Captain Blade, you probably want to collect those power-ups.
+Sam|Sam088b.wav|Excellent, Captain. The buttons at the bottom left of your screen represent those power-ups in your cargo bays. To use them, just select the one you want and press the left mouse button.
+Sam|Sam089c.wav|Captain, just fly to position your shadow right over that landing zone and hover there for a second.
+Sam|Sam090b.wav|Okay sir, you're on your own now.  
+Sam|Sam091b.wav|The longer you spend in the training area, the more challenging it will become.  
+Sam|Sam092b.wav|Have fun. HQ out.
+Sam|Sam093c.wav|Go get 'em, Captain Blade!
+Grimm|Col045c.wav|Welcome to the Helicopter Flight and Combat Training Facility, Captain! 
+Grimm|Col046c.wav|You will use this area to hone your flight combat skills. Train for as long as you need, but remember, there is a war raging out there! 
+Grimm|Col047c.wav|I'll turn you over to our Radio Ops Specialist now. Good luck.
+Sam|Sam146c.wav|Welcome, Captain Blade. I'm going to run you, step by step, through all of the skills you will need in your upcoming missions. Please pay close attention.
+Sam|Sam147b.wav|During these exercises, please make sure you have your HUD buttons on. When active, these buttons will appear in the lower corners of the on-screen display.
+Sam|Sam148c.wav|Press your keyboard's F1 key at any time to see your current objectives and other vital data.
+Sam|Sam149c.wav|The instrument in the upper left corner of the on-screen display is your radar. It displays your mission objectives, landing zones, and the locations of troopers and vehicles.
+Sam|Sam150a.wav|Mission objectives on your radar will flash yellow. If your objective is outside the range of your radar, a directional indicator light, on the outer edge, will give you that objective's heading.
+Sam|Sam151b.wav|If you have more than one mission objective, the directional indicator will point to the closest one.
+Sam|Sam152b.wav|Click on the 'Drop Beacon' button, located in lower right corner of the on-screen display, to direct friendly ground troops to your location.
+Sam|Sam153d.wav|Your objective is to load all of those nearby troops on to your 'copter. To do so, simply drop a beacon while you are landed.
+Sam|Sam112a.wav|Your mission objective has not changed. Return to the landing zone and use the beacon to load ground troops on to your 'copter.
+Sam|Sam113b.wav|I'm sorry, sir, following my instructions is the only way to learn. Come back when you're ready to try again.
+Sam|Sam114a.wav|Excellent. The buttons at the bottom left of your screen represent those men in your 'copter.
+Sam|Sam115c.wav|Now that the men are on board, you have a new mission objective. Fly those troops to the LZ indicated on radar, and drop them off.
+Sam|Sam116b.wav|To unload your troops, select the one you want by clicking on his button with your mouse cursor. Then click on the 'Eject Cargo' button located in the lower right corner of the on-screen display.
+Sam|Sam117c.wav|Your next objective is target practice. To the west there are some Tan targets. Use your forward gun to destroy them.
+Sam|Sam118c.wav|To be most effective in combat, you will need to learn to collect and use power-ups.
+Sam|Sam119b.wav|Once again, your radar will guide you to power-up locations. Return here when you have collected three new weapons.
+Sam|Sam120a.wav|Excellent, Captain. The buttons at the bottom left of your screen represent those power-ups in your cargo bay. To select the one you want to use, click on the desired button with your mouse cursor.
+Sam|Sam121a.wav|There are two power-up areas, Captain - one to the south of here and one to the east. Collect all three power-ups from each area.
+Sam|Sam122b.wav|Tan units vehicles are arriving, Captain, and this time they are going to shoot back!
+Sam|Sam123c.wav|For a coordinated ground and air strike, use the beacon to summon ground troops to your location.
+Sam|Sam124b.wav|Remember to pick up armor power-ups if you are damaged.
+Sam|Sam125a.wav|Okay sir, you have all the skills you need to take on the Tan. Report for your first mission immediately.
+Grimm|Col048a.wav|Take care of your helicopter, Captain. Out in the field, you don't get second chances!

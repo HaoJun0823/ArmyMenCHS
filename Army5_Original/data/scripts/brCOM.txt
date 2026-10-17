@@ -1,0 +1,8 @@
+
+if evtSpyText1 then
+	showmessage "Spy:  Don't shoot me! I'll give you information!"
+
+if evtSpyText2 then
+	showmessage "Spy: Your president is attending a secret diplomatic meeting at a mountain retreat. The Tan are already moving to capture him!"
+
+

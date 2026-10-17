@@ -1,0 +1,210 @@
+#playroom object.aai
+
+#Item Flags
+# ITEMFLAG_MAP			0001	(1)
+# ITEMFLAG_AIRCOLLIDE	00xx	(2)
+# ITEMFLAG_VISBLOCK		0100	(256)
+# Altitute (EXTRA line) - distance above ground (floating). If object has any alt, then height affects copter shadow.
+# Height then becomes distance between alt (bottom) and top of object. Floaters cannot blk grd movemt
+# State - like damage state
+# Lnks - if you have several objects that always go together and you only want to put one in MapEdit, you can just 
+# place them together with set offset using a new line
+# Armor - reduces any hit by that amount of HP
+# Item flags: 1 (placed in map? need it); 256 (opaque); 257 (both); Defaults to all flags; see Architect doc
+# Hght - ht to collide with shots; affects if units can shoot over it? Changes elevation for region. Set to 0 unless
+#	object does not extend to top of image area at hotspot's x-coord.
+# Draw order - hi=top; units def to 1000
+# vis - ?
+# permeab - chance in 255 that a rifle-type projectile (no miss, bazoo) will pass through this object
+# crush - causes this damage to units in damage mask when placed or changes
+# states
+
+#Obj Type		SubT	Ste	Lnk Fl			HP	Hgt	Mv	Ord		Slp			Arm	Vis 	Crush	Perm	Explosn		Sd
+
+# portal frame
+Miscellaneous	571		1	0	0x00000001	-1	1	0	7000	0			0	1
+
+# portal vent - targettop
+Miscellaneous	570		0	0	0x00000001	100	165	0	1000	0			5	1		0		0		124
+Miscellaneous	570		1	0	0x00000001	-1	1	0	1000	0			0	1
+
+# playhouse - targettop
+Miscellaneous	560		0	0	0x00002501	350	39	15	1000	.067		0	1
+Miscellaneous	560		1	0	0x00000501	-1	39	15	1000	.067		0	1
+
+# door
+Fence			300		0	0	0x00000101	-1	300	15	1010	-1.065		0	1
+
+# hockeystik
+Fence			100		0	0	0x00000501	-1	1	0	1		0			0	1
+# bat
+Fence			200		0	0	0x00000501	-1	20	0	1		0			0	1
+
+# flamethrower "objPVP" undeployd winchable
+#Miscellaneous	550		0	0	0x01000101	-1	20	15	1000	0			0	1
+
+# mixing bowl
+Miscellaneous	425		0	0	0x00000101	-1	1	0	999		0			0	1
+Miscellaneous	425		1	0	0x00000101	-1	1	0	999		0			0	1
+Miscellaneous	425		2	0	0x00000101	-1	1	0	999		0			0	1
+Miscellaneous	425		3	0	0x00000101	-1	1	0	999		0			0	1
+Miscellaneous	425		4	0	0x00000101	-1	1	0	999		0			0	1
+Miscellaneous	425		5	0	0x00000101	-1	1	0	999		0			0	1
+Miscellaneous	425		6	0	0x00000101	-1	1	0	999		0			0	1
+Miscellaneous	425		7	0	0x00000101	-1	1	0	999		0			0	1
+Miscellaneous	425		8	0	0x00000101	-1	1	0	999		0			0	1
+# bowl front
+Miscellaneous	426		0	0	0x00000101	-1	1	0	1000	0			0	1
+
+# notepad
+Miscellaneous	535		0	0	0x00000401	-1	1	0	1		0			0	1
+
+# comic book selfmask targtetop wood
+Miscellaneous	530		0	0	0x00023401	100	1	0	1		0			0	1
+Miscellaneous	530		1	0	0x00000401	-1	1	0	1		0			0	1
+
+# left vdg tower - orderht, keepcollide, variorder. 701 = dmg state
+Miscellaneous	700		0	0	0x04080101	150	800	15	1000	-.182		0	1
+Miscellaneous	700		1	0	0x04080101	-1	800	0	1000	-.182		0	1
+# Rt vdg tower - orderht, keepcollide, variorder. 701 = dmg state
+Miscellaneous	705		0	0	0x04080101	150	800	15	1000	0			0	1
+Miscellaneous	705		1	0	0x04080101	-1	800	0	1000	0			0	1
+# rt tower wires
+Miscellaneous	707		0	0	0x00000400	-1	1	15	1		0			0	1
+# lf tower wires
+Miscellaneous	708		0	0	0x00000400	-1	1	15	1		0			0	1
+# vdg zap drawing - no visblock, nomap, variorder?
+Miscellaneous	710		0	0	0x04000000	-1	400	0	5500	0			0	1
+Miscellaneous	710		1	0	0x04000000	-1	400	0	5500	0			0	1
+Miscellaneous	710		2	0	0x04000000	-1	400	0	5500	0			0	1
+Miscellaneous	710		3	0	0x04000000	-1	400	0	5500	0			0	1
+Miscellaneous	710		4	0	0x04000000	-1	400	0	5500	0			0	1
+EXTRA	Miscellaneous	710		310
+# vdg amplifier - targettop
+Miscellaneous	715		0	0	0x00002501	-1	40	15	999		-.122		0	1	1000		0		125
+Miscellaneous	716		0	0	0x00002501	-1	1	0	1000	0			0	1
+# amp wires
+Miscellaneous	717		0	0	0x00000400	-1	1	0	1		0			0	1
+# vdg potato battery -  targettop selfmask horiz
+Miscellaneous	720		0	0	0x00022501	150	90	15	1000	-.2			0	1		0		0		701
+Miscellaneous	720		1	0	0x00022501	100	90	15	1000	-.2			0	1		0		0		701
+Miscellaneous	720		2	0	0x00022501	-1	90	15	1000	-.2			0	1
+# potato wires
+Miscellaneous	721		0	0	0x00000400	-1	1	0	1		0			0	1
+
+# skatebd
+Miscellaneous	501		0	0	0x00000501	-1	20	15	1000	.41			0	1
+# testtubes
+Miscellaneous	502		0	0	0x00002501	150	30	15	1000	0			0	1		0		0		125
+Miscellaneous	502		1	0	0x00002501	-1	40	15	1000	0			0	1
+# desk books
+Miscellaneous	503		0	0	0x00002501	150	20	15	1000	-.521		0	1
+Miscellaneous	503		1	0	0x00002501	-1	20	15	1000	-.521		0	1
+# globe bookend
+Miscellaneous	505		0	0	0x00022501	250	60	15	9		-.326		0	1		0		0		125
+Miscellaneous	505		1	0	0x00000501	-1	1	15	9		-.326		0	1
+#	EXTRA	Miscellaneous	505		1
+# go bowl - blk
+Miscellaneous	510		0	0	0x00000501	-1	20	15	1000	0			0	1
+# go bowl- wht
+Miscellaneous	511		0	0	0x00000501	-1	20	15	1000	0			0	1
+# go stone - blk, wht
+Miscellaneous	512		0	0	0x00000101	-1	5	0	1000	0			0	1
+Miscellaneous	513		0	0	0x00000101	-1	5	0	1000	0			0	1
+# go bd
+Miscellaneous	515		0	0	0x00000501	-1	16	15	1000	0			0	1
+#EXTRA	Miscellaneous	515		1
+# go bd blk - covers stones under bd. selfmask. made invisible, un15ed
+Miscellaneous	516		0	0	0x00020501	-1	1	0	1001	0			0	1 
+# spitfire
+Miscellaneous	520		0	0	0x00002501	250	10	15	1000	-1			0	1	1000		0		120
+Miscellaneous	520		1	0	0x00000501	-1	10	15	1000	-1			0	1
+# blocks - wood
+Fence			250		0	0	0x00001501	-1	60	15	1000	.3			0	1
+Fence			251		0	0	0x00001501	-1	60	15	1000	-.574		0	1
+Fence			252		0	0	0x00001501	-1	60	15	1000	0			0	1
+# baton moveblock
+#Fence			270		0	0	0x00000101	-1	1	15	1		0			0	1
+
+# PatternPanic game
+# 400 - body
+# 401 - objppdamg - opened state - no visblk, undeployed
+# 402 - objppdamgfrt - covers vial - no visblk, undeployed
+# 405 - objPPyb - yellow button - selfmask, targettop, no visblk
+# 406 - objPPOb - org - selfmask, targettop, no visblk
+# 407 - objPPBB - blue - selfmask, targettop, no visblk
+# 408 objppgb - green - selfmask, targettop, no visblk
+# 410 objpprf - red flashing error state - no map
+Miscellaneous	400		0	0	0x00000501	-1	17	15	0			-.208		0	1
+EXTRA	Miscellaneous	400		1
+Miscellaneous	401		0	0	0x00000001	-1	35	0	1003		0			0	1
+Miscellaneous	402		0	0	0x00000001	-1	35	0	1010		0			0	1
+
+Miscellaneous	405		0	0	0x00022001	-1	35	0	1002		0			7	1
+Miscellaneous	405		1	0	0x00000001	-1	35	0	1002		0			7	1
+Miscellaneous	406		0	0	0x00022001	-1	35	0	1002		0			7	1
+Miscellaneous	406		1	0	0x00000001	-1	35	0	1002		0			7	1
+Miscellaneous	407		0	0	0x00022001	-1	35	0	1002		0			7	1
+Miscellaneous	407		1	0	0x00000001	-1	35	0	1002		0			7	1
+Miscellaneous	408		0	0	0x00022001	-1	35	0	1002		0			7	1
+Miscellaneous	408		1	0	0x00000001	-1	35	0	1002		0			7	1
+
+Miscellaneous	410		0	0	0x00000000	-1	0	0	1003		0			0	1
+Miscellaneous	410		1	0	0x00000000	-1	0	0	1003		0			0	1
+Miscellaneous	410		2	0	0x00000000	-1	0	0	1003		0			0	1
+
+# sneaker
+Miscellaneous	500		0	0	0x00082501	150	90	15	1000	-.571		0	1
+Miscellaneous	500		1	0	0x00002501	-1	90	15	1000	-.571		0	1
+
+# bunsen burner - was variorder, nohit
+Miscellaneous	600		0	0	0x04800401	-1	12	15	1000	-.254		0	1
+# butane tank - nohit
+Miscellaneous	601		0	0	0x00800501	-1	1	15	1000	-.685		0	1
+# burner switch - no visblk, selfmask, nottargettop (2000)
+Miscellaneous	602		0	0	0x00020001	-1	41	0	1001	0			0	1
+Miscellaneous	602		1	0	0x00020001	-1	41	0	1001	0			0	1
+Miscellaneous	602		2	0	0x00020001	-1	41	0	1001	0			0	1
+# burner tip - undeployed, targettop, selfmask
+Miscellaneous	603		0	0	0x00022001	-1	20	0	1001	0			0	1		0		0		124
+# burner flame - no vis, no map
+Miscellaneous	604		0	0	0x00000000	-1	1	0	1002	0		0	1
+Miscellaneous	604		1	0	0x00000000	-1	1	0	1002	0		0	1
+Miscellaneous	604		2	0	0x00000000	-1	1	0	1002	0		0	1
+Miscellaneous	604		3	0	0x00000000	-1	1	0	1002	0		0	1
+Miscellaneous	604		4	0	0x00000000	-1	1	0	1002	0		0	1
+Miscellaneous	604		5	0	0x00000000	-1	1	0	1002	0		0	1
+Miscellaneous	604		6	0	0x00000000	-1	1	0	1002	0		0	1
+Miscellaneous	604		7	0	0x00000000	-1	1	0	1002	0		0	1
+Miscellaneous	604		8	0	0x00000000	-1	1	0	1002	0		0	1
+Miscellaneous	604		9	0	0x00000000	-1	1	0	1002	0		0	1
+Miscellaneous	604		10	0	0x00000000	-1	1	0	1002	0		0	1
+Miscellaneous	604		11	0	0x00000000	-1	1	0	1002	0		0	1
+
+# vial 3 - undeployed, winchable, keepcollide. 2nd state for draworder reasons
+Miscellaneous	423		0	0	0x01080101	-1	20	15	1004	0			0	1
+Miscellaneous	423		1	0	0x01000101	-1	20	15	1000	0			0	1
+# vial 1 - undeployed, winchable
+Miscellaneous	421		0	0	0x01000101	-1	20	15	1000	0			0	1
+Miscellaneous	421		1	0	0x00000101	-1	5	15	1000	0			0	1
+# greenvial 1 - undeployed, winchable, damageable, owned by Green
+Miscellaneous	424		0	0	0x01000101	30	20	15	1000	0			0	1		0		0		120
+Miscellaneous	424		1	0	0x00000101	-1	5	15	1000	0			0	1
+#vial 2 - winchable (on desk)
+Miscellaneous	422		0	0	0x01000101	-1	20	15	1000	0			0	1
+
+# portal -- nohit, no-visblock, 1 ht, should be no map
+Miscellaneous	980		0	0	0x00800000	-1	1	0	-2000	0			0	1
+Miscellaneous	980		1	0	0x00800000	-1	1	0	-2000	0			0	1
+Miscellaneous	980		2	0	0x00800000	-1	1	0	-2000	0			0	1
+Miscellaneous	980		3	0	0x00800000	-1	1	0	-2000	0			0	1
+Miscellaneous	980		4	0	0x00800000	-1	1	0	-2000	0			0	1
+Miscellaneous	980		5	0	0x00800000	-1	1	0	-2000	0			0	1
+Miscellaneous	980		6	0	0x00800000	-1	1	0	-2000	0			0	1
+Miscellaneous	980		7	0	0x00800000	-1	1	0	-2000	0			0	1
+Miscellaneous	980		8	0	0x00800000	-1	1	0	-2000	0			0	1
+
+#tent -- novisblock, firethru for Tan, targettop,selfmask. damaged state = basically maptile
+Miscellaneous	540		0	0	0x00422401	60	40	0	1000	.417		0	1
+Miscellaneous	540		1	0	0x00000401	-1	1	0	9		.417		0	1
+

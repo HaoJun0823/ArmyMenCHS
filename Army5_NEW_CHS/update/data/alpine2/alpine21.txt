@@ -1,0 +1,1247 @@
+//Alpine 2 Recovery and Removal
+//Intial plan...Insert the Commando team...keep them covered and wait till they return...
+//2nd part...lead the attack force to retake the city...leaving intact hopefully.
+
+INCLUDE ..\scripts\common.txt
+INCLUDE ..\scripts\skilift.txt
+INCLUDE ..\scripts\tree2fx.txt
+INCLUDE ..\scripts\housefx.txt
+
+
+preloadsprite 43 500 0
+preloadsprite 43 500 1
+preloadsprite 43 500 2
+
+preloadsprite 43 501 0
+preloadsprite 43 501 1
+preloadsprite 43 501 2
+
+preloadsprite 43 502 0
+preloadsprite 43 502 1
+preloadsprite 43 502 2
+
+preloadsprite 43 503 0
+preloadsprite 43 503 1
+preloadsprite 43 503 2
+
+preloadsprite 43 504 0
+preloadsprite 43 504 1
+preloadsprite 43 504 2
+
+preloadsprite 43 505 0
+preloadsprite 43 505 1
+preloadsprite 43 505 2
+
+preloadsprite 43 506 0
+preloadsprite 43 506 1
+preloadsprite 43 506 2
+
+preloadsprite 43 507 0
+preloadsprite 43 507 1
+preloadsprite 43 507 2
+
+preloadsprite 43 508 0
+preloadsprite 43 508 1
+preloadsprite 43 508 2
+
+preloadsprite 43 509 0
+preloadsprite 43 509 1
+preloadsprite 43 509 2
+
+preloadsprite 43 510 0
+preloadsprite 43 510 1
+preloadsprite 43 510 2
+
+preloadsprite 43 601 0
+preloadsprite 43 602 0
+
+preloadsprite 43 011 0
+preloadsprite 43 011 1
+preloadsprite 43 011 2
+preloadsprite 43 012 0
+preloadsprite 43 012 1
+preloadsprite 43 012 2
+preloadsprite 43 013 0
+preloadsprite 43 014 0
+preloadsprite 43 015 0
+preloadsprite 43 016 0
+preloadsprite 43 017 0
+preloadsprite 43 018 0
+preloadsprite 43 018 1
+preloadsprite 43 019 0
+preloadsprite 43 019 1
+preloadsprite 43 020 0
+preloadsprite 43 020 1
+
+PAD padevaclz3 10	"Spec. Meyer"
+PAD padpresmove 10 	President
+PAD padevaclz 11	"Spec. Meyer"				
+PAD padevaclz2 11	president				
+PAD padleftattack2 11	beta				//left flank move
+PAD padgetpres1 12	green
+PAD padgetpres2 13	green
+PAD padleftattack3 13	beta				//left flank move
+PAD padgetpres3 14	green
+PAD padpresstart 15 "Spec. Meyer"
+PAD padpatrol1 20 tan 
+PAD padpatrol2 21 tan
+PAD padpatrol3 22 tan
+PAD padpatrol4 23 tan
+PAD padgreenpatrol1 23 	green trooper				//green pads
+PAD padpatrol5 24 tan
+PAD padgreenpatrol2 24 	green trooper				//green pads
+PAD padpatrol6 25 tan
+PAD padpatrol7 26 tan
+PAD padpatrol8 27 tan
+PAD padpatrol9 28 tan
+PAD padpatrol10 29 tan
+PAD padpatrol11 30 tan
+PAD padpatrol12 31 tan
+PAD padpatrol13 32 tan
+PAD padpatrol14 33 tan
+PAD padpatrol15 34 tan
+PAD padleftattack1 34	beta				//left flank move
+PAD padpatrol16 35 tan
+PAD padpatrol17a 36 patrol9_1 
+PAD padpatrol17b 36 patrol9_2
+PAD padpatrol18a 37 patrol9_1
+PAD padpatrol18b 37 patrol9_2
+PAD padtowerattack 37	"Pvt. Bennett"		//green attack tower
+//PAD padpatrol19 38 tan
+//PAD padpatrol20 39 tan
+PAD padpatrol21 40 tan
+PAD padpatrol22 41 tan
+
+PAD padtarget1 51
+PAD padtarget2 52
+PAD padtarget3 53
+PAD padtarget4 54
+PAD padgreenattack1 54 green > 0
+PAD padtarget5 55
+PAD padtarget6 56
+PAD padtarget7 57
+PAD padtanstart1 60
+PAD padtanstart2 61
+PAD padgreenpatrol3 61 	green	trooper			//green pads
+PAD padtanstart3 62
+PAD padtanstart4 63
+PAD padtanstart5 64
+PAD padtanstart6 65
+//PAD padtanstart7
+PAD padtanstart8 75
+PAD padtanstart9 76
+PAD padtanstart10 77
+PAD padtanstart11 78
+//PAD padtanstart12
+//PAD padtanstart13 
+//PAD padtanstart14
+//PAD padtanstart15 80
+PAD padtanstart16 81
+PAD padtanstart17 82
+PAD padleftattack4 82	beta					//left flank move 
+PAD padgreenpatrol4 82 	green trooper				//green pads
+PAD padtanstart18 83
+PAD padtanstart19 84
+
+PAD padSkiinside	100		captain
+PAD padSkioutside	101		captain
+							
+PAD padresort1 110			tan
+PAD padresort2 111			tan
+PAD padresort3 112			tan
+PAD padresort4 113			tan
+PAD padresort5 114			tan
+PAD padresort6 115			tan
+PAD padresort7 116			tan
+PAD padresort8 117			tan
+PAD padresort9 118			tan
+PAD padresort10 119			tan
+PAD padresort11 120			tan
+PAD padresort12 121			tan
+PAD padresort13 122			tan
+PAD padresort14 123			tan
+PAD padresort15 124			tan
+PAD padresort16 125			tan
+PAD padresort17 126			tan
+PAD padresort18 127			tan
+PAD padresort19 128			tan
+PAD padresort20 129			tan
+
+PAD padpreshome	200			president
+PAD padkillhouse 200 tan trooper
+PAD LPad200	200 			captain	> 0
+PAD padgreenstart1 201
+PAD padgreenstart2 202
+PAD padgreenstart3 203
+PAD padgreenstart4 204
+PAD padgreenstart5 205
+PAD padgreenstart6 206
+PAD padgreenstart7 207
+PAD padgreenstart8 208					// Meyer
+PAD padgreenstart9 209					// Longworth
+PAD padgreenstart10 210					// Macaraeg
+PAD padpreshouse 211		president			// Pres runs into house
+PAD padpresforce 212		president	// force pres to do the right thing after getting out of copter
+PAD padgreenstart11 213	
+PAD padgreenstart12 214					//beta
+
+VARIABLE killvc 0
+VARIABLE varafterintro 0
+
+LIST listtanunit {flak1 flak2 flak3 flak4 flak5 flak6 goon3 goon4 goon5 goon7 goon8 goon9 goon10 goon11 goon12 goon13 goon14 goon15 goon16 goon17 goon18 goon19 goon20 goon21 bflak1 bflak2 bflak3 bflak4 lzkill1 lzkill2 lzkill3 lzkill4 target1 target2 target3 target4 target5 target6 target7 tantower1 tantower2}
+LIST listbuilding {build1 build2 build3 build4 build5 build6 build7 build8 build9 build10 build11 build12 build13 build14 build15 build16 build17 build18 build19 build20 build21 build22 build23 build24}
+LIST listski {snurf1 snurf2 snurf3 snurf4 snurf5 snurf6 snurf7 snurf8 snurf9 snurf10 snurf11 snurf12 snurf13 snurf14 snurf15 snurf16 snurf17 snurf18 snurf19 snurf20}
+LIST listpatrol {patrol1_1 patrol1_2 patrol2_1 patrol2_2 patrol3_1 patrol3_2 patrol5_1 patrol5_2 patrol6_1 patrol6_2 patrol7_1 patrol7_2 patrol8_1 patrol8_2 patrol9_1 patrol9_2 patrol11_1 patrol11_2}
+
+IF startup1 THEN
+	TRIGGER setupgreen,
+	TRIGGER setuptan,
+	TRIGGER setupcarnage,
+	TRIGGER setupsounds,
+	TRIGGERDELAY 100 showmissionobjective,
+	UNDEPLOY ground2,
+	UNDEPLOY ground3
+
+IF showmissionobjective THEN
+	PLAYTALKINGHEAD 115,
+	PLAYTALKINGHEAD 106,
+	PLAYTALKINGHEAD 100,
+	SETMISSIONINFO a21a,
+	ADDMISSIONOBJECTIVE padevaclz
+
+IF talkingheaddone captain TESTVAR varafterintro = 0 THEN			
+	CREATEPOWERUP "WhisperBlades1" whisperblades padgreenstart10,
+	SETVAR varafterintro 1,
+	SETNPC captain 0
+
+IF PICKEDUP whisperblades1 THEN
+	TRIGGERDELAY 5000 secondset
+
+IF secondset THEN
+	CREATEPOWERUP "WhisperBlades1" whisperblades padgreenstart10
+
+IF setupgreen THEN
+	CREATECOPTER attack "captain" (4177,2288,110) green,
+	//SETAIRMAP captain 0,
+	SETAIRVARIANCE captain 110,
+	SETSTEP captain 110,
+	SETNPC captain 1,													//prevent captain from moving
+	CREATEUNIT "Spec. Meyer" rifleman padgreenstart8 green sniper,
+	CREATEUNIT "Spec. Longworth" rifleman padgreenstart9 green sniper,
+	CREATEUNIT "Spec. Macaraeg" rifleman padgreenstart10 green sniper,
+	ENTERVEHICLE "Spec. Meyer" captain,
+	ENTERVEHICLE "Spec. Longworth" captain,
+	ENTERVEHICLE "Spec. Macaraeg" captain,
+	CREATEPOWERUP "WhisperBlades" whisperblades (3462,300),
+	CREATEPOWERUP "WhisperBlades" whisperblades (150,854),
+	CREATEPOWERUP "FullArmor1" FullArmor (4617,1970),
+	CREATEPOWERUP "medkit" medkit (4066,1910),
+	CREATEPOWERUP "ECM" ecmchaff (2260,130),
+	CREATEPOWERUP "firecracker" thrownfirecracker (2883,2305) 10,
+	CREATEPOWERUP "BottleRockets" groundmissile (3841,1968) 20,
+	CREATEPOWERUP "airblastmissile" airblastmissile (1329,494) 10,
+	CREATEPOWERUP "armorboost" armorboost (1022,463)
+	
+IF PICKEDUP "WhisperBlades1" THEN
+	PLAYTALKINGHEAD 107
+
+IF setuptan THEN
+	//more units needed
+	//emplacements								//turned flak Rifleman
+	CREATEVEHICLE "Flak1" ackackbase padtanstart1 tan,
+	SETGUNFACING flak1 127,
+	CREATEUNIT "flak2" rifleman padtanstart2 tan rifle,
+	SETGUNFACING flak2 145,
+	CREATEUNIT "flak3" rifleman padtanstart3 tan rifle,
+	SETGUNFACING flak3 145,
+	CREATEUNIT "flak4" rifleman padtanstart4 tan rifle,
+	SETGUNFACING flak4 127,
+	CREATEUNIT "flak5" rifleman padtanstart18 tan rifle,
+	CREATEUNIT "flak6" rifleman padtanstart19 tan rifle,
+	//need president guards
+	TRIGGER presguards,
+	//goonsquad
+	CREATEUNIT "goon3" rifleman padtanstart16 tan rifle,
+	SETFACING goon3 145,
+	CREATEUNIT "goon4" rifleman padtanstart16 tan rifle,
+	SETFACING goon4 145,
+	CREATEUNIT "goon5" rifleman padtanstart6 tan rifle,
+	SETAIPOSE goon5 kneel,
+	SETAIMODE goon5 ignore,
+	//each Flak gun gets a bazooka guard....well a rifleman
+	CREATEUNIT "Bflak1" rifleman padtanstart8 tan rifle,				//bazooka
+	SETFACING bflak1 145,
+	CREATEUNIT "bflak2" rifleman padtanstart9 tan rifle,
+	SETFACING bflak2 127,
+	CREATEUNIT "bflak3" rifleman padtanstart10 tan rifle,			//bazooka
+	SETFACING bflak3 95,
+	CREATEUNIT "bflak4" rifleman padtanstart11 tan rifle,
+	SETFACING bflak4 145,
+	//Patrolling the Perimeter 
+	TRIGGER patrol
+
+// So guy isn't that easy of a target...
+
+IF HIT goon5 THEN
+	SETAIMODE goon5 defend
+
+MACRO macrocarnage 7
+{
+	IF setupcarnage THEN		//This adds to the flavor that Tan came in and took out the place
+		CREATEUNIT "splat@1" @7 (@2,@3) @4 rifle,
+		DAMAGE splat@1 1000,
+		DAMAGE build@5 @6
+}
+
+EXPAND macrocarnage (1 2274 1430 green 15 1000 rifleman)
+EXPAND macrocarnage (2 2284 1490 green 16 90 jeep)
+EXPAND macrocarnage (3 1770 1530 green 17 90 rifleman)
+EXPAND macrocarnage (4 871 740 tan 8 90 rifleman)
+EXPAND macrocarnage (5 865 639 green 3 90 rifleman)
+EXPAND macrocarnage (6 845 613 tan 7 90 rifleman)
+EXPAND macrocarnage (7 2870 2072 green 19 90 jeep)
+EXPAND macrocarnage (8 2875 2102 tan 21 45 rifleman)
+EXPAND macrocarnage (9 4334 1931 tan 21 45 rifleman)
+
+//presidential guards
+MACRO 	macropresguards 1
+{
+	IF presguards THEN
+		CREATEUNIT "target@1" stingerguy padtarget@1 tan stingermissile,
+		SETMAXHEALTH target@1 120,
+		HEAL target@1 100,
+		SETAIMODE target@1 ignore
+}
+
+EXPAND macropresguards (1)
+EXPAND macropresguards (2)
+EXPAND macropresguards (3)
+EXPAND macropresguards (4)
+EXPAND macropresguards (5)
+EXPAND macropresguards (6)
+EXPAND macropresguards (7)
+	
+//Tan patrolling 
+UNTIL 2 REPEAT 1 BY 1						
+{	
+	IF patrol THEN
+		CREATEUNIT patrol1_$ rifleman padpatrol1 tan rifle,
+		CREATEUNIT patrol2_$ rifleman padpatrol3 tan rifle,
+		CREATEUNIT patrol3_$ rifleman padpatrol5 tan rifle,
+		CREATEUNIT patrol5_$ rifleman padpatrol9 tan rifle,
+		CREATEUNIT patrol6_$ rifleman padpatrol11 tan rifle,
+		CREATEUNIT patrol7_$ rifleman padpatrol13 tan rifle,
+		CREATEUNIT patrol8_$ rifleman padpatrol15 tan rifle,
+		CREATEUNIT patrol9_$ rifleman padpatrol17a tan rifle,
+		CREATEUNIT patrol11_$ rifleman padpatrol21 tan rifle			
+}
+
+//Get patrols to go back and forth
+MACRO macropadpatrol 2
+{
+	IF PADON padpatrol@1 THEN
+		ORDER me GOTO padpatrol@2 INMODE attack
+}
+
+EXPAND macropadpatrol (1 2)
+EXPAND macropadpatrol (2 1)
+EXPAND macropadpatrol (3 4)
+EXPAND macropadpatrol (4 3)
+EXPAND macropadpatrol (5 6)
+EXPAND macropadpatrol (6 5)
+//EXPAND macropadpatrol (7 8)
+//EXPAND macropadpatrol (8 7)
+EXPAND macropadpatrol (9 10)
+EXPAND macropadpatrol (10 9)
+EXPAND macropadpatrol (11 12)
+EXPAND macropadpatrol (12 11)
+EXPAND macropadpatrol (13 14)
+EXPAND macropadpatrol (14 13)
+EXPAND macropadpatrol (15 16)
+EXPAND macropadpatrol (16 15)
+EXPAND macropadpatrol (17a 18a)
+EXPAND macropadpatrol (18a 17a)
+EXPAND macropadpatrol (17b 18b)
+EXPAND macropadpatrol (18b 17b)
+//EXPAND macropadpatrol (19 20)
+//EXPAND macropadpatrol (20 19)
+EXPAND macropadpatrol (21 22)
+EXPAND macropadpatrol (22 21)
+
+//When commando team dropped, they take off for President.
+//player may becon them away
+//must keep taking go get pres orders till president is gotten
+//Then do return to lz order till at LZ
+
+//Meyer President Recovery movement	0 = keep moving forward,  1 or more means they should return to LZ
+VARIABLE gotpres 0						//show if pres has been recovered
+
+IF count 1 of PADON padevaclz PADON padevaclz3 TESTVAR gotpres = 0 THEN		//no pres, then go forward
+	TRIGGERDELAY 3000 forward1,
+	SETMISSIONINFO a21b
+
+IF count 1 of PADON padevaclz2 TESTVAR gotpres > 0 THEN			//Yes pres, everyone to enter copter
+	TRIGGER checkcaptain
+
+IF checkcaptain TESTVAR itemtoitemdistance president captain > 800 THEN
+	//showmessage "接到总统了。你在哪儿？"					
+	PLAYTALKINGHEAD 132
+
+IF count 1 of forward1 THEN						//Go to next way point
+	ORDER "Spec. Meyer" GOTO padgetpres1 INMODE defend,
+	PLAYTALKINGHEAD 108,
+	TRIGGER troopsfollow,
+	triggerdelay 10000 gettopres1dammit
+
+IF gettopres1dammit butnot padon padgetpres1 then
+	ORDER "Spec. Meyer" GOTO padgetpres1 INMODE defend,
+	triggerdelay 10000 gettopres1dammit
+
+IF troopsfollow BUTNOT presout1 THEN							//buddies follow meyer
+	ORDER "Spec. Longworth" FOLLOW "Spec. Meyer" INMODE attack,
+	ORDER "Spec. Macaraeg" FOLLOW "Spec. Meyer" INMODE attack,
+	TRIGGERDELAY 4000 troopsfollow
+
+IF PADON padgetpres1 TESTVAR gotpres = 0 THEN				//outer guards get gun downed
+	TRIGGER gundown1,
+	TRIGGERDELAY 3500 forward2
+
+IF PADON padgetpres1 TESTVAR gotpres > 0 THEN
+	TRIGGER goback1
+
+IF goback1 THEN								//If Pres, head to LZ
+	ORDER president GOTO padevaclz INMODE ignore
+	
+IF gundown1 THEN							//first victums	
+	ORDER "Spec. Meyer" FOLLOW target1 INMODE attack,
+	ORDER "Spec. Longworth" FOLLOW target2 INMODE attack,
+	ORDER "Spec. Macaraeg" FOLLOW target3 INMODE attack
+
+IF forward2 THEN							//next way point
+	ORDER "Spec. Meyer" GOTO padgetpres2 INMODE defend,
+	triggerdelay 10000 gettopres2dammit,
+	ORDER "Spec. Longworth" FOLLOW "Spec. Meyer" INMODE attack,
+	ORDER "Spec. Macaraeg" FOLLOW "Spec. Meyer" INMODE attack
+//	TRIGGER troopsfollow //notneeded
+
+IF gettopres2dammit butnot padon padgetpres2 then
+	ORDER "Spec. Meyer" GOTO padgetpres2 INMODE defend,
+	triggerdelay 10000 gettopres2dammit
+
+IF PADON padgetpres2 TESTVAR gotpres = 0 THEN				//next wave point
+	TRIGGERDELAY 2500 forward3
+
+IF PADON padgetpres2 TESTVAR gotpres > 0 THEN				//If pres, go padgetpres1
+	TRIGGER goback2
+
+IF PADON padgetpres3 TESTVAR gotpres = 0 THEN				//next wave point
+	TRIGGERDELAY 500 forward3
+
+IF PADON padgetpres3 TESTVAR gotpres > 0 THEN				//If pres, go padgetpres1
+	TRIGGER goback2
+
+IF goback2 THEN								//If Pres, head to LZ
+	ORDER president GOTO padgetpres1 INMODE ignore,
+	TRIGGERDELAY 2000 followpres
+
+IF followpres BUTNOT presidentback THEN
+	ORDER "Spec. Meyer" FOLLOW president INMODE defend,
+	ORDER "Spec. Longworth" FOLLOW president INMODE defend,
+	ORDER "Spec. Macaraeg" FOLLOW president INMODE defend,
+	TRIGGERDELAY 3000 followpres
+
+IF forward3 THEN
+	ORDER "Spec. Meyer" GOTO padpresstart INMODE defend,		//charge pres...killing everyone with luck
+//	ORDER "Spec. Longworth" FOLLOW "Spec. Meyer" INMODE attack, // not needed
+//	ORDER "Spec. Macaraeg" FOLLOW "Spec. Meyer" INMODE attack,
+	triggerdelay 10000 gettopresstartdammit
+
+IF gettopresstartdammit butnot padon padpresstart then
+	ORDER "Spec. Meyer" GOTO padpresstart INMODE defend,
+	triggerdelay 10000 gettopresstartdammit
+
+IF count 1 of PADON padpresstart THEN
+	FIREWEAPON grenades me (1810,1210),						//on presidential pad
+	//SETCAMERAFOCUS "Spec. Meyer",
+	TRIGGERDELAY 1500 presout1
+
+If presout1 THEN
+	CREATEEXPLOSION padpresstart 123,
+	makesmoke padpresstart 15000,
+	makesmoke (1810,1210) 15000,
+	makesmoke (1795,1210) 15000,
+	makesmoke (1825,1210) 15000,
+	makesmoke (1810,1240) 15000,
+	makesmoke (1780,1240) 15000,
+	makesmoke (1835,1240) 15000,
+	TRIGGERDELAY 3000 setuppres,
+	TRIGGER setupbugs,
+	TRIGGER nores
+
+//Annoying Bug generator			Create 3 bugs that will constantly attack player
+Macro macroflygen 2
+{
+	IF setupbugs THEN
+		CREATEINSECT @2 bug@1 (100,2370,200) tan,			//should start in some corner
+		SETAIRMAP bug@1 0,
+		SETAIRVARIANCE bug@1 150,
+		SETSTEP bug@1 250,
+		SETAIMODE bug@1 WANDER				//flies to wander
+}
+
+EXPAND macroflygen (1 mutantfly)
+EXPAND macroflygen (2 mutantfly)
+EXPAND macroflygen (3 mutantwasp)
+
+Macro macrolarva 1
+{
+	IF KILLED bug@1 THEN 
+		TRIGGERDELAY 60000 larva
+}
+
+EXPAND macrolarva (1)
+EXPAND macrolarva (2)
+EXPAND macrolarva (3)
+
+IF larva THEN
+	RESURRECT me (100,2370,200),
+	HEAL me 100,
+	SETAIRMAP me 0,
+	SETAIRVARIANCE me 150,
+	SETAIMODE me WANDER
+
+IF setuppres BUTNOT evtpresidentkilled THEN													// Pres starts in Building
+	//and introducing...the president
+	CREATEUNIT "president" rifleman padpresstart green rifle,
+	TRIGGER presidentdeployed,
+	SETMAXHEALTH president 600,
+	heal president 100,
+	ORDER president GOTO padgetpres3 INMODE ignore,
+	ADDVAR gotpres 1,
+	PLAYTALKINGHEAD 101,
+	triggerdelay 1000 followpres,
+	TRIGGERDELAY 3500 lzkillers,
+	triggerdelay 10000 dcforcedudestoLZ
+
+if dcforcedudestoLZ butnot padon padevacLZ2 then
+	order president goto padevacLZ2 inmode defend,
+	triggerdelay 10000 dcforcedudestoLZ
+
+// Special Lose, Building Killed while President in it
+
+IF KILLED build9 BUTNOT presidentdeployed THEN
+	//showmessage "总统在房子里被杀了！",
+	STOPTALKINGHEAD,
+	PLAYTALKINGHEAD 133,
+	TRIGGER evtmissionlost,
+	TRIGGER evtpresidentkilled
+
+// IF team killed before pres out
+IF KILLED "Spec. Longworth" THEN
+	TRIGGER longworthdead							//flag longworth dead		
+
+IF KILLED "Spec. Macaraeg" THEN
+	TRIGGER macdead									//flag Macaraegdead
+
+IF KILLED "Spec. Meyer" THEN
+	TRIGGER checkalldead							// everytime Meyer killed see if all are dead
+
+IF repeat 3 of checkalldead longworthdead macdead THEN			// If team wacked 3 times
+	TRIGGER checkpresout
+
+IF checkpresout BUTNOT presout1 THEN
+	//Showmessage "突击队在找到总统之前就全员阵亡。",
+	STOPTALKINGHEAD,
+	TRIGGER evtmissionlost,
+	PLAYTALKINGHEAD 134,
+	TRIGGER nores,												//prevent res
+	TRIGGERDELAY 7500 tanwins
+
+// If Meyer killed, someone takes over to continue the mission
+	
+IF count 1 of KILLED "Spec. Meyer" THEN
+	TRIGGERDELAY 3 meyerreplace1					
+
+IF meyerreplace1 BUTNOT nores THEN									//Meyer takes Longworth
+	RESURRECT "Spec. Meyer" "Spec. Longworth",
+	UNDEPLOY "Spec. Longworth",
+	HEAL "Spec. Meyer" 100
+
+IF repeat 2 of KILLED "Spec. Meyer" KILLED "Spec. Longworth" THEN
+	TRIGGERDELAY 2 meyerreplace2
+
+IF meyerreplace2 BUTNOT nores THEN									// Meyer takes Mac if Longworth Killed
+	RESURRECT "Spec. Meyer" "Spec. Macaraeg",
+	UNDEPLOY "Spec. Macaraeg",
+	HEAL "Spec. Meyer" 100
+
+IF count 2 of KILLED "Spec. Meyer" KILLED "Spec. Macaraeg" THEN
+	TRIGGERDELAY 2 meyerreplace3
+
+IF meyerreplace3 BUTNOT nores THEN									//Meyer takes Longworth Mac Killed
+	RESURRECT "Spec. Meyer" "Spec. Longworth",
+	UNDEPLOY "Spec. Longworth",
+	HEAL "Spec. Meyer" 100
+
+MACRO macrohitresponse 8
+{	
+	IF HIT target@1 BUTNOT KILLED target@1 THEN			//make the guards somewhat alert when one is hit
+		SETAIMODE target@2 defend,
+		SETAIMODE target@3 defend,
+		SETAIMODE target@4 defend,
+		SETAIMODE target@5 defend,
+		SETAIMODE target@6 defend,
+		SETAIMODE target@7 defend,
+		SETAIMODE target@8 defend
+}
+
+EXPAND macrohitresponse (1 1 2 3 4 5 6 7)	
+EXPAND macrohitresponse (2 1 2 3 4 5 6 7)	
+EXPAND macrohitresponse (3 1 2 3 4 5 6 7)	
+EXPAND macrohitresponse (4 1 2 3 4 5 6 7)	
+EXPAND macrohitresponse (5 1 2 3 4 5 6 7)	
+EXPAND macrohitresponse (6 1 2 3 4 5 6 7)	
+EXPAND macrohitresponse (7 1 2 3 4 5 6 7)	
+
+VARIABLE varspotted 0
+VARIABLE varpresback 0
+
+IF presidentback THEN
+	addvar varpresback 1
+
+IF HIT captain HIT "spec. meyer" HIT "spec. longworth" HIT "spec. macaraeg" TESTVAR varpresback = 0 THEN
+	addvar varspotted 1,
+	TRIGGER spotted
+
+IF spotted TESTVAR varspotted = 2 THEN				//iF Spotted Tan comes to wail on the Player
+	PLAYTALKINGHEAD 109,
+	ORDER target1 GOTO padevaclz INMODE attack,
+	ORDER target2 follow captain INMODE attack,
+	ORDER target3 GOTO padevaclz INMODE attack,
+	ORDER target4 follow captain INMODE attack,
+	ORDER target5 GOTO padevaclz INMODE attack,
+	ORDER target6 follow captain INMODE attack,
+	ORDER target7 GOTO padevaclz INMODE attack,
+	ORDER goon4 follow captain INMODE attack,
+	ORDER goon6 GOTO padevaclz INMODE attack,
+	ORDER president GOTO padevaclz INMODE ignore,
+	TRIGGERDELAY 1500 lzkillers
+
+VARIABLE varbuild2killed 0
+
+IF KILLED build2 THEN
+	ADDVAR varbuild2killed 1
+
+IF count 1 of lzkillers TESTVAR varbuild2killed = 0 THEN
+	CREATEUNIT "lzkill1" rifleman (490,1500) tan rifle,					//attack LZ
+	CREATEUNIT "lzkill2" rifleman (490,1500) tan rifle,
+	CREATEUNIT "lzkill3" rifleman (490,1500) tan rifle,
+	CREATEUNIT "lzkill4" rifleman (490,1500) tan rifle,
+	ORDER lzkill1 GOTO padevaclz INMODE defend,
+	ORDER lzkill2 GOTO padevaclz INMODE attack,
+	ORDER lzkill3 GOTO padevaclz INMODE defend,
+	ORDER lzkill4 GOTO padevaclz INMODE attack,
+	ADDVAR killvc -4													//needed to make VC work correct
+
+// President on board
+IF count 1 of PICKEDUP president THEN
+	PLAYTALKINGHEAD 110,
+	REMOVEMISSIONOBJECTIVE padevaclz,
+	ADDMISSIONOBJECTIVE padpreshome,
+	TRIGGER ammoup
+
+//first part win...get president back...this creates the counterattack
+IF INORDER PICKEDUP president PADON padpresmove THEN
+	ORDER president GOTO padpreshome INMODE ignore
+
+VARIABLE varpresnobeacon 0
+
+IF PADON padpreshome PADON padpresforce THEN
+	TRIGGERDELAY 2500 presidentback,
+	ADDVAR varpresnobeacon 1
+	
+IF count 1 of presidentback THEN
+	SETBEACON captain 3,										//no one can be beacon till pres inside
+	PLAYTALKINGHEAD 118,
+	TRIGGERDELAY 2000 greenassualtforce,
+	TRIGGERDELAY 2000 counterattack,
+	SAVEGAME "Polymer Village_2",
+	SETMISSIONINFO a21c,
+	REMOVEMISSIONOBJECTIVE padpreshome,
+	TRIGGERDELAY 2100 nextobjective,
+	TRIGGER moretan
+
+// Keep President from going into a copter the second time
+
+IF beaconed captain TESTVAR varpresnobeacon = 1 THEN
+	DROPITEM captain president,
+	SETAIPOSE president stand,
+	TRIGGER keepgoing
+
+IF keepgoing THEN
+	DROPITEM captain president,
+	SETAIPOSE president none,
+	ORDER president GOTO padpreshouse INMODE ignore,
+	TRIGGERDELAY 500 keepgoing
+
+IF nextobjective THEN
+	ADDMISSIONOBJECTIVE goon3,
+	ADDMISSIONOBJECTIVE goon4,
+	ADDMISSIONOBJECTIVE goon5,
+	ADDMISSIONOBJECTIVE goon7,
+	ADDMISSIONOBJECTIVE goon8,
+	ADDMISSIONOBJECTIVE goon9,
+	ADDMISSIONOBJECTIVE goon10,
+	ADDMISSIONOBJECTIVE goon11,
+	ADDMISSIONOBJECTIVE goon12,
+	ADDMISSIONOBJECTIVE goon13,
+	ADDMISSIONOBJECTIVE goon14,
+	ADDMISSIONOBJECTIVE goon16,
+	ADDMISSIONOBJECTIVE goon17,
+	ADDMISSIONOBJECTIVE goon18,
+	ADDMISSIONOBJECTIVE goon19,
+	ADDMISSIONOBJECTIVE goon21,
+	ADDMISSIONOBJECTIVE flak1,
+	ADDMISSIONOBJECTIVE flak2,
+	ADDMISSIONOBJECTIVE flak3,
+	ADDMISSIONOBJECTIVE flak4,
+	ADDMISSIONOBJECTIVE flak5,
+	ADDMISSIONOBJECTIVE flak6,
+	ADDMISSIONOBJECTIVE bflak1,
+	ADDMISSIONOBJECTIVE bflak2,
+	ADDMISSIONOBJECTIVE bflak3,
+	ADDMISSIONOBJECTIVE bflak4,
+	ADDMISSIONOBJECTIVE tantower1,
+	ADDMISSIONOBJECTIVE tantower2,
+	ADDMISSIONOBJECTIVE snurf1,
+	ADDMISSIONOBJECTIVE snurf2,
+	ADDMISSIONOBJECTIVE snurf3,
+	ADDMISSIONOBJECTIVE snurf4,
+	ADDMISSIONOBJECTIVE snurf6,
+	ADDMISSIONOBJECTIVE snurf7,
+	ADDMISSIONOBJECTIVE snurf8,
+	ADDMISSIONOBJECTIVE snurf10,
+	ADDMISSIONOBJECTIVE snurf11,
+	ADDMISSIONOBJECTIVE snurf12,
+	ADDMISSIONOBJECTIVE snurf14,
+	ADDMISSIONOBJECTIVE snurf15,
+	ADDMISSIONOBJECTIVE snurf16,
+	ADDMISSIONOBJECTIVE snurf18,
+	ADDMISSIONOBJECTIVE snurf20,
+	ADDMISSIONOBJECTIVE lzkill1,
+	ADDMISSIONOBJECTIVE lzkill2,
+	ADDMISSIONOBJECTIVE lzkill3,
+	ADDMISSIONOBJECTIVE lzkill4,
+	ADDMISSIONOBJECTIVE target1,
+	ADDMISSIONOBJECTIVE target2,
+	ADDMISSIONOBJECTIVE target3,
+	ADDMISSIONOBJECTIVE target4,
+	ADDMISSIONOBJECTIVE target5,
+	ADDMISSIONOBJECTIVE target6,
+	ADDMISSIONOBJECTIVE target7,
+	ADDMISSIONOBJECTIVE patrol1_1,
+	ADDMISSIONOBJECTIVE patrol1_2,
+	ADDMISSIONOBJECTIVE patrol2_1,
+	ADDMISSIONOBJECTIVE patrol2_2,
+	ADDMISSIONOBJECTIVE patrol3_1,
+	ADDMISSIONOBJECTIVE patrol3_2,
+	ADDMISSIONOBJECTIVE patrol5_1,
+	ADDMISSIONOBJECTIVE patrol5_2,
+	ADDMISSIONOBJECTIVE patrol6_1,
+	ADDMISSIONOBJECTIVE patrol6_2,
+	ADDMISSIONOBJECTIVE patrol7_1,
+	ADDMISSIONOBJECTIVE patrol7_2,
+	ADDMISSIONOBJECTIVE patrol8_1,
+	ADDMISSIONOBJECTIVE patrol8_2,
+	ADDMISSIONOBJECTIVE patrol9_1,
+	ADDMISSIONOBJECTIVE patrol9_2,
+	ADDMISSIONOBJECTIVE patrol11_1,
+	ADDMISSIONOBJECTIVE patrol11_2,
+	ADDMISSIONOBJECTIVE rockarch
+
+
+// need tan army listed as objectives
+
+IF counterattack THEN
+	TRIGGER vehiclesetup,
+	TRIGGERDELAY 5000 greenorders1,
+	PLAYTALKINGHEAD 119
+
+	//The vehicles
+MACRO macrovehicle 3
+{
+	IF vehiclesetup THEN
+		CREATEVEHICLE "@1" @2 padgreenstart@3 green
+}
+
+EXPAND macrovehicle (alpha tank 7)
+EXPAND macrovehicle (beta jeep 12)
+EXPAND macrovehicle (gamma jeep 3)
+
+IF moretan THEN							// more troops show up..they were in the houses.
+	CREATEUNIT "goon6" rifleman padtanstart2 tan rifle,
+	CREATEUNIT "goon7" rifleman padtarget3 tan rifle,
+	CREATEUNIT "goon8" rifleman padtanstart4 tan rifle,
+	CREATEUNIT "goon9" rifleman padtanstart5 tan rifle,
+	CREATEUNIT "goon10" rifleman padtanstart8 tan rifle,
+	CREATEUNIT "goon11" rifleman padtanstart9 tan rifle,
+	CREATEUNIT "goon12" rifleman padtanstart10 tan rifle,
+	CREATEUNIT "goon13" rifleman padtanstart11 tan rifle,
+	CREATEUNIT "goon14" rifleman padtanstart14 tan rifle,
+	CREATEUNIT "goon16" flamerman padtanstart16 tan flamer,
+	CREATEUNIT "goon17" flamerman padtanstart1 tan flamer,
+	CREATEUNIT "goon18" grenadier padtanstart2 tan grenade,
+	CREATEUNIT "goon19" grenadier padtarget7 tan grenade,
+	CREATEUNIT "goon21" mortarman padtanstart5 tan mortar,
+	TRIGGER towerforce
+
+IF towerforce BUTNOT KILLED tower1 THEN
+	CREATEUNIT "tanTower1" grenadier padpatrol17a tan grenade,
+	CREATEUNIT "tanTower2" rifleman padpatrol17a tan rifle,
+	ADDVAR killvc -2,											// two more tan deployed, up VC count needed by 2
+	ORDER tantower1 GOTO padkillhouse INMODE defend,
+	ORDER tantower2 GOTO padkillhouse INMODE attack
+	
+VARIABLE varmaxtantower1 0			//limit number of resurrections
+VARIABLE varmaxtantower2 0
+VARIABLE varkillpres 0
+
+MACRO macrotowerres 1
+{
+	IF KILLED tantower@1 BUTNOT KILLED tower1 THEN
+		TRIGGERDELAY 50000 towerres@1,
+		ADDVAR varmaxtantower@1 1
+
+	IF towerres@1 BUTNOT evtgreenwins THEN
+		trigger maxresreached@1
+
+	IF maxresreached@1 BUTNOT greenwins TESTVAR varmaxtantower@1 < 4 THEN
+		RESURRECT me padpatrol17a,
+		ADDVAR killvc -1,
+		SETVAR varkillpres 0,
+		ORDER me GOTO padkillhouse INMODE defend
+}
+
+EXPAND macrotowerres (1)
+EXPAND macrotowerres (2)
+
+IF PADON padkillhouse BUTNOT KILLED build23 THEN
+	trigger blowpreshouse
+
+IF blowpreshouse BUTNOT KILLED build23 THEN
+	TRIGGER guycheck
+
+IF guycheck TESTVAR varkillpres < 1 THEN
+	//SETFACING tantower1 5,
+	FIREWEAPON grenades tantower1 (4280,1890),
+	UNITFIRE tantower1 (4280,1890),				//(4280,1890) build23
+	TRIGGERDELAY 10000 blowpreshouse
+
+IF KILLED tantower1 THEN
+	ADDVAR varkillpres 1
+	
+MACRO macroforce 5
+{
+	IF greenassualtforce THEN
+		CREATEUNIT @1 @2 @3 green @4,
+		SETAIMODE @1 defend, 
+		SETAIPOSE @1 kneel,
+		SETMAXHEALTH @1 @5,
+		HEAL @1 100
+}
+
+EXPAND macroforce ("Pvt. Copur" rifleman padgreenstart1 autorifle 200)
+EXPAND macroforce ("Pvt. Bowie" rifleman padgreenstart4 autorifle 220)
+EXPAND macroforce ("Pvt. Custer" rifleman padgreenstart4 autorifle 200)
+EXPAND macroforce ("Pvt. Ladrino" rifleman padgreenstart11 vulcan 240)
+EXPAND macroforce ("Pvt. Boyle" rifleman padgreenstart1 heavymg 240)
+EXPAND macroforce ("Pvt. Rosser" rifleman padgreenstart6 heavymg 220)
+EXPAND macroforce ("Pvt. Yates" flamerman padgreenstart5 flamer 250)
+EXPAND macroforce ("Pvt. Hill" grenadier padgreenstart5 grenade 200)
+EXPAND macroforce ("Pvt. Bennett" bazookaman padgreenstart11 bazooka 300)
+EXPAND macroforce ("Cpl. Rosser" mortarman padgreenstart6 mortar 200)
+
+IF ammoup THEN
+	CREATEPOWERUP "partialarmor" partialarmor (3485,1600),
+	CREATEPOWERUP "firecracker" thrownfirecracker (3290,200) 5,
+	CREATEPOWERUP "firecracker" thrownfirecracker (4500,1931) 15,
+	CREATEPOWERUP "BottleRockets" groundmissile (4540,2045) 20,
+	CREATEPOWERUP "napalm" napalmbomb (414,981) 5,
+	CREATEPOWERUP "fullarmor" fullarmor (353,420),
+	CREATEPOWERUP "ECM" ecmchaff padgreenstart9,
+	CREATEPOWERUP "greenpaintbomb" greenpaintbomb padgreenstart8 5
+
+IF greenorders1 BUTNOT KILLED build23 THEN						//Pres just hangs if house destroyed
+	SETBEACON captain 0,
+	//ORDER president GOTO padpreshouse INMODE ignore,			//should go to house
+	//ORDER "Spec. Meyer" GOTO padgreenstart8 INMODE defend,			//spec ops become body guards
+	//ORDER "Spec. Longworth" GOTO padgreenstart9 INMODE defend,
+	//ORDER "Spec. Macaraeg" GOTO padgreenstart10 INMODE defend,
+	TRIGGERDELAY 8000 greenorders2,						//left flank
+	TRIGGERDELAY 10000 greenorders3,					// Right flank (toward tower)
+	TRIGGERDELAY 13000 greenorders4,					// Tank
+	TRIGGERDELAY 21000 greenorders5						// rest of inf
+
+IF count 2 of greenorders1 KILLED build23 THEN
+	SETAIPOSE president kneel,									//just hangs if House destroyed
+	SETAIPOSE "Spec. Meyer" stand,
+	SETAIPOSE "Spec. Longworth" stand,
+	SETAIPOSE "Spec. Macaraeg" stand,
+	TRIGGERDELAY 8000 greenorders2,						//left flank
+	TRIGGERDELAY 10000 greenorders3,					// Right flank (toward tower)
+	TRIGGERDELAY 13000 greenorders4,					// Tank
+	TRIGGERDELAY 21000 greenorders5						// rest of inf
+
+IF count 1 of PADON padpreshouse THEN
+	TRIGGERDELAY 3500 hidepres
+
+IF hidepres BUTNOT KILLED build23 THEN
+	UNDEPLOY president,
+	SETAIPOSE "Spec. Meyer" kneel,
+	SETAIPOSE "Spec. Longworth" prone,
+	SETAIPOSE "Spec. Macaraeg" kneel,
+	SETBEACON captain 0,
+	TRIGGER pressafe
+
+// Special Lose Condition...the house the President is in Blows up
+
+IF INORDER pressafe KILLED build23 THEN
+	//showmessage "总统在房子里被杀了！",
+	STOPTALKINGHEAD,
+	TRIGGER evtmissionlost,
+	PLAYTALKINGHEAD 133,
+	TRIGGER evtpresidentkilled
+
+MACRO macrogorder2 5													//Initial move out orders
+{
+	IF greenorders@5 THEN
+		SETAIPOSE @1 none,
+		ORDER @1 @2 @3 INMODE @4,
+		SETSPEED @1 slow
+}	
+
+EXPAND macrogorder2 (alpha GOTO padpatrol1 attack 4)		
+EXPAND macrogorder2 (beta GOTO padleftattack1 defend 2)
+EXPAND macrogorder2 (gamma FOLLOW alpha defend 4)
+EXPAND macrogorder2 ("Pvt. Copur" FOLLOW beta attack 2)						//follow beta
+EXPAND macrogorder2 ("Pvt. Bowie" GOTO padgreenattack1 attack 5)			//attack center
+EXPAND macrogorder2 ("Pvt. Custer" GOTO padgreenattack1 defend 5)			//attack center	
+EXPAND macrogorder2 ("Pvt. Ladrino" GOTO padtowerattack attack 3)				//attack tower
+EXPAND macrogorder2 ("Pvt. Boyle" FOLLOW beta attack 2)						//follow beta
+EXPAND macrogorder2 ("Pvt. Rosser"  GOTO padgreenattack1 attack 5)			//attack center	
+EXPAND macrogorder2 ("Pvt. Yates" GOTO padtanstart9 attack 5)				//attack center
+EXPAND macrogorder2 ("Pvt. Hill" GOTO padtanstart9 defend 5)				//attack center
+EXPAND macrogorder2 ("Cpl. Rosser" GOTO padgreenattack1 attack 5)				//attack center
+EXPAND macrogorder2 ("Pvt. Bennett" GOTO padtowerattack attack 3)				//attack tower
+
+// Make sure troopers don't get stuck w/o orders
+MACRO macrodeadorder 2
+{
+	IF KILLED @1 THEN
+		ORDER @2 GOTO padgreenpatrol1 INMODE attack
+}
+
+EXPAND macrodeadorder (beta "Pvt. Copur")
+//EXPAND macrodeadorder ("Cpl. Rosser" "Pvt. Ladrino")
+EXPAND macrodeadorder (beta "Pvt. Boyle")
+//EXPAND macrodeadorder ("Cpl. Rosser" "Pvt. Bennett")
+
+// Special Order section
+// Attack Right tower by Bennett and Ladrino
+IF PADON padtowerattack BUTNOT KILLED tower1 THEN
+	ORDER me GOTO padtanstart3 INMODE attack,
+	TRIGGERDELAY 6000 blowtower
+
+IF blowtower BUTNOT KILLED tower1 THEN
+	TRIGGER checkbennett
+
+IF checkbennett BUTNOT KILLED "Pvt. Bennett" THEN
+	FIREWEAPON bazookas "Pvt. Bennett" tower1,
+	unitfire "Pvt. Bennett" tower1,  		//(2880,1600)  tower1
+	TRIGGERDELAY 2500 blowtower
+
+IF KILLED tower1 THEN
+	SETAIMODE "Pvt. Bennett" attack,
+	ORDER "Pvt. Ladrino" FOLLOW "Pvt. Bennett" INMODE attack
+
+// Attack Left by Jeep Beta, Boyle and Copur, If Beta killed they just hang out
+IF PADON padleftattack1 THEN
+	ORDER me GOTO padleftattack2
+
+IF PADON padleftattack2 THEN
+	ORDER me GOTO padleftattack3
+
+IF PADON padleftattack3 THEN
+	ORDER me GOTO padleftattack4
+
+IF PADON padleftattack4 THEN
+	TRIGGER wanderpatrol1
+
+IF wanderpatrol1 THEN
+	TRIGGERDELAY 10000 wanderpatrol1,
+	TRIGGER ranpatrol
+
+IF ranpatrol THEN RANDOM									//always have something to do
+	ORDER me GOTO padgreenpatrol1 INMODE attack,
+	ORDER me GOTO padgreenpatrol2 INMODE attack,
+	ORDER me GOTO padgreenpatrol3 INMODE attack,
+	ORDER me GOTO padgreenpatrol4 INMODE attack
+
+// Wander the village once inside
+IF PADON padgreenattack1 PADON padgreenpatrol1 PADON padgreenpatrol2 PADON padgreenpatrol3 PADON padgreenpatrol4 THEN
+	TRIGGER wanderpatrol1
+
+//Get a second takeoff Logic Pad
+VARIABLE eaglehaslanded1 0
+
+IF PADON LPad200 THEN
+	TRIGGERDELAY 1000 copterlanding1
+
+IF copterlanding1 TESTVAR GETPADSTATUS LPad200 = 1 AND eaglehaslanded1 = 0 THEN
+	LAND captain,
+	TRIGGERDELAY 50 copterlanding1
+
+IF LANDED captain THEN
+	SETVAR eaglehaslanded1 1
+
+IF TOOKOFF captain THEN
+	SETVAR eaglehaslanded1 0
+
+//***AMBIENT SOUNDS***//
+//playsound file-name [location [channel [priority [flags [radius]]]]]
+IF setupsounds THEN
+	TRIGGER randomsound1,
+	TRIGGER skilift
+
+IF skilift THEN
+	PLAYSOUND skilift.wav (4716,850) 6 1 1 700
+
+IF randomsound1 THEN
+	TRIGGER randomsound2,
+	TRIGGERDELAY 20000 randomsound1
+
+IF randomsound2 THEN RANDOM
+	PLAYSOUND birdsong1.wav captain 9 1 0 600,
+	PLAYSOUND birdsong2.wav captain 9 1 0 600,
+	PLAYSOUND birdsong3.wav captain 9 1 0 600,
+	PLAYSOUND birdsong4.wav captain 9 1 0 600,
+	PLAYSOUND hawkscreech.wav captain 9 1 0 600,
+	PLAYSOUND wolfhowl.wav captain 9 1 0 600,
+	PLAYSOUND wolfhowl.wav captain 9 1 0 600
+
+//*** CAPTAIN'S FLIGHT MODE ***//
+
+IF INORDER PADON padSkioutside PADON padSkiinside THEN
+	SETAIRMAP captain 1,
+	TRIGGER snurfsetup
+
+IF INORDER PADON padSkiinside PADON padSkioutside THEN
+	SETAIRMAP captain 0
+
+//*** CAPTAIN'S FLIGHT MODE ***//
+
+
+//**************** Ski Resort **************//
+IF count 1 of snurfsetup THEN
+	TRIGGER goski,
+	PLAYTALKINGHEAD 113,
+	CREATEPOWERUP "thrownfirecracker" thrownfirecracker (5636,688) 5,
+	CREATEPOWERUP "partialarmor" partialarmor (6100,840)
+
+IF count 1 of HIT rockarch THEN
+	DEPLOY ground2
+
+IF KILLED rockarch THEN
+	REMOVEMISSIONOBJECTIVE rockarch,
+	UNDEPLOY ground2,
+	DEPLOY ground3,
+	PLAYSOUND avalanche.wav ground3 6 1 0 600,
+	DAMAGE goon5 300 crush
+
+MACRO macrogoski 1
+{
+	IF goski THEN
+		CREATEUNIT snurf@1 rifleman padresort@1 tan rifle,
+		SETMAXHEALTH snurf@1 75,
+		HEAL snurf@1 100,
+		ADDMISSIONOBJECTIVE snurf@1
+
+	IF KILLED snurf@1 THEN
+		TRIGGER ranpowup
+}
+
+EXPAND macrogoski (1)
+EXPAND macrogoski (2)
+EXPAND macrogoski (3)
+EXPAND macrogoski (4)
+EXPAND macrogoski (6)
+EXPAND macrogoski (7)
+EXPAND macrogoski (8)
+EXPAND macrogoski (10)
+EXPAND macrogoski (11)
+EXPAND macrogoski (12)
+EXPAND macrogoski (14)
+EXPAND macrogoski (15)
+EXPAND macrogoski (16)
+EXPAND macrogoski (18)
+EXPAND macrogoski (20)
+
+If ranpowup THEN RANDOM
+	CREATEPOWERUP "partialarmor" partialarmor me,
+	CREATEPOWERUP "partialarmor" partialarmor me,
+	CREATEPOWERUP "firecracker" thrownfirecracker me 2,
+	CREATEPOWERUP "firecracker" thrownfirecracker me 2,
+	CREATEPOWERUP "BottleRockets" groundmissile me 5,
+	CREATEPOWERUP "BottleRockets" groundmissile me 5,
+	CREATEPOWERUP "Airblastmissile" airblastmissile me 3,
+	CREATEPOWERUP "napalm" napalmbomb me 2,
+	CREATEPOWERUP "fullarmor" fullarmor me,
+	CREATEPOWERUP "ECM" ecmchaff me,
+	CREATEPOWERUP "greenpaintbomb" greenpaintbomb me 2
+
+
+IF count 1 of KILLED listski THEN
+	PLAYTALKINGHEAD 114
+
+IF padon padresort1 padon padresort2 padon padresort3 padon padresort4 padon padresort5 padon padresort6 padon padresort7 padon padresort8 padon padresort9 padon padresort10 padon padresort11 padon padresort12 padon padresort13 THEN
+	TRIGGER snurfmove
+
+IF padon padresort14 padon padresort15 padon padresort16 padon padresort17 padon padresort18 padon padresort19 padon padresort20 THEN
+	TRIGGER snurfmove
+
+If snurfmove THEN RANDOM
+	ORDER me GOTO padresort1 INMODE defend,
+	ORDER me GOTO padresort2 INMODE defend,
+	ORDER me GOTO padresort3 INMODE defend,
+	ORDER me GOTO padresort4 INMODE defend,
+	ORDER me GOTO padresort5 INMODE defend,
+	ORDER me GOTO padresort6 INMODE defend,
+	ORDER me GOTO padresort7 INMODE defend,
+	ORDER me GOTO padresort8 INMODE defend,
+	ORDER me GOTO padresort9 INMODE defend,
+	ORDER me GOTO padresort10 INMODE defend,
+	ORDER me GOTO padresort11 INMODE defend,
+	ORDER me GOTO padresort12 INMODE defend,
+	ORDER me GOTO padresort13 INMODE defend,
+	ORDER me GOTO padresort14 INMODE defend,
+	ORDER me GOTO padresort15 INMODE defend,
+	ORDER me GOTO padresort16 INMODE defend,
+	ORDER me GOTO padresort17 INMODE defend,
+	ORDER me GOTO padresort18 INMODE defend,
+	ORDER me GOTO padresort19 INMODE defend,
+	ORDER me GOTO padresort20 INMODE defend
+	
+IF KILLED skihouse THEN
+	MAKESMOKE me,
+	CREATEEXPLOSION (5974,1678) 128,
+	MAKESMOKE (5979,1638,200),
+	MAKESMOKE (6019,1650,200),
+	MAKESMOKE (5979,1740),
+	MAKESMOKE (5969,1618),
+	MAKESMOKE (6100,1650),
+	MAKESMOKE (6006,1640),
+	MAKESMOKE (6050,1660),
+	TRIGGERDELAY 2000 annoyed
+
+IF annoyed THEN
+	CREATEINSECT mutantwasp wasp (5979,1735) grey,			
+	SETAIRMAP wasp 0,
+	SETAIRVARIANCE wasp 120
+
+IF count 1 of KILLED wasp KILLED bug3 THEN				//wasp
+	CREATEPOWERUP "weaponupgrade" weaponupgrade me	
+	//CREATEPOWERUP "swarmmissile" swarmmissile me 10
+
+IF KILLED chalet THEN
+	DAMAGE basechalet 1000
+
+IF KILLED basechalet THEN
+	DAMAGE chalet 1000,
+	CREATEEXPLOSION (4568,559) 128,
+	CREATEEXPLOSION (4688,408) 128,
+	CREATEEXPLOSION (4409,490) 128,
+	CREATEEXPLOSION (4540,185) 128,
+	CREATEEXPLOSION (4679,480) 128			
+
+//All tan must be eliminated
+
+IF KILLED listtanunit KILLED listski KILLED listpatrol THEN					//Track Village, Ski and patrol
+	ADDVAR killvc 1,
+	//showmessage "棕军被消灭。",
+	TRIGGERDELAY 500 killwin
+
+IF killwin TESTVAR killvc = 64 THEN			//whatever total tan is...currently 65...+4 if player gets spotted. If he doesn't get spotted then he has 4 less tan to kill
+	TRIGGER checkprekilled
+
+IF checkprekilled BUTNOT evtpresidentkilled	THEN
+	DROPITEM captain "Spec. Meyer",
+	DROPITEM captain "Spec. Longworth",
+	DROPITEM captain "Spec. Macaraeg",
+	DROPITEM captain "President",			
+	UNDEPLOY  "Spec. Meyer",
+	UNDEPLOY  "Spec. Longworth",
+	UNDEPLOY  "Spec. Macaraeg",
+	UNDEPLOY  "President",
+	TRIGGERDELAY 2000 evtgreenwins
+
+IF evtgreenwins BUTNOT buildinglost THEN
+	TRIGGER plastrorant
+
+VARIABLE varplastrorant 0
+
+IF count 1 of plastrorant THEN
+	UNDEPLOY bug1,
+	UNDEPLOY bug2,
+	UNDEPLOY bug3,
+	UNDEPLOY wasp,
+	STOPTALKINGHEAD, 
+	SETNPC captain 1,
+	ADDVAR varplastrorant 1,
+	PLAYTALKINGHEAD 120,
+	PLAYTALKINGHEAD 111,
+	PLAYTALKINGHEAD 127,
+	PLAYTALKINGHEAD 128,
+	PLAYTALKINGHEAD 129,
+	PLAYTALKINGHEAD 130,
+	PLAYTALKINGHEAD 131,
+	PLAYTALKINGHEAD 112,
+	PLAYTALKINGHEAD 121,
+	PLAYTALKINGHEAD 102,
+	PLAYTALKINGHEAD 122,
+	PLAYTALKINGHEAD 123
+	
+IF talkingheaddone captain TESTVAR varplastrorant = 1 AND boolvolockout = 0 THEN
+	SETNPC captain 0,	
+	SETVAR boolvolockout 1,
+	TRIGGERDELAY 1000 GREENWINS
+	
+//Lose conditions
+IF KILLED president BUTNOT evtmissionlost THEN
+    STOPTALKINGHEAD,
+	TRIGGER evtMissionLost,		            	      // use this event to track that we have lost
+    TRIGGER evtpresidentKilled 	     				  // allow time for death to register
+
+IF evtpresidentKilled THEN             			 
+	PLAYTALKINGHEAD 116,		
+	PLAYTALKINGHEAD 117,	
+	TRIGGERDELAY 7500 TANWINS
+
+VARIABLE deadbuilding 0
+	
+IF KILLED listbuilding BUTNOT evtmissionlost THEN
+	ADDVAR deadbuilding 1,
+	//showmessage "建筑被摧毁。",
+	TRIGGER builddead
+
+IF builddead TESTVAR deadbuilding = 5 THEN
+	PLAYTALKINGHEAD 125
+
+IF builddead TESTVAR deadbuilding = 10 THEN
+	TRIGGER evtmissionlost,
+	TRIGGERDELAY 3 buildinglost
+
+If buildinglost BUTNOT evtgreenwins THEN
+	PLAYTALKINGHEAD 126,
+	TRIGGER evtmissionlost,
+	TRIGGERDELAY 7500 TANWINS
+

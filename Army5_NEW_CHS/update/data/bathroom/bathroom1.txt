@@ -1,0 +1,2142 @@
+// AMAA Bathroom 1
+// David Chang (with Keith Meyer)
+//
+// sound: ch 2 pr 3 = hairdryer
+// ch1 p 3 = tub/portal sounds
+// ch 3 pr 2 = death yell of hairblown guy
+
+// Dear valued customer:
+
+// Are you *this* bored? Obviously your life needs validation and better cat-cleaning methodologies.
+
+// "For some unknown reason, my wife seems to have a problem with the way
+// I wash our cat. I've found this to be a very efficient method.
+// What do you think?
+// 
+// 1. Scrub the toilet several times and flush it well.
+// 
+// 2. Fill toilet with warm water. Add pet shampoo.
+// 
+// 3. 'Place' cat inside toilet.  Close lid.  Sit on lid.  The
+// cat's efforts to get out of the toilet are sufficient to generate
+// washing-machine-like water movement for self-cleaning.
+// 
+// 4. IMPORTANT: Flush toilet at least four times to rinse the cat.
+// 
+// 5. RUN LIKE HECK! Be sure to slam the door behind you. Allow the cat
+// enough time to sulk and dry.
+// 
+// 6. Reward yourself for a job well done by having a beer during the sulk/dry time."
+
+// The publisher of this game strongly discourages step 6 for consumers who, though valued and very dear to our
+// hearts, are under the legal drinking age.
+
+// This was brought to you as a value-added benefit of purchasing AMAT, and does not reflect actual domestic animal
+// handling recommendations of The 3DO Company, its employees, stockholders, partners, beneficiaries,
+// or assigns, in perpetuity. Amen.
+
+INCLUDE ..\scripts\common.txt
+INCLUDE ..\scripts\brCOM.txt
+
+// ======= PADS =======
+PAD padHDBlastGreenTroop1	20	green trooper > 0
+PAD padHDBlastGreenTroop2	30	green trooper > 0
+PAD padLfHDBlastTanTroop	20	tan trooper > 0
+PAD padRtHDBlastTanTroop	30	tan trooper > 0
+PAD padHDBlastAir	6	captain > 0
+PAD padHairsprayLaunch 5 trooper > 0
+PAD padCapAtVanity 14 captain > 0
+PAD padSeeBlueSpy 50 captain > 0
+pad padTubAvoidArea 61 captain > 0
+pad padTubAvoid 65 captain > 0
+PAD padGreenOnCrapper 0 green trooper
+PAD pad3GreenOnCrapper 0 green trooper > 2	// counts num greensoldiers on top of toilet (incl Sarge)
+PAD padCapOnCrapper	0 captain > 0 
+PAD padCapOnScale 1 captain > 0
+PAD padtankOnScale 1 floorjeep > 0
+PAD pad3GreenOnScale 1 green trooper > 2	// counts num greensoldiers on top of scale (incl Sarge)
+pad padgreenonscale 1 green trooper
+PAD padSlughole 15
+PAD padIgnoreCaptain 40 captain > 0		// Kleenex troops should ignore Cap when he is below their elevation
+PAD padVanityAvoid 3 captain >0
+PAD padVanityAvoidArea 60 captain >0
+PAD padHairsprayBlast	100	trooper				// where the hairspray fire will damage
+PAD padCopterBlast 100 captain > 0
+pad padsargekneel 110 sarge > 0
+PAD padKboxBlast 120 captain > 0
+pad padSargeExit 131 green trooper > 0
+
+pad padSnare 4 captain > 0	
+pad padTubhole 80 captain > 0
+pad padPortal 6 captain > 0
+
+pad padToiletLZ 150  captain > 0
+pad padScaleLZ 160  captain > 0
+
+pad padToiletPupLZ 150  weapon > 0
+pad padToiletPup1 151  weapon > 0
+pad padToiletPup2 152  weapon > 0
+
+pad padScalePupLZ 160  weapon > 0
+pad padScalePup1 161  weapon > 0
+pad padScalePup2 162  weapon > 0
+pad padScalePup3 163  weapon > 0
+
+pad padSlugholeAvoid 170 ground unit > 0
+pad padSlugholeGoto1 171 ground unit > 0
+pad padSlugholeGoto2 172 ground unit > 0
+// ======= VARS =======
+variable varexitcount 0
+VARIABLE boolM1won 0
+variable boolTubholedead 0
+VARIABLE varTimer 0
+
+VARIABLE lXo 0
+VARIABLE lYo 0
+VARIABLE rXo 0
+VARIABLE rYo 0
+VARIABLE leftX 0
+VARIABLE leftY 0
+VARIABLE rightX 0
+VARIABLE rightY 0
+variable boolSlugholedead 0
+variable boolkbbuffer 0
+
+VARIABLE tempX 0
+VARIABLE tempY 0
+
+variable boolSwitchbuffer 0
+variable varBoatCount 0
+variable varLeverHits 0
+variable varTubholeHits 0
+VARIABLE varTanInHDBlastZone 0
+VARIABLE boolTanAvoidingHD 0
+VARIABLE varSprayBuffer 0
+VARIABLE boolSprayBurning 0
+VARIABLE boolCapOffVanity 1
+VARIABLE varHDHitCount 0
+VARIABLE boolHairdryerOn 0
+VARIABLE varTanVanityKilled 0
+VARIABLE varHairsprayBlastCount 0
+variable boolspykilled 0
+variable varexplox 0
+variable varexploy 0
+VARIABLE varScaleTanKilled 0
+VARIABLE varKBTanKilled 0
+VARIABLE varPlinkCount 0
+VARIABLE boolSeenmsg1 0
+VARIABLE varKBGuardsDead 0
+VARIABLE boolVanityAvoidOn 0
+// ======= LISTS ======
+list listBoats {newboat newboat_1 newboat_2 newboat_3 newboat_4 newboat_5 newboat_6 newboat_7 newboat_8}
+list listTrapGuys {tub1 tub2 tub3 111tub4 tub5 jeep1}
+LIST listPlinkObjs {objHairspray objSinktapLeft objSinktapRt objBodybrush objTubtapLeft objTubtapRt}
+//	^^ list of stuff that'll make "plink" sound when hit
+LIST listGreenTroops {"private herrick" "corporal wilcox"}
+LIST listScaleTroops {scale1 scale2 scale3}
+LIST listTanKleenex {tanguy2 tanguy3} // removed tanguy tanguy1 tanguy4 tanguy5 tanguy6 tanguy7 tanguy8 tanguy9 tanguy10 tanguy11
+LIST listBigDieObjs {objBubblebath objShampoo objConditioner objShamp2 objBrushholder objLotion objFlower}
+LIST listSmallDieObjs {objCleanser objSoap objCup objSponge objfrogman}
+LIST listTanVanity {tan1 tan2 tan3 tan6 tan7 tan8 tan9 tan11 tan12 tan13}  //not tan4, 10, or 5 since theyre
+// so far off & in defend mode
+// ====================
+OBJECT objFlame
+    STATE osburning
+		FRAME 140 0
+		FRAME 140 1
+		FRAME 140 2
+		FRAME 140 3
+		FRAME 10 0 // cycling dummy
+			SETOBJSTATE objflame osburning
+
+preloadsprite 43 605 0
+preloadsprite 43 605 1
+preloadsprite 43 605 2
+preloadsprite 43 605 3
+//------------------
+OBJECT objhairspraymist
+    STATE osmisting
+		FRAME 140 0
+		FRAME 140 1
+		FRAME 140 2
+		FRAME 140 3
+		FRAME 10 0 // cycling dummy
+			SETOBJSTATE objhairspraymist osmisting
+
+preloadsprite 43 602 0
+preloadsprite 43 602 1
+preloadsprite 43 602 2
+preloadsprite 43 602 3
+
+// ====================
+OBJECT objKleenexBox
+    STATE osKleenexDead
+	    FRAME 10000 1
+    STATE osKleenexLive
+		FRAME 10000 0
+// ====================
+OBJECT objHairspray
+    STATE osHairsprayDead
+	    FRAME 10000 1
+    STATE osHairsprayLive
+		FRAME 10000 0
+// ====================
+OBJECT objHairdryerSwitch
+    STATE osHDSwitchOn
+		FRAME 500 2
+		FRAME 500 1
+		FRAME 10 2
+			setobjstate objhairdryerswitch osHDswitchon
+   STATE osHDSwitchOff
+		FRAME 500 0
+// ====================
+OBJECT objSlughole
+	STATE osHoleDead
+		FRAME 10000 1
+	STATE osHoleLive
+		FRAME 10000 0
+//---
+OBJECT objPortal
+    STATE osPortalSpin
+		FRAME 200 0
+		FRAME 200 1
+		FRAME 200 2
+		FRAME 200 3
+		FRAME 200 4
+		FRAME 200 5
+		FRAME 200 6
+		FRAME 200 7
+		FRAME 200 8
+		FRAME 10 0 // cycling dummy
+			SETOBJSTATE objPortal osPortalSpin 0
+
+preloadsprite 43 980 0
+preloadsprite 43 980 1
+preloadsprite 43 980 2
+preloadsprite 43 980 3
+preloadsprite 43 980 4
+preloadsprite 43 980 5
+preloadsprite 43 980 6
+preloadsprite 43 980 7
+preloadsprite 43 980 8
+
+// ====================
+OBJECT objScaledial
+    STATE osSDspringing
+		FRAME 50 3
+		FRAME 5 0
+		FRAME 30 2
+		FRAME 10 0
+		FRAME 200 3
+		FRAME 130 1
+		FRAME 5 0
+		FRAME 100 2
+		FRAME 50 3
+		FRAME 5 0
+		FRAME 30 2
+		FRAME 10 0
+		FRAME 200 3
+		FRAME 130 1
+		SETOBJSTATE objScaledial osSDstopped
+    STATE osSDstopped
+		FRAME 10 0
+	STATE osSDtwitch
+		FRAME 50 1
+		FRAME 10 0
+		FRAME 40 2
+		FRAME 15 0
+		FRAME 70 3
+		FRAME 30 1
+		SETOBJSTATE objScaledial osSDstopped
+
+preloadsprite 43 270 0
+preloadsprite 43 270 1
+preloadsprite 43 270 2
+preloadsprite 43 270 3
+
+//----
+OBJECT objTublever
+	STATE osdraindown
+		FRAME 1 0
+	STATE osdrainup
+		FRAME 1 1
+// ====================
+
+
+IF startup1 THEN
+//	SETBRIEFING "map02_1.bmp",
+	setmissioninfo br11,
+	TRIGGER setupgreen,
+	moveitem objslughole (3539,1175),
+	moveitem objslugholetarget (3618,1055),
+	moveitem objslugholeframe (3635,1176),
+	TRIGGER setuptan,
+	TRIGGER setuptan2,
+	trigger setuptan3,
+	triggerdelay 10000 evtdroplet,
+	TRIGGERdelay 10 evtTurnHDOn,
+	SETOBJSTATE objSlughole osHoleLive,
+	SETOBJSTATE objHairdryerSwitch osHDSwitchOn,
+	SETOBJSTATE objKleenexBox osKleenexLive,
+//&&	StartHeatWave "hairdryerheat.bmp" (1671,1406),
+	SETOBJSTATE objHairspray osHairsprayLive,
+	SETOBJSTATE objTublever osDrainup,
+	TRIGGERDELAY 100 evtshowmiss1,
+	PLAYSOUND "portal.wav" objPortal 1 3 1,
+	undeploy objtubholeframe,
+	undeploy objtubholeframe2,
+	UNDEPLOY objSlugholeFrame,
+	UNDEPLOY objhairspraymist,
+	UNDEPLOY objflame,
+	undeploy objhairdryerblock,
+	undeploy objslugholeframe,
+	createpowerup partialarmor (3480,2005), // nee of scale
+	createpowerup armorboost (2800,760),
+	createpowerup fullarmor (2567,2990) 40,	// floor at bottomedge
+	createpowerup fullarmor (271,2447) 40,	// near tub handles
+	createpowerup groundmissile (220,2440) 16,	// near tub handles
+	createpowerup groundmissile (2000,2650) 12,	// on floor
+	createpowerup thrownfirecracker (1836,876) 2,	// near med cabinet
+//	createpowerup groundmissile (1651,1243) 7,	// near hairdryer
+	SETOBJSTATE objPortal osPortalSpin,
+	triggerdelay 1000 setupmission3
+
+if evtTimer then
+	addvar varTimer 2, // count secs in 2 second increments
+	trigger evtTimeTest,
+	triggerdelay 2000 evtTimer
+
+if evtTimetest butnot evtTestScaleCleared
+	testvar varTimer = 120
+	and boolvolockout = 0 then
+	playtalkinghead 61 // cap: damn, I've got to move faster
+
+if inorder evtgotguysonscale evtTimetest
+	testvar varTimer = 140
+	then setvar boolnobeacon 1,
+	setbeacon captain 3				// troops stop responding to beacon, not enuf time
+
+if evtTimetest butnot evtTestScaleCleared
+	testvar varTimer = 140
+	and boolvolockout = 0 then
+	playtalkinghead 17 // hurry blade
+
+if evtTimetest butnot evtTestScaleCleared
+	testvar varTimer = 160
+	and boolvolockout = 0 then
+	playtalkinghead 101, // sam: you're not gonna make it!
+	setmissioninfo br11b
+
+if evtTimetest butnot evtTestScaleCleared
+	testvar varTimer = 200
+	and boolvolockout = 0 then
+	trigger evtTimesUp
+
+if pickedup sarge then
+	addmissionobjective objscale
+
+/////////// briefing
+
+IF evtshowmiss1 THEN
+	addmissionobjective objscale,
+	setmissioninfo br11,
+	setnpc captain 1,
+	setaimode captain ignore,
+	SETFACING captain 105,
+	playtalkinghead 102,
+	triggerdelay 1 evtBunkerComment
+
+IF evtBunkerComment butnot evtmissionlost
+	THEN
+	setnpc captain 1,
+	setaimode captain ignore,
+	playtalkinghead 103, //Dang...! I'll take a beating getting past that bunker on top of the toilet.
+	triggerdelay 1 evtSargeSez,
+	ADDVAR boolSeenmsg1 1
+
+	if evtSargeSez butnot evtMissionLost
+//		testvar varTimer < 70 	// only if Sarge has time
+		then playtalkinghead 104, // "Sarge: No prob, Captain. Just get us up there, fast.",
+		setnpc captain 1,
+		setaimode captain ignore,
+		setvar boolNobeacon 0,
+		setbeacon captain 0,
+		setmissioninfo br11a
+
+	if inorder evtsargesez talkingheaddone captain then
+		trigger yakover
+
+	if yakover then setnpc captain 0,
+		triggerdelay 2000 evttimer
+
+macro freezum 1
+{
+if evtAllIgnore then
+	setaimode @1 ignore
+
+if evtAllNormal then
+	setaimode @1 attack
+}
+expand freezum (floor1)
+expand freezum (floor2)
+expand freezum (floor3)
+expand freezum (floor4)
+expand freezum (exit4)
+expand freezum (exit3)
+expand freezum (exit1)
+expand freezum (floorjeep)
+expand freezum (slugger)
+
+//////////////////////// setup troops and tub
+
+IF setupmission3 THEN
+	SETVAR rightY 0,
+	SETVAR lXo GETX waterleft,
+	SETVAR lYo GETY waterleft,
+	SETVAR rXo GETX waterright,
+	SETVAR rYo GETY waterright
+
+IF setupgreen THEN
+	CREATECOPTER scout "captain" (3390,484,500) green,
+	SETAIRMAP captain 1,
+//	SETAIRVARIANCE captain 0,  // this is now giving an error
+	SETSTEP captain 99, // was 52 when at FH_factor 0
+	setnpc captain 1,
+	setaimode captain ignore,
+	setvar tempx getx captain,
+	setvar tempy gety captain,
+	order captain goto (refvar tempx, refvar tempy) inmode ignore,
+	CREATEUNIT "Sarge" grenadier (3400,525) green grenade,
+	CREATEUNIT "private herrick" grenadier (3400,525) green grenade,
+	CREATEUNIT "corporal wilcox" rifleman (3400,525) green autorifle,
+	setmaxhealth "private herrick" 250,
+	heal "private herrick" 100,
+	setmaxhealth "corporal wilcox" 250,
+	heal "corporal wilcox" 100,
+	PICKUPITEM captain Sarge,
+	PICKUPITEM captain "private herrick",
+	PICKUPITEM captain "corporal wilcox"
+
+IF setuptan THEN
+// kleenex units
+	createvehicle "aa" ackackgunsm (2485,401) tan,
+//	setfacing aa 105,
+	setgunfacing aa 191,
+	setaimode aa standfire,
+	CREATEUNIT "tanguy" bazookaman (2400,500) tan bazooka,
+//	CREATEUNIT "tanguy1" bazookaman (2425,510) tan bazooka,
+	CREATEUNIT "tanguy2" bazookaman (2356,525) tan bazooka,
+	CREATEUNIT "outsidetanguy" rifleman (2680,360) tan rifle,
+	CREATEUNIT "tanguy3" rifleman (2430,485) tan vulcan,
+	CREATEUNIT "tanguy4" rifleman (2435,480) tan vulcan,
+	CREATEUNIT "tanguy5" rifleman (2400,575) tan vulcan,
+//	CREATEUNIT "tanguy6" rifleman (2365,518) tan vulcan,
+//	CREATEUNIT "tanguy7" rifleman (2340,505) tan vulcan, 
+//	CREATEUNIT "tanguy8" rifleman (2435,480) tan vulcan,
+//	CREATEUNIT "tanguy9" rifleman (2435,480) tan vulcan,
+//	CREATEUNIT "tanguy10" bazookaman (2365,518) tan bazooka,
+	CREATEUNIT "tanguy11" bazookaman (2435,500) tan bazooka,
+//on bathroom scale
+	CREATEUNIT "scale1" grenadier (2800,2160) tan grenade,
+	CREATEUNIT "scale3" rifleman (2715,2235) tan vulcan,
+	CREATEUNIT "scale2" rifleman (2850,2140) tan autorifle,
+	setaimode scale1 defend,
+	setaimode scale2 defend,
+	setfacing scale3 180,
+	setfacing scale2 150,
+	setaimode scale3 defend,
+// on floor
+//	CREATEUNIT "floor1" grenadier (3635,1836) tan grenade, // e of scale
+//	setfacing floor1 64,
+	CREATEUNIT "floor2" flamerman (3450,1705) tan flamer,	// ne of scale
+	setfacing floor2 240,
+	CREATEUNIT "floor3" rifleman (3610,1856) tan autorifle, // e of scale
+	setfacing floor3 110,
+//	CREATEVEHICLE "jeep0" jeep (3227,2000) tan,	// ne of bathmat
+//	setfacing jeep0 25,
+	CREATEUNIT exit4 flamerman (3740,2785) tan flamer, // se of ducky
+	setfacing exit4 100,
+	setaimode exit4 defend,
+	CREATEUNIT "floor4" bazookaman (1989,2478) tan bazooka, // behind baseball
+	setaipose floor4 kneel,
+//vanity rt units
+	CREATEUNIT "tan4" rifleman (2321,1065) tan rifle,	// in water ring
+	setaimode tan4 defend,
+	CREATEUNIT "tan10" rifleman (2057,843) tan vulcan,	// behind soap
+	setaimode tan10 defend,
+	CREATEUNIT "tan5" grenadier (2421,1023) tan grenade,	// on corner
+	setaimode tan5 defend,	
+//on tubside
+	CREATEUNIT "tubend1" rifleman (1905,2980) tan vulcan // also acts as resurrect unit
+
+IF setuptan2 THEN
+//vanity left units
+	CREATEUNIT "tan1" rifleman (1300,1470) tan vulcan, //stays in HD zone
+	CREATEUNIT "tan2" bazookaman (1300,1470) tan bazooka,
+	CREATEUNIT "tan3" rifleman (1300,1470) tan vulcan,
+//	CREATEUNIT "tan6" grenadier (1175,1470) tan grenade,
+	CREATEUNIT "tan7" rifleman (1175,1470) tan autorifle,
+//	CREATEUNIT "tan8" grenadier (1175,1470) tan grenade,
+	CREATEUNIT "tan9" flamerman (1175,1470) tan flamer, //stays in HD zone
+	CREATEUNIT "tan11" rifleman (1175,1470) tan rifle,
+	CREATEUNIT "tan12" flamerman (1175,1470) tan flamer,//stays in HD zone
+	CREATEUNIT "tan13" rifleman (1175,1470) tan rifle
+
+IF setuptan3 THEN
+// tub2, 3, and tank1 are from script 1
+//	SETGUNFACING tank1 96,
+
+	CREATEVEHICLE "jeep1" jeep (450,2460) tan,
+	SETFACING jeep1 127,
+	SETAIMODE jeep1 ignore,
+	CREATEUNIT "tub1" rifleman (400,2301) tan rifle, // under rt tubtap, hidden
+	SETFACING tub1 223,
+	SETAIPOSE tub1 prone,
+	SETAIMODE tub1 ignore,
+	CREATEUNIT "111tub4" rifleman (517,2690,170) tan rifle,	// guy on tubspout, no corpse draws
+	SETAIMODE 111tub4 ignore,
+	moveitem 111tub4 (517,2690,170),
+	CREATEUNIT "flower1" bazookaman (842,2010) tan bazooka, // from behind flower
+	SETAIMODE flower1 ignore,
+	CREATEUNIT tub2 rifleman (1099,2238) tan rifle,	// guy in jeep
+	setaimode tub2 ignore,
+	entervehicle tub2 jeep1,
+	CREATEUNIT tub3 rifleman (1099,2238) tan rifle,	// from behind bbath
+	CREATEUNIT tub5 rifleman (1075,1996) tan rifle,	// in trash
+	setfacing tub5 95,
+	SETAIPOSE tub5 kneel,
+	SETAIMODE tub5 ignore,	
+	SETAIMODE tub2 ignore,
+	SETAIMODE tub3 ignore,
+
+	SETVAR tempX GETX objTublever,
+	SETVAR tempY GETY objTublever,
+	ADDVAR tempX 200,
+	ADDVAR tempY 200,
+	CREATEVEHICLE tanPT_1 boat (REFVAR tempX, REFVAR tempY) tan,
+	SETFACING tanPT_1 160,
+	setaimode tanPT_1 attack,
+
+	SETVAR tempX GETX objTublever,
+	SETVAR tempY GETY objTublever,
+	ADDVAR tempX 250,
+	ADDVAR tempY 50,
+//	CREATEVEHICLE tanPT_2 boat (REFVAR tempX, REFVAR tempY) tan,
+//	SETFACING tanPT_2 176,
+
+	SETVAR tempX GETX objTublever,
+	SETVAR tempY GETY objTublever,
+	ADDVAR tempX 50,
+	ADDVAR tempY 250
+//	CREATEVEHICLE tanPT_3 boat (REFVAR tempX, REFVAR tempY) tan,
+//	SETFACING tanPT_3 144
+
+// -------  TOP OF TOILET ------------------------------------------
+
+IF KILLED outsidetanguy THEN		// track the outside bazookaman at kleenex
+	ADDVAR varKBGuardsDead 1
+if killed aa
+	then addvar varKBGuardsDead 1,
+	createpowerup partialarmor me
+
+if padon padKboxBlast butnot killed objkleenexbox
+	testvar boolkbbuffer = 0
+	then trigger evtHurtCap
+
+	if evtHurtCap then
+		damage captain 600,
+		createexplosion captain 149, //&&
+		setvar boolkbbuffer 1,
+		triggerdelay 3000 evtresetbuffer
+
+	if evtHurtCap butnot evtWhoa then
+		trigger evtWhoa
+
+	if evtWhoa
+	testvar boolvolockout = 0 then
+		stoptalkinghead,
+		playtalkinghead 129 // whoa!
+
+		if evtresetbuffer then setvar boolkbbuffer 0
+
+//set up respawn for kleenexbox
+IF KILLED listTanKleenex BUTNOT killed objkleenexbox
+	THEN random
+	triggerdelay 1200 reviver,
+	triggerdelay 1100 reviver,
+	triggerdelay 1400 reviver,
+	triggerdelay 1600 reviver,
+	triggerdelay 800 reviver,
+	triggerdelay 1500 reviver,
+	triggerdelay 2000 reviver
+
+	if reviver then
+	RESURRECT me (2400,508),
+	order me goto (2300,400),
+	ADDVAR varKBTanKilled 1
+
+IF LANDED captain
+	TESTVAR GETPADSTATUS padCapOnCrapper = 1
+	THEN
+	SETAIMODE tanguy IGNORE,
+	SETAIMODE tanguy1 IGNORE,
+	SETAIMODE tanguy3 IGNORE,
+	SETAIMODE tanguy4 IGNORE,
+	SETAIMODE tanguy5 IGNORE,
+	SETAIMODE "tanguy6" IGNORE,
+	SETAIMODE "tanguy7" IGNORE,
+	SETAIMODE "tanguy8" IGNORE,
+	SETAIMODE "tanguy9" IGNORE,
+	SETAIMODE "tanguy10" IGNORE,
+	SETAIMODE "tanguy11" IGNORE,
+	SETAIMODE "tanguy2" IGNORE
+
+IF TOOKOFF captain
+	TESTVAR GETPADSTATUS padCapOnCrapper = 1
+	THEN
+	TRIGGER evtRestoreCrapperAI
+IF PADOFF padCapOnCrapper THEN
+	TRIGGER evtRestoreCrapperAI	
+IF evtRestoreCrapperAI THEN
+	SETAIMODE aa attack,
+	SETAIMODE tanguy attack,
+	SETAIMODE tanguy1 attack,
+	SETAIMODE tanguy3 attack,
+	SETAIMODE tanguy4 attack,
+	SETAIMODE tanguy5 attack,
+	SETAIMODE "tanguy6" attack,
+	SETAIMODE "tanguy7" attack,
+	SETAIMODE "tanguy8" attack,
+	SETAIMODE "tanguy9" attack,
+	SETAIMODE "tanguy10" attack,
+	SETAIMODE "tanguy11" attack,
+	SETAIMODE "tanguy2" attack
+
+
+if padon pad3Greenoncrapper then
+	order outsidetanguy follow sarge inmode attack
+
+IF PADON pad3GreenOnCrapper BUTNOT killed objkleenexbox	// test if 3 troops on toilet and work to do
+	TESTVAR varKBGuardsDead = 2				// make sure outside units are dead
+	THEN
+	TRIGGERDELAY 1 evtKillBox1
+
+IF KILLED outsidetanguy BUTNOT killed objkleenexbox		// the reverse case: outside guy killed after Sarge arrival
+	TESTVAR getpadstatus pad3greenoncrapper = 1
+	THEN
+	TRIGGERdelay 1 evtKillBox1
+
+IF KILLED aa BUTNOT killed objkleenexbox		// the altreverse case: AA killed after Sarge arrival
+	TESTVAR getpadstatus pad3greenoncrapper = 1
+	THEN
+	TRIGGERdelay 1 evtKillBox1
+
+IF evtKillBox1 butnot killed captain
+	testvar varKBGuardsDead = 2	// make sure all outside units dead
+	THEN
+	setbeacon captain 3, // disable beaconing
+	setvar boolnobeacon 1,
+    ORDER Sarge goto (2530,370) inmode ignore,
+	ORDER "corporal wilcox" goto (2530,370) inmode ignore,
+	ORDER "private herrick" goto (2530,370) inmode ignore,
+	TRIGGERDELAY 2000 evtKillBox2
+
+IF evtKillBox2 butnot killed objkleenexbox THEN
+    ORDER Sarge goto (2577,329) inmode ignore,
+	ORDER "corporal wilcox" goto (2577,329) inmode ignore,
+	ORDER "private herrick" goto (2577,329) inmode ignore,
+	FIREWEAPON grenades Sarge (2407,518),
+	FIREWEAPON grenades "private herrick" (2353,558),
+	FIREWEAPON grenades Sarge (2407,518),
+	SETFACING Sarge 105,
+	SETFACING "private herrick" 103,
+	SETFACING "corporal wilcox" 102,
+	UNITFIRE Sarge (2407,518),
+	UNITFIRE "private herrick" (2353,558),
+	UNITFIRE Sarge (2407,518),
+	CREATEEXPLOSION (2416, 495) 148,
+	FIREWEAPON grenades Sarge (2407,518),
+	FIREWEAPON grenades "private herrick" (2353,558),
+	FIREWEAPON grenades Sarge (2407,518),
+	UNITFIRE Sarge (2407,518),
+	UNITFIRE "private herrick" (2353,558),
+	UNITFIRE Sarge (2407,518),
+//	ORDER "private herrick" goto (2592,304) inmode ignore,	
+//	ORDER "corporal wilcox" goto (2601,332) inmode ignore,
+  //  ORDER Sarge goto (2561,335) inmode ignore,
+	TRIGGERDELAY 3000 evtKillBox3
+
+IF evtKillBox3 butnot killed objkleenexbox THEN
+//	SETAIPOSE Sarge none,	
+//	SETAIPOSE "private herrick" none,	
+//	SETAIPOSE "corporal wilcox" none,	
+    ORDER Sarge goto (2530,430) inmode ignore,
+	ORDER "corporal wilcox" goto (2530,430) inmode ignore,
+	ORDER "private herrick" goto (2530,430) inmode ignore,
+	SETFACING Sarge 98,
+	SETFACING "private herrick" 95,
+	SETFACING "corporal wilcox" 96,
+	CREATEEXPLOSION (2416, 495) 150,
+	UNITFIRE Sarge (2407,518),
+	UNITFIRE  "private herrick" (2353,558),
+	UNITFIRE  "corporal wilcox" (2407,518),
+	UNITFIRE  Sarge (2407,518),
+	UNITFIRE  "private herrick" (2353,558),
+	UNITFIRE  "corporal wilcox" (2407,518),
+	UNITFIRE Sarge (2407,518),
+	UNITFIRE "private herrick" (2353,558),
+	UNITFIRE Sarge (2407,518),
+	UNITFIRE Sarge (2407,518),
+	UNITFIRE "private herrick" (2353,558),
+	UNITFIRE Sarge (2407,518),
+	UNITFIRE Sarge (2407,518),
+	UNITFIRE "private herrick" (2353,558),
+	UNITFIRE Sarge (2407,518),
+	CREATEEXPLOSION (2416, 495) 150,
+	CREATEEXPLOSION (2407, 490) 135,
+	MAKESMOKE (2416, 495) 5000,
+	ORDER Sarge GOTO (2474,425) INMODE IGNORE,
+	setvar boolvolockout 1,
+	triggerdelay 4000 evtSargeRemind,
+	triggerdelay 15000 evtSargeComplaint
+
+if evtSargeRemind butnot padon padsargekneel then
+	order sarge goto (2474,425) inmode ignore,
+	triggerdelay 4000 evtSargeRemind
+	
+if evtSargeComplaint butnot padon padsargekneel
+	then playtalkinghead 44 // help us out here captain
+
+IF padon padsargekneel butnot evtKBCount1 then
+	triggerdelay 1500 evtKBCount1
+
+	if evtKBCount1 butnot killed objkleenexbox then
+	SETAIPOSE Sarge kneel,
+	playtalkinghead 105, // "Sarge: Three...",
+	TRIGGERDELAY 4000 evtKBCount2
+
+IF evtKBCount2 butnot killed objkleenexbox THEN
+	SETAIPOSE Sarge stand,	
+	playtalkinghead 106, // "Sarge: Two...",
+	ORDER Sarge GOTO (2577,312) INMODE IGNORE,	//run away!
+	ORDER "private herrick" GOTO (2577,312) inmode ignore,
+	ORDER "corporal wilcox" GOTO (2577,312) inmode ignore,
+	TRIGGERDELAY 4000 evtKBCount3
+
+IF evtKBCount3 butnot killed objkleenexbox THEN
+	playtalkinghead 107, // "Sarge: One!"
+	setvar boolvolockout 0,
+	SETAIPOSE Sarge prone,
+	SETAIPOSE "private herrick" prone,
+	SETAIPOSE "corporal wilcox" prone,
+	triggerdelay 4000 evtKBBang
+
+	if evtKBBang then
+	SETFACING Sarge 223,
+	SETFACING "private herrick" 215,
+	SETFACING "corporal wilcox" 230,
+
+	damage objkleenexbox 50000,
+	triggerdelay 3000 evtNextup
+
+	if killed objkleenexbox then
+	MAKESMOKE (2425, 498) 15000,
+	CREATEEXPLOSION (2474,475) 129,
+	playitemsound "Explosion4.wav" objkleenexbox 2 1,
+//	UNITFIRE Sarge (2407,518),
+//	UNITFIRE "private herrick" (2353,558),
+//	UNITFIRE Sarge (2407,518),
+	CREATEEXPLOSION (2474,475) 149,
+	CREATEEXPLOSION (2325,505) 131,
+	MAKESMOKE (2410,500) 5000,
+	SETOBJSTATE objKleenexBox osKleenexDead,
+	DAMAGE tanguy 5000 crush,
+	DAMAGE tanguy1 5000 crush,		// kill all tan units in kleenex box
+	DAMAGE tanguy2 5000 crush,
+	DAMAGE tanguy3 5000 crush,
+	DAMAGE tanguy4 5000 crush,
+	DAMAGE tanguy5 5000 crush,
+	DAMAGE tanguy6 5000 crush,
+	DAMAGE tanguy7 5000 crush,
+	DAMAGE tanguy8 5000 crush,
+	DAMAGE tanguy9 5000 crush,
+	DAMAGE tanguy10 5000 crush,
+	DAMAGE tanguy11 5000 crush,
+	createpowerup groundmissile (2400,520) 4,
+	setaimode Sarge defend,
+	setaimode "private herrick" defend,
+	setaimode "corporal wilcox" defend,
+	setbeacon captain 0, // enable beaconing
+	setvar boolnobeacon 0,
+	SETAIPOSE Sarge none,	
+	SETAIPOSE "private herrick" none,	
+	SETAIPOSE "corporal wilcox" none,	
+	createpowerup superpea weaponupgrade (2426,507)
+
+if pickedup superpea
+	testvar boolvolockout = 0 then
+	playtalkinghead 130 // this'll add some punch to main gun
+
+IF evtNextUp butnot evtmissionlost THEN
+	CREATEEXPLOSION (2360,560) 149,
+	setmissioninfo br11c, // (hurry up in intel)
+	SETAIPOSE Sarge stand,	
+	SETAIPOSE "private herrick" stand,	
+	SETAIPOSE "corporal wilcox" stand,
+	TRIGGERDELAY 500 evtNextUpA
+
+	IF evtNextUpA THEN
+	SETAIPOSE Sarge none,	
+	SETAIPOSE "private herrick" none,	
+	SETAIPOSE "corporal wilcox" none,	
+	CREATEEXPLOSION (2474,475) 139,
+	CREATEEXPLOSION (2325,505) 148,
+	playtalkinghead 108, //	"Sarge: obj complete
+	playtalkinghead 109, //	"Sarge: Now get us to the landing pad on the floor; we have Tan to kill.
+	addmissionobjective objScale,
+	triggerdelay 150000 evtToolate,
+	TRIGGERDELAY 6000 evtNextUp1
+
+IF evtNextUp1
+	testvar boolvolockout = 0 then
+	savegame brmid,
+	playtalkinghead 110 // "Captain: Hold on to your dogtags, big guy."
+
+//------------- floor and tubsnare
+
+if killed jeep0 then createpowerup partialarmor jeep0
+
+if killed floor3 then random
+	triggerdelay 15000 evtnewfl3,
+	triggerdelay 9000 evtnewfl3,
+	triggerdelay 12000 evtnewfl3,
+	triggerdelay 7000 evtnewfl3,
+	trigger weakpuprwd
+
+	if evtnewfl3 then random
+	resurrect floor3 (2375,3175),
+	resurrect floor3 (2775,3175),
+	resurrect floor3 (2575,3175)
+
+	if evtnewfl3 then
+	order floor3 goto captain inmode attack
+
+if hit floor4
+		then TRIGGER evtstartf4
+
+if evtstartf4
+	then setaipose floor4 none,
+	setaimode floor4 attack
+
+//** Snare! **//
+
+if hit listTrapGuys THEN
+	setaimode me standfire
+
+IF padon padSnare butnot evtSnareMe then
+	trigger evtSnareme
+
+IF evtSnareme THEN
+	SETAIPOSE tub1 none,
+	SETAIPOSE tub5 none,
+	SETAIPOSE tub1 none,
+	setfacing tub1 190,
+	order tub1 follow captain inmode attack,
+	order tub2 follow captain inmode attack,
+	order tub5 follow captain inmode attack,
+	setfacing 111tub4 190,
+	SETAIMODE 111tub4 standfire,
+	trigger evtstartf4,			// activate guy behind baseball on floor
+	order flower1 follow captain inmode attack,
+//	ORDER tub2 GOTO (912,2140) inmode attack,
+	ORDER tub3 GOTO (912,2140) inmode ignore,
+	triggerdelay 1000 evtSnareme1
+
+	IF evtSnareme1 THEN
+	order jeep1 follow captain inmode attack,
+	order tub3 follow captain inmode attack,
+	order tubend1 follow captain inmode attack
+//	setspeed tank1 slow,
+//	ORDER tank1 GOTO (1096,2220) inmode ignore
+
+if killed tubend1 then random
+	triggerdelay 6000 evtRevive,
+	triggerdelay 4500 evtRevive,
+	triggerdelay 4000 evtRevive
+
+if killed 111tub4 then
+	createexplosion 111tub4 149
+
+	if evtRevive
+	then resurrect tubend1 (842,2010),
+	order tubend1 follow captain inmode attack
+
+//***TUB DRAIN***********************************************//
+
+IF HIT objTublever then 
+	addvar varLeverHits 1
+IF HIT objTubLever BUTNOT Killed objtublever
+	testvar varLeverHits = 20
+	then trigger evtLeverhint
+
+	if evtLeverhint 
+		testvar boolvolockout = 0 then
+		playtalkinghead 111 // "RS: Captain, you might need something more powerful to move that lever."
+
+IF KILLED objTublever THEN
+	createexplosion (445,2658) 148,
+	makesmoke (438,2667) 2700,
+	SETOBJSTATE objTublever osdrainDown,
+	playsound "" 1 1,					// cancel any ch1 sound
+//	playsound "tubslosh.wav" 1 3 1, // ch 1 priority 3
+	playsound "WHIRLPOOL.wav" (0,0) 1 3 1, // ch 1 priority 3,
+	TRIGGERDELAY 1 draintub
+
+IF KILLED objTubHole THEN
+	addmissionobjective objTubhole,
+	createexplosion (1397,2843) 135,
+	createexplosion (1350,2833) 131,
+	createexplosion (1400,2850) 137,
+	createexplosion (1397,2843) 135,
+	createexplosion (1422,2872) 137,
+	createexplosion (1360,2826) 128,
+	createexplosion (1400,2850) 137,
+	makesmoke (1422,2872) 1000,
+	setvar boolTubholedead 1,
+	triggerdelay 1000 evtMoreSmoke,
+	playitemsound "BathtubBreak.wav" objtubhole 2 2 //yaaaah!
+
+	if evtmoresmoke then
+	createexplosion (1360,2826) 137,
+	createexplosion (1400,2850) 128
+//	triggerdelay 30000 evtTestBoatSpawn && NO BOAT SPAWNING
+
+IF KILLED objTubHole		// if hole is killed and water is already down
+	TESTVAR rightY >= 66
+	THEN
+	createexplosion (1405,2896) 139,
+	createexplosion (1330,2855) 135,
+	makesmoke (1407,2932) 8500,
+	createexplosion (1359,2892) 149,
+	makesmoke (1405,2896) 8000,
+	deploy objtubholeframe2				// place bottom edge of tubhole in water
+
+if padon padTubhole
+	testvar boolTubholedead = 1	then
+	SETAIRMAP captain 0,
+	SETAIRVARIANCE captain 60  // height off water, which is 70 elev
+	// allow flight into tubhole area
+
+if padoff padtubhole then
+	SETSTEP captain 104,
+	SETAIRMAP captain 1
+
+if evtTestBoatSpawn 
+	TESTVAR rightY < 45		// if hole is killed and water is not all the way down
+	then 
+	trigger evtSpawnBoat,
+	triggerdelay 30000 evtTestBoatSpawn
+
+if evtSpawnBoat 
+	testvar varBoatCount < 2
+	then
+	createexplosion (1278,2947) 137,
+	createexplosion (1236,3032) 128,
+	createvehicle newboat boat (1236,3032) tan,
+	createexplosion newboat 137,	
+	SETFACING newboat 70,
+	addvar varBoatCount 1
+
+IF KILLED listBoats THEN		// list only goes up to 8 boats, which should be plenny -- after that, no more PTs
+	addvar varBoatCount -1
+
+IF draintub // if player kills hole first. draintub is called frequently
+	testvar boolTubholedead = 1
+	AND rightY >= 56 THEN	// tub has almost finished draining
+	deploy objtubholeframe2	// place bottom edge of tubhole in water
+//	LowerFlightHeight padTubhole 70		// allow flight into tubhole area
+
+IF draintub
+	TESTVAR rightY >= 66 THEN	// tub has finished draining
+	playsound "" 1 1 1, 	// stop draining sound
+	PLAYSOUND "portal1.wav" objPortal 1 3 1 // restart portal sound
+
+IF draintub
+	TESTVAR rightY < 66 THEN
+
+	// DROP WATER EDGES
+	ADDVAR rightY 2,
+	// was 1
+
+	SETVAR leftY rightY,
+	MULVAR leftY 48,
+	DIVVAR leftY 66,
+
+	SETVAR leftX leftY,
+	MULVAR leftX 22,
+	DIVVAR leftX 48,
+	
+	SETVAR rightX rightY,
+	MULVAR rightX 4,
+	DIVVAR rightX 66,
+
+	SETVAR tempX lXo,
+	ADDVAR tempX leftX,
+	SETVAR tempY lYo,
+	ADDVAR tempY leftY,
+	MOVEITEM waterleft (REFVAR tempX, REFVAR tempY),
+
+	SETVAR tempX rXo,
+	ADDVAR tempX rightX,
+	SETVAR tempY rYo,
+	ADDVAR tempY rightY,
+	MOVEITEM waterright (REFVAR tempX, REFVAR tempY),
+
+// DROP PT BOATS
+//	SETVAR tempX GETX tanPT_1,
+//	SETVAR tempY GETY tanPT_1,
+//	ADDVAR tempY 1,
+//	MOVEITEM tanPT_1 (REFVAR tempX, REFVAR tempY),
+
+//	SETVAR tempX GETX tanPT_2,
+//	SETVAR tempY GETY tanPT_2,
+//	ADDVAR tempY 1,
+//	MOVEITEM tanPT_2 (REFVAR tempX, REFVAR tempY),
+
+//	SETVAR tempX GETX tanPT_3,
+//	SETVAR tempY GETY tanPT_3,
+//	ADDVAR tempY 1,
+//	MOVEITEM tanPT_3 (REFVAR tempX, REFVAR tempY),
+
+	TRIGGERDELAY 1000 draintub
+	
+//***tub DRAIN***//
+
+//-------------BATHROOM SCALE SETUP -----------
+
+IF HIT objScaledial THEN
+	SETOBJSTATE objScaledial osSDtwitch
+
+// this case necessary because player may fly away after the land command has kicked in
+IF LANDED captain
+	TESTVAR GETPADSTATUS padCapOnScale =1
+	THEN
+	SETOBJSTATE objScaledial osSDspringing
+
+if padon padgreenonscale butnot evtHepme
+	testvar varscaletankilled < 3
+	then
+	trigger evthepme
+
+	if evtHepMe 
+	testvar boolvolockout = 0 then
+	playtalkinghead 42 // things are getting hot here
+
+/////// get guys on scale
+
+IF KILLED listScaleTroops
+	THEN		// count # of tan scale units killed
+	ADDVAR varScaleTanKilled 1,
+	TRIGGERDELAY 1000 evtTestScaleMsg
+
+IF evtTestScaleMsg
+	TESTVAR varScaleTanKilled = 3	// if all killed 
+	THEN trigger evtScaleMsg,
+	TRIGGERDelay 1 evtTestGotGuysOnScale
+
+	if evtScaleMsg butnot evtAllClear then 	// only run this once
+		triggerdelay 1 evtAllClear		
+
+		if evtAllclear butnot evtmissionlost
+			testvar getpadstatus pad3greenonscale = 0
+			and boolvolockout = 0
+			then
+			playtalkinghead 112, //  "RS: Okay, boys, looks like the floor landing pad is clear."
+			triggerdelay 4000 evtTestKBRemind
+
+		if evttestkbremind butnot killed objkleenexbox
+			testvar vartimer < 110
+			THEN trigger kbremind
+
+			if kbremind butnot kbremind2
+			then
+			trigger kbremind2
+
+			if kbremind2 
+			testvar boolvolockout = 0 then
+			playtalkinghead 131 // before you drop us off maybe you should let us take care of
+
+//if padon padgreenonscale butnot killed objkleenexbox Later allow player to change his mind
+//	testvar vartimer < 110
+//	then trigger kbremind
+
+IF evtTestGotGuysOnScale butnot killed objkleenexbox // if all killed, and 3 guys on scale, but no kboxkill. 2 cases = legacy,allowed down&back to KB
+	TESTVAR GETPADSTATUS pad3GreenOnScale = 1
+	THEN
+	trigger evtBlup
+
+	if evtBlup butnot evtMissionlost then
+	setvar boolNobeacon 1,
+	setbeacon captain 3,
+//	playtalkinghead 29, // "thank u captain",
+	TRIGGERDELAY 1000 evtGotGuysOnScale
+
+IF INORDER killed objkleenexbox evtTestGotGuysOnScale // if all killed, kb dead, and 3 guys on scale
+	TESTVAR GETPADSTATUS pad3GreenOnScale = 1
+	THEN
+	trigger evtYahoo
+
+	if evtYahoo butnot evtmissionlost then
+	setvar boolNobeacon 1,
+	setbeacon captain 3,
+//	playtalkinghead 29, // "thank u captain",
+	TRIGGERDELAY 1000 evtGotGuysOnScale
+
+// scale cleared first, then guys dropped
+
+IF PADON pad3GreenOnScale 			// if 3 green dudes are on scale,
+	THEN TRIGGER evtTestScaleCleared,	// (see win conditions)
+	setmissioninfo br11d
+
+IF evtTestScaleCleared butnot killed objkleenexbox
+	TESTVAR varScaleTanKilled = 3	// no lollipop if not all tan dead
+	then trigger evt2ndTestScaleCleared
+
+	if evt2ndTestScaleCleared butnot evtThanks
+	THEN
+	setvar boolNobeacon 1,
+	setbeacon captain 3,
+	trigger evtThanks,
+	TRIGGERDELAY 1000 evtGotGuysOnScale // (see win conditions)
+
+IF INORDER killed objkleenexbox evtTestScaleCleared 
+	TESTVAR varScaleTanKilled = 3	// for MISSION2 after Killbox!
+	THEN
+	trigger evtScaleAndKB
+
+	if evtScaleAndKB butnot evtThanks then
+	setvar boolNobeacon 1,
+	setbeacon captain 3,
+	trigger evtThanks,
+	TRIGGERDELAY 1000 evtGotGuysOnScale
+
+//	if evtThanks then
+//	playtalkinghead 29 // "thank u captain"
+
+IF evtGotGuysOnScale
+	then ORDER Sarge GOTO (2900,2300) INMODE defend,	
+	ORDER "private herrick" GOTO (2900,2300) inmode defend,
+	ORDER "corporal wilcox" GOTO (2900,2300) inmode defend,
+	removemissionobjective objScale,
+	setaimode exit4 standfire,
+	order floor3 goto (3525,2100) inmode defend,
+	triggerdelay 4000 evtchat1,
+	triggerdelay 5000 evtgitout,
+	triggerdelay 13000 evtTanIntercept
+
+	if evtchat1
+	testvar boolvolockout = 0 then
+	createvehicle floorjeep jeep (2375,3175) tan, 
+	CREATEUNIT exit3 rifleman (3475,3175) tan rifle,
+//	CREATEUNIT exit1 rifleman (2375,3175) tan rifle,
+//	CREATEUNIT exit2 rifleman (2875,3175) tan rifle,
+	order exit3 goto (2777,2980) inmode ignore,
+	order exit1 goto (2735,2900) inmode ignore,
+	playtalkinghead 44 // help us out here captain
+
+if killed floorjeep then
+	createpowerup armorboost floorjeep
+
+	if inorder evtchat1 hit sarge then trigger
+		testevtOuch
+
+	if inorder evtchat1 hit listgreentroops then trigger
+		testevtOuch
+
+	if testevtOuch butnot evtchat2 then
+		trigger evtchat2
+
+	if evtOuch then
+		trigger evtchat2
+
+	if inorder evtchat1 hit exit4 by captain // make cleaner real weak
+		then createexplosion exit4 149 1000 tan
+
+	if inorder evtchat1 hit floorjeep by captain // make jeep real weak
+		then damage floorjeep 325 //&&
+
+	if hit exit3 by captain butnot evtmission1win then 
+		damage exit3 120 //&&
+
+	if evtchat2 
+	testvar boolvolockout = 0 then
+	playtalkinghead 46, // blade we need spt fast
+	triggerdelay 5 evtchat3
+
+	if evtGitout butnot evtMission1Win then
+	order sarge goto (3635,3170) inmode defend, // was (3050,3155) for pad 130
+	order "private herrick" goto (3635,3170) inmode defend,
+	order "corporal wilcox" goto (3635,3170) inmode defend,
+	triggerdelay 5000 evtGitout
+
+	if evtTanIntercept then
+	order exit1 goto sarge inmode defend,
+//	order exit2 goto sarge inmode attack,
+	order exit3 goto sarge inmode attack,
+	order floor3 goto sarge inmode attack,
+	order floorjeep goto (2700,2750) inmode ignore,
+	triggerdelay 5500 evtbringthecleaner
+
+	if evtchat3 
+	testvar itemtoitemdistance sarge captain > 700
+		AND boolvolockout = 0 then
+	playtalkinghead 68 // I'm on my way
+
+	if evtbringthecleaner then
+	order exit4 goto sarge inmode attack,
+	order floorjeep goto captain inmode attack,
+	triggerdelay 1500 freezumcleaner
+
+	if freezumcleaner then setaimode exit4 standfire
+
+if padon padsargeexit then
+	undeploy me,
+	addvar varexitcount 1
+
+if padon padsargeexit
+	testvar varexitcount = 3 then
+	setvar boolNobeacon 0,
+	setbeacon captain 0,
+	trigger evtmission1win
+
+// --------------------------- slughole secret area -------------------------
+
+if padon padSlugholeAvoid then random
+	order me goto padSlugholeGoto1 inmode defend,
+	order me goto padSlugholeGoto2 inmode defend
+
+IF KILLED objSlugholeTarget THEN
+	playsound "" 2 2,
+	setvar boolSlugholedead 1,
+	playitemsound "roachholedeath.wav" objslugholetarget 2 2, //&&
+	undeploy objSlugholeTarget,
+	deploy objSlugholeFrame,
+	createexplosion (3570,998) 135,
+	createexplosion (3620,1028) 135,
+	makesmoke (3517,1097) 100000,
+	SETOBJSTATE objSlughole osHoleDead,
+	makesmoke (3507,1135) 20000,
+	triggerdelay 300 evtBoom1,
+	triggerdelay 600 evtBoom2,
+	TRIGGERDELAY 6000 evtSpawn2
+
+if evtBoom1 then
+	createexplosion (3560,1058) 135,
+	createexplosion (3600,1088) 135,
+	createexplosion (3630,1140) 140,
+	makesmoke (3577,1117) 100000,
+//	makesmoke (3466,1028) 100000,
+	makesmoke (3506,1029) 100000,
+	createpowerup Insectdeth1 groundmissile (3465,1150) 8,
+	createpowerup Insectdeth3 fullarmor (3535,1212),
+//	createpowerup Insectdeth1 groundmissile (3556,1161) 8,
+//	createpowerup Insectdeth3 fullarmor (3585,1162),
+	CREATEINSECT roach "slug1" (3496,1080) tan, //&&
+//	CREATEINSECT slug "slug2" (3620,1160) tan,
+	SETFACING slug1 160,
+	SETFACING slug2 127,
+	ORDER slug1 goto (3430, 1170) inmode Attack,
+	ORDER slug2 goto (3470, 1230) inmode Attack
+
+if evtBoom2
+	testvar boolvolockout = 0 then
+	createexplosion insectdeth1 145,
+	createexplosion insectdeth3 146,
+	createexplosion (3504,1058) 140,
+//	createexplosion (3560,1130) 135,
+//	makesmoke (3597,1300) 100000,
+//	makesmoke (3567,1100) 100000,
+//	makesmoke (3497,1140) 40000,
+	makesmoke (3528,1144) 100000,
+//	makesmoke (3519,1130) 100000,
+	Playtalkinghead 70 // Excellent!
+
+//if padon padslughole 
+//	testvar boolSlugholedead = 1 then
+//	SETAIRMAP captain 0,
+//	showmessage "放下盖子",
+//	setspeed captain slow,
+//	setstep captain 5,
+//	setairvariance captain 80
+
+//if padoff padslughole then
+//	showmessage "抬起盖子",
+//	SETAIRMAP captain 1,
+//	setstep captain 104
+
+If evtSpawn2 then
+	CREATEUNIT "slugger" bazookaman (3650,1160) tan bazooka,
+	ORDER tanguy7 GOTO (3600,1190) inmode attack
+	//CREATEINSECT slug "slug" (3657,1080) tan
+// Tan units optional
+//	CREATEUNIT "tanguy7" rifleman (3556,1160) tan bazooka
+
+
+// *** ducky--------------------------------
+
+IF killed objducky
+	then
+	createexplosion (3595,2467) 148,
+	makesmoke (3555,2480) 4000,
+	createpowerup groundmissile (3595,2475) 10,
+	createunit "duckytan" rifleman (3604,2452) tan rifle,
+	setaimode duckytan standfire,
+	triggerdelay 1000 evtduckyfind
+
+	if evtduckyfind
+	testvar boolvolockout = 0 then
+	playtalkinghead 100 // bingo!
+
+// ----------------------- HAIRSPRAY --------------------
+
+if padon padSeeBlueSpy then
+	trigger evtfireflamer,
+	triggerdelay 2000 evtTestMoreFlame
+
+	if evtTestMoreFlame
+	testvar getpadstatus padseebluespy = 1
+	then 
+	trigger evtfireflamer
+
+if padon padHDBlastAir then
+	trigger evtfireflamer
+
+if padoff padHDBlastAir then
+	trigger evtfireflamer
+
+if padon padcopterblast then
+	trigger evtfireflamer
+
+if padoff padcopterblast then
+	trigger evtfireflamer
+
+if evtFireFlamer then random
+	triggerdelay 1000 evtFireTan9,
+	triggerdelay 2000 evtFireTan12,
+	triggerdelay 700 evtFireTan9,
+	triggerdelay 10 evtFireTan12,
+	triggerdelay 900 evtFireTan9,
+	triggerdelay 1200 evtFireTan12
+
+macro pyro 8
+{
+if evtfire@1 butnot killed @1
+	testvar itemtoitemdistance @1 @2 > 120
+	AND itemtoitemdistance @1 @3 > 120
+	AND itemtoitemdistance @1 @4 > 120
+	AND itemtoitemdistance @1 @5 > 120
+	AND itemtoitemdistance @1 @6 > 120
+	AND itemtoitemdistance @1 @7 > 120
+	AND itemtoitemdistance @1 @8 > 120
+	then
+//	showmessage "@1 开火",
+	setfacing @1 captain,
+	unitfire @1 captain
+}
+expand pyro (tan9 tan1 tan2 tan7 tan3 tan11 tan12 tan13)
+expand pyro (tan12 tan1 tan2 tan7 tan9 tan11 tan3 tan13)
+
+
+IF HIT objHairsprayTop by captain BUTNOT evtKillHairspray
+	TESTVAR varSprayBuffer = 0		// make sure it's not already deployed
+	THEN
+	triggerdelay 300 evtTestforHSBurn
+
+	if evtTestforHSBurn
+		testvar boolSprayBurning = 0	// make sure we're not flaming
+	then
+	DEPLOY objHairsprayMist,
+	setobjstate objhairspraymist osmisting,
+	PLAYITEMSOUND "Hairspray.wav" objHairsprayTop 3 3 1, // channel 3, priority 3
+	TRIGGERDELAY 2500 evtTurnSprayOff,
+	ADDVAR varSprayBuffer 1
+
+IF HIT objHairsprayMist BUTNOT evtKillHairspray	// broader case, may be deployed
+	THEN
+	HEAL objHairsprayMist 100
+
+IF evtTurnSprayOff				// after triggerdelay, decrement hit buffer
+	THEN
+	ADDVAR varSprayBuffer -1
+
+IF evtTurnSprayOff
+	TESTVAR varSprayBuffer = 0		// test to make sure the mist is ready for undeploy (a hit buffer)
+	THEN
+	PLAYITEMSOUND "" objHairsprayTop 3 3,
+	UNDEPLOY objHairsprayMist,
+	HEAL objHairsprayMist 100
+
+IF ignited objHairsprayMist
+	testvar boolSprayBurning =0						// make sure it's not already burning
+	then
+	SETDAMAGEPAD padHairsprayBlast 60 200 fire,
+	SETDAMAGEPAD padCopterBlast 50 200 fire,
+	UNDEPLOY objHairsprayMist,
+	heal objhairspraymist 100,
+	deploy objflame,
+	addvar boolSprayBurning 1,
+	setobjstate objflame osburning,
+	PLAYITEMSOUND "" objHairsprayTop 3,
+	playitemsound "HairSprayAflame.wav" objhairspraytop 3 3,
+	MAKEFLAME (1612,1652) 2000,
+	MAKEFLAME (1709,1669) 2000,
+	MAKEFLAME (1543,1771) 2000,
+	MAKEFLAME (1574,1793) 2000,
+	ADDVAR varHairsprayBlastCount 1,
+	TRIGGERDELAY 2000 evtFlameOff
+
+IF evtFlameOff butnot ignited objHairspraymist then
+//	PLAYITEMSOUND "" objHairsprayTop 3 3,
+	undeploy objflame,
+	SETDAMAGEPAD padHairsprayBlast 0,
+	SETDAMAGEPAD padCopterBlast 0,
+	ADDVAR boolSprayBurning -1
+
+IF ignited objHairsprayMist butnot evtmissionlost
+	TESTVAR varHairsprayBlastCount = 1	// tweak later?
+	AND boolvolockout = 0 then
+	stoptalkinghead,
+	playtalkinghead 113, //Whoa - that spray can's gonna blow!
+	TRIGGERDELAY 3500 evtKillHairspray
+
+IF evtKillHairspray THEN
+	undeploy objflame,
+	SETDAMAGEPAD padHairsprayBlast 0,
+	SETDAMAGEPAD padCopterBlast 0,
+	setVAR boolSprayBurning 0,
+	createexplosion objhairspraytop 145,
+	triggerdelay 100 evtKHSprelude
+
+if evtKHSprelude then
+	CREATEEXPLOSION (1570,1496,520) 131,
+//	SETDAMAGEPAD padHairsprayBlast 200 500 fire,
+	TRIGGERDELAY 700 evtKHS1
+
+	IF evtKHS1 THEN
+	CREATEEXPLOSION (1601,1482,520) 130,
+	SETOBJSTATE objHairspray osHSDead,
+	UNDEPLOY objHairsprayTop,
+	TRIGGERDELAY 1200 evtKHS2
+
+	IF evtKHS2 THEN
+	MAKESMOKE (1550,1490,480) 15000,
+	CREATEEXPLOSION (1552,1476,520) 135,
+	TRIGGERDELAY 900 evtKHS3
+
+	IF evtKHS3 THEN
+	CREATEEXPLOSION (1505,1460,480) 149,
+	TRIGGERDELAY 700 evtKHS4
+	IF evtKHS4 THEN
+	CREATEEXPLOSION (1446,1454,480) 134,
+	TRIGGERDELAY 1400 evtKHS5
+	IF evtKHS5 THEN
+	CREATEEXPLOSION (1398,1508,480) 148,
+//	setdamagepad padhairsprayblast 0,
+	TRIGGERDELAY 900 evtKillHS6
+	IF evtKillHS6 THEN
+	CREATEEXPLOSION (1645,1515,480) 148,
+	TRIGGERDELAY 700 evtKillHS7
+	IF evtKillHS7 THEN
+	CREATEEXPLOSION (1601,1482,480) 149,
+	TRIGGERDELAY 700 evtKillHS8
+	IF evtKillHS8 THEN
+	CREATEEXPLOSION (1552,1476,480) 137,
+	TRIGGERDELAY 700 evtKHS9
+	IF evtKHS9 THEN
+	MAKESMOKE (1672,1493,480) 15000,
+	MAKESMOKE (1474,1481,480) 15000
+
+// ----------------------- HAIRDRYER SETUP --------------------
+
+IF HIT objHairdryerSwitch by captain
+	testvar boolSwitchbuffer = 0
+	THEN
+	TRIGGER evtChangeHDSwitch,
+	triggerdelay 1 bogus,
+	triggerdelay 1000 evtReviveSwitch
+
+	if bogus then setvar boolSwitchBuffer 1
+
+	if evtReviveSwitch
+		then setvar boolSwitchBuffer 0
+
+IF evtChangeHDSwitch THEN
+	ONOBJSTATE objHairdryerSwitch
+	osHDSwitchOff		TRIGGER evtTurnHDOn,
+	osHDSwitchOn		TRIGGER evtTurnHDOff
+
+IF evtTurnHDOn THEN
+	SETOBJSTATE objHairdryerSwitch osHDSwitchOn,
+//	StartHeatWave "hairdryerheat.bmp" (1676,1412), if kept this needs to be set up in m2 and 3
+	playitemsound "HairDryerOnOffSwitch.wav" objhairdryerswitch 1 2,
+	ADDVAR boolHairdryerOn 1,
+	PLAYITEMSOUND "Hairdryer.wav" objhairspraytop 2 3 1,
+//	setsoundvolume "Hairdryer.wav" 2 300,
+	setsoundradius "Hairdryer.wav" objhairspraytop 2 10 // actual dist = 900 pix
+
+IF evtTurnHDOn BUTNOT evtTanAvoidingHD THEN
+	SETFORCE tan1 RECT (1666,1413) 170 flat 0 -10000 500 ground 100 0 0,
+	SETFORCE tan2 RECT (1666,1413) 170 flat 0 -10000 500 ground 100 0 0,
+	SETFORCE tan3 RECT (1666,1413) 170 flat 0 -10000 500 ground 100 0 0,
+//	SETFORCE tan4 RECT (1666,1413) 170 flat 0 -10000 500 ground 100 0 0,
+//	SETFORCE tan5 RECT (1666,1413) 170 flat 0 -10000 500 ground 100 0 0,
+//	SETFORCE tan6 RECT (1666,1413) 170 flat 0 -10000 500 ground 100 0 0,
+//	SETFORCE tan8 RECT (1666,1413) 170 flat 0 -10000 500 ground 100 0 0,
+	SETFORCE tan7 RECT (1666,1413) 170 flat 0 -10000 500 ground 100 0 0,
+	SETFORCE tan9 RECT (1666,1413) 170 flat 0 -10000 500 ground 100 0 0,
+//	SETFORCE tan10 RECT (1666,1413) 170 flat 0 -10000 500 ground 100 0 0,
+	SETFORCE tan11 RECT (1666,1413) 170 flat 0 -10000 500 ground 100 0 0,
+	SETFORCE tan12 RECT (1666,1413) 170 flat 0 -10000 500 ground 100 0 0,
+	SETFORCE tan13 RECT (1666,1413) 170 flat 0 -10000 500 ground 100 0 0
+
+// handle detect of Captain near hairdryer
+// dupe because we have two pads to detect troopers
+
+IF PADON padHDBlastAir
+	TESTVAR boolHairdryerOn =1
+	THEN
+	SETFORCE me RECT (1666,1413) 170 flat 0 -1000000 450 air 200 0 0
+IF PADOFF padHDBlastAir THEN
+	SETFORCE me none
+
+IF KILLED listTanVanity THEN
+	SETFORCE me none
+
+// BEGIN MACRO handle Tan troops at hairdryer -- if Tan has been blown off counter they won't
+// do it again. Different macro cases for left and right side pads.
+
+MACRO TanAtHD 5
+{
+IF PADON @1
+	THEN
+	ADDVAR varTanInHDBlastZone 1,
+	triggerdelay 400 evtTestForFailedFlight
+
+IF PADON @1
+	TESTVAR boolTanAvoidingHD = 1	// if Tan troop enters hairdryer blast zone and Tan have been 
+					// blown off the vanity before, and the hairdryer has been turned off before
+	THEN				// have him back up and go into defend mode
+	ORDER me GOTO (@2,@3) INMODE ignore,
+//	SHOWMESSAGE "棕军正在避开 @4 侧",
+	TRIGGERDELAY 4000 evtTanAvoid2
+	IF evtTanAvoid2 THEN
+	SETFACING me @5,
+	SETAIMODE me defend
+
+IF PADOFF @1
+	THEN ADDVAR varTanInHDBlastZone -1
+//	SETFORCE me none
+}
+//EXPAND TanAtHD (padLfHDBlastTanTroop 1685 1608 left 210)
+//EXPAND TanAtHD (padRtHDBlastTanTroop 1863 1388 rt 180)
+EXPAND TanAtHD (padLfHDBlastTanTroop 1675 1600 left 210)
+EXPAND TanAtHD (padRtHDBlastTanTroop 1880 1390 rt 180)
+
+// ---------END MACRO
+
+IF evtTurnHDOff THEN
+	SETOBJSTATE objHairdryerSwitch osHDSwitchOff,
+	PLAYITEMSOUND "" objhairspraytop 2,
+	playitemsound "HairDryerOnOffSwitch.wav" objhairdryerswitch 1 2,
+//	SETFORCE captain none,
+//	SETFORCE listGreenTroops none,
+	ADDVAR boolHairdryerOn -1,
+	StopHeatWave,
+	SETFORCE tan1 none,
+	SETFORCE tan2 none,
+	SETFORCE tan3 none,
+//	SETFORCE tan4 none,
+//	SETFORCE tan5 none,
+//	SETFORCE tan6 none,
+	SETFORCE tan7 none,
+//	SETFORCE tan8 none,
+	SETFORCE tan9 none,
+//	SETFORCE tan10 none,
+	SETFORCE tan11 none,
+	SETFORCE tan12 none,
+	SETFORCE tan13 none
+
+IF PADON padHairsprayLaunch
+	TESTVAR boolHairdryerOn = 1
+	AND getelevation me > 1	// trooper must be on vanity
+	THEN
+	TRIGGER evtRandomFlight,
+	trigger evtTestYell,
+	SETFORCE me none,
+	triggerdelay 300 evtHurt,
+	TRIGGERDELAY 500 evtTestStartAvoidance // should Tan start to avoid the Hairdryer? 
+
+	if evtHurt then DAMAGE me 5000 crush		// kill the fallen
+
+	if evtTestYell butnot evtYell
+		then trigger evtYell
+
+		if evtYell then playsound "death3.wav" (0,0) 3 2
+
+IF evtRandomFlight	// throw unit to random location on floor
+	THEN RANDOM
+	moveitem me (2209,1988,0),
+	moveitem me (2400,1925,0),
+	moveitem me (2510,2063,0)
+
+if evtTestForFailedFlight
+	testvar getpadstatus padhairspraylaunch = 1
+	then TRIGGER evtRandomFlight,
+	SETFORCE me none,
+	triggerdelay 300 evtHurt,
+	TRIGGERDELAY 500 evtTestStartAvoidance // should Tan start to avoid the Hairdryer? 
+
+IF evtTestStartAvoidance
+	TESTVAR varTanInHDBlastZone = 0
+	THEN
+	TRIGGER evtTanAvoidingHD
+
+IF evtTanAvoidingHD THEN	// cancel worldforces; Tan has started to "avoid"
+	ADDVAR boolTanAvoidingHD 1,
+	deploy objhairdryerblock, // &&&&
+//	SHOWPDA "棕军正在避开",
+	SETFORCE tan1 none,
+	SETFORCE tan2 none,
+	SETFORCE tan3 none,
+//	SETFORCE tan4 none,
+//	SETFORCE tan5 none,
+//	SETFORCE tan6 none,
+	SETFORCE tan7 none,
+//	SETFORCE tan8 none,
+	SETFORCE tan9 none,
+//	SETFORCE tan10 none,
+	SETFORCE tan11 none,
+	SETFORCE tan12 none,
+	SETFORCE tan13 none
+
+
+// -------------------- VANITY BATTLE --------------------
+
+IF PADON padCapAtVanity BUTNOT evtPrepcalvary THEN
+	TRIGGER evtsoundthealarm,
+	TRIGGERdelay 5000 evtPrepcalvary
+
+if inorder padon padHDBlastAir
+	hit captain by tan
+	testvar vartanvanitykilled < 4
+	then trigger evtTestCapSez
+
+	if evtTestCapSez butnot evtCapSez
+		then trigger evtCapSez
+
+//IF PADON padCapAtVanity					// track where Cap is using 1-tile-wide pad on borders
+//	TESTVAR boolCapOffVanity = 1
+//	THEN ADDVAR boolCapOffVanity -1
+//IF PADON padCapAtVanity
+//	TESTVAR boolCapOffVanity = 0
+//	THEN ADDVAR boolCapOffVanity 1
+
+//IF PADON padCapAtVanity				// if Cap is leaving, regroup
+//	TESTVAR boolCapOffVanity = 1	// may be simultaneous with above toggle; we'll see
+//	THEN TRIGGER evtPrepCalvary
+
+if padon padLfHDBlastTanTroop
+	TESTVAR boolHairdryerOn = 0
+	then setaimode me standfire,
+	triggerdelay 2000 evtRestoreMyAI
+
+if padon padRtHDBlastTanTroop
+	TESTVAR boolHairdryerOn = 0
+	then setaimode me standfire,
+	triggerdelay 2000 evtRestoreMyAI
+
+if evtRestoreMyAI then
+	setaimode me attack	
+
+IF evtSoundTheAlarm THEN // deploy some troops when Cap starts to approach, but don't send
+			// them into hairdryer blast zone
+	ORDER tan1 GOTO (1480,1690) INMODE defend,
+	ORDER tan2 GOTO (1480,1690) INMODE defend,
+	ORDER tan3 GOTO (1480,1690) INMODE defend
+
+//	ORDER tan4 GOTO (1480,1690) INMODE defend,
+//	ORDER tan5 GOTO (1480,1690) INMODE defend
+
+IF evtTurnHDOff BUTNOT evtTanAvoidingHD // send in hordes if HD is turned off & hordes have not horded
+	TESTVAR boolHairdryerOn = 0
+	THEN
+	TRIGGERDELAY 500 evtPrepCalvary
+
+IF evtPrepCalvary 
+//	TESTVAR boolHairdryerOn = 0			// make sure hairdryer hasn't simply been flicked off and on again
+	THEN
+	ORDER tan1 GOTO (1469,1755) inmode attack, // waypoint near end of cabinet door
+	ORDER tan2 GOTO (1469,1755) inmode attack,
+	ORDER tan3 GOTO (1469,1755) inmode attack,
+//	ORDER tan4 GOTO (1469,1755) inmode ignore,
+//	ORDER tan5 GOTO (1469,1755) inmode ignore,
+//	ORDER tan6 GOTO (1469,1755) inmode ignore,
+	ORDER tan7 GOTO (1469,1755) inmode attack,
+//	ORDER tan8 GOTO (1469,1755) inmode ignore,
+	ORDER tan9 GOTO (1469,1755) inmode attack,
+//	ORDER tan10 GOTO (1469,1755) inmode ignore,
+	ORDER tan11 GOTO (1469,1755) inmode defend,
+	ORDER tan12 GOTO (1469,1755) inmode ignore,
+	ORDER tan13 GOTO (1469,1755) inmode defend,
+	TRIGGERDELAY 4000 evtCallCalvary
+
+IF evtCallCalvary butnot evttanavoidinghd				// group then attack
+	TESTVAR boolHairdryerOn = 0 THEN
+	ORDER tan12 GOTO (1630,1670) inmode ignore,	//leave one flamer in the central hairspray area
+	ORDER tan1 GOTO (1525,1700) inmode defend,  // gunner in attack AI
+	ORDER tan2 GOTO (1800,1487) inmode defend,
+	ORDER tan3 GOTO (1830,1466) inmode defend,
+//	ORDER tan4 GOTO (1800,1482) inmode ignore,
+//	ORDER tan5 GOTO (1800,1482) inmode ignore,
+//	ORDER tan6 GOTO (1800,1482) inmode ignore,
+	ORDER tan7 GOTO (1800,1482) inmode defend,
+//	ORDER tan8 GOTO (1800,1482) inmode ignore,
+	ORDER tan9 GOTO (1543,1811) inmode ignore, //stays in HD zone, bottom left corner
+//	ORDER tan10 GOTO (1800,1482) inmode ignore,
+	ORDER tan11 GOTO (1810,1492) inmode defend,
+	ORDER tan13 GOTO (1820,1465) inmode defend,
+	TRIGGERDELAY 4500 evtCalvaryAttack
+
+IF evtCalvaryAttack
+	THEN
+	SETAIMODE tan9 standfire,
+	SETAIMODE tan12 standfire,
+//	SETAIMODE tan2 defend,
+	SETAIMODE tan3 standfire,
+//	SETAIMODE tan4 DEFEND,
+//	SETAIMODE tan5 DEFEND,
+//	SETAIMODE tan6 DEFEND,
+	SETAIMODE tan7 standfire,
+//	SETAIMODE tan8 DEFEND,
+	SETAIMODE tan9 standfire,
+//	SETAIMODE tan10 DEFEND,
+	SETAIMODE tan11 attack,
+	SETAIMODE tan13 standfire
+
+	if evtCapsez butnot evtCapreply 
+	testvar boolvolockout = 0 then
+	playtalkinghead 114, // "HQ, there's too many of them to take head on."
+	TRIGGERDELAY 2000 evtCapReply
+
+	IF evtCapReply butnot evtMissionlost
+	testvar boolvolockout = 0 then
+	playtalkinghead 115 // "you'll just have to fight smarter sir."	
+
+IF KILLED listTanVanity THEN
+	ADDVAR varTanVanityKilled 1,
+	TRIGGER evtTestAllVanityKilled,
+	trigger weakpuprwd
+
+	if evtweakpuprwd then random
+		createpowerup thrownfirecracker me 2,
+		trigger nuthin,
+		trigger nuthin,
+		createpowerup partialarmor me,
+		trigger nuthin,
+		trigger nuthin,
+		createpowerup groundmissile me 3,
+		trigger nuthin,
+		trigger nuthin
+
+IF evtTestAllVanityKilled
+	TESTVAR varTanVanityKilled > 7         // MAKE SURE ALL TAN TROOPS ON VANITY ARE DEAD, PUPPY
+	THEN
+	ally blue tan,
+	ally tan blue,
+	ally green blue,
+	ally blue green,
+	CREATEUNIT spy rifleman (1422,1426) blue rifle,
+	addmissionobjective spy,
+	ORDER spy goto (1300,1525) inmode ignore,
+	triggerdelay 2000 evtTestSpyNotKilled	// see win conditions
+
+IF killed objVanityTent THEN
+		createexplosion (1187,1525) 137,
+		makesmoke (1192,1518) 2000,
+		CREATEPOWERUP groundmissile (1170,1500) 10,
+		CREATEPOWERUP fullarmor (1195,1530) 20
+
+/////////// LANDING PADS ///////
+
+VARIABLE boolcopterlanded 0
+
+
+IF PADON padscaleLZ THEN
+	TRIGGERDELAY 1000 copterlanding
+
+IF PADON padtoiletLZ THEN
+	TRIGGERDELAY 1000 cancopterlanding
+
+IF cancopterlanding TESTVAR GETPADSTATUS padtoiletlz = 1 AND boolcopterlanded = 0 THEN
+	LAND captain,
+	TRIGGERDELAY 1 cancopterlanding
+
+IF copterlanding TESTVAR GETPADSTATUS padscalelz = 1 AND boolcopterlanded = 0 THEN
+	LAND captain,
+	TRIGGERDELAY 1 copterlanding
+
+IF TOOKOFF captain then
+	SETVAR boolcopterlanded 0
+
+if padoff padscalelz
+	then setvar boolcopterlanded 0
+
+IF LANDED captain THEN
+	SETVAR boolcopterlanded 1
+
+if padoff padtoiletLZ
+	then setvar boolcopterlanded 0
+
+//************ random explosion generator for object death
+// to use, create a listBigDieObjs and/or listSmallDieObjs of the objects
+// you want this effect on. Pls do not change the explosion types without
+// telling me. The range of randomness: X is from -6 to 35. Big object
+// Y is -30 to -60; small object Y is -15 to -35. This assumes that the
+// object's hotspot is near the bottom center of a tall rectangular object,
+// like a shampoo bottle.
+
+if evtRandomX then random
+	addvar varExploX 7,
+	addvar varExploX -6,
+	addvar varExploX 27,
+	addvar varExploX 10,
+	addvar varExploX 35,
+	addvar varExploX 15,
+	addvar varExploX 8
+
+if evtRandomBigY then random
+	addvar varExploY -60,
+	addvar varExploY -45,
+	addvar varExploY -30,
+	addvar varExploY -55,
+	addvar varExploY -35,
+	addvar varExploY -50
+
+if evtRandomSmallY then random
+	addvar varExploY -30,
+	addvar varExploY -20,
+	addvar varExploY -15,
+	addvar varExploY -25,
+	addvar varExploY -28,
+	addvar varExploY -35
+
+if killed listBigDieObjs then
+	SETVAR varExploX GETX me,
+	SETVAR varExploY GETY me,
+	trigger evtRandomX,
+	trigger evtRandomBigY,
+	trigger evtRandomExplo,
+	SETVAR varExploX GETX me,
+	SETVAR varExploY GETY me,
+	trigger evtRandomX,
+	trigger evtRandomBigY,
+	triggerdelay 200 evtRandomExplo,
+	SETVAR varExploX GETX me,
+	SETVAR varExploY GETY me,
+	trigger evtRandomX,
+	trigger evtRandomBigY,
+	triggerdelay 500 evtRandomSmoke,
+	SETVAR varExploX GETX me,
+	SETVAR varExploY GETY me,
+	trigger evtRandomX,
+	trigger evtRandomBigY,
+	triggerdelay 800 evtRandomExplo
+
+if killed listSmallDieObjs then
+	SETVAR varExploX GETX me,
+	SETVAR varExploY GETY me,
+	trigger evtRandomX,
+	trigger evtRandomSmallY,
+	trigger evtRandomExplo,
+	SETVAR varExploX GETX me,
+	SETVAR varExploY GETY me,
+	trigger evtRandomX,
+	trigger evtRandomSmallY,
+	triggerdelay 500 evtRandomSmoke
+
+if evtRandomExplo then random
+	createexplosion (refvar varExploX, refvar varExploY) 148,
+	createexplosion (refvar varExploX, refvar varExploY) 149,
+	createexplosion (refvar varExploX, refvar varExploY) 149,
+	createexplosion (refvar varExploX, refvar varExploY) 138,
+	createexplosion (refvar varExploX, refvar varExploY) 140
+
+if evtRandomSmoke then random
+	makesmoke (refvar varExploX, refvar varExploY) 3700,
+	makesmoke (refvar varExploX, refvar varExploY) 2500,
+	makesmoke (refvar varExploX, refvar varExploY) 3000,
+	makesmoke (refvar varExploX, refvar varExploY) 3200,
+	makesmoke (refvar varExploX, refvar varExploY) 4000
+
+// ********* end random explosion generator *******
+
+// loop to play droplet sound, ch2 pri 2
+
+if evtDroplet then random
+	trigger evtDrop1,
+	trigger evtDrop2
+
+	if evtDrop1 then
+		playsound "drip.wav" objtubtaprt 2 2,
+		triggerdelay 11000 evtdroplet
+	if evtDrop2 then
+		playsound "drip.wav" objsinktapleft 2 2,
+		triggerdelay 11000 evtdroplet
+
+// play plink if a plinkobj is hit, in channel 2 (same as HDryer), priority 1. Only play once out of 4 hits
+// to prevent annoyance
+IF HIT listPlinkObjs 
+	TESTVAR varPlinkcount = 7
+	THEN
+//	SHOWMESSAGE "叮！",
+	PLAYITEMSOUND "BulletStone_8Bit.wav" me 2 1,
+	SETSOUNDVOLUME "BulletStone_8Bit.wav" 2 10000,
+	ADDVAR varPlinkcount -7
+
+IF HIT listPlinkObjs	// add to count half the time
+	THEN random
+	ADDVAR varPlinkcount 1,
+	trigger nothing
+
+if killed objtent then
+	createexplosion (2770, 2080) 148,
+	createpowerup napalmbomb (2773, 2080,20) 1,
+	makesmoke objtent 2500
+
+// ======= BEGIN Win Conditions =======
+
+	if evtTestM1Win butnot evtMission1Win		// make sure we're still in M1
+		THEN TRIGGERDELAY 3000 evtMission1Win	// give time to show Sarge heading off scale
+
+		IF evtMission1Win butnot evtMissionlost
+			THEN playtalkinghead 116, // "Mission complete. Good work, Captain.", 
+			setvar boolM1won 1,
+			removemissionobjective objscale
+
+			if inorder evtmission1win talkingheaddone
+			testvar boolvolockout = 0 then
+			trigger greenwins
+
+// mission2
+
+IF evtTestSpyNotKilled BUTNOT evtCaptureSpy	// (the BUTNOT MISSIONLOSTs on CaptureSpys will stop spykillers)
+	TESTVAR getpadstatus padSeeBlueSpy = 1 // cap must be on vanity to win
+	THEN trigger evtCaptureSpy
+
+IF PADON padSeeBlueSpy BUTNOT evtCaptureSpy	// reverse case of preceding
+	TESTVAR varTanVanityKilled = 8
+	THEN trigger evtCaptureSpy
+
+if evtCaptureSpy butnot evtMissionlost then
+	setaipose spy stand,
+	setfacing spy captain,
+	trigger evtCapHail,
+	setnpc captain 1,
+	setaimode captain ignore,
+	setaimode spy ignore,
+	setfacing captain spy,
+	trigger evtAllIgnore
+
+	if evtCapHail
+	testvar boolvolockout = 0 then
+	playtalkinghead 117 // "Captain: Hold it! You're coming with me."
+
+	if inorder evtCaptureSpy talkingheaddone captain then
+		trigger evtCapture2
+
+	if evtCapture2 butnot evtCapture2a then
+		trigger evtCapture2a
+
+	if evtCapture2a butnot evtMissionlost then
+	setnpc captain 1,
+	setaimode captain ignore,
+	playsound "..\voice\blu001c.wav" (0,0) 0 1, // 3 sec, was f
+	trigger evtSpyText1,
+	triggerdelay 4500 evtcapture3
+
+	if evtCapture3 butnot evtMissionlost then
+	playsound "..\voice\blu002f.wav" (0,0) 0 1, //  7 sec, was e
+	trigger evtSpytext2,
+	triggerdelay 9500 evtcapture4
+
+	if evtcapture4
+		testvar boolM1won = 1
+		AND boolvolockout = 0 then
+	playtalkinghead 120, // "good flying captain"
+
+	if  evtcapture4 butnot evtmission1win then
+	playtalkinghead 121 // Good job, Captain. But you've still got work to do!
+
+if inorder evtcapture4 talkingheaddone captain then
+	triggerdelay 1000 evtmission2win
+
+IF evtMission2Win butnot evtmissionlost THEN
+	UNDEPLOY spy,
+	TRIGGER greenwins
+
+// Mission3 win
+
+IF PADON padPortal BUTNOT evtmissionlost
+	THEN TRIGGER evtTestForWin
+
+IF ALLOF evtTestForWin KILLED objTubhole KILLED objtublever
+	TESTVAR getelevation captain < 295 // was 150
+	THEN
+//	setnpc captain 1,		// disable captain so he can't fly off pad
+	TRIGGERDELAY 1 evtKapoof
+
+if evtKapoof then
+	setspeed captain slow,
+	deploy objtubholeframe,	// let's hope this is fast enuf
+	playsound "" 1,
+	playsound "portal2.wav" (0,0) 1 2,
+	createexplosion captain 137,
+	createexplosion captain 128,
+	createexplosion (3568,1158) 137,
+	createexplosion (3572,1154) 128,
+	unally green blue,
+	unally blue green,
+	undeploy captain,
+	TRIGGERDELAY 2000 evtMission3WinTest
+
+	if evtMission3WinTest butnot evtMissionLost
+		then trigger evtMission3WinTest2
+
+//reverse case -- on portal pad when tubhole is killed
+
+IF KILLED objTubhole BUTNOT evtMissionlost
+	TESTVAR getpadstatus padportal = 1
+	THEN TRIGGER evtWinOnPad
+
+	IF ALLOF evtWinOnPad KILLED objtublever
+		TESTVAR getelevation captain < 295 // was 130
+	THEN TRIGGERDELAY 1 evtKapoof
+
+IF allof evtMission3WinTest2 evtMission1Win evtMission2Win
+	testvar boolvolockout = 0
+	THEN playtalkinghead 122, // Nice flying, Captain...!
+	trigger greenwins
+
+// ======= BEGIN Defeat Conditions ======================================
+
+IF KILLED listGreenTroops BUTNOT evtMissionLost THEN
+		TRIGGERDELAY 50 evtCheckCaptain
+
+		IF evtCheckCaptain BUTNOT killed Captain THEN
+		stoptalkinghead,
+        TRIGGER evtMissionLost,                 // use this event to track that we have lost
+        TRIGGERDELAY 1000 evtTroopKilled        // allow time for death to register
+
+IF evtTroopKilled butnot evtTrpKVO then triggerdelay 3 evtTrpKVO
+
+		if evtTrpKVO THEN
+        playtalkinghead 123 // "We can't win! Too many of our men have died in battle!"
+
+	if inorder evtTroopkilled talkingheaddone captain then triggerdelay 1000 tanwins
+
+if evtTimesUp butnot evtGotGuysOnScale then
+		TRIGGERDELAY 50 evtCheckCaptain2
+
+		IF evtCheckCaptain2 BUTNOT killed Captain THEN
+ 		stoptalkinghead,
+       TRIGGER evtMissionLost,                 // use this event to track that we have lost
+        TRIGGERDELAY 1000 evtLoseByTIme
+
+IF evtLoseByTime THEN
+        playtalkinghead 124 // "Too late! Sarge's men never made it to their objective."
+
+	if inorder evtLosebytime talkingheaddone captain then triggerdelay 1000 tanwins
+
+IF killed spy BUTNOT evtMissionLost then
+		stoptalkinghead,
+		setvar boolspykilled 1,
+		playsound "" 0 1,
+        TRIGGER evtMissionLost,                 // use this event to track that we have lost
+        TRIGGERDELAY 1000 evtSpyKilled        // allow time for death to register
+IF evtSpyKilled THEN
+        playtalkinghead 125 // "The Blue Spy was killed. Now we'll never know what the Tan are planning!"
+
+	if inorder evtSpykilled talkingheaddone captain then triggerdelay 1000 tanwins
+
+// mission 3
+
+IF evtMission3WinTest2 butnot evtMission2Win
+	THEN
+	playtalkinghead 0, // "You went AWOL before finishing the mission!",
+	trigger evtMissionlost,
+	trigger whtflag
+
+	if inorder whtflag talkingheaddone captain then triggerdelay 1000 tanwins
+
+IF evtMission3WinTest2 butnot evtMission1Win
+	THEN
+	playtalkinghead 0, // "You went AWOL before finishing the mission!",
+	trigger evtMissionlost,
+	trigger whtflag
+
+// ======= END Defeat Conditions ===========================================
+
+preloadsprite 43 240 0
+preloadsprite 43 240 1
+
+preloadsprite 43 602 0
+preloadsprite 43 602 1
+preloadsprite 43 602 2
+preloadsprite 43 602 3
+
+preloadsprite 25 100 0
+preloadsprite 25 101 0
+
+preloadsprite 43 605 0
+preloadsprite 43 605 1
+preloadsprite 43 605 2
+preloadsprite 43 605 3
+
+preloadsprite 43 203 0
+
+preloadsprite 43 230 0
+
+preloadsprite 43 300 0
+preloadsprite 43 300 1
+preloadsprite 43 301 0
+
+preloadsprite 43 330 0
+
+preloadsprite 43 350 0
+
+preloadsprite 43 400 0
+preloadsprite 43 400 1
+preloadsprite 43 700 0
+preloadsprite 43 700 1
+
+preloadsprite 43 450 0
+
+preloadsprite 43 500 0
+preloadsprite 43 550 0
+
+preloadsprite 43 600 0
+preloadsprite 43 600 1
+
+preloadsprite 43 650 0
+
+preloadsprite 43 750 0
+preloadsprite 43 750 1
+
+preloadsprite 43 850 0
+
+preloadsprite 43 900 0
+
+preloadsprite 43 990 0
+
+preloadsprite 43 040 0
+

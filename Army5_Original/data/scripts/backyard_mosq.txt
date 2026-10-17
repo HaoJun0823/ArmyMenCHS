@@ -1,0 +1,53 @@
+// backyard_mosq
+// Carson Herrick
+
+
+PAD padMosq51	51	
+PAD padMosq52	52	
+PAD padMosq53	53	
+PAD padMosq54	54	
+PAD padMosq55	55	
+PAD padMosq56	56	
+PAD padMosq57	57	
+PAD padMosq58	58	
+PAD padMosq59	59
+
+
+
+//***RANDOMIZE BUGS***//
+UNTIL 9 REPEAT 1 BY 1
+{
+	IF KILLED mosq_$ THEN RANDOM
+		TRIGGERDELAY 10000 raisedeadmosq,
+		TRIGGERDELAY 15000 raisedeadmosq,
+		TRIGGERDELAY 20000 raisedeadmosq,
+		TRIGGERDELAY 25000 raisedeadmosq,
+		TRIGGERDELAY 30000 raisedeadmosq
+}
+
+IF raisedeadmosq THEN
+	RESURRECT me padMosq51,
+	TRIGGER newmosqlocation,
+	TRIGGER newmosqheight
+
+IF newmosqlocation THEN RANDOM
+	MOVEITEM me padMosq51,
+	MOVEITEM me padMosq52,
+	MOVEITEM me padMosq53,
+	MOVEITEM me padMosq54,
+	MOVEITEM me padMosq55,
+	MOVEITEM me padMosq56,
+	MOVEITEM me padMosq57,
+	MOVEITEM me padMosq58,
+	MOVEITEM me padMosq59
+
+IF newmosqheight THEN RANDOM
+	SETAIRVARIANCE me 100,
+	SETAIRVARIANCE me 125,
+	SETAIRVARIANCE me 150,
+	SETAIRVARIANCE me 175,
+	SETAIRVARIANCE me 200,
+	SETAIRVARIANCE me 225,
+	SETAIRVARIANCE me 250
+
+//***RANDOMIZE BUGS***//

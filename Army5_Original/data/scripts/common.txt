@@ -1,0 +1,188 @@
+//common.txt
+
+VARIABLE sargepainbuffer 0
+variable boolnobeacon 0
+variable boolwaitout 0
+variable boolVOlockout 0 // flag to shut off non-greyspy vo during that phase
+
+VARIABLE alreadyrespawned 0
+VARIABLE SPrespawnX 0
+VARIABLE SPrespawnY 0
+
+VARIABLE eaglehaslanded 0
+
+VARIABLE explosionID_1 700
+VARIABLE explosionID_2 700
+VARIABLE parentX 0
+VARIABLE parentY 0
+VARIABLE childX 0
+VARIABLE childY 0
+
+// ======= LANDING PADS ======= //
+
+PAD LPad10	10	captain	> 0
+
+OBJECT 43 910
+	STATE ON
+		FRAME 750 0
+		FRAME 1 0
+			SETOBJSTATE ME OFF
+	STATE OFF
+		FRAME 1250 1
+		FRAME 1 0
+			SETOBJSTATE ME ON
+
+OBJECT 43 920
+	STATE ON
+		FRAME 750 0
+		FRAME 1 0
+			SETOBJSTATE ME OFF
+	STATE OFF
+		FRAME 1250 1
+		FRAME 1 0
+			SETOBJSTATE ME ON
+
+
+IF PADON LPad10 THEN
+	TRIGGERDELAY 1000 copterlanding
+
+IF copterlanding TESTVAR GETPADSTATUS LPad10 = 1 AND eaglehaslanded = 0 THEN
+	LAND captain,
+	TRIGGERDELAY 100 copterlanding
+
+IF LANDED captain THEN
+	SETVAR eaglehaslanded 1
+
+IF TOOKOFF captain THEN
+	SETVAR eaglehaslanded 0
+
+IF PADOFF LPad10 THEN
+	SETVAR eaglehaslanded 0
+
+// ======= LANDING PADS ======= //
+
+
+// ======= BEACON BEHAVIOR ====== //
+
+IF beaconoff THEN
+	setvar boolnobeacon 1,
+	setbeacon captain 3
+
+IF beaconon THEN
+	setvar boolnobeacon 0,
+	setbeacon captain 0
+
+// beaconoff response vo
+
+IF beaconed captain butnot evtmissionlost
+	testvar boolNoBeacon = 1 AND
+		boolwaitout = 0 AND
+		boolVOlockout = 0
+	THEN	// sarge: not now, captain
+	playtalkinghead 40,
+	triggerdelay 10 setwait,
+	triggerdelay 13000 resetwait
+
+IF setwait THEN setvar boolwaitout 1
+
+IF resetwait THEN setvar boolwaitout 0
+
+// ======= BEACON BEHAVIOR ====== //
+
+
+// ======= DEFEAT CONDITIONS ======= //
+
+IF KILLED captain BUTNOT evtMissionLost THEN
+	stoptalkinghead,
+    TRIGGER evtMissionLost,				// use this event to track that we have lost
+    TRIGGER evtCapKilled
+
+IF evtMissionLost THEN
+	STOPUSERSAVE,
+	setvar boolvolockout 1
+
+IF evtCapKilled THEN
+    TRIGGER evtCaptainDead
+
+IF KILLED Sarge BUTNOT evtMissionLost THEN
+	stoptalkinghead,
+//	showpda "STOPHEAD!", // &&&@&@&&@!&@&&!!!
+    TRIGGERdelay 3 evtMissionLost,
+	TRIGGERDELAY 3 evtSargeKilled		// IF this is not delayed, Sarge's obit preempts Cap's! -dc
+
+IF evtSargeKilled BUTNOT evtCapkilled THEN
+	TRIGGER evtSargeDead
+	
+IF evtSargeDead THEN RANDOM
+    PLAYTALKINGHEAD 19,
+    PLAYTALKINGHEAD 20,
+	PLAYTALKINGHEAD 21,
+	PLAYTALKINGHEAD 22
+
+if inorder evtSargeDead talkingheaddone then
+	triggerdelay 1000 tanwins
+
+IF evtCaptainDead THEN RANDOM
+	PLAYTALKINGHEAD 23,
+	PLAYTALKINGHEAD 24,
+	PLAYTALKINGHEAD 25,
+	PLAYTALKINGHEAD 26,
+	PLAYTALKINGHEAD 27
+
+if inorder evtCaptainDead talkingheaddone then
+	triggerdelay 1000 tanwins
+
+// ======= DEFEAT CONDITIONS ======= //
+
+
+// ======= SARGE WHINES ======= //
+
+IF HIT sarge butnot killed sarge
+	THEN triggerdelay 1200 evtWhine
+
+IF evtWhine BUTNOT evtSargeat60
+	TESTVAR GETHEALTH sarge < 400 	// 80%, assuming normal is 500
+	AND GETHEALTH sarge > 300 THEN	
+		TRIGGER evtSargeat60,
+		SETVAR sargepainbuffer 1,
+		TRIGGERDELAY 2000 evtclearbuff
+
+IF evtclearbuff THEN SETVAR sargepainbuffer 0
+
+IF evtSargeat60 BUTNOT evtMissionlost THEN RANDOM
+	PLAYTALKINGHEAD 39,
+	PLAYTALKINGHEAD 42,
+	PLAYTALKINGHEAD 44,
+	PLAYTALKINGHEAD 43,
+	PLAYTALKINGHEAD 47
+
+IF evtWhine BUTNOT evtSargeat25 TESTVAR GETHEALTH sarge < 301 THEN		// 50%, assuming normal is 500
+	TRIGGER evtTestsargeat25
+
+IF evtTestsargeat25 BUTNOT KILLED sarge
+	TESTVAR gethealth sarge > 150 // he can't be too close to death
+	AND sargepainbuffer = 0 THEN // suppress wail if he whined recently
+		TRIGGER evtSargeat25
+
+IF evtSargeat25 BUTNOT evtMissionlost THEN RANDOM
+	PLAYTALKINGHEAD 32,
+	PLAYTALKINGHEAD 33,
+	PLAYTALKINGHEAD 41,
+	PLAYTALKINGHEAD 45,
+	PLAYTALKINGHEAD 46
+
+// ======= SARGE WHINES ======= //
+
+
+// ======= INFINITE LIVES ======= //
+
+IF infinitelife THEN
+	SETCAMERAFOCUS captain,
+	TRIGGERDELAY 3000 respawnSPcopter
+
+IF respawnSPcopter TESTVAR alreadyrespawned = 0 THEN				// alreadyrespawned is set to 1 IF captain died in a hotspot and local script will respawn him in someplace safe
+	SETVAR SPrespawnX GETX captain, SETVAR SPrespawnY GETY captain,
+	CREATEEXPLOSION (REFVAR SPrespawnX, REFVAR SPrespawnY, 1000) 145,
+	DEPLOY captain (REFVAR SPrespawnX, REFVAR SPrespawnY, 1000)
+
+// ======= INFINITE LIVES ======= //

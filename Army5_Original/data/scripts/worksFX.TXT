@@ -1,0 +1,59 @@
+
+
+/// EXPLOSION SETUP ///
+
+MACRO worksMACRO 3
+{
+	IF worksexplosion THEN
+		SETVAR explosionID_1 @2,
+		SETVAR explosionID_2 @3
+}
+EXPAND worksMACRO ( 1 715 716 )
+
+IF selectWORKSexplosion THEN RANDOM
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY) REFVAR explosionID_1,
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY) REFVAR explosionID_2
+
+/// EXPLOSION SETUP ///
+
+
+/// EXPLOSION CREATION ///
+
+IF workspoof1 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 100, ADDVAR childY 65,
+	TRIGGER selectWORKSexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 230, ADDVAR childY -10,
+	TRIGGER selectWORKSexplosion
+
+IF workspoof2 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 130, ADDVAR childY -30,
+	TRIGGER selectWORKSexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 205, ADDVAR childY -110,
+	TRIGGER selectWORKSexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 175, ADDVAR childY -80,
+	TRIGGER selectWORKSexplosion
+
+IF workspoof3 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 130, ADDVAR childY -45,
+	TRIGGER selectWORKSexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 238, ADDVAR childY 60,
+	TRIGGER selectWORKSexplosion
+
+/// EXPLOSION CREATION ///

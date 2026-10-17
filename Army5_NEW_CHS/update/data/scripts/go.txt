@@ -1,0 +1,353 @@
+pad padGoGame 75 captain>0
+
+//list listGoBoardTargets 45 109
+
+// create stone powerups underneath the board (invisible since board is higher)
+// which form legal targets to fire at (forcing valid go location for move)
+// and which have only default count of ammo (copter pickup will refuse low count gostone powerups)
+IF setupboard THEN
+	CREATEPOWERUP whitegostone  (547,1657) -2,
+	CREATEPOWERUP whitegostone  (572,1660) -2,
+	CREATEPOWERUP whitegostone  (596,1662) -2,
+	CREATEPOWERUP whitegostone  (621,1665) -2,
+	CREATEPOWERUP whitegostone  (646,1667) -2,
+	CREATEPOWERUP whitegostone  (671,1669) -2,
+	CREATEPOWERUP whitegostone  (695,1670) -2,
+	CREATEPOWERUP whitegostone  (719,1674) -2,
+	CREATEPOWERUP whitegostone  (743,1677) -2,
+
+	CREATEPOWERUP whitegostone  (544,1678) -2,
+	CREATEPOWERUP whitegostone  (568,1680) -2,
+	CREATEPOWERUP whitegostone  (593,1683) -2,
+	CREATEPOWERUP whitegostone  (618,1685) -2,
+	CREATEPOWERUP whitegostone  (642,1687) -2,
+	CREATEPOWERUP whitegostone  (667,1690) -2,
+	CREATEPOWERUP whitegostone  (691,1692) -2,
+	CREATEPOWERUP whitegostone  (716,1694) -2,
+	CREATEPOWERUP whitegostone  (740,1696) -2,
+
+
+	CREATEPOWERUP whitegostone  (540,1700) -2,
+	CREATEPOWERUP whitegostone  (565,1702) -2,
+	CREATEPOWERUP whitegostone  (590,1704) -2,
+	CREATEPOWERUP whitegostone  (615,1706) -2,
+	CREATEPOWERUP whitegostone  (640,1708) -2,
+	CREATEPOWERUP whitegostone  (665,1710) -2,
+	CREATEPOWERUP whitegostone  (690,1712) -2,
+	CREATEPOWERUP whitegostone  (715,1715) -2,
+	CREATEPOWERUP whitegostone  (740,1717) -2,
+
+	CREATEPOWERUP whitegostone  (536,1722) -2,
+	CREATEPOWERUP whitegostone  (561,1724) -2,
+	CREATEPOWERUP whitegostone  (586,1726) -2,
+	CREATEPOWERUP whitegostone  (611,1728) -2,
+	CREATEPOWERUP whitegostone  (636,1730) -2,
+	CREATEPOWERUP whitegostone  (661,1732) -2,
+	CREATEPOWERUP whitegostone  (686,1734) -2,
+	CREATEPOWERUP whitegostone  (711,1736) -2,
+	CREATEPOWERUP whitegostone  (736,1738) -2,
+
+	CREATEPOWERUP whitegostone  (532,1743) -2,
+	CREATEPOWERUP whitegostone  (556,1745) -2,
+	CREATEPOWERUP whitegostone  (582,1747) -2,
+	CREATEPOWERUP whitegostone  (607,1749) -2,
+	CREATEPOWERUP whitegostone  (632,1751) -2,
+	CREATEPOWERUP whitegostone  (657,1753) -2,
+	CREATEPOWERUP whitegostone  (682,1755) -2,
+	CREATEPOWERUP whitegostone  (707,1757) -2,
+	CREATEPOWERUP whitegostone  (732,1759) -2,
+
+	CREATEPOWERUP whitegostone  (530,1763) -2,
+	CREATEPOWERUP whitegostone  (554,1765) -2,
+	CREATEPOWERUP whitegostone  (580,1767) -2,
+	CREATEPOWERUP whitegostone  (604,1769) -2,
+	CREATEPOWERUP whitegostone  (630,1771) -2,
+	CREATEPOWERUP whitegostone  (653,1773) -2,
+	CREATEPOWERUP whitegostone  (679,1775) -2,
+	CREATEPOWERUP whitegostone  (703,1777) -2,
+	CREATEPOWERUP whitegostone  (729,1779) -2,
+	
+	CREATEPOWERUP whitegostone  (526,1782) -2,
+	CREATEPOWERUP whitegostone  (550,1784) -2,
+	CREATEPOWERUP whitegostone  (576,1786) -2,
+	CREATEPOWERUP whitegostone  (600,1788) -2,
+	CREATEPOWERUP whitegostone  (626,1790) -2,
+	CREATEPOWERUP whitegostone  (650,1793) -2,
+	CREATEPOWERUP whitegostone  (676,1795) -2,
+	CREATEPOWERUP whitegostone  (700,1797) -2,
+	CREATEPOWERUP whitegostone  (726,1799) -2,
+
+	CREATEPOWERUP whitegostone  (532,1804) -2,
+	CREATEPOWERUP whitegostone  (557,1806) -2,
+	CREATEPOWERUP whitegostone  (580,1808) -2,
+	CREATEPOWERUP whitegostone  (605,1810) -2,
+	CREATEPOWERUP whitegostone  (629,1812) -2,
+	CREATEPOWERUP whitegostone  (654,1815) -2,
+	CREATEPOWERUP whitegostone  (678,1817) -2,
+	CREATEPOWERUP whitegostone  (703,1819) -2,
+	CREATEPOWERUP whitegostone  (723,1821) -2,
+	
+	CREATEPOWERUP whitegostone  (525,1820) -2,
+	CREATEPOWERUP whitegostone  (548,1823) -2,
+	CREATEPOWERUP whitegostone  (578,1830) -2,
+	CREATEPOWERUP whitegostone  (603,1832) -2,
+	CREATEPOWERUP whitegostone  (627,1834) -2,
+	CREATEPOWERUP whitegostone  (652,1837) -2,
+	CREATEPOWERUP whitegostone  (676,1839) -2,
+	CREATEPOWERUP whitegostone  (701,1841) -2,
+	CREATEPOWERUP whitegostone  (721,1843) -2	// this completes creating 9x9 go board
+
+	//note: if you want the foecopter to alway start near black stones
+	// DONT put the pickup black stone there. Captain will collide on creation
+IF setupgo THEN
+	CREATEPOWERUP "blackstones"	blackgostone (828,1680,10) 100,	// to be black
+	CREATEPOWERUP whitestones whitegostone (610,1930,10) 100	// or to be white
+
+// picking up one of the powerups from setup initializes the go system and tells it which color to play
+
+/////////////////////// CPU moves
+
+variable varmovecount 0
+
+if blackmoves butnot evtplayerwhite // when player moves
+	then trigger evtCPUmove,
+	trigger evtResetTimer // start counting toward pass hint again
+
+	if evtCPUmove then
+	triggerdelay 2000 evtrespond
+
+if whitemoves butnot evtplayerblack // when player moves
+	then trigger evtCPUmove,
+	trigger evtResetTimer
+
+if evtrespond then
+	makegomove,
+	addvar varmovecount 2,
+	triggerdelay 5000 evtTimeNudge
+
+if blackpasses butnot evtplayerblack	// if pc passes then let cpu pass for player
+	then trigger evtrespond
+
+if whitepasses butnot evtplayerwhite	// if pc passes then let cpu pass for player
+	then trigger evtrespond
+
+if  blackpasses butnot evtplayerwhite	// if human passes, consider it a move
+	then trigger blackmoves
+
+if  whitepasses butnot evtplayerblack	// if human passes, consider it a move
+	then trigger whitemoves
+
+///////////////////////// pass hint
+
+variable booltimerblock 0
+variable vargotimer 0
+
+if evtResetTimer then
+	setvar vargotimer 0,
+	setvar booltimerblock 1,
+	triggerdelay 3400 evtUnblockTimer,
+	triggerdelay 3500 evtTimerloop
+
+if evtUnblocktimer then setvar booltimerblock 0
+
+if evtTimerloop butnot killed goplayer
+	testvar booltimerblock = 0
+	then addvar vargotimer 3,
+	triggerdelay 3000 evtTimerloop
+
+	if evttimerloop butnot evtpasshint1 // play passhint after x secs of inactivity
+		testvar vargotimer = 24
+		AND itemtoitemdistance objgoboard captain < 550
+		then trigger evtpasshint
+
+			if evtpasshint butnot evtmissionlost
+				testvar boolVOlockout = 0
+				then
+				trigger evtpasshint1
+
+				if evtpasshint1 butnot humanwins then
+					trigger evtpasshint2
+
+					if evtpasshint2 butnot computerwins then
+						trigger evtpasshint3
+
+						if evtpasshint3 butnot tiegame then
+							playtalkinghead 133, // Shoot into your bowl to pass, Captain.
+							setvar booltimerblock 1
+
+///////////////////////////////// time nudges
+
+			if evtTimeNudge butnot evtmissionlost
+				testvar boolVOlockout = 0 AND
+				varmovecount = 62 // game nearing end
+				then
+				trigger evtTimeNudge3
+
+				if evtTimeNudge3 butnot humanwins then
+					trigger evtTimeNudge4
+
+					if evtTimeNudge4 butnot computerwins then
+						trigger evtTimeNudge5
+
+						if evtTimeNudge5 butnot tiegame then
+							playtalkinghead 11, // Captain, rem your obj
+							triggerdelay 25000 evtTimeSpank
+
+	if inorder evtTimeSpank evtpasshint3 talkingheaddone captain
+		testvar itemtoitemdistance objgoboard captain < 550
+		then triggerdelay 15000 evtTimeSpank2
+
+	if inorder evtpasshint3 evtTimeSpank
+		testvar itemtoitemdistance objgoboard captain < 550
+		then trigger evtTimeSpank2
+
+			if evtTimeSpank2 butnot evtmissionlost
+				testvar boolVOlockout = 0
+				then
+				trigger evtTimeSpank3
+
+				if evtTimeSpank3 butnot humanwins then
+					trigger evtTimeSpank4
+
+					if evtTimeSpank4 butnot computerwins then
+						trigger evtTimeSpank5
+
+						if evtTimeSpank5 butnot tiegame then
+							playtalkinghead 158 //You've still got work to do...! Shoot into your bowl, Captain.
+
+// picking your side to play
+IF pickedup blackstones butnot setupboard THEN						// if user picks up stones, user goes first
+	TRIGGER setupboard,
+	CREATEEXPLOSION  (730,1600,30) 145,						// he appears in a puff of smoke
+	CREATECOPTER attack goplayer  (730,1600,30) tan,		// tan copter &&
+	SETFACING goplayer 128,									// face the board
+	SETAIMODE goplayer ignore,							// will not harm you
+	trigger evtplayerblack,				// bogus, flagonly
+	PICKUPITEM goplayer whitestones,						// which he retrieves
+	SELECTINVENTORYITEM goplayer 1,						// and selects
+	trigger evtintro,
+	SELECTINVENTORYITEM captain blackstones,			// switch captains weapon to play
+	trigger yourmove,
+	CREATEPOWERUP "passblack" blackgostone  objblackstone	-2 // is the pass zone black bowl
+
+	if yourmove 
+		testvar boolVOlockout = 0 then
+		playtalkinghead 129	// tells you to move first: He's waiting for you to shoot a stone onto the board.
+
+IF pickedup whitestones butnot setupboard THEN						// if user picks up stones, we provide an opponent
+	TRIGGER setupboard,
+	createexplosion (730,1600,30) 145,
+	CREATECOPTER attack goplayer  (730,1600,30) tan,		// tan copter, was 68,2028 &&
+	SETAIMODE goplayer ignore,							// will not harm you
+	trigger evtplayerwhite,				// bogus, flagonly
+	PICKUPITEM goplayer blackstones,					// which he retrieves
+	SELECTINVENTORYITEM goplayer 1,						// and selects
+	trigger evtintro,
+	SELECTINVENTORYITEM captain whitestones,			// switch captains weapon to play
+	SETFACING goplayer 64,								// he faces down til you move
+	triggerdelay 10000 evtgoad,
+	CREATEPOWERUP "passwhite" whitegostone objwhitestone -2 // is the pass zone white bowl
+
+	if evtgoad butnot evtMissionlost
+		testvar boolVOlockout = 0 then
+		trigger evtgoad2
+
+		if evtgoad2 butnot evtCPUmove then // player hasn't moved yet
+		playtalkinghead 139	// tells you to move: Hmm -- he just shot a stone onto the board.
+
+	if evtintro butnot evtmissionlost
+		testvar boolVOlockout = 0
+		then playtalkinghead 130
+
+// pass moves
+//IF blackpasses THEN
+//	SHOWMESSAGE "ºÚÆåÈÃ¹ý¡£"
+//IF whitepasses THEN
+//	SHOWMESSAGE "°×ÆåÈÃ¹ý¡£"
+
+if hit goplayer butnot evtGoWarlike
+	then order goplayer goto (730,1600) inmode ignore
+
+if hit goplayer butnot evtGoWarlike
+	testvar gethealth me < 600 then
+	trigger evtGoWarlike
+
+	if evtGowarlike then
+	createpowerup lance radarmissile goplayer,
+//	createpowerup spud sonarbuoy goplayer,
+//	pickupitem goplayer spud,
+	pickupitem goplayer lance,
+	selectinventoryitem goplayer 2,
+	setaimode goplayer attack
+
+if killed goplayer then
+	triggerdelay 100 penalty
+
+	if penalty then
+	undeploy lance
+
+// when the game ends, the go system disables itself and wont play again (except from a saved replay)
+
+// game results
+IF humanwins THEN
+	UNDEPLOY goplayer,
+	undeploy blackstones,
+	undeploy whitestones,
+	TRIGGERDELAY 2000 hwin
+	
+	IF hwin THEN
+		playsound "" (0,0) 3 1,
+		playsound "gogamewin.wav" (0,0) 3 1,
+		createexplosion (762,1555) 146,
+		CREATEPOWERUP heatray (762,1555) 1,
+		createexplosion (700,1450) 146,
+		CREATEPOWERUP armorboost (700,1530),
+		createexplosion (830,1560) 146,
+		CREATEPOWERUP insecticide (830,1560),
+		savegame prgo
+
+IF computerwins THEN
+	createexplosion goplayer 145,
+	UNDEPLOY goplayer,
+	undeploy blackstones,
+	undeploy whitestones,
+	TRIGGERDELAY 2000 cwin,
+	triggerdelay 2000 cwinvo
+
+	IF cwin then
+		playsound "" (0,0) 3 1,
+		playsound "gogamelose.wav" (0,0) 3 1,
+		createpowerup groundmissile (762,1555) 1,
+		savegame prgo
+
+	IF cwin 
+		testvar boolVOlockout = 0 then
+		playtalkinghead 131 // sorry captain
+
+IF tiegame THEN
+	UNDEPLOY goplayer,
+	undeploy blackstones,
+	undeploy whitestones,
+	TRIGGERDELAY 2000 tg,
+	triggerdelay 2500 evtTieSound,
+	triggerdelay 3000 evtTieFinal
+
+	IF tg 
+		testvar boolVOlockout = 0 then
+		playsound "" (0,0) 3 1,
+		playsound "gostoneplace.wav" (0,0) 3 1,
+		playtalkinghead 132 // Tie game, Captain.
+
+	if evtTieSound then
+		playsound "" (0,0) 3 1,
+		playsound "gostoneplace.wav" (0,0) 3 1
+
+	if evtTieFinal then
+		playsound "" (0,0) 3 1,
+		playsound "gostoneplace.wav" (0,0) 3 1,
+		createexplosion (762,1555) 146,
+		CREATEPOWERUP partialarmor (762,1555),
+		createexplosion (830,1560) 146,
+		CREATEPOWERUP heatray (830,1560) 1,
+		savegame prgo
+

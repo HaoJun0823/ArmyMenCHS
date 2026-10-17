@@ -1,0 +1,170 @@
+LIST troptree01 43 300
+LIST troptree02 43 301
+LIST troptree03 43 302
+LIST troptree04 43 303
+LIST troptree05 43 304
+LIST troptree06 43 305
+LIST troptree07 43 306
+LIST troptree08 43 307
+LIST troptree09 43 308
+LIST troptree10 43 309
+LIST troptree11 43 310
+LIST troptree12 43 311
+LIST troptree13 43 312
+LIST troptree14 43 313
+
+/// EXPLOSION SETUP ///
+MACRO troptreedamage 5
+{
+	IF DMGLVLCHANGED troptree@1 THEN
+		TRIGGER troptreefxexplosion@2,
+		TRIGGER troptreefxpoof@3,
+		TRIGGERDELAY 75 troptreefxpoof@4,
+		TRIGGERDELAY 150 troptreefxpoof@5
+}
+
+EXPAND troptreedamage (01 3 3 4 4)
+EXPAND troptreedamage (02 3 3 4 4)
+EXPAND troptreedamage (03 1 3 4 4)
+EXPAND troptreedamage (04 1 2 3 1)
+EXPAND troptreedamage (05 2 3 4 4)
+EXPAND troptreedamage (06 2 3 2 1)
+EXPAND troptreedamage (07 2 3 4 4)
+EXPAND troptreedamage (08 2 3 2 1)
+EXPAND troptreedamage (09 3 3 2 1)
+EXPAND troptreedamage (10 3 1 3 2)
+EXPAND troptreedamage (11 3 2 1 3)
+EXPAND troptreedamage (12 3 2 3 1)
+EXPAND troptreedamage (13 3 3 2 1)
+EXPAND troptreedamage (14 3 3 2 1)
+
+MACRO troptreefxMACRO 4
+{
+	IF troptreefxexplosion@1 TESTVAR GETDMGLVL me = @2 THEN
+		SETVAR explosionID_1 @3,
+		SETVAR explosionID_2 @4
+}
+
+EXPAND troptreefxMACRO ( 1 1 701 702 )
+EXPAND troptreefxMACRO ( 1 2 701 702 )
+EXPAND troptreefxMACRO ( 1 3 701 702 )
+EXPAND troptreefxMACRO ( 1 4 701 702 )
+
+EXPAND troptreefxMACRO ( 2 1 701 702 )
+EXPAND troptreefxMACRO ( 2 2 701 702 )
+EXPAND troptreefxMACRO ( 2 3 701 702 )
+EXPAND troptreefxMACRO ( 2 4 701 702 )
+
+EXPAND troptreefxMACRO ( 3 1 701 702 )
+EXPAND troptreefxMACRO ( 3 2 701 702 )
+EXPAND troptreefxMACRO ( 3 3 701 702 )
+EXPAND troptreefxMACRO ( 3 4 701 702 )
+
+IF selecttroptreeexplosion THEN RANDOM
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY) REFVAR explosionID_1,
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY) REFVAR explosionID_2
+
+/// EXPLOSION SETUP ///
+
+
+/// EXPLOSION CREATION ///
+
+IF troptreefxpoof1 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -49, ADDVAR childY 10,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -58, ADDVAR childY -39,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -64, ADDVAR childY -94,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -28, ADDVAR childY -135,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 39, ADDVAR childY -97,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 59, ADDVAR childY 13,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -9, ADDVAR childY -15,
+	TRIGGER selecttroptreeexplosion
+
+
+IF troptreefxpoof2 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -8, ADDVAR childY -20,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -47, ADDVAR childY 9,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -74, ADDVAR childY -83,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 13, ADDVAR childY -107,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 57, ADDVAR childY -82,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 89, ADDVAR childY -32,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 78, ADDVAR childY 17,
+	TRIGGER selecttroptreeexplosion
+
+
+IF troptreefxpoof3 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -13, ADDVAR childY -14,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -23, ADDVAR childY -50,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 15, ADDVAR childY -30,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 24, ADDVAR childY -10,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 16, ADDVAR childY 5,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 19, ADDVAR childY 27,
+	TRIGGER selecttroptreeexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -21, ADDVAR childY 18,
+	TRIGGER selecttroptreeexplosion
+
+IF troptreefxpoof4 THEN									//create no explosion
+	CREATEEXPLOSION me 127
+
+/// EXPLOSION CREATION ///

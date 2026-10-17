@@ -1,0 +1,116 @@
+Sam|Sam061c.wav|You went AWOL before finishing the mission!
+Sam|Sam062c.wav|Captain, look at your radar.
+Sam|Sam063c.wav|Nice flying, Captain...!
+Sam|Sam064a.wav|Be on the lookout for air currents.
+Sam|Sam065b.wav|Wrong way, Captain!
+Sam|Sam066a.wav|That's it!
+Sam|Sam067c.wav|That wouldn't be wise, Captain.
+Sam|Sam068b.wav|Take cover.
+Sam|Sam069d.wav|Move it out, boys.
+Sam|Sam070b.wav|Fall back!
+Sam|Sam071b.wav|Stay focussed, Captain.
+Sam|Sam072a.wav|Captain, remember your objective!
+Sam|Sam073b.wav|Tan is on the run.
+Sam|Sam074a.wav|Tan is retreating, Captain.
+Sam|Sam075a.wav|Track them down, Blade.
+Sam|Sam076b.wav|You can't do that, sir.
+Sam|Sam077b.wav|Now take that to Sarge. 
+Sam|Sam078b.wav|Hurry, Blade.
+Sam|Sam079a.wav|I believe that is not allowed, sir.
+Sam|Sam094b.wav|Rest in peace, Sergeant Hawk.
+Sam|Sam095b.wav|Sarge didn't make it back!
+Sam|Sam096c.wav|Sarge is dead, Captain!
+Sam|Sam097b.wav|Sorry, Captain - Sarge was killed in action.
+Sam|Sam098b.wav|Captain didn't make it.
+Sam|Sam099c.wav|Rest in peace, Captain.
+Sam|Sam100c.wav|Captain didn't make it back!
+Sam|Sam101b.wav|Captain was killed in action!
+Sam|Sam102b.wav|Captain, do you read me? Blade? Come in, Captain Blade...
+Sarge|Sar048c.wav|Thanks!
+Sarge|Sar049c.wav|Thank you, Captain.
+Sarge|Sar050b.wav|Hit the deck!
+Sarge|Sar051b.wav|What the...?
+Sarge|Sar052c.wav|I'm taking fire!
+Sarge|Sar053f.wav|Can't...take much more...
+Sarge|Sar054b.wav|Ahhh, that takes the sting out of it.
+Sarge|Sar055b.wav|Holy hand grenades! 
+Sarge|Sar056a.wav|Trooper down!
+Sarge|Sar057a.wav|I'm ready to leave this sector.
+Sarge|Sar058a.wav|Awaiting orders.
+Sarge|Sar059b.wav|Requesting air support.
+Sarge|Sar060b.wav|Not now, Captain!
+Sarge|Sar061c.wav|We're under fire here!
+Sarge|Sar062c.wav|Things are getting hot here.
+Sarge|Sar063c.wav|We need some cover here!
+Sarge|Sar064b.wav|Help us out here, Captain.
+Sarge|Sar065a.wav|They just keep coming!
+Sarge|Sar066b.wav|Blade, we need support fast! 
+Sarge|Sar067f.wav|Blade, we need evac. now!
+Grimm|Col038a.wav|Well done, men!
+Grimm|Col040a.wav|Good work, men.
+Grimm|Col041c.wav|Victory is ours!
+Grimm|Col042a.wav|As I always say, the way to win the war is to never lose!
+Grimm|Col043a.wav|Don't give up man! You're never beaten until you admit it!
+Grimm|Col044a.wav|We've got to press them in the air and on the ground. It's time for each of us to look inside ourselves and see what kind of plastic we're made of.  Are we hollow men?  Or are we plastic soldiers?!
+Plastro|Pla008b.wav|This island is mine - all mine!
+Plastro|Pla009f.wav|I'll get you, Blade!
+Plastro|Pla010d.wav|Death can be more exciting than life. Want to try death, Captain?
+Plastro|Pla011a.wav|You'll never defeat us!
+Plastro|Pla012b.wav|Is that all you've got?
+Plastro|Pla013b.wav|You seem lost, Captain...confused...
+Captain|Cap036b.wav|Gotcha!
+Captain|Cap049c.wav|Damn! I've got to move faster.
+Captain|Cap056b.wav|Thanks, Sarge.
+Captain|Cap059a.wav|I don't like the looks of this!
+Captain|Cap061f.wav|Strange...!
+Captain|Cap062b.wav|Glad that's over!
+Captain|Cap064b.wav|Why do they insist on getting killed?
+Captain|Cap065c.wav|Eat my dust!
+Captain|Cap069c.wav|I'm on my way.
+Captain|Cap070c.wav|I'll be there when I get a chance.
+Captain|Cap075c.wav|Excellent!
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|THIS SHOULD BE LINE #99 (STARTING FROM ZERO)
+Sam|Sam003c.wav|Captain, you need to pick up Sarge and his men before entering the house.
+Sam|Sam004b.wav|Captain, you can't go into the house until you have the whole squad.
+Sam|Sam005b.wav|Good work, sirs. Find a way through that window.
+Captain|Cap004c.wav|My radar is going crazy, Sarge. This place is crawling with Tan!
+Captain|Cap005b.wav|Come in, HQ. I've got Sarge and his boys on board.
+Captain|Cap006a.wav|Found some ammo for that side-mounted gun, Sarge. Care to do the honors?
+Sarge|Sar006b.wav|Okay. Now, let's find that soldier! 
+Sarge|Sar007c.wav|He may have vital intel.
+Sarge|Sar008a.wav|I'm gonna need both of my guys in there, Cap'n.
+Sarge|Sar009b.wav|Captain... this is Sarge... where the heck are ya? Over.
+Sarge|Sar010c.wav|HQ, this is Sarge. We've discovered a huge Tan base inside that house.
+Sarge|Sar011a.wav|We've got orders to get inside that house. Think you could give us a lift?
+Sarge|Sar012b.wav|Oh, yeah!
+Sarge|Sar003a.wav|I need to stay on board, Blade.
+Sam|Sam128a.wav|Do you think that sprinkler under the window could be useful?
+Sam|Sam129a.wav|Try turning on the water faucet. A jet of water from that sprinkler might be able to get you up to that window ledge.

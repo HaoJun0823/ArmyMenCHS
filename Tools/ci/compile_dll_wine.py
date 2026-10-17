@@ -101,6 +101,33 @@ PROJECTS = {
         ],
         "includes": ["."],
     },
+    "Army5_Extend_Dll": {
+        # 5 代（空中战术 / Army Men: Air Tactics）源码树与 4 代**不同**：
+        #   · 没有 mpunlock.cpp（本作没有多人解锁补丁）
+        #   · 多 cdspoof.cpp（屏蔽 CD-ROM 校验，见 docs/15 §5）
+        #   · 多 wrapcjk.cpp（长文本换行修复，当前方案）
+        #   · 多 wrapfix.cpp / linefix.cpp（两套**已禁用的旧方案**）
+        #     它们仍参与编译：源码里函数是空壳实现，但在 hooks.cpp 里
+        #     有引用路径，移出工程会让 target.cpp 的枚举失去对应实现。
+        #     ★ 不要因为"已禁用"就从清单里删掉 —— 与 vcxproj 的
+        #     <ClCompile> 不一致会编译/链接失败。
+        # ★ 一份清单两处维护（vcxproj 与本表），改一处必须改另一处。
+        "sources": [
+            "dllmain.cpp",
+            r"src\cdspoof.cpp",
+            r"src\hooks.cpp",
+            r"src\hzk16.cpp",
+            r"src\linefix.cpp",
+            r"src\log.cpp",
+            r"src\renderer.cpp",
+            r"src\target.cpp",
+            r"src\wrapfix.cpp",
+            r"src\wrapcjk.cpp",
+        ],
+        # src\ 不在附加包含路径：dllmain.cpp 写 "src\hooks.h"，
+        # src/ 内部互引用 "hooks.h"（靠包含当前文件目录解析）。
+        "includes": ["."],
+    },
 }
 
 PROJ = "Army1_Extend_Dll"

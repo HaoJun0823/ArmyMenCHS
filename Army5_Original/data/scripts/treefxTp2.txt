@@ -1,0 +1,221 @@
+LIST troptree1 43 300
+LIST troptree2 43 301
+LIST troptree3 43 302
+LIST troptree4 43 303
+LIST troptree5 43 304
+LIST troptree6 43 305
+LIST troptree7 43 306
+LIST troptree8 43 307
+LIST troptree10 43 309
+LIST troptree11 43 310
+LIST troptree12 43 311
+LIST troptree13 43 312
+LIST troptree14 43 313
+
+/// EXPLOSION SETUP ///
+MACRO troptreedamage 5
+{
+	IF DMGLVLCHANGED troptree@1 THEN
+		TRIGGER pickexplosion@2,
+		TRIGGERDELAY 2 troptreefxpoof@3
+//		TRIGGERDELAY 75 troptreefxpoof@4,
+//		TRIGGERDELAY 75 troptreefxpoof@5 // was 150
+}
+
+EXPAND troptreedamage (1 3 1 4 4)
+EXPAND troptreedamage (2 3 3 4 4)
+EXPAND troptreedamage (3 1 2 4 4)
+EXPAND troptreedamage (4 1 1 3 1)
+EXPAND troptreedamage (5 2 1 4 4)
+EXPAND troptreedamage (6 2 3 2 1)
+EXPAND troptreedamage (7 2 3 4 4)
+EXPAND troptreedamage (8 2 3 2 1)
+//EXPAND troptreedamage (9 3 3 2 1)
+EXPAND troptreedamage (10 3 3 3 2)
+EXPAND troptreedamage (11 3 3 1 3)
+EXPAND troptreedamage (12 3 3 3 1)
+EXPAND troptreedamage (13 3 3 2 1)
+EXPAND troptreedamage (14 3 3 2 1)
+
+//if x then
+//	TRIGGER pickexplosion1,
+//	trigger troptreefxpoof1 captain,
+//	triggerdelay 3000 troptreefxpoof2 captain,
+//	triggerdelay 6000 troptreefxpoof3 captain,
+//	triggerdelay 9000 troptreefxpoof4 captain
+
+MACRO troptreefxMACRO 4
+{
+	IF pickexplosion@1 TESTVAR GETDMGLVL me = @2 THEN
+		SETVAR explosionID_1 @3,
+		SETVAR explosionID_2 @4
+}
+
+EXPAND troptreefxMACRO ( 1 1 701 702 )
+EXPAND troptreefxMACRO ( 1 2 701 702 )
+EXPAND troptreefxMACRO ( 1 3 701 702 )
+EXPAND troptreefxMACRO ( 1 4 701 702 )
+
+EXPAND troptreefxMACRO ( 2 1 701 702 )
+EXPAND troptreefxMACRO ( 2 2 701 702 )
+EXPAND troptreefxMACRO ( 2 3 701 702 )
+EXPAND troptreefxMACRO ( 2 4 701 702 )
+
+EXPAND troptreefxMACRO ( 3 1 701 702 )
+EXPAND troptreefxMACRO ( 3 2 701 702 )
+EXPAND troptreefxMACRO ( 3 3 701 702 )
+EXPAND troptreefxMACRO ( 3 4 701 702 )
+
+IF playbang THEN RANDOM
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY, 130) REFVAR explosionID_1,
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY, 130) REFVAR explosionID_2
+
+/// EXPLOSION SETUP ///
+
+
+/// EXPLOSION CREATION ///
+
+IF troptreefxpoof1 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+	triggerdelay 20 xpoof1a,
+	triggerdelay 10 xpoof1a,
+	triggerdelay 50 xpoof1b,
+	triggerdelay 30 xpoof1c,
+	trigger xpoof1d,
+	triggerdelay 20 xpoof1e,
+	trigger xpoof1f,
+	triggerdelay 15 xpoof1g
+
+	if xpoof1a then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -49, ADDVAR childY 10,
+	TRIGGER playbang
+
+	if xpoof1b then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -58, ADDVAR childY -39,
+	TRIGGER playbang
+
+	if xpoof1c then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -64, ADDVAR childY -94,
+	TRIGGER playbang
+
+	if xpoof1d then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -28, ADDVAR childY -135,
+	TRIGGER playbang
+
+	if xpoof1e then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 39, ADDVAR childY -97,
+	TRIGGER playbang
+
+	if xpoof1f then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 59, ADDVAR childY 13,
+	TRIGGER playbang
+
+	if xpoof1g then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -9, ADDVAR childY -15,
+	TRIGGER playbang
+
+
+IF troptreefxpoof2 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+	triggerdelay 20 xpoof2a,
+	triggerdelay 10 xpoof2a,
+	triggerdelay 50 xpoof2b,
+	triggerdelay 30 xpoof2c,
+	trigger xpoof2d,
+	triggerdelay 20 xpoof2e,
+	trigger xpoof2f,
+	triggerdelay 15 xpoof2g
+
+	if xpoof2a then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -8, ADDVAR childY -20,
+	TRIGGER playbang,
+
+	if xpoof2b then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -47, ADDVAR childY 9,
+	TRIGGER playbang,
+
+	if xpoof2c then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -74, ADDVAR childY -83,
+	TRIGGER playbang,
+
+	if xpoof2d then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 13, ADDVAR childY -107,
+	TRIGGER playbang,
+
+	if xpoof2e then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 57, ADDVAR childY -82,
+	TRIGGER playbang,
+
+	if xpoof2f then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 89, ADDVAR childY -32,
+	TRIGGER playbang,
+
+	if xpoof2g then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 78, ADDVAR childY 17,
+	TRIGGER playbang
+
+
+IF troptreefxpoof3 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+	triggerdelay 20 xpoof3a,
+	triggerdelay 10 xpoof3a,
+	triggerdelay 50 xpoof3b,
+	triggerdelay 30 xpoof3c,
+	trigger xpoof3d,
+	triggerdelay 20 xpoof3e,
+	trigger xpoof3f,
+	triggerdelay 15 xpoof3g
+
+	if xpoof3g then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -13, ADDVAR childY -14,
+	TRIGGER playbang,
+
+	if xpoof3g then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -23, ADDVAR childY -50,
+	TRIGGER playbang,
+
+	if xpoof3g then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 15, ADDVAR childY -30,
+	TRIGGER playbang,
+
+	if xpoof3g then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 24, ADDVAR childY -10,
+	TRIGGER playbang,
+
+	if xpoof3g then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 16, ADDVAR childY 5,
+	TRIGGER playbang,
+
+	if xpoof3g then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 19, ADDVAR childY 27,
+	TRIGGER playbang,
+
+	if xpoof3g then
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -21, ADDVAR childY 18,
+	TRIGGER playbang
+
+//IF troptreefxpoof4 THEN									//create no explosion
+//	CREATEEXPLOSION me 127
+
+/// EXPLOSION CREATION ///

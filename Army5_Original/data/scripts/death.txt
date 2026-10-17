@@ -1,0 +1,85 @@
+// ============================================
+// DEATH MATCH ================================
+// ============================================
+
+UNTIL 211 REPEAT 200 BY 1
+{
+	PAD padPupHidden$	$
+}
+
+UNTIL 255 REPEAT 212 BY 1
+{
+	PAD padPupOpen$		$
+}
+
+
+// SETUP MP MISSION ===========================
+
+IF startup1 THEN
+	TRIGGER adjustpoints,
+	TRIGGER mpsetupplayers,
+	TRIGGERDELAY 200 mpsetupplayers1,
+	TRIGGER setupgoodies,
+	TRIGGER startupmap
+
+IF adjustpoints THEN
+	SETVAR boolEWSActive 0,
+	SETVAR copterpoints 1,
+	SETVAR allycopterpoints -1,
+	SETVAR trooperpoints 0
+
+MACRO setupplayers 1
+{
+	IF mpsetupplayers THEN
+		CREATECOPTER scout captain_@1 pad@1LZ @1
+
+	IF mpsetupplayers1 THEN
+		ADDMISSIONOBJECTIVE captain_@1,
+		SETAIRMAP captain_@1 1,
+		SETAIRVARIANCE captain_@1 200,
+		SETSTEP captain_@1 500
+	
+	UNTIL 5 REPEAT 1 BY 1
+	{
+		IF mpsetupplayers TESTVAR ISCOLORINGAME @1 = 1 THEN
+			CREATEUNIT @1_basepatrol_$ stingerguy pad@1AA$ @1 stingermissile
+	}
+}
+EXPAND setupplayers ( Green )
+EXPAND setupplayers ( Tan   )
+EXPAND setupplayers ( Grey  )
+EXPAND setupplayers ( Blue  )
+
+UNTIL 211 REPEAT 200 BY 1
+{
+	IF setupgoodies THEN
+		TRIGGER gethiddenpowerup$
+
+	IF gethiddenpowerup$ THEN RANDOM
+		CREATEPOWERUP radarmissile		padPupHidden$ 10,
+		CREATEPOWERUP groundmissile		padPupHidden$ 10,
+		CREATEPOWERUP clusterbomb		padPupHidden$ 10,
+		CREATEPOWERUP swarmmissile		padPupHidden$ 10,
+		CREATEPOWERUP napalmbomb    	padPupHidden$ 10,
+		CREATEPOWERUP thrownfirecracker padPupHidden$ 10,
+		CREATEPOWERUP sidegun 			padPupHidden$ 10,
+		CREATEPOWERUP wingmen 			padPupHidden$ 10,
+		CREATEPOWERUP airblastmissile 	padPupHidden$ 10
+}
+
+UNTIL 255 REPEAT 212 BY 1
+{
+	IF setupgoodies THEN
+		TRIGGER getopenpowerup$
+
+	IF getopenpowerup$ THEN RANDOM
+		CREATEPOWERUP partialarmor 	padPupOpen$,
+		CREATEPOWERUP fullarmor 	padPupOpen$,
+		CREATEPOWERUP whisperblades padPupOpen$,
+		CREATEPOWERUP partialarmor 	padPupOpen$,
+		CREATEPOWERUP armorboost 	padPupOpen$,
+		CREATEPOWERUP medkit 		padPupOpen$,
+		CREATEPOWERUP radarmissile		padPupHidden$ 10,
+		CREATEPOWERUP swarmmissile		padPupHidden$ 10,
+		CREATEPOWERUP airblastmissile 	padPupHidden$ 10
+}

@@ -1,0 +1,1474 @@
+{
+ "sam061c.wav": [
+  "Sam",
+  "You went AWOL before finishing the mission!"
+ ],
+ "sam062c.wav": [
+  "Sam",
+  "Captain, look at your radar."
+ ],
+ "sam063c.wav": [
+  "Sam",
+  "Nice flying, Captain...!"
+ ],
+ "sam064a.wav": [
+  "Sam",
+  "Be on the lookout for air currents."
+ ],
+ "sam065b.wav": [
+  "Sam",
+  "Wrong way, Captain!"
+ ],
+ "sam066a.wav": [
+  "Sam",
+  "That's it!"
+ ],
+ "sam067c.wav": [
+  "Sam",
+  "That wouldn't be wise, Captain."
+ ],
+ "sam068b.wav": [
+  "Sam",
+  "Take cover."
+ ],
+ "sam069d.wav": [
+  "Sam",
+  "Move it out, boys."
+ ],
+ "sam070b.wav": [
+  "Sam",
+  "Fall back!"
+ ],
+ "sam071b.wav": [
+  "Sam",
+  "Stay focussed, Captain."
+ ],
+ "sam072a.wav": [
+  "Sam",
+  "Captain, remember your objective!"
+ ],
+ "sam073b.wav": [
+  "Sam",
+  "Tan is on the run."
+ ],
+ "sam074a.wav": [
+  "Sam",
+  "Tan is retreating, Captain."
+ ],
+ "sam075a.wav": [
+  "Sam",
+  "Track them down, Blade."
+ ],
+ "sam076b.wav": [
+  "Sam",
+  "You can't do that, sir."
+ ],
+ "sam077b.wav": [
+  "Sam",
+  "Now take that to Sarge."
+ ],
+ "sam078b.wav": [
+  "Sam",
+  "Hurry, Blade."
+ ],
+ "sam079a.wav": [
+  "Sam",
+  "I believe that is not allowed, sir."
+ ],
+ "sam094b.wav": [
+  "Sam",
+  "Rest in peace, Sergeant Hawk."
+ ],
+ "sam095b.wav": [
+  "Sam",
+  "Sarge didn't make it back!"
+ ],
+ "sam096c.wav": [
+  "Sam",
+  "Sarge is dead, Captain!"
+ ],
+ "sam097b.wav": [
+  "Sam",
+  "Sorry, Captain - Sarge was killed in action."
+ ],
+ "sam098b.wav": [
+  "Sam",
+  "Captain didn't make it."
+ ],
+ "sam099c.wav": [
+  "Sam",
+  "Rest in peace, Captain."
+ ],
+ "sam100c.wav": [
+  "Sam",
+  "Captain didn't make it back!"
+ ],
+ "sam101b.wav": [
+  "Sam",
+  "Captain was killed in action!"
+ ],
+ "sam102b.wav": [
+  "Sam",
+  "Captain, do you read me? Blade? Come in, Captain Blade..."
+ ],
+ "sar048c.wav": [
+  "Sarge",
+  "Thanks!"
+ ],
+ "sar049c.wav": [
+  "Sarge",
+  "Thank you, Captain."
+ ],
+ "sar050b.wav": [
+  "Sarge",
+  "Hit the deck!"
+ ],
+ "sar051b.wav": [
+  "Sarge",
+  "What the...?"
+ ],
+ "sar052c.wav": [
+  "Sarge",
+  "I'm taking fire!"
+ ],
+ "sar053f.wav": [
+  "Sarge",
+  "Can't...take much more..."
+ ],
+ "sar054b.wav": [
+  "Sarge",
+  "Ahhh, that takes the sting out of it."
+ ],
+ "sar055b.wav": [
+  "Sarge",
+  "Holy hand grenades!"
+ ],
+ "sar056a.wav": [
+  "Sarge",
+  "Trooper down!"
+ ],
+ "sar057a.wav": [
+  "Sarge",
+  "I'm ready to leave this sector."
+ ],
+ "sar058a.wav": [
+  "Sarge",
+  "Awaiting orders."
+ ],
+ "sar059b.wav": [
+  "Sarge",
+  "Requesting air support."
+ ],
+ "sar060b.wav": [
+  "Sarge",
+  "Not now, Captain!"
+ ],
+ "sar061c.wav": [
+  "Sarge",
+  "We're under fire here!"
+ ],
+ "sar062c.wav": [
+  "Sarge",
+  "Things are getting hot here."
+ ],
+ "sar063c.wav": [
+  "Sarge",
+  "We need some cover here!"
+ ],
+ "sar064b.wav": [
+  "Sarge",
+  "Help us out here, Captain."
+ ],
+ "sar065a.wav": [
+  "Sarge",
+  "They just keep coming!"
+ ],
+ "sar066b.wav": [
+  "Sarge",
+  "Blade, we need support fast!"
+ ],
+ "sar067f.wav": [
+  "Sarge",
+  "Blade, we need evac. now!"
+ ],
+ "col038a.wav": [
+  "Grimm",
+  "Well done, men!"
+ ],
+ "col040a.wav": [
+  "Grimm",
+  "Good work, men."
+ ],
+ "col041c.wav": [
+  "Grimm",
+  "Victory is ours!"
+ ],
+ "col042a.wav": [
+  "Grimm",
+  "As I always say, the way to win the war is to never lose!"
+ ],
+ "col043a.wav": [
+  "Grimm",
+  "Don't give up man! You're never beaten until you admit it!"
+ ],
+ "col044a.wav": [
+  "Grimm",
+  "We've got to press them in the air and on the ground. It's time for each of us to look inside ourselves and see what kind of plastic we're made of.  Are we hollow men?  Or are we plastic soldiers?!"
+ ],
+ "pla008b.wav": [
+  "Plastro",
+  "This island is mine - all mine!"
+ ],
+ "pla009f.wav": [
+  "Plastro",
+  "I'll get you, Blade!"
+ ],
+ "pla010d.wav": [
+  "Plastro",
+  "Death can be more exciting than life. Want to try death, Captain?"
+ ],
+ "pla011a.wav": [
+  "Plastro",
+  "You'll never defeat us!"
+ ],
+ "pla012b.wav": [
+  "Plastro",
+  "Is that all you've got?"
+ ],
+ "pla013b.wav": [
+  "Plastro",
+  "You seem lost, Captain...confused..."
+ ],
+ "cap036b.wav": [
+  "Captain",
+  "Gotcha!"
+ ],
+ "cap049c.wav": [
+  "Captain",
+  "Damn! I've got to move faster."
+ ],
+ "cap056b.wav": [
+  "Captain",
+  "Thanks, Sarge."
+ ],
+ "cap059a.wav": [
+  "Captain",
+  "I don't like the looks of this!"
+ ],
+ "cap061f.wav": [
+  "Captain",
+  "Strange...!"
+ ],
+ "cap062b.wav": [
+  "Captain",
+  "Glad that's over!"
+ ],
+ "cap064b.wav": [
+  "Captain",
+  "Why do they insist on getting killed?"
+ ],
+ "cap065c.wav": [
+  "Captain",
+  "Eat my dust!"
+ ],
+ "cap069c.wav": [
+  "Captain",
+  "I'm on my way."
+ ],
+ "cap070c.wav": [
+  "Captain",
+  "I'll be there when I get a chance."
+ ],
+ "cap075c.wav": [
+  "Captain",
+  "Excellent!"
+ ],
+ "cap000.wav": [
+  "Captain",
+  "THIS SHOULD BE LINE #99 (STARTING FROM ZERO)"
+ ],
+ "sam130a.wav": [
+  "Sam",
+  "Rendezvous with the Recon team and secure the bridge."
+ ],
+ "sam017e.wav": [
+  "Sam",
+  "With the bridge blown you'll need to find another way to cross the river."
+ ],
+ "sam018a.wav": [
+  "Sam",
+  "Good job, Blade. Your team is across the river. Now lead them up to the village."
+ ],
+ "cap014a.wav": [
+  "Captain",
+  "HQ, I've just spotted several Green POWs."
+ ],
+ "cap015c.wav": [
+  "Captain",
+  "Oh no! The Tan have those boys covered with explosives! They're gonna use our own guys to blow the bridge!"
+ ],
+ "capt108d.wav": [
+  "Captain",
+  "Those men won't have given their lives for nothing! We are going to complete this mission and make the Tan pay! But first, I've got to find a way to rebuild that bridge."
+ ],
+ "cap017a.wav": [
+  "Captain",
+  "That won't work... or will it?"
+ ],
+ "cap018b.wav": [
+  "Captain",
+  "A couple more like that should do the trick."
+ ],
+ "cap019f.wav": [
+  "Captain",
+  "Call me Blade... the Bridge Builder!"
+ ],
+ "cap020c.wav": [
+  "Captain",
+  "Okay men, break out that cargo. Let's have a look at my new ride."
+ ],
+ "sam108a.wav": [
+  "Sam",
+  "We just lost a vehicle! Any more and we can't pull this off!"
+ ],
+ "sam107c.wav": [
+  "Sam",
+  "We cannot lose more than one vehicle, Captain."
+ ],
+ "sam104a.wav": [
+  "Sam",
+  "You have to save our men, Captain Blade...!"
+ ],
+ "sam131e.wav": [
+  "Sam",
+  "It's an ambush! Fall back! Fall back!"
+ ],
+ "sam132b.wav": [
+  "Sam",
+  "Those infantrymen are at your command, Captain. Drop them behind enemy lines for a tactical advantage."
+ ],
+ "sam133c.wav": [
+  "Sam",
+  "The convoy has arrived. They are carrying equipment vital to rescuing the president, so keep them safe and lead them north to the village."
+ ],
+ "sam134a.wav": [
+  "Sam",
+  "They took out one of our cargo trucks, Captain. If we lose the last one, the mission will be lost!"
+ ],
+ "sam135b.wav": [
+  "Sam",
+  "Too much vital equipment was destroyed with our trucks, Captain. We've lost."
+ ],
+ "capt109e.wav": [
+  "Captain",
+  "One more should do it."
+ ],
+ "sam019c.wav": [
+  "Sam",
+  "Captain, our engineers have developed a new technology to keep your copter quiet and off enemy radar during flight. But these \"whisper blades\" only have a short duration, so work fast."
+ ],
+ "sam020c.wav": [
+  "Sam",
+  "Okay Blade, the rescue squad just radioed confirmation of pickup. Hold the LZ until they make it out."
+ ],
+ "sam021a.wav": [
+  "Sam",
+  "It gets worse, sirs. Sarge and his men are in serious trouble back across the portal. He just radioed for reinforcements."
+ ],
+ "sam109b.wav": [
+  "Sam",
+  "Do not allowed the village to be destroyed, Captain."
+ ],
+ "sam110a.wav": [
+  "Sam",
+  "You must save the village, Captain."
+ ],
+ "sam111b.wav": [
+  "Sam",
+  "Too many buildings have been damaged."
+ ],
+ "cap021a.wav": [
+  "Captain",
+  "You can count on me, sir."
+ ],
+ "cap022a.wav": [
+  "Captain",
+  "Silent... but deadly."
+ ],
+ "cap023a.wav": [
+  "Captain",
+  "HQ, the strike team is going in. Stand by."
+ ],
+ "cap024b.wav": [
+  "Captain",
+  "We've been spotted!"
+ ],
+ "cap025c.wav": [
+  "Captain",
+  "Mornin', Mr. President. Buckle up; we're not out of the woods yet."
+ ],
+ "cap026a.wav": [
+  "Captain",
+  "What the-?!?"
+ ],
+ "cap027b.wav": [
+  "Captain",
+  "That snake!"
+ ],
+ "cap028b.wav": [
+  "Captain",
+  "Looks like I've found a secret Tan R & R facility."
+ ],
+ "cap029b.wav": [
+  "Captain",
+  "Ahhh, like Tan fish in a barrel."
+ ],
+ "col001b.wav": [
+  "Grimm",
+  "Captain, Grimm here. Good work so far, but now you're really gonna earn your wings. The president is heavily guarded. Take the strike team to recover him and hold the LZ until they bring him out. Then fly the president back to safety. Good luck."
+ ],
+ "col002a.wav": [
+  "Grimm",
+  "Blade, bad news. Abort your mission."
+ ],
+ "col003a.wav": [
+  "Grimm",
+  "The president is dead."
+ ],
+ "col004c.wav": [
+  "Grimm",
+  "Glad to have you back, Mr. President. Unfortunately, there's no time for celebration. We have to retake this village."
+ ],
+ "col005a.wav": [
+  "Grimm",
+  "Our reinforcements have arrived, Captain. It's time to restore peace to this village... let no Tan survive!"
+ ],
+ "col006c.wav": [
+  "Grimm",
+  "Excellent work, everyone. We were able to run off the Tan without any serious..."
+ ],
+ "col007f.wav": [
+  "Grimm",
+  "Blast!"
+ ],
+ "col008a.wav": [
+  "Grimm",
+  "Okay, Captain. We will come up with a plan to locate and attack Plastro's headquarters. You need to get back to that house and give Sarge a hand. On the double, men!"
+ ],
+ "col009a.wav": [
+  "Grimm",
+  "And Captain, give the Tan some hell!"
+ ],
+ "col010d.wav": [
+  "Grimm",
+  "Careful with those weapons, Captain! Green citizens call this little village home, you know!"
+ ],
+ "col011d.wav": [
+  "Grimm",
+  "Blade! I want to restore peace to the village, not leave the village in pieces! Get it?!"
+ ],
+ "col012b.wav": [
+  "Grimm",
+  "You have caused too much damage to the civilian homes, Captain. You're grounded."
+ ],
+ "pla001e.wav": [
+  "Grimm",
+  "Soldiers! (you should never see this)"
+ ],
+ "pla002d.wav": [
+  "Plastro",
+  "Captain William Blade... You seem so self-satisfied."
+ ],
+ "pla003e.wav": [
+  "Plastro",
+  "I suppose you and that old buffoon, Col. Grimm, actually thought it was that easy to defeat my forces? HA! That little exercise was a simple decoy!"
+ ],
+ "pla004g.wav": [
+  "Plastro",
+  "While you were wasting all your energy trying to rescue your beloved president, my spy took the liberty of relieving you of your precious helicopter blueprints."
+ ],
+ "pla005a.wav": [
+  "Plastro",
+  "Soon we will mold a LEGION of air combat units! They, in addition to the esteemed Grey Doctor's new pets, will make my army UNSTOPPABLE! MUHAAHAAHAA...!"
+ ],
+ "sam136d.wav": [
+  "Sam",
+  "The president at LZ, Captain. Where are you?"
+ ],
+ "col049c.wav": [
+  "Grimm",
+  "The president has been killed inside the house!"
+ ],
+ "col050b.wav": [
+  "Grimm",
+  "The strike team has been killed! The president is lost."
+ ],
+ "sam001b.wav": [
+  "Sam",
+  "Captain, Sarge has been captured! He and two of his men were sent through the portal to investigate reports of heavy Tan activity. Locate those men and get them out of there."
+ ],
+ "sam002c.wav": [
+  "Sam",
+  "Captain, intel indicates Sergeant Hawk is in the vicinity of the sandbox."
+ ],
+ "cap001c.wav": [
+  "Captain",
+  "Roger, HQ. I'm on it."
+ ],
+ "cap002b.wav": [
+  "Captain",
+  "HQ, I have one of Sarge's men on board."
+ ],
+ "cap003b.wav": [
+  "Captain",
+  "Good to see you, Sarge. Where's the rest of your squad?"
+ ],
+ "sar001f.wav": [
+  "Sarge",
+  "Yellow just isn't my color."
+ ],
+ "sar002c.wav": [
+  "Sarge",
+  "I sent my men on recon, toward the house. Let's get this bird airborne."
+ ],
+ "sar003a.wav": [
+  "Sarge",
+  "I need to stay on board, Blade."
+ ],
+ "sar004a.wav": [
+  "Sarge",
+  "Let's go get those soldiers!"
+ ],
+ "sar005a.wav": [
+  "Sarge",
+  "Okay Captain, my last man must be closer to the house. Let's head over there."
+ ],
+ "sam126b.wav": [
+  "Sam",
+  "To drop items that you have picked up, Captain, click on the 'Lower Winch' button. If your HUD buttons are on, this button will appear in the lower right corner of the on-screen display."
+ ],
+ "sar068a.wav": [
+  "Sarge",
+  "I see my trooper down there, Captain. Use your beacon to direct him out and back to the LZ."
+ ],
+ "sar069a.wav": [
+  "Sarge",
+  "Come on, Captain. Those boys are waiting for us to pick them up!"
+ ],
+ "cap084c.wav": [
+  "Captain",
+  "This'll add some punch to my main gun."
+ ],
+ "sam003c.wav": [
+  "Sam",
+  "Captain, you need to pick up Sarge and his men before entering the house."
+ ],
+ "sam004b.wav": [
+  "Sam",
+  "Captain, you can't go into the house until you have the whole squad."
+ ],
+ "sam005b.wav": [
+  "Sam",
+  "Good work, sirs. Find a way through that window."
+ ],
+ "cap004c.wav": [
+  "Captain",
+  "My radar is going crazy, Sarge. This place is crawling with Tan!"
+ ],
+ "cap005b.wav": [
+  "Captain",
+  "Come in, HQ. I've got Sarge and his boys on board."
+ ],
+ "cap006a.wav": [
+  "Captain",
+  "Found some ammo for that side-mounted gun, Sarge. Care to do the honors?"
+ ],
+ "sar006b.wav": [
+  "Sarge",
+  "Okay. Now, let's find that soldier!"
+ ],
+ "sar007c.wav": [
+  "Sarge",
+  "He may have vital intel."
+ ],
+ "sar008a.wav": [
+  "Sarge",
+  "I'm gonna need both of my guys in there, Cap'n."
+ ],
+ "sar009b.wav": [
+  "Sarge",
+  "Captain... this is Sarge... where the heck are ya? Over."
+ ],
+ "sar010c.wav": [
+  "Sarge",
+  "HQ, this is Sarge. We've discovered a huge Tan base inside that house."
+ ],
+ "sar011a.wav": [
+  "Sarge",
+  "We've got orders to get inside that house. Think you could give us a lift?"
+ ],
+ "sar012b.wav": [
+  "Sarge",
+  "Oh, yeah!"
+ ],
+ "sam128a.wav": [
+  "Sam",
+  "Do you think that sprinkler under the window could be useful?"
+ ],
+ "sam129a.wav": [
+  "Sam",
+  "Try turning on the water faucet. A jet of water from that sprinkler might be able to get you up to that window ledge."
+ ],
+ "cap048c.wav": [
+  "Captain",
+  "Bingo!"
+ ],
+ "sam052a.wav": [
+  "Sam",
+  "You're not going to make it!"
+ ],
+ "sam007a.wav": [
+  "Sam",
+  "Sarge and his men have an urgent rendezvous. Get them safely to the landing zone on the floor. Then report in for new orders."
+ ],
+ "cap007c.wav": [
+  "Captain",
+  "Dang...! I'll take a serious beating flying over that bunker on the toilet."
+ ],
+ "sar013a.wav": [
+  "Sarge",
+  "No problem. Just get us up there fast - we'll take it out."
+ ],
+ "sar017b.wav": [
+  "Sarge",
+  "Three..."
+ ],
+ "sar018b.wav": [
+  "Sarge",
+  "Two..."
+ ],
+ "sar019b.wav": [
+  "Sarge",
+  "One..."
+ ],
+ "sar020b.wav": [
+  "Sarge",
+  "Objective accomplished, Captain."
+ ],
+ "sar021c.wav": [
+  "Sarge",
+  "Now get us to the landing zone on the floor; we have Tan to kill."
+ ],
+ "cap008c.wav": [
+  "Captain",
+  "Hold on to your dogtags, big guy."
+ ],
+ "sam015b.wav": [
+  "Sam",
+  "Captain, you might need something more powerful to move that lever."
+ ],
+ "cap009c.wav": [
+  "Captain",
+  "Okay, boys, looks like the LZ is clear."
+ ],
+ "cap010c.wav": [
+  "Captain",
+  "Whoa - that spray can's gonna blow!"
+ ],
+ "cap011a.wav": [
+  "Captain",
+  "HQ, there's too many of them to take head on."
+ ],
+ "sam010c.wav": [
+  "Sam",
+  "You'll just have to fight smarter, sir."
+ ],
+ "sam008a.wav": [
+  "Sam",
+  "Mission complete. Good work, Captain."
+ ],
+ "cap012c.wav": [
+  "Captain",
+  "Don't move! You're coming with me."
+ ],
+ "blu001f.wav": [
+  "BlueSpy",
+  "Don't shoot me! I'll give you information!"
+ ],
+ "blu002e.wav": [
+  "BlueSpy",
+  "Your president is at a secret diplomatic meeting at a mountain retreat. The Tan are already moving to capture him."
+ ],
+ "sam014b.wav": [
+  "Sam",
+  "Good flying, Captain."
+ ],
+ "sam034c.wav": [
+  "Sam",
+  "Good job, Captain. But you've still got work to do!"
+ ],
+ "sam040c.wav": [
+  "Sam",
+  "We can't win! Too many of our men have died in battle!"
+ ],
+ "sam044c.wav": [
+  "Sam",
+  "Too late! Sarge's men never made it to their objective."
+ ],
+ "sam012b.wav": [
+  "Sam",
+  "The Blue Spy was killed. Now we'll never know what the Tan are planning!"
+ ],
+ "sam009c.wav": [
+  "Sam",
+  "Captain, we have reports of a Blue Spy under Tan protection on the far side of the sink. He may have information on the Tan offensive. Take out the Tan guards and capture that spy."
+ ],
+ "cap013c.wav": [
+  "Captain",
+  "HQ, we have a situation. Tan guerillas are on the move to capture the president."
+ ],
+ "sam011a.wav": [
+  "Sam",
+  "Right, Captain. There is a portal that will take you close to the president's mountain retreat. Get through it! Then rendezvous with the strike team."
+ ],
+ "cap054b.wav": [
+  "Captain",
+  "Whoa!"
+ ],
+ "sar070a.wav": [
+  "Sarge",
+  "Captain, before you drop us off, maybe you should let us take care of that bunker on top of the toilet for ya."
+ ],
+ "sam127a.wav": [
+  "Sam",
+  "That's bad news. The President is carrying our secret helicopter plans! We cannot let Plastro get his hands on them! There is a portal in the bathtub that will bring you close to the President's mountain retreat. Get through it! Our strike team will meet you when you get there."
+ ],
+ "sar038b.wav": [
+  "Sarge",
+  "This doesn't look so good."
+ ],
+ "sam080d.wav": [
+  "Sam",
+  "Welcome, Captain Blade. Feel free to fly around the training area at your leisure. While you do, I will point out some important features of your helicopter and make a few other helpful suggestions."
+ ],
+ "sam081c.wav": [
+  "Sam",
+  "To take off, simply accelerate using your right mouse button."
+ ],
+ "sam082c.wav": [
+  "Sam",
+  "Once airborne, your directional heading is controlled by your mouse cursor."
+ ],
+ "sam083c.wav": [
+  "Sam",
+  "The instrument in the upper left corner of the on-screen display is your radar. It displays your mission objectives, landing zones and the locations of enemy troopers and vehicles. The light on the outer edge of your radar will give you the heading of your closest mission objective."
+ ],
+ "sam084c.wav": [
+  "Sam",
+  "Your armor meter is shown above your radar. If you run out of armor, it's all over!"
+ ],
+ "sam085d.wav": [
+  "Sam",
+  "To fire your weapon, move your mouse cursor over your desired target and press the left mouse button."
+ ],
+ "sam086c.wav": [
+  "Sam",
+  "Drop a beacon to direct friendly ground troops. If you are landed when you drop a beacon, nearby troops will attempt to board your chopper."
+ ],
+ "sam087c.wav": [
+  "Sam",
+  "Captain Blade, you probably want to collect those power-ups."
+ ],
+ "sam088b.wav": [
+  "Sam",
+  "Excellent, Captain. The buttons at the bottom left of your screen represent those power-ups in your cargo bays. To use them, just select the one you want and press the left mouse button."
+ ],
+ "sam089c.wav": [
+  "Sam",
+  "Captain, just fly to position your shadow right over that landing zone and hover there for a second."
+ ],
+ "sam090b.wav": [
+  "Sam",
+  "Okay sir, you're on your own now."
+ ],
+ "sam091b.wav": [
+  "Sam",
+  "The longer you spend in the training area, the more challenging it will become."
+ ],
+ "sam092b.wav": [
+  "Sam",
+  "Have fun. HQ out."
+ ],
+ "sam093c.wav": [
+  "Sam",
+  "Go get 'em, Captain Blade!"
+ ],
+ "col045c.wav": [
+  "Grimm",
+  "Welcome to the Helicopter Flight and Combat Training Facility, Captain!"
+ ],
+ "col046c.wav": [
+  "Grimm",
+  "You will use this area to hone your flight combat skills. Train for as long as you need, but remember, there is a war raging out there!"
+ ],
+ "col047c.wav": [
+  "Grimm",
+  "I'll turn you over to our Radio Ops Specialist now. Good luck."
+ ],
+ "sam146c.wav": [
+  "Sam",
+  "Welcome, Captain Blade. I'm going to run you, step by step, through all of the skills you will need in your upcoming missions. Please pay close attention."
+ ],
+ "sam147b.wav": [
+  "Sam",
+  "During these exercises, please make sure you have your HUD buttons on. When active, these buttons will appear in the lower corners of the on-screen display."
+ ],
+ "sam148c.wav": [
+  "Sam",
+  "Press your keyboard's F1 key at any time to see your current objectives and other vital data."
+ ],
+ "sam149c.wav": [
+  "Sam",
+  "The instrument in the upper left corner of the on-screen display is your radar. It displays your mission objectives, landing zones, and the locations of troopers and vehicles."
+ ],
+ "sam150a.wav": [
+  "Sam",
+  "Mission objectives on your radar will flash yellow. If your objective is outside the range of your radar, a directional indicator light, on the outer edge, will give you that objective's heading."
+ ],
+ "sam151b.wav": [
+  "Sam",
+  "If you have more than one mission objective, the directional indicator will point to the closest one."
+ ],
+ "sam152b.wav": [
+  "Sam",
+  "Click on the 'Drop Beacon' button, located in lower right corner of the on-screen display, to direct friendly ground troops to your location."
+ ],
+ "sam153d.wav": [
+  "Sam",
+  "Your objective is to load all of those nearby troops on to your 'copter. To do so, simply drop a beacon while you are landed."
+ ],
+ "sam112a.wav": [
+  "Sam",
+  "Your mission objective has not changed. Return to the landing zone and use the beacon to load ground troops on to your 'copter."
+ ],
+ "sam113b.wav": [
+  "Sam",
+  "I'm sorry, sir, following my instructions is the only way to learn. Come back when you're ready to try again."
+ ],
+ "sam114a.wav": [
+  "Sam",
+  "Excellent. The buttons at the bottom left of your screen represent those men in your 'copter."
+ ],
+ "sam115c.wav": [
+  "Sam",
+  "Now that the men are on board, you have a new mission objective. Fly those troops to the LZ indicated on radar, and drop them off."
+ ],
+ "sam116b.wav": [
+  "Sam",
+  "To unload your troops, select the one you want by clicking on his button with your mouse cursor. Then click on the 'Eject Cargo' button located in the lower right corner of the on-screen display."
+ ],
+ "sam117c.wav": [
+  "Sam",
+  "Your next objective is target practice. To the west there are some Tan targets. Use your forward gun to destroy them."
+ ],
+ "sam118c.wav": [
+  "Sam",
+  "To be most effective in combat, you will need to learn to collect and use power-ups."
+ ],
+ "sam119b.wav": [
+  "Sam",
+  "Once again, your radar will guide you to power-up locations. Return here when you have collected three new weapons."
+ ],
+ "sam120a.wav": [
+  "Sam",
+  "Excellent, Captain. The buttons at the bottom left of your screen represent those power-ups in your cargo bay. To select the one you want to use, click on the desired button with your mouse cursor."
+ ],
+ "sam121a.wav": [
+  "Sam",
+  "There are two power-up areas, Captain - one to the south of here and one to the east. Collect all three power-ups from each area."
+ ],
+ "sam122b.wav": [
+  "Sam",
+  "Tan units vehicles are arriving, Captain, and this time they are going to shoot back!"
+ ],
+ "sam123c.wav": [
+  "Sam",
+  "For a coordinated ground and air strike, use the beacon to summon ground troops to your location."
+ ],
+ "sam124b.wav": [
+  "Sam",
+  "Remember to pick up armor power-ups if you are damaged."
+ ],
+ "sam125a.wav": [
+  "Sam",
+  "Okay sir, you have all the skills you need to take on the Tan. Report for your first mission immediately."
+ ],
+ "col048a.wav": [
+  "Grimm",
+  "Take care of your helicopter, Captain. Out in the field, you don't get second chances!"
+ ],
+ "sam022e.wav": [
+  "Sam",
+  "Bad news, Captain. Tan is reinforcing their troops."
+ ],
+ "sam023c.wav": [
+  "Sam",
+  "Good news, Blade. Green reinforcement have finally arrived."
+ ],
+ "sam024c.wav": [
+  "Sam",
+  "Nice work, Captain. We could hear that from here!"
+ ],
+ "sam025b.wav": [
+  "Sam",
+  "Sweet work, sir! That set Tan back AND we got the Blue Spy to squeal. Head to the Playroom and report in when you get there."
+ ],
+ "sam026b.wav": [
+  "Sam",
+  "Captain, find the source of those balloons and take it out!"
+ ],
+ "sam027c.wav": [
+  "Sam",
+  "Don't forget to destroy the balloon generator."
+ ],
+ "sam028a.wav": [
+  "Sam",
+  "Remember to capture that Blue Spy."
+ ],
+ "sam029a.wav": [
+  "Sam",
+  "Outstanding! Now see if you can waste that artillery on the sofa."
+ ],
+ "sam030a.wav": [
+  "Sam",
+  "All Tan vehicles have to be destoyed."
+ ],
+ "sar022b.wav": [
+  "Sarge",
+  "Blade, get us up to the coffee table."
+ ],
+ "sar071f.wav": [
+  "Sarge",
+  "Holy...! Captain, we're gonna need support, fast!"
+ ],
+ "sar024c.wav": [
+  "Sarge",
+  "Okay, Blade. HQ wants this area secured. We must find and destroy the source of those balloons, clear the sofa of artillery, and destroy all of Tan's armored vehicles. And intel reports the Blue spy is joyriding here somewhere. They want him pronto. Ready for some fun?"
+ ],
+ "sar025c.wav": [
+  "Sarge",
+  "We are taking too many casualties! Fall back, fall back!"
+ ],
+ "sar026a.wav": [
+  "Sarge",
+  "They are all over us. Pull your weight, Captain, or we're done for!"
+ ],
+ "sar027a.wav": [
+  "Sarge",
+  "We have them on the run. Track them down and take 'em out, Captain."
+ ],
+ "sar028b.wav": [
+  "Sarge",
+  "OOOOHHRAAA! Flying like that deserves the Plastic Cross."
+ ],
+ "cap030a.wav": [
+  "Captain",
+  "Where do they come from?"
+ ],
+ "cap031f.wav": [
+  "Captain",
+  "GOAL!"
+ ],
+ "cap032b.wav": [
+  "Captain",
+  "No sweat - the cavalry is here."
+ ],
+ "cap033b.wav": [
+  "Captain",
+  "Never a dull moment."
+ ],
+ "cap034c.wav": [
+  "Captain",
+  "This is no good. I'll need a more powerful weapon."
+ ],
+ "cap035c.wav": [
+  "Captain",
+  "Ah, this should do the trick."
+ ],
+ "cap037c.wav": [
+  "Captain",
+  "Take him away, boys."
+ ],
+ "cap038e.wav": [
+  "Captain",
+  "Outstanding. What do you think of that, Sarge?"
+ ],
+ "cap039b.wav": [
+  "Captain",
+  "Oh... so the Tan fly boy thinks he can play."
+ ],
+ "cap040b.wav": [
+  "Captain",
+  "Scratch one..."
+ ],
+ "cap041c.wav": [
+  "Captain",
+  "Artillery cleared."
+ ],
+ "cap042a.wav": [
+  "Captain",
+  "Blade shoots. He scores!"
+ ],
+ "cap043b.wav": [
+  "Captain",
+  "Oh well, no hockey today."
+ ],
+ "cap044b.wav": [
+  "Captain",
+  "I'll play a game of hockey with this Tan rookie."
+ ],
+ "blu003.wav": [
+  "BlueSpy",
+  "Darn you, Blade!"
+ ],
+ "sam137c.wav": [
+  "Sam",
+  "That spy had vital information. Killing him was a bad idea."
+ ],
+ "capt110b.wav": [
+  "Captain",
+  "Ha! I win!"
+ ],
+ "capt111a.wav": [
+  "Captain",
+  "We'll meet again!"
+ ],
+ "sam138a.wav": [
+  "Sam",
+  "The Tan are building a chemical weapon on the desk. Get Sarge and his men up there so they can secure the area."
+ ],
+ "sam038c.wav": [
+  "Sam",
+  "Looks like they're guarding something down there. Don't tangle with it until we have more info...!"
+ ],
+ "sar029d.wav": [
+  "Sarge",
+  "They've taken almost all the chemical drums."
+ ],
+ "cap072c.wav": [
+  "Captain",
+  "Something's wrong...!"
+ ],
+ "sar030b.wav": [
+  "Sarge",
+  "Look who I found. Where are the chemicals, Grey?"
+ ],
+ "gry001d.wav": [
+  "GreySpy",
+  "(notused)The chemicals are on the floor. One is guarded by a combination device. The other is in a tent on the colored mat, but the red and yellow areas are tripwired. And the guards will blow it up if you try anything!"
+ ],
+ "sar033c.wav": [
+  "Sarge",
+  "It's not easy being Green."
+ ],
+ "sar034a.wav": [
+  "Sarge",
+  "Fellows, I've got an idea. Sorry, Grey; we're gonna need your clothes."
+ ],
+ "sar035b.wav": [
+  "Sarge",
+  "What the--?!"
+ ],
+ "sam039c.wav": [
+  "Sam",
+  "Just one more, Captain."
+ ],
+ "sam035c.wav": [
+  "Sam",
+  "Captain, that device apparently requires you to follow its lead."
+ ],
+ "sam036e.wav": [
+  "Sam",
+  "Blade, I think that thing wants you to echo it."
+ ],
+ "sam066c.wav": [
+  "Sam",
+  "That's it...!"
+ ],
+ "sam140b.wav": [
+  "Sam",
+  "Track those Tan down, Blade."
+ ],
+ "sar015d.wav": [
+  "Sarge",
+  "Hurry it up, Captain! We've got to get to that landing zone."
+ ],
+ "sam141a.wav": [
+  "Sam",
+  "Get all three chemicals and drop them in the container on the desk. These chemicals should combine to make a potent volcano powder weapon that we can use in our attack on the Tan."
+ ],
+ "sam041b.wav": [
+  "Sam",
+  "Tan units destroyed a critical mission objective at the tent!"
+ ],
+ "sam043c.wav": [
+  "Sam",
+  "Tan units destroyed one of the chemical drums."
+ ],
+ "sar036e.wav": [
+  "Sarge",
+  "Kill the troops near that shoe and get me to that landing zone behind it. I'll sneak in and eliminate the guards."
+ ],
+ "sar037a.wav": [
+  "Sarge",
+  "The guards are down! Cover me while I make a run for the landing zone!"
+ ],
+ "sam037e.wav": [
+  "Sam",
+  "Good work, Captain! Get that drum to the mixing bowl on the desk!"
+ ],
+ "sam144b.wav": [
+  "Sam",
+  "New orders! After you destroy those cargo trucks, you need to eliminate all of the mutant insects as well. Good luck!"
+ ],
+ "sam053c.wav": [
+  "Sam",
+  "The convoy is finished! Now go through the portal -- Colonel Grimm needs you pronto!"
+ ],
+ "sam042c.wav": [
+  "Sam",
+  "The convoy made it through, sir. I'm sorry."
+ ],
+ "sam056c.wav": [
+  "Sam",
+  "He's waiting for you to shoot a stone onto the board."
+ ],
+ "sam055a.wav": [
+  "Sam",
+  "Looks like an opportunity to play Go against the Tan. I've played this board game before; you have to surround empty intersections to win."
+ ],
+ "sam059c.wav": [
+  "Sam",
+  "Sorry, Captain."
+ ],
+ "sam058b.wav": [
+  "Sam",
+  "Tie game, Captain."
+ ],
+ "sam057b.wav": [
+  "Sam",
+  "Shoot into your bowl to pass, Captain."
+ ],
+ "sam048c.wav": [
+  "Sam",
+  "Excellent, Captain. Get Sarge on board and then winch that thing up."
+ ],
+ "sar039c.wav": [
+  "Sarge",
+  "Thanks, Ca-- What...?!? The boys just spotted a Tan convoy!"
+ ],
+ "sam051b.wav": [
+  "Sam",
+  "Sorry, Cap; you just pulled convoy duty. I guess you'll miss the big dance. Drop the troops on the desk; one of your buddies will fly them in for the final operation."
+ ],
+ "sam046b.wav": [
+  "Sam",
+  "Excellent. Sarge will deliver the Plastic Volcano Powder to Colonel Grimm. Now we have to take care of that convoy."
+ ],
+ "sam054b.wav": [
+  "Sam",
+  "Blade, it's true -- Colonel Grimm's trapped and needs your help. Stop the convoy and take the portal."
+ ],
+ "cap046i.wav": [
+  "Captain",
+  "Hmm -- he just shot a stone onto the board."
+ ],
+ "pla006a.wav": [
+  "Plastro",
+  "Give it up, flyboy. I've already taken care of your pathetic colonel."
+ ],
+ "cap045c.wav": [
+  "Captain",
+  "Plastro!"
+ ],
+ "pla007d.wav": [
+  "Plastro",
+  "You can change your radio frequencies, but you can't change your fate!"
+ ],
+ "sam049b.wav": [
+  "Sam",
+  "Good job, Captain. Winch that thing up and give it to Sarge."
+ ],
+ "sar070x.wav": [
+  "Sarge",
+  "We're taking too many casualties!"
+ ],
+ "sar014a.wav": [
+  "Sarge",
+  "Blade, we need to get to that LZ."
+ ],
+ "cap110dc.wav": [
+  "Captain",
+  "(spots something) Aha!"
+ ],
+ "sar072c.wav": [
+  "Sarge",
+  "Captain, we have to get up to that desk."
+ ],
+ "sar073b.wav": [
+  "Sarge",
+  "(spots something) Hold on, Blade...."
+ ],
+ "sar074c.wav": [
+  "Sarge",
+  "There has to be a way to get to that tent... we'll need to use stealth."
+ ],
+ "sam142a.wav": [
+  "Sam",
+  "Drop that chemical into the container, Captain."
+ ],
+ "sam143c.wav": [
+  "Sam",
+  "Captain, drop off your men at the LZ on the desk right now!"
+ ],
+ "sam012alt.wav": [
+  "Sam",
+  "Now we'll never know what the Tan are planning!"
+ ],
+ "sam047b.wav": [
+  "Sam",
+  "Destroy all of the convoy trucks, Captain."
+ ],
+ "sam154dc.wav": [
+  "Sam",
+  "You've still got work to do...! Shoot into your bowl, Captain."
+ ],
+ "sam139a.wav": [
+  "Sam",
+  "Check your F1 map for more information."
+ ],
+ "sam060b.wav": [
+  "Sam",
+  "You need to hold on to that."
+ ],
+ "sar040a.wav": [
+  "Sarge",
+  "A bogus piece of intel brought us to this damn island, and now the Tan have us pinned down here."
+ ],
+ "sar041c.wav": [
+  "Sarge",
+  "And my guys seem to be fighting a new breed of giant mutant creepy-crawly every day!"
+ ],
+ "sar042d.wav": [
+  "Sarge",
+  "My boys can't hold off these bugs much longer, Captain. We need to get to those boats!"
+ ],
+ "sar043b.wav": [
+  "Sarge",
+  "Too... many... bugs...!"
+ ],
+ "sar044c.wav": [
+  "Sarge",
+  "We could use some air support back here at the citadel, Captain."
+ ],
+ "col013a.wav": [
+  "Grimm",
+  "Captain! Thank goodness you made it. We really need your help."
+ ],
+ "col014b.wav": [
+  "Grimm",
+  "The Gray Navy has developed some kind of sub-surface vessel. We are putting the finishing touches on a sonar detection system right now, but our destroyers are taking a serious pounding in the meantime."
+ ],
+ "col015c.wav": [
+  "Grimm",
+  "We still have enough firepower to attack the real Tan headquarters, but first we have to locate that island."
+ ],
+ "col016b.wav": [
+  "Grimm",
+  "We have a couple of destroyers heading in to pick us up."
+ ],
+ "col017d.wav": [
+  "Grimm",
+  "If you don't clear these waters of gray sub-surface ships in time, our destroyers will be shredded."
+ ],
+ "col018d.wav": [
+  "Grimm",
+  "Come in, Blade. Listen. Those boats are going to be here any minute! Take out those Grey subs, fast!"
+ ],
+ "col025c.wav": [
+  "Grimm",
+  "Their submersibles are moving in, Captain... it's now or never!"
+ ],
+ "sar047f.wav": [
+  "Sarge",
+  "Colonel Grimm is dead, Captain! It's a massacre! We're doomed!"
+ ],
+ "col031a.wav": [
+  "Grimm",
+  "It's too late! We're finished, Captain."
+ ],
+ "col051a.wav": [
+  "Grimm",
+  "The Gray Navy has developed some kind of sub-surface vessel. They're moving in to attack our destroyers. Use sonar buoys and depth charges to take those subs out!"
+ ],
+ "col052b.wav": [
+  "Grimm",
+  "We still have enough firepower to attack the real Tan headquarters, but first we need to get off this island."
+ ],
+ "sar075c.wav": [
+  "Sarge",
+  "I'll send one squad at a time from the citadel to the LZ. You need to pick them up and drop them off on the destroyers."
+ ],
+ "sar076d.wav": [
+  "Sarge",
+  "Those damn bugs will swarm as soon as we are exposed. Don't let my men become bug food, Captain!"
+ ],
+ "sar077b.wav": [
+  "Sarge",
+  "When everyone else is safe, I'll run to the LZ last."
+ ],
+ "col053c.wav": [
+  "Grimm",
+  "Okay Captain. You need to transport our men off the island. Get them to the destroyers... and keep those damn subs from sinking our boats, will ya!"
+ ],
+ "sar078a.wav": [
+  "Sarge",
+  "There they go! Protect that squad and get them to the boats."
+ ],
+ "col054b.wav": [
+  "Grimm",
+  "Don't forget about those submarines, Captain. Our destroyers are vulnerable to their torpedoes."
+ ],
+ "sar079a.wav": [
+  "Sarge",
+  "Another team away, Captain!"
+ ],
+ "sar080c.wav": [
+  "Sarge",
+  "Okay, Captain, I'm heading to the beach! Pick me up and let's get out of here!"
+ ],
+ "col055b.wav": [
+  "Grimm",
+  "They're trying to take out our weapons, Captain!  If we lose all four guns on either boat, it's all over!"
+ ],
+ "col027f.wav": [
+  "Grimm",
+  "Excellent, Blade! You've discovered Plastro's volcano fortress. Clear the small island, but don't blast that bridge. With all their fortifications, it'll be impossible to establish a beachhead on the larger island."
+ ],
+ "cap058c.wav": [
+  "Captain",
+  "The gods have smiled."
+ ],
+ "cap057c.wav": [
+  "Captain",
+  "Whoa! This area makes my spine tingle."
+ ],
+ "cap052d.wav": [
+  "Captain",
+  "Looks like they've got quite a bug export operation here."
+ ],
+ "col029b.wav": [
+  "Grimm",
+  "Those insects could really wreak havoc on our landing...!"
+ ],
+ "col032c.wav": [
+  "Grimm",
+  "The bridge is down! It's over!"
+ ],
+ "col030c.wav": [
+  "Grimm",
+  "Hurry it up, Captain! They're marshalling their forces!"
+ ],
+ "cap053c.wav": [
+  "Captain",
+  "Almost done, Colonel. Hang in there."
+ ],
+ "col033a.wav": [
+  "Grimm",
+  "Smartly done, Blade. We'll be there shortly."
+ ],
+ "col036c.wav": [
+  "Grimm",
+  "Alright, men, this is it. We need to cross to the other island and storm Plastro's fortress. Blade, we need you to cover us when we're on the bridge. When the battle gets chaotic, help direct our forces from the air."
+ ],
+ "sar045c.wav": [
+  "Sarge",
+  "Captain, here's that Plastic Volcano Powder. We're still not sure exactly what it does, but I'm sure you'll know when it's time."
+ ],
+ "col037c.wav": [
+  "Grimm",
+  "All right! Give 'em hell, boys!"
+ ],
+ "col034c.wav": [
+  "Grimm",
+  "Stop those suicide troopers with the firecrackers strapped to them! They're trying to blow the bridge!"
+ ],
+ "col035c.wav": [
+  "Grimm",
+  "Watch out! More suicide soldiers at the bridge!"
+ ],
+ "sar046b.wav": [
+  "Sarge",
+  "The bridge is out! We'll just have to count on the guys who already made it over."
+ ],
+ "cap055c.wav": [
+  "Captain",
+  "Here goes nothin'!"
+ ],
+ "col058a.wav": [
+  "Grimm",
+  "We've killed most of the island guards, but we've got to crack that fortress!"
+ ],
+ "cap054e.wav": [
+  "Captain",
+  "Whoa...!"
+ ],
+ "col059dc.wav": [
+  "Grimm",
+  "Captain! We really need your help."
+ ],
+ "pla011e.wav": [
+  "Plastro",
+  "You'll never defeat me!"
+ ],
+ "sam066b.wav": [
+  "Sam",
+  "Thaaat's it...!"
+ ],
+ "cap050a.wav": [
+  "Captain",
+  "HQ, come in... do you have a location on that portal?"
+ ],
+ "col019a.wav": [
+  "Grimm",
+  "Nice work, Blade. Now we need to find the Tan base so we can put Plastro's diabolical bug factory out of commission."
+ ],
+ "col020c.wav": [
+  "Grimm",
+  "And remember... conserve your missiles out there. You're not going to have many chances to rearm."
+ ],
+ "col021a.wav": [
+  "Grimm",
+  "Those Grey ships must be coming from somewhere! Use sonar buoys to track them down."
+ ],
+ "col022a.wav": [
+  "Grimm",
+  "Radio signal from HQ is down, Captain. Something is strange about this area of the ocean."
+ ],
+ "col023a.wav": [
+  "Grimm",
+  "You are going to have to find that portal!"
+ ],
+ "col024a.wav": [
+  "Grimm",
+  "Step it up, Blade! A Tan chopper just spotted our ships. We're sitting ducks out here if they start firing torpedoes!"
+ ],
+ "col026b.wav": [
+  "Grimm",
+  "We've taken a direct hit, Captain! We're going down! It's all over!"
+ ],
+ "col056b.wav": [
+  "Grimm",
+  "High numbers of Grey subs in this area lead us to believe they are using a secret under-water portal. Perhaps a well-placed depth charge could bring it to the surface. Find that portal and lead us through it."
+ ]
+}

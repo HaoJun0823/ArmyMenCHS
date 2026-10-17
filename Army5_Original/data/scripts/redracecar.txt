@@ -1,0 +1,433 @@
+// redracecar.txt
+// Carson Herrick
+
+VARIABLE startXred 1277
+VARIABLE startYred 2634
+VARIABLE sourceXred 0
+VARIABLE sourceYred 0
+VARIABLE targetXred 0
+VARIABLE targetYred 0
+VARIABLE currentXred 1277
+VARIABLE currentYred 2634
+VARIABLE currentZred 0
+VARIABLE tallyXred 0
+VARIABLE tallyYred 0
+
+VARIABLE cosred 0
+VARIABLE sinred 0
+
+VARIABLE currentdegred 0
+VARIABLE enddegred 0
+
+VARIABLE centerXred 0
+VARIABLE centerYred 0
+VARIABLE rXred 0
+VARIABLE rYred 0
+
+VARIABLE newredstate 0
+
+
+OBJECT RedCar
+	//SECTION A
+	STATE osRedA1
+		FRAME 10 1	TRIGGER movered_A1
+		FRAME 0 0	SETOBJSTATE RedCar osRedA1
+
+	//SECTION B
+	STATE osRedB1
+		FRAME 10 2	TRIGGER movered_B1
+		FRAME 0 0	SETOBJSTATE RedCar osRedB1
+	STATE osRedB2
+		FRAME 10 3	TRIGGER movered_B2
+		FRAME 0 0	SETOBJSTATE RedCar osRedB2
+	STATE osRedB3
+		FRAME 10 1	TRIGGER movered_B3
+		FRAME 0 0	SETOBJSTATE RedCar osRedB3
+	STATE osRedB4
+		FRAME 10 4	TRIGGER movered_B4
+		FRAME 0 0	SETOBJSTATE RedCar osRedB4
+	STATE osRedB5
+		FRAME 10 5	TRIGGER movered_B5
+		FRAME 0 0	SETOBJSTATE RedCar osRedB5
+	STATE osRedB6
+		FRAME 10 6	TRIGGER movered_B6
+		FRAME 0 0	SETOBJSTATE RedCar osRedB6
+
+	//SECTION C
+	STATE osRedC1
+		FRAME 10 7	TRIGGER arcred_C1
+		FRAME 0 0	SETOBJSTATE RedCar osRedC1
+	STATE osRedC2
+		FRAME 10 8	TRIGGER arcred_C2
+		FRAME 0 0	SETOBJSTATE RedCar osRedC2
+	STATE osRedC3
+		FRAME 10 9	TRIGGER arcred_C3
+		FRAME 0 0	SETOBJSTATE RedCar osRedC3
+	STATE osRedC4
+		FRAME 10 10	TRIGGER arcred_C4
+		FRAME 0 0	SETOBJSTATE RedCar osRedC4
+	STATE osRedC5
+		FRAME 10 11	TRIGGER arcred_C5
+		FRAME 0 0	SETOBJSTATE RedCar osRedC5
+	STATE osRedC6
+		FRAME 10 12	TRIGGER arcred_C6
+		FRAME 0 0	SETOBJSTATE RedCar osRedC6
+	STATE osRedC7
+		FRAME 10 13	TRIGGER arcred_C7
+		FRAME 0 0	SETOBJSTATE RedCar osRedC7
+
+	//SECTION D
+	STATE osRedD1
+		FRAME 10 14	TRIGGER arcred_D1
+		FRAME 0 0	SETOBJSTATE RedCar osRedD1
+	STATE osRedD2
+		FRAME 10 15	TRIGGER arcred_D2
+		FRAME 0 0	SETOBJSTATE RedCar osRedD2
+	STATE osRedD3
+		FRAME 10 16	TRIGGER arcred_D3
+		FRAME 0 0	SETOBJSTATE RedCar osRedD3
+	STATE osRedD4
+		FRAME 10 17	TRIGGER arcred_D4
+		FRAME 0 0	SETOBJSTATE RedCar osRedD4
+	STATE osRedD5
+		FRAME 10 18	TRIGGER arcred_D5
+		FRAME 0 0	SETOBJSTATE RedCar osRedD5
+	STATE osRedD6
+		FRAME 10 19	TRIGGER arcred_D6
+		FRAME 0 0	SETOBJSTATE RedCar osRedD6
+
+	//SECTION E
+	STATE osRedE1
+		FRAME 10 20	TRIGGER arcred_E1
+		FRAME 0 0	SETOBJSTATE RedCar osRedE1
+	STATE osRedE2
+		FRAME 10 21	TRIGGER arcred_E2
+		FRAME 0 0	SETOBJSTATE RedCar osRedE2
+	STATE osRedE3
+		FRAME 10 22	TRIGGER arcred_E3
+		FRAME 0 0	SETOBJSTATE RedCar osRedE3
+	STATE osRedE4
+		FRAME 10 23	TRIGGER arcred_E4
+		FRAME 0 0	SETOBJSTATE RedCar osRedE4
+	STATE osRedE5
+		FRAME 10 24	TRIGGER arcred_E5
+		FRAME 0 0	SETOBJSTATE RedCar osRedE5
+	STATE osRedE6
+		FRAME 10 25	TRIGGER arcred_E6
+		FRAME 0 0	SETOBJSTATE RedCar osRedE6
+
+	//SECTION F
+	STATE osRedF1
+		FRAME 10 26	TRIGGER movered_F1
+		FRAME 0 0	SETOBJSTATE RedCar osRedF1
+
+	//SECTION G
+	STATE osRedG1
+		FRAME 10 27	TRIGGER arcred_G1
+		FRAME 0 0	SETOBJSTATE RedCar osRedG1
+	STATE osRedG2
+		FRAME 10 28	TRIGGER arcred_G2
+		FRAME 0 0	SETOBJSTATE RedCar osRedG2
+	STATE osRedG3
+		FRAME 10 29	TRIGGER arcred_G3
+		FRAME 0 0	SETOBJSTATE RedCar osRedG3
+	STATE osRedG4
+		FRAME 10 30	TRIGGER arcred_G4
+		FRAME 0 0	SETOBJSTATE RedCar osRedG4
+	STATE osRedG5
+		FRAME 10 31	TRIGGER arcred_G5
+		FRAME 0 0	SETOBJSTATE RedCar osRedG5
+	STATE osRedG6
+		FRAME 10 32	TRIGGER arcred_G6
+		FRAME 0 0	SETOBJSTATE RedCar osRedG6
+	STATE osRedG7
+		FRAME 10 33	TRIGGER arcred_G7
+		FRAME 0 0	SETOBJSTATE RedCar osRedG7
+
+	//SECTION H
+	STATE osRedH1
+		FRAME 10 34	TRIGGER arcred_H1
+		FRAME 0 0	SETOBJSTATE RedCar osRedH1
+	STATE osRedH2
+		FRAME 10 35	TRIGGER arcred_H2
+		FRAME 0 0	SETOBJSTATE RedCar osRedH2
+	STATE osRedH3
+		FRAME 10 36	TRIGGER arcred_H3
+		FRAME 0 0	SETOBJSTATE RedCar osRedH3
+	STATE osRedH4
+		FRAME 10 37	TRIGGER arcred_H4
+		FRAME 0 0	SETOBJSTATE RedCar osRedH4
+	STATE osRedH5
+		FRAME 10 38	TRIGGER arcred_H5
+		FRAME 0 0	SETOBJSTATE RedCar osRedH5
+	STATE osRedH6
+		FRAME 10 39	TRIGGER arcred_H6
+		FRAME 0 0	SETOBJSTATE RedCar osRedH6
+
+	//SECTION I
+	STATE osRedI1
+		FRAME 10 40	TRIGGER movered_I1
+		FRAME 0 0	SETOBJSTATE RedCar osRedI1
+	STATE osRedI2
+		FRAME 10 41	TRIGGER movered_I2
+		FRAME 0 0	SETOBJSTATE RedCar osRedI2
+	STATE osRedI3
+		FRAME 10 42	TRIGGER movered_I3
+		FRAME 0 0	SETOBJSTATE RedCar osRedI3
+	STATE osRedI4
+		FRAME 10 43	TRIGGER movered_I4
+		FRAME 0 0	SETOBJSTATE RedCar osRedI4
+	STATE osRedI5
+		FRAME 10 44	TRIGGER movered_I5
+		FRAME 0 0	SETOBJSTATE RedCar osRedI5
+
+	//SECTION J
+	STATE osRedJ1
+		FRAME 10 14	TRIGGER arcred_J1
+		FRAME 0 0	SETOBJSTATE RedCar osRedJ1
+	STATE osRedJ2
+		FRAME 10 15	TRIGGER arcred_J2
+		FRAME 0 0	SETOBJSTATE RedCar osRedJ2
+	STATE osRedJ3
+		FRAME 10 16	TRIGGER arcred_J3
+		FRAME 0 0	SETOBJSTATE RedCar osRedJ3
+	STATE osRedJ4
+		FRAME 10 17	TRIGGER arcred_J4
+		FRAME 0 0	SETOBJSTATE RedCar osRedJ4
+	STATE osRedJ5
+		FRAME 10 18	TRIGGER arcred_J5
+		FRAME 0 0	SETOBJSTATE RedCar osRedJ5
+	STATE osRedJ6
+		FRAME 10 19	TRIGGER arcred_J6
+		FRAME 0 0	SETOBJSTATE RedCar osRedJ6
+
+	//SECTION K
+	STATE osRedK1
+		FRAME 10 20	TRIGGER arcred_K1
+		FRAME 0 0	SETOBJSTATE RedCar osRedK1
+	STATE osRedK2
+		FRAME 10 21	TRIGGER arcred_K2
+		FRAME 0 0	SETOBJSTATE RedCar osRedK2
+	STATE osRedK3
+		FRAME 10 22	TRIGGER arcred_K3
+		FRAME 0 0	SETOBJSTATE RedCar osRedK3
+	STATE osRedK4
+		FRAME 10 23	TRIGGER arcred_K4
+		FRAME 0 0	SETOBJSTATE RedCar osRedK4
+	STATE osRedK5
+		FRAME 10 24	TRIGGER arcred_K5
+		FRAME 0 0	SETOBJSTATE RedCar osRedK5
+	STATE osRedK6
+		FRAME 10 25	TRIGGER arcred_K6
+		FRAME 0 0	SETOBJSTATE RedCar osRedK6
+
+	//SECTION L
+	STATE osRedL1
+		FRAME 10 45	TRIGGER arcred_L1
+		FRAME 0 0	SETOBJSTATE RedCar osRedL1
+	STATE osRedL2
+		FRAME 10 46	TRIGGER arcred_L2
+		FRAME 0 0	SETOBJSTATE RedCar osRedL2
+	STATE osRedL3
+		FRAME 10 47	TRIGGER arcred_L3
+		FRAME 0 0	SETOBJSTATE RedCar osRedL3
+	STATE osRedL4
+		FRAME 10 48	TRIGGER arcred_L4
+		FRAME 0 0	SETOBJSTATE RedCar osRedL4
+	STATE osRedL5
+		FRAME 10 49	TRIGGER arcred_L5
+		FRAME 0 0	SETOBJSTATE RedCar osRedL5
+	STATE osRedL6
+		FRAME 10 50	TRIGGER arcred_L6
+		FRAME 0 0	SETOBJSTATE RedCar osRedL6
+
+MACRO moveRedCar 8
+{
+	IF movered_@1 THEN
+		TRIGGER setupmoveredstate_@1,
+		SETVAR targetXred sourceXred,
+		ADDVAR targetXred @3,
+		SETVAR targetYred sourceYred,
+		ADDVAR targetYred @4,
+		SETVAR currentZred @8,
+		TRIGGER movereddist_@1,
+		TRIGGER testredmove_@1
+
+	IF setupmoveredstate_@1 TESTVAR newredstate = 0 THEN
+		SETVAR newredstate 1,
+		SETVAR sourceXred startXred, ADDVAR sourceXred @6,
+		SETVAR sourceYred startYred, ADDVAR sourceYred @7
+	
+	IF movereddist_@1 THEN
+		ADDVAR tallyXred @2,
+		SETVAR currentXred sourceXred,
+		ADDVAR currentXred tallyXred,
+		SETVAR currentZred @8,
+
+		SETVAR tallyYred tallyXred,
+		MULVAR tallyYred @4,
+		DIVVAR tallyYred @3,
+		SETVAR currentYred sourceYred,
+		ADDVAR currentYred tallyYred
+
+	IF testredmove_@1 TESTVAR @2 > 0 THEN
+		TRIGGER posredmove_@1
+
+	IF testredmove_@1 TESTVAR @2 < 0 THEN
+		TRIGGER negredmove_@1
+
+	IF posredmove_@1 TESTVAR currentXred < targetXred THEN
+		MOVEITEM RedCar (REFVAR currentXred, REFVAR currentYred, REFVAR currentZred)
+
+	IF posredmove_@1 TESTVAR currentXred >= targetXred THEN
+		SETVAR newredstate 0,
+		SETOBJSTATE RedCar osRed@5,
+		MOVEITEM RedCar (REFVAR currentXred, REFVAR currentYred, REFVAR currentZred)
+
+	IF negredmove_@1 TESTVAR currentXred > targetXred THEN
+		MOVEITEM RedCar (REFVAR currentXred, REFVAR currentYred, REFVAR currentZred)
+
+	IF negredmove_@1 TESTVAR currentXred <= targetXred THEN
+		SETVAR newredstate 0,
+		SETOBJSTATE RedCar osRed@5,
+		MOVEITEM RedCar (REFVAR currentXred, REFVAR currentYred, REFVAR currentZred)
+}
+EXPAND moveRedCar ( A1 8 492 411 B1 0 0 0)
+
+EXPAND moveRedCar ( B1 8 578 468 B2 0 0 0)
+EXPAND moveRedCar ( B2 8 664 524 B3 0 0 32) // 32 height 
+EXPAND moveRedCar ( B3 8 750 581 B4 0 0 0)
+EXPAND moveRedCar ( B4 8 831 663 B5 0 0 0)
+EXPAND moveRedCar ( B5 8 911 745 B6 0 0 0)
+EXPAND moveRedCar ( B6 8 992 827 C1 0 0 0)
+
+EXPAND moveRedCar ( F1 8 462 -383 G1 479 814 0)
+
+EXPAND moveRedCar ( I1 -8  -70  44 I2 480 41 32)// 32 height
+EXPAND moveRedCar ( I2 -8 -165 102 I3 480 41 0)
+EXPAND moveRedCar ( I3 -8 -314 205 I4 480 41 0)
+EXPAND moveRedCar ( I4 -8 -401 321 I5 480 41 0)
+EXPAND moveRedCar ( I5 -8 -501 415 J1 480 41 0)
+
+
+MACRO arcRedCar 7
+{
+	IF arcred_@1 THEN
+		TRIGGER setuparcredstate_@1,
+		SETVAR enddegred @3,
+		SETVAR centerXred startXred,
+		ADDVAR centerXred @5,
+		SETVAR centerYred startYred,
+		ADDVAR centerYred @6,
+		TRIGGER testreddist_@1,
+		TRIGGER arcreddist_@1,
+		TRIGGER testredarc_@1
+	
+	IF setuparcredstate_@1 TESTVAR newredstate = 0 THEN
+		SETVAR newredstate 1,
+		SETVAR currentdegred @2,
+		SETVAR tallyXred 0, SETVAR tallyYred 0
+
+	IF testreddist_@1 TESTVAR @4 > 0 THEN
+		SETVAR rXred 330, SETVAR rYred 274
+		
+	IF testreddist_@1 TESTVAR @4 < 0 THEN
+		SETVAR rXred 380, SETVAR rYred 314
+
+	IF arcreddist_@1 THEN
+		ADDVAR currentdegred @4,
+		SETVAR cosred currentdegred,
+		SETVAR sinred currentdegred,
+		COSVAR cosred, SINVAR sinred,
+		
+		SETVAR currentXred rXred,
+		MULVAR currentXred cosred,
+		DIVVAR currentXred 1000,
+		ADDVAR currentXred centerXred,
+	
+		SETVAR currentYred rYred,
+		MULVAR currentYred sinred,
+		DIVVAR currentYred 1000,
+		ADDVAR currentYred centerYred
+	
+	IF testredarc_@1 TESTVAR @4 > 0 THEN
+		TRIGGER posredarc_@1
+
+	IF testredarc_@1 TESTVAR @4 < 0 THEN
+		TRIGGER negredarc_@1
+
+	IF posredarc_@1 TESTVAR currentdegred < enddegred THEN
+		MOVEITEM RedCar (REFVAR currentXred, REFVAR currentYred)
+
+	IF posredarc_@1 TESTVAR currentdegred >= enddegred THEN
+		SETVAR newredstate 0,
+		SETOBJSTATE RedCar osRed@7,
+		MOVEITEM RedCar (REFVAR currentXred, REFVAR currentYred)
+
+	IF negredarc_@1 TESTVAR currentdegred > enddegred THEN
+		MOVEITEM RedCar (REFVAR currentXred, REFVAR currentYred)
+
+	IF negredarc_@1 TESTVAR currentdegred <= enddegred THEN
+		SETVAR newredstate 0,
+		SETOBJSTATE RedCar osRed@7,
+		MOVEITEM RedCar (REFVAR currentXred, REFVAR currentYred)
+}
+EXPAND arcRedCar ( C1 224 214 -1 729 1052 C2 )
+EXPAND arcRedCar ( C2 214 204 -1 729 1052 C3 )
+EXPAND arcRedCar ( C3 204 194 -1 729 1052 C4 )
+EXPAND arcRedCar ( C4 194 184 -1 729 1052 C5 )
+EXPAND arcRedCar ( C5 184 173 -1 729 1052 C6 )
+EXPAND arcRedCar ( C6 173 163 -1 729 1052 C7 )
+EXPAND arcRedCar ( C7 163 153 -1 729 1052 D1 )
+
+EXPAND arcRedCar ( D1 153 143 -1 729 1052 D2 )
+EXPAND arcRedCar ( D2 143 133 -1 729 1052 D3 )
+EXPAND arcRedCar ( D3 133 123 -1 729 1052 D4 )
+EXPAND arcRedCar ( D4 123 113 -1 729 1052 D5 )
+EXPAND arcRedCar ( D5 113 103 -1 729 1052 D6 )
+EXPAND arcRedCar ( D6 103  93 -1 729 1052 E1 )
+
+EXPAND arcRedCar ( E1 93 83 -1 729 1052 E2 )
+EXPAND arcRedCar ( E2 83 72 -1 729 1052 E3 )
+EXPAND arcRedCar ( E3 72 62 -1 729 1052 E4 )
+EXPAND arcRedCar ( E4 62 52 -1 729 1052 E5 )
+EXPAND arcRedCar ( E5 52 42 -1 729 1052 E6 )
+EXPAND arcRedCar ( E6 42 32 -1 729 1052 F1 )
+
+EXPAND arcRedCar ( G1 160 170 1 729 220 G2 )
+EXPAND arcRedCar ( G2 170 180 1 729 220 G3 )
+EXPAND arcRedCar ( G3 180 190 1 729 220 G4 )
+EXPAND arcRedCar ( G4 190 199 1 729 220 G5 )
+EXPAND arcRedCar ( G5 199 209 1 729 220 G6 )
+EXPAND arcRedCar ( G6 209 219 1 729 220 G7 )
+EXPAND arcRedCar ( G7 219 229 1 729 220 H1 )
+
+EXPAND arcRedCar ( H1 229 238 1 729 220 H2 )
+EXPAND arcRedCar ( H2 238 248 1 729 220 H3 )
+EXPAND arcRedCar ( H3 248 258 1 729 220 H4 )
+EXPAND arcRedCar ( H4 258  12 1 729 220 H5 )
+EXPAND arcRedCar ( H5  12  22 1 729 220 H6 )
+EXPAND arcRedCar ( H6  22  32 1 729 220 I1 )
+
+EXPAND arcRedCar ( J1 160 150 -1 -270 220 J2 )
+EXPAND arcRedCar ( J2 150 138 -1 -270 220 J3 )
+EXPAND arcRedCar ( J3 138 124 -1 -270 220 J4 )
+EXPAND arcRedCar ( J4 124 116 -1 -270 220 J5 )
+EXPAND arcRedCar ( J5 116 108 -1 -270 220 J6 )
+EXPAND arcRedCar ( J6 108  96 -1 -270 220 K1 )
+
+EXPAND arcRedCar ( K1 96 84 -1 -270 220 K2 )
+EXPAND arcRedCar ( K2 84 75 -1 -270 220 K3 )
+EXPAND arcRedCar ( K3 75 64 -1 -270 220 K4 )
+EXPAND arcRedCar ( K4 64 53 -1 -270 220 K5 )
+EXPAND arcRedCar ( K5 53 43 -1 -270 220 K6 )
+EXPAND arcRedCar ( K6 43 32 -1 -270 220 L1 )
+
+EXPAND arcRedCar ( L1  32  25 -1 -270 220 L2 )
+EXPAND arcRedCar ( L2  25   8 -1 -270 220 L3 )
+EXPAND arcRedCar ( L3   8   0 -1 -270 220 L4 )
+EXPAND arcRedCar ( L4 255 245 -1 -270 220 L5 )
+EXPAND arcRedCar ( L5 245 232 -1 -270 220 L6 )
+EXPAND arcRedCar ( L6 232 224 -1 -270 220 A1 )
+
+

@@ -1,0 +1,140 @@
+LIST PottedFlower1 43 40
+LIST PottedFlower2 43 41
+LIST Flower1 43 42
+LIST Flower2 43 43
+
+
+/// EXPLOSION SETUP ///
+
+IF DMGLVLCHANGED Flower1 THEN
+	TRIGGER flowerexplosion,
+	TRIGGER flowerpoof3,
+	TRIGGERDELAY 75 flowerpoof2,
+	TRIGGERDELAY 150 flowerpoof1
+
+IF DMGLVLCHANGED Flower2 THEN
+	TRIGGER flowerexplosion,
+	TRIGGER flowerpoof1,
+	TRIGGERDELAY 75 flowerpoof3,
+	TRIGGERDELAY 150 flowerpoof2
+
+IF DMGLVLCHANGED Flower3 THEN
+	TRIGGER flowerexplosion,
+	TRIGGER flowerpoof2,
+	TRIGGERDELAY 75 flowerpoof1,
+	TRIGGERDELAY 150 flowerpoof3
+
+MACRO flowerMACRO 3
+{
+	IF flowerexplosion TESTVAR GETDMGLVL me = @1 THEN
+		SETVAR explosionID_1 @2,
+		SETVAR explosionID_2 @3
+}
+EXPAND flowerMACRO ( 1 702 703 )
+EXPAND flowerMACRO ( 2 701 700 )
+
+IF selectFLOWERexplosion THEN RANDOM
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY) REFVAR explosionID_1,
+	CREATEEXPLOSION (REFVAR childX, REFVAR childY) REFVAR explosionID_2
+
+/// EXPLOSION SETUP ///
+
+
+/// EXPLOSION CREATION ///
+
+IF flowerpoof1 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -59, ADDVAR childY 12,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -68, ADDVAR childY -49,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -74, ADDVAR childY -104,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -28, ADDVAR childY -155,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 49, ADDVAR childY -107,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 69, ADDVAR childY 13,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -9, ADDVAR childY -15,
+	TRIGGER selectFLOWERexplosion
+
+
+IF flowerpoof2 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -8, ADDVAR childY -30,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -57, ADDVAR childY 9,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -94, ADDVAR childY -103,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 13, ADDVAR childY -137,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 67, ADDVAR childY -102,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 99, ADDVAR childY -32,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 78, ADDVAR childY 17,
+	TRIGGER selectFLOWERexplosion
+
+
+IF flowerpoof3 THEN
+	SETVAR parentX GETX me, SETVAR parentY GETY me,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -43, ADDVAR childY -44,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -43, ADDVAR childY -136,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 54, ADDVAR childY -144,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 54, ADDVAR childY -58,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 96, ADDVAR childY -45,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX 29, ADDVAR childY 27,
+	TRIGGER selectFLOWERexplosion,
+
+	SETVAR childX parentX , SETVAR childY parentY,
+	ADDVAR childX -31, ADDVAR childY 18,
+	TRIGGER selectFLOWERexplosion
+
+/// EXPLOSION CREATION ///

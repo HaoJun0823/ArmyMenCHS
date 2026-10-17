@@ -1,0 +1,3 @@
+if Tropcom1 then
+	showmessage "人群：士兵们！"
+

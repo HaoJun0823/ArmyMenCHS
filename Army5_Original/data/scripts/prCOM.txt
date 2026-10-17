@@ -1,0 +1,6 @@
+
+if evtPRtxt1 then
+	showmessage "Grey Spy:  One is here on the desk. The other two chemicals are on the floor. One is strapped to a pattern recognition device."
+
+if evtPRtxt2 then
+	showmessage "The other is in a well-guarded Tan tent on a colored mat. The guards will destroy it if you get too close...!"

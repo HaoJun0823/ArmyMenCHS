@@ -1,0 +1,6 @@
+
+if evtPRtxt1 then
+	showmessage "灰军间谍：一份就在书桌上。另外两份化学品在地板上，其中一份绑在图案识别装置上。"
+
+if evtPRtxt2 then
+	showmessage "另一份在有色垫子上一顶戒备森严的棕军帐篷里。你一靠近，守卫就会把它毁掉……！"

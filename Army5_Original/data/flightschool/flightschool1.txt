@@ -1,0 +1,456 @@
+
+// flightschool
+// Carson Herrick
+
+VARIABLE alreadyrespawned 0
+VARIABLE SPrespawnX 0
+VARIABLE SPrespawnY 0
+
+VARIABLE eaglehaslanded 0
+
+VARIABLE explosionID_1 700
+VARIABLE explosionID_2 700
+VARIABLE parentX 0
+VARIABLE parentY 0
+VARIABLE childX 0
+VARIABLE childY 0
+
+INCLUDE ..\scripts\tree2fx.txt
+
+PAD LPad10	10	captain	> 0
+PAD LPad11	11	captain	> 0
+
+PAD pad10 10 captain
+PAD pad11 11 captain
+PAD pad20 20 captain
+PAD pad30 30 captain
+PAD pad40 40 captain
+PAD pad50 50 tan
+PAD pad51 51 tan
+PAD pad52 52 tan
+PAD pad53 53 tan
+PAD ExitPad 53 tan
+
+PAD padHelpLand 100 captain
+
+VARIABLE GameStage 0
+VARIABLE HelpTakeoff 0
+VARIABLE HelpLanding 0
+VARIABLE HelpBeacon 0
+VARIABLE HelpCargo 0
+VARIABLE HelpPowerUp 0
+VARIABLE HelpArmor 0
+VARIABLE HelpRadar 0
+VARIABLE HelpWeapon 0
+
+VARIABLE stage2landing 0
+
+VARIABLE HelpEnemy 0
+VARIABLE TanDeployed 0
+
+LIST PowerupList { P1 P2 P3 P4 P5 P6 P7 P8 P9 P10 P11 P12 }
+LIST TacklingDummy { Tan1 Tan2 Tan3 Tan4 Tan5 Tan6 Tan7 Tan8 Tan9 Tan10 Tan11 Tan12 Tan13 Tan14 Tan15 Tan16 Tan17 Tan18 Tan19 Tan20 }
+LIST TanDummy { TanV TanV_0 TanV_1 TanV_2 TanV_3 TanV_4 TanV_5 TanV_6 TanV_7 TanV_8 TanV_9 TanV_10 }
+
+//***SETUP MISSION***//
+IF startup1 THEN
+	TRIGGER setupgreen,
+	TRIGGER setuptrees,
+	TRIGGERDELAY 100 walkthrough
+	
+IF setupgreen THEN
+	CREATECOPTER scout captain (2493,3699,500) green,
+	SETBEACON captain 3,
+	SETNPC captain 1,
+
+	SETFACING captain 110,
+	SETAIRMAP captain 1,
+	SETSTEP captain 200,
+	TRIGGER setupgreenguys
+
+IF talkingheaddone captain THEN
+	SETNPC captain 0
+
+UNTIL 3 REPEAT 1 BY 1
+{
+	IF setupgreenguys THEN
+		CREATEUNIT private_$ rifleman (2710,3673) green autorifle,
+		ADDMISSIONOBJECTIVE lastcreated,
+		TRIGGER setrandomheading lastcreated
+}
+
+UNTIL 5 REPEAT 4 BY 1
+{
+	IF setupgreenguys THEN
+		CREATEUNIT private_$ rifleman (2295,3590) green vulcan,
+		ADDMISSIONOBJECTIVE lastcreated,
+		TRIGGER setrandomheading lastcreated
+}
+
+UNTIL 11 REPEAT 1 BY 1
+{
+	IF setuptrees THEN
+		DAMAGE pineTree_$ 1
+}
+IF setuptrees THEN
+	DAMAGE pineTree 1
+
+IF setupgoodies THEN
+	CREATEPOWERUP P1 clusterbomb (2515,433) 5, ADDMISSIONOBJECTIVE lastcreated,
+	CREATEPOWERUP P2 radarmissile (2415,503) 5, ADDMISSIONOBJECTIVE lastcreated,
+	CREATEPOWERUP P3 swarmmissile (2728,532) 5, ADDMISSIONOBJECTIVE lastcreated,
+	
+	CREATEPOWERUP P4 partialarmor (332,3516),
+	CREATEPOWERUP P5 partialarmor (498,3624),
+	CREATEPOWERUP P6 partialarmor (457,3715)
+
+IF setrandomheading THEN RANDOM
+	SETFACING me 0,
+	SETFACING me 16,
+	SETFACING me 32,
+	SETFACING me 48,
+	SETFACING me 64,
+	SETFACING me 80,
+	SETFACING me 96,
+	SETFACING me 112,
+	SETFACING me 128,
+	SETFACING me 144,
+	SETFACING me 160,
+	SETFACING me 176,
+	SETFACING me 192,
+	SETFACING me 208,
+	SETFACING me 224,
+	SETFACING me 240
+
+//***SETUP MISSION***//
+
+
+//*** GAME STAGE 1 - TAKE OFF ***//
+
+IF walkthrough THEN
+	SETMISSIONINFO fs1,
+	SETVAR GameStage 1,
+	SETVAR HelpTakeoff 1,
+	PLAYTALKINGHEAD 114,
+	PLAYTALKINGHEAD 115,
+	PLAYTALKINGHEAD 116,
+	PLAYTALKINGHEAD 117,
+	PLAYTALKINGHEAD 118,
+	PLAYTALKINGHEAD 119,
+	PLAYTALKINGHEAD 120,
+	PLAYTALKINGHEAD 121,
+	PLAYTALKINGHEAD 122,
+	TRIGGERDELAY 10000 help_takeoff
+
+IF help_takeoff TESTVAR GameStage = 1 AND HelpTakeoff = 1 THEN
+	PLAYTALKINGHEAD 101
+
+//*** GAME STAGE 1 - TAKE OFF ***//
+
+
+//*** GAME STAGE 2 - HEADING & RADAR ***//
+
+IF TOOKOFF captain TESTVAR GameStage = 1 THEN
+	SETVAR HelpTakeoff 10,
+	SETVAR HelpBeacon 1,
+	SETVAR HelpRadar 1,
+	TRIGGER help_heading,
+//	TRIGGER help_radar,
+	TRIGGER help_beacon
+
+IF help_heading TESTVAR THEN
+	PLAYTALKINGHEAD 102
+
+//IF help_radar TESTVAR HelpRadar = 1 THEN
+	
+	
+IF help_beacon TESTVAR HelpBeacon = 1 THEN
+	SETBEACON captain 0,
+	SETVAR GameStage 2,
+	PLAYTALKINGHEAD 123,
+	PLAYTALKINGHEAD 124,
+
+	SETVAR stage2landing 0,
+	TRIGGERDELAY 20000 landstage2
+
+IF landstage2 TESTVAR stage2landing = 0 AND GameStage < 4 THEN
+	SETVAR stage2landing 1,
+	PLAYTALKINGHEAD 109
+
+IF help_beacon2 TESTVAR HelpBeacon = 2 THEN
+	PLAYTALKINGHEAD 1,
+	PLAYTALKINGHEAD 125,
+	TRIGGERDELAY 60000 help_beacon2
+
+//IF help_beacon3 TESTVAR HelpBeacon = 2 THEN
+//	PLAYTALKINGHEAD 126,
+//	TRIGGERDELAY 10000 TANWINS
+
+IF PADON pad20 TESTVAR GameStage > 1 AND GameStage < 4 AND HelpBeacon = 1 THEN
+	SETVAR HelpBeacon 2,
+	TRIGGER help_beacon2
+
+//*** GAME STAGE 2 - HEADING & RADAR ***//
+
+
+//*** GAME STAGE 3 - BEACON ***//
+
+IF BEACONED captain TESTVAR GameStage = 2 THEN
+	SETVAR GameStage 3
+
+//*** GAME STAGE 3 - BEACON ***//
+
+
+//*** GAME STAGE 4 - LOAD TROOPS ***//
+
+MACRO getallguys 5
+{
+	IF PICKEDUP private_@1 BY captain TESTVAR GameStage = 3 AND
+		HASITEM captain private_@2 = 1 AND
+		HASITEM captain private_@3 = 1 AND
+		HASITEM captain private_@4 = 1 AND
+		HASITEM captain private_@5 = 1 THEN
+			SETMISSIONINFO fs2,
+			SETVAR GameStage 4,
+			SETVAR HelpBeacon 10,
+			SETVAR HelpLanding 0,
+			TRIGGER removeobjective3,
+			ADDMISSIONOBJECTIVE (3528,669),
+			PLAYTALKINGHEAD 127,
+			PLAYTALKINGHEAD 128
+	
+	IF removeobjective3 THEN
+		REMOVEMISSIONOBJECTIVE private_@1
+}
+EXPAND getallguys ( 1 2 3 4 5 )
+EXPAND getallguys ( 2 3 4 5 1 )
+EXPAND getallguys ( 3 4 5 1 2 )
+EXPAND getallguys ( 4 5 1 2 3 )
+EXPAND getallguys ( 5 1 2 3 4 )
+
+//*** GAME STAGE 4 - LOAD TROOPS ***//
+
+
+//*** GAME STAGE 5 - DROP TROOPS AT PAD11 ***//
+
+IF LANDED captain TESTVAR GameStage = 4 AND HelpCargo = 0 AND GETPADSTATUS Lpad11 = 1 AND
+	HASITEM captain private_1 = 1 AND
+	HASITEM captain private_2 = 1 AND
+	HASITEM captain private_3 = 1 AND
+	HASITEM captain private_4 = 1 AND
+	HASITEM captain private_5 = 1 THEN
+	SETVAR HelpCargo 10,
+	PLAYTALKINGHEAD 129
+
+MACRO dropallguys 5
+{
+	IF DROPPED private_@1 BY captain TESTVAR GameStage = 4 AND
+		GETPADSTATUS LPad11 = 1 AND
+		HASITEM captain private_@2 = 0 AND
+		HASITEM captain private_@3 = 0 AND
+		HASITEM captain private_@4 = 0 AND
+		HASITEM captain private_@5 = 0 THEN
+			SETMISSIONINFO fs3,
+			SETVAR GameStage 5,
+			SETVAR HelpLanding 10,
+			REMOVEMISSIONOBJECTIVE (3528,669),
+			PLAYTALKINGHEAD 130,
+			TRIGGER setupobjective6
+}
+EXPAND dropallguys ( 1 2 3 4 5 )
+EXPAND dropallguys ( 2 3 4 5 1 )
+EXPAND dropallguys ( 3 4 5 1 2 )
+EXPAND dropallguys ( 4 5 1 2 3 )
+EXPAND dropallguys ( 5 1 2 3 4 )
+
+IF PADON padHelpLand TESTVAR GameStage = 4 AND HelpLanding = 0 THEN
+	SETVAR HelpLanding 1,
+	PLAYTALKINGHEAD 109
+
+MACRO setuptantargets 3
+{
+	IF setupobjective6 THEN
+		CREATEUNIT tantarget_@1 rifleman (@2,@3) tan rifle,
+		SETAIPOSE lastcreated STAND,
+		SETAIMODE lastcreated IGNORE,
+		ADDMISSIONOBJECTIVE lastcreated,
+		TRIGGER setrandomheading lastcreated
+}
+EXPAND setuptantargets ( 1 866 1040 )
+EXPAND setuptantargets ( 2 817 1104 )
+EXPAND setuptantargets ( 3 764 1166 )
+EXPAND setuptantargets ( 4 705 1233 )
+EXPAND setuptantargets ( 5 649 1308 )
+
+//*** GAME STAGE 5 - DROP TROOPS AT PAD11 ***//
+
+
+//*** GAME STAGE 6 - TARGET PRACTICE ***//
+
+IF ALLOF KILLED tantarget_1 KILLED tantarget_2 KILLED tantarget_3 KILLED tantarget_4 KILLED tantarget_5 THEN
+	SETMISSIONINFO fs4,
+	SETVAR GameStage 6,
+	PLAYTALKINGHEAD 131,
+	PLAYTALKINGHEAD 132,
+	TRIGGER setupgoodies 
+
+IF PADON pad40 TESTVAR GameStage = 5 AND HelpWeapon = 0 THEN
+	SETVAR HelpWeapon 10,
+	PLAYTALKINGHEAD 105
+
+//*** GAME STAGE 6 - TARGET PRACTICE ***//
+
+
+//*** GAME STAGE 7 - COLLECT POWER-UPS ***//
+
+//IF PADON pad40 TESTVAR GameStage = 6 AND HelpPowerUp < 10 AND HelpPowerUp > 0 THEN
+//	PLAYTALKINGHEAD 129
+
+IF PADON pad30 TESTVAR GameStage = 6 AND HelpPowerUp < 1 THEN
+	SETVAR HelpPowerUp 1,
+	PLAYTALKINGHEAD 107
+	
+IF PICKEDUP PowerupList BY captain TESTVAR HelpPowerUp < 5 THEN
+	SETVAR HelpPowerUp 5,
+	PLAYTALKINGHEAD 133,
+	PLAYTALKINGHEAD 105
+
+IF ALLOF PICKEDUP P1 PICKEDUP P2 PICKEDUP P3 THEN
+	SETMISSIONINFO fs5,
+	SETVAR HelpPowerUp 10,
+	SETVAR GameStage 7,
+	TRIGGER setupstage8
+
+//*** GAME STAGE 7 - COLLECT POWER-UPS ***//
+
+
+//*** GAME STAGE 8 - PSUDO BATTLE ***//
+
+IF PADON pad40 TESTVAR GameStage = 7 THEN
+	SETVAR GameStage 8,
+	PLAYTALKINGHEAD 135,
+	PLAYTALKINGHEAD 136
+
+IF setupstage8 THEN
+	ADDVAR TanDeployed 1,
+	TRIGGER nextpatrol,
+	TRIGGER completepatrolsetup lastcreated
+
+IF completepatrolsetup THEN
+	SETFACING me 128,
+	ADDMISSIONOBJECTIVE me,
+	ORDER me GOTO pad51 INMODE DEFEND
+
+IF nextpatrol TESTVAR HelpEnemy < 5 AND TanDeployed < 10 THEN SEQUENTIAL
+	CREATEVEHICLE TanV jeep pad50 tan,
+	CREATEVEHICLE TanV jeep pad50 tan,
+	CREATEVEHICLE TanV jeep pad50 tan,
+	CREATEVEHICLE TanV tank pad50 tan,
+	CREATEVEHICLE TanV tank pad50 tan
+
+IF nextpatrol TESTVAR TanDeployed >= 10 THEN
+	SETVAR HelpEnemy 999,
+	TRIGGER flightschoolwin
+
+IF KILLED TanDummy THEN
+	ADDVAR HelpEnemy 1,
+	TRIGGER flightschoolwin
+
+IF flightschoolwin TESTVAR HelpEnemy >= 5 THEN
+	PLAYTALKINGHEAD 138,
+	TRIGGERDELAY 10000 GREENWINS
+
+IF flightschoolwin TESTVAR HelpEnemy < 5 THEN
+	TRIGGER setupstage8
+
+IF PADON pad51 THEN
+	ORDER me GOTO pad52 INMODE DEFEND
+
+IF PADON pad52 THEN
+	ORDER me GOTO pad53 INMODE DEFEND,
+	TRIGGER setupstage8
+
+IF PADON ExitPad THEN
+	UNDEPLOY me
+
+IF HIT captain TESTVAR HelpArmor = 0 AND GameStage >= 8 THEN
+	SETVAR HelpArmor 1,
+	PLAYTALKINGHEAD 104
+
+IF HIT captain TESTVAR HelpArmor = 1 AND GameStage >= 8 THEN
+	SETVAR HelpArmor 10,
+	ADDMISSIONOBJECTIVE P4,
+	ADDMISSIONOBJECTIVE P5,
+	ADDMISSIONOBJECTIVE P6,
+	PLAYTALKINGHEAD 137
+
+//*** GAME STAGE 8 - PSUDO BATTLE ***//
+
+
+//*** CAPTAIN KILLED ***//
+
+IF KILLED captain BUTNOT infinitelife THEN
+	PLAYTALKINGHEAD 139,
+	TRIGGERDELAY 5000 fs_retry
+
+IF infinitelife THEN
+	PLAYTALKINGHEAD 139,
+	TRIGGERDELAY 5000 fs_retry
+
+IF fs_retry THEN
+	RESURRECT captain (2493,3699,500)
+
+//*** CAPTAIN KILLED ***//
+
+
+// ======= LANDING PADS ======= //
+
+OBJECT 43 910
+	STATE ON
+		FRAME 750 0
+		FRAME 1 0
+			SETOBJSTATE ME OFF
+	STATE OFF
+		FRAME 1250 1
+		FRAME 1 0
+			SETOBJSTATE ME ON
+
+OBJECT 43 920
+	STATE ON
+		FRAME 750 0
+		FRAME 1 0
+			SETOBJSTATE ME OFF
+	STATE OFF
+		FRAME 1250 1
+		FRAME 1 0
+			SETOBJSTATE ME ON
+
+IF PADON LPad10 THEN
+	TRIGGERDELAY 1000 copterlanding10
+
+IF copterlanding10 TESTVAR GETPADSTATUS LPad10 = 1 AND eaglehaslanded = 0 THEN
+	LAND captain,
+	TRIGGERDELAY 1 copterlanding10
+
+IF PADON LPad11 THEN
+	TRIGGERDELAY 1000 copterlanding11
+
+IF copterlanding11 TESTVAR GETPADSTATUS LPad11 = 1 AND eaglehaslanded = 0 THEN
+	LAND captain,
+	TRIGGERDELAY 1 copterlanding11
+
+IF LANDED captain THEN
+	SETVAR eaglehaslanded 1
+
+IF TOOKOFF captain THEN
+	SETVAR eaglehaslanded 0
+
+IF PADOFF LPad10 THEN
+	SETVAR eaglehaslanded 0
+
+IF PADOFF LPad11 THEN
+	SETVAR eaglehaslanded 0
+
+// ======= LANDING PADS ======= //
+
+

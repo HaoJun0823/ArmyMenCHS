@@ -1,0 +1,1666 @@
+//Alpine1...A Bridge to Far...the product of the Meyer
+//Initial Outline
+
+//LISTS
+list listgreenresponseforce {beta gamma}
+list listtantokill {tan1 tan2 tan3 tan4 tan5 tan6 tan7 tan8 tan9 tan10 tan11 tan12 tan13 tan14 tan15 tan16 tan17 tan18 tan19 tan20 tan21 tan22 tan23 tan24 tan25}
+List listtantokill2 {goon1 goon2 goon3 goon4 goon5 goon6 goon7 goon8 left1 left2 left3 left4 left5 left6 left7 left8 center1 center2 center3 center4 center5 center6 center7 center8 center9 center10 center11 center12 center13 center14 right1 right2 right3 right4 right5 right6 right7 right8}
+
+
+//Included scripts
+INCLUDE ..\scripts\common.txt
+INCLUDE ..\scripts\tree2fx.txt
+
+preloadsprite 43 100 0
+preloadsprite 43 100 1
+preloadsprite 43 100 2
+preloadsprite 43 100 3
+preloadsprite 43 100 4
+
+preloadsprite 43 101 0
+preloadsprite 43 101 1
+preloadsprite 43 101 2
+preloadsprite 43 101 3
+preloadsprite 43 101 4
+
+preloadsprite 43 102 0
+preloadsprite 43 102 1
+preloadsprite 43 102 2
+preloadsprite 43 102 3
+preloadsprite 43 102 4
+
+preloadsprite 43 103 0
+preloadsprite 43 103 1
+preloadsprite 43 103 2
+preloadsprite 43 103 3
+preloadsprite 43 103 4
+
+preloadsprite 43 104 0
+preloadsprite 43 104 1
+preloadsprite 43 104 2
+preloadsprite 43 104 3
+preloadsprite 43 104 4
+
+preloadsprite 43 105 0
+preloadsprite 43 105 1
+preloadsprite 43 105 2
+preloadsprite 43 105 3
+preloadsprite 43 105 4
+
+preloadsprite 43 106 0
+preloadsprite 43 106 1
+preloadsprite 43 106 2
+preloadsprite 43 106 3
+preloadsprite 43 106 4
+
+preloadsprite 43 107 0
+preloadsprite 43 107 1
+preloadsprite 43 107 2
+preloadsprite 43 107 3
+preloadsprite 43 107 4
+
+preloadsprite 43 108 0
+preloadsprite 43 108 1
+preloadsprite 43 108 2
+preloadsprite 43 108 3
+preloadsprite 43 108 4
+
+preloadsprite 43 109 0
+preloadsprite 43 109 1
+preloadsprite 43 109 2
+preloadsprite 43 109 3
+preloadsprite 43 109 4
+
+preloadsprite 43 110 0
+preloadsprite 43 110 1
+preloadsprite 43 110 2
+preloadsprite 43 110 3
+preloadsprite 43 110 4
+
+preloadsprite 43 111 0
+preloadsprite 43 111 1
+preloadsprite 43 111 2
+preloadsprite 43 111 3
+preloadsprite 43 111 4
+
+preloadsprite 43 112 0
+preloadsprite 43 112 1
+preloadsprite 43 112 2
+preloadsprite 43 112 3
+preloadsprite 43 112 4
+
+preloadsprite 43 300 0
+preloadsprite 43 301 0
+preloadsprite 43 302 0
+preloadsprite 43 303 0
+preloadsprite 43 304 0
+preloadsprite 43 305 0
+preloadsprite 43 306 0
+preloadsprite 43 307 0
+preloadsprite 43 308 0
+preloadsprite 43 309 0
+preloadsprite 43 310 0
+preloadsprite 43 311 0
+preloadsprite 43 312 0
+preloadsprite 43 313 0
+preloadsprite 43 314 0
+
+preloadsprite 27 400 0
+preloadsprite 27 400 1
+preloadsprite 27 400 2
+preloadsprite 27 401 0
+
+preloadsprite 43 402 0
+
+//PADS
+PAD padtanstart1 11
+PAD padtanstart2 12
+PAD padtanstart3 13
+PAD padtanstart4 14
+PAD padtanstart5 15
+PAD padtanstart6 16
+PAD padtanstart7 17
+PAD padtanstart8 18
+PAD padtanstart9 19
+PAD padtanstart10 20
+PAD padtanstart11 21
+PAD padtanstart12 22
+PAD padtanstart13 23
+PAD padtanstart14 24
+PAD padtanstart15 25
+PAD padtanstart16 26
+PAD padtanstart17 27
+PAD padtanstart18 28
+PAD padtanstart19 29
+PAD padtanstart20 30
+PAD padtanstart21 31
+PAD padtanstart22 32
+PAD padtanstart23 33
+PAD padtanstart24 34			
+PAD padtanstart25 35			
+
+PAD padcrossriver 68 green vehicle > 1
+PAD padgreenvc 69 green vehicle
+
+PAD padblowbridge1 70 
+PAD padblowbridge2 71 
+PAD padblowbridge3 72 
+
+PAD padguardbridge1 74	green vehicle
+PAD padguardbridge2 75	green vehicle
+PAD padhelpbridge1 70	green vehicle 
+PAD padhelpbridge2 72 	green vehicle
+
+
+PAD padgreenstart1 100
+PAD padgreenstart2 101
+PAD padgreenstart3 102
+PAD padgreenstart4 103
+PAD padgreenstart5 104
+
+PAD padgreenmove1 110	green vehicle
+//PAD paddemotrigger 111 green
+
+PAD padconvoyharrass1 115
+PAD padconvoyharrass2 116
+
+PAD padgreenwin1 254 beta
+PAD padgreenwin2 254 gamma
+PAD padtanblockwin 254 tan > 0
+
+PAD padperpstart 220 perp
+PAD padpatrol1 120 center9
+PAD padpatrol1b 120 center10
+PAD padpatrol2 121 center9
+PAD padpatrol2b 121 center10
+PAD padpatrol3 122 center11
+PAD padpatrol3b 122 center12
+PAD padpatrol4 123 center11
+PAD padpatrol4b 123 center12
+PAD padpatrol5 124 center13
+PAD padpatrol5b 124 center14
+PAD padpatrol6 125 center13
+PAD padpatrol6b 125 center14
+PAD padgoonstart1 151
+PAD padgoonstart2 152
+PAD padgoonstart3 153
+PAD padgoonstart4 154
+PAD padtanleftstart1 160
+PAD padtanleftstart2 161
+PAD padtanleftstart3 162
+PAD padtanleftstart4 163
+PAD padtanleftstart5 164
+PAD padtanleftstart6 165
+PAD padtanleftstart7 166
+PAD padtanleftstart8 167
+PAD padtanleftstart9 168
+PAD padtanleftstart10 169
+PAD padtancenterstart1 180
+PAD padtancenterstart2 181
+PAD padtancenterstart3 182
+PAD padtancenterstart4 183
+PAD padtancenterstart5 184
+PAD padtancenterstart6 185
+PAD padtancenterstart7 186
+PAD padtancenterstart8 187
+PAD padtancenterstart9 188
+PAD padtancenterstart10 189
+PAD padtancenterstart11 190
+PAD padtancenterstart12 191
+PAD padtancenterstart13 192
+PAD padtancenterstart14 193
+PAD padtanrightstart1 200
+PAD padtanrightstart2 201
+PAD padtanrightstart3 202
+PAD padtanrightstart4 203
+PAD padtanrightstart5 204
+PAD padtanrightstart6 205
+PAD padtanrightstart7 206
+PAD padtanrightstart8 207
+PAD padtanrightstart9 208
+PAD padtanrightstart10 209
+PAD padgreentrip1 230 green vehicle				//green vehicle
+PAD padgreentrip2 231 green vehicle
+PAD padgreentrip3 232 green vehicle
+PAD padgreentrip4 233 green vehicle
+PAD padgreentrip5 234 green vehicle
+PAD padgreentrip6 235 green vehicle
+
+PAD padconvoymove1 240 green vehicle > 0
+PAD padconvoymove2 241 green vehicle > 0
+PAD padconvoymove3 242 green vehicle > 0
+PAD padconvoymove4 243 green vehicle > 0
+PAD padconvoymove5 244 green vehicle > 0
+PAD padconvoymove6 245 green vehicle > 0
+PAD padconvoymove7 246 green vehicle > 0
+
+PAD padconvoyhelp1 247 green vehicle
+PAD padconvoyhelp2 248 green vehicle
+PAD padconvoyhelp3 249 green vehicle
+PAD padconvoyhelp4 250 green vehicle
+
+//VARIABLES
+VARIABLE numgreendead 0
+VARIABLE numtankilled 0
+VARIABLE vargoonreact 0
+VARIABLE varrollpad 0
+VARIABLE numtankilled2 0
+
+
+IF startup1 THEN
+	TRIGGER setuptrees,
+	TRIGGER setupsounds,
+	SETCAMERAFOCUS stonebridge,
+	TRIGGERDELAY 27000 setupbugs,
+	TRIGGER greenintro,
+	TRIGGERDELAY 4000 cameraintro,										//new
+	TRIGGERDELAY 8000 runaway,
+//	TRIGGERDELAY 12000 bladereaction,									//first spot of POW
+	TRIGGER showmissionobjective,
+	CREATEPOWERUP "partialarmor" partialarmor (418,3209),
+	CREATEPOWERUP "partialarmor" partialarmor (980,4010),
+	TRIGGERDELAY 2 forcecamera											//forces camera on to bridge\
+	
+IF forcecamera THEN
+	SETCAMERAFOCUS stonebridge
+
+IF showmissionobjective THEN
+	PLAYTALKINGHEAD 100,
+	ADDMISSIONOBJECTIVE stonebridge,
+	SETMISSIONINFO a11a
+
+//IF bladereaction THEN
+//	PLAYTALKINGHEAD 103
+
+MACRO macrogreenintro 8
+{
+	IF greenintro THEN
+		SETCAMERAFOCUS demo2,
+		CREATEUNIT @1 @2 (@3,@4) green @5,
+		SETMAXHEALTH @1 @6,
+		HEAL @1 100
+
+	IF capture THEN
+		ORDER @1 GOTO @7 INMODE ignore,
+		SETSPEED @1 @8
+}
+
+EXPAND macrogreenintro ("Cpl. Kinzek" rifleman 2110 4600 heavymg 600 padgreenstart3 normal)
+EXPAND macrogreenintro ("Pvt. Quinn" bazookaman 2110 4600 bazooka 600 padgreenstart2 normal)
+EXPAND macrogreenintro ("Pvt. Valenti" mortarman 2110 4600 mortar 600 padgreenstart5 normal)
+EXPAND macrogreenintro (martyr1 rifleman 2537 4260 rifle 100 padblowbridge2 slow)
+EXPAND macrogreenintro (martyr2 rifleman 2537 4260 rifle 100 padblowbridge2 slow)
+EXPAND macrogreenintro (martyr3 rifleman 2537 4260 rifle 100 padblowbridge2 slow)
+EXPAND macrogreenintro (demo1 rifleman 2300 4500 rifle 600 padblowbridge2 slow)
+EXPAND macrogreenintro (demo2 rifleman 2340 4450 rifle 1000 padblowbridge1 slow)
+EXPAND macrogreenintro (demo3 rifleman 2300 4500 rifle 600 padblowbridge3 slow)
+
+//Intro
+MACRO macrointro 5
+{
+	IF cameraintro THEN
+		CREATEUNIT @1 rifleman (@2,@3) tan rifle,
+		SETMAXHEALTH @1 600,
+		HEAL @1 100,
+		ORDER @1 FOLLOW @5 INMODE attack,
+		TRIGGERDELAY 10000 capture
+
+	IF capture THEN
+		ORDER @1 GOTO @4 INMODE ignore
+}
+
+EXPAND macrointro (capture1 2620 4260 padguardbridge1 martyr1)
+EXPAND macrointro (capture2 2300 4750 padgreenstart1 "Cpl. Kinzek")
+EXPAND macrointro (capture3 1870 4500 padguardbridge2 "Pvt.Quinn")
+EXPAND macrointro (capture4 2730 4144 padguardbridge2 martyr2)
+EXPAND macrointro (capture5 2380 4750 padgreenstart1 demo1)
+EXPAND macrointro (capture6 2450 4750 padguardbridge1 demo2)
+EXPAND macrointro (capture7 2400 3900 padguardbridge2 martyr3)
+EXPAND macrointro (capture8 2700 4300 padguardbridge2 martyr1)
+EXPAND macrointro (capture9 2380 4750 padguardbridge1 demo3)
+
+IF capture THEN
+	TRIGGERDELAY 1000 scatter
+
+IF scatter THEN
+	ORDER capture9 GOTO (2170,4550),
+	ORDER capture6 GOTO (2270,4561),
+	ORDER capture3 GOTO (2720,4240),
+	ORDER capture4 GOTO (2600,4190),
+	ORDER capture7 GOTO (2850,4200)
+
+IF runaway THEN
+	ORDER "Cpl. Kinzek" GOTO padgreenstart3 INMODE ignore,
+	ORDER "Pvt. Quinn" GOTO padgreenstart2 INMODE ignore,
+	ORDER "Pvt. Valenti" GOTO padgreenstart5 INMODE ignore,
+	//showmessage "It's an ambush! Fall back, fall back.",
+	PLAYTALKINGHEAD 113
+
+IF setupgreen THEN
+	CREATECOPTER scout "captain" (930,4950,110) green,
+	SETAIRMAP captain 0,
+	SETAIRVARIANCE captain 135,
+	SETSTEP captain 125,
+	SETCAMERAFOCUS captain,
+	SETAIMODE "Cpl. Kinzek" defend,
+	SETAIMODE "Pvt. Quinn" defend,
+	SETAIMODE "Pvt. Valenti" defend,
+	SETMAXHEALTH "Cpl. Kinzek" 300,
+	SETMAXHEALTH "Pvt. Quinn" 300,
+	SETMAXHEALTH "Pvt. Valenti" 300,
+	HEAL "Cpl. Kinzek" 95,
+	HEAL "Pvt. Quinn" 95,
+	HEAL "Pvt. Valenti" 95,	 
+	// Airborne capable Inf is deployed during Camera scene...
+	CREATEPOWERUP "FullArmor" FullArmor (2725,5000),
+	CREATEPOWERUP "FullArmor" FullArmor (1560,5010),						// need move
+	CREATEPOWERUP "ArmorBoost" armorboost (950,4070),
+	CREATEPOWERUP "partialarmor" partialarmor (135,4578),
+	CREATEPOWERUP "partialarmor" partialarmor (130,4751),
+	CREATEPOWERUP "BottleRockets" groundmissile (1645,4666) 10,
+	CREATEPOWERUP "napalm" napalmbomb (1980,4960) 5,
+	CREATEPOWERUP "airblast" airblastmissile (2400,3150) 10,
+	CREATEPOWERUP "medkit" medkit (1800,5000)
+		
+UNTIL 100 REPEAT 1 BY 1
+{
+	IF setuptrees THEN
+		DAMAGE tree$ 17
+}
+
+IF setuptrees THEN
+	DAMAGE tree 17,
+	DAMAGE treebridge1 17,
+	DAMAGE treebridge2 17,
+	DAMAGE treebridge3 17,
+	UNDEPLOY objlog1,			//logs to build bridge
+	UNDEPLOY objlog2,
+	UNDEPLOY objlog3,
+	UNDEPLOY objtempbridge			//temp bridge...gets deployed when 3 logs placed
+	
+IF setuptan THEN
+	SETMAXHEALTH capture1 200,
+	SETMAXHEALTH capture2 200,
+	SETMAXHEALTH capture3 200,
+	SETMAXHEALTH capture4 200,
+	SETMAXHEALTH capture5 200,
+	SETMAXHEALTH capture6 200,
+	SETMAXHEALTH capture7 200,
+	SETMAXHEALTH capture8 200,
+	SETMAXHEALTH capture9 200,
+	HEAL capture1 90,
+	HEAL capture2 90,
+	HEAL capture3 90,
+	HEAL capture4 90,
+	HEAL capture5 90,
+	HEAL capture6 90,
+	HEAL capture7 90,
+	HEAL capture8 90,
+	HEAL capture9 90,
+	TRIGGER unitsetup
+
+Macro macroorders 5
+{
+	IF unitsetup THEN
+		CREATEUNIT tan@1 @2 @3 tan @4,
+		SETFACING tan@1 130,
+		SETAIMODE tan@1 @5
+}
+
+EXPAND macroorders (1 tank padtanstart22 rifle attack)
+EXPAND macroorders (2 ackackbase padtanstart2 rifle attack)
+EXPAND macroorders (3 ackackbase padtanstart25 rifle attack)
+EXPAND macroorders (4 jeep padtanstart23 rifle attack)
+EXPAND macroorders (5 rifleman padtanstart21 sniper attack)
+//EXPAND macroorders (6 stingerguy padtanstart3 stingermissile attack)
+EXPAND macroorders (7 stingerguy padtanstart5 stingermissile attack)
+EXPAND macroorders (8 stingerguy padtanstart15 stingermissile defend)
+EXPAND macroorders (9 stingerguy padtanstart20 stingermissile attack)
+EXPAND macroorders (10 bazookaman padtanstart9 bazooka defend)
+EXPAND macroorders (11 bazookaman padtanstart6 bazooka defend)
+EXPAND macroorders (12 mortarman padtanstart11 mortar defend)
+EXPAND macroorders (13 mortarman padtanstart12 mortar defend)
+EXPAND macroorders (14 rifleman padtanstart1 rifle attack)
+EXPAND macroorders (15 rifleman padtanstart4 rifle attack)
+EXPAND macroorders (16 rifleman padtanstart7 rifle attack)
+EXPAND macroorders (17 rifleman padtanstart8 rifle defend)
+EXPAND macroorders (18 rifleman padtanstart10 rifle attack)
+EXPAND macroorders (19 rifleman padtanstart13 rifle attack)
+EXPAND macroorders (20 rifleman padtanstart14 rifle defend)
+EXPAND macroorders (21 rifleman padtanstart16 rifle attack)
+EXPAND macroorders (22 rifleman padtanstart17 rifle defend)
+EXPAND macroorders (23 rifleman padtanstart18 rifle attack)
+EXPAND macroorders (24 rifleman padtanstart19 rifle defend)
+EXPAND macroorders (25 rifleman padtanstart24 rifle attack)
+
+// pair of rifleman constantly attack convoy, should be annoying, but not lethal
+
+IF PADON padgreentrip1 PADON padgreentrip2 PADON padgreentrip3 THEN
+	TRIGGER greenfar															//check to see if green are far, that is all
+
+IF KILLED raider1tree THEN
+	TRIGGER raider1spotfound
+
+IF convoyraiders BUTNOT greenfar THEN									//show up near side, but stop if convoy gone far
+	TRIGGER secondcheck
+
+IF secondcheck BUTNOT raider1spotfound THEN
+	CREATEUNIT "raider1" rifleman padconvoyharrass1 tan rifle,			//inf
+	ORDER lastcreated FOLLOW gamma INMODE attack,
+	CREATEUNIT "raider2" rifleman padconvoyharrass1 tan rifle,
+	ORDER lastcreated FOLLOW beta INMODE attack,
+	TRIGGERDELAY 50000 convoyraiders
+
+MACRO macroalttargets 3								//make sure raiders have target
+{
+	IF KILLED @1 THEN
+		ORDER @2 FOLLOW @3 INMODE attack
+}
+
+EXPAND macroalttargets (gamma raider1 beta)
+EXPAND macroalttargets (gamma raider3 beta)
+EXPAND macroalttargets (beta raider2 gamma)
+EXPAND macroalttargets (beta raider4 gamma)
+
+IF KILLED raider2tree THEN
+	TRIGGER raider2spotfound
+
+IF count 1 of PADON padcrossriver THEN
+	TRIGGER convoyraiders2
+
+IF convoyraiders2 BUTNOT raider2spotfound THEN							//show far side
+	CREATEUNIT "raider3" rifleman padconvoyharrass2 tan rifle,			//inf
+	ORDER lastcreated FOLLOW gamma INMODE attack,
+	CREATEUNIT "raider4" rifleman padconvoyharrass2 tan rifle,
+	ORDER lastcreated FOLLOW beta INMODE attack,
+	TRIGGERDELAY 60000 convoyraiders2
+
+IF count 1 of padon padblowbridge2 THEN
+	TRIGGERDELAY 1000 blowbridge
+
+IF blowbridge THEN
+	setm80 demo1 green,
+	setm80 demo2 green,
+	setm80 demo3 green,
+	PLAYTALKINGHEAD 104,
+	ORDER capture2 GOTO padgreenstart2 INMODE attack,
+	ORDER capture5 GOTO padgreenstart3 INMODE attack,
+	TRIGGERDELAY 1500 demoorder			//constantly order demo team to bridge
+
+IF  demoorder THEN
+	ORDER demo1 GOTO padblowbridge2 INMODE ignore,
+	ORDER demo2 GOTO padblowbridge3 INMODE ignore,
+	ORDER demo3 GOTO padblowbridge1 INMODE ignore,
+	TRIGGERDELAY 1500 demoorder
+	
+IF KILLED demo1 KILLED demo2 KILLED demo3 THEN
+	SETAIPOSE capture1 prone,
+	SETAIPOSE capture3 prone,
+	SETAIPOSE capture4 prone,
+	SETAIPOSE capture6 prone,
+	SETAIPOSE capture7 prone,
+	SETAIPOSE capture8 prone,
+	SETAIPOSE capture9 prone,
+	createexplosion padblowbridge2 148 1000
+
+IF KILLED stonebridge THEN
+	TRIGGER picktreeobjective,
+	PLAYTALKINGHEAD 105,
+	PLAYTALKINGHEAD 114,
+	//TRIGGERDELAY 3000 samresponse,
+	//REMOVEMISSIONOBJECTIVE padgreenwin,
+	//ADDMISSIONOBJECTIVE padcrossriver,
+	SETMISSIONINFO a11b,
+	PLAYSOUND trainbridgecollapse.wav captain 5 1 0 1200,			//bridge collapse
+	TRIGGERDELAY 5001 setupgreen,
+	TRIGGERDELAY 5000 setuptan,
+	CREATEPOWERUP "firecracker" thrownfirecracker padblowbridge2 10,
+	SETAIMODE capture1 defend,
+	SETAIMODE capture3 defend,
+	SETAIMODE capture4 defend,
+	SETAIMODE capture6 defend,
+	SETAIMODE capture7 defend,
+	SETAIMODE capture8 defend,
+	SETAIMODE capture9 defend,
+	TRIGGERDELAY 5000 getup,
+	TRIGGERDELAY 4500 savebridgeblown,
+
+IF getup THEN
+	SETAIPOSE capture1 none,
+	SETAIPOSE capture3 none,
+	SETAIPOSE capture4 none,
+	SETAIPOSE capture6 none,
+	SETAIPOSE capture7 none,
+	SETAIPOSE capture8 none,
+	SETAIPOSE capture9 none
+
+IF savebridgeblown THEN
+	SAVEGAME "Foothills_2"
+	
+//IF samresponse THEN					// with bridge blown, have to find another way.
+	//PLAYTALKINGHEAD 101	
+
+IF picktreeobjective THEN				///should be RANDOM
+	ADDMISSIONOBJECTIVE treebridge1,
+	ADDMISSIONOBJECTIVE treebridge2,
+	ADDMISSIONOBJECTIVE treebridge3
+	
+//Death Generated Goodies. Again certain Items are skewed to show more often than others
+
+Macro macrogoodies 1
+
+{
+	IF KILLED listtantokill TESTVAR numtankilled = @1 THEN
+		PLAYSOUND powerupappear.wav me 6 1 0 1200,			//sound when stuff appears
+		TRIGGER stuff
+}
+
+	IF stuff THEN RANDOM
+		CREATEPOWERUP "FullArmor1" FullArmor me,
+		CREATEPOWERUP "ArmorBoost1" armorboost me,
+		CREATEPOWERUP "partialarmor1" partialarmor me,
+		CREATEPOWERUP "partialarmor1" partialarmor me,
+		CREATEPOWERUP "BottleRockets1" groundmissile me 7,
+		CREATEPOWERUP "BottleRockets1" groundmissile me 7,
+		CREATEPOWERUP "BottleRockets1" groundmissile me 7,
+		CREATEPOWERUP "firecracker1" thrownfirecracker me 5,
+		CREATEPOWERUP "firecracker1" thrownfirecracker me 5,
+		CREATEPOWERUP "napalm1" napalmbomb me 5,
+		CREATEPOWERUP "airblast1" airblastmissile me 7,
+		CREATEPOWERUP "medkit1" medkit me
+
+IF KILLED listtantokill THEN						
+	ADDVAR numtankilled 1
+													//24 Tan to kill for goodies
+EXPAND macrogoodies (2)
+EXPAND macrogoodies (4)
+EXPAND macrogoodies (6)
+EXPAND macrogoodies (9)
+EXPAND macrogoodies (12)
+EXPAND macrogoodies (15)
+EXPAND macrogoodies (18)
+EXPAND macrogoodies (21)
+EXPAND macrogoodies (24)
+
+//Annoying fly generator			Create 3 flies that will constantly attack player
+Macro macroflygen 1
+{
+	IF setupbugs THEN
+		CREATEINSECT mutantfly fly@1 (2900,600,135) tan,			//should start in some corner
+		SETAIRMAP fly@1 0,
+		SETAIRVARIANCE fly@1 135,
+		SETSTEP fly@1 135,
+		SETAIMODE fly@1 WANDER				//flies to wander
+}
+
+EXPAND macroflygen (1)
+EXPAND macroflygen (2)
+//EXPAND macroflygen (3)
+
+Macro macrolarva 1
+{
+	IF KILLED fly@1 THEN 
+		TRIGGERDELAY 60000 larva
+}
+
+EXPAND macrolarva (1)
+EXPAND macrolarva (2)
+//EXPAND macrolarva (3)
+
+IF larva THEN
+	RESURRECT me (2900,600,135),
+	HEAL me 100,
+	SETAIRMAP me 0,
+	SETAIRVARIANCE me 135,
+	SETAIMODE me WANDER
+
+// What rolls down stairs, alone or in pairs? It's Log! Log!
+MACRO macrolog 1
+{
+	IF KILLED treebridge@1 THEN
+		CREATEWINCHABLE log "buildlog@1" me, 			//1000,
+		CREATEEXPLOSION me 136,
+		CREATEEXPLOSION me 128,
+		ADDMISSIONOBJECTIVE buildlog@1,
+		UNDEPLOY treebridge@1					//should remove old tree
+}
+
+IF count 1 of KILLED treebridge1 KILLED treebridge2 KILLED treebridge3 THEN
+	PLAYTALKINGHEAD 106
+
+EXPAND macrolog (1)
+EXPAND macrolog (2)
+EXPAND macrolog (3)
+
+// Building the perfect Bridge
+// Track if log is picked up
+VARIABLE varlog1 0
+VARIABLE varlog2 0
+VARIABLE varlog3 0
+VARIABLE varloglocx1 0
+VARIABLE varloglocy1 0
+VARIABLE varloglocx2 0
+VARIABLE varloglocy2 0
+VARIABLE varloglocx3 0
+VARIABLE varloglocy3 0
+
+MACRO macrologplace 1
+{
+	IF PICKEDUP buildlog@1 THEN		//1 mean log is on copter
+		SETVAR varlog1 1		//not sure if this is needed
+
+	IF DROPPED buildlog@1 THEN		//0 means no longer has it
+		SETVAR varlog1 0,
+		SETVAR varloglocx@1 GETX me,
+		SETVAR varloglocy@1 GETY me,
+		TRIGGER rightspota@1,
+		TRIGGER rightspotc@1
+
+	IF rightspota@1 TESTVAR varloglocx@1 > 2300 THEN	//perfect placement (2511,4339) to (2333,4394)
+		TRIGGER rightspotb@1
+
+	IF rightspotb@1 TESTVAR varloglocx@1 < 2600 THEN
+		//showmessage "log correct x",
+		TRIGGER placea@1
+	
+	IF rightspotc@1 TESTVAR varloglocy@1 > 4300 THEN
+		TRIGGER rightspotd@1
+
+	IF rightspotd@1 TESTVAR varloglocy@1 < 4400 THEN
+		//showmessage "log correct y",
+		TRIGGER placeb@1
+
+	If count 2 of placea@1 placeb@1 THEN
+		//showmessage "Log placed!",
+		TRIGGER logplop@1
+	
+}
+
+EXPAND macrologplace (1)
+EXPAND macrologplace (2)
+EXPAND macrologplace (3)
+
+VARIABLE varfinishbridge 0
+
+IF logplop1 THEN				// remove axr replace w/log obj so player can't remove
+	UNDEPLOY buildlog1,
+	DEPLOY objlog1 (2415,4365,1),			//force deploy
+	ADDVAR varfinishbridge 1,
+	REMOVEMISSIONOBJECTIVE treebridge1,
+	TRIGGER bridgebuilt
+
+IF logplop2 THEN				// remove axr replace w/log obj so player can't remove
+	UNDEPLOY buildlog2,
+	DEPLOY objlog2 (2390,4340,1),			//force deploy
+	ADDVAR varfinishbridge 1,
+	REMOVEMISSIONOBJECTIVE treebridge2,
+	TRIGGER bridgebuilt
+
+IF logplop3 THEN				// remove axr replace w/log obj so player can't remove
+	UNDEPLOY buildlog3,
+	DEPLOY objlog3 (2455,4375,1),			//force deploy
+	ADDVAR varfinishbridge 1,
+	REMOVEMISSIONOBJECTIVE treebridge3,
+	TRIGGER bridgebuilt
+
+IF count 1 of logplop1 logplop2 logplop3 THEN
+	PLAYTALKINGHEAD 107
+
+IF count 2 of logplop1 logplop2 logplop3 THEN
+	PLAYTALKINGHEAD 118
+
+IF bridgebuilt TESTVAR varfinishbridge = 3 THEN
+	DEPLOY objtempbridge,				//Deploy where old bridge was
+	PLAYTALKINGHEAD 108,
+	TRIGGER setuptan2,
+	TRIGGER convoyarrive,
+	REMOVEMISSIONOBJECTIVE buildlog1,
+	REMOVEMISSIONOBJECTIVE buildlog2,
+	REMOVEMISSIONOBJECTIVE buildlog3,
+	REMOVEMISSIONOBJECTIVE stonebridge,
+	SETMISSIONINFO a11c,
+	TRIGGERDELAY 500 bridgesavegame,
+	TRIGGER morepowerups
+
+VARIABLE varconvoyhere 0							//create flag that convoy has arrived
+	
+IF convoyarrive THEN
+	CREATEVEHICLE "alpha" tank padgreenstart1 green,
+		
+	CREATEVEHICLE "beta" jeep padgreenstart3 green,
+	SETFACING beta 180,
+	CREATEUNIT "Sgt. Scotty" rifleman padgreenstart3 green heavyMG,
+	CREATEUNIT "Pvt. Gray" bazookaman padgreenstart3 green bazooka,
+	ENTERVEHICLE "Sgt. Scotty" beta,
+	ENTERVEHICLE "Pvt. Gray" beta,
+	
+	CREATEVEHICLE "gamma" jeep padgreenstart4 green,
+	SETFACING gamma 180,
+ 	CREATEUNIT "Spec. Meyer" rifleman padgreenstart4 green heavyMG,
+	CREATEUNIT "Spec. Longworth" rifleman padgreenstart4 green heavymg,
+	ENTERVEHICLE "Spec. Meyer" gamma,
+	ENTERVEHICLE "Spec. Longworth" gamma,
+	
+	CREATEVEHICLE "epsilon" jeep padgreenstart2 green,
+	CREATEUNIT "Pvt. Lucky" bazookaman padgreenstart2 green bazooka,
+	CREATEUNIT "Spec. Macaraeg" rifleman padgreenstart2 green heavymg,
+	ENTERVEHICLE "Pvt. Lucky" epsilon,
+	ENTERVEHICLE "Spec. Macaraeg" epsilon,
+	// tell player convoy has arrived
+	PLAYTALKINGHEAD 115,
+	ADDVAR varconvoyhere 1,							//used to let me know convoy arrived
+	TRIGGERDELAY 9000 convoyraiders,
+	TRIGGER startconvoy									//needs tweaking
+
+IF morepowerups THEN
+	CREATEPOWERUP "FullArmor" FullArmor (715,2249),
+	CREATEPOWERUP "FullArmor" FullArmor (300,900),
+	CREATEPOWERUP "partialarmor" partialarmor (750,2430),
+	CREATEPOWERUP "partialarmor" partialarmor (800,530),
+	CREATEPOWERUP "partialarmor" partialarmor (2800,2500),
+	CREATEPOWERUP "partialarmor" partialarmor (1216,1206),
+	CREATEPOWERUP "BottleRockets" groundmissile (1700,600) 10,
+	CREATEPOWERUP "firecracker" thrownfirecracker (1540,2340) 10,
+	CREATEPOWERUP "BottleRockets" groundmissile (2670,1430) 10,
+	CREATEPOWERUP "firecracker" thrownfirecracker (1270,970) 10,
+	CREATEPOWERUP "BottleRockets" groundmissile (226,4686) 10,
+	CREATEPOWERUP "firecracker" thrownfirecracker (530,4891) 10,
+	CREATEPOWERUP "BottleRockets" groundmissile (2700,4340) 10,
+	CREATEPOWERUP "firecracker" thrownfirecracker (2674,4165) 10,
+	CREATEPOWERUP "napalm" napalmbomb (1885,4130) 5,
+	CREATEPOWERUP "napalm" napalmbomb (218,1300) 5,
+	CREATEPOWERUP "airblast" airblastmissile (227,683) 10
+		
+
+//2nd part of the mission...getting to the other side
+IF setuptan2 THEN	
+	//Left Flank Forces
+	CREATEUNIT "left1" rifleman padtanleftstart1 tan,					//used to be tank...now rifle
+	CREATEVEHICLE "left2" ackackbase padtanleftstart2 tan,
+	CREATEUNIT "left3" bazookaman padtanleftstart3 tan bazooka,			//bazooka
+	CREATEUNIT "left4" rifleman padtanleftstart4 tan rifle,
+	CREATEUNIT "left5" rifleman padtanleftstart5 tan rifle,
+	CREATEUNIT "left6" rifleman padtanleftstart6 tan rifle,
+	CREATEUNIT "left7" rifleman padtanleftstart7 tan rifle,
+	CREATEUNIT "left8" rifleman padtanleftstart8 tan rifle,
+	CREATEUNIT "left9" bazookaman padtanleftstart9 tan bazooka,			
+	CREATEUNIT "left10" bazookaman padtanleftstart10 tan bazooka,			
+	
+	//Center Forces
+	CREATEVEHICLE "center1" ackackbase padtancenterstart1 tan,	
+	CREATEVEHICLE "center2" ackackbase padtancenterstart2 tan,
+	CREATEUNIT "center3" stingerguy padtancenterstart3 tan stingermissile,			//stinger
+	CREATEUNIT "center4" stingerguy padtancenterstart4 tan stingermissile,	
+	CREATEUNIT "center5" bazookaman padtancenterstart5 tan bazooka,			//bazooka
+	CREATEUNIT "center6" bazookaman padtancenterstart6 tan bazooka,
+	CREATEUNIT "center7" mortarman padtancenterstart7 tan mortar,			//mortar
+	CREATEUNIT "center8" mortarman padtancenterstart8 tan mortar,
+	CREATEUNIT "center9" rifleman padtancenterstart9 tan rifle,				//inf
+	CREATEUNIT "center10" rifleman padtancenterstart10 tan rifle,
+	CREATEUNIT "center11" rifleman padtancenterstart11 tan rifle,
+	CREATEUNIT "center12" rifleman padtancenterstart12 tan rifle,
+	CREATEUNIT "center13" rifleman padtancenterstart13 tan rifle,
+	CREATEUNIT "center14" rifleman padtancenterstart14 tan rifle,
+	//Right Flank Forces
+	CREATEVEHICLE "Right1" tank padtanrightstart1 tan,
+	CREATEVEHICLE "Right2" ackackbase padtanrightstart2 tan,
+	CREATEUNIT "Right3" stingerguy padtanrightstart3 tan stingermissile,			//stinger
+	CREATEUNIT "right4" stingerguy padtanrightstart4 tan stingermissile,
+	CREATEUNIT "right5" rifleman padtanrightstart5 tan rifle,
+	CREATEUNIT "right6" bazookaman padtanrightstart6 tan bazooka,
+	CREATEUNIT "right7" rifleman padtanrightstart7 tan rifle,
+	CREATEUNIT "right8" rifleman padtanrightstart8 tan rifle,
+	CREATEUNIT "right9" bazookaman padtanrightstart9 tan bazooka,
+	CREATEUNIT "right10" bazookaman padtanrightstart10 tan bazooka,
+
+	//Hidden tree guys
+	CREATEUNIT "Hidden1" stingerguy (238,1244) tan stingermissile,			//stinger
+	SETFACING right9 90,
+	SETFACING right10 90,
+	SETFACING left9 130,
+	SETFACING left10 90,
+	SETAIPOSE right9 kneel,
+	SETAIPOSE right10 prone,
+	SETAIPOSE left9 kneel,
+	SETAIPOSE left10 prone,
+	TRIGGER goonsquad,
+	TRIGGER createperp,
+	TRIGGER tanorders2,
+	TRIGGER tanorders21
+
+IF KILLED hidden1 THEN
+	CREATEPOWERUP "BottleRockets1" groundmissile me 20
+
+Macro macroorders2 2
+{
+	IF tanorders2 THEN
+		SETFACING left@1 130,
+		SETFACING center@1 130,
+		SETFACING right@1 130,		
+		SETAIMODE left@1 @2,
+		SETAIMODE center@1 @2,
+		SETAIMODE right@1 @2
+}
+
+// a little tricky, there has to be symetry in orders between the groups
+EXPAND macroorders2 (1 attack)
+EXPAND macroorders2 (2 defend)
+EXPAND macroorders2 (3 attack)
+EXPAND macroorders2 (4 attack)
+EXPAND macroorders2 (5 attack)
+EXPAND macroorders2 (6 attack)
+EXPAND macroorders2 (7 defend)
+EXPAND macroorders2 (8 defend)
+
+// I could send 9-14 center on patrol...hmmm
+
+Macro macrotanorders21 3
+{
+	If tanorders21 THEN
+		ORDER center@1 GOTO padpatrol@2 INMODE @3				//need padpatrolnames
+}
+
+EXPAND macrotanorders21 (9 1 attack)
+EXPAND macrotanorders21 (10 2 defend)
+EXPAND macrotanorders21 (11 3 attack)
+EXPAND macrotanorders21 (12 4 defend)
+EXPAND macrotanorders21 (13 5 attack)
+EXPAND macrotanorders21 (14 6 defend)
+
+Macro macropadpatrol 2
+{
+	IF PADON padpatrol@1 THEN
+		ORDER me goto padpatrol@2 INMODE attack
+}
+
+EXPAND macropadpatrol (1 2)
+EXPAND macropadpatrol (1b 2)
+EXPAND macropadpatrol (2 1)
+EXPAND macropadpatrol (2b 1)
+EXPAND macropadpatrol (3 4)
+EXPAND macropadpatrol (3b 4)
+EXPAND macropadpatrol (4 3)
+EXPAND macropadpatrol (4b 3)
+EXPAND macropadpatrol (5 6)
+EXPAND macropadpatrol (5b 6)
+EXPAND macropadpatrol (6 5)
+EXPAND macropadpatrol (6b 5)
+
+//Perpetual Tan Generator
+IF createperp THEN		 		
+	CREATEUNIT "perp" rifleman padperpstart tan rifle,
+	TRIGGER perporder
+
+IF perporder THEN RANDOM
+	ORDER perp GOTO padpatrol1 INMODE attack,
+	ORDER perp GOTO padpatrol1 INMODE defend,
+	ORDER perp GOTO padpatrol2 INMODE attack,
+	ORDER perp GOTO padpatrol2 INMODE defend,
+	ORDER perp GOTO padpatrol3 INMODE attack,
+	ORDER perp GOTO padpatrol3 INMODE defend,
+	ORDER perp GOTO padpatrol4 INMODE attack,
+	ORDER perp GOTO padpatrol4 INMODE defend,
+	ORDER perp GOTO padpatrol5 INMODE attack,
+	ORDER perp GOTO padpatrol5 INMODE defend,
+	ORDER perp GOTO padpatrol6 INMODE attack,
+	ORDER perp GOTO padpatrol6 INMODE defend
+
+IF KILLED perp THEN
+	TRIGGERDELAY 7500 resperp
+
+IF resperp THEN
+	RESURRECT perp padperpstart,
+	heal perp 100,
+	TRIGGER perporder
+
+//Goon squad	Center oriented reserves, when copter or troops get going down one path the get activated
+IF goonsquad THEN
+	//Last Man Back
+	CREATEVEHICLE "Lastman" tank padtanblockwin tan,
+	SETFACING lastman 90,
+	SETAIMODE lastman defend,
+	//Goons...hired goons
+	CREATEVEHICLE "Goon1" tank padgoonstart1 tan,
+	CREATEVEHICLE "Goon2" halftrack padgoonstart2 tan,			//should be ack ack htrack
+	CREATEVEHICLE "Goon3" jeep padgoonstart3 tan,	
+	CREATEVEHICLE "Goon4" jeep padgoonstart4 tan,
+	CREATEUNIT "Goon5" rifleman padgoonstart3 tan rifle,			
+	CREATEUNIT "Goon6" rifleman padgoonstart3 tan rifle,	
+	CREATEUNIT "Goon7" rifleman padgoonstart4 tan rifle,			
+	CREATEUNIT "Goon8" stingerguy padgoonstart4 tan stingermissile,
+	ENTERVEHICLE goon5 goon3,
+	
+	ENTERVEHICLE goon6 goon3,
+	ENTERVEHICLE goon7 goon4,
+	ENTERVEHICLE goon8 goon4,
+	TRIGGER goonorders
+
+//Goon Orders	Inital state they stay put
+IF goonorders THEN
+	SETAIMODE goon1 DEFEND,
+	SETAIMODE goon2 DEFEND,
+	SETAIMODE goon3 DEFEND,
+	SETAIMODE goon4 DEFEND,
+	SETAIMODE goon5 DEFEND,
+	SETAIMODE goon6 DEFEND,
+	SETAIMODE goon7 DEFEND,
+	SETAIMODE goon8 DEFEND,
+	SETFACING goon1 130,
+	SETFACING goon2 130,
+	SETFACING goon3 130,
+	SETFACING goon4 130,
+	TRIGGERDELAY 240000 dosomething
+
+// If after a long time goes by send them orders			//set time to 30000 to 50000 if possible
+
+MACRO macrodosomething 1
+{
+	IF dosomething THEN RANDOM
+		ORDER goon@1 GOTO padpatrol1 INMODE attack,
+		ORDER goon@1 GOTO padpatrol2 INMODE attack,
+		ORDER goon@1 GOTO padpatrol3 INMODE attack,
+		ORDER goon@1 GOTO padpatrol4 INMODE attack,
+		ORDER goon@1 GOTO padpatrol5 INMODE attack,
+		ORDER goon@1 GOTO padpatrol6 INMODE attack,
+		ORDER goon@1 GOTO padpatrol7 INMODE attack,
+		ORDER goon@1 GOTO padpatrol8 INMODE attack
+}
+
+EXPAND macrodosomething (1)
+EXPAND macrodosomething (2)
+EXPAND macrodosomething (3)
+EXPAND macrodosomething (4)
+EXPAND macrodosomething (5)
+EXPAND macrodosomething (6)
+EXPAND macrodosomething (7) 
+EXPAND macrodosomething (8)
+
+IF dosomething THEN
+	TRIGGERDELAY 60000 dosomething
+
+//If fired upon or copter does something...
+//Pad movement if Green vehicles cross certain paths. Currently 5 checks
+MACRO macrogoonorders 3
+{
+	IF PADON padgreentrip@1 THEN
+		ORDER Goon@2 GOTO padgreentrip@1 INMODE @3
+}
+
+// 1st path
+EXPAND macrogoonorders (1 1 attack)					//Tank goes killing everything
+EXPAND macrogoonorders (1 2 attack)					//AA jeep kills
+EXPAND macrogoonorders (1 3 defend)					//Jeeps just try to get there
+EXPAND macrogoonorders (1 4 defend)
+EXPAND macrogoonorders (1 5 defend)					//Inf...1 team attack, the other defend
+EXPAND macrogoonorders (1 6 defend)					
+EXPAND macrogoonorders (1 7 attack)
+EXPAND macrogoonorders (1 8 attack)
+// 2nd path
+EXPAND macrogoonorders (2 1 attack)					//Tank goes killing everything
+EXPAND macrogoonorders (2 2 attack)					//AA jeep kills
+EXPAND macrogoonorders (2 3 defend)					//Jeeps just try to get there
+EXPAND macrogoonorders (2 4 defend)
+EXPAND macrogoonorders (2 5 defend)					//Inf...1 team attack, the other defend
+EXPAND macrogoonorders (2 6 defend)					
+EXPAND macrogoonorders (2 7 attack)
+EXPAND macrogoonorders (2 8 attack)
+// 3rd path
+EXPAND macrogoonorders (3 1 attack)					//Tank goes killing everything
+EXPAND macrogoonorders (3 2 attack)					//AA jeep kills
+EXPAND macrogoonorders (3 3 defend)					//Jeeps just try to get there
+EXPAND macrogoonorders (3 4 defend)
+EXPAND macrogoonorders (3 5 defend)					//Inf...1 team attack, the other defend
+EXPAND macrogoonorders (3 6 defend)					
+EXPAND macrogoonorders (3 7 attack)
+EXPAND macrogoonorders (3 8 attack)
+// 4th path
+EXPAND macrogoonorders (4 1 attack)					//Tank goes killing everything
+EXPAND macrogoonorders (4 2 attack)					//AA jeep kills
+EXPAND macrogoonorders (4 3 defend)					//Jeeps just try to get there
+EXPAND macrogoonorders (4 4 defend)
+EXPAND macrogoonorders (4 5 defend)					//Inf...1 team attack, the other defend
+EXPAND macrogoonorders (4 6 defend)					
+EXPAND macrogoonorders (4 7 attack)
+EXPAND macrogoonorders (4 8 attack)
+// 5th path
+EXPAND macrogoonorders (5 1 attack)					//Tank goes killing everything
+EXPAND macrogoonorders (5 2 attack)					//AA jeep kills
+EXPAND macrogoonorders (5 3 defend)					//Jeeps just try to get there
+EXPAND macrogoonorders (5 4 defend)
+EXPAND macrogoonorders (5 5 defend)					//Inf...1 team attack, the other defend
+EXPAND macrogoonorders (5 6 defend)					
+EXPAND macrogoonorders (5 7 attack)
+EXPAND macrogoonorders (5 8 attack)
+
+//Hunt and kill if fired upon
+MACRO macrogoonreact 5				
+{
+	IF KILLED Goon@1 THEN
+		ORDER Goon@2 @3 @4 INMODE @5
+}
+
+//tank killed
+EXPAND macrogoonreact (1 2 FOLLOW me attack)				//AA vehicle hunts killer
+EXPAND macrogoonreact (1 3 GOTO padgreenwin defend)			//jeeps head to final spot
+EXPAND macrogoonreact (1 4 GOTO padgreenwin defend)
+EXPAND macrogoonreact (1 5 FOLLOW me defend)				//These inf Hold ground
+EXPAND macrogoonreact (1 6 FOLLOW me defend)
+EXPAND macrogoonreact (1 7 GOTO padgreenwin attack)			//These run back to final spot
+EXPAND macrogoonreact (1 8 GOTO padgreenwin defend)		
+//aa vehicle killed
+EXPAND macrogoonreact (2 1 FOLLOW me attack)				//Tank hunts killer
+EXPAND macrogoonreact (2 3 GOTO padgreenwin attack)			//One jeep run, one stay
+EXPAND macrogoonreact (2 4 FOLLOW me defend)
+EXPAND macrogoonreact (2 5 FOLLOW me defend)				//Inf stays
+EXPAND macrogoonreact (2 6 FOLLOW me defend)			
+EXPAND macrogoonreact (2 7 FOLLOW me attack)
+EXPAND macrogoonreact (2 8 FOLLOW me attack)
+//Jeeps killed
+EXPAND macrogoonreact (3 1 FOLLOW me attack)				//Tank hunts
+EXPAND macrogoonreact (3 2 GOTO padgreenwin defend)			//AA fallsback
+EXPAND macrogoonreact (3 4 GOTO padgreenwin attack)			//jeep retreats
+//Inf doesn't care
+EXPAND macrogoonreact (4 1 FOLLOW me attack)				//Tank hunts
+EXPAND macrogoonreact (4 2 GOTO padgreenwin defend)			//AA fallsback
+EXPAND macrogoonreact (4 3 GOTO padgreenwin attack)			//jeep retreats
+//No one cares if inf killed...
+// They do need a trigger if the Flanks or center are attacked...but don't move if just one killed have a counter...so if two are killed.
+
+MACRO macrogoonreact2 5
+{
+	IF KILLED center@1 THEN
+		ADDVAR vargoonreact 1,
+		TRIGGER reactcheck1,
+		TRIGGER reactcheck2
+
+	IF reactcheck1 TESTVAR vargoonreact = 2 THEN
+		ORDER goon@2 GOTO @5 INMODE attack,
+		ORDER goon@3 GOTO @5 INMODE attack,
+		ORDER goon@4 GOTO @5 INMODE attack
+}
+
+IF reactcheck2 TESTVAR vargoonreact = 4 THEN
+	ORDER goon4 FOLLOW me INMODE attack
+
+EXPAND macrogoonreact2 (9 1 2 3 padpatrol1) 
+EXPAND macrogoonreact2 (10 1 2 3 padpatrol2)
+EXPAND macrogoonreact2 (11 1 2 3 padpatrol3)
+EXPAND macrogoonreact2 (12 1 2 3 padpatrol4)
+EXPAND macrogoonreact2 (13 1 2 3 padpatrol5)
+EXPAND macrogoonreact2 (14 1 2 3 padpatrol6)
+
+// Every x number of seconds should send and order to these guys...use in Livingroom as well...
+//something like if tan order then Triggerdelay 30000 sendorders...if send order order x goto pad y...TriggerDelay 30000 sendorder
+
+// Inf should hop from Jeeps...
+//Dump inf when jeeps hit are hit
+
+IF HIT Goon3 THEN
+	TRIGGERDELAY 100 leavegoon5,
+	TRIGGERDELAY 550 leavegoon6
+
+IF HIT Goon4 THEN
+	TRIGGERDELAY 100 leavegoon7,
+	TRIGGERDELAY 550 leavegoon8
+
+MACRO macrotanunload 2
+{
+	IF leavegoon@1 THEN
+		EXITVEHICLE goon@1 goon@2,
+		SETAIMODE goon@1 attack
+}
+
+EXPAND macrotanunload (5 3)
+EXPAND macrotanunload (6 3)
+EXPAND macrotanunload (7 4)
+EXPAND macrotanunload (8 4)
+
+IF HIT beta THEN
+	TRIGGERDELAY 100 exit1,
+	TRIGGERDELAY 550 exit2
+
+IF HIT gamma THEN
+	TRIGGERDELAY 100 exit3,
+	TRIGGERDELAY 550 exit4
+
+IF HIT epsilon THEN
+	TRIGGERDELAY 100 exit5,
+	TRIGGERDELAY 550 exit6
+
+MACRO macrounload 3						
+{
+	IF exit@1 THEN
+		EXITVEHICLE @2 @3,
+		SETAIMODE @2 defend
+}
+
+EXPAND macrounload (1 "Pvt. Gray" beta)
+EXPAND macrounload (2 "Sgt. Scotty" beta)
+EXPAND macrounload (3 "Spec. Longworth" gamma)
+EXPAND macrounload (4 "Spec. Meyer" gamma)
+EXPAND macrounload (5 "Pvt. Lucky" epsilon)
+EXPAND macrounload (6 "Spec. Macaraeg" epsilon)
+
+//Death Generated Goodies. Again certain Items are skewed to show more often than others
+
+Macro macrogoodies2 1
+
+{
+	IF KILLED listtantokill2 TESTVAR numtankilled2 = @1 THEN
+		PLAYSOUND powerupappear.wav me 7 1 0 1200,			//sound when stuff appears
+		TRIGGER stuff2
+}
+	IF stuff2 THEN RANDOM
+		CREATEPOWERUP "FullArmor" FullArmor me,
+		CREATEPOWERUP "ArmorBoost" armorboost me,
+		CREATEPOWERUP "partialarmor1" partialarmor me,
+		CREATEPOWERUP "partialarmor1" partialarmor me,
+		CREATEPOWERUP "partialarmor1" partialarmor me,
+		CREATEPOWERUP "BottleRockets1" groundmissile me 7,
+		CREATEPOWERUP "BottleRockets1" groundmissile me 7,
+		CREATEPOWERUP "BottleRockets1" groundmissile me 7,
+		CREATEPOWERUP "firecracker1" thrownfirecracker me 5,
+		CREATEPOWERUP "firecracker1" thrownfirecracker me 5,
+		CREATEPOWERUP "napalm1" napalmbomb me 5,
+		CREATEPOWERUP "airblast1" airblastmissile me 5,
+		CREATEPOWERUP "medkit" medkit me
+
+IF KILLED listtantokill2 THEN
+	ADDVAR numtankilled2 1
+										//38 tan to kill
+EXPAND macrogoodies2 (3)
+EXPAND macrogoodies2 (6)
+EXPAND macrogoodies2 (9)
+EXPAND macrogoodies2 (12)
+EXPAND macrogoodies2 (15)
+EXPAND macrogoodies2 (28)
+EXPAND macrogoodies2 (21)
+EXPAND macrogoodies2 (24)
+EXPAND macrogoodies2 (27)
+EXPAND macrogoodies2 (30)
+EXPAND macrogoodies2 (33)
+EXPAND macrogoodies2 (36)
+EXPAND macrogoodies2 (38)
+
+IF KILLED left1 KILLED right1 KILLED goon2 KILLED goon4 THEN
+	CREATEPOWERUP "ECM" ECMchaff me
+
+IF KILLED beta KILLED gamma THEN
+	CREATEPOWERUP "armorboost" armorboost me
+
+//***AMBIENT SOUNDS***//
+//playsound file-name [location [channel [priority [flags [radius]]]]]
+IF setupsounds THEN
+	TRIGGER riversound,
+	TRIGGER randomsound1
+
+IF riversound THEN
+	PLAYSOUND streamloop.wav (1000,4494) 8 1 1 600,
+	PLAYSOUND streamloop.wav (2000,4383) 8 1 1 600,
+	PLAYSOUND streamloop.wav (2800,4787) 8 1 1 600
+	
+IF randomsound1 THEN
+	TRIGGER randomsound2,
+	TRIGGERDELAY 20000 randomsound1
+
+IF randomsound2 THEN RANDOM
+	PLAYSOUND birdsong1.wav captain 9 1 0 600,
+	PLAYSOUND birdsong2.wav captain 9 1 0 600,
+	PLAYSOUND birdsong3.wav captain 9 1 0 600,
+	PLAYSOUND birdsong4.wav captain 9 1 0 600,
+	PLAYSOUND hawkscreech.wav captain 9 1 0 600,
+	PLAYSOUND wolfhowl.wav captain 9 1 0 600,
+	PLAYSOUND wolfhowl.wav captain 9 1 0 600
+
+//Convoy movement
+VARIABLE varalphakilled 0
+VARIABLE varbetakilled 0
+VARIABLE vargammakilled 0
+VARIABLE vartempx 0
+VARIABLE vartempy 0
+
+IF KILLED alpha THEN
+	ADDVAR varalphakilled 1,
+	TRIGGER moveout									//This way if killed while going to a location it forces the next in line to keep moving to last x,y
+
+IF KILLED beta THEN
+	ADDVAR varbetakilled 1,
+	TRIGGER moveout
+
+IF KILLED gamma THEN
+	ADDVAR vargammakilled 1
+
+IF startconvoy THEN
+	SETVAR vartempx 1110,
+	SETVAR vartempy 4925,
+	PLAYTALKINGHEAD 8,
+	TRIGGER moveout
+
+IF PADON padgreenmove1 THEN
+	TRIGGER firstmove
+
+IF count 1 of firstmove THEN
+	SETVAR vartempx 1716,
+	SETVAR vartempy 4688,
+	TRIGGER moveout
+
+IF PADON padconvoyhelp1 THEN
+	TRIGGER firsthelp
+
+IF count 1 of firsthelp THEN
+	SETVAR vartempx 2230,
+	SETVAR vartempy 4548,
+	TRIGGER moveout
+
+IF PADON padguardbridge1 THEN
+	TRIGGER secondmove
+
+IF count 1 of secondmove THEN	
+	SETVAR vartempx 2301,
+	SETVAR vartempy 4463,	
+	TRIGGER moveout
+
+IF PADON padhelpbridge1 THEN
+	TRIGGER thirdmove
+
+IF count 1 of thirdmove THEN
+	SETVAR vartempx 2504,
+	SETVAR vartempy 4285,
+	TRIGGER moveout
+
+IF PADON padhelpbridge2 THEN
+	TRIGGER fourthmove
+
+IF count 1 of fourthmove THEN
+	SETVAR vartempx 2572,
+	SETVAR vartempy 4142,
+	TRIGGER moveout
+
+IF PADON padguardbridge2 THEN
+	TRIGGER fifthmove
+
+IF count 1 of fifthmove THEN	
+	SETVAR vartempx 1957,
+	SETVAR vartempy 3844,
+	TRIGGER moveout
+
+IF moveout TESTVAR varalphakilled = 0 THEN
+	ORDER alpha GOTO (refvar vartempx,refvar vartempy) INMODE defend,
+	TRIGGERDELAY 5000 betamove
+
+IF moveout TESTVAR varalphakilled = 1 THEN
+	TRIGGERDELAY 1000 betamove
+
+IF betamove TESTVAR varalphakilled = 0 THEN				//beta follows alpha
+	ORDER beta FOLLOW alpha INMODE defend,
+	TRIGGERDELAY 4000 gammamove
+
+IF betamove TESTVAR varalphakilled = 1 THEN				//unless alpha dead
+	ORDER beta GOTO (refvar vartempx,refvar vartempy),
+	TRIGGERDELAY 7000 gammamove 
+
+IF gammamove TESTVAR varbetakilled = 0 THEN					//gamma follows beta 
+	ORDER gamma FOLLOW beta,
+	TRIGGERDELAY 6000 epsilonmove
+
+IF gammamove TESTVAR varbetakilled = 1 THEN					//unless beta dead, then check alpha
+	TRIGGER checkalpha
+
+IF checkalpha TESTVAR varalphakilled = 0 THEN				//follow alpha
+	ORDER gamma FOLLOW alpha,
+	TRIGGERDELAY 8000 epsilonmove
+
+IF checkalpha TESTVAR varalphakilled = 1 THEN					//but if both dead...
+	ORDER gamma GOTO (refvar vartempx,refvar vartempy) INMODE defend,
+	TRIGGERDELAY 8000 epsilonmove 
+
+IF epsilonmove TESTVAR vargammakilled = 0 THEN				//epsilon follows gamma
+	ORDER epsilon FOLLOW gamma INMODE defend
+
+IF epsilonmove TESTVAR vargammakilled = 1 THEN				//eps. , but gamma killed
+	TRIGGER checkgamma
+
+IF checkgamma TESTVAR varbetakilled = 0 THEN				// is beta dead...if not
+	ORDER epsilon FOLLOW beta INMODE defend
+
+//More convoy move
+VARIABLE vargroup1dead 0
+VARIABLE vargroup2dead 0
+VARIABLE vargroup3dead 0
+VARIABLE vargroup4dead 0
+VARIABLE vargroup5dead 0
+VARIABLE vargroup6dead 0
+
+IF allof KILLED right4 KILLED right5 KILLED right6 KILLED right7 KILLED right2 KILLED center2 THEN
+	ADDVAR vargroup1dead 1,
+	//showmessage "group1 Killed",
+	TRIGGER Killedgroup1
+
+IF allof KILLED right1 KILLED right8 KILLED right9 KILLED right10 THEN
+	ADDVAR vargroup2dead 1,
+	//showmessage "group2 Killed",
+	TRIGGER killedgroup2
+
+IF allof KILLED center10 KILLED left3 KILLED center1 THEN
+	ADDVAR vargroup3dead 1,
+	//showmessage "group3 Killed",
+	TRIGGER killedgroup3
+
+IF allof KILLED left2 KILLED left4 KILLED left5 KILLED left6 THEN
+	ADDVAR vargroup4dead 1,
+	//showmessage "group4 Killed",
+	TRIGGER killedgroup4
+
+IF allof KILLED center10 KILLED center5 KILLED center8 KILLED center9 KILLED left1 THEN
+	ADDVAR vargroup5dead 1,
+	//showmessage "group5 Killed",
+	TRIGGER killedgroup5
+
+IF allof KILLED left7 KILLED left8 KILLED left9 KILLED left10 THEN
+	ADDVAR vargroup6dead 1,
+	//showmessage "group6 Killed",
+	TRIGGER killedgroup6
+
+//IF a killed group then check pad status
+
+MACRO macrogroupkilledmove 4
+{
+	IF Killedgroup@1 TESTVAR GETPADSTATUS @2 = 1 THEN
+		SETVAR vartempx @3,
+		SETVAR vartempy @4,
+		PLAYTALKINGHEAD 8,
+		TRIGGER moveout
+}
+
+EXPAND macrogroupkilledmove (1 padcrossriver 2200 2640)
+EXPAND macrogroupkilledmove (1 padconvoymove3 2200 2640)
+EXPAND macrogroupkilledmove (2 padconvoymove1 2225 1287)
+EXPAND macrogroupkilledmove (2 padconvoymove5 2225 1287)
+EXPAND macrogroupkilledmove (3 padconvoymove1 892 3096)
+EXPAND macrogroupkilledmove (3 padcrossriver 892 3096)
+EXPAND macrogroupkilledmove (4 padconvoymove3 325 2298)
+EXPAND macrogroupkilledmove (5 padconvoymove4 1000 1731)
+EXPAND macrogroupkilledmove (5 padconvoymove3 1000 1731)
+EXPAND macrogroupkilledmove (5 padconvoymove2 1000 1731)
+EXPAND macrogroupkilledmove (6 padconvoymove5 676 832)
+
+MACRO macropadmove 7								//macro handles 3 common cases
+{
+	IF PADON padconvoymove@1 THEN
+		TRIGGER check@1 
+
+	IF check@1 TESTVAR vargroup@2dead = 1 THEN				
+		SETVAR vartempx @3,
+		SETVAR vartempy @4,
+		TRIGGER beenthere@1,
+		//showmessage "using macro @1",
+		PLAYTALKINGHEAD 8,
+		TRIGGER moveout
+	
+	IF check@1 TESTVAR vargroup@2dead = 0 THEN
+		TRIGGER checknext@1
+	
+	IF checknext@1 BUTNOT beenthere@5 TESTVAR vargroup@5dead = 1 THEN
+		SETVAR vartempx @6,
+		SETVAR vartempy @7,
+		TRIGGER beenthere@1,
+		//showmessage "using macro @5",
+		TRIGGER moveout
+}
+
+EXPAND macropadmove (1 2 2260 1160 3 892 3096)
+EXPAND macropadmove (4 5 1000 1731 5 1000 1731)
+EXPAND macropadmove (5 6 676 832 2 2225 1287)
+
+//special case...3 outlets
+
+IF PADON padconvoymove3 THEN
+	TRIGGER check3 
+
+IF check3 TESTVAR vargroup5dead = 1 THEN				
+	SETVAR vartempx 1000,
+	SETVAR vartempy 1731,
+	TRIGGER beenthere3,
+	//showmessage "pad move outlet",
+	TRIGGER moveout
+	
+IF check3 TESTVAR vargroup5dead = 0 THEN
+	TRIGGER checknext3
+	
+IF checknext3 BUTNOT beenthere1 TESTVAR vargroup1dead = 1 THEN
+	SETVAR vartempx 2200,
+	SETVAR vartempy 2640,
+	TRIGGER beenthere3,
+	TRIGGER moveout
+
+IF checknext3 TESTVAR vargroup1dead = 0 THEN
+	 TRIGGER checknext3b
+
+IF checknext3b TESTVAR vargroup4dead = 1 THEN
+	SETVAR vartempx 325,
+	SETVAR vartempy 2295,
+	TRIGGER moveout
+
+MACRO macrorunforwin 1
+{
+	IF PADON padconvoymove@1 THEN
+		TRIGGER side@1,
+		TRIGGER checktanblock,
+		TRIGGER beenthere@1
+}
+
+EXPAND macrorunforwin (2)
+EXPAND macrorunforwin (6)
+
+
+IF checktanblock TESTVAR GETPADSTATUS padtanblockwin = 0 THEN
+	TRIGGER goleft,
+	TRIGGER goright,
+	//showmessage "Go for it",
+	PLAYTALKINGHEAD 8,
+	TRIGGER moveout
+
+IF checktanblock TESTVAR GETPADSTATUS padtanblockwin = 1 THEN
+	//showmessage "checking to move in 5 seconds",
+	TRIGGERDELAY 5000 checktanblock	
+
+IF count 2 of side2 goright THEN
+	SETVAR vartempx 2600,
+	SETVAR vartempy 658,
+	//showmessage "going right",
+	TRIGGER moveout
+
+IF count 2 of side6 goleft THEN
+	SETVAR vartempx 1397,
+	SETVAR vartempy 572,
+	//showmessage "going left",
+	TRIGGER moveout
+
+IF PADON padconvoyhelp2 THEN
+	TRIGGER help2
+
+IF count 1 of help2 THEN							//Go home
+	SETVAR vartempx 2336,
+	SETVAR vartempy 69,
+	TRIGGER moveout
+
+IF PADON padconvoyhelp3 THEN
+	TRIGGER help3
+
+IF count 1 of help3 THEN							//Go help
+	SETVAR vartempx 1873,
+	SETVAR vartempy 413,
+	TRIGGER moveout
+
+IF PADON padconvoyhelp4 THEN
+	TRIGGER help4
+
+IF count 1 of help4 THEN							//Go home
+	SETVAR vartempx 2336,
+	SETVAR vartempy 69,
+	TRIGGER moveout
+
+// convoy getting attacked warnings
+VARIABLE varwarning 0
+
+IF HIT beta HIT gamma THEN
+	ADDVAR varwarning 1,
+	TRIGGER sendhelp
+
+IF sendhelp TESTVAR varwarning = 20 THEN
+	TRIGGER cryhelp,
+	SETVAR varwarning 0
+
+IF cryhelp THEN RANDOM
+	PLAYTALKINGHEAD 1,
+	PLAYTALKINGHEAD 7,	
+	PLAYTALKINGHEAD 7
+
+// Objective Listings
+
+MACRO macroalpineobj 5
+
+{	IF PADON pad@1 THEN
+		TRIGGER obj@2,
+		TRIGGER obj@3,
+		TRIGGER obj@4,
+		TRIGGER obj@5
+}
+
+EXPAND macroalpineobj (crossriver 1 3 null null)
+EXPAND macroalpineobj (convoymove1 3 2 null null)
+EXPAND macroalpineobj (convoymove2 5 1r win 3r)
+EXPAND macroalpineobj (convoymove3 1 4 5 null)
+EXPAND macroalpineobj (convoymove4 3r 5 null 1r)
+EXPAND macroalpineobj (convoymove5 2 4r 6 1r)
+EXPAND macroalpineobj (convoymove6 5r win 2r null)
+
+IF count 1 of obj1 THEN
+	ADDMISSIONOBJECTIVE right2,
+	ADDMISSIONOBJECTIVE right4,
+	ADDMISSIONOBJECTIVE right5,
+	ADDMISSIONOBJECTIVE right6,
+	ADDMISSIONOBJECTIVE right7,
+	ADDMISSIONOBJECTIVE center2
+
+IF count 1 of obj1r THEN
+	REMOVEMISSIONOBJECTIVE right2,
+	REMOVEMISSIONOBJECTIVE right4,
+	REMOVEMISSIONOBJECTIVE right5,
+	REMOVEMISSIONOBJECTIVE right6,
+	REMOVEMISSIONOBJECTIVE right7,
+	REMOVEMISSIONOBJECTIVE center2
+
+IF count 1 of obj2 THEN
+	ADDMISSIONOBJECTIVE right1,
+	ADDMISSIONOBJECTIVE right8,
+	ADDMISSIONOBJECTIVE right9,	
+	ADDMISSIONOBJECTIVE right10
+
+IF count 1 of obj2r THEN
+	REMOVEMISSIONOBJECTIVE right1,
+	REMOVEMISSIONOBJECTIVE right8,
+	REMOVEMISSIONOBJECTIVE right9,	
+	REMOVEMISSIONOBJECTIVE right10
+
+IF count 1 of obj3 THEN
+	ADDMISSIONOBJECTIVE center1,
+	ADDMISSIONOBJECTIVE center10,
+	ADDMISSIONOBJECTIVE left3
+
+IF count 1 of obj3r THEN
+	REMOVEMISSIONOBJECTIVE center1,
+	REMOVEMISSIONOBJECTIVE center10,
+	REMOVEMISSIONOBJECTIVE left3
+
+IF count 1 of obj4 THEN
+	ADDMISSIONOBJECTIVE left2,
+	ADDMISSIONOBJECTIVE left4,
+	ADDMISSIONOBJECTIVE left5,
+	ADDMISSIONOBJECTIVE left6
+ 	
+IF count 1 of obj4r THEN
+	REMOVEMISSIONOBJECTIVE left2,
+	REMOVEMISSIONOBJECTIVE left4,
+	REMOVEMISSIONOBJECTIVE left5,
+	REMOVEMISSIONOBJECTIVE left6
+
+IF count 1 of obj5 THEN
+	ADDMISSIONOBJECTIVE center5,
+	ADDMISSIONOBJECTIVE center8,
+	ADDMISSIONOBJECTIVE center9,
+	ADDMISSIONOBJECTIVE center10,
+	ADDMISSIONOBJECTIVE left1
+ 
+IF count 1 of obj5r THEN
+	REMOVEMISSIONOBJECTIVE center5,
+	REMOVEMISSIONOBJECTIVE center8,
+	REMOVEMISSIONOBJECTIVE center9,
+	REMOVEMISSIONOBJECTIVE center10,
+	REMOVEMISSIONOBJECTIVE left1
+	
+IF count 1 of obj6 THEN
+ 	ADDMISSIONOBJECTIVE left7,
+ 	ADDMISSIONOBJECTIVE left8,
+ 	ADDMISSIONOBJECTIVE left9,
+ 	ADDMISSIONOBJECTIVE left10
+
+If win THEN
+	ADDMISSIONOBJECTIVE lastman
+ 
+IF null THEN
+	ADDMISSIONOBJECTIVE padgreenvc
+	
+//Victory Conditions
+IF count 1 of PADON padcrossriver THEN
+	PLAYTALKINGHEAD 102,
+	ADDMISSIONOBJECTIVE padgreenwin1
+
+IF bridgesavegame THEN
+	SAVEGAME "Foothills_3"
+
+IF count 1 of PADON padgreenwin1 THEN
+	TRIGGERDELAY 1000 evtgreenwin2
+
+IF count 1 of PADON padgreenwin2 THEN
+	TRIGGERDELAY 1001 evtgreenwin2
+
+IF count 1 of evtgreenwin2 THEN
+	TRIGGER evtgreenwins3
+
+IF evtgreenwins3 BUTNOT tanwins THEN
+	STOPTALKINGHEAD,
+	PLAYTALKINGHEAD 109,
+	HEAL beta 100,
+	HEAL gamma 100,
+	HEAL captain 100,
+	SETNPC captain 1,
+	UNDEPLOY right9,
+	UNDEPLOY right10,
+	UNDEPLOY center10,
+	UNDEPLOY center11,
+	UNDEPLOY center12,
+	UNDEPLOY center13,
+	UNDEPLOY center14,
+	UNDEPLOY bug1,
+	UNDEPLOY bug2,
+	TRIGGERDELAY 10000 GREENWINS
+
+// ======= BEGIN Defeat Conditions =======
+IF KILLED listgreenresponseforce THEN
+	ADDVAR numgreendead 1,
+	TRIGGER greendead
+
+IF greendead TESTVAR numgreendead = 1 THEN
+	PLAYTALKINGHEAD 116
+
+IF greendead TESTVAR numgreendead = 2 THEN
+	TRIGGER checktanwin
+
+IF checktanwin BUTNOT greenwins THEN
+	STOPTALKINGHEAD,
+	PLAYTALKINGHEAD 117,
+	TRIGGERDELAY 11000 tanwins
+// ======= END Defeat Conditions =======
+
+

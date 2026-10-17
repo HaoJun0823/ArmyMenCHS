@@ -1,0 +1,125 @@
+Sam|Sam061c.wav|You went AWOL before finishing the mission!
+Sam|Sam062c.wav|Captain, look at your radar.
+Sam|Sam063c.wav|Nice flying, Captain...!
+Sam|Sam064a.wav|Be on the lookout for air currents.
+Sam|Sam065b.wav|Wrong way, Captain!
+Sam|Sam066a.wav|That's it!
+Sam|Sam067c.wav|That wouldn't be wise, Captain.
+Sam|Sam068b.wav|Take cover.
+Sam|Sam069d.wav|Move it out, boys.
+Sam|Sam070b.wav|Fall back!
+Sam|Sam071b.wav|Stay focussed, Captain.
+Sam|Sam072a.wav|Captain, remember your objective!
+Sam|Sam073b.wav|Tan is on the run.
+Sam|Sam074a.wav|Tan is retreating, Captain.
+Sam|Sam075a.wav|Track them down, Blade.
+Sam|Sam076b.wav|You can't do that, sir.
+Sam|Sam077b.wav|Now take that to Sarge. 
+Sam|Sam078b.wav|Hurry, Blade.
+Sam|Sam079a.wav|I believe that is not allowed, sir.
+Sam|Sam094b.wav|Rest in peace, Sergeant Hawk.
+Sam|Sam095b.wav|Sarge didn't make it back!
+Sam|Sam096c.wav|Sarge is dead, Captain!
+Sam|Sam097b.wav|Sorry, Captain - Sarge was killed in action.
+Sam|Sam098b.wav|Captain didn't make it.
+Sam|Sam099c.wav|Rest in peace, Captain.
+Sam|Sam100c.wav|Captain didn't make it back!
+Sam|Sam101b.wav|Captain was killed in action!
+Sam|Sam102b.wav|Captain, do you read me? Blade? Come in, Captain Blade...
+Sarge|Sar048c.wav|Thanks!
+Sarge|Sar049c.wav|Thank you, Captain.
+Sarge|Sar050b.wav|Hit the deck!
+Sarge|Sar051b.wav|What the...?
+Sarge|Sar052c.wav|I'm taking fire!
+Sarge|Sar053f.wav|Can't...take much more...
+Sarge|Sar054b.wav|Ahhh, that takes the sting out of it.
+Sarge|Sar055b.wav|Holy hand grenades! 
+Sarge|Sar056a.wav|Trooper down!
+Sarge|Sar057a.wav|I'm ready to leave this sector.
+Sarge|Sar058a.wav|Awaiting orders.
+Sarge|Sar059b.wav|Requesting air support.
+Sarge|Sar060b.wav|Not now, Captain!
+Sarge|Sar061c.wav|We're under fire here!
+Sarge|Sar062c.wav|Things are getting hot here.
+Sarge|Sar063c.wav|We need some cover here!
+Sarge|Sar064b.wav|Help us out here, Captain.
+Sarge|Sar065a.wav|They just keep coming!
+Sarge|Sar066b.wav|Blade, we need support fast! 
+Sarge|Sar067f.wav|Blade, we need evac. now!
+Grimm|Col038a.wav|Well done, men!
+Grimm|Col040a.wav|Good work, men.
+Grimm|Col041c.wav|Victory is ours!
+Grimm|Col042a.wav|As I always say, the way to win the war is to never lose!
+Grimm|Col043a.wav|Don't give up man! You're never beaten until you admit it!
+Grimm|Col044a.wav|We've got to press them in the air and on the ground. It's time for each of us to look inside ourselves and see what kind of plastic we're made of.  Are we hollow men?  Or are we plastic soldiers?!
+Plastro|Pla008b.wav|This island is mine - all mine!
+Plastro|Pla009f.wav|I'll get you, Blade!
+Plastro|Pla010d.wav|Death can be more exciting than life. Want to try death, Captain?
+Plastro|Pla011a.wav|You'll never defeat us!
+Plastro|Pla012b.wav|Is that all you've got?
+Plastro|Pla013b.wav|You seem lost, Captain...confused...
+Captain|Cap036b.wav|Gotcha!
+Captain|Cap049c.wav|Damn! I've got to move faster.
+Captain|Cap056b.wav|Thanks, Sarge.
+Captain|Cap059a.wav|I don't like the looks of this!
+Captain|Cap061f.wav|Strange...!
+Captain|Cap062b.wav|Glad that's over!
+Captain|Cap064b.wav|Why do they insist on getting killed?
+Captain|Cap065c.wav|Eat my dust!
+Captain|Cap069c.wav|I'm on my way.
+Captain|Cap070c.wav|I'll be there when I get a chance.
+Captain|Cap075c.wav|Excellent!
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|PLACEHOLDER
+Captain|Cap000.wav|THIS SHOULD BE LINE #99 (STARTING FROM ZERO)
+Sarge|Sar040a.wav|A bogus piece of intel brought us to this damn island, and now the Tan have us pinned down here. 
+Sarge|Sar041c.wav|And my guys seem to be fighting a new breed of giant mutant creepy-crawly every day!
+Sarge|Sar042d.wav|My boys can't hold off these bugs much longer, Captain. We need to get to those boats!
+Sarge|Sar043b.wav|Too... many... bugs...!
+Sarge|Sar044c.wav|We could use some air support back here at the citadel, Captain.
+Grimm|Col013a.wav|Captain! Thank goodness you made it. We really need your help.
+Grimm|Col014b.wav|The Gray Navy has developed some kind of sub-surface vessel. We are putting the finishing touches on a sonar detection system right now, but our destroyers are taking a serious pounding in the meantime.
+Grimm|Col015c.wav|We still have enough firepower to attack the real Tan headquarters, but first we have to locate that island.
+Grimm|Col016b.wav|We have a couple of destroyers heading in to pick us up.  
+Grimm|Col017d.wav|If you don't clear these waters of gray sub-surface ships in time, our destroyers will be shredded.
+Grimm|Col018d.wav|Come in, Blade. Listen. Those boats are going to be here any minute! Take out those Grey subs, fast!
+Grimm|Col025c.wav|Their submersibles are moving in, Captain... it's now or never!
+Sarge|Sar047f.wav|Colonel Grimm is dead, Captain! It's a massacre! We're doomed!
+Grimm|Col031a.wav|It's too late! We're finished, Captain.
+Grimm|Col051a.wav|The Gray Navy has developed some kind of sub-surface vessel. They're moving in to attack our destroyers. Use sonar buoys and depth charges to take those subs out!
+Grimm|Col052b.wav|We still have enough firepower to attack the real Tan headquarters, but first we need to get off this island.
+Sarge|Sar075c.wav|I'll send one squad at a time from the citadel to the LZ. You need to pick them up and drop them off on the destroyers.
+Sarge|Sar076d.wav|Those damn bugs will swarm as soon as we are exposed. Don't let my men become bug food, Captain!
+Sarge|Sar077b.wav|When everyone else is safe, I'll run to the LZ last.
+Grimm|Col053c.wav|Okay Captain. You need to transport our men off the island. Get them to the destroyers... and keep those damn subs from sinking our boats, will ya!
+Sarge|Sar078a.wav|There they go! Protect that squad and get them to the boats.
+Grimm|Col054b.wav|Don't forget about those submarines, Captain. Our destroyers are vulnerable to their torpedoes.
+Sarge|Sar079a.wav|Another team away, Captain!
+Sarge|Sar080c.wav|Okay, Captain, I'm heading to the beach! Pick me up and let's get out of here!
+Grimm|Col055b.wav|They're trying to take out our weapons, Captain!  If we lose all four guns on either boat, it's all over!

@@ -125,3 +125,20 @@ compat/**  -text
 #  ★ 与 compat/** 同一理由、同一做法。
 # ============================================================================
 cnc-ddraw/**  -text
+
+# ============================================================================
+#  5 代（空中战术）的载荷目录同理：这些文件是**从实机游戏目录原样取来**的
+#  覆盖资源，跑起来时必须逐字节相同。
+#
+#  ★ Army5_NEW_CHS/update/strings/*.txt 与 update/data/**/*.txt 会被上面那条
+#    `*.txt -text` 覆盖，但 update/ 下还有 .bmp 与 .wav，audio/ 下也有 .txt
+#    （codesfx.txt / voice.txt）—— 逐条列举容易漏，整目录声明最稳。
+#  ★ Army5_Object_CHS/** 是解包工作区（raw/*.bin + png/*.png + manifest.json），
+#    manifest.json 里有 source_sha256 与逐对象 size/offset，换行转换会直接
+#    让 sha256 与偏移对不上。
+#  ★ 放在文件末尾：gitattributes 是"最后匹配者生效"。
+# ============================================================================
+Army5_NEW_CHS/**     -text
+Army5_Object_CHS/**  -text
+Army5_Original/**    -text
+Army5_Voice_CHS/**   -text

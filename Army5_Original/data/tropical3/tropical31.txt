@@ -1,0 +1,430 @@
+// Tropical Map 3 (lost sea)
+// Carson Herrick
+
+INCLUDE ..\scripts\common.txt
+INCLUDE ..\scripts\T3destroyers.txt
+
+PRELOADSPRITE 43 503 0
+PRELOADSPRITE 43 503 1
+PRELOADSPRITE 43 503 2
+PRELOADSPRITE 43 503 3
+PRELOADSPRITE 43 503 4
+PRELOADSPRITE 43 503 5
+PRELOADSPRITE 43 503 6
+PRELOADSPRITE 43 503 7
+PRELOADSPRITE 43 503 8
+PRELOADSPRITE 43 503 9
+PRELOADSPRITE 43 503 10
+
+PAD subTouch1	101		submarine
+PAD subTouch2	102		submarine
+PAD subTouch3	103		submarine
+PAD subTouch4	104		submarine
+PAD subTouch5	105		submarine
+PAD subTouch6	106		submarine
+PAD subTouch7	107		submarine
+PAD subTouch8	108		submarine
+PAD subTouch9	109		submarine
+PAD subTouch10	110		submarine
+
+PAD subStart1	201		submarine > 0
+PAD subStart2	202		submarine > 0
+PAD subStart3	203		submarine > 0
+PAD subStart4	204		submarine > 0
+PAD subStart5	205		submarine > 0
+PAD subStart6	206		submarine > 0
+PAD subStart7	207		submarine > 0
+PAD subStart8	208		submarine > 0
+PAD subStart9	209		submarine > 0
+PAD subStart10	210		submarine > 0
+PAD subStart11	212		submarine > 0
+PAD subStart12	211		submarine > 0
+PAD subStart13	213		submarine > 0
+PAD subStart14	214		submarine > 0
+PAD subStart15	215		submarine > 0
+PAD subStart16	216		submarine > 0
+
+OBJECT PortalOpen
+	STATE osPortalCycle
+		FRAME 100 0
+		FRAME 100 1
+		FRAME 100 2
+		FRAME 100 3
+		FRAME 100 4
+		FRAME 100 5
+		FRAME 100 6
+		FRAME 100 7
+		FRAME 100 8
+		FRAME 100 9
+		FRAME 100 10
+		FRAME 100 11
+		FRAME 100 12
+		FRAME 100 13
+		FRAME 100 14
+		FRAME 100 15
+		FRAME 100 16
+		FRAME 100 17
+		FRAME 0 0
+			SETOBJSTATE me osPortalCycle
+
+LIST TanBattalion { tanscout_0 tanscout_1 tanscout_2 tanscout_3 tanscout_4 tanscout_5 tanscout_6 tanscout_7 tanscout_8 tanscout_9 tanscout_10 tanscout_11 tanscout_12 }
+
+VARIABLE NumTanCopters 0 
+VARIABLE NumGreyFlies 0
+VARIABLE NumGreyWasps 0
+VARIABLE AddTimer 0
+VARIABLE BoolWarning 0
+VARIABLE afterintro 0
+
+VARIABLE randompadlocation 0
+
+//***SETUP MISSION***//
+IF startup1 THEN
+	ALLY TAN GREY,
+	ALLY GREY TAN,
+	TRIGGER setupgreen,
+	TRIGGER setupgoodies,	
+	TRIGGER setupsounds,
+	TRIGGER setupportal,
+	TRIGGERDELAY 100 showmissionobjective
+
+IF showmissionobjective THEN
+	SETMISSIONINFO tp31,
+	PLAYTALKINGHEAD 111,
+	PLAYTALKINGHEAD 105,
+	PLAYTALKINGHEAD 104,
+	PLAYTALKINGHEAD 102,
+	PLAYTALKINGHEAD 106,
+	PLAYTALKINGHEAD 107
+
+IF talkingheaddone captain TESTVAR afterintro = 0 THEN
+	SETVAR afterintro 1,
+	SETNPC captain 0,
+	TRIGGER setupgrey,
+	TRIGGER setuptan
+
+IF setupgreen THEN
+	CREATECOPTER bigbertha captain (2048,2048,200) green,
+	SETNPC captain 1,
+	SETFACING captain 110,
+	SETAIRMAP captain 1,
+	TRIGGER setupdestroyers
+
+IF setupgrey THEN
+	TRIGGER createsubs,
+	TRIGGER delayinsects
+
+IF setuptan THEN
+	TRIGGER getchoppercount,
+	TRIGGERDELAY 30000 delaychoppers
+
+IF setupportal THEN
+	TRIGGER randomportal,
+	TRIGGER moveportaltopad,
+	UNDEPLOY PortalOpen
+
+IF setupsounds THEN
+	TRIGGER surfsound
+
+IF setupgoodies THEN
+	CREATEPOWERUP sonarbuoy (1827,1921,5) 20,
+	CREATEPOWERUP fullarmor (1757,1921,5),
+	CREATEPOWERUP ecmchaff (1769,2179,5),
+	CREATEPOWERUP depthcharge (1859,2179,5) 20
+
+//***SETUP MISSION***//
+
+
+//***PORTAL***//
+
+UNTIL 10 REPEAT 1 BY 1
+{
+	IF moveportaltopad TESTVAR randompadlocation = $ THEN
+		MOVEITEM PortalClosed subTouch$
+
+	IF PADON subTouch$ TESTVAR randompadlocation = $ THEN
+		TRIGGER randsublocation me
+}
+
+IF randomportal THEN RANDOM
+	SETVAR randompadlocation 1,
+	SETVAR randompadlocation 2,
+//	SETVAR randompadlocation 3,
+//	SETVAR randompadlocation 4,
+//	SETVAR randompadlocation 5,
+//	SETVAR randompadlocation 6,
+	SETVAR randompadlocation 7,
+	SETVAR randompadlocation 8,
+	SETVAR randompadlocation 9,
+	SETVAR randompadlocation 10
+
+IF KILLED PortalClosed BY captain THEN
+	DEPLOY PortalOpen PortalClosed,
+	UNDEPLOY PortalClosed,
+//	SETCAMERAFOCUS PortalOpen,
+	SETNPC captain 1,
+	ORDER captain GOTO PortalOpen,
+	PLAYSOUND "portal.wav" PortalOpen 1 3 1,
+	PLAYTALKINGHEAD 100,
+	TRIGGERDELAY 10000 greenwindelay
+
+//***PORTAL***//
+
+//***SUBMARINES***//
+
+MACRO createsubsMacro 2
+{
+	UNTIL @2 REPEAT 0 BY 1
+	{
+		IF createsubs TESTVAR Difficulty = @1 THEN
+			CREATEUNIT greysub submarine subStart1 grey,
+			TRIGGER selectsubweapon lastcreated,
+			TRIGGER randsublocation lastcreated
+	}
+}
+EXPAND createsubsMacro ( 0 5 )
+EXPAND createsubsMacro ( 1 10 )
+EXPAND createsubsMacro ( 2 15 )
+
+IF selectsubweapon THEN SEQUENTIAL
+	SELECTINVENTORYITEM me 1,
+	SELECTINVENTORYITEM me 2
+
+UNTIL 16 REPEAT 1 BY 1
+{
+	IF setsubloc$ TESTVAR GETPADSTATUS subStart$ = 0 THEN
+		TRIGGERDELAY 1 deploysub$
+
+	IF setsubloc$ TESTVAR GETPADSTATUS subStart$ = 1 THEN
+		TRIGGERDELAY 1 randsublocation
+
+	IF deploysub$ THEN
+		DEPLOY me subStart$,
+		ORDER me GOTO PortalClosed INMODE DEFEND
+}
+
+IF randsublocation THEN SEQUENTIAL
+	TRIGGER setsubloc1,
+	TRIGGER setsubloc9,
+	TRIGGER setsubloc5,
+	TRIGGER setsubloc13,
+	TRIGGER setsubloc2,
+	TRIGGER setsubloc10,
+	TRIGGER setsubloc6,
+	TRIGGER setsubloc14,
+	TRIGGER setsubloc3,
+	TRIGGER setsubloc11,
+	TRIGGER setsubloc7,
+	TRIGGER setsubloc15,
+	TRIGGER setsubloc4,
+	TRIGGER setsubloc12,
+	TRIGGER setsubloc8,
+	TRIGGER setsubloc16
+	
+
+//***SUBMARINES***//
+
+
+//***HELICOPTERS***//
+
+MACRO createchopperMacro 2
+{
+	UNTIL @2 REPEAT 1 BY 1
+	{
+		IF createchoppers TESTVAR Difficulty = @1 AND BoolWarning = 0 THEN
+			CREATECOPTER scout tanscout_$ (100,100,200) tan,
+			TRIGGER randcopterlocation lastcreated,
+			TRIGGER copterinventory tanscout_$
+
+		IF createchoppers TESTVAR Difficulty = @1 AND BoolWarning > 0 THEN
+			RESURRECT tanscout_$ (100,100,200),
+			TRIGGER randcopterlocation lastcreated,
+			TRIGGER copterinventory tanscout_$	
+	}
+
+	IF getchoppercount TESTVAR Difficulty = @1 THEN
+		SETVAR NumTanCopters @2
+}
+EXPAND createchopperMacro ( 0 1 )
+EXPAND createchopperMacro ( 1 2 )
+EXPAND createchopperMacro ( 2 3 )
+
+IF randcopterlocation THEN SEQUENTIAL
+	MOVEITEM me subStart1,
+	MOVEITEM me subStart2,
+	MOVEITEM me subStart3,
+	MOVEITEM me subStart4,
+	MOVEITEM me subStart5,
+	MOVEITEM me subStart6,
+	MOVEITEM me subStart7,
+	MOVEITEM me subStart8,
+	MOVEITEM me subStart9,
+	MOVEITEM me subStart10,
+	MOVEITEM me subStart11,
+	MOVEITEM me subStart12,
+	MOVEITEM me subStart13,
+	MOVEITEM me subStart14,
+	MOVEITEM me subStart15,
+	MOVEITEM me subStart16,
+	MOVEITEM me subStart17
+
+IF copterinventory THEN
+	SETFACING me 128,
+	SETAIRMAP me 1,
+	CREATEPOWERUP torpedo me -1, PICKUPITEM me lastcreated,
+	CREATEPOWERUP airblastmissile me -1, PICKUPITEM me lastcreated,
+	CREATEPOWERUP depthcharge me 5, PICKUPITEM me lastcreated,
+	TRIGGER randomtreasure1, PICKUPITEM me lastcreated,
+	TRIGGER randomtreasure2, PICKUPITEM me lastcreated,
+	SELECTINVENTORYITEM me 0,
+	TRIGGERDELAY 1 scoutgunner
+
+IF scoutgunner TESTVAR
+	ITEMTOITEMDISTANCE me captain <= 500 THEN
+		SELECTINVENTORYITEM me 2,
+		ORDER me FOLLOW captain INMODE ATTACK,
+		TRIGGERDELAY 1 scoutgunner
+
+IF scoutgunner TESTVAR
+	ITEMTOITEMDISTANCE me captain > 500 THEN SEQUENTIAL
+		TRIGGER targetDestroyer1,
+		TRIGGER targetDestroyer2
+
+IF targetDestroyer1 THEN
+	SELECTINVENTORYITEM me 1,
+	ORDER me GOTO Destroyer1 INMODE ATTACK,
+	TRIGGERDELAY 1 scoutgunner
+
+IF targetDestroyer2 THEN
+	SELECTINVENTORYITEM me 1,
+	ORDER me GOTO Destroyer2 INMODE ATTACK,
+	TRIGGERDELAY 1 scoutgunner
+
+IF delaychoppers TESTVAR Difficulty = 0 THEN
+	SETVAR AddTimer 20000, 
+	TRIGGERDELAY REFVAR AddTimer createchoppers,
+	ADDVAR AddTimer 1000,
+	TRIGGERDELAY REFVAR AddTimer firstchopperwarning
+
+IF delaychoppers TESTVAR Difficulty = 1 THEN
+	SETVAR AddTimer 40000, 
+	TRIGGERDELAY REFVAR AddTimer createchoppers,
+	ADDVAR AddTimer 1000,
+	TRIGGERDELAY REFVAR AddTimer firstchopperwarning
+
+IF delaychoppers TESTVAR Difficulty = 2 THEN
+	SETVAR AddTimer 60000, 
+	TRIGGERDELAY REFVAR AddTimer createchoppers,
+	ADDVAR AddTimer 1000,
+	TRIGGERDELAY REFVAR AddTimer firstchopperwarning
+
+IF KILLED TanBattalion THEN
+	ADDVAR NumTanCopters -1,
+	TRIGGER tanchopperwave
+
+IF tanchopperwave TESTVAR NumTanCopters <= 0 THEN
+	TRIGGER getchoppercount,
+	TRIGGER delaychoppers
+
+IF randomtreasure1 THEN RANDOM
+	CREATEPOWERUP fullarmor me,
+	CREATEPOWERUP armorboost me,
+	CREATEPOWERUP partialarmor me,
+	CREATEPOWERUP airmine me 999,
+	CREATEPOWERUP swarmmissile me 999,
+	CREATEPOWERUP wingmen me 999
+
+IF randomtreasure2 THEN RANDOM
+	CREATEPOWERUP fullarmor me,
+	CREATEPOWERUP armorboost me,
+	CREATEPOWERUP partialarmor me,
+	CREATEPOWERUP heatray me 999,
+	CREATEPOWERUP ecmchaff me,
+	CREATEPOWERUP radarmissile me 999
+			
+IF firstchopperwarning BUTNOT destroyerkilled TESTVAR BoolWarning = 0 THEN
+	SETVAR BoolWarning 1,
+	PLAYTALKINGHEAD 108
+
+//***HELICOPTERS***//
+
+
+//***RANDOM INSECTS***//
+
+IF delayinsects TESTVAR Difficulty = 0 THEN
+	TRIGGERDELAY 90000 orderinsects
+
+IF delayinsects TESTVAR Difficulty = 1 THEN
+	TRIGGERDELAY 60000 orderinsects
+
+IF delayinsects TESTVAR Difficulty = 2 THEN
+	TRIGGERDELAY 30000 orderinsects
+
+IF orderinsects TESTVAR NumGreyFlies < 10 AND NumGreyWasps < 10 THEN
+	TRIGGER randominsect,
+	ORDER LASTCREATED FOLLOW captain INMODE ATTACK,
+	TRIGGER delayinsects
+
+IF randominsect THEN RANDOM
+	TRIGGER randomwaspcount,
+	TRIGGER randomflycount
+
+IF randomwaspcount TESTVAR NumGreyWasps < 10 THEN
+	ADDVAR NumGreyWasps 1,
+	TRIGGER randomwasp
+
+IF randomwasp THEN RANDOM
+	CREATEINSECT mutantwasp mwasp (20,20,200) grey,
+	CREATEINSECT mutantwasp mwasp (4020,20,200) grey,
+	CREATEINSECT mutantwasp mwasp (20,4020,200) grey,
+	CREATEINSECT mutantwasp mwasp (4020,4020,200) grey
+
+IF randomflycount TESTVAR NumGreyFlies < 10 THEN
+	ADDVAR NumGreyFlies 1,
+	TRIGGER randomfly
+
+IF randomfly THEN RANDOM
+	CREATEINSECT mutantfly mfly (20,20,200) grey,
+	CREATEINSECT mutantfly mfly (4020,20,200) grey,
+	CREATEINSECT mutantfly mfly (20,4020,200) grey,
+	CREATEINSECT mutantfly mfly (4020,4020,200) grey
+
+//***RANDOM INSECTS***//
+
+
+//***NOTIFY***//
+
+IF destroyerkilled THEN
+	TRIGGER removeallguns,
+	SETOBJSTATE me osSink,
+	PLAYTALKINGHEAD 110,
+	TRIGGERDELAY 10000 tanwindelay
+
+IF greenwindelay BUTNOT destroyerkilled THEN
+	STOPTALKINGHEAD,
+	SETNPC captain 0,
+	TRIGGER GREENWINS
+
+IF tanwindelay THEN
+	STOPTALKINGHEAD,
+	SETNPC captain 0,
+	TRIGGER TANWINS
+
+//***NOTIFY***//
+
+
+//***AMBIENT SOUNDS***//
+
+IF surfsound THEN
+	playsound wavesonbeach.wav (2048,2048) 8 1 1 50
+
+IF birdsound THEN
+	PLAYSOUND seagulls.wav (0,0) 7 1 0,
+	TRIGGER repeatbirdsound
+
+IF repeatbirdsound THEN RANDOM
+	TRIGGERDELAY 10000 birdsound,
+	TRIGGERDELAY 30000 birdsound,
+	TRIGGERDELAY 60000 birdsound
+
+//***AMBIENT SOUNDS***//

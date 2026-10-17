@@ -1,0 +1,424 @@
+// blueracecar.txt
+// Carson Herrick
+
+VARIABLE startXblue 1245
+VARIABLE startYblue 2663
+VARIABLE sourceXblue 0
+VARIABLE sourceYblue 0
+VARIABLE targetXblue 0
+VARIABLE targetYblue 0
+VARIABLE currentXblue 1245	
+VARIABLE currentYblue 2663
+VARIABLE currentZblue 0
+VARIABLE tallyXblue 0
+VARIABLE tallyYblue 0
+
+VARIABLE cosblue 0
+VARIABLE sinblue 0
+
+VARIABLE currentdegblue 0
+VARIABLE enddegblue 0
+
+VARIABLE centerXblue 0
+VARIABLE centerYblue 0
+VARIABLE rXblue 0
+VARIABLE rYblue 0
+
+VARIABLE newbluestate 0
+
+
+OBJECT BlueCar
+	state osblueidle
+		frame 0 0
+	//SECTION A
+	STATE osBlueA1
+		FRAME 10 1	TRIGGER moveblue_A1
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueA1
+
+	//SECTION B
+	STATE osBlueB1
+		FRAME 10 2	TRIGGER moveblue_B1
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueB1
+	STATE osBlueB2
+		FRAME 10 3	TRIGGER moveblue_B2
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueB2
+	STATE osBlueB3
+		FRAME 10 1	TRIGGER moveblue_B3
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueB3
+	STATE osBlueB4
+		FRAME 10 4	TRIGGER moveblue_B4
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueB4
+	STATE osBlueB5
+		FRAME 10 5	TRIGGER moveblue_B5
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueB5
+	STATE osBlueB6
+		FRAME 10 6	TRIGGER moveblue_B6
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueB6
+
+	//SECTION C
+	STATE osBlueC1
+		FRAME 10 7	TRIGGER arcblue_C1
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueC1
+	STATE osBlueC2
+		FRAME 10 8	TRIGGER arcblue_C2
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueC2
+	STATE osBlueC3
+		FRAME 10 9	TRIGGER arcblue_C3
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueC3
+	STATE osBlueC4
+		FRAME 10 10	TRIGGER arcblue_C4
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueC4
+	STATE osBlueC5
+		FRAME 10 11	TRIGGER arcblue_C5
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueC5
+	STATE osBlueC6
+		FRAME 10 12	TRIGGER arcblue_C6
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueC6
+
+	//SECTION D
+	STATE osBlueD1
+		FRAME 10 13	TRIGGER arcblue_D1
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueD1
+	STATE osBlueD2
+		FRAME 10 14	TRIGGER arcblue_D2
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueD2
+	STATE osBlueD3
+		FRAME 10 15	TRIGGER arcblue_D3
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueD3
+	STATE osBlueD4
+		FRAME 10 16	TRIGGER arcblue_D4
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueD4
+	STATE osBlueD5
+		FRAME 10 17	TRIGGER arcblue_D5
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueD5
+	STATE osBlueD6
+		FRAME 10 18	TRIGGER arcblue_D6
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueD6
+
+	//SECTION E
+	STATE osBlueE1
+		FRAME 10 19	TRIGGER arcblue_E1
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueE1
+	STATE osBlueE2
+		FRAME 10 20	TRIGGER arcblue_E2
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueE2
+	STATE osBlueE3
+		FRAME 10 21	TRIGGER arcblue_E3
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueE3
+	STATE osBlueE4
+		FRAME 10 22	TRIGGER arcblue_E4
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueE4
+	STATE osBlueE5
+		FRAME 10 23	TRIGGER arcblue_E5
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueE5
+	STATE osBlueE6
+		FRAME 10 24	TRIGGER arcblue_E6
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueE6
+
+	//SECTION F
+	STATE osBlueF1
+		FRAME 10 25	TRIGGER moveblue_F1
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueF1
+
+	//SECTION G
+	STATE osBlueG1
+		FRAME 10 26	TRIGGER arcblue_G1
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueG1
+	STATE osBlueG2
+		FRAME 10 27	TRIGGER arcblue_G2
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueG2
+	STATE osBlueG3
+		FRAME 10 28	TRIGGER arcblue_G3
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueG3
+	STATE osBlueG4
+		FRAME 10 29	TRIGGER arcblue_G4
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueG4
+	STATE osBlueG5
+		FRAME 10 30	TRIGGER arcblue_G5
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueG5
+
+	//SECTION H
+	STATE osBlueH1
+		FRAME 10 31	TRIGGER arcblue_H1
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueH1
+	STATE osBlueH2
+		FRAME 10 32	TRIGGER arcblue_H2
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueH2
+	STATE osBlueH3
+		FRAME 10 33	TRIGGER arcblue_H3
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueH3
+	STATE osBlueH4
+		FRAME 10 34	TRIGGER arcblue_H4
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueH4
+	STATE osBlueH5
+		FRAME 10 35	TRIGGER arcblue_H5
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueH5
+	STATE osBlueH6
+		FRAME 10 36	TRIGGER arcblue_H6
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueH6
+
+	//SECTION I
+	STATE osBlueI1
+		FRAME 10 37	TRIGGER moveblue_I1
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueI1
+	STATE osBlueI2
+		FRAME 10 38	TRIGGER moveblue_I2
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueI2
+	STATE osBlueI3
+		FRAME 10 39	TRIGGER moveblue_I3
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueI3
+	STATE osBlueI4
+		FRAME 10 40	TRIGGER moveblue_I4
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueI4
+	STATE osBlueI5
+		FRAME 10 41	TRIGGER moveblue_I5
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueI5
+
+	//SECTION J
+	STATE osBlueJ1
+		FRAME 10 13	TRIGGER arcblue_J1
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueJ1
+	STATE osBlueJ2
+		FRAME 10 14	TRIGGER arcblue_J2
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueJ2
+	STATE osBlueJ3
+		FRAME 10 15	TRIGGER arcblue_J3
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueJ3
+	STATE osBlueJ4
+		FRAME 10 16	TRIGGER arcblue_J4
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueJ4
+	STATE osBlueJ5
+		FRAME 10 17	TRIGGER arcblue_J5
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueJ5
+	STATE osBlueJ6
+		FRAME 10 18	TRIGGER arcblue_J6
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueJ6
+
+	//SECTION K
+	STATE osBlueK1
+		FRAME 10 19	TRIGGER arcblue_K1
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueK1
+	STATE osBlueK2
+		FRAME 10 20	TRIGGER arcblue_K2
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueK2
+	STATE osBlueK3
+		FRAME 10 21	TRIGGER arcblue_K3
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueK3
+	STATE osBlueK4
+		FRAME 10 22	TRIGGER arcblue_K4
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueK4
+	STATE osBlueK5
+		FRAME 10 23	TRIGGER arcblue_K5
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueK5
+	STATE osBlueK6
+		FRAME 10 24	TRIGGER arcblue_K6
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueK6
+
+	//SECTION L
+	STATE osBlueL1
+		FRAME 10 42	TRIGGER arcblue_L1
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueL1
+	STATE osBlueL2
+		FRAME 10 43	TRIGGER arcblue_L2
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueL2
+	STATE osBlueL3
+		FRAME 10 44	TRIGGER arcblue_L3
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueL3
+	STATE osBlueL4
+		FRAME 10 45	TRIGGER arcblue_L4
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueL4
+	STATE osBlueL5
+		FRAME 10 46	TRIGGER arcblue_L5
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueL5
+	STATE osBlueL6
+		FRAME 10 47	TRIGGER arcblue_L6
+		FRAME 0 0	SETOBJSTATE BlueCar osBlueL6
+
+MACRO moveBlueCar 8 
+{
+	IF moveblue_@1 THEN
+		TRIGGER setupmovebluestate_@1,
+		SETVAR targetXblue sourceXblue,
+		ADDVAR targetXblue @3,
+		SETVAR targetYblue sourceYblue,
+		ADDVAR targetYblue @4,
+		SETVAR currentZBlue @8,
+		TRIGGER movebluedist_@1,
+		TRIGGER testbluemove_@1
+
+	IF setupmovebluestate_@1 TESTVAR newbluestate = 0 THEN
+		SETVAR newbluestate 1,
+		SETVAR sourceXblue startXblue, ADDVAR sourceXblue @6,
+		SETVAR sourceYblue startYblue, ADDVAR sourceYblue @7
+	
+	IF movebluedist_@1 THEN
+		ADDVAR tallyXblue @2,
+		SETVAR currentXblue sourceXblue,
+		ADDVAR currentXblue tallyXblue,
+		SETVAR currentZBlue @8,
+
+		SETVAR tallyYblue tallyXblue,
+		MULVAR tallyYblue @4,
+		DIVVAR tallyYblue @3,
+		SETVAR currentYblue sourceYblue,
+		ADDVAR currentYblue tallyYblue
+
+	IF testbluemove_@1 TESTVAR @2 > 0 THEN
+		TRIGGER posbluemove_@1
+
+	IF testbluemove_@1 TESTVAR @2 < 0 THEN
+		TRIGGER negbluemove_@1
+
+	IF posbluemove_@1 TESTVAR currentXblue < targetXblue THEN
+		MOVEITEM BlueCar (REFVAR currentXblue, REFVAR currentYblue, REFVAR currentZBlue)
+
+	IF posbluemove_@1 TESTVAR currentXblue >= targetXblue THEN
+		SETVAR newbluestate 0,
+		SETOBJSTATE BlueCar osBlue@5,
+		MOVEITEM BlueCar (REFVAR currentXblue, REFVAR currentYblue,REFVAR currentZBlue)
+
+	IF negbluemove_@1 TESTVAR currentXblue > targetXblue THEN
+		MOVEITEM BlueCar (REFVAR currentXblue, REFVAR currentYblue,REFVAR currentZBlue)
+
+	IF negbluemove_@1 TESTVAR currentXblue <= targetXblue THEN
+		SETVAR newbluestate 0,
+		SETOBJSTATE BlueCar osBlue@5,
+		MOVEITEM BlueCar (REFVAR currentXblue, REFVAR currentYblue,REFVAR currentZBlue)
+}
+EXPAND moveBlueCar ( A1 8 555 455 B1 0 0 0)
+
+EXPAND moveBlueCar ( B1 8 642 504 B2 0 0 0)
+EXPAND moveBlueCar ( B2 8 728 562 B3 0 0 32)  // 32 height 
+EXPAND moveBlueCar ( B3 8 807 636 B4 0 0 0)
+EXPAND moveBlueCar ( B4 8 873 708 B5 0 0 0)
+EXPAND moveBlueCar ( B5 8 941 778 B6 0 0 0)
+EXPAND moveBlueCar ( B6 8 977 818 C1 0 0 0)
+
+EXPAND moveBlueCar ( F1 8 508 -420 G1 538 831 0)
+
+EXPAND moveBlueCar ( I1 -8  -83  57 I2 506 -31 32) // 32 height 
+EXPAND moveBlueCar ( I2 -8 -167 107 I3 506 -31 0)
+EXPAND moveBlueCar ( I3 -8 -248 164 I4 506 -31 0)
+EXPAND moveBlueCar ( I4 -8 -329 240 I5 506 -31 0)
+EXPAND moveBlueCar ( I5 -8 -482 400 J1 506 -31 0)
+
+
+MACRO arcBlueCar 7
+{
+	IF arcblue_@1 THEN
+		TRIGGER setuparcbluestate_@1,
+		SETVAR enddegblue @3,
+		SETVAR centerXblue startXblue,
+		ADDVAR centerXblue @5,
+		SETVAR centerYblue startYblue,
+		ADDVAR centerYblue @6,
+		TRIGGER testbluedist_@1,
+		TRIGGER arcbluedist_@1,
+		TRIGGER testbluearc_@1
+	
+	IF setuparcbluestate_@1 TESTVAR newbluestate = 0 THEN
+		SETVAR newbluestate 1,
+		SETVAR currentdegblue @2,
+		SETVAR tallyXblue 0, SETVAR tallyYblue 0
+
+	IF testbluedist_@1 TESTVAR @4 > 0 THEN
+		//SETVAR rXblue 380, SETVAR rYblue 314
+		SETVAR rXblue 390, SETVAR rYblue 324
+
+	IF testbluedist_@1 TESTVAR @4 < 0 THEN
+		SETVAR rXblue 330, SETVAR rYblue 274
+
+	IF arcbluedist_@1 THEN
+		ADDVAR currentdegblue @4,
+		SETVAR cosblue currentdegblue,
+		SETVAR sinblue currentdegblue,
+		COSVAR cosblue, SINVAR sinblue,
+		
+		SETVAR currentXblue rXblue,
+		MULVAR currentXblue cosblue,
+		DIVVAR currentXblue 1000,
+		ADDVAR currentXblue centerXblue,
+	
+		SETVAR currentYblue rYblue,
+		MULVAR currentYblue sinblue,
+		DIVVAR currentYblue 1000,
+		ADDVAR currentYblue centerYblue
+	
+	IF testbluearc_@1 TESTVAR @4 > 0 THEN
+		TRIGGER posbluearc_@1
+
+	IF testbluearc_@1 TESTVAR @4 < 0 THEN
+		TRIGGER negbluearc_@1
+
+	IF posbluearc_@1 TESTVAR currentdegblue < enddegblue THEN
+		MOVEITEM BlueCar (REFVAR currentXblue, REFVAR currentYblue)
+
+	IF posbluearc_@1 TESTVAR currentdegblue >= enddegblue THEN
+		SETVAR newbluestate 0,
+		SETOBJSTATE BlueCar osBlue@7,
+		MOVEITEM BlueCar (REFVAR currentXblue, REFVAR currentYblue)
+
+	IF negbluearc_@1 TESTVAR currentdegblue > enddegblue THEN
+		MOVEITEM BlueCar (REFVAR currentXblue, REFVAR currentYblue)
+
+	IF negbluearc_@1 TESTVAR currentdegblue <= enddegblue THEN
+		SETVAR newbluestate 0,
+		SETOBJSTATE BlueCar osBlue@7,
+		MOVEITEM BlueCar (REFVAR currentXblue, REFVAR currentYblue)
+}
+EXPAND arcBlueCar ( C1 224 210 -1 761 1023 C2 )
+EXPAND arcBlueCar ( C2 210 200 -1 761 1023 C3 )
+EXPAND arcBlueCar ( C3 200 190 -1 761 1023 C4 )
+EXPAND arcBlueCar ( C4 190 180 -1 761 1023 C5 )
+EXPAND arcBlueCar ( C5 180 170 -1 761 1023 C6 )
+EXPAND arcBlueCar ( C6 170 160 -1 761 1023 D1 )
+
+EXPAND arcBlueCar ( D1 160 150 -1 761 1023 D2 )
+EXPAND arcBlueCar ( D2 150 138 -1 761 1023 D3 )
+EXPAND arcBlueCar ( D3 138 124 -1 761 1023 D4 )
+EXPAND arcBlueCar ( D4 124 116 -1 761 1023 D5 )
+EXPAND arcBlueCar ( D5 116 108 -1 761 1023 D6 )
+EXPAND arcBlueCar ( D6 108  96 -1 761 1023 E1 )
+
+EXPAND arcBlueCar ( E1 96 84 -1 761 1023 E2 )
+EXPAND arcBlueCar ( E2 84 75 -1 761 1023 E3 )
+EXPAND arcBlueCar ( E3 75 64 -1 761 1023 E4 )
+EXPAND arcBlueCar ( E4 64 53 -1 761 1023 E5 )
+EXPAND arcBlueCar ( E5 53 43 -1 761 1023 E6 )
+EXPAND arcBlueCar ( E6 43 32 -1 761 1023 F1 )
+
+EXPAND arcBlueCar ( G1 160 172 1 761 191 G2 )
+EXPAND arcBlueCar ( G2 172 183 1 761 191 G3 )
+EXPAND arcBlueCar ( G3 183 195 1 761 191 G4 )
+EXPAND arcBlueCar ( G4 195 206 1 761 191 G5 )
+EXPAND arcBlueCar ( G5 206 218 1 761 191 H1 )
+
+EXPAND arcBlueCar ( H1 218 230 1 761 191 H2 )
+EXPAND arcBlueCar ( H2 230 241 1 761 191 H3 )
+EXPAND arcBlueCar ( H3 241 253 1 761 191 H4 )
+EXPAND arcBlueCar ( H4 253 255 1 761 191 H5 )
+EXPAND arcBlueCar ( H5   0  20 1 761 191 H6 )
+EXPAND arcBlueCar ( H6  20  32 1 761 191 I1 )
+
+EXPAND arcBlueCar ( J1 160 150 -1 -238 191 J2 )
+EXPAND arcBlueCar ( J2 150 138 -1 -238 191 J3 )
+EXPAND arcBlueCar ( J3 138 124 -1 -238 191 J4 )
+EXPAND arcBlueCar ( J4 124 116 -1 -238 191 J5 )
+EXPAND arcBlueCar ( J5 116 108 -1 -238 191 J6 )
+EXPAND arcBlueCar ( J6 108  96 -1 -238 191 K1 )
+
+EXPAND arcBlueCar ( K1 96 84 -1 -238 191 K2 )
+EXPAND arcBlueCar ( K2 84 75 -1 -238 191 K3 )
+EXPAND arcBlueCar ( K3 75 64 -1 -238 191 K4 )
+EXPAND arcBlueCar ( K4 64 53 -1 -238 191 K5 )
+EXPAND arcBlueCar ( K5 53 43 -1 -238 191 K6 )
+EXPAND arcBlueCar ( K6 43 32 -1 -238 191 L1 )
+
+EXPAND arcBlueCar ( L1  32  25 -1 -238 191 L2 )
+EXPAND arcBlueCar ( L2  25   8 -1 -238 191 L3 )
+EXPAND arcBlueCar ( L3   8   0 -1 -238 191 L4 )
+EXPAND arcBlueCar ( L4 255 245 -1 -238 191 L5 )
+EXPAND arcBlueCar ( L5 245 232 -1 -238 191 L6 )
+EXPAND arcBlueCar ( L6 232 224 -1 -238 191 A1 )
+
+

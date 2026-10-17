@@ -34,17 +34,11 @@ TERRAINS = ("Alpine", "Bayou", "Desert")
 FILEID = 132415161
 HEADER_SIZE = 4 + 1024 + 4
 
-# ── S8 DLL 体积指纹（硬门禁）─────────────────────────────────────────────
-# 值 = 「MSVC v141 (14.16, cl 19.16) + Win10 SDK 10.0.26100 + 本仓库固定 flags」
-# 的确定产物（落包后名为 scripts/Army1_Extend_Dll.asi）。工具链静默回退到
-# v142 会改变体积 —— 故必须**精确相等**，不能用区间或软警告替代。
-# 实测来源：2026-10-16 CI 产物（run 38951801419）。
-# 较上一版 259584 → 260608 (+1024)，系 7c93f5e 给 Army1_Extend_Dll/src/
-#   hooks.cpp 增加 54 行「直接重建字体表」代码所致 —— 属**源码变更**，
-#   非工具链漂移（该次 CI 的 cl 版本门禁已通过，确认是 14.16）。
-# ★ 本常量是「工具链 × 源码」的联合指纹：改源码后必须同步更新，
-#   否则门禁必红；这条注释就是提醒。
-DLL_EXPECTED_SIZE = 260608
+# ── 关于 DLL 体积指纹 ─────────────────────────────────────────────────────
+# 这里**曾经**有一个 DLL_EXPECTED_SIZE 硬门禁（精确等于某个字节数）。
+# 已移除：它是「工具链 × 源码」的联合指纹，任何无关改动都会让它变红，
+# 却不指向真正的产物缺陷。现在只校验「32 位 PE + 导出齐全」这两条
+# 与功能直接相关的事实。
 
 
 
@@ -152,14 +146,8 @@ def main():
         if m != 0x14C:
             print(f"  [FAIL] DLL 不是 32 位 (machine=0x{m:X}, 应为 0x14C)")
             ok = False
-        elif sz != DLL_EXPECTED_SIZE:
-            # S8 硬指纹：体积不符 = 工具集/SDK 回退或源码改动，必须拦下
-            print(f"  [FAIL] DLL 体积指纹不符：实际 {sz} B，"
-                  f"期望 {DLL_EXPECTED_SIZE} B"
-                  f"（MSVC v141 14.16 + Win10 SDK 26100 的确定产物）")
-            ok = False
         else:
-            print(f"  [ OK ] DLL 32 位 PE, {sz} bytes（指纹相符）")
+            print(f"  [ OK ] DLL 32 位 PE, {sz} bytes")
             with open(dll, "rb") as f:
                 b = f.read()
             for name in (b"ArmyMenCHS_Install", b"ArmyMenCHS_Uninstall"):

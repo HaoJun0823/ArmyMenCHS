@@ -1,0 +1,2437 @@
+//Living Room...A Birthday Surprise
+//By Keith Meyer and Carson "Slot Car" Herrick
+//The all inclusivescenario...find things, capture things and Kill things! All in one.
+
+INCLUDE ..\scripts\common.txt
+//INCLUDE ..\scripts\blueracecar.txt
+//INCLUDE ..\scripts\redracecar.txt
+
+preloadsprite 43 100 0 
+preloadsprite 43 110 0
+preloadsprite 43 111 0
+
+preloadsprite 43 150 0
+preloadsprite 43 151 0
+preloadsprite 43 152 0
+preloadsprite 43 153 0
+preloadsprite 43 154 0
+preloadsprite 43 155 0
+preloadsprite 43 156 0
+preloadsprite 43 157 0
+
+preloadsprite 43 200 0
+preloadsprite 43 251 0
+preloadsprite 43 252 0
+preloadsprite 43 300 0
+preloadsprite 43 350 0
+preloadsprite 43 402 0
+preloadsprite 43 405 0
+
+preloadsprite 43 801 0
+
+preloadsprite 43 850 0
+preloadsprite 43 851 0
+preloadsprite 43 852 0
+preloadsprite 43 853 0
+
+
+OBJECT yellowidle1
+	STATE osflicker
+		
+		FRAME 50 0
+		FRAME 50 1
+		FRAME 50 2
+		FRAME 50 3
+		FRAME 50 4
+		FRAME 50 5
+		FRAME 50 0
+			SETOBJSTATE yellowidle1 osflicker
+
+	STATE osgolimp
+
+		FRAME 50 6
+		FRAME 50 7
+		FRAME 50 8
+		FRAME 50 9
+		FRAME 50 10
+		FRAME 50 11
+
+OBJECT yellowidle2
+	STATE osflicker
+		
+		FRAME 50 0
+		FRAME 50 1
+		FRAME 50 2
+		FRAME 50 3
+		FRAME 50 4
+		FRAME 50 5
+		FRAME 50 0
+	
+			SETOBJSTATE yellowidle2 osflicker
+
+	STATE osgolimp
+
+		FRAME 50 6
+		FRAME 50 7
+		FRAME 50 8
+		FRAME 50 9
+		FRAME 50 10
+		FRAME 50 11
+
+OBJECT yellowidle3
+	STATE osflicker
+		
+		FRAME 50 0
+		FRAME 50 1
+		FRAME 50 2
+		FRAME 50 3
+		FRAME 50 4
+		FRAME 50 5
+		FRAME 50 0
+	
+			SETOBJSTATE yellowidle3 osflicker
+
+	STATE osgolimp
+
+		FRAME 50 6
+		FRAME 50 7
+		FRAME 50 8
+		FRAME 50 9
+		FRAME 50 10
+		FRAME 50 11
+
+OBJECT redidle1
+	STATE osflicker
+		
+		FRAME 50 0
+		FRAME 50 1
+		FRAME 50 2
+		FRAME 50 3
+		FRAME 50 4
+		FRAME 50 5
+		FRAME 50 0
+	
+			SETOBJSTATE redidle1 osflicker
+
+	STATE osgolimp
+
+		FRAME 50 6
+		FRAME 50 7
+		FRAME 50 8
+		FRAME 50 9
+		FRAME 50 10
+		FRAME 50 11
+
+OBJECT redidle2
+	STATE osflicker
+		
+		FRAME 50 0
+		FRAME 50 1
+		FRAME 50 2
+		FRAME 50 3
+		FRAME 50 4
+		FRAME 50 5
+		FRAME 50 0
+	
+			SETOBJSTATE redidle2 osflicker
+	STATE osgolimp
+
+		FRAME 50 6
+		FRAME 50 7
+		FRAME 50 8
+		FRAME 50 9
+		FRAME 50 10
+		FRAME 50 11
+
+OBJECT redidle3
+	STATE osflicker
+		
+		FRAME 50 0
+		FRAME 50 1
+		FRAME 50 2
+		FRAME 50 3
+		FRAME 50 4
+		FRAME 50 5
+		FRAME 50 0
+	
+			SETOBJSTATE redidle3 osflicker
+	STATE osgolimp
+
+		FRAME 50 6
+		FRAME 50 7
+		FRAME 50 8
+		FRAME 50 9
+		FRAME 50 10
+		FRAME 50 11
+
+OBJECT blueidle1
+	STATE osflicker
+		
+		FRAME 50 0
+		FRAME 50 1
+		FRAME 50 2
+		FRAME 50 3
+		FRAME 50 4
+		FRAME 50 5
+		FRAME 50 0
+	
+			SETOBJSTATE blueidle1 osflicker
+	
+	STATE osgolimp
+
+		FRAME 50 6
+		FRAME 50 7
+		FRAME 50 8
+		FRAME 50 9
+		FRAME 50 10
+		FRAME 50 11
+
+OBJECT blueidle2
+	STATE osflicker
+		
+		FRAME 50 0
+		FRAME 50 1
+		FRAME 50 2
+		FRAME 50 3
+		FRAME 50 4
+		FRAME 50 5
+		FRAME 50 0
+	
+			SETOBJSTATE blueidle2 osflicker
+
+	STATE osgolimp
+
+		FRAME 50 6
+		FRAME 50 7
+		FRAME 50 8
+		FRAME 50 9
+		FRAME 50 10
+		FRAME 50 11
+
+OBJECT blueidle3
+	STATE osflicker
+		
+		FRAME 50 0
+		FRAME 50 1
+		FRAME 50 2
+		FRAME 50 3	
+		FRAME 50 4
+		FRAME 50 5
+		FRAME 50 0
+	
+			SETOBJSTATE blueidle3 osflicker
+
+	STATE osgolimp
+
+		FRAME 50 6
+		FRAME 50 7
+		FRAME 50 8
+		FRAME 50 9
+		FRAME 50 10
+		FRAME 50 11
+
+
+OBJECT blueidle3
+	STATE osflicker
+		
+		FRAME 50 0
+		FRAME 50 1
+		FRAME 50 2
+		FRAME 50 3
+		FRAME 50 4
+		FRAME 50 5
+		FRAME 50 0
+	
+			SETOBJSTATE blueidle3 osflicker
+
+	STATE osgolimp
+
+		FRAME 50 6
+		FRAME 50 7
+		FRAME 50 8
+		FRAME 50 9
+		FRAME 50 10
+		FRAME 50 11
+
+OBJECT TrackFan
+	STATE osFanSpin
+		
+		FRAME 111 30
+		FRAME 111 31
+		FRAME 111 32
+		FRAME 111 30
+		FRAME 111 31
+		FRAME 111 32
+		FRAME 111 30
+		FRAME 111 31
+		FRAME 112 32
+
+		FRAME 129 30
+		FRAME 129 27
+		FRAME 129 28
+		FRAME 129 29
+		FRAME 129 24
+		FRAME 129 25
+		FRAME 129 26
+		FRAME 129 21
+		FRAME 129 22
+		FRAME 129 23
+		FRAME 129 18
+		FRAME 129 19
+		FRAME 129 20
+		FRAME 129 15
+		FRAME 129 16
+		FRAME 129 17
+		FRAME 129 12
+		FRAME 129 13
+		FRAME 129 14
+		FRAME 129 9
+		FRAME 129 10
+		FRAME 129 11
+		FRAME 129 6
+		FRAME 129 7
+		FRAME 129 8
+		FRAME 129 3
+		FRAME 129 4
+		FRAME 129 5
+		FRAME 129 1
+		FRAME 130 2		
+
+		FRAME 111 0
+		FRAME 111 1
+		FRAME 111 2
+		FRAME 111 0
+		FRAME 111 1
+		FRAME 111 2
+		FRAME 111 0
+		FRAME 111 1
+		FRAME 112 2
+
+		FRAME 129 3
+		FRAME 129 4
+		FRAME 129 5
+		FRAME 129 6
+		FRAME 129 7
+		FRAME 129 8
+		FRAME 129 9
+		FRAME 129 10
+		FRAME 129 11
+		FRAME 129 12
+		FRAME 129 13
+		FRAME 129 14
+		FRAME 129 15
+		FRAME 129 16
+		FRAME 129 17
+		FRAME 129 18
+		FRAME 129 19
+		FRAME 129 20
+		FRAME 129 21
+		FRAME 129 22
+		FRAME 129 23
+		FRAME 129 24
+		FRAME 129 25
+		FRAME 129 26
+		FRAME 129 27
+		FRAME 129 28
+		FRAME 129 29
+		FRAME 0 0
+
+			SETOBJSTATE TrackFan osFanSpin
+
+	STATE osStopfan
+		FRAME 120 30
+		FRAME 120 31
+		FRAME 120 32
+		FRAME 120 30
+		FRAME 130 31
+		FRAME 130 32
+		FRAME 130 30
+		FRAME 130 31
+		FRAME 130 32
+
+		FRAME 140 30
+		FRAME 145 27
+		FRAME 150 28
+		FRAME 155 29
+		FRAME 160 24
+		FRAME 165 25
+		FRAME 170 26
+		FRAME 175 21
+		FRAME 180 22
+		FRAME 185 23
+		FRAME 190 18
+		FRAME 200 19
+		FRAME 230 20 //stopped
+			SETOBJSTATE trackfan osfanoff
+
+	STATE osfanoff
+		FRAME 0 20
+
+	STATE osfanstart
+		FRAME 270 20
+		FRAME 250 15
+		FRAME 250 16
+		FRAME 240 17
+		FRAME 230 12
+		FRAME 220 13
+		FRAME 210 14
+		FRAME 200 9
+		FRAME 190 10
+		FRAME 180 11
+		FRAME 170 6
+		FRAME 160 7
+		FRAME 150 8
+		FRAME 140 3
+		FRAME 130 4
+		FRAME 130 5
+		FRAME 130 1
+		FRAME 130 2		
+
+		FRAME 111 0
+		FRAME 111 1
+		FRAME 111 2
+		FRAME 111 0
+		FRAME 111 1
+		FRAME 111 2
+		FRAME 111 0
+		FRAME 111 1
+		FRAME 112 2
+
+		FRAME 129 3
+		FRAME 129 4
+		FRAME 129 5
+		FRAME 129 6
+		FRAME 129 7
+		FRAME 129 8
+		FRAME 129 9
+		FRAME 129 10
+		FRAME 129 11
+		FRAME 129 12
+		FRAME 129 13
+		FRAME 129 14
+		FRAME 129 15
+		FRAME 129 16
+		FRAME 129 17
+		FRAME 129 18
+		FRAME 129 19
+		FRAME 129 20
+		FRAME 129 21
+		FRAME 129 22
+		FRAME 129 23
+		FRAME 129 24
+		FRAME 129 25
+		FRAME 129 26
+		FRAME 129 27
+		FRAME 129 28
+		FRAME 129 29
+		FRAME 0 0
+			setobjstate trackfan osfanspin
+
+OBJECT gamedisk
+	STATE osSpin
+		FRAME 50 0
+		FRAME 60 1
+		FRAME 70 2
+		FRAME 80 3
+		FRAME 90 4
+		FRAME 50 0 // cycle so it can spin forever
+			SETOBJSTATE gamedisk osSpin 0
+	STATE osNospin
+		FRAME 50 0
+
+	STATE osSpindown
+		FRAME 50 0
+		FRAME 60 1
+		FRAME 70 2
+		FRAME 120 3
+		FRAME 170 4
+		FRAME 250 0
+		FRAME 133 1
+		FRAME 350 2
+		FRAME 400 3
+		FRAME 450 4
+		FRAME 500 0 //stopped
+			SETOBJSTATE gamedisk osNospin
+
+OBJECT gamelid
+	STATE osLidflip
+		FRAME 30 0
+		FRAME 40 1
+		FRAME 50 2
+		FRAME 60 3
+		FRAME 70 4
+			SETOBJSTATE gamelid osLidup
+	STATE osLidup
+		FRAME 10 4
+	STATE osLiddown
+		FRAME 10 0
+
+PAD padgreenstart1 11 green
+PAD padgreenstart2 12 green
+PAD padgreenstart3 13 green
+PAD padgreenstart4 14 green
+PAD padgreenmove1 15 green 
+PAD padgreenmove2 16 green 
+PAD padgreenmove3 17 green 
+PAD padgreenmove4 18 green 
+PAD padgreenmove5 19 green 
+PAD padpatrol1 20 tan
+PAD padtanmove1 21 tan
+PAD padtanmove2 22 tan
+PAD padtanmove3 23 tan
+PAD padtanmove4 24 tan
+PAD padtanmove5 25 tan
+PAD padtanmove6 26 tan
+PAD padtanmove7 27 tan
+PAD padtanmove8 28 tan
+PAD padpatrol2 30 tan
+PAD padhatman1 40 tan
+PAD padhatman2 50
+PAD padhatman3 60
+PAD padhatman4 70 tan
+PAD padpatrol3 80 tan
+PAD padtanstart2 81 tan
+PAD padtanstart3 82 tan
+PAD padtanstart4 83 tan
+PAD padtanstart5 84 tan
+PAD padtanstart6 85 tan
+PAD padtanstart1 90 tan
+PAD padtanstart7 91 tan
+PAD padtanstart8 92 tan
+PAD padrightspeakerstart 100 tan
+PAD padrightspeakermove1 105 tan
+PAD padrightspeakermove2 108 tan
+PAD padtvstart 110 tan
+PAD padtvmove1 113 tan
+PAD padtvmove2 115 tan
+PAD padtvmove3 118 tan
+PAD padleftspeakerstart 120 tan
+PAD padleftspeakermove 125 tan
+PAD padroundtablestart 130 tan
+PAD padroundtablemove 135 tan
+PAD padentertain1 140 tan
+PAD padentertain2 145 tan
+PAD padentertain3 150 tan
+PAD padentertain4 155 tan
+PAD padcdplayerlid 160 tan
+PAD padhydrotank1 170
+PAD padhydrodef1 175	tan
+PAD padhydrodef2 178
+PAD padevaclz 200 sarge = 1
+PAD padLpad2	201	captain > 0 Delay 500 0
+PAD padreturnlz 202 captain > 0			//new LZ
+PAD padtantofar 202	tan
+PAD padsargepatrol1 203 sarge
+PAD padsargepatrol2 204 sarge
+PAD padsargepatrol3 205	sarge
+PAD padblowpad1 211
+PAD padblowpad2 212
+PAD padblowpad3 213
+PAD padblowpad4 214
+PAD padblowpad5 215
+PAD padblowpad6 216
+PAD padblowpad7 217
+PAD padblowpad8 218
+PAD padblowpad9 219
+PAD padblowpad10 220
+PAD padblowpad11 221
+PAD padblowpad12 222
+PAD padblowpad13 223
+PAD padblowpad14 224
+PAD padblowpad15 225
+PAD padblowpad16 226
+PAD padblowpad17 227
+PAD padblowpad18 228
+PAD padblowpad19 229
+PAD padblowpad20 230
+PAD padblowpad21 231
+PAD padblowpad22 232
+
+PAD padcaptainup 235 captain		// sets captain to use flight height
+PAD padcaptaindown 236 captain		// sets captain to terrain follow
+
+// hockey pads
+PAD padstayinplay 239 goalee
+PAD padtangoal 240 grey
+PAD padgreengoal 241 grey
+PAD padcenterline 242 mypuck > 0
+PAD padtandef1 243 tan
+PAD padtandef2 244 tan
+PAD padtandef3 245 tan
+PAD padcenterice 246
+PAD padtriggerhockey 247 captain
+PAD padreward1 248
+PAD padreward2 249
+PAD padacon 250 captain
+PAD padacoff 251 captain
+PAD padfillslot 252 mypuck > 0
+PAD padreward3 253
+PAD padreward4 254
+
+LIST listballoon {floater_$_1 floater_$_2 floater_$_3 floater_$_4 floater_$_5 floater_$_6 floater_$_7 floater_$_8 floater_$_9 floater_$_10 floater_$_11 floater_$_12 floater_$_13 floater_$_14 floater_$_15 floater_$_16 floater_$_17 floater_$_18 floater_$_19 floater_$_20}
+LIST listbcup1 43 500
+LIST listwholecupcake1 43 510
+LIST listeatencupcake1 43 520
+LIST listpartyhat1 43 530
+LIST listpartyhat2 43 535
+LIST listcan1 43 700
+LIST listcan2 43 710
+LIST listcan3 43 720
+LIST listreconguys {recon_$ recon_$_1 recon_$_2 recon_1 recon_2 recon_3 recon_4 recon_1_1 recon_2_1 recon_3_1 recon_4_1 recon_1_2 recon_2_2 recon_3_2 recon_4_2}
+LIST listtanarmoredforce {copter1 deftank1 deftank2 armor1 armor2 tank1 tank2 tank3 tank4 tank5 tank6 htrack1 htrack2 htrack3 bbbdefender3}
+LIST listCouchforce {arby1 arby2 arby3 arby4}
+LIST listGreenarmoredforce {Gtank1 Gtank2 gtank3 Gjeep1 Gjeep2 gjeep3}
+LIST listtantokill {htrackinf1 htrackinf3 htrackinf5 htrackinf7 htrackinf9 HMG1 HMG2 HMG3 grunt1 grunt2 grunt3 grunt4 grunt5 grunt6 grunt7 grunt8 grunt9 grunt10 grunt11 grunt12 grunt13 madwasp target cupman aaemplacement 111consoleplayer1 
+		111consoleplayer2 111consoleplayer3 111consoleplayer4 splat1 splat2 splat3 splat4}
+LIST listpowerupskillhydrotank {firecracker radarmissile1 clusterbomb1 heatray1}
+LIST listbanzai {banzai1 banzai2 banzai3 banzai4 banzai1_1 banzai2_1 banzai3_1 banzai4_1 banzai1_2 banzai2_2 banzai3_2 banzai4_2 banzai1_3 banzai2_3 banzai3_3 banzai4_3 banzai1_4 banzai2_4 banzai3_4 banzai4_4 banzai1_5 banzai2_5 banzai3_5 banzai4_5 banzai1_6 banzai2_6 banzai3_6 banzai4_6 banzai1_7 banzai2_7 banzai3_7 banzai4_7}
+
+VARIABLE numwave 0
+VARIABLE numhittank 0
+VARIABLE wavehealth 30
+VARIABLE nextwave 0
+VARIABLE numballoon 0
+VARIABLE numexplosion 0
+VARIABLE padvar 0
+VARIABLE varforward1 0
+VARIABLE varforward2 0
+VARIABLE varforward3 0
+VARIABLE Recondead 0
+VARIABLE Numtandead 0				//used to track win/loss based off Tan vehicles
+VARIABLE tempx 0
+VARIABLE tempy 0
+VARIABLE powerbuttoncount 0
+VARIABLE partyguys 0
+VARIABLE partydelay 0
+VARIABLE Numtotalbugs 0
+VARIABLE Numdelaybugs 0
+VARIABLE Numgreendead 0
+VARIABLE Numtankilled 0				//used for giving out goodies
+VARIABLE vartopplugdead 0
+VARIABLE ballooninflated 0
+VARIABLE varoutofair 0
+
+IF startup1 THEN
+	TRIGGER setupgreen,
+	TRIGGER setuptan,
+	TRIGGER setupballoon,
+	TRIGGER setupblue,
+	TRIGGER setupsounds,
+	SETOBJSTATE gamedisk osNospin,
+	SETOBJSTATE gamelid osLiddown,
+	CREATEOBJECT hydrogentank 43 600 (2502,1274) 0,		//created hydro tank
+	UNDEPLOY cord1damage,
+	UNDEPLOY cord2damage,
+	UNDEPLOY powerlight,
+	CREATEOBJECT gauge 43 601 (2463,1249),
+	TRIGGERDELAY 50 killkenny,
+	TRIGGERDELAY 2 setcamera,
+	SETMISSIONINFO lv11o
+
+IF setcamera THEN
+	setcamerafocus kenny
+
+IF setupgreen THEN
+//Sarge and halfsquad of guys, plus point man that gets blown up
+	CREATEUNIT "sarge" rifleman (3750,2650) green vulcan,
+	SETMAXHEALTH sarge 800,						// should be 800
+	HEAL sarge 100,
+	CREATEUNIT "Cpl. Walker" rifleman (3660,2730) green autorifle,
+	CREATEUNIT "Pvt. Crazy Stan" flamerman (3785,2740) green flamer,
+	CREATEUNIT "Pvt. Ben" bazookaman (3620,2780) green bazooka,
+	setaipose sarge stand,
+	setaipose "Cpl. Walker" stand,
+	setaipose "Pvt. Crazy Stan" stand,
+	setaipose "Pvt. Ben" stand,
+	setfacing sarge 45,
+	setfacing "Cpl. Walker" 250,
+	setfacing "Pvt. Crazy Stan" 25,
+	setfacing "Pvt. Ben" 10,
+// This is the point man
+	CREATEUNIT "Kenny" rifleman (3450,2490) green rifle,
+	SETAIMODE Kenny defend,
+	SETAIPOSE kenny stand,
+	SETCAMERAFOCUS Kenny,
+	CREATEPOWERUP "FullArmor" FullArmor (1878,3600),
+	CREATEPOWERUP "partialarmor" partialarmor (3486,3000),
+	CREATEPOWERUP "partialarmor" partialarmor (3050,2900),
+	CREATEPOWERUP "partialarmor" partialarmor (1100,1620),
+	CREATEPOWERUP "partialarmor" partialarmor (248,2200),
+	CREATEPOWERUP "medkit" medkit (4000,2140),
+	CREATEPOWERUP "BottleRockets" groundmissile (496,3800) 15,
+	CREATEPOWERUP "napalmbomb" napalmbomb (1000,2900) 5,
+	CREATEPOWERUP "partialarmor" partialarmor (1900,1318),
+	CREATEPOWERUP "heatray1" heatray (3120,620) 10,
+	CREATEPOWERUP "greenpaintbomb" greenpaintbomb (3700,2700) 5,
+	CREATEPOWERUP "sidegun" sidegun (3880,1230)
+
+If setuptan THEN
+	CREATEUNIT "BBBdefender1" stingerguy (116,3078) tan stingermissile,
+	CREATEVEHICLE "BBBdefender2" ackackbase (315,2944) tan,		//New ackackbase
+	SETFACING bbbdefender2 150,
+	CREATEVEHICLE "BBBdefender3" halftrack (350,2760) tan,		//ackack tow vehicle
+	ADDMISSIONOBJECTIVE bbbdefender3,
+	SETAIMODE bbbdefender3 defend,
+	CREATEUNIT "BBBdefender4" rifleman (98,2833) tan rifle,
+	// Balloon Setup
+	CREATEBALLOON scout balloon1 (3000,2200,120) tan,	//Given a Z coord. so it doesn't inflate animate
+	SETMAXHEALTH balloon1 300,
+	HEAL balloon1 100,
+	SETAIRMAP balloon1 1,
+	SETAIRVARIANCE balloon1 120,
+	CREATEVEHICLE "kennykiller" tank (3000,2200) tan,
+	SETFACING kennykiller 135,
+	SETGUNFACING kennykiller 160,
+	SETAIMODE kennykiller defend,
+	CARRY balloon1 kennykiller,
+	//Floor Defence and Patrol
+	CREATEVEHICLE "Deftank1" tank (2600,2080) tan,
+	ADDMISSIONOBJECTIVE deftank1,
+	SETFACING deftank1 170,
+	SETMAXHEALTH deftank1 400,
+	HEAL deftank1 100,
+	MAKESMOKE deftank1 30000,
+	SETAIMODE deftank1 defend,
+	CREATEVEHICLE "Deftank2" tank (2805,2650) tan,
+	SETMAXHEALTH deftank2 400,
+	ADDMISSIONOBJECTIVE deftank2,
+	HEAL deftank2 100,
+	MAKESMOKE deftank2 30000,
+	SETFACING deftank2 175,
+	SETAIMODE deftank2 defend,
+	CREATEUNIT "hydrodef6" bazookaman (2720,1855) tan bazooka,
+	//Console troopers
+	CREATEUNIT 111consoleplayer1 stingerguy (1734,1848,45) tan stingermissile,				//111 = no corpse left behind
+	CREATEUNIT 111consoleplayer2 bazookaman (1750,1840,45) tan bazooka,
+	CREATEUNIT 111consoleplayer3 rifleman (1760,1840,45) tan rifle,
+	CREATEUNIT 111consoleplayer4 rifleman (1770,1850,45) tan rifle,
+	//HMG
+	CREATEUNIT "HMG1" rifleman (2136,2716) tan vulcan,
+	SETAIMODE hmg1 defend,
+	//CREATEUNIT "HMG2" rifleman (1962,2694) tan rifle,
+	CREATEVEHICLE "Armor1" tank (1815,2790) tan,
+	SETFACING armor1 185,
+	SETAIMODE armor1 defend,
+	ADDMISSIONOBJECTIVE armor1,
+	// Will be AA emplacement or something to that effect
+	CREATEVEHICLE "AAemplacement" ackackbase (2065,2800) tan,		//ackackvehicle
+	SETFACING aaemplacement 170,
+	// A 1/2 squad
+	CREATEUNIT "grunt1" rifleman (1206,2859) tan rifle,
+	CREATEUNIT "grunt2" rifleman (1000,2702) tan rifle,
+	CREATEUNIT "grunt3" rifleman (1163,2973) tan rifle,
+	//CREATEUNIT "grunt4" rifleman (845,2959) tan rifle,
+	CREATEUNIT "grunt5" rifleman (1028,2845) tan bazooka,
+	// B 1/2 Squad
+	CREATEUNIT "grunt6" rifleman (2196,3581) tan rifle,
+	CREATEUNIT "grunt7" rifleman (1814,3617) tan rifle,
+	CREATEUNIT "grunt8" rifleman (1888,3672) tan rifle,
+	//CREATEUNIT "grunt9" rifleman (2000,3456) tan rifle,
+	CREATEUNIT "grunt10" rifleman (1980,3798) tan bazooka,
+	// Fan Patrol
+	CREATEUNIT "grunt11" rifleman (881,3695) tan vulcan,
+	//CREATEUNIT "grunt12" rifleman (965,3506) tan vulcan,
+	CREATEUNIT "grunt13" bazookaman (992,3561) tan bazooka,
+	CREATEVEHICLE "Armor2" tank (1213,3768) tan,
+	ADDMISSIONOBJECTIVE armor2,
+	TRIGGER reconsetup,
+	//Couch troops Suppose to be the ballista boys
+	CREATEVEHICLE "arby1" arbalest (3350,3760,266) tan,		//Back of sofa
+	CREATEVEHICLE "arby2" arbalest (2500,3880,106) tan,		//Left arm
+	CREATEVEHICLE "arby3" arbalest (2890,2930,186) tan,		//Right Coffee table
+	CREATEVEHICLE "arby4" arbalest (2518,3343,186) tan,		//Left coffee table
+	ADDMISSIONOBJECTIVE arby1,
+	ADDMISSIONOBJECTIVE arby2,
+	ADDMISSIONOBJECTIVE arby3,
+	ADDMISSIONOBJECTIVE arby4,
+	CREATEUNIT "couch1" rifleman (3370,3850,266) tan rifle,
+	CREATEUNIT "couch2" rifleman (3280,3850,266) tan rifle,
+	CREATEUNIT "couch3" rifleman (2500,3490,186) tan rifle,
+	CREATEUNIT "couch4" rifleman (2520,3490,186) tan rifle,
+	CREATEUNIT "couch5" rifleman (2910,2900,186) tan rifle,
+	CREATEUNIT "couch6" rifleman (2890,2900,186) tan rifle,
+	CREATEUNIT "couch7" rifleman (2381,3343,186) tan rifle,
+	CREATEUNIT "couch8" rifleman (2541,3333,186) tan rifle,
+	//The Misc.	
+	MOVEITEM TrackFan (775,3700),
+	MOVEITEM fanbase (775,3700),
+	MOVEITEM fancord (378,3855)	
+	
+	//Floor patrol
+UNTIL 3 REPEAT 1 BY 1					//Final Patrol should be 3 to 5
+{	
+	IF setuptan THEN
+		CREATEUNIT Floorpatrol1_$ rifleman padpatrol1 tan rifle,
+		CREATEUNIT Floorpatrol2_$ rifleman padpatrol3 tan rifle
+}
+	
+IF killkenny THEN
+	SETMAXHEALTH Kenny 40,
+	HEAL Kenny 100,
+	SETFACING kennykiller 160,
+	ORDER balloon1 FOLLOW Kenny INMODE attack,
+	TRIGGERDELAY 4000 checknextwave1,
+	PLAYTALKINGHEAD 110,
+	setfacing sarge kennykiller,
+	setfacing "Cpl. Walker" kennykiller,
+	setfacing "Pvt. Crazy Stan" 20,
+	setfacing "Pvt. Ben" 20,
+	setaipose "cpl. walker" kneel,
+	unitfire sarge kennykiller,
+	triggerdelay 5100 evtFireAtKK,
+	triggerdelay 6700 evtFireAtKK,
+	triggerdelay 7400 evtFireAtKK,
+	triggerdelay 7800 evtFireAtKK,
+	triggerdelay 8000 evtFireAtKK,
+	triggerdelay 8300 evtFireAtKK,
+	triggerdelay 9200 evtFireAtKK,
+	triggerdelay 3800 evtFireAtKK
+
+if evtFireAtKK then
+	setfacing sarge kennykiller,
+	setfacing "Cpl. Walker" kennykiller
+
+if evtFireAtKK then random
+	unitfire sarge kennykiller,
+	unitfire "cpl. walker" kennykiller,
+	unitfire sarge kennykiller,
+	setaipose "pvt. crazy stan" kneel
+
+IF KILLED Kenny THEN
+	CREATEEXPLOSION (3400,2600) 148 500,
+	ORDER balloon1 FOLLOW sarge INMODE attack,
+	ADDMISSIONOBJECTIVE kennykiller,
+	SETGUNFACING kennykiller 127,
+	setaipose sarge none,
+	setaipose "Cpl. Walker" none,
+	setaipose "Pvt. Crazy Stan" none,
+	setaipose "Pvt. Ben" none,
+	TRIGGERDELAY 2000 deploycap
+	
+IF deploycap THEN
+	CREATECOPTER attack "captain" (4000,2800,135) green,
+	SETAIRMAP captain 0,
+	SETAIRVARIANCE captain 125,
+	SETFACING captain 30,
+	SETSTEP captain 140,
+	SETBEACON captain 0,
+	PLAYTALKINGHEAD 118,
+	TRIGGERDELAY 1500 sargerevenge,
+	CREATEOBJECT fanonbutton 43 253 (951,3928) 0,
+	CREATEOBJECT fanoffbutton 43 254 (951,3928) 0,
+	UNDEPLOY fanoffbutton,
+	TRIGGER fanon						//Turn on fan
+
+// FAN starts on by default...pad trigger what needs to be on.
+
+VARIABLE varfanbuttonhit 0
+
+IF HIT fanonbutton HIT fanoffbutton THEN
+//	showmessage "fan hit",
+	ADDVAR varfanbuttonhit 1,
+	TRIGGER fancheck
+
+IF fancheck TESTVAR varfanbuttonhit = 3 THEN
+	SETVAR varfanbuttonhit 0,
+	PLAYSOUND click.wav fanbase 8 1 0,
+	TRIGGER changefan
+
+IF changefan THEN ONOBJSTATE trackfan
+	osfanspin TRIGGER turnfanoff,
+	osfanoff TRIGGER turnfanon
+
+IF turnfanoff THEN
+//	showmessage "turning off",
+	UNDEPLOY fanonbutton,
+	DEPLOY fanoffbutton (951,3928),
+	SETFORCE captain RECT (775,3700) 220 flat 5 -50000 1200 air 600 12 24,		//Fan force slowing down
+	SETOBJSTATE trackfan osstopfan,
+	TRIGGERDELAY 1000 fanoff
+
+VARIABLE varfanon 0 			//track whether fan on or not
+
+IF fanoff THEN
+//	showmessage "fan off",
+	SETFORCE captain RECT (775,3700) 220 flat 5 -0 0 air 0 0 0,		//Fan force off
+	SETOBJSTATE trackfan osstopfan,
+	SETVAR varfanon 0
+
+IF turnfanon THEN
+//	showmessage "turning on",
+	UNDEPLOY fanoffbutton,
+	DEPLOY fanonbutton (951,3928),
+	SETFORCE captain RECT (775,3700) 220 flat 5 -50000 1200 air 600 12 24,		//Fan force starting up
+	SETOBJSTATE trackfan osstartfan,
+	TRIGGERDELAY 1000 fanon
+
+IF fanon THEN
+// SETFORCE unit-name forcetype location heading  decaytype decayrate magnitude maxdist affects other period angle
+	SETFORCE captain RECT (775,3700) 220 flat 5 -80000 2000 air 500 11 24,		//Fan force On
+	SETVAR varfanon 1	
+
+IF PADON padacon THEN
+	TRIGGER checkplug
+
+IF KILLED topplug THEN
+	CREATEEXPLOSION me 136,
+	ADDVAR vartopplugdead 1,
+	SETOBJSTATE yellowidle1 osgolimp, 
+	SETOBJSTATE yellowidle2 osgolimp,
+	SETOBJSTATE yellowidle3 osgolimp,
+	SETOBJSTATE redidle1 osgolimp,
+	SETOBJSTATE redidle2 osgolimp,
+	SETOBJSTATE redidle3 osgolimp,
+	SETOBJSTATE blueidle1 osgolimp,
+	SETOBJSTATE blueidle2 osgolimp,
+	SETOBJSTATE blueidle3 osgolimp,
+	SETFORCE captain RECT (3480,500) 85 flat 5 0 1000 air 400 0 0				// AC force off
+
+IF checkplug TESTVAR vartopplugdead = 0 THEN
+	SETFORCE captain RECT (3670,420) 95 flat 5 -150000 1000 air 710 0 0,		// AC force
+	PLAYSOUND airconditioner.wav (3600,700) 9 1 1,				
+	SETSOUNDVOLUME airconditioner.wav 9 1000
+
+IF PADON padacoff TESTVAR varfanon = 1 THEN				//turn fan back on
+	TRIGGER fanon,						
+	TRIGGERDELAY 1500 cutsound
+
+IF PADON padacoff TESTVAR varfanon = 0 THEN				//Leave fan off
+	TRIGGER fanoff,
+	TRIGGERDELAY 1500 cutsound
+
+IF cutsound THEN
+	PLAYSOUND "" (3480,500) 9 1 1 100	//turns off AC sound
+
+IF KILLED bottomplug THEN	
+	CREATEEXPLOSION me 137,
+	PLAYSOUND "" (3400,1100) 5 1 1		//turns off airhockeyairhiss
+
+IF KILLED bottomplug BUTNOT setuphockey THEN		//kill plug after playing don't show head
+	PLAYTALKINGHEAD 129
+
+IF sargerevenge THEN
+	ORDER sarge FOLLOW kennykiller INMODE attack,
+	ORDER "Cpl. Walker" FOLLOW sarge INMODE attack,
+	ORDER "Pvt. Ben" FOLLOW sarge INMODE attack,
+	ORDER "Pvt. Crazy Stan" FOLLOW sarge INMODE attack
+
+IF KILLED kennykiller THEN
+	SETAIMODE sarge defend
+	
+IF checknextwave1 TESTVAR HASITEM captain sarge = 0 THEN		//should test for captain on board TESTVAR captain HASITEM sarge = 0 THEN should be BUTNOT blowhydro1 THEN
+	TRIGGER checkevac,
+	TRIGGER checknextwave2
+
+IF checknextwave2 TESTVAR nextwave < 8 THEN
+	TRIGGERDELAY 3000 humanwavecreation,
+	ADDVAR nextwave 1,
+	TRIGGERDELAY 10000 checknextwave1 
+
+UNTIL 4 REPEAT 1 BY 1
+{
+	IF humanwavecreation THEN
+		CREATEUNIT banzai$ rifleman padhydrodef1 tan rifle
+}
+
+IF PADON padtantofar THEN
+	TRIGGERDELAY 1000 tanleave
+
+IF tanleave THEN RANDOM
+	ORDER me GOTO padtanmove8 INMODE defend,
+	ORDER me GOTO padtanmove7 INMODE defend,
+	ORDER me GOTO padtanmove6 INMODE defend
+
+IF PADON padhydrodef1 THEN
+	ORDER me FOLLOW sarge INMODE attack, 		//Need pad for banzaii to go to
+	SETMAXHEALTH me 100,				//IF sarge picked up send banzaii to another pad there get undeployed
+	HEAL me 100					//maybe make pad need more than 6 people
+								
+
+IF KILLED Kennykiller THEN
+	TRIGGERDELAY 1000 checkballoon1
+
+// Balloon creation
+VARIABLE ballooncheck 0
+	
+IF KILLED listballoon THEN						// tally how many balloons are still there
+	ADDVAR numballoon -1
+
+IF checkballoon1 BUTNOT blowhydro1 THEN
+	SETVAR ballooncheck 1,						// enable either branch test
+	TRIGGER checkballoon2						// then resume
+
+//You cannot know which checkballoon2 would trigger first.  If create a new balloon happens first, it might make it
+//possible for the "cant make one now" path to also execute. To stop that, we use ballooncheck.
+IF checkballoon2 TESTVAR ballooncheck = 1 AND numballoon < 3 THEN	//we can make a new balllon.
+	SETVAR ballooncheck 0,						// disable other checkballon2 
+	TRIGGER setupballoon,						// create a new balllon
+	TRIGGERDELAY 15000 checkballoon1					// try again in 15 seconds
+		
+IF checkballoon2 TESTVAR ballooncheck = 1 AND numballoon > 2 THEN	//we cant make one now
+	SETVAR ballooncheck 0,						// disable other checkballoon2 
+	TRIGGERDELAY 15000 checkballoon1					// try again in 15 seconds
+				
+IF setupballoon BUTNOT blowhydro1 TESTVAR varoutofair = 0 THEN					//make another balloon
+	CREATEUNIT floaterinf_$ bazookaman padhydrotank1 tan bazooka,	// old baz man
+	CREATEBALLOON scout floater_$ padhydrotank1 tan,		
+	ADDVAR numballoon 1,
+	ADDVAR ballooninflated 1, 
+	TRIGGER ballooncreated,
+	TRIGGER carrytroops
+
+MACRO macrocarrytroops 2
+{
+	IF carrytroops THEN
+		CARRY @1 @2,
+		SETMAXHEALTH @1 200,
+		HEAL @1 200,
+		ORDER @1 FOLLOW captain INMODE attack,
+		SETAIRMAP @1 0,
+		SETAIRVARIANCE @1 250,
+		SETSTEP @1 500
+}
+
+EXPAND macrocarrytroops (floater_$ floaterinf_$)
+EXPAND macrocarrytroops (floater_$_1 floaterinf_$_1)
+EXPAND macrocarrytroops (floater_$_2 floaterinf_$_2)
+EXPAND macrocarrytroops (floater_$_3 floaterinf_$_3)
+EXPAND macrocarrytroops (floater_$_4 floaterinf_$_4)
+EXPAND macrocarrytroops (floater_$_5 floaterinf_$_5)
+EXPAND macrocarrytroops (floater_$_6 floaterinf_$_6)
+EXPAND macrocarrytroops (floater_$_7 floaterinf_$_7)
+EXPAND macrocarrytroops (floater_$_8 floaterinf_$_8)
+EXPAND macrocarrytroops (floater_$_9 floaterinf_$_9)
+EXPAND macrocarrytroops (floater_$_10 floaterinf_$_10)
+EXPAND macrocarrytroops (floater_$_11 floaterinf_$_11)
+EXPAND macrocarrytroops (floater_$_12 floaterinf_$_12)
+EXPAND macrocarrytroops (floater_$_13 floaterinf_$_13)
+EXPAND macrocarrytroops (floater_$_14 floaterinf_$_14)
+EXPAND macrocarrytroops (floater_$_15 floaterinf_$_15)
+EXPAND macrocarrytroops (floater_$_16 floaterinf_$_16)
+EXPAND macrocarrytroops (floater_$_17 floaterinf_$_17)
+EXPAND macrocarrytroops (floater_$_18 floaterinf_$_18)
+EXPAND macrocarrytroops (floater_$_19 floaterinf_$_19)
+EXPAND macrocarrytroops (floater_$_20 floaterinf_$_20)
+
+
+//Recon random setup						//These troops from the back wall to the table.
+IF reconsetup THEN RANDOM					//They are set up so a random group will appear up to 3 times.
+	TRIGGER reconsetup1,
+	TRIGGER reconsetup2,
+	TRIGGER reconsetup3
+
+UNTIL 3 REPEAT 1 BY 1
+{
+	IF reconsetup1 THEN
+		CREATEUNIT recon_$ rifleman padpatrol2 tan vulcan,
+		ORDER lastcreated GOTO padpatrol1 INMODE defend,
+		ADDVAR recondead 3
+}	
+		
+
+UNTIL 4 REPEAT 1 BY 1
+{
+	IF reconsetup2 THEN
+		CREATEUNIT recon_$ rifleman padpatrol1 tan rifle,
+		ORDER lastcreated GOTO padpatrol2 INMODE defend,
+		ADDVAR recondead 2
+}	
+
+	IF reconsetup3 THEN
+		CREATEUNIT recon_$ flamerman padpatrol1 tan flamer,
+		SETFACING lastcreated 125,
+		ORDER lastcreated GOTO padpatrol2 INMODE attack,
+		ADDVAR Recondead 11
+
+//Get patrols to go back and forth
+IF PADON padpatrol1 THEN
+	ORDER me GOTO padpatrol2 INMODE defend					
+
+IF PADON padpatrol2 THEN
+	ORDER me GOTO padpatrol1 INMODE defend
+
+// When one patrol dies, another take it's place	
+IF KILLED listreconguys THEN
+	ADDVAR Recondead 1,
+	TRIGGER testrecondead
+
+IF testrecondead
+	TESTVAR Recondead = 12 THEN
+	ADDVAR Recondead -12,
+	TRIGGERDELAY 15000 reconsetup
+		
+IF setupblue THEN
+	DEPLOY bluecar,
+	setobjstate bluecar osbluea1
+
+//Move AI around Patrols move back and forth
+IF PADON padpatrol3 THEN			
+	ORDER me GOTO padpatrol1 INMODE defend					
+
+IF PADON padpatrol1 THEN		
+	ORDER me GOTO padpatrol3 INMODE defend
+
+//Create an Insect Flanking force...
+ IF count 1 of startinsect THEN
+	TRIGGERDELAY 10000 buggenerate1,
+	TRIGGERDELAY 20000 buggenerate2,
+	TRIGGERDELAY 30000 buggenerate3,
+	TRIGGERDELAY 50000 buggenerate4,
+	TRIGGERDELAY 75000 buggenerate5
+
+MACRO macroinsectflankers 2
+{
+	IF buggenerate@2 THEN
+		CREATEINSECT @1 bug@2 padpatrol1 tan,		//should start in some corner
+		SETAIRMAP bug@1 0,
+		SETAIRVARIANCE bug@1 270,
+		SETSTEP bug@1 500,
+		SETAIMODE bug@1 WANDER
+}
+
+EXPAND  macroinsectflankers (mutantfly 1)			
+EXPAND  macroinsectflankers (mutantfly 2)
+EXPAND  macroinsectflankers (mutantwasp 3)
+EXPAND  macroinsectflankers (mutantwasp 4)
+EXPAND  macroinsectflankers (mutantwasp 5)
+
+// Pick up the Blue Spy
+If PICKEDUP BlueCar by Captain THEN
+	setobjstate BlueCar osblueidle,
+	setvar tempx getx captain,
+	setvar tempy gety captain,
+	moveitem BlueCar (refvar tempx,refvar tempy),
+	TRIGGERDELAY 3000 startinsect,					//Insect swarm start when spy taken away
+	PLAYTALKINGHEAD 122,
+	addmissionobjective lpad10,
+	TRIGGERDELAY 4000 bluewhine
+
+IF count 1 of bluewhine THEN
+	playsound "..\voice\Blu003a.wav" (0,0) 0 2 0 600,		// BSpy: (no com window) 
+	showmessage "Damn you, Blade...!"				//should move for localization
+
+MACRO macrotanarmor 3
+{
+	IF tanarmorattack THEN
+		CREATEVEHICLE "@1" @2 @3 tan,
+		ADDMISSIONOBJECTIVE @1		
+}
+
+EXPAND macrotanarmor (tank1 tank padtanstart2)			
+EXPAND macrotanarmor (tank2 tank padtanstart3)			
+EXPAND macrotanarmor (tank3 tank padtanstart4)
+EXPAND macrotanarmor (tank4 tank padtanstart5)
+EXPAND macrotanarmor (htrack1 halftrack padtanstart6)		
+EXPAND macrotanarmor (htrack2 halftrack padtanstart1)
+
+IF tanarmorattack THEN
+	CREATEUNIT "htrackinf1" rifleman padtanstart6 tan rifle,
+	CREATEUNIT "htrackinf2" rifleman padtanstart6 tan rifle,
+	CREATEUNIT "htrackinf3" stingerguy padtanstart6 tan stingermissile,
+	ENTERVEHICLE htrackinf1 Htrack1,
+	ENTERVEHICLE htrackinf2 Htrack1,
+	ENTERVEHICLE htrackinf3 Htrack1,
+	CREATEUNIT "htrackinf4" rifleman padtanmove1 tan rifle,
+	CREATEUNIT "htrackinf5" rifleman padtanmove1 tan rifle,
+	CREATEUNIT "htrackinf6" stingerguy padtanmove1 tan stingermissile,
+	ENTERVEHICLE htrackinf4 Htrack2,
+	ENTERVEHICLE htrackinf5 Htrack2,
+	ENTERVEHICLE htrackinf6 Htrack2,
+	TRIGGERDELAY 10000 tanmove1
+
+IF tanreinforcement THEN						//These tan show up after tan has taken a beating
+	//armor platoon (reduced)
+	CREATEVEHICLE "Tank5" tank (2400,350) tan,
+	ADDMISSIONOBJECTIVE tank5,
+	SETFACING tank5 122,
+	ORDER tank5 GOTO padhydrodef1 INMODE defend,
+	CREATEVEHICLE "Tank6" tank (2500,300) tan,
+	ADDMISSIONOBJECTIVE tank6,
+	SETFACING tank6 122,
+	ORDER tank6 GOTO padhydrodef1 INMODE defend,
+	//armor Inf platoon 1/1
+	CREATEVEHICLE "htrack3" halftrack (2450,400) tan,
+	ADDMISSIONOBJECTIVE htrack3,
+	SETFACING htrack3 122,
+	CREATEUNIT "htrackinf7" rifleman (2450,200) tan rifle,
+	CREATEUNIT "htrackinf8" rifleman (2450,200) tan rifle,
+	CREATEUNIT "htrackinf9" stingerguy (2450,200) tan stingermissile,
+	ENTERVEHICLE htrackinf7 Htrack3,
+	ENTERVEHICLE htrackinf8 Htrack3,
+	ENTERVEHICLE htrackinf9 Htrack3,
+	ORDER htrack3 GOTO padhydrodef1 INMODE defend,
+	//Entertainment troops
+	CREATEUNIT "stereo1" rifleman padstereorightstart tan rifle,
+	CREATEUNIT "stereo2" rifleman padstereorightstart tan rifle,
+	CREATEUNIT "stereo3" rifleman padstereoleftstart tan rifle,
+	CREATEUNIT "television1" rifleman padtvstart1 tan rifle,
+	CREATEUNIT "television2" stingerguy padtvstart1 tan stingermissile,
+	CREATEUNIT "roundtable1" stingerguy padroundtablestart tan stingermissile,
+	CREATEUNIT "entertain1" rifleman padentertain1 tan rifle,
+	CREATEUNIT "entertain2" rifleman padentertain2 tan rifle,
+	CREATEUNIT "entertain3" rifleman padentertain3 tan rifle,
+	CREATEUNIT "entertain4" rifleman padentertain4 tan rifle,
+	CREATECOPTER scout "copter1" (120,3247,200) tan,			// old location (2450,200,110)
+	SETAIRMAP copter1 0,
+	SETAIRVARIANCE copter1 250,
+	SETSTEP copter1 500,
+	ADDMISSIONOBJECTIVE copter1,
+	SETMAXHEALTH copter1 800,
+	Heal copter1 100,
+	TRIGGERDELAY 20000 tanmove2
+
+IF greenreinforcement1 THEN
+	PLAYTALKINGHEAD 101,
+	CREATEVEHICLE "Gtank1" tank padgreenstart1 green,
+	SETFACING gtank1 90,
+	ORDER gtank1 GOTO (3594,2288) INMODE defend,
+	CREATEVEHICLE "Gtank2" tank padgreenstart2 green,
+	SETFACING gtank2 60,
+	ORDER gtank2 GOTO (3161,2890) INMODE defend,
+	CREATEVEHICLE "Gjeep1" jeep padgreenstart3 green,
+	SETFACING gjeep1 90,
+	ORDER gjeep1 GOTO (3501,2489) INMODE defend,
+	CREATEUNIT "Pvt. Weiss" rifleman padgreenstart3 green autorifle,
+	CREATEUNIT "Pvt. Johnson" bazookaman padgreenstart3 green bazooka,
+	ENTERVEHICLE "Pvt. Weiss" Gjeep1,
+	ENTERVEHICLE "Pvt. Johnson" Gjeep1,
+	CREATEVEHICLE "Gjeep2" jeep padgreenstart4 green,
+	SETFACING gjeep2 60,
+	ORDER gtank1 GOTO (3374,2489) INMODE defend,
+	CREATEUNIT "Pvt. Bubber" rifleman padgreenstart4 green autorifle,
+	CREATEUNIT "Pvt. Holmes" bazookaman padgreenstart4 green bazooka,
+	ENTERVEHICLE "Pvt. Bubber" Gjeep2,
+	ENTERVEHICLE "Pvt. Holmes" Gjeep2,
+	TRIGGERDELAY 35000 greenreinforcement2,
+	TRIGGERDELAY 15000 greenmove1
+
+IF greenreinforcement2 THEN
+//Crack Mortar team
+//	CREATEUNIT "Pvt. Thumper" mortarman (3960,2620) green mortar,
+//	CREATEUNIT "Pvt. Crumpet" mortarman (3960,2620) green mortar,
+//	CREATEUNIT "Pvt. Vasylysk" mortarman (3960,2620) green mortar,
+	//Green armored Cav platoon 
+	CREATEVEHICLE "Gtank3" tank padgreenstart1 green,
+	SETFACING gtank3 90,
+	ORDER gtank3 GOTO (3460,2588) INMODE defend,
+	CREATEVEHICLE "Gjeep3" jeep padgreenstart4 green,
+	SETFACING gjeep3 90,
+	ORDER gjeep3 GOTO (3374,2488) INMODE defend,
+	CREATEUNIT "Pvt. Onozakan" bazookaman padreturnlz green bazooka,
+	CREATEUNIT "Pvt. Dangerous Dan" flamerman padreturnlz green flamer,
+	ENTERVEHICLE "Pvt. Onozakan" Gjeep3,
+	ENTERVEHICLE "Pvt. Dangerous Dan" Gjeep3,
+	TRIGGERDELAY 15000 greenmove2
+
+//AI for troops...lots of stuff based off guys killed and pads moved to...fake a small battle..random pads to move
+IF greenmove1 THEN
+	ORDER gtank1 GOTO padgreenmove1 INMODE defend,
+	ORDER gtank2 GOTO padgreenmove2 INMODE defend,
+	ORDER gjeep1 FOLLOW gtank1 INMODE defend,
+	ORDER gjeep2 FOLLOW gtank2 INMODE defend,
+	TRIGGERDELAY 30000 greenmove3
+
+IF greenmove2 THEN
+	ORDER gtank3 GOTO padgreenmove1 INMODE defend,
+	ORDER gjeep3 FOLLOW gtank1 INMODE defend
+
+If greenmove3 THEN				//to prevent Green from just hanging out
+	ORDER gtank1 GOTO padgreenmove4 INMODE attack,
+	ORDER gtank2 GOTO padgreenmove5 INMODE attack,
+	ORDER gtank3 GOTO padgreenmove5 INMODE attack,
+	ORDER "Pvt. Weiss" GOTO padgreenmove4 INMODE attack,
+	ORDER "Pvt. Johnson" GOTO padgreenmove4 INMODE attack,
+	ORDER "Pvt. Bubber" GOTO padgreenmove5 INMODE attack,
+	ORDER "Pvt. Holmes" GOTO padgreenmove5 INMODE attack,
+	ORDER "Pvt. Onazakan" GOTO padgreenmove6 INMODE attack,
+	ORDER "Pvt. Dangerous Dan" GOTO padgreenmove6 INMODE attack,
+	TRIGGERDELAY 30000 greenmove3
+	
+IF PADON padgreenmove1 THEN
+	ORDER me GOTO padgreenmove4 INMODE attack
+
+IF PADON padgreenmove2 THEN
+	ORDER me GOTO padgreenmove4 INMODE attack
+
+IF PADON padgreenmove3 THEN RANDOM
+	ORDER me GOTO padgreenmove5 INMODE attack,
+	ORDER me GOTO padgreenmove4 INMODE attack
+
+IF PADON padgreenmove4 THEN RANDOM
+	ORDER me GOTO padgreenmove5 INMODE attack,
+	ORDER me GOTO padgreenmove3 INMODE attack
+
+IF PADON padgreenmove5 THEN RANDOM
+	ORDER me GOTO padgreenmove3 INMODE attack,
+	ORDER me GOTO padgreenmove4 INMODE attack
+
+//Combat AI, basically if hit respond, if something killed runaway...they are just cav after all...
+//Green Basic reaction, for when they get hit or killed
+
+//These follow 1st wave movement...when greenmove2 occurs they should move out if they had retreated.
+//At least 2 levels...the basic...someone is hit everyone react...then the reactivation of troops that ran away
+
+MACRO macrohitai 3
+{
+	IF HIT @1 THEN
+		ORDER @2 FOLLOW @3 INMODE attack
+}
+
+EXPAND macrohitai (gtank1 gtank2 gtank1)				//tanks will team up if shot
+EXPAND macrohitai (gtank2 gtank1 gtank2)
+EXPAND macrohitai (gjeep1 gtank2 gjeep1)
+EXPAND macrohitai (gjeep2 gtank1 gjeep2)
+EXPAND macrohitai (tank4 tank2 me)  //ohhh this works...if a tank is hit I can send the others to attack the offender!!!
+EXPAND macrohitai (tank4 tank1 me)
+EXPAND macrohitai (tank3 tank2 me)
+EXPAND macrohitai (htrack1 tank4 me)	//reserve don't get released if halftracks are hit only the tanks
+EXPAND macrohitai (htrack2 tank4 me)
+EXPAND macrohitai (tank1 tank2 me)	//but they cover themselves
+EXPAND macrohitai (tank2 tank1 me)
+
+MACRO macrokillai 3
+{
+	IF KILLED @1 THEN
+		ORDER @2 GOTO padreturnlz INMODE @3
+		//showmessage "Green vehicle down!"			//debug message
+}
+
+EXPAND macrokillai (gtank1 gtank2 attack) 	//One down they run away, but the tanks stay in attack mode
+EXPAND macrokillai (gtank1 gjeep1 defend) 	
+EXPAND macrokillai (gtank1 gjeep2 defend)
+EXPAND macrokillai (gtank2 gtank1 attack)
+EXPAND macrokillai (gtank2 gjeep1 defend)
+EXPAND macrokillai (gtank2 gjeep2 defend)
+EXPAND macrokillai (gjeep1 gtank1 attack)
+EXPAND macrokillai (gjeep1 gtank2 attack)
+EXPAND macrokillai (gjeep1 gjeep2 defend)
+EXPAND macrokillai (gjeep2 gtank1 attack)
+EXPAND macrokillai (gjeep2 gtank2 attack)
+EXPAND macrokillai (gjeep2 gjeep1 defend)
+
+//Dump the jeep inf when they get hit
+IF HIT gjeep1 THEN
+	TRIGGERDELAY 110 leavejeep1,
+	TRIGGERDELAY 550 leavejeep2
+
+IF HIT gjeep2 THEN
+	TRIGGERDELAY 105 leavejeep3,
+	TRIGGERDELAY 650 leavejeep4
+
+IF HIT gjeep3 THEN						//all inf bails from jeep if hit
+	TRIGGERDELAY 100 leavejeep5,
+	TRIGGERDELAY 560 leavejeep6
+
+MACRO macrounload 3						
+{
+	IF count 1 of leavejeep@3 THEN
+		EXITVEHICLE @1 gjeep@2
+}
+EXPAND macrounload ("Pvt. Weiss" 1 1)
+EXPAND macrounload ("Pvt. Johnson" 1 2)
+EXPAND macrounload ("Pvt. Bubber" 2 3)
+EXPAND macrounload ("Pvt. Holmes" 2 4)
+EXPAND macrounload ("Pvt. Onazakan" 3 5)
+EXPAND macrounload ("Pvt. Dangerous Dan" 3 6)
+
+//Advanced Green reaction for when Tan starts to get beat
+
+IF KILLED listtanarmoredforce THEN				//this covers the second group as well
+	TRIGGER checkcounterattack
+
+IF checkcounterattack TESTVAR numtandead = 9 THEN
+	TRIGGER greenassualt1,
+	TRIGGER greenassualt2,
+	TRIGGER greenassualt3,
+	TRIGGER greenassualt4,
+	TRIGGER greenassualt5,
+	TRIGGER greenassualt6,
+	TRIGGER greenassualt7,
+	TRIGGER greenassualt8,
+	TRIGGER greenassualt9,
+	TRIGGER greenassualt10,
+	TRIGGER greenassualt11,
+	TRIGGER greenassualt12,
+	PLAYTALKINGHEAD 114,
+	TRIGGERDELAY 35000 nextassualt
+
+MACRO macrogreenassualt 2
+{	
+	IF greenassualt@1 THEN RANDOM
+		ORDER @2 GOTO padpatrol1 INMODE attack,
+		ORDER @2 GOTO padtanmove1 INMODE attack,
+		ORDER @2 GOTO padtanmove2 INMODE attack,
+		ORDER @2 GOTO padtanmove7 INMODE attack,
+		ORDER @2 GOTO padgreenmove2 INMODE attack,
+		ORDER @2 GOTO padtanstart7 INMODE attack,
+		ORDER @2 GOTO padhydrodef1 INMODE attack
+}
+
+EXPAND macrogreenassualt (1 gtank1)
+EXPAND macrogreenassualt (2 gtank2)
+EXPAND macrogreenassualt (3 gtank3)
+EXPAND macrogreenassualt (4 gjeep1)
+EXPAND macrogreenassualt (5 gjeep2)
+EXPAND macrogreenassualt (6 gjeep3)
+EXPAND macrogreenassualt (7 "Pvt. Weiss")
+EXPAND macrogreenassualt (8 "Pvt. Johnson")
+EXPAND macrogreenassualt (9 "Pvt. Bubber")
+EXPAND macrogreenassualt (10 "Pvt. Holmes")
+EXPAND macrogreenassualt (11 "Pvt. Onazakan")
+EXPAND macrogreenassualt (12 "Pvt. Dangerous Dan")
+
+IF nextassualt THEN 
+	TRIGGER greenassualt1,
+	TRIGGER greenassualt2,
+	TRIGGER greenassualt3,
+	TRIGGER greenassualt4,
+	TRIGGER greenassualt5,
+	TRIGGER greenassualt6,
+	TRIGGER greenassualt7,
+	TRIGGER greenassualt8,
+	TRIGGER greenassualt9,
+	TRIGGER greenassualt10,
+	TRIGGER greenassualt11,
+	TRIGGER greenassualt12,
+	TRIGGERDELAY 35000 nextassualt
+
+//Inital move out of tan forces...execute a pincer...when enemy found engage and hunt down.
+//When significant losses occur they turn and run.
+
+IF tanmove1 THEN
+	ORDER tank3 GOTO padtanmove5 INMODE defend,
+	ORDER tank4 GOTO padtanmove1 INMODE defend,
+	ORDER htrack1 GOTO padtanmove1 INMODE defend,
+	SETAIMODE tank1 defend,
+	SETAIMODE tank2 defend
+
+IF tanmove2 THEN
+	ORDER tank5 GOTO padtanmove6 INMODE attack,
+	ORDER tank6 GOTO padtanmove7 INMODE attack,
+	ORDER htrack3 FOLLOW tank5 INMODE attack
+
+IF tanmove3 THEN						//force movement after 60 seconds
+	ORDER tank1 GOTO padtanmove1 INMODE defend,
+	ORDER tank2 GOTO padtanmove2 INMODE defend,
+	ORDER tank3 GOTO padtanmove4 INMODE defend,
+	ORDER tank4 GOTO padtanmove5 INMODE defend,
+	ORDER tank5 GOTO padtanmove6 INMODE defend,
+	ORDER tank6 GOTO padtanmove7 INMODE defend,
+	ORDER htrack1 FOLLOW tank1 INMODE defend,
+	ORDER htrack2 FOLLOW tank3 INMODE defend,
+	ORDER htrack3 FOLLOW tank5 INMODE defend,
+	TRIGGERDELAY 65000 tanmove3
+
+//Tank1 tank2 AA1 in reserve...Tank 3 wide flank...rest left flank
+
+IF PADON padtanmove5 THEN
+	ORDER me GOTO padtanmove6 INMODE attack
+
+IF PADON padtanmove6 THEN 
+	ORDER me GOTO padtanmove7 INMODE attack
+
+IF PADON padtanmove7 THEN RANDOM
+	ORDER me GOTO padtanmove8 INMODE attack,
+	ORDER me GOTO padtanmove3 INMODE attack
+
+IF PADON padtanmove1 THEN
+	ORDER me GOTO padtanmove2 INMODE attack
+
+IF PADON padtanmove2 THEN RANDOM
+	ORDER me GOTO padtanmove3 INMODE attack,
+	ORDER me GOTO padtanmove4 INMODE attack
+
+IF PADON padtanmove3 THEN RANDOM
+	ORDER me GOTO padtanmove2 INMODE attack,
+	ORDER me GOTO padtanmove4 INMODE attack,
+	ORDER me GOTO padtanmove8 INMODE attack
+
+IF PADON padtanmove8 THEN RANDOM
+	ORDER me GOTO padtanmove3 INMODE attack,
+	ORDER me GOTO padtanmove4 INMODE attack
+
+//Combat AI, basically expanding the previous Macrohit (If hit @1 then order @2 follow @3)
+
+MACRO macrotankillai 4				//slightly different macro as Tan presses the attack and not runaway till later
+{
+	IF KILLED @1 THEN
+		ORDER @2 @3 @4 INMODE attack
+}
+							//Tracking a guy down doesn't work...send them to do pad movement
+EXPAND macrotankillai (tank4 tank1 GOTO padtanmove5)			//tan4 down...to the revenge
+EXPAND macrotankillai (tank4 tank2 GOTO padtanmove1)
+EXPAND macrotankillai (htrack1 tank1 GOTO padtanmove1)			//htracks killed tanks revenge
+EXPAND macrotankillai (htrack1 tank2 GOTO padtanmove1)
+EXPAND macrotankillai (htrack2 tank1 GOTO padtanmove1)
+EXPAND macrotankillai (htrack2 tank2 GOTO padtanmove1)
+EXPAND macrotankillai (htrack1 htrack2 GOTO padtanstart1) 	//htracks killed then other htrack runs away
+EXPAND macrotankillai (htrack2 htrack1 GOTO padtanstart1)
+EXPAND macrotankillai (gtank1 tank1 GOTO padtanmove1)
+EXPAND macrotankillai (gtank1 tank2 GOTO padtanmove1)
+EXPAND macrotankillai (gtank1 tank1 GOTO padtanmove1)
+EXPAND macrotankillai (gtank2 tank1 GOTO padtanmove1)
+EXPAND macrotankillai (gtank2 tank2 GOTO padtanmove1)
+
+//Advanced Tan reaction...to make sure they don't get stuck doing nothing and other stuff
+//Dump inf when htracks are hit
+
+IF HIT htrack1 THEN
+	TRIGGERDELAY 103 leavehtrack1,
+	TRIGGERDELAY 555 leavehtrack2,
+	TRIGGERDELAY 1007 leavehtrack3
+
+IF HIT htrack2 THEN
+	TRIGGERDELAY 101 leavehtrack4,
+	TRIGGERDELAY 554 leavehtrack5,
+	TRIGGERDELAY 1006 leavehtrack6
+
+IF HIT htrack3 THEN
+	TRIGGERDELAY 102 leavehtrack7,
+	TRIGGERDELAY 558 leavehtrack8,
+	TRIGGERDELAY 1009 leavehtrack9
+
+MACRO macrotanunload 2
+{
+	IF count 1 of leavehtrack@1 THEN
+		EXITVEHICLE htrackinf@1 htrack@2
+}
+EXPAND macrotanunload (1 1)
+EXPAND macrotanunload (2 1)
+EXPAND macrotanunload (3 1)
+EXPAND macrotanunload (4 2)
+EXPAND macrotanunload (5 2)
+EXPAND macrotanunload (6 2)
+EXPAND macrotanunload (7 3)
+EXPAND macrotanunload (8 3)
+EXPAND macrotanunload (9 3)
+
+//IF recon force retreat...then all Tan press the attack
+IF KILLED listgreenarmoredforce THEN
+	TRIGGER tanpressattack
+
+IF tanpressattack TESTVAR numgreendead = 3 THEN
+	PLAYTALKINGHEAD 45,
+	TRIGGER tanwander1,
+	TRIGGER tanwander2,
+	TRIGGER tanwander3,
+	TRIGGER tanwander4,
+	TRIGGER tanwander5,
+	TRIGGER tanwander6,
+	TRIGGERDELAY 35000 nextorder
+
+MACRO macrotanwander 2
+{
+	IF tanwander@1 THEN RANDOM
+		ORDER @2 GOTO padgreenmove2 INMODE attack,
+		ORDER @2 GOTO padpatrol2 INMODE attack,
+		ORDER @2 GOTO padgreenmove4 INMODE attack,
+		ORDER @2 GOTO padgreenmove4 INMODE attack, 
+		ORDER @2 GOTO padhydrodef1 INMODE attack, 
+		ORDER @2 GOTO lpad10 INMODE attack
+}
+
+EXPAND macrotanwander (1 tank1)
+EXPAND macrotanwander (2 tank2)
+EXPAND macrotanwander (3 tank3)
+EXPAND macrotanwander (4 tank4)
+EXPAND macrotanwander (5 htrack1)
+EXPAND macrotanwander (6 htrack2)
+
+IF nextorder THEN
+	TRIGGER tanwander1,
+	TRIGGER tanwander2,
+	TRIGGER tanwander3,
+	TRIGGER tanwander4,
+	TRIGGER tanwander5,
+	TRIGGER tanwander6,
+	TRIGGERDELAY 35000 nextorder
+
+//TV troops moving to their posts
+MACRO macropadmovement 4
+{
+	IF PADON @1 THEN RANDOM
+		ORDER me GOTO @2 INMODE defend,
+		ORDER me GOTO @3 INMODE defend,
+		ORDER me GOTO @4 INMODE defend
+}
+
+EXPAND macropadmovement (padrightspeakerstart padrightspeakermove1 padrightspeakermove2 padrightspeakermove2)
+EXPAND macropadmovement (padleftspeakerstart padleftspeakermove padleftspeakermove padleftspeakermove)
+EXPAND macropadmovement (padtvstart padtvmove1 padtvmove2 padtvmove3) 
+		
+IF PADON padpatrol1 THEN
+	ORDER me GOTO padtanmove3 INMODE defend
+
+//One party hat to release Green troops
+If KILLED bcup_2 THEN
+	makesmoke (1512,2655),
+	CREATEUNIT "cupman" rifleman (1512,2635) tan rifle,		
+	SETAIPOSE cupman kneel
+	
+IF KILLED partyhat THEN
+	createexplosion me 141,
+	makesmoke (1943,2304),
+	makesmoke (1923,2304),
+	makesmoke (1923,2319),
+	makesmoke (1903,2329),
+	makesmoke (1901,2365),
+	makesmoke (1930,2367),
+	TRIGGERDELAY 2000 makemadwasp 		
+
+IF makemadwasp THEN
+	CREATEINSECT mutantwasp "madwasp"  (1930,2314) tan,
+	SETAIRMAP madwasp 0,
+	SETAIRVARIANCE madwasp 250,
+	SETSTEP madwasp 500,
+	ORDER madwasp FOLLOW captain INMODE attack
+
+IF KILLED partyhat2b THEN
+	createexplosion me 141,
+	makesmoke (2000,2900),
+	makesmoke (1930,2870),
+	makesmoke (1940,2831),
+	makesmoke (1890,2880),
+	makesmoke (2000,2850),
+	makesmoke (1930,2920),
+	TRIGGER testpartyguys
+
+IF testpartyguys
+	TESTVAR partyguys < 6 THEN 		//Should be between 5 and 10
+	TRIGGERDELAY 1200 deploytroops		// Should 1000 or 1500
+
+	IF deploytroops THEN
+		TRIGGERDELAY REFVAR partydelay createtroops
+
+	IF createtroops THEN
+		ADDVAR partydelay 5000,		//should be 5000
+		ADDVAR partyguys 1,
+		TRIGGER testpartyguys
+
+	IF createtroops THEN RANDOM
+		CREATEUNIT party_$ bazookaman padhatman4 tan bazooka,
+		CREATEUNIT party_$ flamerman padhatman4 tan flamer,
+		CREATEUNIT party_$ rifleman padhatman4 tan rifle,
+		CREATEUNIT party_$ rifleman padhatman4 tan rifle,
+		CREATEUNIT party_$ rifleman padhatman4 tan vulcan,
+		CREATEUNIT party_$ stingerguy padhatman4 tan stingermissile			//should be stinger guy
+
+// Move from Hat to out side
+IF padon padhatman4 THEN
+	ORDER me GOTO padhatman1 INMODE ignore
+
+IF padon padhatman1 THEN RANDOM
+	ORDER me GOTO padhatman2 INMODE attack,
+	ORDER me GOTO padhatman3 INMODE attack
+
+//Playing with Tan copters
+IF count 1 of KILLED copter1 by captain THEN
+	PLAYTALKINGHEAD 126
+
+IF count 1 of HIT captain BY copter1 THEN
+	PLAYTALKINGHEAD 125
+
+//Random creation list
+IF KILLED listtantokill THEN
+	ADDVAR numtankilled 1
+
+Macro macrolivinggoodies 1
+
+{
+	IF KILLED listtantokill TESTVAR numtankilled = @1 THEN
+		//PLAYSOUND powerupappear.wav me 5 1 0 1200,		//sound when stuff appears, bad sound...
+		TRIGGER stuff
+
+}
+	IF stuff THEN RANDOM
+		CREATEPOWERUP "FullArmor" FullArmor me,
+		CREATEPOWERUP "ArmorBoost" armorboost me,
+		CREATEPOWERUP "partialarmor" partialarmor me,
+		CREATEPOWERUP "partialarmor" partialarmor me,
+		CREATEPOWERUP "BottleRockets" groundmissile me 20,
+		CREATEPOWERUP "BottleRockets" groundmissile me 20,
+		CREATEPOWERUP "firecracker" thrownfirecracker me 10,
+		CREATEPOWERUP "firecracker" thrownfirecracker me 10,
+		CREATEPOWERUP "firecracker" thrownfirecracker me 10,
+		CREATEPOWERUP "napalmbomb" napalmbomb me 5,
+		CREATEPOWERUP "airblast" airblastmissile me 10,
+		CREATEPOWERUP "medkit" medkit me,
+		CREATEPOWERUP "ECMchaff" ecmchaff me 5,
+		CREATEPOWERUP "ECMchaff" ecmchaff me 5,
+		CREATEPOWERUP "greenpaintbomb" greenpaintbomb me 5,
+		CREATEPOWERUP "radarmissile1" radarmissile me 10,
+		CREATEPOWERUP "airmines" airmine me 10,
+		CREATEPOWERUP "heatray1" heatray me 5,
+		CREATEPOWERUP "clusterbomb1" clusterbomb me 5
+
+EXPAND macrolivinggoodies (2)				//modify for number needed to kill to get something
+EXPAND macrolivinggoodies (4)
+EXPAND macrolivinggoodies (6)
+EXPAND macrolivinggoodies (8)
+EXPAND macrolivinggoodies (10)
+EXPAND macrolivinggoodies (12)
+EXPAND macrolivinggoodies (14)
+EXPAND macrolivinggoodies (16)
+EXPAND macrolivinggoodies (18)
+EXPAND macrolivinggoodies (20)
+EXPAND macrolivinggoodies (22)
+EXPAND macrolivinggoodies (24)
+EXPAND macrolivinggoodies (26)
+EXPAND macrolivinggoodies (28)
+EXPAND macrolivinggoodies (30)
+	
+MACRO macroexplodestuff 2
+{
+	If KILLED @1 THEN
+		createexplosion me @2,
+		makesmoke me 5000
+}
+
+EXPAND macroexplodestuff (listbcup1 144)
+EXPAND macroexplodestuff (listeatencupcake1 147)
+EXPAND macroexplodestuff (listwholecupcake1 148)
+EXPAND macroexplodestuff (listpaddle1 123)
+EXPAND macroexplodestuff (listpaddle2 123)
+EXPAND macroexplodestuff (listcontroller1 123)
+EXPAND macroexplodestuff (listcontroller2 123)
+EXPAND macroexplodestuff (listpartyhat1 123)
+EXPAND macroexplodestuff (listpartyhat2 123)
+EXPAND macroexplodestuff (listcan1 123)
+EXPAND macroexplodestuff (listcan2 123)
+EXPAND macroexplodestuff (listcan3 123)
+
+// Health from the gods...
+VARIABLE vardivinegift 0
+
+IF HIT captain TESTVAR gethealth captain < 300 THEN
+	TRIGGERDELAY 15000 checkhealth
+
+IF checkhealth TESTVAR vardivinegift = 0 THEN
+	CREATEPOWERUP "divinegift" partialarmor (3873,2305),
+	ADDVAR vardivinegift 1
+	//showmessage "armor of the gods"				//debug message
+
+IF PICKEDUP divinegift PICKEDUP divinegift_2 PICKEDUP divinegift_3 PICKEDUP divinegift_4 PICKEDUP divinegift_5  THEN
+	SETVAR vardivinegift 0
+
+//Cup cakes give food powerup upon destruction
+IF KILLED listeatencupcake1 THEN
+	CREATEPOWERUP "little food" food me 2
+
+IF KILLED listwholecupcake1 THEN
+	CREATEPOWERUP "Big food" food me 5
+
+//Getting the big bomb
+
+IF PICKEDUP listpowerupskillhydrotank BUTNOT KILLED hydrogentank THEN	//any weapon big enough gives head
+	PLAYTALKINGHEAD 121
+
+IF KILLED hydrogentank THEN
+	TRIGGERDELAY 10 blowhydro1,
+	TRIGGERDELAY 1500 blowhydro2,
+	TRIGGERDELAY 3000 blowhydro3,
+	TRIGGERDELAY 3100 goodietime
+
+MACRO blowup 8
+{
+		IF blowhydro@1 THEN
+			CREATEEXPLOSION padblowpad@2 714 1000,
+			CREATEEXPLOSION padblowpad@3 139 1500,
+			CREATEEXPLOSION padblowpad@4 140 1000,
+			CREATEEXPLOSION padblowpad@5 139 1500,
+			CREATEEXPLOSION padblowpad@6 140 1000,
+			CREATEEXPLOSION padblowpad@7 139 1500,
+			CREATEEXPLOSION padblowpad@8 715 1000	
+}
+
+EXPAND blowup (1 2 4 6 8 12 16 20)
+EXPAND blowup (2 3 5 7 9 14 19 22)
+EXPAND blowup (3 10 13 11 15 17 21 18)
+
+IF goodietime THEN
+	CREATEPOWERUP "radarmissile1" radarmissile padblowpad11 5,
+	CREATEPOWERUP "fullarmor" fullarmor padblowpad9,
+	CREATEPOWERUP "firecracker" thrownfirecracker padblowpad15 15,
+	CREATEPOWERUP "airmine" airmine padblowpad21 5
+
+// Non- Random stuff to get
+MACRO macropowerup 3
+{
+	IF KILLED @1 THEN
+		CREATEPOWERUP "Powerup!" @2 me @3
+}
+
+EXPAND macropowerup (deftank1 partialarmor 20)
+EXPAND macropowerup (deftank2 partialarmor 20)
+EXPAND macropowerup (armor1 clusterbomb1 5)
+EXPAND macropowerup (bbbdefender2 fullarmor 10)
+EXPAND macropowerup (htrack1 airblastmissile 15)
+EXPAND macropowerup (tank4 radarmissile 5)
+EXPAND macropowerup (htrack3 medkit 1)
+EXPAND macropowerup (htrack2 ecmchaff 5)
+EXPAND macropowerup (bug1 partialarmor 20)
+EXPAND macropowerup (bug2 partialarmor 20)
+EXPAND macropowerup (bug3 fullarmor 20)
+EXPAND macropowerup (bug4 fullarmor 20)
+EXPAND macropowerup (bug5 armorboost 20)
+EXPAND macropowerup (listcouchforce napalmbomb 2)					//arty gives 2 napalm
+EXPAND macropowerup (listballoon groundmissile 4)				//each balloon 4 groundmissiles
+	
+//Special effects section
+IF KILLED controller1 THEN
+	CREATEEXPLOSION me 136,
+	DEPLOY cord1damage
+
+IF KILLED controller2 THEN
+	CREATEEXPLOSION me 136,
+	DEPLOY cord2damage
+
+IF HIT ejectbutton THEN
+	ONOBJSTATE gamelid
+	osLidup TRIGGER lidstay,
+	osLiddown TRIGGER fliplid	
+
+IF lidstay THEN
+	SETOBJSTATE gamelid osLidup
+
+IF fliplid THEN
+	SETOBJSTATE gamelid osLidflip,
+	SETFORCE 111consoleplayer1 zpush (1750,1900) 10 flat 5 -100000 10600 air 970 0 0, 	//make tan troops fly
+	SETFORCE 111consoleplayer2 zpush (1740,1900) 15 flat 5 -100000 11600 air 970 0 0, 	//make tan troops fly
+	SETFORCE 111consoleplayer3 zpush (1760,1900) 20 flat 5 -100000 12600 air 970 0 0, 	//make tan troops fly
+	SETFORCE 111consoleplayer4 zpush (1720,1900) 50 flat 5 -100000 23600 air 970 0 0, 	//make tan troops fly
+	UNDEPLOY ejectlight,
+	TRIGGERDELAY 2350 crushem
+
+IF crushem THEN
+	UNDEPLOY 111consoleplayer1,
+	UNDEPLOY 111consoleplayer2,
+	UNDEPLOY 111consoleplayer3,
+	UNDEPLOY 111consoleplayer4,
+	TRIGGERDELAY 5 crushem2
+
+IF crushem2 THEN
+	CREATEUNIT splat1 rifleman (1745,905) tan rifle,   	//DEPLOY 111consoleplayer1 (1745,905),
+	CREATEUNIT splat2 rifleman (1790,890) tan rifle,  	//DEPLOY 111consoleplayer2 (1790,890),
+	CREATEUNIT splat3 rifleman (1720,992) tan rifle,  	//DEPLOY 111consoleplayer3 (1720,992),
+	CREATEUNIT splat4 rifleman (1771,983) tan rifle,	//DEPLOY 111consoleplayer4 (1771,983),
+	DAMAGE splat1 550 crush,
+	DAMAGE splat2 600 crush,
+	DAMAGE splat3 700 crush,
+	DAMAGE splat4 1000 crush
+
+IF HIT powerbutton THEN
+	ADDVAR powerbuttoncount 1,
+	TRIGGER evtTestpoweron
+
+IF evtTestpoweron TESTVAR powerbuttoncount = 3 THEN			// have to hit switch 3x to trigger it
+	SETVAR powerbuttoncount 0,
+	TRIGGER evtChangepower
+
+IF evtChangepower THEN ONOBJSTATE gamedisk
+	osNospin TRIGGER evtTurnon,
+	osSpin TRIGGER evtTurnOff,
+	osSpindown TRIGGER evtTurnon
+
+IF evtTurnon THEN
+	SETOBJSTATE gamedisk osSpin,
+	DEPLOY powerlight
+
+IF INORDER fliplid evtTurnon THEN
+	CREATEPOWERUP "Swarmmissile" Swarmmissile (1727,1858,40) 10				//on CD
+ 	
+IF evtTurnoff THEN
+	SETOBJSTATE gamedisk osSpindown,
+	UNDEPLOY powerlight
+
+IF ballooncreated THEN
+	//showmessage "ballooncreated",
+	TRIGGER gaugecheck,
+	TRIGGER gaugecheck2,
+	TRIGGER gaugecheck3,
+	TRIGGER gaugecheck4,
+	TRIGGER gaugecheck5,
+	TRIGGER gaugecheck6,
+	TRIGGER gaugecheck7,
+	TRIGGER gaugecheck8
+
+IF gaugecheck TESTVAR ballooninflated = 2 THEN
+	TRIGGER inflate
+
+IF gaugecheck2 TESTVAR ballooninflated = 5 THEN
+	TRIGGER inflate2
+
+IF gaugecheck3 TESTVAR ballooninflated = 7 THEN
+	TRIGGER inflate3
+
+IF gaugecheck4 TESTVAR ballooninflated = 9 THEN
+	TRIGGER inflate4
+
+IF gaugecheck5 TESTVAR ballooninflated = 12 THEN
+	TRIGGER inflate5
+
+IF gaugecheck6 TESTVAR ballooninflated = 15 THEN
+	TRIGGER inflate6
+
+IF gaugecheck7 TESTVAR ballooninflated = 17 THEN
+	TRIGGER inflate7
+
+IF gaugecheck8 TESTVAR ballooninflated = 20 THEN
+	TRIGGER inflate8 
+
+IF KILLED hydrogentank THEN
+	CREATEOBJECT hydrogentankdebris 43 612 (2450,1040) 0,
+	UNDEPLOY gauge,
+	UNDEPLOY gauge2,
+	UNDEPLOY gauge3,
+	UNDEPLOY gauge4,
+	UNDEPLOY gauge5,
+	UNDEPLOY gauge6,
+	UNDEPLOY gauge7,
+	UNDEPLOY gauge8
+
+IF count 1 of DMGLVLCHANGED hydrogentank THEN
+	TRIGGER leak
+
+IF leak BUTNOT KILLED hydrogentank THEN
+	ADDVAR ballooninflated 1,
+	TRIGGER gaugecheck,
+	TRIGGER gaugecheck2,
+	TRIGGER gaugecheck3,
+	TRIGGER gaugecheck4,
+	TRIGGER gaugecheck5,
+	TRIGGER gaugecheck6,
+	TRIGGER gaugecheck7,
+	TRIGGER gaugecheck8,
+	TRIGGERDELAY 12000 leak
+ 
+IF inflate BUTNOT KILLED hydrogentank THEN
+	CREATEOBJECT gauge2 43 602 (2463,1249),
+	UNDEPLOY gauge
+
+IF inflate2 BUTNOT KILLED hydrogentank THEN
+	CREATEOBJECT gauge3 43 603 (2463,1249),
+	UNDEPLOY gauge2
+
+IF inflate3 BUTNOT KILLED hydrogentank THEN
+	CREATEOBJECT gauge4 43 604 (2463,1249),
+	UNDEPLOY gauge3
+
+IF inflate4 BUTNOT KILLED hydrogentank THEN
+	CREATEOBJECT gauge5 43 605 (2463,1249),
+	UNDEPLOY gauge4
+
+IF inflate5 BUTNOT KILLED hydrogentank THEN
+	CREATEOBJECT gauge6 43 606 (2463,1249),
+	UNDEPLOY gauge5
+
+IF inflate6 BUTNOT KILLED hydrogentank THEN
+	CREATEOBJECT gauge7 43 607 (2463,1249),
+	UNDEPLOY gauge6
+
+IF inflate7 BUTNOT KILLED hydrogentank THEN
+	CREATEOBJECT gauge8 43 608 (2463,1249),
+	UNDEPLOY gauge7
+
+IF inflate8 BUTNOT KILLED hydrogentank THEN
+	UNDEPLOY gauge8,
+	ADDVAR varoutofair 1
+
+If outofair TESTVAR varoutofair = 1 THEN
+	PLAYSOUND "" hydrogentank 10 1 1 
+
+//When Sarge is getting overrun tell player to evac to coffee table
+IF checkevac BUTNOT pickedup sarge TESTVAR nextwave = 3 THEN 
+	PLAYTALKINGHEAD 47     			
+
+//When rockets bounce off Hydrogen tank, let player know to get big bomb (big bomb to be used by tan to bomb green troops:)
+IF HIT hydrogentank BY captain THEN					//need to make a better check
+	ADDVAR numhittank 1,
+	TRIGGER tankhelp
+ 
+IF tankhelp BUTNOT DMGLVLCHANGED hydrogentank TESTVAR numhittank = 8 THEN
+	PLAYTALKINGHEAD 120
+
+//***AMBIENT SOUNDS***//
+//playsound file-name [location [channel [priority [flags [radius]]]]]
+IF setupsounds THEN
+	TRIGGER constantsounds
+
+IF constantsounds THEN
+	PLAYSOUND fan.wav trackfan 6 1 1,
+	PLAYSOUND slotcars.wav redcar 8 1 1,
+	PLAYSOUND airhockeyairhiss.wav (3400,1100) 5 1 1 
+	
+IF count 1 of DMGLVLCHANGED hydrogentank THEN
+	PLAYSOUND co2hiss.wav hydrogentank 10 1 1
+
+IF KILLED hydrogentank THEN
+	PLAYSOUND "" hydrogentank 10 1 1 
+
+IF HIT powerbutton HIT ejectbutton THEN
+	PLAYSOUND gameconsoleswitch.wav consoleswitch 8 1 0
+	
+//***LANDING PADS***//
+IF PADON padlpad2 THEN
+	LAND captain
+
+//***LANDING PADS***//
+
+//Warnings that Green is getting hammered
+
+IF KILLED listgreenarmoredforce THEN
+	ADDVAR numgreendead 1,
+	TRIGGER greendead
+
+MACRO macrogreendying 2
+{
+	IF greendead TESTVAR numgreendead = @1 THEN
+		PLAYTALKINGHEAD @2
+}
+
+EXPAND macrogreendying (1 43)
+EXPAND macrogreendying (2 44)
+EXPAND macrogreendying (3 112)		 //"We are taking too many casualties.! Fall back, fall back!!!  Blade, you have to hold them off.")
+EXPAND macrogreendying (4 36)
+EXPAND macrogreendying (5 113)		//"They are all over us.! Pull your weight, Captain, or we are done for.")
+//EXPAND macrogreendying (6 6)
+
+
+	
+//Victory Conditions			//currently set to drop sarge off, blow tank, get sarge, return
+//Score 1 point for each of the 4 Victory conditions (Blow Hydro tank, Deliver Blue, Kill tanks, Kill Artillery)
+VARIABLE varvccount 0
+VARIABLE vargotspy 0
+VARIABLE varmatchskilled 0
+VARIABLE gotsarge 0
+VARIABLE varbanzaikilled 0
+
+IF PICKEDUP sarge THEN
+	ADDVAR gotsarge 1,
+	TRIGGERDELAY 500 sargemessage
+
+IF KILLED listbanzai THEN
+	ADDVAR varbanzaikilled 1,
+	TRIGGER banzaiwipedout
+
+IF banzaiwipedout TESTVAR varbanzaikilled = 31 THEN				//change to total number of banzai currently 32 (32-1 =32 for var)
+	TRIGGERDELAY 500 sargemessage2
+
+IF sargemessage TESTVAR gotsarge = 1 THEN
+	TRIGGER sargemessage2
+
+IF count 1 of sargemessage2 THEN						//play message once if either Sarge P/U or Banzai rush eliminated
+	PLAYTALKINGHEAD 111,
+	PLAYTALKINGHEAD 119	
+
+VARIABLE vardroppedcarlocx 0
+VARIABLE vardroppedcarlocy 0
+														//DROPPED bluecar in correct x,y triggers takeblueaway
+IF DROPPED bluecar THEN
+	SETVAR vardroppedcarlocx GETX me,
+	SETVAR vardroppedcarlocy GETY me,
+	TRIGGER correctdrop1
+
+IF correctdrop1 TESTVAR vardroppedcarlocx > 3700 THEN
+	TRIGGER correctdrop2
+
+IF correctdrop2 TESTVAR	vardroppedcarlocx < 3900 THEN
+	TRIGGER correctdrop3
+
+IF correctdrop3 TESTVAR vardroppedcarlocy > 2550 THEN
+	TRIGGER correctdrop4
+
+IF correctdrop4 TESTVAR vardroppedcarlocy < 2750 THEN
+	TRIGGERDELAY 500 takeblueaway
+
+IF takeblueaway THEN
+	removemissionobjective lpad10,		
+	UNDEPLOY bluecar,
+	CREATEUNIT "triplezero" rifleman (refvar vardroppedcarlocx, refvar vardroppedcarlocy) blue rifle,
+	SETAIMODE triplezero ignore,
+	ALLY blue green,
+	ALLY green blue,
+	CREATEVEHICLE "cop" jeep (4000,2800) green,
+	ORDER cop GOTO (refvar vardroppedcarlocx, refvar vardroppedcarlocy) INMODE ignore,
+	ADDVAR vargotspy 1,
+	//Showmessage "number 1",
+	TRIGGERDELAY 5000 entercar
+
+IF entercar THEN
+	ENTERVEHICLE triplezero cop,
+	ORDER cop GOTO (4050,2550),
+	TRIGGERDELAY 3500 driveoff
+
+IF driveoff THEN
+	UNDEPLOY cop,
+	TRIGGER bladeremark
+	
+IF bladeremark BUTNOT KILLED cop THEN
+	PLAYTALKINGHEAD 123,
+	TRIGGERDELAY 4000 checkrest1,
+	TRIGGER objevent2,								//for f1 screen
+	TRIGGER checkvc,
+	ADDVAR varvccount 1,							//score 1
+	TRIGGERDELAY 3000 tanarmorattack,				//Extra Tan shows up when spy is taken away
+	TRIGGERDELAY 8000 greenreinforcement1							//Green shows up
+
+IF KILLED hydrogentank THEN
+	ADDVAR varvccount 1,				//score 2
+	TRIGGER killedhydro,
+	//showmessage "number2",
+	PLAYTALKINGHEAD 102,
+	TRIGGERDELAY 1000 checkrest1,
+	TRIGGER objevent1,								//for f1 screen
+	TRIGGER checkvc
+
+IF KILLED listcouchforce THEN
+	ADDVAR varmatchskilled 1,
+	TRIGGER checkmatchvc
+
+IF checkmatchvc TESTVAR varmatchskilled = 4 THEN
+	ADDVAR varvccount 1,				//score 3
+	//showmessage "number3",
+	PLAYTALKINGHEAD 127,
+	TRIGGERDELAY 1000 checkrest1,
+	TRIGGER objevent3,								//for f1 screen
+	TRIGGER checkvc
+
+IF KILLED listtanarmoredforce THEN
+	ADDVAR numtandead 1,
+	TRIGGER armordead
+
+IF armordead TESTVAR numtandead = 7 THEN
+	TRIGGER tanreinforcement,						//trigger the 2nd wave.
+	PLAYTALKINGHEAD 100,
+	PLAYTALKINGHEAD 116
+
+IF armordead TESTVAR numtandead = 11 THEN
+	PLAYTALKINGHEAD 66
+
+IF armordead TESTVAR numtandead = 15 THEN			//currently at 15
+	ADDVAR varvccount 1,				//score 4
+	//showmessage "number4",
+	PLAYTALKINGHEAD 124,
+	PLAYTALKINGHEAD 115,
+	TRIGGERDELAY 1000 checkrest1,
+	TRIGGER objevent4,									//for f1 screen
+	TRIGGER checkvc
+
+IF checkrest1 BUTNOT KILLED hydrogentank THEN			//check hydro killed
+	PLAYTALKINGHEAD 105
+	
+IF checkrest2 TESTVAR vargotspy = 0 THEN			//Spy not captured
+	PLAYTALKINGHEAD 106
+
+IF checkrest2 TESTVAR vargotspy = 1 THEN			//spy captured check artillery
+	//showmessage "checking artillery",
+	TRIGGER checkrest3
+
+IF count 2 of checkrest1 KILLED hydrogentank THEN		//if hydro killed then check spy
+	TRIGGER checkrest2
+	//showmessage "checking tan killed"
+
+IF count 3 of checkrest1 KILLED hydrogentank TESTVAR numtandead > 17 THEN
+	TRIGGER checkrest2
+
+IF checkrest4 TESTVAR numtandead < 16 THEN			//last thing to check is armor killed
+	PLAYTALKINGHEAD 108
+
+IF checkrest4 TESTVAR numtandead > 17 THEN			//If all armor killed check spy
+	//showmessage "checking spy",
+	TRIGGER checkrest2
+
+IF checkrest3 TESTVAR varmatchskilled < 4 THEN			//Hydro dead, spy captured...check armor kill or artillery dead
+	PLAYTALKINGHEAD 107
+
+IF checkrest3 TESTVAR varmatchskilled > 3 THEN			//Get to here, Spy cap, hydro killed, matchbox killed
+	trigger checkrest4
+
+IF checkvc TESTVAR varvccount = 1 THEN
+	SAVEGAME "Livingroom_2"
+
+IF checkvc TESTVAR varvccount = 2 THEN
+	SAVEGAME "Livingroom_3"
+
+IF checkvc TESTVAR varvccount = 3 THEN
+	SAVEGAME "Livingroom_4"
+
+IF checkvc TESTVAR varvccount = 4 THEN
+	TRIGGERDELAY 2000 evtgreenwin
+
+//===================Objectives and info =================//
+
+MACRO macroobj1 2
+{
+	IF count 1 of objevent@1 THEN
+		SETMISSIONINFO lv11@2,
+		TRIGGER nextcheck1
+}
+
+EXPAND macroobj1 (1 a)
+EXPAND macroobj1 (2 b)
+EXPAND macroobj1 (3 c)
+EXPAND macroobj1 (4 d)
+
+MACRO macroobj2 3
+{
+	IF count 3 of nextcheck1 objevent@1 objevent@2 THEN
+		SETMISSIONINFO lv11@3,
+		TRIGGER nextcheck2
+}
+
+EXPAND macroobj2 (1 2 e)
+EXPAND macroobj2 (1 3 f)
+EXPAND macroobj2 (1 4 g)
+EXPAND macroobj2 (2 3 h)
+EXPAND macroobj2 (2 4 i)
+EXPAND macroobj2 (3 4 j)
+
+MACRO macroobj3 4
+{
+	IF count 4 of nextcheck2 objevent@1 objevent@2 objevent@3 THEN
+		SETMISSIONINFO lv11@4
+}
+
+EXPAND macroobj3 (1 2 3 k)
+EXPAND macroobj3 (1 2 4 l)
+EXPAND macroobj3 (1 3 4 m)
+EXPAND macroobj3 (2 3 4 n)
+
+
+//=====================Hockey Time====================//
+//Living Room Secret Level...HOCKEY TIME!!! Keith Meyer
+		
+VARIABLE maxgoals 0
+VARIABLE vargoalee 0
+VARIABLE vartangoals 0
+VARIABLE vargreengoals 0
+
+//IF count 1 of PADON padtriggerhockey THEN
+//	TRIGGER toowindy
+
+//IF toowindy BUTNOT KILLED topplug THEN
+	// "A bit too windy for Hockey."
+
+IF PADON padtriggerhockey BUTNOT hockeystarted THEN				//Pad triggers hockey check
+	TRIGGERDELAY 2000 setuphockey,
+	TRIGGER hockeystarted
+
+IF count 2 of setuphockey KILLED topplug THEN
+	TRIGGER plugkilled									//extra check just in case the easy doesn't work
+
+IF plugkilled BUTNOT KILLED bottomplug THEN			//Hockey starts if both Top killed and bottom not
+	CREATEUNIT mypuck puck (3537,1321,200) grey,			 // air hockey puck
+	CREATECOPTER scout "goalee" (3024,874,230) tan,			// air hockey defender
+	SETFACING goalee 144,
+	SETAIMODE goalee DEFEND,
+	PLAYTALKINGHEAD 130,
+	SETITEMTARGET goalee mypuck
+
+VARIABLE vargoaleehealth 800
+
+IF HIT goalee TESTVAR gethealth goalee < vargoaleehealth THEN      		// If goalee wailed on he will fight back
+	SETITEMTARGET goalee captain,
+	ORDER goalee FOLLOW captain INMODE attack,
+	ADDVAR vargoaleehealth -200,
+	TRIGGERDELAY 5000 returntosanity
+
+IF returntosanity THEN
+	SETITEMTARGET goalee mypuck 
+	
+IF KILLED goalee THEN
+	TRIGGERDELAY 15000 newgoalee
+//	showmessage "Fools, we have more from where that came from!."
+
+IF newgoalee THEN
+	resurrect goalee padtandef1,
+	SETAIMODE goalee defend,
+	ADDVAR vargoalee 1,
+	TRIGGERDELAY 1000 goaleefoul
+
+IF goaleefoul TESTVAR vargoalee > 2 THEN
+	SETITEMTARGET goalee captain,
+	ORDER goalee FOLLOW captain INMODE attack
+
+IF PADON padtangoal THEN
+	UNDEPLOY mypuck,
+	TRIGGER score,
+	TRIGGERDELAY 1500 newpuck,
+	TRIGGER reward,
+	ADDVAR vargreengoals 1,
+	// vargreengoals,
+	ORDER goalee GOTO padtandef1 INMODE attack
+
+IF score THEN RANDOM
+	PLAYTALKINGHEAD 117,
+	PLAYTALKINGHEAD 128,
+	PLAYTALKINGHEAD 70
+
+IF reward THEN RANDOM
+	CREATEPOWERUP "FullArmor" FullArmor padreward1,
+	CREATEPOWERUP "ArmorBoost" armorboost padreward1,
+	CREATEPOWERUP "partialarmor" partialarmor padreward1,
+	CREATEPOWERUP "BottleRockets" groundmissile padreward2 15,
+	CREATEPOWERUP "firecracker" thrownfirecracker padreward2 10,
+	CREATEPOWERUP "napalmbomb" napalmbomb padreward2 5,
+	CREATEPOWERUP "airblast" airblastmissile padreward3 5,
+	CREATEPOWERUP "greenpaintbomb" greenpaintbomb padreward4 2,
+	CREATEPOWERUP "radarmissile1" radarmissile padreward3 5,
+	CREATEPOWERUP "airmines" airmine padreward4 5,
+	CREATEPOWERUP "heatray1" heatray padreward4 5,
+	CREATEPOWERUP "clusterbomb1" clusterbomb padreward2 5
+
+IF PADON padgreengoal THEN
+	UNDEPLOY mypuck,
+	TRIGGERDELAY 1500 newpuck,
+	TRIGGER doh,
+	TRIGGER goat,
+	ADDVAR vartangoals 1,
+	//TRACEVAR vartangoals,
+	ORDER goalee GOTO padtandef1 INMODE attack
+
+IF doh THEN RANDOM
+	PLAYTALKINGHEAD 61,
+	PLAYTALKINGHEAD 17
+
+IF goat THEN RANDOM
+	CREATEINSECT roach "roach" padgreengoal tan,
+	CREATEINSECT mutantwasp "mutantwasp" padgreengoal tan,
+	CREATEINSECT mutantfly "mutantfly" padgreengoal tan,
+	CREATEUNIT "radardude" stingerguy padgreengoal tan stingermissile
+
+IF newpuck TESTVAR maxgoals < 5 THEN
+	CREATEEXPLOSION (3537,1321,200) 133,
+	ADDVAR maxgoals 1,
+	DEPLOY mypuck (3537,1321,200)
+
+IF PADON padcenterline TESTVAR GETX mypuck > GETX goalee THEN RANDOM
+	ORDER goalee FOLLOW mypuck INMODE attack,
+	ORDER goalee GOTO padtandef1 INMODE attack,
+	ORDER goalee GOTO padtandef2 INMODE attack,
+	ORDER goalee GOTO padtandef3 INMODE attack
+
+IF PADON padstayinplay THEN RANDOM
+	ORDER goalee GOTO padtandef1 INMODE attack,
+	ORDER goalee GOTO padtandef2 INMODE attack,
+	ORDER goalee GOTO padtandef3 INMODE attack
+
+IF PADON padfillslot THEN
+	ORDER goalee GOTO padtandef1 INMODE defend
+	
+IF PADON padcenterline TESTVAR GETX mypuck <= GETX goalee THEN
+	ORDER goalee GOTO padtandef1
+
+IF newpuck TESTVAR maxgoals = 5 THEN
+	PLAYTALKINGHEAD 65,				//the best for now
+	TRIGGERDELAY 1000 winner1,
+	TRIGGERDELAY 1000 winner2,
+	UNDEPLOY goalee,
+	UNDEPLOY mypuck
+
+IF winner1 testvar vargreengoals > vartangoals THEN
+	//showmessage "Ha, I won!.",
+	PLAYTALKINGHEAD 133,
+	TRIGGER bonusprize
+
+IF bonusprize THEN RANDOM
+	CREATEPOWERUP "ArmorBoost" armorboost padcenterice,
+	CREATEPOWERUP "napalmbomb" napalmbomb padcenterice 5,
+	CREATEPOWERUP "Swarmmissile" swarmmissile padcenterice 10,
+	CREATEPOWERUP "heatray1" heatray padcenterice 5,
+	CREATEPOWERUP "clusterbomb1" clusterbomb padcenterice 10
+
+IF winner2 testvar vargreengoals < vartangoals THEN
+	//showmessage "May be next time..."
+	PLAYTALKINGHEAD 134
+
+//============== End Hockey ==============//
+
+//table/floor/sofa interaction
+
+IF PADON padcaptainup BUTNOT PICKEDUP bluecar THEN
+	SETAIRMAP captain 1
+//	showmessage "captain flight height follow"
+
+IF PADON padcaptaindown THEN
+	SETAIRMAP captain 0
+//	showmessage "captain terrain follow"
+
+
+//=============Winning=================//
+
+IF evtgreenwin BUTNOT evtmissionlost THEN
+	PLAYTALKINGHEAD 103,
+	TRIGGER cleanup,
+	TRIGGERDELAY 18000 GREENWINS
+
+IF cleanup THEN
+	SETNPC captain 1,
+	UNDEPLOY bug1,
+	UNDEPLOY bug2,
+	UNDEPLOY bug3,
+	UNDEPLOY bug4,
+	UNDEPLOY bug5,
+	HEAL sarge 100,
+	HEAL captain 100,
+	DROPITEM captain sarge,
+	DROPITEM captain "Cpl. Walker",
+	DROPITEM captain "Pvt. Crazy Stan",
+	DROPITEM captain "Pvt. Ben", 
+ 	DROPITEM captain "Pvt. Onozakan",
+	DROPITEM captain "Pvt. Dangerous Dan",
+	DROPITEM captain "Pvt. Weiss",
+	DROPITEM captain "Pvt. Johnson",
+	DROPITEM captain "Pvt. Bubber", 
+	DROPITEM captain "Pvt. Holmes",
+
+	DROPITEM captain "Pvt. Copur", 
+	DROPITEM captain "Pvt. Bowie",
+	DROPITEM captain "Pvt. Custer",
+	DROPITEM captain "Pvt. Ladrino",
+	DROPITEM captain "Pvt. Boyle",
+	DROPITEM captain "Pvt. Rosser",
+	DROPITEM captain "Pvt. Yates",
+	DROPITEM captain "Pvt. Hill",
+	DROPITEM captain "Cpl. Rosser",
+	DROPITEM captain "Pvt. Bennett", 
+	DROPITEM captain "Spec. Meyer", 
+	DROPITEM captain "Spec. Macaraeg", 
+	DROPITEM captain "Spec. Longworth", 
+
+	UNDEPLOY sarge,
+	UNDEPLOY "Cpl. Walker",
+	UNDEPLOY "Pvt. Crazy Stan",
+	UNDEPLOY "Pvt. Ben", 
+ 	UNDEPLOY "Pvt. Onozakan",
+	UNDEPLOY "Pvt. Dangerous Dan",
+	UNDEPLOY "Pvt. Weiss",
+	UNDEPLOY "Pvt. Johnson",
+	UNDEPLOY "Pvt. Bubber", 
+	UNDEPLOY "Pvt. Holmes",
+
+	UNDEPLOY "Pvt. Copur", 
+	UNDEPLOY "Pvt. Bowie",
+	UNDEPLOY "Pvt. Custer",
+	UNDEPLOY "Pvt. Ladrino",
+	UNDEPLOY "Pvt. Boyle",
+	UNDEPLOY "Pvt. Rosser",
+	UNDEPLOY "Pvt. Yates",
+	UNDEPLOY "Pvt. Hill",
+	UNDEPLOY "Cpl. Rosser",
+	UNDEPLOY "Pvt. Bennett", 
+	UNDEPLOY "Spec. Meyer", 
+	UNDEPLOY "Spec. Macaraeg", 
+	UNDEPLOY "Spec. Longworth" 
+ 
+
+//============= Lose Condition...over and above Sarge and Cap getting wacked ===============//
+
+IF count 1 of KILLED triplezero KILLED cop THEN
+	STOPTALKINGHEAD,
+	TRIGGER evtmissionlost,
+	TRIGGERDELAY 3 evtdeadspy,
+	TRIGGERDELAY 7500 tanwins
+
+IF evtdeadspy THEN
+	PLAYTALKINGHEAD 132
+//========= End Loser ========//
