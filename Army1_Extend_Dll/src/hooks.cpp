@@ -72,6 +72,11 @@ static bool   g_stringEnable = true;     // [Strings] Enable
 static std::string g_faceName = "\xE5\xAE\x8B\xE4\xBD\x93";  // UTF-8 "宋体"
 static BYTE   g_charSet = 134;   // GB2312_CHARSET
 
+// "No unit" → 中文。空表示不改（保持英文）。
+// ★ 不走 INI 槽位补丁：两处字面量容量只有 8 字节，"没有部队" GBK 是 9 字节，
+//   必被 too-long 拒绝，所以改用立即数改写（见 PatchNoUnitString）。
+static std::string g_noUnitZh = "没有部队";
+
 // ---------------------------------------------------------------- 编码转换
 
 static std::string Utf8ToGbk(const std::string& utf8) {
@@ -142,6 +147,11 @@ bool LoadTranslationData() {
             else if (k == "CharSet") g_charSet = (BYTE)atoi(v.c_str());
         } else if (sec == "Strings") {
             if (k == "Enable") g_stringEnable = (v == "1" || v == "true");
+            if (k == "NoUnit") {
+                // 空值 = 关闭该项改写（保持英文 "No unit"）
+                g_noUnitZh = v;
+                Log("NoUnit 译名: '%s'", v.c_str());
+            }
             if (k == "Files") {
                 size_t start = 0;
                 while (start <= v.size()) {
@@ -587,6 +597,472 @@ static bool PatchIAT(HMODULE hMod, const char* dllName,
     return false;
 }
 
+// ---------------------------------------------------------------- 内联补丁基元
+
+// 校验目标处现有字节，完全一致才写入；不一致说明 exe 版本不符，**绝不盲写**。
+static bool CheckBytes(const BYTE* p, const BYTE* pat, size_t n) {
+    for (size_t i = 0; i < n; i++)
+        if (p[i] != pat[i]) return false;
+    return true;
+}
+
+static bool MakeWritable(void* p, size_t n, DWORD& oldProt) {
+    return VirtualProtect(p, n, PAGE_EXECUTE_READWRITE, &oldProt) != 0;
+}
+
+static void RestoreProtect(void* p, size_t n, DWORD oldProt) {
+    DWORD tmp = 0;
+    VirtualProtect(p, n, oldProt, &tmp);
+}
+
+// 在 target 处写入 E9 rel32（余下用 NOP 填满 len 字节）。
+// 返回 trampoline：先执行被覆盖的原始 len 字节，再跳回 target+len。
+// 没有 trampoline 就**不能**再调原函数（会无限递归）。
+static void* InstallInlineJmp(BYTE* target, size_t len, void* hook,
+                              const BYTE* expect) {
+    if (len < 5 || len > 16) return nullptr;
+    if (expect && !CheckBytes(target, expect, len)) {
+        Log("inline: 字节签名不符 @0x%p，放弃", (void*)target);
+        return nullptr;
+    }
+
+    BYTE* tramp = (BYTE*)VirtualAlloc(nullptr, 32, MEM_COMMIT | MEM_RESERVE,
+                                      PAGE_EXECUTE_READWRITE);
+    if (!tramp) { Log("inline: VirtualAlloc 失败"); return nullptr; }
+    memcpy(tramp, target, len);
+    tramp[len] = 0xE9;
+    *(DWORD*)(tramp + len + 1) =
+        (DWORD)(target + len) - (DWORD)(tramp + len + 5);
+
+    DWORD oldProt = 0;
+    if (!MakeWritable(target, len, oldProt)) {
+        Log("inline: VirtualProtect 失败 @0x%p", (void*)target);
+        VirtualFree(tramp, 0, MEM_RELEASE);
+        return nullptr;
+    }
+    target[0] = 0xE9;
+    *(DWORD*)(target + 1) = (DWORD)hook - (DWORD)(target + 5);
+    for (size_t i = 5; i < len; i++) target[i] = 0x90;
+    RestoreProtect(target, len, oldProt);
+    FlushInstructionCache(GetCurrentProcess(), target, len);
+
+    Log("inline: 0x%p -> hook 0x%p, trampoline 0x%p (%d 字节)",
+        (void*)target, hook, (void*)tramp, (int)len);
+    return tramp;
+}
+
+// ---------------------------------------------------------------- 中文位图文字桥接
+//
+// 背景（IDA 实证，零售 1.2）：
+//   · 1.2 的左下角信息屏不再走 GDI，而是预烘焙的**位图字体**：
+//     BmpTextWrite = sub_44B760，逐字节查 dword_6975E0[fontid] 字形表。
+//   · 该表由 sub_44BD60 用 sprintf("#a%c") 只烘焙 **ASCII 32..127** 共 96 个
+//     字形（表头 96 个 WORD 偏移 = 192 字节）。GBK 汉字字节 >= 0x80 会索引到
+//     2*byte-64 = 最大 446 字节处，远超出表头 → 把字形数据当偏移 → 花屏/越界。
+//   · 1.0 中文零售版同一处走 GDI：sub_45AD30 → sub_4102D0 → sub_455B50(TextOutA)。
+//     1.2 里对应的 GDI 路径函数 sub_413A30 仍然完好（菜单/简报仍在用）。
+//
+// 对策：含 >=0x80 字节的串切到 GDI 路径，字体取已被 RebuildFontTable 换成
+//       宋体 GB2312 的 FONT_DASHCOMM 槽。纯 ASCII 串原样走原函数，视觉零变化。
+//       GDI 槽表 7 项都在 RebuildFontTable 覆盖范围内；FONT_MAP(槽 7) 不在其中
+//       且只用于 debug 覆盖层，故 BMPFONT_MAP 不桥接，直接回退原路径。
+
+#define RVA_BMPTEXT_WRITE  0x004B760u   // sub_44B760  位图贴字
+#define RVA_BMPTEXT_WIDTH  0x004BA60u   // sub_44BA60  位图量宽
+#define RVA_TEXTWRITE_GDI  0x0013A30u   // sub_413A30  GDI 贴字
+#define RVA_TEXTSETCOLOR   0x0013E00u   // sub_413E00  设前景/背景色
+#define RVA_FONT_TABLE     0x000E9F48u  // HFONT[7] 表（dword_4E9F48）
+#define RVA_TEXT_COLOR     0x000E9F70u  // 全局前景色
+#define RVA_TEXT_BKCOLOR   0x000E9F6Cu  // 全局背景色
+
+// 位图字体 id → GDI 字体槽（FONTS 枚举）。InitBitmapFonts 构建顺序：
+//   [0]=MakeBitmapFont(FONT_DASHCOMM=3)  [1]=FONT_TIMES_20=2  [2]=FONT_MAP=7
+// FONT_MAP 槽(0x4E9F64)不在 RebuildFontTable 的 7 项里，仍是无中文字形的
+// Courier，所以 -1 = 不桥接。
+static int GdiFontForBitmap(int fontid) {
+    switch (fontid) {
+        case 0:  return 3;    // BMPFONT_DASHCOMM -> FONT_DASHCOMM(0x4E9F54)
+        case 1:  return 2;    // BMPFONT_BUTTON   -> FONT_TIMES_20(0x4E9F50)
+        default: return -1;   // BMPFONT_MAP / 未知
+    }
+}
+
+using PFN_BmpTextWrite = int(__fastcall*)(void*, int, int, const char*, int,
+                                          SIZE*, int);
+using PFN_BmpTextWidth = int(__fastcall*)(const char*, int, SIZE*);
+using PFN_TextWriteGdi = int(__fastcall*)(void*, int, int, const char*, int,
+                                          SIZE*);
+using PFN_TextSetColors = void(__fastcall*)(DWORD, DWORD);
+
+static PFN_BmpTextWrite  g_orgBmpTextWrite = nullptr;
+static PFN_BmpTextWidth  g_orgBmpTextWidth = nullptr;
+static PFN_TextWriteGdi  g_textWriteGdi    = nullptr;
+static PFN_TextSetColors g_textSetColors   = nullptr;
+
+// GBK 汉字首字节 0xB0..0xF7、次字节 0xA1..0xFE，都 >= 0x80
+static bool HasHighByte(const char* s) {
+    if (!s) return false;
+    for (; *s; ++s)
+        if ((BYTE)*s >= 0x80) return true;
+    return false;
+}
+
+// 串尾是否为"只有首字节、缺次字节"的半个汉字。
+// 断行乱码的根因就在这里：断行器 sub_441300 按**字节**截断，
+// 中文没有空格可对，最终在任意字节处 v4[v9]=0，恰好劈开一个 GBK 字符。
+static bool EndsWithPartialCjk(const char* s) {
+    while (*s) {
+        if ((BYTE)*s >= 0x80) {
+            if (!s[1]) return true;    // 首字节后面就是 NUL → 半个字
+            s += 2;                    // 完整的双字节汉字/符号
+        } else {
+            s += 1;
+        }
+    }
+    return false;
+}
+
+static HFONT GetFontSlot(int gdiFont) {
+    if (gdiFont < 0 || gdiFont > 6) return nullptr;
+    HMODULE h = GetModuleHandleA(nullptr);
+    if (!h) return nullptr;
+    return (HFONT)*(DWORD*)((BYTE*)h + RVA_FONT_TABLE + gdiFont * 4);
+}
+
+// 量宽专用内存 DC（与绘制用的是同一批 GDI 字体，度量一致）
+static HDC GetMeasureDC(HFONT font) {
+    static HDC   s_dc   = nullptr;
+    static HFONT s_font = nullptr;
+    if (!s_dc) {
+        s_dc = CreateCompatibleDC(nullptr);
+        if (!s_dc) return nullptr;
+    }
+    if (font != s_font) {
+        SelectObject(s_dc, font);
+        s_font = font;
+    }
+    return s_dc;
+}
+
+// 取字符串"安全可绘制长度"：若结尾是半个汉字，则砍掉那半个字节。
+// 绘制路径用它兜底——即使某条路径（如 sub_44E5B0 的血条文字）给了
+// 半个汉字，也只是少显示一个字，不会画出乱码。
+static size_t SafeCjkLen(const char* s) {
+    size_t n = strlen(s);
+    size_t i = 0;
+    while (i < n) {
+        if ((BYTE)s[i] >= 0x80) {
+            if (i + 1 >= n) return i;   // 首字节后没了 → 丢弃这半个
+            i += 2;
+        } else {
+            i += 1;
+        }
+    }
+    return n;
+}
+
+// sub_44B760 替换体：签名/约定必须与原文一致（ecx=surf, edx=x, 5 个栈参, ret 14h）
+static int __fastcall HookBmpTextWrite(void* surf, int x, int y,
+                                       const char* text, int fontid,
+                                       SIZE* sz, int color) {
+    if (!g_textWriteGdi || !g_orgBmpTextWrite || !HasHighByte(text))
+        return g_orgBmpTextWrite(surf, x, y, text, fontid, sz, color);
+
+    int gdiFont = GdiFontForBitmap(fontid);
+    if (gdiFont < 0 || !GetFontSlot(gdiFont))
+        return g_orgBmpTextWrite(surf, x, y, text, fontid, sz, color);
+
+    // ★ 兜底：砍掉结尾的半个汉字再画（GDI 收到半个 GBK 会画出垃圾字形）
+    const char* s      = text;
+    size_t      prefix = 0;
+    if (text[0] == '#' && text[1] != 0) { s = text + 2; prefix = 2; }
+    size_t safeLen = SafeCjkLen(s);
+    char*  buf = nullptr;
+    if (safeLen != strlen(s)) {
+        buf = (char*)malloc(prefix + safeLen + 1);
+        if (buf) {
+            if (prefix) memcpy(buf, text, prefix);
+            memcpy(buf + prefix, s, safeLen);
+            buf[prefix + safeLen] = 0;
+            s = buf + prefix;          // 保留颜色前缀供 TextWrite 解析
+        }
+    }
+
+    HMODULE h = GetModuleHandleA(nullptr);
+    DWORD* pFg = (DWORD*)((BYTE*)h + RVA_TEXT_COLOR);
+    DWORD* pBg = (DWORD*)((BYTE*)h + RVA_TEXT_BKCOLOR);
+    DWORD oldFg = *pFg, oldBg = *pBg;
+
+    // RGB_GREEN / RGB_BLACK，与位图路径的 GREEN_IDX 观感一致
+    g_textSetColors(0x0000FF00, 0x00000000);
+
+    SIZE local;
+    int r = g_textWriteGdi(surf, x, y, s, gdiFont, sz ? sz : &local);
+
+    g_textSetColors(oldFg, oldBg);   // 还原全局色，别污染菜单的 GDI 文字
+    if (buf) free(buf);
+    (void)color;                     // 位图路径用调色板索引，GDI 路径用前景色
+    return r;
+}
+
+// sub_44BA60 替换体：CJK 用 GDI 量宽，否则原样（ret 4）
+//
+// ★ 断行修复的支点：断行器 sub_441300 用
+//     for (v19[v9]=0; BmpTextWidth(v19) > 窗口宽; v19[v9]=0) --v9;
+//   逐字节后退找边界。中文没有空格可对，退出时 v9 可能落在汉字两字节之间，
+//   随后 v4[v9]=0 把一个 GBK 字符劈成两半 → 乱码。
+//   这里让"串尾是半个汉字"时返回一个必然超宽的数值，循环就会继续后退，
+//   直到退到完整字符边界为止。无需改动游戏代码。
+static int __fastcall HookBmpTextWidth(const char* text, int fontid, SIZE* sz) {
+    if (!HasHighByte(text))
+        return g_orgBmpTextWidth ? g_orgBmpTextWidth(text, fontid, sz) : 0;
+
+    int gdiFont = GdiFontForBitmap(fontid);
+    HFONT font = (gdiFont >= 0) ? GetFontSlot(gdiFont) : nullptr;
+    HDC dc = font ? GetMeasureDC(font) : nullptr;
+    if (!dc) {
+        if (g_orgBmpTextWidth) return g_orgBmpTextWidth(text, fontid, sz);
+        if (sz) sz->cx = sz->cy = 0;
+        return 0;
+    }
+
+    // 与 BmpTextWrite 一致：跳过 "#X" 颜色前缀（'#' + 1 字节色号）
+    const char* s = text;
+    size_t n = strlen(text);
+    if (n >= 2 && s[0] == '#') { s += 2; n -= 2; }
+
+    SIZE out = { 0, 0 };
+    if (n) GetTextExtentPoint32A(dc, s, (int)n, &out);
+
+    TEXTMETRICA tm;
+    if (GetTextMetricsA(dc, &tm)) out.cy = tm.tmHeight;
+
+    // 半个汉字：报一个必然超宽的宽度，逼断行器继续回退到字符边界。
+    // 加 0x4000 而不是直接给 INT_MAX，避免调用方做算术时溢出。
+    if (EndsWithPartialCjk(s)) {
+        out.cx += 0x4000;
+        if (sz) *sz = out;
+        return out.cx;
+    }
+
+    if (sz) *sz = out;
+    return out.cx;
+}
+
+// ---------------------------------------------------------------- "No unit" 立即数改写
+//
+// 两处字面量容量只有 8 字节（"No unit\0" / "No Unit\0"），"没有部队" 的 GBK
+// 是 8 字节 + NUL = 9，走 INI 槽位补丁必被 too-long 拒绝。所以直接改代码里的
+// 绝对地址立即数（exe 无 ASLR，DllCharacteristics=0，静态地址可用），指向 DLL
+// 自己的缓冲区 —— 顺带彻底摆脱容量限制。
+
+#define RVA_NOUNIT_DASH_PUSH  0x0040302u  // 0x440302  push offset aNoUnit_0
+#define RVA_NOUNIT_ITEM_MOV   0x0022670u  // 0x422670  mov edi, offset aNoUnit
+
+static char g_noUnitGbk[64] = {0};
+
+static void PatchNoUnitString(const std::string& zh) {
+    std::string gbk = Utf8ToGbk(zh);
+    if (gbk.empty() || gbk.size() + 1 > sizeof(g_noUnitGbk)) {
+        Log("PatchNoUnitString: 转换失败或过长，跳过");
+        return;
+    }
+    memcpy(g_noUnitGbk, gbk.c_str(), gbk.size());
+    g_noUnitGbk[gbk.size()] = 0;
+
+    HMODULE h = GetModuleHandleA(nullptr);
+    if (!h) return;
+    BYTE* base = (BYTE*)h;
+    DWORD addr = (DWORD)(DWORD_PTR)g_noUnitGbk;
+
+    // ① Dashboard_Update 选中单位栏：8B 56 0C | 68 imm32
+    {
+        static const BYTE kSig[] = { 0x8B, 0x56, 0x0C, 0x68,
+                                     0x2C, 0xCC, 0x4B, 0x00 };
+        BYTE* p = base + RVA_NOUNIT_DASH_PUSH - 4;
+        if (CheckBytes(p, kSig, sizeof(kSig))) {
+            DWORD oldProt = 0;
+            BYTE* imm = base + RVA_NOUNIT_DASH_PUSH;
+            if (MakeWritable(imm, 4, oldProt)) {
+                *(DWORD*)imm = addr;
+                RestoreProtect(imm, 4, oldProt);
+                Log("NoUnit[dash] 0x%p -> '%s'", (void*)imm, zh.c_str());
+            }
+        } else {
+            Log("NoUnit[dash]: 签名不符 @0x%p，跳过", (void*)p);
+        }
+    }
+
+    // ② ItemName 兜底：85 C0 7F 22 | BF imm32
+    {
+        static const BYTE kSig[] = { 0x85, 0xC0, 0x7F, 0x22, 0xBF,
+                                     0x50, 0x3E, 0x4B, 0x00 };
+        BYTE* p = base + RVA_NOUNIT_ITEM_MOV - 5;
+        if (CheckBytes(p, kSig, sizeof(kSig))) {
+            DWORD oldProt = 0;
+            BYTE* imm = base + RVA_NOUNIT_ITEM_MOV;
+            if (MakeWritable(imm, 4, oldProt)) {
+                *(DWORD*)imm = addr;
+                RestoreProtect(imm, 4, oldProt);
+                Log("NoUnit[item] 0x%p -> '%s'", (void*)imm, zh.c_str());
+            }
+        } else {
+            Log("NoUnit[item]: 签名不符 @0x%p，跳过", (void*)p);
+        }
+    }
+}
+
+// ---------------------------------------------------------------- 信息屏折行接管
+//
+// 乱码根因（IDA 实证，sub_441300 = ReceiveDashMessage，源码 ui.cpp:3370）：
+//   超宽时它按**字节**截断，且截断后 v4 += v9 + 1 —— 把 v4[v9] 那个字节
+//   **吃掉**了。原文逻辑假设断点处是空格，吃掉无害；中文没有空格可对，
+//   断点必然落在汉字中间或吞掉某个汉字的首字节 → 半个 GBK 字 / 整串错位。
+//   实测：39 字节的中文串，安全字节断点只有 0/2/4/.../22 与串尾，
+//   而这些"安全点"全都靠吞掉 ASCII 才成立，中文里不存在可丢弃字节。
+//
+// 对策：在其入口接管。DLL 自己按**字符边界**贪心折行，再把每一段短串
+//   交给原函数。短串宽度不超限 → 不进入断行分支 → 走
+//   sprintf(listtext[v14], "%s", v4) 整行写入，字节一个不少。
+//   这样完全不依赖游戏侧的字节截断逻辑。
+
+#define RVA_ADD_DASH_MSG   0x0041300u   // sub_441300  ReceiveDashMessage
+#define RVA_DASH_MSG_WIDTH 0x000B8AA4u  // dword_4B8AA4 信息屏可用像素宽
+
+using PFN_AddDashMsg = void(__fastcall*)(const char*, void*);
+
+static PFN_AddDashMsg g_orgAddDashMsg = nullptr;
+
+// 单个字符（1 或 2 字节）的显示宽度
+static int CjkAdvanceWidth(HDC dc, const char* p, int bytes) {
+    SIZE s = { 0, 0 };
+    GetTextExtentPoint32A(dc, p, bytes, &s);
+    return s.cx;
+}
+
+// 按字符边界把 msg 贪心折成若干行，逐段交给原函数。
+// 返回是否真的接管（false 表示调用方应回退到原函数）。
+static bool WrapAndDispatch(const char* msg, void* unit) {
+    if (!g_orgAddDashMsg || !g_textWriteGdi) return false;
+
+    HMODULE h = GetModuleHandleA(nullptr);
+    if (!h) return false;
+    int limit = *(int*)((BYTE*)h + RVA_DASH_MSG_WIDTH);
+    if (limit <= 0) return false;
+
+    HFONT font = GetFontSlot(3);            // FONT_DASHCOMM
+    HDC   dc   = font ? GetMeasureDC(font) : nullptr;
+    if (!dc) return false;
+
+    // 颜色前缀 '#X'：原函数每行都会带上前缀，这里照做
+    const char* body   = msg;
+    char        prefix[3] = { 0, 0, 0 };
+    size_t      plen   = 0;
+    if (msg[0] == '#' && msg[1] != 0) {
+        prefix[0] = msg[0];
+        prefix[1] = msg[1];
+        plen = 2;
+        body = msg + 2;
+    }
+
+    size_t len = strlen(body);
+    if (len == 0) return false;
+
+    // 一次性算好所有行边界，避免边切边改原串
+    std::vector<std::pair<size_t, size_t> > lines;   // [begin, end)
+    size_t p = 0;
+    while (p < len) {
+        size_t q = p;
+        int    w = 0;
+        while (q < len) {
+            int adv = ((BYTE)body[q] >= 0x80) ? 2 : 1;
+            if (q + (size_t)adv > len) break;        // 尾巴上半个残字，丢弃
+            int cw = CjkAdvanceWidth(dc, body + q, adv);
+            if (w + cw > limit) break;
+            w += cw;
+            q += (size_t)adv;
+        }
+        // 一个字都放不下：强制收一个完整字符，避免死循环
+        if (q == p) {
+            int adv = ((BYTE)body[p] >= 0x80) ? 2 : 1;
+            q = (p + (size_t)adv <= len) ? p + (size_t)adv : len;
+        }
+        // 单行不得超过游戏的行缓冲上限（v19[68] / v9<=59）
+        if (q - p > 59) q = p + 59;
+        lines.push_back(std::make_pair(p, q));
+        p = q;
+    }
+
+    if (lines.empty()) return false;
+
+    // 逐段调用原函数（trampoline 不经过本 hook，无递归风险）
+    std::string buf;
+    buf.reserve(len + 2);
+    for (size_t i = 0; i < lines.size(); i++) {
+        buf.assign(prefix, plen);
+        buf.append(body + lines[i].first, lines[i].second - lines[i].first);
+        g_orgAddDashMsg(buf.c_str(), unit);
+    }
+    return true;
+}
+
+// sub_441300 替换体：ecx=msg, edx=unit（无栈参数，retn）
+static void __fastcall HookAddDashMsg(const char* msg, void* unit) {
+    if (!g_orgAddDashMsg) return;
+    // 纯 ASCII 完全走原路径，行为零变化
+    if (!msg || !HasHighByte(msg) || !WrapAndDispatch(msg, unit))
+        g_orgAddDashMsg(msg, unit);
+}
+
+// ---------------------------------------------------------------- 中文渲染安装
+
+static bool s_cjkInstalled = false;
+static bool s_cjkAttempted = false;
+
+static bool InstallCjkRenderer() {
+    if (s_cjkInstalled) return true;
+
+    // ★ 只尝试一次。若中途部分成功（一个 patch 成功、另一个签名不符），
+    //   二次进入时已打补丁处的字节不再是原始签名 → InstallInlineJmp 失败返回
+    //   nullptr → 把 trampoline 指针清空 → 而 E9 仍然跳进 hook → hook 判空后
+    //   调用空地址崩溃。所以一旦尝试过就绝不再试。
+    if (s_cjkAttempted) return s_cjkInstalled;
+    s_cjkAttempted = true;
+
+    HMODULE h = GetModuleHandleA(nullptr);
+    if (!h) { Log("InstallCjkRenderer: 无主模块"); return false; }
+
+    BYTE* base = (BYTE*)h;
+    g_textWriteGdi  = (PFN_TextWriteGdi)(base + RVA_TEXTWRITE_GDI);
+    g_textSetColors = (PFN_TextSetColors)(base + RVA_TEXTSETCOLOR);
+
+    // BmpTextWrite 头部：81 EC 94 00 00 00  = sub esp,94h（6 字节，整条指令）
+    static const BYTE kWriteSig[] = { 0x81, 0xEC, 0x94, 0x00, 0x00, 0x00 };
+    g_orgBmpTextWrite = (PFN_BmpTextWrite)InstallInlineJmp(
+        base + RVA_BMPTEXT_WRITE, sizeof(kWriteSig),
+        (void*)HookBmpTextWrite, kWriteSig);
+
+    // BmpTextWidth 头部：56 8B 35 E0 75 69 00 = push esi; mov esi,ds:6975E0（7 字节）
+    static const BYTE kWidthSig[] = { 0x56, 0x8B, 0x35, 0xE0,
+                                      0x75, 0x69, 0x00 };
+    g_orgBmpTextWidth = (PFN_BmpTextWidth)InstallInlineJmp(
+        base + RVA_BMPTEXT_WIDTH, sizeof(kWidthSig),
+        (void*)HookBmpTextWidth, kWidthSig);
+
+    // ReceiveDashMessage 头部：81 EC 20 01 00 00 = sub esp,120h（6 字节）
+    // ★ 折行接管：必须在 BmpTextWidth hook 之后装，因为它依赖 GDI 量宽可用
+    static const BYTE kDashSig[] = { 0x81, 0xEC, 0x20, 0x01, 0x00, 0x00 };
+    g_orgAddDashMsg = (PFN_AddDashMsg)InstallInlineJmp(
+        base + RVA_ADD_DASH_MSG, sizeof(kDashSig),
+        (void*)HookAddDashMsg, kDashSig);
+
+    s_cjkInstalled = (g_orgBmpTextWrite && g_orgBmpTextWidth);
+    Log("InstallCjkRenderer: write=%p width=%p dash=%p -> %s",
+        (void*)g_orgBmpTextWrite, (void*)g_orgBmpTextWidth,
+        (void*)g_orgAddDashMsg, s_cjkInstalled ? "ok" : "FAILED");
+    return s_cjkInstalled;
+}
+
 // ---------------------------------------------------------------- 安装
 
 bool InstallHooks() {
@@ -728,8 +1204,12 @@ extern "C" __declspec(dllexport) void InitializeASI() {
 
     RebuildFontTable();   // 直接改写已建好的字体表（Hook 拦不到早先那次建表）
 
-    Log("InitializeASI -> data=%d hook=%d patch=%d",
-        (int)dataOk, (int)hookOk, (int)patchOk);
+    // ★ 必须在 RebuildFontTable 之后：桥接要读中文字体的句柄是否已就位
+    bool cjkOk = InstallCjkRenderer();
+    if (!g_noUnitZh.empty()) PatchNoUnitString(g_noUnitZh);
+
+    Log("InitializeASI -> data=%d hook=%d patch=%d cjk=%d",
+        (int)dataOk, (int)hookOk, (int)patchOk, (int)cjkOk);
 }
 
 extern "C" __declspec(dllexport) bool ArmyMenCHS_Install() {
@@ -745,9 +1225,12 @@ extern "C" __declspec(dllexport) bool ArmyMenCHS_Install() {
 
     RebuildFontTable();   // 直接改写已建好的字体表（Hook 拦不到早先那次建表）
 
-    Log("Install -> data=%d hook=%d patch=%d",
-        (int)dataOk, (int)hookOk, (int)patchOk);
-    return hookOk || patchOk;
+    bool cjkOk = InstallCjkRenderer();
+    if (!g_noUnitZh.empty()) PatchNoUnitString(g_noUnitZh);
+
+    Log("Install -> data=%d hook=%d patch=%d cjk=%d",
+        (int)dataOk, (int)hookOk, (int)patchOk, (int)cjkOk);
+    return hookOk || patchOk || cjkOk;
 }
 
 extern "C" __declspec(dllexport) void ArmyMenCHS_Uninstall() {
