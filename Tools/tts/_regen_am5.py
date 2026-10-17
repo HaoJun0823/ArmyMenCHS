@@ -20,7 +20,7 @@ import voice_cast_am5 as vc
 
 MODEL = r"G:\Projects\ArmyMenCHS\models\Qwen3-TTS-12Hz-1.7B-VoiceDesign"
 SRC = r"G:\Projects\ArmyMenCHS\Army5_Original\audio\voice"
-OUT = r"G:\Projects\ArmyMenCHS\Army5_NEW_CHS\audio\vos"
+OUT = r"G:\Projects\ArmyMenCHS\Army5_NEW_CHS\update\audio\voice"
 ZH = r"G:\Projects\ArmyMenCHS\Army5_Voice_CHS\source\vos_zh.json"
 
 CAP_FACTOR = 2.2
