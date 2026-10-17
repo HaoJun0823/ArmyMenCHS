@@ -620,12 +620,19 @@ bool InstallHooks() {
 }
 
 // ── 字体表重建（修复绿点/方块：中文显示成绿点）────────────────────────
-// 根因：Army Men 通过延迟加载 dsound.dll 注入 ASI，InitializeASI 触发时，
-// 零售 TextInit(sub_4558F0) 早已把字体表 dword_658728[7] 建成
-// ArialNarrow/Times（无中文字形）。CreateFont* Hook 只拦"未来"的创建，
-// 拦不到那次早先的一锤子建表，因此 Hook 形同虚设（日志可证：Hook 装上
-// 但全程零拦截）。这里直接改写已建好的字体表，把每槽强制换成 GB2312 宋体
-// （尺寸沿用零售），使 TextWrite 用到的每个字体都能画中文。
+// 根因（IDA 反编译实证，零售 Armymen.exe）：
+//   · TextInit = sub_413800，把 7 个 HFONT 写进 dword_4E9F48 起的一张表；
+//     建字体走 sub_413D30 -> CreateFontA(...,0/*ANSI_CHARSET*/,...)，
+//     字体名只有 "Times New Roman" / "ArialNarrow" —— 均无 GBK 字形。
+//   · TextWrite = sub_413A30，取字体用 *(&dword_4E9F48 + fontid)，
+//     随后 SelectObject + TextOutA 直接走 GDI（零售无位图字体路径）。
+//   · 建表发生在 InitializeASI 之前，CreateFont* 的 IAT Hook 回收不到，
+//     所以 Hook 装了也零拦截（运行时日志可证）。必须在建表之后直接改写表。
+//
+// 槽位布局（注意第 7 项 0x4E9F54 不连续，夹在 0x4E9F50/0x4E9F58 之间）：
+//   [0] 0x4E9F48 Times 14   [1] 0x4E9F4C Times 18   [2] 0x4E9F50 Times 20
+//   [3] 0x4E9F58 Arial 14   [4] 0x4E9F5C Arial 20   [5] 0x4E9F60 Arial 36
+//   [6] 0x4E9F54 Arial -10  (FONT_DASHCOMM，左下角信息屏/战报用的就是这个)
 static void RebuildFontTable() {
     if (!g_fontEnable) return;
     if (g_faceName.empty()) { Log("RebuildFontTable: 无中文字体名，跳过"); return; }
@@ -633,39 +640,61 @@ static void RebuildFontTable() {
     HMODULE hGame = GetModuleHandleA(nullptr);
     if (!hGame) { Log("RebuildFontTable: 取不到主模块"); return; }
 
-    // 零售 sub_4558F0 建表的 height（RVA 0x258728，7 槽）
-    //   0 Times 14  1 Times 18  2 Times 20
-    //   3 Arial -10 4 Arial 14  5 Arial 20  6 Arial 36
-    static const int kHeights[7] = {14, 18, 20, -10, 14, 20, 36};
-
-    BYTE* pTable = (BYTE*)hGame + 0x258728;   // VA 0x658728
     ModRange mr;
-    if (!GetModRange(hGame, mr) || !ValidPtr(mr, pTable, sizeof(DWORD) * 7)) {
-        Log("RebuildFontTable: 字体表地址越界，跳过");
-        return;
-    }
+    if (!GetModRange(hGame, mr)) { Log("RebuildFontTable: 读模块范围失败"); return; }
 
-    DWORD oldProt = 0;
-    if (!VirtualProtect(pTable, sizeof(DWORD) * 7, PAGE_READWRITE, &oldProt)) {
-        Log("RebuildFontTable: VirtualProtect 失败 (0x%lX)", GetLastError());
-        return;
-    }
+    struct SlotDef { DWORD rva; int height; const char* what; };
+    // RVA = VA - 0x400000（零售映像基址 0x400000）
+    static const SlotDef kSlots[7] = {
+        { 0x0E9F48,  14, "Times14"   },
+        { 0x0E9F4C,  18, "Times18"   },
+        { 0x0E9F50,  20, "Times20"   },
+        { 0x0E9F58,  14, "Arial14"   },
+        { 0x0E9F5C,  20, "Arial20"   },
+        { 0x0E9F60,  36, "Arial36"   },
+        { 0x0E9F54, -10, "DashComm"  },   // 左下角信息屏
+    };
 
     int ok = 0;
     for (int i = 0; i < 7; i++) {
+        DWORD* pSlot = (DWORD*)((BYTE*)hGame + kSlots[i].rva);
+        if (!ValidPtr(mr, pSlot, sizeof(DWORD))) {
+            Log("RebuildFontTable: 槽 %s 越界，跳过", kSlots[i].what);
+            continue;
+        }
+
         // 直接调 Win32 CreateFontA：DLL 自身 IAT 指向真实 gdi32，不经 exe 的 Hook。
-        HFONT hNew = CreateFontA(kHeights[i], 0, 0, 0, 400, 0, 0, 0,
+        // 参数对齐零售 sub_413D30：weight=400、(a3=0) 无斜体/下划线/删除线、
+        // OUT_DEFAULT_PRECIS=0、CLIP_DEFAULT_PRECIS=0、DRAFT_QUALITY=1、
+        // VARIABLE_PITCH=2，仅把 charset 换 GB2312、名字换中文字体。
+        HFONT hNew = CreateFontA(kSlots[i].height, 0, 0, 0, 400, 0, 0, 0,
                                  (DWORD)g_charSet, 0, 0, 1, 2,
                                  g_faceName.c_str());
-        if (!hNew) { Log("RebuildFontTable: 槽 %d 建宋体失败", i); continue; }
-        // 覆盖该槽为新 HFONT。旧 HFONT 不 DeleteObject：可能被 DDraw 表面仍选中，
-        // 删之会失败；且每进程仅重建一次，泄漏 7 个对象可接受。
-        *(DWORD*)(pTable + (size_t)i * 4) = (DWORD)hNew;
+        if (!hNew) {
+            Log("RebuildFontTable: 槽 %s 建中文字体失败 (err=%lu)", kSlots[i].what, GetLastError());
+            continue;
+        }
+
+        DWORD oldProt = 0;
+        if (!VirtualProtect(pSlot, sizeof(DWORD), PAGE_READWRITE, &oldProt)) {
+            Log("RebuildFontTable: 槽 %s VirtualProtect 失败 (err=%lu)", kSlots[i].what, GetLastError());
+            DeleteObject(hNew);
+            continue;
+        }
+
+        HFONT hOld = (HFONT)*pSlot;
+        *pSlot = (DWORD)(DWORD_PTR)hNew;
+
+        DWORD tmp = 0;
+        VirtualProtect(pSlot, sizeof(DWORD), oldProt, &tmp);
+
+        // 旧 HFONT 不 DeleteObject：可能仍被 DDraw 表面/DC 选中，删除有失效风险；
+        // 每进程仅重建一次，泄漏 7 个 GDI 对象可接受。
+        Log("RebuildFontTable: %-8s h=%4d  %p -> %p", kSlots[i].what,
+            kSlots[i].height, (void*)hOld, (void*)hNew);
         ok++;
     }
 
-    DWORD tmp = 0;
-    VirtualProtect(pTable, sizeof(DWORD) * 7, oldProt, &tmp);
     Log("RebuildFontTable: 重建 %d/7 槽为 %s(GB2312=%u)", ok, g_faceName.c_str(), (unsigned)g_charSet);
 }
 
