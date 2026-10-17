@@ -51,7 +51,7 @@
   },
   "00_121_D.wav": {
     "speaker": "Sarge",
-    "value_ch": "最后一项测试，士兵。从那道棕军路障里硬闯过去，把你的人带到撤离区。左键射击半履带车的火炮。",
+    "value_ch": "最后一项测试，士兵。从那道黄军路障里硬闯过去，把你的人带到撤离区。左键射击半履带车的火炮。",
     "value_en": "Final test, soldier. Bust your way through that tan barricade and get your men over to the exit area. Left click to fire the half-track's cannon."
   },
   "00_122_C.wav": {
@@ -126,7 +126,7 @@
   },
   "00_1C.wav": {
     "speaker": "Sarge",
-    "value_ch": "欢迎来到新兵营，列兵。我们和棕军正陷入一场生死搏杀，战场上塑料都在熔化。你本不必来，但这里正是你要学会怎样在这场战争中活下去的地方，而且你会学得很好。你将带领一些士兵，尝尝实战的滋味，还会轮流坐上装甲车的驾驶位。别担心在这里送命。这是你在真正要命之前学习的机会。",
+    "value_ch": "欢迎来到新兵营，列兵。我们和黄军正陷入一场生死搏杀，战场上塑料都在熔化。你本不必来，但这里正是你要学会怎样在这场战争中活下去的地方，而且你会学得很好。你将带领一些士兵，尝尝实战的滋味，还会轮流坐上装甲车的驾驶位。别担心在这里送命。这是你在真正要命之前学习的机会。",
     "value_en": "Welcome to boot camp, Private. We're locked in a life and death struggle with the Tan Army and plastic is melting in the battlefields. You don't have to be here, but this is where you're going to learn how to survive this war, and you're going to learn it well. You'll lead some soldiers, get a taste of live combat, and take a turn at the wheel of some armored vehicles. Don't worry about dying here. This is a chance for you to learn before it really counts."
   },
   "00_21E.wav": {
@@ -241,7 +241,7 @@
   },
   "00_78_C.wav": {
     "speaker": "Sarge",
-    "value_ch": "前方，那些棕军在空地上打盹，但那里有两个出口。把你的兵分成两个小队，从两个方向同时进攻。看能不能堵住棕军，别让他们逃出空地。",
+    "value_ch": "前方，那些黄军在空地上打盹，但那里有两个出口。把你的兵分成两个小队，从两个方向同时进攻。看能不能堵住黄军，别让他们逃出空地。",
     "value_en": "Up ahead, those TAN are dozing in that clearing, but it has two exits. Split your men into two squads and attack from both directions at once. See if you can prevent the TAN from escaping the clearing."
   },
   "00_7A.wav": {
@@ -271,7 +271,7 @@
   },
   "00_95_C.wav": {
     "speaker": "Sarge",
-    "value_ch": "地雷这东西不太政治正确，但能帮你拦住东边开来的那辆棕军卡车。埋一条雷线，让他们挡在你和卡车之间。",
+    "value_ch": "地雷这东西不太政治正确，但能帮你拦住东边开来的那辆黄军卡车。埋一条雷线，让他们挡在你和卡车之间。",
     "value_en": "They're not politically correct, but mines will help you stop the tan truck that's coming in from the east. Lay down a line of them and keep them between you and the truck."
   },
   "00_ambush1_C.wav": {
@@ -291,7 +291,7 @@
   },
   "00_cmd2_E.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "首先，他会演示绿色单位在攻击指令模式下，遇到棕军威胁时会怎么反应。",
+    "value_ch": "首先，他会演示绿色单位在攻击指令模式下，遇到黄军威胁时会怎么反应。",
     "value_en": "First, he'll act out how a green unit will respond to a tan threat when in attack command mode."
   },
   "00_cmd3_B.wav": {
@@ -356,7 +356,7 @@
   },
   "01_01_HQ.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "指挥官，我们需要你突袭海滩，摧毁北边的棕军雷达大楼，在敌方防线上撕开一个口子。预计阻力不大，但我相信越往内陆敌人威胁越强。祝好运。总部完毕。",
+    "value_ch": "指挥官，我们需要你突袭海滩，摧毁北边的黄军雷达大楼，在敌方防线上撕开一个口子。预计阻力不大，但我相信越往内陆敌人威胁越强。祝好运。总部完毕。",
     "value_en": "Commander, we need you to storm the beach and puncture a hole in the TAN's defense by destroying the TAN radar building to the north. You can expect minimal resistance, but I'm sure the enemy threat will increase further inland. Good luck. HQ out."
   },
   "01_01_greenattackers.wav": {
@@ -386,7 +386,7 @@
   },
   "02_01_HQ.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "指挥官，棕军在这片区域的山丘上部署了火炮。这些火炮让我们部队无法安全通过，所以你的任务是摧毁这些火炮。留意格林曼中尉。他被这些火炮压制住了，正等着你的人打通道路好让他的部队继续推进。只要清掉一部分火炮，格林曼中尉就会下令部队穿过这片区域。",
+    "value_ch": "指挥官，黄军在这片区域的山丘上部署了火炮。这些火炮让我们部队无法安全通过，所以你的任务是摧毁这些火炮。留意格林曼中尉。他被这些火炮压制住了，正等着你的人打通道路好让他的部队继续推进。只要清掉一部分火炮，格林曼中尉就会下令部队穿过这片区域。",
     "value_en": "Commander, the TAN have artillery cannons stationed on the hills in this area. These cannons make it impossible to get our troops through the area unharmed, so it is your job to destroy these cannons. Keep a lookout for Lieutenant Greenman. He is pinned in due to these cannons and waiting for your men to make it safe for his men to continue. As soon as some of the cannons are eliminated, Lieutenant Greenman will order his forces to move through the area."
   },
   "02_01_LGreenman.wav": {
@@ -396,7 +396,7 @@
   },
   "02_02_HQ.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "干得好。所有棕军火炮都被摧毁了。总部完毕。",
+    "value_ch": "干得好。所有黄军火炮都被摧毁了。总部完毕。",
     "value_en": "Good job. All the tan cannons are destroyed. HQ out."
   },
   "02_02_LGreenman.wav": {
@@ -426,7 +426,7 @@
   },
   "03_01_tansquadleader_07B.wav": {
     "speaker": "TanArmy",
-    "value_ch": "发现敌人。以棕军的名义投降吧。",
+    "value_ch": "发现敌人。以黄军的名义投降吧。",
     "value_en": "enemy sighted. Surrender in the name of Tan."
   },
   "03_01_tantrooper_05C.wav": {
@@ -466,12 +466,12 @@
   },
   "03_bluecorp.wav": {
     "speaker": "GreenArmy_Grunt",
-    "value_ch": "我们绝不向棕军投降。开火！开火！",
+    "value_ch": "我们绝不向黄军投降。开火！开火！",
     "value_en": "We'll never surrender to Tan. Open fire! Open fire!"
   },
   "04_01_HQ.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "指挥官，有项任务需要你来完成。战斗工兵奉命去摧毁一座棕军的装甲大楼，里面藏着被窃的、关乎我军下一步进攻计划的绝密文件。不幸的是，工兵被俘了。在棕军把他们转移到更安全的地点前，去把这些人救出来，然后协助爆破专家炸掉那座棕军大楼。祝好运。总部完毕。",
+    "value_ch": "指挥官，有项任务需要你来完成。战斗工兵奉命去摧毁一座黄军的装甲大楼，里面藏着被窃的、关乎我军下一步进攻计划的绝密文件。不幸的是，工兵被俘了。在黄军把他们转移到更安全的地点前，去把这些人救出来，然后协助爆破专家炸掉那座黄军大楼。祝好运。总部完毕。",
     "value_en": "Commander, we need you to finish a job. Combat engineers were sent to destroy an armored TAN building that contained stolen top-secret documents regarding our next plan of attack. Unfortunately, the engineers were taken captive. Go rescue these men before the TAN move them to a more secure location, and then assist the demolition expert in taking out the TAN building. Good luck. HQ out."
   },
   "04_01_combatengineer_01B.wav": {
@@ -501,7 +501,7 @@
   },
   "04_02_combatengineer_01B.wav": {
     "speaker": "GreenArmy_Grunt",
-    "value_ch": "我们得抓紧。棕军守卫很快会带着补给到了。",
+    "value_ch": "我们得抓紧。黄军守卫很快会带着补给到了。",
     "value_en": "We'll need to hurry. TAN guards will soon arrive with supplies."
   },
   "04_02_greentroop_03C.wav": {
@@ -516,12 +516,12 @@
   },
   "04_03_HQ_E.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "很好。现在把爆破工兵护送到那座棕军大楼，让他把它炸掉。",
+    "value_ch": "很好。现在把爆破工兵护送到那座黄军大楼，让他把它炸掉。",
     "value_en": "Great. Now escort the demolition engineer over to the TAM building so he can destroy it."
   },
   "04_03_combatengineer_01B.wav": {
     "speaker": "GreenArmy_Grunt",
-    "value_ch": "棕军守卫应该快到了。",
+    "value_ch": "黄军守卫应该快到了。",
     "value_en": "Tangard should be arriving soon."
   },
   "04_03_greentroop_02B.wav": {
@@ -566,12 +566,12 @@
   },
   "05_01_HQ.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "指挥官，棕军正把这个镇子当作集结地来分散部署部队。由于棕军高射炮遍布城前，我们至今无法组织有效的轰炸。你的任务是进去干掉那些高射炮，好让我们的轰炸机畅通无阻地轰炸城区。棕军兵力应该很雄厚，务必小心。总部完毕。",
+    "value_ch": "指挥官，黄军正把这个镇子当作集结地来分散部署部队。由于黄军高射炮遍布城前，我们至今无法组织有效的轰炸。你的任务是进去干掉那些高射炮，好让我们的轰炸机畅通无阻地轰炸城区。黄军兵力应该很雄厚，务必小心。总部完毕。",
     "value_en": "Commander, the TAN are using this town as a staging point to disperse their troops. We have so far been unable to organize an adequate bombing run due to TAN AA guns spread throughout the city's front. Your mission is to get in there and take out those AA guns so our bombers can get a clear run on the city. TAN forces should be heavy, so be careful. HQ out."
   },
   "05_01_greentroop.wav": {
     "speaker": "GreenArmy_Grunt",
-    "value_ch": "指挥官，棕军在前方车场扣押了我们一些车辆。",
+    "value_ch": "指挥官，黄军在前方车场扣押了我们一些车辆。",
     "value_en": "Commander, the Tans have some of our vehicles in the vehicle yard up ahead."
   },
   "05_01_tantroop.wav": {
@@ -591,17 +591,17 @@
   },
   "06_01_2nd.wav": {
     "speaker": "GreenArmy_Grunt",
-    "value_ch": "见到你们真好。趁棕军第十旅还没重新集结，咱们赶紧撤。",
+    "value_ch": "见到你们真好。趁黄军第十旅还没重新集结，咱们赶紧撤。",
     "value_en": "Nice to see you guys. Now let's get out of here before the 10 have a chance to regroup."
   },
   "06_01_HQ.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "指挥官，第二装甲旅应该从东面赶到了。找到他们，继续向该城北端推进。据报棕军装甲第九旅驻防在城区这一带，建议进攻第九旅前尽量多搜集火力。绿军总部已启动轰炸，你最好抓紧行动。祝好运。总部完毕。",
+    "value_ch": "指挥官，第二装甲旅应该从东面赶到了。找到他们，继续向该城北端推进。据报黄军装甲第九旅驻防在城区这一带，建议进攻第九旅前尽量多搜集火力。绿军总部已启动轰炸，你最好抓紧行动。祝好运。总部完毕。",
     "value_en": "Commander, the 2nd Armored Brigade should be arriving from the east. Find them, and continue on towards the northern end of this city. We have reports that Tan's Armored 9th Brigade is stationed in this section of the city, so we recommend finding as much firepower as possible before attacking the 9th. Green Command has initiated the bombing run, so you better get a move on. Good luck. HQ out."
   },
   "06_01_disguiseguy.wav": {
     "speaker": "GreenArmy_Grunt",
-    "value_ch": "还好你们来了。我还以为自己肯定要断胳膊少腿了。棕军第十旅在北方囤了不少火箭筒。拿上这些伪装服，遮住你们几个弟兄，好混进去自己搞几具。",
+    "value_ch": "还好你们来了。我还以为自己肯定要断胳膊少腿了。黄军第十旅在北方囤了不少火箭筒。拿上这些伪装服，遮住你们几个弟兄，好混进去自己搞几具。",
     "value_en": "Good thing you guys came along. I thought I was going to lose a limb or two for sure. The ten have been stockpiling bazookas to the north. Take these disguises to mask a couple of your soldiers so that you can sneak in and get some for yourself."
   },
   "06_01_tantrooper.wav": {
@@ -621,12 +621,12 @@
   },
   "06_03_HQ_B.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "干得好，指挥官。我不知道你怎么及时突破棕军第十旅防线的，不过听说你还活着就好。新命令马上就到。",
+    "value_ch": "干得好，指挥官。我不知道你怎么及时突破黄军第十旅防线的，不过听说你还活着就好。新命令马上就到。",
     "value_en": "Good work, Commander. I don't know how you got through the 10 defenses in time, but good to hear you're still alive. New orders are on the way."
   },
   "07_01_HQ.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "本区西北边境附近有一座棕军火车站。棕军正利用该站接收重炮、武器、坦克和作战所需补给。拿下车站就能阻止棕军向前线输送更多军火。你的任务是设法进入车站并将其占领。小心些。我们有理由相信棕军已在这片区域埋设地雷。遗憾的是，我们不知道雷区在哪。但也正因如此我们才选了你，指挥官。祝狩猎顺利。总部完毕。",
+    "value_ch": "本区西北边境附近有一座黄军火车站。黄军正利用该站接收重炮、武器、坦克和作战所需补给。拿下车站就能阻止黄军向前线输送更多军火。你的任务是设法进入车站并将其占领。小心些。我们有理由相信黄军已在这片区域埋设地雷。遗憾的是，我们不知道雷区在哪。但也正因如此我们才选了你，指挥官。祝狩猎顺利。总部完毕。",
     "value_en": "There is a TAN train station near the northwestern border of this area. The TAN forces are using this station to receive heavy artillery, weapons, tanks, and supplies they need for the war effort. Securing this station will prevent the TAN from bringing any more weaponry to the front lines. Your mission is to find a way to get into the station and take it over. Be careful. We have reason to think the TAN have planted mines throughout the area. Unfortunately, we have no idea where the mined areas are. But that's why we chose you for the job, Commander. Good hunting. HQ out."
   },
   "07_01_greentroop.wav": {
@@ -651,7 +651,7 @@
   },
   "08_01_HQ.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "指挥官，北边的河是通往棕军的咽喉要道。我们已命令第五硬塑旅从东西两翼包抄桥梁，但还需要你和你的部队担任正面突击。我们的最终目标是突破棕军隔着河的正面防线，清除驻扎在那里的重型火炮。总部完毕。",
+    "value_ch": "指挥官，北边的河是通往黄军的咽喉要道。我们已命令第五硬塑旅从东西两翼包抄桥梁，但还需要你和你的部队担任正面突击。我们的最终目标是突破黄军隔着河的正面防线，清除驻扎在那里的重型火炮。总部完毕。",
     "value_en": "Commander, the river to the north is a pinch point to the Tann. We ordered the 5th Hard Plastic Brigade to flank the bridges from the east and west, but we need you and your men to take on the frontal assault. Our ultimate goal is to breach the Tann's front line on the other side of the river, eliminating any heavy cannons stationed there. HQ out."
   },
   "08_01_HardPlastic_01C.wav": {
@@ -681,7 +681,7 @@
   },
   "08_03_HQ_B.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "干得漂亮。我们现在可以借这些桥，把大军开进棕军腹心地带了。指挥官，干得好。总部完毕。",
+    "value_ch": "干得漂亮。我们现在可以借这些桥，把大军开进黄军腹心地带了。指挥官，干得好。总部完毕。",
     "value_en": "Great work. We can now use these bridges to move our armies into the heart of Tan Territory. Excellent job, Commander. HQ out."
   },
   "08_03_HardPlastic_01A.wav": {
@@ -696,12 +696,12 @@
   },
   "08_05_HardPlastic_01C.wav": {
     "speaker": "SpaceHQ",
-    "value_ch": "既然已经把棕军前沿狠狠收拾了一顿，那就让这些棕军见识见识咱们家乡的作风！",
+    "value_ch": "既然已经把黄军前沿狠狠收拾了一顿，那就让这些黄军见识见识咱们家乡的作风！",
     "value_en": "Now that we gave the Tans front line a good whooping, let's show these Tans how we like to do things back home!"
   },
   "09_01_HQ.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "指挥官，你的任务是守住饰品山谷，并清除该地区的棕军守军。棕军在山谷周边设了多处防御工事，当心从这些点位打来的猛烈火力。另外，绿军海军正在进攻玩具岛。支援他们或许对你的任务有帮助。总部完毕。",
+    "value_ch": "指挥官，你的任务是守住饰品山谷，并清除该地区的黄军守军。黄军在山谷周边设了多处防御工事，当心从这些点位打来的猛烈火力。另外，绿军海军正在进攻玩具岛。支援他们或许对你的任务有帮助。总部完毕。",
     "value_en": "Commander, your mission is to secure the Trinket Valley and eliminate the defending TAN units in the area. The TAN have set up various defensive positions around the valley, so keep an eye out for heavy fire from these locations. By the way, the Green Navy is conducting an attack on Toy Island. Assisting them may prove to help you in your mission. HQ out."
   },
   "09_01_boatpilot_01A.wav": {
@@ -711,7 +711,7 @@
   },
   "09_02_HQ__A.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "我们的侦察机发现，棕军正在集结兵力准备反扑。",
+    "value_ch": "我们的侦察机发现，黄军正在集结兵力准备反扑。",
     "value_en": "Our spy planes have noticed TAN forces are massing for a counterattack as we speak."
   },
   "09_02_boatpilot_01B.wav": {
@@ -721,7 +721,7 @@
   },
   "09_03_HQ_A.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "指挥官，现在该您去拿下大桥北端了。那里驻有棕军部队，您必须将其肃清。总部完毕。",
+    "value_ch": "指挥官，现在该您去拿下大桥北端了。那里驻有黄军部队，您必须将其肃清。总部完毕。",
     "value_en": "Commander, it's time for you to secure the northern end of the bridge. Some TAN units are stationed there, so you'll have to eliminate them. HQ out."
   },
   "09_03_boatpilot_01B.wav": {
@@ -741,7 +741,7 @@
   },
   "10_01_HQ.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "指挥官，前方有三座村庄必须拿下。棕军用龙牙障碍挡住我们的坦克，所以得由你徒步突入，在车队抵达前拿下全部三座村庄。棕军死守这片区域，预计会遭到猛烈抵抗。总部完毕。",
+    "value_ch": "指挥官，前方有三座村庄必须拿下。黄军用龙牙障碍挡住我们的坦克，所以得由你徒步突入，在车队抵达前拿下全部三座村庄。黄军死守这片区域，预计会遭到猛烈抵抗。总部完毕。",
     "value_en": "Commander, there are three villages up ahead that must be secured. The TAN are using Dragon Teeth to block our tanks, so we need you to go in on foot and secure all three villages before our convoy arrives. The TANs are desperate to hold on to this area, so expect heavy resistance. HQ out."
   },
   "10_02_HQ_A.wav": {
@@ -751,7 +751,7 @@
   },
   "11_01_HQ.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "指挥官，需要你清空前方的区域。这支车队载着进攻棕军首都所需的关键补给。我们接到报告，附近的棕军坦克可能试图拦截车队，要当心它们。一旦丢了车队，攻占棕军首都的希望也就破灭了。您还有侦察兵支援，指挥官。让他们去前方探路，找出可能的棕军威胁。总部完毕。",
+    "value_ch": "指挥官，需要你清空前方的区域。这支车队载着进攻黄军首都所需的关键补给。我们接到报告，附近的黄军坦克可能试图拦截车队，要当心它们。一旦丢了车队，攻占黄军首都的希望也就破灭了。您还有侦察兵支援，指挥官。让他们去前方探路，找出可能的黄军威胁。总部完毕。",
     "value_en": "We need you to clear out the area up ahead, Commander. This convoy carries crucial supplies we'll need to attack the TAM's capital city. We have received reports that nearby TAM tanks may try to intercept our convoy, so be on the lookout for them. If we lose the convoy, our hopes of conquering the TAM's capital will be lost. You also have recon support, Commander. Use them to scout the route ahead and to locate possible TAM threats. HQ out."
   },
   "11_02_HQ_A.wav": {
@@ -766,12 +766,12 @@
   },
   "11_04_HQ_A.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "保护车队干得不错。这下咱们就有更多塑料兵去砸棕军了。总部完毕。",
+    "value_ch": "保护车队干得不错。这下咱们就有更多塑料兵去砸黄军了。总部完毕。",
     "value_en": "Good work protecting the convoy. Now we'll have more plastic to throw at the Tans. HQ out."
   },
   "12_01_HQ.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "指挥官，这是我们的最后一战。我们已经把棕军逼退回首都，正面主攻就靠你了。目标是棕军首都中心的宫殿。杀出一条血路打到那里，把它摧毁。预计会遭遇棕军极其猛烈的抵抗和可能的反扑。带上车队剩下的力量，助你一臂之力。祝好运，指挥官。总部完毕。",
+    "value_ch": "指挥官，这是我们的最后一战。我们已经把黄军逼退回首都，正面主攻就靠你了。目标是黄军首都中心的宫殿。杀出一条血路打到那里，把它摧毁。预计会遭遇黄军极其猛烈的抵抗和可能的反扑。带上车队剩下的力量，助你一臂之力。祝好运，指挥官。总部完毕。",
     "value_en": "Commander, this is our final battle. We have pushed the TAN back to their capital and it's up to you to spearhead the main assault. Your objective is the palace at the center of the TAN capital. Fight your way there and destroy it. You can expect very heavy TAN resistance and possible counter attacks. Take what's left of the convoy and use them to help your efforts. Good luck, Commander. HQ out."
   },
   "12_01_ptboat_01B.wav": {
@@ -786,7 +786,7 @@
   },
   "12_03_HQ_A.wav": {
     "speaker": "HQ_Command",
-    "value_ch": "您做到了，指挥官。棕军已被击败，他们的首都已落入我们掌控。没了首都，棕军必败无疑。祝贺任务圆满完成。总部，完毕。",
+    "value_ch": "您做到了，指挥官。黄军已被击败，他们的首都已落入我们掌控。没了首都，黄军必败无疑。祝贺任务圆满完成。总部，完毕。",
     "value_en": "You did it, Commander. The Tann army has been defeated and their capital city is under our control. Without their capital, the Tann will lose the war for sure. Congratulations on a job well done. HQ, over and out."
   },
   "Aah.wav": {
@@ -1213,7 +1213,7 @@
   },
   "mp_gottan.wav": {
     "speaker": "Multiplayer",
-    "value_ch": "棕队旗帜被夺！",
+    "value_ch": "黄队旗帜被夺！",
     "value_en": "And flag captured!"
   },
   "mp_itblue.wav": {
@@ -1233,7 +1233,7 @@
   },
   "mp_ittan.wav": {
     "speaker": "Multiplayer",
-    "value_ch": "棕队是鬼。",
+    "value_ch": "黄队是鬼。",
     "value_en": "Tan is it."
   },
   "paraTroopers.wav": {
