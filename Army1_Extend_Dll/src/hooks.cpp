@@ -77,6 +77,10 @@ static BYTE   g_charSet = 134;   // GB2312_CHARSET
 //   必被 too-long 拒绝，所以改用立即数改写（见 PatchNoUnitString）。
 static std::string g_noUnitZh = "没有部队";
 
+// "Sarge" → 中文。空表示不改。
+// 同样走立即数改写：原串被车辆动画路径共用，只改 ItemName 那一处引用。
+static std::string g_sargeZh = "中士";
+
 // ---------------------------------------------------------------- 编码转换
 
 static std::string Utf8ToGbk(const std::string& utf8) {
@@ -151,6 +155,11 @@ bool LoadTranslationData() {
                 // 空值 = 关闭该项改写（保持英文 "No unit"）
                 g_noUnitZh = v;
                 Log("NoUnit 译名: '%s'", v.c_str());
+            }
+            if (k == "Sarge") {
+                // 空值 = 关闭该项改写（保持英文 "Sarge"）
+                g_sargeZh = v;
+                Log("Sarge 译名: '%s'", v.c_str());
             }
             if (k == "Files") {
                 size_t start = 0;
@@ -912,6 +921,53 @@ static void PatchNoUnitString(const std::string& zh) {
     }
 }
 
+// ---------------------------------------------------------------- "Sarge" 立即数改写
+//
+// ItemName() 的 ARMY_SARGE 分支返回字面量 "Sarge"（TextData.cpp:317）。
+// ★ 为什么不能改字符串，只能改立即数：
+//   该串（RVA 0x4BDCA0）同时被 MsgVehicleNames[5].pString 引用
+//   （off_4BD06C + 5*8，见 sub_446710/USA.h:165），而 VehicleName() 在
+//   Vehicle.cpp:1648 / 1661 用它拼动画路径：
+//       sprintf(filename, "%s/%s", VehicleName(eType), vehicle_anim_names[i]);
+//   改了字符串 → "Alpine/Vehicles/中士/xxx.axs" 找不到 → Sarge 车辆动画全丢。
+//   所以只改 ItemName 里那一条 mov 的立即数（B8 imm32，5 字节指令），
+//   其余引用照旧指向原 "Sarge"。
+
+#define RVA_SARGE_ITEMNAME_IMM 0x0046860u  // 0x44685F  mov eax, offset aSarge_0
+
+static char g_sargeGbk[32] = {0};
+
+static void PatchSargeString(const std::string& zh) {
+    std::string gbk = Utf8ToGbk(zh);
+    if (gbk.empty() || gbk.size() + 1 > sizeof(g_sargeGbk)) {
+        Log("PatchSargeString: 转换失败或过长，跳过");
+        return;
+    }
+    memcpy(g_sargeGbk, gbk.c_str(), gbk.size());
+    g_sargeGbk[gbk.size()] = 0;
+
+    HMODULE h = GetModuleHandleA(nullptr);
+    if (!h) return;
+    BYTE* base = (BYTE*)h;
+
+    // imm32 在 RVA 0x46860，指令头 B8 在它前 1 字节（0x4685F）
+    // 完整指令：B8 A0 DC 4B 00 = mov eax, 0x4BDCA0  (aSarge_0)
+    static const BYTE kSig[] = { 0xB8, 0xA0, 0xDC, 0x4B, 0x00 };
+    BYTE* p = base + RVA_SARGE_ITEMNAME_IMM - 1;   // 指向 B8 开头
+    if (!CheckBytes(p, kSig, sizeof(kSig))) {
+        Log("Sarge[ItemName]: 签名不符 @0x%p，跳过", (void*)p);
+        return;
+    }
+
+    DWORD oldProt = 0;
+    BYTE* imm = base + RVA_SARGE_ITEMNAME_IMM;
+    if (MakeWritable(imm, 4, oldProt)) {
+        *(DWORD*)imm = (DWORD)(DWORD_PTR)g_sargeGbk;
+        RestoreProtect(imm, 4, oldProt);
+        Log("Sarge[ItemName] 0x%p -> '%s'", (void*)imm, zh.c_str());
+    }
+}
+
 // ---------------------------------------------------------------- 信息屏折行接管
 //
 // 乱码根因（IDA 实证，sub_441300 = ReceiveDashMessage，源码 ui.cpp:3370）：
@@ -1207,6 +1263,7 @@ extern "C" __declspec(dllexport) void InitializeASI() {
     // ★ 必须在 RebuildFontTable 之后：桥接要读中文字体的句柄是否已就位
     bool cjkOk = InstallCjkRenderer();
     if (!g_noUnitZh.empty()) PatchNoUnitString(g_noUnitZh);
+    if (!g_sargeZh.empty())  PatchSargeString(g_sargeZh);
 
     Log("InitializeASI -> data=%d hook=%d patch=%d cjk=%d",
         (int)dataOk, (int)hookOk, (int)patchOk, (int)cjkOk);
@@ -1227,6 +1284,7 @@ extern "C" __declspec(dllexport) bool ArmyMenCHS_Install() {
 
     bool cjkOk = InstallCjkRenderer();
     if (!g_noUnitZh.empty()) PatchNoUnitString(g_noUnitZh);
+    if (!g_sargeZh.empty())  PatchSargeString(g_sargeZh);
 
     Log("Install -> data=%d hook=%d patch=%d cjk=%d",
         (int)dataOk, (int)hookOk, (int)patchOk, (int)cjkOk);
