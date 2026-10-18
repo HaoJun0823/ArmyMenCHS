@@ -126,7 +126,7 @@ if padon v1 testvar test1 = 0 and deadtan1 = 1 then
 		
 if padon t1 testvar tan1 = 0 and ob1 = 0 then
 
-		showmessage "棕军已拿下目标 1",
+		showmessage "黄军已拿下目标 1",
 		setitemflag victory1 strategic 1,
 		setvar tan1 1,
 		addvar win1 -1,
@@ -162,7 +162,7 @@ if padon v2 testvar test2 = 0 and deadtan2 = 1 then
 
 if padon t2 testvar tan2 = 0 and ob2 = 0 then
 
-		showmessage "棕军已拿下目标 2",
+		showmessage "黄军已拿下目标 2",
 		setitemflag victory2 strategic 1,
 		setvar tan2 1,
 		addvar win1 -1,
@@ -536,7 +536,7 @@ if tanattack testvar cattack = 2 then
 
 if attackmsg then
 	
-	showmessage "我们的侦察机发现棕军正在集结，准备进攻！",
+	showmessage "我们的侦察机发现黄军正在集结，准备进攻！",
 	playsound "09_02_HQ__A.wav" 0 1
 	
 	
@@ -566,7 +566,7 @@ macro maketans3 7
 
 if tanattack1 then
 
-	showmessage "棕军进攻了！",
+	showmessage "黄军进攻了！",
 	createunit @1 @2 @3 tan 5 @4 @5,
 	setfacing @1 @6,
 	setaimode @1 @7,
@@ -620,7 +620,7 @@ if tanattack2 testvar stop = 0 then
 	createunit tanl rifleman r3 tan 3 autorifle -1,
    	createunit jeep1p rifleman r3 tan 3 autorifle -1,
 	createunit tanm rifleman r3 tan 3 autorifle -1,
-  	showmessage "更多棕军进攻了！",
+  	showmessage "更多黄军进攻了！",
 	entervehicle tanc1 tanb,
 	entervehicle tana1p tana,
 	entervehicle jeep1p tank1,

@@ -29,6 +29,6 @@ macro death_rules 5
 }
 
 expand death_rules ( green 绿队 tan blue grey )
-expand death_rules ( tan 棕队 green blue grey )
+expand death_rules ( tan 黄队 green blue grey )
 expand death_rules ( blue 蓝队 green tan grey )
 expand death_rules ( grey 灰队 green tan blue )

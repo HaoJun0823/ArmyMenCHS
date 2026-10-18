@@ -848,7 +848,7 @@ if correcttroopercount then
 	setvar numgreen getdeployedtroopercount green
 
 if lose_message then
-	showpda "干得好。车站是我们的了！棕军再也挡不住我们。任务完成。"
+	showpda "干得好。车站是我们的了！黄军再也挡不住我们。任务完成。"
 	
 // *** LOSE CONDITION *** //
 
@@ -862,7 +862,7 @@ if numtroopers testvar getdeployedtroopercount green = 0 then
     trigger checklose
 
 if checklose then
-	showpda "你已被淘汰出这场战争。棕军现在能给前线补给。任务失败……",
+	showpda "你已被淘汰出这场战争。黄军现在能给前线补给。任务失败……",
     addvar losevar 10,
     triggerdelay 3000 tanwins
 
@@ -1054,7 +1054,7 @@ If count 2 of pdatank tanksalive then
 	showpda "总部：指挥官，装甲第 2 军将夺取北方的火车站。按需要支援他们！"
         
 If count 2 of pdatank tanksdead then
-	showpda "总部：指挥官，我们需要你拿下北方的火车站。小心地雷和炮火，还有棕军坦克部队。祝好运！"
+	showpda "总部：指挥官，我们需要你拿下北方的火车站。小心地雷和炮火，还有黄军坦克部队。祝好运！"
 
 If count 2 of pdatank onetankalive THEN
 	showpda "总部：指挥官，我们需要你拿下北方的火车站。装甲第 2 军残部会协助。小心地雷和炮火，还有坦克部队。祝好运！"

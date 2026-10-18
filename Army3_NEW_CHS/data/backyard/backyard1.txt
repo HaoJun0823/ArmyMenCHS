@@ -551,7 +551,7 @@ if endmission1 butnot killed greensarge1 then
 	playsound "" pbasket 7 0 1 10,
 	playsound "" 6 1 1,
 	playsound "HQ_base_history.wav" 0 1, 
-	showpda "干得好，中士！棕军基地已经成为历史！",
+	showpda "干得好，中士！黄军基地已经成为历史！",
 	dropitem greensarge1 AAB1 (3,6),
 	moveitem AAB1 (3,6),
 	triggerdelay 100 gotestgreenwins

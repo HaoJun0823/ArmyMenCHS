@@ -3,6 +3,6 @@ if evtSpyText1 then
 	showmessage "间谍：别开枪！我给你情报！"
 
 if evtSpyText2 then
-	showmessage "间谍：你们的总统正在一处山间别墅参加秘密外交会谈。棕军已经在行动，要抓他！"
+	showmessage "间谍：你们的总统正在一处山间别墅参加秘密外交会谈。黄军已经在行动，要抓他！"
 
 

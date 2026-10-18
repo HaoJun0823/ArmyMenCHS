@@ -10,8 +10,8 @@ Sam|Sam069d.wav|动起来，弟兄们。
 Sam|Sam070b.wav|撤退！
 Sam|Sam071b.wav|保持专注，上尉。
 Sam|Sam072a.wav|上尉，记住你的任务目标！
-Sam|Sam073b.wav|棕军在跑。
-Sam|Sam074a.wav|棕军在撤退，上尉。
+Sam|Sam073b.wav|黄军在跑。
+Sam|Sam074a.wav|黄军在撤退，上尉。
 Sam|Sam075a.wav|追上他们，布莱德。
 Sam|Sam076b.wav|长官，你不能这么做。
 Sam|Sam077b.wav|现在把这个拿给中士。
@@ -98,7 +98,7 @@ Captain|Cap000.wav|PLACEHOLDER
 Captain|Cap000.wav|PLACEHOLDER
 Captain|Cap000.wav|PLACEHOLDER
 Captain|Cap000.wav|THIS SHOULD BE LINE #99 (STARTING FROM ZERO)
-Sam|Sam001b.wav|上尉，中士被俘了！他和两名部下被派过传送门，去调查棕军活动频繁的报告。找到那几个人，把他们救出来。
+Sam|Sam001b.wav|上尉，中士被俘了！他和两名部下被派过传送门，去调查黄军活动频繁的报告。找到那几个人，把他们救出来。
 Sam|Sam002c.wav|上尉，情报显示霍克中士就在沙坑附近。
 Captain|Cap001c.wav|收到，总部。我去办。
 Captain|Cap002b.wav|总部，中士的一名部下已登机。

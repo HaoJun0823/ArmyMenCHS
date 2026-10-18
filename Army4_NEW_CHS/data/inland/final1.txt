@@ -117,7 +117,7 @@ if startup1 then
 
 if killed palace1 testvar losevar = 0 then
 	
-	showmessage "棕军总部被摧毁！",
+	showmessage "黄军总部被摧毁！",
 	playsound "12_03_hq_a.wav" 3 3, 
 	triggerdelay 3000 checkwin
 	
@@ -421,7 +421,7 @@ random
 
 if startmsg then
 
-	showpda "拿下棕军国会大厦！"
+	showpda "拿下黄军国会大厦！"
 
 
 if artmsg then

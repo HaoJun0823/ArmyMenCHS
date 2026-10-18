@@ -248,7 +248,7 @@ if letfunbegin then
 	playsound "inland5_nomusic.wav" 15 2 1
 
 if thegoal then 
-	showpda "摧毁棕军高射炮，为我们的轰炸机开辟安全航线！"
+	showpda "摧毁黄军高射炮，为我们的轰炸机开辟安全航线！"
 
 // *** VICTORY CONDITIONS *** //
 
@@ -267,7 +267,7 @@ if checkwin testvar losevar = 0 then
 	triggerdelay 2000 greenwins
 
 if proceednorth then
-	showpda "干得好。继续向东北，前往战略地图上标示的位置。指挥官，棕军已经察觉你的存在，尽量别引来多余的注意。"
+	showpda "干得好。继续向东北，前往战略地图上标示的位置。指挥官，黄军已经察觉你的存在，尽量别引来多余的注意。"
 	
 if showthend then
 	setitemflag endspot strategic 1

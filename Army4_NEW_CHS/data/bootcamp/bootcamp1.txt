@@ -1460,11 +1460,11 @@ if count 1 of padon pad71 then
 	setitemflag pincer3 strategic 1,
 	setitemflag pincer4 strategic 1,
 	setitemflag pincer5 strategic 1,
-	showmessage "前面那些棕军在空地里打盹，但那块空地有两个出口。",
+	showmessage "前面那些黄军在空地里打盹，但那块空地有两个出口。",
 	triggerdelay 4000 evtPad71b
 
 if evtPad71b then
-	showmessage "编两个小队从两个方向进攻。别让棕军跑了。"
+	showmessage "编两个小队从两个方向进攻。别让黄军跑了。"
 //	showmessage "Arm your men, private, and move them north. Be careful; there are Tan troops in these woods."
 
 if count 1 of padon pad72 then
@@ -1623,7 +1623,7 @@ if count 1 of padon pad83 then
 	playsound "" (0,0) 0 3, playsound "00_95_c.wav" (0,0) 0 3,
 	createexplosion (2725,745) 145,
 	createpowerup myne mine (2725,745) 16,
-	showmessage "地雷能拦下从东边开来的棕军卡车。",
+	showmessage "地雷能拦下从东边开来的黄军卡车。",
 	triggerdelay 7000 minevo2,
 	triggerdelay 30000 evtHurri,
 	triggerdelay 40000 evtSendCarrie

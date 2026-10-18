@@ -38,7 +38,7 @@ if SetMoviecam then
         setuilock 1,
 		setvar ingamemovie 1,
         setcamerafocus TBstarz1,
-		showmessage  "棕军队长：出发吧弟兄们，盯紧那些绿军小子！",
+		showmessage  "黄军队长：出发吧弟兄们，盯紧那些绿军小子！",
 		PLAYSOUND "03_02_tansquadleader_07B.wav" (0,0) 6 1 100,
         triggerdelay 5500 ingame_movie
 
@@ -294,7 +294,7 @@ expand tanstarz ( TRstarz8 Tanstarzpad10 rifle 94 stand Twalkers10 0 )
 expand tanstarz ( TRstarz9 Tanstarzpad11 rifle 94 stand Twalkers11 0 )
 
 IF count 1 of powersspotted THEN
-	    showmessage "棕军队长：发现敌人！以棕军之名，投降吧！",
+	    showmessage "黄军队长：发现敌人！以黄军之名，投降吧！",
 		playsound "03_01_tansquadleader_07B.wav" (0,0) 6 1 100
 
 if padon Twalkers1 then
@@ -357,7 +357,7 @@ if alerttans then
 
 if setcamfocGRN then
         //setcamerafocus agent_powers,
-        showmessage "蓝军下士：我们绝不会向棕军投降。开火！开火！",
+        showmessage "蓝军下士：我们绝不会向黄军投降。开火！开火！",
 		playsound "03_bluecorp.wav" (0,0) 6 1 100,
         setaipose agent_powers kneel,
         triggerdelay 4000 powersattacks,
@@ -515,7 +515,7 @@ If checkpda testvar getpadstatus padlg = 0 Then
 	triggerdelay 10 pdatank
 
 If checkpda testvar getpadstatus padlg = 1 then
-	showpda "总部：指挥官，我们需要你打击并消灭正在维修的棕军坦克。格林曼中尉另有命令，不随你同行，但请留意我们先前派入、由友军蓝军带领的一支小队。",
+	showpda "总部：指挥官，我们需要你打击并消灭正在维修的黄军坦克。格林曼中尉另有命令，不随你同行，但请留意我们先前派入、由友军蓝军带领的一支小队。",
 	setnpc lg 1,
 	addvar lgcof 1,
 	addvar numgreen -1,
@@ -532,10 +532,10 @@ IF checktanks testvar tankcof = 0 THEN
 	trigger tanksdead 
 
 If count 2 of pdatank tanksalive then
-	showpda "总部：指挥官，我们需要你打击并消灭正在维修的棕军坦克。我绿军装甲兵另有任务，但请留意我们先前派入、由友军蓝军带领的一支小队。"
+	showpda "总部：指挥官，我们需要你打击并消灭正在维修的黄军坦克。我绿军装甲兵另有任务，但请留意我们先前派入、由友军蓝军带领的一支小队。"
         
 If count 2 of pdatank tanksdead then
-	showpda "总部：指挥官，我们需要你打击并消灭正在维修的棕军坦克。请留意我们先前派入、由友军蓝军带领的一支小队。"
+	showpda "总部：指挥官，我们需要你打击并消灭正在维修的黄军坦克。请留意我们先前派入、由友军蓝军带领的一支小队。"
 
 //**Enemy guards**//
 pad enemydep1   200
@@ -735,7 +735,7 @@ PAD padtankermove1b	156		tanker2
 PAD padtankermove1c	156		tanker3
 
 IF count 1 of intruderalert THEN										//intruder alert sets guards to attack and trigger tankers to go to tank
-	showmessage "棕军：发现绿军！坦克乘员各就各位！",
+	showmessage "黄军：发现绿军！坦克乘员各就各位！",
 	playsound "03_02_tantrooper_02C.wav" (0,0) 6 1 100,
 	ORDER tttandef0 follow me INMODE attack,
 	ORDER tttandef4 follow me INMODE attack,
@@ -860,7 +860,7 @@ IF hit tandef15 BUTNOT KILLED tandef15 THEN
 	TRIGGER housedeploy
 
 IF count 1 of housedeploy  THEN
-	showmessage "棕军：发现绿军！",
+	showmessage "黄军：发现绿军！",
 	playsound "03_01_tantrooper_05C.wav" (0,0) 6 1 100,
 	TRIGGERDELAY 5500 housecreation
 

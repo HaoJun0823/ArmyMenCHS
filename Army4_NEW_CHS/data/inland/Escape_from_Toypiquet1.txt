@@ -258,7 +258,7 @@ if balanceVOrandom then
 		playsound "gamehq3_C.wav" 3 3
 
 if yourtask then
-	showpda "指挥官，装甲第 2 军应从东面赶来，与他们会合，尽快撤出城！棕军已查明你的位置并部署了装甲第 9 军，务必小心！"
+	showpda "指挥官，装甲第 2 军应从东面赶来，与他们会合，尽快撤出城！黄军已查明你的位置并部署了装甲第 9 军，务必小心！"
 
 
 // *** MIDDLE OUTPOST *** //

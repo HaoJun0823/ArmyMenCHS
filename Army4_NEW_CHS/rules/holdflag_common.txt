@@ -52,7 +52,7 @@ macro holdflag_rules 3
 }
 
 expand holdflag_rules (green "绿队" 1)
-expand holdflag_rules (tan "棕队" 2)
+expand holdflag_rules (tan "黄队" 2)
 expand holdflag_rules (blue "蓝队" 3)
 expand holdflag_rules (grey "灰队" 4)
 

@@ -2128,7 +2128,7 @@ IF checkrest2 TESTVAR vargotspy = 1 THEN			//spy captured check artillery
 
 IF count 2 of checkrest1 KILLED hydrogentank THEN		//if hydro killed then check spy
 	TRIGGER checkrest2
-	//showmessage "¼ì²é×Ø¾ü»÷É±"
+	//showmessage "¼ì²é»Æ¾ü»÷É±"
 
 IF count 3 of checkrest1 KILLED hydrogentank TESTVAR numtandead > 17 THEN
 	TRIGGER checkrest2

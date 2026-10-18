@@ -139,7 +139,7 @@ macro node_control_macro 6
 }
 
 expand node_control_macro ( green 绿队 1 tan   blue  grey )
-expand node_control_macro ( tan   棕队 2 blue  grey  green )
+expand node_control_macro ( tan   黄队 2 blue  grey  green )
 expand node_control_macro ( blue  蓝队 3 grey  green tan )
 expand node_control_macro ( grey  灰队 4 green tan   blue )
 

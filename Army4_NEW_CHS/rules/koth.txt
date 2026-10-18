@@ -123,7 +123,7 @@ macro koth_macro 6
 }
 
 expand koth_macro (green "绿队" 1 tan blue grey )
-expand koth_macro (tan "棕队" 2 blue grey green )
+expand koth_macro (tan "黄队" 2 blue grey green )
 expand koth_macro (blue "蓝队" 3 grey green tan )
 expand koth_macro (grey "灰队" 4 green tan blue )
 

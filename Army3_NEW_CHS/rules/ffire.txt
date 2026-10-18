@@ -35,7 +35,7 @@ macro checkForFriendlyFire 5
 }
 
 expand checkForFriendlyFire ( green 绿队 tan blue grey )
-expand checkForFriendlyFire ( tan 棕队 green blue grey )
+expand checkForFriendlyFire ( tan 黄队 green blue grey )
 expand checkForFriendlyFire ( blue 蓝队 green tan grey )
 expand checkForFriendlyFire ( grey 灰队 green tan blue )
 

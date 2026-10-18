@@ -10,8 +10,8 @@ Sam|Sam069d.wav|动起来，弟兄们。
 Sam|Sam070b.wav|撤退！
 Sam|Sam071b.wav|保持专注，上尉。
 Sam|Sam072a.wav|上尉，记住你的任务目标！
-Sam|Sam073b.wav|棕军在跑。
-Sam|Sam074a.wav|棕军在撤退，上尉。
+Sam|Sam073b.wav|黄军在跑。
+Sam|Sam074a.wav|黄军在撤退，上尉。
 Sam|Sam075a.wav|追上他们，布莱德。
 Sam|Sam076b.wav|长官，你不能这么做。
 Sam|Sam077b.wav|现在把这个拿给中士。

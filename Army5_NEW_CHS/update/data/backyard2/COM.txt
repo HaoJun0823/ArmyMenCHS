@@ -10,8 +10,8 @@ Sam|Sam069d.wav|动起来，弟兄们。
 Sam|Sam070b.wav|撤退！
 Sam|Sam071b.wav|保持专注，上尉。
 Sam|Sam072a.wav|上尉，记住你的任务目标！
-Sam|Sam073b.wav|棕军在跑。
-Sam|Sam074a.wav|棕军在撤退，上尉。
+Sam|Sam073b.wav|黄军在跑。
+Sam|Sam074a.wav|黄军在撤退，上尉。
 Sam|Sam075a.wav|追上他们，布莱德。
 Sam|Sam076b.wav|长官，你不能这么做。
 Sam|Sam077b.wav|现在把这个拿给中士。
@@ -101,14 +101,14 @@ Captain|Cap000.wav|THIS SHOULD BE LINE #99 (STARTING FROM ZERO)
 Sam|Sam003c.wav|上尉，进房子之前你得先接上中士和他的部下。
 Sam|Sam004b.wav|上尉，小队没凑齐之前你不能进那栋房子。
 Sam|Sam005b.wav|干得好，长官们。想办法从那个窗户进去。
-Captain|Cap004c.wav|我的雷达都疯了，中士。这地方到处都是棕军！
+Captain|Cap004c.wav|我的雷达都疯了，中士。这地方到处都是黄军！
 Captain|Cap005b.wav|总部，我是布莱德。中士和他的人都上机了。
 Captain|Cap006a.wav|给侧装机枪找到些弹药，中士。想不想来开个头？
 Sarge|Sar006b.wav|好。现在，去找那个兵！
 Sarge|Sar007c.wav|他可能掌握重要情报。
 Sarge|Sar008a.wav|上尉，我需要我那两个弟兄都进去。
 Sarge|Sar009b.wav|上尉……我是中士……你到底在哪儿？完毕。
-Sarge|Sar010c.wav|总部，我是中士。我们在那栋房子里发现了一个巨大的棕军基地。
+Sarge|Sar010c.wav|总部，我是中士。我们在那栋房子里发现了一个巨大的黄军基地。
 Sarge|Sar011a.wav|我们奉命进那栋房子。能捎我们一程吗？
 Sarge|Sar012b.wav|哦，太棒了！
 Sarge|Sar003a.wav|我得留在机上，布莱德。

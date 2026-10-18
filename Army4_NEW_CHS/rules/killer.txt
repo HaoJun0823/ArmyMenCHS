@@ -62,7 +62,7 @@ macro killer_macro 6
 }
 
 expand killer_macro (green "绿队" tan blue grey 1)
-expand killer_macro (tan "棕队" green blue grey 2)
+expand killer_macro (tan "黄队" green blue grey 2)
 expand killer_macro (blue "蓝队" green tan grey 3)
 expand killer_macro (grey "灰队" green tan blue 4)
 

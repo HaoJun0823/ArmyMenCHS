@@ -10,8 +10,8 @@ Sam|Sam069d.wav|动起来，弟兄们。
 Sam|Sam070b.wav|撤退！
 Sam|Sam071b.wav|保持专注，上尉。
 Sam|Sam072a.wav|上尉，记住你的任务目标！
-Sam|Sam073b.wav|棕军在跑。
-Sam|Sam074a.wav|棕军在撤退，上尉。
+Sam|Sam073b.wav|黄军在跑。
+Sam|Sam074a.wav|黄军在撤退，上尉。
 Sam|Sam075a.wav|追上他们，布莱德。
 Sam|Sam076b.wav|长官，你不能这么做。
 Sam|Sam077b.wav|现在把这个拿给中士。
@@ -102,8 +102,8 @@ Sam|Sam130a.wav|与侦察小队会合，夺取桥梁。
 Sam|Sam017e.wav|桥被炸了，你得另找一条路渡河。
 Sam|Sam018a.wav|干得好，布莱德。你的小队已经过河了。现在带他们上到村里去。
 Captain|Cap014a.wav|总部，我刚发现几名绿军战俘。
-Captain|Cap015c.wav|糟了！棕军在那帮弟兄身上绑了炸药！他们要用我们自己人炸桥！
-Captain|Capt108d.wav|那些人不会白白牺牲！我们要完成任务，让棕军付出代价！但首先，我得想办法把桥重建起来。
+Captain|Cap015c.wav|糟了！黄军在那帮弟兄身上绑了炸药！他们要用我们自己人炸桥！
+Captain|Capt108d.wav|那些人不会白白牺牲！我们要完成任务，让黄军付出代价！但首先，我得想办法把桥重建起来。
 Captain|Cap017a.wav|那样不行……也许行？
 Captain|Cap018b.wav|再来这么两下就够了。
 Captain|Cap019f.wav|叫我布莱德……造桥专家！

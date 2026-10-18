@@ -1167,7 +1167,7 @@ IF KILLED basechalet THEN
 
 IF KILLED listtanunit KILLED listski KILLED listpatrol THEN					//Track Village, Ski and patrol
 	ADDVAR killvc 1,
-	//showmessage "棕军被消灭。",
+	//showmessage "黄军被消灭。",
 	TRIGGERDELAY 500 killwin
 
 IF killwin TESTVAR killvc = 64 THEN			//whatever total tan is...currently 65...+4 if player gets spotted. If he doesn't get spotted then he has 4 less tan to kill

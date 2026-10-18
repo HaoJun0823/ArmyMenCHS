@@ -43,7 +43,7 @@ variable numgreennnn 5
 pad balancepad  210
 
 if D_DayStart1 then
-	showpda "摧毁北方的棕军雷达站。",
+	showpda "摧毁北方的黄军雷达站。",
         triggerdelay 500 initbombem1,
         triggerdelay 2500 initbombem2,
         triggerdelay 1000 Openhig_random,

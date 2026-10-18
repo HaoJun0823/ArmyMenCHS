@@ -10,8 +10,8 @@ Sam|Sam069d.wav|动起来，弟兄们。
 Sam|Sam070b.wav|撤退！
 Sam|Sam071b.wav|保持专注，上尉。
 Sam|Sam072a.wav|上尉，记住你的任务目标！
-Sam|Sam073b.wav|棕军在跑。
-Sam|Sam074a.wav|棕军在撤退，上尉。
+Sam|Sam073b.wav|黄军在跑。
+Sam|Sam074a.wav|黄军在撤退，上尉。
 Sam|Sam075a.wav|追上他们，布莱德。
 Sam|Sam076b.wav|长官，你不能这么做。
 Sam|Sam077b.wav|现在把这个拿给中士。
@@ -98,7 +98,7 @@ Captain|Cap000.wav|PLACEHOLDER
 Captain|Cap000.wav|PLACEHOLDER
 Captain|Cap000.wav|PLACEHOLDER
 Captain|Cap000.wav|THIS SHOULD BE LINE #99 (STARTING FROM ZERO)
-Sam|Sam138a.wav|棕军正在书桌上制造一件化学武器。把中士和他的人送上去，让他们控制那一区域。
+Sam|Sam138a.wav|黄军正在书桌上制造一件化学武器。把中士和他的人送上去，让他们控制那一区域。
 Sam|Sam038c.wav|看来他们在下面守着什么东西。在拿到更多情报之前别去招惹……！
 Sarge|Sar029d.wav|他们把几乎所有的化学品桶都搬走了。
 Captain|Cap072c.wav|有哪里不对……！
@@ -111,14 +111,14 @@ Sam|Sam039c.wav|再来一个就够了，上尉。
 Sam|Sam035c.wav|上尉，那装置显然要你跟着它的引导走。
 Sam|Sam036e.wav|布莱德，我看那东西是要你跟着它重复。
 Sam|Sam066c.wav|就是这样……！
-Sam|Sam140b.wav|追上那些棕军，布莱德。
+Sam|Sam140b.wav|追上那些黄军，布莱德。
 Sarge|Sar057a.wav|我准备好离开这个区域了。
 Sarge|Sar015d.wav|快点，上尉！我们得赶到那个着陆区。
 Sam|Sam034c.wav|干得好，上尉，但你还有活要干！
-Sam|Sam141a.wav|拿到三份化学品，把它们投进书桌上的容器。这些化学品应该能混合成一种强效火山粉武器，用于我们进攻棕军。
+Sam|Sam141a.wav|拿到三份化学品，把它们投进书桌上的容器。这些化学品应该能混合成一种强效火山粉武器，用于我们进攻黄军。
 Sam|sam040c.wav|我们赢不了。我们的人死得太多了。
-Sam|sam041b.wav|棕军摧毁了帐篷处的一个关键任务目标！
-Sam|sam043c.wav|棕军摧毁了其中一桶化学品。
+Sam|sam041b.wav|黄军摧毁了帐篷处的一个关键任务目标！
+Sam|sam043c.wav|黄军摧毁了其中一桶化学品。
 Sarge|Sar036e.wav|干掉那只鞋子附近的部队，把我送到它后面的着陆区。我会溜进去解决守卫。
 Sarge|Sar038b.wav|这情况看起来不太妙。
 Sarge|Sar037a.wav|守卫倒了！我冲向着陆区时掩护我！
@@ -128,12 +128,12 @@ Sam|sam053c.wav|运输队完事了！现在穿过传送门——格里姆上校急着要你！
 Sam|sam014b.wav|飞得好，上尉！
 Sam|sam042c.wav|运输队过去了，长官。很抱歉。
 Sam|sam056c.wav|他正等着你把棋子射到棋盘上。
-Sam|sam055a.wav|看来有机会跟棕军下一盘围棋。我以前玩过这种棋；你得围住空交叉点才能赢。
+Sam|sam055a.wav|看来有机会跟黄军下一盘围棋。我以前玩过这种棋；你得围住空交叉点才能赢。
 Sam|sam059c.wav|抱歉，上尉。
 Sam|sam058b.wav|打平了，上尉。
 Sam|sam057b.wav|射进你的碗里就算过，上尉。
 Sam|sam048c.wav|太好了，上尉。把中士接上机，然后用绞盘把那东西吊起来。
-Sarge|Sar039c.wav|谢了，上——什么……？！弟兄们刚发现一支棕军运输队！
+Sarge|Sar039c.wav|谢了，上——什么……？！弟兄们刚发现一支黄军运输队！
 Sam|sam051b.wav|抱歉上尉；你这次被派去护送运输队了。看来你要错过那场大戏。把部队放到书桌上；最后行动由你的战友送他们进去。
 Sam|sam046b.wav|太好了。中士会把塑料火山粉交给格里姆上校。现在得去解决那支运输队。
 Sam|sam054b.wav|布莱德，是真的——格里姆上校被困住了，需要你帮忙。拦下运输队，走传送门。
@@ -154,7 +154,7 @@ Sarge|sar073b.wav|（发现了什么）等等，布莱德……
 Sarge|sar074c.wav|总得有办法到那个帐篷去……我们得用潜行。
 Sam|sam142a.wav|把那份化学品投进容器里，上尉。
 Sam|sam143c.wav|上尉，立刻把你的人放到书桌上的着陆区！
-Sam|sam012alt.wav|现在我们永远不知道棕军在谋划什么了！
+Sam|sam012alt.wav|现在我们永远不知道黄军在谋划什么了！
 Sam|sam047b.wav|摧毁运输队的所有卡车，上尉。
 Sam|sam154dc.wav|你还有活要干……！射进你的碗里，上尉。
 Sam|sam139a.wav|按 F1 查看地图，获取更多信息。

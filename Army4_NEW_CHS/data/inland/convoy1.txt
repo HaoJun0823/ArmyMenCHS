@@ -102,7 +102,7 @@ if padon v3 testvar test3a = 0 then
 	
 if checkwin testvar win1 = 2 and losevar = 0 then
 
-	showpda "车队保护得好！现在我们手头有更多塑料可扔向棕军了。总部通话完毕！",
+	showpda "车队保护得好！现在我们手头有更多塑料可扔向黄军了。总部通话完毕！",
 	playsound "11_04_HQ_A.wav" 3 3,
    	triggerdelay 5000 victory
 	
@@ -308,7 +308,7 @@ if hit tan20 testvar b5 = 0 then
 
 if startmsg then
 
-	showpda "护送车队安全过河，并留意附近的棕军部队。"
+	showpda "护送车队安全过河，并留意附近的黄军部队。"
 
 
 //Objectives//

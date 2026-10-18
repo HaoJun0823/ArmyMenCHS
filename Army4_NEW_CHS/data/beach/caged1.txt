@@ -227,7 +227,7 @@ If remove then
 //**PDA message**//
 
 if showpdames then
-        showpda "指挥官，我们需要你完成一项任务。工兵被派去摧毁一栋棕军建筑，结果反而被俘。救出爆破专家「疯斯坦」，并协助他完成工作。",
+        showpda "指挥官，我们需要你完成一项任务。工兵被派去摧毁一栋黄军建筑，结果反而被俘。救出爆破专家「疯斯坦」，并协助他完成工作。",
 		playsound "04_02_HQ_A.wav" (0,0) 6 1 100,
 		//Combat engineers were sent to destroy an 
 		//armored Tan building that contains stolen top secret documents regarding our next plan of attack.
@@ -688,7 +688,7 @@ macro truckmac 7
 {
 
 if count 1 of startmpdiff then															//create truck
-        showmessage "疯斯坦：棕军守卫应该快到了。",
+        showmessage "疯斯坦：黄军守卫应该快到了。",
         playsound "04_03_combatengineer_01B.wav" (0,0) 6 1 100,
 		//setitemflag @1 strategic 1,
         createvehicle @1 @2 @3 tan,
@@ -852,7 +852,7 @@ if count 1 of givedemoweapon then
 		setitemflag securityb strategic 1
 
 If gotbomb then
-		showmessage "疯斯坦：棕军守卫应该快到了。",
+		showmessage "疯斯坦：黄军守卫应该快到了。",
 		playsound "04_03_combatengineer_01B.wav" (0,0) 6 0 100
 
 macro CGDoor 2

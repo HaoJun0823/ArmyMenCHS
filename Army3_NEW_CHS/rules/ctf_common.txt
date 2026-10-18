@@ -81,6 +81,6 @@ macro ctfevents 9
 }
 
 expand ctfevents ( green 绿队 g tan blue grey t b gr )
-expand ctfevents ( tan 棕队 t green blue grey g b gr )
+expand ctfevents ( tan 黄队 t green blue grey g b gr )
 expand ctfevents ( blue 蓝队 b green tan grey g t gr )
 expand ctfevents ( grey 灰队 gr green tan blue g t b )

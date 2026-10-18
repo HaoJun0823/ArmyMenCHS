@@ -1527,7 +1527,7 @@ IF PADON @1
 					// blown off the vanity before, and the hairdryer has been turned off before
 	THEN				// have him back up and go into defend mode
 	ORDER me GOTO (@2,@3) INMODE ignore,
-//	SHOWMESSAGE "棕军正在避开 @4 侧",
+//	SHOWMESSAGE "黄军正在避开 @4 侧",
 	TRIGGERDELAY 4000 evtTanAvoid2
 	IF evtTanAvoid2 THEN
 	SETFACING me @5,
@@ -1604,7 +1604,7 @@ IF evtTestStartAvoidance
 IF evtTanAvoidingHD THEN	// cancel worldforces; Tan has started to "avoid"
 	ADDVAR boolTanAvoidingHD 1,
 	deploy objhairdryerblock, // &&&&
-//	SHOWPDA "棕军正在避开",
+//	SHOWPDA "黄军正在避开",
 	SETFORCE tan1 none,
 	SETFORCE tan2 none,
 	SETFORCE tan3 none,

@@ -10,8 +10,8 @@ Sam|Sam069d.wav|动起来，弟兄们。
 Sam|Sam070b.wav|撤退！
 Sam|Sam071b.wav|保持专注，上尉。
 Sam|Sam072a.wav|上尉，记住你的任务目标！
-Sam|Sam073b.wav|棕军在跑。
-Sam|Sam074a.wav|棕军在撤退，上尉。
+Sam|Sam073b.wav|黄军在跑。
+Sam|Sam074a.wav|黄军在撤退，上尉。
 Sam|Sam075a.wav|追上他们，布莱德。
 Sam|Sam076b.wav|长官，你不能这么做。
 Sam|Sam077b.wav|现在把这个拿给中士。
@@ -98,14 +98,14 @@ Captain|Cap000.wav|PLACEHOLDER
 Captain|Cap000.wav|PLACEHOLDER
 Captain|Cap000.wav|PLACEHOLDER
 Captain|Cap000.wav|THIS SHOULD BE LINE #99 (STARTING FROM ZERO)
-Sarge|Sar040a.wav|一份假情报把我们引到了这座该死的岛上，现在棕军又把我们压制在这儿。
+Sarge|Sar040a.wav|一份假情报把我们引到了这座该死的岛上，现在黄军又把我们压制在这儿。
 Sarge|Sar041c.wav|我的人好像每天都要打一种新的巨型变异虫子！
 Sarge|Sar042d.wav|我的人顶不住这些虫子多久了，上尉。我们得撤到那些船上去！
 Sarge|Sar043b.wav|虫子……太……多了……！
 Sarge|Sar044c.wav|上尉，要塞这边需要点空中支援。
 Grimm|Col013a.wav|上尉！谢天谢地你赶到了。我们真的很需要你帮忙。
 Grimm|Col014b.wav|灰军海军造出了某种水下舰艇。我们正在给声纳探测系统做最后的调试，但在此期间我们的驱逐舰正遭受重创。
-Grimm|Col015c.wav|我们的火力仍足以攻击棕军真正的总部，但首先得找到那座岛。
+Grimm|Col015c.wav|我们的火力仍足以攻击黄军真正的总部，但首先得找到那座岛。
 Grimm|Col016b.wav|有两艘驱逐舰正过来接我们。
 Grimm|Col017d.wav|如果你不及时清掉这片海域的灰军水下舰艇，我们的驱逐舰会被撕碎。
 Grimm|Col018d.wav|回话，布莱德。听着，那些船随时就到！快把那几艘灰军潜艇干掉！
@@ -113,7 +113,7 @@ Grimm|Col025c.wav|他们的潜航器逼近了，上尉……现在不动手就没机会了！
 Sarge|Sar047f.wav|格里姆上校死了，上尉！这是一场屠杀！我们完了！
 Grimm|Col031a.wav|太迟了！我们完了，上尉。
 Grimm|Col051a.wav|灰军海军造出了某种水下舰艇，正逼近攻击我们的驱逐舰。用声纳浮标和深水炸弹把那几艘潜艇干掉！
-Grimm|Col052b.wav|我们的火力仍足以攻击棕军真正的总部，但首先得离开这座岛。
+Grimm|Col052b.wav|我们的火力仍足以攻击黄军真正的总部，但首先得离开这座岛。
 Sarge|Sar075c.wav|我一次从要塞派一个小队到着陆区。你要把他们接上，再送到驱逐舰上。
 Sarge|Sar076d.wav|我们一暴露，那些该死的虫子就会涌上来。别让我的人变成虫子的口粮，上尉！
 Sarge|Sar077b.wav|等其他人安全了，我最后跑向着陆区。
