@@ -42,7 +42,7 @@ r"""把 build_out_am5 组装成**可直接解压到游戏根目录**的 4 代汉
 ★ 包根说明与许可（与其他各代同一套约定 S11/S12/S13）：
     LICENSE      <- 仓库根 LICENSE（项目主许可，含游戏版权声明）
     License.txt  <- LICENSES/*.txt 合并：ASILoader + cnc-ddraw + qwen3-tts
-                    + GPLv3。★ 三方组件的许可要求随产物分发时附上声明。
+                    + Apache-2.0（基础许可全文）。★ 三方组件的许可要求随产物分发时附上声明。
     必读说明.txt <- Documents/必读说明_空中战术.txt，写 UTF-8 **带 BOM** +
                     CRLF（Windows 记事本靠 BOM 判编码）
     AI 辅助文件  <- 与其他各代同源的两份 txt，同样 BOM + CRLF
@@ -101,8 +101,8 @@ LICENSE_DIR = "LICENSES"
 # ★ 显式清单，不是"目录里有什么就合什么"：LICENSES/ 是各代共用目录，
 #   1 代包不该混进只有本代才用到的 qwen3-tts 声明（反之亦然）。
 #   合并顺序：先随包分发的第三方（UAL / cnc-ddraw / qwen3-tts），
-#   最后 GPLv3.txt 作为主许可正文。
-LICENSE_ORDER = ["ASILoader.txt", "cnc-ddraw.txt", "qwen3-tts.txt", "GPLv3.txt"]
+#   最后 Apache-2.0.txt 作为主许可正文（基础许可全文）。
+LICENSE_ORDER = ["ASILoader.txt", "cnc-ddraw.txt", "qwen3-tts.txt", "Apache-2.0.txt"]
 
 # ── Release 附件名 ─────────────────────────────────────────────────────
 #   ★ 固定短名，**不带**日期时间戳（唯一性由 Release 的 tag 保证）。

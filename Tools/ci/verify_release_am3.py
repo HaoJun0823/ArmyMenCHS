@@ -207,8 +207,7 @@ def main():
         lt = z.read("License.txt").decode("utf-8", errors="replace")
         for mark, label in LICENSE_REQUIRED_MARKS:
             check(mark in lt, "License.txt 含 %s" % label)
-        check("GNU GENERAL PUBLIC LICENSE" in lt.upper()
-              or "GPL" in lt, "License.txt 含项目主许可（GPLv3）正文")
+        check("APACHE LICENSE" in lt.upper(), "License.txt 含基础许可（Apache-2.0）正文")
         print("       License.txt %d B" % len(z.read("License.txt")))
 
     print()

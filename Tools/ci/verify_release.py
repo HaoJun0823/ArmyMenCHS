@@ -13,7 +13,7 @@
   7. **包根必备文件**：dsound.dll（ASI Loader）/ LICENSE / License.txt /
      安装说明.txt（须 UTF-8 BOM，否则记事本显示乱码）
   8. LICENSE 内容体检：不得残留其它项目名（Saints Row / Volition 等），
-     必须含 GPL 与游戏版权方声明
+     必须含本项目主许可（HJNCSA-1.0 / Apache-2.0 基础许可）与游戏版权方声明
 
 ★ 第 7/8 项是硬门禁：dsound.dll 缺失时游戏不会加载 scripts/ 下的 .asi，
   汉化会**完全失效**且没有任何报错 —— 必须在 CI 阶段拦下。
@@ -227,7 +227,7 @@ def main():
         ("LICENSE", 1000, "项目主许可（含游戏版权声明）", False),
         ("License.txt", 1000, "LICENSES/*.txt 合并正文", False),
         # 必读说明是中文，**必须**带 BOM，否则记事本显示乱码。
-        # License.txt 是英文 GPL 正文，不需要 BOM。
+        # License.txt 是英文许可正文（第三方声明 + Apache-2.0 全文），不需要 BOM。
         # S11 统一命名：原「安装说明.txt」已更名为「必读说明.txt」。
         ("必读说明.txt", 500, "必读说明（须为 UTF-8 BOM）", True),
         # S12/S13：两份 AI 辅助文件，中文正文同样需 BOM。

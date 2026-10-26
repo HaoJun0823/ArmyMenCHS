@@ -200,7 +200,7 @@ def main():
         for mark, label in (("MIT License", "MIT 正文"),
                             ("github.com/FunkyFr3sh", "cnc-ddraw 版权行"),
                             ("== ASILoader.txt", "UAL 声明"),
-                            ("GPL", "项目主许可（GPLv3）")):
+                            ("Apache License", "基础许可（Apache-2.0）正文")):
             ok(mark in ltxt, "License.txt 含 %s" % label,
                "License.txt 缺 %s —— 随包分发的第三方声明不全" % label)
 
