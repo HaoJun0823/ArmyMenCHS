@@ -268,7 +268,11 @@ def main():
             if bad in txt:
                 print(f"  [FAIL] LICENSE {desc}")
                 ok = False
-        for need in ("GNU General Public License", "3DO Company"):
+        # 主许可已由 GPL-3.0 更换为 HJNCSA-1.0（非商业源码可得许可，
+        # 基座为 Apache 2.0）。体检项随之更新：确认换的是本项目的新许可，
+        # 而不是残留的旧模板或其它仓库的 LICENSE。
+        for need in ("Non-Commercial Source-Available License",
+                     "Apache License 2.0", "3DO Company"):
             if need not in txt:
                 print(f"  [FAIL] LICENSE 缺少必要声明: {need}")
                 ok = False
