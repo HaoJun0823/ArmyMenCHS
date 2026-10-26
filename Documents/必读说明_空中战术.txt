@@ -168,7 +168,10 @@ ddraw.ini、LICENSE、License.txt、必读说明.txt 与两份 AI 辅助文件�
 
 许可与致谢
 ----------
-本汉化补丁：GPL-3.0-or-later（见 LICENSE 与 License.txt）
+本汉化补丁：个人非官方作品，禁止商业使用。
+二次修改后再分发，须公开源代码与改动记录，并保留原作者署名。
+作者不对使用后果承担责任，也不拥有本游戏及其原始素材的版权。
+完整条款详见随包 LICENSE 与 License.txt。
 Ultimate ASI Loader：MIT License, Copyright (c) 2023 ThirteenAG
 cnc-ddraw：MIT License, Copyright (c) 2025 github.com/FunkyFr3sh
 Qwen3-TTS（中文配音合成）：Apache License 2.0

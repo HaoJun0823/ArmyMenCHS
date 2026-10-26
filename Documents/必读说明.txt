@@ -81,7 +81,10 @@ Steam 再发行版本）。
 
 许可与致谢
 ----------
-本汉化补丁：GPL-3.0-or-later（见 LICENSE 与 License.txt）
+本汉化补丁：个人非官方作品，禁止商业使用。
+二次修改后再分发，须公开源代码与改动记录，并保留原作者署名。
+作者不对使用后果承担责任，也不拥有本游戏及其原始素材的版权。
+完整条款详见随包 LICENSE 与 License.txt。
 Ultimate ASI Loader：MIT License, Copyright (c) 2023 ThirteenAG
 
 《玩具兵大战》(Army Men) (c) 1998 The 3DO Company. All rights reserved.

@@ -183,7 +183,7 @@ ArmyMenSourceCode/       1998 官方源码（git submodule）
 cnc-ddraw/               ddraw.dll + 调优过的 ddraw.ini（MIT，1/2/3/5 代共用）
 compat/                  2 代 Windows 兼容性 shim 的导入/还原 .reg
 asi/dsound.dll           Ultimate ASI Loader v6.4（MIT）
-LICENSES/                三方许可全文（ASILoader / cnc-ddraw / qwen3-tts / GPLv3）
+LICENSES/                许可全文（ASILoader / cnc-ddraw / qwen3-tts / Apache-2.0）
 Documents/               包内必读说明的源文件（各代一份）
 Tools/
   ├─ ci/                 构建、打包、校验、对账（五代同构）
@@ -220,7 +220,13 @@ docs/                    文档（见上）
 
 ## 许可
 
-GPL-3.0-or-later。见 [`LICENSE`](LICENSE) 与 [`LICENSES/`](LICENSES/)。
+本项目为个人非官方作品，采用 **HJNCSA-1.0（非商业源码可得许可）**：
+
+- **禁止商业使用**（含任何以营利为目的的分发、售卖、打包或引流变现）
+- **二次修改后再分发**，须公开源代码与改动记录，并保留原作者署名
+- **作者不对使用后果承担责任**，亦**不拥有本游戏及其原始素材的版权**
+
+完整条款见 [`LICENSE`](LICENSE) 与 [`LICENSES/`](LICENSES/)。
 
 随包分发的第三方组件：
 

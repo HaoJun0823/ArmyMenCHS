@@ -242,7 +242,7 @@ stage_am3/                      280 文件 / 36.74 MB（zip 14.79 MB）
 ├── ddraw.dll                   cnc-ddraw 7.0.0.1
 ├── ddraw.ini                   cnc-ddraw 配置（项目调优）
 ├── LICENSE                     项目主许可
-├── License.txt                 三方声明合并（ASILoader+cnc-ddraw+qwen3-tts+GPLv3）
+├── License.txt                 许可合并（ASILoader+cnc-ddraw+qwen3-tts+Apache-2.0）
 ├── 必读说明.txt                 安装说明（UTF-8 **带 BOM** + CRLF）
 ├── 如果不会安装，请把该文件发给AI，让AI教你.txt
 └── 将此文件交给AI，让AI协助完善本项目.txt
