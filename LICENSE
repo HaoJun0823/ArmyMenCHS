@@ -1,105 +1,865 @@
-HaoJun0823 Project License
-Copyright (c) 2026 Haojun (HaoJun0823) (Randerion). All rights reserved.
-Homepage: https://www.haojun0823.xyz
-Github: https://github.com/HaoJun0823
-ORCID: https://orcid.org/0000-0002-2285-0503
+HaoJun0823 非商业源码可得许可 / HaoJun0823 Non-Commercial Source-Available License
+通用正文，版本 1.0 / Core text, version 1.0  (HJNCSA-Core-1.0)
+
+Copyright (c) 2026 Haojun (HaoJun0823) (Randerion)
+主页 Homepage: https://www.haojun0823.xyz
+Github:   https://github.com/HaoJun0823
+ORCID:    https://orcid.org/0000-0002-2285-0503
+
+======================================================================
+语言 / LANGUAGE
+======================================================================
+
+本文件以中文与英文两种语言书就。两种文本具有同一效力；如两种文本在
+解释上产生歧义、不一致或冲突，以中文文本为准，中文文本为解释与判断
+的最终依据。
+This document is made in Chinese and English. Both texts are equally
+authentic. In the event of any ambiguity, inconsistency or conflict in
+interpretation between the two texts, the Chinese text prevails and is
+the final basis for interpretation and judgment.
+
+本文件中由许可人自行添加的条款（第 0 节至第 8 节及附录 A）中，就两种
+文本的解释而言，以中文为准。
+For the terms added by the Licensor in this document (Sections 0 through
+8 and Appendix A), the Chinese text governs as between the two texts.
+
+基础许可（Apache 许可证 2.0）始终以其官方英文文本为准。该官方文本逐字
+收录于 ./LICENSES/Apache-2.0.txt，本项目未作翻译或修改。本文件中任何
+引用或转述基础许可内容的中文表述，仅为便利的译文，不改变基础许可的
+效力与解释。
+The base license (Apache License 2.0) is governed at all times by its
+official English text, reproduced verbatim at ./LICENSES/Apache-2.0.txt
+and neither translated nor modified by this project. Any Chinese wording
+in this file that quotes or paraphrases the base license is a translation
+for convenience only, and does not alter the effect or interpretation of
+the base license.
+
+======================================================================
+摘要 / SUMMARY
+======================================================================
+
+摘要仅为阅读便利，不构成许可的一部分，也不修改许可。摘要与正文冲突
+时，以正文为准。摘要对应版本 1.0；日后正文若有修订，摘要会同步更新。
+This summary is for convenience only. It is not part of the license and
+does not modify it. If it conflicts with the main text, the main text
+prevails. This summary reflects version 1.0.
+
+ 1. 这是什么 / What this is
+    本许可 = Apache 2.0 全文 + 本人附加条件，因此它不是标准 Apache 2.0，
+    不能简称为 "Apache" 或 "Apache-2.0"。Apache 2.0 原文一字未改。它只
+    约束本项目的原创部分；第三方组件各按自己的协议，详见第 6 节。
+    **它不是开源许可**——开源许可不得限制使用领域，而本许可禁止商用；
+    准确名称是"源码可得许可"（source-available）。
+    Apache 2.0 plus my added conditions. Not the standard Apache 2.0 and
+    must not be called "Apache" or "Apache-2.0" alone. It governs only
+    this project's original work; third-party components keep their own
+    licenses, as listed in Section 6. **It is NOT an open source license**
+    -- open source licenses may not restrict fields of endeavor, whereas
+    this one prohibits commercial use. The accurate term is
+    "source-available".
+
+ 2. 你可以做什么 / You may
+    免费使用、学习、修改、再分发（含修改版），用于任何非商业目的；
+    也可以向本项目贡献，贡献自动适用同一许可。
+    Use, study, modify and redistribute, including modified versions, for
+    any non-commercial purpose. Contributions are welcome and are
+    automatically licensed on the same terms.
+
+ 3. 你不能：商业用途 / You may not -- commercial use
+    不得用于任何商业目的：出售、捆绑付费产品、收费托管、付费安装或
+    支持、广告变现下载站、嵌入任何商业产品或服务。
+    No commercial purpose of any kind: selling, bundling with paid
+    products, paid hosting, paid installation or support, ad-monetised
+    download portals, inclusion in any commercial offering.
+
+ 4. 你不能：只发二进制 / You may not -- closed distribution
+    分发编译产物、二进制、打包版时，必须同时免费提供完整可构建源码。
+    只发二进制而不给源码，不在本许可授权范围内。
+    Shipping compiled, binary or packaged forms without the complete
+    Corresponding Source at the same time is outside the grant.
+
+ 5. 你必须：再分发时随附修改后内容与改动说明
+    You must -- redistribution: modified content and changes
+    再分发本作品（无论源码形式还是编译形式）时，必须随该次分发一同
+    提供：(a) 修改后的完整内容；(b) 清晰的改动说明——改了什么、基于
+    哪个上游版本。二者必须让接收方容易获取：随分发包提供，或在获取
+    该分发物的同一页面显著位置直接给出链接。不得要求接收方另行索取、
+    注册、付费、等待回复或自行寻找；"应要求提供"或"事后补上"都不算
+    满足。仅写"已修改"不构成改动说明。
+    Whenever you redistribute this work, in Source or Object form, you
+    must ship with that very distribution: (a) the complete modified
+    content, and (b) a clear statement of changes -- what you changed and
+    which upstream version you based it on. Both must be easy for the
+    recipient to obtain: included in the package, or linked prominently on
+    the same page from which the distribution is obtained. Recipients must
+    not have to ask, register, pay, wait for a reply or hunt elsewhere.
+    Providing them only on request, or only afterwards, does not comply.
+    "Modified" alone is not a statement of changes.
+
+ 6. 你必须：公开仓库，接收方容易获取
+    You must -- public repository, easy to obtain
+    源码必须通过公开可访问的仓库或 URL 提供，无注册、无付费墙、无时限、
+    无访问费，并在分发物及其文档中标注该地址，接收方无需任何中间步骤
+    即可取得。
+    Source must be at a public URL with no registration, paywall, time
+    limit or access fee, and that URL must be stated in the distribution
+    and its documentation. Recipients must be able to obtain the source
+    from it without any intermediary step.
+
+ 7. 你必须：醒目署名 / You must -- prominent attribution
+    三处醒目署名：包内 LICENSE/NOTICE、README 等文档、以及用户可见的
+    About/Credits 界面；署名须含 "HaoJun0823" 与仓库链接。
+    Prominent credit in the package, the docs and any About/Credits
+    screen, including "HaoJun0823" and the repository link.
+
+ 8. 你不能：抹除署名或冒用名义 / You may not -- credits and name
+    不得删除、遮盖或改动任何版权与贡献署名；不得用作者名义暗示背书、
+    赞助、关联或责任，不得注册含该名义且易误导的域名或账号。
+    Do not remove, obscure or alter any credit. Do not use the author's
+    name to imply endorsement, sponsorship, affiliation or
+    responsibility, or register misleading domains or accounts.
+
+ 9. 附加条款怎么生效 / How the added terms bite
+    上述第 3、4 项不是"违反后收回授权"，而是从授权范围中直接排除——
+    那些权利从未授予过。因此违反不是违约，而是自始无授权，构成著作权侵权。
+    Items 3 and 4 above do not revoke a granted right; they define the
+    boundary of the grant. Those rights were never granted, so exercising
+    them is unlicensed use, i.e. copyright infringement.
+
+10. 第三方程序（仅当适用）/ Third-party program (only if applicable)
+    若本作品修改第三方程序（见附录 A）：未获官方授权，会改动原程序，
+    可能与该程序的用户协议冲突，用户自行判断并自担风险；本许可不主张
+    原程序任何权利。
+    Where the work modifies a third-party program (Appendix A): it is
+    unauthorised, it modifies that program, it may conflict with that
+    program's own terms, and the user bears the risk. No rights in that
+    program are claimed.
+
+11. 免责与作者权利 / Disclaimer and the author's own rights
+    按"原样"提供，不担保兼容性、可用性、合法性；不对数据损坏、账号
+    处罚、第三方索赔负责。本许可不限制作者本人使用、商业化、重新授权
+    或就其作品申请著作权登记。
+    Provided "as is" with no warranty of compatibility, fitness or
+    legality; no liability for data loss, account penalties or third-party
+    claims. Nothing here restricts the author's own use,
+    commercialization, relicensing or copyright registration.
+
+======================================================================
+本文件用法 / HOW TO USE THIS FILE
+======================================================================
+
+第 0 节至第 8 节为通用正文，用于完全由你本人创作的作品时，单独使用
+即可。
+Sections 0 through 8 are the general core text. Use them alone for works
+that are entirely your own.
+
+附录 A 为可选部分。仅当本作品基于或修改第三方程序（例如游戏汉化、
+游戏改造项目）时，填写后一并纳入；不适用时整段删除。
+Appendix A is OPTIONAL. Include it, filled in, only when the work is
+built on or modifies a third-party program (for example a game
+localization or modification project). Delete Appendix A entirely when it
+does not apply.
 
 ----------------------------------------------------------------------
-Main License
+0. 本许可是什么 / What This License Is
 ----------------------------------------------------------------------
 
-This project (the Chinese translation data, documentation, build scripts
-and tools authored for it) is licensed under:
+本许可是 Apache 许可证 2.0 版加上许可人附加条件后的结果。因此它**不是**
+Apache 许可证 2.0，不得单独简称为 "Apache"、"Apache 许可证" 或
+"Apache-2.0"。它是一项派生许可：Apache 许可证 2.0 为其基础，本文件第 3
+节与第 4 节在其之上附加条件。
+This license is the Apache License, Version 2.0, with additional
+conditions added by the Licensor. It is therefore NOT the Apache License
+2.0, and it must not be referred to as "the Apache License", "Apache" or
+"Apache-2.0" alone. It is a derived license: the Apache License 2.0 forms
+its base, and Sections 3 and 4 of this file add conditions to it.
 
-    GNU General Public License v3.0 or later
+    SPDX-License-Identifier: LicenseRef-HaoJun0823-NCSA-1.0
+    基础许可 Base license:      Apache-2.0
 
-SPDX-License-Identifier: GPL-3.0-or-later
+基础许可全文：./LICENSES/Apache-2.0.txt
+Full text of the base license:  ./LICENSES/Apache-2.0.txt
+官方来源 Official source:
+    https://www.apache.org/licenses/LICENSE-2.0
 
-The full license text is available at:
-    ./LICENSES/GPLv3.txt
+Apache 许可证 2.0 全文逐字收录于 ./LICENSES/Apache-2.0.txt，本项目未作
+任何修改。仅第 3 节与第 4 节为许可人自行添加的条件。
+The Apache License 2.0 is reproduced verbatim in ./LICENSES/Apache-2.0.txt
+and is not modified by this project. Only the additional conditions in
+Sections 3 and 4 are the Licensor's own.
+
+添加此类附加条件的权利，由 Apache 许可证 2.0 第 4 节末段明文授予：
+The right to add such additional conditions is expressly granted by the
+Apache License 2.0, Section 4, final paragraph:
+
+    "You may add Your own copyright statement to Your modifications and
+    may provide additional or different license terms and conditions for
+    use, reproduction, or distribution of Your modifications, or for any
+    such Derivative Works as a whole, provided Your use, reproduction, and
+    distribution of the Work otherwise complies with the conditions stated
+    in this License."
+
+本许可不是开源许可。按开放源代码促进会（OSI）的开源定义，开源许可不得
+限制使用领域，而本许可禁止商业用途。因此本作品属于"源码可得"
+（source-available）作品，不应被称为"开源软件"、"开源项目"或"开源许可"。
+本许可使源码公开、可修改、可再分发，但不授予任何商业使用权。
+This license is not an open source license. Under the Open Source
+Definition of the Open Source Initiative (OSI), an open source license may
+not restrict fields of endeavor, whereas this license prohibits commercial
+use. This work is therefore a "source-available" work and must not be
+described as "open source software", an "open source project" or an "open
+source license". This license makes the source public, modifiable and
+redistributable, but grants no commercial rights.
 
 ----------------------------------------------------------------------
-Game Copyright Notice (Army Men Series)
+1. 权利授予 / Grant of Rights
 ----------------------------------------------------------------------
 
-This project is an independent, fan-made Chinese localization ("translation
-patch") for the Army Men video game series (Chinese title: 玩具兵大战).
-It is not affiliated with, endorsed by, or sponsored by the copyright
-holders of those games.
+在遵守本文件各项条件的前提下，许可人就本项目——即为其创作的全部原创
+智力成果，包括源代码、数据、文本、翻译与本地化材料、构建脚本、工具、
+字体数据、文档以及本项目作者与贡献者创作的其他材料——授予你 Apache
+许可证 2.0 第 2 节（著作权许可授予）与第 3 节（专利许可授予）所规定的
+权利。
+Subject to the terms of this file, the Licensor grants you the rights set
+out in Sections 2 (Grant of Copyright License) and 3 (Grant of Patent
+License) of the Apache License 2.0, in respect of this project -- meaning
+all original intellectual contributions authored for it, including source
+code, data, text, translation and localization materials, build scripts,
+tooling, font data, documentation and other materials created by this
+project's authors and contributors.
 
-Army Men (玩具兵大战) and all related titles, characters, artwork, music,
-and trademarks are the property of their respective copyright holders.
+授予的限制——请仔细阅读：
+LIMITATION OF GRANT -- READ THIS CAREFULLY:
 
-Copyright (c) 1998 The 3DO Company. All rights reserved.
+上述权利授予受本文件第 3 节限制。许可人依 Apache 许可证 2.0 第 4 节添加
+第 3 节所列条件，这些条件构成权利授予所附条件的一部分。
+The grant of rights described above is limited by Section 3 of this file.
+In accordance with Section 4 of the Apache License 2.0, the Licensor adds
+the conditions in Section 3, and those conditions form part of the terms
+on which the rights are granted.
 
-The 3DO Company is the original developer and publisher of the Army Men
-series. This project makes no claim of rights in any game asset.
+因此，上述权利授予**不包括**，且本许可**不授予**你以下任何权利：
+Accordingly, the grant of rights DOES NOT INCLUDE, and this license DOES
+NOT GRANT to you, any right to:
 
-This project redistributes **no game assets**. It provides only translation
-text and data that users must apply to their own legally acquired copies of
-the games. The games themselves are not redistributed by this project and
-remain governed by their own licenses and copyright.
+  (a) 将本项目或其任何衍生作品用于任何商业目的（第 3.1 节）；或
+      use this project or any derivative of it for any Commercial Purpose
+      (Section 3.1); or
+
+  (b) 以源码形式或目标形式再分发本项目或其任何衍生作品时，未随该次分发
+      一并提供第 3.3 节至第 3.6 节所要求的完整修改后内容与改动说明。
+      redistribute this project or any derivative of it, in Source or
+      Object form, without shipping with that very distribution the
+      complete modified content and a statement of changes as required by
+      Sections 3.3 to 3.6.
+
+(a)、(b) 所述权利自始未曾授予。它们位于授予范围之外，因而不存在终止或
+撤销的问题。你若行使本许可未授予的权利，即属无授权使用，构成对许可人
+著作权的侵害。
+The rights described in (a) and (b) are not granted at all. They are
+outside the scope of the grant, and no question of termination or
+revocation arises in respect of them. If you exercise a right that this
+license does not grant, your use is unlicensed and constitutes
+infringement of the Licensor's copyright.
+
+本节不限制 Apache 许可证 2.0 本身的任何条件，其全部条件继续适用。
+Nothing in this Section limits any condition of the Apache License 2.0
+itself, all of which continue to apply.
 
 ----------------------------------------------------------------------
-Additional Terms
+2. 本许可的适用范围 / Scope of This License
 ----------------------------------------------------------------------
 
-None.
+本许可仅管辖第 1 节所述的、由本项目作者与贡献者作出的原创智力贡献。
+其唯一目的在于保护这些作者与贡献者的劳动与智力投入。
+This license governs ONLY the original intellectual contributions made by
+this project's authors and contributors as described in Section 1. Its
+sole purpose is to protect the labour and intellectual investment of those
+authors and contributors.
+
+许可人始终是本作品的所有权人。本许可不转让所有权，也不限制许可人本人
+对其自有作品的使用、修改、商业化、重新授权或申请著作权登记。许可人可
+随时就本作品向任何人提供不同条件，包括商业条件。
+The Licensor remains the owner of the Work. Nothing in this license
+transfers ownership, and nothing in it restricts the Licensor's own use,
+modification, commercialization, relicensing or registration of copyright
+in the Licensor's own work. The Licensor may at any time offer the Work to
+any person under different terms, including commercial terms.
+
+2.1 排除的材料 / Excluded materials
+    许可人明确排除的材料不受本文件许可。若分发物中存在名为 EXCLUSIONS
+    的文件，或 NOTICE 文件中存在同等的排除清单，则该文件所列的文件与
+    目录不属于第 1 节授予的范围，其全部权利由许可人保留。被排除的材料
+    可包括，例如：剧本或故事文本、对话、美术、音频、关卡设计，以及许可
+    人拟不公开、拟单独发布或拟以自己名义申请著作权保护的其他内容。排除
+    清单不影响其中未列出的任何材料的许可状态；不存在该清单即表示没有
+    任何材料被排除。
+    Materials expressly excluded by the Licensor are not licensed under
+    this file. If a file named EXCLUSIONS, or an equivalent list in the
+    NOTICE file, is present in the distribution, the files and directories
+    it lists are excluded from the grant in Section 1, and all rights in
+    them are reserved to the Licensor. Excluded materials may include, for
+    example, story or script text, dialogue, artwork, audio, level design
+    or other content that the Licensor intends to keep closed, to publish
+    separately, or to register for copyright protection in its own name.
+    An exclusions list does not affect the license status of anything not
+    listed in it, and the absence of such a list means that no material is
+    excluded.
+
+若本作品基于或修改第三方程序，另见附录 A，该附录对本许可的适用范围作
+相应限制。
+Where this work is built on or modifies a third-party program, see
+Appendix A, which limits the scope of this license accordingly.
 
 ----------------------------------------------------------------------
-Other Copyright Notices
+3. 附加条件 / Additional Conditions
 ----------------------------------------------------------------------
 
+以下条件由许可人依 Apache 许可证 2.0 第 4 节添加。它们适用于本作品以及
+任何衍生作品的整体，构成第 1 节权利授予所附条件的一部分；授予不及于
+任何不遵守这些条件的使用。
+The following conditions are added by the Licensor under Section 4 of the
+Apache License 2.0. They apply to the Work and to any Derivative Work as
+a whole. They form part of the terms on which the rights in Section 1 are
+granted, and the grant does not extend to any use that does not comply
+with them.
+
+3.1 非商业条件 / Non-Commercial condition
+    你不得将本项目或其任何衍生作品用于任何商业目的。"商业目的"指任何
+    以获取或指向商业优势、金钱报酬或其他对价为目的或方向的使用，无论
+    该对价由你或任何第三方取得。
+    You MUST NOT use this project or any derivative of it for any
+    Commercial Purpose. "Commercial Purpose" means any use that is
+    intended for or directed towards commercial advantage, monetary
+    compensation, or other consideration, whether received by you or by
+    any third party.
+
+3.2 商业目的——示例 / Commercial Purpose -- examples
+    允许，例如：
+    Permitted, by way of example:
+      * 个人使用与私人修改；
+        personal use and private modification;
+      * 免费再分发，包括不对访问收费的社区镜像；
+        redistribution at no charge, including community mirrors that do
+        not monetise access;
+      * 自愿捐赠，前提是本项目的获取不以捐赠为条件，且捐赠不带来任何
+        额外访问、优先权或功能。
+        voluntary donations, provided that access to the project is not
+        conditional on donating and that donating confers no additional
+        access, priority or features.
+    不允许，例如：
+    Not permitted, by way of example:
+      * 出售本项目或其任何衍生作品；
+        selling this project or any derivative of it;
+      * 将其与任何付费产品、服务或订阅捆绑；
+        bundling it with any paid product, service or subscription;
+      * 通过以广告、订阅或付费访问变现下载的站点分发；
+        distributing it through portals that monetise downloads through
+        advertising, subscription or paid access;
+      * 围绕它提供付费的安装、配置或支持服务；
+        offering paid installation, configuration or support services
+        built around it;
+      * 将其作为收费的托管服务或托管服务的一部分提供；
+        offering it as, or as part of, a hosted or managed service for a
+        fee;
+      * 将其并入任何形式的商业产品；
+        incorporating it into any commercial offering of any kind;
+      * 将其用于生产或交付任何付费产品、服务、出版物或媒体，包括价值
+        实质部分来源于它的任何产品或服务。
+        using it in the production or delivery of any paid product,
+        service, publication or media, including any product or service
+        whose value derives in substantial part from it.
+
+3.3 对应源码 / Corresponding Source
+    "对应源码"指生成、构建、安装并运行本项目或其任何衍生作品的分发形式
+    所需的全部材料，包括但不限于源代码、本地化与翻译数据、生成脚本、
+    构建脚本、工具源码、素材源文件，以及用于产出该分发形式的配置。
+    "Corresponding Source" means all materials necessary to generate,
+    build, install and run the distributed form of this project or of any
+    Derivative Work of it, including without limitation source code,
+    localization and translation data, generation scripts, build scripts,
+    tool sources, asset sources and the configuration used to produce the
+    distributed form.
+
+3.4 再分发——修改后内容与改动说明 / Redistribution -- modified content
+    你以源码形式或目标形式再分发本项目或其任何衍生作品时，必须随该次
+    分发一并提供：
+    Whenever you redistribute this project or any Derivative Work of it,
+    in Source form or in Object form, you MUST ship with that very
+    distribution:
+      (a) 完整的修改后内容，即第 3.3 节所定义的完整对应源码，免费且
+          适用本同一许可；以及
+          the complete modified content, that is, the complete
+          Corresponding Source as defined in Section 3.3, at no charge and
+          under this same license; and
+      (b) 第 3.6 节所要求的改动说明。
+          a statement of changes as required by Section 3.6.
+    二者必须使接收方容易获取：随分发包本身提供，或在获取该分发物的同一
+    页面或位置的显著处给出链接。不得要求接收方索取、注册、付费、等待
+    回复或到别处寻找。仅在被索取时提供，或仅在分发完成之后提供，均不
+    满足本条件。再分发目标形式而不提供对应源码，不在本许可授权范围内。
+    Both MUST be easy for the recipient to obtain: included in the
+    distributed package itself, or linked prominently on the same page or
+    location from which the distribution is obtained. A recipient MUST NOT
+    be required to ask for them, to register, to pay, to wait for a reply,
+    or to search for them elsewhere. Making them available only on
+    request, or only after the distribution has taken place, does not
+    satisfy this condition. Redistributing the Object form without the
+    Corresponding Source is not a use this license permits.
+
+3.5 公开源码仓库 / Public source repository
+    对应源码必须通过公开源码仓库或同等的公开可访问 URL 提供，且该 URL
+    必须在分发物及其文档中载明。该仓库必须可供任何人访问，无注册、无
+    付费墙、无时限、无访问费，并在衍生作品分发期间持续可访问。接收方
+    必须能够从该 URL 取得对应源码，无需任何中间步骤。
+    The Corresponding Source MUST be made available through a public
+    source repository or an equivalent publicly accessible URL, and that
+    URL MUST be stated in the distribution and in its documentation. The
+    repository MUST be accessible to anyone without registration, paywall,
+    time limit or access fee, and MUST remain accessible for as long as
+    the Derivative Work is distributed. It MUST be easy for a recipient to
+    obtain the Corresponding Source from that URL without any
+    intermediary step.
+
+3.6 改动说明 / Statement of changes
+    你必须提供清晰、准确的改动说明——变更日志、提交历史或同等材料——
+    说明相对于上游版本修改了什么，以及你的衍生作品基于哪个上游版本。
+    仅声明"已修改"不足以满足要求。该说明必须依第 3.4 节随分发一并提供。
+    本条件是对 Apache 许可证 2.0 第 4(b) 节要求的补充，而非替代；后者
+    要求使被修改的文件带有显著声明，说明你改动了这些文件。
+    You MUST include a clear and accurate statement of the changes you
+    have made -- a changelog, commit history or equivalent -- identifying
+    what was modified relative to the upstream version and which upstream
+    version your Derivative Work is based on. Merely stating "modified" is
+    not sufficient. This statement MUST accompany the distribution as
+    required by Section 3.4. This condition is in addition to, and does
+    not replace, the requirement in Section 4(b) of the Apache License 2.0
+    to cause modified files to carry prominent notices stating that you
+    changed them.
+
+3.7 醒目署名 / Prominent attribution
+    署名必须在以下全部位置醒目出现：
+    Attribution MUST appear prominently in ALL of the following places:
+      (a) 分发包内名为 LICENSE 或 NOTICE 的文件中；
+          inside the distributed package, in a file named LICENSE or
+          NOTICE;
+      (b) 任何用户可见的文档（README 或同等文件）中；
+          in any user-visible documentation (README or equivalent);
+      (c) 对于面向用户的构建版本，其 About、Credits 或同等的界面或
+          输出中。
+          for user-facing builds, in an About, Credits or equivalent
+          screen or output.
+    署名必须标明本项目，并同时显示 "HaoJun0823"（Randerion）之名与指向
+    官方源码仓库的有效链接。
+    The attribution MUST identify the project and display both the name
+    "HaoJun0823" (Randerion) and a working link to the canonical source
+    repository.
+
+3.8 不得移除署名 / No removal of credits
+    你不得移除、遮盖或改动：
+    You MUST NOT remove, obscure or alter:
+      (a) 本文件，以及随附的 Apache 许可证 2.0 副本；
+          this file, or the copy of the Apache License 2.0 that
+          accompanies it;
+      (b) 任何著作权、专利、商标或署名声明；
+          any copyright, patent, trademark or attribution notice;
+      (c) 在源文件、数据文件、文档或用户可见输出中，给予本项目作者、
+          翻译者、贡献者或第三方的任何署名。
+          any credit given to the project's authors, translators,
+          contributors or third parties, whether in source files, data
+          files, documentation or user-visible output.
+    原始版本中出现的所有署名，必须逐字延续到任何衍生作品中。
+    All credits present in the original MUST be carried through verbatim
+    into any Derivative Work.
+
+3.9 不得使用名义或暗示背书 / No use of name or implication of endorsement
+    除第 3.7 节所要求的署名外，并在 Apache 许可证 2.0 第 6 节（商标）
+    之外，你不得以任何方式使用 "HaoJun0823"、"Randerion" 之名、本项目
+    名称或其贡献者姓名，以暗示或表示作者或任何贡献者为你、你的衍生作品
+    或你的行为背书、赞助、与之关联或承担责任。你不得注册或使用任何以
+    可能引人误解的方式包含上述名义的域名、账号、产品名或服务名。
+    In addition to Section 6 (Trademarks) of the Apache License 2.0, and
+    except as required for the attribution in Section 3.7, you MUST NOT
+    use the name "HaoJun0823", "Randerion", the name of this project, or
+    the names of its contributors, in any way that suggests or implies
+    that the author or any contributor endorses, sponsors, is affiliated
+    with, or is responsible for you, your Derivative Work, or your
+    activities. You MUST NOT register or use any domain name, account,
+    product or service name that incorporates those names in a way likely
+    to mislead.
+
+3.10 你不得再加限制 / No additional restrictions by you
+    你不得施加，也不得采用任何技术措施施加，任何对本许可所授予权利的
+    进一步限制，限制对象包括你的衍生作品的任何接收方。
+    You MUST NOT impose, and MUST NOT apply any technological measure
+    that imposes, any further restriction on the exercise of the rights
+    granted under this license by any recipient of your Derivative Work.
+
+3.11 准据法与管辖 / Governing law and jurisdiction
+    本许可受中华人民共和国法律管辖，不适用其冲突法规则。许可人住所地
+    有管辖权的法院对本许可所引起或与之相关的任何争议享有非排他管辖权。
+    本节不限制任何一方就知识产权侵害在任何有管辖权的法院寻求禁令或
+    其他救济。
+    This license is governed by the laws of the People's Republic of
+    China, without regard to its conflict-of-law provisions. The courts
+    having jurisdiction at the Licensor's place of residence shall have
+    non-exclusive jurisdiction over any dispute arising out of or in
+    connection with this license. Nothing in this Section limits either
+    party's ability to seek injunctive or other relief in any competent
+    jurisdiction for infringement of intellectual property rights.
+
+----------------------------------------------------------------------
+4. 贡献 / Contributions
+----------------------------------------------------------------------
+
+4.1 Apache 许可证 2.0 第 5 节（贡献的提交）适用，并由本节补充。
+    Section 5 (Submission of Contributions) of the Apache License 2.0
+    applies, and is supplemented as follows.
+
+4.2 你若向本项目贡献——通过提交代码、数据、译文、文档或任何其他材料——
+    即表示你以本同一许可（即 Apache 许可证 2.0 连同第 3 节附加条件）
+    向许可人及公众许可你的贡献，不含任何进一步的条款或条件。
+    If you contribute to this project -- by submitting code, data,
+    translation, documentation or any other material -- you license your
+    contribution to the Licensor and to the public under this same
+    license, that is, the Apache License 2.0 together with the additional
+    conditions in Section 3, without any further terms or conditions.
+
+4.3 你保留自己贡献的著作权。你无须将著作权转让给许可人。本许可不是
+    著作权转让协议，不转让你贡献的所有权。
+    You retain copyright in your own contribution. You are not required
+    to assign copyright to the Licensor. This license is not a Copyright
+    Assignment Agreement and does not transfer ownership of your
+    contribution.
+
+4.4 你将依第 3.8 节获得署名。
+    You will be credited in accordance with Section 3.8.
+
+4.5 你声明自己有权按上述条件提交该贡献。
+    You represent that you have the right to submit your contribution
+    under these terms.
+
+----------------------------------------------------------------------
+5. 其他著作权声明 / Other Copyright Notices
+----------------------------------------------------------------------
+
+Copyright (c) 2026 Randerion (HaoJun0823). 保留所有权利。
 Copyright (c) 2026 Randerion (HaoJun0823). All rights reserved.
 
-Portions of this project are Copyright (c) their respective authors.
+本项目的部分内容著作权归各自作者与贡献者所有，其署名在其出现之处均
+予以保留。
+Portions of this project are Copyright (c) their respective authors and
+contributors, whose credits are retained wherever they appear.
+
+第三方组件保留其原始著作权声明，详见第 6 节。
+Third-party components retain their original copyright notices, as set out
+in Section 6.
 
 ----------------------------------------------------------------------
-Third-Party Components
+6. 来源与组件 / Provenance and Components
 ----------------------------------------------------------------------
 
-The following third-party components are distributed under their own
-licenses and are not covered by the main license of this project:
+本节记录本项目包含哪些内容、各部分来自何处，以及各自适用何种许可。
+本节仅为清晰而设，本身不修改或授予任何许可。
+This section records what this project contains, where each part came
+from, and which license applies to each part. It is provided for clarity
+and does not itself modify or grant any license.
 
-- ASI Loader (Ultimate ASI Loader) - MIT License - Copyright (c) 2023 ThirteenAG
-  Redistributed in this release as `dsound.dll` (Win32 build, v6.4).
-  See ./LICENSES/ASILoader.txt
+6.1 如何阅读本节 / How to read this section
+    本项目中的每个文件，恰好归属于下列三组之一：A——原创内容，
+    B——上游程序，C——第三方组件。若某个文件自带
+    SPDX-License-Identifier 或著作权头，则该文件级声明就该文件而言优先
+    于本节。
+    Every file in this project belongs to exactly one of the three groups
+    below: A -- original work, B -- upstream program, C -- third-party
+    components. Where an individual file carries its own
+    SPDX-License-Identifier or copyright header, that file-level notice
+    prevails over this section for that file.
+
+6.2 A 组——原创内容（适用本许可）/
+    Group A -- Original work (licensed under this license)
+    由本项目作者与贡献者创作的材料。这是第 1 节所许可的材料，也是第 3
+    节附加条件所适用的唯一材料。
+    Material authored by this project's authors and contributors. This is
+    the material licensed by Section 1, and it is the ONLY material to
+    which the additional conditions in Section 3 apply.
+
+    本项目新增的内容：
+    What this project adds:
+      简体中文译文与本地化数据；插件与注入模块源码（ArmyMenSourceCode）；
+      字体与文本渲染改造；文档
+      Simplified Chinese translation and localization data; plugin and injected
+      module source (ArmyMenSourceCode); font and text rendering changes; documentation
+
+    许可 License: HJNCSA-1.0（本文件 this file）
+    参见 See:     ./LICENSE
+
+6.3 B 组——上游程序及其资产（此处不予许可）/
+    Group B -- Upstream program and its assets (NOT licensed here)
+    本项目所关联的第三方程序，以及该程序的任何原始资产。本项目不授予
+    其中任何权利，也不主张其中任何所有权。附录 A 适用时，该程序在附录
+    A 中列明。
+    The third-party program that this project relates to, and any of that
+    program's original assets. This project grants no right in any of it
+    and claims no ownership of any of it. Where Appendix A applies, the
+    program is identified there.
+
+    Army Men 系列（玩具兵大战）
+    Army Men series
+      Copyright (c) The 3DO Company（1998，原开发商与发行商） 等各自权利人
+      Copyright (c) The 3DO Company (1998, original developer and publisher) and their respective owners
+      许可 License: 专有 / 该游戏自身的许可 proprietary / the game's own license
+      状态 Status:  不受本许可管辖。本许可不授予其中任何权利。
+                    NOT covered by this license. No right in it is granted here.
+
+      本项目不分发游戏本体。仓库中若包含从许可人合法取得的副本中提取、
+      并仅为本地化目的而修改的替换文件（文本、字体及显示所必需的最小
+      集合），这些文件的底层权利仍归各原权利人所有；本项目不主张其中
+      任何权利，且仅将其作为替换文件提供给已经拥有该游戏的用户。
+      This project does not distribute the game itself. Where the
+      repository contains replacement files extracted from a lawfully
+      acquired copy and modified solely for localization purposes (text,
+      fonts and the minimum set of assets required for display), the
+      underlying rights in those files remain with their respective
+      owners; this project claims no rights in them and provides them only
+      as replacement files for users who already own the game.
+
+6.4 C 组——第三方组件（各按自身许可）/
+    Group C -- Third-party components (licensed under their own licenses)
+    非本项目创作、由本项目使用或再分发的组件。每个组件仅按其自身许可
+    获得许可，该许可全文逐字保存在 ./LICENSES/ 中，本项目未作修改。本
+    许可第 3 节的附加条件**不适用于**这些组件，本项目也不对其施加超出
+    其自身许可要求的任何限制。
+    Components not authored by this project, used or redistributed by it.
+    Each component is licensed ONLY under its own license, whose verbatim
+    text is preserved unchanged in ./LICENSES/. The additional conditions
+    in Section 3 of this license do NOT apply to these components, and
+    this project imposes on them no restriction beyond what their own
+    licenses require.
+
+    - ASI Loader
+      MIT -- Copyright (c) ThirteenAG
+      参见 See ./LICENSES/ASILoader.txt
+      用途 Used for: 运行时注入加载器 / runtime injection loader
+
+    - cnc-ddraw
+      MIT -- Copyright (c) FunkyFr3sh
+      参见 See ./LICENSES/cnc-ddraw.txt
+      用途 Used for: DirectDraw 兼容层 / DirectDraw compatibility layer
+
+    - Qwen3-TTS
+      Apache-2.0 -- Copyright (c) Alibaba Cloud
+      参见 See ./LICENSES/qwen3-tts.txt
+      用途 Used for: 语音合成（构建期） / speech synthesis (build time)
+
+6.5 逐字全文与文件级声明 / Verbatim texts and file-level notices
+    上文提及的每一项许可，其全文均逐字收录于 ./LICENSES/，本项目未作
+    修改。带有自有 SPDX-License-Identifier 或著作权头的源文件保留该声明，
+    且该声明就该文件优先适用。若大量文件共用同一许可，也可在机器可读
+    文件（例如 .reuse/dep5）中集中登记，而不必逐文件声明。
+    The full text of every license referred to above is reproduced
+    verbatim in ./LICENSES/ and is not modified by this project. Source
+    files that carry their own SPDX-License-Identifier or copyright header
+    retain that header, and it prevails for that file. Where many files
+    share one license, they may instead be recorded together in a machine
+    readable file (for example .reuse/dep5) rather than file by file.
 
 ----------------------------------------------------------------------
-Disclaimer
+7. 免责声明 / Disclaimer
 ----------------------------------------------------------------------
 
-The main license of this project, GNU General Public License v3.0 or later,
-includes its own warranty disclaimer and limitation of liability. The
-following disclaimer is a project-specific summary and does not replace,
-modify, or override the main license. The main license controls in case of
-any conflict.
+Apache 许可证 2.0 第 7 节（免责声明）与第 8 节（责任限制）完全适用，
+其全文见 ./LICENSES/Apache-2.0.txt。以下内容对其作补充，并应与之一并
+阅读。
+Sections 7 (Disclaimer of Warranty) and 8 (Limitation of Liability) of
+the Apache License 2.0 apply in full and are reproduced in
+./LICENSES/Apache-2.0.txt. The following supplements them and is to be
+read together with them.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+本软件与相关材料按"原样"提供，不附任何明示或默示的担保，包括但不限
+于对适销性、特定用途适用性、不侵权与权利归属的担保。无论口头或书面，
+从作者或他处获得的任何意见或信息，均不构成本处未明确声明的担保。
+THE SOFTWARE AND MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NONINFRINGEMENT, AND
+TITLE. NO ADVICE OR INFORMATION, WHETHER ORAL OR WRITTEN, OBTAINED FROM
+THE AUTHOR OR ELSEWHERE SHALL CREATE ANY WARRANTY NOT EXPRESSLY STATED
+HERE.
+
+作者与贡献者不保证本项目：
+THE AUTHORS AND CONTRIBUTORS DO NOT WARRANT THAT THIS PROJECT:
+  * 能在任何特定硬件、操作系统、驱动、运行时或配置上正确运行；
+    will function correctly on any particular hardware, operating system,
+    driver, runtime or configuration;
+  * 与它所交互的任何第三方程序的任何特定版本或构建兼容，或在该程序
+    更新后仍然兼容；
+    is compatible with any particular version or build of any third-party
+    program it interacts with, or will remain so after any update;
+  * 没有缺陷，或任何缺陷会被修复；
+    is free of defects, or that any defect will be corrected;
+  * 在任何特定法域内、或用于任何特定目的时合法。
+    is lawful to use in any particular jurisdiction or for any particular
+    purpose.
+
+在任何情况下，作者与贡献者均不对任何索赔、损害或其他责任负责，无论是
+基于合同、侵权（包括疏忽）或其他法律理论，也无论是否因本软件、相关
+材料、使用或无法使用本软件或材料而产生或与之相关，包括但不限于：
+IN NO EVENT SHALL THE AUTHORS OR CONTRIBUTORS BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE, THE
+MATERIALS OR THE USE OR OTHER DEALINGS IN THE SOFTWARE OR MATERIALS,
+INCLUDING WITHOUT LIMITATION:
+
+  * 任何性质的数据、配置、工程或文件的损坏、丢失或损毁；
+    corruption, loss or damage to data, configurations, projects or files
+    of any kind;
+  * 任何软件或操作系统的不稳定、崩溃或性能下降；
+    instability, crashes or degraded performance of any software or
+    operating system;
+  * 因你使用本项目而引起的第三方索赔；
+    any claim brought by a third party arising from your use of this
+    project;
+  * 任何利润、收入、数据或预期节省的损失，以及任何间接或后果性损失。
+    any loss of profit, revenue, data or anticipated savings, and any
+    indirect or consequential loss of any kind.
+
+你使用本项目完全出于自身风险。使用前你应自行备份数据，并自行确认你的
+使用合法且获得许可。
+YOU USE THIS PROJECT ENTIRELY AT YOUR OWN RISK. YOU ARE RESPONSIBLE FOR
+BACKING UP YOUR OWN DATA BEFORE USING IT, AND FOR SATISFYING YOURSELF
+THAT YOUR USE IS LAWFUL AND PERMITTED.
 
 ----------------------------------------------------------------------
-Notes
+8. 附注 / Notes
 ----------------------------------------------------------------------
 
-This file describes the main license, additional terms, copyright notices,
-third-party components, and disclaimer of this project.
+本文件说明本项目的主要许可、该许可的适用范围、附加条件、贡献、其他
+著作权声明、来源与组件，以及免责声明。
+This file describes the main license, the scope of that license,
+additional conditions, contributions, other copyright notices,
+provenance and components, and the disclaimer of this project.
 
-The full license texts are located in the ./LICENSES/ directory.
+各项许可全文位于 ./LICENSES/ 目录，逐字收录，未作修改。
+The full license texts are located in the ./LICENSES/ directory and are
+reproduced verbatim, without modification.
 
-Scope notes for this specific project:
+======================================================================
+附录 A —— 第三方程序声明
+APPENDIX A -- THIRD-PARTY PROGRAM NOTICE
+======================================================================
 
-  * The patch does NOT modify, redistribute or replace the game executable.
-    `Armymen.exe` is never written to. All in-memory patching is performed at
-    runtime by scripts\Army1_Extend_Dll.asi and is fully reversible.
-  * Game asset differences in `update/` are extracted blocks taken from the
-    user's own legally acquired copy of the localized retail release; no new
-    artwork is authored by this project.
-  * No stb / MinHook / Source Han Serif are used by this project. The font is
-    the system-provided SimSun (宋体), selected at runtime via the game's own
-    CreateFontA/CreateFontIndirectA.
+可选。仅当本作品基于、修改、修补或扩展第三方程序（例如游戏、应用程序
+或平台）时，填写本附录并纳入。不适用时整段删除。
+OPTIONAL. Include this appendix, filled in, only when this work is built
+on, modifies, patches or extends a third-party program (for example a
+game, application or platform). Delete it entirely when it does not
+apply.
+
+A.1 不对第三方程序主张权利 / No claim over the third-party program
+    本作品是一项独立的非官方作品，涉及名为 Army Men 系列（玩具兵大战） 的
+    第三方程序。它不隶属于该程序的著作权人或发行方，也不受其背书、
+    赞助或许可。
+    This work is an independent, unofficial work relating to the
+    third-party program known as Army Men series. It is NOT affiliated
+    with, endorsed by, sponsored by, or licensed by the copyright holder
+    or publisher of that program.
+
+A.2 本许可不： / This license does NOT:
+      * 授予第三方程序或其任何资产的任何权利；
+        grant any right in the third-party program or any of its assets;
+      * 授权任何会侵害第三方程序著作权人权利的使用；
+        authorise any use that would infringe the rights of the copyright
+        holder of the third-party program;
+      * 主张、声称或转让第三方程序及其文本、美术、音频、视频、商标或
+        任何其他资产的所有权。
+        assert, claim or transfer any ownership of the third-party
+        program, its text, artwork, audio, video, trademarks or any other
+        asset.
+    底层程序的任何权利专属于其各自所有人，并受该程序自身许可与著作权
+    管辖。本文件无意与之竞争、覆盖或影响那些权利。
+    Any rights in the underlying program remain exclusively with their
+    respective owners and are governed by that program's own license and
+    copyright. Nothing in this file is intended to compete with, override
+    or affect those rights.
+
+A.3 第三方程序的著作权声明 / Copyright notice of the third-party program
+    Army Men 系列（玩具兵大战） 及所有相关名称、角色、美术、音乐、视频、
+    文本与商标，归各自著作权人所有，包括但不限于：
+    Army Men series and all related titles, characters, artwork, music,
+    video, text and trademarks are the property of their respective
+    copyright holders, including but not limited to:
+
+        - The 3DO Company（1998，原开发商与发行商） / The 3DO Company (1998, original developer and publisher)
+
+    Copyright (c) 各自所有人 their respective owners。保留所有权利
+    All rights reserved。
+
+A.4 未获授权状态 / Unauthorised status
+    本作品未获第三方程序的著作权人、发行方或分发方的授权、批准、背书、
+    许可或支持。它是独立制作与分发的非官方作品。
+    This work has NOT been authorised, approved, endorsed, licensed or
+    supported by the copyright holder, publisher or distributor of the
+    third-party program. It is an unofficial work produced and
+    distributed independently.
+
+A.5 对第三方程序的修改 / Modification of the third-party program
+    安装或使用本作品，会在运行时或磁盘上修改、修补或扩展第三方程序的
+    行为。因此，本作品不属于对该程序的"未修改"使用。
+    Installing or using this work modifies, patches or extends the
+    behaviour of the third-party program at runtime or on disk. This work
+    is therefore not an "unmodified" use of that program.
+
+A.6 可能与该程序自身条款冲突 / Possible conflict with the program's terms
+    特此提示用户：此类修改**可能**与适用于其所持该程序副本的最终用户
+    许可协议（EULA）、服务条款或其他合同条款相冲突。本作品不表示该
+    使用被允许，本许可中的任何内容也不得被解读为该使用被允许的表述。
+    Users are advised that such modification MAY conflict with the End
+    User License Agreement (EULA), terms of service, or other contractual
+    terms that apply to their copy of the third-party program. This work
+    does not represent that such use is permitted, and nothing in this
+    license should be read as a representation that it is.
+
+A.7 用户的责任 / Responsibility of the user
+    你应自行判断你对本作品的使用，是否在你所持第三方程序副本的适用
+    条款下被允许，并自行遵守那些条款。若不确定，请勿使用本作品。
+    You are solely responsible for determining whether your use of this
+    work is permitted under the terms applicable to your copy of the
+    third-party program, and for complying with those terms. If you are
+    unsure, do not use this work.
+
+A.8 本许可不授权任何被禁止的使用 /
+    This license does not authorise any prohibited use
+    本许可中的任何内容，均不授权你实施第三方程序条款所禁止的行为。
+    当第三方程序的条款与本许可同时适用且无法调和时，就该程序本身而言，
+    以第三方程序的条款为准。
+    Nothing in this license authorises you to do anything that the terms
+    of the third-party program prohibit. Where the terms of the
+    third-party program and this license both apply and cannot be
+    reconciled, the terms of the third-party program prevail with respect
+    to that program itself.
+
+A.9 针对第三方程序修改的补充免责 /
+    Additional disclaimers for third-party program modification
+    在第 7 节之外，作者与贡献者亦不对下列事项负责，且不就此作出担保：
+    In addition to Section 7, the authors and contributors are not liable
+    for, and do not warrant against:
+      * 第三方程序的安装、存档、配置文件或任何其他数据的损坏、丢失或
+        损毁；
+        corruption, loss or damage to installations, saved games,
+        profiles, configurations or any other data of the third-party
+        program;
+      * 任何账号、在线服务、多人访问或反作弊状态被暂停、限制或终止，
+        包括发行方或运营方因你使用本作品而采取的任何措施；
+        suspension, restriction or termination of any account, online
+        service, multiplayer access or anti-cheat standing, including any
+        action taken by the publisher or operator because of the use of
+        this work;
+      * 第三方程序的著作权人、发行方或分发方因你使用本作品而提出的
+        任何索赔。
+        any claim brought by the copyright holder, publisher or
+        distributor of the third-party program arising from your use of
+        this work.
+
+    你使用本作品完全出于自身风险。安装前你应自行备份数据。
+    YOU USE THIS WORK ENTIRELY AT YOUR OWN RISK. YOU ARE RESPONSIBLE FOR
+    BACKING UP YOUR OWN DATA BEFORE INSTALLING IT.
