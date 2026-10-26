@@ -42,7 +42,8 @@
 ★ 包根说明与许可（本轮补齐，与 1/2 代同一套约定 S11/S12/S13）：
     LICENSE      <- 仓库根 LICENSE（项目主许可，含游戏版权声明）
     License.txt  <- LICENSES/*.txt 合并：ASILoader + cnc-ddraw + qwen3-tts
-                    + GPLv3。★ 三方组件（UAL / cnc-ddraw / qwen3-tts）的
+                    + Apache-2.0（基础许可全文）。★ 三方组件（UAL / cnc-ddraw
+                    / qwen3-tts）的
                     许可要求随二进制或产物分发时附上版权声明，缺一不可。
     必读说明.txt <- Documents/必读说明_太空玩具.txt，写 UTF-8 **带 BOM** +
                     CRLF（Windows 记事本靠 BOM 判编码，目标用户直接双击打开）
@@ -98,8 +99,8 @@ LICENSE_DIR = "LICENSES"
 # ★ 显式清单，不是"目录里有什么就合什么"：LICENSES/ 是三代共用目录，
 #   1 代包不该混进 3 代才用到的 qwen3-tts 声明（反之亦然）。
 #   合并顺序：先随包分发的第三方（UAL / cnc-ddraw / qwen3-tts），
-#   最后 GPLv3.txt 作为主许可正文。
-LICENSE_ORDER = ["ASILoader.txt", "cnc-ddraw.txt", "qwen3-tts.txt", "GPLv3.txt"]
+#   最后 Apache-2.0.txt 作为主许可正文（基础许可全文）。
+LICENSE_ORDER = ["ASILoader.txt", "cnc-ddraw.txt", "qwen3-tts.txt", "Apache-2.0.txt"]
 
 # 配音落位自证：与 ci_build_am3.py 的 AUDIO_EXPECT_FILES 保持一致
 AUDIO_REL = "update/audio/vos"

@@ -92,11 +92,11 @@ AI_FILES = [
     "将此文件交给AI，让AI协助完善本项目.txt",
 ]
 LICENSE_DIR = "LICENSES"
-# 合并顺序：先随包分发的第三方（UAL / cnc-ddraw），最后 GPLv3.txt 作为主许可正文
+# 合并顺序：先随包分发的第三方（UAL / cnc-ddraw），最后 Apache-2.0.txt 作为主许可正文
 #   ★ 显式清单，不再"目录里有什么就合什么"：LICENSES/ 是三代共用目录，
 #     qwen3-tts.txt（3 代配音用）不该出现在 2 代包里。
 #   ★ cnc-ddraw 是 MIT：随二进制分发必须附版权声明，故必须在此列出。
-LICENSE_ORDER = ["ASILoader.txt", "cnc-ddraw.txt", "GPLv3.txt"]
+LICENSE_ORDER = ["ASILoader.txt", "cnc-ddraw.txt", "Apache-2.0.txt"]
 
 # Windows 兼容性 shim 的抵消/恢复脚本（2 代特有，来自仓库 compat/）
 COMPAT_REG_DIR = "compat"

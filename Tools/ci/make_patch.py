@@ -54,13 +54,13 @@ AI_FILES = [
     "将此文件交给AI，让AI协助完善本项目.txt",
 ]
 LICENSE_DIR = "LICENSES"
-# 合并顺序：先随包分发的第三方（UAL），最后 GPLv3.txt 作为主许可正文
+# 合并顺序：先随包分发的第三方（UAL），最后 Apache-2.0.txt 作为主许可正文
 #   ★ 显式清单，不是"目录里有什么就合什么"：LICENSES/ 是三代共用目录，
 #     cnc-ddraw.txt / qwen3-tts.txt 是 2 代与 3 代才随包分发的声明，
 #     混进 1 代包会给玩家一份与包内容无关的许可文件。
 #   ★ 与 2 代 make_patch_am2.py、3 代 make_patch_am3.py 一样，
 #     少一份就**直接失败**（缺第三方声明＝合规缺口，不能静默少合）。
-LICENSE_ORDER = ["ASILoader.txt", "GPLv3.txt"]
+LICENSE_ORDER = ["ASILoader.txt", "Apache-2.0.txt"]
 
 
 def sha256(p):
